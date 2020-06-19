@@ -11,7 +11,7 @@ var _constants = require("../../../constants");
 
 var _renderFromComponentMap = _interopRequireDefault(require("../../../utils/renderFromComponentMap"));
 
-var _getChildren = require("./getChildren");
+var _getContentModel = require("../../../utils/getContentModel");
 
 var _PageContext = require("../../../context/PageContext");
 
@@ -59,7 +59,7 @@ const Experiment = /*#__PURE__*/_react.default.memo(props => {
     }));
   }
 
-  const items = (0, _getChildren.getChildren)({
+  const items = (0, _getContentModel.getContentModel)({
     id: selectedVariant.id,
     type: selectedVariant.type
   });

@@ -3,13 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getChildren = void 0;
+exports.getContentModel = void 0;
 
 var _react = require("react");
 
-var _context = require("../../../../context");
+var _context = require("../../context");
 
-const getChildren = ({
+const getContentModel = ({
   id,
   type
 }) => {
@@ -21,4 +21,4 @@ const getChildren = ({
   });
 };
 
-exports.getChildren = getChildren;
+exports.getContentModel = getContentModel;

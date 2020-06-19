@@ -1,0 +1,1 @@
+{"version":3,"file":"CloudLogger.d.ts","sourceRoot":"","sources":["../../src/integration/CloudLogger.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,iBAAiB,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAC;AAEtD,qBAAa,WAAW;IACtB,OAAO,CAAC,MAAM,CAAM;gBAER,MAAM,EAAE,iBAAiB;IAI/B,GAAG,CAAC,OAAO,EAAE,MAAM,EAAE,QAAQ,EAAE,QAAQ;CAQ9C"}

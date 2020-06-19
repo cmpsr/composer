@@ -1,0 +1,1 @@
+{"version":3,"file":"FeatureStyle.d.ts","sourceRoot":"","sources":["../../src/types/FeatureStyle.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,GAAG,CAAC;AAE1B,oBAAY,YAAY,GAAG;IACzB,UAAU,CAAC,EAAE,KAAK,CAAC;IACnB,KAAK,CAAC,EAAE,KAAK,CAAC;IACd,QAAQ,CAAC,EAAE,KAAK,CAAC;IACjB,OAAO,CAAC,EAAE,KAAK,CAAC;CACjB,CAAC"}

@@ -1,0 +1,30 @@
+#import "../../BodyCopy/fragments/BodyCopy.graphql"
+#import "../../Experiment/fragments/Experiment.graphql"
+#import "../../Feature/fragments/Feature.graphql"
+#import "../../Footer/fragments/Footer.graphql"
+#import "../../Grid/fragments/Grid.graphql"
+#import "../../Header/fragments/Header.graphql"
+#import "../../Hero/fragments/Hero.graphql"
+
+query SectionByIdQuery($id: String!) {
+  section(id: $id) {
+    sys {
+      id
+    }
+    title
+    subtitle
+    style
+    type
+    contentCollection(limit: 20) {
+      items {
+        ...BodyCopy
+        ...Experiment
+        ...Feature
+        ...Footer
+        ...Grid
+        ...Header
+        ...Hero
+      }
+    }
+  }
+}

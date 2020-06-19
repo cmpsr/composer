@@ -1,0 +1,113 @@
+.typo-headline-1 {
+  @apply text-m-headline-1 font-m-headline-1 font-weight-m-headline-1 leading-m-headline-1 tracking-m-headline-1;
+}
+.typo-headline-2 {
+  @apply text-m-headline-2 font-m-headline-2 font-weight-m-headline-2 leading-m-headline-2 tracking-m-headline-2;
+}
+.typo-headline-3 {
+  @apply text-m-headline-3 font-m-headline-3 font-weight-m-headline-3 leading-m-headline-3 tracking-m-headline-3;
+}
+.typo-headline-4 {
+  @apply text-m-headline-4 font-m-headline-4 font-weight-m-headline-4 leading-m-headline-4 tracking-m-headline-4;
+}
+.typo-headline-5 {
+  @apply text-m-headline-5 font-m-headline-5 font-weight-m-headline-5 leading-m-headline-5 tracking-m-headline-5;
+}
+.typo-headline-6 {
+  @apply text-m-headline-6 font-m-headline-6 font-weight-m-headline-6 leading-m-headline-6 tracking-m-headline-6;
+}
+.typo-body {
+  @apply text-m-body font-m-body font-weight-m-body leading-m-body tracking-m-body;
+}
+.typo-detail {
+  @apply text-m-detail font-m-detail font-weight-m-detail leading-m-detail tracking-m-detail;
+}
+.typo-eyebrow {
+  @apply text-m-eyebrow font-m-eyebrow font-weight-m-eyebrow leading-m-eyebrow tracking-m-eyebrow;
+}
+.typo-form {
+  @apply text-m-form font-m-form font-weight-m-form leading-m-form tracking-m-form;
+}
+.typo-form-error {
+  @apply text-m-formError font-m-formError font-weight-m-formError leading-m-formError tracking-m-formError text-fill-system-error;
+}
+.typo-form-label {
+  @apply text-m-formLabel font-m-formLabel font-weight-m-formLabel leading-m-formLabel tracking-m-formLabel;
+}
+.typo-button {
+  @apply text-m-button font-m-button font-weight-m-button leading-m-button tracking-m-button;
+}
+.typo-link {
+  @apply text-m-link font-m-link font-weight-m-link leading-m-link tracking-m-link underline;
+}
+@screen md {
+  .typo-headline-1 {
+    @apply text-headline-1 font-headline-1 font-weight-headline-1 leading-headline-1 tracking-headline-1;
+  }
+  .typo-headline-2 {
+    @apply text-headline-2 font-headline-2 font-weight-headline-2 leading-headline-2 tracking-headline-2;
+  }
+  .typo-headline-3 {
+    @apply text-headline-3 font-headline-3 font-weight-headline-3 leading-headline-3 tracking-headline-3;
+  }
+  .typo-headline-4 {
+    @apply text-headline-4 font-headline-4 font-weight-headline-4 leading-headline-4 tracking-headline-4;
+  }
+  .typo-headline-5 {
+    @apply text-headline-5 font-headline-5 font-weight-headline-5 leading-headline-5 tracking-headline-5;
+  }
+  .typo-headline-6 {
+    @apply text-headline-6 font-headline-6 font-weight-headline-6 leading-headline-6 tracking-headline-6;
+  }
+  .typo-body {
+    @apply text-body font-body font-weight-body leading-body tracking-body;
+  }
+  .typo-detail {
+    @apply text-detail font-detail font-weight-detail leading-detail tracking-detail;
+  }
+  .typo-eyebrow {
+    @apply text-eyebrow font-eyebrow font-weight-eyebrow leading-eyebrow tracking-eyebrow;
+  }
+  .typo-form {
+    @apply text-form font-form font-weight-form leading-form tracking-form;
+  }
+  .typo-form-error {
+    @apply text-formError font-formError font-weight-formError leading-formError tracking-formError text-fill-system-error;
+  }
+  .typo-form-label {
+    @apply text-formLabel font-formLabel font-weight-formLabel leading-formLabel tracking-formLabel;
+  }
+  .typo-button {
+    @apply text-button font-button font-weight-button leading-button tracking-button;
+  }
+  .typo-link {
+    @apply text-link font-link font-weight-link leading-link tracking-link;
+  }
+}
+.dark-100 {
+  @apply text-dark-100;
+}
+.dark-50 {
+  @apply text-dark-50;
+}
+.dark-25 {
+  @apply text-dark-25;
+}
+.light-100 {
+  @apply text-light-100;
+}
+.light-50 {
+  @apply text-light-50;
+}
+.light-25 {
+  @apply text-light-25;
+}
+.accent-100 {
+  @apply text-accent-100;
+}
+.accent-50 {
+  @apply text-accent-50;
+}
+.accent-25 {
+  @apply text-accent-25;
+}

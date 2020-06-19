@@ -7,7 +7,7 @@
     "registry": "https://npm.pkg.github.com/",
     "directory": "lib"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Steve Cox <stevejcox@me.com>",
   "license": "MIT",
   "main": "./lib/index.js",

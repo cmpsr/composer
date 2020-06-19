@@ -3,7 +3,7 @@ import { DEFAULT } from 'constants/index';
 import renderFromComponentMap from 'utils/renderFromComponentMap';
 
 import { ExperimentProps } from './types';
-import { getChildren } from './getChildren';
+import { getContentModel } from '../../../utils/getContentModel';
 import { PageContext } from 'context/PageContext';
 import { getVariantByQueryParams } from 'utils/getVariantByQueryParams';
 import { randomTrafficSelector } from 'utils/randomTrafficSelector';
@@ -35,7 +35,7 @@ const Experiment: React.FC<ExperimentProps> = React.memo((props) => {
     addVariant({ ...selectedVariant, ref: id });
   }
 
-  const items = getChildren({
+  const items = getContentModel({
     id: selectedVariant.id,
     type: selectedVariant.type,
   });

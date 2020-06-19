@@ -13,7 +13,7 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "libbuild": "yarn babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && cp package.json ./lib/package.json",
+    "libbuild": "rimraf lib && yarn babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && cp package.json ./lib/package.json",
     "test": "jest --env=jest-environment-jsdom-sixteen",
     "test:watch": "jest --watch --env=jest-environment-jsdom-sixteen",
     "test:coverage": "jest --coverage --env=jest-environment-jsdom-sixteen"
@@ -31,6 +31,7 @@
     "graphql-tag": "^2.10.3",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.4.4",
+    "rimraf": "^3.0.2",
     "uuid": "^7.0.1"
   },
   "devDependencies": {

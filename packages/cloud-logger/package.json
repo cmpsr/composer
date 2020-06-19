@@ -4,8 +4,7 @@
     "url": "ssh://git@github.com:cmpsr/composer.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/",
-    "directory": "lib"
+    "registry": "https://npm.pkg.github.com/"
   },
   "version": "0.0.2",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@gmail.com>",
@@ -13,7 +12,7 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && find lib -type f -name '*.test.*' -exec rm {} + && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && cp package.json ./lib/package.json",
+    "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && find lib -type f -name '*.test.*' -exec rm {} + && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"

@@ -6,7 +6,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@gmail.com>",
   "license": "MIT",
   "main": "./lib/index.js",

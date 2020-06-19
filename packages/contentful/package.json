@@ -1,0 +1,40 @@
+{
+  "name": "@cmpsr/contentful",
+  "repository": {
+    "url": "ssh://git@github.com:cmpsr/composer.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "directory": "lib"
+  },
+  "version": "0.0.1",
+  "author": "Steve Cox <stevejcox@me.com>",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "libbuild": "yarn babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && cp package.json ./lib/package.json",
+    "test": "jest --env=jest-environment-jsdom-sixteen",
+    "test:watch": "jest --watch --env=jest-environment-jsdom-sixteen",
+    "test:coverage": "jest --coverage --env=jest-environment-jsdom-sixteen"
+  },
+  "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
+    "@apollo/react-ssr": "^3.1.3",
+    "@cmpsr/components": "^0.1.0",
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link-context": "^1.0.19",
+    "apollo-link-http": "^1.5.16",
+    "classnames": "^2.2.6",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.3",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.4.4",
+    "uuid": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/uuid": "^7.0.3"
+  },
+  "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
+}

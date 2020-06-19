@@ -1,0 +1,28 @@
+{
+  "name": "@cmpsr/analytics",
+  "repository": {
+    "url": "ssh://git@github.com:cmpsr/composer.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "directory": "lib"
+  },
+  "version": "0.0.1",
+  "author": "Steve Cox <stevejcox@me.com>",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "libbuild": "babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && cp package.json ./lib/package.json",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "js-cookie": "^2.2.1"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^2.2.5"
+  },
+  "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
+}

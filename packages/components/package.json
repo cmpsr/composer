@@ -1,0 +1,58 @@
+{
+  "name": "@cmpsr/components",
+  "repository": {
+    "url": "ssh://git@github.com:cmpsr/composer.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "directory": "lib"
+  },
+  "version": "0.0.1",
+  "author": "Steve Cox <stevejcox@me.com>",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "storybook": "echo 'Starting Storybook' && start-storybook -p 8080 -c .storybook",
+    "build-storybook": "build-storybook -c .storybook",
+    "libbuild": "yarn babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && find lib -type f -name '*.test.*' -exec rm {} + && yarn tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && cp package.json ./lib/package.json",
+    "test": "jest --env=jest-environment-jsdom-sixteen",
+    "test:watch": "jest --watch --env=jest-environment-jsdom-sixteen",
+    "test:coverage": "jest --coverage --env=jest-environment-jsdom-sixteen"
+  },
+  "dependencies": {
+    "@types/classnames": "^2.2.10",
+    "classnames": "^2.2.6",
+    "downshift": "^5.1.1",
+    "react-day-picker": "^7.4.8",
+    "react-device-detect": "^1.11.14",
+    "react-markdown": "^4.3.1",
+    "react-modal": "^3.11.2",
+    "react-tooltip": "^4.2.6"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^5.3.17",
+    "@storybook/addon-actions": "^5.3.13",
+    "@storybook/addon-docs": "^5.3.17",
+    "@storybook/addon-knobs": "^5.3.13",
+    "@storybook/addon-notes": "^5.3.13",
+    "@storybook/addon-viewport": "^5.3.13",
+    "@storybook/addons": "^5.3.13",
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^5.3.18",
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "mockdate": "^2.0.5",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-mixins": "^6.2.3",
+    "postcss-preset-env": "^6.7.0",
+    "storybook-addon-performance": "^0.7.0",
+    "storybook-chromatic": "^3.5.2",
+    "tailwindcss": "^1.4.0",
+    "tsconfig-paths-webpack-plugin": "^3.2.0"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1"
+  },
+  "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
+}

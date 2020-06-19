@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testimonials3 should match snapshot 1`] = `
+<div
+  className="flex flex-col items-center"
+  data-testid="testimonial3"
+>
+  <picture
+    className="select-none mb-4"
+  >
+    <source
+      className="select-none w-32 h-32 rounded-full object-cover"
+      data-testid="image"
+      srcSet="https://images.ctfassets.net/o9153kt66j4s/6Ru9unmOhMXrFwKtLV2SRU/7c902fd189741be40f5fef77340cbf1d/placeholder.svg?fm=webp"
+      type="image/webp"
+    />
+    <img
+      alt="Image Title"
+      className="select-none w-32 h-32 rounded-full object-cover"
+      src="https://images.ctfassets.net/o9153kt66j4s/6Ru9unmOhMXrFwKtLV2SRU/7c902fd189741be40f5fef77340cbf1d/placeholder.svg"
+    />
+  </picture>
+  <h6
+    className="typo-headline-6"
+    data-testid="typography"
+  >
+    Testing author,
+  </h6>
+  <p
+    className="typo-body text-gray-500 mb-6"
+    data-testid="typography"
+  >
+    Testing profession.
+  </p>
+  <p
+    className="typo-body text-center md:px-5"
+    data-testid="typography"
+  >
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae aut, omnis, maxime rem, cum similique repellendus hic impedit totam magnam deserunt voluptatum quia! Blanditiis repellendus sit debitis doloribus, totam minima?
+  </p>
+</div>
+`;

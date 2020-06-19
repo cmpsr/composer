@@ -1,0 +1,32 @@
+{
+  "plugins": [
+    "@babel/plugin-proposal-object-rest-spread",
+    "import-graphql",
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "client": "./src/client",
+          "config": "./src/config",
+          "constants": "./src/constants",
+          "context": "./src/context",
+          "models": "./src/models",
+          "schema": "./src/schema",
+          "utils": "./src/utils"
+        }
+      }
+    ]
+  ],
+  "presets": [
+    "@babel/preset-typescript",
+    "@babel/preset-react",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ]
+}

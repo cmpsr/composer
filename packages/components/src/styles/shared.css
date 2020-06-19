@@ -1,0 +1,15 @@
+.primary-btn {
+  @apply text-center text-fill-white select-none font-medium bg-fill-primary-100 py-4 px-8 flex items-center justify-center;
+}
+.secondary-btn {
+  @apply text-center text-fill-primary-100 select-none border border-fill-primary-100 font-medium py-4 px-8 flex items-center justify-center;
+}
+
+.ul-columns-2 {
+  columns: 2;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  @apply appearance-none m-0;
+}

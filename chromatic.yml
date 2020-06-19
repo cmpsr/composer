@@ -1,0 +1,14 @@
+name: 'Chromatic'
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: yarn && yarn build-storybook
+    - uses: chromaui/action@v1
+      with:
+        appCode: hh5grum9txd
+        token: ${{ secrets.GITHUB_TOKEN }}
+        storybookBuildDir: "./packages/components/storybook-static"

@@ -1,0 +1,25 @@
+{
+  "name": "@cmpsr/plaid-link",
+  "repository": {
+    "url": "ssh://git@github.com:cmpsr/composer.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "directory": "lib"
+  },
+  "version": "0.0.1",
+  "author": "Takeichi Kanzaki Cabrera <takeichi@impulsum.vc>",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "libbuild": "babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && cp package.json ./lib/package.json",
+    "test": "jest --env=jest-environment-jsdom-sixteen",
+    "test:watch": "jest --watch --env=jest-environment-jsdom-sixteen",
+    "test:coverage": "jest --coverage --env=jest-environment-jsdom-sixteen"
+  },
+  "dependencies": {
+    "react-plaid-link": "^2.2.1"
+  },
+  "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
+}

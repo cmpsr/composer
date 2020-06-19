@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testimonials6 should match snapshot 1`] = `
+<div
+  className="w-full h-full max-w-content mx-auto flex justify-center"
+  data-testid="box"
+>
+  <div
+    className="flex flex-col md:flex-row md:w-3/4 p-3"
+    data-testid="testimonial6"
+  >
+    <svg
+      className="md:w-20 h-12"
+      data-testid="icon"
+      height="50px"
+      viewBox="0 0 24 24"
+      width="50px"
+    >
+      <path
+        d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"
+      />
+    </svg>
+    <div>
+      <h1
+        className="typo-headline-2 p-1 text-center mb-10"
+        data-testid="typography"
+      >
+        I realized up there that our planet is not infinite. It’s fragile.
+      </h1>
+      <div
+        className="flex items-end justify-center"
+      >
+        <h6
+          className="typo-headline-6 mr-2"
+          data-testid="typography"
+        >
+          Testing author,
+        </h6>
+        <p
+          className="typo-body text-gray-500"
+          data-testid="typography"
+        >
+          Testing profession.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

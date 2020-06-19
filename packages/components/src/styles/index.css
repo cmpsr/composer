@@ -1,0 +1,12 @@
+/* purgecss start ignore */
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "./shared.css";
+@import "../components/primitives/Typography/Typography.css";
+@import "../components/primitives/form/form.css";
+@import "../components/primitives/Progress/Circular/Circular.css";
+@import "../components/primitives/Tooltip/Tooltip.css";
+@import "../components/primitives/Modal/Modal.css";
+/* purgecss end ignore */
+@import "tailwindcss/utilities";

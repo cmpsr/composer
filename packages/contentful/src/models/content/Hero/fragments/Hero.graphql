@@ -1,0 +1,24 @@
+#import "../../Asset/fragments/Asset.graphql"
+#import "../../Link/fragments/Link.graphql"
+
+fragment Hero on Hero {
+  sys {
+    id
+  }
+  title
+  type
+  eyebrow
+  subtitle
+  desktopAsset {
+    ...Asset
+  }
+  mobileAsset {
+    ...Asset
+  }
+  style
+  contentCollection(limit: 3) {
+    items {
+      ...Link
+    }
+  }
+}

@@ -4,7 +4,7 @@
     "url": "ssh://git@github.com:cmpsr/composer.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.org"
   },
   "version": "0.0.7",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@gmail.com>",

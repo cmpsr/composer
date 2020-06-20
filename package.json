@@ -9,6 +9,7 @@
     "prepublish": "lerna run libbuild --stream",
     "publish": "lerna version && lerna publish from-package",
     "build": "lerna run libbuild --stream",
+    "build:storybook": "lerna run build:storybook --stream",
     "test": "lerna run test --stream",
     "test:watch": "lerna run --parallel test:watch --stream",
     "test:coverage": "lerna run --parallel test:coverage --stream",

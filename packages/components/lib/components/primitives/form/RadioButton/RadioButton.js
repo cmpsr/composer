@@ -46,7 +46,7 @@ const RadioButton = /*#__PURE__*/(0, _react.forwardRef)(({
   }, /*#__PURE__*/_react.default.createElement("input", {
     ref: ref,
     name: name,
-    className: (0, _classnames.default)('form-radio ', radio, radioBorder, className),
+    className: (0, _classnames.default)(radio, radioBorder, className),
     "aria-label": ariaLabel,
     type: "radio",
     value: value,

@@ -1,5 +1,4 @@
 const colors = require('./colors');
-const customForms = require('./customForms');
 
 module.exports = {
   fontFamily: {
@@ -242,5 +241,4 @@ module.exports = {
       '40': '.4',
     },
   },
-  customForms,
 };

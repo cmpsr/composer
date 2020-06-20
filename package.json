@@ -16,7 +16,7 @@
     "lint": "eslint . --ext .tsx,.ts,.js",
     "lint-and-fix": "eslint . --ext .tsx,.ts,.js --fix"
   },
-  "private": false,
+  "private": true,
   "workspaces": [
     "packages/*"
   ],

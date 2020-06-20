@@ -4,9 +4,10 @@
     "url": "ssh://git@github.com:cmpsr/composer.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
-  "version": "0.0.7",
+  "version": "0.0.9",
   "author": "Steve Cox <stevejcox@me.com>",
   "license": "MIT",
   "main": "./lib/index.js",

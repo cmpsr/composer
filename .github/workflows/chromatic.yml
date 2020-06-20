@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: yarn && yarn build:storybook
+    - run: yarn
     - uses: chromaui/action@v1
       with:
         appCode: cc7b1csiu9

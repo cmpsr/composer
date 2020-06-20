@@ -46,6 +46,7 @@
     "babel-plugin-import-graphql": "^2.7.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-react-app": "^9.1.2",
+    "chromatic": "^5.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.20.2",

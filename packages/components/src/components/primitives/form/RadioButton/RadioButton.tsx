@@ -51,7 +51,7 @@ export const RadioButton = forwardRef<HTMLInputElement, Props>(
         <input
           ref={ref}
           name={name}
-          className={cn('form-radio ', radio, radioBorder, className)}
+          className={cn(radio, radioBorder, className)}
           aria-label={ariaLabel}
           type="radio"
           value={value}

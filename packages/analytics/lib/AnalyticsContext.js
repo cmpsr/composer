@@ -9,7 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const AnalyticsContext = _react.default.createContext({
+const AnalyticsContext = /*#__PURE__*/_react.default.createContext({
   identify: () => null,
   group: () => null,
   page: () => null,

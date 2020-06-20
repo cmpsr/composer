@@ -9,7 +9,7 @@ var _react = require("react");
 
 var _config = require("../config");
 
-const ContentfulContext = (0, _react.createContext)({
+const ContentfulContext = /*#__PURE__*/(0, _react.createContext)({
   locale: 'en-US',
   componentMap: _config.componentMap,
   queryMap: _config.queryMap

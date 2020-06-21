@@ -1,0 +1,38 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.15.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - lerna > @lerna/clean > @lerna/prompt > inquirer > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/import > @lerna/prompt > inquirer > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/version > @lerna/prompt > inquirer > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/publish > @lerna/prompt > inquirer > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/publish > @lerna/otplease > @lerna/prompt > inquirer > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/prompt > inquirer > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-changelog-writer > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-commits-parser > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/version > @lerna/conventional-commits > conventional-recommended-bump > conventional-commits-parser > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/publish > @lerna/npm-dist-tag > @lerna/otplease > @lerna/prompt > inquirer > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/publish > @lerna/npm-publish > @lerna/otplease > @lerna/prompt > inquirer > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-changelog-writer > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/conventional-commits > conventional-changelog-core > conventional-commits-parser > lodash:
+        patched: '2020-06-21T23:53:47.670Z'
+    - lerna > @lerna/publish > @lerna/version > @lerna/conventional-commits > conventional-recommended-bump > conventional-commits-parser > lodash:
+        patched: '2020-06-21T23:53:47.670Z'

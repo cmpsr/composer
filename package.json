@@ -13,7 +13,9 @@
     "test:coverage": "lerna run --parallel test:coverage --stream",
     "lint": "eslint . --ext .tsx,.ts,.js",
     "lint-and-fix": "eslint . --ext .tsx,.ts,.js --fix",
-    "publish-ci": "lerna publish from-package -y --no-verify-access"
+    "publish-ci": "lerna publish from-package -y --no-verify-access",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "private": true,
   "workspaces": [
@@ -21,7 +23,8 @@
   ],
   "dependencies": {
     "@changesets/cli": "^2.9.1",
-    "lerna": "^3.20.2"
+    "lerna": "^3.20.2",
+    "snyk": "^1.346.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -60,5 +63,6 @@
     "react-docgen-typescript-loader": "^3.7.2",
     "react-test-renderer": "^16.13.1",
     "typescript": "^3.8.3"
-  }
+  },
+  "snyk": true
 }

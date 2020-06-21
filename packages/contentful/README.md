@@ -1,3 +1,1 @@
 # Contentful
-
-Changes without publishing

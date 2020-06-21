@@ -1,4 +1,4 @@
-![](https://github.com/cmpsr/composer/workflows/Tests/badge.svg) [![codecov](https://codecov.io/gh/cmpsr/composer/branch/master/graph/badge.svg)](https://codecov.io/gh/cmpsr/composer) [![Known Vulnerabilities](https://snyk.io/test/github/cmpsr/composer/badge.svg)](https://snyk.io/test/github/cmpsr/composer})
+![](https://github.com/cmpsr/composer/workflows/Tests/badge.svg) [![codecov](https://codecov.io/gh/cmpsr/composer/branch/master/graph/badge.svg)](https://codecov.io/gh/cmpsr/composer) [![Known Vulnerabilities](https://snyk.io/test/github/cmpsr/composer/badge.svg)](https://snyk.io/test/github/cmpsr/composer)
 
 # Composer
 

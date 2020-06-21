@@ -1,7 +1,7 @@
 name: 'Publish'
 
 on:
-  push:
+  pull_request:
     branches:
       - production
 
@@ -16,8 +16,8 @@ jobs:
 
       - name: Configure CI Git User
         run: |
-          git config --global user.name '@stevejcox'
-          git config --global user.email 'stevejcox@users.noreply.github.com'
+          git config --global user.name '@cmpsr-bot'
+          git config --global user.email 'cmpsr-bot@users.noreply.github.com'
           git remote set-url origin https://$GITHUB_ACTOR:$GH_PAT@github.com/cmpsr/composer
         env:
           GH_PAT: ${{ secrets.GH_PAT }}

@@ -2,5 +2,3 @@ node_modules
 packages/node_modules
 .env
 coverage
-export.json
-import.json

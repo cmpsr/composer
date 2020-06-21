@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.19
+
+### Patch Changes
+
+- Added - to Contentful readme
+
 ## 0.0.18
 
 ### Patch Changes

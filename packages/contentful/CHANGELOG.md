@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.18
+
+### Patch Changes
+
+- bceef91: Updated README to test changeset
+
 ## 0.0.17
 
 ### Patch Changes

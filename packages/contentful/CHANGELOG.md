@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.21
+
+### Patch Changes
+
+- c95c1a0: Removes unnecesary readme content
+
 ## 0.0.20
 
 ### Patch Changes

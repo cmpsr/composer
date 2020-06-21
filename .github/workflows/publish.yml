@@ -1,9 +1,8 @@
 name: 'Publish'
 
 on:
-  pull_request:
-    branches:
-      - production
+  release:
+    types: [published]
 
 jobs:
   build:

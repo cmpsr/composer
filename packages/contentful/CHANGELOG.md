@@ -5,6 +5,7 @@
 ### Patch Changes
 
 - Contentful README to test changeset
+- bceef91: Updated README to test changeset
 
 ## 0.0.17
 

@@ -1,3 +1,3 @@
 # Contentful
 
-TBD -
+Changes without publishing

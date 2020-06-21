@@ -1,0 +1,12 @@
+{
+  "exclude": ["node_modules", "lib", "**/*.stories.*", "**/*.test*"],
+  "include": ["src"],
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "lib",
+    "rootDir": "src",
+    "declaration": true,
+    "resolveJsonModule": true,
+    "baseUrl": "src"
+  }
+}

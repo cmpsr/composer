@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Feature1 should match snapshot 1`] = `
+<div
+  className="w-full h-full max-w-content mx-auto flex items-stretch"
+  data-testid="box"
+>
+  <div
+    className="text-left flex flex-col justify-center"
+  >
+    <h2
+      className="typo-headline-1"
+      data-testid="typography"
+    >
+      title test
+    </h2>
+    <div
+      className="flex justify-start mt-8"
+    />
+  </div>
+</div>
+`;

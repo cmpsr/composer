@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmbeddedFeature1 should match snapshot 1`] = `
+<div
+  className="w-full h-full max-w-content mx-auto items-center"
+  data-testid="box"
+>
+  <div
+    className="text-left"
+  >
+    <h2
+      className="typo-headline-4 mt-4"
+      data-testid="typography"
+    >
+      title test
+    </h2>
+    <div
+      className="flex justify-start mt-4"
+    />
+  </div>
+</div>
+`;

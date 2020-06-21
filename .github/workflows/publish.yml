@@ -1,0 +1,43 @@
+name: 'Publish'
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2 # Number of commits to fetch. 0 indicates all history. Default: 1
+
+      - name: Configure CI Git User
+        run: |
+          git config --global user.name '@stevejcox'
+          git config --global user.email 'stevejcox@users.noreply.github.com'
+          git remote set-url origin https://$GITHUB_ACTOR:$GH_PAT@github.com/cmpsr/composer
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+
+      - name: Install Packages
+        run: yarn install
+
+      - name: Authenticate with Registry
+        run: |
+          yarn logout
+          echo "@cmpsr:registry=http://registry.npmjs.org/" > .npmrc
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+          npm whoami
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish package
+        run: yarn lerna publish --conventional-commits --yes
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

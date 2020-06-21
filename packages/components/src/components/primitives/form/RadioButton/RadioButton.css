@@ -1,0 +1,20 @@
+input[type="radio"] {
+  -webkit-appearance: none;
+}
+
+input[type="radio"]:before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 20% auto;
+  border-radius: 50%;
+}
+
+input[type="radio"]:checked:before {
+  @apply bg-states-contained-enabled;
+}
+
+input[type="radio"]:disabled:checked:before {
+  @apply bg-states-contained-disabled;
+}

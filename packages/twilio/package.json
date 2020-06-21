@@ -1,0 +1,27 @@
+{
+  "name": "@cmpsr/twilio",
+  "repository": {
+    "url": "ssh://git@github.com:cmpsr/composer.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "version": "0.0.15",
+  "author": "Steve Cox <stevejcox@me.com>",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "rimraf": "^3.0.2",
+    "twilio": "^3.40.0",
+    "twilio-chat": "^3.3.4"
+  },
+  "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
+}

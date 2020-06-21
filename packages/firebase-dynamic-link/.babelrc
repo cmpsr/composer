@@ -1,0 +1,15 @@
+{
+  "plugins": ["@babel/plugin-proposal-object-rest-spread", ["module-resolver"]],
+  "presets": [
+    "@babel/preset-typescript",
+    "@babel/preset-react",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ]
+}

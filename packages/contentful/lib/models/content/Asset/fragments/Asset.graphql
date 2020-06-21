@@ -1,0 +1,5 @@
+fragment Asset on Asset {
+  contentType
+  title
+  url
+}

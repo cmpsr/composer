@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation4 should match snapshot 1`] = `
+<div
+  className="w-full h-full py-8 bg-white"
+  data-testid="box"
+>
+  <nav
+    className="w-full h-full max-w-content mx-auto items-center flex flex-col md:flex-row"
+    data-testid="navigation4"
+  >
+    <div
+      className="flex-1 flex justify-start"
+    />
+    <div
+      className="flex-1 flex flex-col md:flex-row w-full justify-center items-center"
+    >
+      <div
+        className="flex flex-grow-0 text-center my-4 mx-8 md:my-0"
+      />
+    </div>
+    <div
+      className="flex-1 flex justify-end"
+    />
+  </nav>
+</div>
+`;

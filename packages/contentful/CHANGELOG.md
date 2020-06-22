@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.22
+
+### Patch Changes
+
+- 2becc38: Updated README
+
 ## 0.0.21
 
 ### Patch Changes

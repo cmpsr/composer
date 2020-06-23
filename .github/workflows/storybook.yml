@@ -22,7 +22,7 @@ jobs:
         project_id: ${{ secrets.RUN_PROJECT }}
 
     - name: Copy deploy files to root
-      run: cp ./deploy/storybook/. ./
+      run: cp -r ./deploy/storybook/. ./
 
     # Build and push image to Google Container Registry
     - name: Build

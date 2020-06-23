@@ -27,18 +27,14 @@ jobs:
         cd ./deploy/storybook &&
         gcloud builds submit \
           --quiet \
-          --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
-      env:
-        SERVICE_NAME: storybook-${GITHUB_REF##*/}
-        
+          --tag "gcr.io/$PROJECT_ID/storybook-${GITHUB_REF##*/}:$GITHUB_SHA"
+
     # Deploy image to Cloud Run
     - name: Deploy
       run: |-
         gcloud run deploy "$SERVICE_NAME" \
           --quiet \
           --region "$RUN_REGION" \
-          --image "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA" \
+          --image "gcr.io/$PROJECT_ID/storybook-${GITHUB_REF##*/}:$GITHUB_SHA" \
           --platform "managed" \
           --allow-unauthenticated
-      env:
-        SERVICE_NAME: storybook-${GITHUB_REF##*/}

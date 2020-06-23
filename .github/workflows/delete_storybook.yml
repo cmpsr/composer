@@ -25,6 +25,6 @@ jobs:
         --quiet
     
     # Delete cloud-run from gcloud
-    - name: Delete images
+    - name: Delete cloud run services
       run: gcloud run services delete storybook-${GITHUB_REF##*/} \
         --region $RUN_REGION

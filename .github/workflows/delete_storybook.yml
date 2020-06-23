@@ -6,7 +6,8 @@ env:
   RUN_REGION: us-central1
 
 jobs:
-  setup-build-deploy:
+  delete:
+    if: github.event.ref_type == 'branch'
     name: Delete storybook
     runs-on: ubuntu-latest
 
@@ -20,8 +21,7 @@ jobs:
 
     # Delete images from gcloud
     - name: Delete images
-      run: echo "storybook-${GITHUB_REF##*/}" && \
-        gcloud container images delete "storybook-${GITHUB_REF##*/}" \
+      run: echo "storybook-${{ github.event.ref }}" && gcloud container images delete "storybook-${{ github.event.ref }}" \
         --force-delete-tags \
         --quiet
     

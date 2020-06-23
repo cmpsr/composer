@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.0.24
+
+### Patch Changes
+
+- Updated dependencies [8af560d]
+  - @cmpsr/components@0.0.19
+
 ## 0.0.23
 
 ### Patch Changes

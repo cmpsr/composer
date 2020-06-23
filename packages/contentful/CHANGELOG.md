@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.0.25
+
+### Patch Changes
+
+- Updated dependencies [d28706e]
+  - @cmpsr/components@0.0.20
+
 ## 0.0.24
 
 ### Patch Changes

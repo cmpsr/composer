@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.20
+
+### Patch Changes
+
+- d28706e: add inputmode property to TextFieldWithLabel
+
 ## 0.0.19
 
 ### Patch Changes

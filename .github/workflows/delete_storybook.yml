@@ -24,7 +24,7 @@ jobs:
       run: |-
         gcloud container images list-tags gcr.io/${PROJECT_ID}/storybook-${{ github.event.ref }} \
         --format='get(digest)' \
-        --limit=unlimited | xargs -I {arg} gcloud container images delete "gcr.io/${PROJECT_ID}/storybook-${{ github.event.ref }}@{arg}" \
+        --limit=unlimited | xargs -I {arg} gcloud container images delete "gcr.io/${PROJECT_ID}/storybook-${{ github.event.ref }}@{arg}" --force-delete-tags \
         --quiet
 
     # Delete cloud-run from gcloud

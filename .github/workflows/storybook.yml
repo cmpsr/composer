@@ -24,10 +24,10 @@ jobs:
     # Build and push image to Google Container Registry
     - name: Build
       run: |-
-        cd ./deploy/storybook &&
         gcloud builds submit \
           --quiet \
-          --tag "gcr.io/$PROJECT_ID/storybook-${GITHUB_REF##*/}:$GITHUB_SHA"
+          --tag "gcr.io/$PROJECT_ID/storybook-${GITHUB_REF##*/}:$GITHUB_SHA" \
+          ./deploy/storybook/Dockerfile
 
     # Deploy image to Cloud Run
     - name: Deploy

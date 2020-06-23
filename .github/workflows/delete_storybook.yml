@@ -1,0 +1,30 @@
+name: Delete Images and Cloud Run service
+on: 'delete'
+
+env:
+  PROJECT_ID: ${{ secrets.RUN_PROJECT }}
+  RUN_REGION: us-central1
+
+jobs:
+  setup-build-deploy:
+    name: Delete storybook
+    runs-on: ubuntu-latest
+
+    steps:
+    # Setup gcloud CLI
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '290.0.1'
+        service_account_key: ${{ secrets.RUN_SA_KEY }}
+        project_id: ${{ secrets.RUN_PROJECT }}
+
+    # Delete images from gcloud
+    - name: Delete images
+      run: gcloud container images delete storybook-${GITHUB_REF##*/} \
+        --force-delete-tags \
+        --quiet
+    
+    # Delete cloud-run from gcloud
+    - name: Delete images
+      run: gcloud run services delete storybook-${GITHUB_REF##*/} \
+        --region $RUN_REGION

@@ -4,6 +4,7 @@ import { CurrencyFieldIcon } from './CurrencyFieldIcon';
 import { ICON_DEFAULT_TEST_ID } from 'components/primitives/Icon';
 import { Icon } from 'components/primitives';
 import { person as Person } from 'components/primitives/Icon/icons/social';
+import { InputMode } from '../TextField';
 
 describe('CurrencyFieldIcon', () => {
   const icon = (
@@ -185,5 +186,17 @@ describe('CurrencyFieldIcon', () => {
       'placeholder'
     ) as HTMLInputElement;
     expect(input).toHaveClass('border-fill-system-error');
+  });
+  it('should render inputMode', () => {
+    render(
+      <CurrencyFieldIcon
+        icon={icon}
+        name="text-field"
+        placeholder="placeholder"
+        inputMode={InputMode.Numeric}
+      />
+    );
+    const input = screen.getByPlaceholderText('placeholder');
+    expect(input.getAttribute('inputmode')).toBe('numeric');
   });
 });

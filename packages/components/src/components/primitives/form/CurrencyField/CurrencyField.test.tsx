@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { CurrencyField } from './CurrencyField';
 import { ICON_DEFAULT_TEST_ID } from 'components/primitives/Icon';
+import { InputMode } from '../TextField';
 
 describe('CurrencyField', () => {
   it('should render element with name', () => {
@@ -135,5 +136,16 @@ describe('CurrencyField', () => {
       'placeholder'
     ) as HTMLInputElement;
     expect(input).toHaveClass('border-fill-system-error');
+  });
+  it('should render inputMode', () => {
+    render(
+      <CurrencyField
+        name="text-field"
+        placeholder="placeholder"
+        inputMode={InputMode.Numeric}
+      />
+    );
+    const input = screen.getByPlaceholderText('placeholder');
+    expect(input.getAttribute('inputmode')).toBe('numeric');
   });
 });

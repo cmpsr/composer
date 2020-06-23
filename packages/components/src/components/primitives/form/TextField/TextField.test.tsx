@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { TextField } from '.';
+import { TextField, InputMode } from '.';
 
 describe('TextField', () => {
   it('should render element with name', () => {
@@ -89,5 +89,16 @@ describe('TextField', () => {
       'placeholder'
     ) as HTMLInputElement;
     expect(input.maxLength).toBe(3);
+  });
+  it('should render inputMode', () => {
+    render(
+      <TextField
+        name="text-field"
+        placeholder="placeholder"
+        inputMode={InputMode.Numeric}
+      />
+    );
+    const input = screen.getByPlaceholderText('placeholder');
+    expect(input.getAttribute('inputmode')).toBe('numeric');
   });
 });

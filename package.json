@@ -13,7 +13,7 @@
     "test:coverage": "lerna run --parallel test:coverage --stream",
     "lint": "eslint . --ext .tsx,.ts,.js",
     "lint-and-fix": "eslint . --ext .tsx,.ts,.js --fix",
-    "publish-ci": "lerna publish from-package -y --no-verify-access"
+    "publish-ci": "lerna run libbuild --stream && lerna publish from-package -y --no-verify-access"
   },
   "private": true,
   "workspaces": [

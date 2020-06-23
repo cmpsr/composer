@@ -1,6 +1,10 @@
 import React, { ChangeEvent, forwardRef } from 'react';
 import cn from 'classnames';
-import { InputShapes, TextField } from 'components/primitives/form/TextField';
+import {
+  InputShapes,
+  TextField,
+  InputMode,
+} from 'components/primitives/form/TextField';
 import {
   Typography,
   TypographyTypes,
@@ -21,6 +25,7 @@ type Props = {
   maxLength?: number;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   label: string;
+  inputMode?: InputMode;
 };
 
 export const TextFieldWithLabel = forwardRef<HTMLInputElement, Props>(
@@ -39,6 +44,7 @@ export const TextFieldWithLabel = forwardRef<HTMLInputElement, Props>(
       invalid,
       maxLength,
       label,
+      inputMode,
     }: Props,
     ref
   ) => {
@@ -66,6 +72,7 @@ export const TextFieldWithLabel = forwardRef<HTMLInputElement, Props>(
           maxLength={maxLength}
           invalid={invalid}
           shape={shape}
+          inputMode={inputMode}
         />
       </>
     );

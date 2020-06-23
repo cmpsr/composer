@@ -25,9 +25,7 @@ jobs:
     - name: Build
       run: |-
         gcloud builds submit \
-          --config "./deploy/cloudbuild.yml" \
-          --quiet \
-          --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
+          --config "./deploy/cloudbuild.yml"
       env:
         SERVICE_NAME: storybook-${GITHUB_REF##*/}
     # Deploy image to Cloud Run

@@ -3,7 +3,8 @@ import { CurrencyFieldIcon } from '..';
 import { Icon } from 'components/primitives';
 import { person as Person } from 'components/primitives/Icon/icons/social';
 import { Tooltip } from 'components/primitives/Tooltip';
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean, text, select } from '@storybook/addon-knobs';
+import { InputMode } from 'components/primitives/form/TextField';
 
 export default {
   title: 'Composer/Primitive/Form/CurrencyFieldIcon',
@@ -21,6 +22,7 @@ export const withIcon = () => (
     placeholder={text('Placeholder', 'placeholder')}
     invalid={boolean('Invalid', false)}
     disabled={boolean('Disabled', false)}
+    inputMode={select('Input mode', InputMode, InputMode.Numeric)}
   />
 );
 
@@ -45,6 +47,7 @@ export const withIconTooltip = () => (
     placeholder={text('Placeholder', 'placeholder')}
     invalid={boolean('Invalid', false)}
     disabled={boolean('Disabled', false)}
+    inputMode={select('Input mode', InputMode, InputMode.Numeric)}
   />
 );
 

@@ -8,6 +8,16 @@ export enum InputShapes {
   Rectangle = 'rounded-input-rectangle',
 }
 
+export enum InputMode {
+  Text = 'text',
+  Decimal = 'decimal',
+  Numeric = 'numeric',
+  Tel = 'tel',
+  Search = 'search',
+  Email = 'email',
+  Url = 'url',
+}
+
 type Props = {
   className?: string;
   shape?: InputShapes;
@@ -20,6 +30,7 @@ type Props = {
   type?: string;
   maxLength?: number;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  inputMode?: InputMode;
 };
 
 export const TextField = forwardRef<HTMLInputElement, Props>(
@@ -36,6 +47,7 @@ export const TextField = forwardRef<HTMLInputElement, Props>(
       disabled = false,
       invalid = false,
       maxLength,
+      inputMode,
     }: Props,
     ref
   ) => {
@@ -53,6 +65,7 @@ export const TextField = forwardRef<HTMLInputElement, Props>(
         required={required}
         ref={ref}
         maxLength={maxLength}
+        inputMode={inputMode}
       />
     );
   }

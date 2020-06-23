@@ -24,11 +24,14 @@ jobs:
       run: |-
         gcloud container images list-tags gcr.io/${PROJECT_ID}/storybook-${{ github.event.ref }} \
         --format='get(digest)' \
-        --limit=unlimited | xargs -I {arg} gcloud container images delete "gcr.io/${PROJECT_ID}/storybook-${{ github.event.ref }}@{arg}" --force-delete-tags --quiet
+        --limit=unlimited | xargs -I {arg} gcloud container images delete "gcr.io/${PROJECT_ID}/storybook-${{ github.event.ref }}@{arg}" \
+        --force-delete-tags \
+        --quiet
 
     # Delete cloud-run from gcloud
     - name: Delete cloud run services
       run: |-
         gcloud run services delete "storybook-${GITHUB_REF##*/}" \
         --region $RUN_REGION \
-        --platform "managed"
+        --platform "managed" \
+        --quiet

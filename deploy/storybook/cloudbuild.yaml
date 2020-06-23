@@ -1,25 +1,9 @@
 steps:
 # build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-f', './deploy/storybook/Dockerfile', '-t', 'gcr.io/$PROJECT_ID/storybook-$BRANCH_NAME:$COMMIT_SHA', '.']
+  args: ['build', '-f', './deploy/storybook/Dockerfile', '-t', 'gcr.io/$PROJECT_ID/$SERVICE_NAME:$COMMIT_SHA', '.']
 # push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/storybook-$BRANCH_NAME:$COMMIT_SHA']
-# Deploy container image to Cloud Run
-- name: 'gcr.io/cloud-builders/gcloud'
-  args:
-  - 'run'
-  - 'deploy'
-  - 'storybook-$BRANCH_NAME'
-  - '--image'
-  - 'gcr.io/$PROJECT_ID/storybook-$BRANCH_NAME:$COMMIT_SHA'
-  - '--region'
-  - 'us-central1'
-  - '--platform'
-  - 'managed'
-  - '--allow-unauthenticated'
-  - '--memory'
-  - '2G'
-images:
-- 'gcr.io/$PROJECT_ID/storybook-$BRANCH_NAME:$COMMIT_SHA'
+  args: ['push', 'gcr.io/$PROJECT_ID/$SERVICE_NAME:$COMMIT_SHA']
+images: ['gcr.io/$PROJECT_ID/$SERVICE_NAME:$COMMIT_SHA']
 timeout: 750s

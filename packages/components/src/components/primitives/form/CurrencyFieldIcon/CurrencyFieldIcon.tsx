@@ -3,6 +3,7 @@ import cn from 'classnames';
 
 import { Icon } from 'components/primitives';
 import { attach_money as AttachMoney } from 'components/primitives/Icon/icons/editor';
+import { InputMode } from 'components/primitives/form/TextField';
 
 type Props = {
   className?: string;
@@ -16,6 +17,7 @@ type Props = {
   icon: React.ReactNode;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   invalid?: boolean;
+  inputMode?: InputMode;
 };
 
 export const CurrencyFieldIcon = forwardRef<HTMLInputElement, Props>(
@@ -31,6 +33,7 @@ export const CurrencyFieldIcon = forwardRef<HTMLInputElement, Props>(
       disabled = false,
       icon,
       invalid,
+      inputMode,
     }: Props,
     ref
   ) => {
@@ -57,6 +60,7 @@ export const CurrencyFieldIcon = forwardRef<HTMLInputElement, Props>(
           onChange={onChange}
           disabled={disabled}
           ref={ref}
+          inputMode={inputMode}
         />
         <div
           className={cn('absolute inset-y-0 flex items-center right-0 pr-3')}

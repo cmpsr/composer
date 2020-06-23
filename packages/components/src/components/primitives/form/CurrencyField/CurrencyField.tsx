@@ -3,6 +3,7 @@ import cn from 'classnames';
 
 import { Icon } from 'components/primitives';
 import { attach_money as AttachMoney } from 'components/primitives/Icon/icons/editor';
+import { InputMode } from 'components/primitives/form/TextField';
 
 type Props = {
   className?: string;
@@ -14,6 +15,7 @@ type Props = {
   type?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   invalid?: boolean;
+  inputMode?: InputMode;
 };
 
 export const CurrencyField = forwardRef<HTMLInputElement, Props>(
@@ -28,6 +30,7 @@ export const CurrencyField = forwardRef<HTMLInputElement, Props>(
       type = 'number',
       disabled = false,
       invalid,
+      inputMode,
     }: Props,
     ref
   ) => {
@@ -54,6 +57,7 @@ export const CurrencyField = forwardRef<HTMLInputElement, Props>(
           onChange={onChange}
           disabled={disabled}
           ref={ref}
+          inputMode={inputMode}
         />
       </div>
     );

@@ -28,7 +28,8 @@ const CurrencyField = /*#__PURE__*/(0, _react.forwardRef)(({
   required,
   type = 'number',
   disabled = false,
-  invalid
+  invalid,
+  inputMode
 }, ref) => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "flex"
@@ -55,7 +56,8 @@ const CurrencyField = /*#__PURE__*/(0, _react.forwardRef)(({
     placeholder: placeholder,
     onChange: onChange,
     disabled: disabled,
-    ref: ref
+    ref: ref,
+    inputMode: inputMode
   }));
 });
 exports.CurrencyField = CurrencyField;

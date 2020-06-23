@@ -20,11 +20,12 @@ jobs:
 
     # Delete images from gcloud
     - name: Delete images
-      run: gcloud container images delete storybook-${GITHUB_REF##*/} \
+      run: echo "storybook-${GITHUB_REF##*/}" && \
+        gcloud container images delete "storybook-${GITHUB_REF##*/}" \
         --force-delete-tags \
         --quiet
     
     # Delete cloud-run from gcloud
     - name: Delete cloud run services
-      run: gcloud run services delete storybook-${GITHUB_REF##*/} \
+      run: gcloud run services delete "storybook-${GITHUB_REF##*/}" \
         --region $RUN_REGION

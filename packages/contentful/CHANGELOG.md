@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.26
+
+### Patch Changes
+
+- a96b018: Removed copy from Contentful README
+
 ## 0.0.25
 
 ### Patch Changes

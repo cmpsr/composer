@@ -15,15 +15,11 @@
 # https://hub.docker.com/_/node
 FROM node:12-alpine
 
-RUN ls
-
 # Create and change to the app directory.
 WORKDIR /usr/src/app
 
 # Copy local code to the container image.
 COPY . ./
-
-RUN ls
 
 # Install production dependencies.
 RUN yarn install
@@ -38,7 +34,7 @@ EXPOSE 8080
 # Copy the nginx configuration file. This sets up the behavior of nginx, most
 # importantly, it ensure nginx listens on port 8080. Google App Engine expects
 # the runtime to respond to HTTP requests at port 8080.
-COPY ./deploy/storybook/nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
 # Finally, all static assets.
 COPY --from=0 /usr/src/app/packages/components/storybook-static/ /usr/share/nginx/www/

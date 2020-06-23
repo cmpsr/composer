@@ -1,9 +1,0 @@
-steps:
-# build the container image
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-f', './deploy/storybook/Dockerfile', '-t', 'gcr.io/$PROJECT_ID/$SERVICE_NAME:$COMMIT_SHA', '.']
-# push the container image to Container Registry
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/$SERVICE_NAME:$COMMIT_SHA']
-images: ['gcr.io/$PROJECT_ID/$SERVICE_NAME:$COMMIT_SHA']
-timeout: 750s

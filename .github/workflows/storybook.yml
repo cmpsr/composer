@@ -26,7 +26,7 @@ jobs:
       run: |-
         gcloud builds submit \
           --quiet \
-          --tag "gcr.io/$PROJECT_ID/storybook-${GITHUB_REF##*/}:$GITHUB_SHA" ./deploy/storybook
+          --tag "gcr.io/$PROJECT_ID/storybook-${GITHUB_REF##*/}:$GITHUB_SHA" .
 
     # Deploy image to Cloud Run
     - name: Deploy

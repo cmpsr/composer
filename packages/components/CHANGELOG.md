@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.18
+
+### Patch Changes
+
+- 40da4cb: add inputmode property to textfield components
+
 ## 0.0.17
 
 ### Patch Changes

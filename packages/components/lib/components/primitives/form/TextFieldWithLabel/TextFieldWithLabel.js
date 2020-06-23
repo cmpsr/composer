@@ -32,7 +32,8 @@ const TextFieldWithLabel = /*#__PURE__*/(0, _react.forwardRef)(({
   disabled,
   invalid,
   maxLength,
-  label
+  label,
+  inputMode
 }, ref) => {
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_.Typography, {
     className: (0, _classnames.default)(labelClassName),
@@ -52,7 +53,8 @@ const TextFieldWithLabel = /*#__PURE__*/(0, _react.forwardRef)(({
     required: required,
     maxLength: maxLength,
     invalid: invalid,
-    shape: shape
+    shape: shape,
+    inputMode: inputMode
   }));
 });
 exports.TextFieldWithLabel = TextFieldWithLabel;

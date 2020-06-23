@@ -31,7 +31,7 @@ jobs:
     # Delete cloud-run from gcloud
     - name: Delete cloud run services
       run: |-
-        gcloud run services delete "storybook-${GITHUB_REF##*/}" \
+        gcloud run services delete "storybook-${{ github.event.ref }}" \
         --region $RUN_REGION \
         --platform "managed" \
         --quiet

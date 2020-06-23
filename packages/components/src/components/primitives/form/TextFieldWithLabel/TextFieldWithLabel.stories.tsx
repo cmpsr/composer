@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextFieldWithLabel } from '.';
-import { InputShapes } from '../TextField';
+import { InputShapes, InputMode } from '../TextField';
 import { text, boolean, select, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
@@ -20,6 +20,7 @@ export const base = () => (
     shape={select('Shape', InputShapes, InputShapes.SemiRounded)}
     onChange={action('on change')}
     maxLength={number('Max length', 33)}
+    inputMode={select('Input mode', InputMode, InputMode.Numeric)}
   />
 );
 

@@ -31,7 +31,7 @@ jobs:
     # Deploy image to Cloud Run
     - name: Deploy
       run: |-
-        gcloud run deploy "$SERVICE_NAME" \
+        gcloud run deploy storybook-${GITHUB_REF##*/} \
           --quiet \
           --region "$RUN_REGION" \
           --image "gcr.io/$PROJECT_ID/storybook-${GITHUB_REF##*/}:$GITHUB_SHA" \

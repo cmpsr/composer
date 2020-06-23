@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from 'react';
+import { InputMode } from 'components/primitives/form/TextField';
 declare type Props = {
     className?: string;
     ariaLabel?: string;
@@ -9,6 +10,7 @@ declare type Props = {
     type?: string;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     invalid?: boolean;
+    inputMode?: InputMode;
 };
 export declare const CurrencyField: React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLInputElement>>;
 export {};

@@ -17,6 +17,8 @@ var _Tooltip = require("../../../Tooltip");
 
 var _addonKnobs = require("@storybook/addon-knobs");
 
+var _TextField = require("../../TextField");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = {
@@ -34,7 +36,8 @@ const withIcon = () => /*#__PURE__*/_react.default.createElement(_.CurrencyField
   name: "default",
   placeholder: (0, _addonKnobs.text)('Placeholder', 'placeholder'),
   invalid: (0, _addonKnobs.boolean)('Invalid', false),
-  disabled: (0, _addonKnobs.boolean)('Disabled', false)
+  disabled: (0, _addonKnobs.boolean)('Disabled', false),
+  inputMode: (0, _addonKnobs.select)('Input mode', _TextField.InputMode, _TextField.InputMode.Numeric)
 });
 
 exports.withIcon = withIcon;
@@ -55,7 +58,8 @@ const withIconTooltip = () => /*#__PURE__*/_react.default.createElement(_.Curren
   name: "default",
   placeholder: (0, _addonKnobs.text)('Placeholder', 'placeholder'),
   invalid: (0, _addonKnobs.boolean)('Invalid', false),
-  disabled: (0, _addonKnobs.boolean)('Disabled', false)
+  disabled: (0, _addonKnobs.boolean)('Disabled', false),
+  inputMode: (0, _addonKnobs.select)('Input mode', _TextField.InputMode, _TextField.InputMode.Numeric)
 });
 
 exports.withIconTooltip = withIconTooltip;

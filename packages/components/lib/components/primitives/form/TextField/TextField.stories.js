@@ -29,7 +29,8 @@ const base = () => /*#__PURE__*/_react.default.createElement(_.TextField, {
   required: (0, _addonKnobs.boolean)('Required', false),
   shape: (0, _addonKnobs.select)('Shape', _.InputShapes, _.InputShapes.SemiRounded),
   onChange: (0, _addonActions.action)('on change'),
-  maxLength: (0, _addonKnobs.number)('Max length', 33)
+  maxLength: (0, _addonKnobs.number)('Max length', 33),
+  inputMode: (0, _addonKnobs.select)('Input mode', _.InputMode, _.InputMode.Numeric)
 });
 
 exports.base = base;

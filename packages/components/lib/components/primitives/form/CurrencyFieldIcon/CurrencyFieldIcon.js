@@ -29,7 +29,8 @@ const CurrencyFieldIcon = /*#__PURE__*/(0, _react.forwardRef)(({
   type = 'number',
   disabled = false,
   icon,
-  invalid
+  invalid,
+  inputMode
 }, ref) => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "flex relative"
@@ -56,7 +57,8 @@ const CurrencyFieldIcon = /*#__PURE__*/(0, _react.forwardRef)(({
     placeholder: placeholder,
     onChange: onChange,
     disabled: disabled,
-    ref: ref
+    ref: ref,
+    inputMode: inputMode
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _classnames.default)('absolute inset-y-0 flex items-center right-0 pr-3')
   }, icon));

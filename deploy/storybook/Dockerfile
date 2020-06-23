@@ -21,6 +21,8 @@ WORKDIR /usr/src/app
 # Copy local code to the container image.
 COPY . ./
 
+RUN ls
+
 # Install production dependencies.
 RUN yarn install
 RUN yarn run build-storybook --scope @cmpsr/components

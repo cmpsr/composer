@@ -18,8 +18,9 @@ FROM node:12-alpine
 # Create and change to the app directory.
 WORKDIR /usr/src/app
 
+RUN ls
 # Copy local code to the container image.
-COPY . ./
+COPY ../../. ./
 
 RUN ls
 

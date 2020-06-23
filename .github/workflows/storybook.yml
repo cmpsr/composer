@@ -25,7 +25,7 @@ jobs:
     - name: Build
       run: |-
         gcloud builds submit \
-          --config "./deploy/cloudbuild.yml"
+          --config "./deploy/storybook/cloudbuild.yml"
       env:
         SERVICE_NAME: storybook-${GITHUB_REF##*/}
     # Deploy image to Cloud Run

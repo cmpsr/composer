@@ -6,7 +6,7 @@ import { getDropdownSingleSelectClasses } from 'utils/getDropdownSingleSelectCla
 
 export const DROPDOWN_NATIVE_DEFAULT_TEST_ID = 'dropdown_native';
 
-interface Option {
+export interface Option {
   label: any;
   value: any;
 }

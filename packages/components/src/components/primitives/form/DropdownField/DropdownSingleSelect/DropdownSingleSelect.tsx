@@ -2,7 +2,7 @@ import React, { forwardRef, useState } from 'react';
 import cn from 'classnames';
 import Downshift from 'downshift';
 import { isMobile } from 'react-device-detect';
-import { DropdownNativeSelect } from '../DropdownNativeSelect';
+import { DropdownNativeSelect, Option } from '../DropdownNativeSelect';
 import { getDropdownSingleSelectClasses } from 'utils/getDropdownSingleSelectClasses';
 
 import { Icon } from 'components/primitives';
@@ -12,11 +12,6 @@ import {
 } from 'components/primitives/Icon/icons/navigation';
 
 export const DROPDOWN_DEFAULT_TEST_ID = 'dropdown';
-
-export interface Option {
-  label: any;
-  value: any;
-}
 
 type Props = {
   className?: string;

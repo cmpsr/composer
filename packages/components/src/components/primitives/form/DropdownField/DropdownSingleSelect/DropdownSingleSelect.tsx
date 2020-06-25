@@ -1,13 +1,19 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 import cn from 'classnames';
 import Downshift from 'downshift';
+import { isMobile } from 'react-device-detect';
+import { DropdownNativeSelect } from '../DropdownNativeSelect';
+import { getDropdownSingleSelectClasses } from 'utils/getDropdownSingleSelectClasses';
 
 import { Icon } from 'components/primitives';
-import { expand_more as ExpandMore } from 'components/primitives/Icon/icons/navigation';
+import {
+  expand_more as ExpandMore,
+  expand_less as ExpandLess,
+} from 'components/primitives/Icon/icons/navigation';
 
 export const DROPDOWN_DEFAULT_TEST_ID = 'dropdown';
 
-interface Option {
+export interface Option {
   label: any;
   value: any;
 }
@@ -24,7 +30,7 @@ type Props = {
   invalid?: boolean;
 };
 
-export const DropdownSingleSelect = forwardRef<HTMLElement, Props>(
+export const DropdownSingleSelect = forwardRef<HTMLSelectElement, Props>(
   (
     {
       className,
@@ -39,12 +45,47 @@ export const DropdownSingleSelect = forwardRef<HTMLElement, Props>(
     }: Props,
     ref
   ) => {
+    const defaultValue = initialSelectedOption && initialSelectedOption.value;
+    const [itemSelected, setItemSelected] = useState(defaultValue || null);
+    const {
+      selectClasses,
+      buttonClasses,
+      selectTextClasses,
+      selectFocusClasses,
+      selectDisabledClasses,
+      selectErrorClasses,
+      selectListClasses,
+      itemListClasses,
+      icon,
+    } = getDropdownSingleSelectClasses(disabled, invalid, itemSelected);
+
+    if (isMobile) {
+      return (
+        <DropdownNativeSelect
+          className={className}
+          options={options}
+          placeHolder={placeHolder}
+          initialSelectedOption={initialSelectedOption}
+          onItemChange={onItemChange}
+          disabled={disabled}
+          name={name}
+          invalid={invalid}
+          ref={ref}
+        />
+      );
+    }
+
+    const handleOnChange = (selectedItem) => {
+      if (onItemChange) {
+        onItemChange(selectedItem);
+      }
+      setItemSelected(selectedItem?.value);
+    };
+
     return (
       <Downshift
         initialSelectedItem={initialSelectedOption}
-        onChange={(selectedItem) => {
-          onItemChange && onItemChange(selectedItem);
-        }}
+        onChange={(selectedItem) => handleOnChange(selectedItem)}
         itemToString={(item) => (item ? item.value : '')}
       >
         {({
@@ -61,34 +102,31 @@ export const DropdownSingleSelect = forwardRef<HTMLElement, Props>(
                 name={name}
                 ref={ref}
                 className={cn(
-                  'flex items-center justify-between px-3 h-12 appearance-none w-full text-dark-100 bg-fill-forms-enabled border rounded focus:border-outline-forms-focus border-outline-forms-filled text-left focus:outline-none',
-                  {
-                    'bg-gray-200': disabled,
-                    'border-outline-forms-filled hover:border-fill-primary-100': !disabled,
-                  },
-                  { 'border-fill-system-error': invalid },
+                  buttonClasses,
+                  selectClasses,
+                  selectTextClasses,
+                  selectFocusClasses,
+                  selectDisabledClasses,
+                  selectErrorClasses,
                   className
                 )}
                 data-testid={testId}
                 disabled={disabled}
               >
-                {(selectedItem && <span>{selectedItem.label}</span>) || (
-                  <span className="text-outline-forms-filled">
-                    {placeHolder}
-                  </span>
-                )}
-                <Icon width={24} height={24} className="fill-current">
-                  <ExpandMore type="filled" />
+                <span>{selectedItem ? selectedItem.label : placeHolder}</span>
+                <Icon width={24} height={24} className={icon}>
+                  {!isOpen ? (
+                    <ExpandMore type="filled" />
+                  ) : (
+                    <ExpandLess type="filled" />
+                  )}
                 </Icon>
               </button>
               {isOpen && (
-                <ul
-                  {...getMenuProps()}
-                  className="border rounded-b border-outline-primary-100"
-                >
+                <ul {...getMenuProps()} className={selectListClasses}>
                   {options.map((item, index) => (
                     <li
-                      className="p-3 hover:bg-gray-100"
+                      className={itemListClasses}
                       key={`${index}${item.value}`}
                       {...getItemProps({ key: item.value, index, item })}
                     >

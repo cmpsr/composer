@@ -35,7 +35,7 @@ basic.story = {
 export const withInitialSelectedItem = () => {
   return (
     <DropdownSingleSelect
-      initialSelectedOption={options[3]}
+      initialSelectedOption={options[0]}
       options={options}
       onItemChange={action('Item changed')}
       invalid={boolean('Invalid', false)}

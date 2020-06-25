@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { TextFieldWithLabel } from '.';
+import { InputMode } from '../TextField';
 
 describe('TextFieldWithLabel', () => {
   it('should render element with name', () => {
@@ -161,5 +162,17 @@ describe('TextFieldWithLabel', () => {
       <TextFieldWithLabel label="label" name="name" placeholder="placeholder" />
     );
     screen.getByText(/label/i);
+  });
+  it('should render inputMode', () => {
+    render(
+      <TextFieldWithLabel
+        label="label"
+        name="text-field"
+        placeholder="placeholder"
+        inputMode={InputMode.Numeric}
+      />
+    );
+    const input = screen.getByPlaceholderText('placeholder');
+    expect(input.getAttribute('inputmode')).toBe('numeric');
   });
 });

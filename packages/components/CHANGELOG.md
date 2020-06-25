@@ -1,5 +1,17 @@
 # Change Log
 
+## 0.0.20
+
+### Patch Changes
+
+- d28706e: add inputmode property to TextFieldWithLabel
+
+## 0.0.19
+
+### Patch Changes
+
+- 8af560d: add property inputmode to textfield components
+
 ## 0.0.18
 
 ### Patch Changes

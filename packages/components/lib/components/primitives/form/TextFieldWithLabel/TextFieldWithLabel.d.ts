@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { InputShapes } from 'components/primitives/form/TextField';
+import { InputShapes, InputMode } from 'components/primitives/form/TextField';
 declare type Props = {
     textFieldClassName?: string;
     labelClassName?: string;
@@ -14,6 +14,7 @@ declare type Props = {
     maxLength?: number;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     label: string;
+    inputMode?: InputMode;
 };
 export declare const TextFieldWithLabel: React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLInputElement>>;
 export {};

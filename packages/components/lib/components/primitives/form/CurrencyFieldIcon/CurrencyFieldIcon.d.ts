@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from 'react';
+import { InputMode } from 'components/primitives/form/TextField';
 declare type Props = {
     className?: string;
     iconPosition?: 'left' | 'right';
@@ -11,6 +12,7 @@ declare type Props = {
     icon: React.ReactNode;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     invalid?: boolean;
+    inputMode?: InputMode;
 };
 export declare const CurrencyFieldIcon: React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLInputElement>>;
 export {};

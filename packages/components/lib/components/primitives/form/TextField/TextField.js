@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TextField = exports.InputShapes = void 0;
+exports.TextField = exports.InputMode = exports.InputShapes = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -26,6 +26,19 @@ exports.InputShapes = InputShapes;
   InputShapes["Rectangle"] = "rounded-input-rectangle";
 })(InputShapes || (exports.InputShapes = InputShapes = {}));
 
+let InputMode;
+exports.InputMode = InputMode;
+
+(function (InputMode) {
+  InputMode["Text"] = "text";
+  InputMode["Decimal"] = "decimal";
+  InputMode["Numeric"] = "numeric";
+  InputMode["Tel"] = "tel";
+  InputMode["Search"] = "search";
+  InputMode["Email"] = "email";
+  InputMode["Url"] = "url";
+})(InputMode || (exports.InputMode = InputMode = {}));
+
 const TextField = /*#__PURE__*/(0, _react.forwardRef)(({
   className,
   shape = InputShapes.SemiRounded,
@@ -37,7 +50,8 @@ const TextField = /*#__PURE__*/(0, _react.forwardRef)(({
   type = 'text',
   disabled = false,
   invalid = false,
-  maxLength
+  maxLength,
+  inputMode
 }, ref) => {
   const textFieldStateClasses = (0, _utils.getTextFieldStateClasses)(disabled, invalid);
   return /*#__PURE__*/_react.default.createElement("input", {
@@ -50,7 +64,8 @@ const TextField = /*#__PURE__*/(0, _react.forwardRef)(({
     disabled: disabled,
     required: required,
     ref: ref,
-    maxLength: maxLength
+    maxLength: maxLength,
+    inputMode: inputMode
   });
 });
 exports.TextField = TextField;

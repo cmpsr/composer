@@ -56,7 +56,7 @@ basic.story = {
 
 const withInitialSelectedItem = () => {
   return /*#__PURE__*/_react.default.createElement(_.DropdownSingleSelect, {
-    initialSelectedOption: options[3],
+    initialSelectedOption: options[0],
     options: options,
     onItemChange: (0, _addonActions.action)('Item changed'),
     invalid: (0, _addonKnobs.boolean)('Invalid', false),

@@ -11,6 +11,12 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _downshift = _interopRequireDefault(require("downshift"));
 
+var _reactDeviceDetect = require("react-device-detect");
+
+var _DropdownNativeSelect = require("../DropdownNativeSelect");
+
+var _getDropdownSingleSelectClasses = require("../../../../../utils/getDropdownSingleSelectClasses");
+
 var _ = require("../../..");
 
 var _navigation = require("../../../Icon/icons/navigation");
@@ -36,11 +42,45 @@ const DropdownSingleSelect = /*#__PURE__*/(0, _react.forwardRef)(({
   name = 'dropdown',
   invalid
 }, ref) => {
+  const defaultValue = initialSelectedOption && initialSelectedOption.value;
+  const [itemSelected, setItemSelected] = (0, _react.useState)(defaultValue || null);
+  const {
+    selectClasses,
+    buttonClasses,
+    selectTextClasses,
+    selectFocusClasses,
+    selectDisabledClasses,
+    selectErrorClasses,
+    selectListClasses,
+    itemListClasses,
+    icon
+  } = (0, _getDropdownSingleSelectClasses.getDropdownSingleSelectClasses)(disabled, invalid, itemSelected);
+
+  if (_reactDeviceDetect.isMobile) {
+    return /*#__PURE__*/_react.default.createElement(_DropdownNativeSelect.DropdownNativeSelect, {
+      className: className,
+      options: options,
+      placeHolder: placeHolder,
+      initialSelectedOption: initialSelectedOption,
+      onItemChange: onItemChange,
+      disabled: disabled,
+      name: name,
+      invalid: invalid,
+      ref: ref
+    });
+  }
+
+  const handleOnChange = selectedItem => {
+    if (onItemChange) {
+      onItemChange(selectedItem);
+    }
+
+    setItemSelected(selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.value);
+  };
+
   return /*#__PURE__*/_react.default.createElement(_downshift.default, {
     initialSelectedItem: initialSelectedOption,
-    onChange: selectedItem => {
-      onItemChange && onItemChange(selectedItem);
-    },
+    onChange: selectedItem => handleOnChange(selectedItem),
     itemToString: item => item ? item.value : ''
   }, ({
     isOpen,
@@ -52,26 +92,21 @@ const DropdownSingleSelect = /*#__PURE__*/(0, _react.forwardRef)(({
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", _extends({}, getToggleButtonProps(), {
       name: name,
       ref: ref,
-      className: (0, _classnames.default)('flex items-center justify-between px-3 h-12 appearance-none w-full text-dark-100 bg-fill-forms-enabled border rounded focus:border-outline-forms-focus border-outline-forms-filled text-left focus:outline-none', {
-        'bg-gray-200': disabled,
-        'border-outline-forms-filled hover:border-fill-primary-100': !disabled
-      }, {
-        'border-fill-system-error': invalid
-      }, className),
+      className: (0, _classnames.default)(buttonClasses, selectClasses, selectTextClasses, selectFocusClasses, selectDisabledClasses, selectErrorClasses, className),
       "data-testid": testId,
       disabled: disabled
-    }), selectedItem && /*#__PURE__*/_react.default.createElement("span", null, selectedItem.label) || /*#__PURE__*/_react.default.createElement("span", {
-      className: "text-outline-forms-filled"
-    }, placeHolder), /*#__PURE__*/_react.default.createElement(_.Icon, {
+    }), /*#__PURE__*/_react.default.createElement("span", null, selectedItem ? selectedItem.label : placeHolder), /*#__PURE__*/_react.default.createElement(_.Icon, {
       width: 24,
       height: 24,
-      className: "fill-current"
-    }, /*#__PURE__*/_react.default.createElement(_navigation.expand_more, {
+      className: icon
+    }, !isOpen ? /*#__PURE__*/_react.default.createElement(_navigation.expand_more, {
+      type: "filled"
+    }) : /*#__PURE__*/_react.default.createElement(_navigation.expand_less, {
       type: "filled"
     }))), isOpen && /*#__PURE__*/_react.default.createElement("ul", _extends({}, getMenuProps(), {
-      className: "border rounded-b border-outline-primary-100"
+      className: selectListClasses
     }), options.map((item, index) => /*#__PURE__*/_react.default.createElement("li", _extends({
-      className: "p-3 hover:bg-gray-100",
+      className: itemListClasses,
       key: `${index}${item.value}`
     }, getItemProps({
       key: item.value,

@@ -1,9 +1,6 @@
 import React from 'react';
+import { Option } from '../DropdownNativeSelect';
 export declare const DROPDOWN_DEFAULT_TEST_ID = "dropdown";
-interface Option {
-    label: any;
-    value: any;
-}
 declare type Props = {
     className?: string;
     options?: Option[];
@@ -15,6 +12,6 @@ declare type Props = {
     name?: string;
     invalid?: boolean;
 };
-export declare const DropdownSingleSelect: React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLElement>>;
+export declare const DropdownSingleSelect: React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLSelectElement>>;
 export {};
 //# sourceMappingURL=DropdownSingleSelect.d.ts.map

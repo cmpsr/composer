@@ -8,13 +8,11 @@ export const getDropdownSingleSelectClasses = (
     buttonClasses: 'flex items-center justify-between',
     selectClasses:
       'appearance-none px-3 h-12 w-full bg-fill-forms-enabled border rounded text-left',
-    selectTextClasses: `${
-      itemSelected ? 'text-fill-forms-filled' : 'text-fill-forms-inactive'
-    }`,
+    selectTextClasses: `${itemSelected ? 'text-dark-100' : 'text-dark-50'}`,
     selectFocusClasses: 'focus:border-outline-forms-focus focus:outline-none',
     selectDisabledClasses: disabled
-      ? 'bg-fill-forms-disabled border-outline-forms-disabled !text-fill-forms-inactive'
-      : 'border-outline-forms-filled hover:border-fill-primary-100',
+      ? 'bg-fill-forms-disabled border-outline-forms-disabled !text-dark-50'
+      : 'border-outline-forms-filled hover:border-states-contained-enabled',
     selectErrorClasses: `${invalid ? 'border-fill-system-error' : ''}`,
     iconWrapper:
       'pointer-events-none absolute inset-y-0 flex items-center z-10 right-0 pr-3',

@@ -1,11 +1,11 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { DropdownSingleSelect } from '.';
+import { DropdownNativeSelect } from './';
 import { boolean } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Composer/Primitive/Form/Dropdown/Single-Select',
-  component: DropdownSingleSelect,
+  title: 'Composer/Primitive/Form/Dropdown/Single-Select/DropdownNativeSelect',
+  component: DropdownNativeSelect,
 };
 
 const options = [
@@ -19,7 +19,7 @@ const options = [
 
 export const basic = () => {
   return (
-    <DropdownSingleSelect
+    <DropdownNativeSelect
       options={options}
       onItemChange={action('Item changed')}
       invalid={boolean('Invalid', false)}
@@ -34,8 +34,8 @@ basic.story = {
 
 export const withInitialSelectedItem = () => {
   return (
-    <DropdownSingleSelect
-      initialSelectedOption={options[0]}
+    <DropdownNativeSelect
+      initialSelectedOption={options[3]}
       options={options}
       onItemChange={action('Item changed')}
       invalid={boolean('Invalid', false)}

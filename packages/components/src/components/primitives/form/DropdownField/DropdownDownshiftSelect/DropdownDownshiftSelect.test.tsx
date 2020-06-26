@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { DropdownNativeSelect } from '.';
+import { DropdownDownshiftSelect } from '.';
 import { DROPDOWN_DEFAULT_TEST_ID } from '../DropdownSingleSelect';
 import { ICON_DEFAULT_TEST_ID } from 'components/primitives/Icon';
 
-describe('DropdownNativeSelect', () => {
+describe('DropdownDownshiftSelect', () => {
   const options = [
     { value: 1, label: 'Option 1' },
     { value: 2, label: 'Option 2' },
@@ -12,34 +12,39 @@ describe('DropdownNativeSelect', () => {
   ];
   const onChange = jest.fn();
   it('should render element with default placeholder', () => {
-    render(<DropdownNativeSelect options={options} onItemChange={onChange} />);
-    screen.getByText('Select an item');
+    render(
+      <DropdownDownshiftSelect options={options} onItemChange={onChange} />
+    );
+    const dropdown = screen.getByText('Select an item');
+    expect(dropdown).toBeInTheDocument();
   });
   it('should render element with placeholder', () => {
     render(
-      <DropdownNativeSelect
+      <DropdownDownshiftSelect
         options={options}
         onItemChange={onChange}
         placeHolder="Placeholder"
       />
     );
-    screen.getByText('Placeholder');
+    const dropdown = screen.getByText('Placeholder');
+    expect(dropdown).toBeInTheDocument();
   });
   it('should select initial item', () => {
     const initialItem = options[1];
     render(
-      <DropdownNativeSelect
+      <DropdownDownshiftSelect
         options={options}
         initialSelectedOption={initialItem}
         onItemChange={onChange}
         placeHolder="Placeholder"
       />
     );
-    screen.getByText(initialItem.label);
+    const option2 = screen.getByText(initialItem.label);
+    expect(option2).toBeInTheDocument();
   });
   it('should render options on click', () => {
     render(
-      <DropdownNativeSelect
+      <DropdownDownshiftSelect
         options={options}
         onItemChange={onChange}
         placeHolder="Placeholder"
@@ -52,31 +57,33 @@ describe('DropdownNativeSelect', () => {
   });
   it('should render icon', () => {
     render(
-      <DropdownNativeSelect
+      <DropdownDownshiftSelect
         options={options}
         onItemChange={onChange}
         placeHolder="Placeholder"
       />
     );
-    screen.getByTestId(ICON_DEFAULT_TEST_ID);
+    const icon = screen.getByTestId(ICON_DEFAULT_TEST_ID);
+    expect(icon).toBeInTheDocument();
   });
   it('should call onChange method', () => {
     render(
-      <DropdownNativeSelect
+      <DropdownDownshiftSelect
         options={options}
         onItemChange={onChange}
         placeHolder="Placeholder"
       />
     );
     const dropdown = screen.getByTestId(DROPDOWN_DEFAULT_TEST_ID);
-    fireEvent.change(dropdown, {
-      target: { value: 2 },
-    });
+    fireEvent.click(dropdown);
+    fireEvent.keyDown(dropdown);
+    const item = screen.getByText('Option 1');
+    fireEvent.click(item);
     expect(onChange).toHaveBeenCalledTimes(1);
   });
   it('should not crash if no onChange method', () => {
     render(
-      <DropdownNativeSelect options={options} placeHolder="Placeholder" />
+      <DropdownDownshiftSelect options={options} placeHolder="Placeholder" />
     );
     const dropdown = screen.getByTestId(DROPDOWN_DEFAULT_TEST_ID);
     fireEvent.click(dropdown);
@@ -86,7 +93,7 @@ describe('DropdownNativeSelect', () => {
   });
   it('should add disabled true', () => {
     render(
-      <DropdownNativeSelect
+      <DropdownDownshiftSelect
         options={options}
         onItemChange={onChange}
         placeHolder="Placeholder"
@@ -96,11 +103,11 @@ describe('DropdownNativeSelect', () => {
     const dropdown = screen.getByTestId(
       DROPDOWN_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
-    expect(dropdown).toBeDisabled();
+    expect(dropdown.disabled).toBe(true);
   });
   it('should add disabled false', () => {
     render(
-      <DropdownNativeSelect
+      <DropdownDownshiftSelect
         options={options}
         onItemChange={onChange}
         placeHolder="Placeholder"
@@ -114,7 +121,7 @@ describe('DropdownNativeSelect', () => {
   });
   it('should render element with name', () => {
     render(
-      <DropdownNativeSelect
+      <DropdownDownshiftSelect
         name="name"
         options={options}
         onItemChange={onChange}
@@ -127,7 +134,7 @@ describe('DropdownNativeSelect', () => {
   });
   it('should apply classnames when is invalid', () => {
     render(
-      <DropdownNativeSelect
+      <DropdownDownshiftSelect
         options={options}
         onItemChange={onChange}
         placeHolder="Placeholder"

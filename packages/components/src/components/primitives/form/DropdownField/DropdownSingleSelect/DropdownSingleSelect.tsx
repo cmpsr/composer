@@ -1,9 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import React, { forwardRef } from 'react';
 import { isMobile } from 'react-device-detect';
 import { DropdownNativeSelect } from '../DropdownNativeSelect';
 import { DropdownDownshiftSelect } from '../DropdownDownshiftSelect';
-
-export const DROPDOWN_DEFAULT_TEST_ID = 'dropdown';
 
 export interface Option {
   label: string;
@@ -22,10 +20,12 @@ export type SelectProps = {
   invalid?: boolean;
 };
 
-export const DropdownSingleSelect: FunctionComponent<SelectProps> = (props) => {
-  return isMobile ? (
-    <DropdownNativeSelect {...props} />
-  ) : (
-    <DropdownDownshiftSelect {...props} />
-  );
-};
+export const DropdownSingleSelect = forwardRef<HTMLSelectElement, SelectProps>(
+  (props: SelectProps, ref) => {
+    return isMobile ? (
+      <DropdownNativeSelect {...props} ref={ref} />
+    ) : (
+      <DropdownDownshiftSelect {...props} ref={ref} />
+    );
+  }
+);

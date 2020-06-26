@@ -3,7 +3,9 @@ import cn from 'classnames';
 import { Icon } from 'components/primitives';
 import { expand_more as ExpandMore } from 'components/primitives/Icon/icons/navigation';
 import { getDropdownSingleSelectClasses } from 'utils/getDropdownSingleSelectClasses';
-import { SelectProps, DROPDOWN_DEFAULT_TEST_ID } from '../DropdownSingleSelect';
+import { SelectProps } from '../DropdownSingleSelect';
+
+export const DROPDOWN_NATIVE_DEFAULT_TEST_ID = 'dropdown-native';
 
 export const DropdownNativeSelect = forwardRef<HTMLSelectElement, SelectProps>(
   (
@@ -13,7 +15,7 @@ export const DropdownNativeSelect = forwardRef<HTMLSelectElement, SelectProps>(
       placeHolder = 'Select an item',
       initialSelectedOption,
       onItemChange,
-      testId = DROPDOWN_DEFAULT_TEST_ID,
+      testId = DROPDOWN_NATIVE_DEFAULT_TEST_ID,
       disabled = false,
       name = 'dropdown',
       invalid,

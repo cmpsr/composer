@@ -2,12 +2,14 @@ import React, { forwardRef, useState } from 'react';
 import cn from 'classnames';
 import Downshift from 'downshift';
 import { getDropdownSingleSelectClasses } from 'utils/getDropdownSingleSelectClasses';
-import { SelectProps, DROPDOWN_DEFAULT_TEST_ID } from '../DropdownSingleSelect';
+import { SelectProps } from '../DropdownSingleSelect';
 import { Icon } from 'components/primitives';
 import {
   expand_more as ExpandMore,
   expand_less as ExpandLess,
 } from 'components/primitives/Icon/icons/navigation';
+
+export const DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID = 'dropdown-downshift';
 
 export const DropdownDownshiftSelect = forwardRef<
   HTMLSelectElement,
@@ -20,7 +22,7 @@ export const DropdownDownshiftSelect = forwardRef<
       placeHolder = 'Select an item',
       initialSelectedOption,
       onItemChange,
-      testId = DROPDOWN_DEFAULT_TEST_ID,
+      testId = DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID,
       disabled = false,
       name = 'dropdown',
       invalid,

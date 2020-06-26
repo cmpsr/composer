@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { DropdownDownshiftSelect } from '.';
-import { DROPDOWN_DEFAULT_TEST_ID } from '../DropdownSingleSelect';
+import { DropdownDownshiftSelect, DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID } from '.';
 import { ICON_DEFAULT_TEST_ID } from 'components/primitives/Icon';
 
 describe('DropdownDownshiftSelect', () => {
@@ -15,8 +14,7 @@ describe('DropdownDownshiftSelect', () => {
     render(
       <DropdownDownshiftSelect options={options} onItemChange={onChange} />
     );
-    const dropdown = screen.getByText('Select an item');
-    expect(dropdown).toBeInTheDocument();
+    screen.getByText('Select an item');
   });
   it('should render element with placeholder', () => {
     render(
@@ -26,8 +24,7 @@ describe('DropdownDownshiftSelect', () => {
         placeHolder="Placeholder"
       />
     );
-    const dropdown = screen.getByText('Placeholder');
-    expect(dropdown).toBeInTheDocument();
+    screen.getByText('Placeholder');
   });
   it('should select initial item', () => {
     const initialItem = options[1];
@@ -39,8 +36,7 @@ describe('DropdownDownshiftSelect', () => {
         placeHolder="Placeholder"
       />
     );
-    const option2 = screen.getByText(initialItem.label);
-    expect(option2).toBeInTheDocument();
+    screen.getByText(initialItem.label);
   });
   it('should render options on click', () => {
     render(
@@ -52,8 +48,7 @@ describe('DropdownDownshiftSelect', () => {
     );
     const button = screen.getByText('Placeholder');
     fireEvent.click(button);
-    const option = screen.getAllByText('Option 1');
-    expect(option[0]).toBeInTheDocument();
+    screen.getByText('Option 1');
   });
   it('should render icon', () => {
     render(
@@ -63,8 +58,7 @@ describe('DropdownDownshiftSelect', () => {
         placeHolder="Placeholder"
       />
     );
-    const icon = screen.getByTestId(ICON_DEFAULT_TEST_ID);
-    expect(icon).toBeInTheDocument();
+    screen.getByTestId(ICON_DEFAULT_TEST_ID);
   });
   it('should call onChange method', () => {
     render(
@@ -74,7 +68,7 @@ describe('DropdownDownshiftSelect', () => {
         placeHolder="Placeholder"
       />
     );
-    const dropdown = screen.getByTestId(DROPDOWN_DEFAULT_TEST_ID);
+    const dropdown = screen.getByTestId(DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID);
     fireEvent.click(dropdown);
     fireEvent.keyDown(dropdown);
     const item = screen.getByText('Option 1');
@@ -85,7 +79,7 @@ describe('DropdownDownshiftSelect', () => {
     render(
       <DropdownDownshiftSelect options={options} placeHolder="Placeholder" />
     );
-    const dropdown = screen.getByTestId(DROPDOWN_DEFAULT_TEST_ID);
+    const dropdown = screen.getByTestId(DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID);
     fireEvent.click(dropdown);
     fireEvent.keyDown(dropdown);
     const item = screen.getByText('Option 1');
@@ -101,9 +95,9 @@ describe('DropdownDownshiftSelect', () => {
       />
     );
     const dropdown = screen.getByTestId(
-      DROPDOWN_DEFAULT_TEST_ID
+      DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
-    expect(dropdown.disabled).toBe(true);
+    expect(dropdown).toBeDisabled();
   });
   it('should add disabled false', () => {
     render(
@@ -115,7 +109,7 @@ describe('DropdownDownshiftSelect', () => {
       />
     );
     const dropdown = screen.getByTestId(
-      DROPDOWN_DEFAULT_TEST_ID
+      DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
     expect(dropdown).not.toBeDisabled();
   });
@@ -128,7 +122,7 @@ describe('DropdownDownshiftSelect', () => {
       />
     );
     const dropdown = screen.getByTestId(
-      DROPDOWN_DEFAULT_TEST_ID
+      DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
     expect(dropdown.name).toBe('name');
   });
@@ -142,7 +136,7 @@ describe('DropdownDownshiftSelect', () => {
       />
     );
     const dropdown = screen.getByTestId(
-      DROPDOWN_DEFAULT_TEST_ID
+      DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
     expect(dropdown).toHaveClass('border-fill-system-error');
   });

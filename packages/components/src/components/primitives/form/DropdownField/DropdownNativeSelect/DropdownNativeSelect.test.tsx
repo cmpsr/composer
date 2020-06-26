@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { DropdownNativeSelect } from '.';
-import { DROPDOWN_DEFAULT_TEST_ID } from '../DropdownSingleSelect';
+import { DropdownNativeSelect, DROPDOWN_NATIVE_DEFAULT_TEST_ID } from '.';
 import { ICON_DEFAULT_TEST_ID } from 'components/primitives/Icon';
 
 describe('DropdownNativeSelect', () => {
@@ -68,7 +67,7 @@ describe('DropdownNativeSelect', () => {
         placeHolder="Placeholder"
       />
     );
-    const dropdown = screen.getByTestId(DROPDOWN_DEFAULT_TEST_ID);
+    const dropdown = screen.getByTestId(DROPDOWN_NATIVE_DEFAULT_TEST_ID);
     fireEvent.change(dropdown, {
       target: { value: 2 },
     });
@@ -78,7 +77,7 @@ describe('DropdownNativeSelect', () => {
     render(
       <DropdownNativeSelect options={options} placeHolder="Placeholder" />
     );
-    const dropdown = screen.getByTestId(DROPDOWN_DEFAULT_TEST_ID);
+    const dropdown = screen.getByTestId(DROPDOWN_NATIVE_DEFAULT_TEST_ID);
     fireEvent.click(dropdown);
     fireEvent.keyDown(dropdown);
     const item = screen.getByText('Option 1');
@@ -94,7 +93,7 @@ describe('DropdownNativeSelect', () => {
       />
     );
     const dropdown = screen.getByTestId(
-      DROPDOWN_DEFAULT_TEST_ID
+      DROPDOWN_NATIVE_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
     expect(dropdown).toBeDisabled();
   });
@@ -108,7 +107,7 @@ describe('DropdownNativeSelect', () => {
       />
     );
     const dropdown = screen.getByTestId(
-      DROPDOWN_DEFAULT_TEST_ID
+      DROPDOWN_NATIVE_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
     expect(dropdown).not.toBeDisabled();
   });
@@ -121,7 +120,7 @@ describe('DropdownNativeSelect', () => {
       />
     );
     const dropdown = screen.getByTestId(
-      DROPDOWN_DEFAULT_TEST_ID
+      DROPDOWN_NATIVE_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
     expect(dropdown.name).toBe('name');
   });
@@ -135,7 +134,7 @@ describe('DropdownNativeSelect', () => {
       />
     );
     const dropdown = screen.getByTestId(
-      DROPDOWN_DEFAULT_TEST_ID
+      DROPDOWN_NATIVE_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
     expect(dropdown).toHaveClass('border-fill-system-error');
   });

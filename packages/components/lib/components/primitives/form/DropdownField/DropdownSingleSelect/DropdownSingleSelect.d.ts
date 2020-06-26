@@ -1,5 +1,4 @@
-import { FunctionComponent } from 'react';
-export declare const DROPDOWN_DEFAULT_TEST_ID = "dropdown";
+import React from 'react';
 export interface Option {
     label: string;
     value: any;
@@ -15,5 +14,5 @@ export declare type SelectProps = {
     name?: string;
     invalid?: boolean;
 };
-export declare const DropdownSingleSelect: FunctionComponent<SelectProps>;
+export declare const DropdownSingleSelect: React.ForwardRefExoticComponent<SelectProps & React.RefAttributes<HTMLSelectElement>>;
 //# sourceMappingURL=DropdownSingleSelect.d.ts.map

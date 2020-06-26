@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DropdownDownshiftSelect = void 0;
+exports.DropdownDownshiftSelect = exports.DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -12,8 +12,6 @@ var _classnames = _interopRequireDefault(require("classnames"));
 var _downshift = _interopRequireDefault(require("downshift"));
 
 var _getDropdownSingleSelectClasses = require("../../../../../utils/getDropdownSingleSelectClasses");
-
-var _DropdownSingleSelect = require("../DropdownSingleSelect");
 
 var _ = require("../../..");
 
@@ -27,13 +25,15 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
+const DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID = 'dropdown-downshift';
+exports.DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID = DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID;
 const DropdownDownshiftSelect = /*#__PURE__*/(0, _react.forwardRef)(({
   className,
   options,
   placeHolder = 'Select an item',
   initialSelectedOption,
   onItemChange,
-  testId = _DropdownSingleSelect.DROPDOWN_DEFAULT_TEST_ID,
+  testId = DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID,
   disabled = false,
   name = 'dropdown',
   invalid

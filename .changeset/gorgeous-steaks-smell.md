@@ -1,5 +1,0 @@
----
-"@cmpsr/components": patch
----
-
-Dummy

@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.0.21
+
+### Patch Changes
+
+- d0bd2f0: Dummy
+- e33e285: show native dropdown on single select dropdown
+
 ## 0.0.20
 
 ### Patch Changes

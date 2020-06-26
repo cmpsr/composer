@@ -9,15 +9,15 @@ var _react = _interopRequireDefault(require("react"));
 
 var _addonActions = require("@storybook/addon-actions");
 
-var _ = require(".");
+var _ = require("./");
 
 var _addonKnobs = require("@storybook/addon-knobs");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = {
-  title: 'Composer/Primitive/Form/Dropdown/Single-Select',
-  component: _.DropdownSingleSelect
+  title: 'Composer/Primitive/Form/Dropdown/Single-Select/DropdownDownshiftSelect',
+  component: _.DropdownDownshiftSelect
 };
 exports.default = _default;
 const options = [{
@@ -41,7 +41,7 @@ const options = [{
 }];
 
 const basic = () => {
-  return /*#__PURE__*/_react.default.createElement(_.DropdownSingleSelect, {
+  return /*#__PURE__*/_react.default.createElement(_.DropdownDownshiftSelect, {
     options: options,
     onItemChange: (0, _addonActions.action)('Item changed'),
     invalid: (0, _addonKnobs.boolean)('Invalid', false),
@@ -55,8 +55,8 @@ basic.story = {
 };
 
 const withInitialSelectedItem = () => {
-  return /*#__PURE__*/_react.default.createElement(_.DropdownSingleSelect, {
-    initialSelectedOption: options[0],
+  return /*#__PURE__*/_react.default.createElement(_.DropdownDownshiftSelect, {
+    initialSelectedOption: options[3],
     options: options,
     onItemChange: (0, _addonActions.action)('Item changed'),
     invalid: (0, _addonKnobs.boolean)('Invalid', false),

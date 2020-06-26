@@ -52,8 +52,6 @@ module.exports = {
     enabled: '#FFFFFF',
     focus: '#FFFFFF',
     disabled: '#D8D8D8',
-    inactive: 'rgba(0, 0, 0, 0.3)',
-    filled: '#000000',
   },
   'outline-forms': {
     enabled: '#FFFFFF',

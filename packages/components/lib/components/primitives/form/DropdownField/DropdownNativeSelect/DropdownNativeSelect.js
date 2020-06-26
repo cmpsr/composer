@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DropdownNativeSelect = exports.DROPDOWN_NATIVE_DEFAULT_TEST_ID = void 0;
+exports.DropdownNativeSelect = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -15,26 +15,26 @@ var _navigation = require("../../../Icon/icons/navigation");
 
 var _getDropdownSingleSelectClasses = require("../../../../../utils/getDropdownSingleSelectClasses");
 
+var _DropdownSingleSelect = require("../DropdownSingleSelect");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-const DROPDOWN_NATIVE_DEFAULT_TEST_ID = 'dropdown_native';
-exports.DROPDOWN_NATIVE_DEFAULT_TEST_ID = DROPDOWN_NATIVE_DEFAULT_TEST_ID;
 const DropdownNativeSelect = /*#__PURE__*/(0, _react.forwardRef)(({
   className,
   options,
   placeHolder = 'Select an item',
   initialSelectedOption,
   onItemChange,
-  testId = DROPDOWN_NATIVE_DEFAULT_TEST_ID,
+  testId = _DropdownSingleSelect.DROPDOWN_DEFAULT_TEST_ID,
   disabled = false,
   name = 'dropdown',
   invalid
 }, ref) => {
-  const defaultValue = initialSelectedOption && initialSelectedOption.value;
+  const defaultValue = initialSelectedOption === null || initialSelectedOption === void 0 ? void 0 : initialSelectedOption.value;
   const [itemSelected, setItemSelected] = (0, _react.useState)(defaultValue || '');
   const {
     selectWrapper,
@@ -49,13 +49,9 @@ const DropdownNativeSelect = /*#__PURE__*/(0, _react.forwardRef)(({
 
   const handleOnChange = event => {
     const index = event.target.selectedIndex;
-    const label = event.target[index].label;
-    event.target.className += ' !text-fill-forms-filled';
-    setItemSelected(event.target.value);
-    return onItemChange({
-      label: label,
-      value: event.target.value
-    });
+    const value = event.target.value;
+    setItemSelected(value);
+    return onItemChange(options[index]);
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -71,13 +67,11 @@ const DropdownNativeSelect = /*#__PURE__*/(0, _react.forwardRef)(({
   }, /*#__PURE__*/_react.default.createElement("option", {
     value: ""
   }, placeHolder), options.map((item, index) => /*#__PURE__*/_react.default.createElement("option", {
-    key: `${index}${item.value}`,
+    key: index,
     value: item.value
   }, item.label))), /*#__PURE__*/_react.default.createElement("div", {
     className: iconWrapper
   }, /*#__PURE__*/_react.default.createElement(_.Icon, {
-    width: 24,
-    height: 24,
     className: icon
   }, /*#__PURE__*/_react.default.createElement(_navigation.expand_more, {
     type: "filled"

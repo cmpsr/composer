@@ -40,9 +40,7 @@ const DropdownNativeSelect = /*#__PURE__*/(0, _react.forwardRef)(({
     selectWrapper,
     selectClasses,
     selectTextClasses,
-    selectFocusClasses,
     selectDisabledClasses,
-    selectErrorClasses,
     iconWrapper,
     icon
   } = (0, _getDropdownSingleSelectClasses.getDropdownSingleSelectClasses)(disabled, invalid, itemSelected);
@@ -51,14 +49,14 @@ const DropdownNativeSelect = /*#__PURE__*/(0, _react.forwardRef)(({
     const index = event.target.selectedIndex;
     const value = event.target.value;
     setItemSelected(value);
-    return onItemChange(options[index]);
+    onItemChange(options[index - 1]);
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: selectWrapper
   }, /*#__PURE__*/_react.default.createElement("select", {
     value: itemSelected,
-    className: (0, _classnames.default)(selectClasses, selectTextClasses, selectFocusClasses, selectDisabledClasses, selectErrorClasses, className),
+    className: (0, _classnames.default)(selectClasses, selectTextClasses, selectDisabledClasses, className),
     onChange: handleOnChange,
     name: name,
     disabled: disabled,

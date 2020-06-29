@@ -3,9 +3,7 @@ export declare const getDropdownSingleSelectClasses: (disabled: boolean, invalid
     buttonClasses: string;
     selectClasses: string;
     selectTextClasses: string;
-    selectFocusClasses: string;
     selectDisabledClasses: string;
-    selectErrorClasses: string;
     iconWrapper: string;
     icon: string;
     selectListClasses: string;

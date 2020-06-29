@@ -37,9 +37,8 @@ export const DropdownNativeSelect = forwardRef<HTMLSelectElement, SelectProps>(
     const handleOnChange = (event) => {
       const index = event.target.selectedIndex;
       const value = event.target.value;
-
       setItemSelected(value);
-      return onItemChange(options[index - 1]);
+      onItemChange(options[index - 1]);
     };
 
     return (

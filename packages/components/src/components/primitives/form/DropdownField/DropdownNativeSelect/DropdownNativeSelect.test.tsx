@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import { DropdownNativeSelect, DROPDOWN_NATIVE_DEFAULT_TEST_ID } from '.';
 import { ICON_DEFAULT_TEST_ID } from 'components/primitives/Icon';
 
@@ -137,5 +137,21 @@ describe('DropdownNativeSelect', () => {
       DROPDOWN_NATIVE_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
     expect(dropdown).toHaveClass('border-fill-system-error');
+  });
+  it('should call onItemChange with right value selected', async () => {
+    const mockOnChange = jest.fn().mockImplementation((item) => item);
+    const value = 2;
+    render(
+      <DropdownNativeSelect
+        options={options}
+        onItemChange={mockOnChange}
+        placeHolder="Placeholder"
+      />
+    );
+    const select = (await waitFor(() =>
+      screen.getByTestId('dropdown-native')
+    )) as HTMLSelectElement;
+    fireEvent.change(select, { target: { value } });
+    expect(mockOnChange).toBeCalledWith({ label: 'Option 2', value });
   });
 });

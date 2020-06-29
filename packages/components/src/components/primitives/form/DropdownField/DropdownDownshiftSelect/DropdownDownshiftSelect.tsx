@@ -35,9 +35,7 @@ export const DropdownDownshiftSelect = forwardRef<
       selectClasses,
       buttonClasses,
       selectTextClasses,
-      selectFocusClasses,
       selectDisabledClasses,
-      selectErrorClasses,
       selectListClasses,
       itemListClasses,
       icon,
@@ -73,9 +71,7 @@ export const DropdownDownshiftSelect = forwardRef<
                   buttonClasses,
                   selectClasses,
                   selectTextClasses,
-                  selectFocusClasses,
                   selectDisabledClasses,
-                  selectErrorClasses,
                   className
                 )}
                 data-testid={testId}

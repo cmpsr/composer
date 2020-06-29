@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.22
+
+### Patch Changes
+
+- 946bb44: Improve Dropdown styling and apply minor fix
+
 ## 0.0.21
 
 ### Patch Changes

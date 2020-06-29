@@ -49,7 +49,7 @@ const DropdownNativeSelect = /*#__PURE__*/(0, _react.forwardRef)(({
     const index = event.target.selectedIndex;
     const value = event.target.value;
     setItemSelected(value);
-    return onItemChange(options[index - 1]);
+    onItemChange(options[index - 1]);
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {

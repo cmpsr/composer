@@ -1,12 +1,12 @@
-import React, { ReactNode } from "react";
-import cn from "classnames";
-import { isMobile } from "react-device-detect";
+import React, { ReactNode } from 'react';
+import cn from 'classnames';
+import { isMobile } from 'react-device-detect';
 
-import { Box } from "components/containers";
-import { Asset, Typography, TypographyTypes } from "components/primitives";
-import { getClassesFromStyle } from "utils";
+import { Box } from 'components/containers';
+import { Asset, Typography, TypographyTypes } from 'components/primitives';
+import { getClassesFromStyle } from 'utils';
 
-import { HeroStyle, Asset as AssetType } from "types";
+import { HeroStyle, Asset as AssetType } from 'types';
 
 type Props = {
   title?: string;
@@ -31,7 +31,8 @@ export const Hero1 = ({
 }: Props) => {
   const colorClasses = getClassesFromStyle(style.background);
   return (
-    <Box size="screen" className={cn("", className, colorClasses)}>
+    <Box size="screen" className={cn('', className, colorClasses)}>
+      Ignore
       {mobileAsset && (
         <Box size="screen" className="md:hidden w-full h-full z-0 absolute">
           <Asset

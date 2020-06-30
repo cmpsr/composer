@@ -17,6 +17,7 @@ type Props = {
   element: React.ReactNode;
   testId?: string;
   backgroundColor?: string;
+  className?: string;
 };
 
 export const Tooltip = ({
@@ -26,6 +27,7 @@ export const Tooltip = ({
   element,
   testId = TOOLTIP_DEFAULT_TEST_ID,
   backgroundColor = '#000000',
+  className,
 }: Props) => {
   return (
     <div data-testid={testId}>
@@ -37,6 +39,13 @@ export const Tooltip = ({
         id={id}
         place={place}
         effect={'solid'}
+        className={className}
+        overridePosition={({ left, top }, _e, _t, node) => {
+          return {
+            top,
+            left: typeof node === 'string' ? left : Math.max(left, 0),
+          };
+        }}
       >
         {tooltip}
       </ReactTooltip>

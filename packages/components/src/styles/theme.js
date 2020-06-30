@@ -31,6 +31,10 @@ module.exports = {
     'm-formLabel': 'Roboto-Bold',
     'm-button': 'Roboto-Medium',
     'm-link': 'Roboto-Regular',
+    'intensity-light': 'Roboto-Light',
+    'intensity-regular': 'Roboto-Regular',
+    'intensity-medium': 'Roboto-Medium',
+    'intensity-bold': 'Roboto-Bold',
   },
   extend: {
     padding: {

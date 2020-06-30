@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Typography = exports.TypographyMode = exports.TypographyTypes = exports.TYPOGRAPHY_DEFAULT_TEST_ID = void 0;
+exports.Typography = exports.TypographyIntensity = exports.TypographyMode = exports.TypographyTypes = exports.TYPOGRAPHY_DEFAULT_TEST_ID = void 0;
 
 var _react = require("react");
 
@@ -50,11 +50,22 @@ exports.TypographyMode = TypographyMode;
   TypographyMode["Accent25"] = "accent-25";
 })(TypographyMode || (exports.TypographyMode = TypographyMode = {}));
 
+let TypographyIntensity;
+exports.TypographyIntensity = TypographyIntensity;
+
+(function (TypographyIntensity) {
+  TypographyIntensity["Light"] = "font-intensity-light";
+  TypographyIntensity["Regular"] = "font-intensity-regular";
+  TypographyIntensity["Medium"] = "font-intensity-medium";
+  TypographyIntensity["Bold"] = "font-intensity-bold";
+})(TypographyIntensity || (exports.TypographyIntensity = TypographyIntensity = {}));
+
 const Typography = ({
   className,
   children,
   style = {},
   type,
+  intensity,
   tag,
   mode,
   htmlFor,
@@ -62,7 +73,7 @@ const Typography = ({
 }) => {
   const colorClasses = (0, _utils.getClassesFromStyle)(style);
   return /*#__PURE__*/(0, _react.createElement)(tag, {
-    className: (0, _classnames.default)(type, colorClasses, className, mode),
+    className: (0, _classnames.default)(type, colorClasses, className, mode, intensity),
     'data-testid': testId,
     htmlFor
   }, children);

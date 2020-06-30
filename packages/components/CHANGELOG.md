@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.23
+
+### Patch Changes
+
+- 04b90a5: Add new Typography property called 'Intensity'
+
 ## 0.0.22
 
 ### Patch Changes

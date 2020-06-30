@@ -1,7 +1,8 @@
-name: 'Chromatic'
+name: "Chromatic"
 on:
-  push:
-    branches: [master]
+  pull_request:
+    paths:
+    - "packages/components/**"
 
 jobs:
   chromatic:
@@ -14,3 +15,4 @@ jobs:
         appCode: cc7b1csiu9
         token: ${{ secrets.GITHUB_TOKEN }}
         storybookBuildDir: "./packages/components/storybook-static"
+        autoAcceptChanges: "master"

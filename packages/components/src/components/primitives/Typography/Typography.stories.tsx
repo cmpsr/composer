@@ -53,6 +53,47 @@ export const Headlines = () => (
   </div>
 );
 
+export const Copy = () => (
+  <div>
+    <div className="flex flex-row items-center my-4">
+      <p className="mr-4">Body</p>
+      <Typography tag="p" type={TypographyTypes.Body}>
+        The quick brown fox jumps over the lazy dog.
+      </Typography>
+    </div>
+    <div className="flex flex-row items-center my-4">
+      <p className="mr-4">Detail</p>
+      <Typography tag="p" type={TypographyTypes.Detail}>
+        The quick brown fox jumps over the lazy dog.
+      </Typography>
+    </div>
+    <div className="flex flex-row items-center my-4">
+      <p className="mr-4">Eyebrow</p>
+      <Typography tag="p" type={TypographyTypes.Eyebrow}>
+        The quick brown fox jumps over the lazy dog.
+      </Typography>
+    </div>
+    <div className="flex flex-row items-center my-4">
+      <p className="mr-4">Form</p>
+      <Typography tag="p" type={TypographyTypes.Form}>
+        The quick brown fox jumps over the lazy dog.
+      </Typography>
+    </div>
+    <div className="flex flex-row items-center my-4">
+      <p className="mr-4">Button</p>
+      <Typography tag="p" type={TypographyTypes.Button}>
+        The quick brown fox jumps over the lazy dog.
+      </Typography>
+    </div>
+    <div className="flex flex-row items-center my-4">
+      <p className="mr-4">Link</p>
+      <Typography tag="p" type={TypographyTypes.Link}>
+        The quick brown fox jumps over the lazy dog.
+      </Typography>
+    </div>
+  </div>
+);
+
 enum tagOptions {
   h1 = 'h1',
   h2 = 'h2',

@@ -12,6 +12,47 @@ export default {
   component: Typography,
 };
 
+export const Headlines = () => (
+  <div>
+    <div className="flex flex-row items-center my-4">
+      <p className="mr-4">Headline1</p>
+      <Typography tag="h1" type={TypographyTypes.Headline1}>
+        The quick brown fox jumps over the lazy dog.
+      </Typography>
+    </div>
+    <div className="flex flex-row items-center my-4">
+      <p className="mr-4">Headline2</p>
+      <Typography tag="h1" type={TypographyTypes.Headline2}>
+        The quick brown fox jumps over the lazy dog.
+      </Typography>
+    </div>
+    <div className="flex flex-row items-center my-4">
+      <p className="mr-4">Headline3</p>
+      <Typography tag="h1" type={TypographyTypes.Headline3}>
+        The quick brown fox jumps over the lazy dog.
+      </Typography>
+    </div>
+    <div className="flex flex-row items-center my-4">
+      <p className="mr-4">Headline4</p>
+      <Typography tag="h1" type={TypographyTypes.Headline4}>
+        The quick brown fox jumps over the lazy dog.
+      </Typography>
+    </div>
+    <div className="flex flex-row items-center my-4">
+      <p className="mr-4">Headline5</p>
+      <Typography tag="h1" type={TypographyTypes.Headline5}>
+        The quick brown fox jumps over the lazy dog.
+      </Typography>
+    </div>
+    <div className="flex flex-row items-center my-4">
+      <p className="mr-4">Headline6</p>
+      <Typography tag="h1" type={TypographyTypes.Headline6}>
+        The quick brown fox jumps over the lazy dog.
+      </Typography>
+    </div>
+  </div>
+);
+
 enum tagOptions {
   h1 = 'h1',
   h2 = 'h2',

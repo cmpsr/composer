@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Typographies = exports.Headlines = exports.default = void 0;
+exports.Typographies = exports.Copy = exports.Headlines = exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -66,6 +66,52 @@ const Headlines = () => /*#__PURE__*/_react.default.createElement("div", null, /
 }, "The quick brown fox jumps over the lazy dog.")));
 
 exports.Headlines = Headlines;
+
+const Copy = () => /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+  className: "flex flex-row items-center my-4"
+}, /*#__PURE__*/_react.default.createElement("p", {
+  className: "mr-4"
+}, "Body"), /*#__PURE__*/_react.default.createElement(_.Typography, {
+  tag: "p",
+  type: _Typography.TypographyTypes.Body
+}, "The quick brown fox jumps over the lazy dog.")), /*#__PURE__*/_react.default.createElement("div", {
+  className: "flex flex-row items-center my-4"
+}, /*#__PURE__*/_react.default.createElement("p", {
+  className: "mr-4"
+}, "Detail"), /*#__PURE__*/_react.default.createElement(_.Typography, {
+  tag: "p",
+  type: _Typography.TypographyTypes.Detail
+}, "The quick brown fox jumps over the lazy dog.")), /*#__PURE__*/_react.default.createElement("div", {
+  className: "flex flex-row items-center my-4"
+}, /*#__PURE__*/_react.default.createElement("p", {
+  className: "mr-4"
+}, "Eyebrow"), /*#__PURE__*/_react.default.createElement(_.Typography, {
+  tag: "p",
+  type: _Typography.TypographyTypes.Eyebrow
+}, "The quick brown fox jumps over the lazy dog.")), /*#__PURE__*/_react.default.createElement("div", {
+  className: "flex flex-row items-center my-4"
+}, /*#__PURE__*/_react.default.createElement("p", {
+  className: "mr-4"
+}, "Form"), /*#__PURE__*/_react.default.createElement(_.Typography, {
+  tag: "p",
+  type: _Typography.TypographyTypes.Form
+}, "The quick brown fox jumps over the lazy dog.")), /*#__PURE__*/_react.default.createElement("div", {
+  className: "flex flex-row items-center my-4"
+}, /*#__PURE__*/_react.default.createElement("p", {
+  className: "mr-4"
+}, "Button"), /*#__PURE__*/_react.default.createElement(_.Typography, {
+  tag: "p",
+  type: _Typography.TypographyTypes.Button
+}, "The quick brown fox jumps over the lazy dog.")), /*#__PURE__*/_react.default.createElement("div", {
+  className: "flex flex-row items-center my-4"
+}, /*#__PURE__*/_react.default.createElement("p", {
+  className: "mr-4"
+}, "Link"), /*#__PURE__*/_react.default.createElement(_.Typography, {
+  tag: "p",
+  type: _Typography.TypographyTypes.Link
+}, "The quick brown fox jumps over the lazy dog.")));
+
+exports.Copy = Copy;
 var tagOptions;
 
 (function (tagOptions) {

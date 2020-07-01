@@ -1,0 +1,38 @@
+{
+  "name": "@cmpsr/contentful-core",
+  "version": "0.0.1",
+  "description": "> TODO: description",
+  "author": "Ryan Hefner <hi@ryanhefner.com>",
+  "homepage": "https://github.com/cmpsr/composer#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "scripts": "scripts",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "scripts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmpsr/composer.git"
+  },
+  "scripts": {
+    "libbuild": "rimraf lib && yarn babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
+    "test": "jest --env=jest-environment-jsdom-sixteen",
+    "test:watch": "jest --watch --env=jest-environment-jsdom-sixteen",
+    "test:coverage": "jest --coverage --env=jest-environment-jsdom-sixteen",
+    "graphql:schema": "node ./scripts/graphql-schema.js",
+    "graphql:types": "node ./scripts/graphql-types.js"
+  },
+  "bugs": {
+    "url": "https://github.com/cmpsr/composer/issues"
+  },
+  "dependencies": {
+    "apollo-link-http": "^1.5.17",
+    "dotenv": "^8.2.0",
+    "invariant": "^2.2.4"
+  }
+}

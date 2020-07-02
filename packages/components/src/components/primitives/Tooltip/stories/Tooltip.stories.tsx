@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip, TooltipPlace } from '..';
+import { Tooltip, TooltipPlace, BackgroundColor } from '..';
 
 export default {
   title: 'Composer/Primitive/Tooltip',
@@ -70,7 +70,7 @@ export const withBackgroundColor = () => (
   <div className="p-48">
     <Tooltip
       id="background"
-      backgroundColor={'red'}
+      backgroundColor={BackgroundColor.Primary75}
       tooltip={<span>Tooltip</span>}
       element={<span>Trigger</span>}
     />

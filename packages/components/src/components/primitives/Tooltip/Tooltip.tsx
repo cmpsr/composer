@@ -1,7 +1,15 @@
 import React from 'react';
+import cn from 'classnames';
 import ReactTooltip from 'react-tooltip';
+import tw from 'twin.macro';
+import styled from 'styled-components';
 
 export const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
+
+export enum BackgroundColor {
+  Primary100 = '!bg-fill-primary-100',
+  Primary75 = '!bg-fill-primary-75',
+}
 
 export enum TooltipPlace {
   Left = 'left',
@@ -16,9 +24,26 @@ type Props = {
   tooltip: React.ReactNode;
   element: React.ReactNode;
   testId?: string;
-  backgroundColor?: string;
+  backgroundColor?: BackgroundColor;
   className?: string;
 };
+
+const TooltipWrapper = styled(ReactTooltip)`
+  &:after {
+    ${({ background }) =>
+      background &&
+      (background === BackgroundColor.Primary100
+        ? tw`border-fill-primary-100`
+        : tw`border-fill-primary-75`)}
+  }
+  &:before {
+    ${({ background }) =>
+      background &&
+      (background === BackgroundColor.Primary100
+        ? tw`border-fill-primary-100`
+        : tw`border-fill-primary-75`)}
+  }
+`;
 
 export const Tooltip = ({
   id,
@@ -26,7 +51,7 @@ export const Tooltip = ({
   tooltip,
   element,
   testId = TOOLTIP_DEFAULT_TEST_ID,
-  backgroundColor = '#000000',
+  backgroundColor = BackgroundColor.Primary100,
   className,
 }: Props) => {
   return (
@@ -34,12 +59,13 @@ export const Tooltip = ({
       <a data-tip data-for={id}>
         {element}
       </a>
-      <ReactTooltip
-        backgroundColor={backgroundColor}
+      <TooltipWrapper
+        backgroundColor="none"
+        background={backgroundColor}
         id={id}
         place={place}
         effect={'solid'}
-        className={className}
+        className={cn(backgroundColor, className)}
         overridePosition={({ left, top }, _e, _t, node) => {
           return {
             top,
@@ -48,7 +74,7 @@ export const Tooltip = ({
         }}
       >
         {tooltip}
-      </ReactTooltip>
+      </TooltipWrapper>
     </div>
   );
 };

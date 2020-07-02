@@ -9,7 +9,8 @@
           "utils": "./src/utils"
         }
       }
-    ]
+    ],
+    "macros"
   ],
   "presets": [
     "@babel/preset-typescript",

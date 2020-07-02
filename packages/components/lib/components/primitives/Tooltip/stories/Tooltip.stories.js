@@ -77,7 +77,7 @@ const withBackgroundColor = () => /*#__PURE__*/_react.default.createElement("div
   className: "p-48"
 }, /*#__PURE__*/_react.default.createElement(_.Tooltip, {
   id: "background",
-  backgroundColor: 'red',
+  backgroundColor: _.BackgroundColor.Primary75,
   tooltip: /*#__PURE__*/_react.default.createElement("span", null, "Tooltip"),
   element: /*#__PURE__*/_react.default.createElement("span", null, "Trigger")
 }));

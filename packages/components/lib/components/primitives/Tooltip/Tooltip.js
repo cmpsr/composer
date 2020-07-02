@@ -47,17 +47,6 @@ const TooltipWrapper = (0, _styledComponents.default)(_reactTooltip.default)`
   "borderColor": "rgba(216, 216, 216, var(--border-opacity))"
 })}
   }
-  &:before {
-    ${({
-  background
-}) => background && (background === BackgroundColor.Primary100 ? {
-  "--border-opacity": "1",
-  "borderColor": "rgba(65, 65, 65, var(--border-opacity))"
-} : {
-  "--border-opacity": "1",
-  "borderColor": "rgba(216, 216, 216, var(--border-opacity))"
-})}
-  }
 `;
 
 const Tooltip = ({

@@ -7,6 +7,8 @@ exports.withBackgroundColor = exports.withRightPlace = exports.withLeftPlace = e
 
 var _react = _interopRequireDefault(require("react"));
 
+var _addonKnobs = require("@storybook/addon-knobs");
+
 var _ = require("..");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -77,7 +79,7 @@ const withBackgroundColor = () => /*#__PURE__*/_react.default.createElement("div
   className: "p-48"
 }, /*#__PURE__*/_react.default.createElement(_.Tooltip, {
   id: "background",
-  backgroundColor: _.BackgroundColor.Primary75,
+  backgroundColor: (0, _addonKnobs.select)('backgroundColor', _.BackgroundColor, _.BackgroundColor.Primary75),
   tooltip: /*#__PURE__*/_react.default.createElement("span", null, "Tooltip"),
   element: /*#__PURE__*/_react.default.createElement("span", null, "Trigger")
 }));

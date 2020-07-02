@@ -1,4 +1,5 @@
 import React from 'react';
+import { select } from '@storybook/addon-knobs';
 import { Tooltip, TooltipPlace, BackgroundColor } from '..';
 
 export default {
@@ -70,7 +71,11 @@ export const withBackgroundColor = () => (
   <div className="p-48">
     <Tooltip
       id="background"
-      backgroundColor={BackgroundColor.Primary75}
+      backgroundColor={select(
+        'backgroundColor',
+        BackgroundColor,
+        BackgroundColor.Primary75
+      )}
       tooltip={<span>Tooltip</span>}
       element={<span>Trigger</span>}
     />

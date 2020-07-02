@@ -36,13 +36,6 @@ const TooltipWrapper = styled(ReactTooltip)`
         ? tw`border-fill-primary-100`
         : tw`border-fill-primary-75`)}
   }
-  &:before {
-    ${({ background }) =>
-      background &&
-      (background === BackgroundColor.Primary100
-        ? tw`border-fill-primary-100`
-        : tw`border-fill-primary-75`)}
-  }
 `;
 
 export const Tooltip = ({

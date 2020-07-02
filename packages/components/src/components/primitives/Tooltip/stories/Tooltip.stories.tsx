@@ -1,87 +1,31 @@
 import React from 'react';
 import { Tooltip, TooltipPlace, BackgroundColor } from '..';
 import { select } from '@storybook/addon-knobs';
-
 export default {
   title: 'Composer/Primitive/Tooltip',
   component: Tooltip,
 };
-
-export const withTopPlace = () => (
+enum idOptions {
+  top = 'top',
+  bottom = 'bottom',
+  left = 'left',
+  right = 'right',
+}
+export const base = () => (
   <div className="p-48">
     <Tooltip
-      id="top"
+      id={select('id', idOptions, idOptions.top)}
       place={select('place', TooltipPlace, TooltipPlace.Top)}
       tooltip={<span>Tooltip</span>}
       element={<span>Trigger</span>}
-    />
-  </div>
-);
-
-withTopPlace.story = {
-  name: 'With top place',
-};
-
-export const withBottomPlace = () => (
-  <div className="p-48">
-    <Tooltip
-      id="bottom"
-      place={TooltipPlace.Bottom}
-      tooltip={<span>Tooltip</span>}
-      element={<span>Trigger</span>}
-    />
-  </div>
-);
-
-withBottomPlace.story = {
-  name: 'With bot place',
-};
-
-export const withLeftPlace = () => (
-  <div className="p-48">
-    <Tooltip
-      id="left"
-      place={TooltipPlace.Left}
-      tooltip={<span>Tooltip</span>}
-      element={<span>Trigger</span>}
-    />
-  </div>
-);
-
-withLeftPlace.story = {
-  name: 'With left place',
-};
-
-export const withRightPlace = () => (
-  <div className="p-48">
-    <Tooltip
-      id="right"
-      place={TooltipPlace.Right}
-      tooltip={<span>Tooltip</span>}
-      element={<span>Trigger</span>}
-    />
-  </div>
-);
-
-withRightPlace.story = {
-  name: 'With right place',
-};
-
-export const withBackgroundColor = () => (
-  <div className="p-48">
-    <Tooltip
-      id="background"
       tooltipBackground={select(
         'tooltipBackground',
         BackgroundColor,
         BackgroundColor.Primary75
       )}
-      tooltip={<span>Tooltip</span>}
-      element={<span>Trigger</span>}
     />
   </div>
 );
-
-withBackgroundColor.story = {
-  name: 'With background color',
+base.story = {
+  name: 'Base',
 };

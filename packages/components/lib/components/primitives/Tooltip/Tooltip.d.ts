@@ -13,7 +13,8 @@ declare type Props = {
     element: React.ReactNode;
     testId?: string;
     backgroundColor?: string;
+    className?: string;
 };
-export declare const Tooltip: ({ id, place, tooltip, element, testId, backgroundColor, }: Props) => JSX.Element;
+export declare const Tooltip: ({ id, place, tooltip, element, testId, backgroundColor, className, }: Props) => JSX.Element;
 export {};
 //# sourceMappingURL=Tooltip.d.ts.map

@@ -101,4 +101,11 @@ describe('Tooltip', () => {
       'place-bottom place-top place-right'
     );
   });
+  it('should render default placement with top place', () => {
+    const trigger = 'trigger';
+    const tooltip = 'tooltip';
+    render(<Tooltip id={'id'} tooltip={tooltip} element={trigger} />);
+    const tooltipElement = screen.getByText(tooltip);
+    expect(tooltipElement).toHaveClass('place-top');
+  });
 });

@@ -4,10 +4,7 @@ import colors from '../../../../lib/styles/colors.js';
 
 export const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
 
-export const BackgroundColor = {
-  Primary100: colors['fill-primary'][100],
-  Primary75: colors['fill-primary'][75],
-};
+const defaultColor = colors['fill-primary'][100];
 
 export enum TooltipPlace {
   Left = 'left',
@@ -22,7 +19,7 @@ type Props = {
   tooltip: React.ReactNode;
   element: React.ReactNode;
   testId?: string;
-  tooltipBackground?: string;
+  backgroundColor?: string;
   className?: string;
 };
 
@@ -32,7 +29,7 @@ export const Tooltip = ({
   tooltip,
   element,
   testId = TOOLTIP_DEFAULT_TEST_ID,
-  tooltipBackground = BackgroundColor.Primary100,
+  backgroundColor = defaultColor,
   className,
 }: Props) => {
   return (
@@ -41,7 +38,7 @@ export const Tooltip = ({
         {element}
       </a>
       <ReactTooltip
-        backgroundColor={tooltipBackground}
+        backgroundColor={backgroundColor}
         id={id}
         place={place}
         effect={'solid'}

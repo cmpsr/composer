@@ -1,6 +1,6 @@
 import React from 'react';
-import { Tooltip, TooltipPlace, BackgroundColor } from '..';
-import { select } from '@storybook/addon-knobs';
+import { Tooltip, TooltipPlace } from '..';
+import { select, text } from '@storybook/addon-knobs';
 
 export default {
   title: 'Composer/Primitive/Tooltip',
@@ -14,6 +14,11 @@ enum idOptions {
   right = 'right',
 }
 
+enum colorOptions {
+  red = 'red',
+  gray = 'gray',
+}
+
 export const base = () => (
   <div className="p-48">
     <Tooltip
@@ -21,10 +26,10 @@ export const base = () => (
       place={select('place', TooltipPlace, TooltipPlace.Top)}
       tooltip={<span>Tooltip</span>}
       element={<span>Trigger</span>}
-      tooltipBackground={select(
-        'tooltipBackground',
-        BackgroundColor,
-        BackgroundColor.Primary75
+      backgroundColor={select(
+        'backgroundColor',
+        colorOptions,
+        colorOptions.gray
       )}
     />
   </div>

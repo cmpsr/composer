@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.24
+
+### Patch Changes
+
+- de9295a: fix tooltip background color
+
 ## 0.0.23
 
 ### Patch Changes

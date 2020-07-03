@@ -9,10 +9,13 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactTooltip = _interopRequireDefault(require("react-tooltip"));
 
+var _colors = _interopRequireDefault(require("../../../../lib/styles/colors.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
 exports.TOOLTIP_DEFAULT_TEST_ID = TOOLTIP_DEFAULT_TEST_ID;
+const defaultColor = _colors.default['fill-primary'][100];
 let TooltipPlace;
 exports.TooltipPlace = TooltipPlace;
 
@@ -29,7 +32,8 @@ const Tooltip = ({
   tooltip,
   element,
   testId = TOOLTIP_DEFAULT_TEST_ID,
-  backgroundColor = '#000000'
+  backgroundColor = defaultColor,
+  className
 }) => {
   return /*#__PURE__*/_react.default.createElement("div", {
     "data-testid": testId
@@ -40,7 +44,8 @@ const Tooltip = ({
     backgroundColor: backgroundColor,
     id: id,
     place: place,
-    effect: 'solid'
+    effect: 'solid',
+    className: className
   }, tooltip));
 };
 

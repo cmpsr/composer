@@ -1,7 +1,0 @@
-fragment Grid on Grid {
-  sys {
-    id
-  }
-  style
-  type
-}

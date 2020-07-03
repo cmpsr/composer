@@ -1,6 +1,0 @@
-fragment Experiment on Experiment {
-  sys {
-    id
-  }
-  variants
-}

@@ -1,1 +1,0 @@
-{"version":3,"file":"FastlyABAllocations.d.ts","sourceRoot":"","sources":["../../src/types/FastlyABAllocations.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,mBAAmB;IAClC,GAAG,EAAE,MAAM,CAAC;IACZ,KAAK,EAAE,MAAM,CAAC;IACd,WAAW,EAAE;QACX,GAAG,EAAE,MAAM,CAAC;QACZ,GAAG,EAAE,MAAM,CAAC;QACZ,KAAK,EAAE,MAAM,CAAC;QACd,KAAK,EAAE,MAAM,CAAC;KACf,EAAE,CAAC;CACL"}

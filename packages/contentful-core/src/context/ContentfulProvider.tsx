@@ -13,8 +13,8 @@ export const ContentfulProvider = ({
   queryMap = {},
 }) => {
   useEffect(() => {
-    invariant(accessToken, '`accessToken` props required on `ContentfulProvider`.');
-    invariant(space, '`space` required on `ContentfulProvider`.');
+    // invariant(accessToken, '`accessToken` props required on `ContentfulProvider`.');
+    // invariant(space, '`space` required on `ContentfulProvider`.');
 
     if (!Object.keys(componentMap).length) {
       console.warn('`componentMap` supplied to `ContentfulProvider` is empty.');

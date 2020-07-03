@@ -19,6 +19,10 @@
     "type": "git",
     "url": "git+https://github.com/cmpsr/composer.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
   "scripts": {
     "libbuild": "rimraf lib && yarn babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
     "test": "jest --env=jest-environment-jsdom-sixteen",

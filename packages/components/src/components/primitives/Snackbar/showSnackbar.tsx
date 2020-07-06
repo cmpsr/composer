@@ -52,8 +52,8 @@ export const showSnackbar = ({
   type = SnackbarType.Default,
   position = SnackbarPosition.TopCenter,
 }: ShowSnackbarProps) => {
-  const isIconRightPosition = textPosition === 'right';
-  const styles = getStyle({ textPosition: isIconRightPosition, type });
+  const isTextRightPosition = textPosition === 'right';
+  const styles = getStyle({ isTextRightPosition, type });
   const snackbarContent = (
     <div className={styles.snackbarWrapper}>
       <div className={styles.informationWrapper}>

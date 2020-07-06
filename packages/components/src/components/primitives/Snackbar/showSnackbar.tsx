@@ -1,14 +1,24 @@
 import React from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import {
   Typography,
   TypographyMode,
   TypographyTypes,
 } from 'components/primitives/Typography';
 import { Icon } from 'components/primitives/Icon';
-import { getStyle } from './DefaultSnackbar.styles';
+import { getStyle } from './Snackbar.styles';
 
-export const DEFAULT_SNACKBAR_DEFAULT_TEST_ID = 'snackbar';
+export enum SnackbarType {
+  Default = 'default',
+  Success = 'success',
+  Warning = 'warning',
+  Error = 'error',
+}
+
+export enum SnackbarTextPosition {
+  Left = 'left',
+  Right = 'right',
+}
 
 export enum SnackbarPosition {
   TopCenter = 'top-center',
@@ -19,19 +29,16 @@ export enum SnackbarPosition {
   BottomLeft = 'bottom-left',
 }
 
-export enum TextPosition {
-  Left = 'left',
-  Right = 'right',
-}
-
 type ShowSnackbarProps = {
   message: string;
   description?: string;
   showIcon?: boolean;
   icon?: React.ReactNode;
-  textPosition?: TextPosition;
+  textPosition?: SnackbarTextPosition;
   showButton?: boolean;
   buttonText?: string;
+  type?: SnackbarType;
+  position?: SnackbarPosition;
 };
 
 export const showSnackbar = ({
@@ -39,13 +46,15 @@ export const showSnackbar = ({
   description,
   showIcon,
   icon,
-  textPosition = TextPosition.Right,
+  textPosition = SnackbarTextPosition.Right,
   showButton,
   buttonText,
+  type = SnackbarType.Default,
+  position = SnackbarPosition.TopCenter,
 }: ShowSnackbarProps) => {
   const isIconRightPosition = textPosition === 'right';
-  const styles = getStyle(isIconRightPosition);
-  toast(
+  const styles = getStyle({ textPosition: isIconRightPosition, type });
+  const snackbarContent = (
     <div className={styles.snackbarWrapper}>
       <div className={styles.informationWrapper}>
         <Typography
@@ -81,28 +90,5 @@ export const showSnackbar = ({
       ) : null}
     </div>
   );
-};
-
-type Props = {
-  testId?: string;
-  position?: SnackbarPosition;
-};
-
-export const DefaultSnackbar = ({
-  testId = DEFAULT_SNACKBAR_DEFAULT_TEST_ID,
-  position = SnackbarPosition.TopCenter,
-}: Props) => {
-  const styles = getStyle();
-  return (
-    <div data-testid={testId}>
-      <ToastContainer
-        autoClose={5000}
-        hideProgressBar={true}
-        toastClassName={styles.toastContainer}
-        position={position}
-        closeButton={null}
-        draggable={false}
-      />
-    </div>
-  );
+  toast(snackbarContent, { className: styles.toastContainer, position });
 };

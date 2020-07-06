@@ -12,4 +12,5 @@ module.exports = {
   outline: ['focus', 'active', 'responsive'],
   borderRadius: ['responsive', 'important'],
   padding: ['responsive', 'important'],
+  boxShadow: ['responsive', 'important'],
 };

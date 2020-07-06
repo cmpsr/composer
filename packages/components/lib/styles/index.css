@@ -9,5 +9,6 @@
 @import "../components/primitives/Tooltip/Tooltip.css";
 @import "../components/primitives/Modal/Modal.css";
 @import "../components/primitives/form/RadioButton/RadioButton.css";
+@import "react-toastify/dist/ReactToastify.css";
 /* purgecss end ignore */
 @import "tailwindcss/utilities";

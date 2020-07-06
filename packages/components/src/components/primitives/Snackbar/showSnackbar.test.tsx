@@ -39,7 +39,7 @@ describe('showSnackbar', () => {
       textPosition: SnackbarTextPosition.Right,
     });
     const text = await screen.findByText('message');
-    expect(text.parentElement).toHaveClass('order-1');
+    expect(text.parentElement).toHaveClass('order-2');
   });
   it('should render snackbar top center position', async () => {
     showSnackbar({

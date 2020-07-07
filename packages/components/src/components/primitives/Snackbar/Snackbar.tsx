@@ -7,6 +7,7 @@ import {
   TypographyTypes,
 } from 'components/primitives/Typography';
 import { Icon } from 'components/primitives/Icon';
+import { Button } from 'components/primitives/Button';
 
 export const SNACKBAR_DEFAULT_TEST_ID = 'snackbar';
 
@@ -33,7 +34,7 @@ export enum SnackbarPosition {
 
 type Props = {
   testId?: string;
-  open?: boolean;
+  open: boolean;
   message: string;
   description?: string;
   showIcon?: boolean;
@@ -44,6 +45,7 @@ type Props = {
   type?: SnackbarType;
   position?: SnackbarPosition;
   autoClose?: number;
+  onClickButton?: (...args: any[]) => void;
 };
 
 export const Snackbar = ({
@@ -59,6 +61,7 @@ export const Snackbar = ({
   type = SnackbarType.Default,
   position = SnackbarPosition.TopCenter,
   autoClose = 5000,
+  onClickButton,
 }: Props) => {
   const isTextRightPosition = textPosition === 'right';
   const styles = getStyle({ isTextRightPosition, type });
@@ -87,21 +90,25 @@ export const Snackbar = ({
           <Icon className={styles.icon}>{icon}</Icon>
         </div>
       ) : showButton ? (
-        <Typography
-          className={styles.ctaWrapper}
-          type={TypographyTypes.Button}
-          mode={TypographyMode.Light100}
-          tag="p"
-        >
-          {buttonText}
-        </Typography>
+        <Button className={styles.ctaWrapper} onClick={onClickButton}>
+          <Typography
+            type={TypographyTypes.Button}
+            mode={TypographyMode.Light100}
+            tag="p"
+          >
+            {buttonText}
+          </Typography>
+        </Button>
       ) : null}
     </div>
   );
 
   useEffect(() => {
     if (open) {
-      toast(snackbarContent, { className: styles.toastContainer, position });
+      toast(snackbarContent, {
+        className: styles.toastContainer,
+        position,
+      });
     } else {
       toast.dismiss();
     }

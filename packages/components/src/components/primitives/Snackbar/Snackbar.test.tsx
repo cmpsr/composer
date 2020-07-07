@@ -44,17 +44,6 @@ describe('Snackbar', () => {
     const text = await screen.findByText('message');
     expect(text.parentElement).toHaveClass('order-2');
   });
-  it('should render snackbar top center position', async () => {
-    render(
-      <Snackbar message="message" position={SnackbarPosition.TopCenter} open />
-    );
-    await screen.findByText('message');
-    const snackbarPosition = screen.getByTestId(SNACKBAR_DEFAULT_TEST_ID)
-      .children[0].children[0];
-    expect(snackbarPosition).toHaveClass(
-      'Toastify__toast-container--top-center'
-    );
-  });
   it('should render snackbar with success type background', async () => {
     render(<Snackbar message="message" type={SnackbarType.Success} open />);
     await screen.findByText('message');

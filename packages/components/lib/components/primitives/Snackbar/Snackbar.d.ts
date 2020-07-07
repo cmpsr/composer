@@ -20,7 +20,7 @@ export declare enum SnackbarPosition {
 }
 declare type Props = {
     testId?: string;
-    open?: boolean;
+    open: boolean;
     message: string;
     description?: string;
     showIcon?: boolean;
@@ -31,7 +31,8 @@ declare type Props = {
     type?: SnackbarType;
     position?: SnackbarPosition;
     autoClose?: number;
+    onClickButton?: (...args: any[]) => void;
 };
-export declare const Snackbar: ({ testId, open, message, description, showIcon, icon, textPosition, showButton, buttonText, type, position, autoClose, }: Props) => JSX.Element;
+export declare const Snackbar: ({ testId, open, message, description, showIcon, icon, textPosition, showButton, buttonText, type, position, autoClose, onClickButton, }: Props) => JSX.Element;
 export {};
 //# sourceMappingURL=Snackbar.d.ts.map

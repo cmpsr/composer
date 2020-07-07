@@ -58,7 +58,7 @@ export const DefaultSnackbar = ({
   action,
 }: Props) => {
   const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
-  const styles = getStyle({ isTextRightPosition, type });
+  const styles = getStyle(isTextRightPosition, type);
   const snackbarContent = (
     <div className={styles.snackbarWrapper}>
       <div className={styles.informationWrapper}>

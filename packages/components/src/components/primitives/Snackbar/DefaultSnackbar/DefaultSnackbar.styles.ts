@@ -1,9 +1,6 @@
 import { SnackbarType } from './DefaultSnackbar';
 
-export const getStyle = ({
-  isTextRightPosition = false,
-  type = SnackbarType.Default,
-}) => ({
+export const getStyle = (isTextRightPosition: boolean, type: SnackbarType) => ({
   snackbarWrapper: `${
     isTextRightPosition ? 'justify-start' : 'justify-between'
   } flex items-center`,

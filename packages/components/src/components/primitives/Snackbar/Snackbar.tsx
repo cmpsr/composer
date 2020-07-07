@@ -63,7 +63,7 @@ export const Snackbar = ({
   autoClose = 5000,
   onClickButton,
 }: Props) => {
-  const isTextRightPosition = textPosition === 'right';
+  const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
   const styles = getStyle({ isTextRightPosition, type });
   const snackbarContent = (
     <div className={styles.snackbarWrapper}>

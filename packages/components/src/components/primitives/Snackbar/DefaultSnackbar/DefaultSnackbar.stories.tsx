@@ -6,6 +6,7 @@ import {
   SnackbarType,
 } from './DefaultSnackbar';
 import { close as Close } from '../../Icon/icons/navigation';
+import { Icon } from '../../Icon';
 import { select, text, boolean, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
@@ -34,7 +35,11 @@ export const withBase = () => {
         )}
         autoClose={number('Auto close', 5000)}
         action={{
-          childAction: <Close type="filled" />,
+          childAction: (
+            <Icon className="text-fill-white fill-current">
+              <Close type="filled" />
+            </Icon>
+          ),
           onClickAction: action('On click action'),
         }}
       />
@@ -54,7 +59,11 @@ export const withIcon = () => {
         message="Prompt Option"
         description="Detail Info"
         action={{
-          childAction: <Close type="filled" />,
+          childAction: (
+            <Icon className="text-fill-white fill-current">
+              <Close type="filled" />
+            </Icon>
+          ),
           onClickAction: action('On click action'),
         }}
         textPosition={SnackbarTextPosition.Right}
@@ -77,7 +86,7 @@ export const withButton = () => {
         message="Prompt Option"
         description="Detail Info"
         action={{
-          childAction: <div>buttonContent</div>,
+          childAction: <div className="text-fill-white">buttonContent</div>,
           onClickAction: action('On click action'),
         }}
         textPosition={SnackbarTextPosition.Left}

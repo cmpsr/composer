@@ -31,7 +31,7 @@ export enum SnackbarPosition {
   BottomLeft = 'bottom-left',
 }
 
-type Props = {
+export type SnackbarProps = {
   testId?: string;
   open: boolean;
   message: string;
@@ -56,7 +56,7 @@ export const DefaultSnackbar = ({
   position = SnackbarPosition.TopCenter,
   autoClose = 5000,
   action,
-}: Props) => {
+}: SnackbarProps) => {
   const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
   const styles = getStyle({ isTextRightPosition, type });
   const snackbarContent = (

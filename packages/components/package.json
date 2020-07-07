@@ -7,10 +7,13 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.0.25",
+  "version": "0.0.26",
   "author": "Steve Cox <stevejcox@me.com>",
   "license": "MIT",
   "main": "./lib/index.js",
+  "files": [
+    "./lib"
+  ],
   "types": "./lib/index.d.ts",
   "scripts": {
     "storybook": "echo 'Starting Storybook' && start-storybook -p 8080 -c .storybook",

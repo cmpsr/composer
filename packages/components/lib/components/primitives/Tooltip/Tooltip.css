@@ -1,0 +1,20 @@
+.__react_component_tooltip {
+  border-radius: 2px !important;
+  padding: 5px 20px !important;
+}
+
+.place-top:after {
+  border-top-width: 9px !important;
+}
+
+.place-left:after {
+  border-left-width: 9px !important;
+}
+
+.place-right:after {
+  border-right-width: 9px !important;
+}
+
+.place-bottom:after {
+  border-bottom-width: 9px !important;
+}

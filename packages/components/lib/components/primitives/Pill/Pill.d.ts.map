@@ -1,0 +1,1 @@
+{"version":3,"file":"Pill.d.ts","sourceRoot":"","sources":["../../../../src/components/primitives/Pill/Pill.tsx"],"names":[],"mappings":";AAQA,eAAO,MAAM,oBAAoB,SAAS,CAAC;AAE3C,aAAK,KAAK,GAAG;IACX,SAAS,CAAC,EAAE,MAAM,CAAC;IACnB,KAAK,CAAC,EAAE,MAAM,CAAC;IACf,MAAM,CAAC,EAAE,MAAM,CAAC;CACjB,CAAC;AAEF,eAAO,MAAM,IAAI,kCAId,KAAK,gBAkBP,CAAC"}

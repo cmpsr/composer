@@ -1,0 +1,1 @@
+{"version":3,"file":"HeroStyle.d.ts","sourceRoot":"","sources":["../../src/types/HeroStyle.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,GAAG,CAAC;AAE1B,oBAAY,SAAS,GAAG;IACtB,UAAU,CAAC,EAAE,KAAK,CAAC;IACnB,KAAK,CAAC,EAAE,KAAK,CAAC;IACd,QAAQ,CAAC,EAAE,KAAK,CAAC;IACjB,OAAO,CAAC,EAAE,KAAK,CAAC;CACjB,CAAC"}

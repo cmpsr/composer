@@ -1,0 +1,14 @@
+#import "../../Link/fragments/Link.graphql"
+
+fragment Group on Group {
+  sys {
+    id
+  }
+  style
+  type
+  contentCollection(limit: 20) {
+    items {
+      ...Link
+    }
+  }
+}

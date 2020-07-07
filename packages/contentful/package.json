@@ -21,7 +21,7 @@
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
     "@apollo/react-ssr": "^3.1.3",
-    "@cmpsr/components": "^0.0.25",
+    "@cmpsr/components": "^0.0.28",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.8",
     "apollo-link-context": "^1.0.19",
@@ -35,7 +35,6 @@
     "uuid": "^7.0.1"
   },
   "devDependencies": {
-    "@cmpsr/components": "^0.0.25",
     "@types/uuid": "^7.0.3"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"

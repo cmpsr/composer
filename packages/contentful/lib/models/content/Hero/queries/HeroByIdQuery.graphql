@@ -1,0 +1,7 @@
+#import "../fragments/Hero.graphql"
+
+query HeroByIdQuery($id: String!) {
+  hero(id: $id) {
+    ...Hero
+  }
+}

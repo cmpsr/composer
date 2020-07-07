@@ -18,7 +18,7 @@ export declare enum SnackbarPosition {
     BottomCenter = "bottom-center",
     BottomLeft = "bottom-left"
 }
-declare type Props = {
+export declare type SnackbarProps = {
     testId?: string;
     open: boolean;
     message: string;
@@ -32,6 +32,5 @@ declare type Props = {
         onClickAction?: () => void;
     };
 };
-export declare const DefaultSnackbar: ({ testId, open, message, description, textPosition, type, position, autoClose, action, }: Props) => JSX.Element;
-export {};
+export declare const DefaultSnackbar: ({ testId, open, message, description, textPosition, type, position, autoClose, action, }: SnackbarProps) => JSX.Element;
 //# sourceMappingURL=DefaultSnackbar.d.ts.map

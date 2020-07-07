@@ -11,6 +11,8 @@ var _DefaultSnackbar = require("./DefaultSnackbar");
 
 var _navigation = require("../../Icon/icons/navigation");
 
+var _Icon = require("../../Icon");
+
 var _addonKnobs = require("@storybook/addon-knobs");
 
 var _addonActions = require("@storybook/addon-actions");
@@ -35,9 +37,11 @@ const withBase = () => {
     position: (0, _addonKnobs.select)('Position', _DefaultSnackbar.SnackbarPosition, _DefaultSnackbar.SnackbarPosition.TopCenter),
     autoClose: (0, _addonKnobs.number)('Auto close', 5000),
     action: {
-      childAction: /*#__PURE__*/_react.default.createElement(_navigation.close, {
+      childAction: /*#__PURE__*/_react.default.createElement(_Icon.Icon, {
+        className: "text-fill-white fill-current"
+      }, /*#__PURE__*/_react.default.createElement(_navigation.close, {
         type: "filled"
-      }),
+      })),
       onClickAction: (0, _addonActions.action)('On click action')
     }
   }));
@@ -56,9 +60,11 @@ const withIcon = () => {
     message: "Prompt Option",
     description: "Detail Info",
     action: {
-      childAction: /*#__PURE__*/_react.default.createElement(_navigation.close, {
+      childAction: /*#__PURE__*/_react.default.createElement(_Icon.Icon, {
+        className: "text-fill-white fill-current"
+      }, /*#__PURE__*/_react.default.createElement(_navigation.close, {
         type: "filled"
-      }),
+      })),
       onClickAction: (0, _addonActions.action)('On click action')
     },
     textPosition: _DefaultSnackbar.SnackbarTextPosition.Right,
@@ -80,7 +86,9 @@ const withButton = () => {
     message: "Prompt Option",
     description: "Detail Info",
     action: {
-      childAction: /*#__PURE__*/_react.default.createElement("div", null, "buttonContent"),
+      childAction: /*#__PURE__*/_react.default.createElement("div", {
+        className: "text-fill-white"
+      }, "buttonContent"),
       onClickAction: (0, _addonActions.action)('On click action')
     },
     textPosition: _DefaultSnackbar.SnackbarTextPosition.Left,

@@ -1,5 +1,5 @@
 import React from 'react';
-export declare const SNACKBAR_DEFAULT_TEST_ID = "snackbar";
+export declare const DEFAULT_SNACKBAR_DEFAULT_TEST_ID = "defaultSnackbar";
 export declare enum SnackbarType {
     Default = "default",
     Success = "success",
@@ -23,16 +23,15 @@ declare type Props = {
     open: boolean;
     message: string;
     description?: string;
-    showIcon?: boolean;
-    icon?: React.ReactNode;
     textPosition?: SnackbarTextPosition;
-    showButton?: boolean;
-    buttonText?: string;
     type?: SnackbarType;
     position?: SnackbarPosition;
     autoClose?: number;
-    onClickButton?: (...args: any[]) => void;
+    action?: {
+        childAction: React.ReactNode;
+        onClickAction?: () => void;
+    };
 };
-export declare const Snackbar: ({ testId, open, message, description, showIcon, icon, textPosition, showButton, buttonText, type, position, autoClose, onClickButton, }: Props) => JSX.Element;
+export declare const DefaultSnackbar: ({ testId, open, message, description, textPosition, type, position, autoClose, action, }: Props) => JSX.Element;
 export {};
-//# sourceMappingURL=Snackbar.d.ts.map
+//# sourceMappingURL=DefaultSnackbar.d.ts.map

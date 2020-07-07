@@ -1,4 +1,4 @@
-import { SnackbarType } from './Snackbar';
+import { SnackbarType } from './DefaultSnackbar';
 export declare const getStyle: ({ isTextRightPosition, type, }: {
     isTextRightPosition?: boolean;
     type?: SnackbarType;
@@ -6,7 +6,6 @@ export declare const getStyle: ({ isTextRightPosition, type, }: {
     snackbarWrapper: string;
     informationWrapper: string;
     ctaWrapper: string;
-    icon: string;
     toastContainer: string;
 };
-//# sourceMappingURL=Snackbar.styles.d.ts.map
+//# sourceMappingURL=DefaultSnackbar.styles.d.ts.map

@@ -4,14 +4,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Snackbar = require("./Snackbar");
+var _DefaultSnackbar = require("./DefaultSnackbar");
 
-Object.keys(_Snackbar).forEach(function (key) {
+Object.keys(_DefaultSnackbar).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {
-      return _Snackbar[key];
+      return _DefaultSnackbar[key];
     }
   });
 });

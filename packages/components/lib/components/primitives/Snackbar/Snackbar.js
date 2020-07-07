@@ -68,7 +68,7 @@ const Snackbar = ({
   autoClose = 5000,
   onClickButton
 }) => {
-  const isTextRightPosition = textPosition === 'right';
+  const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
   const styles = (0, _Snackbar.getStyle)({
     isTextRightPosition,
     type

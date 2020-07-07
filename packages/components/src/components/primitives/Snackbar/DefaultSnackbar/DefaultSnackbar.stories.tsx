@@ -1,35 +1,31 @@
 import React from 'react';
 import {
-  Snackbar,
+  DefaultSnackbar,
   SnackbarTextPosition,
   SnackbarPosition,
   SnackbarType,
-} from './Snackbar';
-import { close as Close } from '../Icon/icons/navigation';
+} from './DefaultSnackbar';
+import { close as Close } from '../../Icon/icons/navigation';
 import { select, text, boolean, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Composer/Primitive/Snackbar',
-  component: Snackbar,
+  title: 'Composer/Primitive/Snackbar/DefaultSnackbar',
+  component: DefaultSnackbar,
 };
 
 export const withBase = () => {
   return (
     <div className="p-48">
-      <Snackbar
+      <DefaultSnackbar
         open={boolean('Open', false)}
         message={text('Message', 'Prompt Option')}
         description={text('Description', 'Detail Info')}
-        showIcon={boolean('Show close icon', true)}
-        icon={<Close type="filled" />}
         textPosition={select(
           'Text Position',
           SnackbarTextPosition,
           SnackbarTextPosition.Right
         )}
-        showButton={boolean('Show button', false)}
-        buttonText={text('Button text', 'Button')}
         type={select('Type', SnackbarType, SnackbarType.Default)}
         position={select(
           'Position',
@@ -37,7 +33,10 @@ export const withBase = () => {
           SnackbarPosition.TopCenter
         )}
         autoClose={number('Auto close', 5000)}
-        onClickButton={action('On click button')}
+        action={{
+          childAction: <Close type="filled" />,
+          onClickAction: action('On click action'),
+        }}
       />
     </div>
   );
@@ -50,12 +49,14 @@ withBase.story = {
 export const withIcon = () => {
   return (
     <div className="p-48">
-      <Snackbar
+      <DefaultSnackbar
         open={true}
         message="Prompt Option"
         description="Detail Info"
-        showIcon
-        icon={<Close type="filled" />}
+        action={{
+          childAction: <Close type="filled" />,
+          onClickAction: action('On click action'),
+        }}
         textPosition={SnackbarTextPosition.Right}
         type={SnackbarType.Default}
         position={SnackbarPosition.TopCenter}
@@ -71,12 +72,14 @@ withIcon.story = {
 export const withButton = () => {
   return (
     <div className="p-48">
-      <Snackbar
+      <DefaultSnackbar
         open={true}
         message="Prompt Option"
         description="Detail Info"
-        showButton
-        buttonText="ButtonText"
+        action={{
+          childAction: <div>buttonContent</div>,
+          onClickAction: action('On click action'),
+        }}
         textPosition={SnackbarTextPosition.Left}
         type={SnackbarType.Default}
         position={SnackbarPosition.TopCenter}

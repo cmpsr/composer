@@ -1,4 +1,4 @@
-import { SnackbarType } from './Snackbar';
+import { SnackbarType } from './DefaultSnackbar';
 
 export const getStyle = ({
   isTextRightPosition = false,
@@ -9,7 +9,6 @@ export const getStyle = ({
   } flex items-center`,
   informationWrapper: `${isTextRightPosition ? 'order-2' : 'order-1'}`,
   ctaWrapper: `${isTextRightPosition ? 'order-1 pr-4' : 'order-2'}`,
-  icon: 'fill-current text-fill-white',
   toastContainer: `!shadow-12% !rounded !px-4 !py-1.125 ${snackbarTypeStyle(
     type
   )}`,

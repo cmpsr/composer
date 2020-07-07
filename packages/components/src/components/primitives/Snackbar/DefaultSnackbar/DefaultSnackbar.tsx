@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { getStyle } from './Snackbar.styles';
+import { getStyle } from './DefaultSnackbar.styles';
 import {
   Typography,
   TypographyMode,
   TypographyTypes,
 } from 'components/primitives/Typography';
-import { Icon } from 'components/primitives/Icon';
 import { Button } from 'components/primitives/Button';
 
-export const SNACKBAR_DEFAULT_TEST_ID = 'snackbar';
+export const DEFAULT_SNACKBAR_DEFAULT_TEST_ID = 'defaultSnackbar';
 
 export enum SnackbarType {
   Default = 'default',
@@ -37,31 +36,26 @@ type Props = {
   open: boolean;
   message: string;
   description?: string;
-  showIcon?: boolean;
-  icon?: React.ReactNode;
   textPosition?: SnackbarTextPosition;
-  showButton?: boolean;
-  buttonText?: string;
   type?: SnackbarType;
   position?: SnackbarPosition;
   autoClose?: number;
-  onClickButton?: (...args: any[]) => void;
+  action?: {
+    childAction: React.ReactNode;
+    onClickAction?: () => void;
+  };
 };
 
-export const Snackbar = ({
-  testId = SNACKBAR_DEFAULT_TEST_ID,
+export const DefaultSnackbar = ({
+  testId = DEFAULT_SNACKBAR_DEFAULT_TEST_ID,
   open = false,
   message,
   description,
-  showIcon,
-  icon,
   textPosition = SnackbarTextPosition.Right,
-  showButton,
-  buttonText,
   type = SnackbarType.Default,
   position = SnackbarPosition.TopCenter,
   autoClose = 5000,
-  onClickButton,
+  action,
 }: Props) => {
   const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
   const styles = getStyle({ isTextRightPosition, type });
@@ -85,19 +79,9 @@ export const Snackbar = ({
           </Typography>
         )}
       </div>
-      {showIcon ? (
-        <div className={styles.ctaWrapper}>
-          <Icon className={styles.icon}>{icon}</Icon>
-        </div>
-      ) : showButton ? (
-        <Button className={styles.ctaWrapper} onClick={onClickButton}>
-          <Typography
-            type={TypographyTypes.Button}
-            mode={TypographyMode.Light100}
-            tag="p"
-          >
-            {buttonText}
-          </Typography>
+      {action ? (
+        <Button className={styles.ctaWrapper} onClick={action.onClickAction}>
+          {action.childAction}
         </Button>
       ) : null}
     </div>

@@ -11,6 +11,7 @@ export declare const backspace: ({ type }: Props) => JSX.Element;
 export declare const ballot: ({ type }: Props) => JSX.Element;
 export declare const block: ({ type }: Props) => JSX.Element;
 export declare const clear: ({ type }: Props) => JSX.Element;
+export declare const content_copy: ({ type }: Props) => JSX.Element;
 export declare const create: ({ type }: Props) => JSX.Element;
 export declare const delete_sweep: ({ type }: Props) => JSX.Element;
 export declare const drafts: ({ type }: Props) => JSX.Element;

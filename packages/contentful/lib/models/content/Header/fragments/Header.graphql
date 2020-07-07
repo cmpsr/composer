@@ -1,0 +1,24 @@
+#import "../../Link/fragments/Link.graphql"
+#import "../../Grid/fragments/Grid.graphql"
+
+fragment Header on Header {
+  sys {
+    id
+  }
+  style
+  type
+  logo {
+    ...Link
+  }
+  contentCollection(limit: 10) {
+    items {
+      ...Link
+      ...Grid
+    }
+  }
+  secondaryContentCollection(limit: 10) {
+    items {
+      ...Link
+    }
+  }
+}

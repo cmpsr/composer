@@ -7,10 +7,7 @@ exports.getStyle = void 0;
 
 var _DefaultSnackbar = require("./DefaultSnackbar");
 
-const getStyle = ({
-  isTextRightPosition = false,
-  type = _DefaultSnackbar.SnackbarType.Default
-}) => ({
+const getStyle = (isTextRightPosition, type) => ({
   snackbarWrapper: `${isTextRightPosition ? 'justify-start' : 'justify-between'} flex items-center`,
   informationWrapper: `${isTextRightPosition ? 'order-2' : 'order-1'}`,
   ctaWrapper: `${isTextRightPosition ? 'order-1 pr-4' : 'order-2'}`,

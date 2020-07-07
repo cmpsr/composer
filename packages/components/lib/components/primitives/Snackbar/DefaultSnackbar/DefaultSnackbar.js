@@ -63,10 +63,7 @@ const DefaultSnackbar = ({
   action
 }) => {
   const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
-  const styles = (0, _DefaultSnackbar.getStyle)({
-    isTextRightPosition,
-    type
-  });
+  const styles = (0, _DefaultSnackbar.getStyle)(isTextRightPosition, type);
 
   const snackbarContent = /*#__PURE__*/_react.default.createElement("div", {
     className: styles.snackbarWrapper

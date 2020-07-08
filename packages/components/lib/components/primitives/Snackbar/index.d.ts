@@ -1,2 +1,2 @@
-export * from './DefaultSnackbar';
+export * from './Snackbar';
 //# sourceMappingURL=index.d.ts.map

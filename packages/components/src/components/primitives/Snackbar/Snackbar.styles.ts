@@ -1,4 +1,4 @@
-import { SnackbarType } from './DefaultSnackbar';
+import { SnackbarType } from './Snackbar';
 
 export const getStyle = (isTextRightPosition: boolean, type: SnackbarType) => ({
   snackbarWrapper: `${

@@ -1,24 +1,24 @@
 import React from 'react';
 import {
-  DefaultSnackbar,
+  Snackbar,
   SnackbarTextPosition,
   SnackbarPosition,
   SnackbarType,
-} from './DefaultSnackbar';
-import { close as Close } from '../../Icon/icons/navigation';
-import { Icon } from '../../Icon';
+} from './Snackbar';
+import { close as Close } from '../Icon/icons/navigation';
+import { Icon } from '../Icon';
 import { select, text, boolean, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Composer/Primitive/Snackbar/DefaultSnackbar',
-  component: DefaultSnackbar,
+  title: 'Composer/Primitive/Snackbar',
+  component: Snackbar,
 };
 
 export const withBase = () => {
   return (
     <div className="p-48">
-      <DefaultSnackbar
+      <Snackbar
         open={boolean('Open', false)}
         message={text('Message', 'Prompt Option')}
         description={text('Description', 'Detail Info')}
@@ -54,7 +54,7 @@ withBase.story = {
 export const withIcon = () => {
   return (
     <div className="p-48">
-      <DefaultSnackbar
+      <Snackbar
         open={true}
         message="Prompt Option"
         description="Detail Info"
@@ -81,7 +81,7 @@ withIcon.story = {
 export const withButton = () => {
   return (
     <div className="p-48">
-      <DefaultSnackbar
+      <Snackbar
         open={true}
         message="Prompt Option"
         description="Detail Info"

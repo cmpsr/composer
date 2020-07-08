@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { getStyle } from './DefaultSnackbar.styles';
+import { getStyle } from './Snackbar.styles';
 import {
   Typography,
   TypographyMode,
@@ -8,7 +8,7 @@ import {
 } from 'components/primitives/Typography';
 import { Button } from 'components/primitives/Button';
 
-export const DEFAULT_SNACKBAR_DEFAULT_TEST_ID = 'defaultSnackbar';
+export const SNACKBAR_DEFAULT_TEST_ID = 'snackbar';
 
 export enum SnackbarType {
   Default = 'default',
@@ -46,8 +46,8 @@ type Props = {
   };
 };
 
-export const DefaultSnackbar = ({
-  testId = DEFAULT_SNACKBAR_DEFAULT_TEST_ID,
+export const Snackbar = ({
+  testId = SNACKBAR_DEFAULT_TEST_ID,
   open = false,
   message,
   description,

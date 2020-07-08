@@ -7,11 +7,11 @@ exports.withButton = exports.withIcon = exports.withBase = exports.default = voi
 
 var _react = _interopRequireDefault(require("react"));
 
-var _DefaultSnackbar = require("./DefaultSnackbar");
+var _Snackbar = require("./Snackbar");
 
-var _navigation = require("../../Icon/icons/navigation");
+var _navigation = require("../Icon/icons/navigation");
 
-var _Icon = require("../../Icon");
+var _Icon = require("../Icon");
 
 var _addonKnobs = require("@storybook/addon-knobs");
 
@@ -20,21 +20,21 @@ var _addonActions = require("@storybook/addon-actions");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = {
-  title: 'Composer/Primitive/Snackbar/DefaultSnackbar',
-  component: _DefaultSnackbar.DefaultSnackbar
+  title: 'Composer/Primitive/Snackbar',
+  component: _Snackbar.Snackbar
 };
 exports.default = _default;
 
 const withBase = () => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "p-48"
-  }, /*#__PURE__*/_react.default.createElement(_DefaultSnackbar.DefaultSnackbar, {
+  }, /*#__PURE__*/_react.default.createElement(_Snackbar.Snackbar, {
     open: (0, _addonKnobs.boolean)('Open', false),
     message: (0, _addonKnobs.text)('Message', 'Prompt Option'),
     description: (0, _addonKnobs.text)('Description', 'Detail Info'),
-    textPosition: (0, _addonKnobs.select)('Text Position', _DefaultSnackbar.SnackbarTextPosition, _DefaultSnackbar.SnackbarTextPosition.Right),
-    type: (0, _addonKnobs.select)('Type', _DefaultSnackbar.SnackbarType, _DefaultSnackbar.SnackbarType.Default),
-    position: (0, _addonKnobs.select)('Position', _DefaultSnackbar.SnackbarPosition, _DefaultSnackbar.SnackbarPosition.TopCenter),
+    textPosition: (0, _addonKnobs.select)('Text Position', _Snackbar.SnackbarTextPosition, _Snackbar.SnackbarTextPosition.Right),
+    type: (0, _addonKnobs.select)('Type', _Snackbar.SnackbarType, _Snackbar.SnackbarType.Default),
+    position: (0, _addonKnobs.select)('Position', _Snackbar.SnackbarPosition, _Snackbar.SnackbarPosition.TopCenter),
     autoClose: (0, _addonKnobs.number)('Auto close', 5000),
     action: {
       childAction: /*#__PURE__*/_react.default.createElement(_Icon.Icon, {
@@ -55,7 +55,7 @@ withBase.story = {
 const withIcon = () => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "p-48"
-  }, /*#__PURE__*/_react.default.createElement(_DefaultSnackbar.DefaultSnackbar, {
+  }, /*#__PURE__*/_react.default.createElement(_Snackbar.Snackbar, {
     open: true,
     message: "Prompt Option",
     description: "Detail Info",
@@ -67,9 +67,9 @@ const withIcon = () => {
       })),
       onClickAction: (0, _addonActions.action)('On click action')
     },
-    textPosition: _DefaultSnackbar.SnackbarTextPosition.Right,
-    type: _DefaultSnackbar.SnackbarType.Default,
-    position: _DefaultSnackbar.SnackbarPosition.TopCenter
+    textPosition: _Snackbar.SnackbarTextPosition.Right,
+    type: _Snackbar.SnackbarType.Default,
+    position: _Snackbar.SnackbarPosition.TopCenter
   }));
 };
 
@@ -81,7 +81,7 @@ withIcon.story = {
 const withButton = () => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "p-48"
-  }, /*#__PURE__*/_react.default.createElement(_DefaultSnackbar.DefaultSnackbar, {
+  }, /*#__PURE__*/_react.default.createElement(_Snackbar.Snackbar, {
     open: true,
     message: "Prompt Option",
     description: "Detail Info",
@@ -91,9 +91,9 @@ const withButton = () => {
       }, "buttonContent"),
       onClickAction: (0, _addonActions.action)('On click action')
     },
-    textPosition: _DefaultSnackbar.SnackbarTextPosition.Left,
-    type: _DefaultSnackbar.SnackbarType.Default,
-    position: _DefaultSnackbar.SnackbarPosition.TopCenter
+    textPosition: _Snackbar.SnackbarTextPosition.Left,
+    type: _Snackbar.SnackbarType.Default,
+    position: _Snackbar.SnackbarPosition.TopCenter
   }));
 };
 

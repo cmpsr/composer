@@ -4,9 +4,8 @@
 
 ### Patch Changes
 
-- 1f15fd7: rename snackbar
-- f4138fb: Add content_copy_icon
-- 4fb710a: create toast component
+- f4138fb: Add content_copy icon
+- 4fb710a: Add snackbar component
 
 ## 0.0.24
 

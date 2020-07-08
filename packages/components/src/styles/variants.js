@@ -10,4 +10,7 @@ module.exports = {
   ],
   pointerEvents: ['responsive', 'disabled', 'hover', 'focus', 'active'],
   outline: ['focus', 'active', 'responsive'],
+  borderRadius: ['responsive', 'important'],
+  padding: ['responsive', 'important'],
+  boxShadow: ['responsive', 'important'],
 };

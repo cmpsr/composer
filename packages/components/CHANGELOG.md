@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.0.29
+
+### Patch Changes
+
+- f4138fb: Add content_copy icon
+- 4fb710a: Add snackbar component
+
 ## 0.0.24
 
 ### Patch Changes

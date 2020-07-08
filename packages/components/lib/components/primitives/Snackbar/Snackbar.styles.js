@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getStyle = void 0;
 
-var _DefaultSnackbar = require("./DefaultSnackbar");
+var _Snackbar = require("./Snackbar");
 
 const getStyle = (isTextRightPosition, type) => ({
   snackbarWrapper: `${isTextRightPosition ? 'justify-start' : 'justify-between'} flex items-center`,
@@ -18,16 +18,16 @@ exports.getStyle = getStyle;
 
 const snackbarTypeStyle = type => {
   switch (type) {
-    case _DefaultSnackbar.SnackbarType.Default:
+    case _Snackbar.SnackbarType.Default:
       return '!bg-fill-black-75';
 
-    case _DefaultSnackbar.SnackbarType.Success:
+    case _Snackbar.SnackbarType.Success:
       return '!bg-fill-system-success';
 
-    case _DefaultSnackbar.SnackbarType.Warning:
+    case _Snackbar.SnackbarType.Warning:
       return '!bg-fill-system-warning';
 
-    case _DefaultSnackbar.SnackbarType.Error:
+    case _Snackbar.SnackbarType.Error:
       return '!bg-fill-system-error';
   }
 };

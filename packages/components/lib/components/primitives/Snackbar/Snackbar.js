@@ -3,24 +3,24 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DefaultSnackbar = exports.SnackbarPosition = exports.SnackbarTextPosition = exports.SnackbarType = exports.DEFAULT_SNACKBAR_DEFAULT_TEST_ID = void 0;
+exports.Snackbar = exports.SnackbarPosition = exports.SnackbarTextPosition = exports.SnackbarType = exports.SNACKBAR_DEFAULT_TEST_ID = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
 var _reactToastify = require("react-toastify");
 
-var _DefaultSnackbar = require("./DefaultSnackbar.styles");
+var _Snackbar = require("./Snackbar.styles");
 
-var _Typography = require("../../Typography");
+var _Typography = require("../Typography");
 
-var _Button = require("../../Button");
+var _Button = require("../Button");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-const DEFAULT_SNACKBAR_DEFAULT_TEST_ID = 'defaultSnackbar';
-exports.DEFAULT_SNACKBAR_DEFAULT_TEST_ID = DEFAULT_SNACKBAR_DEFAULT_TEST_ID;
+const SNACKBAR_DEFAULT_TEST_ID = 'snackbar';
+exports.SNACKBAR_DEFAULT_TEST_ID = SNACKBAR_DEFAULT_TEST_ID;
 let SnackbarType;
 exports.SnackbarType = SnackbarType;
 
@@ -51,8 +51,8 @@ exports.SnackbarPosition = SnackbarPosition;
   SnackbarPosition["BottomLeft"] = "bottom-left";
 })(SnackbarPosition || (exports.SnackbarPosition = SnackbarPosition = {}));
 
-const DefaultSnackbar = ({
-  testId = DEFAULT_SNACKBAR_DEFAULT_TEST_ID,
+const Snackbar = ({
+  testId = SNACKBAR_DEFAULT_TEST_ID,
   open = false,
   message,
   description,
@@ -63,7 +63,7 @@ const DefaultSnackbar = ({
   action
 }) => {
   const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
-  const styles = (0, _DefaultSnackbar.getStyle)(isTextRightPosition, type);
+  const styles = (0, _Snackbar.getStyle)(isTextRightPosition, type);
 
   const snackbarContent = /*#__PURE__*/_react.default.createElement("div", {
     className: styles.snackbarWrapper
@@ -102,4 +102,4 @@ const DefaultSnackbar = ({
   }));
 };
 
-exports.DefaultSnackbar = DefaultSnackbar;
+exports.Snackbar = Snackbar;

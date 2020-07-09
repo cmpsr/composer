@@ -1,7 +1,17 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, ReactFragment } from 'react';
 import invariant from 'invariant';
 
 import { ContentfulContext } from './ContentfulContext';
+
+type Props = {
+  accessToken?: string;
+  children?: ReactFragment;
+  componentMap?: any;
+  environment?: string;
+  locale?: string;
+  space?: string;
+  queryMap?: any;
+}
 
 export const ContentfulProvider = ({
   accessToken,
@@ -11,7 +21,7 @@ export const ContentfulProvider = ({
   locale = 'en-US',
   space,
   queryMap = {},
-}) => {
+}: Props) => {
   useEffect(() => {
     // invariant(accessToken, '`accessToken` props required on `ContentfulProvider`.');
     // invariant(space, '`space` required on `ContentfulProvider`.');
@@ -21,7 +31,7 @@ export const ContentfulProvider = ({
     }
 
     if (!Object.keys(queryMap).length) {
-      console.warn('`queryMap` supplied to `ContentfulProvider` is empty.');
+      // console.warn('`queryMap` supplied to `ContentfulProvider` is empty.');
     }
   }, [accessToken, componentMap, queryMap, space]);
 

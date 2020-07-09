@@ -19,6 +19,17 @@ yarn add @cmpsr/contentful-core
 
 ## How to use
 
+### Required `.env` variables
+
+```
+CONTENTFUL_PREVIEW={true|false}
+CONTENTFUL_SPACE_ID={Contentful space ID}
+CONTENTFUL_ENVIRONMENT={Contentful environment} (defaults to `master`)
+CONTENTFUL_ACCESS_TOKEN_DELIVERY={Contentful Delivery Token}
+CONTENTFUL_ACCESS_TOKEN_PREVIEW={Contentful Preview Token}
+CONTENTFUL_ACCESS_TOKEN={Contentful token used to generate schema/types}
+```
+
 ### `ContentfulProvider`
 
 ```js
@@ -75,22 +86,13 @@ _Environment Variables_
   }
 }
 
-### `.env`
-
-```
-CONTENTFUL_PREVIEW={true|false}
-CONTENTFUL_SPACE_ID={Contentful space ID}
-CONTENTFUL_ENVIRONMENT={Contentful environment} (defaults to `master`)
-CONTENTFUL_ACCESS_TOKEN_DELIVERY={Contentful Delivery Token}
-CONTENTFUL_ACCESS_TOKEN_PREVIEW={Contentful Preview Token}
-CONTENTFUL_ACCESS_TOKEN={Contentful token used to generate schema/types}
-```
-
 ## Examples
 
 ### NextJS
 
 #### 1. Define Apollo Client
+
+`lib/apollo.js`
 
 ```js
 import { withApollo } from 'next-apollo';

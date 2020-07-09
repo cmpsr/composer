@@ -1,1 +1,0 @@
-{"version":3,"file":"TwilioSms.d.ts","sourceRoot":"","sources":["../../src/sms/TwilioSms.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,gBAAgB,EAAE,MAAM,OAAO,CAAC;AAEzC,qBAAa,SAAS;IACpB,OAAO,CAAC,YAAY,CAAgB;gBAExB,MAAM,EAAE,gBAAgB;IAI9B,IAAI,CAAC,OAAO,EAAE,MAAM,EAAE,IAAI,EAAE,MAAM,EAAE,EAAE,EAAE,MAAM;CAQrD"}

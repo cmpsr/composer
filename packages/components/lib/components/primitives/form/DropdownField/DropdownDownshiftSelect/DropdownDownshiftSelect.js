@@ -44,9 +44,7 @@ const DropdownDownshiftSelect = /*#__PURE__*/(0, _react.forwardRef)(({
     selectClasses,
     buttonClasses,
     selectTextClasses,
-    selectFocusClasses,
     selectDisabledClasses,
-    selectErrorClasses,
     selectListClasses,
     itemListClasses,
     icon
@@ -74,7 +72,7 @@ const DropdownDownshiftSelect = /*#__PURE__*/(0, _react.forwardRef)(({
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", _extends({}, getToggleButtonProps(), {
       name: name,
       ref: ref,
-      className: (0, _classnames.default)(buttonClasses, selectClasses, selectTextClasses, selectFocusClasses, selectDisabledClasses, selectErrorClasses, className),
+      className: (0, _classnames.default)(buttonClasses, selectClasses, selectTextClasses, selectDisabledClasses, className),
       "data-testid": testId,
       disabled: disabled
     }), /*#__PURE__*/_react.default.createElement("span", null, selectedItem ? selectedItem.label : placeHolder), /*#__PURE__*/_react.default.createElement(_.Icon, {

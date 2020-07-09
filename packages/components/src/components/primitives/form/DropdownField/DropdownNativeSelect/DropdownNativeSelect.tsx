@@ -29,9 +29,7 @@ export const DropdownNativeSelect = forwardRef<HTMLSelectElement, SelectProps>(
       selectWrapper,
       selectClasses,
       selectTextClasses,
-      selectFocusClasses,
       selectDisabledClasses,
-      selectErrorClasses,
       iconWrapper,
       icon,
     } = getDropdownSingleSelectClasses(disabled, invalid, itemSelected);
@@ -39,9 +37,8 @@ export const DropdownNativeSelect = forwardRef<HTMLSelectElement, SelectProps>(
     const handleOnChange = (event) => {
       const index = event.target.selectedIndex;
       const value = event.target.value;
-
       setItemSelected(value);
-      return onItemChange(options[index]);
+      onItemChange(options[index - 1]);
     };
 
     return (
@@ -51,9 +48,7 @@ export const DropdownNativeSelect = forwardRef<HTMLSelectElement, SelectProps>(
           className={cn(
             selectClasses,
             selectTextClasses,
-            selectFocusClasses,
             selectDisabledClasses,
-            selectErrorClasses,
             className
           )}
           onChange={handleOnChange}

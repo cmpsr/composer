@@ -34,11 +34,19 @@ export enum TypographyMode {
   Accent25 = 'accent-25',
 }
 
+export enum TypographyIntensity {
+  Light = 'font-intensity-light',
+  Regular = 'font-intensity-regular',
+  Medium = 'font-intensity-medium',
+  Bold = 'font-intensity-bold',
+}
+
 type Props = {
   className?: string;
   style?: Style;
   tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'label';
   type: TypographyTypes;
+  intensity?: TypographyIntensity;
   children: ReactNode;
   mode?: TypographyMode;
   testId?: string;
@@ -50,6 +58,7 @@ export const Typography = ({
   children,
   style = {},
   type,
+  intensity,
   tag,
   mode,
   htmlFor,
@@ -60,7 +69,7 @@ export const Typography = ({
   return createElement(
     tag,
     {
-      className: cn(type, colorClasses, className, mode),
+      className: cn(type, colorClasses, className, mode, intensity),
       'data-testid': testId,
       htmlFor,
     },

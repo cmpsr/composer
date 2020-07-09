@@ -3,11 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.withBackgroundColor = exports.withRightPlace = exports.withLeftPlace = exports.withBottomPlace = exports.withTopPlace = exports.default = void 0;
+exports.base = exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 var _ = require("..");
+
+var _addonKnobs = require("@storybook/addon-knobs");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16,73 +18,33 @@ var _default = {
   component: _.Tooltip
 };
 exports.default = _default;
+var idOptions;
 
-const withTopPlace = () => /*#__PURE__*/_react.default.createElement("div", {
+(function (idOptions) {
+  idOptions["top"] = "top";
+  idOptions["bottom"] = "bottom";
+  idOptions["left"] = "left";
+  idOptions["right"] = "right";
+})(idOptions || (idOptions = {}));
+
+var colorOptions;
+
+(function (colorOptions) {
+  colorOptions["red"] = "red";
+  colorOptions["gray"] = "gray";
+})(colorOptions || (colorOptions = {}));
+
+const base = () => /*#__PURE__*/_react.default.createElement("div", {
   className: "p-48"
 }, /*#__PURE__*/_react.default.createElement(_.Tooltip, {
-  id: "top",
-  place: _.TooltipPlace.Top,
+  id: (0, _addonKnobs.select)('id', idOptions, idOptions.top),
+  place: (0, _addonKnobs.select)('place', _.TooltipPlace, _.TooltipPlace.Top),
   tooltip: /*#__PURE__*/_react.default.createElement("span", null, "Tooltip"),
-  element: /*#__PURE__*/_react.default.createElement("span", null, "Trigger")
+  element: /*#__PURE__*/_react.default.createElement("span", null, "Trigger"),
+  backgroundColor: (0, _addonKnobs.select)('backgroundColor', colorOptions, colorOptions.gray)
 }));
 
-exports.withTopPlace = withTopPlace;
-withTopPlace.story = {
-  name: 'With top place'
-};
-
-const withBottomPlace = () => /*#__PURE__*/_react.default.createElement("div", {
-  className: "p-48"
-}, /*#__PURE__*/_react.default.createElement(_.Tooltip, {
-  id: "bottom",
-  place: _.TooltipPlace.Bottom,
-  tooltip: /*#__PURE__*/_react.default.createElement("span", null, "Tooltip"),
-  element: /*#__PURE__*/_react.default.createElement("span", null, "Trigger")
-}));
-
-exports.withBottomPlace = withBottomPlace;
-withBottomPlace.story = {
-  name: 'With bot place'
-};
-
-const withLeftPlace = () => /*#__PURE__*/_react.default.createElement("div", {
-  className: "p-48"
-}, /*#__PURE__*/_react.default.createElement(_.Tooltip, {
-  id: "left",
-  place: _.TooltipPlace.Left,
-  tooltip: /*#__PURE__*/_react.default.createElement("span", null, "Tooltip"),
-  element: /*#__PURE__*/_react.default.createElement("span", null, "Trigger")
-}));
-
-exports.withLeftPlace = withLeftPlace;
-withLeftPlace.story = {
-  name: 'With left place'
-};
-
-const withRightPlace = () => /*#__PURE__*/_react.default.createElement("div", {
-  className: "p-48"
-}, /*#__PURE__*/_react.default.createElement(_.Tooltip, {
-  id: "right",
-  place: _.TooltipPlace.Right,
-  tooltip: /*#__PURE__*/_react.default.createElement("span", null, "Tooltip"),
-  element: /*#__PURE__*/_react.default.createElement("span", null, "Trigger")
-}));
-
-exports.withRightPlace = withRightPlace;
-withRightPlace.story = {
-  name: 'With right place'
-};
-
-const withBackgroundColor = () => /*#__PURE__*/_react.default.createElement("div", {
-  className: "p-48"
-}, /*#__PURE__*/_react.default.createElement(_.Tooltip, {
-  id: "background",
-  backgroundColor: 'red',
-  tooltip: /*#__PURE__*/_react.default.createElement("span", null, "Tooltip"),
-  element: /*#__PURE__*/_react.default.createElement("span", null, "Trigger")
-}));
-
-exports.withBackgroundColor = withBackgroundColor;
-withBackgroundColor.story = {
-  name: 'With background color'
+exports.base = base;
+base.story = {
+  name: 'Base'
 };

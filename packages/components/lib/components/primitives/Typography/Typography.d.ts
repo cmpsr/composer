@@ -28,17 +28,24 @@ export declare enum TypographyMode {
     Accent50 = "accent-50",
     Accent25 = "accent-25"
 }
+export declare enum TypographyIntensity {
+    Light = "font-intensity-light",
+    Regular = "font-intensity-regular",
+    Medium = "font-intensity-medium",
+    Bold = "font-intensity-bold"
+}
 declare type Props = {
     className?: string;
     style?: Style;
     tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'label';
     type: TypographyTypes;
+    intensity?: TypographyIntensity;
     children: ReactNode;
     mode?: TypographyMode;
     testId?: string;
     htmlFor?: string;
 };
-export declare const Typography: ({ className, children, style, type, tag, mode, htmlFor, testId, }: Props) => import("react").DetailedReactHTMLElement<{
+export declare const Typography: ({ className, children, style, type, intensity, tag, mode, htmlFor, testId, }: Props) => import("react").DetailedReactHTMLElement<{
     className: string;
     'data-testid': string;
     htmlFor: string;

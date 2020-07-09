@@ -1,2 +1,5 @@
+# Node dependencies
 node_modules
-lib
+
+# Local env files
+.env

@@ -1,1 +1,0 @@
-{"version":3,"file":"LinkShortener.d.ts","sourceRoot":"","sources":["../../src/integration/LinkShortener.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,mBAAmB,EAAE,SAAS,EAAE,MAAM,SAAS,CAAC;AAIzD,qBAAa,aAAa;IACxB,OAAO,CAAC,MAAM,CAAsB;gBAExB,MAAM,EAAE,mBAAmB;IAIjC,KAAK,CAAC,GAAG,EAAE,MAAM,GAAG,OAAO,CAAC,SAAS,CAAC;CAe7C"}

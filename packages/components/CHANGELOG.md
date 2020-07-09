@@ -1,5 +1,30 @@
 # Change Log
 
+## 0.0.29
+
+### Patch Changes
+
+- f4138fb: Add content_copy icon
+- 4fb710a: Add snackbar component
+
+## 0.0.24
+
+### Patch Changes
+
+- de9295a: fix tooltip background color
+
+## 0.0.23
+
+### Patch Changes
+
+- 04b90a5: Add new Typography property called 'Intensity'
+
+## 0.0.22
+
+### Patch Changes
+
+- 946bb44: Improve Dropdown styling and apply minor fix
+
 ## 0.0.21
 
 ### Patch Changes

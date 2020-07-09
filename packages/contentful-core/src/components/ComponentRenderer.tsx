@@ -7,7 +7,7 @@ type Props = {
   data?: any;
   index?: number;
   parentId?: string;
-  rest: any[];
+  rest?: any[];
 }
 
 export const ComponentRenderer = ({ data, index, parentId, ...rest }: Props) => {

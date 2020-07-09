@@ -3,22 +3,35 @@
 Base Composer components for standing up a React/NextJS app that can dynamically
 render components based on Contentful Model types mapped to components and queries.
 
-## Usage
+## Install
 
-### `.env`
+Via [npm](https://npmjs.com/package/@cmpsr/contentful-core):
 
-```
-CONTENTFUL_PREVIEW={true|false}
-CONTENTFUL_SPACE_ID={Contentful space ID}
-CONTENTFUL_ENVIRONMENT={Contentful environment} (defaults to `master`)
-CONTENTFUL_ACCESS_TOKEN_DELIVERY={Contentful Delivery Token}
-CONTENTFUL_ACCESS_TOKEN_PREVIEW={Contentful Preview Token}
-CONTENTFUL_ACCESS_TOKEN={Contentful token used to generate schema/types}
+```sh
+npm i --save @cmpsr/contentful-core
 ```
 
-### NextJS
+Via [Yarn](https://yarn.fyi/@cmpsr/contentful-core):
 
-#### Utility Scripts
+```sh
+yarn add @cmpsr/contentful-core
+```
+
+## How to use
+
+### `ContentfulProvider`
+
+```js
+
+```
+
+### `ComponentRenderer`
+
+```js
+
+```
+
+### Utility Scripts
 
 The utility scripts make it easy to generate GraphQL schemas and the associated Typescript definitions for your Contentful setup.
 
@@ -27,7 +40,7 @@ _Required script environment variables_
 `CONTENTFUL_SPACE_ID` - The Contentful Space ID.
 `CONTENTFUL_ACCESS_TOKEN` - The Contentful API access token. This could be the Delivery or Preview API access token, depending on your needs.
 
-**Generate Schema**
+#### Generate Schema
 
 Within your project directory, run the following command to generate the `fragmentTypes.json` based on your Contentful models.
 
@@ -39,7 +52,7 @@ _Environment Variables_
 
 `SCHEMA_DIR` - Directory to write the `fragmentsTypes.json` to. Defaults to: `./src/schema`
 
-**Generate Types**
+#### Generate Types
 
 Within your project directory, run the following command to generate the `fragmentTypes.json` based on your Contentful models.
 
@@ -62,7 +75,22 @@ _Environment Variables_
   }
 }
 
-#### Define Apollo Client
+### `.env`
+
+```
+CONTENTFUL_PREVIEW={true|false}
+CONTENTFUL_SPACE_ID={Contentful space ID}
+CONTENTFUL_ENVIRONMENT={Contentful environment} (defaults to `master`)
+CONTENTFUL_ACCESS_TOKEN_DELIVERY={Contentful Delivery Token}
+CONTENTFUL_ACCESS_TOKEN_PREVIEW={Contentful Preview Token}
+CONTENTFUL_ACCESS_TOKEN={Contentful token used to generate schema/types}
+```
+
+## Examples
+
+### NextJS
+
+#### 1. Define Apollo Client
 
 ```js
 import { withApollo } from 'next-apollo';
@@ -87,7 +115,7 @@ const apolloClient = new ApolloClient({
 export default withApollo(apolloClient);
 ```
 
-#### Wrap Next App (or Page(s))
+#### 2. Wrap Next App (or Page(s))
 
 `pages/_app.js`
 

@@ -1,0 +1,28 @@
+#import "../../Asset/fragments/Asset.graphql"
+#import "../../Link/fragments/Link.graphql"
+
+fragment Feature on Feature {
+  sys {
+    id
+  }
+  title
+  type
+  embeddedType
+  eyebrow
+  subtitle
+  desktopAsset {
+    ...Asset
+  }
+  mobileAsset {
+    ...Asset
+  }
+  embeddedAsset {
+    ...Asset
+  }
+  style
+  contentCollection(limit: 3) {
+    items {
+      ...Link
+    }
+  }
+}

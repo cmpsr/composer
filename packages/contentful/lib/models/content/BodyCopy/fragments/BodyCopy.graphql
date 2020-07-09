@@ -1,0 +1,8 @@
+fragment BodyCopy on BodyCopy {
+  sys {
+    id
+  }
+  type
+  style
+  copy
+}

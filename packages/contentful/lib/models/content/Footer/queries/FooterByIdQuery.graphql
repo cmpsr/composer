@@ -1,0 +1,7 @@
+#import "../fragments/Footer.graphql"
+
+query FooterByIdQuery($id: String!) {
+  footer(id: $id) {
+    ...Footer
+  }
+}

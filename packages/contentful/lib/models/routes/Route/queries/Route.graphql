@@ -1,0 +1,14 @@
+query RouteQuery($slug: String!) {
+  routeCollection(where: { slug: $slug }, limit: 1) {
+    items {
+      id
+      slug
+      page {
+        sys {
+          id
+        }
+      }
+      variants
+    }
+  }
+}

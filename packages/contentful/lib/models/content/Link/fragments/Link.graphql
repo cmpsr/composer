@@ -1,0 +1,18 @@
+#import "../../Asset/fragments/Asset.graphql"
+
+fragment Link on Link {
+  sys {
+    id
+  }
+  asset {
+    ...Asset
+  }
+  title
+  type
+  embeddedType
+  route {
+    slug
+  }
+  style
+  url
+}

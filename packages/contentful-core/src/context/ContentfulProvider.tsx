@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, ReactFragment } from 'react';
-import invariant from 'invariant';
+// import invariant from 'invariant';
 
 import { ContentfulContext } from './ContentfulContext';
 
@@ -30,9 +30,9 @@ export const ContentfulProvider = ({
       console.warn('`componentMap` supplied to `ContentfulProvider` is empty.');
     }
 
-    if (!Object.keys(queryMap).length) {
-      // console.warn('`queryMap` supplied to `ContentfulProvider` is empty.');
-    }
+    // if (!Object.keys(queryMap).length) {
+    //   console.warn('`queryMap` supplied to `ContentfulProvider` is empty.');
+    // }
   }, [accessToken, componentMap, queryMap, space]);
 
   const value = useMemo(() => {

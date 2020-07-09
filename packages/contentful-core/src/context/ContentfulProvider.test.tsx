@@ -22,4 +22,4 @@ describe('ContentfulProvider', () => {
 
     expect(consoleWarn).toHaveBeenCalled();
   });
-})
+});

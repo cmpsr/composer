@@ -7,6 +7,7 @@
       {
         "alias": {
           "client": "./src/client",
+          "components": "./src/components",
           "constants": "./src/constants",
           "context": "./src/context",
           "renderers": "./src/renderers",

@@ -1,4 +1,4 @@
-# `contentful-core`
+# contentful-core
 
 Base Composer components for standing up a React/NextJS app that can dynamically
 render components based on Contentful Model types mapped to components and queries.

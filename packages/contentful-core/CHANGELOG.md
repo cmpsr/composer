@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.1.0
+
+### Minor Changes
+
+- c6a356e: Add ComponentRenderer component and utils to contentful-core package
+
 ## 0.0.3
 
 ### Patch Changes

@@ -60,7 +60,8 @@ const Snackbar = ({
   type = SnackbarType.Default,
   position = SnackbarPosition.TopCenter,
   autoClose = 5000,
-  action
+  action,
+  onClose
 }) => {
   const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
   const styles = (0, _Snackbar.getStyle)(isTextRightPosition, type);
@@ -86,7 +87,8 @@ const Snackbar = ({
     if (open) {
       (0, _reactToastify.toast)(snackbarContent, {
         className: styles.toastContainer,
-        position
+        position,
+        onClose
       });
     } else {
       _reactToastify.toast.dismiss();

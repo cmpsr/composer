@@ -43,7 +43,8 @@ const withBase = () => {
         type: "filled"
       })),
       onClickAction: (0, _addonActions.action)('On click action')
-    }
+    },
+    onClose: (0, _addonActions.action)('On close')
   }));
 };
 
@@ -69,7 +70,8 @@ const withIcon = () => {
     },
     textPosition: _Snackbar.SnackbarTextPosition.Right,
     type: _Snackbar.SnackbarType.Default,
-    position: _Snackbar.SnackbarPosition.TopCenter
+    position: _Snackbar.SnackbarPosition.TopCenter,
+    onClose: (0, _addonActions.action)('On close')
   }));
 };
 
@@ -93,7 +95,8 @@ const withButton = () => {
     },
     textPosition: _Snackbar.SnackbarTextPosition.Left,
     type: _Snackbar.SnackbarType.Default,
-    position: _Snackbar.SnackbarPosition.TopCenter
+    position: _Snackbar.SnackbarPosition.TopCenter,
+    onClose: (0, _addonActions.action)('On close')
   }));
 };
 

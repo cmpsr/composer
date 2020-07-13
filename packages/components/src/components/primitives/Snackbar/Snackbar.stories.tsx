@@ -42,6 +42,7 @@ export const withBase = () => {
           ),
           onClickAction: action('On click action'),
         }}
+        onClose={action('On close')}
       />
     </div>
   );
@@ -69,6 +70,7 @@ export const withIcon = () => {
         textPosition={SnackbarTextPosition.Right}
         type={SnackbarType.Default}
         position={SnackbarPosition.TopCenter}
+        onClose={action('On close')}
       />
     </div>
   );
@@ -92,6 +94,7 @@ export const withButton = () => {
         textPosition={SnackbarTextPosition.Left}
         type={SnackbarType.Default}
         position={SnackbarPosition.TopCenter}
+        onClose={action('On close')}
       />
     </div>
   );

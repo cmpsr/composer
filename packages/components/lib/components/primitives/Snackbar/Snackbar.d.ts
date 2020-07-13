@@ -31,7 +31,8 @@ declare type Props = {
         childAction: React.ReactNode;
         onClickAction?: () => void;
     };
+    onClose?: () => void;
 };
-export declare const Snackbar: ({ testId, open, message, description, textPosition, type, position, autoClose, action, }: Props) => JSX.Element;
+export declare const Snackbar: ({ testId, open, message, description, textPosition, type, position, autoClose, action, onClose, }: Props) => JSX.Element;
 export {};
 //# sourceMappingURL=Snackbar.d.ts.map

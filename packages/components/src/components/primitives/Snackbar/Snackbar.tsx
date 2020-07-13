@@ -103,12 +103,14 @@ export const Snackbar = ({
 
   return (
     <div data-testid={testId}>
-      <ToastContainer
-        autoClose={autoClose}
-        hideProgressBar={true}
-        closeButton={null}
-        draggable={false}
-      />
+      {open && (
+        <ToastContainer
+          autoClose={autoClose}
+          hideProgressBar={true}
+          closeButton={null}
+          draggable={false}
+        />
+      )}
     </div>
   );
 };

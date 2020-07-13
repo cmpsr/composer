@@ -96,7 +96,7 @@ const Snackbar = ({
   }, [open]);
   return /*#__PURE__*/_react.default.createElement("div", {
     "data-testid": testId
-  }, /*#__PURE__*/_react.default.createElement(_reactToastify.ToastContainer, {
+  }, open && /*#__PURE__*/_react.default.createElement(_reactToastify.ToastContainer, {
     autoClose: autoClose,
     hideProgressBar: true,
     closeButton: null,

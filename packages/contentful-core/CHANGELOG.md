@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.1.1
+
+### Patch Changes
+
+- 0ccbb0f: Update CODEOWNERS list
+
 ## 0.1.0
 
 ### Minor Changes

@@ -44,6 +44,7 @@ type Props = {
     childAction: React.ReactNode;
     onClickAction?: () => void;
   };
+  onClose?: () => void;
 };
 
 export const Snackbar = ({
@@ -56,6 +57,7 @@ export const Snackbar = ({
   position = SnackbarPosition.TopCenter,
   autoClose = 5000,
   action,
+  onClose,
 }: Props) => {
   const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
   const styles = getStyle(isTextRightPosition, type);
@@ -92,6 +94,7 @@ export const Snackbar = ({
       toast(snackbarContent, {
         className: styles.toastContainer,
         position,
+        onClose,
       });
     } else {
       toast.dismiss();

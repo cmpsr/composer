@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.30
+
+### Patch Changes
+
+- 7a30969: add onClose callback to toast
+
 ## 0.0.29
 
 ### Patch Changes

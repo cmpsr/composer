@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.31
+
+### Patch Changes
+
+- 6c464a8: Add new property overlayClassName to Modal
+
 ## 0.0.30
 
 ### Patch Changes

@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
 import cn from 'classnames';
 import Downshift from 'downshift';
 import { getDropdownSingleSelectClasses } from 'utils/getDropdownSingleSelectClasses';
@@ -47,6 +47,10 @@ export const DropdownDownshiftSelect = forwardRef<
       }
       setItemSelected(selectedItem?.value);
     };
+
+    useEffect(() => {
+      initialSelectedOption && handleOnChange(initialSelectedOption);
+    }, []);
 
     return (
       <Downshift

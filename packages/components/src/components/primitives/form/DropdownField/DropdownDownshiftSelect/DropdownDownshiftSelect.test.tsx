@@ -4,6 +4,9 @@ import { DropdownDownshiftSelect, DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID } from '.';
 import { ICON_DEFAULT_TEST_ID } from 'components/primitives/Icon';
 
 describe('DropdownDownshiftSelect', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
   const options = [
     { value: 1, label: 'Option 1' },
     { value: 2, label: 'Option 2' },
@@ -139,5 +142,20 @@ describe('DropdownDownshiftSelect', () => {
       DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
     expect(dropdown).toHaveClass('border-fill-system-error');
+  });
+  it('should call onItemChange when initial option is provided', () => {
+    const initialItem = options[1];
+    const mockOnItemChange = jest.fn();
+
+    render(
+      <DropdownDownshiftSelect
+        options={options}
+        initialSelectedOption={initialItem}
+        onItemChange={mockOnItemChange}
+        placeHolder="Placeholder"
+      />
+    );
+    screen.getByText(initialItem.label);
+    expect(mockOnItemChange).toBeCalledTimes(1);
   });
 });

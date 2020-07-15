@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.1.2
+
+### Patch Changes
+
+- b3bdc01: Add componentMap prop to ComponentRenderer component
+
 ## 0.1.1
 
 ### Patch Changes

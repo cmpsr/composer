@@ -58,6 +58,9 @@ const DropdownDownshiftSelect = /*#__PURE__*/(0, _react.forwardRef)(({
     setItemSelected(selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.value);
   };
 
+  (0, _react.useEffect)(() => {
+    initialSelectedOption && handleOnChange(initialSelectedOption);
+  }, []);
   return /*#__PURE__*/_react.default.createElement(_downshift.default, {
     initialSelectedItem: initialSelectedOption,
     onChange: selectedItem => handleOnChange(selectedItem),

@@ -12,6 +12,7 @@ const Header = ({ links }): ReactElement => (
 );
 const Hero = ({ title }): ReactElement => <div className="hero"><h1>{title}</h1></div>;
 const Footer = ({ year }): ReactElement => <footer>&copy;{year}</footer>;
+const HeroOverride = ({ title }): ReactElement => <div className="hero"><h2>{title}</h2></div>;
 
 const HeaderData = { __typename: 'Header', sys: { id: 'header-id' }, links: [{ href: '/', label: 'Home' }] };
 const HeroData = { __typename: 'Hero', sys: { id: 'hero-id' }, title: 'Hero Title' };
@@ -95,5 +96,39 @@ describe('ComponentRenderer', () => {
     ));
 
     expect(container).toMatchInlineSnapshot('<div />');
+  });
+
+  it('renders override components', () => {
+    const { container } = render((
+      <ContentfulProvider componentMap={componentMap}>
+        <ComponentRenderer
+          componentMap={{ Hero: HeroOverride }}
+          data={[HeaderData, HeroData, FooterData]}
+        />
+      </ContentfulProvider>
+    ));
+
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <header>
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </header>
+        <div
+          class="hero"
+        >
+          <h2>
+            Hero Title
+          </h2>
+        </div>
+        <footer>
+          ©
+          2020
+        </footer>
+      </div>
+    `);
   });
 });

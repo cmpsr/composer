@@ -4,18 +4,20 @@ import { renderFromContentfulModel } from 'renderers';
 import { isCollectionShape } from 'utils';
 
 type Props = {
+  componentMap?: any;
   data?: any;
   index?: number;
   parentId?: string;
   rest?: any[];
 }
 
-export const ComponentRenderer = ({ data, index, parentId, ...rest }: Props) => {
+export const ComponentRenderer = ({ componentMap: componentMapOverrides, data, index, parentId, ...rest }: Props) => {
   const contentfulContext = useContext(ContentfulContext);
+  const componentMap = Object.assign({}, contentfulContext.componentMap, componentMapOverrides);
 
   if (Array.isArray(data)) {
     return data.map((item, index) => renderFromContentfulModel(
-      contentfulContext,
+      { componentMap },
       { ...item, ...rest },
       index,
       parentId
@@ -25,7 +27,7 @@ export const ComponentRenderer = ({ data, index, parentId, ...rest }: Props) => 
   if (isCollectionShape(data)) {
     const collectionKey = Object.keys(data)[0];
     return data[collectionKey].items.map((item, index) => renderFromContentfulModel(
-      contentfulContext,
+      { componentMap },
       { ...item, ...rest },
       index,
       parentId
@@ -33,7 +35,7 @@ export const ComponentRenderer = ({ data, index, parentId, ...rest }: Props) => 
   }
 
   return renderFromContentfulModel(
-    contentfulContext,
+    { componentMap },
     data,
     index,
     parentId

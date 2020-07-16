@@ -5,8 +5,6 @@ import { close as Close } from 'components/primitives/Icon/icons/navigation';
 import { getModalClasses } from 'utils/getModalClasses';
 import ReactModal from 'react-modal';
 
-export const MODAL_DEFAULT_TEST_ID = 'modal';
-
 export enum ModalShapes {
   Rounded = 'rounded-modal-rounded',
   SemiRounded = 'rounded-modal-semi-rounded',
@@ -15,21 +13,21 @@ export enum ModalShapes {
 
 type Props = {
   className?: string;
+  overlayClassName?: string;
   onClick?: () => void;
   shape?: ModalShapes;
   isOpen?: boolean;
   children?: ReactNode;
   closeButton?: boolean;
-  testId?: string;
 };
 
 export const Modal = ({
   children,
   className,
+  overlayClassName,
   shape,
   isOpen = false,
   closeButton = false,
-  testId = MODAL_DEFAULT_TEST_ID,
 }: Props) => {
   const [show, setShow] = useState(isOpen);
   const { wrapper, overlay } = getModalClasses();
@@ -42,9 +40,8 @@ export const Modal = ({
     <ReactModal
       className={cn(wrapper, className, shape)}
       isOpen={show}
-      overlayClassName={overlay}
+      overlayClassName={cn(overlay, overlayClassName)}
       ariaHideApp={false}
-      data-testid={testId}
     >
       {closeButton && (
         <div className="flex justify-end">

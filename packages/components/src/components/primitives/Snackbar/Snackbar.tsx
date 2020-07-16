@@ -59,7 +59,6 @@ export const Snackbar = ({
   action,
   onClose,
 }: Props) => {
-  const [hasBeenOpened, setHasBeenOpened] = useState(false);
   const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
   const styles = getStyle(isTextRightPosition, type);
   const snackbarContent = (
@@ -91,17 +90,18 @@ export const Snackbar = ({
   );
 
   useEffect(() => {
+    let hasBeenOpened = false;
     if (open) {
-      setHasBeenOpened(true);
       toast(snackbarContent, {
         className: styles.toastContainer,
         position,
         onClose,
       });
+      hasBeenOpened = true;
     } else {
       if (hasBeenOpened) {
         toast.dismiss();
-        setHasBeenOpened(false);
+        hasBeenOpened = false;
       }
     }
   }, [open]);

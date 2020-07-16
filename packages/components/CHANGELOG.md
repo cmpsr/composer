@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.32
+
+### Patch Changes
+
+- fa47034: Snackbar style and flag
+
 ## 0.0.31
 
 ### Patch Changes

@@ -9,7 +9,7 @@ describe('getConversationSummaryClasses', () => {
       avatarWrapper: 'min-w-3',
       avatar: '-ml-0-22',
       profile: 'flex pr-3 sm:pr-5',
-      profileWrapper: 'pl-1 max-w-13',
+      profileWrapper: 'pl-1 max-w-8-75 md:max-w-13',
       profileTitle: 'truncate',
       profileDescription: 'mb-1 truncate',
       profileMessage: 'text-dark-50 truncate',

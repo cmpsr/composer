@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { getStyle } from './Snackbar.styles';
 import {
@@ -59,6 +59,7 @@ export const Snackbar = ({
   action,
   onClose,
 }: Props) => {
+  const [hasBeenOpened, setHasBeenOpened] = useState(false);
   const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
   const styles = getStyle(isTextRightPosition, type);
   const snackbarContent = (
@@ -91,13 +92,17 @@ export const Snackbar = ({
 
   useEffect(() => {
     if (open) {
+      setHasBeenOpened(true);
       toast(snackbarContent, {
         className: styles.toastContainer,
         position,
         onClose,
       });
     } else {
-      toast.dismiss();
+      if (hasBeenOpened) {
+        toast.dismiss();
+        setHasBeenOpened(false);
+      }
     }
   }, [open]);
 

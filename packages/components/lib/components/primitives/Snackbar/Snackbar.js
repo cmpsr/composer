@@ -63,6 +63,7 @@ const Snackbar = ({
   action,
   onClose
 }) => {
+  const [hasBeenOpened, setHasBeenOpened] = (0, _react.useState)(false);
   const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
   const styles = (0, _Snackbar.getStyle)(isTextRightPosition, type);
 
@@ -90,8 +91,13 @@ const Snackbar = ({
         position,
         onClose
       });
+      setHasBeenOpened(true);
     } else {
-      _reactToastify.toast.dismiss();
+      if (hasBeenOpened) {
+        _reactToastify.toast.dismiss();
+
+        setHasBeenOpened(false);
+      }
     }
   }, [open]);
   return /*#__PURE__*/_react.default.createElement("div", {

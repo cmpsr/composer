@@ -22,7 +22,7 @@ var _default = {
 exports.default = _default;
 
 const basic = () => /*#__PURE__*/_react.default.createElement("div", {
-  className: "p-10"
+  className: "p-3"
 }, /*#__PURE__*/_react.default.createElement(_.ConversationList, {
   selectedConversationId: (0, _addonKnobs.text)('selectedConversationId', ''),
   conversations: [{

@@ -9,7 +9,7 @@ export default {
 };
 
 export const basic = () => (
-  <div className="p-10">
+  <div className="p-3">
     <ConversationList
       selectedConversationId={text('selectedConversationId', '')}
       conversations={[

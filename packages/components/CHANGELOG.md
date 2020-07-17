@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.33
+
+### Patch Changes
+
+- 404b78f: maxWidth fix for ConversationSummary
+
 ## 0.0.32
 
 ### Patch Changes

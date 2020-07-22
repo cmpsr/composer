@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.34
+
+### Patch Changes
+
+- c41271f: Change implementation of snackbar
+
 ## 0.0.33
 
 ### Patch Changes

@@ -3,9 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Snackbar = exports.SnackbarPosition = exports.SnackbarTextPosition = exports.SnackbarType = exports.SNACKBAR_DEFAULT_TEST_ID = void 0;
+exports.Snackbar = exports.showSnackbar = exports.hideSnackbar = exports.SnackbarPosition = exports.SnackbarTextPosition = exports.SnackbarType = exports.SNACKBAR_DEFAULT_TEST_ID = exports.SHOW_SNACKBAR_DEFAULT_TEST_ID = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _reactToastify = require("react-toastify");
 
@@ -15,11 +17,11 @@ var _Typography = require("../Typography");
 
 var _Button = require("../Button");
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-const SNACKBAR_DEFAULT_TEST_ID = 'snackbar';
+const SHOW_SNACKBAR_DEFAULT_TEST_ID = 'showSnackbar';
+exports.SHOW_SNACKBAR_DEFAULT_TEST_ID = SHOW_SNACKBAR_DEFAULT_TEST_ID;
+const SNACKBAR_DEFAULT_TEST_ID = 'Snackbar';
 exports.SNACKBAR_DEFAULT_TEST_ID = SNACKBAR_DEFAULT_TEST_ID;
 let SnackbarType;
 exports.SnackbarType = SnackbarType;
@@ -51,9 +53,13 @@ exports.SnackbarPosition = SnackbarPosition;
   SnackbarPosition["BottomLeft"] = "bottom-left";
 })(SnackbarPosition || (exports.SnackbarPosition = SnackbarPosition = {}));
 
-const Snackbar = ({
-  testId = SNACKBAR_DEFAULT_TEST_ID,
-  open = false,
+const hideSnackbar = () => _reactToastify.toast.dismiss();
+
+exports.hideSnackbar = hideSnackbar;
+
+const showSnackbar = ({
+  className,
+  testId = SHOW_SNACKBAR_DEFAULT_TEST_ID,
   message,
   description,
   textPosition = SnackbarTextPosition.Right,
@@ -63,12 +69,12 @@ const Snackbar = ({
   action,
   onClose
 }) => {
-  const [hasBeenOpened, setHasBeenOpened] = (0, _react.useState)(false);
   const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
   const styles = (0, _Snackbar.getStyle)(isTextRightPosition, type);
 
   const snackbarContent = /*#__PURE__*/_react.default.createElement("div", {
-    className: styles.snackbarWrapper
+    className: styles.snackbarWrapper,
+    "data-testid": testId
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: styles.informationWrapper
   }, /*#__PURE__*/_react.default.createElement(_Typography.Typography, {
@@ -84,26 +90,24 @@ const Snackbar = ({
     onClick: action.onClickAction
   }, action.childAction) : null);
 
-  (0, _react.useEffect)(() => {
-    if (open) {
-      (0, _reactToastify.toast)(snackbarContent, {
-        className: styles.toastContainer,
-        position,
-        onClose
-      });
-      setHasBeenOpened(true);
-    } else {
-      if (hasBeenOpened) {
-        _reactToastify.toast.dismiss();
+  (0, _reactToastify.toast)(snackbarContent, {
+    className: (0, _classnames.default)(styles.toastContainer, className),
+    position,
+    onClose,
+    autoClose
+  });
+};
 
-        setHasBeenOpened(false);
-      }
-    }
-  }, [open]);
+exports.showSnackbar = showSnackbar;
+
+const Snackbar = ({
+  className,
+  testId = SNACKBAR_DEFAULT_TEST_ID
+}) => {
   return /*#__PURE__*/_react.default.createElement("div", {
     "data-testid": testId
   }, /*#__PURE__*/_react.default.createElement(_reactToastify.ToastContainer, {
-    autoClose: autoClose,
+    className: className,
     hideProgressBar: true,
     closeButton: null,
     draggable: false

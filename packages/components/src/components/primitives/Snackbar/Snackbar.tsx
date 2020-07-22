@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import cn from 'classnames';
 import { ToastContainer, toast } from 'react-toastify';
 import { getStyle } from './Snackbar.styles';
 import {
@@ -8,7 +9,8 @@ import {
 } from 'components/primitives/Typography';
 import { Button } from 'components/primitives/Button';
 
-export const SNACKBAR_DEFAULT_TEST_ID = 'snackbar';
+export const SHOW_SNACKBAR_DEFAULT_TEST_ID = 'showSnackbar';
+export const SNACKBAR_DEFAULT_TEST_ID = 'Snackbar';
 
 export enum SnackbarType {
   Default = 'default',
@@ -32,8 +34,8 @@ export enum SnackbarPosition {
 }
 
 type Props = {
+  className?: string;
   testId?: string;
-  open: boolean;
   message: string;
   description?: string;
   textPosition?: SnackbarTextPosition;
@@ -46,10 +48,11 @@ type Props = {
   };
   onClose?: () => void;
 };
+export const hideSnackbar = () => toast.dismiss();
 
-export const Snackbar = ({
-  testId = SNACKBAR_DEFAULT_TEST_ID,
-  open = false,
+export const showSnackbar = ({
+  className,
+  testId = SHOW_SNACKBAR_DEFAULT_TEST_ID,
   message,
   description,
   textPosition = SnackbarTextPosition.Right,
@@ -59,11 +62,10 @@ export const Snackbar = ({
   action,
   onClose,
 }: Props) => {
-  const [hasBeenOpened, setHasBeenOpened] = useState(false);
   const isTextRightPosition = textPosition === SnackbarTextPosition.Right;
   const styles = getStyle(isTextRightPosition, type);
   const snackbarContent = (
-    <div className={styles.snackbarWrapper}>
+    <div className={styles.snackbarWrapper} data-testid={testId}>
       <div className={styles.informationWrapper}>
         <Typography
           type={TypographyTypes.Body}
@@ -89,27 +91,27 @@ export const Snackbar = ({
       ) : null}
     </div>
   );
+  toast(snackbarContent, {
+    className: cn(styles.toastContainer, className),
+    position,
+    onClose,
+    autoClose,
+  });
+};
 
-  useEffect(() => {
-    if (open) {
-      toast(snackbarContent, {
-        className: styles.toastContainer,
-        position,
-        onClose,
-      });
-      setHasBeenOpened(true);
-    } else {
-      if (hasBeenOpened) {
-        toast.dismiss();
-        setHasBeenOpened(false);
-      }
-    }
-  }, [open]);
+type SnackbarProps = {
+  className?: string;
+  testId?: string;
+};
 
+export const Snackbar = ({
+  className,
+  testId = SNACKBAR_DEFAULT_TEST_ID,
+}: SnackbarProps) => {
   return (
     <div data-testid={testId}>
       <ToastContainer
-        autoClose={autoClose}
+        className={className}
         hideProgressBar={true}
         closeButton={null}
         draggable={false}

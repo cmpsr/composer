@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.1.3
+
+### Patch Changes
+
+- edeaf6f: Adds ComponentRendererWithQuery and ComponentRendererWithContext
+
 ## 0.1.2
 
 ### Patch Changes

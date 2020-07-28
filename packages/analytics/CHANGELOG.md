@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.18
+
+### Patch Changes
+
+- 918607c: Create analytics lib folder
+
 ## 0.0.17
 
 ### Patch Changes

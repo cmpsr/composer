@@ -37,6 +37,10 @@ jest.mock('crypto', () => {
 describe('Kms', () => {
   const config: KmsConfig = {
     projectId: 'project_id',
+    credentials: {
+      client_email: 'user@server.com',
+      private_key: 'private_key',
+    },
     key: {
       keyRingId: 'key_ring_id',
       cryptoKeyId: 'crypto_key',
@@ -52,6 +56,17 @@ describe('Kms', () => {
   });
 
   describe('string encryption', () => {
+    test('should authenticate', () => {
+      const kms = new Kms(config);
+      kms.encrypt('plaintext');
+      const client = require('@google-cloud/kms');
+      expect(client.KeyManagementServiceClient).toBeCalledTimes(1);
+      expect(client.KeyManagementServiceClient).toBeCalledWith({
+        projectId: config.projectId,
+        keyFilename: undefined,
+        credentials: config.credentials,
+      });
+    });
     test('should encrypt string', async () => {
       const kms = new Kms(config);
       const encrypted = await kms.encrypt('plaintext');
@@ -75,6 +90,17 @@ describe('Kms', () => {
   });
 
   describe('string decryption', () => {
+    test('should authenticate', () => {
+      const kms = new Kms(config);
+      kms.encrypt('plaintext');
+      const client = require('@google-cloud/kms');
+      expect(client.KeyManagementServiceClient).toBeCalledTimes(1);
+      expect(client.KeyManagementServiceClient).toBeCalledWith({
+        projectId: config.projectId,
+        keyFilename: undefined,
+        credentials: config.credentials,
+      });
+    });
     test('should decrypt string', async () => {
       const kms = new Kms(config);
       const encrypted = await kms.decrypt('encrypted text');

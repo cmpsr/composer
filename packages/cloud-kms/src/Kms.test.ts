@@ -50,9 +50,7 @@ describe('Kms', () => {
   };
 
   beforeEach(() => {
-    mockCryptoKeyVersionPath.mockClear();
-    mockGetPublicKey.mockClear();
-    mockAsymmetricDecrypt.mockClear();
+    jest.clearAllMocks();
   });
 
   describe('string encryption', () => {
@@ -60,8 +58,9 @@ describe('Kms', () => {
       const kms = new Kms(config);
       kms.encrypt('plaintext');
       const client = require('@google-cloud/kms');
-      expect(client.KeyManagementServiceClient).toBeCalledTimes(1);
-      expect(client.KeyManagementServiceClient).toBeCalledWith({
+      const mockKmsServiceClient = client.KeyManagementServiceClient as jest.Mock;
+      expect(mockKmsServiceClient).toBeCalledTimes(1);
+      expect(mockKmsServiceClient).toBeCalledWith({
         projectId: config.projectId,
         keyFilename: undefined,
         credentials: config.credentials,
@@ -94,8 +93,9 @@ describe('Kms', () => {
       const kms = new Kms(config);
       kms.encrypt('plaintext');
       const client = require('@google-cloud/kms');
-      expect(client.KeyManagementServiceClient).toBeCalledTimes(1);
-      expect(client.KeyManagementServiceClient).toBeCalledWith({
+      const mockKmsServiceClient = client.KeyManagementServiceClient as jest.Mock;
+      expect(mockKmsServiceClient).toBeCalledTimes(1);
+      expect(mockKmsServiceClient).toBeCalledWith({
         projectId: config.projectId,
         keyFilename: undefined,
         credentials: config.credentials,

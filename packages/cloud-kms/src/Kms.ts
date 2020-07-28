@@ -4,6 +4,8 @@ import crypto from 'crypto';
 
 class Kms implements IEncryptor {
   private config: KmsConfig;
+  private client: any;
+  private name: any;
 
   constructor(config: KmsConfig) {
     this.config = config;
@@ -58,18 +60,8 @@ class Kms implements IEncryptor {
   private async encryptString(data: string) {
     const client = this.createClient();
 
-    // Construct the crypto key version ID
-    const locationId = this.config.key.locationId || 'global';
-    const name = client.cryptoKeyVersionPath(
-      this.config.projectId,
-      locationId,
-      this.config.key.keyRingId,
-      this.config.key.cryptoKeyId,
-      this.config.key.cryptoKeyVersionId
-    );
-
     // Get public key from Cloud KMS
-    const [publicKey] = await client.getPublicKey({ name });
+    const [publicKey] = await client.getPublicKey({ name: this.createName() });
 
     // Encrypt data using the public key
     const dataBuffer = Buffer.from(data);
@@ -90,18 +82,9 @@ class Kms implements IEncryptor {
     const client = this.createClient();
 
     // Construct the crypto key version ID
-    const locationId = this.config.key.locationId || 'global';
-    const name = client.cryptoKeyVersionPath(
-      this.config.projectId,
-      locationId,
-      this.config.key.keyRingId,
-      this.config.key.cryptoKeyId,
-      this.config.key.cryptoKeyVersionId
-    );
-
     // Decrypt plaintext using Cloud KMS
     const [result] = await client.asymmetricDecrypt({
-      name: name,
+      name: this.createName(),
       ciphertext: data,
     });
 
@@ -109,12 +92,30 @@ class Kms implements IEncryptor {
   }
 
   private createClient() {
+    if (this.client) return this.client;
     const { projectId, keyFilename, credentials } = this.config;
-    return new kms.KeyManagementServiceClient({
+    this.client = new kms.KeyManagementServiceClient({
       projectId,
       keyFilename,
       credentials,
     });
+    return this.client;
+  }
+
+  private createName() {
+    if (this.name) return this.name;
+    const client = this.createClient();
+
+    // Construct the crypto key version ID
+    const locationId = this.config.key.locationId || 'global';
+    this.name = client.cryptoKeyVersionPath(
+      this.config.projectId,
+      locationId,
+      this.config.key.keyRingId,
+      this.config.key.cryptoKeyId,
+      this.config.key.cryptoKeyVersionId
+    );
+    return this.name;
   }
 }
 

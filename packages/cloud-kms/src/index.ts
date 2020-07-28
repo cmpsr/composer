@@ -1,5 +1,4 @@
 import { Kms } from './Kms';
-import { KmsConfig } from './types';
 
 const useKMS = ({
   projectId = process.env.GCP_PROJECT_ID,

@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.18
+
+### Patch Changes
+
+- 37677b7: add authentication to KMS integration
+
 ## 0.0.17
 
 ### Patch Changes

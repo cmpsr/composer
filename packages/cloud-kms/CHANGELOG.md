@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.19
+
+### Patch Changes
+
+- 1fe3ca9: add lib folder to cloud-kms package
+
 ## 0.0.18
 
 ### Patch Changes

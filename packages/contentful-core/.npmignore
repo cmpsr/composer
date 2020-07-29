@@ -1,0 +1,11 @@
+# Coverage files
+coverage
+
+# Tools directory
+tools
+
+# Src directory
+src
+
+# Rollup config
+rollup.config.js

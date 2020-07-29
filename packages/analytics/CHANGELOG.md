@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.19
+
+### Patch Changes
+
+- 5f9a803: Add babel plugin to compile class properties
+
 ## 0.0.18
 
 ### Patch Changes

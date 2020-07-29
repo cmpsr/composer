@@ -21,10 +21,11 @@ const config = {
   external: [
     'react',
     'react-dom',
+    /@babel\/runtime/,
   ],
   plugins: [
     babel({
-      babelHelpers: process.env.BABEL_ENV === 'umd' ? 'external' : 'bundled',
+      babelHelpers: process.env.BABEL_ENV === 'umd' ? 'bundled' : 'runtime',
       exclude: 'node_modules/**',
     }),
     resolve(),

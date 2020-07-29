@@ -11,10 +11,7 @@ const config = {
     name: 'cloud-kms',
     file: './dist/index.js',
     format: 'umd',
-    globals: {
-      'react': 'React',
-      'react-dom': 'ReactDOM',
-    },
+    globals: {},
     banner: `/*! ${pkg.name} v${pkg.version} | (c) ${new Date().getFullYear()} Composer | ${pkg.license} License | https://github.com/${pkg.repository} !*/`,
     footer: '/* tbd */',
   },

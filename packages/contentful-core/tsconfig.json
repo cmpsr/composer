@@ -1,7 +1,10 @@
 {
   "exclude": [
+    "cjs",
+    "es",
     "node_modules",
     "lib",
+    "umd",
     "**/*.stories.*",
     "**/*.test*"
   ],

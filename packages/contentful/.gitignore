@@ -3,3 +3,9 @@ node_modules
 
 # Local env files
 .env
+
+# Compiled library files
+cjs
+es
+lib
+umd

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
-import colors from '../../../../lib/styles/colors.js';
+import colors from 'styles/colors.js';
 
 export const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
 

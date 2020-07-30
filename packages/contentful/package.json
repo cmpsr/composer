@@ -1,22 +1,43 @@
 {
   "name": "@cmpsr/contentful",
-  "repository": {
-    "url": "ssh://git@github.com:cmpsr/composer.git"
+  "version": "0.0.36",
+  "license": "MIT",
+  "description": "",
+  "author": "Steve Cox <stevejcox@me.com>",
+  "repository": "cmpsr/composer",
+  "homepage": "https://github.com/cmpsr/composer/packages/contentful#readme",
+  "bugs": {
+    "url": "https://github.com/cmpsr/composer/issues"
   },
+  "main": "cjs/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "cjs",
+    "dist",
+    "es",
+    "lib",
+    "umd"
+  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.0.36",
-  "author": "Steve Cox <stevejcox@me.com>",
-  "license": "MIT",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
   "scripts": {
+    "clean": "rimraf lib && rimraf cjs && rimraf dist && rimraf es",
+    "build": "yarn clean && node ./tools/build.js",
     "libbuild": "rimraf lib && yarn babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
     "test": "jest --env=jest-environment-jsdom-sixteen",
     "test:watch": "jest --watch --env=jest-environment-jsdom-sixteen",
     "test:coverage": "jest --coverage --env=jest-environment-jsdom-sixteen"
+  },
+  "peerDependencies": {
+    "react": ">=16.3",
+    "react-dom": ">=16.3"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
@@ -31,11 +52,21 @@
     "graphql-tag": "^2.10.3",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.4.4",
-    "rimraf": "^3.0.2",
     "uuid": "^7.0.1"
   },
   "devDependencies": {
-    "@types/uuid": "^7.0.3"
+    "@babel/plugin-external-helpers": "^7.10.4",
+    "@babel/plugin-transform-typescript": "^7.10.5",
+    "@rollup/plugin-babel": "^5.1.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@types/uuid": "^7.0.3",
+    "gzip-size": "^5.1.1",
+    "pretty-bytes": "^5.3.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.23.0",
+    "rollup-plugin-terser": "^6.1.0"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
 }

@@ -67,6 +67,7 @@ module.exports = {
       'modal-rounded': '1.375rem',
       'modal-semi-rounded': '0.25rem',
       'modal-rectangle': '0',
+      '1-375': '1.375rem',
     },
     stroke: {
       'fill-primary': {
@@ -200,6 +201,8 @@ module.exports = {
       '2.6': '2.6rem',
       '3.5': '3.5rem',
       '480': '30rem',
+      '13-438': '13.438rem',
+      '19-625': '19.625rem',
     },
     height: {
       '1.75': '1.75rem',
@@ -207,6 +210,8 @@ module.exports = {
       '2-625': '2.625rem',
       '2.6': '2.6rem',
       '3.5': '3.5rem',
+      '13-438': '13.438rem',
+      '19-625': '19.625rem',
     },
     minHeight: {
       '2-5': '2.5rem',

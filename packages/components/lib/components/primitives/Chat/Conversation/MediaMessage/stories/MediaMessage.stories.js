@@ -24,12 +24,12 @@ exports.default = _default;
 const basic = () => /*#__PURE__*/_react.default.createElement("div", {
   className: "p-10"
 }, /*#__PURE__*/_react.default.createElement(_.MediaMessage, {
-  time: (0, _addonKnobs.text)("Time", "15:05 PM"),
+  time: (0, _addonKnobs.text)('Time', '15:05 PM'),
   borderColor: (0, _addonKnobs.select)('Border Color', _.MediaMessageBorderColor, _.MediaMessageBorderColor.Secondary25),
   placement: (0, _addonKnobs.select)('Placement', _.MessagePlacement, _.MessagePlacement.Left),
   image: {
-    title: 'title',
-    url: 'https://images.ctfassets.net/o9153kt66j4s/2ClCasVvBEEKCAnWbctHQt/195c416b76203751ad8d62f231e84855/Screen_Shot_2020-07-30_at_2.07.47_PM.png'
+    title: (0, _addonKnobs.text)('Title', 'title'),
+    url: (0, _addonKnobs.text)('Url', 'https://images.ctfassets.net/o9153kt66j4s/2ClCasVvBEEKCAnWbctHQt/195c416b76203751ad8d62f231e84855/Screen_Shot_2020-07-30_at_2.07.47_PM.png')
   },
   onClick: (0, _addonActions.action)('Media Message on Click')
 }));

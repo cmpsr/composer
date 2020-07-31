@@ -1,5 +1,5 @@
 import { MediaMessageBorderColor, MessagePlacement } from './MediaMessage';
-export declare const getStyles: (placement: MessagePlacement, borderColor: MediaMessageBorderColor, hasTime: boolean) => {
+export declare const getStyles: (placement: MessagePlacement, borderColor: MediaMessageBorderColor) => {
     wrapperClasses: string;
     messageClasses: string;
     timeClasses: string;

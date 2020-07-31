@@ -50,7 +50,7 @@ const MediaMessage = ({
     messageClasses,
     imageClasses,
     timeClasses
-  } = (0, _MediaMessage.getStyles)(placement, borderColor, !!time);
+  } = (0, _MediaMessage.getStyles)(placement, borderColor);
   return /*#__PURE__*/_react.default.createElement("div", {
     "data-testid": testId,
     className: (0, _classnames.default)(wrapperClasses)

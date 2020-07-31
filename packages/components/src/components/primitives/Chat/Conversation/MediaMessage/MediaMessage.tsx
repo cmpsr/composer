@@ -41,7 +41,7 @@ export const MediaMessage = ({
   onClick,
   testId = WRAPPER_MEDIA_MESSAGE_DEFAULT_TEST_ID,
 }: Props) => {
-  const { wrapperClasses, messageClasses, imageClasses, timeClasses } = getStyles(placement, borderColor, !!time);
+  const { wrapperClasses, messageClasses, imageClasses, timeClasses } = getStyles(placement, borderColor);
   return (
     <div
       data-testid={testId}

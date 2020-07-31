@@ -42,7 +42,7 @@ basic.story = {
 const withMultipleMessages = () => /*#__PURE__*/_react.default.createElement("div", {
   className: "p-10"
 }, /*#__PURE__*/_react.default.createElement(_.MediaMessage, {
-  time: (0, _addonKnobs.text)("Time", "15:05 PM"),
+  time: (0, _addonKnobs.text)('Time', '15:05 PM'),
   borderColor: (0, _addonKnobs.select)('Border Color', _.MediaMessageBorderColor, _.MediaMessageBorderColor.Secondary25),
   placement: (0, _addonKnobs.select)('Placement', _.MessagePlacement, _.MessagePlacement.Left),
   image: {
@@ -51,7 +51,7 @@ const withMultipleMessages = () => /*#__PURE__*/_react.default.createElement("di
   },
   onClick: (0, _addonActions.action)('Media Message on Click')
 }), /*#__PURE__*/_react.default.createElement(_.MediaMessage, {
-  time: (0, _addonKnobs.text)("Time", "15:05 PM"),
+  time: (0, _addonKnobs.text)('Time', '15:05 PM'),
   borderColor: (0, _addonKnobs.select)('Border Color', _.MediaMessageBorderColor, _.MediaMessageBorderColor.Secondary25),
   placement: (0, _addonKnobs.select)('Placement', _.MessagePlacement, _.MessagePlacement.Left),
   image: {

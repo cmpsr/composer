@@ -5,7 +5,7 @@ node_modules
 .env
 
 # Compiled library files
-cjs
-es
-lib
-umd
+dist
+
+# Log files
+*.log

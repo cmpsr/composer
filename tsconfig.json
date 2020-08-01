@@ -1,6 +1,8 @@
 {
   "exclude": [
     "node_modules",
+    "dist",
+    "tools",
     "__mocks__",
     "__tests__",
     "**/*.story.tsx",
@@ -10,6 +12,7 @@
     "jsx": "react",
     "target": "ES2015",
     "module": "commonjs",
+    "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": true,
     "esModuleInterop": true,

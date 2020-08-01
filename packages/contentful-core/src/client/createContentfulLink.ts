@@ -1,7 +1,20 @@
 import invariant from 'invariant';
+import { ApolloLink } from 'apollo-link';
 import { createHttpLink } from 'apollo-link-http';
 
-export const createContentfulLink = options => {
+export interface Headers {
+  [key: string]: string;
+}
+
+export interface Options {
+  accessToken: string;
+  apiVersion?: string;
+  environment?: string;
+  space: string;
+  headers?: Headers;
+}
+
+export const createContentfulLink = (options: Options): ApolloLink => {
   const {
     accessToken,
     apiVersion,
@@ -20,7 +33,7 @@ export const createContentfulLink = options => {
   return createHttpLink({
     headers: {
       ...headers,
-      Authorization: `Bearer ${accessToken}`,
+      'Authorization': `Bearer ${accessToken}`,
     },
     uri: `https://graphql.contentful.com/content/${apiVersion}/spaces/${space}/environments/${environment}`, // Server URL (must be absolute)
   });

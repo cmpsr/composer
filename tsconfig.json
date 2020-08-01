@@ -1,8 +1,19 @@
 {
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules",
+    "__mocks__",
+    "__tests__",
+    "**/*.story.tsx",
+    "**/*.test.*"
+  ],
   "compilerOptions": {
     "jsx": "react",
+    "target": "ES2015",
+    "module": "commonjs",
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
     "esModuleInterop": true,
+    "noImplicitAny": false,
     "skipLibCheck": true
   }
 }

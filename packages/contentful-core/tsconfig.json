@@ -1,22 +1,28 @@
 {
-  "exclude": [
-    "cjs",
-    "es",
-    "node_modules",
-    "lib",
-    "umd",
-    "**/*.stories.*",
-    "**/*.test*"
-  ],
-  "include": [
-    "src"
-  ],
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "lib",
-    "rootDir": "src",
-    "declaration": true,
-    "resolveJsonModule": true,
-    "baseUrl": "src"
+    "outDir": "./dist/lib",
+    "rootDir": "./src/",
+    "baseUrl": ".",
+    "paths": {
+      "client": [
+        "./src/client"
+      ],
+      "components": [
+        "./src/components"
+      ],
+      "constants": [
+        "./src/constants"
+      ],
+      "context": [
+        "./src/context"
+      ],
+      "renderers": [
+        "./src/renderers"
+      ],
+      "utils": [
+        "./src/utils"
+      ]
+    }
   }
 }

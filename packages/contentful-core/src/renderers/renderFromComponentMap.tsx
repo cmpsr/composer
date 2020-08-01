@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { DEFAULT } from 'constants/index';
+import { DEFAULT } from '../constants';
 
 export const renderFromComponentMap = (
   componentMap: Record<string, () => ReactElement>,

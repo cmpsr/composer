@@ -6,3 +6,6 @@ src
 
 # Rollup config
 rollup.config.js
+
+# Log files
+*.log

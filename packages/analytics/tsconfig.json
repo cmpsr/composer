@@ -1,15 +1,13 @@
 {
-  "exclude": ["node_modules", "lib", "**/*.test*"],
-  "include": ["src"],
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "lib",
-    "rootDir": "src",
-    "declaration": true,
-    "baseUrl": "src",
+    "outDir": "./dist/lib",
+    "rootDir": "./src/",
+    "baseUrl": ".",
     "paths": {
-      "constants": ["src/constants"],
-      "types": ["src/types"]
+      "types": [
+        "./src/types"
+      ]
     }
   }
 }

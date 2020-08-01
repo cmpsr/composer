@@ -1,4 +1,18 @@
+# Node modules
 node_modules
+
+# Package files
+packages/*/dist
 packages/node_modules
+
+# Local env files
 .env
+
+# Coverage files
 coverage
+
+# Config output
+tsconfig.tsbuildinfo
+
+# Log files
+*.log

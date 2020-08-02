@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.1.5
+
+### Patch Changes
+
+- 59c68ae: Supplies componentMap to sub components
+
 ## 0.1.4
 
 ### Patch Changes

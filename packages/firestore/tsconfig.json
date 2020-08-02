@@ -1,14 +1,16 @@
 {
-  "exclude": ["node_modules", "lib", "**/*.test*"],
-  "include": ["src"],
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "lib",
-    "rootDir": "src",
-    "declaration": true,
-    "baseUrl": "src",
+    "outDir": "./dist/lib",
+    "rootDir": "./src/",
+    "baseUrl": ".",
     "paths": {
-      "types": ["./types"]
+      "db": [
+        "./src/db"
+      ],
+      "types": [
+        "./src/types"
+      ]
     }
   }
 }

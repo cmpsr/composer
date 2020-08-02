@@ -11,7 +11,7 @@ export const renderFromContentfulModel = (
   if (!type || !Object.keys(componentMap).includes(type)) return null;
 
   return componentMap[type](
-    { ...item, key: `${parentId}_${item.sys.id}_${index}` },
+    { ...item, key: `${parentId}_${item.sys.id}_${index}`, componentMap },
     index
   );
 };

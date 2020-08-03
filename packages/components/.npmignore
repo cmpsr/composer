@@ -1,14 +1,6 @@
-# Tools directory
-tools
-
 # Src directory
 src
 
-# Rollup config
-rollup.config.js
-
-# Jest config
+# Configs
 jest.config.js
-
-# Typescript config
 tsconfig.json

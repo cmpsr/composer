@@ -5,10 +5,7 @@ node_modules
 .env
 
 # Compiled library files
-cjs
-es
-lib
-umd
+dist
 
 # Storybook files
 storybook-static

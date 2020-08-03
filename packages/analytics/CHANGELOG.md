@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.20
+
+### Patch Changes
+
+- df09fd1: Execute identify method on analytics
+
 ## 0.0.19
 
 ### Patch Changes

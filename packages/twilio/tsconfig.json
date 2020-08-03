@@ -1,15 +1,28 @@
 {
-  "exclude": ["node_modules", "lib", "**/*.test*"],
-  "include": ["src"],
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "lib",
+    "outDir": "./dist/lib",
     "rootDir": "src",
-    "declaration": true,
     "baseUrl": "src",
     "paths": {
-      "constants": ["./constants"],
-      "types": ["./types"]
+      "client": [
+        "./client"
+      ],
+      "constants": [
+        "./constants"
+      ],
+      "conversations": [
+        "./conversations"
+      ],
+      "services": [
+        "./services"
+      ],
+      "sms": [
+        "./sms"
+      ],
+      "types": [
+        "./types"
+      ]
     }
   }
 }

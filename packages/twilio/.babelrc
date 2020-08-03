@@ -1,23 +1,16 @@
 {
+  "extends": "../../babel.config.js",
   "plugins": [
-    "@babel/plugin-proposal-object-rest-spread",
     [
       "module-resolver",
       {
         "alias": {
+          "client": "./src/client",
+          "constants": "./src/constants",
+          "conversations": "./src/conversations",
+          "services": "./src/services",
+          "sms": "./src/sms",
           "types": "./src/types"
-        }
-      }
-    ]
-  ],
-  "presets": [
-    "@babel/preset-typescript",
-    "@babel/preset-react",
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "node": "current"
         }
       }
     ]

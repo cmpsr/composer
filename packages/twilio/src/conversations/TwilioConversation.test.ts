@@ -198,7 +198,7 @@ describe('TwilioConversation', () => {
         expect(twilio().conversations.conversations).toBeCalledWith(
           conversationSid
         );
-        expect(mockCreateParticipant).toBeCalledTimes(1);
+        expect(mockCreateParticipant).toBeCalledTimes(3);
         expect(mockCreateParticipant).toBeCalledWith({ identity });
         expect(returnedParticipant).toStrictEqual(participant);
       });
@@ -240,7 +240,7 @@ describe('TwilioConversation', () => {
         expect(twilio().conversations.conversations).toBeCalledWith(
           conversationSid
         );
-        expect(mockCreateMessage).toBeCalledTimes(1);
+        expect(mockCreateMessage).toBeCalledTimes(3);
         expect(mockCreateMessage).toBeCalledWith({
           author: authorSid,
           body: text,
@@ -300,7 +300,7 @@ describe('TwilioConversation', () => {
         expect(twilio().conversations.conversations).toBeCalledWith(
           conversationSid
         );
-        expect(mockCreateWebhook).toBeCalledTimes(1);
+        expect(mockCreateWebhook).toBeCalledTimes(3);
         expect(mockCreateWebhook).toBeCalledWith({
           configuration: {
             method: 'GET',

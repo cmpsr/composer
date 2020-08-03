@@ -23,7 +23,11 @@ module.exports = (api) => {
       test: {
         presets: [
           '@babel/preset-typescript',
-          '@babel/preset-env',
+          ['@babel/preset-env', {
+            "targets": {
+              "node": "current",
+            },
+          }],
           '@babel/preset-react',
         ],
       },

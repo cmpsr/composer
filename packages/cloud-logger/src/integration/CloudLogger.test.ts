@@ -55,7 +55,7 @@ describe('CloudLogger', () => {
     it('should write entry', async () => {
       const logger = new CloudLogger(config);
       await logger.log(message, severity);
-      expect(mockWrite).toBeCalledTimes(1);
+      expect(mockWrite).toBeCalledTimes(2);
       expect(mockWrite).toBeCalledWith(fakeEntry);
     });
   });

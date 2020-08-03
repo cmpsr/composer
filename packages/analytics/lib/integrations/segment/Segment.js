@@ -16,7 +16,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 class Segment {
   constructor(config) {
     _defineProperty(this, "identify", (userId, traits) => {
-      window.analytics(userId, traits);
+      window.analytics.identify(userId, traits);
     });
 
     _defineProperty(this, "group", (groupId, traits) => {

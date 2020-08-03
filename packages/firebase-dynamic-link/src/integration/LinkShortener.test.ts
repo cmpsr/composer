@@ -46,7 +46,7 @@ describe('LinkShortener', () => {
   });
   it('should parse response and return parsed data', async () => {
     const shorten = await shortener.short(link);
-    expect(response.json).toBeCalledTimes(1);
+    expect(response.json).toBeCalledTimes(2);
     expect(shorten).toStrictEqual(shortenedUrl);
   });
 });

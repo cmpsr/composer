@@ -1,7 +1,9 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "outDir": "./dist/lib",
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "baseUrl": ".",
     "paths": {
       "db": [
@@ -11,5 +13,8 @@
         "./src/types"
       ]
     }
-  }
+  },
+  "include": [
+    "src/**/*"
+  ]
 }

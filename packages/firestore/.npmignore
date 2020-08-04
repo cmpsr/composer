@@ -1,8 +1,5 @@
 # Src directory
 src
 
-# Jest config
-jest.config.js
-
 # Typescript config
 tsconfig.json

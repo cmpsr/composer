@@ -1,4 +1,4 @@
-import { TOKEN_GENERATOR_URL } from "constants/index";
+import { TOKEN_GENERATOR_URL } from "../constants";
 
 export const fetchAccessToken = async (identity: string) => {
   return await fetch(TOKEN_GENERATOR_URL, {

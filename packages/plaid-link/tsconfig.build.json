@@ -1,7 +1,10 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.build.json",
   "compilerOptions": {
+    "jsx": "react",
     "outDir": "./dist/lib",
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "baseUrl": ".",
     "paths": {
       "link": [
@@ -11,5 +14,8 @@
         "./src/types"
       ]
     }
-  }
+  },
+  "include": [
+    "src/**/*"
+  ]
 }

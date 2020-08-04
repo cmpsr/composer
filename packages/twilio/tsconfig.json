@@ -1,27 +1,5 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist/lib",
-    "baseUrl": ".",
-    "paths": {
-      "client": [
-        "./src/client"
-      ],
-      "constants": [
-        "./src/constants"
-      ],
-      "conversations": [
-        "./src/conversations"
-      ],
-      "services": [
-        "./src/services"
-      ],
-      "sms": [
-        "./src/sms"
-      ],
-      "types": [
-        "./src/types"
-      ]
-    }
+    "outDir": "./dist/lib"
   }
-}

@@ -1,8 +1,3 @@
-import * as channelJoin from './channel/join';
-import * as components from './components';
+export * as channelJoin from './channel/join';
+export * as components from './components';
 export * from './useTwilioChat';
-
-export {
-  channelJoin,
-  components,
-};

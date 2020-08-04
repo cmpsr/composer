@@ -1,6 +1,5 @@
 {
   "name": "@cmpsr/analytics",
-  "private": true,
   "version": "0.0.19",
   "license": "MIT",
   "description": "",
@@ -10,10 +9,9 @@
   "bugs": {
     "url": "https://github.com/cmpsr/composer/issues"
   },
-  "main": "cjs/index.js",
-  "module": "es/index.js",
-  "jsnext:main": "lib/index.js",
-  "types": "types",
+  "main": "index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.js",
   "directories": {
     "lib": "lib"
   },

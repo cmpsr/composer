@@ -2,7 +2,9 @@
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "jsx": "react",
-    "outDir": "./dist/types",
+    "outDir": "./dist/lib",
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "baseUrl": ".",
     "paths": {
       "types": [

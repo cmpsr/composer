@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    // "isolatedModules": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "tools",
+    "__mocks__",
+    "__tests__",
+    "**/*.story.tsx",
+    "**/*.stories.tsx",
+    "**/*.test.*"
+  ]
+}

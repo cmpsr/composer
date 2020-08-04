@@ -1,6 +1,6 @@
 import React, { useState, KeyboardEvent, useEffect } from 'react';
 import cn from 'classnames';
-import { useTwilioChat } from 'client/chat';
+import { useTwilioChat } from '../../useTwilioChat';
 import { ChatMessage } from '../ChatMessage';
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
   identity: string;
 };
 
-const ChatWindow = ({ className, identity }: Props) => {
+export const ChatWindow = ({ className, identity }: Props) => {
   const { channel, messages } = useTwilioChat(identity);
   const [message, setMessage] = useState<string>('');
 
@@ -71,5 +71,3 @@ const ChatWindow = ({ className, identity }: Props) => {
     </div>
   );
 };
-
-export default ChatWindow;

@@ -8,4 +8,3 @@ export const useTwilioSms = (
 };
 
 export { TwilioSms };
-export * from 'types/TwilioConversation';

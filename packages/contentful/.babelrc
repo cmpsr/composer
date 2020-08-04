@@ -1,6 +1,6 @@
 {
+  "extends": "../../babel.config.js",
   "plugins": [
-    "@babel/plugin-proposal-object-rest-spread",
     "import-graphql",
     [
       "module-resolver",
@@ -12,19 +12,8 @@
           "context": "./src/context",
           "models": "./src/models",
           "schema": "./src/schema",
+          "types": "./src/types",
           "utils": "./src/utils"
-        }
-      }
-    ]
-  ],
-  "presets": [
-    "@babel/preset-typescript",
-    "@babel/preset-react",
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "node": "current"
         }
       }
     ]

@@ -6,15 +6,14 @@
   "license": "MIT",
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "lerna run build --stream",
-    "bbuild": "lerna run libbuild --stream",
-    "build-storybook": "lerna run libbuild --stream --scope=@cmpsr/components && lerna run build-storybook --stream",
-    "test": "lerna run test --stream",
+    "build": "lerna run build --stream --ignore=@cmpsr/{components,contentful,twilio}",
+    "build-storybook": "lerna run build --stream --scope=@cmpsr/components && lerna run build-storybook --stream",
+    "test": "lerna run test --stream --ignore=@cmpsr/{components,contentful,twilio}",
     "test:watch": "lerna run --parallel test:watch --stream",
     "test:coverage": "lerna run --parallel test:coverage --stream",
     "lint": "eslint . --ext .tsx,.ts,.js",
     "lint-and-fix": "eslint . --ext .tsx,.ts,.js --fix",
-    "publish-ci": "lerna run libbuild --stream && lerna publish from-package -y --no-verify-access",
+    "publish-ci": "lerna run build --stream --ignore=@cmpsr/{components,contentful,twilio} && lerna publish from-package -y --no-verify-access",
     "prerelease": "yarn build",
     "release": "lerna publish"
   },
@@ -80,6 +79,7 @@
     "react-docgen-typescript-loader": "^3.7.2",
     "react-test-renderer": "^16.13.1",
     "rollup-plugin-typescript2": "^0.27.1",
+    "ts-jest": "^26.1.4",
     "typescript": "^3.8.3"
   }
 }

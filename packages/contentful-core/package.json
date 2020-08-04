@@ -9,19 +9,15 @@
   "bugs": {
     "url": "https://github.com/cmpsr/composer/issues"
   },
-  "main": "dist/cjs/index.js",
-  "module": "dist/es/index.js",
-  "jsnext:main": "dist/lib/index.js",
-  "types": "dist/lib/index.d.ts",
+  "main": "index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.js",
   "directories": {
-    "lib": "dist/lib",
+    "lib": "lib",
     "scripts": "scripts",
     "test": "__tests__"
   },
-  "files": [
-    "dist",
-    "scripts"
-  ],
+  "files": [],
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
@@ -29,7 +25,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "prebuild": "yarn clean",
-    "build": "node ../../scripts/build",
+    "build": "mkdir dist && cp -R ./scripts ./dist/scripts && node ../../scripts/build",
     "test": "jest --env=jest-environment-jsdom-sixteen",
     "test:watch": "jest --watch --env=jest-environment-jsdom-sixteen",
     "test:coverage": "jest --coverage --env=jest-environment-jsdom-sixteen",

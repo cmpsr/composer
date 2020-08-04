@@ -9,26 +9,19 @@
   "bugs": {
     "url": "https://github.com/cmpsr/composer/issues"
   },
-  "main": "cjs/index.js",
-  "module": "es/index.js",
-  "jsnext:main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.js",
   "directories": {
     "lib": "lib"
   },
-  "files": [
-    "cjs",
-    "dist",
-    "es",
-    "lib",
-    "umd"
-  ],
+  "files": [],
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
   "scripts": {
-    "clean": "rimraf lib cjs dist es umd",
+    "clean": "rimraf dist",
     "prebuild": "yarn clean",
     "build": "node ../../scripts/build",
     "storybook": "echo 'Starting Storybook' && start-storybook -p 8080 -c .storybook",

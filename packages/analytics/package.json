@@ -1,5 +1,6 @@
 {
   "name": "@cmpsr/analytics",
+  "private": true,
   "version": "0.0.19",
   "license": "MIT",
   "description": "",
@@ -9,22 +10,20 @@
   "bugs": {
     "url": "https://github.com/cmpsr/composer/issues"
   },
-  "main": "dist/cjs/index.js",
-  "module": "dist/es/index.js",
-  "jsnext:main": "dist/lib/index.js",
-  "types": "dist/lib/index.d.ts",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "lib/index.js",
+  "types": "types",
   "directories": {
-    "lib": "dist/lib"
+    "lib": "lib"
   },
-  "files": [
-    "dist"
-  ],
+  "files": [],
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
   "scripts": {
-    "clean": "rimraf dist lib cjs es",
+    "clean": "rimraf dist",
     "prebuild": "yarn clean",
     "build": "node ../../scripts/build",
     "test": "jest",

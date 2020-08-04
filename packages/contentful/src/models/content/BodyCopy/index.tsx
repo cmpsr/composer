@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { DEFAULT } from "constants/index";
-import { BodyCopy as DSMBodyCopy } from "@cmpsr/components/lib/components/primitives";
+import { BodyCopy as DSMBodyCopy } from "@cmpsr/components/components/primitives";
 
 import renderFromComponentMap from "utils/renderFromComponentMap";
 

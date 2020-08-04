@@ -6,8 +6,8 @@ import * as getRouteVariant from './getRouteVariant';
 import * as getRouteVariantByQuery from './getRouteVariantByQuery';
 import * as getVariantByQueryParams from './getVariantByQueryParams';
 import * as randomTrafficSelector from './randomTrafficSelector';
-import * as renderFromComponentMap from './renderFromComponentMap';
-import * as renderFromContentfulModel from './renderFromContentfulModel';
+import renderFromComponentMap from './renderFromComponentMap';
+import renderFromContentfulModel from './renderFromContentfulModel';
 
 export {
   getContent,

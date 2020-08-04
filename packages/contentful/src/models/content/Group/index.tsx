@@ -1,7 +1,7 @@
 import React, { ReactElement, useContext } from 'react';
 
 import { DEFAULT } from 'constants/index';
-import { Group as GroupDSM } from '@cmpsr/components/lib/components/layouts';
+import { Group as GroupDSM } from '@cmpsr/components/components/layouts';
 
 import { ContentfulContext } from "context";
 import renderFromComponentMap from 'utils/renderFromComponentMap';

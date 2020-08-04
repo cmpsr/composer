@@ -6,7 +6,7 @@ import {
   Feature2,
   Feature3,
   EmbeddedFeature1,
-} from "@cmpsr/components/lib/components/layouts";
+} from "@cmpsr/components/components/layouts";
 
 import { ContentfulContext } from "context";
 import renderFromComponentMap from "utils/renderFromComponentMap";

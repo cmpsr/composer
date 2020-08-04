@@ -1,4 +1,4 @@
-import { CloudLogger } from './integration/CloudLogger';
+import { CloudLogger } from 'integration/CloudLogger';
 
 const useCloudLogger = (
   logName: string,

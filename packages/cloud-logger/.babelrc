@@ -1,3 +1,13 @@
 {
-  "extends": "../../babel.config.js"
+  "extends": "../../babel.config.js",
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "integration": "./src/integration"
+        }
+      }
+    ]
+  ]
 }

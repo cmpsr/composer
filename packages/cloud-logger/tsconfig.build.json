@@ -1,12 +1,17 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "outDir": "./dist/lib",
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "baseUrl": "src",
     "paths": {
       "integration": [
         "./src/integration"
       ]
     }
-  }
+  },
+  "include": [
+    "src/**/*"
+  ]
 }

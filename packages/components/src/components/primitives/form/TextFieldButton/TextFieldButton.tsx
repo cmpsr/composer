@@ -34,7 +34,7 @@ export const TextFieldButton = ({
     <div className="flex">
       <input
         className={cn(
-          'appearance-none rounded-l-md relative block w-full p-3 border border-outline-primary-100 placeholder-primary-fill-75 text-gray-900 focus:outline-none focus:border-fill-primary-900 focus:z-10 sm:text-sm sm:leading-5',
+          'appearance-none rounded-l-md relative block w-full p-3 border border-outline-primary-900 placeholder-primary-fill-75 text-gray-900 focus:outline-none focus:border-fill-primary-900 focus:z-10 sm:text-sm sm:leading-5',
           className
         )}
         aria-label={ariaLabel}

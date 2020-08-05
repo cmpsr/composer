@@ -64,7 +64,7 @@ export const TextFieldIconButton = ({
       <input
         className={cn(
           className,
-          'appearance-none rounded-l-md relative block w-full p-3 border border-outline-primary-100 placeholder-primary-fill-75 text-gray-900 focus:outline-none focus:border-fill-primary-900 focus:z-10 sm:text-sm sm:leading-5',
+          'appearance-none rounded-l-md relative block w-full p-3 border border-outline-primary-900 placeholder-primary-fill-75 text-gray-900 focus:outline-none focus:border-fill-primary-900 focus:z-10 sm:text-sm sm:leading-5',
           { 'pl-10': iconPosition === 'left' }
         )}
         aria-label={ariaLabel}

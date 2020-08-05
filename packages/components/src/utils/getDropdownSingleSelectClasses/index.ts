@@ -18,7 +18,7 @@ export const getDropdownSingleSelectClasses = (
     iconWrapper:
       'pointer-events-none absolute inset-y-0 flex items-center z-10 right-0 pr-3',
     icon: 'fill-current text-fill-black-50',
-    selectListClasses: 'border rounded-b border-outline-primary-100',
+    selectListClasses: 'border rounded-b border-outline-primary-900',
     itemListClasses: 'p-3 hover:bg-gray-100',
   };
 };

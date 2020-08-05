@@ -92,7 +92,7 @@ export const DropdownMultiSelect = ({
                 'flex justify-between items-center h-12 px-3 appearance-none w-full bg-white border rounded focus:outline-none text-left',
                 {
                   'bg-gray-200': disabled,
-                  'border-outline-primary-100 hover:border-fill-primary-900': !disabled,
+                  'border-outline-primary-900 hover:border-fill-primary-900': !disabled,
                 },
                 className
               )}
@@ -110,7 +110,7 @@ export const DropdownMultiSelect = ({
             </button>
             <ul
               {...getMenuProps()}
-              className={cn('border rounded-b border-outline-primary-100', {
+              className={cn('border rounded-b border-outline-primary-900', {
                 hidden: !isOpen,
               })}
             >

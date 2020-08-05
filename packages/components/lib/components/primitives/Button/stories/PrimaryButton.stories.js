@@ -27,13 +27,17 @@ var _default = {
 };
 exports.default = _default;
 
-const withText = () => /*#__PURE__*/_react.default.createElement(_.Button, {
-  type: _.ButtonTypes.Primary,
-  onClick: (0, _addonActions.action)('button action click')
-}, /*#__PURE__*/_react.default.createElement(_Typography.Typography, {
-  tag: "span",
-  type: _Typography.TypographyTypes.Button
-}, "Primary Button"));
+const withText = () => {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "primary-fill-100"
+  }, /*#__PURE__*/_react.default.createElement(_.Button, {
+    type: _.ButtonTypes.Primary,
+    onClick: (0, _addonActions.action)('button action click')
+  }, /*#__PURE__*/_react.default.createElement(_Typography.Typography, {
+    tag: "span",
+    type: _Typography.TypographyTypes.Button
+  }, "Primary Button")));
+};
 
 exports.withText = withText;
 withText.story = {

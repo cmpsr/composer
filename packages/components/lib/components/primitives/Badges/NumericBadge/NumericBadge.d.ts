@@ -2,7 +2,7 @@
 export declare const NUMERIC_BADGE_DEFAULT_TEST_ID = "numericBadge";
 export declare enum BadgeColor {
     Error = "bg-fill-system-error",
-    Primary = "bg-fill-primary-100",
+    Primary = "bg-fill-primary-900",
     Secondary = "bg-fill-secondary-100"
 }
 declare type Props = {

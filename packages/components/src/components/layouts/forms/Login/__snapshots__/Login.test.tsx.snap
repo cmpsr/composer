@@ -58,7 +58,7 @@ exports[`Login should match snapshot 1`] = `
           className="flex items-center"
         >
           <input
-            className="form-checkbox h-4 w-4 fill-primary-100 transition duration-150 ease-in-out"
+            className="form-checkbox h-4 w-4 transition duration-150 ease-in-out"
             id="remember_me"
             onChange={[Function]}
             type="checkbox"
@@ -74,7 +74,7 @@ exports[`Login should match snapshot 1`] = `
           className="text-sm leading-5"
         >
           <a
-            className="flex-grow-0 text-btn font-medium fill-primary-100 focus:outline-none focus:underline transition ease-in-out duration-150"
+            className="flex-grow-0 text-btn font-medium focus:outline-none focus:underline transition ease-in-out duration-150"
             data-testid="link"
           >
             Forgot your password?

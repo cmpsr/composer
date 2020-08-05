@@ -28,7 +28,7 @@ const Login = ({
   remember,
   forgot,
   signIn = {
-    title: "Sign in"
+    title: 'Sign in'
   },
   onSubmit
 }) => {
@@ -52,7 +52,7 @@ const Login = ({
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _classnames.default)("h-screen flex items-center justify-center bg-gray-50 px-4 lg:px-8", className)
+    className: (0, _classnames.default)('h-screen flex items-center justify-center bg-gray-50 px-4 lg:px-8', className)
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "max-w-md w-full"
   }, /*#__PURE__*/_react.default.createElement("div", null, asset && /*#__PURE__*/_react.default.createElement(_primitives.Asset, {
@@ -92,7 +92,7 @@ const Login = ({
   }, remember && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("input", {
     id: "remember_me",
     type: "checkbox",
-    className: "form-checkbox h-4 w-4 fill-primary-100 transition duration-150 ease-in-out",
+    className: "form-checkbox h-4 w-4 transition duration-150 ease-in-out",
     onChange: onChangeRememberMe
   }), /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: "remember_me",
@@ -100,7 +100,7 @@ const Login = ({
   }, remember))), /*#__PURE__*/_react.default.createElement("div", {
     className: "text-sm leading-5"
   }, (forgot === null || forgot === void 0 ? void 0 : forgot.title) && /*#__PURE__*/_react.default.createElement(_Link.Link, {
-    className: "font-medium fill-primary-100 focus:outline-none focus:underline transition ease-in-out duration-150",
+    className: "font-medium focus:outline-none focus:underline transition ease-in-out duration-150",
     url: forgot.url,
     route: forgot.route
   }, forgot.title))), /*#__PURE__*/_react.default.createElement("div", {

@@ -31,8 +31,8 @@ let AvatarBackgroundColor;
 exports.AvatarBackgroundColor = AvatarBackgroundColor;
 
 (function (AvatarBackgroundColor) {
-  AvatarBackgroundColor["Primary100"] = "bg-fill-primary-100";
-  AvatarBackgroundColor["Primary25"] = "bg-fill-primary-25";
+  AvatarBackgroundColor["Primary100"] = "bg-fill-primary-900";
+  AvatarBackgroundColor["Primary25"] = "bg-fill-primary-600";
 })(AvatarBackgroundColor || (exports.AvatarBackgroundColor = AvatarBackgroundColor = {}));
 
 const AvatarText = ({

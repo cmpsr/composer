@@ -25,7 +25,7 @@ exports.MessageBackgroundColor = MessageBackgroundColor;
 (function (MessageBackgroundColor) {
   MessageBackgroundColor["Black10"] = "bg-fill-black-10";
   MessageBackgroundColor["Secondary25"] = "bg-fill-secondary-25";
-  MessageBackgroundColor["Primary25"] = "bg-fill-primary-25";
+  MessageBackgroundColor["Primary25"] = "bg-fill-primary-600";
 })(MessageBackgroundColor || (exports.MessageBackgroundColor = MessageBackgroundColor = {}));
 
 let MessagePlacement;

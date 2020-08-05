@@ -1,5 +1,5 @@
-import React from "react";
-import { Asset as AssetType } from "types";
+import React from 'react';
+import { Asset as AssetType } from 'types';
 declare type Props = {
     className?: string;
     asset?: AssetType;

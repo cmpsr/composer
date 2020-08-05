@@ -20,7 +20,7 @@ exports.BadgeColor = BadgeColor;
 
 (function (BadgeColor) {
   BadgeColor["Error"] = "bg-fill-system-error";
-  BadgeColor["Primary"] = "bg-fill-primary-100";
+  BadgeColor["Primary"] = "bg-fill-primary-900";
   BadgeColor["Secondary"] = "bg-fill-secondary-100";
 })(BadgeColor || (exports.BadgeColor = BadgeColor = {}));
 

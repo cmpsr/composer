@@ -58,11 +58,11 @@ const TextFieldIcon = ({
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "relative"
   }, /*#__PURE__*/_react.default.createElement("input", {
-    className: (0, _classnames.default)(className, 'appearance-none rounded-md relative block w-full p-3 border placeholder-primary-fill-75 text-gray-900 focus:outline-none focus:border-fill-primary-100 focus:z-10 sm:text-sm sm:leading-5', {
+    className: (0, _classnames.default)(className, 'appearance-none rounded-md relative block w-full p-3 border placeholder-primary-fill-75 text-gray-900 focus:outline-none focus:border-fill-primary-900 focus:z-10 sm:text-sm sm:leading-5', {
       'pl-10': iconPosition === 'left'
     }, {
       'bg-gray-200': disabled,
-      'border-outline-primary-100': !disabled
+      'border-outline-primary-900': !disabled
     }),
     "aria-label": ariaLabel,
     name: name,

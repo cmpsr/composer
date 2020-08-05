@@ -5,7 +5,7 @@ export declare enum CircularSize {
     Large = "large"
 }
 export declare enum CircularColor {
-    Primary = "stroke-fill-primary-100",
+    Primary = "stroke-fill-primary-900",
     White = "white"
 }
 declare type Props = {

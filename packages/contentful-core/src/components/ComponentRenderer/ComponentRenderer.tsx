@@ -4,6 +4,7 @@ import { renderFromContentfulModel } from 'renderers';
 import { isCollectionShape } from 'utils';
 
 type Props = {
+  className?: string;
   componentMap?: any;
   data?: any;
   index?: number;
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export const ComponentRenderer = ({
+  className = '',
   componentMap: componentMapOverrides,
   data,
   index,
@@ -29,7 +31,7 @@ export const ComponentRenderer = ({
     return data.map((item, index) =>
       renderFromContentfulModel(
         { componentMap },
-        { ...item, ...rest },
+        { ...item, ...rest, className },
         index,
         parentId
       )
@@ -41,7 +43,7 @@ export const ComponentRenderer = ({
     return data[collectionKey].items.map((item, index) =>
       renderFromContentfulModel(
         { componentMap },
-        { ...item, ...rest },
+        { ...item, ...rest, className },
         index,
         parentId
       )
@@ -50,7 +52,7 @@ export const ComponentRenderer = ({
 
   return renderFromContentfulModel(
     { componentMap },
-    { ...data, ...rest },
+    { ...data, ...rest, className },
     index,
     parentId
   );

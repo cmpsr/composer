@@ -7,7 +7,7 @@ import { TypographyTypes } from '../../components/primitives/Typography';
 
 describe('getAvatarTextClasses', () => {
   const baseHighlight =
-    'flex items-center justify-center rounded-full border-2 border-solid border-fill-secondary-75';
+    'flex items-center justify-center rounded-full border-2 border-solid border-fill-secondary-800';
   const baseAvatar = `flex items-center justify-center rounded-full`;
 
   it('should return a string of classnames for large size', () => {

@@ -9,7 +9,7 @@ export const getAvatarTextClasses = (
   backgroundColor: AvatarBackgroundColor
 ) => {
   let highlightClasses =
-    'flex items-center justify-center rounded-full border-2 border-solid border-fill-secondary-75';
+    'flex items-center justify-center rounded-full border-2 border-solid border-fill-secondary-800';
   const avatarClasses = `flex items-center justify-center rounded-full ${size} ${backgroundColor}`;
   const textClasses = 'overflow-hidden truncate p-0.15';
 

@@ -1,5 +1,12 @@
 # @cmpsr/contentful-core
 
+## 0.1.6
+
+### Patch Changes
+
+- e975e7c: Adds missing rest to renderFromContentfulModel
+- 8afda7c: Adds className to ComponentRenderer components
+
 ## 0.1.5
 
 ### Patch Changes

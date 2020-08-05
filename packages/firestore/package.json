@@ -1,25 +1,36 @@
 {
   "name": "@cmpsr/firestore",
-  "repository": {
-    "url": "ssh://git@github.com:cmpsr/composer.git"
+  "version": "0.0.17",
+  "license": "MIT",
+  "author": "Steve Cox <stevejcox@me.com>",
+  "repository": "cmpsr/composer",
+  "homepage": "https://github.com/cmpsr/composer/packages/firestore#readme",
+  "bugs": {
+    "url": "https://github.com/cmpsr/composer/issues"
   },
+  "main": "index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [],
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.0.17",
-  "author": "Steve Cox <stevejcox@me.com>",
-  "license": "MIT",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
   "scripts": {
-    "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
+    "clean": "rimraf dist",
+    "prebuild": "yarn clean",
+    "build": "node ../../scripts/build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "@google-cloud/firestore": "^3.7.4",
+    "@google-cloud/firestore": "^3.7.4"
+  },
+  "devDependencies": {
     "rimraf": "^3.0.2"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"

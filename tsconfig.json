@@ -1,8 +1,13 @@
 {
-  "exclude": ["node_modules"],
+  "extends": "./tsconfig.build.json",
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@cmpsr/*": [
+        "./packages/*/src"
+      ]
+    },
     "jsx": "react",
-    "esModuleInterop": true,
     "skipLibCheck": true
   }
 }

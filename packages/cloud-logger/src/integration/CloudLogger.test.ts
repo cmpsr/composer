@@ -30,6 +30,10 @@ describe('CloudLogger', () => {
     logName: 'log_name',
   };
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should instantiate google cloud logging', () => {
     const cloudLogging = require('@google-cloud/logging');
     new CloudLogger(config);

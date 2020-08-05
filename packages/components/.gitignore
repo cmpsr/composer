@@ -4,5 +4,11 @@ node_modules
 # Local env files
 .env
 
+# Compiled library files
+dist
+
+# Storybook files
 storybook-static
+
+# Logs
 yarn-error.log*

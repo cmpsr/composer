@@ -1,9 +1,0 @@
-fragment Section on Section {
-  sys {
-    id
-  }
-  title
-  subtitle
-  style
-  type
-}

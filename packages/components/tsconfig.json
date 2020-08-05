@@ -1,14 +1,22 @@
 {
-  "exclude": ["node_modules", "lib", "**/*.stories.*", "**/*.test*"],
-  "include": ["src"],
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "lib",
+    "outDir": "./dist/lib",
     "rootDir": "src",
-    "declaration": true,
     "baseUrl": "src",
     "paths": {
-      "components/containers": ["./components/containers"]
+      "components": [
+        "./components"
+      ],
+      "styles": [
+        "./styles"
+      ],
+      "type": [
+        "./types"
+      ],
+      "utils": [
+        "./utils"
+      ]
     }
   }
 }

@@ -1,23 +1,12 @@
 {
+  "extends": "../../babel.config.js",
   "plugins": [
-    "@babel/plugin-proposal-object-rest-spread",
     [
       "module-resolver",
       {
         "alias": {
+          "link": "./src/link",
           "types": "./src/types"
-        }
-      }
-    ]
-  ],
-  "presets": [
-    "@babel/preset-typescript",
-    "@babel/preset-react",
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "node": "current"
         }
       }
     ]

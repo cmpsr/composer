@@ -152,6 +152,10 @@ describe('TwilioConversation', () => {
       twilio.mockReset();
     });
 
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
     describe('getConversation', () => {
       test('should return conversation', async () => {
         const twilioConversation = new TwilioConversation(config);

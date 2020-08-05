@@ -1,7 +1,0 @@
-#import "../fragments/Group.graphql"
-
-query GroupByIdQuery($id: String!) {
-  group(id: $id) {
-    ...Group
-  }
-}

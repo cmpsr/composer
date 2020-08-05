@@ -1,0 +1,6 @@
+# Src directory
+src
+
+# Configs
+jest.config.js
+tsconfig.json

@@ -4,11 +4,11 @@ import { DEFAULT } from "constants/index";
 
 import renderFromComponentMap from "utils/renderFromComponentMap";
 
-import { Section as DSMSection } from "@cmpsr/components/lib/components/layouts";
+import { Section as DSMSection } from "@cmpsr/components/components/layouts";
 import {
   Typography,
   TypographyTypes,
-} from "@cmpsr/components/lib/components/primitives";
+} from "@cmpsr/components/components/primitives";
 
 import { SectionProps } from "./types";
 import { getChildren } from "./getChildren";

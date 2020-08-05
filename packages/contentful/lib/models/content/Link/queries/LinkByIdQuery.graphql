@@ -1,7 +1,0 @@
-#import "../fragments/Link.graphql"
-
-query LinkByIdQuery($id: String!) {
-  link(id: $id) {
-    ...Link
-  }
-}

@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 
 import { DEFAULT } from "constants/index";
-import { Grid as GridDSM } from "@cmpsr/components/lib/components/layouts";
+import { Grid as GridDSM } from "@cmpsr/components/components/layouts";
 
 import renderFromComponentMap from "utils/renderFromComponentMap";
 

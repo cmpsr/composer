@@ -1,7 +1,0 @@
-#import "../fragments/Feature.graphql"
-
-query FeatureByIdQuery($id: String!) {
-  feature(id: $id) {
-    ...Feature
-  }
-}

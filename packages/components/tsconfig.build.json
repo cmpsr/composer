@@ -1,0 +1,27 @@
+{
+  "extends": "../../tsconfig.build.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "outDir": "./dist/lib",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "baseUrl": "./src/",
+    "paths": {
+      "components": [
+        "./src/components"
+      ],
+      "styles": [
+        "./src/styles"
+      ],
+      "types": [
+        "./src/types"
+      ],
+      "utils": [
+        "./src/utils"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

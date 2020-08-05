@@ -1,5 +1,4 @@
+export * from './integrations';
 export * from './AnalyticsContext';
 export * from './AnalyticsProvider';
 export * from './useAnalytics';
-export * from './types';
-export * from './integrations/types';

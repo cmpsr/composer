@@ -6,7 +6,7 @@ import {
   Asset,
   Typography,
   TypographyTypes,
-} from '@cmpsr/components/lib/components/primitives';
+} from '@cmpsr/components/components/primitives';
 import renderFromComponentMap from 'utils/renderFromComponentMap';
 
 import { LinkProps } from './types';

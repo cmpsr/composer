@@ -1,0 +1,6 @@
+# Src directory
+src
+
+# Typescript config
+tsconfig.json
+tsconfig.build.json

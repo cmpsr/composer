@@ -10,7 +10,7 @@ import {
   Hero6,
   Hero7,
   Hero8,
-} from "@cmpsr/components/lib/components/layouts";
+} from "@cmpsr/components/components/layouts";
 
 import { ContentfulContext } from "context";
 import renderFromComponentMap from "utils/renderFromComponentMap";

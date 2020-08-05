@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState, KeyboardEvent, useEffect } from 'react';
 import cn from 'classnames';
-import { useTwilioChat } from 'client/chat/useTwilioChat';
-import { useState, KeyboardEvent, useEffect } from 'react';
+import { useTwilioChat } from '../../useTwilioChat';
 import { ChatMessage } from '../ChatMessage';
 
 type Props = {

@@ -6,7 +6,7 @@ import {
   Footer2,
   Footer3,
   Footer4,
-} from "@cmpsr/components/lib/components/layouts";
+} from "@cmpsr/components/components/layouts";
 
 import { ContentfulContext } from "context";
 import renderFromComponentMap from "utils/renderFromComponentMap";

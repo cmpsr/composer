@@ -10,7 +10,7 @@ import {
   Navigation6,
   Navigation7,
   Navigation8,
-} from "@cmpsr/components/lib/components/layouts";
+} from "@cmpsr/components/components/layouts";
 
 import { ContentfulContext } from "context";
 import renderFromComponentMap from "utils/renderFromComponentMap";

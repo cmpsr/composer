@@ -1,25 +1,37 @@
 {
   "name": "@cmpsr/cloud-kms",
-  "repository": {
-    "url": "ssh://git@github.com:cmpsr/composer.git"
+  "version": "0.0.19",
+  "license": "MIT",
+  "description": "",
+  "author": "Steve Cox <stevejcox@me.com>",
+  "repository": "cmpsr/composer",
+  "homepage": "https://github.com/cmpsr/composer/packages/cloud-ksm#readme",
+  "bugs": {
+    "url": "https://github.com/cmpsr/composer/issues"
   },
+  "main": "index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [],
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.0.19",
-  "author": "Steve Cox <stevejcox@me.com>",
-  "license": "MIT",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
   "scripts": {
-    "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
+    "clean": "rimraf dist",
+    "prebuild": "yarn clean",
+    "build": "node ../../scripts/build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "@google-cloud/kms": "^2.0.0",
+    "@google-cloud/kms": "^2.0.0"
+  },
+  "devDependencies": {
     "rimraf": "^3.0.2"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"

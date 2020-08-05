@@ -1,1 +1,0 @@
-{"version":3,"file":"Paragraph.d.ts","sourceRoot":"","sources":["../../../../../src/components/primitives/BodyCopy/renderers/Paragraph.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,EAAE,YAAY,EAAE,MAAM,OAAO,CAAC;AAI5C,OAAO,EAAE,aAAa,EAAE,MAAM,OAAO,CAAC;AAGtC,eAAO,MAAM,SAAS,EAAE,CACtB,KAAK,EAAE,aAAa,KACjB,KAAK,CAAC,EAAE,CAAC;IAAE,QAAQ,EAAE,YAAY,EAAE,CAAA;CAAE,CAczC,CAAC"}

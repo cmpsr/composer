@@ -22,6 +22,10 @@ describe('LinkShortener', () => {
     return Promise.resolve(response);
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should call api to shorten link', async () => {
     await shortener.short(link);
     expect(mockFetch).toBeCalledTimes(1);

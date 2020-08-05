@@ -8,7 +8,7 @@ type Props = {
   identity: string;
 };
 
-export const ChatWindow = ({ className, identity }: Props) => {
+const ChatWindow = ({ className, identity }: Props) => {
   const { channel, messages } = useTwilioChat(identity);
   const [message, setMessage] = useState<string>('');
 
@@ -71,3 +71,5 @@ export const ChatWindow = ({ className, identity }: Props) => {
     </div>
   );
 };
+
+export default ChatWindow;

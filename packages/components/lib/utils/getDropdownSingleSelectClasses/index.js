@@ -13,7 +13,7 @@ const getDropdownSingleSelectClasses = (disabled = false, invalid = false, itemS
     selectTextClasses: `${itemSelected ? 'text-dark-100' : 'text-outline-forms-filled'}`,
     selectDisabledClasses: disabled ? 'bg-fill-forms-disabled border-outline-forms-disabled !text-outline-forms-filled' : 'border-outline-forms-filled hover:border-states-contained-enabled',
     iconWrapper: 'pointer-events-none absolute inset-y-0 flex items-center z-10 right-0 pr-3',
-    icon: 'fill-current text-fill-black-50',
+    icon: 'fill-current text-fill-black-300',
     selectListClasses: 'border rounded-b border-outline-primary-900',
     itemListClasses: 'p-3 hover:bg-gray-100'
   };

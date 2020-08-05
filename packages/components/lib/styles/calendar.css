@@ -117,7 +117,7 @@
 }
 
 .DayPicker-WeekNumber {
-  @apply text-sm cursor-pointer text-right text-fill-black-100 p-2;
+  @apply text-sm cursor-pointer text-right text-fill-black-500 p-2;
   display: table-cell;
   min-width: 1em;
   border-right: 1px solid #eaecec;
@@ -168,7 +168,7 @@
 }
 
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):not(.DayPicker-Day--start):not(.DayPicker-Day--end) {
-  @apply bg-fill-black-25;
+  @apply bg-fill-black-200;
 }
 
 .singleCalendar
@@ -213,7 +213,7 @@
 }
 
 .rangeCalendar .DayPicker-Day--start::after {
-  @apply bg-fill-black-25;
+  @apply bg-fill-black-200;
   content: "";
   height: 40px;
   width: 14px;
@@ -224,7 +224,7 @@
 }
 
 .rangeCalendar .DayPicker-Day--end::before {
-  @apply bg-fill-black-25;
+  @apply bg-fill-black-200;
   content: "";
   height: 40px;
   width: 13px;

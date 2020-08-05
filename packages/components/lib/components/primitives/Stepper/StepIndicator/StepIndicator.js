@@ -45,7 +45,7 @@ const Indicators = ({
       key: index
     }, /*#__PURE__*/_react.default.createElement("hr", {
       className: (0, _classnames.default)('border-b-4 border-t-2 rounded w-10', {
-        'border-fill-black-25': index > activeStep
+        'border-fill-black-200': index > activeStep
       }, {
         'border-fill-primary-900': index <= activeStep
       })

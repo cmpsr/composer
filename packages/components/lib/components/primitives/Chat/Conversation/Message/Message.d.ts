@@ -2,8 +2,8 @@
 export declare const MESSAGE_DEFAULT_TEST_ID = "message";
 export declare const WRAPPER_MESSAGE_DEFAULT_TEST_ID = "wrapperMessage";
 export declare enum MessageBackgroundColor {
-    Black10 = "bg-fill-black-10",
-    Secondary25 = "bg-fill-secondary-25",
+    Black10 = "bg-fill-black-100",
+    Secondary25 = "bg-fill-secondary-600",
     Primary25 = "bg-fill-primary-600"
 }
 export declare enum MessagePlacement {

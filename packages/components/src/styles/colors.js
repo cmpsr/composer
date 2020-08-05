@@ -18,7 +18,6 @@ module.exports = {
   'outline-primary-300': '#979797',
   'outline-primary-200': '#979797',
   'outline-primary-100': '#979797',
-
   // Secondary
   'fill-secondary-900': '#d8d8d8',
   'fill-secondary-800': '#d8d8d8',

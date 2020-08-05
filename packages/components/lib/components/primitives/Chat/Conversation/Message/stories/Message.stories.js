@@ -44,13 +44,13 @@ withRight.story = {
 const withColors = () => /*#__PURE__*/_react.default.createElement("div", {
   className: "p-10"
 }, /*#__PURE__*/_react.default.createElement(_.Message, {
-  backgroundColor: _.MessageBackgroundColor.Primary25,
+  backgroundColor: _.MessageBackgroundColor.Primary600,
   text: "I'm a primary 25 color"
 }), /*#__PURE__*/_react.default.createElement(_.Message, {
-  backgroundColor: _.MessageBackgroundColor.Secondary25,
+  backgroundColor: _.MessageBackgroundColor.Secondary600,
   text: "I'm a secondary 25 color"
 }), /*#__PURE__*/_react.default.createElement(_.Message, {
-  backgroundColor: _.MessageBackgroundColor.Black10,
+  backgroundColor: _.MessageBackgroundColor.Black100,
   text: "I'm a black 10 color"
 }));
 
@@ -80,7 +80,7 @@ const withMultipleMessages = () => /*#__PURE__*/_react.default.createElement("di
   text: "We should talk about this deal :)"
 }), /*#__PURE__*/_react.default.createElement(_.Message, {
   time: "02:37 PM",
-  backgroundColor: _.MessageBackgroundColor.Secondary25,
+  backgroundColor: _.MessageBackgroundColor.Secondary600,
   placement: _.MessagePlacement.Left,
   text: "Absolutely! I'm really interested."
 }), /*#__PURE__*/_react.default.createElement(_.Message, {

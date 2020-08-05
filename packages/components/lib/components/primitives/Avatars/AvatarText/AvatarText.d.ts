@@ -7,8 +7,8 @@ export declare enum AvatarSize {
     Large = "w-3.5 h-3.5"
 }
 export declare enum AvatarBackgroundColor {
-    Primary100 = "bg-fill-primary-900",
-    Primary25 = "bg-fill-primary-600"
+    Primary900 = "bg-fill-primary-900",
+    Primary600 = "bg-fill-primary-600"
 }
 declare type Props = {
     text: string;

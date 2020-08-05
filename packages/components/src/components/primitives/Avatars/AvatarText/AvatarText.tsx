@@ -16,8 +16,8 @@ export enum AvatarSize {
 }
 
 export enum AvatarBackgroundColor {
-  Primary100 = 'bg-fill-primary-900',
-  Primary25 = 'bg-fill-primary-600',
+  Primary900 = 'bg-fill-primary-900',
+  Primary600 = 'bg-fill-primary-600',
 }
 
 type Props = {
@@ -36,7 +36,7 @@ export const AvatarText = ({
   highlightClassName,
   testId = AVATAR_TEXT_DEFAULT_TEST_ID,
   size = AvatarSize.Large,
-  backgroundColor = AvatarBackgroundColor.Primary100,
+  backgroundColor = AvatarBackgroundColor.Primary900,
   isHighlighted,
 }: Props) => {
   const { highlightClasses, avatarClasses, textClasses } = getAvatarTextClasses(

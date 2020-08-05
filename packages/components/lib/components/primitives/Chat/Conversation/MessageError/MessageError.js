@@ -48,7 +48,7 @@ const MessageError = ({
   }, /*#__PURE__*/_react.default.createElement(_Message.Message, {
     text: text,
     className: (0, _classnames.default)(message),
-    backgroundColor: _Message.MessageBackgroundColor.Black10,
+    backgroundColor: _Message.MessageBackgroundColor.Black100,
     placement: placement
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: iconWrapper,

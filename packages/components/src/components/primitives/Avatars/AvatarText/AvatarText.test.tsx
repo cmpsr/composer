@@ -53,18 +53,21 @@ describe('AvatarText', () => {
     render(
       <AvatarText
         text="ok"
-        backgroundColor={AvatarBackgroundColor.Primary100}
+        backgroundColor={AvatarBackgroundColor.Primary900}
       />
     );
     const avatar = screen.getByTestId(AVATAR_TEXT_DEFAULT_TEST_ID);
-    expect(avatar).toHaveClass(AvatarBackgroundColor.Primary100);
+    expect(avatar).toHaveClass(AvatarBackgroundColor.Primary900);
   });
   it('should render primary background-25 color', () => {
     render(
-      <AvatarText text="ok" backgroundColor={AvatarBackgroundColor.Primary25} />
+      <AvatarText
+        text="ok"
+        backgroundColor={AvatarBackgroundColor.Primary600}
+      />
     );
     const avatar = screen.getByTestId(AVATAR_TEXT_DEFAULT_TEST_ID);
-    expect(avatar).toHaveClass(AvatarBackgroundColor.Primary25);
+    expect(avatar).toHaveClass(AvatarBackgroundColor.Primary600);
   });
   it('should render highlight', () => {
     render(<AvatarText text="ok" isHighlighted />);

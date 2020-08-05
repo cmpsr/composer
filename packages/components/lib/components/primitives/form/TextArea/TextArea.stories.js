@@ -41,7 +41,6 @@ const withError = () => /*#__PURE__*/_react.default.createElement("div", {
 }, /*#__PURE__*/_react.default.createElement(_.TextArea, {
   name: "default",
   placeholder: "Placeholder",
-  className: "border-red-600",
   isInvalid: true
 }), /*#__PURE__*/_react.default.createElement(_ErrorField.ErrorField, {
   error: "Error"

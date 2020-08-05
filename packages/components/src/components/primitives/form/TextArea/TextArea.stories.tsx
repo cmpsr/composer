@@ -25,12 +25,7 @@ basic.story = {
 
 export const withError = () => (
   <div className="flex flex-col">
-    <TextArea
-      name="default"
-      placeholder="Placeholder"
-      className="border-red-600"
-      isInvalid
-    />
+    <TextArea name="default" placeholder="Placeholder" isInvalid />
     <ErrorField error="Error" />
   </div>
 );

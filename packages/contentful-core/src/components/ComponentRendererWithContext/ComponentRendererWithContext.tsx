@@ -3,6 +3,7 @@ import { ContentfulProvider } from '../../context';
 import { ComponentRendererWithQuery } from '../ComponentRendererWithQuery';
 
 export type ChildProps = {
+  className?: string;
   componentMap: any;
   queryMap: any;
   type: string;
@@ -10,12 +11,17 @@ export type ChildProps = {
 };
 
 export const ComponentRendererWithContext = ({
+  className,
   variables,
   componentMap,
   queryMap,
-  type,
+  type
 }: ChildProps): ReactElement | null => (
   <ContentfulProvider componentMap={componentMap} queryMap={queryMap}>
-    <ComponentRendererWithQuery type={type} variables={variables} />
+    <ComponentRendererWithQuery
+      className={className}
+      type={type}
+      variables={variables}
+    />
   </ContentfulProvider>
 );

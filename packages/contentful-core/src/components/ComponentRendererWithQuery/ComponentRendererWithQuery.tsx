@@ -4,6 +4,7 @@ import { ContentfulContext } from '../../context';
 import { ComponentRenderer } from '../ComponentRenderer';
 
 export type ChildProps = {
+  className?: string;
   componentMap?: any;
   queryMap?: any;
   type: string;
@@ -11,19 +12,20 @@ export type ChildProps = {
 };
 
 export const ComponentRendererWithQuery = ({
+  className,
   componentMap: componentMapOverride,
   queryMap: queryMapOverride,
   type,
-  variables,
+  variables
 }: ChildProps): ReactElement | null => {
   const {
     componentMap: componentMapDefault,
-    queryMap: queryMapDefault,
+    queryMap: queryMapDefault
   } = useContext(ContentfulContext);
 
   const query = (queryMapOverride || queryMapDefault)[type]();
   const { data } = useQuery(query, {
-    variables,
+    variables
   });
   if (!data) return null;
 
@@ -34,6 +36,7 @@ export const ComponentRendererWithQuery = ({
     key.indexOf('Collection') >= 0 ? data[key].items[0] : data[key];
   return (
     <ComponentRenderer
+      className={className}
       data={dataToParse}
       componentMap={componentMapOverride || componentMapDefault}
     />

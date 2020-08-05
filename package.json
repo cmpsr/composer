@@ -10,7 +10,7 @@
     "build-storybook": "lerna run build --stream --scope=@cmpsr/components && lerna run build-storybook --stream",
     "test": "lerna run test --stream --ignore=@cmpsr/{components,contentful}",
     "test:watch": "lerna run --parallel test:watch --stream",
-    "test:coverage": "lerna run --parallel test:coverage --stream",
+    "test:coverage": "lerna run --parallel test:coverage --stream --ignore=@cmpsr/{components,contentful}",
     "lint": "eslint . --ext .tsx,.ts,.js",
     "lint-and-fix": "eslint . --ext .tsx,.ts,.js --fix",
     "publish-ci": "lerna run build --stream --ignore=@cmpsr/{components,contentful} && lerna publish from-package -y --no-verify-access",

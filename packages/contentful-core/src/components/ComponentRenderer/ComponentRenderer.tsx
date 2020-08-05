@@ -48,5 +48,10 @@ export const ComponentRenderer = ({
     );
   }
 
-  return renderFromContentfulModel({ componentMap }, data, index, parentId);
+  return renderFromContentfulModel(
+    { componentMap },
+    { ...data, ...rest },
+    index,
+    parentId
+  );
 };

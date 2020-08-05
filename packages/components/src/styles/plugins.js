@@ -1,14 +1,24 @@
 const plugin = require('tailwindcss/plugin');
+const pseudoElements = require('./pseudoElements');
 
 module.exports = [
-  plugin(function ({ addVariant }) {
+  plugin(function({ addVariant, e }) {
     addVariant('important', ({ container }) => {
-      container.walkRules((rule) => {
+      container.walkRules(rule => {
         rule.selector = `.\\!${rule.selector.slice(1)}`;
-        rule.walkDecls((decl) => {
+        rule.walkDecls(decl => {
           decl.important = true;
         });
       });
     });
-  }),
+
+    const escape = e || (x => x);
+    pseudoElements.forEach(pseudo => {
+      addVariant(pseudo, ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.${escape(`${pseudo}${separator}${className}`)}::${pseudo}`;
+        });
+      });
+    });
+  })
 ];

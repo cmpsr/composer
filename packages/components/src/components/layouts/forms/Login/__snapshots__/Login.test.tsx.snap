@@ -28,7 +28,7 @@ exports[`Login should match snapshot 1`] = `
         <div>
           <input
             aria-label="Name"
-            className="form-input border-outline-forms-filled focus:outline-none placeholder-outline-forms-filled focus:border-outline-forms-focus rounded-input-semi-rounded"
+            className="form-input border-outline-form-filled focus:outline-none placeholder-outline-form-filled focus:border-outline-form-focus rounded-input-semi-rounded"
             disabled={false}
             name="name"
             onChange={[Function]}
@@ -42,7 +42,7 @@ exports[`Login should match snapshot 1`] = `
         >
           <input
             aria-label="Password"
-            className="form-input border-outline-forms-filled focus:outline-none placeholder-outline-forms-filled focus:border-outline-forms-focus rounded-input-semi-rounded"
+            className="form-input border-outline-form-filled focus:outline-none placeholder-outline-form-filled focus:border-outline-form-focus rounded-input-semi-rounded"
             disabled={false}
             name="password"
             onChange={[Function]}
@@ -85,7 +85,7 @@ exports[`Login should match snapshot 1`] = `
         className="mt-6"
       >
         <button
-          className="w-full relative flex focus:outline-none primary-btn disabled:bg-states-contained-disabled disabled:pointer-events-none active:bg-states-contained-pressed hover:bg-states-contained-hover"
+          className="w-full relative flex focus:outline-none primary-btn disabled:bg-state-primary-disabled disabled:pointer-events-none active:bg-state-primary-pressed hover:bg-state-primary-hover"
           data-testid="button"
           type="submit"
         >

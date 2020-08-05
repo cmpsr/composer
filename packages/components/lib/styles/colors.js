@@ -134,19 +134,29 @@ module.exports = {
   },
   // Overlay
   'fill-overlay': 'rgba(0, 0, 0, 0.4)',
-  // Elevation & States
-  'states-contained': {
+  // States - Primary
+  'state-primary': {
     enabled: '#414141',
     hover: '#191919',
     pressed: '#000000',
     disabled: '#D5D5D5',
   },
-  'states-outlined': {
-    hover: '#E5E5E5',
-    pressed: '#D0D0D0',
-    disabled: '#E7E7E7',
+  // States - Secondary
+  'fill-state-secondary': {
+    enabled: '#ffffff',
+    hover: '#efefef',
+    pressed: '#c3c3c3',
+    disabled: '#d5d5d5',
   },
-  'states-general': {
+  'outline-state-secondary': {
+    enabled: '#414141',
+    hover: '#191919',
+    pressed: '#000000',
+    disabled: '#d5d5d5',
+  },
+  // States - UI
+  'state-ui': {
+    enabled: '#ffffff',
     hover: '#EFEFEF',
     pressed: '#C3C3C3',
     disabled: '#D5D5D5',

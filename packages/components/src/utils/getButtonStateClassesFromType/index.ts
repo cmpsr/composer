@@ -3,17 +3,17 @@ import { ButtonTypes } from 'components/primitives/Button';
 export const getButtonStateClassesFromType = (type: ButtonTypes) => {
   if (type === ButtonTypes.Primary) {
     return (
-      'disabled:bg-states-contained-disabled ' +
+      'disabled:bg-state-primary-disabled ' +
       'disabled:pointer-events-none ' +
-      'active:bg-states-contained-pressed ' +
-      'hover:bg-states-contained-hover'
+      'active:bg-state-primary-pressed ' +
+      'hover:bg-state-primary-hover'
     );
   } else if (type === ButtonTypes.Secondary) {
     return (
-      'disabled:bg-states-outlined-disabled ' +
+      'disabled:bg-fill-state-secondary-disabled ' +
       'disabled:pointer-events-none ' +
-      'active:bg-states-outlined-pressed ' +
-      'hover:bg-states-outlined-hover'
+      'active:bg-fill-state-secondary-pressed ' +
+      'hover:bg-fill-state-secondary-hover'
     );
   }
 };

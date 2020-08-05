@@ -44,8 +44,8 @@ export const CurrencyField = forwardRef<HTMLInputElement, Props>(
         <input
           className={cn(
             'appearance-none rounded-r-md relative block w-full p-3 border placeholder-primary-fill-75 text-dark-100 focus:outline-none focus:border-fill-primary-900 focus:z-10 sm:text-sm sm:leading-5',
-            { 'disabled:bg-fill-forms-disabled': disabled },
-            { 'border-outline-forms-filled': !disabled },
+            { 'disabled:bg-fill-form-disabled': disabled },
+            { 'border-outline-form-filled': !disabled },
             { 'border-fill-system-error': invalid },
             className
           )}

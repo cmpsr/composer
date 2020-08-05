@@ -6,15 +6,15 @@ export const getDropdownSingleSelectClasses = (
   return {
     selectWrapper: 'relative',
     buttonClasses: 'flex items-center justify-between',
-    selectClasses: `appearance-none px-3 h-12 w-full bg-fill-forms-enabled border rounded text-left ${
-      invalid ? 'border-fill-system-error' : 'focus:border-outline-forms-focus'
+    selectClasses: `appearance-none px-3 h-12 w-full bg-fill-form-enabled border rounded text-left ${
+      invalid ? 'border-fill-system-error' : 'focus:border-outline-form-focus'
     } focus:outline-none text-form`,
     selectTextClasses: `${
-      itemSelected ? 'text-dark-100' : 'text-outline-forms-filled'
+      itemSelected ? 'text-dark-100' : 'text-outline-form-filled'
     }`,
     selectDisabledClasses: disabled
-      ? 'bg-fill-forms-disabled border-outline-forms-disabled !text-outline-forms-filled'
-      : 'border-outline-forms-filled hover:border-states-contained-enabled',
+      ? 'bg-fill-form-disabled border-outline-form-disabled !text-outline-form-filled'
+      : 'border-outline-form-filled hover:border-state-primary-enabled',
     iconWrapper:
       'pointer-events-none absolute inset-y-0 flex items-center z-10 right-0 pr-3',
     icon: 'fill-current text-fill-black-300',

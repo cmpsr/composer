@@ -5,17 +5,17 @@ export const getTextFieldStateClasses = (
   if (disabled) {
     return (
       'disabled:placeholder-dark-50 ' +
-      'disabled:bg-fill-forms-disabled ' +
-      'disabled:border-outline-forms-disabled '
+      'disabled:bg-fill-form-disabled ' +
+      'disabled:border-outline-form-disabled '
     );
   }
 
   return (
-    'border-outline-forms-filled ' +
+    'border-outline-form-filled ' +
     'focus:outline-none ' +
-    'placeholder-outline-forms-filled ' +
+    'placeholder-outline-form-filled ' +
     `${
-      invalid ? 'border-fill-system-error' : 'focus:border-outline-forms-focus'
+      invalid ? 'border-fill-system-error' : 'focus:border-outline-form-focus'
     }`
   );
 };

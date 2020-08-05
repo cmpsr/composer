@@ -54,7 +54,7 @@ describe('getAvatarTextClasses', () => {
       AvatarSize.Small,
       AvatarBackgroundColor.Primary25
     );
-    expect(avatarClasses).toContain(`bg-fill-primary-25`);
+    expect(avatarClasses).toContain('bg-fill-primary-600');
   });
 });
 

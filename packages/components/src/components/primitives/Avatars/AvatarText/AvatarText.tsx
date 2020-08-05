@@ -17,7 +17,7 @@ export enum AvatarSize {
 
 export enum AvatarBackgroundColor {
   Primary100 = 'bg-fill-primary-900',
-  Primary25 = 'bg-fill-primary-25',
+  Primary25 = 'bg-fill-primary-600',
 }
 
 type Props = {

@@ -20,5 +20,8 @@ module.exports = {
     'hover',
     'focus',
     'active',
+    'before',
+    'after',
   ],
+  borderWidth: ['responsive', 'hover', 'focus', 'before', 'after'],
 };

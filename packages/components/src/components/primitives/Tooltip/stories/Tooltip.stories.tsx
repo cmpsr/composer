@@ -15,8 +15,8 @@ enum idOptions {
 }
 
 enum colorOptions {
-  red = 'red',
-  gray = 'gray',
+  Primary900 = 'bg-fill-primary-900',
+  Primary100 = 'bg-fill-primary-100',
 }
 
 export const base = () => (
@@ -29,7 +29,7 @@ export const base = () => (
       backgroundColor={select(
         'backgroundColor',
         colorOptions,
-        colorOptions.gray
+        colorOptions.Primary900
       )}
     />
   </div>

@@ -15,7 +15,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
 exports.TOOLTIP_DEFAULT_TEST_ID = TOOLTIP_DEFAULT_TEST_ID;
-const defaultColor = _colors.default['fill-primary'][900];
+const defaultColor = _colors.default['fill-primary-900'];
 let TooltipPlace;
 exports.TooltipPlace = TooltipPlace;
 

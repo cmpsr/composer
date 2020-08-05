@@ -4,7 +4,7 @@ import colors from '../../../../lib/styles/colors.js';
 
 export const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
 
-const defaultColor = colors['fill-primary'][900];
+const defaultColor = colors['fill-primary-900'];
 
 export enum TooltipPlace {
   Left = 'left',

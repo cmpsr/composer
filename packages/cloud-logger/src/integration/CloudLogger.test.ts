@@ -30,6 +30,10 @@ describe('CloudLogger', () => {
     logName: 'log_name',
   };
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should instantiate google cloud logging', () => {
     const cloudLogging = require('@google-cloud/logging');
     new CloudLogger(config);
@@ -55,7 +59,7 @@ describe('CloudLogger', () => {
     it('should write entry', async () => {
       const logger = new CloudLogger(config);
       await logger.log(message, severity);
-      expect(mockWrite).toBeCalledTimes(2);
+      expect(mockWrite).toBeCalledTimes(1);
       expect(mockWrite).toBeCalledWith(fakeEntry);
     });
   });

@@ -103,6 +103,6 @@ describe('showSnackbar', () => {
     await screen.findByText('message');
     const snackbarBackground = screen.getByTestId(SHOW_SNACKBAR_DEFAULT_TEST_ID)
       .parentElement.parentElement;
-    expect(snackbarBackground).toHaveClass('!bg-fill-black-75');
+    expect(snackbarBackground).toHaveClass('!bg-fill-black-400');
   });
 });

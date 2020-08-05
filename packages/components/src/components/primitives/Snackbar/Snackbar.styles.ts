@@ -14,7 +14,7 @@ export const getStyle = (isTextRightPosition: boolean, type: SnackbarType) => ({
 const snackbarTypeStyle = (type: SnackbarType) => {
   switch (type) {
     case SnackbarType.Default:
-      return '!bg-fill-black-75';
+      return '!bg-fill-black-400';
     case SnackbarType.Success:
       return '!bg-fill-system-success';
     case SnackbarType.Warning:

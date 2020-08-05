@@ -93,7 +93,7 @@ export const withFooter = () => (
       icon={<Favorite type="filled" />}
       title={text('Title 4', 'title')}
     />
-    <hr className="border border-fill-black-25 my-2" />
+    <hr className="border border-fill-black-200 my-2" />
     <div className="flex justify-between items-center px-6 py-2">
       <Link url="#">
         <Typography tag="span" type={TypographyTypes.Link}>

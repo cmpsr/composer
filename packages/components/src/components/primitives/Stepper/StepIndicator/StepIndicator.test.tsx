@@ -33,7 +33,7 @@ describe('StepIndicator', () => {
       if (index <= activeStep) {
         expect(line).toHaveClass(`border-fill-primary-900 ${activeClasses}`);
       } else {
-        expect(line).toHaveClass(`border-fill-black-25 ${activeClasses}`);
+        expect(line).toHaveClass(`border-fill-black-200 ${activeClasses}`);
       }
     }
   });

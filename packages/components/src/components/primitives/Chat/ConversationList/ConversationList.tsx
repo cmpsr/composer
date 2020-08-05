@@ -34,7 +34,7 @@ export const ConversationList = ({
                 {...conversation}
                 isActive={conversation.id === selectedConversationId}
               />
-              <div className="ml-8 border-b border-outline-background-100"></div>
+              <div className="ml-8 border-b border-outline-background-400"></div>
             </li>
           );
         })}

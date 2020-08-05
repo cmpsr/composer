@@ -125,7 +125,7 @@ describe('ConversationSummary', () => {
       />
     );
     const summary = screen.getByTestId(CONVERSATION_SUMMARY_DEFAULT_TEST_ID);
-    expect(summary).toHaveClass('bg-fill-background-100');
+    expect(summary).toHaveClass('bg-fill-background-400');
   });
   it('should render avatarText and highlight avatar', () => {
     render(

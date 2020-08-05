@@ -1,6 +1,6 @@
 {
   "name": "@cmpsr/contentful-core",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "license": "MIT",
   "description": "Base Composer components for standing up a React/NextJS app that can dynamically render components based on Contentful Model types mapped to components and queries.",
   "author": "Ryan Hefner <hi@ryanhefner.com>",
@@ -39,6 +39,7 @@
   "dependencies": {
     "@types/invariant": "^2.2.33",
     "apollo-link-http": "^1.5.17",
+    "cross-fetch": "^3.0.5",
     "dotenv": "^8.2.0",
     "invariant": "^2.2.4"
   },

@@ -13,7 +13,7 @@ export class Segment implements IIntegration {
   }
 
   identify: Identify = (userId, traits) => {
-    (window as any).analytics(userId, traits);
+    (window as any).analytics.identify(userId, traits);
   };
 
   group: Group = (groupId, traits) => {

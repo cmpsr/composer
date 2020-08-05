@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = (api) => {
-  api.cache(false);
+  api.cache(true);
 
   return {
     ignore: ['node_modules'],

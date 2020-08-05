@@ -100,9 +100,9 @@ module.exports = {
   'outline-white': '#ffffff',
   // Transparencies
   'fill-transparent-400': 'rgba(0, 0, 0, 0.75)',
-  'fill-transparent-300': 'rgba(0, 0, 0, 0.75)',
-  'fill-transparent-200': 'rgba(0, 0, 0, 0.75)',
-  'fill-transparent-100': 'rgba(0, 0, 0, 0.75)',
+  'fill-transparent-300': 'rgba(0, 0, 0, 0.50)',
+  'fill-transparent-200': 'rgba(0, 0, 0, 0.15)',
+  'fill-transparent-100': 'rgba(0, 0, 0, 0)',
   // Overlay
   'fill-overlay': 'rgba(0, 0, 0, 0.4)',
   // States - Primary

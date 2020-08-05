@@ -1,10 +1,9 @@
 import React from 'react';
+import cn from 'classnames';
 import ReactTooltip from 'react-tooltip';
-import colors from '../../../../lib/styles/colors.js';
+import { getStyles } from './Tooltip.styles';
 
 export const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
-
-const defaultColor = colors['fill-primary'][100];
 
 export enum TooltipPlace {
   Left = 'left',
@@ -29,20 +28,20 @@ export const Tooltip = ({
   tooltip,
   element,
   testId = TOOLTIP_DEFAULT_TEST_ID,
-  backgroundColor = defaultColor,
   className,
+  backgroundColor,
 }: Props) => {
+  const { arrowColor, defaultColor } = getStyles(place, backgroundColor);
   return (
     <div data-testid={testId}>
       <a data-tip data-for={id}>
         {element}
       </a>
       <ReactTooltip
-        backgroundColor={backgroundColor}
         id={id}
         place={place}
         effect={'solid'}
-        className={className}
+        className={cn(defaultColor, arrowColor, className)}
       >
         {tooltip}
       </ReactTooltip>

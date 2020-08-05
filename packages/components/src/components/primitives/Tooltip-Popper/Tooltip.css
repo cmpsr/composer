@@ -1,0 +1,18 @@
+.arrow::before {
+  content: "";
+  margin: auto;
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.arrow[data-placement*="top"] {
+  bottom: 0;
+  margin-bottom: -3px;
+}
+
+.arrow[data-placement*="top"]::before {
+  border-width: 10px 8px 0 8px;
+  /*border-color: #232323 transparent transparent transparent;*/
+}

@@ -21,13 +21,16 @@
     "test:coverage": "jest --coverage --env=jest-environment-jsdom-sixteen"
   },
   "dependencies": {
+    "@popperjs/core": "^2.4.4",
     "@types/classnames": "^2.2.10",
     "classnames": "^2.2.6",
     "downshift": "^5.1.1",
+    "lodash": "^4.17.19",
     "react-day-picker": "^7.4.8",
     "react-device-detect": "^1.11.14",
     "react-markdown": "^4.3.1",
     "react-modal": "^3.11.2",
+    "react-popper": "^2.2.3",
     "react-toastify": "^6.0.8",
     "react-tooltip": "^4.2.6",
     "rimraf": "^3.0.2"

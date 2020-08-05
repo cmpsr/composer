@@ -31,7 +31,7 @@ const FAKE_ROUTE = {
 const FAKE_LINK_STYLE = {
   background: {
     default: {
-      bg: 'fill-primary-100',
+      bg: 'fill-primary-900',
     },
   },
 };
@@ -51,7 +51,7 @@ const FAKE_LINK = {
 // Mock the graphql file calls
 jest.mock(
   '../../__tests__/models/content/Link/queries/LinkByIdQuery.graphql',
-  () => 'LinkByIdQuery',
+  () => 'LinkByIdQuery'
 );
 
 // Mock useQuery
@@ -61,7 +61,9 @@ jest.mock('@apollo/react-hooks', () => ({
 
 describe('renderContentItemFromType', () => {
   it('renders a Link', () => {
-    const { getByText } = render(renderFromContentfulModel({ componentMap }, FAKE_LINK));
+    const { getByText } = render(
+      renderFromContentfulModel({ componentMap }, FAKE_LINK)
+    );
     getByText(FAKE_LINK.title);
   });
 });

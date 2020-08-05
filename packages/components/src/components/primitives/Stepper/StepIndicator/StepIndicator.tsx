@@ -41,7 +41,7 @@ const Indicators = ({ numberOfSteps, activeStep }: IndicatorsProps) => {
           className={cn(
             'border-b-4 border-t-2 rounded w-10',
             { 'border-fill-black-25': index > activeStep },
-            { 'border-fill-primary-100': index <= activeStep }
+            { 'border-fill-primary-900': index <= activeStep }
           )}
         />
       </li>

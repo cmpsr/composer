@@ -18,7 +18,7 @@ describe('IconicBadge', () => {
       <IconicBadge color={BadgeColor.Primary} icon={<Search type="filled" />} />
     );
     const badge = screen.getByTestId(ICONIC_BADGE_DEFAULT_TEST_ID);
-    expect(badge).toHaveClass('bg-fill-primary-100');
+    expect(badge).toHaveClass('bg-fill-primary-900');
   });
   it('should render with secondary color', () => {
     render(

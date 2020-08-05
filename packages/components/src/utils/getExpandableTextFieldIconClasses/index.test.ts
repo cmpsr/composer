@@ -34,7 +34,7 @@ describe('getExpandableTextFieldIconClasses', () => {
       true
     );
     expect(iconClasses).toStrictEqual(
-      'text-fill-primary-100 fill-current cursor-pointer mt-2 md:mt-0-625'
+      'text-fill-primary-900 fill-current cursor-pointer mt-2 md:mt-0-625'
     );
   });
   it('should return iconClasses when isIconEnabled is false', () => {

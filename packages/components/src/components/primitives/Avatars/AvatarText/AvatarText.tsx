@@ -16,7 +16,7 @@ export enum AvatarSize {
 }
 
 export enum AvatarBackgroundColor {
-  Primary100 = 'bg-fill-primary-100',
+  Primary100 = 'bg-fill-primary-900',
   Primary25 = 'bg-fill-primary-25',
 }
 

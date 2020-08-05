@@ -47,7 +47,7 @@ describe('getAvatarTextClasses', () => {
       AvatarSize.Small,
       AvatarBackgroundColor.Primary100
     );
-    expect(avatarClasses).toContain(`bg-fill-primary-100`);
+    expect(avatarClasses).toContain(`bg-fill-primary-900`);
   });
   it('should return string of classnames for primary-25 background color', () => {
     const { avatarClasses } = getAvatarTextClasses(

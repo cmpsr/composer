@@ -164,7 +164,7 @@
 
 .DayPicker-Day--end,
 .DayPicker-Day--start {
-  @apply relative bg-fill-primary-100 text-white rounded-full;
+  @apply relative bg-fill-primary-900 text-white rounded-full;
 }
 
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):not(.DayPicker-Day--start):not(.DayPicker-Day--end) {
@@ -173,7 +173,7 @@
 
 .singleCalendar
   .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):not(.DayPicker-Day--start):not(.DayPicker-Day--end) {
-  @apply bg-fill-primary-100 text-white;
+  @apply bg-fill-primary-900 text-white;
 }
 
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {

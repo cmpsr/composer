@@ -11,13 +11,20 @@ export default {
   component: Button,
 };
 
-export const withText = () => (
-  <Button type={ButtonTypes.Primary} onClick={action('button action click')}>
-    <Typography tag="span" type={TypographyTypes.Button}>
-      Primary Button
-    </Typography>
-  </Button>
-);
+export const withText = () => {
+  return (
+    <div className="primary-fill-100">
+      <Button
+        type={ButtonTypes.Primary}
+        onClick={action('button action click')}
+      >
+        <Typography tag="span" type={TypographyTypes.Button}>
+          Primary Button
+        </Typography>
+      </Button>
+    </div>
+  );
+};
 
 withText.story = {
   name: 'With text',

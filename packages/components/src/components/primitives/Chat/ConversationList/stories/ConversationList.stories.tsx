@@ -59,7 +59,7 @@ export const withEmptyConversations = () => (
     <ConversationList
       conversations={[]}
       emptyCaseElement={
-        <div className="p-5 text-light-100 bg-fill-primary-100">
+        <div className="p-5 text-light-100 bg-fill-primary-900">
           You don't have any conversation yet
         </div>
       }

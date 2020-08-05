@@ -64,8 +64,8 @@ export const TextFieldIconButton = ({
       <input
         className={cn(
           className,
-          'appearance-none rounded-l-md relative block w-full p-3 border border-outline-primary-100 placeholder-primary-fill-75 text-gray-900 focus:outline-none focus:border-fill-primary-100 focus:z-10 sm:text-sm sm:leading-5',
-          { 'pl-10': iconPosition === 'left' },
+          'appearance-none rounded-l-md relative block w-full p-3 border border-outline-primary-100 placeholder-primary-fill-75 text-gray-900 focus:outline-none focus:border-fill-primary-900 focus:z-10 sm:text-sm sm:leading-5',
+          { 'pl-10': iconPosition === 'left' }
         )}
         aria-label={ariaLabel}
         name={name}
@@ -85,7 +85,7 @@ export const TextFieldIconButton = ({
         className={cn(
           'absolute inset-y-0 flex items-center',
           { 'left-0 pl-3': iconPosition === 'left' },
-          { 'right-0 pr-3': iconPosition === 'right' },
+          { 'right-0 pr-3': iconPosition === 'right' }
         )}
       >
         <Icon

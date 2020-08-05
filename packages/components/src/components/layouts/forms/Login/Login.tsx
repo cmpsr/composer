@@ -1,5 +1,5 @@
-import React from "react";
-import cn from "classnames";
+import React from 'react';
+import cn from 'classnames';
 
 import {
   Button,
@@ -8,11 +8,11 @@ import {
   TypographyTypes,
   Icon,
   Asset,
-} from "components/primitives";
-import { useState, ChangeEvent } from "react";
-import { TextField } from "components/primitives/form/TextField";
-import { Link } from "components/primitives/Link";
-import { Asset as AssetType } from "types";
+} from 'components/primitives';
+import { useState, ChangeEvent } from 'react';
+import { TextField } from 'components/primitives/form/TextField';
+import { Link } from 'components/primitives/Link';
+import { Asset as AssetType } from 'types';
 
 type Props = {
   className?: string;
@@ -41,7 +41,7 @@ export const Login = ({
   title,
   remember,
   forgot,
-  signIn = { title: "Sign in" },
+  signIn = { title: 'Sign in' },
   onSubmit,
 }: Props) => {
   const [username, setUsername] = useState<string>();
@@ -62,7 +62,7 @@ export const Login = ({
   return (
     <div
       className={cn(
-        "h-screen flex items-center justify-center bg-gray-50 px-4 lg:px-8",
+        'h-screen flex items-center justify-center bg-gray-50 px-4 lg:px-8',
         className
       )}
     >
@@ -106,7 +106,7 @@ export const Login = ({
                   <input
                     id="remember_me"
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 fill-primary-100 transition duration-150 ease-in-out"
+                    className="form-checkbox h-4 w-4 transition duration-150 ease-in-out"
                     onChange={onChangeRememberMe}
                   />
                   <label
@@ -122,7 +122,7 @@ export const Login = ({
             <div className="text-sm leading-5">
               {forgot?.title && (
                 <Link
-                  className="font-medium fill-primary-100 focus:outline-none focus:underline transition ease-in-out duration-150"
+                  className="font-medium focus:outline-none focus:underline transition ease-in-out duration-150"
                   url={forgot.url}
                   route={forgot.route}
                 >

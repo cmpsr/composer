@@ -28,7 +28,7 @@ exports[`Login should match snapshot 1`] = `
         <div>
           <input
             aria-label="Name"
-            className="form-input border-outline-form-filled focus:outline-none placeholder-outline-form-filled focus:border-outline-form-focus rounded-input-semi-rounded"
+            className="form-input focus:outline-none placeholder-outline-form-filled border-outline-form-filled focus:border-outline-form-focus rounded-input-semi-rounded"
             disabled={false}
             name="name"
             onChange={[Function]}
@@ -42,7 +42,7 @@ exports[`Login should match snapshot 1`] = `
         >
           <input
             aria-label="Password"
-            className="form-input border-outline-form-filled focus:outline-none placeholder-outline-form-filled focus:border-outline-form-focus rounded-input-semi-rounded"
+            className="form-input focus:outline-none placeholder-outline-form-filled border-outline-form-filled focus:border-outline-form-focus rounded-input-semi-rounded"
             disabled={false}
             name="password"
             onChange={[Function]}

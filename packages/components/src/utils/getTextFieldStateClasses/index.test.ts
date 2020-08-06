@@ -6,9 +6,7 @@ describe('getTextFieldStateClasses', () => {
     const invalid = false;
     const textFieldStateClasses = getTextFieldStateClasses(disabled, invalid);
     expect(textFieldStateClasses).toEqual(
-      'disabled:placeholder-dark-50 ' +
-        'disabled:bg-fill-form-disabled ' +
-        'disabled:border-outline-form-disabled '
+      'disabled:placeholder-dark-50 disabled:bg-fill-form-disabled disabled:border-outline-form-disabled'
     );
   });
   it('should return a string of classnames for disabled false and invalid false', () => {
@@ -16,10 +14,7 @@ describe('getTextFieldStateClasses', () => {
     const invalid = false;
     const textFieldStateClasses = getTextFieldStateClasses(disabled, invalid);
     expect(textFieldStateClasses).toEqual(
-      'border-outline-form-filled ' +
-        'focus:outline-none ' +
-        'placeholder-outline-form-filled ' +
-        'focus:border-outline-form-focus'
+      'focus:outline-none placeholder-outline-form-filled border-outline-form-filled focus:border-outline-form-focus'
     );
   });
   it('should return a string of classnames for disabled false and invalid true', () => {
@@ -27,10 +22,7 @@ describe('getTextFieldStateClasses', () => {
     const invalid = true;
     const textFieldStateClasses = getTextFieldStateClasses(disabled, invalid);
     expect(textFieldStateClasses).toEqual(
-      'border-outline-form-filled ' +
-        'focus:outline-none ' +
-        'placeholder-outline-form-filled ' +
-        'border-fill-system-error'
+      'focus:outline-none placeholder-outline-form-filled border-fill-system-error'
     );
   });
 });

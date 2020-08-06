@@ -138,6 +138,6 @@ describe('DropdownDownshiftSelect', () => {
     const dropdown = screen.getByTestId(
       DROPDOWN_DOWNSHIFT_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
-    expect(dropdown).toHaveClass('border-fill-system-error');
+    expect(dropdown).toHaveClass('!border-fill-system-error');
   });
 });

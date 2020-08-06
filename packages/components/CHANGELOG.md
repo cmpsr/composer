@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.0.35
+
+### Patch Changes
+
+- 78e9d89: Use new structure of colors from DSM
+- 925aa9f: Add proper border for text fields
+
 ## 0.0.34
 
 ### Patch Changes

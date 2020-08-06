@@ -45,7 +45,7 @@ const CurrencyField = /*#__PURE__*/(0, _react.forwardRef)(({
     className: (0, _classnames.default)('appearance-none rounded-r-md relative block w-full p-3 border placeholder-primary-fill-75 text-dark-100 focus:outline-none focus:border-fill-primary-900 focus:z-10 sm:text-sm sm:leading-5', {
       'disabled:bg-fill-form-disabled': disabled
     }, {
-      'border-outline-form-filled': !disabled
+      'border-outline-form-filled': !disabled && !invalid
     }, {
       'border-fill-system-error': invalid
     }, className),

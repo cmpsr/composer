@@ -29,16 +29,16 @@ withRight.story = {
 export const withColors = () => (
   <div className="p-10">
     <Message
-      backgroundColor={MessageBackgroundColor.Primary25}
+      backgroundColor={MessageBackgroundColor.Primary600}
       text="I'm a primary 25 color"
     />
     <Message
-      backgroundColor={MessageBackgroundColor.Secondary25}
+      backgroundColor={MessageBackgroundColor.Secondary600}
       text="I'm a secondary 25 color"
     />
 
     <Message
-      backgroundColor={MessageBackgroundColor.Black10}
+      backgroundColor={MessageBackgroundColor.Black100}
       text="I'm a black 10 color"
     />
   </div>
@@ -64,7 +64,7 @@ export const withMultipleMessages = () => (
     <Message time="01:32 PM" text="We should talk about this deal :)" />
     <Message
       time="02:37 PM"
-      backgroundColor={MessageBackgroundColor.Secondary25}
+      backgroundColor={MessageBackgroundColor.Secondary600}
       placement={MessagePlacement.Left}
       text="Absolutely! I'm really interested."
     />

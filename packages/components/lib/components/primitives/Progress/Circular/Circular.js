@@ -25,7 +25,7 @@ let CircularColor;
 exports.CircularColor = CircularColor;
 
 (function (CircularColor) {
-  CircularColor["Primary"] = "stroke-fill-primary-100";
+  CircularColor["Primary"] = "stroke-fill-primary-900";
   CircularColor["White"] = "white";
 })(CircularColor || (exports.CircularColor = CircularColor = {}));
 

@@ -11,7 +11,7 @@ describe('getExpandableTextFieldIconClasses', () => {
       wrapperClasses: 'flex items-end',
       iconWrapperClasses: 'order-1 pr-4 min-h-2-625 md:min-h-3',
       iconClasses:
-        'text-fill-primary-25 fill-current cursor-pointer mt-2 md:mt-0-625',
+        'text-fill-primary-600 fill-current cursor-pointer mt-2 md:mt-0-625',
       expandableTextFieldClasses: 'order-2',
     });
   });
@@ -24,7 +24,7 @@ describe('getExpandableTextFieldIconClasses', () => {
       wrapperClasses: 'flex items-end',
       iconWrapperClasses: 'order-2 pl-4 min-h-2-625 md:min-h-3',
       iconClasses:
-        'text-fill-primary-25 fill-current cursor-pointer mt-2 md:mt-0-625',
+        'text-fill-primary-600 fill-current cursor-pointer mt-2 md:mt-0-625',
       expandableTextFieldClasses: 'order-1',
     });
   });
@@ -34,7 +34,7 @@ describe('getExpandableTextFieldIconClasses', () => {
       true
     );
     expect(iconClasses).toStrictEqual(
-      'text-fill-primary-100 fill-current cursor-pointer mt-2 md:mt-0-625'
+      'text-fill-primary-900 fill-current cursor-pointer mt-2 md:mt-0-625'
     );
   });
   it('should return iconClasses when isIconEnabled is false', () => {
@@ -43,7 +43,7 @@ describe('getExpandableTextFieldIconClasses', () => {
       false
     );
     expect(iconClasses).toStrictEqual(
-      'text-fill-primary-25 fill-current cursor-pointer mt-2 md:mt-0-625'
+      'text-fill-primary-600 fill-current cursor-pointer mt-2 md:mt-0-625'
     );
   });
 });

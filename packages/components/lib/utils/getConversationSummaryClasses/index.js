@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.getConversationSummaryClasses = void 0;
 
 const getConversationSummaryClasses = (isError, isActive) => ({
-  wrapper: `${isActive ? 'bg-fill-background-100' : 'bg-transparent'} select-none cursor-pointer flex justify-between p-4 md:rounded md:hover:bg-fill-background-75`,
+  wrapper: `${isActive ? 'bg-fill-background-400' : 'bg-transparent'} select-none cursor-pointer flex justify-between p-4 md:rounded md:hover:bg-fill-background-300`,
   avatarWrapper: 'min-w-3',
   avatar: '-ml-0-22',
   profile: 'flex pr-3 sm:pr-5',

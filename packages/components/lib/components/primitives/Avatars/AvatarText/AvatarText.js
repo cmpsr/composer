@@ -31,8 +31,8 @@ let AvatarBackgroundColor;
 exports.AvatarBackgroundColor = AvatarBackgroundColor;
 
 (function (AvatarBackgroundColor) {
-  AvatarBackgroundColor["Primary100"] = "bg-fill-primary-100";
-  AvatarBackgroundColor["Primary25"] = "bg-fill-primary-25";
+  AvatarBackgroundColor["Primary900"] = "bg-fill-primary-900";
+  AvatarBackgroundColor["Primary600"] = "bg-fill-primary-600";
 })(AvatarBackgroundColor || (exports.AvatarBackgroundColor = AvatarBackgroundColor = {}));
 
 const AvatarText = ({
@@ -41,7 +41,7 @@ const AvatarText = ({
   highlightClassName,
   testId = AVATAR_TEXT_DEFAULT_TEST_ID,
   size = AvatarSize.Large,
-  backgroundColor = AvatarBackgroundColor.Primary100,
+  backgroundColor = AvatarBackgroundColor.Primary900,
   isHighlighted
 }) => {
   const {

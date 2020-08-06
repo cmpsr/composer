@@ -28,7 +28,7 @@ exports[`Login should match snapshot 1`] = `
         <div>
           <input
             aria-label="Name"
-            className="form-input border-outline-forms-filled focus:outline-none placeholder-outline-forms-filled focus:border-outline-forms-focus rounded-input-semi-rounded"
+            className="form-input border-outline-form-filled focus:outline-none placeholder-outline-form-filled focus:border-outline-form-focus rounded-input-semi-rounded"
             disabled={false}
             name="name"
             onChange={[Function]}
@@ -42,7 +42,7 @@ exports[`Login should match snapshot 1`] = `
         >
           <input
             aria-label="Password"
-            className="form-input border-outline-forms-filled focus:outline-none placeholder-outline-forms-filled focus:border-outline-forms-focus rounded-input-semi-rounded"
+            className="form-input border-outline-form-filled focus:outline-none placeholder-outline-form-filled focus:border-outline-form-focus rounded-input-semi-rounded"
             disabled={false}
             name="password"
             onChange={[Function]}
@@ -58,7 +58,7 @@ exports[`Login should match snapshot 1`] = `
           className="flex items-center"
         >
           <input
-            className="form-checkbox h-4 w-4 fill-primary-100 transition duration-150 ease-in-out"
+            className="form-checkbox h-4 w-4 transition duration-150 ease-in-out"
             id="remember_me"
             onChange={[Function]}
             type="checkbox"
@@ -74,7 +74,7 @@ exports[`Login should match snapshot 1`] = `
           className="text-sm leading-5"
         >
           <a
-            className="flex-grow-0 text-btn font-medium fill-primary-100 focus:outline-none focus:underline transition ease-in-out duration-150"
+            className="flex-grow-0 text-btn font-medium focus:outline-none focus:underline transition ease-in-out duration-150"
             data-testid="link"
           >
             Forgot your password?
@@ -85,7 +85,7 @@ exports[`Login should match snapshot 1`] = `
         className="mt-6"
       >
         <button
-          className="w-full relative flex focus:outline-none primary-btn disabled:bg-states-contained-disabled disabled:pointer-events-none active:bg-states-contained-pressed hover:bg-states-contained-hover"
+          className="w-full relative flex focus:outline-none primary-btn disabled:bg-state-primary-disabled disabled:pointer-events-none active:bg-state-primary-pressed hover:bg-state-primary-hover"
           data-testid="button"
           type="submit"
         >

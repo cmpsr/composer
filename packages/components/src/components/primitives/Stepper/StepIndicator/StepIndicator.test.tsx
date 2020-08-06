@@ -31,9 +31,9 @@ describe('StepIndicator', () => {
     for (let index = 0; index < numberOfSteps; index++) {
       const line = lines[index].firstChild;
       if (index <= activeStep) {
-        expect(line).toHaveClass(`border-fill-primary-100 ${activeClasses}`);
+        expect(line).toHaveClass(`border-fill-primary-900 ${activeClasses}`);
       } else {
-        expect(line).toHaveClass(`border-fill-black-25 ${activeClasses}`);
+        expect(line).toHaveClass(`border-fill-black-200 ${activeClasses}`);
       }
     }
   });

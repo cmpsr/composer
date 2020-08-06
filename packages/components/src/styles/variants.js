@@ -13,4 +13,12 @@ module.exports = {
   borderRadius: ['responsive', 'important'],
   padding: ['responsive', 'important'],
   boxShadow: ['responsive', 'important'],
+  borderColor: [
+    'responsive',
+    'important',
+    'disabled',
+    'hover',
+    'focus',
+    'active',
+  ],
 };

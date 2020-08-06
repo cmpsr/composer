@@ -57,9 +57,9 @@ export const TextFieldIcon = ({
       <input
         className={cn(
           className,
-          'appearance-none rounded-md relative block w-full p-3 border placeholder-primary-fill-75 text-gray-900 focus:outline-none focus:border-fill-primary-100 focus:z-10 sm:text-sm sm:leading-5',
+          'appearance-none rounded-md relative block w-full p-3 border placeholder-primary-fill-75 text-gray-900 focus:outline-none focus:border-fill-primary-900 focus:z-10 sm:text-sm sm:leading-5',
           { 'pl-10': iconPosition === 'left' },
-          { 'bg-gray-200': disabled, 'border-outline-primary-100': !disabled },
+          { 'bg-gray-200': disabled, 'border-outline-primary-900': !disabled }
         )}
         aria-label={ariaLabel}
         name={name}

@@ -19,7 +19,7 @@ exports.getStyle = getStyle;
 const snackbarTypeStyle = type => {
   switch (type) {
     case _Snackbar.SnackbarType.Default:
-      return '!bg-fill-black-75';
+      return '!bg-fill-black-400';
 
     case _Snackbar.SnackbarType.Success:
       return '!bg-fill-system-success';

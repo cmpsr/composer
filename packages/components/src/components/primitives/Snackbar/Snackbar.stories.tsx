@@ -19,7 +19,7 @@ export default {
 
 export const withBase = () => {
   const props = {
-    className: text('ClassName', 'text-fill-primary-100'),
+    className: text('ClassName', 'text-fill-primary-900'),
     message: text('Message', 'Prompt Option'),
     description: text('Description', 'Detail Info'),
     textPosition: select(
@@ -47,7 +47,7 @@ export const withBase = () => {
 
   return (
     <div className="p-48">
-      <Snackbar className={text('ClassName', 'text-fill-primary-100')} />
+      <Snackbar className={text('ClassName', 'text-fill-primary-900')} />
       <button onClick={hideSnackbar}>Hide snackbar</button>
     </div>
   );
@@ -59,7 +59,7 @@ withBase.story = {
 
 export const withIcon = () => {
   const props = {
-    className: 'text-fill-primary-100',
+    className: 'text-fill-primary-900',
     message: 'Prompt Option',
     description: 'Detail Info',
     textPosition: SnackbarTextPosition.Right,
@@ -94,7 +94,7 @@ withIcon.story = {
 
 export const withButton = () => {
   const props = {
-    className: 'text-fill-primary-100',
+    className: 'text-fill-primary-900',
     message: 'Prompt Option',
     description: 'Detail Info',
     textPosition: SnackbarTextPosition.Left,

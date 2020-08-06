@@ -67,7 +67,7 @@ const ConversationSummary = ({
   }, /*#__PURE__*/_react.default.createElement(_AvatarText.AvatarText, {
     highlightClassName: avatar,
     size: _AvatarText.AvatarSize.Small,
-    backgroundColor: _AvatarText.AvatarBackgroundColor.Primary25,
+    backgroundColor: _AvatarText.AvatarBackgroundColor.Primary600,
     text: avatarText,
     isHighlighted: isHighlighted
   })), /*#__PURE__*/_react.default.createElement("div", {

@@ -92,7 +92,7 @@ const DropdownMultiSelect = ({
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", _extends({}, getToggleButtonProps(), {
       className: (0, _classnames.default)('flex justify-between items-center h-12 px-3 appearance-none w-full bg-white border rounded focus:outline-none text-left', {
         'bg-gray-200': disabled,
-        'border-outline-primary-100 hover:border-fill-primary-100': !disabled
+        'border-outline-primary-900 hover:border-fill-primary-900': !disabled
       }, className),
       "data-testid": testId,
       disabled: disabled
@@ -108,7 +108,7 @@ const DropdownMultiSelect = ({
     }, /*#__PURE__*/_react.default.createElement(_navigation.expand_more, {
       type: "filled"
     }))), /*#__PURE__*/_react.default.createElement("ul", _extends({}, getMenuProps(), {
-      className: (0, _classnames.default)('border rounded-b border-outline-primary-100', {
+      className: (0, _classnames.default)('border rounded-b border-outline-primary-900', {
         hidden: !isOpen
       })
     }), isOpen && options.map((item, index) => /*#__PURE__*/_react.default.createElement("li", _extends({

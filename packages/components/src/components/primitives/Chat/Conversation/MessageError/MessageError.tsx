@@ -44,7 +44,7 @@ export const MessageError = ({
         <Message
           text={text}
           className={cn(message)}
-          backgroundColor={MessageBackgroundColor.Black10}
+          backgroundColor={MessageBackgroundColor.Black100}
           placement={placement}
         />
         <div

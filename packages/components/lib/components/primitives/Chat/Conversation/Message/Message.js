@@ -23,9 +23,9 @@ let MessageBackgroundColor;
 exports.MessageBackgroundColor = MessageBackgroundColor;
 
 (function (MessageBackgroundColor) {
-  MessageBackgroundColor["Black10"] = "bg-fill-black-10";
-  MessageBackgroundColor["Secondary25"] = "bg-fill-secondary-25";
-  MessageBackgroundColor["Primary25"] = "bg-fill-primary-25";
+  MessageBackgroundColor["Black100"] = "bg-fill-black-100";
+  MessageBackgroundColor["Secondary600"] = "bg-fill-secondary-600";
+  MessageBackgroundColor["Primary600"] = "bg-fill-primary-600";
 })(MessageBackgroundColor || (exports.MessageBackgroundColor = MessageBackgroundColor = {}));
 
 let MessagePlacement;
@@ -40,7 +40,7 @@ const Message = ({
   text,
   className,
   testId = MESSAGE_DEFAULT_TEST_ID,
-  backgroundColor = MessageBackgroundColor.Primary25,
+  backgroundColor = MessageBackgroundColor.Primary600,
   placement = MessagePlacement.Right,
   time
 }) => {

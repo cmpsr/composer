@@ -23,7 +23,7 @@ export const Pill = ({
     <div
       className={cn(
         className,
-        'text-center align-middle rounded-full border border-outline-primary-50 w-auto inline-block py-0.375 px-5'
+        'text-center align-middle rounded-full border border-outline-primary-700 w-auto inline-block py-0.375 px-5'
       )}
       data-testid={testId}
     >

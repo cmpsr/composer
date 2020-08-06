@@ -9,9 +9,9 @@ var _Button = require("../../components/primitives/Button");
 
 const getButtonStateClassesFromType = type => {
   if (type === _Button.ButtonTypes.Primary) {
-    return 'disabled:bg-states-contained-disabled ' + 'disabled:pointer-events-none ' + 'active:bg-states-contained-pressed ' + 'hover:bg-states-contained-hover';
+    return 'disabled:bg-state-primary-disabled ' + 'disabled:pointer-events-none ' + 'active:bg-state-primary-pressed ' + 'hover:bg-state-primary-hover';
   } else if (type === _Button.ButtonTypes.Secondary) {
-    return 'disabled:bg-states-outlined-disabled ' + 'disabled:pointer-events-none ' + 'active:bg-states-outlined-pressed ' + 'hover:bg-states-outlined-hover';
+    return 'disabled:bg-fill-state-secondary-disabled ' + 'disabled:pointer-events-none ' + 'active:bg-fill-state-secondary-pressed ' + 'hover:bg-fill-state-secondary-hover';
   }
 };
 

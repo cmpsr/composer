@@ -29,7 +29,7 @@ exports.default = _default;
 
 const withBase = () => {
   const props = {
-    className: (0, _addonKnobs.text)('ClassName', 'text-fill-primary-100'),
+    className: (0, _addonKnobs.text)('ClassName', 'text-fill-primary-900'),
     message: (0, _addonKnobs.text)('Message', 'Prompt Option'),
     description: (0, _addonKnobs.text)('Description', 'Detail Info'),
     textPosition: (0, _addonKnobs.select)('Text Position', _Snackbar.SnackbarTextPosition, _Snackbar.SnackbarTextPosition.Right),
@@ -52,7 +52,7 @@ const withBase = () => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "p-48"
   }, /*#__PURE__*/_react.default.createElement(_Snackbar.Snackbar, {
-    className: (0, _addonKnobs.text)('ClassName', 'text-fill-primary-100')
+    className: (0, _addonKnobs.text)('ClassName', 'text-fill-primary-900')
   }), /*#__PURE__*/_react.default.createElement("button", {
     onClick: _Snackbar.hideSnackbar
   }, "Hide snackbar"));
@@ -65,7 +65,7 @@ withBase.story = {
 
 const withIcon = () => {
   const props = {
-    className: 'text-fill-primary-100',
+    className: 'text-fill-primary-900',
     message: 'Prompt Option',
     description: 'Detail Info',
     textPosition: _Snackbar.SnackbarTextPosition.Right,
@@ -97,7 +97,7 @@ withIcon.story = {
 
 const withButton = () => {
   const props = {
-    className: 'text-fill-primary-100',
+    className: 'text-fill-primary-900',
     message: 'Prompt Option',
     description: 'Detail Info',
     textPosition: _Snackbar.SnackbarTextPosition.Left,

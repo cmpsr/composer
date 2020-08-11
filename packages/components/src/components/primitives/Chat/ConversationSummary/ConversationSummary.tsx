@@ -78,7 +78,7 @@ export const ConversationSummary = ({
           <AvatarText
             highlightClassName={avatar}
             size={AvatarSize.Small}
-            backgroundColor={AvatarBackgroundColor.Primary25}
+            backgroundColor={AvatarBackgroundColor.Primary600}
             text={avatarText}
             isHighlighted={isHighlighted}
           />

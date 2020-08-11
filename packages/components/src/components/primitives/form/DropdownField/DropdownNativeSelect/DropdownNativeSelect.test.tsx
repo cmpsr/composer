@@ -136,7 +136,7 @@ describe('DropdownNativeSelect', () => {
     const dropdown = screen.getByTestId(
       DROPDOWN_NATIVE_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
-    expect(dropdown).toHaveClass('border-fill-system-error');
+    expect(dropdown).toHaveClass('!border-fill-system-error');
   });
   it('should call onItemChange with right value selected', async () => {
     const mockOnChange = jest.fn().mockImplementation((item) => item);

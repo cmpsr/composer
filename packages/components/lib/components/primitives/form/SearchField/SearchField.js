@@ -59,7 +59,7 @@ const SearchField = /*#__PURE__*/(0, _react.forwardRef)(({
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _classnames.default)('absolute inset-y-0 flex items-center z-10', iconPosition)
   }, /*#__PURE__*/_react.default.createElement(_.Icon, {
-    className: "fill-current text-fill-black-25"
+    className: "fill-current text-fill-black-200"
   }, /*#__PURE__*/_react.default.createElement(_action.search, {
     type: "filled"
   }))));

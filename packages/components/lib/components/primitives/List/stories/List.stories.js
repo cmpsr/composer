@@ -119,7 +119,7 @@ const withFooter = () => /*#__PURE__*/_react.default.createElement(_.List, {
   }),
   title: (0, _addonKnobs.text)('Title 4', 'title')
 }), /*#__PURE__*/_react.default.createElement("hr", {
-  className: "border border-fill-black-25 my-2"
+  className: "border border-fill-black-200 my-2"
 }), /*#__PURE__*/_react.default.createElement("div", {
   className: "flex justify-between items-center px-6 py-2"
 }, /*#__PURE__*/_react.default.createElement(_Link.Link, {

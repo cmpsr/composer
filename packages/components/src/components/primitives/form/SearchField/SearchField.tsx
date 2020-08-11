@@ -61,7 +61,7 @@ export const SearchField = forwardRef<HTMLInputElement, Props>(
             iconPosition
           )}
         >
-          <Icon className="fill-current text-fill-black-25">
+          <Icon className="fill-current text-fill-black-200">
             <Search type="filled" />
           </Icon>
         </div>

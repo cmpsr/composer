@@ -11,7 +11,7 @@ export const getExpandableTextFieldIconClasses = (
       isIconLeft ? 'order-1 pr-4' : 'order-2 pl-4'
     } min-h-2-625 md:min-h-3`,
     iconClasses: `${
-      isIconEnabled ? 'text-fill-primary-100' : 'text-fill-primary-25'
+      isIconEnabled ? 'text-fill-primary-900' : 'text-fill-primary-600'
     } fill-current cursor-pointer mt-2 md:mt-0-625`,
     expandableTextFieldClasses: `${isIconLeft ? 'order-2' : 'order-1'}`,
   };

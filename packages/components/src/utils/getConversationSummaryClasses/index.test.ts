@@ -5,7 +5,7 @@ describe('getConversationSummaryClasses', () => {
     const summaryClasses = getConversationSummaryClasses(false, false);
     expect(summaryClasses).toStrictEqual({
       wrapper:
-        'bg-transparent select-none cursor-pointer flex justify-between p-4 md:rounded md:hover:bg-fill-background-75',
+        'bg-transparent select-none cursor-pointer flex justify-between p-4 md:rounded md:hover:bg-fill-background-300',
       avatarWrapper: 'min-w-3',
       avatar: '-ml-0-22',
       profile: 'flex pr-3 sm:pr-5',
@@ -25,7 +25,7 @@ describe('getConversationSummaryClasses', () => {
   it('should return wrapper with classnames when is active', () => {
     const { wrapper } = getConversationSummaryClasses(false, true);
     expect(wrapper).toStrictEqual(
-      'bg-fill-background-100 select-none cursor-pointer flex justify-between p-4 md:rounded md:hover:bg-fill-background-75'
+      'bg-fill-background-400 select-none cursor-pointer flex justify-between p-4 md:rounded md:hover:bg-fill-background-300'
     );
   });
 });

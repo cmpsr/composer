@@ -52,7 +52,7 @@ module.exports = {
     },
     borderColor: {
       'fill-secondary': {
-        '75': '#44d081',
+        '800': '#44d081',
       },
     },
     borderRadius: {
@@ -70,7 +70,7 @@ module.exports = {
     },
     stroke: {
       'fill-primary': {
-        '100': '#414141',
+        '900': '#414141',
       },
     },
     colors,

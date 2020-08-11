@@ -37,16 +37,14 @@ const CurrencyFieldIcon = /*#__PURE__*/(0, _react.forwardRef)(({
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: " flex items-center px-5 rounded-l-md bg-gray-400 text-gray-100"
   }, /*#__PURE__*/_react.default.createElement(_.Icon, {
-    width: 24,
-    height: 24,
     className: "fill-current"
   }, /*#__PURE__*/_react.default.createElement(_editor.attach_money, {
     type: "filled"
   }))), /*#__PURE__*/_react.default.createElement("input", {
-    className: (0, _classnames.default)('appearance-none rounded-r-md relative block w-full p-3 border placeholder-primary-fill-75 text-dark-100 focus:outline-none focus:border-fill-primary-100 focus:z-10 sm:text-sm sm:leading-5', {
-      'disabled:bg-fill-forms-disabled': disabled
+    className: (0, _classnames.default)('appearance-none rounded-r-md relative block w-full p-3 border placeholder-primary-fill-75 text-dark-100 focus:outline-none focus:border-fill-primary-900 focus:z-10 sm:text-sm sm:leading-5', {
+      'disabled:bg-fill-form-disabled': disabled
     }, {
-      'border-outline-forms-filled': !disabled
+      'border-outline-form-filled': !disabled && !invalid
     }, {
       'border-fill-system-error': invalid
     }, className),

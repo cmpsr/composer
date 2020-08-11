@@ -4,8 +4,8 @@ export const getRadioButtonClasses = (isDisabled) => {
     labelClass: 'ml-0-625',
     radioBorder: `${
       isDisabled
-        ? 'border-states-contained-disabled'
-        : 'border-states-contained-enabled'
+        ? 'border-state-primary-disabled'
+        : 'border-state-primary-enabled'
     }`,
   };
 };

@@ -5,10 +5,10 @@ describe('getClassesFromType', () => {
   it('should return a string of classnames for primary button type', () => {
     const typeStateClasses = getButtonStateClassesFromType(ButtonTypes.Primary);
     expect(typeStateClasses).toEqual(
-      'disabled:bg-states-contained-disabled ' +
+      'disabled:bg-state-primary-disabled ' +
         'disabled:pointer-events-none ' +
-        'active:bg-states-contained-pressed ' +
-        'hover:bg-states-contained-hover'
+        'active:bg-state-primary-pressed ' +
+        'hover:bg-state-primary-hover'
     );
   });
   it('should return a string of classnames for secondary button type', () => {
@@ -16,10 +16,10 @@ describe('getClassesFromType', () => {
       ButtonTypes.Secondary
     );
     expect(typeStateClasses).toEqual(
-      'disabled:bg-states-outlined-disabled ' +
+      'disabled:bg-fill-state-secondary-disabled ' +
         'disabled:pointer-events-none ' +
-        'active:bg-states-outlined-pressed ' +
-        'hover:bg-states-outlined-hover'
+        'active:bg-fill-state-secondary-pressed ' +
+        'hover:bg-fill-state-secondary-hover'
     );
   });
 });

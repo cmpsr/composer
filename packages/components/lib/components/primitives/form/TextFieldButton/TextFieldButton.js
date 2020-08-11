@@ -27,7 +27,7 @@ const TextFieldButton = ({
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "flex"
   }, /*#__PURE__*/_react.default.createElement("input", {
-    className: (0, _classnames.default)('appearance-none rounded-l-md relative block w-full p-3 border border-outline-primary-100 placeholder-primary-fill-75 text-gray-900 focus:outline-none focus:border-fill-primary-100 focus:z-10 sm:text-sm sm:leading-5', className),
+    className: (0, _classnames.default)('appearance-none rounded-l-md relative block w-full p-3 border border-outline-primary-900 placeholder-primary-fill-75 text-gray-900 focus:outline-none focus:border-fill-primary-900 focus:z-10 sm:text-sm sm:leading-5', className),
     "aria-label": ariaLabel,
     name: name,
     type: type,

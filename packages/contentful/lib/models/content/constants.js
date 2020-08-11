@@ -21,7 +21,7 @@ exports.FAKE_ROUTE = FAKE_ROUTE;
 const FAKE_LINK_STYLE = {
   background: {
     default: {
-      bg: 'fill-primary-100'
+      bg: 'fill-primary-900'
     }
   }
 };

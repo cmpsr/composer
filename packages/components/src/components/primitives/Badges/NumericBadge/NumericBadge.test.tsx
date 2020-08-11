@@ -20,12 +20,12 @@ describe('NumericBadge', () => {
   it('should render number with primary color', () => {
     render(<NumericBadge color={BadgeColor.Primary} number={3} />);
     const badge = screen.getByTestId(NUMERIC_BADGE_DEFAULT_TEST_ID);
-    expect(badge).toHaveClass('bg-fill-primary-100');
+    expect(badge).toHaveClass('bg-fill-primary-900');
   });
   it('should render number with secondary color', () => {
     render(<NumericBadge color={BadgeColor.Secondary} number={3} />);
     const badge = screen.getByTestId(NUMERIC_BADGE_DEFAULT_TEST_ID);
-    expect(badge).toHaveClass('bg-fill-secondary-100');
+    expect(badge).toHaveClass('bg-fill-secondary-900');
   });
   it('should render number with error system color', () => {
     render(<NumericBadge color={BadgeColor.Error} number={3} />);

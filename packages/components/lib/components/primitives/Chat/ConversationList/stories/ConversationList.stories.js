@@ -62,7 +62,7 @@ const withEmptyConversations = () => /*#__PURE__*/_react.default.createElement("
 }, /*#__PURE__*/_react.default.createElement(_.ConversationList, {
   conversations: [],
   emptyCaseElement: /*#__PURE__*/_react.default.createElement("div", {
-    className: "p-5 text-light-100 bg-fill-primary-100"
+    className: "p-5 text-light-100 bg-fill-primary-900"
   }, "You don't have any conversation yet")
 }));
 

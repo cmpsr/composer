@@ -18,7 +18,7 @@ describe('Circular', () => {
     const { container } = render(<Circular />);
     const svg = container.firstChild;
     const circle = svg.firstChild;
-    expect(circle.getAttribute('stroke')).toBe('stroke-fill-primary-100');
+    expect(circle.getAttribute('stroke')).toBe('stroke-fill-primary-900');
   });
   it('should render with stroke color for circle', () => {
     const { container } = render(<Circular color={CircularColor.White} />);

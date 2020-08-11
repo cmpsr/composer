@@ -10,7 +10,7 @@ var _AvatarText = require("../../components/primitives/Avatars/AvatarText");
 var _Typography = require("../../components/primitives/Typography");
 
 const getAvatarTextClasses = (size, backgroundColor) => {
-  let highlightClasses = 'flex items-center justify-center rounded-full border-2 border-solid border-fill-secondary-75';
+  let highlightClasses = 'flex items-center justify-center rounded-full border-2 border-solid border-fill-secondary-800';
   const avatarClasses = `flex items-center justify-center rounded-full ${size} ${backgroundColor}`;
   const textClasses = 'overflow-hidden truncate p-0.15';
 

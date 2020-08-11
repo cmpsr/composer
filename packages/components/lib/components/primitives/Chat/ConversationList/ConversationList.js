@@ -37,7 +37,7 @@ const ConversationList = ({
       }, /*#__PURE__*/_react.default.createElement(_ConversationSummary.ConversationSummary, _extends({}, conversation, {
         isActive: conversation.id === selectedConversationId
       })), /*#__PURE__*/_react.default.createElement("div", {
-        className: "ml-8 border-b border-outline-background-100"
+        className: "ml-8 border-b border-outline-background-400"
       }));
     }));
   };

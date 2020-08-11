@@ -14,7 +14,7 @@ export const withBase = () => (
     backgroundColor={select(
       'Background Color',
       AvatarBackgroundColor,
-      AvatarBackgroundColor.Primary100
+      AvatarBackgroundColor.Primary900
     )}
     isHighlighted={boolean('Highlighted', false)}
   />

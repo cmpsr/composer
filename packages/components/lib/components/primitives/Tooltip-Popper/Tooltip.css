@@ -39,20 +39,20 @@
 
 .arrow[data-placement*="top"]:before {
   border-width: 10px 8px 0 8px;
-  border-color: #414141 transparent transparent transparent;
+  border-color: #2a5aa7 transparent transparent transparent;
 }
 
 .arrow[data-placement*="right"]:before {
   border-width: 8px 10px 8px 0;
-  border-color: transparent #414141 transparent transparent;
+  border-color: transparent #2a5aa7 transparent transparent;
 }
 
 .arrow[data-placement*="left"]:before {
   border-width: 8px 0 8px 10px;
-  border-color: transparent transparent transparent #414141;
+  border-color: transparent transparent transparent #2a5aa7;
 }
 
 .arrow[data-placement*="bottom"]:before {
   border-width: 0 8px 10px 8px;
-  border-color: transparent transparent #414141 transparent;
+  border-color: transparent transparent #2a5aa7 transparent;
 }

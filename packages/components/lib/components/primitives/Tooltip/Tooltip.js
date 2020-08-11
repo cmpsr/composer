@@ -7,15 +7,16 @@ exports.Tooltip = exports.TooltipPlace = exports.TOOLTIP_DEFAULT_TEST_ID = void 
 
 var _react = _interopRequireDefault(require("react"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _reactTooltip = _interopRequireDefault(require("react-tooltip"));
 
-var _colors = _interopRequireDefault(require("../../../../lib/styles/colors.js"));
+var _Tooltip = require("./Tooltip.styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
 exports.TOOLTIP_DEFAULT_TEST_ID = TOOLTIP_DEFAULT_TEST_ID;
-const defaultColor = _colors.default['fill-primary'][100];
 let TooltipPlace;
 exports.TooltipPlace = TooltipPlace;
 
@@ -32,20 +33,23 @@ const Tooltip = ({
   tooltip,
   element,
   testId = TOOLTIP_DEFAULT_TEST_ID,
-  backgroundColor = defaultColor,
-  className
+  className,
+  backgroundColor
 }) => {
+  const {
+    arrowColor,
+    defaultColor
+  } = (0, _Tooltip.getStyles)(place, backgroundColor);
   return /*#__PURE__*/_react.default.createElement("div", {
     "data-testid": testId
   }, /*#__PURE__*/_react.default.createElement("a", {
     "data-tip": true,
     "data-for": id
   }, element), /*#__PURE__*/_react.default.createElement(_reactTooltip.default, {
-    backgroundColor: backgroundColor,
     id: id,
     place: place,
     effect: 'solid',
-    className: className
+    className: (0, _classnames.default)(defaultColor, arrowColor, className)
   }, tooltip));
 };
 

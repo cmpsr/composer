@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import cn from 'classnames';
 import { usePopper } from 'react-popper';
-import './Tooltip.css';
+import { getStyles } from './Tooltip.styles';
 
 export enum TooltipPlace {
   Left = 'left',
@@ -11,9 +12,12 @@ export enum TooltipPlace {
 
 type Props = {
   place?: TooltipPlace;
+  element: React.ReactNode;
+  tooltip: React.ReactNode;
+  className?: string;
 }
 
-export const Tooltip = ({ place = TooltipPlace.Top }: Props) => {
+export const Tooltip = ({ place = TooltipPlace.Top, element, tooltip, className }: Props) => {
   const [showPopper, setShowPopper] = useState(true);
   const [referenceElement, setReferenceElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
@@ -27,16 +31,18 @@ export const Tooltip = ({ place = TooltipPlace.Top }: Props) => {
       },
     }],
   });
-  console.log(popperElement)
+  const { arrowColor, defaultColor } = getStyles(place, backgroundColor);
+
+  //before:border-t-fill-primary-100 before:border-r-transparent before:border-l-transparent h-1 w-4
   return (
     <>
-      <button type="button" ref={setReferenceElement} onClick={() => setShowPopper(!showPopper)}>
-        element
-      </button>
+      <a ref={setReferenceElement} onClick={() => setShowPopper(!showPopper)}>
+        {element}
+      </a>
       {showPopper && (
-        <div ref={setPopperElement} style={styles.popper} {...attributes.popper} className="bg-fill-primary-100 px-5 py-1 text-white rounded-sm">
-          Tooltip
-          <div ref={setArrowElement} style={styles.arrow} data-placement={place} className="arrow h-1 w-4 before:border-t-fill-primary-100 before:border-r-transparent before:border-l-transparent" />
+        <div ref={setPopperElement} style={styles.popper} {...attributes.popper} className={cn("bg-fill-primary-100 px-5 py-1 text-white rounded-sm", className)}>
+          {tooltip}
+          <div ref={setArrowElement} style={styles.arrow} data-placement={place} className="arrow" />
         </div>
       )}
     </>

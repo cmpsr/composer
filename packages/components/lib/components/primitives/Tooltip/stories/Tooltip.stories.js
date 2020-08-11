@@ -30,8 +30,8 @@ var idOptions;
 var colorOptions;
 
 (function (colorOptions) {
-  colorOptions["red"] = "red";
-  colorOptions["gray"] = "gray";
+  colorOptions["primary50"] = "bg-fill-primary-50";
+  colorOptions["primary100"] = "bg-fill-primary-100";
 })(colorOptions || (colorOptions = {}));
 
 const base = () => /*#__PURE__*/_react.default.createElement("div", {
@@ -41,7 +41,7 @@ const base = () => /*#__PURE__*/_react.default.createElement("div", {
   place: (0, _addonKnobs.select)('place', _.TooltipPlace, _.TooltipPlace.Top),
   tooltip: /*#__PURE__*/_react.default.createElement("span", null, "Tooltip"),
   element: /*#__PURE__*/_react.default.createElement("span", null, "Trigger"),
-  backgroundColor: (0, _addonKnobs.select)('backgroundColor', colorOptions, colorOptions.gray)
+  backgroundColor: (0, _addonKnobs.select)('backgroundColor', colorOptions, colorOptions.primary100)
 }));
 
 exports.base = base;

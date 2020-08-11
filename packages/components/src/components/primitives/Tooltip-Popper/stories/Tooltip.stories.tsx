@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { Tooltip, TooltipPlace } from '../Tooltip';
 import { select, text } from '@storybook/addon-knobs';
 
@@ -9,10 +9,13 @@ export default {
 
 export const base = () => (
   <div className="p-48">
-    <Tooltip place={select('Place', TooltipPlace, TooltipPlace.Top)} />
+    <Tooltip
+      place={select('Place', TooltipPlace, TooltipPlace.Top)}
+      element={<span>Trigger</span>}
+      tooltip={<span>Tooltip</span>}
+    />
   </div>
 );
-
 
 base.story = {
   name: 'Base',

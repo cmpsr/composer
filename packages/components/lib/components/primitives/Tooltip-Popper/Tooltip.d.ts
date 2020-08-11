@@ -1,5 +1,4 @@
 import React from 'react';
-export declare const TOOLTIP_DEFAULT_TEST_ID = "tooltip";
 export declare enum TooltipPlace {
     Left = "left",
     Right = "right",
@@ -7,14 +6,11 @@ export declare enum TooltipPlace {
     Top = "top"
 }
 declare type Props = {
-    id: string;
     place?: TooltipPlace;
-    tooltip: React.ReactNode;
     element: React.ReactNode;
-    testId?: string;
-    backgroundColor?: string;
+    tooltip: React.ReactNode;
     className?: string;
 };
-export declare const Tooltip: ({ id, place, tooltip, element, testId, className, backgroundColor, }: Props) => JSX.Element;
+export declare const Tooltip: ({ place, element, tooltip, className }: Props) => JSX.Element;
 export {};
 //# sourceMappingURL=Tooltip.d.ts.map

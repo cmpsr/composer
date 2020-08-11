@@ -58,7 +58,7 @@ export const ComponentRenderer = ({
       parentId
     );
   } catch (e) {
-    console.log(e);
+    console.log('error', e);
     return null;
   }
 };

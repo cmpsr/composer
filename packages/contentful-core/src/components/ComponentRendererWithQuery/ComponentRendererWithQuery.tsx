@@ -18,27 +18,32 @@ export const ComponentRendererWithQuery = ({
   type,
   variables
 }: ChildProps): ReactElement | null => {
-  const {
-    componentMap: componentMapDefault,
-    queryMap: queryMapDefault
-  } = useContext(ContentfulContext);
+  try {
+    const {
+      componentMap: componentMapDefault,
+      queryMap: queryMapDefault
+    } = useContext(ContentfulContext);
 
-  const query = (queryMapOverride || queryMapDefault)[type]();
-  const { data } = useQuery(query, {
-    variables
-  });
-  if (!data) return null;
+    const query = (queryMapOverride || queryMapDefault)[type]();
+    const { data } = useQuery(query, {
+      variables
+    });
+    if (!data) return null;
 
-  const key = Object.keys(data)[0];
-  if (!key) return null;
+    const key = Object.keys(data)[0];
+    if (!key) return null;
 
-  const dataToParse =
-    key.indexOf('Collection') >= 0 ? data[key].items[0] : data[key];
-  return (
-    <ComponentRenderer
-      className={className}
-      data={dataToParse}
-      componentMap={componentMapOverride || componentMapDefault}
-    />
-  );
+    const dataToParse =
+      key.indexOf('Collection') >= 0 ? data[key].items[0] : data[key];
+    return (
+      <ComponentRenderer
+        className={className}
+        data={dataToParse}
+        componentMap={componentMapOverride || componentMapDefault}
+      />
+    );
+  } catch (e) {
+    console.log('error', e);
+    return null;
+  }
 };

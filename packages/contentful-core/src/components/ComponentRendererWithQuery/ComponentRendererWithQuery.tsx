@@ -28,10 +28,8 @@ export const ComponentRendererWithQuery = ({
     const { data } = useQuery(query, {
       variables
     });
-    if (!data) return null;
 
     const key = Object.keys(data)[0];
-    if (!key) return null;
 
     const dataToParse =
       key.indexOf('Collection') >= 0 ? data[key].items[0] : data[key];

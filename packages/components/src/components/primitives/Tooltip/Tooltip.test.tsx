@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import { Tooltip, TooltipPlace, TOOLTIP_DEFAULT_TEST_ID, BackgroundColor } from './Tooltip';
 
 describe('Tooltip', () => {
@@ -15,7 +15,7 @@ describe('Tooltip', () => {
     );
     screen.getByText(trigger);
   });
-  it('should render tooltip on mouse hover', () => {
+  it('should render tooltip on mouse hover', async () => {
     const trigger = 'trigger';
     const tooltip = 'tooltip';
     render(
@@ -27,7 +27,7 @@ describe('Tooltip', () => {
     );
     const element = screen.getByText(trigger);
     fireEvent.mouseEnter(element);
-    waitFor(() => screen.getByText(tooltip));
+    await waitFor(() => screen.getByText(tooltip));
   });
   it('should remove tooltip on mouse leave', () => {
     const trigger = 'trigger';
@@ -41,12 +41,12 @@ describe('Tooltip', () => {
     );
     const element = screen.getByText(trigger);
     fireEvent.mouseEnter(element);
-    waitFor(() => screen.getByText(tooltip));
+    screen.getByText(tooltip);
     fireEvent.mouseLeave(element);
     const tooltipElement = screen.queryByText(tooltip);
     expect(tooltipElement).not.toBeInTheDocument();
   });
-  it('should render proper placement class when top place', () => {
+  it('should render proper placement class when top place', async () => {
     const trigger = 'trigger';
     const tooltip = 'tooltip';
     render(
@@ -58,12 +58,11 @@ describe('Tooltip', () => {
     );
     const element = screen.getByText(trigger);
     fireEvent.mouseEnter(element);
-    let tooltipElement;
-    waitFor(() => tooltipElement = screen.getByTestId(TOOLTIP_DEFAULT_TEST_ID));
+    const tooltipElement = screen.getByTestId(TOOLTIP_DEFAULT_TEST_ID);
     const arrow = tooltipElement.children[0];
-    expect(arrow.getAttribute('data-placement')).toEqual('top');
+    await waitFor(() => expect(arrow.getAttribute('data-placement')).toEqual('top'));
   });
-  it('should render proper placement class when bottom place', () => {
+  it('should render proper placement class when bottom place', async () => {
     const trigger = 'trigger';
     const tooltip = 'tooltip';
     render(
@@ -75,12 +74,11 @@ describe('Tooltip', () => {
     );
     const element = screen.getByText(trigger);
     fireEvent.mouseEnter(element);
-    let tooltipElement;
-    waitFor(() => tooltipElement = screen.getByTestId(TOOLTIP_DEFAULT_TEST_ID));
+    const tooltipElement = screen.getByTestId(TOOLTIP_DEFAULT_TEST_ID);
     const arrow = tooltipElement.children[0];
-    expect(arrow.getAttribute('data-placement')).toEqual('bottom');
+    await waitFor(() => expect(arrow.getAttribute('data-placement')).toEqual('bottom'));
   });
-  it('should render proper placement class when left place', () => {
+  it('should render proper placement class when left place', async () => {
     const trigger = 'trigger';
     const tooltip = 'tooltip';
     render(
@@ -92,12 +90,11 @@ describe('Tooltip', () => {
     );
     const element = screen.getByText(trigger);
     fireEvent.mouseEnter(element);
-    let tooltipElement;
-    waitFor(() => tooltipElement = screen.getByTestId(TOOLTIP_DEFAULT_TEST_ID));
+    const tooltipElement = screen.getByTestId(TOOLTIP_DEFAULT_TEST_ID);
     const arrow = tooltipElement.children[0];
-    expect(arrow.getAttribute('data-placement')).toEqual('left');
+    await waitFor(() => expect(arrow.getAttribute('data-placement')).toEqual('left'));
   });
-  it('should render proper placement class when right place', () => {
+  it('should render proper placement class when right place', async () => {
     const trigger = 'trigger';
     const tooltip = 'tooltip';
     render(
@@ -109,12 +106,11 @@ describe('Tooltip', () => {
     );
     const element = screen.getByText(trigger);
     fireEvent.mouseEnter(element);
-    let tooltipElement;
-    waitFor(() => tooltipElement = screen.getByTestId(TOOLTIP_DEFAULT_TEST_ID));
+    const tooltipElement = screen.getByTestId(TOOLTIP_DEFAULT_TEST_ID);
     const arrow = tooltipElement.children[0];
-    expect(arrow.getAttribute('data-placement')).toEqual('right');
+    await waitFor(() => expect(arrow.getAttribute('data-placement')).toEqual('right'));
   });
-  it('should render backgroun color', () => {
+  it('should render backgroun color', async () => {
     const trigger = 'trigger';
     const tooltip = 'tooltip';
     render(
@@ -127,8 +123,7 @@ describe('Tooltip', () => {
     );
     const element = screen.getByText(trigger);
     fireEvent.mouseEnter(element);
-    let tooltipElement;
-    waitFor(() => tooltipElement = screen.getByTestId(TOOLTIP_DEFAULT_TEST_ID));
-    expect(tooltipElement).toHaveClass('bg-fill-primary-100');
+    const tooltipElement = screen.getByTestId(TOOLTIP_DEFAULT_TEST_ID);
+    await waitFor(() => expect(tooltipElement).toHaveClass('bg-fill-primary-100'));
   })
 });

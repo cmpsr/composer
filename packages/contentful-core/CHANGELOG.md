@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.1.8
+
+### Patch Changes
+
+- 4da10b9: Adds null returns for null data
+
 ## 0.1.7
 
 ### Patch Changes

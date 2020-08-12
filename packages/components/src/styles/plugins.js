@@ -6,18 +6,18 @@ const flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette')
   .default;
 
 module.exports = [
-  plugin(function({ addVariant, e, addUtilities, theme, variants }) {
+  plugin(function ({ addVariant, e, addUtilities, theme, variants }) {
     addVariant('important', ({ container }) => {
-      container.walkRules(rule => {
+      container.walkRules((rule) => {
         rule.selector = `.\\!${rule.selector.slice(1)}`;
-        rule.walkDecls(decl => {
+        rule.walkDecls((decl) => {
           decl.important = true;
         });
       });
     });
 
-    const escape = e || (x => x);
-    pseudoElements.forEach(pseudo => {
+    const escape = e || ((x) => x);
+    pseudoElements.forEach((pseudo) => {
       addVariant(pseudo, ({ modifySelectors, separator }) => {
         modifySelectors(({ className }) => {
           return `.${escape(`${pseudo}${separator}${className}`)}::${pseudo}`;
@@ -28,19 +28,27 @@ module.exports = [
     const colors = flattenColorPalette(theme('borderColor'));
     const utilities = flatMap(omit(colors, 'default'), (value, modifier) => ({
       [`.${e(`border-t-${modifier}`)}`]: {
-        borderTopColor: `${value} !important`
+        borderTopColor: `${value}`,
       },
       [`.${e(`border-r-${modifier}`)}`]: {
-        borderRightColor: `${value} !important`
+        borderRightColor: `${value}`,
       },
       [`.${e(`border-b-${modifier}`)}`]: {
-        borderBottomColor: `${value} !important`
+        borderBottomColor: `${value}`,
       },
       [`.${e(`border-l-${modifier}`)}`]: {
-        borderLeftColor: `${value} !important`
-      }
+        borderLeftColor: `${value}`,
+      },
     }));
 
     addUtilities(utilities, variants('borderColor'));
-  })
+    addUtilities(
+      {
+        '.empty-content': {
+          content: "''",
+        },
+      },
+      ['before', 'after']
+    );
+  }),
 ];

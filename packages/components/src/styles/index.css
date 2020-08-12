@@ -6,8 +6,6 @@
 @import "../components/primitives/Typography/Typography.css";
 @import "../components/primitives/form/form.css";
 @import "../components/primitives/Progress/Circular/Circular.css";
-@import "../components/primitives/Tooltip/Tooltip.css";
-@import "../components/primitives/Tooltip-Popper/Tooltip.css";
 @import "../components/primitives/Modal/Modal.css";
 @import "../components/primitives/form/RadioButton/RadioButton.css";
 @import "../components/primitives/Snackbar/Snackbar.css";

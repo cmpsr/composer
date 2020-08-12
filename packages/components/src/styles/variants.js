@@ -24,4 +24,8 @@ module.exports = {
     'before',
     'after',
   ],
+  margin: ['responsive', 'hover', 'focus', 'before', 'after'],
+  display: ['responsive', 'hover', 'focus', 'before', 'after'],
+  width: ['responsive', 'hover', 'focus', 'before', 'after'],
+  height: ['responsive', 'hover', 'focus', 'before', 'after'],
 };

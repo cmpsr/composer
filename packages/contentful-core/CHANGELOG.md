@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.1.7
+
+### Patch Changes
+
+- ac62e76: Adds try/catch to ComponentRenderer
+
 ## 0.1.6
 
 ### Patch Changes

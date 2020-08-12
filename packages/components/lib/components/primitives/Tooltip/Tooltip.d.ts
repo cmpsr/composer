@@ -1,4 +1,5 @@
 import React from 'react';
+export declare const TOOLTIP_DEFAULT_TEST_ID = "tooltip";
 export declare enum BackgroundColor {
     Primary900 = "bg-fill-primary-900",
     Primary100 = "bg-fill-primary-100"
@@ -15,7 +16,8 @@ declare type Props = {
     tooltip: React.ReactNode;
     className?: string;
     backgroundColor?: string;
+    testId?: string;
 };
-export declare const Tooltip: ({ place, element, tooltip, className, backgroundColor, }: Props) => JSX.Element;
+export declare const Tooltip: ({ place, element, tooltip, className, backgroundColor, testId, }: Props) => JSX.Element;
 export {};
 //# sourceMappingURL=Tooltip.d.ts.map

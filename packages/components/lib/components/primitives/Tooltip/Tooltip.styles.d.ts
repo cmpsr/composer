@@ -1,5 +1,5 @@
 export declare const getStyles: (place: any, backgroundColor: any) => {
-    defaultColor: string;
+    tooltipClasses: string;
     arrowClasses: string;
     arrowBeforeClasses: string;
     arrowPlacementClasses: any;

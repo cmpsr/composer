@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Tooltip = exports.TooltipPlace = exports.BackgroundColor = void 0;
+exports.Tooltip = exports.TooltipPlace = exports.BackgroundColor = exports.TOOLTIP_DEFAULT_TEST_ID = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -21,6 +21,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
+const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
+exports.TOOLTIP_DEFAULT_TEST_ID = TOOLTIP_DEFAULT_TEST_ID;
 let BackgroundColor;
 exports.BackgroundColor = BackgroundColor;
 
@@ -44,7 +46,8 @@ const Tooltip = ({
   element,
   tooltip,
   className,
-  backgroundColor = BackgroundColor.Primary900
+  backgroundColor = BackgroundColor.Primary900,
+  testId = TOOLTIP_DEFAULT_TEST_ID
 }) => {
   const [showPopper, setShowPopper] = (0, _react.useState)(false);
   const [referenceElement, setReferenceElement] = (0, _react.useState)(null);
@@ -74,16 +77,18 @@ const Tooltip = ({
     arrowClasses,
     arrowBeforeClasses,
     arrowPlacementClasses,
-    defaultColor
+    tooltipClasses
   } = (0, _Tooltip.getStyles)(place, backgroundColor);
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("a", {
     ref: setReferenceElement,
-    onClick: () => setShowPopper(!showPopper)
+    onMouseEnter: () => setShowPopper(true),
+    onMouseLeave: () => setShowPopper(false)
   }, element), showPopper && /*#__PURE__*/_react.default.createElement("div", _extends({
     ref: setPopperElement,
     style: styles.popper
   }, attributes.popper, {
-    className: (0, _classnames.default)(defaultColor, className)
+    className: (0, _classnames.default)(tooltipClasses, className),
+    "data-testid": testId
   }), tooltip, /*#__PURE__*/_react.default.createElement("div", {
     ref: setArrowElement,
     style: styles.arrow,

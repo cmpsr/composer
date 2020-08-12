@@ -13,7 +13,7 @@ const getStyles = (place, backgroundColor) => {
     left: `-right-0-25`
   };
   return {
-    defaultColor: `${backgroundColor} px-5 py-1 text-white rounded-sm`,
+    tooltipClasses: `${backgroundColor} px-5 py-1 text-white rounded-sm`,
     arrowClasses: 'absolute w-2 h-2 z-10',
     arrowBeforeClasses: `before:absolute before:w-2 before:h-2 before:z-10 before:empty-content before:${backgroundColor} before:transform before:rotate-45`,
     arrowPlacementClasses: placeClasses[place]

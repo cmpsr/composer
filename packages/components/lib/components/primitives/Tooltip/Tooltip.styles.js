@@ -6,11 +6,17 @@ Object.defineProperty(exports, "__esModule", {
 exports.getStyles = void 0;
 
 const getStyles = (place, backgroundColor) => {
-  const color = backgroundColor.substring(2);
-  const borderPlace = place[0];
+  const placeClasses = {
+    top: `-bottom-0-25 `,
+    bottom: `-top-0-25 `,
+    right: `-left-0-25`,
+    left: `-right-0-25`
+  };
   return {
-    defaultColor: `!${backgroundColor}`,
-    arrowColor: `after:border-${borderPlace}${color}`
+    defaultColor: `${backgroundColor} px-5 py-1 text-white rounded-sm`,
+    arrowClasses: 'absolute w-2 h-2 z-10',
+    arrowBeforeClasses: `before:absolute before:w-2 before:h-2 before:z-10 before:empty-content before:${backgroundColor} before:transform before:rotate-45`,
+    arrowPlacementClasses: placeClasses[place]
   };
 };
 

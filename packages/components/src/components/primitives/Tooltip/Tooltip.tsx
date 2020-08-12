@@ -4,8 +4,8 @@ import { usePopper } from 'react-popper';
 import { getStyles } from './Tooltip.styles';
 
 export enum BackgroundColor {
-  primary900 = 'bg-fill-primary-900',
-  primary100 = 'bg-fill-primary-100',
+  Primary900 = 'bg-fill-primary-900',
+  Primary100 = 'bg-fill-primary-100',
 }
 
 export enum TooltipPlace {
@@ -28,7 +28,7 @@ export const Tooltip = ({
   element,
   tooltip,
   className,
-  backgroundColor = BackgroundColor.primary900,
+  backgroundColor = BackgroundColor.Primary900,
 }: Props) => {
   const [showPopper, setShowPopper] = useState(false);
   const [referenceElement, setReferenceElement] = useState(null);
@@ -50,7 +50,7 @@ export const Tooltip = ({
       },
     ],
   });
-  const { arrowClasses, defaultColor } = getStyles(place, backgroundColor);
+  const { arrowClasses, arrowBeforeClasses, arrowPlacementClasses, tooltipClasses } = getStyles(place, backgroundColor);
 
   return (
     <>
@@ -63,8 +63,8 @@ export const Tooltip = ({
           style={styles.popper}
           {...attributes.popper}
           className={cn(
-            defaultColor,
-            className
+            tooltipClasses,
+            className,
           )}
         >
           {tooltip}
@@ -72,7 +72,7 @@ export const Tooltip = ({
             ref={setArrowElement}
             style={styles.arrow}
             data-placement={place}
-            className={cn(arrowClasses, "arrow")}
+            className={cn(arrowClasses, arrowBeforeClasses, arrowPlacementClasses)}
           />
         </div>
       )}

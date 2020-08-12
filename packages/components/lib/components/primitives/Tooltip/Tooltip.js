@@ -1,76 +1,95 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, '__esModule', {
-  value: true,
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-exports.Tooltip = exports.TooltipPlace = exports.TOOLTIP_DEFAULT_TEST_ID = void 0;
+exports.Tooltip = exports.TooltipPlace = exports.BackgroundColor = void 0;
 
-const _react = _interopRequireDefault(require('react'));
+var _react = _interopRequireWildcard(require("react"));
 
-const _classnames = _interopRequireDefault(require('classnames'));
+var _classnames = _interopRequireDefault(require("classnames"));
 
-const _reactTooltip = _interopRequireDefault(require('react-tooltip'));
+var _reactPopper = require("react-popper");
 
-const _Tooltip = require('./Tooltip.styles');
+var _Tooltip = require("./Tooltip.styles");
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
-exports.TOOLTIP_DEFAULT_TEST_ID = TOOLTIP_DEFAULT_TEST_ID;
-const defaultColor = _colors.default['fill-primary-900'];
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+let BackgroundColor;
+exports.BackgroundColor = BackgroundColor;
+
+(function (BackgroundColor) {
+  BackgroundColor["Primary900"] = "bg-fill-primary-900";
+  BackgroundColor["Primary100"] = "bg-fill-primary-100";
+})(BackgroundColor || (exports.BackgroundColor = BackgroundColor = {}));
+
 let TooltipPlace;
 exports.TooltipPlace = TooltipPlace;
 
 (function (TooltipPlace) {
-  TooltipPlace['Left'] = 'left';
-  TooltipPlace['Right'] = 'right';
-  TooltipPlace['Bottom'] = 'bottom';
-  TooltipPlace['Top'] = 'top';
+  TooltipPlace["Left"] = "left";
+  TooltipPlace["Right"] = "right";
+  TooltipPlace["Bottom"] = "bottom";
+  TooltipPlace["Top"] = "top";
 })(TooltipPlace || (exports.TooltipPlace = TooltipPlace = {}));
 
 const Tooltip = ({
-  id,
   place = TooltipPlace.Top,
-  tooltip,
   element,
-  testId = TOOLTIP_DEFAULT_TEST_ID,
+  tooltip,
   className,
-  backgroundColor,
+  backgroundColor = BackgroundColor.Primary900
 }) => {
-  const { arrowColor, defaultColor } = (0, _Tooltip.getStyles)(
-    place,
-    backgroundColor
-  );
-  return /*#__PURE__*/ _react.default.createElement(
-    'div',
-    {
-      'data-testid': testId,
-    },
-    /*#__PURE__*/ _react.default.createElement(
-      'a',
-      {
-        'data-tip': true,
-        'data-for': id,
-      },
-      element
-    ),
-    /*#__PURE__*/ _react.default.createElement(
-      _reactTooltip.default,
-      {
-        id: id,
-        place: place,
-        effect: 'solid',
-        className: (0, _classnames.default)(
-          defaultColor,
-          arrowColor,
-          className
-        ),
-      },
-      tooltip
-    )
-  );
+  const [showPopper, setShowPopper] = (0, _react.useState)(false);
+  const [referenceElement, setReferenceElement] = (0, _react.useState)(null);
+  const [popperElement, setPopperElement] = (0, _react.useState)(null);
+  const [arrowElement, setArrowElement] = (0, _react.useState)(null);
+  const {
+    styles,
+    attributes
+  } = (0, _reactPopper.usePopper)(referenceElement, popperElement, {
+    placement: place,
+    modifiers: [{
+      name: 'flip',
+      enabled: false
+    }, {
+      name: 'arrow',
+      options: {
+        element: arrowElement
+      }
+    }, {
+      name: 'offset',
+      options: {
+        offset: [0, 10]
+      }
+    }]
+  });
+  const {
+    arrowClasses,
+    arrowBeforeClasses,
+    arrowPlacementClasses,
+    defaultColor
+  } = (0, _Tooltip.getStyles)(place, backgroundColor);
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("a", {
+    ref: setReferenceElement,
+    onClick: () => setShowPopper(!showPopper)
+  }, element), showPopper && /*#__PURE__*/_react.default.createElement("div", _extends({
+    ref: setPopperElement,
+    style: styles.popper
+  }, attributes.popper, {
+    className: (0, _classnames.default)(defaultColor, className)
+  }), tooltip, /*#__PURE__*/_react.default.createElement("div", {
+    ref: setArrowElement,
+    style: styles.arrow,
+    "data-placement": place,
+    className: (0, _classnames.default)(arrowClasses, arrowBeforeClasses, arrowPlacementClasses)
+  })));
 };
 
 exports.Tooltip = Tooltip;

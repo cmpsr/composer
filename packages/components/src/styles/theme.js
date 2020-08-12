@@ -248,6 +248,7 @@ module.exports = {
     inset: {
       '1/2': '50%',
       '1': '1rem',
+      '-0-25': '-0.25rem',
     },
     backgroundOpacity: {
       '40': '.4',

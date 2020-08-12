@@ -55,6 +55,9 @@ module.exports = {
         '800': '#44d081',
       },
     },
+    borderWidth: {
+      '10': '10px',
+    },
     borderRadius: {
       'btn-rounded': '1.75rem',
       'btn-semi-rounded': '0.5rem',
@@ -221,6 +224,7 @@ module.exports = {
     },
     margin: {
       '-0-22': '-0.22rem',
+      '0-063': '0.063rem',
       '0-625': '0.625rem',
       '3-5': '3.5rem',
     },
@@ -244,6 +248,7 @@ module.exports = {
     inset: {
       '1/2': '50%',
       '1': '1rem',
+      '-0-25': '-0.25rem',
     },
     backgroundOpacity: {
       '40': '.4',

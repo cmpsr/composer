@@ -6,8 +6,10 @@ import {
   Typography,
   TypographyTypes,
 } from 'components/primitives';
-import { Dropdown, Item } from 'components/primitives/Dropdown';
+import { Dropdown } from 'components/primitives/Dropdown';
+import { LinkItem } from 'components/primitives/List/'
 import { favorite as Favorite } from 'components/primitives/Icon/icons/action';
+import { text } from '@storybook/addon-knobs';
 
 export default {
   title: 'Composer/Layout/Navigation/Navigation1',
@@ -31,54 +33,98 @@ export const withSearchAndContent = () => (
       ),
       content: [
         <Dropdown title="Link" key="0">
-          <Item>{{ title: 'Item' }}</Item>
-          <Item>{{ title: 'Item' }}</Item>
-          <Item>{{ title: 'Item' }}</Item>
-          <Item>{{ title: 'Item' }}</Item>
+          <LinkItem title={text('Title 1', 'Result')} />
+          <LinkItem title={text('Title 1', 'Result')} />
+          <LinkItem title={text('Title 1', 'Result')} />
+          <LinkItem title={text('Title 1', 'Result')} />
         </Dropdown>,
         <Dropdown title="Link" key="1">
-          <Item>{{ title: 'Item', icon: <Favorite type="filled" /> }}</Item>
-          <Item>{{ title: 'Item', icon: <Favorite type="filled" /> }}</Item>
-          <Item>{{ title: 'Item', icon: <Favorite type="filled" /> }}</Item>
-          <Item>{{ title: 'Item', icon: <Favorite type="filled" /> }}</Item>
+          <LinkItem
+            icon={<Favorite type="filled" />}
+            title={text('Title 1', 'Result')}
+          />
+          <LinkItem
+            icon={<Favorite type="filled" />}
+            title={text('Title 1', 'Result')}
+          />
+          <LinkItem
+            icon={<Favorite type="filled" />}
+            title={text('Title 1', 'Result')}
+          />
+          <LinkItem
+            icon={<Favorite type="filled" />}
+            title={text('Title 1', 'Result')}
+          />
         </Dropdown>,
         <Dropdown title="Link" columns={2} key="2">
-          <div>
-            <Typography
-              tag="h6"
-              type={TypographyTypes.Headline6}
-              className="py-4 px-6 whitespace-no-wrap"
-            >
-              Item Sub - Title 1
-            </Typography>
-            <Item>{{ title: 'Item 1', icon: <Favorite type="filled" /> }}</Item>
-            <Item>{{ title: 'Item 2', icon: <Favorite type="filled" /> }}</Item>
-            <Item>{{ title: 'Item 3', icon: <Favorite type="filled" /> }}</Item>
-            <Item>{{ title: 'Item 4', icon: <Favorite type="filled" /> }}</Item>
-            <Item>{{ title: 'Item 5', icon: <Favorite type="filled" /> }}</Item>
-            <Item>{{ title: 'Item 6', icon: <Favorite type="filled" /> }}</Item>
-          </div>
-          <hr className="border h-auto my-3" />
-          <div>
-            <Typography
-              tag="h6"
-              type={TypographyTypes.Headline6}
-              className="py-4 px-6 whitespace-no-wrap"
-            >
-              Item Sub - Title 2
-            </Typography>
-            <Item>{{ title: 'Item 7', icon: <Favorite type="filled" /> }}</Item>
-            <Item>{{ title: 'Item 8', icon: <Favorite type="filled" /> }}</Item>
-            <Item>{{ title: 'Item 9', icon: <Favorite type="filled" /> }}</Item>
-            <Item>
-              {{ title: 'Item 10', icon: <Favorite type="filled" /> }}
-            </Item>
-            <Item>
-              {{ title: 'Item 11', icon: <Favorite type="filled" /> }}
-            </Item>
-            <Item>
-              {{ title: 'Item 12', icon: <Favorite type="filled" /> }}
-            </Item>
+          <div className="flex">
+            <div>
+              <Typography
+                tag="h6"
+                type={TypographyTypes.Headline6}
+                className="py-4 px-6 whitespace-no-wrap"
+              >
+                Item Sub - Title 1
+              </Typography>
+              <LinkItem
+                icon={<Favorite type="filled" />}
+                title={text('Title 1', 'Result')}
+              />
+              <LinkItem
+                icon={<Favorite type="filled" />}
+                title={text('Title 1', 'Result')}
+              />
+              <LinkItem
+                icon={<Favorite type="filled" />}
+                title={text('Title 1', 'Result')}
+              />
+              <LinkItem
+                icon={<Favorite type="filled" />}
+                title={text('Title 1', 'Result')}
+              />
+              <LinkItem
+                icon={<Favorite type="filled" />}
+                title={text('Title 1', 'Result')}
+              />
+              <LinkItem
+                icon={<Favorite type="filled" />}
+                title={text('Title 1', 'Result')}
+              />
+            </div>
+            <hr className="border h-auto my-3" />
+            <div>
+              <Typography
+                tag="h6"
+                type={TypographyTypes.Headline6}
+                className="py-4 px-6 whitespace-no-wrap"
+              >
+                Item Sub - Title 2
+              </Typography>
+              <LinkItem
+                icon={<Favorite type="filled" />}
+                title={text('Title 1', 'Result')}
+              />
+              <LinkItem
+                icon={<Favorite type="filled" />}
+                title={text('Title 1', 'Result')}
+              />
+              <LinkItem
+                icon={<Favorite type="filled" />}
+                title={text('Title 1', 'Result')}
+              />
+              <LinkItem
+                icon={<Favorite type="filled" />}
+                title={text('Title 1', 'Result')}
+              />
+              <LinkItem
+                icon={<Favorite type="filled" />}
+                title={text('Title 1', 'Result')}
+              />
+              <LinkItem
+                icon={<Favorite type="filled" />}
+                title={text('Title 1', 'Result')}
+              />
+            </div>
           </div>
         </Dropdown>,
         <Link url="#" key="3">

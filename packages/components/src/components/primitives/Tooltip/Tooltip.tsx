@@ -3,6 +3,8 @@ import cn from 'classnames';
 import { usePopper } from 'react-popper';
 import { getStyles } from './Tooltip.styles';
 
+export const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
+
 export enum BackgroundColor {
   Primary900 = 'bg-fill-primary-900',
   Primary100 = 'bg-fill-primary-100',
@@ -21,6 +23,7 @@ type Props = {
   tooltip: React.ReactNode;
   className?: string;
   backgroundColor?: string;
+  testId?: string;
 };
 
 export const Tooltip = ({
@@ -29,6 +32,7 @@ export const Tooltip = ({
   tooltip,
   className,
   backgroundColor = BackgroundColor.Primary900,
+  testId = TOOLTIP_DEFAULT_TEST_ID,
 }: Props) => {
   const [showPopper, setShowPopper] = useState(false);
   const [referenceElement, setReferenceElement] = useState(null);
@@ -54,7 +58,8 @@ export const Tooltip = ({
 
   return (
     <>
-      <a ref={setReferenceElement} onClick={() => setShowPopper(!showPopper)}>
+      <a ref={setReferenceElement} onMouseEnter={() => setShowPopper(true)}
+        onMouseLeave={() => setShowPopper(false)} >
         {element}
       </a>
       {showPopper && (
@@ -66,6 +71,7 @@ export const Tooltip = ({
             tooltipClasses,
             className,
           )}
+          data-testid={testId}
         >
           {tooltip}
           <div

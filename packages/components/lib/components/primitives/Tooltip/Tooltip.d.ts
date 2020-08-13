@@ -1,6 +1,6 @@
 import React from 'react';
 export declare const TOOLTIP_DEFAULT_TEST_ID = "tooltip";
-export declare enum BackgroundColor {
+export declare enum TooltipBackgroundColor {
     Primary900 = "bg-fill-primary-900",
     Primary100 = "bg-fill-primary-100"
 }

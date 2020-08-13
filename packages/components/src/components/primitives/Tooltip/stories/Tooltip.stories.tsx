@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip, TooltipPlace, BackgroundColor } from '../Tooltip';
+import { Tooltip, TooltipPlace, TooltipBackgroundColor } from '../Tooltip';
 import { select, text } from '@storybook/addon-knobs';
 
 export default {
@@ -15,8 +15,8 @@ export const base = () => (
       tooltip={<span>{text('Tooltip', 'Tooltip')}</span>}
       backgroundColor={select(
         'backgroundColor',
-        BackgroundColor,
-        BackgroundColor.Primary900
+        TooltipBackgroundColor,
+        TooltipBackgroundColor.Primary900
       )}
     />
   </div>

@@ -25,7 +25,7 @@ const base = () => /*#__PURE__*/_react.default.createElement("div", {
   place: (0, _addonKnobs.select)('Place', _Tooltip.TooltipPlace, _Tooltip.TooltipPlace.Left),
   element: /*#__PURE__*/_react.default.createElement("span", null, (0, _addonKnobs.text)('Trigger', 'Trigger')),
   tooltip: /*#__PURE__*/_react.default.createElement("span", null, (0, _addonKnobs.text)('Tooltip', 'Tooltip')),
-  backgroundColor: (0, _addonKnobs.select)('backgroundColor', _Tooltip.BackgroundColor, _Tooltip.BackgroundColor.Primary900)
+  backgroundColor: (0, _addonKnobs.select)('backgroundColor', _Tooltip.TooltipBackgroundColor, _Tooltip.TooltipBackgroundColor.Primary900)
 }));
 
 exports.base = base;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
-import { Tooltip, TooltipPlace, TOOLTIP_DEFAULT_TEST_ID, BackgroundColor } from './Tooltip';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { Tooltip, TooltipPlace, TOOLTIP_DEFAULT_TEST_ID, TooltipBackgroundColor } from './Tooltip';
 
 describe('Tooltip', () => {
   it('should render trigger', () => {
@@ -110,7 +110,7 @@ describe('Tooltip', () => {
     const arrow = tooltipElement.children[0];
     await waitFor(() => expect(arrow.getAttribute('data-placement')).toEqual('right'));
   });
-  it('should render backgroun color', async () => {
+  it('should render background color', async () => {
     const trigger = 'trigger';
     const tooltip = 'tooltip';
     render(
@@ -118,7 +118,7 @@ describe('Tooltip', () => {
         place={TooltipPlace.Right}
         tooltip={tooltip}
         element={trigger}
-        backgroundColor={BackgroundColor.Primary100}
+        backgroundColor={TooltipBackgroundColor.Primary100}
       />
     );
     const element = screen.getByText(trigger);

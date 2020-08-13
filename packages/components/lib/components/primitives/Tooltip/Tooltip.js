@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Tooltip = exports.TooltipPlace = exports.BackgroundColor = exports.TOOLTIP_DEFAULT_TEST_ID = void 0;
+exports.Tooltip = exports.TooltipPlace = exports.TooltipBackgroundColor = exports.TOOLTIP_DEFAULT_TEST_ID = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -23,13 +23,13 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
 exports.TOOLTIP_DEFAULT_TEST_ID = TOOLTIP_DEFAULT_TEST_ID;
-let BackgroundColor;
-exports.BackgroundColor = BackgroundColor;
+let TooltipBackgroundColor;
+exports.TooltipBackgroundColor = TooltipBackgroundColor;
 
-(function (BackgroundColor) {
-  BackgroundColor["Primary900"] = "bg-fill-primary-900";
-  BackgroundColor["Primary100"] = "bg-fill-primary-100";
-})(BackgroundColor || (exports.BackgroundColor = BackgroundColor = {}));
+(function (TooltipBackgroundColor) {
+  TooltipBackgroundColor["Primary900"] = "bg-fill-primary-900";
+  TooltipBackgroundColor["Primary100"] = "bg-fill-primary-100";
+})(TooltipBackgroundColor || (exports.TooltipBackgroundColor = TooltipBackgroundColor = {}));
 
 let TooltipPlace;
 exports.TooltipPlace = TooltipPlace;
@@ -46,7 +46,7 @@ const Tooltip = ({
   element,
   tooltip,
   className,
-  backgroundColor = BackgroundColor.Primary900,
+  backgroundColor = TooltipBackgroundColor.Primary900,
   testId = TOOLTIP_DEFAULT_TEST_ID
 }) => {
   const [showPopper, setShowPopper] = (0, _react.useState)(false);

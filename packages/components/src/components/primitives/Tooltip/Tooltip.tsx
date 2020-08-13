@@ -5,7 +5,7 @@ import { getStyles } from './Tooltip.styles';
 
 export const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
 
-export enum BackgroundColor {
+export enum TooltipBackgroundColor {
   Primary900 = 'bg-fill-primary-900',
   Primary100 = 'bg-fill-primary-100',
 }
@@ -31,7 +31,7 @@ export const Tooltip = ({
   element,
   tooltip,
   className,
-  backgroundColor = BackgroundColor.Primary900,
+  backgroundColor = TooltipBackgroundColor.Primary900,
   testId = TOOLTIP_DEFAULT_TEST_ID,
 }: Props) => {
   const [showPopper, setShowPopper] = useState(false);

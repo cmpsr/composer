@@ -15,7 +15,7 @@ exports.getListClasses = getListClasses;
 
 const getItemClasses = () => {
   return {
-    wrapper: 'flex items-center justify-left px-6 py-4 hover:bg-state-ui-hover whitespace-no-wrap cursor-pointer focus:outline-none',
+    wrapper: 'flex items-center justify-left px-6 py-4 hover:bg-fill-state-ui-hover whitespace-no-wrap cursor-pointer focus:outline-none',
     iconClasses: 'fill-current mr-3',
     titleWrapper: 'flex flex-col'
   };

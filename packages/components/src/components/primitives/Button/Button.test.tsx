@@ -57,7 +57,7 @@ describe('Button', () => {
       BUTTON_DEFAULT_TEST_ID
     ) as HTMLButtonElement;
     expect(button).toBeDisabled();
-    expect(button).toHaveClass('disabled:bg-state-primary-disabled');
+    expect(button).toHaveClass('disabled:bg-fill-state-primary-disabled');
   });
   it('should render secondary button with state outlined disabled', () => {
     render(<Button disabled type={ButtonTypes.Secondary} />);

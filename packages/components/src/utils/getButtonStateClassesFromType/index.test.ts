@@ -5,10 +5,10 @@ describe('getClassesFromType', () => {
   it('should return a string of classnames for primary button type', () => {
     const typeStateClasses = getButtonStateClassesFromType(ButtonTypes.Primary);
     expect(typeStateClasses).toEqual(
-      'disabled:bg-state-primary-disabled ' +
+      'disabled:bg-fill-state-primary-disabled ' +
         'disabled:pointer-events-none ' +
-        'active:bg-state-primary-pressed ' +
-        'hover:bg-state-primary-hover'
+        'active:bg-fill-state-primary-pressed ' +
+        'hover:bg-fill-state-primary-hover'
     );
   });
   it('should return a string of classnames for secondary button type', () => {

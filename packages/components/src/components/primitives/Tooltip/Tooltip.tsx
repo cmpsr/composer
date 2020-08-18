@@ -1,10 +1,14 @@
-import React from 'react';
-import ReactTooltip from 'react-tooltip';
-import colors from '../../../../lib/styles/colors.js';
+import React, { useState } from 'react';
+import cn from 'classnames';
+import { usePopper } from 'react-popper';
+import { getStyles } from './Tooltip.styles';
 
 export const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
 
-const defaultColor = colors['fill-primary-900'];
+export enum TooltipBackgroundColor {
+  Primary900 = 'bg-fill-primary-900',
+  Primary100 = 'bg-fill-primary-100',
+}
 
 export enum TooltipPlace {
   Left = 'left',
@@ -14,38 +18,70 @@ export enum TooltipPlace {
 }
 
 type Props = {
-  id: string;
   place?: TooltipPlace;
-  tooltip: React.ReactNode;
   element: React.ReactNode;
-  testId?: string;
-  backgroundColor?: string;
+  tooltip: React.ReactNode;
   className?: string;
+  backgroundColor?: string;
+  testId?: string;
 };
 
 export const Tooltip = ({
-  id,
   place = TooltipPlace.Top,
-  tooltip,
   element,
-  testId = TOOLTIP_DEFAULT_TEST_ID,
-  backgroundColor = defaultColor,
+  tooltip,
   className,
+  backgroundColor = TooltipBackgroundColor.Primary900,
+  testId = TOOLTIP_DEFAULT_TEST_ID,
 }: Props) => {
+  const [showPopper, setShowPopper] = useState(false);
+  const [referenceElement, setReferenceElement] = useState(null);
+  const [popperElement, setPopperElement] = useState(null);
+  const [arrowElement, setArrowElement] = useState(null);
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    placement: place,
+    modifiers: [
+      {
+        name: 'flip',
+        enabled: false,
+      },
+      { name: 'arrow', options: { element: arrowElement } },
+      {
+        name: 'offset',
+        options: {
+          offset: [0, 10],
+        },
+      },
+    ],
+  });
+  const { arrowClasses, arrowBeforeClasses, arrowPlacementClasses, tooltipClasses } = getStyles(place, backgroundColor);
+
   return (
-    <div data-testid={testId}>
-      <a data-tip data-for={id}>
+    <>
+      <a ref={setReferenceElement} onMouseEnter={() => setShowPopper(true)}
+        onMouseLeave={() => setShowPopper(false)} >
         {element}
       </a>
-      <ReactTooltip
-        backgroundColor={backgroundColor}
-        id={id}
-        place={place}
-        effect={'solid'}
-        className={className}
-      >
-        {tooltip}
-      </ReactTooltip>
-    </div>
+      {showPopper && (
+        <div
+          ref={setPopperElement}
+          style={styles.popper}
+          {...attributes.popper}
+          className={cn(
+            tooltipClasses,
+            className,
+          )}
+          data-testid={testId}
+        >
+          {tooltip}
+          <div
+            ref={setArrowElement}
+            style={styles.arrow}
+            data-placement={place}
+            className={cn(arrowClasses, arrowBeforeClasses, arrowPlacementClasses)}
+          />
+        </div>
+      )}
+    </>
   );
 };

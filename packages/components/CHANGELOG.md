@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.36
+
+### Patch Changes
+
+- 568d108: fix tooltip component
+
 ## 0.0.35
 
 ### Patch Changes

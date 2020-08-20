@@ -26,13 +26,13 @@
   @apply text-m-eyebrow-regular font-m-eyebrow-regular font-weight-m-eyebrow-regular leading-m-eyebrow-regular tracking-m-eyebrow-regular;
 }
 .typo-form {
-  @apply text-m-form font-m-form font-weight-m-form leading-m-form tracking-m-form;
+  @apply text-m-form-filled font-m-form-filled font-weight-m-form-filled leading-m-form-filled tracking-m-form-filled;
 }
 .typo-form-error {
-  @apply text-m-formError font-m-formError font-weight-m-formError leading-m-formError tracking-m-formError text-fill-system-error;
+  @apply text-m-form-error font-m-form-error font-weight-m-form-error leading-m-form-error tracking-m-form-error text-fill-system-error;
 }
 .typo-form-label {
-  @apply text-m-formLabel font-m-formLabel font-weight-m-formLabel leading-m-formLabel tracking-m-formLabel;
+  @apply text-m-form-label font-m-form-label font-weight-m-form-label leading-m-form-label tracking-m-form-label;
 }
 .typo-button {
   @apply text-m-button-enabled font-m-button-enabled font-weight-m-button-enabled leading-m-button-enabled tracking-m-button-enabled;
@@ -69,13 +69,13 @@
     @apply text-d-eyebrow-regular font-d-eyebrow-regular font-weight-d-eyebrow-regular leading-d-eyebrow-regular tracking-d-eyebrow-regular;
   }
   .typo-form {
-    @apply text-form font-form font-weight-form leading-form tracking-form;
+    @apply text-d-form-filled font-d-form-filled font-weight-d-form-filled leading-d-form-filled tracking-d-form-filled;
   }
   .typo-form-error {
-    @apply text-formError font-formError font-weight-formError leading-formError tracking-formError text-fill-system-error;
+    @apply text-d-form-error font-d-form-error font-weight-d-form-error leading-d-form-error tracking-d-form-error text-fill-system-error;
   }
   .typo-form-label {
-    @apply text-formLabel font-formLabel font-weight-formLabel leading-formLabel tracking-formLabel;
+    @apply text-d-form-label font-d-form-label font-weight-d-form-label leading-d-form-label tracking-d-form-label;
   }
   .typo-button {
     @apply text-d-button-enabled font-d-button-enabled font-weight-d-button-enabled leading-d-button-enabled tracking-d-button-enabled;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
+import { boolean, text, select } from '@storybook/addon-knobs';
 import { Button, ButtonTypes, ButtonShapes } from '..';
 import { Icon } from 'components/primitives/Icon';
 import { favorite as Favorite } from '../../Icon/icons/action';
@@ -12,9 +12,14 @@ export default {
 };
 
 export const withText = () => (
-  <Button type={ButtonTypes.Primary} onClick={action('button action click')}>
+  <Button
+    type={select('Type', ButtonTypes, ButtonTypes.Primary)}
+    onClick={action('button action click')}
+    shape={select('Shape', ButtonShapes, ButtonShapes.Rectangle)}
+    disabled={boolean('Disabled', false)}
+  >
     <Typography tag="span" type={TypographyTypes.Button}>
-      Primary Button
+      {text('Text', 'Primary Button')}
     </Typography>
   </Button>
 );
@@ -24,7 +29,12 @@ withText.story = {
 };
 
 export const withIcon = () => (
-  <Button type={ButtonTypes.Primary} onClick={action('button action click')}>
+  <Button
+    type={select('Type', ButtonTypes, ButtonTypes.Primary)}
+    onClick={action('button action click')}
+    shape={select('Shape', ButtonShapes, ButtonShapes.Rectangle)}
+    disabled={boolean('Disabled', false)}
+  >
     <Icon className="fill-current" width={20} height={20}>
       <Favorite type="filled" />
     </Icon>
@@ -36,12 +46,17 @@ withIcon.story = {
 };
 
 export const withTextIcon = () => (
-  <Button type={ButtonTypes.Primary} onClick={action('button action click')}>
+  <Button
+    type={select('Type', ButtonTypes, ButtonTypes.Primary)}
+    onClick={action('button action click')}
+    shape={select('Shape', ButtonShapes, ButtonShapes.Rectangle)}
+    disabled={boolean('Disabled', false)}
+  >
     <Icon className="fill-current" width={20} height={20}>
       <Favorite type="filled" />
     </Icon>
     <Typography tag="span" type={TypographyTypes.Button} className="mx-1">
-      Primary Button
+      {text('Text', 'Primary Button')}
     </Typography>
   </Button>
 );
@@ -51,9 +66,14 @@ withTextIcon.story = {
 };
 
 export const primaryIconAlignment = () => (
-  <Button type={ButtonTypes.Primary} onClick={action('button action click')}>
+  <Button
+    type={select('Type', ButtonTypes, ButtonTypes.Primary)}
+    onClick={action('button action click')}
+    shape={select('Shape', ButtonShapes, ButtonShapes.Rectangle)}
+    disabled={boolean('Disabled', false)}
+  >
     <Typography tag="span" type={TypographyTypes.Button} className="mx-1">
-      Primary Button
+      {text('Text', 'Primary Button')}
     </Typography>
     <Icon className="fill-current" width={20} height={20}>
       <Favorite type="filled" />
@@ -63,54 +83,6 @@ export const primaryIconAlignment = () => (
 
 primaryIconAlignment.story = {
   name: 'With text and icon alignment',
-};
-
-export const withDisabled = () => (
-  <Button
-    disabled={boolean('Disabled', true)}
-    type={ButtonTypes.Primary}
-    onClick={action('button action click')}
-  >
-    <Typography tag="span" type={TypographyTypes.Button}>
-      Primary Button Disabled
-    </Typography>
-  </Button>
-);
-
-withDisabled.story = {
-  name: 'With disabled',
-};
-
-export const withRoundedBorder = () => (
-  <Button
-    shape={ButtonShapes.Rounded}
-    type={ButtonTypes.Primary}
-    onClick={action('button action click')}
-  >
-    <Typography tag="span" type={TypographyTypes.Button}>
-      Primary Button Rounded
-    </Typography>
-  </Button>
-);
-
-withRoundedBorder.story = {
-  name: 'With rounded',
-};
-
-export const withSemiRoundedBorder = () => (
-  <Button
-    shape={ButtonShapes.SemiRounded}
-    type={ButtonTypes.Primary}
-    onClick={action('button action click')}
-  >
-    <Typography tag="span" type={TypographyTypes.Button}>
-      Primary Button Semi Rounded
-    </Typography>
-  </Button>
-);
-
-withSemiRoundedBorder.story = {
-  name: 'With semi rounded',
 };
 
 export const testChromatic = () => (

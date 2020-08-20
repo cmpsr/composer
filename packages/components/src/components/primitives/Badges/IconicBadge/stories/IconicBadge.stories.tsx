@@ -8,7 +8,12 @@ export default {
   component: IconicBadge,
 };
 
-export const basic = () => <IconicBadge icon={<Search type="filled" />} color={select('color', BadgeColor, BadgeColor.Primary)} />;
+export const basic = () => (
+  <IconicBadge
+    icon={<Search type="filled" />}
+    color={select('color', BadgeColor, BadgeColor.Primary)}
+  />
+);
 
 basic.story = {
   name: 'Basic',

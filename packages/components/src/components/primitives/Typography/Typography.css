@@ -38,7 +38,7 @@
   @apply text-m-button-enabled font-m-button-enabled font-weight-m-button-enabled leading-m-button-enabled tracking-m-button-enabled;
 }
 .typo-link {
-  @apply text-m-link font-m-link font-weight-m-link leading-m-link tracking-m-link underline;
+  @apply text-m-link-small font-m-link-small font-weight-m-link-small leading-m-link-small tracking-m-link-small underline;
 }
 @screen md {
   .typo-headline-1 {
@@ -81,7 +81,7 @@
     @apply text-d-button-enabled font-d-button-enabled font-weight-d-button-enabled leading-d-button-enabled tracking-d-button-enabled;
   }
   .typo-link {
-    @apply text-link font-link font-weight-link leading-link tracking-link;
+    @apply text-d-link-small font-d-link-small font-weight-d-link-small leading-d-link-small tracking-d-link-small;
   }
 }
 .dark-100 {

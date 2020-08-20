@@ -17,7 +17,7 @@
   @apply text-m-h6 font-m-h6 font-weight-m-h6 leading-m-h6 tracking-m-h6;
 }
 .typo-body {
-  @apply text-m-body font-m-body font-weight-m-body leading-m-body tracking-m-body;
+  @apply text-m-body-regular font-m-body-regular font-weight-m-body-regular leading-m-body-regular tracking-m-body-regular;
 }
 .typo-detail {
   @apply text-m-detail font-m-detail font-weight-m-detail leading-m-detail tracking-m-detail;
@@ -60,7 +60,7 @@
     @apply text-d-h6 font-d-h6 font-weight-d-h6 leading-d-h6 tracking-d-h6;
   }
   .typo-body {
-    @apply text-body font-body font-weight-body leading-body tracking-body;
+    @apply text-d-body-regular font-d-body-regular font-weight-d-body-regular leading-d-body-regular tracking-d-body-regular;
   }
   .typo-detail {
     @apply text-detail font-detail font-weight-detail leading-detail tracking-detail;

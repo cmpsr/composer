@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.0.37
+
+### Patch Changes
+
+- f16fb5a: Rename key of colors to match DSM
+- 45d57bf: update typpgraphies definition to match DSM
+
 ## 0.0.36
 
 ### Patch Changes

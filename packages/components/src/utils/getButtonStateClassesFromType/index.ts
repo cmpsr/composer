@@ -3,10 +3,10 @@ import { ButtonTypes } from 'components/primitives/Button';
 export const getButtonStateClassesFromType = (type: ButtonTypes) => {
   if (type === ButtonTypes.Primary) {
     return (
-      'disabled:bg-state-primary-disabled ' +
+      'disabled:bg-fill-state-primary-disabled ' +
       'disabled:pointer-events-none ' +
-      'active:bg-state-primary-pressed ' +
-      'hover:bg-state-primary-hover'
+      'active:bg-fill-state-primary-pressed ' +
+      'hover:bg-fill-state-primary-hover'
     );
   } else if (type === ButtonTypes.Secondary) {
     return (

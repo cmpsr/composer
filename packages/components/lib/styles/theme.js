@@ -73,7 +73,25 @@ module.exports = {
         '900': '#414141',
       },
     },
-    colors,
+    colors: {
+      ...colors,
+      // Typographies
+      dark: {
+        '100': '#000000',
+        '50': '#828282',
+        '25': '#C8C8C8',
+      },
+      light: {
+        '100': '#FFFFFF',
+        '50': '#FFFFFF',
+        '25': '#FFFFFF',
+      },
+      accent: {
+        '100': '#2A5AA7',
+        '50': '#2A5AA7',
+        '25': '#2A5AA7',
+      },
+    },
     fontSize: {
       'headline-1': '4.75rem',
       'headline-2': '3.75rem',

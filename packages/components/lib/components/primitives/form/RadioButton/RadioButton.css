@@ -12,9 +12,9 @@ input[type="radio"]:before {
 }
 
 input[type="radio"]:checked:before {
-  @apply bg-state-primary-enabled;
+  @apply bg-fill-state-primary-enabled;
 }
 
 input[type="radio"]:disabled:checked:before {
-  @apply bg-state-primary-disabled;
+  @apply bg-fill-state-primary-disabled;
 }

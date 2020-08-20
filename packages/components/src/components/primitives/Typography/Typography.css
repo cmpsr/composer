@@ -20,7 +20,7 @@
   @apply text-m-body-regular font-m-body-regular font-weight-m-body-regular leading-m-body-regular tracking-m-body-regular;
 }
 .typo-detail {
-  @apply text-m-detail font-m-detail font-weight-m-detail leading-m-detail tracking-m-detail;
+  @apply text-m-detail-regular font-m-detail-regular font-weight-m-detail-regular leading-m-detail-regular tracking-m-detail-regular;
 }
 .typo-eyebrow {
   @apply text-m-eyebrow font-m-eyebrow font-weight-m-eyebrow leading-m-eyebrow tracking-m-eyebrow;
@@ -63,7 +63,7 @@
     @apply text-d-body-regular font-d-body-regular font-weight-d-body-regular leading-d-body-regular tracking-d-body-regular;
   }
   .typo-detail {
-    @apply text-detail font-detail font-weight-detail leading-detail tracking-detail;
+    @apply text-d-detail-regular font-d-detail-regular font-weight-d-detail-regular leading-d-detail-regular tracking-d-detail-regular;
   }
   .typo-eyebrow {
     @apply text-eyebrow font-eyebrow font-weight-eyebrow leading-eyebrow tracking-eyebrow;

@@ -1,20 +1,20 @@
 .typo-headline-1 {
-  @apply text-m-headline-1 font-m-headline-1 font-weight-m-headline-1 leading-m-headline-1 tracking-m-headline-1;
+  @apply text-m-h1 font-m-h1 font-weight-m-h1 leading-m-h1 tracking-m-h1;
 }
 .typo-headline-2 {
-  @apply text-m-headline-2 font-m-headline-2 font-weight-m-headline-2 leading-m-headline-2 tracking-m-headline-2;
+  @apply text-m-h2 font-m-h2 font-weight-m-h2 leading-m-h2 tracking-m-h2;
 }
 .typo-headline-3 {
-  @apply text-m-headline-3 font-m-headline-3 font-weight-m-headline-3 leading-m-headline-3 tracking-m-headline-3;
+  @apply text-m-h3 font-m-h3 font-weight-m-h3 leading-m-h3 tracking-m-h3;
 }
 .typo-headline-4 {
-  @apply text-m-headline-4 font-m-headline-4 font-weight-m-headline-4 leading-m-headline-4 tracking-m-headline-4;
+  @apply text-m-h4 font-m-h4 font-weight-m-h4 leading-m-h4 tracking-m-h4;
 }
 .typo-headline-5 {
-  @apply text-m-headline-5 font-m-headline-5 font-weight-m-headline-5 leading-m-headline-5 tracking-m-headline-5;
+  @apply text-m-h5 font-m-h5 font-weight-m-h5 leading-m-h5 tracking-m-h5;
 }
 .typo-headline-6 {
-  @apply text-m-headline-6 font-m-headline-6 font-weight-m-headline-6 leading-m-headline-6 tracking-m-headline-6;
+  @apply text-m-h6 font-m-h6 font-weight-m-h6 leading-m-h6 tracking-m-h6;
 }
 .typo-body {
   @apply text-m-body font-m-body font-weight-m-body leading-m-body tracking-m-body;

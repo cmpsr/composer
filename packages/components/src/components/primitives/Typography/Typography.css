@@ -1,20 +1,20 @@
 .typo-headline-1 {
-  @apply text-m-headline-1 font-m-headline-1 font-weight-m-headline-1 leading-m-headline-1 tracking-m-headline-1;
+  @apply text-m-h1 font-m-h1 font-weight-m-h1 leading-m-h1 tracking-m-h1;
 }
 .typo-headline-2 {
-  @apply text-m-headline-2 font-m-headline-2 font-weight-m-headline-2 leading-m-headline-2 tracking-m-headline-2;
+  @apply text-m-h2 font-m-h2 font-weight-m-h2 leading-m-h2 tracking-m-h2;
 }
 .typo-headline-3 {
-  @apply text-m-headline-3 font-m-headline-3 font-weight-m-headline-3 leading-m-headline-3 tracking-m-headline-3;
+  @apply text-m-h3 font-m-h3 font-weight-m-h3 leading-m-h3 tracking-m-h3;
 }
 .typo-headline-4 {
-  @apply text-m-headline-4 font-m-headline-4 font-weight-m-headline-4 leading-m-headline-4 tracking-m-headline-4;
+  @apply text-m-h4 font-m-h4 font-weight-m-h4 leading-m-h4 tracking-m-h4;
 }
 .typo-headline-5 {
-  @apply text-m-headline-5 font-m-headline-5 font-weight-m-headline-5 leading-m-headline-5 tracking-m-headline-5;
+  @apply text-m-h5 font-m-h5 font-weight-m-h5 leading-m-h5 tracking-m-h5;
 }
 .typo-headline-6 {
-  @apply text-m-headline-6 font-m-headline-6 font-weight-m-headline-6 leading-m-headline-6 tracking-m-headline-6;
+  @apply text-m-h6 font-m-h6 font-weight-m-h6 leading-m-h6 tracking-m-h6;
 }
 .typo-body {
   @apply text-m-body font-m-body font-weight-m-body leading-m-body tracking-m-body;
@@ -42,22 +42,22 @@
 }
 @screen md {
   .typo-headline-1 {
-    @apply text-headline-1 font-headline-1 font-weight-headline-1 leading-headline-1 tracking-headline-1;
+    @apply text-d-h1 font-d-h1 font-weight-d-h1 leading-d-h1 tracking-d-h1;
   }
   .typo-headline-2 {
-    @apply text-headline-2 font-headline-2 font-weight-headline-2 leading-headline-2 tracking-headline-2;
+    @apply text-d-h2 font-d-h2 font-weight-d-h2 leading-d-h2 tracking-d-h2;
   }
   .typo-headline-3 {
-    @apply text-headline-3 font-headline-3 font-weight-headline-3 leading-headline-3 tracking-headline-3;
+    @apply text-d-h3 font-d-h3 font-weight-d-h3 leading-d-h3 tracking-d-h3;
   }
   .typo-headline-4 {
-    @apply text-headline-4 font-headline-4 font-weight-headline-4 leading-headline-4 tracking-headline-4;
+    @apply text-d-h4 font-d-h4 font-weight-d-h4 leading-d-h4 tracking-d-h4;
   }
   .typo-headline-5 {
-    @apply text-headline-5 font-headline-5 font-weight-headline-5 leading-headline-5 tracking-headline-5;
+    @apply text-d-h5 font-d-h5 font-weight-d-h5 leading-d-h5 tracking-d-h5;
   }
   .typo-headline-6 {
-    @apply text-headline-6 font-headline-6 font-weight-headline-6 leading-headline-6 tracking-headline-6;
+    @apply text-d-h6 font-d-h6 font-weight-d-h6 leading-d-h6 tracking-d-h6;
   }
   .typo-body {
     @apply text-body font-body font-weight-body leading-body tracking-body;

@@ -35,7 +35,7 @@
   @apply text-m-formLabel font-m-formLabel font-weight-m-formLabel leading-m-formLabel tracking-m-formLabel;
 }
 .typo-button {
-  @apply text-m-button font-m-button font-weight-m-button leading-m-button tracking-m-button;
+  @apply text-m-button-enabled font-m-button-enabled font-weight-m-button-enabled leading-m-button-enabled tracking-m-button-enabled;
 }
 .typo-link {
   @apply text-m-link font-m-link font-weight-m-link leading-m-link tracking-m-link underline;
@@ -78,7 +78,7 @@
     @apply text-formLabel font-formLabel font-weight-formLabel leading-formLabel tracking-formLabel;
   }
   .typo-button {
-    @apply text-button font-button font-weight-button leading-button tracking-button;
+    @apply text-d-button-enabled font-d-button-enabled font-weight-d-button-enabled leading-d-button-enabled tracking-d-button-enabled;
   }
   .typo-link {
     @apply text-link font-link font-weight-link leading-link tracking-link;

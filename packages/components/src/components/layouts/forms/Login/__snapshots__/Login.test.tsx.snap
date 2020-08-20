@@ -85,7 +85,7 @@ exports[`Login should match snapshot 1`] = `
         className="mt-6"
       >
         <button
-          className="w-full relative flex focus:outline-none primary-btn disabled:bg-state-primary-disabled disabled:pointer-events-none active:bg-state-primary-pressed hover:bg-state-primary-hover"
+          className="w-full relative flex focus:outline-none primary-btn disabled:bg-fill-state-primary-disabled disabled:pointer-events-none active:bg-fill-state-primary-pressed hover:bg-fill-state-primary-hover"
           data-testid="button"
           type="submit"
         >

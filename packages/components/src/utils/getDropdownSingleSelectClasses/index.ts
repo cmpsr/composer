@@ -13,7 +13,7 @@ export const getDropdownSingleSelectClasses = (
   }`,
   selectDisabledClasses: disabled
     ? 'bg-fill-form-disabled border-outline-form-disabled !text-outline-form-filled'
-    : 'border-outline-form-filled hover:border-state-primary-enabled',
+    : 'border-outline-form-filled hover:border-fill-state-primary-enabled',
   iconWrapper:
     'pointer-events-none absolute inset-y-0 flex items-center z-10 right-0 pr-3',
   icon: 'fill-current text-fill-black-300',

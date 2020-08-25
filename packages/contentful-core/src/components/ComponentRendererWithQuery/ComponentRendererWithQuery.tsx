@@ -8,7 +8,7 @@ export type ChildProps = {
   componentMap?: any;
   queryMap?: any;
   type: string;
-  variables: { [key: string]: string };
+  variables: { [key: string]: string | boolean | number };
 };
 
 export const ComponentRendererWithQuery = ({

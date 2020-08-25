@@ -11,7 +11,12 @@ addParameters({
   viewport: {
     viewports: INITIAL_VIEWPORTS,
   },
-  decorators: [withA11y, withKnobs],
+  decorators: [
+    withA11y,
+    withKnobs({
+      escapeHTML: false,
+    }),
+  ],
   docs: {
     container: DocsContainer,
     page: DocsPage,

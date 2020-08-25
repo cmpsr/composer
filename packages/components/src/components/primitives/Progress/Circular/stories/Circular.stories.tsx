@@ -1,27 +1,19 @@
 import React from 'react';
 import { Circular, CircularColor, CircularSize } from '..';
+import { select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Composer/Primitive/Progress/Circular',
   component: Circular,
 };
 
-export const withPrimaryColor = () => (
-  <Circular color={CircularColor.Primary} />
+export const basic = () => (
+  <Circular
+    color={select('Color', CircularColor, CircularColor.Primary)}
+    size={select('Size', CircularSize, CircularSize.Large)}
+  />
 );
 
-withPrimaryColor.story = {
-  name: 'With primary color',
-};
-
-export const withLargeSize = () => <Circular size={CircularSize.Large} />;
-
-withLargeSize.story = {
-  name: 'With large size',
-};
-
-export const withSmallSize = () => <Circular size={CircularSize.Small} />;
-
-withSmallSize.story = {
-  name: 'With small size',
+basic.story = {
+  name: 'Basic',
 };

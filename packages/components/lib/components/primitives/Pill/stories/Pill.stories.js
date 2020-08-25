@@ -9,6 +9,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _ = require("..");
 
+var _addonKnobs = require("@storybook/addon-knobs");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = {
@@ -18,7 +20,7 @@ var _default = {
 exports.default = _default;
 
 const basic = () => /*#__PURE__*/_react.default.createElement(_.Pill, {
-  label: "TODAY"
+  label: (0, _addonKnobs.text)('Label', "TODAY")
 });
 
 exports.basic = basic;

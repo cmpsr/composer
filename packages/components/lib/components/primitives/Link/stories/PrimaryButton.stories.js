@@ -15,6 +15,8 @@ var _ = require("..");
 
 var _Typography = require("../../Typography");
 
+var _addonKnobs = require("@storybook/addon-knobs");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = {
@@ -26,13 +28,13 @@ exports.default = _default;
 const withText = () => /*#__PURE__*/_react.default.createElement("span", {
   className: "flex"
 }, /*#__PURE__*/_react.default.createElement(_.Link, {
-  url: "#",
-  type: _.LinkTypes.Primary,
-  className: "flex-grow-0"
+  url: (0, _addonKnobs.text)('Url', '#'),
+  type: (0, _addonKnobs.select)('Type', _.LinkTypes, _.LinkTypes.Primary),
+  className: (0, _addonKnobs.text)('ClassName', 'flex-grow-0')
 }, /*#__PURE__*/_react.default.createElement(_Typography.Typography, {
   tag: "span",
   type: _Typography.TypographyTypes.Link
-}, "Primary Link")));
+}, (0, _addonKnobs.text)('Text', "Primary Link"))));
 
 exports.withText = withText;
 withText.story = {
@@ -42,12 +44,12 @@ withText.story = {
 const withIcon = () => /*#__PURE__*/_react.default.createElement("span", {
   className: "flex"
 }, /*#__PURE__*/_react.default.createElement(_.Link, {
-  url: "#",
-  type: _.LinkTypes.Primary
+  url: (0, _addonKnobs.text)('Url', '#'),
+  type: (0, _addonKnobs.select)('Type', _.LinkTypes, _.LinkTypes.Primary)
 }, /*#__PURE__*/_react.default.createElement(_Typography.Typography, {
   tag: "span",
   type: _Typography.TypographyTypes.Link
-}, "Primary Link"), /*#__PURE__*/_react.default.createElement(_Icon.Icon, {
+}, (0, _addonKnobs.text)('Text', 'Primary Link')), /*#__PURE__*/_react.default.createElement(_Icon.Icon, {
   className: "fill-current",
   width: 20,
   height: 20
@@ -61,12 +63,12 @@ withIcon.story = {
 };
 
 const fullWidth = () => /*#__PURE__*/_react.default.createElement(_.Link, {
-  url: "#",
-  type: _.LinkTypes.Primary
+  url: (0, _addonKnobs.text)('Url', '#'),
+  type: (0, _addonKnobs.select)('Type', _.LinkTypes, _.LinkTypes.Primary)
 }, /*#__PURE__*/_react.default.createElement(_Typography.Typography, {
   tag: "span",
   type: _Typography.TypographyTypes.Link
-}, "Primary Link"));
+}, (0, _addonKnobs.text)('Text', 'Primary Link')));
 
 exports.fullWidth = fullWidth;
 fullWidth.story = {

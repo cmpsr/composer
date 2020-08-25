@@ -9,6 +9,7 @@ type Props = {
   componentMap?: any;
   environment?: string;
   locale?: string;
+  preview?: boolean;
   space?: string;
   queryMap?: any;
 }
@@ -19,6 +20,7 @@ export const ContentfulProvider = ({
   componentMap = {},
   environment = 'master',
   locale = 'en-US',
+  preview = false,
   space,
   queryMap = {},
 }: Props) => {
@@ -41,10 +43,11 @@ export const ContentfulProvider = ({
       componentMap,
       environment,
       locale,
+      preview,
       queryMap,
       space,
     };
-  }, [accessToken, componentMap, environment, locale, queryMap, space]);
+  }, [accessToken, componentMap, environment, locale, preview, queryMap, space]);
 
   return (
     <ContentfulContext.Provider value={value}>

@@ -78,13 +78,15 @@ _Environment Variables_
 
 **Add to `package.json`**
 
+```json
 {
   "scripts": {
     ...
-    "graphql:schema": "./node_modules/@cmpsr/contentful-core/scripts/graphql-schema.js",
-    "graphql:types": "./node_modules/@cmpsr/contentful-core/scripts/graphql-types.js"
+    "graphql:schema": "node ./node_modules/@cmpsr/contentful-core/scripts/graphql-schema.js",
+    "graphql:types": "node ./node_modules/@cmpsr/contentful-core/scripts/graphql-types.js"
   }
 }
+```
 
 ## Examples
 

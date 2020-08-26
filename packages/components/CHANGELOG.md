@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.38
+
+### Patch Changes
+
+- ca2887c: fix some composer warnings
+
 ## 0.0.37
 
 ### Patch Changes

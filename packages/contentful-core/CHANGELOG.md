@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.1.9
+
+### Patch Changes
+
+- 40e18f5: Feature: Contentful Preview
+
 ## 0.1.8
 
 ### Patch Changes

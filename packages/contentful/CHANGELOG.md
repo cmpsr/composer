@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.0.40
+
+### Patch Changes
+
+- 40e18f5: Feature: Contentful Preview
+- Updated dependencies [ca2887c]
+  - @cmpsr/components@0.0.38
+
 ## 0.0.39
 
 ### Patch Changes

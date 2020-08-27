@@ -22,10 +22,7 @@ withText.story = {
 };
 
 export const withIcon = () => (
-  <Link
-    url={text('Url', '#')}
-    className={text('ClassName', 'flex items-center')}
-  >
+  <Link url={text('Url', '#')} className={text('ClassName', 'flex items-center')}>
     <Typography tag="span" type={TypographyTypes.Link}>
       {text('Text', 'Primary Link')}
     </Typography>

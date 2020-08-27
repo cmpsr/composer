@@ -7,18 +7,46 @@ export default {
   component: Message,
 };
 
-export const basic = () => (
+export const withLeft = () => (
+  <div className="p-10">
+    <Message placement={select('Placement', MessagePlacement, MessagePlacement.Left)} text={text('Text', "I'm a fancy message")} />
+  </div>
+);
+
+withLeft.story = {
+  name: 'With left placement',
+};
+
+export const withRight = () => (
+  <div className="p-10">
+    <Message placement={select('Placement', MessagePlacement, MessagePlacement.Right)} text={text('Text', "I'm a fancy message")} />
+  </div>
+);
+
+withRight.story = {
+  name: 'With right placement',
+};
+
+export const withColors = () => (
   <div className="p-10">
     <Message
-      placement={select('Placement', MessagePlacement, MessagePlacement.Left)}
       backgroundColor={select('BackgroundColor', MessageBackgroundColor, MessageBackgroundColor.Primary600)}
-      text={text('Text', "I'm a fancy message")}
+      text={text('Text', "I'm a primary 25 color")}
+    />
+    <Message
+      backgroundColor={select('BackgroundColor', MessageBackgroundColor, MessageBackgroundColor.Secondary600)}
+      text={text('Text', "I'm a secondary 25 color")}
+    />
+
+    <Message
+      backgroundColor={select('BackgroundColor', MessageBackgroundColor, MessageBackgroundColor.Black100)}
+      text={text('Text', "I'm a black 10 color")}
     />
   </div>
 );
 
-basic.story = {
-  name: 'Basic',
+withColors.story = {
+  name: 'With colors',
 };
 
 export const withTime = () => (
@@ -33,15 +61,15 @@ withTime.story = {
 
 export const withMultipleMessages = () => (
   <div className="p-10">
-    <Message text={text('Text 1', "Hi Pau! Welcome Aboard!")} />
-    <Message time={text('Time 2', "01:32 PM")} text={text('Text 2', "We should talk about this deal :)")} />
+    <Message text="Hi Pau! Welcome Aboard!" />
+    <Message time="01:32 PM" text="We should talk about this deal :)" />
     <Message
-      time={text('Time 3', "02:37 PM")}
-      backgroundColor={select('BackgroundColor', MessageBackgroundColor, MessageBackgroundColor.Secondary600)}
-      placement={select('Placement', MessagePlacement, MessagePlacement.Left)}
-      text={text('Text 3', "Absolutely! I'm really interested.")}
+      time="02:37 PM"
+      backgroundColor={MessageBackgroundColor.Secondary600}
+      placement={MessagePlacement.Left}
+      text="Absolutely! I'm really interested."
     />
-    <Message text={text('Text 4', "Oops, sorry. I'm having some issues, my internet connection is super unstable...")} />
+    <Message text="Oops, sorry. I'm having some issues, my internet connection is super unstable..." />
   </div>
 );
 

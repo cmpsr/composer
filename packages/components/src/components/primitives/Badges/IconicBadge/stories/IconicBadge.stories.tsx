@@ -8,13 +8,46 @@ export default {
   component: IconicBadge,
 };
 
-export const basic = () => (
+export const withIcon = () => (
   <IconicBadge
     icon={<Search type="filled" />}
     color={select('color', BadgeColor, BadgeColor.Primary)}
   />
 );
 
-basic.story = {
-  name: 'Basic',
+withIcon.story = {
+  name: 'With icon',
+};
+
+export const withPrimaryColor = () => (
+  <IconicBadge
+    color={select('color', BadgeColor, BadgeColor.Primary)}
+    icon={<Search type="filled" />}
+  />
+);
+
+withPrimaryColor.story = {
+  name: 'With primary color',
+};
+
+export const withSecondaryColor = () => (
+  <IconicBadge
+    color={select('color', BadgeColor, BadgeColor.Secondary)}
+    icon={<Search type="filled" />}
+  />
+);
+
+withSecondaryColor.story = {
+  name: 'With secondary color',
+};
+
+export const withErrorColor = () => (
+  <IconicBadge
+    color={select('color', BadgeColor, BadgeColor.Error)}
+    icon={<Search type="filled" />}
+  />
+);
+
+withErrorColor.story = {
+  name: 'With error color',
 };

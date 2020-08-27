@@ -9,7 +9,7 @@ export default {
   component: MessageError,
 };
 
-export const basic = () => (
+export const withLeft = () => (
   <div className="p-10">
     <MessageError
       placement={select('Placement', MessagePlacement, MessagePlacement.Left)}
@@ -19,21 +19,35 @@ export const basic = () => (
   </div>
 );
 
-basic.story = {
-  name: 'Basic',
+withLeft.story = {
+  name: 'With error on left',
+};
+
+export const withRight = () => (
+  <div className="p-10">
+    <MessageError
+      placement={select('Placement', MessagePlacement, MessagePlacement.Right)}
+      errorText={text('Error Text', "I'm an error")}
+      text={text('Text', "I'm a fancy message")}
+    />
+  </div>
+);
+
+withRight.story = {
+  name: 'With error on right',
 };
 
 export const withMultipleErrors = () => (
   <div className="p-10">
     <MessageError
-      placement={select('Placement 1', MessagePlacement, MessagePlacement.Right)}
-      errorText={text('Error Text 1', "I'm on the right side!")}
-      text={text('Text 1', "I'm a fancy message :)")}
+      placement={select('First Placement', MessagePlacement, MessagePlacement.Right)}
+      errorText={text('First Error Text', "I'm on the right side!")}
+      text={text('First Text', "I'm a fancy message :)")}
     />
     <MessageError
-      placement={select('Placement 2', MessagePlacement, MessagePlacement.Left)}
-      errorText={text('Error Text 2', "I'm on the left side!")}
-      text={text('Text 2', "I'm a fancy message :(")}
+      placement={select('Second Placement', MessagePlacement, MessagePlacement.Left)}
+      errorText={text('Second Error Text', "I'm on the left side!")}
+      text={text('Second Text', "I'm a fancy message :(")}
     />
   </div>
 );

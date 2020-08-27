@@ -7,13 +7,22 @@ export default {
   component: Circular,
 };
 
-export const basic = () => (
-  <Circular
-    color={select('Color', CircularColor, CircularColor.Primary)}
-    size={select('Size', CircularSize, CircularSize.Large)}
-  />
+export const withPrimaryColor = () => (
+  <Circular color={select('Color', CircularColor, CircularColor.Primary)} />
 );
 
-basic.story = {
-  name: 'Basic',
+withPrimaryColor.story = {
+  name: 'With primary color',
+};
+
+export const withLargeSize = () => <Circular size={select('Size', CircularSize, CircularSize.Large)} />;
+
+withLargeSize.story = {
+  name: 'With large size',
+};
+
+export const withSmallSize = () => <Circular size={select('Size', CircularSize, CircularSize.Small)} />;
+
+withSmallSize.story = {
+  name: 'With small size',
 };

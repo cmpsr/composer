@@ -15,8 +15,6 @@ export const withText = () => (
   <Button
     type={select('Type', ButtonTypes, ButtonTypes.Primary)}
     onClick={action('button action click')}
-    shape={select('Shape', ButtonShapes, ButtonShapes.Rectangle)}
-    disabled={boolean('Disabled', false)}
   >
     <Typography tag="span" type={TypographyTypes.Button}>
       {text('Text', 'Primary Button')}
@@ -32,8 +30,6 @@ export const withIcon = () => (
   <Button
     type={select('Type', ButtonTypes, ButtonTypes.Primary)}
     onClick={action('button action click')}
-    shape={select('Shape', ButtonShapes, ButtonShapes.Rectangle)}
-    disabled={boolean('Disabled', false)}
   >
     <Icon className="fill-current" width={20} height={20}>
       <Favorite type="filled" />
@@ -49,8 +45,6 @@ export const withTextIcon = () => (
   <Button
     type={select('Type', ButtonTypes, ButtonTypes.Primary)}
     onClick={action('button action click')}
-    shape={select('Shape', ButtonShapes, ButtonShapes.Rectangle)}
-    disabled={boolean('Disabled', false)}
   >
     <Icon className="fill-current" width={20} height={20}>
       <Favorite type="filled" />
@@ -69,8 +63,6 @@ export const primaryIconAlignment = () => (
   <Button
     type={select('Type', ButtonTypes, ButtonTypes.Primary)}
     onClick={action('button action click')}
-    shape={select('Shape', ButtonShapes, ButtonShapes.Rectangle)}
-    disabled={boolean('Disabled', false)}
   >
     <Typography tag="span" type={TypographyTypes.Button} className="mx-1">
       {text('Text', 'Primary Button')}
@@ -85,14 +77,62 @@ primaryIconAlignment.story = {
   name: 'With text and icon alignment',
 };
 
-export const testChromatic = () => (
+export const withDisabled = () => (
   <Button
-    shape={ButtonShapes.SemiRounded}
-    type={ButtonTypes.Primary}
+    disabled={boolean('Disabled', true)}
+    type={select('Type', ButtonTypes, ButtonTypes.Primary)}
     onClick={action('button action click')}
   >
     <Typography tag="span" type={TypographyTypes.Button}>
-      Test button
+      {text('Text', 'Primary Button Disabled')}
+    </Typography>
+  </Button>
+);
+
+withDisabled.story = {
+  name: 'With disabled',
+};
+
+export const withRoundedBorder = () => (
+  <Button
+    shape={select('Shape', ButtonShapes, ButtonShapes.Rounded)}
+    type={select('Type', ButtonTypes, ButtonTypes.Primary)}
+    onClick={action('button action click')}
+  >
+    <Typography tag="span" type={TypographyTypes.Button}>
+      {text('Text', 'Primary Button Rounded')}
+    </Typography>
+  </Button>
+);
+
+withRoundedBorder.story = {
+  name: 'With rounded',
+};
+
+export const withSemiRoundedBorder = () => (
+  <Button
+    shape={select('Shape', ButtonShapes, ButtonShapes.SemiRounded)}
+    type={select('Type', ButtonTypes, ButtonTypes.Primary)}
+    onClick={action('button action click')}
+  >
+    <Typography tag="span" type={TypographyTypes.Button}>
+      {text('Text', 'Primary Button Semi Rounded')}
+    </Typography>
+  </Button>
+);
+
+withSemiRoundedBorder.story = {
+  name: 'With semi rounded',
+};
+
+export const testChromatic = () => (
+  <Button
+    shape={select('Shape', ButtonShapes, ButtonShapes.SemiRounded)}
+    type={select('Type', ButtonTypes, ButtonTypes.Primary)}
+    onClick={action('button action click')}
+  >
+    <Typography tag="span" type={TypographyTypes.Button}>
+      {text('Text', 'Test button')}
     </Typography>
   </Button>
 );

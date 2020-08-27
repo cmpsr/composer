@@ -18,7 +18,7 @@ export const withText = () => (
       className={text('ClassName', 'flex-grow-0')}
     >
       <Typography tag="span" type={TypographyTypes.Link}>
-        {text('Text', "Primary Link")}
+        {text('Text', 'Primary Link')}
       </Typography>
     </Link>
   </span>

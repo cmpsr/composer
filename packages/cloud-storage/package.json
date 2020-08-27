@@ -19,7 +19,7 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "@google-cloud/storage": "^4.7.0",
+    "@google-cloud/storage": "^5.0.0",
     "rimraf": "^3.0.2"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.withOnErrorClick = exports.withMultipleErrors = exports.basic = exports.default = void 0;
+exports.withOnErrorClick = exports.withMultipleErrors = exports.withRight = exports.withLeft = exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -23,7 +23,7 @@ var _default = {
 };
 exports.default = _default;
 
-const basic = () => /*#__PURE__*/_react.default.createElement("div", {
+const withLeft = () => /*#__PURE__*/_react.default.createElement("div", {
   className: "p-10"
 }, /*#__PURE__*/_react.default.createElement(_.MessageError, {
   placement: (0, _addonKnobs.select)('Placement', _Message.MessagePlacement, _Message.MessagePlacement.Left),
@@ -31,21 +31,34 @@ const basic = () => /*#__PURE__*/_react.default.createElement("div", {
   text: (0, _addonKnobs.text)('Text', "I'm a fancy message")
 }));
 
-exports.basic = basic;
-basic.story = {
-  name: 'Basic'
+exports.withLeft = withLeft;
+withLeft.story = {
+  name: 'With error on left'
+};
+
+const withRight = () => /*#__PURE__*/_react.default.createElement("div", {
+  className: "p-10"
+}, /*#__PURE__*/_react.default.createElement(_.MessageError, {
+  placement: (0, _addonKnobs.select)('Placement', _Message.MessagePlacement, _Message.MessagePlacement.Right),
+  errorText: (0, _addonKnobs.text)('Error Text', "I'm an error"),
+  text: (0, _addonKnobs.text)('Text', "I'm a fancy message")
+}));
+
+exports.withRight = withRight;
+withRight.story = {
+  name: 'With error on right'
 };
 
 const withMultipleErrors = () => /*#__PURE__*/_react.default.createElement("div", {
   className: "p-10"
 }, /*#__PURE__*/_react.default.createElement(_.MessageError, {
-  placement: (0, _addonKnobs.select)('Placement 1', _Message.MessagePlacement, _Message.MessagePlacement.Right),
-  errorText: (0, _addonKnobs.text)('Error Text 1', "I'm on the right side!"),
-  text: (0, _addonKnobs.text)('Text 1', "I'm a fancy message :)")
+  placement: (0, _addonKnobs.select)('First Placement', _Message.MessagePlacement, _Message.MessagePlacement.Right),
+  errorText: (0, _addonKnobs.text)('First Error Text', "I'm on the right side!"),
+  text: (0, _addonKnobs.text)('First Text', "I'm a fancy message :)")
 }), /*#__PURE__*/_react.default.createElement(_.MessageError, {
-  placement: (0, _addonKnobs.select)('Placement 2', _Message.MessagePlacement, _Message.MessagePlacement.Left),
-  errorText: (0, _addonKnobs.text)('Error Text 2', "I'm on the left side!"),
-  text: (0, _addonKnobs.text)('Text 2', "I'm a fancy message :(")
+  placement: (0, _addonKnobs.select)('Second Placement', _Message.MessagePlacement, _Message.MessagePlacement.Left),
+  errorText: (0, _addonKnobs.text)('Second Error Text', "I'm on the left side!"),
+  text: (0, _addonKnobs.text)('Second Text', "I'm a fancy message :(")
 }));
 
 exports.withMultipleErrors = withMultipleErrors;

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.secondaryIconAlignment = exports.withTextIcon = exports.withIcon = exports.withText = exports.default = void 0;
+exports.withSemiRoundedBorder = exports.withRoundedBorder = exports.withDisabled = exports.secondaryIconAlignment = exports.withTextIcon = exports.withIcon = exports.withText = exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -31,9 +31,7 @@ exports.default = _default;
 
 const withText = () => /*#__PURE__*/_react.default.createElement(_.Button, {
   type: (0, _addonKnobs.select)('Type', _Button.ButtonTypes, _Button.ButtonTypes.Secondary),
-  onClick: (0, _addonActions.action)('button action click'),
-  shape: (0, _addonKnobs.select)('Shape', _Button.ButtonShapes, _Button.ButtonShapes.Rectangle),
-  disabled: (0, _addonKnobs.boolean)('Disabled', false)
+  onClick: (0, _addonActions.action)('button action click')
 }, /*#__PURE__*/_react.default.createElement(_Typography.Typography, {
   tag: "span",
   type: _Typography.TypographyTypes.Button
@@ -46,9 +44,7 @@ withText.story = {
 
 const withIcon = () => /*#__PURE__*/_react.default.createElement(_.Button, {
   type: (0, _addonKnobs.select)('Type', _Button.ButtonTypes, _Button.ButtonTypes.Secondary),
-  onClick: (0, _addonActions.action)('button action click'),
-  shape: (0, _addonKnobs.select)('Shape', _Button.ButtonShapes, _Button.ButtonShapes.Rectangle),
-  disabled: (0, _addonKnobs.boolean)('Disabled', false)
+  onClick: (0, _addonActions.action)('button action click')
 }, /*#__PURE__*/_react.default.createElement(_Icon.Icon, {
   className: "fill-current",
   width: 20,
@@ -64,9 +60,7 @@ withIcon.story = {
 
 const withTextIcon = () => /*#__PURE__*/_react.default.createElement(_.Button, {
   type: (0, _addonKnobs.select)('Type', _Button.ButtonTypes, _Button.ButtonTypes.Secondary),
-  onClick: (0, _addonActions.action)('button action click'),
-  shape: (0, _addonKnobs.select)('Shape', _Button.ButtonShapes, _Button.ButtonShapes.Rectangle),
-  disabled: (0, _addonKnobs.boolean)('Disabled', false)
+  onClick: (0, _addonActions.action)('button action click')
 }, /*#__PURE__*/_react.default.createElement(_Icon.Icon, {
   className: "fill-current",
   width: 20,
@@ -86,9 +80,7 @@ withTextIcon.story = {
 
 const secondaryIconAlignment = () => /*#__PURE__*/_react.default.createElement(_.Button, {
   type: (0, _addonKnobs.select)('Type', _Button.ButtonTypes, _Button.ButtonTypes.Secondary),
-  onClick: (0, _addonActions.action)('button action click'),
-  shape: (0, _addonKnobs.select)('Shape', _Button.ButtonShapes, _Button.ButtonShapes.Rectangle),
-  disabled: (0, _addonKnobs.boolean)('Disabled', false)
+  onClick: (0, _addonActions.action)('button action click')
 }, /*#__PURE__*/_react.default.createElement(_Typography.Typography, {
   tag: "span",
   type: _Typography.TypographyTypes.Button,
@@ -104,4 +96,46 @@ const secondaryIconAlignment = () => /*#__PURE__*/_react.default.createElement(_
 exports.secondaryIconAlignment = secondaryIconAlignment;
 secondaryIconAlignment.story = {
   name: 'With text and icon alignment'
+};
+
+const withDisabled = () => /*#__PURE__*/_react.default.createElement(_.Button, {
+  disabled: (0, _addonKnobs.boolean)('Disabled', true),
+  type: (0, _addonKnobs.select)('Type', _Button.ButtonTypes, _Button.ButtonTypes.Secondary),
+  onClick: (0, _addonActions.action)('button action click')
+}, /*#__PURE__*/_react.default.createElement(_Typography.Typography, {
+  tag: "span",
+  type: _Typography.TypographyTypes.Button
+}, (0, _addonKnobs.text)('Text', 'Secondary Button Disabled')));
+
+exports.withDisabled = withDisabled;
+withDisabled.story = {
+  name: 'With disabled'
+};
+
+const withRoundedBorder = () => /*#__PURE__*/_react.default.createElement(_.Button, {
+  shape: (0, _addonKnobs.select)('Shape', _Button.ButtonShapes, _Button.ButtonShapes.Rounded),
+  type: (0, _addonKnobs.select)('Type', _Button.ButtonTypes, _Button.ButtonTypes.Secondary),
+  onClick: (0, _addonActions.action)('button action click')
+}, /*#__PURE__*/_react.default.createElement(_Typography.Typography, {
+  tag: "span",
+  type: _Typography.TypographyTypes.Button
+}, (0, _addonKnobs.text)('Text', 'Secondary Button Rounded')));
+
+exports.withRoundedBorder = withRoundedBorder;
+withRoundedBorder.story = {
+  name: 'With rounded'
+};
+
+const withSemiRoundedBorder = () => /*#__PURE__*/_react.default.createElement(_.Button, {
+  shape: (0, _addonKnobs.select)('Shape', _Button.ButtonShapes, _Button.ButtonShapes.SemiRounded),
+  type: (0, _addonKnobs.select)('Type', _Button.ButtonTypes, _Button.ButtonTypes.Secondary),
+  onClick: (0, _addonActions.action)('button action click')
+}, /*#__PURE__*/_react.default.createElement(_Typography.Typography, {
+  tag: "span",
+  type: _Typography.TypographyTypes.Button
+}, (0, _addonKnobs.text)('Text', 'Secondary Button Semi Rounded')));
+
+exports.withSemiRoundedBorder = withSemiRoundedBorder;
+withSemiRoundedBorder.story = {
+  name: 'With semi rounded'
 };

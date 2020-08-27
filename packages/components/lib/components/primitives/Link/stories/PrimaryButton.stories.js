@@ -34,7 +34,7 @@ const withText = () => /*#__PURE__*/_react.default.createElement("span", {
 }, /*#__PURE__*/_react.default.createElement(_Typography.Typography, {
   tag: "span",
   type: _Typography.TypographyTypes.Link
-}, (0, _addonKnobs.text)('Text', "Primary Link"))));
+}, (0, _addonKnobs.text)('Text', 'Primary Link'))));
 
 exports.withText = withText;
 withText.story = {

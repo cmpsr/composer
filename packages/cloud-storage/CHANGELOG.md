@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.18
+
+### Patch Changes
+
+- 607e1c1: update dependencies to fix vulnerability issues
+
 ## 0.0.17
 
 ### Patch Changes

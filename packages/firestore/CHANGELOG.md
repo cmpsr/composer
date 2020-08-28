@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.18
+
+### Patch Changes
+
+- a172334: verify data return by getItem exists before access it
+
 ## 0.0.17
 
 ### Patch Changes

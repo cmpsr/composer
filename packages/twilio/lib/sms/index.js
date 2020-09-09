@@ -30,12 +30,10 @@ Object.keys(_TwilioConversation).forEach(function (key) {
   });
 });
 
-const useTwilioSms = (accountSid = process.env.TWILIO_ACCOUNT_SID, authToken = process.env.TWILIO_AUTH_TOKEN, serviceId = process.env.TWILIO_CHAT_SERVICE_SID) => {
-  return new _TwilioSms.TwilioSms({
-    accountSid,
-    authToken,
-    serviceId
-  });
-};
+const useTwilioSms = (accountSid = process.env.TWILIO_ACCOUNT_SID, authToken = process.env.TWILIO_AUTH_TOKEN, serviceId = process.env.TWILIO_CHAT_SERVICE_SID) => new _TwilioSms.TwilioSms({
+  accountSid,
+  authToken,
+  serviceId
+});
 
 exports.useTwilioSms = useTwilioSms;

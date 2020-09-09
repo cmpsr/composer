@@ -32,7 +32,7 @@ Object.keys(_TwilioConversation2).forEach(function (key) {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const useTwilioConversation = (accountSid = process.env.TWILIO_ACCOUNT_SID, authToken = process.env.TWILIO_AUTH_TOKEN, serviceId = process.env.TWILIO_SERVICE_ID) => {
+const useTwilioConversation = (accountSid = process.env.TWILIO_ACCOUNT_SID, authToken = process.env.TWILIO_AUTH_TOKEN, serviceId = process.env.TWILIO_CHAT_SERVICE_SID) => {
   return new _TwilioConversation.default({
     accountSid,
     authToken,

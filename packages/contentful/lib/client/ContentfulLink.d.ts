@@ -1,4 +1,4 @@
 export declare const ContentfulLink: ({ preview }: {
     preview?: boolean;
-}) => import("apollo-link").ApolloLink;
+}) => import("@apollo/client").ApolloLink;
 //# sourceMappingURL=ContentfulLink.d.ts.map

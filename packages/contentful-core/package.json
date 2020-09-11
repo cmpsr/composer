@@ -29,13 +29,15 @@
     "test:watch": "jest --watch --env=jest-environment-jsdom-sixteen",
     "test:coverage": "jest --coverage --env=jest-environment-jsdom-sixteen",
     "graphql:schema": "node ./scripts/graphql-schema.js",
-    "graphql:types": "node ./scripts/graphql-types.js"
+    "graphql:types": "node ./scripts/graphql-types.js",
+    "graphql:possibleTypes": "node ./scripts/graphql-possibleTypes.js"
   },
   "bugs": {
     "url": "https://github.com/cmpsr/composer/issues"
   },
   "dependencies": {
-    "apollo-link-http": "^1.5.17",
+    "@apollo/client": "^3.1.4",
+    "apollo-link-contentful": "^0.1.3",
     "cross-fetch": "^3.0.5",
     "dotenv": "^8.2.0",
     "invariant": "^2.2.4"

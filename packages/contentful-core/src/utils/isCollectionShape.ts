@@ -1,4 +1,8 @@
 export const isCollectionShape = object => {
+  if (!object || typeof object !== 'object') {
+    return false;
+  }
+
   if (Object.keys(object).length !== 1) {
     return false;
   }

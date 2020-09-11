@@ -1,5 +1,5 @@
 import React, { ReactElement, useContext } from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { ContentfulContext } from '../../context';
 import { ComponentRenderer } from '../ComponentRenderer';
 

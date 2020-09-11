@@ -27,20 +27,22 @@ CONTENTFUL_SPACE_ID={Contentful space ID}
 CONTENTFUL_ENVIRONMENT={Contentful environment} (defaults to `master`)
 CONTENTFUL_ACCESS_TOKEN_DELIVERY={Contentful Delivery Token}
 CONTENTFUL_ACCESS_TOKEN_PREVIEW={Contentful Preview Token}
-CONTENTFUL_ACCESS_TOKEN={Contentful token used to generate schema/types}
+CONTENTFUL_ACCESS_TOKEN={Contentful token used by scripts to generate schema/types}
 ```
 
 ### `ContentfulProvider`
 
 ```js
-
 ```
 
 ### `ComponentRenderer`
 
 ```js
-
 ```
+
+### `ComponentRenedererWithContext`
+
+### `ComponentRendererWithQuery`
 
 ### Utility Scripts
 
@@ -83,7 +85,8 @@ _Environment Variables_
   "scripts": {
     ...
     "graphql:schema": "node ./node_modules/@cmpsr/contentful-core/scripts/graphql-schema.js",
-    "graphql:types": "node ./node_modules/@cmpsr/contentful-core/scripts/graphql-types.js"
+    "graphql:types": "node ./node_modules/@cmpsr/contentful-core/scripts/graphql-types.js",
+    "graphql:possibleTypes": "node ./node_modules/@cmpsr/contentful-core/scripts/graphql-possibleTypes.js"
   }
 }
 ```
@@ -94,26 +97,39 @@ _Environment Variables_
 
 #### 1. Define Apollo Client
 
-`lib/apollo.js`
+`lib/apollo.js` - `createContetnfulLink` - GraphQL Version
 
 ```js
-import { withApollo } from 'next-apollo';
-import ApolloClient from 'apollo-client';
-import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
-import { createContentfulLink } from '@cmpsr/contentful-core/lib/client';
-
-import introspectionQueryResultData from '../../schema/fragmentTypes.json';
-
-const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData,
-});
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { withApollo } from "next-apollo";
+import { createContentfulLink } from "@cmpsr/contentful-core/lib/client";
+import possibleTypes from "types/possibleTypes.json";
 
 const apolloClient = new ApolloClient({
   link: createContentfulLink({
     space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY
   }),
-  cache: new InMemoryCache({ fragmentMatcher }),
+  cache: new InMemoryCache({ possibleTypes })
+});
+
+export default withApollo(apolloClient);
+```
+
+`lib/apollo.js` - `ContentfulRestLink` - GraphQL Queries + REST API Version
+
+```js
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { withApollo } from "next-apollo";
+import { ContentfulRestLink } from "@cmpsr/contentful-core/lib/client";
+import possibleTypes from "types/possibleTypes.json";
+
+const apolloClient = new ApolloClient({
+  link: new ContentfulRestLink({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY
+  }),
+  cache: new InMemoryCache({ possibleTypes })
 });
 
 export default withApollo(apolloClient);
@@ -124,8 +140,8 @@ export default withApollo(apolloClient);
 `pages/_app.js`
 
 ```js
-import React from 'react'
-import withApollo from '../lib/apollo'
+import React from "react";
+import withApollo from "lib/apollo";
 
 const MyApp = ({ Component, pageProps }) => <Component {...pageProps} />;
 
@@ -136,7 +152,7 @@ export default withApollo({ ssr: true })(MyApp);
 
 ```js
 import React from 'react'
-import withApollo from '../lib/apollo'
+import withApollo from 'lib/apollo'
 
 const Home = props => {
   ...
@@ -144,7 +160,6 @@ const Home = props => {
 
 export default withApollo({ ssr: true })(Home);
 ```
-
 
 ### React App
 

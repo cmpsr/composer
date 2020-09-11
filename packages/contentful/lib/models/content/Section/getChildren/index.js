@@ -7,7 +7,7 @@ exports.getChildren = void 0;
 
 var _react = require("react");
 
-var _reactHooks = require("@apollo/react-hooks");
+var _client = require("@apollo/client");
 
 var _context = require("../../../../context");
 
@@ -23,7 +23,7 @@ const getChildren = ({
   const contentfulContext = (0, _react.useContext)(_context.ContentfulContext);
   const {
     data
-  } = (0, _reactHooks.useQuery)(SectionByIdQuery, {
+  } = (0, _client.useQuery)(SectionByIdQuery, {
     variables: {
       id
     }

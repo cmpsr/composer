@@ -1,5 +1,5 @@
 import React, { ReactElement, useContext } from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 
 import { ContentfulContext } from 'context';
 import renderFromContentfulModel from 'utils/renderFromContentfulModel';
@@ -17,17 +17,22 @@ export const getChildren = ({ id, preview = false }: Props): ReactElement => {
   const { data }: { data: StandardPageByIdQueryType } = useQuery(
     StandardPageByIdQuery,
     {
-      variables: { id, preview },
+      variables: { id, preview }
     }
   );
 
   if (!data) return null;
 
-  const header = data.standardPage.header && renderFromContentfulModel(contentfulContext, data.standardPage.header);
+  const header =
+    data.standardPage.header &&
+    renderFromContentfulModel(contentfulContext, data.standardPage.header);
   const contentItems = data.standardPage.contentCollection.items.map(
-    (item, index) => renderFromContentfulModel(contentfulContext, item, index, id)
+    (item, index) =>
+      renderFromContentfulModel(contentfulContext, item, index, id)
   );
-  const footer = data.standardPage.footer && renderFromContentfulModel(contentfulContext, data.standardPage.footer);
+  const footer =
+    data.standardPage.footer &&
+    renderFromContentfulModel(contentfulContext, data.standardPage.footer);
 
   return (
     <>

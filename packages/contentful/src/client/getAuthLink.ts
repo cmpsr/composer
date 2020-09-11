@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import { setContext } from 'apollo-link-context';
+import { setContext } from '@apollo/client/link/context';
 
 export const getAuthLink = (preview = false) => {
   return setContext((_, { headers }) => ({
@@ -7,7 +7,7 @@ export const getAuthLink = (preview = false) => {
       ...headers,
       Authorization: preview
         ? `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN_PREVIEW}`
-        : `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY}`,
-    },
+        : `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY}`
+    }
   }));
 };

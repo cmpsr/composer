@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getAuthLink = void 0;
 
-var _apolloLinkContext = require("apollo-link-context");
+var _context = require("@apollo/client/link/context");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -14,7 +14,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 const getAuthLink = (preview = false) => {
-  return (0, _apolloLinkContext.setContext)((_, {
+  return (0, _context.setContext)((_, {
     headers
   }) => ({
     headers: _objectSpread(_objectSpread({}, headers), {}, {

@@ -21,7 +21,7 @@ jest.mock("../../models/content/Hero/queries/HeroByIdQuery.graphql", () => 'Hero
 jest.mock("../../models/content/Link/queries/LinkByIdQuery.graphql", () => 'LinkByIdQuery');
 jest.mock("../../models/content/Section/queries/SectionByIdQuery.graphql", () => 'SectionByIdQuery'); // Mock useQuery
 
-jest.mock('@apollo/react-hooks', () => ({
+jest.mock('@apollo/client', () => ({
   useQuery: jest.fn(() => ({
     error: null,
     loading: null

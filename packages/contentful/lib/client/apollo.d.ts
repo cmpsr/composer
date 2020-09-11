@@ -14,7 +14,7 @@ export declare const initOnContext: (ctx: any, preview: any) => any;
  * @param  {Boolean} [withApolloOptions.ssr=false]
  * @returns {(PageComponent: ReactNode) => ReactNode}
  */
-export declare const withApollo: ({ ssr, preview, }?: {
+export declare const withApollo: ({ ssr, preview }?: {
     ssr?: boolean;
     preview?: boolean;
 }) => (PageComponent: any) => {

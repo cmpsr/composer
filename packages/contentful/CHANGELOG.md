@@ -1,5 +1,16 @@
 # Change Log
 
+## 0.1.0
+
+### Minor Changes
+
+- 718ecf3: Upgrade: Apollo
+
+### Patch Changes
+
+- Updated dependencies [718ecf3]
+  - @cmpsr/contentful-core@0.2.0
+
 ## 0.0.40
 
 ### Patch Changes

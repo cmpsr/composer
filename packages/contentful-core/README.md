@@ -33,14 +33,16 @@ CONTENTFUL_ACCESS_TOKEN={Contentful token used by scripts to generate schema/typ
 ### `ContentfulProvider`
 
 ```js
-
 ```
 
 ### `ComponentRenderer`
 
 ```js
-
 ```
+
+### `ComponentRenedererWithContext`
+
+### `ComponentRendererWithQuery`
 
 ### Utility Scripts
 
@@ -95,20 +97,39 @@ _Environment Variables_
 
 #### 1. Define Apollo Client
 
-`lib/apollo.js`
+`lib/apollo.js` - `createContetnfulLink` - GraphQL Version
 
 ```js
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { withApollo } from "next-apollo";
 import { createContentfulLink } from "@cmpsr/contentful-core/lib/client";
-import possibleTypes from "../../types/possibleTypes.json";
+import possibleTypes from "types/possibleTypes.json";
 
 const apolloClient = new ApolloClient({
   link: createContentfulLink({
     space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY
   }),
-  cache: new InMemoryCache({ possibleTypes }),
+  cache: new InMemoryCache({ possibleTypes })
+});
+
+export default withApollo(apolloClient);
+```
+
+`lib/apollo.js` - `ContentfulRestLink` - GraphQL Queries + REST API Version
+
+```js
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { withApollo } from "next-apollo";
+import { ContentfulRestLink } from "@cmpsr/contentful-core/lib/client";
+import possibleTypes from "types/possibleTypes.json";
+
+const apolloClient = new ApolloClient({
+  link: new ContentfulRestLink({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY
+  }),
+  cache: new InMemoryCache({ possibleTypes })
 });
 
 export default withApollo(apolloClient);
@@ -120,7 +141,7 @@ export default withApollo(apolloClient);
 
 ```js
 import React from "react";
-import withApollo from "../lib/apollo";
+import withApollo from "lib/apollo";
 
 const MyApp = ({ Component, pageProps }) => <Component {...pageProps} />;
 
@@ -131,7 +152,7 @@ export default withApollo({ ssr: true })(MyApp);
 
 ```js
 import React from 'react'
-import withApollo from '../lib/apollo'
+import withApollo from 'lib/apollo'
 
 const Home = props => {
   ...

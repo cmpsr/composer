@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.0.40",
+  "version": "0.1.0",
   "author": "Steve Cox <stevejcox@me.com>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -23,7 +23,7 @@
     "@apollo/client": "^3.1.5",
     "@apollo/react-ssr": "^3.1.3",
     "@cmpsr/components": "^0.0.38",
-    "@cmpsr/contentful-core": "^0.1.9",
+    "@cmpsr/contentful-core": "^0.2.0",
     "classnames": "^2.2.6",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",

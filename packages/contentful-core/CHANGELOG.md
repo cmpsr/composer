@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.2.0
+
+### Minor Changes
+
+- 718ecf3: Upgrade: Apollo
+
 ## 0.1.9
 
 ### Patch Changes

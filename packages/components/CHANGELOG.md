@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.39
+
+### Patch Changes
+
+- cb1f663: Grant media capabilities to Message component
+
 ## 0.0.38
 
 ### Patch Changes

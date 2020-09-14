@@ -5,7 +5,8 @@ import {
   TypographyTypes,
   TypographyMode,
 } from 'components/primitives/Typography';
-import { getMessageClasses } from 'utils/getMessageClasses';
+import { Image } from 'components/primitives/Image';
+import { getStyles } from 'utils/getMessageClasses';
 
 export const MESSAGE_DEFAULT_TEST_ID = 'message';
 export const WRAPPER_MESSAGE_DEFAULT_TEST_ID = 'wrapperMessage';
@@ -21,13 +22,20 @@ export enum MessagePlacement {
   Right = 'right',
 }
 
+type Media = {
+  contentType: string;
+  url: string;
+};
+
 type Props = {
-  text: string;
+  text?: string;
   className?: string;
   testId?: string;
   backgroundColor?: MessageBackgroundColor;
   placement?: MessagePlacement;
   time?: string;
+  mediaFiles?: Media[];
+  onMediaClick?: (mediaFiles: Media[]) => void;
 };
 
 export const Message = ({
@@ -37,12 +45,26 @@ export const Message = ({
   backgroundColor = MessageBackgroundColor.Primary600,
   placement = MessagePlacement.Right,
   time,
+  mediaFiles = [],
+  onMediaClick,
 }: Props) => {
-  const { wrapperClasses, messageClasses, timeClasses } = getMessageClasses(
-    placement,
-    backgroundColor,
-    !!time
-  );
+  const onClickMediaFiles = () => {
+    onMediaClick && onMediaClick(mediaFiles);
+  };
+  const { hasMedia, hasMultipleMedia, thumbnail } = {
+    hasMedia: mediaFiles.length > 0,
+    hasMultipleMedia: mediaFiles.length > 1,
+    thumbnail: mediaFiles && mediaFiles[0]?.url,
+  };
+  const {
+    wrapperClasses,
+    messageClasses,
+    timeClasses,
+    textWrapper,
+    mediaPreview,
+    numberOfMediaFiles,
+    mediaWrapper,
+  } = getStyles(placement, backgroundColor, !!time, !!text, hasMedia);
 
   return (
     <div
@@ -50,13 +72,46 @@ export const Message = ({
       className={cn(className, wrapperClasses)}
     >
       <div data-testid={testId} className={cn(messageClasses)}>
-        <Typography
-          mode={TypographyMode.Dark100}
-          tag={'span'}
-          type={TypographyTypes.Form}
-        >
-          {text}
-        </Typography>
+        {hasMedia && (
+          <div
+            className={mediaWrapper}
+            data-testid="mediaWrapper"
+            onClick={onClickMediaFiles}
+          >
+            <Image
+              imageClassName={mediaPreview}
+              image={{
+                title: 'Media Asset',
+                url: thumbnail,
+              }}
+            />
+            {hasMultipleMedia && (
+              <div
+                data-testid="mediaFilesIndicator"
+                className={numberOfMediaFiles}
+              >
+                <Typography
+                  mode={TypographyMode.Light100}
+                  tag={'h6'}
+                  type={TypographyTypes.Headline6}
+                >
+                  +{mediaFiles.length}
+                </Typography>
+              </div>
+            )}
+          </div>
+        )}
+        {!!text && (
+          <div className={cn(textWrapper)} data-testid="textMessage">
+            <Typography
+              mode={TypographyMode.Dark100}
+              tag={'span'}
+              type={TypographyTypes.Form}
+            >
+              {text}
+            </Typography>
+          </div>
+        )}
       </div>
       {time && (
         <div className={timeClasses}>

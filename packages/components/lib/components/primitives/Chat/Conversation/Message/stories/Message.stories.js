@@ -3,11 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.withMultipleMessages = exports.withTime = exports.withColors = exports.withRight = exports.withLeft = exports.default = void 0;
+exports.withMedia = exports.withMultipleMessages = exports.withTime = exports.withColors = exports.withRight = exports.withLeft = exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 var _ = require("..");
+
+var _addonActions = require("@storybook/addon-actions");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -85,9 +87,38 @@ const withMultipleMessages = () => /*#__PURE__*/_react.default.createElement("di
   text: "Absolutely! I'm really interested."
 }), /*#__PURE__*/_react.default.createElement(_.Message, {
   text: "Oops, sorry. I'm having some issues, my internet connection is super unstable..."
+}), /*#__PURE__*/_react.default.createElement(_.Message, {
+  text: "This is a media message",
+  onMediaClick: (0, _addonActions.action)('On media click'),
+  mediaFiles: [{
+    contentType: 'image/jpeg',
+    url: 'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK'
+  }, {
+    contentType: 'image/jpeg',
+    url: 'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK'
+  }]
 }));
 
 exports.withMultipleMessages = withMultipleMessages;
 withMultipleMessages.story = {
   name: 'With multiple messages'
+};
+
+const withMedia = () => /*#__PURE__*/_react.default.createElement("div", {
+  className: "p-10"
+}, /*#__PURE__*/_react.default.createElement(_.Message, {
+  text: "This is a media message",
+  onMediaClick: (0, _addonActions.action)('On media click'),
+  mediaFiles: [{
+    contentType: 'image/jpeg',
+    url: 'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK'
+  }, {
+    contentType: 'image/jpeg',
+    url: 'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK'
+  }]
+}));
+
+exports.withMedia = withMedia;
+withMedia.story = {
+  name: 'With media'
 };

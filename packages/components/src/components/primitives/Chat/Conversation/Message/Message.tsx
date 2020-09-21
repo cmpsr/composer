@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import {
   Typography,
   TypographyTypes,
   TypographyMode,
 } from 'components/primitives/Typography';
+import { Circular } from 'components/primitives/Progress/Circular';
 import { Image } from 'components/primitives/Image';
 import { getStyles } from 'utils/getMessageClasses';
 
@@ -36,6 +37,7 @@ type Props = {
   time?: string;
   mediaFiles?: Media[];
   onMediaClick?: (mediaFiles: Media[]) => void;
+  onLoadMedia?: () => void;
 };
 
 export const Message = ({
@@ -47,9 +49,15 @@ export const Message = ({
   time,
   mediaFiles = [],
   onMediaClick,
+  onLoadMedia,
 }: Props) => {
+  const [isMediaLoaded, loadMedia] = useState(false);
   const onClickMediaFiles = () => {
     onMediaClick && onMediaClick(mediaFiles);
+  };
+  const handleMediaLoad = () => {
+    loadMedia(true);
+    onLoadMedia && onLoadMedia();
   };
   const { hasMedia, hasMultipleMedia, thumbnail } = {
     hasMedia: mediaFiles.length > 0,
@@ -64,7 +72,15 @@ export const Message = ({
     mediaPreview,
     numberOfMediaFiles,
     mediaWrapper,
-  } = getStyles(placement, backgroundColor, !!time, !!text, hasMedia);
+    mediaLoader,
+  } = getStyles(
+    placement,
+    backgroundColor,
+    !!time,
+    !!text,
+    hasMedia,
+    isMediaLoaded
+  );
 
   return (
     <div
@@ -78,14 +94,20 @@ export const Message = ({
             data-testid="mediaWrapper"
             onClick={onClickMediaFiles}
           >
+            {!isMediaLoaded && (
+              <div data-testid="mediaLoader" className={mediaLoader}>
+                <Circular />
+              </div>
+            )}
             <Image
+              onLoad={handleMediaLoad}
               imageClassName={mediaPreview}
               image={{
                 title: 'Media Asset',
                 url: thumbnail,
               }}
             />
-            {hasMultipleMedia && (
+            {hasMultipleMedia && isMediaLoaded && (
               <div
                 data-testid="mediaFilesIndicator"
                 className={numberOfMediaFiles}

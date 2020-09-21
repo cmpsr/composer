@@ -1,5 +1,5 @@
 import { MessageBackgroundColor, MessagePlacement } from 'components/primitives/Chat/Conversation/Message';
-export declare const getStyles: (placement: MessagePlacement, backgroundColor: MessageBackgroundColor, hasTime: boolean, hasText: boolean, hasMedia: boolean) => {
+export declare const getStyles: (placement: MessagePlacement, backgroundColor: MessageBackgroundColor, hasTime: boolean, hasText: boolean, hasMedia: boolean, isMediaLoaded: boolean) => {
     wrapperClasses: string;
     messageClasses: string;
     timeClasses: string;
@@ -7,5 +7,6 @@ export declare const getStyles: (placement: MessagePlacement, backgroundColor: M
     mediaPreview: string;
     mediaWrapper: string;
     numberOfMediaFiles: string;
+    mediaLoader: string;
 };
 //# sourceMappingURL=index.d.ts.map

@@ -57,14 +57,14 @@ const Message = ({
 }) => {
   var _mediaFiles$;
 
-  const [isMediaLoaded, loadMedia] = (0, _react.useState)(false);
+  const [isMediaLoaded, setMediaLoaded] = (0, _react.useState)(false);
 
   const onClickMediaFiles = () => {
     onMediaClick && onMediaClick(mediaFiles);
   };
 
   const handleMediaLoad = () => {
-    loadMedia(true);
+    setMediaLoaded(true);
     onLoadMedia && onLoadMedia();
   };
 

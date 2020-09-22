@@ -51,12 +51,12 @@ export const Message = ({
   onMediaClick,
   onLoadMedia,
 }: Props) => {
-  const [isMediaLoaded, loadMedia] = useState(false);
+  const [isMediaLoaded, setMediaLoaded] = useState(false);
   const onClickMediaFiles = () => {
     onMediaClick && onMediaClick(mediaFiles);
   };
   const handleMediaLoad = () => {
-    loadMedia(true);
+    setMediaLoaded(true);
     onLoadMedia && onLoadMedia();
   };
   const { hasMedia, hasMultipleMedia, thumbnail } = {

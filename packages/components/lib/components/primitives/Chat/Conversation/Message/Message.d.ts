@@ -23,7 +23,8 @@ declare type Props = {
     time?: string;
     mediaFiles?: Media[];
     onMediaClick?: (mediaFiles: Media[]) => void;
+    onLoadMedia?: () => void;
 };
-export declare const Message: ({ text, className, testId, backgroundColor, placement, time, mediaFiles, onMediaClick, }: Props) => JSX.Element;
+export declare const Message: ({ text, className, testId, backgroundColor, placement, time, mediaFiles, onMediaClick, onLoadMedia, }: Props) => JSX.Element;
 export {};
 //# sourceMappingURL=Message.d.ts.map

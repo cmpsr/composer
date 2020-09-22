@@ -5,17 +5,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Message = exports.MessagePlacement = exports.MessageBackgroundColor = exports.WRAPPER_MESSAGE_DEFAULT_TEST_ID = exports.MESSAGE_DEFAULT_TEST_ID = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
 var _Typography = require("../../../Typography");
+
+var _Circular = require("../../../Progress/Circular");
 
 var _Image = require("../../../Image");
 
 var _getMessageClasses = require("../../../../../utils/getMessageClasses");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 const MESSAGE_DEFAULT_TEST_ID = 'message';
 exports.MESSAGE_DEFAULT_TEST_ID = MESSAGE_DEFAULT_TEST_ID;
@@ -46,12 +52,20 @@ const Message = ({
   placement = MessagePlacement.Right,
   time,
   mediaFiles = [],
-  onMediaClick
+  onMediaClick,
+  onLoadMedia
 }) => {
   var _mediaFiles$;
 
+  const [isMediaLoaded, setMediaLoaded] = (0, _react.useState)(false);
+
   const onClickMediaFiles = () => {
     onMediaClick && onMediaClick(mediaFiles);
+  };
+
+  const handleMediaLoad = () => {
+    setMediaLoaded(true);
+    onLoadMedia && onLoadMedia();
   };
 
   const {
@@ -70,8 +84,9 @@ const Message = ({
     textWrapper,
     mediaPreview,
     numberOfMediaFiles,
-    mediaWrapper
-  } = (0, _getMessageClasses.getStyles)(placement, backgroundColor, !!time, !!text, hasMedia);
+    mediaWrapper,
+    mediaLoader
+  } = (0, _getMessageClasses.getStyles)(placement, backgroundColor, !!time, !!text, hasMedia, isMediaLoaded);
   return /*#__PURE__*/_react.default.createElement("div", {
     "data-testid": WRAPPER_MESSAGE_DEFAULT_TEST_ID,
     className: (0, _classnames.default)(className, wrapperClasses)
@@ -82,13 +97,17 @@ const Message = ({
     className: mediaWrapper,
     "data-testid": "mediaWrapper",
     onClick: onClickMediaFiles
-  }, /*#__PURE__*/_react.default.createElement(_Image.Image, {
+  }, !isMediaLoaded && /*#__PURE__*/_react.default.createElement("div", {
+    "data-testid": "mediaLoader",
+    className: mediaLoader
+  }, /*#__PURE__*/_react.default.createElement(_Circular.Circular, null)), /*#__PURE__*/_react.default.createElement(_Image.Image, {
+    onLoad: handleMediaLoad,
     imageClassName: mediaPreview,
     image: {
       title: 'Media Asset',
       url: thumbnail
     }
-  }), hasMultipleMedia && /*#__PURE__*/_react.default.createElement("div", {
+  }), hasMultipleMedia && isMediaLoaded && /*#__PURE__*/_react.default.createElement("div", {
     "data-testid": "mediaFilesIndicator",
     className: numberOfMediaFiles
   }, /*#__PURE__*/_react.default.createElement(_Typography.Typography, {

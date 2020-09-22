@@ -14,7 +14,8 @@ describe('getStyles', () => {
       MessageBackgroundColor.Primary600,
       false,
       true,
-      false
+      false,
+      true
     );
     expect(classes.wrapperClasses).toContain(
       `${baseWrapper} flex-col mb-2 items-start justify-start`
@@ -29,7 +30,8 @@ describe('getStyles', () => {
       MessageBackgroundColor.Primary600,
       false,
       true,
-      false
+      false,
+      true
     );
     expect(classes.wrapperClasses).toContain(
       `${baseWrapper} flex-col mb-2 items-end justify-end`
@@ -44,7 +46,8 @@ describe('getStyles', () => {
       MessageBackgroundColor.Primary600,
       true,
       true,
-      false
+      false,
+      true
     );
     expect(classes.wrapperClasses).toContain(
       `${baseWrapper} flex-col mb-0 items-start justify-start`
@@ -56,7 +59,8 @@ describe('getStyles', () => {
       MessageBackgroundColor.Primary600,
       true,
       true,
-      false
+      false,
+      true
     );
     expect(classes.wrapperClasses).toContain(
       `${baseWrapper} flex-col mb-0 items-end justify-end`
@@ -68,7 +72,8 @@ describe('getStyles', () => {
       MessageBackgroundColor.Primary600,
       true,
       true,
-      false
+      false,
+      true
     );
     expect(classes.timeClasses).toContain('mt-1 mb-2');
   });
@@ -76,6 +81,7 @@ describe('getStyles', () => {
     const classes = getStyles(
       MessagePlacement.Left,
       MessageBackgroundColor.Primary600,
+      true,
       true,
       true,
       true
@@ -88,7 +94,8 @@ describe('getStyles', () => {
       MessageBackgroundColor.Primary600,
       true,
       true,
-      false
+      false,
+      true
     );
     expect(classes.textWrapper).toContain('pt-2 pb-2 px-3');
   });
@@ -96,6 +103,7 @@ describe('getStyles', () => {
     const classes = getStyles(
       MessagePlacement.Left,
       MessageBackgroundColor.Primary600,
+      true,
       true,
       true,
       true
@@ -108,8 +116,31 @@ describe('getStyles', () => {
       MessageBackgroundColor.Primary600,
       true,
       false,
+      true,
       true
     );
     expect(classes.mediaPreview).toContain('rounded-bl-message-semirounded');
+  });
+  it('should render mediaLoader when media is loaded', () => {
+    const classes = getStyles(
+      MessagePlacement.Left,
+      MessageBackgroundColor.Primary600,
+      true,
+      false,
+      true,
+      true
+    );
+    expect(classes.mediaPreview).toContain('block');
+  });
+  it('should hide mediaLoader when media is not loaded', () => {
+    const classes = getStyles(
+      MessagePlacement.Left,
+      MessageBackgroundColor.Primary600,
+      true,
+      false,
+      true,
+      false
+    );
+    expect(classes.mediaPreview).toContain('hidden');
   });
 });

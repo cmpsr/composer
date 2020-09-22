@@ -78,10 +78,11 @@ describe('Message', () => {
     expect(time).toBeInTheDocument();
     expect(time).toHaveClass('mt-1 mb-2');
   });
-  it('should render a badge indicator when there are multiple media files', () => {
+  it('should render a badge indicator when there are multiple media files', async () => {
     render(<Message mediaFiles={mediaFiles.concat(mediaFiles[0])} />);
-    screen.getByTestId('mediaFilesIndicator');
-    screen.getByText('+2');
+    const image = screen.getByTestId('imageContent');
+    fireEvent.load(image);
+    await screen.findByTestId('mediaFilesIndicator');
   });
   it('should call onClick when media is clicked', () => {
     const mockOnMediaClick = jest.fn();
@@ -90,5 +91,28 @@ describe('Message', () => {
     fireEvent.click(media);
     expect(mockOnMediaClick).toBeCalledTimes(1);
     expect(mockOnMediaClick).toBeCalledWith(mediaFiles);
+  });
+  it('should render mediaLoader when media is loading', () => {
+    const mockOnMediaClick = jest.fn();
+    render(<Message mediaFiles={mediaFiles} onMediaClick={mockOnMediaClick} />);
+    screen.getByTestId('mediaLoader');
+  });
+  it('should hide image and mediaFilesIndicator when media is loading', () => {
+    render(<Message mediaFiles={mediaFiles.concat(mediaFiles[0])} />);
+    const image = screen.getByTestId('image');
+    screen.queryByTestId('mediaFilesIndicator');
+    expect(image).toHaveClass('hidden');
+  });
+  it('should call onLoadMedia when media has loaded', () => {
+    const mockOnLoadMedia = jest.fn();
+    render(
+      <Message
+        mediaFiles={mediaFiles.concat(mediaFiles[0])}
+        onLoadMedia={mockOnLoadMedia}
+      />
+    );
+    const image = screen.getByTestId('imageContent');
+    fireEvent.load(image);
+    expect(mockOnLoadMedia).toHaveBeenCalledTimes(1);
   });
 });

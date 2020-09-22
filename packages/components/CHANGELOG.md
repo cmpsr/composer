@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.40
+
+### Patch Changes
+
+- 66d881b: Add onload callback to Image and Message
+
 ## 0.0.39
 
 ### Patch Changes

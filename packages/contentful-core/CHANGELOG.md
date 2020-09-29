@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.2.1
+
+### Patch Changes
+
+- 3f07907: add support for IE11 in contentful core
+
 ## 0.2.0
 
 ### Minor Changes

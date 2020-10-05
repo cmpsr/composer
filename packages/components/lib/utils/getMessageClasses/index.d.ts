@@ -8,5 +8,7 @@ export declare const getStyles: (placement: MessagePlacement, backgroundColor: M
     mediaWrapper: string;
     numberOfMediaFiles: string;
     mediaLoader: string;
+    imageWrapper: string;
+    badgeLoader: string;
 };
 //# sourceMappingURL=index.d.ts.map

@@ -5,7 +5,10 @@ import {
   TypographyTypes,
   TypographyMode,
 } from 'components/primitives/Typography';
-import { Circular } from 'components/primitives/Progress/Circular';
+import {
+  Circular,
+  CircularColor,
+} from 'components/primitives/Progress/Circular';
 import { Image } from 'components/primitives/Image';
 import { getStyles } from 'utils/getMessageClasses';
 
@@ -73,6 +76,8 @@ export const Message = ({
     numberOfMediaFiles,
     mediaWrapper,
     mediaLoader,
+    imageWrapper,
+    badgeLoader,
   } = getStyles(
     placement,
     backgroundColor,
@@ -96,10 +101,13 @@ export const Message = ({
           >
             {!isMediaLoaded && (
               <div data-testid="mediaLoader" className={mediaLoader}>
-                <Circular />
+                <div className={badgeLoader}>
+                  <Circular color={CircularColor.White} />
+                </div>
               </div>
             )}
             <Image
+              className={imageWrapper}
               onLoad={handleMediaLoad}
               imageClassName={mediaPreview}
               image={{

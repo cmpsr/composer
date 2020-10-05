@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.41
+
+### Patch Changes
+
+- 4c59cb2: Add fixed size for media messages
+
 ## 0.0.40
 
 ### Patch Changes

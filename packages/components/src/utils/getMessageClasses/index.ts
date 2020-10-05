@@ -15,6 +15,7 @@ export const getStyles = (
     wrapperClasses,
     messageClasses,
     mediaPreview,
+    mediaLoader,
   } = getMessagePlacementClasses(
     placement,
     backgroundColor,
@@ -28,10 +29,14 @@ export const getStyles = (
     timeClasses: hasTime ? 'mt-1 mb-2' : '',
     textWrapper: `${hasMedia ? 'pt-1' : 'pt-2'} pb-2 px-3`,
     mediaPreview,
-    mediaWrapper: 'relative cursor-pointer',
+    mediaWrapper:
+      'relative cursor-pointer w-16-375 md:w-20-125 h-16-375 md:h-20-125 flex justify-center',
     numberOfMediaFiles:
       'w-3-125 h-3-125 bg-fill-black-300 md:w-3-75 md:h-3-75 rounded-full flex items-center justify-center absolute m-auto top-0 right-0 left-0 bottom-0',
-    mediaLoader: 'flex justify-center items-center',
+    mediaLoader,
+    imageWrapper: 'flex',
+    badgeLoader:
+      'w-3-125 h-3-125 bg-fill-black-300 md:w-3-75 md:h-3-75 rounded-full flex items-center justify-center absolute m-auto top-0 right-0 left-0 bottom-0',
   };
 };
 
@@ -44,15 +49,21 @@ const getMessagePlacementClasses = (
 ) => {
   const baseWrapper = `flex flex-col ${hasTime ? 'mb-0' : 'mb-2'}`;
   const baseMessage = `${backgroundColor} p-1 inline-block max-w-90 md:max-w-85 lg:max-w-3/4 text-left`;
-  const baseMedia = `w-full max-w-20 rounded-message-rounded ${
+  const baseMedia = `w-full max-w-20 rounded-message-rounded object-cover ${
     isMediaLoaded ? 'block' : 'hidden'
   }`;
-
+  const baseMediaLoader =
+    'flex justify-center items-center w-full h-full bg-fill-secondary-600 rounded-message-rounded';
   if (placement === MessagePlacement.Left) {
     return {
       wrapperClasses: `${baseWrapper} items-start justify-start`,
       messageClasses: `${baseMessage} rounded-message-rounded rounded-bl-message-semirounded`,
       mediaPreview: `${baseMedia} ${
+        hasText
+          ? 'rounded-bl-none rounded-br-none'
+          : 'rounded-bl-message-semirounded'
+      }`,
+      mediaLoader: `${baseMediaLoader} ${
         hasText
           ? 'rounded-bl-none rounded-br-none'
           : 'rounded-bl-message-semirounded'
@@ -63,6 +74,11 @@ const getMessagePlacementClasses = (
       wrapperClasses: `${baseWrapper} items-end justify-end`,
       messageClasses: `${baseMessage} rounded-message-rounded rounded-br-message-semirounded`,
       mediaPreview: `${baseMedia} ${
+        hasText
+          ? 'rounded-bl-none rounded-br-none'
+          : 'rounded-br-message-semirounded'
+      }`,
+      mediaLoader: `${baseMediaLoader} ${
         hasText
           ? 'rounded-bl-none rounded-br-none'
           : 'rounded-br-message-semirounded'

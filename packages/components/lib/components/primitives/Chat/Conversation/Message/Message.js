@@ -85,7 +85,9 @@ const Message = ({
     mediaPreview,
     numberOfMediaFiles,
     mediaWrapper,
-    mediaLoader
+    mediaLoader,
+    imageWrapper,
+    badgeLoader
   } = (0, _getMessageClasses.getStyles)(placement, backgroundColor, !!time, !!text, hasMedia, isMediaLoaded);
   return /*#__PURE__*/_react.default.createElement("div", {
     "data-testid": WRAPPER_MESSAGE_DEFAULT_TEST_ID,
@@ -100,7 +102,12 @@ const Message = ({
   }, !isMediaLoaded && /*#__PURE__*/_react.default.createElement("div", {
     "data-testid": "mediaLoader",
     className: mediaLoader
-  }, /*#__PURE__*/_react.default.createElement(_Circular.Circular, null)), /*#__PURE__*/_react.default.createElement(_Image.Image, {
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: badgeLoader
+  }, /*#__PURE__*/_react.default.createElement(_Circular.Circular, {
+    color: _Circular.CircularColor.White
+  }))), /*#__PURE__*/_react.default.createElement(_Image.Image, {
+    className: imageWrapper,
     onLoad: handleMediaLoad,
     imageClassName: mediaPreview,
     image: {

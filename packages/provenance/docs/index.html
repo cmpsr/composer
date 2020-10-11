@@ -1,0 +1,3141 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Provenance Loan Onboarding API | API Reference</title>
+    <link rel="stylesheet" href="stylesheets/foundation.min.css" />
+    <link rel="stylesheet" href="stylesheets/spectacle.min.css" />
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- <script src="javascripts/foundation.js"></script> -->
+    <script src="javascripts/spectacle.min.js"></script>
+  </head>
+  <body id="spectacle">
+    <div id="page" class="drawer-layout drawer-slide-right-large">
+      <div id="sidebar">
+        <button class="close-button" aria-label="Close menu" type="button" data-drawer-close>
+          <span aria-hidden="true">×</span>
+        </button>
+        <div id="logo">
+          <img src="images/logo.svg" title="Provenance Loan Onboarding API" /> </div>
+        <nav id="nav" role="navigation">
+          <h5>API Reference</h5>
+          <a href="#introduction">Introduction</a>
+          <!-- <h5>Security</h5> -->
+          <a href="#authentication">Authentication</a>
+          <h5>Operations</h5>
+          <section>
+            <a href="#tag-Contract-Execution">Contract Execution</a>
+            <ul>
+              <li>
+                <a href="#operation--api-v1-contract-execution--executionUuid--get"> Get the state of a contract execution. Use this endpoint to poll for contract completion or error. </a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <a href="#tag-Documents">Documents</a>
+            <ul>
+              <li>
+                <a href="#operation--api-v1-document-post"> Onboard a document </a>
+              </li>
+              <li>
+                <a href="#operation--api-v1-document-put"> Update a document </a>
+              </li>
+              <li>
+                <a href="#operation--api-v1-document--id--get"> Retrieve document </a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <a href="#tag-Loans">Loans</a>
+            <ul>
+              <li>
+                <a href="#operation--api-v1-loan-get"> List all loan uuids </a>
+              </li>
+              <li>
+                <a href="#operation--api-v1-loan-post"> Onboard a loan </a>
+              </li>
+              <li>
+                <a href="#operation--api-v1-loan-put"> Update a loan </a>
+              </li>
+              <li>
+                <a href="#operation--api-v1-loan-count-get"> Get count of loans </a>
+              </li>
+              <li>
+                <a href="#operation--api-v1-loan--id--get"> Retrieve a loan </a>
+              </li>
+            </ul>
+          </section>
+          <h5>Schema Definitions</h5>
+          <a href="#definition-ContractExecutionState"> ContractExecutionState </a>
+          <a href="#definition-CreditReportsList"> CreditReportsList </a>
+          <a href="#definition-Disclosure"> Disclosure </a>
+          <a href="#definition-DocumentList"> DocumentList </a>
+          <a href="#definition-DocumentWithDataList"> DocumentWithDataList </a>
+          <a href="#definition-Funding"> Funding </a>
+          <a href="#definition-IncomeRecordsList"> IncomeRecordsList </a>
+          <a href="#definition-LienProperty"> LienProperty </a>
+          <a href="#definition-LinkedDocument"> LinkedDocument </a>
+          <a href="#definition-Loan"> Loan </a>
+          <a href="#definition-LoanOriginationData"> LoanOriginationData </a>
+          <a href="#definition-LoanServicing"> LoanServicing </a>
+          <a href="#definition-PartiesList"> PartiesList </a>
+          <a href="#definition-Party"> Party </a>
+          <a href="#definition-TriMergeReportsList"> TriMergeReportsList </a>
+          <a href="#definition-UnderwritingPacket"> UnderwritingPacket </a>
+        </nav>
+      </div>
+      <div id="docs" class="row collapse expanded drawer" data-drawer>
+        <button class="floating-menu-icon" type="button" data-drawer-slide="right">
+          <span class="hamburger"></span>
+        </button>
+        <div class="example-box doc-content"></div>
+        <article>
+          <div id="introduction" data-traverse-target="introduction">
+            <h1 class="doc-title">Provenance Loan Onboarding API
+              <span>API Reference</span>
+            </h1>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <p>Welcome to the Provenance (P8e) Loan Onboarding API Reference.</p>
+                <p>The LOS API is organized around the REST methodology, and it uses resource-oriented URLs and common HTTP response codes to indicate API errors.</p>
+                <p>All requests are authenticated using an <code>apikey</code> in the header.</p>
+                <p>All operations that trigger a P8e contract execution are asynchronous and will return an execution UUID. The status of the contract execution can be monitored using the
+                  <a href="#tag-Contract-Execution">Contract Execution</a> endpoint.</p>
+                <p>
+                  <strong>Example Usage:</strong>
+                </p>
+                <ul>
+                  <li>Onboard a loan using the
+                    <a href="#operation--api-v1-loan-post">Onboard Loan Endpoint</a>
+                  </li>
+                  <li>Save the <code>executionUuid</code> returned by the operation</li>
+                  <li>Use the <code>executionUuid</code> to poll the status of the onboarding contract using the
+                    <a href="#operation--api-v1-contract-execution--executionUuid--state-get">Contract Execution Endpoint</a>
+                  </li>
+                </ul>
+                <p>The native data format for Provenance is Google Protocol Buffers (protos). The
+                  <a href="provenance-protocol-messages.html" />Provenance Domain Model</a> for this API is included. Note that protos use <code>snake_case</code> format, while the JSON representation of the protos uses <code>camelCase</code>.</p>
+                <p>
+                  <strong>Please Note:</strong> Data examples are all highly truncated and should not be used as complete data models.</p>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>API Endpoint</h5>
+                  <!-- <div class="hljs"> --><pre><code>https://[your-custom-environment].test.p8e.io/</code></pre>
+                  <!-- </div> -->
+                  <h5>Request Content-Types:
+                    <span>application/json</span>
+                  </h5>
+                  <h5>Response Content-Types:
+                    <span>application/json</span>
+                  </h5>
+                  <h5>Schemes:
+                    <span>https</span>
+                  </h5>
+                  <h5>Version:
+                    <span>1.0</span>
+                  </h5>
+                </section>
+              </div>
+            </div>
+          </div>
+          <!-- <h1 id="security" data-traverse-target="security">Security</h1> -->
+          <h1 id="authentication" data-traverse-target="authentication">Authentication</h1>
+          <div id="security-definition-apikey" class="panel">
+            <div class="doc-row">
+              <div class="doc-copy">
+                <h3 class="security-definition-title">
+                  <span class="security-name">apikey</span>
+                  <span class="swagger-security-definition-apiKey"></span>
+                </h3>
+                <section class="swagger-security-definition-properties">
+                  <div class="prop-row security-definition-property">
+                    <div class="prop-name">
+                      <div class="prop-title security-definition-property-name">name</div>
+                    </div>
+                    <div class="prop-value security-definition-property-type"> apiKey </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-Contract-Execution" class="swagger-summary-tag" data-traverse-target="tag-Contract-Execution">Contract Execution</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>Contract execution-related information</p>
+            </div>
+          </div>
+          <div id="operation--api-v1-contract-execution--executionUuid--get" class="operation panel" data-traverse-target="operation--api-v1-contract-execution--executionUuid--get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Contract-Execution">Contract Execution</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Get the state of a contract execution. Use this endpoint to poll for contract completion or error.</span>
+            </h2>
+            <div class="doc-row content-types">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"> </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/api/v1/contract/execution/{executionUuid}</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">apikey</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p>apikey</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">header</div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">executionUuid</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p>executionUuid</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-format">(uuid)</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">path</div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/ContractExecutionState">ContractExecutionState</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>OK</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">401 Unauthorized</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Unauthorized</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">403 Forbidden</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Forbidden</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Not Found</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;contract&quot;</span>: <span class="hljs-string">&quot;RecordLoanContract&quot;</span>,
+  <span class="hljs-attr">&quot;contractState&quot;</span>: <span class="hljs-string">&quot;COMPLETED&quot;</span>,
+  <span class="hljs-attr">&quot;error&quot;</span>: <span class="hljs-string">&quot;(If error occurs) Inputs for contract execution are missing&quot;</span>,
+  <span class="hljs-attr">&quot;executionUuid&quot;</span>: <span class="hljs-string">&quot;22ae2ba0-a95a-4540-9c70-9184ee811198&quot;</span>,
+  <span class="hljs-attr">&quot;scopeUuid&quot;</span>: <span class="hljs-string">&quot;15209d4e-ea0a-41f3-b593-47829a0fe25b&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-Documents" class="swagger-summary-tag" data-traverse-target="tag-Documents">Documents</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>Document-related operations</p>
+            </div>
+          </div>
+          <div id="operation--api-v1-document-post" class="operation panel" data-traverse-target="operation--api-v1-document-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Documents">Documents</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Onboard a document</span>
+            </h2>
+            <div class="doc-row content-types">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"> </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">POST</span>
+                  <span class="operation-path">/api/v1/document</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body">
+                  <div class="prop-row">
+                    <div class="prop-name">
+                      <div class="swagger-request-model">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/LinkedDocument">LinkedDocument</a>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value columns small-6">
+                      <!-- <div class="swagger-request-description"> -->
+                      <p>document</p>
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </section>
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">apikey</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p>apikey</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">header</div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Request Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">[]
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref"></div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>OK</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">201 Created</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Created</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">401 Unauthorized</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Unauthorized</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">403 Forbidden</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Forbidden</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Not Found</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json"><span class="hljs-string">&quot;adca1bf5-739b-4fe9-8b40-a97210f1e77e&quot;</span>
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--api-v1-document-put" class="operation panel" data-traverse-target="operation--api-v1-document-put">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Documents">Documents</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary"> Update a document</span>
+            </h2>
+            <div class="doc-row content-types">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"> </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">PUT</span>
+                  <span class="operation-path">/api/v1/document</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body">
+                  <div class="prop-row">
+                    <div class="prop-name">
+                      <div class="swagger-request-model">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/LinkedDocument">LinkedDocument</a>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value columns small-6">
+                      <!-- <div class="swagger-request-description"> -->
+                      <p>document</p>
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </section>
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">apikey</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p>apikey</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">header</div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Request Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">[]
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref"></div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>OK</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">201 Created</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Created</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">401 Unauthorized</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Unauthorized</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">403 Forbidden</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Forbidden</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Not Found</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json"><span class="hljs-string">&quot;adca1bf5-739b-4fe9-8b40-a97210f1e77e&quot;</span>
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--api-v1-document--id--get" class="operation panel" data-traverse-target="operation--api-v1-document--id--get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Documents">Documents</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Retrieve document</span>
+            </h2>
+            <div class="doc-row content-types">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"> </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/api/v1/document/{id}</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">apikey</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p>apikey</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">header</div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">id</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p>id</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-format">(uuid)</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">path</div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/LinkedDocument">LinkedDocument</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>OK</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">401 Unauthorized</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Unauthorized</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">403 Forbidden</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Forbidden</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Not Found</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">[]
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-Loans" class="swagger-summary-tag" data-traverse-target="tag-Loans">Loans</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>Onboard/Update Loan endpoints</p>
+            </div>
+          </div>
+          <div id="operation--api-v1-loan-get" class="operation panel" data-traverse-target="operation--api-v1-loan-get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Loans">Loans</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">List all loan uuids</span>
+            </h2>
+            <div class="doc-row content-types">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"> </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/api/v1/loan</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">apikey</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p>apikey</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">header</div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref"></div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>OK</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">401 Unauthorized</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Unauthorized</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">403 Forbidden</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Forbidden</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Not Found</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">[
+  <span class="hljs-string">&quot;adca1bf5-739b-4fe9-8b40-a97210f1e77e&quot;</span>
+]
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--api-v1-loan-post" class="operation panel" data-traverse-target="operation--api-v1-loan-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Loans">Loans</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Onboard a loan</span>
+            </h2>
+            <div class="doc-row content-types">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"> </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">POST</span>
+                  <span class="operation-path">/api/v1/loan</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body">
+                  <div class="prop-row">
+                    <div class="prop-name">
+                      <div class="swagger-request-model">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/LoanOriginationData">LoanOriginationData</a>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value columns small-6">
+                      <!-- <div class="swagger-request-description"> -->
+                      <p>originationData</p>
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </section>
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">apikey</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p>apikey</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">header</div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Request Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;additionalParties&quot;</span>: {},
+  <span class="hljs-attr">&quot;creditReports&quot;</span>: {
+    <span class="hljs-attr">&quot;reports&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3a6de705-f5e3-43fb-aa25-41506f7b0de0&quot;</span>
+        },
+        <span class="hljs-attr">&quot;partyUuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b8d8eaa1-c745-41e6-8d1e-133498a51287&quot;</span>
+        },
+        <span class="hljs-attr">&quot;reportTimestamp&quot;</span>: <span class="hljs-string">&quot;2018-10-18T10:06:26Z&quot;</span>,
+        <span class="hljs-attr">&quot;attributes&quot;</span>: {
+          <span class="hljs-attr">&quot;fico&quot;</span>: <span class="hljs-number">770</span>,
+          <span class="hljs-attr">&quot;totalTrades60DaysDelinquent&quot;</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">&quot;taxLiens&quot;</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">&quot;bankruptcy&quot;</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">&quot;totalMonthlyRevolvingPayment&quot;</span>: {
+            <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;000003097&quot;</span>,
+            <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+          },
+          <span class="hljs-attr">&quot;totalOpenBalance&quot;</span>: {
+            <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;000463054&quot;</span>,
+            <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+          }
+        }
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;digitalSignaturePackets&quot;</span>: {},
+  <span class="hljs-attr">&quot;documents&quot;</span>: {
+    <span class="hljs-attr">&quot;docs&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;a7b0d75c-b139-4915-905d-5978972b42c0&quot;</span>
+        },
+        <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;Qfis02VP/r5LuUklpNNx/43hqMI0Iz33CYKB9+sKTlIWaYip/4YEUBzvVw7d1S5+zG3M2h8vDI4JtGVrpundrg==&quot;</span>,
+        <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;CLOSING_DISCLOSURE&quot;</span>
+      },
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;4fde1906-6a9c-4549-b337-b918805a6f8d&quot;</span>
+        },
+        <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;/G7dTfLUUiNxkeOAvb/a3Gk8nDN3Y+ClcQ8xOnfsmtPEH7p+CNcCRdFD6n6tOWZ1tvuTVbMT/0yHYfruO33g9w==&quot;</span>,
+        <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;LOAN_ESTIMATE&quot;</span>
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;funding&quot;</span>: {
+    <span class="hljs-attr">&quot;initiated&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">&quot;complete&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">&quot;completedDate&quot;</span>: <span class="hljs-string">&quot;2020-09-09T16:07:15.499720Z&quot;</span>
+  },
+  <span class="hljs-attr">&quot;incomeRecords&quot;</span>: {},
+  <span class="hljs-attr">&quot;lienProperty&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+    },
+    <span class="hljs-attr">&quot;borrowerUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;28ab6d01-2553-4ab4-b692-c7cde4be63f4&quot;</span>
+    },
+    <span class="hljs-attr">&quot;loanUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;1772d5eb-a224-4454-a234-f01f5f53b4a7&quot;</span>
+    },
+    <span class="hljs-attr">&quot;address&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+      },
+      <span class="hljs-attr">&quot;street&quot;</span>: <span class="hljs-string">&quot;1478  COLLEGE  PKWY&quot;</span>,
+      <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;GULF BREEZE&quot;</span>,
+      <span class="hljs-attr">&quot;state&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+      <span class="hljs-attr">&quot;zip&quot;</span>: <span class="hljs-string">&quot;32563&quot;</span>,
+      <span class="hljs-attr">&quot;unitNumber&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
+      <span class="hljs-attr">&quot;addressType&quot;</span>: <span class="hljs-string">&quot;HOME&quot;</span>,
+      <span class="hljs-attr">&quot;ownership&quot;</span>: <span class="hljs-string">&quot;SOLE&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;loan&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3717acf4-a0f4-4f0f-8f39-005eb726f601&quot;</span>
+    },
+    <span class="hljs-attr">&quot;loanNumber&quot;</span>: <span class="hljs-string">&quot;1-18291-033&quot;</span>,
+    <span class="hljs-attr">&quot;loanType&quot;</span>: <span class="hljs-string">&quot;FIGURE_HELOC&quot;</span>,
+    <span class="hljs-attr">&quot;loanPurpose&quot;</span>: <span class="hljs-string">&quot;Home Improvement&quot;</span>,
+    <span class="hljs-attr">&quot;originatorUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3c48bcba-e42b-46e4-9187-a2974e7aeda8&quot;</span>
+    },
+    <span class="hljs-attr">&quot;originatorName&quot;</span>: <span class="hljs-string">&quot;FIGURE_LENDING&quot;</span>,
+    <span class="hljs-attr">&quot;monthlyPaymentAmount&quot;</span>: {
+      <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;620.82&quot;</span>,
+      <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;primaryParty&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;e13cad7a-9dd9-4280-9b08-02c00cf10bd4&quot;</span>
+    },
+    <span class="hljs-attr">&quot;name&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;5d56bb7d-efba-4e4a-9bfb-4563ebf1c267&quot;</span>
+      },
+      <span class="hljs-attr">&quot;firstName&quot;</span>: <span class="hljs-string">&quot;Megan&quot;</span>,
+      <span class="hljs-attr">&quot;lastName&quot;</span>: <span class="hljs-string">&quot;Prescott&quot;</span>
+    },
+    <span class="hljs-attr">&quot;dob&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;1965-11-15&quot;</span>
+    },
+    <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;111111111&quot;</span>,
+    <span class="hljs-attr">&quot;maritalStatus&quot;</span>: <span class="hljs-string">&quot;MARRIED&quot;</span>,
+    <span class="hljs-attr">&quot;incomeSources&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b9465f21-45e8-455f-8c5d-1190663e6c58&quot;</span>
+        },
+        <span class="hljs-attr">&quot;employer&quot;</span>: <span class="hljs-string">&quot;Fidelity&quot;</span>,
+        <span class="hljs-attr">&quot;amount&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;176094.0&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        }
+      }
+    ],
+    <span class="hljs-attr">&quot;yearlyIncome&quot;</span>: {
+      <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;176094.0&quot;</span>,
+      <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+    },
+    <span class="hljs-attr">&quot;addresses&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+        },
+        <span class="hljs-attr">&quot;street&quot;</span>: <span class="hljs-string">&quot;1478  COLLEGE  PKWY&quot;</span>,
+        <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;GULF BREEZE&quot;</span>,
+        <span class="hljs-attr">&quot;state&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+        <span class="hljs-attr">&quot;zip&quot;</span>: <span class="hljs-string">&quot;32563&quot;</span>,
+        <span class="hljs-attr">&quot;addressType&quot;</span>: <span class="hljs-string">&quot;HOME&quot;</span>
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;servicing&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;29361f17-0485-4ff1-a4de-f9b9b8272309&quot;</span>
+    },
+    <span class="hljs-attr">&quot;servicerName&quot;</span>: <span class="hljs-string">&quot;figure-servicing&quot;</span>,
+    <span class="hljs-attr">&quot;servicingPolicy&quot;</span>: {
+      <span class="hljs-attr">&quot;policyUuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;6ce18ab1-bcb1-49c0-bc56-0acee1a9b941&quot;</span>
+      },
+      <span class="hljs-attr">&quot;assetUuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;2772d5eb-a224-4454-a234-f01f5f63b4a7&quot;</span>
+      },
+      <span class="hljs-attr">&quot;feeRate&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.01&quot;</span>
+      },
+      <span class="hljs-attr">&quot;remittanceType&quot;</span>: <span class="hljs-string">&quot;ACTUAL_ACTUAL&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;signedPromNote&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;40f4f3bc-fcc6-421c-a68b-9cf0d16cb791&quot;</span>
+    },
+    <span class="hljs-attr">&quot;signedDocument&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;59644aa7-2905-4732-bbc2-2c28af879537&quot;</span>
+      },
+      <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;3fis02VP/r5LuUklpNNx/43hqMI0Iz33CYKB9+sKTlIWaYip/4YEUBzvVw7d1S5+zG3M2h8vDI4JtGVrpundrg==&quot;</span>,
+      <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Signed-Heloc_Agreement.pdf&quot;</span>,
+      <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;HELOCAGREEMENT&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;triMergeReports&quot;</span>: {
+    <span class="hljs-attr">&quot;reports&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;calculatedCreditScore&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">&quot;reports&quot;</span>: [],
+        <span class="hljs-attr">&quot;partyUuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b8d8eaa1-c745-41e6-8d1e-133498a51287&quot;</span>
+        }
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;underwritingPacket&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;a608fee5-7395-4c0a-932e-73e88f8770f6&quot;</span>
+    },
+    <span class="hljs-attr">&quot;productUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;251e3dc2-4dbd-42c4-aa66-d3f4290a9193&quot;</span>
+    },
+    <span class="hljs-attr">&quot;originatorUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;29361f17-0485-4ff1-a4de-f9b9b8272309&quot;</span>
+    },
+    <span class="hljs-attr">&quot;uwVersion&quot;</span>: <span class="hljs-number">7</span>,
+    <span class="hljs-attr">&quot;creditScore&quot;</span>: <span class="hljs-number">770</span>,
+    <span class="hljs-attr">&quot;vantageScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;ficoScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;customCreditScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;triMergeScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;originationState&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+    <span class="hljs-attr">&quot;offers&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;edca1bf5-739b-4fe9-8b40-a97210f1e77e&quot;</span>
+        },
+        <span class="hljs-attr">&quot;index&quot;</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">&quot;termInYears&quot;</span>: <span class="hljs-number">5</span>,
+        <span class="hljs-attr">&quot;intRate&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.06250&quot;</span>
+        },
+        <span class="hljs-attr">&quot;minAmount&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;15000.00&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        },
+        <span class="hljs-attr">&quot;maxAmount&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;28638.0&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        }
+      }
+    ],
+    <span class="hljs-attr">&quot;selectedOffer&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;dde724a0-227c-40f8-9c6e-17956f7dc022&quot;</span>
+      },
+      <span class="hljs-attr">&quot;offerIndex&quot;</span>: <span class="hljs-number">6</span>,
+      <span class="hljs-attr">&quot;amount&quot;</span>: {
+        <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;49536.00&quot;</span>,
+        <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+      },
+      <span class="hljs-attr">&quot;termInYears&quot;</span>: <span class="hljs-number">10</span>,
+      <span class="hljs-attr">&quot;rateType&quot;</span>: <span class="hljs-string">&quot;FIXED&quot;</span>,
+      <span class="hljs-attr">&quot;intRate&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.08750&quot;</span>
+      }
+    }
+  }
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref"></div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>OK</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">201 Created</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Created</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">401 Unauthorized</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Unauthorized</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">403 Forbidden</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Forbidden</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Not Found</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json"><span class="hljs-string">&quot;adca1bf5-739b-4fe9-8b40-a97210f1e77e&quot;</span>
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--api-v1-loan-put" class="operation panel" data-traverse-target="operation--api-v1-loan-put">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Loans">Loans</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Update a loan</span>
+            </h2>
+            <div class="doc-row content-types">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"> </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">PUT</span>
+                  <span class="operation-path">/api/v1/loan</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body">
+                  <div class="prop-row">
+                    <div class="prop-name">
+                      <div class="swagger-request-model">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/LoanOriginationData">LoanOriginationData</a>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value columns small-6">
+                      <!-- <div class="swagger-request-description"> -->
+                      <p>originationData</p>
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </section>
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">apikey</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p>apikey</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">header</div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Request Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;additionalParties&quot;</span>: {},
+  <span class="hljs-attr">&quot;creditReports&quot;</span>: {
+    <span class="hljs-attr">&quot;reports&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3a6de705-f5e3-43fb-aa25-41506f7b0de0&quot;</span>
+        },
+        <span class="hljs-attr">&quot;partyUuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b8d8eaa1-c745-41e6-8d1e-133498a51287&quot;</span>
+        },
+        <span class="hljs-attr">&quot;reportTimestamp&quot;</span>: <span class="hljs-string">&quot;2018-10-18T10:06:26Z&quot;</span>,
+        <span class="hljs-attr">&quot;attributes&quot;</span>: {
+          <span class="hljs-attr">&quot;fico&quot;</span>: <span class="hljs-number">770</span>,
+          <span class="hljs-attr">&quot;totalTrades60DaysDelinquent&quot;</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">&quot;taxLiens&quot;</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">&quot;bankruptcy&quot;</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">&quot;totalMonthlyRevolvingPayment&quot;</span>: {
+            <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;000003097&quot;</span>,
+            <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+          },
+          <span class="hljs-attr">&quot;totalOpenBalance&quot;</span>: {
+            <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;000463054&quot;</span>,
+            <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+          }
+        }
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;digitalSignaturePackets&quot;</span>: {},
+  <span class="hljs-attr">&quot;documents&quot;</span>: {
+    <span class="hljs-attr">&quot;docs&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;a7b0d75c-b139-4915-905d-5978972b42c0&quot;</span>
+        },
+        <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;Qfis02VP/r5LuUklpNNx/43hqMI0Iz33CYKB9+sKTlIWaYip/4YEUBzvVw7d1S5+zG3M2h8vDI4JtGVrpundrg==&quot;</span>,
+        <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;CLOSING_DISCLOSURE&quot;</span>
+      },
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;4fde1906-6a9c-4549-b337-b918805a6f8d&quot;</span>
+        },
+        <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;/G7dTfLUUiNxkeOAvb/a3Gk8nDN3Y+ClcQ8xOnfsmtPEH7p+CNcCRdFD6n6tOWZ1tvuTVbMT/0yHYfruO33g9w==&quot;</span>,
+        <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;LOAN_ESTIMATE&quot;</span>
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;funding&quot;</span>: {
+    <span class="hljs-attr">&quot;initiated&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">&quot;complete&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">&quot;completedDate&quot;</span>: <span class="hljs-string">&quot;2020-09-09T16:07:15.499720Z&quot;</span>
+  },
+  <span class="hljs-attr">&quot;incomeRecords&quot;</span>: {},
+  <span class="hljs-attr">&quot;lienProperty&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+    },
+    <span class="hljs-attr">&quot;borrowerUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;28ab6d01-2553-4ab4-b692-c7cde4be63f4&quot;</span>
+    },
+    <span class="hljs-attr">&quot;loanUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;1772d5eb-a224-4454-a234-f01f5f53b4a7&quot;</span>
+    },
+    <span class="hljs-attr">&quot;address&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+      },
+      <span class="hljs-attr">&quot;street&quot;</span>: <span class="hljs-string">&quot;1478  COLLEGE  PKWY&quot;</span>,
+      <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;GULF BREEZE&quot;</span>,
+      <span class="hljs-attr">&quot;state&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+      <span class="hljs-attr">&quot;zip&quot;</span>: <span class="hljs-string">&quot;32563&quot;</span>,
+      <span class="hljs-attr">&quot;unitNumber&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
+      <span class="hljs-attr">&quot;addressType&quot;</span>: <span class="hljs-string">&quot;HOME&quot;</span>,
+      <span class="hljs-attr">&quot;ownership&quot;</span>: <span class="hljs-string">&quot;SOLE&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;loan&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3717acf4-a0f4-4f0f-8f39-005eb726f601&quot;</span>
+    },
+    <span class="hljs-attr">&quot;loanNumber&quot;</span>: <span class="hljs-string">&quot;1-18291-033&quot;</span>,
+    <span class="hljs-attr">&quot;loanType&quot;</span>: <span class="hljs-string">&quot;FIGURE_HELOC&quot;</span>,
+    <span class="hljs-attr">&quot;loanPurpose&quot;</span>: <span class="hljs-string">&quot;Home Improvement&quot;</span>,
+    <span class="hljs-attr">&quot;originatorUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3c48bcba-e42b-46e4-9187-a2974e7aeda8&quot;</span>
+    },
+    <span class="hljs-attr">&quot;originatorName&quot;</span>: <span class="hljs-string">&quot;FIGURE_LENDING&quot;</span>,
+    <span class="hljs-attr">&quot;monthlyPaymentAmount&quot;</span>: {
+      <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;620.82&quot;</span>,
+      <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;primaryParty&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;e13cad7a-9dd9-4280-9b08-02c00cf10bd4&quot;</span>
+    },
+    <span class="hljs-attr">&quot;name&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;5d56bb7d-efba-4e4a-9bfb-4563ebf1c267&quot;</span>
+      },
+      <span class="hljs-attr">&quot;firstName&quot;</span>: <span class="hljs-string">&quot;Megan&quot;</span>,
+      <span class="hljs-attr">&quot;lastName&quot;</span>: <span class="hljs-string">&quot;Prescott&quot;</span>
+    },
+    <span class="hljs-attr">&quot;dob&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;1965-11-15&quot;</span>
+    },
+    <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;111111111&quot;</span>,
+    <span class="hljs-attr">&quot;maritalStatus&quot;</span>: <span class="hljs-string">&quot;MARRIED&quot;</span>,
+    <span class="hljs-attr">&quot;incomeSources&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b9465f21-45e8-455f-8c5d-1190663e6c58&quot;</span>
+        },
+        <span class="hljs-attr">&quot;employer&quot;</span>: <span class="hljs-string">&quot;Fidelity&quot;</span>,
+        <span class="hljs-attr">&quot;amount&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;176094.0&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        }
+      }
+    ],
+    <span class="hljs-attr">&quot;yearlyIncome&quot;</span>: {
+      <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;176094.0&quot;</span>,
+      <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+    },
+    <span class="hljs-attr">&quot;addresses&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+        },
+        <span class="hljs-attr">&quot;street&quot;</span>: <span class="hljs-string">&quot;1478  COLLEGE  PKWY&quot;</span>,
+        <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;GULF BREEZE&quot;</span>,
+        <span class="hljs-attr">&quot;state&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+        <span class="hljs-attr">&quot;zip&quot;</span>: <span class="hljs-string">&quot;32563&quot;</span>,
+        <span class="hljs-attr">&quot;addressType&quot;</span>: <span class="hljs-string">&quot;HOME&quot;</span>
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;servicing&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;29361f17-0485-4ff1-a4de-f9b9b8272309&quot;</span>
+    },
+    <span class="hljs-attr">&quot;servicerName&quot;</span>: <span class="hljs-string">&quot;figure-servicing&quot;</span>,
+    <span class="hljs-attr">&quot;servicingPolicy&quot;</span>: {
+      <span class="hljs-attr">&quot;policyUuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;6ce18ab1-bcb1-49c0-bc56-0acee1a9b941&quot;</span>
+      },
+      <span class="hljs-attr">&quot;assetUuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;2772d5eb-a224-4454-a234-f01f5f63b4a7&quot;</span>
+      },
+      <span class="hljs-attr">&quot;feeRate&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.01&quot;</span>
+      },
+      <span class="hljs-attr">&quot;remittanceType&quot;</span>: <span class="hljs-string">&quot;ACTUAL_ACTUAL&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;signedPromNote&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;40f4f3bc-fcc6-421c-a68b-9cf0d16cb791&quot;</span>
+    },
+    <span class="hljs-attr">&quot;signedDocument&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;59644aa7-2905-4732-bbc2-2c28af879537&quot;</span>
+      },
+      <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;3fis02VP/r5LuUklpNNx/43hqMI0Iz33CYKB9+sKTlIWaYip/4YEUBzvVw7d1S5+zG3M2h8vDI4JtGVrpundrg==&quot;</span>,
+      <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Signed-Heloc_Agreement.pdf&quot;</span>,
+      <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;HELOCAGREEMENT&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;triMergeReports&quot;</span>: {
+    <span class="hljs-attr">&quot;reports&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;calculatedCreditScore&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">&quot;reports&quot;</span>: [],
+        <span class="hljs-attr">&quot;partyUuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b8d8eaa1-c745-41e6-8d1e-133498a51287&quot;</span>
+        }
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;underwritingPacket&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;a608fee5-7395-4c0a-932e-73e88f8770f6&quot;</span>
+    },
+    <span class="hljs-attr">&quot;productUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;251e3dc2-4dbd-42c4-aa66-d3f4290a9193&quot;</span>
+    },
+    <span class="hljs-attr">&quot;originatorUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;29361f17-0485-4ff1-a4de-f9b9b8272309&quot;</span>
+    },
+    <span class="hljs-attr">&quot;uwVersion&quot;</span>: <span class="hljs-number">7</span>,
+    <span class="hljs-attr">&quot;creditScore&quot;</span>: <span class="hljs-number">770</span>,
+    <span class="hljs-attr">&quot;vantageScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;ficoScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;customCreditScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;triMergeScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;originationState&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+    <span class="hljs-attr">&quot;offers&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;edca1bf5-739b-4fe9-8b40-a97210f1e77e&quot;</span>
+        },
+        <span class="hljs-attr">&quot;index&quot;</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">&quot;termInYears&quot;</span>: <span class="hljs-number">5</span>,
+        <span class="hljs-attr">&quot;intRate&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.06250&quot;</span>
+        },
+        <span class="hljs-attr">&quot;minAmount&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;15000.00&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        },
+        <span class="hljs-attr">&quot;maxAmount&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;28638.0&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        }
+      }
+    ],
+    <span class="hljs-attr">&quot;selectedOffer&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;dde724a0-227c-40f8-9c6e-17956f7dc022&quot;</span>
+      },
+      <span class="hljs-attr">&quot;offerIndex&quot;</span>: <span class="hljs-number">6</span>,
+      <span class="hljs-attr">&quot;amount&quot;</span>: {
+        <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;49536.00&quot;</span>,
+        <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+      },
+      <span class="hljs-attr">&quot;termInYears&quot;</span>: <span class="hljs-number">10</span>,
+      <span class="hljs-attr">&quot;rateType&quot;</span>: <span class="hljs-string">&quot;FIXED&quot;</span>,
+      <span class="hljs-attr">&quot;intRate&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.08750&quot;</span>
+      }
+    }
+  }
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref"></div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>OK</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">201 Created</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Created</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">401 Unauthorized</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Unauthorized</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">403 Forbidden</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Forbidden</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Not Found</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json"><span class="hljs-string">&quot;adca1bf5-739b-4fe9-8b40-a97210f1e77e&quot;</span>
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--api-v1-loan-count-get" class="operation panel" data-traverse-target="operation--api-v1-loan-count-get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Loans">Loans</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Get count of loans</span>
+            </h2>
+            <div class="doc-row content-types">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"> </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/api/v1/loan/count</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">apikey</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p>apikey</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">header</div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref"></div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>OK</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">401 Unauthorized</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Unauthorized</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">403 Forbidden</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Forbidden</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Not Found</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json"><span class="hljs-string">&quot;string&quot;</span>
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--api-v1-loan--id--get" class="operation panel" data-traverse-target="operation--api-v1-loan--id--get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Loans">Loans</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Retrieve a loan</span>
+            </h2>
+            <div class="doc-row content-types">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"> </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/api/v1/loan/{id}</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">apikey</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p>apikey</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">header</div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">id</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p>id</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-format">(uuid)</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">path</div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/LoanOriginationData">LoanOriginationData</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>OK</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">401 Unauthorized</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Unauthorized</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">403 Forbidden</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Forbidden</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Not Found</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;additionalParties&quot;</span>: {},
+  <span class="hljs-attr">&quot;creditReports&quot;</span>: {
+    <span class="hljs-attr">&quot;reports&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3a6de705-f5e3-43fb-aa25-41506f7b0de0&quot;</span>
+        },
+        <span class="hljs-attr">&quot;partyUuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b8d8eaa1-c745-41e6-8d1e-133498a51287&quot;</span>
+        },
+        <span class="hljs-attr">&quot;reportTimestamp&quot;</span>: <span class="hljs-string">&quot;2018-10-18T10:06:26Z&quot;</span>,
+        <span class="hljs-attr">&quot;attributes&quot;</span>: {
+          <span class="hljs-attr">&quot;fico&quot;</span>: <span class="hljs-number">770</span>,
+          <span class="hljs-attr">&quot;totalTrades60DaysDelinquent&quot;</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">&quot;taxLiens&quot;</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">&quot;bankruptcy&quot;</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">&quot;totalMonthlyRevolvingPayment&quot;</span>: {
+            <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;000003097&quot;</span>,
+            <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+          },
+          <span class="hljs-attr">&quot;totalOpenBalance&quot;</span>: {
+            <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;000463054&quot;</span>,
+            <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+          }
+        }
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;digitalSignaturePackets&quot;</span>: {},
+  <span class="hljs-attr">&quot;documents&quot;</span>: {
+    <span class="hljs-attr">&quot;docs&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;a7b0d75c-b139-4915-905d-5978972b42c0&quot;</span>
+        },
+        <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;Qfis02VP/r5LuUklpNNx/43hqMI0Iz33CYKB9+sKTlIWaYip/4YEUBzvVw7d1S5+zG3M2h8vDI4JtGVrpundrg==&quot;</span>,
+        <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;CLOSING_DISCLOSURE&quot;</span>
+      },
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;4fde1906-6a9c-4549-b337-b918805a6f8d&quot;</span>
+        },
+        <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;/G7dTfLUUiNxkeOAvb/a3Gk8nDN3Y+ClcQ8xOnfsmtPEH7p+CNcCRdFD6n6tOWZ1tvuTVbMT/0yHYfruO33g9w==&quot;</span>,
+        <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;LOAN_ESTIMATE&quot;</span>
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;funding&quot;</span>: {
+    <span class="hljs-attr">&quot;initiated&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">&quot;complete&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">&quot;completedDate&quot;</span>: <span class="hljs-string">&quot;2020-09-09T16:07:15.499720Z&quot;</span>
+  },
+  <span class="hljs-attr">&quot;incomeRecords&quot;</span>: {},
+  <span class="hljs-attr">&quot;lienProperty&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+    },
+    <span class="hljs-attr">&quot;borrowerUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;28ab6d01-2553-4ab4-b692-c7cde4be63f4&quot;</span>
+    },
+    <span class="hljs-attr">&quot;loanUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;1772d5eb-a224-4454-a234-f01f5f53b4a7&quot;</span>
+    },
+    <span class="hljs-attr">&quot;address&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+      },
+      <span class="hljs-attr">&quot;street&quot;</span>: <span class="hljs-string">&quot;1478  COLLEGE  PKWY&quot;</span>,
+      <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;GULF BREEZE&quot;</span>,
+      <span class="hljs-attr">&quot;state&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+      <span class="hljs-attr">&quot;zip&quot;</span>: <span class="hljs-string">&quot;32563&quot;</span>,
+      <span class="hljs-attr">&quot;unitNumber&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
+      <span class="hljs-attr">&quot;addressType&quot;</span>: <span class="hljs-string">&quot;HOME&quot;</span>,
+      <span class="hljs-attr">&quot;ownership&quot;</span>: <span class="hljs-string">&quot;SOLE&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;loan&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3717acf4-a0f4-4f0f-8f39-005eb726f601&quot;</span>
+    },
+    <span class="hljs-attr">&quot;loanNumber&quot;</span>: <span class="hljs-string">&quot;1-18291-033&quot;</span>,
+    <span class="hljs-attr">&quot;loanType&quot;</span>: <span class="hljs-string">&quot;FIGURE_HELOC&quot;</span>,
+    <span class="hljs-attr">&quot;loanPurpose&quot;</span>: <span class="hljs-string">&quot;Home Improvement&quot;</span>,
+    <span class="hljs-attr">&quot;originatorUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3c48bcba-e42b-46e4-9187-a2974e7aeda8&quot;</span>
+    },
+    <span class="hljs-attr">&quot;originatorName&quot;</span>: <span class="hljs-string">&quot;FIGURE_LENDING&quot;</span>,
+    <span class="hljs-attr">&quot;monthlyPaymentAmount&quot;</span>: {
+      <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;620.82&quot;</span>,
+      <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;primaryParty&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;e13cad7a-9dd9-4280-9b08-02c00cf10bd4&quot;</span>
+    },
+    <span class="hljs-attr">&quot;name&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;5d56bb7d-efba-4e4a-9bfb-4563ebf1c267&quot;</span>
+      },
+      <span class="hljs-attr">&quot;firstName&quot;</span>: <span class="hljs-string">&quot;Megan&quot;</span>,
+      <span class="hljs-attr">&quot;lastName&quot;</span>: <span class="hljs-string">&quot;Prescott&quot;</span>
+    },
+    <span class="hljs-attr">&quot;dob&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;1965-11-15&quot;</span>
+    },
+    <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;111111111&quot;</span>,
+    <span class="hljs-attr">&quot;maritalStatus&quot;</span>: <span class="hljs-string">&quot;MARRIED&quot;</span>,
+    <span class="hljs-attr">&quot;incomeSources&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b9465f21-45e8-455f-8c5d-1190663e6c58&quot;</span>
+        },
+        <span class="hljs-attr">&quot;employer&quot;</span>: <span class="hljs-string">&quot;Fidelity&quot;</span>,
+        <span class="hljs-attr">&quot;amount&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;176094.0&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        }
+      }
+    ],
+    <span class="hljs-attr">&quot;yearlyIncome&quot;</span>: {
+      <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;176094.0&quot;</span>,
+      <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+    },
+    <span class="hljs-attr">&quot;addresses&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+        },
+        <span class="hljs-attr">&quot;street&quot;</span>: <span class="hljs-string">&quot;1478  COLLEGE  PKWY&quot;</span>,
+        <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;GULF BREEZE&quot;</span>,
+        <span class="hljs-attr">&quot;state&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+        <span class="hljs-attr">&quot;zip&quot;</span>: <span class="hljs-string">&quot;32563&quot;</span>,
+        <span class="hljs-attr">&quot;addressType&quot;</span>: <span class="hljs-string">&quot;HOME&quot;</span>
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;servicing&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;29361f17-0485-4ff1-a4de-f9b9b8272309&quot;</span>
+    },
+    <span class="hljs-attr">&quot;servicerName&quot;</span>: <span class="hljs-string">&quot;figure-servicing&quot;</span>,
+    <span class="hljs-attr">&quot;servicingPolicy&quot;</span>: {
+      <span class="hljs-attr">&quot;policyUuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;6ce18ab1-bcb1-49c0-bc56-0acee1a9b941&quot;</span>
+      },
+      <span class="hljs-attr">&quot;assetUuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;2772d5eb-a224-4454-a234-f01f5f63b4a7&quot;</span>
+      },
+      <span class="hljs-attr">&quot;feeRate&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.01&quot;</span>
+      },
+      <span class="hljs-attr">&quot;remittanceType&quot;</span>: <span class="hljs-string">&quot;ACTUAL_ACTUAL&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;signedPromNote&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;40f4f3bc-fcc6-421c-a68b-9cf0d16cb791&quot;</span>
+    },
+    <span class="hljs-attr">&quot;signedDocument&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;59644aa7-2905-4732-bbc2-2c28af879537&quot;</span>
+      },
+      <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;3fis02VP/r5LuUklpNNx/43hqMI0Iz33CYKB9+sKTlIWaYip/4YEUBzvVw7d1S5+zG3M2h8vDI4JtGVrpundrg==&quot;</span>,
+      <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Signed-Heloc_Agreement.pdf&quot;</span>,
+      <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;HELOCAGREEMENT&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;triMergeReports&quot;</span>: {
+    <span class="hljs-attr">&quot;reports&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;calculatedCreditScore&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">&quot;reports&quot;</span>: [],
+        <span class="hljs-attr">&quot;partyUuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b8d8eaa1-c745-41e6-8d1e-133498a51287&quot;</span>
+        }
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;underwritingPacket&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;a608fee5-7395-4c0a-932e-73e88f8770f6&quot;</span>
+    },
+    <span class="hljs-attr">&quot;productUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;251e3dc2-4dbd-42c4-aa66-d3f4290a9193&quot;</span>
+    },
+    <span class="hljs-attr">&quot;originatorUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;29361f17-0485-4ff1-a4de-f9b9b8272309&quot;</span>
+    },
+    <span class="hljs-attr">&quot;uwVersion&quot;</span>: <span class="hljs-number">7</span>,
+    <span class="hljs-attr">&quot;creditScore&quot;</span>: <span class="hljs-number">770</span>,
+    <span class="hljs-attr">&quot;vantageScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;ficoScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;customCreditScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;triMergeScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;originationState&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+    <span class="hljs-attr">&quot;offers&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;edca1bf5-739b-4fe9-8b40-a97210f1e77e&quot;</span>
+        },
+        <span class="hljs-attr">&quot;index&quot;</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">&quot;termInYears&quot;</span>: <span class="hljs-number">5</span>,
+        <span class="hljs-attr">&quot;intRate&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.06250&quot;</span>
+        },
+        <span class="hljs-attr">&quot;minAmount&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;15000.00&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        },
+        <span class="hljs-attr">&quot;maxAmount&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;28638.0&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        }
+      }
+    ],
+    <span class="hljs-attr">&quot;selectedOffer&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;dde724a0-227c-40f8-9c6e-17956f7dc022&quot;</span>
+      },
+      <span class="hljs-attr">&quot;offerIndex&quot;</span>: <span class="hljs-number">6</span>,
+      <span class="hljs-attr">&quot;amount&quot;</span>: {
+        <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;49536.00&quot;</span>,
+        <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+      },
+      <span class="hljs-attr">&quot;termInYears&quot;</span>: <span class="hljs-number">10</span>,
+      <span class="hljs-attr">&quot;rateType&quot;</span>: <span class="hljs-string">&quot;FIXED&quot;</span>,
+      <span class="hljs-attr">&quot;intRate&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.08750&quot;</span>
+      }
+    }
+  }
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1>Schema Definitions</h1>
+          <div id="definition-ContractExecutionState" class="definition panel" data-traverse-target="definition-ContractExecutionState">
+            <h2 class="panel-title">
+              <a name="/definitions/ContractExecutionState"></a>ContractExecutionState:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>Metadata about the status of a contract execution</p>
+                </section>
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="contract">
+                      <span class="json-property-name">contract:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The name of the smart contract class being executed</p>
+                    </dd>
+                    <dt data-property-name="contractState">
+                      <span class="json-property-name">contractState:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-enum" title="Possible values">, x &isin; {
+                        <span class="json-property-enum-item">INITIATED</span> ,
+                        <span class="json-property-enum-item">REQUESTED</span> ,
+                        <span class="json-property-enum-item">COMPLETED</span> ,
+                        <span class="json-property-enum-item">ADVANCED</span> ,
+                        <span class="json-property-enum-item">ERROR</span> } </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The status of the contract execution. <code>INITIATED</code> when contract exec starts, <code>COMPLETED</code> when finished, else <code>ERROR</code> if operation failed.</p>
+                    </dd>
+                    <dt data-property-name="error">
+                      <span class="json-property-name">error:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>If an error occurs, the error message will be supplied</p>
+                    </dd>
+                    <dt data-property-name="executionUuid">
+                      <span class="json-property-name">executionUuid:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-format">(uuid)</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The identifier for the contract execution instance.</p>
+                    </dd>
+                    <dt data-property-name="scopeUuid">
+                      <span class="json-property-name">scopeUuid:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-format">(uuid)</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The identifier for the test of facts on which the contract is executing. Typically this is a business object identifier, like a loan UUID or document UUID</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;contract&quot;</span>: <span class="hljs-string">&quot;RecordLoanContract&quot;</span>,
+  <span class="hljs-attr">&quot;contractState&quot;</span>: <span class="hljs-string">&quot;COMPLETED&quot;</span>,
+  <span class="hljs-attr">&quot;error&quot;</span>: <span class="hljs-string">&quot;(If error occurs) Inputs for contract execution are missing&quot;</span>,
+  <span class="hljs-attr">&quot;executionUuid&quot;</span>: <span class="hljs-string">&quot;22ae2ba0-a95a-4540-9c70-9184ee811198&quot;</span>,
+  <span class="hljs-attr">&quot;scopeUuid&quot;</span>: <span class="hljs-string">&quot;15209d4e-ea0a-41f3-b593-47829a0fe25b&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-CreditReportsList" class="definition panel" data-traverse-target="definition-CreditReportsList">
+            <h2 class="panel-title">
+              <a name="/definitions/CreditReportsList"></a>CreditReportsList:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#loan.CreditReportsList' />CreditReportsList definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;reports&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3a6de705-f5e3-43fb-aa25-41506f7b0de0&quot;</span>
+      },
+      <span class="hljs-attr">&quot;partyUuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b8d8eaa1-c745-41e6-8d1e-133498a51287&quot;</span>
+      },
+      <span class="hljs-attr">&quot;reportTimestamp&quot;</span>: <span class="hljs-string">&quot;2018-10-18T10:06:26Z&quot;</span>,
+      <span class="hljs-attr">&quot;attributes&quot;</span>: {
+        <span class="hljs-attr">&quot;fico&quot;</span>: <span class="hljs-number">770</span>,
+        <span class="hljs-attr">&quot;totalTrades60DaysDelinquent&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">&quot;taxLiens&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">&quot;bankruptcy&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">&quot;totalMonthlyRevolvingPayment&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;000003097&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        },
+        <span class="hljs-attr">&quot;totalOpenBalance&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;000463054&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Disclosure" class="definition panel" data-traverse-target="definition-Disclosure">
+            <h2 class="panel-title">
+              <a name="/definitions/Disclosure"></a>Disclosure:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#common.Disclosure' />Disclosure definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;uuid&quot;</span>: {
+    <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;40f4f3bc-fcc6-421c-a68b-9cf0d16cb791&quot;</span>
+  },
+  <span class="hljs-attr">&quot;signedDocument&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;59644aa7-2905-4732-bbc2-2c28af879537&quot;</span>
+    },
+    <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;3fis02VP/r5LuUklpNNx/43hqMI0Iz33CYKB9+sKTlIWaYip/4YEUBzvVw7d1S5+zG3M2h8vDI4JtGVrpundrg==&quot;</span>,
+    <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Signed-Heloc_Agreement.pdf&quot;</span>,
+    <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;HELOCAGREEMENT&quot;</span>
+  }
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-DocumentList" class="definition panel" data-traverse-target="definition-DocumentList">
+            <h2 class="panel-title">
+              <a name="/definitions/DocumentList"></a>DocumentList:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#common.DocumentList' />DocumentList definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;docs&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;a7b0d75c-b139-4915-905d-5978972b42c0&quot;</span>
+      },
+      <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;Qfis02VP/r5LuUklpNNx/43hqMI0Iz33CYKB9+sKTlIWaYip/4YEUBzvVw7d1S5+zG3M2h8vDI4JtGVrpundrg==&quot;</span>,
+      <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;CLOSING_DISCLOSURE&quot;</span>
+    },
+    {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;4fde1906-6a9c-4549-b337-b918805a6f8d&quot;</span>
+      },
+      <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;/G7dTfLUUiNxkeOAvb/a3Gk8nDN3Y+ClcQ8xOnfsmtPEH7p+CNcCRdFD6n6tOWZ1tvuTVbMT/0yHYfruO33g9w==&quot;</span>,
+      <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;LOAN_ESTIMATE&quot;</span>
+    }
+  ]
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-DocumentWithDataList" class="definition panel" data-traverse-target="definition-DocumentWithDataList">
+            <h2 class="panel-title">
+              <a name="/definitions/DocumentWithDataList"></a>DocumentWithDataList:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#common.DocumentWithDataList' />DocumentWithDataList definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Funding" class="definition panel" data-traverse-target="definition-Funding">
+            <h2 class="panel-title">
+              <a name="/definitions/Funding"></a>Funding:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#loan.Funding' />Funding definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;initiated&quot;</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">&quot;complete&quot;</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">&quot;completedDate&quot;</span>: <span class="hljs-string">&quot;2020-09-09T16:07:15.499720Z&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-IncomeRecordsList" class="definition panel" data-traverse-target="definition-IncomeRecordsList">
+            <h2 class="panel-title">
+              <a name="/definitions/IncomeRecordsList"></a>IncomeRecordsList:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#loan.IncomeRecordsList' />IncomeRecordsList definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-LienProperty" class="definition panel" data-traverse-target="definition-LienProperty">
+            <h2 class="panel-title">
+              <a name="/definitions/LienProperty"></a>LienProperty:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#.LienProperty' />LienProperty definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;uuid&quot;</span>: {
+    <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+  },
+  <span class="hljs-attr">&quot;borrowerUuid&quot;</span>: {
+    <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;28ab6d01-2553-4ab4-b692-c7cde4be63f4&quot;</span>
+  },
+  <span class="hljs-attr">&quot;loanUuid&quot;</span>: {
+    <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;1772d5eb-a224-4454-a234-f01f5f53b4a7&quot;</span>
+  },
+  <span class="hljs-attr">&quot;address&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+    },
+    <span class="hljs-attr">&quot;street&quot;</span>: <span class="hljs-string">&quot;1478  COLLEGE  PKWY&quot;</span>,
+    <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;GULF BREEZE&quot;</span>,
+    <span class="hljs-attr">&quot;state&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+    <span class="hljs-attr">&quot;zip&quot;</span>: <span class="hljs-string">&quot;32563&quot;</span>,
+    <span class="hljs-attr">&quot;unitNumber&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
+    <span class="hljs-attr">&quot;addressType&quot;</span>: <span class="hljs-string">&quot;HOME&quot;</span>,
+    <span class="hljs-attr">&quot;ownership&quot;</span>: <span class="hljs-string">&quot;SOLE&quot;</span>
+  }
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-LinkedDocument" class="definition panel" data-traverse-target="definition-LinkedDocument">
+            <h2 class="panel-title">
+              <a name="/definitions/LinkedDocument"></a>LinkedDocument:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#common.LinkedDocument' />LinkedDocument definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">[]
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Loan" class="definition panel" data-traverse-target="definition-Loan">
+            <h2 class="panel-title">
+              <a name="/definitions/Loan"></a>Loan:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#loan.Loan' />Loan definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;uuid&quot;</span>: {
+    <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3717acf4-a0f4-4f0f-8f39-005eb726f601&quot;</span>
+  },
+  <span class="hljs-attr">&quot;loanNumber&quot;</span>: <span class="hljs-string">&quot;1-18291-033&quot;</span>,
+  <span class="hljs-attr">&quot;loanType&quot;</span>: <span class="hljs-string">&quot;FIGURE_HELOC&quot;</span>,
+  <span class="hljs-attr">&quot;loanPurpose&quot;</span>: <span class="hljs-string">&quot;Home Improvement&quot;</span>,
+  <span class="hljs-attr">&quot;originatorUuid&quot;</span>: {
+    <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3c48bcba-e42b-46e4-9187-a2974e7aeda8&quot;</span>
+  },
+  <span class="hljs-attr">&quot;originatorName&quot;</span>: <span class="hljs-string">&quot;FIGURE_LENDING&quot;</span>,
+  <span class="hljs-attr">&quot;monthlyPaymentAmount&quot;</span>: {
+    <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;620.82&quot;</span>,
+    <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+  }
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-LoanOriginationData" class="definition panel" data-traverse-target="definition-LoanOriginationData">
+            <h2 class="panel-title">
+              <a name="/definitions/LoanOriginationData"></a>LoanOriginationData:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="additionalParties">
+                      <span class="json-property-name">additionalParties:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/PartiesList">PartiesList</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Co-borrowers on the loan</p>
+                    </dd>
+                    <dt data-property-name="creditReports">
+                      <span class="json-property-name">creditReports:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/CreditReportsList">CreditReportsList</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Credit Reports for primary party</p>
+                    </dd>
+                    <dt data-property-name="digitalSignaturePackets">
+                      <span class="json-property-name">digitalSignaturePackets:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/DocumentWithDataList">DocumentWithDataList</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Documents digitally signed by source</p>
+                    </dd>
+                    <dt data-property-name="documents">
+                      <span class="json-property-name">documents:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/DocumentList">DocumentList</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Metadata about documents for the loan. (Does not contain actual document)</p>
+                    </dd>
+                    <dt data-property-name="funding">
+                      <span class="json-property-name">funding:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/Funding">Funding</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Status of loan funding</p>
+                    </dd>
+                    <dt data-property-name="incomeRecords">
+                      <span class="json-property-name">incomeRecords:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/IncomeRecordsList">IncomeRecordsList</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Primary party&#39;s records of income</p>
+                    </dd>
+                    <dt data-property-name="lienProperty">
+                      <span class="json-property-name">lienProperty:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/LienProperty">LienProperty</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>If loan is property-based, the lien information for the loan</p>
+                    </dd>
+                    <dt data-property-name="loan">
+                      <span class="json-property-name">loan:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/Loan">Loan</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Loan information</p>
+                    </dd>
+                    <dt data-property-name="primaryParty">
+                      <span class="json-property-name">primaryParty:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/Party">Party</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Primary borrower information</p>
+                    </dd>
+                    <dt data-property-name="servicing">
+                      <span class="json-property-name">servicing:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/LoanServicing">LoanServicing</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Information about loan servicer</p>
+                    </dd>
+                    <dt data-property-name="signedPromNote">
+                      <span class="json-property-name">signedPromNote:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/Disclosure">Disclosure</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The promissory note for the loan</p>
+                    </dd>
+                    <dt data-property-name="triMergeReports">
+                      <span class="json-property-name">triMergeReports:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/TriMergeReportsList">TriMergeReportsList</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="underwritingPacket">
+                      <span class="json-property-name">underwritingPacket:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/UnderwritingPacket">UnderwritingPacket</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Underwriting records</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;additionalParties&quot;</span>: {},
+  <span class="hljs-attr">&quot;creditReports&quot;</span>: {
+    <span class="hljs-attr">&quot;reports&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3a6de705-f5e3-43fb-aa25-41506f7b0de0&quot;</span>
+        },
+        <span class="hljs-attr">&quot;partyUuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b8d8eaa1-c745-41e6-8d1e-133498a51287&quot;</span>
+        },
+        <span class="hljs-attr">&quot;reportTimestamp&quot;</span>: <span class="hljs-string">&quot;2018-10-18T10:06:26Z&quot;</span>,
+        <span class="hljs-attr">&quot;attributes&quot;</span>: {
+          <span class="hljs-attr">&quot;fico&quot;</span>: <span class="hljs-number">770</span>,
+          <span class="hljs-attr">&quot;totalTrades60DaysDelinquent&quot;</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">&quot;taxLiens&quot;</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">&quot;bankruptcy&quot;</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">&quot;totalMonthlyRevolvingPayment&quot;</span>: {
+            <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;000003097&quot;</span>,
+            <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+          },
+          <span class="hljs-attr">&quot;totalOpenBalance&quot;</span>: {
+            <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;000463054&quot;</span>,
+            <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+          }
+        }
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;digitalSignaturePackets&quot;</span>: {},
+  <span class="hljs-attr">&quot;documents&quot;</span>: {
+    <span class="hljs-attr">&quot;docs&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;a7b0d75c-b139-4915-905d-5978972b42c0&quot;</span>
+        },
+        <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;Qfis02VP/r5LuUklpNNx/43hqMI0Iz33CYKB9+sKTlIWaYip/4YEUBzvVw7d1S5+zG3M2h8vDI4JtGVrpundrg==&quot;</span>,
+        <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;CLOSING_DISCLOSURE&quot;</span>
+      },
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;4fde1906-6a9c-4549-b337-b918805a6f8d&quot;</span>
+        },
+        <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;/G7dTfLUUiNxkeOAvb/a3Gk8nDN3Y+ClcQ8xOnfsmtPEH7p+CNcCRdFD6n6tOWZ1tvuTVbMT/0yHYfruO33g9w==&quot;</span>,
+        <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;LOAN_ESTIMATE&quot;</span>
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;funding&quot;</span>: {
+    <span class="hljs-attr">&quot;initiated&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">&quot;complete&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">&quot;completedDate&quot;</span>: <span class="hljs-string">&quot;2020-09-09T16:07:15.499720Z&quot;</span>
+  },
+  <span class="hljs-attr">&quot;incomeRecords&quot;</span>: {},
+  <span class="hljs-attr">&quot;lienProperty&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+    },
+    <span class="hljs-attr">&quot;borrowerUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;28ab6d01-2553-4ab4-b692-c7cde4be63f4&quot;</span>
+    },
+    <span class="hljs-attr">&quot;loanUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;1772d5eb-a224-4454-a234-f01f5f53b4a7&quot;</span>
+    },
+    <span class="hljs-attr">&quot;address&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+      },
+      <span class="hljs-attr">&quot;street&quot;</span>: <span class="hljs-string">&quot;1478  COLLEGE  PKWY&quot;</span>,
+      <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;GULF BREEZE&quot;</span>,
+      <span class="hljs-attr">&quot;state&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+      <span class="hljs-attr">&quot;zip&quot;</span>: <span class="hljs-string">&quot;32563&quot;</span>,
+      <span class="hljs-attr">&quot;unitNumber&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
+      <span class="hljs-attr">&quot;addressType&quot;</span>: <span class="hljs-string">&quot;HOME&quot;</span>,
+      <span class="hljs-attr">&quot;ownership&quot;</span>: <span class="hljs-string">&quot;SOLE&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;loan&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3717acf4-a0f4-4f0f-8f39-005eb726f601&quot;</span>
+    },
+    <span class="hljs-attr">&quot;loanNumber&quot;</span>: <span class="hljs-string">&quot;1-18291-033&quot;</span>,
+    <span class="hljs-attr">&quot;loanType&quot;</span>: <span class="hljs-string">&quot;FIGURE_HELOC&quot;</span>,
+    <span class="hljs-attr">&quot;loanPurpose&quot;</span>: <span class="hljs-string">&quot;Home Improvement&quot;</span>,
+    <span class="hljs-attr">&quot;originatorUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;3c48bcba-e42b-46e4-9187-a2974e7aeda8&quot;</span>
+    },
+    <span class="hljs-attr">&quot;originatorName&quot;</span>: <span class="hljs-string">&quot;FIGURE_LENDING&quot;</span>,
+    <span class="hljs-attr">&quot;monthlyPaymentAmount&quot;</span>: {
+      <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;620.82&quot;</span>,
+      <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;primaryParty&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;e13cad7a-9dd9-4280-9b08-02c00cf10bd4&quot;</span>
+    },
+    <span class="hljs-attr">&quot;name&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;5d56bb7d-efba-4e4a-9bfb-4563ebf1c267&quot;</span>
+      },
+      <span class="hljs-attr">&quot;firstName&quot;</span>: <span class="hljs-string">&quot;Megan&quot;</span>,
+      <span class="hljs-attr">&quot;lastName&quot;</span>: <span class="hljs-string">&quot;Prescott&quot;</span>
+    },
+    <span class="hljs-attr">&quot;dob&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;1965-11-15&quot;</span>
+    },
+    <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;111111111&quot;</span>,
+    <span class="hljs-attr">&quot;maritalStatus&quot;</span>: <span class="hljs-string">&quot;MARRIED&quot;</span>,
+    <span class="hljs-attr">&quot;incomeSources&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b9465f21-45e8-455f-8c5d-1190663e6c58&quot;</span>
+        },
+        <span class="hljs-attr">&quot;employer&quot;</span>: <span class="hljs-string">&quot;Fidelity&quot;</span>,
+        <span class="hljs-attr">&quot;amount&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;176094.0&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        }
+      }
+    ],
+    <span class="hljs-attr">&quot;yearlyIncome&quot;</span>: {
+      <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;176094.0&quot;</span>,
+      <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+    },
+    <span class="hljs-attr">&quot;addresses&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+        },
+        <span class="hljs-attr">&quot;street&quot;</span>: <span class="hljs-string">&quot;1478  COLLEGE  PKWY&quot;</span>,
+        <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;GULF BREEZE&quot;</span>,
+        <span class="hljs-attr">&quot;state&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+        <span class="hljs-attr">&quot;zip&quot;</span>: <span class="hljs-string">&quot;32563&quot;</span>,
+        <span class="hljs-attr">&quot;addressType&quot;</span>: <span class="hljs-string">&quot;HOME&quot;</span>
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;servicing&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;29361f17-0485-4ff1-a4de-f9b9b8272309&quot;</span>
+    },
+    <span class="hljs-attr">&quot;servicerName&quot;</span>: <span class="hljs-string">&quot;figure-servicing&quot;</span>,
+    <span class="hljs-attr">&quot;servicingPolicy&quot;</span>: {
+      <span class="hljs-attr">&quot;policyUuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;6ce18ab1-bcb1-49c0-bc56-0acee1a9b941&quot;</span>
+      },
+      <span class="hljs-attr">&quot;assetUuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;2772d5eb-a224-4454-a234-f01f5f63b4a7&quot;</span>
+      },
+      <span class="hljs-attr">&quot;feeRate&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.01&quot;</span>
+      },
+      <span class="hljs-attr">&quot;remittanceType&quot;</span>: <span class="hljs-string">&quot;ACTUAL_ACTUAL&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;signedPromNote&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;40f4f3bc-fcc6-421c-a68b-9cf0d16cb791&quot;</span>
+    },
+    <span class="hljs-attr">&quot;signedDocument&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;59644aa7-2905-4732-bbc2-2c28af879537&quot;</span>
+      },
+      <span class="hljs-attr">&quot;sha512Hash&quot;</span>: <span class="hljs-string">&quot;3fis02VP/r5LuUklpNNx/43hqMI0Iz33CYKB9+sKTlIWaYip/4YEUBzvVw7d1S5+zG3M2h8vDI4JtGVrpundrg==&quot;</span>,
+      <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Signed-Heloc_Agreement.pdf&quot;</span>,
+      <span class="hljs-attr">&quot;documentType&quot;</span>: <span class="hljs-string">&quot;HELOCAGREEMENT&quot;</span>
+    }
+  },
+  <span class="hljs-attr">&quot;triMergeReports&quot;</span>: {
+    <span class="hljs-attr">&quot;reports&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;calculatedCreditScore&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-attr">&quot;reports&quot;</span>: [],
+        <span class="hljs-attr">&quot;partyUuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b8d8eaa1-c745-41e6-8d1e-133498a51287&quot;</span>
+        }
+      }
+    ]
+  },
+  <span class="hljs-attr">&quot;underwritingPacket&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;a608fee5-7395-4c0a-932e-73e88f8770f6&quot;</span>
+    },
+    <span class="hljs-attr">&quot;productUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;251e3dc2-4dbd-42c4-aa66-d3f4290a9193&quot;</span>
+    },
+    <span class="hljs-attr">&quot;originatorUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;29361f17-0485-4ff1-a4de-f9b9b8272309&quot;</span>
+    },
+    <span class="hljs-attr">&quot;uwVersion&quot;</span>: <span class="hljs-number">7</span>,
+    <span class="hljs-attr">&quot;creditScore&quot;</span>: <span class="hljs-number">770</span>,
+    <span class="hljs-attr">&quot;vantageScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;ficoScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;customCreditScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;triMergeScore&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;originationState&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+    <span class="hljs-attr">&quot;offers&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;edca1bf5-739b-4fe9-8b40-a97210f1e77e&quot;</span>
+        },
+        <span class="hljs-attr">&quot;index&quot;</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">&quot;termInYears&quot;</span>: <span class="hljs-number">5</span>,
+        <span class="hljs-attr">&quot;intRate&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.06250&quot;</span>
+        },
+        <span class="hljs-attr">&quot;minAmount&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;15000.00&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        },
+        <span class="hljs-attr">&quot;maxAmount&quot;</span>: {
+          <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;28638.0&quot;</span>,
+          <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+        }
+      }
+    ],
+    <span class="hljs-attr">&quot;selectedOffer&quot;</span>: {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;dde724a0-227c-40f8-9c6e-17956f7dc022&quot;</span>
+      },
+      <span class="hljs-attr">&quot;offerIndex&quot;</span>: <span class="hljs-number">6</span>,
+      <span class="hljs-attr">&quot;amount&quot;</span>: {
+        <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;49536.00&quot;</span>,
+        <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+      },
+      <span class="hljs-attr">&quot;termInYears&quot;</span>: <span class="hljs-number">10</span>,
+      <span class="hljs-attr">&quot;rateType&quot;</span>: <span class="hljs-string">&quot;FIXED&quot;</span>,
+      <span class="hljs-attr">&quot;intRate&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.08750&quot;</span>
+      }
+    }
+  }
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-LoanServicing" class="definition panel" data-traverse-target="definition-LoanServicing">
+            <h2 class="panel-title">
+              <a name="/definitions/LoanServicing"></a>LoanServicing:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#asset.LoanServicing' />LoanServicing definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;uuid&quot;</span>: {
+    <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;29361f17-0485-4ff1-a4de-f9b9b8272309&quot;</span>
+  },
+  <span class="hljs-attr">&quot;servicerName&quot;</span>: <span class="hljs-string">&quot;figure-servicing&quot;</span>,
+  <span class="hljs-attr">&quot;servicingPolicy&quot;</span>: {
+    <span class="hljs-attr">&quot;policyUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;6ce18ab1-bcb1-49c0-bc56-0acee1a9b941&quot;</span>
+    },
+    <span class="hljs-attr">&quot;assetUuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;2772d5eb-a224-4454-a234-f01f5f63b4a7&quot;</span>
+    },
+    <span class="hljs-attr">&quot;feeRate&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.01&quot;</span>
+    },
+    <span class="hljs-attr">&quot;remittanceType&quot;</span>: <span class="hljs-string">&quot;ACTUAL_ACTUAL&quot;</span>
+  }
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-PartiesList" class="definition panel" data-traverse-target="definition-PartiesList">
+            <h2 class="panel-title">
+              <a name="/definitions/PartiesList"></a>PartiesList:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#loan.PartiesList' />PartiesList definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;parties&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;e13cad7a-9dd9-4280-9b08-02c00cf10bd4&quot;</span>
+      },
+      <span class="hljs-attr">&quot;name&quot;</span>: {
+        <span class="hljs-attr">&quot;uuid&quot;</span>: {
+          <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;5d56bb7d-efba-4e4a-9bfb-4563ebf1c267&quot;</span>
+        },
+        <span class="hljs-attr">&quot;firstName&quot;</span>: <span class="hljs-string">&quot;Megan&quot;</span>,
+        <span class="hljs-attr">&quot;lastName&quot;</span>: <span class="hljs-string">&quot;Prescott&quot;</span>
+      },
+      <span class="hljs-attr">&quot;dob&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;1965-11-15&quot;</span>
+      },
+      <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;111111111&quot;</span>,
+      <span class="hljs-attr">&quot;maritalStatus&quot;</span>: <span class="hljs-string">&quot;MARRIED&quot;</span>,
+      <span class="hljs-attr">&quot;incomeSources&quot;</span>: [
+        {
+          <span class="hljs-attr">&quot;uuid&quot;</span>: {
+            <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b9465f21-45e8-455f-8c5d-1190663e6c58&quot;</span>
+          },
+          <span class="hljs-attr">&quot;employer&quot;</span>: <span class="hljs-string">&quot;Fidelity&quot;</span>,
+          <span class="hljs-attr">&quot;amount&quot;</span>: {
+            <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;176094.0&quot;</span>,
+            <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+          }
+        }
+      ],
+      <span class="hljs-attr">&quot;yearlyIncome&quot;</span>: {
+        <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;176094.0&quot;</span>,
+        <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+      },
+      <span class="hljs-attr">&quot;addresses&quot;</span>: [
+        {
+          <span class="hljs-attr">&quot;uuid&quot;</span>: {
+            <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+          },
+          <span class="hljs-attr">&quot;street&quot;</span>: <span class="hljs-string">&quot;1478  COLLEGE  PKWY&quot;</span>,
+          <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;GULF BREEZE&quot;</span>,
+          <span class="hljs-attr">&quot;state&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+          <span class="hljs-attr">&quot;zip&quot;</span>: <span class="hljs-string">&quot;32563&quot;</span>,
+          <span class="hljs-attr">&quot;addressType&quot;</span>: <span class="hljs-string">&quot;HOME&quot;</span>
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Party" class="definition panel" data-traverse-target="definition-Party">
+            <h2 class="panel-title">
+              <a name="/definitions/Party"></a>Party:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#.Party' />Party definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;uuid&quot;</span>: {
+    <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;e13cad7a-9dd9-4280-9b08-02c00cf10bd4&quot;</span>
+  },
+  <span class="hljs-attr">&quot;name&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;5d56bb7d-efba-4e4a-9bfb-4563ebf1c267&quot;</span>
+    },
+    <span class="hljs-attr">&quot;firstName&quot;</span>: <span class="hljs-string">&quot;Megan&quot;</span>,
+    <span class="hljs-attr">&quot;lastName&quot;</span>: <span class="hljs-string">&quot;Prescott&quot;</span>
+  },
+  <span class="hljs-attr">&quot;dob&quot;</span>: {
+    <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;1965-11-15&quot;</span>
+  },
+  <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;111111111&quot;</span>,
+  <span class="hljs-attr">&quot;maritalStatus&quot;</span>: <span class="hljs-string">&quot;MARRIED&quot;</span>,
+  <span class="hljs-attr">&quot;incomeSources&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b9465f21-45e8-455f-8c5d-1190663e6c58&quot;</span>
+      },
+      <span class="hljs-attr">&quot;employer&quot;</span>: <span class="hljs-string">&quot;Fidelity&quot;</span>,
+      <span class="hljs-attr">&quot;amount&quot;</span>: {
+        <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;176094.0&quot;</span>,
+        <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+      }
+    }
+  ],
+  <span class="hljs-attr">&quot;yearlyIncome&quot;</span>: {
+    <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;176094.0&quot;</span>,
+    <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+  },
+  <span class="hljs-attr">&quot;addresses&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;35664a0e-369c-4bba-b074-02f85d03d364&quot;</span>
+      },
+      <span class="hljs-attr">&quot;street&quot;</span>: <span class="hljs-string">&quot;1478  COLLEGE  PKWY&quot;</span>,
+      <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;GULF BREEZE&quot;</span>,
+      <span class="hljs-attr">&quot;state&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+      <span class="hljs-attr">&quot;zip&quot;</span>: <span class="hljs-string">&quot;32563&quot;</span>,
+      <span class="hljs-attr">&quot;addressType&quot;</span>: <span class="hljs-string">&quot;HOME&quot;</span>
+    }
+  ]
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-TriMergeReportsList" class="definition panel" data-traverse-target="definition-TriMergeReportsList">
+            <h2 class="panel-title">
+              <a name="/definitions/TriMergeReportsList"></a>TriMergeReportsList:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#loan.TriMergeReportsList' />TriMergeReportsList definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;reports&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;calculatedCreditScore&quot;</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">&quot;reports&quot;</span>: [],
+      <span class="hljs-attr">&quot;partyUuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;b8d8eaa1-c745-41e6-8d1e-133498a51287&quot;</span>
+      }
+    }
+  ]
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-UnderwritingPacket" class="definition panel" data-traverse-target="definition-UnderwritingPacket">
+            <h2 class="panel-title">
+              <a name="/definitions/UnderwritingPacket"></a>UnderwritingPacket:
+              <span class="json-property-type">
+                <span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>
+                    <a href='provenance-protocol-messages.html#.UnderwritingPacket' />UnderwritingPacket definition in Provenance Protocol Messages</a>
+                  </p>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;uuid&quot;</span>: {
+    <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;a608fee5-7395-4c0a-932e-73e88f8770f6&quot;</span>
+  },
+  <span class="hljs-attr">&quot;productUuid&quot;</span>: {
+    <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;251e3dc2-4dbd-42c4-aa66-d3f4290a9193&quot;</span>
+  },
+  <span class="hljs-attr">&quot;originatorUuid&quot;</span>: {
+    <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;29361f17-0485-4ff1-a4de-f9b9b8272309&quot;</span>
+  },
+  <span class="hljs-attr">&quot;uwVersion&quot;</span>: <span class="hljs-number">7</span>,
+  <span class="hljs-attr">&quot;creditScore&quot;</span>: <span class="hljs-number">770</span>,
+  <span class="hljs-attr">&quot;vantageScore&quot;</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">&quot;ficoScore&quot;</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">&quot;customCreditScore&quot;</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">&quot;triMergeScore&quot;</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">&quot;originationState&quot;</span>: <span class="hljs-string">&quot;FL&quot;</span>,
+  <span class="hljs-attr">&quot;offers&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;uuid&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;edca1bf5-739b-4fe9-8b40-a97210f1e77e&quot;</span>
+      },
+      <span class="hljs-attr">&quot;index&quot;</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">&quot;termInYears&quot;</span>: <span class="hljs-number">5</span>,
+      <span class="hljs-attr">&quot;intRate&quot;</span>: {
+        <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.06250&quot;</span>
+      },
+      <span class="hljs-attr">&quot;minAmount&quot;</span>: {
+        <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;15000.00&quot;</span>,
+        <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+      },
+      <span class="hljs-attr">&quot;maxAmount&quot;</span>: {
+        <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;28638.0&quot;</span>,
+        <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+      }
+    }
+  ],
+  <span class="hljs-attr">&quot;selectedOffer&quot;</span>: {
+    <span class="hljs-attr">&quot;uuid&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;dde724a0-227c-40f8-9c6e-17956f7dc022&quot;</span>
+    },
+    <span class="hljs-attr">&quot;offerIndex&quot;</span>: <span class="hljs-number">6</span>,
+    <span class="hljs-attr">&quot;amount&quot;</span>: {
+      <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-string">&quot;49536.00&quot;</span>,
+      <span class="hljs-attr">&quot;currency&quot;</span>: <span class="hljs-string">&quot;USD&quot;</span>
+    },
+    <span class="hljs-attr">&quot;termInYears&quot;</span>: <span class="hljs-number">10</span>,
+    <span class="hljs-attr">&quot;rateType&quot;</span>: <span class="hljs-string">&quot;FIXED&quot;</span>,
+    <span class="hljs-attr">&quot;intRate&quot;</span>: {
+      <span class="hljs-attr">&quot;value&quot;</span>: <span class="hljs-string">&quot;0.08750&quot;</span>
+    }
+  }
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div class="doc-row no-margin">
+            <div class="doc-copy doc-separator">
+              <a class="powered-by" href="https://sourcey.com/spectacle">Documentation by
+                <span>Spectacle</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

@@ -20,7 +20,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "@changesets/cli": "^2.9.1",
+    "@changesets/cli": "^2.11.1",
     "lerna": "^3.20.2"
   },
   "devDependencies": {

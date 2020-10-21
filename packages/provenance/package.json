@@ -1,0 +1,33 @@
+{
+  "name": "provenance",
+  "version": "0.0.1",
+  "description": "> TODO: description",
+  "author": "Jon Nutter <jon@nuorder.com>",
+  "homepage": "https://github.com/cmpsr/composer#readme",
+  "license": "ISC",
+  "main": "lib/provenance.js",
+  "directories": {
+    "lib": "src"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmpsr/composer.git"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "bugs": {
+    "url": "https://github.com/cmpsr/composer/issues"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "axios-curlirize": "^1.3.7",
+    "dotenv": "^8.2.0",
+    "waait": "^1.0.5"
+  }
+}

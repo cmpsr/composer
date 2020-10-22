@@ -151,78 +151,82 @@ export const Outlined = () => (
     <SectionIconWrapper
       sectionName="Action"
       icons={ActionIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
     <SectionIconWrapper
       sectionName="Alert"
       icons={AlertIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
-    <SectionIconWrapper sectionName="Av" icons={AvIcons} iconType="outlined" />
+    <SectionIconWrapper
+      sectionName="Av"
+      icons={AvIcons}
+      iconType={Icon.Types.Outlined}
+    />
     <SectionIconWrapper
       sectionName="Communication"
       icons={CommunicationIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
     <SectionIconWrapper
       sectionName="Content"
       icons={ContentIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
     <SectionIconWrapper
       sectionName="Device"
       icons={DeviceIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
     <SectionIconWrapper
       sectionName="Editor"
       icons={EditorIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
     <SectionIconWrapper
       sectionName="File"
       icons={FileIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
     <SectionIconWrapper
       sectionName="Hardware"
       icons={HardwareIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
     <SectionIconWrapper
       sectionName="Image"
       icons={ImageIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
     <SectionIconWrapper
       sectionName="Toggle"
       icons={ToggleIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
     <SectionIconWrapper
       sectionName="Places"
       icons={PlacesIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
     <SectionIconWrapper
       sectionName="Navigation"
       icons={NavigationIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
     <SectionIconWrapper
       sectionName="Notification"
       icons={NotificationIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
     <SectionIconWrapper
       sectionName="Social"
       icons={SocialIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
     <SectionIconWrapper
       sectionName="Maps"
       icons={MapsIcons}
-      iconType="outlined"
+      iconType={Icon.Types.Outlined}
     />
   </>
 );
@@ -236,78 +240,82 @@ export const Rounded = () => (
     <SectionIconWrapper
       sectionName="Action"
       icons={ActionIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
     <SectionIconWrapper
       sectionName="Alert"
       icons={AlertIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
-    <SectionIconWrapper sectionName="Av" icons={AvIcons} iconType="rounded" />
+    <SectionIconWrapper
+      sectionName="Av"
+      icons={AvIcons}
+      iconType={Icon.Types.Rounded}
+    />
     <SectionIconWrapper
       sectionName="Communication"
       icons={CommunicationIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
     <SectionIconWrapper
       sectionName="Content"
       icons={ContentIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
     <SectionIconWrapper
       sectionName="Device"
       icons={DeviceIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
     <SectionIconWrapper
       sectionName="Editor"
       icons={EditorIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
     <SectionIconWrapper
       sectionName="File"
       icons={FileIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
     <SectionIconWrapper
       sectionName="Hardware"
       icons={HardwareIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
     <SectionIconWrapper
       sectionName="Image"
       icons={ImageIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
     <SectionIconWrapper
       sectionName="Toggle"
       icons={ToggleIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
     <SectionIconWrapper
       sectionName="Places"
       icons={PlacesIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
     <SectionIconWrapper
       sectionName="Navigation"
       icons={NavigationIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
     <SectionIconWrapper
       sectionName="Notification"
       icons={NotificationIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
     <SectionIconWrapper
       sectionName="Social"
       icons={SocialIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
     <SectionIconWrapper
       sectionName="Maps"
       icons={MapsIcons}
-      iconType="rounded"
+      iconType={Icon.Types.Rounded}
     />
   </>
 );

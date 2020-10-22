@@ -5,8 +5,7 @@ import { Icon } from './Icon';
 describe('Icon', () => {
   it('should render children', () => {
     render(<Icon>test</Icon>);
-    const icon = screen.getByText('test');
-    expect(icon).toBeInTheDocument();
+    screen.getByText('test');
   });
   it('should render default width and height', () => {
     render(<Icon>test</Icon>);

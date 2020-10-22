@@ -13,6 +13,9 @@ export const StyledButton = styled.button<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 1px;
 
   &.primary {
     background-color: ${(props) => getTheme(props).colors.fillPrimary900};
@@ -37,8 +40,6 @@ export const StyledButton = styled.button<Props>`
   &.secondary {
     background-color: transparent;
     color: ${(props) => getTheme(props).colors.fillPrimary900};
-    border-style: solid;
-    border-width: 1px;
     border-color: ${(props) => getTheme(props).colors.fillPrimary900};
 
     &:active {
@@ -71,7 +72,7 @@ export const StyledButton = styled.button<Props>`
   }
 
   &:disabled {
-    pointer-events: none;
+    cursor: not-allowed;
   }
 
   &:focus {

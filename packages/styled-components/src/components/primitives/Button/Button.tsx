@@ -1,39 +1,17 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import cn from 'classnames';
 import { StyledButton } from './Button.styled';
-
-export const BUTTON_DEFAULT_TEST_ID = 'button';
-export enum ButtonTypes {
-  Primary = 'primary',
-  Secondary = 'secondary'
-}
-
-export enum ButtonShapes {
-  Rounded = 'rounded',
-  SemiRounded = 'semiRounded',
-  Rectangle = 'rectangle'
-}
-
-type Props = {
-  children?: ReactNode;
-  className?: string;
-  onClick?: (...args: any[]) => void;
-  type?: ButtonTypes;
-  htmlType?: 'button' | 'submit' | 'reset';
-  testId?: string;
-  disabled?: boolean;
-  shape?: ButtonShapes;
-};
+import { Types, HtmlTypes, Shapes, Props } from './Button.types';
 
 export const Button = ({
   children,
   className,
   onClick,
-  type = ButtonTypes.Primary,
-  htmlType = 'button',
-  testId = BUTTON_DEFAULT_TEST_ID,
-  disabled,
-  shape
+  type = Types.Primary,
+  htmlType = HtmlTypes.Button,
+  testId = 'button',
+  disabled = false,
+  shape = Shapes.Rectangle,
 }: Props) => (
   <StyledButton
     data-testid={testId}
@@ -45,3 +23,7 @@ export const Button = ({
     {children}
   </StyledButton>
 );
+
+Button.Types = Types;
+Button.HtmlTypes = HtmlTypes;
+Button.Shapes = Shapes;

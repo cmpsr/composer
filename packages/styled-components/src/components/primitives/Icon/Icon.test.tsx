@@ -25,6 +25,6 @@ describe('Icon', () => {
       </Icon>
     );
     const icon = screen.getByText('test');
-    expect(icon.getAttribute('viewBox')).toBe('0 0 3 2');
+    expect(icon).toHaveAttribute('viewBox', '0 0 3 2');
   });
 });

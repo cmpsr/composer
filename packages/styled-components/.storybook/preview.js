@@ -6,21 +6,21 @@ import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
 import { withPerformance } from 'storybook-addon-performance';
 import { withKnobs } from '@storybook/addon-knobs';
 import { ThemeProvider } from 'styled-components';
-import theme from '../src/styles/theme';
+import theme from 'styles/theme';
 
 import '../src/styles/index.css';
 
 addParameters({
   viewport: {
-    viewports: INITIAL_VIEWPORTS
+    viewports: INITIAL_VIEWPORTS,
   },
   decorators: [withA11y, withKnobs],
   docs: {
     container: DocsContainer,
-    page: DocsPage
-  }
+    page: DocsPage,
+  },
 });
 
 addDecorator(withPerformance);
 
-addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
+addDecorator((story) => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);

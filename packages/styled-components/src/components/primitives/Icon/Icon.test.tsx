@@ -10,8 +10,8 @@ describe('Icon', () => {
   it('should render default width and height', () => {
     render(<Icon>test</Icon>);
     const icon = screen.getByText('test');
-    expect(icon.getAttribute('width')).toBe('24px');
-    expect(icon.getAttribute('height')).toBe('24px');
+    expect(icon).toHaveAttribute('width', '24px');
+    expect(icon).toHaveAttribute('height', '24px');
   });
   it('should render class', () => {
     render(<Icon className="foo">test</Icon>);

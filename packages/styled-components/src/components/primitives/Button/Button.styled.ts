@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getTheme } from 'utils/getTheme';
 
 interface Props {
   theme: any;
@@ -14,54 +15,59 @@ export const StyledButton = styled.button<Props>`
   justify-content: center;
 
   &.primary {
-    background-color: ${props => props.theme.colors.fillPrimary900};
-    color: ${props => props.theme.colors.fillWhite};
+    background-color: ${(props) => getTheme(props).colors.fillPrimary900};
+    color: ${(props) => getTheme(props).colors.fillWhite};
 
     &:active {
-      background-color: ${props => props.theme.colors.fillStatePrimaryPressed};
+      background-color: ${(props) =>
+        getTheme(props).colors.fillStatePrimaryPressed};
     }
 
     &:hover {
-      background-color: ${props => props.theme.colors.fillStatePrimaryHover};
+      background-color: ${(props) =>
+        getTheme(props).colors.fillStatePrimaryHover};
     }
 
     &:disabled {
-      background-color: ${props => props.theme.colors.fillStatePrimaryDisabled};
+      background-color: ${(props) =>
+        getTheme(props).colors.fillStatePrimaryDisabled};
     }
   }
 
   &.secondary {
     background-color: transparent;
-    color: ${props => props.theme.colors.fillPrimary900};
+    color: ${(props) => getTheme(props).colors.fillPrimary900};
     border-style: solid;
     border-width: 1px;
-    border-color: ${props => props.theme.colors.fillPrimary900};
+    border-color: ${(props) => getTheme(props).colors.fillPrimary900};
 
     &:active {
-      background-color: ${props =>
-        props.theme.colors.fillStateSecondaryPressed};
+      background-color: ${(props) =>
+        getTheme(props).colors.fillStateSecondaryPressed};
     }
 
     &:hover {
-      background-color: ${props => props.theme.colors.fillStateSecondaryHover};
+      background-color: ${(props) =>
+        getTheme(props).colors.fillStateSecondaryHover};
     }
 
     &:disabled {
-      background-color: ${props =>
-        props.theme.colors.fillStateSecondaryDisabled};
+      background-color: ${(props) =>
+        getTheme(props).colors.fillStateSecondaryDisabled};
     }
   }
 
   &.rounded {
-    border-radius: ${props => props.theme.Button.borderRadius.rounded};
+    border-radius: ${(props) => getTheme(props).Button.borderRadius.rounded};
   }
 
   &.semiRounded {
-    border-radius: ${props => props.theme.Button.borderRadius.semiRounded};
+    border-radius: ${(props) =>
+      getTheme(props).Button.borderRadius.semiRounded};
   }
 
   &.rectangle {
-    border-radius: ${props => props.theme.Button.borderRadius.rectangle};
+    border-radius: ${(props) => getTheme(props).Button.borderRadius.rectangle};
   }
 
   &:disabled {

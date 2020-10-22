@@ -1,0 +1,28 @@
+{
+  "plugins": [
+    "@babel/plugin-proposal-object-rest-spread",
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "src": "./src",
+          "components": "./src/components",
+          "utils": "./src/utils",
+          "tests": "./config/jest"
+        }
+      }
+    ]
+  ],
+  "presets": [
+    "@babel/preset-typescript",
+    "@babel/preset-react",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ]
+}

@@ -8,7 +8,8 @@
           "src": "./src",
           "components": "./src/components",
           "utils": "./src/utils",
-          "tests": "./config/jest"
+          "tests": "./config/jest",
+          "styles": "./src/styles"
         }
       }
     ]

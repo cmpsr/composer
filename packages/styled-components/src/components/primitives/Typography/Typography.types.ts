@@ -1,5 +1,16 @@
 import { ReactNode } from 'react';
 
+export type Props = {
+  className?: string;
+  tag?: Tags;
+  type?: Types;
+  intensity?: Intensities;
+  children: ReactNode;
+  mode?: Modes;
+  testId?: string;
+  htmlFor?: string;
+};
+
 export enum Types {
   Headline1 = 'headline1',
   Headline2 = 'headline2',
@@ -47,14 +58,3 @@ export enum Tags {
   Span = 'span',
   Label = 'label',
 }
-
-export type Props = {
-  className?: string;
-  tag?: Tags;
-  type?: Types;
-  intensity?: Intensities;
-  children: ReactNode;
-  mode?: Modes;
-  testId?: string;
-  htmlFor?: string;
-};

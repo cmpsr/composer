@@ -1,5 +1,5 @@
 {
-  "name": "@cmpsr/components",
+  "name": "@cmpsr/styled-components",
   "repository": {
     "url": "ssh://git@github.com:cmpsr/composer.git"
   },

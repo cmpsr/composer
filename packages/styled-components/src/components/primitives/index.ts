@@ -4,3 +4,4 @@ export * from './Link';
 export * from './Badges/NumericBadge';
 export * from './Typography';
 export * from './Video';
+export * from './Pill';

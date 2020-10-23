@@ -16,6 +16,11 @@ const theme = {
       rectangle: '0',
     },
   },
+  IconicBadge: {
+    height: '1.25rem',
+    width: '1.25rem',
+    padding: '0.15rem',
+  },
   NumericBadge: {
     height: '1.25rem',
     width: '1.25rem',

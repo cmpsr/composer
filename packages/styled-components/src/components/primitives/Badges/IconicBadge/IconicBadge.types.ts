@@ -1,9 +1,9 @@
+import { ReactNode } from 'react';
 import { Color } from '../Badges.types';
 
 export type Props = {
-  number: number;
+  icon: ReactNode;
   className?: string;
   testId?: string;
   color?: Color;
-  maximumNumber?: number;
 };

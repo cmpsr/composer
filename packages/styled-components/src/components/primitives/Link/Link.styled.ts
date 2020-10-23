@@ -14,9 +14,6 @@ export const StyledLink = styled.a<Props>`
     justify-content: center;
   }
 
-  &.text {
-  }
-
   &.primary {
     color: ${(props) => getTheme(props).colors.fillWhite};
     background-color: ${(props) => getTheme(props).colors.fillPrimary900};

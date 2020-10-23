@@ -1,3 +1,4 @@
+export * from './Asset';
 export * from './Avatars/AvatarText';
 export * from './Badges/IconicBadge';
 export * from './Badges/NumericBadge';

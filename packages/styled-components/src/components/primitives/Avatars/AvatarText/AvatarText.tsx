@@ -17,8 +17,6 @@ const flatTypographyType = (size: Sizes) => {
       return Typography.Types.Body;
     case Sizes.ExtraSmall:
       return Typography.Types.Eyebrow;
-    default:
-      return null;
   }
 };
 

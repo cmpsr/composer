@@ -1,7 +1,8 @@
 import React from 'react';
 import cn from 'classnames';
 import { Typography } from 'components/primitives/Typography';
-import { Color, Props } from './NumericBadge.types';
+import { Props } from './NumericBadge.types';
+import { Color } from '../Badges.types';
 import { StyledContainer, StyledTypography } from './NumericBadge.styled';
 
 export const NumericBadge = ({

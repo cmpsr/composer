@@ -1,3 +1,5 @@
+import { Color } from '../Badges.types';
+
 export type Props = {
   number: number;
   className?: string;
@@ -5,9 +7,3 @@ export type Props = {
   color?: Color;
   maximumNumber?: number;
 };
-
-export enum Color {
-  Error = 'error',
-  Primary = 'primary',
-  Secondary = 'secondary',
-}

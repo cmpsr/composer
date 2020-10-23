@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const StyledLink = styled.a<Props>`
-  color: #000000;
+  color: ${(props) => getTheme(props).colors.fillBlack500};
   flex-grow: 0;
 
   &.image {

@@ -5,7 +5,7 @@ export type Props = {
   testId?: string;
 };
 
-export type IndicatorsProps = {
+export type StepsProps = {
   numberOfSteps: number;
   activeStep: number;
 };

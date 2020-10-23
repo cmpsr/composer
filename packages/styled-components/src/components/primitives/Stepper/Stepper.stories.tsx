@@ -1,14 +1,14 @@
 import React from 'react';
-import { StepIndicator } from '.';
+import { Stepper } from '.';
 import { number } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Primitives/Stepper/StepIndicator',
-  component: StepIndicator,
+  title: 'Primitives/Stepper',
+  component: Stepper,
 };
 
 export const Playground = () => (
-  <StepIndicator
+  <Stepper
     numberOfSteps={number('Number of steps', 4)}
     activeStep={number('Active step', 2)}
   />

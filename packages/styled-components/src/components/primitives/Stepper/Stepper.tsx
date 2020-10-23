@@ -1,29 +1,25 @@
 import React from 'react';
 import cn from 'classnames';
-import { Props, IndicatorsProps } from './StepIndicator.types';
-import {
-  StyledOrderedList,
-  StyledHr,
-  StyledListItem,
-} from './StepIndicator.styled';
+import { Props, StepsProps } from './Stepper.types';
+import { StyledOrderedList, StyledHr, StyledListItem } from './Stepper.styled';
 
-export const StepIndicator = ({
+export const Stepper = ({
   className,
   numberOfSteps,
   activeStep,
-  testId = 'stepIndicator',
+  testId = 'stepper',
 }: Props) => {
   return (
     <StyledOrderedList data-testid={testId} className={className}>
-      <Indicators numberOfSteps={numberOfSteps} activeStep={activeStep} />
+      <Steps numberOfSteps={numberOfSteps} activeStep={activeStep} />
     </StyledOrderedList>
   );
 };
 
-const Indicators = ({ numberOfSteps, activeStep }: IndicatorsProps) => {
-  const arrOfIndicators = [];
+const Steps = ({ numberOfSteps, activeStep }: StepsProps) => {
+  const stepsArray = [];
   for (let index = 0; index < numberOfSteps; index++) {
-    arrOfIndicators.push(
+    stepsArray.push(
       <StyledListItem data-testid={'line'} key={index}>
         <StyledHr
           className={cn(
@@ -35,5 +31,5 @@ const Indicators = ({ numberOfSteps, activeStep }: IndicatorsProps) => {
     );
   }
 
-  return <>{arrOfIndicators}</>;
+  return <>{stepsArray}</>;
 };

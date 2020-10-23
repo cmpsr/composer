@@ -6,6 +6,6 @@ export * from './Icon';
 export * from './Image';
 export * from './Link';
 export * from './Pill';
-export * from './Stepper/StepIndicator';
+export * from './Stepper';
 export * from './Typography';
 export * from './Video';

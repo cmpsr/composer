@@ -45,7 +45,7 @@ describe('Link', () => {
   it('should render href', () => {
     render(<Link route={{ slug: 'link_test' }}>Link test</Link>);
     const link = screen.getByTestId(testId);
-    expect(link.getAttribute('href')).toBe('link_test');
+    expect(link).toHaveAttribute('href', 'link_test');
   });
   it('should render target', () => {
     render(<Link target={Link.Target.Blank} />);

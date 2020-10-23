@@ -7,5 +7,6 @@ export * from './Icon';
 export * from './Image';
 export * from './Link';
 export * from './Pill';
+export * from './Spinner';
 export * from './Typography';
 export * from './Video';

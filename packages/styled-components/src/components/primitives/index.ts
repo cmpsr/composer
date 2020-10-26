@@ -9,6 +9,7 @@ export * from './Image';
 export * from './Link';
 export * from './List';
 export * from './Pill';
+export * from './Snackbar';
 export * from './Spinner';
 export * from './Stepper';
 export * from './Typography';

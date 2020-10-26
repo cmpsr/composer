@@ -9,8 +9,42 @@ export default {
   component: LinkItem,
 };
 
+export const Title = () => (
+  <>
+    <h1>LinkItem title</h1>
+    <LinkItem title="Title" />
+  </>
+);
+
+export const SubTitle = () => (
+  <>
+    <h1>LinkItem subtitle</h1>
+    <LinkItem title="Title" subTitle="SubTitle" />
+  </>
+);
+
 export const Icons = () => (
-  <LinkItem icon={<Favorite type={Icon.Types.Filled} />} title="Title" />
+  <>
+    <h1>LinkItems icons</h1>
+    {Object.keys(Icon.Types).map((type: any) => (
+      <>
+        <LinkItem icon={<Favorite type={Icon.Types[type]} />} title="Title" />
+        <br />
+      </>
+    ))}
+  </>
+);
+
+export const Targets = () => (
+  <>
+    <h1>LinkItems targets</h1>
+    {Object.keys(Link.Target).map((target: any) => (
+      <>
+        <LinkItem target={Link.Target[target]} title="Title" />
+        <br />
+      </>
+    ))}
+  </>
 );
 
 export const Playground = () => (

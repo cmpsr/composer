@@ -8,8 +8,12 @@ export default {
   component: Spinner,
 };
 
+const Container = styled.div`
+  background: grey;
+`;
+
 export const Sizes = () => (
-  <>
+  <Container>
     <h1>Spinner sizes</h1>
     {Object.keys(Spinner.Sizes).map((size: any) => (
       <>
@@ -17,12 +21,8 @@ export const Sizes = () => (
         <br />
       </>
     ))}
-  </>
+  </Container>
 );
-
-const Container = styled.div`
-  background: grey;
-`;
 
 export const Colors = () => (
   <Container>

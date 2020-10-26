@@ -20,7 +20,7 @@ describe('AvatarText', () => {
   it('should render highlight class', () => {
     render(<AvatarText text="foo" isHighlighted highlightClassName="foo" />);
     const avatarHighlight = screen.getByTestId('avatarTextHighlight');
-    expect(avatarHighlight).toHaveClass('foo');
+    expect(avatarHighlight).toHaveClass('custom');
   });
   it('should render extra small size', () => {
     render(<AvatarText text="foo" size={AvatarText.Sizes.ExtraSmall} />);

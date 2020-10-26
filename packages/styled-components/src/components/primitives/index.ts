@@ -7,6 +7,7 @@ export * from './Dropdown';
 export * from './Icon';
 export * from './Image';
 export * from './Link';
+export * from './List';
 export * from './Pill';
 export * from './Typography';
 export * from './Video';

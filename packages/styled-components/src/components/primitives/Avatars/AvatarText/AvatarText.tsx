@@ -47,7 +47,8 @@ export const AvatarText = ({
   return isHighlighted ? (
     <StyledHighlighter
       data-testid="avatarTextHighlight"
-      className={cn(size, highlightClassName)}
+      className={cn(size, highlightClassName ? 'custom' : '')}
+      css={highlightClassName}
     >
       {avatar}
     </StyledHighlighter>

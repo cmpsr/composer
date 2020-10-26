@@ -9,5 +9,6 @@ export * from './Link';
 export * from './List';
 export * from './Pill';
 export * from './Stepper';
+export * from './Tooltip';
 export * from './Typography';
 export * from './Video';

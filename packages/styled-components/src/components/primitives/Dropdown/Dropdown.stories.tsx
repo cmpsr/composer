@@ -7,6 +7,15 @@ export default {
   component: Dropdown,
 };
 
+export const Title = () => (
+  <>
+    <h1>Title</h1>
+    <Dropdown title="Title">
+      <span>Children</span>
+    </Dropdown>
+  </>
+);
+
 export const Playground = () => (
   <>
     <h1>Playground</h1>

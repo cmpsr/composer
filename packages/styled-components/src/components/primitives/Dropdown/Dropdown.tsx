@@ -1,14 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Icon, Typography } from 'components/primitives';
-import { List } from 'components/primitives/List';
 import {
   expand_more as ExpandMore,
   expand_less as ExpandLess,
 } from 'components/primitives/Icon/icons/navigation';
 import { Props } from './Dropdown.types';
-import { StyledWrapper, StyledAnchor, StyledIcon } from './Dropdown.styled';
+import {
+  StyledWrapper,
+  StyledAnchor,
+  StyledIcon,
+  StyledList,
+} from './Dropdown.styled';
 
-export const Dropdown = ({ title, className, children }: Props) => {
+export const Dropdown = ({
+  title,
+  className,
+  children,
+  testId = 'dropdown',
+}: Props) => {
   const node = useRef(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -26,7 +35,7 @@ export const Dropdown = ({ title, className, children }: Props) => {
   }, [node]);
 
   return (
-    <StyledWrapper ref={node}>
+    <StyledWrapper ref={node} data-testid={testId}>
       <StyledAnchor
         className={className}
         role="button"
@@ -43,7 +52,7 @@ export const Dropdown = ({ title, className, children }: Props) => {
           )}
         </StyledIcon>
       </StyledAnchor>
-      {isOpen && <List className="min-w-10">{children}</List>}
+      {isOpen && <StyledList>{children}</StyledList>}
     </StyledWrapper>
   );
 };

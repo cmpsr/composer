@@ -21,12 +21,7 @@ const Steps = ({ numberOfSteps, activeStep }: StepsProps) => {
   for (let index = 0; index < numberOfSteps; index++) {
     stepsArray.push(
       <StyledListItem data-testid={'line'} key={index}>
-        <StyledHr
-          className={cn(
-            { unactive: index > activeStep },
-            { active: index <= activeStep }
-          )}
-        />
+        <StyledHr className={cn({ active: index <= activeStep })} />
       </StyledListItem>
     );
   }

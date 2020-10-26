@@ -26,10 +26,8 @@ export const StyledHr = styled.hr<Props>`
   border-style: solid;
   border-radius: 0.25rem;
   width: 2.5rem;
+  border-color: ${(props) => getTheme(props).colors.fillBlack200};
 
-  &.unactive {
-    border-color: ${(props) => getTheme(props).colors.fillBlack200};
-  }
   &.active {
     border-color: ${(props) => getTheme(props).colors.fillPrimary900};
   }

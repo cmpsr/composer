@@ -24,8 +24,6 @@ describe('Stepper', () => {
       const line = lines[index].firstChild;
       if (index <= activeStep) {
         expect(line).toHaveClass('active');
-      } else {
-        expect(line).toHaveClass('unactive');
       }
     }
   });

@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { Typography } from 'components/primitives/Typography';
+import { customCss } from 'utils/customCss';
 
 interface Props {
+  css?: string;
   theme: any;
 }
 
@@ -67,4 +69,6 @@ export const StyledHighlighter = styled.div<Props>`
     width: 4rem;
     height: 4rem;
   }
+
+  ${(props) => customCss(props)};
 `;

@@ -3,7 +3,7 @@ import { Icon, Typography } from 'components/primitives';
 import {
   expand_more as ExpandMore,
   expand_less as ExpandLess,
-} from 'components/primitives/Icon/icons/navigation';
+} from 'components/primitives/Icon';
 import { Props } from './Dropdown.types';
 import {
   StyledWrapper,
@@ -19,7 +19,7 @@ export const Dropdown = ({
   testId = 'dropdown',
 }: Props) => {
   const node = useRef(null);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleClose = (e) => {
@@ -44,7 +44,7 @@ export const Dropdown = ({
         <Typography tag={Typography.Tags.Span} type={Typography.Types.Body}>
           {title}
         </Typography>
-        <StyledIcon testId={isOpen ? 'ExpandLess' : 'ExpandMore'}>
+        <StyledIcon testId={isOpen ? 'expandLess' : 'expandMore'}>
           {isOpen ? (
             <ExpandLess type={Icon.Types.Filled} />
           ) : (

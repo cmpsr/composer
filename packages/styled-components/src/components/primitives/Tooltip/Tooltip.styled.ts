@@ -36,7 +36,7 @@ export const StyledArrow = styled.div<Props>`
   &.primary900::before {
     background-color: ${(props) => getTheme(props).colors.fillPrimary900};
   }
-  &:before &.primary100::before {
+  &.primary100::before {
     background-color: ${(props) => getTheme(props).colors.fillPrimary100};
   }
 

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Link } from 'components/primitives/Link';
+import { Target } from 'components/primitives/Link/Link.types';
 
 export type Props = {
   className?: string;
@@ -8,6 +8,6 @@ export type Props = {
   route?: { slug: string };
   title?: string;
   subTitle?: string;
-  target?: Link.Target;
+  target?: Target;
   testId?: string;
 };

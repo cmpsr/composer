@@ -1,16 +1,22 @@
 import React from 'react';
-import { Message, MessagePlacement, MessageBackgroundColor } from '..';
+import { Message } from '.';
+import { MessagePlacement, Color } from './Message.types';
 import { action } from '@storybook/addon-actions';
+import styled from 'styled-components';
 
 export default {
-  title: 'Composer/Primitive/Chat/Conversation/Message',
+  title: 'Primitives/Chat/Conversation/Message',
   component: Message,
 };
 
+const Container = styled.div`
+  padding: 2.5rem;
+`;
+
 export const withLeft = () => (
-  <div className="p-10">
+  <Container>
     <Message placement={MessagePlacement.Left} text="I'm a fancy message" />
-  </div>
+  </Container>
 );
 
 withLeft.story = {
@@ -18,9 +24,9 @@ withLeft.story = {
 };
 
 export const withRight = () => (
-  <div className="p-10">
+  <Container>
     <Message placement={MessagePlacement.Right} text="I'm a fancy message" />
-  </div>
+  </Container>
 );
 
 withRight.story = {
@@ -28,21 +34,21 @@ withRight.story = {
 };
 
 export const withColors = () => (
-  <div className="p-10">
+  <Container>
     <Message
-      backgroundColor={MessageBackgroundColor.Primary600}
+      backgroundColor={Color.Primary}
       text="I'm a primary 25 color"
     />
     <Message
-      backgroundColor={MessageBackgroundColor.Secondary600}
+      backgroundColor={Color.Secondary}
       text="I'm a secondary 25 color"
     />
 
     <Message
-      backgroundColor={MessageBackgroundColor.Black100}
+      backgroundColor={Color.Black}
       text="I'm a black 10 color"
     />
-  </div>
+  </Container>
 );
 
 withColors.story = {
@@ -50,9 +56,9 @@ withColors.story = {
 };
 
 export const withTime = () => (
-  <div className="p-10">
+  <Container>
     <Message time="10:23 AM" text="I'm a fancy message" />
-  </div>
+  </Container>
 );
 
 withTime.story = {
@@ -60,12 +66,12 @@ withTime.story = {
 };
 
 export const withMultipleMessages = () => (
-  <div className="p-10">
+  <Container>
     <Message text="Hi Pau! Welcome Aboard!" />
     <Message time="01:32 PM" text="We should talk about this deal :)" />
     <Message
       time="02:37 PM"
-      backgroundColor={MessageBackgroundColor.Secondary600}
+      backgroundColor={Color.Secondary}
       placement={MessagePlacement.Left}
       text="Absolutely! I'm really interested."
     />
@@ -86,7 +92,7 @@ export const withMultipleMessages = () => (
         },
       ]}
     />
-  </div>
+  </Container>
 );
 
 withMultipleMessages.story = {
@@ -94,7 +100,7 @@ withMultipleMessages.story = {
 };
 
 export const withMedia = () => (
-  <div className="p-10">
+  <Container>
     <Message
       text="This is a media message"
       onMediaClick={action('On media click')}
@@ -111,7 +117,7 @@ export const withMedia = () => (
         },
       ]}
     />
-  </div>
+  </Container>
 );
 
 withMedia.story = {

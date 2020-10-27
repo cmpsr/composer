@@ -23,7 +23,8 @@ class FirestoreDb implements IDatabase {
 
   async getItem(id: string | number, from: string) {
     const doc = await this.db.collection(from).doc(id.toString()).get();
-    return !doc.data()._deleted
+    const data = doc?.data();
+    return data && !data._deleted
       ? { id: doc.id, ...this.removeHiddenFields(doc.data()) }
       : undefined;
   }

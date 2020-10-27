@@ -1,55 +1,57 @@
 import { render } from '@testing-library/react';
 
-import { componentMap } from "../../config";
+import { componentMap } from '../../config';
 import renderFromContentfulModel from '.';
 import { FAKE_LINK } from '../../models/content/constants';
 
 // Mock the graphql file calls
 jest.mock(
   '../../models/content/BodyCopy/queries/BodyCopyByIdQuery.graphql',
-  () => 'BodyCopyByIdQuery',
+  () => 'BodyCopyByIdQuery'
 );
 jest.mock(
   '../../models/content/Feature/queries/FeatureByIdQuery.graphql',
-  () => 'FeatureByIdQuery',
+  () => 'FeatureByIdQuery'
 );
 jest.mock(
   '../../models/content/Footer/queries/FooterByIdQuery.graphql',
-  () => 'FooterByIdQuery',
+  () => 'FooterByIdQuery'
 );
 jest.mock(
   '../../models/content/Grid/queries/GridByIdQuery.graphql',
-  () => 'GridByIdQuery',
+  () => 'GridByIdQuery'
 );
 jest.mock(
   '../../models/content/Group/queries/GroupByIdQuery.graphql',
-  () => 'GroupByIdQuery',
+  () => 'GroupByIdQuery'
 );
 jest.mock(
   '../../models/content/Header/queries/HeaderByIdQuery.graphql',
-  () => 'HeaderByIdQuery',
+  () => 'HeaderByIdQuery'
 );
 jest.mock(
   '../../models/content/Hero/queries/HeroByIdQuery.graphql',
-  () => 'HeroByIdQuery',
+  () => 'HeroByIdQuery'
 );
 jest.mock(
   '../../models/content/Link/queries/LinkByIdQuery.graphql',
-  () => 'LinkByIdQuery',
+  () => 'LinkByIdQuery'
 );
 jest.mock(
   '../../models/content/Section/queries/SectionByIdQuery.graphql',
-  () => 'SectionByIdQuery',
+  () => 'SectionByIdQuery'
 );
 
 // Mock useQuery
-jest.mock('@apollo/react-hooks', () => ({
-  useQuery: jest.fn(() => ({ error: null, loading: null })),
+jest.mock('@apollo/client', () => ({
+  useQuery: jest.fn(() => ({ error: null, loading: null }))
 }));
 
 describe('renderContentItemFromType', () => {
   it('renders a Link', () => {
-    const { getByText } = render(renderFromContentfulModel({ componentMap }, FAKE_LINK));
+    const { getByText } = render(
+      renderFromContentfulModel({ componentMap }, FAKE_LINK)
+    );
     getByText(FAKE_LINK.title);
   });
 });

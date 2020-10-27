@@ -31,6 +31,7 @@ exports[`PricingPlan1 should match snapshot 1`] = `
         <img
           alt=""
           className="select-none h-10"
+          data-testid="imageContent"
           src="https://images.ctfassets.net/o9153kt66j4s/6jk4DaIRMlx1CyOXIiLN5F/acebc0468bf2df33d069774c8e8e5bf6/Composer_-_white.svg"
         />
       </picture>

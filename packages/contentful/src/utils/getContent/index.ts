@@ -1,9 +1,9 @@
-import { ReactElement, useContext } from "react";
-import { useQuery } from "@apollo/react-hooks";
-import { DocumentNode } from "graphql";
+import { ReactElement, useContext } from 'react';
+import { useQuery } from '@apollo/client';
+import { DocumentNode } from 'graphql';
 
-import { ContentfulContext } from "context";
-import renderFromContentfulModel from "utils/renderFromContentfulModel";
+import { ContentfulContext } from 'context';
+import renderFromContentfulModel from 'utils/renderFromContentfulModel';
 
 type Props = {
   id: string;
@@ -14,7 +14,7 @@ type Props = {
 export const getContent = <T>({ id, query, name }: Props): ReactElement => {
   const contentfulContext = useContext(ContentfulContext);
   const { data }: { data: T } = useQuery(query, {
-    variables: { id },
+    variables: { id }
   });
   if (!data) return null;
 

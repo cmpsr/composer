@@ -17,6 +17,7 @@ exports[`Hero3 should match snapshot 1`] = `
     <img
       alt="Image Title"
       className="select-none object-cover w-full h-full"
+      data-testid="imageContent"
       src="https://images.ctfassets.net/o9153kt66j4s/6Ru9unmOhMXrFwKtLV2SRU/7c902fd189741be40f5fef77340cbf1d/placeholder.svg"
     />
   </picture>

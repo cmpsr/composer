@@ -1,5 +1,29 @@
 # Change Log
 
+## 0.0.41
+
+### Patch Changes
+
+- 4c59cb2: Add fixed size for media messages
+
+## 0.0.40
+
+### Patch Changes
+
+- 66d881b: Add onload callback to Image and Message
+
+## 0.0.39
+
+### Patch Changes
+
+- cb1f663: Grant media capabilities to Message component
+
+## 0.0.38
+
+### Patch Changes
+
+- ca2887c: fix some composer warnings
+
 ## 0.0.37
 
 ### Patch Changes

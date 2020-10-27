@@ -1,11 +1,11 @@
-import { ReactElement, useContext } from "react";
-import { useQuery } from "@apollo/react-hooks";
+import { ReactElement, useContext } from 'react';
+import { useQuery } from '@apollo/client';
 
-import { ContentfulContext } from "context";
-import renderFromContentfulModel from "utils/renderFromContentfulModel";
+import { ContentfulContext } from 'context';
+import renderFromContentfulModel from 'utils/renderFromContentfulModel';
 
-import { SectionByIdQuery as SectionByIdQueryType } from "types/SectionByIdQuery";
-import SectionByIdQuery from "../queries/SectionByIdQuery.graphql";
+import { SectionByIdQuery as SectionByIdQueryType } from 'types/SectionByIdQuery';
+import SectionByIdQuery from '../queries/SectionByIdQuery.graphql';
 
 type Props = {
   id: string;
@@ -14,7 +14,7 @@ type Props = {
 export const getChildren = ({ id }: Props): ReactElement[] => {
   const contentfulContext = useContext(ContentfulContext);
   const { data }: { data: SectionByIdQueryType } = useQuery(SectionByIdQuery, {
-    variables: { id },
+    variables: { id }
   });
   if (!data) return null;
 

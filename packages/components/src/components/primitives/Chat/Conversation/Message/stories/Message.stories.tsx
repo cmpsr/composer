@@ -1,5 +1,6 @@
 import React from 'react';
 import { Message, MessagePlacement, MessageBackgroundColor } from '..';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Composer/Primitive/Chat/Conversation/Message',
@@ -69,9 +70,50 @@ export const withMultipleMessages = () => (
       text="Absolutely! I'm really interested."
     />
     <Message text="Oops, sorry. I'm having some issues, my internet connection is super unstable..." />
+    <Message
+      text="This is a media message"
+      onMediaClick={action('On media click')}
+      mediaFiles={[
+        {
+          contentType: 'image/jpeg',
+          url:
+            'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
+        },
+        {
+          contentType: 'image/jpeg',
+          url:
+            'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
+        },
+      ]}
+    />
   </div>
 );
 
 withMultipleMessages.story = {
   name: 'With multiple messages',
+};
+
+export const withMedia = () => (
+  <div className="p-10">
+    <Message
+      text="This is a media message"
+      onMediaClick={action('On media click')}
+      mediaFiles={[
+        {
+          contentType: 'image/jpeg',
+          url:
+            'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
+        },
+        {
+          contentType: 'image/jpeg',
+          url:
+            'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
+        },
+      ]}
+    />
+  </div>
+);
+
+withMedia.story = {
+  name: 'With media',
 };

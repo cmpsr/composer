@@ -2,9 +2,11 @@ import twilio from 'twilio';
 import { TwilioAuthConfig, WebhookMethod } from 'types';
 
 class TwilioConversation {
+  private config: TwilioAuthConfig;
   private twilioClient: twilio.Twilio;
 
   constructor(config: TwilioAuthConfig) {
+    this.config = config;
     this.twilioClient = twilio(config.accountSid, config.authToken);
   }
 
@@ -82,6 +84,19 @@ class TwilioConversation {
       .conversations(conversationSid)
       .webhooks.create({ configuration, target: 'webhook' });
     return twilioWebhook.toJSON();
+  }
+
+  async getMedia(mediaId: string) {
+    const { accountSid, authToken, serviceId } = this.config;
+    const url = `https://${accountSid}:${authToken}@mcs.us1.twilio.com/v1/Services/${serviceId}/Media/${mediaId}`;
+    let response = await fetch(url);
+    if (!response.ok) return undefined;
+    const media = await response.json();
+    const mediaUrl = media['links']['content_direct_temporary'];
+    response = await fetch(mediaUrl);
+    if (!response.ok) return undefined;
+    const mediaContent = await response.arrayBuffer();
+    return mediaContent;
   }
 }
 

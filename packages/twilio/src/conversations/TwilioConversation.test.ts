@@ -89,6 +89,7 @@ describe('TwilioConversation', () => {
   const config = {
     accountSid: 'account_sid',
     authToken: 'auth_token',
+    serviceId: 'service_id',
   };
 
   test('should initialize client', () => {
@@ -311,6 +312,75 @@ describe('TwilioConversation', () => {
         });
         expect(returnedWebhook).toStrictEqual(mockCreateWebhook());
       });
+    });
+  });
+
+  describe('getMedia', () => {
+    const mediaId = 'media_id';
+    const mediaContentUrl = 'https://media.us1.twilio.com/long_media_url';
+    const media = {
+      sid: mediaId,
+      service_sid: 'service_id',
+      date_created: '2020-09-08T02:17:37.373103-07:00',
+      date_upload_updated: '2020-09-08T02:17:37.378269-07:00',
+      date_updated: '2020-09-08T02:17:37.373103-07:00',
+      links: {
+        content: '/v1/Services/service_id/Media/media_id/Content',
+        content_direct_temporary: mediaContentUrl,
+      },
+      size: 10117,
+      content_type: 'image/jpeg',
+      filename: null,
+      author: null,
+      message_sid: 'message_id',
+      channel_sid: 'channel_id',
+      url: '/v1/Services/service_id/Media/media_id',
+      is_multipart_upstream: false,
+    };
+    let originalFetch = global.fetch;
+    const mockFetch = jest.fn().mockReturnValue({
+      ok: true,
+      json: () => media,
+      arrayBuffer: () => Buffer.from('buffer'),
+    });
+    beforeAll(() => {
+      global.fetch = mockFetch;
+    });
+    afterAll(() => {
+      global.fetch = originalFetch;
+    });
+
+    test('should call fetch with twilio mcs url', () => {
+      const twilioConversation = new TwilioConversation(config);
+      twilioConversation.getMedia(mediaId);
+      const expectedUrl = `https://${config.accountSid}:${config.authToken}@mcs.us1.twilio.com/v1/Services/${config.serviceId}/Media/${mediaId}`;
+      expect(mockFetch).toBeCalledWith(expectedUrl);
+    });
+    test('should return undefined if request fails', async () => {
+      mockFetch.mockReturnValueOnce({ ...mockFetch(), ok: false });
+      const twilioConversation = new TwilioConversation(config);
+      const media = await twilioConversation.getMedia(mediaId);
+      expect(media).not.toBeDefined();
+    });
+    test('should fetch media from content temporary url', async () => {
+      const twilioConversation = new TwilioConversation(config);
+      await twilioConversation.getMedia(mediaId);
+      expect(mockFetch).toBeCalledWith(mediaContentUrl);
+    });
+    test('should return undefined if media content request fails', async () => {
+      const fetchResult = mockFetch();
+      mockFetch
+        .mockReturnValueOnce({ ...fetchResult })
+        .mockReturnValueOnce({ ...fetchResult, ok: false });
+      const twilioConversation = new TwilioConversation(config);
+      const media = await twilioConversation.getMedia(mediaId);
+      expect(mockFetch).toBeCalledWith(mediaContentUrl);
+      expect(media).not.toBeDefined();
+    });
+    test('should return media content', async () => {
+      const twilioConversation = new TwilioConversation(config);
+      const media = await twilioConversation.getMedia(mediaId);
+      expect(media).toStrictEqual(mockFetch().arrayBuffer());
     });
   });
 });

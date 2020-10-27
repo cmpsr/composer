@@ -2,7 +2,7 @@
 node_modules
 
 # Compiled library files
-lib
+#lib
 
 # Local env files
 .env

@@ -1,14 +1,8 @@
-import { ApolloClient } from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 import { ContentfulLink } from './';
 
-import introspectionQueryResultData from '../schema/fragmentTypes.json';
-
-const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData,
-});
+import possibleTypes from '../types/possibleTypes.json';
 
 export default function createApolloClient(initialState, ctx, preview = false) {
   // The `ctx` (NextPageContext) will only be present on the server.
@@ -16,6 +10,6 @@ export default function createApolloClient(initialState, ctx, preview = false) {
   return new ApolloClient({
     ssrMode: Boolean(ctx),
     link: ContentfulLink({ preview }),
-    cache: new InMemoryCache({ fragmentMatcher }).restore(initialState),
+    cache: new InMemoryCache({ possibleTypes }).restore(initialState)
   });
 }

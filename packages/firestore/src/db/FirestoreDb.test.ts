@@ -108,6 +108,12 @@ describe('FirestoreDb', () => {
       expect(mockDocument).toBeCalledWith(id);
       expect(mockGetDoc).toBeCalled();
     });
+    test('should return undefined if no doc match id', async () => {
+      mockGetDoc.mockReturnValueOnce(undefined);
+      const firestoreDb = new FirestoreDb(config);
+      const item = await firestoreDb.getItem(id, collectionName);
+      expect(item).not.toBeDefined();
+    });
     test('should return undefined if doc is marked as deleted', async () => {
       mockGetDoc.mockReturnValueOnce({
         ...mockGetDoc(),

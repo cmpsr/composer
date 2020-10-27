@@ -1,5 +1,23 @@
 # @cmpsr/contentful-core
 
+## 0.2.1
+
+### Patch Changes
+
+- 3f07907: add support for IE11 in contentful core
+
+## 0.2.0
+
+### Minor Changes
+
+- 718ecf3: Upgrade: Apollo
+
+## 0.1.9
+
+### Patch Changes
+
+- 40e18f5: Feature: Contentful Preview
+
 ## 0.1.8
 
 ### Patch Changes

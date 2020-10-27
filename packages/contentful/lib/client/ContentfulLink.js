@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ContentfulLink = void 0;
 
-var _apolloLinkHttp = require("apollo-link-http");
+var _client = require("@apollo/client");
 
 var _isomorphicUnfetch = _interopRequireDefault(require("isomorphic-unfetch"));
 
@@ -17,7 +17,7 @@ const ContentfulLink = ({
   preview = false
 }) => {
   const environment = process.env.CONTENTFUL_ENVIRONMENT ? process.env.CONTENTFUL_ENVIRONMENT : 'master';
-  return (0, _.getAuthLink)(preview).concat(new _apolloLinkHttp.HttpLink({
+  return (0, _.getAuthLink)(preview).concat(new _client.HttpLink({
     uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${environment}`,
     // Server URL (must be absolute)
     fetch: _isomorphicUnfetch.default

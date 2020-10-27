@@ -1,5 +1,45 @@
 # Change Log
 
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies [4c59cb2]
+  - @cmpsr/components@0.0.41
+
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies [66d881b]
+  - @cmpsr/components@0.0.40
+
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies [cb1f663]
+  - @cmpsr/components@0.0.39
+
+## 0.1.0
+
+### Minor Changes
+
+- 718ecf3: Upgrade: Apollo
+
+### Patch Changes
+
+- Updated dependencies [718ecf3]
+  - @cmpsr/contentful-core@0.2.0
+
+## 0.0.40
+
+### Patch Changes
+
+- 40e18f5: Feature: Contentful Preview
+- Updated dependencies [ca2887c]
+  - @cmpsr/components@0.0.38
+
 ## 0.0.39
 
 ### Patch Changes

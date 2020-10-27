@@ -9,7 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _app = _interopRequireDefault(require("next/app"));
 
-var _reactHooks = require("@apollo/react-hooks");
+var _client = require("@apollo/client");
 
 var _apolloClient = _interopRequireDefault(require("./apolloClient"));
 
@@ -43,9 +43,9 @@ const initOnContext = (ctx, preview) => {
   const inAppContext = Boolean(ctx.ctx); // We consider installing `withApollo({ ssr: true })` on global App level
   // as antipattern since it disables project wide Automatic Static Optimization.
 
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === 'development') {
     if (inAppContext) {
-      console.warn("Warning: You have opted-out of Automatic Static Optimization due to `withApollo` in `pages/_app`.\n" + "Read more: https://err.sh/next.js/opt-out-auto-static-optimization\n");
+      console.warn('Warning: You have opted-out of Automatic Static Optimization due to `withApollo` in `pages/_app`.\n' + 'Read more: https://err.sh/next.js/opt-out-auto-static-optimization\n');
     }
   } // Initialize ApolloClient if not already done
 
@@ -81,7 +81,7 @@ exports.initOnContext = initOnContext;
 const initApolloClient = (initialState, ctx, preview) => {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     return (0, _apolloClient.default)(initialState, ctx, preview);
   } // Reuse client on the client-side
 
@@ -123,14 +123,14 @@ const withApollo = ({
       client = initApolloClient(apolloState, undefined, preview);
     }
 
-    return /*#__PURE__*/_react.default.createElement(_reactHooks.ApolloProvider, {
+    return /*#__PURE__*/_react.default.createElement(_client.ApolloProvider, {
       client: client
     }, /*#__PURE__*/_react.default.createElement(PageComponent, pageProps));
   }; // Set the correct displayName in development
 
 
-  if (process.env.NODE_ENV !== "production") {
-    const displayName = PageComponent.displayName || PageComponent.name || "Component";
+  if (process.env.NODE_ENV !== 'production') {
+    const displayName = PageComponent.displayName || PageComponent.name || 'Component';
     WithApollo.displayName = `withApollo(${displayName})`;
   }
 
@@ -150,7 +150,7 @@ const withApollo = ({
       } // Only on the server:
 
 
-      if (typeof window === "undefined") {
+      if (typeof window === 'undefined') {
         const {
           AppTree
         } = ctx; // When redirecting, the response is finished.
@@ -167,7 +167,7 @@ const withApollo = ({
             // We don't want to have this in our client bundle.
             const {
               getDataFromTree
-            } = await Promise.resolve().then(() => _interopRequireWildcard(require("@apollo/react-ssr"))); // Since AppComponents and PageComponents have different context types
+            } = await Promise.resolve().then(() => _interopRequireWildcard(require('@apollo/react-ssr'))); // Since AppComponents and PageComponents have different context types
             // we need to modify their props a little.
 
             let props;
@@ -194,7 +194,7 @@ const withApollo = ({
             // Prevent Apollo Client GraphQL errors from crashing SSR.
             // Handle them in components via the data.error prop:
             // https://www.apollographql.com/docs/react/api/react-apollo.html#graphql-query-data-error
-            console.error("Error while running `getDataFromTree`", error);
+            console.error('Error while running `getDataFromTree`', error);
           }
         }
       }

@@ -1,5 +1,5 @@
-import { ReactElement } from "react";
-import { DocumentNode } from "graphql";
+import { ReactElement } from 'react';
+import { DocumentNode } from 'graphql';
 declare type Props = {
     id: string;
     query: DocumentNode;

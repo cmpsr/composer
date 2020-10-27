@@ -10,14 +10,21 @@ export declare enum MessagePlacement {
     Left = "left",
     Right = "right"
 }
+declare type Media = {
+    contentType: string;
+    url: string;
+};
 declare type Props = {
-    text: string;
+    text?: string;
     className?: string;
     testId?: string;
     backgroundColor?: MessageBackgroundColor;
     placement?: MessagePlacement;
     time?: string;
+    mediaFiles?: Media[];
+    onMediaClick?: (mediaFiles: Media[]) => void;
+    onLoadMedia?: () => void;
 };
-export declare const Message: ({ text, className, testId, backgroundColor, placement, time, }: Props) => JSX.Element;
+export declare const Message: ({ text, className, testId, backgroundColor, placement, time, mediaFiles, onMediaClick, onLoadMedia, }: Props) => JSX.Element;
 export {};
 //# sourceMappingURL=Message.d.ts.map

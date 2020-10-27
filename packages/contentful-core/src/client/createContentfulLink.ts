@@ -1,7 +1,6 @@
+import { HttpLink } from '@apollo/client';
 import invariant from 'invariant';
 import fetch from 'cross-fetch';
-
-import { createHttpLink } from 'apollo-link-http';
 
 export const createContentfulLink = (options) => {
   const {
@@ -29,7 +28,7 @@ export const createContentfulLink = (options) => {
     'Contentful `accessToken` missing from ContentfulLink initialization'
   );
 
-  return createHttpLink({
+  return new HttpLink({
     headers: {
       ...headers,
       Authorization: `Bearer ${accessToken}`,

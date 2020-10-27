@@ -11,29 +11,29 @@ const Link = ({ title, url }) => (
 );
 
 const componentMap = {
-  Link: (item): ReactElement => <Link {...item} />,
+  Link: (item): ReactElement => <Link {...item} />
 };
 
 const FAKE_ASSET = {
   contentType: 'image',
   title: 'fake asset title',
-  url: 'impulsum.vc',
+  url: 'impulsum.vc'
 };
 
 const FAKE_SYS = {
-  id: 'fake sys id',
+  id: 'fake sys id'
 };
 
 const FAKE_ROUTE = {
-  slug: '/',
+  slug: '/'
 };
 
 const FAKE_LINK_STYLE = {
   background: {
     default: {
-      bg: 'fill-primary-900',
-    },
-  },
+      bg: 'fill-primary-900'
+    }
+  }
 };
 
 const FAKE_LINK = {
@@ -45,7 +45,7 @@ const FAKE_LINK = {
   embeddedType: null,
   route: FAKE_ROUTE,
   style: FAKE_LINK_STYLE,
-  url: 'impulsum.vc',
+  url: 'impulsum.vc'
 };
 
 // Mock the graphql file calls
@@ -55,8 +55,8 @@ jest.mock(
 );
 
 // Mock useQuery
-jest.mock('@apollo/react-hooks', () => ({
-  useQuery: jest.fn(() => ({ error: null, loading: null })),
+jest.mock('@apollo/client', () => ({
+  useQuery: jest.fn(() => ({ error: null, loading: null }))
 }));
 
 describe('renderContentItemFromType', () => {

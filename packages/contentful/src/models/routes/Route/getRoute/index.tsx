@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 
 import Route from '../queries/Route.graphql';
 import { RouteQuery } from 'types/RouteQuery';
@@ -10,7 +10,7 @@ type Props = {
 
 export const getRoute = ({ slug }: Props): RouteQuery => {
   const { data }: { data: RouteQuery } = useQuery(Route, {
-    variables: { slug },
+    variables: { slug }
   });
   return data;
 };

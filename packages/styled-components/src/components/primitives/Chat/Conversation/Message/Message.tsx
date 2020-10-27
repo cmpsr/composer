@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
 import {
+  StyledMessage,
+  MessageWrapper,
+  TextWrapper,
+  TimeWrapper,
+  MediaWrapper,
+} from './Message.styled';
+import {
   Typography,
   TypographyTypes,
   TypographyMode,
@@ -88,6 +95,7 @@ export const Message = ({
   );
 
   return (
+    <>
       <div
         data-testid={WRAPPER_MESSAGE_DEFAULT_TEST_ID}
         className={cn(className, wrapperClasses)}
@@ -155,5 +163,69 @@ export const Message = ({
           </div>
         )}
       </div>
+      <StyledMessage placement={placement} hasTime={!!time}>
+        <MessageWrapper placement={placement}>
+          {hasMedia && (
+            <MediaWrapper
+              isMediaLoaded={isMediaLoaded}
+              onClick={onClickMediaFiles}
+            >
+              {!isMediaLoaded && (
+                <div data-testid="mediaLoader" className={mediaLoader}>
+                  <div className={badgeLoader}>
+                    <Circular color={CircularColor.White} />
+                  </div>
+                </div>
+              )}
+              <Image
+                className="imageWrapper"
+                onLoad={handleMediaLoad}
+                imageClassName="mediaPreview"
+                image={{
+                  title: 'Media Asset',
+                  url: thumbnail,
+                }}
+              />
+              {hasMultipleMedia && isMediaLoaded && (
+                <div
+                  data-testid="mediaFilesIndicator"
+                  className="numberOfMediaFiles"
+                >
+                  <Typography
+                    mode={TypographyMode.Light100}
+                    tag={'h6'}
+                    type={TypographyTypes.Headline6}
+                  >
+                    +{mediaFiles.length}
+                  </Typography>
+                </div>
+              )}
+            </MediaWrapper>
+          )}
+          {!!text && (
+            <TextWrapper>
+              <Typography
+                mode={TypographyMode.Dark100}
+                tag={'span'}
+                type={TypographyTypes.Form}
+              >
+                {text}
+              </Typography>
+            </TextWrapper>
+          )}
+        </MessageWrapper>
+        {time && (
+          <TimeWrapper time={!!time}>
+            <Typography
+              mode={TypographyMode.Dark50}
+              tag={'span'}
+              type={TypographyTypes.Eyebrow}
+            >
+              {time}
+            </Typography>
+          </TimeWrapper>
+        )}
+      </StyledMessage>
+    </>
   );
 };

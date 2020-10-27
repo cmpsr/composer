@@ -122,9 +122,11 @@ export const Playground = () => {
     },
   };
 
-  useEffect(() => {
-    showSnackbar(config);
-  }, [config]);
-
-  return <Snackbar />;
+  return (
+    <>
+      <h1>Playground</h1>
+      <button onClick={() => showSnackbar(config)}>Show snackbar</button>
+      <Snackbar />
+    </>
+  );
 };

@@ -3,6 +3,7 @@ export * from './Avatars/AvatarText';
 export * from './Badges/IconicBadge';
 export * from './Badges/NumericBadge';
 export * from './Button';
+export * from './Chat/ConversationList';
 export * from './Chat/ConversationSummary';
 export * from './Icon';
 export * from './Image';

@@ -9,6 +9,8 @@ export * from './Icon';
 export * from './Image';
 export * from './Link';
 export * from './List';
+export * from './List/Items/ButtonItem';
+export * from './List/Items/LinkItem';
 export * from './Pill';
 export * from './Spinner';
 export * from './Stepper';

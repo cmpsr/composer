@@ -1,7 +1,8 @@
 import React from 'react';
 import cn from 'classnames';
 import { StyledButton } from './Button.styled';
-import { Types, HtmlTypes, Shapes, Props } from './Button.types';
+import { Types, HtmlTypes, Props } from './Button.types';
+import { Shapes } from 'components/Components.types';
 
 export const Button = ({
   children,
@@ -11,7 +12,7 @@ export const Button = ({
   htmlType = HtmlTypes.Button,
   testId = 'button',
   disabled = false,
-  shape = Shapes.Rectangle,
+  shape = Shapes.Rectangle
 }: Props) => (
   <StyledButton
     data-testid={testId}

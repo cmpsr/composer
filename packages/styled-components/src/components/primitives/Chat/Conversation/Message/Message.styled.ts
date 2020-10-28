@@ -65,13 +65,10 @@ export const StyledMessageWrapper = styled.div<Props>`
 `;
 
 export const TextWrapper = styled.div<Props>`
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding: 0.625rem 0.75rem;
 
   &.hasMedia {
-    padding-top: 0.25rem;
+    padding-top: 0.5rem;
   }
 `;
 

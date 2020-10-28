@@ -15,13 +15,10 @@ import { Image } from 'components/primitives/Image';
 import { Colors, Props, Placements } from './Message.types';
 import { Spinner } from 'components/primitives/Spinner';
 
-export const MESSAGE_DEFAULT_TEST_ID = 'message';
-export const WRAPPER_MESSAGE_DEFAULT_TEST_ID = 'wrapperMessage';
-
 export const Message = ({
   text,
   className,
-  testId = MESSAGE_DEFAULT_TEST_ID,
+  testId = 'message',
   color = Colors.Primary,
   placement = Placements.Right,
   time,
@@ -45,12 +42,12 @@ export const Message = ({
 
   return (
     <StyledMessage
-      data-testid={WRAPPER_MESSAGE_DEFAULT_TEST_ID}
+      data-testid="wrapperMessage"
       className={cn(className, placement, { hasTime: !!time})}
     >
       <StyledMessageWrapper
         data-testid={testId}
-        className={cn('StyledMessageWrapper', placement, color)}
+        className={cn(placement, color)}
       >
         {hasMedia && (
           <StyledMediaWrapper

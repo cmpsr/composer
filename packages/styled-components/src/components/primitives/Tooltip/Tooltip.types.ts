@@ -1,12 +1,11 @@
+import { BaseProps } from 'components/Components.types';
 import { ReactNode } from 'react';
 
-export type Props = {
+export type Props = BaseProps & {
   place?: Places;
   element: ReactNode;
   tooltip: ReactNode;
-  className?: string;
   backgroundColor?: string;
-  testId?: string;
 };
 
 export enum BackgroundColors {

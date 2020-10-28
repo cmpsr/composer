@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
-import { Button, Typography } from 'components/primitives';
+import { Button } from 'components/primitives/Button';
+import { Typography } from 'components/primitives/Typography';
 import { ToastContainer } from 'react-toastify';
 
 interface Props {

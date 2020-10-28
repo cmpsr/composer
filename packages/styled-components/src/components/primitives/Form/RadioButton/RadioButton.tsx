@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import cn from 'classnames';
 import { Typography } from 'components/primitives/Typography';
 import { Props } from './RadioButton.types';
 import {
@@ -19,6 +20,7 @@ export const RadioButton = forwardRef<HTMLInputElement, Props>(
       onChange,
       testId = 'radioButton',
       className,
+      customCss,
     }: Props,
     ref
   ) => {
@@ -35,7 +37,8 @@ export const RadioButton = forwardRef<HTMLInputElement, Props>(
         <StyledInput
           ref={ref}
           name={name}
-          className={className}
+          css={customCss}
+          className={cn(className, { custom: customCss })}
           aria-label={ariaLabel}
           type="radio"
           value={value}

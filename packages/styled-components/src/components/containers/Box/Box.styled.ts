@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
+import { customCss } from 'utils/customCss';
+import { StyledCssProps } from 'components/Components.styled.types';
 
-interface Props {
-  theme: any;
-}
-
-export const StyledBox = styled.div<Props>`
+export const StyledBox = styled.div<StyledCssProps>`
   &.screen {
     width: 100vw;
     height: 100vh;
@@ -21,4 +19,6 @@ export const StyledBox = styled.div<Props>`
     margin-left: auto;
     max-width: ${(props) => getTheme(props).breakpoints.xl};
   }
+
+  ${(props) => customCss(props)}
 `;

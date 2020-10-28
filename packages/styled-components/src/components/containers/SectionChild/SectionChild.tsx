@@ -5,12 +5,13 @@ import { StyledSectionChild } from './SectionChild.styled';
 
 export const SectionChild = ({
   children,
+  className,
   customCss,
   testId = 'sectionChild',
 }: Props) => (
   <StyledSectionChild
     data-testid={testId}
-    className={cn({ custom: customCss })}
+    className={cn(className, { custom: customCss })}
     css={customCss}
   >
     {children}

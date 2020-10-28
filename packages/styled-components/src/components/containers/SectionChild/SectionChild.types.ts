@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
+import { CssCustomizableProps } from 'components/Components.types';
 
-export type Props = {
+export type Props = CssCustomizableProps & {
   children?: ReactNode;
-  customCss?: string;
-  testId?: string;
 };

@@ -7,7 +7,12 @@ describe('SectionChild', () => {
     render(<SectionChild />);
     screen.getByTestId('sectionChild');
   });
-  it('should render class name', () => {
+  it('should render custom class', () => {
+    render(<SectionChild className="foo" />);
+    const sectionChild = screen.getByTestId('sectionChild');
+    expect(sectionChild).toHaveClass('foo');
+  });
+  it('should render custom CSS as class', () => {
     render(<SectionChild customCss="customCss" />);
     const sectionChild = screen.getByTestId('sectionChild');
     expect(sectionChild).toHaveClass('custom');

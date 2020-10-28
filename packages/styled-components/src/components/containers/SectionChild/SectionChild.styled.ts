@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { customCss } from 'utils/customCss';
+import { StyledCssProps } from 'components/Components.styled.types';
 
-interface Props {
-  css?: string;
-}
+type Props = StyledCssProps;
 
 export const StyledSectionChild = styled.div<Props>`
   padding-top: 2rem;

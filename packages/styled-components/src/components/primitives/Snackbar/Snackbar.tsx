@@ -2,7 +2,13 @@ import React from 'react';
 import cn from 'classnames';
 import { toast } from 'react-toastify';
 import { Typography } from 'components/primitives/Typography';
-import { Props, Positions, TextPositions, Types } from './Snackbar.types';
+import {
+  ShowSnackbarProps,
+  SnackbarProps,
+  Positions,
+  TextPositions,
+  Types,
+} from './Snackbar.types';
 import {
   StyledWrapper,
   StyledInformation,
@@ -25,7 +31,7 @@ export const showSnackbar = ({
   autoClose = 5000,
   action,
   onClose,
-}: Props) => {
+}: ShowSnackbarProps) => {
   const snackbarContent = (
     <StyledWrapper className={textPosition} data-testid={testId}>
       <StyledInformation className={textPosition}>
@@ -59,11 +65,6 @@ export const showSnackbar = ({
     onClose,
     autoClose,
   });
-};
-
-type SnackbarProps = {
-  className?: string;
-  testId?: string;
 };
 
 export const Snackbar = ({ className, testId = 'snackbar' }: SnackbarProps) => {

@@ -1,4 +1,4 @@
-export type Props = {
+export type ShowSnackbarProps = {
   className?: string;
   testId?: string;
   message: string;
@@ -12,6 +12,11 @@ export type Props = {
     onClickAction?: () => void;
   };
   onClose?: () => void;
+};
+
+export type SnackbarProps = {
+  className?: string;
+  testId?: string;
 };
 
 export enum Types {

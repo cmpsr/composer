@@ -8,6 +8,7 @@ interface Props {
   hasTime?: boolean;
   isMediaLoaded?: boolean;
   hasMedia?: boolean;
+  hasText?: boolean;
 }
 
 export const StyledMessage = styled.div<Props>`
@@ -92,7 +93,18 @@ export const MediaWrapper = styled.div<Props>`
     max-width: 20rem;
     object-fit: cover;
     display: ${(props) => (props.isMediaLoaded ? 'block' : 'hidden')};
-    border-radius: 22px 22px 0 0;
+    border-radius: 22px;
+
+    ${(props) =>
+      props.placement === MessagePlacement.Left
+        ? css`
+            border-bottom-left-radius: ${props.hasText ? 0 : '6px'};
+            border-bottom-right-radius: ${props.hasText ? 0 : '22px'};
+          `
+        : css`
+            border-bottom-left-radius: ${props.hasText ? 0 : '22px'};
+            border-bottom-right-radius: ${props.hasText ? 0 : '6px'};
+          `}
   }
 
   .numberOfMediaFiles {
@@ -114,5 +126,47 @@ export const MediaWrapper = styled.div<Props>`
       width: 3.75rem;
       height: 3.75rem;
     }
+  }
+`;
+
+export const MediaLoader = styled.div<Props>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: ${(props) => getTheme(props).colors.fillSecondary600};
+  border-radius: 22px;
+
+  ${(props) =>
+    props.placement === MessagePlacement.Left
+      ? css`
+          border-bottom-left-radius: ${props.hasText ? 0 : '6px'};
+          border-bottom-right-radius: ${props.hasText ? 0 : '22px'};
+        `
+      : css`
+          border-bottom-left-radius: ${props.hasText ? 0 : '22px'};
+          border-bottom-right-radius: ${props.hasText ? 0 : '6px'};
+        `}
+`;
+
+export const BadgeLoader = styled.div`
+  width: 3.125rem;
+  height: 3.125rem;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background-color: ${(props) => getTheme(props).colors.fillBlack300};
+
+  @media (min-width: 768px) {
+    width: 3.75rem;
+    height: 3.75rem;
   }
 `;

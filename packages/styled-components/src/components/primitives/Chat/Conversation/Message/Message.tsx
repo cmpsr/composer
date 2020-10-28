@@ -6,6 +6,8 @@ import {
   TextWrapper,
   TimeWrapper,
   MediaWrapper,
+  MediaLoader,
+  BadgeLoader,
 } from './Message.styled';
 import {
   Typography,
@@ -47,8 +49,15 @@ export const Message = ({
           {hasMedia && (
             <MediaWrapper
               isMediaLoaded={isMediaLoaded}
+              placement={placement}
+              hasText={!!text}
               onClick={onClickMediaFiles}
             >
+              {!isMediaLoaded && (
+                <MediaLoader hasText={!!text} placement={placement}>
+                  <BadgeLoader>{/* TODO: Pending circular component */}</BadgeLoader>
+                </MediaLoader>
+              )}
               <Image
                 className="imageWrapper"
                 onLoad={handleMediaLoad}

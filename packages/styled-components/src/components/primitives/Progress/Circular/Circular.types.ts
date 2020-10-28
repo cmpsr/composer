@@ -8,7 +8,7 @@ export enum CircularSize {
   Large = 'large',
 }
 
-export type Props = {
+type Props = {
   className?: string;
   strokeWidth?: number;
   testId?: string;

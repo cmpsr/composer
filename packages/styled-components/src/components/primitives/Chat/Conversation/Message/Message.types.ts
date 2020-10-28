@@ -1,10 +1,10 @@
-export enum Color {
+export enum Colors {
   Black = 'black',
   Primary = 'primary',
   Secondary = 'secondary',
 }
 
-export enum MessagePlacement {
+export enum Placements {
   Left = 'left',
   Right = 'right',
 }
@@ -18,8 +18,8 @@ export type Props = {
   text?: string;
   className?: string;
   testId?: string;
-  backgroundColor?: Color;
-  placement?: MessagePlacement;
+  color?: Colors;
+  placement?: Placements;
   time?: string;
   mediaFiles?: Media[];
   onMediaClick?: (mediaFiles: Media[]) => void;

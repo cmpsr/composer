@@ -1,27 +1,61 @@
 import React from 'react';
 import { Message } from '.';
-import { MessagePlacement, Color } from './Message.types';
 import { action } from '@storybook/addon-actions';
-import styled from 'styled-components';
 
 export default {
   title: 'Primitives/Chat/Conversation/Message',
   component: Message,
 };
 
-const Container = styled.div`
-  padding: 2.5rem;
-`;
-
-export const withLeft = () => (
-  <Container>
-    <Message placement={MessagePlacement.Left} text="I'm a fancy message" />
-  </Container>
+export const Placements = () => (
+  <>
+    <h1>Message placements</h1>
+    {
+      Object.keys(Message.Placements).map((placement: any) => (
+        <>
+          <Message placement={Message.Placements[placement]} text="I'm a fancy message" />
+        </>
+      ))
+    }
+  </>
 );
 
-withLeft.story = {
-  name: 'With left placement',
-};
+export const Colors = () => (
+  <>
+    <h1>Message colors</h1>
+    {
+      Object.keys(Message.Colors).map((color: any) => (
+        <>
+          <Message color={Message.Colors[color]} text="I'm a fancy message" />
+        </>
+      ))
+    }
+  </>
+);
+
+export const Media = () => (
+    <>
+    <h1>Message media</h1>
+    <Message
+      text="This is a media message"
+      time="10:23 AM"
+      onMediaClick={action('On media click')}
+      mediaFiles={[
+        {
+          contentType: 'image/jpeg',
+          url:
+            'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
+        },
+        {
+          contentType: 'image/jpeg',
+          url:
+            'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
+        },
+      ]}
+    />
+    </>
+);
+/*
 
 export const withRight = () => (
   <Container>
@@ -123,3 +157,4 @@ export const withMedia = () => (
 withMedia.story = {
   name: 'With media',
 };
+*/

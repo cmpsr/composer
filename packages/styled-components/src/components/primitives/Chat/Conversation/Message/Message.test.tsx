@@ -1,12 +1,12 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import {
-  MessagePlacement,
-  MessageBackgroundColor,
   Message,
   WRAPPER_MESSAGE_DEFAULT_TEST_ID,
   MESSAGE_DEFAULT_TEST_ID,
 } from './Message';
+import { MessagePlacement, Color } from './Message.types';
+import "jest-styled-components";
 
 describe('Message', () => {
   const mediaFiles = [{ url: 'url', contentType: 'contentType' }];
@@ -23,32 +23,32 @@ describe('Message', () => {
   it('should render primary 25 background color', () => {
     render(
       <Message
-        backgroundColor={MessageBackgroundColor.Primary600}
+        backgroundColor={Color.Primary}
         text="I'm a fancy message"
       />
     );
     const message = screen.getByTestId(MESSAGE_DEFAULT_TEST_ID);
-    expect(message).toHaveClass(MessageBackgroundColor.Primary600);
+    expect(message).toHaveClass(Color.Primary);
   });
   it('should render secondary 25 background color', () => {
     render(
       <Message
-        backgroundColor={MessageBackgroundColor.Secondary600}
+        backgroundColor={Color.Secondary}
         text="I'm a fancy message"
       />
     );
     const message = screen.getByTestId(MESSAGE_DEFAULT_TEST_ID);
-    expect(message).toHaveClass(MessageBackgroundColor.Secondary600);
+    expect(message).toHaveClass(Color.Secondary);
   });
   it('should render black 10 background color', () => {
     render(
       <Message
-        backgroundColor={MessageBackgroundColor.Black100}
+        backgroundColor={Color.Black}
         text="I'm a fancy message"
       />
     );
     const message = screen.getByTestId(MESSAGE_DEFAULT_TEST_ID);
-    expect(message).toHaveClass(MessageBackgroundColor.Black100);
+    expect(message).toHaveClass(Color.Black);
   });
   it('should render with left placement styles', () => {
     render(
@@ -56,6 +56,7 @@ describe('Message', () => {
     );
     const message = screen.getByTestId(MESSAGE_DEFAULT_TEST_ID);
     const messageWrapper = message.parentElement;
+    screen.debug();
     expect(message).toHaveClass(
       'p-1 inline-block max-w-90 md:max-w-85 lg:max-w-3/4 text-left rounded-message-rounded rounded-bl-message-semirounded'
     );
@@ -97,11 +98,12 @@ describe('Message', () => {
     render(<Message mediaFiles={mediaFiles} onMediaClick={mockOnMediaClick} />);
     screen.getByTestId('mediaLoader');
   });
-  it('should hide image and mediaFilesIndicator when media is loading', () => {
+  it.only('should hide image and mediaFilesIndicator when media is loading', () => {
     render(<Message mediaFiles={mediaFiles.concat(mediaFiles[0])} />);
-    const image = screen.getByTestId('image');
-    screen.queryByTestId('mediaFilesIndicator');
-    expect(image).toHaveClass('hidden');
+    const image = screen.getByTestId('imageContent');
+    screen.debug();
+    //screen.queryByTestId('mediaFilesIndicator');
+    expect(image).toHaveStyleRule('display', 'none');
   });
   it('should call onLoadMedia when media has loaded', () => {
     const mockOnLoadMedia = jest.fn();

@@ -1,5 +1,5 @@
-import { BaseProps } from 'components/Components.types';
+import { CssCustomizableProps } from 'components/Components.types';
 
-export type Props = BaseProps & {
+export type Props = CssCustomizableProps & {
   error: string;
 };

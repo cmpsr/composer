@@ -13,6 +13,11 @@ describe('Box', () => {
     const box = screen.getByTestId(testId);
     expect(box).toHaveClass('foo');
   });
+  it('should render custom css', () => {
+    render(<Box customCss="customCss" />);
+    const box = screen.getByTestId(testId);
+    expect(box).toHaveClass('custom');
+  });
   it('should render screen size', () => {
     render(<Box size={Box.Sizes.Screen}>foo</Box>);
     const box = screen.getByTestId(testId);

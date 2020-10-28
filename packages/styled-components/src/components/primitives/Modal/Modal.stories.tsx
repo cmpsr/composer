@@ -30,12 +30,46 @@ const StyledTitle = styled(Typography)`
   margin-inline-end: 0px;
 `;
 
+const Title = (props: any) => (
+  <StyledTitle
+    mode={Typography.Modes.Dark100}
+    tag={Typography.Tags.H4}
+    type={Typography.Types.Headline4}
+  >
+    {props.children}
+  </StyledTitle>
+);
+
+export const Rectangle = () => (
+  <Modal shape={Modal.Shapes.Rectangle} isOpen>
+    <Title>Rectangle Modal</Title>
+  </Modal>
+);
+
+export const SemiRounded = () => (
+  <Modal shape={Modal.Shapes.SemiRounded} isOpen>
+    <Title>SemiRounded Modal</Title>
+  </Modal>
+);
+
+export const Rounded = () => (
+  <Modal shape={Modal.Shapes.Rounded} isOpen>
+    <Title>Rounded Modal</Title>
+  </Modal>
+);
+
+export const CloseButton = () => (
+  <Modal isOpen showCloseButton>
+    <Title>Showing close button</Title>
+  </Modal>
+);
+
 export const Playground = () => (
   <Modal
-    shape={select('shape', Modal.Shapes, Modal.Shapes.Rectangle)}
+    shape={select('Shape', Modal.Shapes, Modal.Shapes.Rectangle)}
     customCss={text('Modal custom CSS', 'width: 30rem;')}
     isOpen={boolean('isOpen', true)}
-    closeButton={boolean('closeButton', true)}
+    showCloseButton={boolean('Show close button', true)}
   >
     <TitleContainer>
       <StyledTitle

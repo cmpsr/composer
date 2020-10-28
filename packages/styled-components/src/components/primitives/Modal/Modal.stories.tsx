@@ -35,7 +35,7 @@ export const Playground = () => (
     shape={select('shape', Modal.Shapes, Modal.Shapes.Rectangle)}
     customCss={text('Modal custom CSS', 'width: 30rem;')}
     isOpen={boolean('isOpen', true)}
-    closeButton={boolean('closeButton', true)}
+    showCloseButton={boolean('closeButton', true)}
   >
     <TitleContainer>
       <StyledTitle

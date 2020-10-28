@@ -8,6 +8,6 @@ export type Props = {
   shape?: Shapes;
   isOpen?: boolean;
   children?: ReactNode;
-  closeButton?: boolean;
+  showCloseButton?: boolean;
   testId?: string;
 };

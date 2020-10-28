@@ -13,7 +13,7 @@ describe('Modal', () => {
     expect(component).not.toBeInTheDocument();
   });
   it('should render close button', () => {
-    render(<Modal isOpen closeButton />);
+    render(<Modal isOpen showCloseButton />);
     screen.getByTestId('close-button');
   });
   it('should render children', () => {
@@ -22,7 +22,7 @@ describe('Modal', () => {
   });
   it('should close modal when on close clicked', () => {
     render(
-      <Modal isOpen closeButton>
+      <Modal isOpen showCloseButton>
         content
       </Modal>
     );

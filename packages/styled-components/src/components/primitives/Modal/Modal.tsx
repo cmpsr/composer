@@ -22,7 +22,7 @@ export const Modal = ({
   overlayCustomCss,
   shape = Shapes.Rectangle,
   isOpen = false,
-  closeButton = false,
+  showCloseButton: closeButton = false,
   testId = 'modal'
 }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(isOpen);

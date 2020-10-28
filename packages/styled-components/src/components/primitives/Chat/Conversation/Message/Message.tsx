@@ -13,6 +13,7 @@ import {
 import { Typography } from 'components/primitives/Typography';
 import { Image } from 'components/primitives/Image';
 import { Colors, Props, Placements } from './Message.types';
+import { Spinner } from 'components/primitives/Spinner';
 
 export const MESSAGE_DEFAULT_TEST_ID = 'message';
 export const WRAPPER_MESSAGE_DEFAULT_TEST_ID = 'wrapperMessage';
@@ -62,7 +63,7 @@ export const Message = ({
                 className={cn(placement, { hasText: !!text})}
               >
                 <BadgeLoader>
-                  {/* <Circular color={CircularColor.White} /> */}
+                  <Spinner color={Spinner.Colors.White} />
                 </BadgeLoader>
               </StyledMediaLoader>
             )}

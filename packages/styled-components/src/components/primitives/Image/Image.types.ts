@@ -1,8 +1,8 @@
-export type Props = {
-  className?: string;
+import { BaseProps } from 'components/Components.types';
+
+export type Props = BaseProps & {
   imageClassName?: string;
   image: Image;
-  testId?: string;
   onLoad?: () => void;
 };
 

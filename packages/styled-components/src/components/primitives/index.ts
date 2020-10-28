@@ -6,6 +6,7 @@ export * from './Button';
 export * from './Chat/ConversationList';
 export * from './Chat/ConversationSummary';
 export * from './Dropdown';
+export * from './Form/ErrorField';
 export * from './Icon';
 export * from './Image';
 export * from './Link';

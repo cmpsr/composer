@@ -1,9 +1,8 @@
+import { StyledCssProps } from 'components/Components.styled.types';
 import styled from 'styled-components';
 import { customCss } from 'utils/customCss';
 
-interface Props {
-  css?: string;
-}
+type Props = StyledCssProps;
 
 export const StyledGrid = styled.div<Props>`
   display: grid;

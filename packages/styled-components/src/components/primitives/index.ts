@@ -16,5 +16,6 @@ export * from './Modal';
 export * from './Pill';
 export * from './Spinner';
 export * from './Stepper';
+export * from './Tooltip';
 export * from './Typography';
 export * from './Video';

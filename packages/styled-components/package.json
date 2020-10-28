@@ -13,7 +13,7 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "storybook": "echo 'Starting Storybook' && start-storybook -p 8080 -c .storybook",
+    "storybook": "echo 'Starting Storybook' && start-storybook -p 8080 -c .storybook --no-dll",
     "build-storybook": "build-storybook -c .storybook",
     "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && find lib -type f -name '*.test.*' -exec rm {} + && yarn tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
     "test": "jest --env=jest-environment-jsdom-sixteen",

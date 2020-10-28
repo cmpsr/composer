@@ -1,11 +1,9 @@
+import { CssCustomizableProps } from 'components/Components.types';
 import { ReactNode } from 'react';
 
-export type Props = {
+export type Props = CssCustomizableProps & {
   children?: ReactNode;
-  className?: string;
   size?: Sizes;
-  customCss?: string;
-  testId?: string;
 };
 
 export enum Sizes {

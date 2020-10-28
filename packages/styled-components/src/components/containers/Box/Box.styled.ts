@@ -1,13 +1,9 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { customCss } from 'utils/customCss';
+import { StyledCssProps } from 'components/Components.styled.types';
 
-interface Props {
-  theme: any;
-  css?: string;
-}
-
-export const StyledBox = styled.div<Props>`
+export const StyledBox = styled.div<StyledCssProps>`
   &.screen {
     width: 100vw;
     height: 100vh;

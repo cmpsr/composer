@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 import { customCss } from 'utils/customCss';
+import { StyledCssProps } from 'components/Components.styled.types';
 
-interface Props {
-  css?: string;
-}
-
-export const StyledSection = styled.section<Props>`
+export const StyledSection = styled.section<StyledCssProps>`
   margin-bottom: 1rem;
 
   ${(props) => customCss(props)}

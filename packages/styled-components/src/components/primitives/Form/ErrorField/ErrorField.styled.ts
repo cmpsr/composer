@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import { Icon } from 'components/primitives/Icon';
 import { getTheme } from 'utils/getTheme';
-
-interface Props {
-  theme: any;
-}
+import { StyledBaseProps } from 'components/Components.styled.types';
 
 export const StyledWrapper = styled.span`
   display: flex;
@@ -14,7 +11,7 @@ export const StyledWrapper = styled.span`
   margin-left: 0.75rem;
 `;
 
-export const StyledIcon = styled(Icon)<Props>`
+export const StyledIcon = styled(Icon)<StyledBaseProps>`
   color: ${(props) => getTheme(props).colors.fillSystemError};
   margin-right: 0.25rem;
   fill: currentColor;

@@ -1,5 +1,5 @@
-export type Props = {
+import { BaseProps } from 'components/Components.types';
+
+export type Props = BaseProps & {
   error: string;
-  className?: string;
-  testId?: string;
 };

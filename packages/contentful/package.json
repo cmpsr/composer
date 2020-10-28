@@ -28,7 +28,7 @@
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^9.4.4",
+    "next": "^10.0.0",
     "rimraf": "^3.0.2",
     "uuid": "^7.0.1"
   },

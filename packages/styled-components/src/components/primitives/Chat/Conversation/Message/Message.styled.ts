@@ -55,11 +55,11 @@ export const StyledMessageWrapper = styled.div<Props>`
     border-bottom-right-radius: 6px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: ${(props) => getTheme(props).breakpoints.lg}) {
     max-width: 75%;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: ${(props) => getTheme(props).breakpoints.md}) {
     max-width: 85%;
   }
 `;
@@ -90,7 +90,7 @@ export const StyledMediaWrapper = styled.div<Props>`
   width: 16.375rem;
   height: 16.375rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: ${(props) => getTheme(props).breakpoints.md}) {
     width: 20.125rem;
     height: 20.125rem;
   }
@@ -178,7 +178,7 @@ export const NumberOfMediaFiles = styled.div`
   width: 3.125rem;
   height: 3.125rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: ${(props) => getTheme(props).breakpoints.md}) {
     width: 3.75rem;
     height: 3.75rem;
   }
@@ -199,7 +199,7 @@ export const BadgeLoader = styled.div`
   border-radius: 100%;
   background-color: ${(props) => getTheme(props).colors.fillBlack300};
 
-  @media (min-width: 768px) {
+  @media (min-width: ${(props) => getTheme(props).breakpoints.md}) {
     width: 3.75rem;
     height: 3.75rem;
   }

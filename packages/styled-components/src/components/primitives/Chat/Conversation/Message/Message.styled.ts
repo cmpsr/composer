@@ -1,6 +1,5 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
-import { Placements } from './Message.types';
 
 interface Props {
   theme: any;

@@ -56,39 +56,6 @@ export const Media = () => (
     </>
 );
 /*
-
-export const withRight = () => (
-  <Container>
-    <Message placement={MessagePlacement.Right} text="I'm a fancy message" />
-  </Container>
-);
-
-withRight.story = {
-  name: 'With right placement',
-};
-
-export const withColors = () => (
-  <Container>
-    <Message
-      backgroundColor={Color.Primary}
-      text="I'm a primary 25 color"
-    />
-    <Message
-      backgroundColor={Color.Secondary}
-      text="I'm a secondary 25 color"
-    />
-
-    <Message
-      backgroundColor={Color.Black}
-      text="I'm a black 10 color"
-    />
-  </Container>
-);
-
-withColors.story = {
-  name: 'With colors',
-};
-
 export const withTime = () => (
   <Container>
     <Message time="10:23 AM" text="I'm a fancy message" />

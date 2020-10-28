@@ -5,7 +5,7 @@ interface Props {
   theme: any;
 }
 
-export const StyledMessage = styled.div<Props>`
+export const StyledMessage = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 0.5rem;
@@ -64,7 +64,7 @@ export const StyledMessageWrapper = styled.div<Props>`
   }
 `;
 
-export const TextWrapper = styled.div<Props>`
+export const TextWrapper = styled.div`
   padding: 0.625rem 0.75rem;
 
   &.hasMedia {
@@ -72,7 +72,7 @@ export const TextWrapper = styled.div<Props>`
   }
 `;
 
-export const TimeWrapper = styled.div<Props>`
+export const TimeWrapper = styled.div`
   &.hasTime {
     margin-bottom: 0.5rem;
     margin-top: 0.25rem;
@@ -160,7 +160,7 @@ export const StyledMediaLoader = styled.div<Props>`
   }
 `;
 
-export const NumberOfMediaFiles = styled.div`
+export const NumberOfMediaFiles = styled.div<Props>`
   position: absolute;
   top: 0;
   right: 0;
@@ -181,7 +181,7 @@ export const NumberOfMediaFiles = styled.div`
   }
 `;
 
-export const BadgeLoader = styled.div`
+export const BadgeLoader = styled.div<Props>`
   width: 3.125rem;
   height: 3.125rem;
   top: 0;

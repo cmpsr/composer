@@ -12,4 +12,9 @@ describe('Section', () => {
     const section = screen.getByTestId('section');
     expect(section).toHaveClass('foo');
   });
+  it('should render custom css', () => {
+    render(<Section customCss="customCss" />);
+    const section = screen.getByTestId('section');
+    expect(section).toHaveClass('custom');
+  });
 });

@@ -4,6 +4,7 @@ export type Props = {
   children?: ReactNode;
   className?: string;
   size?: Sizes;
+  customCss?: string;
   testId?: string;
 };
 

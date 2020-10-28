@@ -1,14 +1,13 @@
 import React from 'react';
 import { Section } from '.';
 import { text } from '@storybook/addon-knobs';
-import styled from 'styled-components';
 
 export default {
   title: 'Containers/Section',
-  component: Section
+  component: Section,
 };
 
-const StyledSection = styled(Section)`
+const styles = `
   background: #cdd7ff;
   border: 2px solid black;
   padding: 10px;
@@ -17,8 +16,14 @@ const StyledSection = styled(Section)`
 export const Playground = () => (
   <>
     <h1>Playground</h1>
-    <StyledSection>{text('Section 1', '1')}</StyledSection>
-    <StyledSection>{text('Section 2', '2')}</StyledSection>
-    <StyledSection>{text('Section 3', '3')}</StyledSection>
+    <Section customCss={text('Section 1 styles', styles)}>
+      {text('Section 1', '1')}
+    </Section>
+    <Section customCss={text('Section 2 styles', styles)}>
+      {text('Section 2', '2')}
+    </Section>
+    <Section customCss={text('Section 3 styles', styles)}>
+      {text('Section 3', '3')}
+    </Section>
   </>
 );

@@ -14,6 +14,7 @@ export * from './List/Items/ButtonItem';
 export * from './List/Items/LinkItem';
 export * from './Modal';
 export * from './Pill';
+export * from './Snackbar';
 export * from './Spinner';
 export * from './Stepper';
 export * from './Tooltip';

@@ -12,6 +12,8 @@ import {
 import {
   Typography,
 } from 'components/primitives/Typography';
+import { Circular } from 'components/primitives/Progress/Circular';
+import { Color as CircularColor } from 'components/primitives/Progress/Circular/Circular.types';
 import { Image } from 'components/primitives/Image';
 import { Color, Props, MessagePlacement } from './Message.types';
 
@@ -55,7 +57,9 @@ export const Message = ({
             >
               {!isMediaLoaded && (
                 <MediaLoader hasText={!!text} placement={placement}>
-                  <BadgeLoader>{/* TODO: Pending circular component */}</BadgeLoader>
+                  <BadgeLoader>
+                    <Circular color={CircularColor.White} />
+                  </BadgeLoader>
                 </MediaLoader>
               )}
               <Image

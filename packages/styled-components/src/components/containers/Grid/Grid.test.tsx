@@ -14,6 +14,6 @@ describe('Grid', () => {
   it('should render custom CSS as a class', () => {
     const { getByTestId } = render(<Grid customCss="customCss">foo</Grid>);
     const grid = getByTestId('grid');
-    expect(grid.classList).toContain('custom');
+    expect(grid).toHaveClass('custom');
   });
 });

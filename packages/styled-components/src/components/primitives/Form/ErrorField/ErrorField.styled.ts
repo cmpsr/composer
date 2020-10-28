@@ -13,7 +13,6 @@ export const StyledWrapper = styled.span<StyledCssProps>`
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   margin-left: 0.75rem;
-
   ${(props) => customCss(props)}
 `;
 

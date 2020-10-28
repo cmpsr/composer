@@ -11,6 +11,11 @@ describe('Grid', () => {
     render(<Grid>foo</Grid>);
     screen.getByText('foo');
   });
+  it('should render custom class', () => {
+    const { getByTestId } = render(<Grid className="foo">foo</Grid>);
+    const grid = getByTestId('grid');
+    expect(grid).toHaveClass('foo');
+  });
   it('should render custom CSS as a class', () => {
     const { getByTestId } = render(<Grid customCss="customCss">foo</Grid>);
     const grid = getByTestId('grid');

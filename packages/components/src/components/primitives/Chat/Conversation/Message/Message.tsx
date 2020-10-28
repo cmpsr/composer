@@ -88,72 +88,72 @@ export const Message = ({
   );
 
   return (
-      <div
-        data-testid={WRAPPER_MESSAGE_DEFAULT_TEST_ID}
-        className={cn(className, wrapperClasses)}
-      >
-        <div data-testid={testId} className={cn(messageClasses)}>
-          {hasMedia && (
-            <div
-              className={mediaWrapper}
-              data-testid="mediaWrapper"
-              onClick={onClickMediaFiles}
-            >
-              {!isMediaLoaded && (
-                <div data-testid="mediaLoader" className={mediaLoader}>
-                  <div className={badgeLoader}>
-                    <Circular color={CircularColor.White} />
-                  </div>
+    <div
+      data-testid={WRAPPER_MESSAGE_DEFAULT_TEST_ID}
+      className={cn(className, wrapperClasses)}
+    >
+      <div data-testid={testId} className={cn(messageClasses)}>
+        {hasMedia && (
+          <div
+            className={mediaWrapper}
+            data-testid="mediaWrapper"
+            onClick={onClickMediaFiles}
+          >
+            {!isMediaLoaded && (
+              <div data-testid="mediaLoader" className={mediaLoader}>
+                <div className={badgeLoader}>
+                  <Circular color={CircularColor.White} />
                 </div>
-              )}
-              <Image
-                className={imageWrapper}
-                onLoad={handleMediaLoad}
-                imageClassName={mediaPreview}
-                image={{
-                  title: 'Media Asset',
-                  url: thumbnail,
-                }}
-              />
-              {hasMultipleMedia && isMediaLoaded && (
-                <div
-                  data-testid="mediaFilesIndicator"
-                  className={numberOfMediaFiles}
-                >
-                  <Typography
-                    mode={TypographyMode.Light100}
-                    tag={'h6'}
-                    type={TypographyTypes.Headline6}
-                  >
-                    +{mediaFiles.length}
-                  </Typography>
-                </div>
-              )}
-            </div>
-          )}
-          {!!text && (
-            <div className={cn(textWrapper)} data-testid="textMessage">
-              <Typography
-                mode={TypographyMode.Dark100}
-                tag={'span'}
-                type={TypographyTypes.Form}
+              </div>
+            )}
+            <Image
+              className={imageWrapper}
+              onLoad={handleMediaLoad}
+              imageClassName={mediaPreview}
+              image={{
+                title: 'Media Asset',
+                url: thumbnail,
+              }}
+            />
+            {hasMultipleMedia && isMediaLoaded && (
+              <div
+                data-testid="mediaFilesIndicator"
+                className={numberOfMediaFiles}
               >
-                {text}
-              </Typography>
-            </div>
-          )}
-        </div>
-        {time && (
-          <div className={timeClasses}>
+                <Typography
+                  mode={TypographyMode.Light100}
+                  tag={'h6'}
+                  type={TypographyTypes.Headline6}
+                >
+                  +{mediaFiles.length}
+                </Typography>
+              </div>
+            )}
+          </div>
+        )}
+        {!!text && (
+          <div className={cn(textWrapper)} data-testid="textMessage">
             <Typography
-              mode={TypographyMode.Dark50}
+              mode={TypographyMode.Dark100}
               tag={'span'}
-              type={TypographyTypes.Eyebrow}
+              type={TypographyTypes.Form}
             >
-              {time}
+              {text}
             </Typography>
           </div>
         )}
       </div>
+      {time && (
+        <div className={timeClasses}>
+          <Typography
+            mode={TypographyMode.Dark50}
+            tag={'span'}
+            type={TypographyTypes.Eyebrow}
+          >
+            {time}
+          </Typography>
+        </div>
+      )}
+    </div>
   );
 };

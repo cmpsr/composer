@@ -43,7 +43,7 @@ export const Message = ({
   return (
     <StyledMessage
       data-testid="wrapperMessage"
-      className={cn(className, placement, { hasTime: !!time})}
+      className={cn(className, placement, { hasTime: !!time })}
     >
       <StyledMessageWrapper
         data-testid={testId}
@@ -55,9 +55,9 @@ export const Message = ({
             data-testid="mediaWrapper"
           >
             {!isMediaLoaded && (
-              <StyledMediaLoader 
+              <StyledMediaLoader
                 data-testid="mediaLoader"
-                className={cn(placement, { hasText: !!text})}
+                className={cn(placement, { hasText: !!text })}
               >
                 <BadgeLoader>
                   <Spinner color={Spinner.Colors.White} />
@@ -67,7 +67,10 @@ export const Message = ({
             <Image
               className="imageWrapper"
               onLoad={handleMediaLoad}
-              imageClassName={cn('mediaPreview', placement, { hasText: !!text, isMediaLoaded: isMediaLoaded})}
+              imageClassName={cn('mediaPreview', placement, {
+                hasText: !!text,
+                isMediaLoaded: isMediaLoaded,
+              })}
               image={{
                 title: 'Media Asset',
                 url: thumbnail,
@@ -87,7 +90,7 @@ export const Message = ({
           </StyledMediaWrapper>
         )}
         {!!text && (
-          <TextWrapper className={cn({hasMedia})} data-testid="textMessage">
+          <TextWrapper className={cn({ hasMedia })} data-testid="textMessage">
             <Typography
               mode={Typography.Modes.Dark100}
               tag={Typography.Tags.Span}
@@ -99,7 +102,7 @@ export const Message = ({
         )}
       </StyledMessageWrapper>
       {time && (
-        <TimeWrapper className={cn({hasTime: !!time })}>
+        <TimeWrapper className={cn({ hasTime: !!time })}>
           <Typography
             mode={Typography.Modes.Dark50}
             tag={Typography.Tags.Span}

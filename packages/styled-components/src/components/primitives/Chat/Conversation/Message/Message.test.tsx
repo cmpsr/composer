@@ -1,11 +1,9 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import {
-  Message,
-} from './Message';
+import { Message } from './Message';
 
 describe('Message', () => {
-  const WRAPPER_MESSAGE_DEFAULT_TEST_ID ='wrapperMessage';
+  const WRAPPER_MESSAGE_DEFAULT_TEST_ID = 'wrapperMessage';
   const MESSAGE_DEFAULT_TEST_ID = 'message';
   const mediaFiles = [{ url: 'url', contentType: 'contentType' }];
   it('should render class', () => {
@@ -18,35 +16,22 @@ describe('Message', () => {
     const message = screen.getByText("I'm a fancy message");
     expect(message).toBeInTheDocument();
   });
-  
   it('should render primary color', () => {
     render(
-      <Message
-        color={Message.Colors.Primary}
-        text="I'm a fancy message"
-      />
+      <Message color={Message.Colors.Primary} text="I'm a fancy message" />
     );
     const message = screen.getByTestId(MESSAGE_DEFAULT_TEST_ID);
     expect(message).toHaveClass(Message.Colors.Primary);
   });
   it('should render secondary color', () => {
     render(
-      <Message
-        color={Message.Colors.Secondary}
-        text="I'm a fancy message"
-      />
+      <Message color={Message.Colors.Secondary} text="I'm a fancy message" />
     );
     const message = screen.getByTestId(MESSAGE_DEFAULT_TEST_ID);
     expect(message).toHaveClass(Message.Colors.Secondary);
   });
-  
   it('should render black color', () => {
-    render(
-      <Message
-        color={Message.Colors.Black}
-        text="I'm a fancy message"
-      />
-    );
+    render(<Message color={Message.Colors.Black} text="I'm a fancy message" />);
     const message = screen.getByTestId(MESSAGE_DEFAULT_TEST_ID);
     expect(message).toHaveClass(Message.Colors.Black);
   });
@@ -59,7 +44,10 @@ describe('Message', () => {
   });
   it('should render with right placement styles', () => {
     render(
-      <Message placement={Message.Placements.Right} text="I'm a fancy message" />
+      <Message
+        placement={Message.Placements.Right}
+        text="I'm a fancy message"
+      />
     );
     const message = screen.getByTestId(MESSAGE_DEFAULT_TEST_ID);
     expect(message).toHaveClass(Message.Placements.Right);

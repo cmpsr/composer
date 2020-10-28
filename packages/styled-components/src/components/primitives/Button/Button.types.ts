@@ -1,20 +1,15 @@
 import { ReactNode } from 'react';
+import { Shapes } from 'components/Components.types';
 
 export enum Types {
   Primary = 'primary',
-  Secondary = 'secondary',
+  Secondary = 'secondary'
 }
 
 export enum HtmlTypes {
   Button = 'button',
   Submit = 'submit',
-  Reset = 'reset',
-}
-
-export enum Shapes {
-  Rounded = 'rounded',
-  SemiRounded = 'semiRounded',
-  Rectangle = 'rectangle',
+  Reset = 'reset'
 }
 
 export type Props = {

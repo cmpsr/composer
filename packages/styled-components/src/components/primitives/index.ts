@@ -12,7 +12,6 @@ export * from './List';
 export * from './List/Items/ButtonItem';
 export * from './List/Items/LinkItem';
 export * from './Pill';
-export * from './Progress/Circular';
 export * from './Spinner';
 export * from './Stepper';
 export * from './Typography';

@@ -9,6 +9,7 @@ import {
   StyledMediaLoader,
   StyledBadgeLoader,
   StyledNumberOfMediaFiles,
+  mediaPreview,
 } from './Message.styled';
 import { Typography } from 'components/primitives/Typography';
 import { Image } from 'components/primitives/Image';
@@ -67,7 +68,8 @@ export const Message = ({
             <Image
               className="imageWrapper"
               onLoad={handleMediaLoad}
-              imageClassName={cn('mediaPreview', placement, {
+              customCss={mediaPreview}
+              imageClassName={cn(placement, {
                 hasText: !!text,
                 isMediaLoaded: isMediaLoaded,
               })}

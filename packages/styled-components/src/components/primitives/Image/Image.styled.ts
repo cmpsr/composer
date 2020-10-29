@@ -1,9 +1,17 @@
 import styled from 'styled-components';
+import { StyledCssProps } from 'components/Components.styled.types';
+import { customCss } from 'utils/customCss';
 
-export const StyledSource = styled.source`
+type Props = StyledCssProps;
+
+export const StyledSource = styled.source<Props>`
   user-select: none;
+
+  ${(props) => customCss(props)}
 `;
 
-export const StyledImage = styled.img`
+export const StyledImage = styled.img<Props>`
   user-select: none;
+
+  ${(props) => customCss(props)}
 `;

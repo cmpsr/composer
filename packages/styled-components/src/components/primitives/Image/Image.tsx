@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import { Props } from './Image.types';
 import { StyledImage, StyledSource } from './Image.styled';
 
@@ -8,11 +9,12 @@ export const Image = ({
   image: { title, url },
   testId = 'image',
   onLoad,
+  customCss,
 }: Props) => {
   return (
     <picture className={className}>
       <StyledSource
-        className={imageClassName}
+        className={cn(imageClassName, { custom: customCss })}
         data-testid={testId}
         type="image/webp"
         srcSet={`${url}?fm=webp`}
@@ -20,7 +22,8 @@ export const Image = ({
       <StyledImage
         data-testid="imageContent"
         onLoad={onLoad}
-        className={imageClassName}
+        css={customCss}
+        className={cn(imageClassName, { custom: customCss })}
         alt={title}
         src={url}
       />

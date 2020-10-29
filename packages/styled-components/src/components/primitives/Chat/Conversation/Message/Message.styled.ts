@@ -92,39 +92,34 @@ export const StyledMediaWrapper = styled.div<StyledBaseProps>`
   .imageWrapper {
     display: flex;
   }
+`;
 
-  .mediaPreview {
+export const mediaPreview = `
     width: 100%;
     user-select: none;
     max-width: 20rem;
     object-fit: cover;
     display: none;
     border-radius: 22px;
-
     &.isMediaLoaded {
       display: block;
     }
-
     &.left {
       border-bottom-left-radius: 6px;
       border-bottom-right-radius: 22px;
-
       &.hasText {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
       }
     }
-
     &.right {
       border-bottom-left-radius: 22px;
       border-bottom-right-radius: 6px;
-
       &.hasText {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
       }
     }
-  }
 `;
 
 export const StyledMediaLoader = styled.div<StyledBaseProps>`

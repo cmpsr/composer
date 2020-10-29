@@ -4,6 +4,7 @@ export type Props = {
   image: Image;
   testId?: string;
   onLoad?: () => void;
+  customCss?: string;
 };
 
 export type Image = {

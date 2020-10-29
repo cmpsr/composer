@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { Props } from './Image.types';
-import { StyledImage, StyledSource } from './Image.styled';
+import { StyledImage } from './Image.styled';
 
 export const Image = ({
   className,
@@ -13,7 +13,8 @@ export const Image = ({
 }: Props) => {
   return (
     <picture className={className}>
-      <StyledSource
+      <StyledImage
+        as="source"
         css={customCss}
         className={cn(imageClassName, { custom: customCss })}
         data-testid={testId}

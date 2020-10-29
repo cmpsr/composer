@@ -1,11 +1,19 @@
 import React from 'react';
 import { Image } from '.';
 import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
+import { select, text } from '@storybook/addon-knobs';
 
 export default {
   title: 'Primitives/Image',
   component: Image,
+};
+
+const customCss = {
+  none: null,
+  customWidth: `
+    width: 10%;
+    cursor: pointer;
+  `,
 };
 
 export const Playground = () => (
@@ -18,6 +26,6 @@ export const Playground = () => (
       ),
     }}
     onLoad={action('Image loaded')}
-    customCss={text('Custom css', "custom")}
+    customCss={select('Custom css', customCss, customCss.none)}
   />
 );

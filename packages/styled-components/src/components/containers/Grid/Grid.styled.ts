@@ -1,11 +1,6 @@
-import { StyledCssProps } from 'components/Components.styled.types';
 import styled from 'styled-components';
-import { customCss } from 'utils/customCss';
+import { withCustomCss } from 'utils/customCss';
 
-type Props = StyledCssProps;
-
-export const StyledGrid = styled.div<Props>`
+export const StyledGrid = withCustomCss(styled.div`
   display: grid;
-
-  ${(props) => customCss(props)}
-`;
+`);

@@ -6,14 +6,15 @@ import { StyledImage, StyledSource } from './Image.styled';
 export const Image = ({
   className,
   imageClassName,
+  customCss,
   image: { title, url },
   testId = 'image',
   onLoad,
-  customCss,
 }: Props) => {
   return (
     <picture className={className}>
       <StyledSource
+        css={customCss}
         className={cn(imageClassName, { custom: customCss })}
         data-testid={testId}
         type="image/webp"

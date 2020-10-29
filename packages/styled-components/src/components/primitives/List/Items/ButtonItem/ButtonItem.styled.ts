@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { Button } from 'components/primitives/Button';
+import { StyledBaseProps } from 'components/Components.styled.types';
 
-interface Props {
-  theme: any;
-}
+type Props = StyledBaseProps;
 
 export const StyledButton = styled(Button)<Props>`
   display: flex;

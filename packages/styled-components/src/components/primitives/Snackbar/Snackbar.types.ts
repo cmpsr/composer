@@ -1,6 +1,6 @@
-export type ShowSnackbarProps = {
-  className?: string;
-  testId?: string;
+import { BaseProps } from 'components/Components.types';
+
+export type ShowSnackbarProps = BaseProps & {
   message: string;
   description?: string;
   textPosition?: TextPositions;
@@ -14,10 +14,7 @@ export type ShowSnackbarProps = {
   onClose?: () => void;
 };
 
-export type SnackbarProps = {
-  className?: string;
-  testId?: string;
-};
+export type SnackbarProps = BaseProps;
 
 export enum Types {
   Default = 'default',

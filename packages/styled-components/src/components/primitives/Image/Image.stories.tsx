@@ -18,5 +18,6 @@ export const Playground = () => (
       ),
     }}
     onLoad={action('Image loaded')}
+    customCss={text('Custom css', "custom")}
   />
 );

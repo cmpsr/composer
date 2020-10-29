@@ -3,14 +3,12 @@ import { getTheme } from 'utils/getTheme';
 import { Typography } from 'components/primitives/Typography';
 import { Icon } from 'components/primitives/Icon';
 import { customCss } from 'utils/customCss';
+import {
+  StyledBaseProps,
+  StyledCssProps,
+} from 'components/Components.styled.types';
 
-interface CssProps {
-  css?: string;
-}
-
-interface Props extends CssProps {
-  theme: any;
-}
+type Props = StyledBaseProps & StyledCssProps;
 
 const truncate = `
   overflow: hidden;

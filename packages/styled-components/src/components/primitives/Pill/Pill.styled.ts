@@ -1,9 +1,8 @@
+import { StyledBaseProps } from 'components/Components.styled.types';
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 
-interface Props {
-  theme: any;
-}
+type Props = StyledBaseProps;
 
 export const StyledPill = styled.div<Props>`
   text-align: center;

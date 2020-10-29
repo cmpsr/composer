@@ -1,9 +1,9 @@
-export type Props = {
+import { BaseProps } from 'components/Components.types';
+
+export type Props = BaseProps & {
   autoPlay?: boolean;
   controls?: boolean;
-  className?: string;
   video: Video;
-  testId?: string;
 };
 
 export type Video = {

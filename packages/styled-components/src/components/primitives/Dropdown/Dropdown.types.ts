@@ -1,8 +1,7 @@
+import { BaseProps } from 'components/Components.types';
 import { ReactNode } from 'react';
 
-export type Props = {
+export type Props = BaseProps & {
   title: string;
-  className?: string;
   children?: ReactNode;
-  testId?: string;
 };

@@ -1,9 +1,8 @@
+import { BaseProps } from 'components/Components.types';
 import { Color } from '../Badges.types';
 
-export type Props = {
+export type Props = BaseProps & {
   number: number;
-  className?: string;
-  testId?: string;
   color?: Color;
   maximumNumber?: number;
 };

@@ -17,22 +17,22 @@ describe('Message', () => {
   });
   it('should render primary color', () => {
     render(
-      <Message color={Message.Colors.Primary} text="I'm a fancy message" />
+      <Message backgroundColor={Message.BackgroundColors.Primary} text="I'm a fancy message" />
     );
     const message = screen.getByTestId(testId);
-    expect(message).toHaveClass(Message.Colors.Primary);
+    expect(message).toHaveClass(Message.BackgroundColors.Primary);
   });
   it('should render secondary color', () => {
     render(
-      <Message color={Message.Colors.Secondary} text="I'm a fancy message" />
+      <Message backgroundColor={Message.BackgroundColors.Secondary} text="I'm a fancy message" />
     );
     const message = screen.getByTestId(testId);
-    expect(message).toHaveClass(Message.Colors.Secondary);
+    expect(message).toHaveClass(Message.BackgroundColors.Secondary);
   });
   it('should render black color', () => {
-    render(<Message color={Message.Colors.Black} text="I'm a fancy message" />);
+    render(<Message backgroundColor={Message.BackgroundColors.Black} text="I'm a fancy message" />);
     const message = screen.getByTestId(testId);
-    expect(message).toHaveClass(Message.Colors.Black);
+    expect(message).toHaveClass(Message.BackgroundColors.Black);
   });
   it('should render with left placement styles', () => {
     render(

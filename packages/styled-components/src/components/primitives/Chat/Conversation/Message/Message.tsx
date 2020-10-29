@@ -13,14 +13,14 @@ import {
 } from './Message.styled';
 import { Typography } from 'components/primitives/Typography';
 import { Image } from 'components/primitives/Image';
-import { Colors, Props, Placements } from './Message.types';
+import { BackgroundColors, Props, Placements } from './Message.types';
 import { Spinner } from 'components/primitives/Spinner';
 
 export const Message = ({
   text,
   className,
   testId = 'message',
-  color = Colors.Primary,
+  backgroundColor = BackgroundColors.Primary,
   placement = Placements.Right,
   time,
   mediaFiles = [],
@@ -48,7 +48,7 @@ export const Message = ({
     >
       <StyledMessageWrapper
         data-testid={testId}
-        className={cn(placement, color)}
+        className={cn(placement, backgroundColor)}
       >
         {hasMedia && (
           <StyledMediaWrapper
@@ -118,5 +118,5 @@ export const Message = ({
   );
 };
 
-Message.Colors = Colors;
+Message.BackgroundColors = BackgroundColors;
 Message.Placements = Placements;

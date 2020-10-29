@@ -37,9 +37,9 @@ export const Placements = () => (
 export const Colors = () => (
   <>
     <h1>Message colors</h1>
-    {Object.keys(Message.Colors).map((color: any) => (
+    {Object.keys(Message.BackgroundColors).map((color: any) => (
       <>
-        <Message color={Message.Colors[color]} text="I'm a fancy message" />
+        <Message color={Message.BackgroundColors[color]} text="I'm a fancy message" />
       </>
     ))}
   </>

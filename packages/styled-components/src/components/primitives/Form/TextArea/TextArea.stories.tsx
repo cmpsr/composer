@@ -1,6 +1,5 @@
 import React from 'react';
 import { TextArea } from '.';
-import { action } from '@storybook/addon-actions';
 import { boolean, text, select } from '@storybook/addon-knobs';
 
 export default {

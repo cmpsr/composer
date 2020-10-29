@@ -11,11 +11,11 @@ export default {
 export const Shapes = () => (
   <>
     <h1>TextArea shapes</h1>
-    {Object.keys(TextArea.Shapes).map((shape: any) => (
-      <>
+    {Object.keys(TextArea.Shapes).map((shape: any, i) => (
+      <div key={i}>
         <TextArea shape={TextArea.Shapes[shape]} value={shape} />
         <br />
-      </>
+      </div>
     ))}
   </>
 );

@@ -1,5 +1,10 @@
 import { Shapes } from 'components/Components.types';
-import { ChangeEvent } from 'react';
+import {
+  ChangeEvent,
+  ForwardRefExoticComponent,
+  PropsWithoutRef,
+  RefAttributes,
+} from 'react';
 import { CssCustomizableProps } from 'components/Components.types';
 
 export type Props = CssCustomizableProps & {
@@ -14,6 +19,13 @@ export type Props = CssCustomizableProps & {
   maxLength?: number;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   inputMode?: Modes;
+};
+
+export type Type = ForwardRefExoticComponent<
+  PropsWithoutRef<Props> & RefAttributes<HTMLInputElement>
+> & {
+  Shapes?: typeof Shapes;
+  Modes?: typeof Modes;
 };
 
 export enum Modes {

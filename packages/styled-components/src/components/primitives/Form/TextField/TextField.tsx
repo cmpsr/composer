@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
 import { Shapes } from 'components/Components.types';
-import { Props, Modes } from './TextField.types';
+import { Props, Modes, Type } from './TextField.types';
 import { StyledInput } from './TextField.styled';
 
-export const TextField = forwardRef<HTMLInputElement, Props>(
+export const TextField: Type = forwardRef<HTMLInputElement, Props>(
   (
     {
       className,
@@ -45,7 +45,5 @@ export const TextField = forwardRef<HTMLInputElement, Props>(
   )
 );
 
-// @ts-ignore
 TextField.Shapes = Shapes;
-// @ts-ignore
 TextField.Modes = Modes;

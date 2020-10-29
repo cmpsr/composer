@@ -11,10 +11,8 @@ export default {
 export const Shapes = () => (
   <>
     <h1>TextField shapes</h1>
-    {/*  @ts-ignore */}
     {Object.keys(TextField.Shapes).map((shape: any, i) => (
       <>
-        {/*  @ts-ignore */}
         <TextField shape={TextField.Shapes[shape]} placeholder={shape} />
         <br />
       </>
@@ -25,10 +23,8 @@ export const Shapes = () => (
 export const Modes = () => (
   <>
     <h1>TextField Modes</h1>
-    {/*  @ts-ignore */}
     {Object.keys(TextField.Modes).map((mode: any) => (
       <>
-        {/*  @ts-ignore */}
         <TextField inputMode={TextField.Modes[mode]} placeholder={mode} />
         <br />
       </>
@@ -59,10 +55,8 @@ export const Playground = () => (
       invalid={boolean('Invalid', false)}
       required={boolean('Required', false)}
       maxLength={number('Max length', 12)}
-      // @ts-ignore
       shape={select('Shape', TextField.Shapes, TextField.Shapes.Rectangle)}
-      // @ts-ignore
-      inputModes={select('Mode', TextField.Modes, TextField.Modes.Text)}
+      inputMode={select('Mode', TextField.Modes, TextField.Modes.Text)}
       onChange={action('On change')}
     />
   </>

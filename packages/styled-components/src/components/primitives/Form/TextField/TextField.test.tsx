@@ -54,7 +54,6 @@ describe('TextField', () => {
     expect(input).toHaveAttribute('maxLength', '3');
   });
   it('should render inputMode', () => {
-    // @ts-ignore
     render(<TextField inputMode={TextField.Modes.Numeric} />);
     const input = screen.getByTestId(testId);
     expect(input).toHaveAttribute('inputmode', 'numeric');

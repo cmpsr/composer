@@ -1,8 +1,8 @@
-export type Props = {
+import { BaseProps } from 'components/Components.types';
+
+export type Props = BaseProps & {
   text: string;
-  className?: string;
   highlightClassName?: string;
-  testId?: string;
   size?: Sizes;
   backgroundColor?: BackgroundColors;
   isHighlighted?: boolean;

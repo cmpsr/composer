@@ -1,5 +1,6 @@
-export type Props = {
-  className?: string;
+import { BaseProps } from 'components/Components.types';
+
+export type Props = BaseProps & {
   imageClassName?: string;
   asset: Asset;
   autoPlay?: boolean;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Props } from './Button.types';
+import { Props } from './ButtonItem.types';
 import { StyledButton } from './ButtonItem.styled';
 
 export const ButtonItem = ({

@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { Typography } from 'components/primitives/Typography';
 import { getTheme } from 'utils/getTheme';
+import { StyledBaseProps } from 'components/Components.styled.types';
 
-interface Props {
-  theme: any;
-}
+type Props = StyledBaseProps;
 
 export const StyledContainer = styled.div<Props>`
   display: flex;

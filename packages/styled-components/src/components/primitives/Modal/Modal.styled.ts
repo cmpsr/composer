@@ -2,11 +2,12 @@ import styled, { keyframes } from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { Icon } from 'components/primitives/Icon';
 import { customCss } from 'utils/customCss';
+import {
+  StyledBaseProps,
+  StyledCssProps,
+} from 'components/Components.styled.types';
 
-interface Props {
-  theme: any;
-  css?: string;
-}
+type Props = StyledBaseProps & StyledCssProps;
 
 export const StyledOverlay = styled.div<Props>`
   position: fixed;
@@ -15,12 +16,12 @@ export const StyledOverlay = styled.div<Props>`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${props => getTheme(props).colors.fillOverlay};
+  background-color: ${(props) => getTheme(props).colors.fillOverlay};
   display: flex;
   justify-content: center;
   align-items: center;
 
-  ${props => customCss(props)};
+  ${(props) => customCss(props)};
 `;
 
 const openAnimation = keyframes`
@@ -44,18 +45,18 @@ export const StyledWrapper = styled.div<Props>`
   }
 
   &.rounded {
-    border-radius: ${props => getTheme(props).Modal.borderRadius.rounded};
+    border-radius: ${(props) => getTheme(props).Modal.borderRadius.rounded};
   }
 
   &.semiRounded {
-    border-radius: ${props => getTheme(props).Modal.borderRadius.semiRounded};
+    border-radius: ${(props) => getTheme(props).Modal.borderRadius.semiRounded};
   }
 
   &.rectangle {
-    border-radius: ${props => getTheme(props).Modal.borderRadius.rectangle};
+    border-radius: ${(props) => getTheme(props).Modal.borderRadius.rectangle};
   }
 
-  ${props => customCss(props)};
+  ${(props) => customCss(props)};
 `;
 
 export const StyledCloseContainer = styled.div`

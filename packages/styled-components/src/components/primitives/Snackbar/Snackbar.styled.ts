@@ -3,10 +3,9 @@ import { getTheme } from 'utils/getTheme';
 import { Button } from 'components/primitives/Button';
 import { Typography } from 'components/primitives/Typography';
 import { ToastContainer } from 'react-toastify';
+import { StyledBaseProps } from 'components/Components.styled.types';
 
-interface Props {
-  theme: any;
-}
+type Props = StyledBaseProps;
 
 export const StyledToastContainer = styled(ToastContainer)`
   .Toastify__toast {

@@ -40,6 +40,15 @@ describe('Modal', () => {
     const modal = screen.getByText('content');
     expect(modal).toHaveClass('custom');
   });
+  it('should render custom class', () => {
+    render(
+      <Modal isOpen className="foo">
+        content
+      </Modal>
+    );
+    const modal = screen.getByText('content');
+    expect(modal).toHaveClass('foo');
+  });
   it('should render custom CSS class on overlay', () => {
     render(
       <Modal isOpen overlayCustomCss="overlayCustomCss">
@@ -48,5 +57,14 @@ describe('Modal', () => {
     );
     const overlay = screen.getByText('content').parentNode;
     expect(overlay).toHaveClass('custom');
+  });
+  it('should render custom class on overlay', () => {
+    render(
+      <Modal isOpen overlayClassName="foo">
+        content
+      </Modal>
+    );
+    const overlay = screen.getByText('content').parentNode;
+    expect(overlay).toHaveClass('foo');
   });
 });

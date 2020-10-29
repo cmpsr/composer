@@ -1,3 +1,5 @@
+import { BaseProps } from 'components/Components.types';
+
 export enum Colors {
   Black = 'black',
   Primary = 'primary',
@@ -14,10 +16,8 @@ type Media = {
   url: string;
 };
 
-export type Props = {
+export type Props = BaseProps & {
   text?: string;
-  className?: string;
-  testId?: string;
   color?: Colors;
   placement?: Placements;
   time?: string;

@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
-
-interface Props {
-  theme: any;
-}
+import { StyledBaseProps } from 'components/Components.styled.types';
 
 export const StyledMessage = styled.div`
   display: flex;
@@ -25,7 +22,7 @@ export const StyledMessage = styled.div`
   }
 `;
 
-export const StyledMessageWrapper = styled.div<Props>`
+export const StyledMessageWrapper = styled.div<StyledBaseProps>`
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
   padding: 0.25rem;
@@ -64,7 +61,7 @@ export const StyledMessageWrapper = styled.div<Props>`
   }
 `;
 
-export const TextWrapper = styled.div`
+export const StyledTextWrapper = styled.div`
   padding: 0.625rem 0.75rem;
 
   &.hasMedia {
@@ -72,14 +69,14 @@ export const TextWrapper = styled.div`
   }
 `;
 
-export const TimeWrapper = styled.div`
+export const StyledTimeWrapper = styled.div`
   &.hasTime {
     margin-bottom: 0.5rem;
     margin-top: 0.25rem;
   }
 `;
 
-export const StyledMediaWrapper = styled.div<Props>`
+export const StyledMediaWrapper = styled.div<StyledBaseProps>`
   position: relative;
   display: flex;
   justify-content: center;
@@ -130,7 +127,7 @@ export const StyledMediaWrapper = styled.div<Props>`
   }
 `;
 
-export const StyledMediaLoader = styled.div<Props>`
+export const StyledMediaLoader = styled.div<StyledBaseProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -160,7 +157,7 @@ export const StyledMediaLoader = styled.div<Props>`
   }
 `;
 
-export const NumberOfMediaFiles = styled.div<Props>`
+export const StyledNumberOfMediaFiles = styled.div<StyledBaseProps>`
   position: absolute;
   top: 0;
   right: 0;
@@ -181,7 +178,7 @@ export const NumberOfMediaFiles = styled.div<Props>`
   }
 `;
 
-export const BadgeLoader = styled.div<Props>`
+export const StyledBadgeLoader = styled.div<StyledBaseProps>`
   width: 3.125rem;
   height: 3.125rem;
   top: 0;

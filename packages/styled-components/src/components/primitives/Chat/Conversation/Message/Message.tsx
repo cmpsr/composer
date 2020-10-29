@@ -3,12 +3,12 @@ import cn from 'classnames';
 import {
   StyledMessage,
   StyledMessageWrapper,
-  TextWrapper,
-  TimeWrapper,
+  StyledTextWrapper,
+  StyledTimeWrapper,
   StyledMediaWrapper,
   StyledMediaLoader,
-  BadgeLoader,
-  NumberOfMediaFiles,
+  StyledBadgeLoader,
+  StyledNumberOfMediaFiles,
 } from './Message.styled';
 import { Typography } from 'components/primitives/Typography';
 import { Image } from 'components/primitives/Image';
@@ -59,9 +59,9 @@ export const Message = ({
                 data-testid="mediaLoader"
                 className={cn(placement, { hasText: !!text })}
               >
-                <BadgeLoader>
+                <StyledBadgeLoader>
                   <Spinner color={Spinner.Colors.White} />
-                </BadgeLoader>
+                </StyledBadgeLoader>
               </StyledMediaLoader>
             )}
             <Image
@@ -77,7 +77,7 @@ export const Message = ({
               }}
             />
             {hasMultipleMedia && isMediaLoaded && (
-              <NumberOfMediaFiles data-testid="mediaFilesIndicator">
+              <StyledNumberOfMediaFiles data-testid="mediaFilesIndicator">
                 <Typography
                   mode={Typography.Modes.Light100}
                   tag={Typography.Tags.H6}
@@ -85,12 +85,12 @@ export const Message = ({
                 >
                   +{mediaFiles.length}
                 </Typography>
-              </NumberOfMediaFiles>
+              </StyledNumberOfMediaFiles>
             )}
           </StyledMediaWrapper>
         )}
         {!!text && (
-          <TextWrapper className={cn({ hasMedia })} data-testid="textMessage">
+          <StyledTextWrapper className={cn({ hasMedia })} data-testid="textMessage">
             <Typography
               mode={Typography.Modes.Dark100}
               tag={Typography.Tags.Span}
@@ -98,11 +98,11 @@ export const Message = ({
             >
               {text}
             </Typography>
-          </TextWrapper>
+          </StyledTextWrapper>
         )}
       </StyledMessageWrapper>
       {time && (
-        <TimeWrapper className={cn({ hasTime: !!time })}>
+        <StyledTimeWrapper className={cn({ hasTime: !!time })}>
           <Typography
             mode={Typography.Modes.Dark50}
             tag={Typography.Tags.Span}
@@ -110,7 +110,7 @@ export const Message = ({
           >
             {time}
           </Typography>
-        </TimeWrapper>
+        </StyledTimeWrapper>
       )}
     </StyledMessage>
   );

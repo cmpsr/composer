@@ -8,27 +8,16 @@ export default {
   component: Message,
 };
 
+const mediaFile = {
+      contentType: 'image/jpeg',
+      url:
+        'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
+    };
+
 const mediaFiles = {
   none: [],
-  one: [
-    {
-      contentType: 'image/jpeg',
-      url:
-        'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
-    },
-  ],
-  two: [
-    {
-      contentType: 'image/jpeg',
-      url:
-        'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
-    },
-    {
-      contentType: 'image/jpeg',
-      url:
-        'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
-    },
-  ],
+  one: [mediaFile],
+  two: [mediaFile, mediaFile],
 };
 
 export const Placements = () => (
@@ -55,6 +44,13 @@ export const Colors = () => (
     ))}
   </>
 );
+
+export const Media = () => (
+  <>
+    <h1>Message media</h1>
+    <Message mediaFiles={mediaFiles.two} onMediaClick={action('On media click')} text="I'm a media message" />
+  </>
+)
 
 export const Playground = () => (
   <>

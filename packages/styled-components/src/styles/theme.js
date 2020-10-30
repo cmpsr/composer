@@ -28,6 +28,13 @@ const theme = {
       rectangle: '0',
     },
   },
+  Input: {
+    borderRadius: {
+      rounded: '1.5rem',
+      semiRounded: '0.25rem',
+      rectangle: '0'
+    }
+  },
   Modal: {
     borderRadius: {
       rounded: '1.375rem',

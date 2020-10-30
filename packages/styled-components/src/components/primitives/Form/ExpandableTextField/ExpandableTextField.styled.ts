@@ -1,18 +1,16 @@
 import { StyledCssProps } from 'components/Components.styled.types';
 import styled from 'styled-components';
-import { customCss } from 'utils/customCss';
+import { withCustomCss } from 'utils/withCustomCss';
 import { getTheme } from 'utils/getTheme';
 
-type Props = StyledCssProps;
-
-export const StyledWrapper = styled.div<Props>`
+export const StyledWrapper = withCustomCss<
+  StyledCssProps & React.ClassAttributes<StyledCssProps>
+>(styled.div<StyledCssProps>`
   position: relative;
   width: 100%;
+`);
 
-  ${(props) => customCss(props)}
-`;
-
-export const StyledPlaceholder = styled.div<Props>`
+export const StyledPlaceholder = styled.div<StyledCssProps>`
   line-height: 1.5rem;
   pointer-events: none;
   position: absolute;
@@ -30,7 +28,7 @@ export const StyledPlaceholder = styled.div<Props>`
   }
 `;
 
-export const StyledExpandable = styled.div<Props>`
+export const StyledExpandable = styled.div<StyledCssProps>`
   line-height: 1.5rem;
   background-color: ${(props) => getTheme(props).colors.fillFormEnabled};
   display: block;

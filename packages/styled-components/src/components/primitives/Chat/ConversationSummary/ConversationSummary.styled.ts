@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { Typography } from 'components/primitives/Typography';
+import { Props as TypographyProps } from 'components/primitives/Typography/Typography.types';
 import { Icon } from 'components/primitives/Icon';
-import { customCss } from 'utils/customCss';
+import { withCustomCss } from 'utils/withCustomCss';
 import {
   StyledBaseProps,
   StyledCssProps,
@@ -70,7 +71,9 @@ export const StyledProfileDescription = styled(Typography)`
   ${truncate}
 `;
 
-export const StyledProfileMessage = styled(Typography)<Props>`
+export const StyledProfileMessage = withCustomCss<
+  Props & TypographyProps
+>(styled(Typography)`
   margin-top: 0rem;
   margin-bottom: 0rem;
   ${truncate}
@@ -79,9 +82,7 @@ export const StyledProfileMessage = styled(Typography)<Props>`
   &.error {
     color: ${(props) => getTheme(props).colors.fillSystemError};
   }
-
-  ${(props) => customCss(props)};
-`;
+`);
 
 export const StyledNotificationContainer = styled.div`
   display: flex;

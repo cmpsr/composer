@@ -67,10 +67,7 @@ export const ConversationSummary = ({
             {description}
           </StyledProfileDescription>
           <StyledProfileMessage
-            className={cn(
-              { error: isError },
-              { custom: messageClassName?.length > 0 }
-            )}
+            className={cn({ error: isError })}
             tag={Typography.Tags.Paragraph}
             type={Typography.Types.Detail}
             css={messageClassName}

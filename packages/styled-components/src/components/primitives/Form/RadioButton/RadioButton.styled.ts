@@ -13,7 +13,11 @@ export const StyledLabel = styled.label`
   margin-left: 0.625rem;
 `;
 
-export const StyledInput = withCustomCss(styled.input<StyledCssProps>`
+export const StyledInput = withCustomCss<
+  StyledCssProps &
+    React.ClassAttributes<StyledCssProps> &
+    React.InputHTMLAttributes<StyledCssProps>
+>(styled.input`
   margin: 0 0 0 0.625rem;
   border-radius: 9999px;
   border-width: 2px;

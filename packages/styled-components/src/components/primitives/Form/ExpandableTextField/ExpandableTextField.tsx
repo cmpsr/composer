@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, forwardRef } from 'react';
-import cn from 'classnames';
 import { Props, Type } from './ExpandableTextField.types';
 import { Shapes } from 'components/Components.types';
 import {
@@ -41,10 +40,7 @@ export const ExpandableTextField: Type = forwardRef<HTMLInputElement, Props>(
     }, []);
 
     return (
-      <StyledWrapper
-        css={customCss}
-        className={cn(className, { custom: customCss })}
-      >
+      <StyledWrapper css={customCss} className={className}>
         <StyledPlaceholder ref={placeholderRef}>
           {placeholder}
         </StyledPlaceholder>

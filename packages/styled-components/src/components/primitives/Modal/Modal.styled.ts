@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { Icon } from 'components/primitives/Icon';
-import { withCustomCss } from 'utils/customCss';
+import { withCustomCss } from 'utils/withCustomCss';
 import {
   StyledBaseProps,
   StyledCssProps,
@@ -9,7 +9,9 @@ import {
 
 type Props = StyledBaseProps & StyledCssProps;
 
-export const StyledOverlay = withCustomCss(styled.div<Props>`
+export const StyledOverlay = withCustomCss<
+  Props & React.BaseHTMLAttributes<Props>
+>(styled.div`
   position: fixed;
   z-index: 20;
   top: 0;
@@ -27,7 +29,9 @@ const openAnimation = keyframes`
   to {opacity: 1}
 `;
 
-export const StyledWrapper = withCustomCss(styled.div<Props>`
+export const StyledWrapper = withCustomCss<
+  Props & React.BaseHTMLAttributes<Props>
+>(styled.div`
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   padding-top: 2rem;

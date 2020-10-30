@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
-import { withCustomCss } from 'utils/customCss';
 import { StyledCssProps } from 'components/Components.styled.types';
+import { withCustomCss } from 'utils/withCustomCss';
 
 export const StyledBox = withCustomCss(styled.div<StyledCssProps>`
   &.screen {

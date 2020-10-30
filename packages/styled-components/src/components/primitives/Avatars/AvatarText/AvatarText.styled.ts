@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { Typography } from 'components/primitives/Typography';
-import { withCustomCss } from 'utils/customCss';
+import { withCustomCss } from 'utils/withCustomCss';
 import {
   StyledBaseProps,
   StyledCssProps,

@@ -5,7 +5,7 @@ import {
   StyledCssProps,
   StyledBaseProps,
 } from 'components/Components.styled.types';
-import { withCustomCss } from 'utils/customCss';
+import { withCustomCss } from 'utils/withCustomCss';
 
 export const StyledWrapper = withCustomCss(styled.span<StyledCssProps>`
   display: flex;

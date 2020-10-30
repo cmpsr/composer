@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Typography } from 'components/primitives/Typography';
 import { getTheme } from 'utils/getTheme';
 import { StyledCssProps } from 'components/Components.styled.types';
-import { withCustomCss } from 'utils/customCss';
+import { withCustomCss } from 'utils/withCustomCss';
 
 export const StyledTypography = styled(Typography)`
   display: inline-flex;

@@ -12,7 +12,7 @@ export const Box = ({
 }: Props) => (
   <StyledBox
     css={customCss}
-    className={cn(className, size, { custom: customCss })}
+    className={cn(className, size)}
     data-testid={testId}
   >
     {children}

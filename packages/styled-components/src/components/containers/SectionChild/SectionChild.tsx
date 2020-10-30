@@ -1,5 +1,4 @@
 import React from 'react';
-import cn from 'classnames';
 import { Props } from './SectionChild.types';
 import { StyledSectionChild } from './SectionChild.styled';
 
@@ -11,7 +10,7 @@ export const SectionChild = ({
 }: Props) => (
   <StyledSectionChild
     data-testid={testId}
-    className={cn(className, { custom: customCss })}
+    className={className}
     css={customCss}
   >
     {children}

@@ -12,12 +12,12 @@ export type Props = CssCustomizableProps & {
   ariaLabel?: string;
   name: string;
   placeholder: string;
+  required?: boolean;
   disabled?: boolean;
   invalid?: boolean;
   type?: string;
-  required?: boolean;
-  inputMode?: Modes;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  inputMode?: Modes;
 };
 
 export type Type = ForwardRefExoticComponent<

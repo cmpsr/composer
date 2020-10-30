@@ -8,7 +8,8 @@ import {
   StyledInput,
   StyledIcon,
 } from './CurrencyField.styled';
-import { Props, Type, Modes } from './CurrencyField.types';
+import { Props } from './CurrencyField.types';
+import { Modes, Type } from 'components/primitives/Form/TextField/TextField.types';
 
 export const CurrencyField: Type = forwardRef<HTMLInputElement, Props>(
   (

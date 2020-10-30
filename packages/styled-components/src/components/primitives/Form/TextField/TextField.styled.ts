@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
-import {
-  StyledBaseProps,
-  StyledCssProps,
-} from 'components/Components.styled.types';
+import { StyledCssProps } from 'components/Components.styled.types';
 import { withCustomCss } from 'utils/withCustomCss';
 
-type Props = StyledBaseProps & StyledCssProps;
-
-export const StyledInput = withCustomCss(styled.input<Props>`
+export const StyledInput = withCustomCss<
+  StyledCssProps &
+    React.ClassAttributes<StyledCssProps> &
+    React.InputHTMLAttributes<StyledCssProps>
+>(styled.input`
   background-color: ${(props) => getTheme(props).colors.fillFormEnabled};
   position: relative;
   display: block;

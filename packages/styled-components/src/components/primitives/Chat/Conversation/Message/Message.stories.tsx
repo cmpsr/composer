@@ -39,7 +39,7 @@ export const Colors = () => (
     <h1>Message colors</h1>
     {Object.keys(Message.BackgroundColors).map((color: any) => (
       <>
-        <Message color={Message.BackgroundColors[color]} text="I'm a fancy message" />
+        <Message backgroundColor={Message.BackgroundColors[color]} text="I'm a fancy message" />
       </>
     ))}
   </>

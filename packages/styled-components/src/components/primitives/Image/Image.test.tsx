@@ -43,4 +43,9 @@ describe('Image', () => {
     fireEvent.load(image);
     expect(mockOnLoad).toHaveBeenCalledTimes(1);
   });
+  it('should render custom CSS as a class', () => {
+    render(<Image image={imageType} customCss="customCss" />);
+    const image = screen.getByTestId(imageContentTestId);
+    expect(image).toHaveClass('custom');
+  });
 });

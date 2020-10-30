@@ -9,6 +9,7 @@ export * from './Dropdown';
 export * from './Form/ErrorField';
 export * from './Form/ExpandableTextField';
 export * from './Form/RadioButton';
+export * from './Form/TextArea';
 export * from './Icon';
 export * from './Image';
 export * from './Link';

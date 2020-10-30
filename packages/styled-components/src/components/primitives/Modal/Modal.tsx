@@ -39,11 +39,11 @@ export const Modal = ({
     <StyledOverlay
       data-testid={testId}
       onClick={handleCloseModal}
-      className={cn(overlayClassName, { custom: overlayCustomCss })}
+      className={overlayClassName}
       css={overlayCustomCss}
     >
       <StyledWrapper
-        className={cn(className, shape, { custom: customCss })}
+        className={cn(className, shape)}
         css={customCss}
         onClick={stopEventPropagation}
       >

@@ -23,13 +23,13 @@ const mediaFiles = {
 export const Placements = () => (
   <>
     <h1>Message placements</h1>
-    {Object.keys(Message.Placements).map((placement: any) => (
-      <>
+    {Object.keys(Message.Placements).map((placement: any, i) => (
+      <div key={i}>
         <Message
           placement={Message.Placements[placement]}
           text="I'm a fancy message"
         />
-      </>
+      </div>
     ))}
   </>
 );
@@ -37,10 +37,10 @@ export const Placements = () => (
 export const Colors = () => (
   <>
     <h1>Message colors</h1>
-    {Object.keys(Message.BackgroundColors).map((color: any) => (
-      <>
-        <Message backgroundColor={Message.BackgroundColors[color]} text="I'm a fancy message" />
-      </>
+    {Object.keys(Message.BackgroundColors).map((backgroundColor: any, i) => (
+      <div key={i}>
+        <Message backgroundColor={Message.BackgroundColors[backgroundColor]} text="I'm a fancy message" />
+      </div>
     ))}
   </>
 );
@@ -61,6 +61,11 @@ export const Playground = () => (
         'Message placement',
         Message.Placements,
         Message.Placements.Left
+      )}
+      backgroundColor={select(
+        'Message background color',
+        Message.BackgroundColors,
+        Message.BackgroundColors.Primary
       )}
       time={text('Time', '10:30 Am')}
       onMediaClick={action('On media click')}

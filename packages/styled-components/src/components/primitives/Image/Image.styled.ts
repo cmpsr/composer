@@ -1,11 +1,15 @@
-import { StyledCssProps } from 'components/Components.styled.types';
 import styled from 'styled-components';
-import { customCss } from 'utils/customCss';
 
-type Props = StyledCssProps;
+import { StyledCssProps } from 'components/Components.styled.types';
+import { withCustomCss } from 'utils/withCustomCss';
 
-export const StyledImage = styled.img<StyledCssProps>`
+type Props = StyledCssProps & {
+  as?: string;
+  type?: string;
+};
+
+export const StyledImage = withCustomCss<
+  Props & React.ImgHTMLAttributes<Props>
+>(styled.img`
   user-select: none;
-
-  ${(props) => customCss(props)}
-`;
+`);

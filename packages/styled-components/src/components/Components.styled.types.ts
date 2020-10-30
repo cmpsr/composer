@@ -5,5 +5,6 @@ export type StyledBaseProps = {
 };
 
 export type StyledCssProps = {
+  className?: string;
   css?: string;
 };

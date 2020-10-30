@@ -14,6 +14,11 @@ describe('TextArea', () => {
     const textArea = screen.getByTestId(testId);
     expect(textArea).toHaveClass('foo');
   });
+  it('should render custom Css', () => {
+    render(<TextArea customCss="foo" />);
+    const textArea = screen.getByTestId(testId);
+    expect(textArea).toHaveClass('custom');
+  });
   it('should render required', () => {
     render(<TextArea required />);
     const textArea = screen.getByTestId(testId);

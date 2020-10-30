@@ -5,7 +5,7 @@ import { boolean, text, select, number } from '@storybook/addon-knobs';
 
 export default {
   title: 'Primitives/Form/TextField',
-  component: TextField
+  component: TextField,
 };
 
 export const Shapes = () => (
@@ -58,6 +58,7 @@ export const Playground = () => (
       shape={select('Shape', TextField.Shapes, TextField.Shapes.Rectangle)}
       inputMode={select('Mode', TextField.Modes, TextField.Modes.Text)}
       onChange={action('On change')}
+      customCss={text('Custom css', 'padding: 10px; border: 1px dashed blue;')}
     />
   </>
 );

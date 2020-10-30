@@ -20,7 +20,7 @@ export const TextField: Type = forwardRef<HTMLInputElement, Props>(
       maxLength,
       inputMode,
       testId = 'textField',
-      customCss
+      customCss,
     }: Props,
     ref
   ) => (
@@ -29,7 +29,6 @@ export const TextField: Type = forwardRef<HTMLInputElement, Props>(
       css={customCss}
       className={cn(className, shape, {
         invalid: invalid,
-        custom: customCss
       })}
       aria-label={ariaLabel}
       name={name}

@@ -30,7 +30,7 @@ export const Icons = () => (
         Text & Icon
       </Typography>
       <Icon className="fill-current" width={20} height={20}>
-        <Favorite type="filled" />
+        <Favorite type={Icon.Types.Filled} />
       </Icon>
     </FlexContainer>
   </Link>

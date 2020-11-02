@@ -24,7 +24,7 @@ export const Conversations = () => (
     <ConversationList
       conversations={[
         {
-          id: 1,
+          id: '1',
           title: 'Pau Teruel',
           description: 'Description',
           message: 'Message',
@@ -35,7 +35,7 @@ export const Conversations = () => (
           unreadMessages: 0,
         },
         {
-          id: 2,
+          id: '2',
           title: 'John Cena',
           description: 'Description',
           message: 'Message',

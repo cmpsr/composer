@@ -3,10 +3,11 @@ import {
   StyledBaseProps,
 } from 'components/Components.styled.types';
 import { ExpandableTextField } from 'components/primitives/Form/ExpandableTextField';
+import { Props } from 'components/primitives/Form/ExpandableTextField/ExpandableTextField.types';
 import { Icon } from 'components/primitives/Icon';
 import styled from 'styled-components';
-import { customCss } from 'utils/customCss';
 import { getTheme } from 'utils/getTheme';
+import { withCustomCss } from 'utils/withCustomCss';
 
 export const StyledWrapper = styled.div<StyledBaseProps>`
   display: flex;
@@ -45,15 +46,13 @@ export const StyledIcon = styled(Icon)<StyledBaseProps>`
   }
 `;
 
-export const StyledExpandableTextField = styled(ExpandableTextField)<
-  StyledCssProps
->`
+export const StyledExpandableTextField = withCustomCss<
+  StyledCssProps & Props & React.ClassAttributes<StyledCssProps>
+>(styled(ExpandableTextField)`
   &.left {
     order: 2;
   }
   &.right {
     order: 1;
   }
-
-  ${(props) => customCss(props)}
-`;
+`);

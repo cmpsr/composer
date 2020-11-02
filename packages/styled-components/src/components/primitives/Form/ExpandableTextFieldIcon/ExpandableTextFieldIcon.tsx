@@ -45,9 +45,7 @@ export const ExpandableTextFieldIcon = ({
       </StyledIconWrapper>
       <StyledExpandableTextField
         css={customCss}
-        className={cn(expandableTextFieldClassName, iconPosition, {
-          custom: customCss,
-        })}
+        className={cn(expandableTextFieldClassName, iconPosition)}
         placeholder={placeholder}
         onChange={handleChange}
         shape={shape}

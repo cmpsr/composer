@@ -4,7 +4,7 @@ import { ConversationList } from '.';
 
 describe('ConversationList', () => {
   const testId = 'conversationList';
-  it('should render classname', () => {
+  it('should render class name', () => {
     render(<ConversationList className="foo" conversations={[]} />);
     const conversationList = screen.getByTestId(testId);
     expect(conversationList).toHaveClass('foo');
@@ -27,7 +27,6 @@ describe('ConversationList', () => {
             title: 'title',
             description: 'description',
             message: 'message',
-            messageClassName: 'italic',
             time: 'time',
             avatarText: 'avatarText',
             isHighlighted: false,
@@ -41,7 +40,6 @@ describe('ConversationList', () => {
             title: 'title',
             description: 'description',
             message: 'message',
-            messageClassName: 'italic',
             time: 'time',
             avatarText: 'avatarText',
             isHighlighted: false,

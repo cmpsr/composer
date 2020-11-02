@@ -1,9 +1,9 @@
 import React from 'react';
 import { Video } from 'components/primitives/Video';
 import { Image } from 'components/primitives/Image';
-import { Props, ContentType } from './Asset.types';
+import { Props, Type, ContentType } from './Asset.types';
 
-export const Asset = ({
+export const Asset: Type = ({
   autoPlay,
   controls,
   className,

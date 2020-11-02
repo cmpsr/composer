@@ -5,27 +5,27 @@ import { TextField } from '.';
 describe('TextField', () => {
   const testId = 'textField';
   it('should render name', () => {
-    render(<TextField name="foo" />);
+    render(<TextField placeholder="placeholder" name="foo" />);
     const input = screen.getByTestId(testId);
     expect(input).toHaveAttribute('name', 'foo');
   });
   it('should render type', () => {
-    render(<TextField type="text" />);
+    render(<TextField placeholder="placeholder" name="name" type="text" />);
     const input = screen.getByTestId(testId);
     expect(input).toHaveAttribute('type', 'text');
   });
   it('should render class', () => {
-    render(<TextField className="foo" />);
+    render(<TextField placeholder="placeholder" name="name" className="foo" />);
     const input = screen.getByTestId(testId);
     expect(input).toHaveClass('foo');
   });
   it('should render aria label', () => {
-    render(<TextField ariaLabel="foo" />);
+    render(<TextField placeholder="placeholder" name="name" ariaLabel="foo" />);
     const input = screen.getByTestId(testId);
     expect(input).toHaveAttribute('aria-label', 'foo');
   });
   it('should render required', () => {
-    render(<TextField required />);
+    render(<TextField placeholder="placeholder" name="name" required />);
     const input = screen.getByTestId(testId);
     expect(input).toBeRequired();
   });
@@ -44,17 +44,23 @@ describe('TextField', () => {
     expect(mockOnChange).toBeCalledTimes(1);
   });
   it('should render disabled', () => {
-    render(<TextField disabled />);
+    render(<TextField placeholder="placeholder" name="name" disabled />);
     const input = screen.getByTestId(testId);
     expect(input).toBeDisabled();
   });
   it('should limit max length', () => {
-    render(<TextField maxLength={3} />);
+    render(<TextField placeholder="placeholder" name="name" maxLength={3} />);
     const input = screen.getByTestId(testId);
     expect(input).toHaveAttribute('maxLength', '3');
   });
   it('should render inputMode', () => {
-    render(<TextField inputMode={TextField.Modes.Numeric} />);
+    render(
+      <TextField
+        placeholder="placeholder"
+        name="name"
+        inputMode={TextField.Modes.Numeric}
+      />
+    );
     const input = screen.getByTestId(testId);
     expect(input).toHaveAttribute('inputmode', 'numeric');
   });

@@ -16,6 +16,7 @@ export const Shapes = () => (
         <ExpandableTextField
           shape={ExpandableTextField.Shapes[shape]}
           placeholder={shape}
+          onChange={action('On change')}
         />
         <br />
       </div>

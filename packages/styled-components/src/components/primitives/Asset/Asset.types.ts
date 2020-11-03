@@ -1,3 +1,4 @@
+import { FunctionComponent } from 'react';
 import { BaseProps } from 'components/Components.types';
 
 export type Props = BaseProps & {
@@ -5,6 +6,10 @@ export type Props = BaseProps & {
   asset: Asset;
   autoPlay?: boolean;
   controls?: boolean;
+};
+
+export type Type = FunctionComponent<Props> & {
+  ContentType?: typeof ContentType;
 };
 
 export enum ContentType {

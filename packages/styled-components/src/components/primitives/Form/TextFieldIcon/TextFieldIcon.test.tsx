@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { TextFieldIcon } from '.';
+import 'jest-styled-components';
 
 describe('TextFieldIcon', () => {
   const testId = 'textFieldIcon';
@@ -50,6 +51,13 @@ describe('TextFieldIcon', () => {
     givenComponentRendered();
     const icon = screen.getByTestId('icon');
     expect(icon).toHaveClass('notFocused');
+  });
+  it('should render custom css', () => {
+    givenComponentRendered({ customCss: 'color: violet' });
+    const textFieldIcon = screen.getByTestId(testId);
+    expect(textFieldIcon).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
   const givenComponentRendered = (props?: any) =>
     render(

@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
-import { StyledCssProps } from 'components/Components.styled.types';
+import {
+  StyledCssProps,
+  StyledBaseProps,
+} from 'components/Components.styled.types';
 import { Icon } from 'components/primitives/Icon';
 import { TextField } from 'components/primitives/Form/TextField';
 import { customCss } from 'utils/customCss';
@@ -27,7 +30,7 @@ export const StyledIconWrapper = styled.div`
   }
 `;
 
-export const StyledIcon = styled(Icon)`
+export const StyledIcon = styled(Icon)<StyledBaseProps>`
   fill: currentColor;
   color: ${(props) => getTheme(props).colors.fillBlack200};
 `;

@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { StyledCssProps } from 'components/Components.styled.types';
-import { withCustomCss } from 'utils/withCustomCss';
 import { Icon } from 'components/primitives/Icon';
 import { TextField } from 'components/primitives/Form/TextField';
-import { Props } from 'components/primitives/Form/TextField/TextField.types';
+import { customCss } from 'utils/customCss';
 
 export const StyledWrapper = styled.div`
   position: relative;
@@ -33,13 +32,10 @@ export const StyledIcon = styled(Icon)`
   color: ${(props) => getTheme(props).colors.fillBlack200};
 `;
 
-export const StyledTextField = withCustomCss<
-  StyledCssProps &
-    Props &
-    React.ClassAttributes<StyledCssProps> &
-    React.InputHTMLAttributes<StyledCssProps>
->(styled(TextField)`
+export const StyledTextField = styled(TextField)<StyledCssProps>`
   &.left {
     padding-left: 2.5rem;
   }
-`);
+
+  ${(props) => customCss(props)}
+`;

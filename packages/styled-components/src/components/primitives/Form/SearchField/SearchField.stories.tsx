@@ -70,7 +70,7 @@ export const Playground = () => (
         SearchField.IconPositions.Left
       )}
       onChange={action('On change')}
-      customCss={text('Custom css', 'padding: 10px; border: 1px dashed blue;')}
+      customCss={text('Custom css', 'border: 1px dashed blue;')}
     />
   </>
 );

@@ -35,5 +35,5 @@ export enum Modes {
   Tel = 'tel',
   Search = 'search',
   Email = 'email',
-  Url = 'url'
+  Url = 'url',
 }

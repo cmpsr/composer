@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
-import { withCustomCss } from 'utils/withCustomCss';
+import { customCss } from 'utils/customCss';
 import {
   StyledBaseProps,
   StyledCssProps,
@@ -8,9 +8,7 @@ import {
 
 type Props = StyledBaseProps & StyledCssProps;
 
-export const StyledTextArea = withCustomCss<
-  Props & React.TextareaHTMLAttributes<Props>
->(styled.textarea`
+export const StyledTextArea = styled.textarea<Props>`
   background-color: ${(props) => getTheme(props).colors.fillFormEnabled};
   position: relative;
   display: block;
@@ -61,4 +59,6 @@ export const StyledTextArea = withCustomCss<
     font-size: ${(props) => getTheme(props).Typography.md.fontSize.form};
     font-family: ${(props) => getTheme(props).Typography.md.fontFamily.form};
   }
-`);
+
+  ${(props) => customCss(props)}
+`;

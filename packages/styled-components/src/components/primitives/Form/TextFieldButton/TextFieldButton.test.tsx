@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { TextFieldButton } from './TextFieldButton';
+import 'jest-styled-components';
 
 describe('TextFieldButtonButton', () => {
   const testId = 'textFieldButton';

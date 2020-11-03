@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { Icon } from 'components/primitives/Icon';
-import { withCustomCss } from 'utils/withCustomCss';
+import { customCss } from 'utils/customCss';
 import {
   StyledBaseProps,
   StyledCssProps,
@@ -9,9 +9,7 @@ import {
 
 type Props = StyledBaseProps & StyledCssProps;
 
-export const StyledOverlay = withCustomCss<
-  Props & React.BaseHTMLAttributes<Props>
->(styled.div`
+export const StyledOverlay = styled.div<Props>`
   position: fixed;
   z-index: 20;
   top: 0;
@@ -22,16 +20,16 @@ export const StyledOverlay = withCustomCss<
   display: flex;
   justify-content: center;
   align-items: center;
-`);
+
+  ${(props) => customCss(props)}
+`;
 
 const openAnimation = keyframes`
   from {opacity: 0}
   to {opacity: 1}
 `;
 
-export const StyledWrapper = withCustomCss<
-  Props & React.BaseHTMLAttributes<Props>
->(styled.div`
+export const StyledWrapper = styled.div<Props>`
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   padding-top: 2rem;
@@ -57,7 +55,9 @@ export const StyledWrapper = withCustomCss<
   &.rectangle {
     border-radius: ${(props) => getTheme(props).Modal.borderRadius.rectangle};
   }
-`);
+
+  ${(props) => customCss(props)}
+`;
 
 export const StyledCloseContainer = styled.div`
   display: flex;

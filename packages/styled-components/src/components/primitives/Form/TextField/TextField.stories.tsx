@@ -12,10 +12,14 @@ export const Shapes = () => (
   <>
     <h1>TextField shapes</h1>
     {Object.keys(TextField.Shapes).map((shape: any, i) => (
-      <>
-        <TextField shape={TextField.Shapes[shape]} placeholder={shape} />
+      <div key={i}>
+        <TextField
+          shape={TextField.Shapes[shape]}
+          placeholder={shape}
+          name={shape}
+        />
         <br />
-      </>
+      </div>
     ))}
   </>
 );
@@ -23,11 +27,15 @@ export const Shapes = () => (
 export const Modes = () => (
   <>
     <h1>TextField Modes</h1>
-    {Object.keys(TextField.Modes).map((mode: any) => (
-      <>
-        <TextField inputMode={TextField.Modes[mode]} placeholder={mode} />
+    {Object.keys(TextField.Modes).map((mode: any, i) => (
+      <div key={i}>
+        <TextField
+          inputMode={TextField.Modes[mode]}
+          placeholder={mode}
+          name={mode}
+        />
         <br />
-      </>
+      </div>
     ))}
   </>
 );
@@ -35,14 +43,14 @@ export const Modes = () => (
 export const Disabled = () => (
   <>
     <h1>TextField disabled</h1>
-    <TextField disabled placeholder="disabled" />
+    <TextField disabled placeholder="disabled" name="disabled" />
   </>
 );
 
 export const Invalid = () => (
   <>
     <h1>TextField invalid</h1>
-    <TextField invalid placeholder="invalid" />
+    <TextField invalid placeholder="invalid" name="invalid" />
   </>
 );
 
@@ -50,6 +58,7 @@ export const Playground = () => (
   <>
     <h1>Playground</h1>
     <TextField
+      name="name"
       placeholder={text('Placeholder', 'Placeholder')}
       disabled={boolean('Disabled', false)}
       invalid={boolean('Invalid', false)}

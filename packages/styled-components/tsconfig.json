@@ -1,5 +1,5 @@
 {
-  "exclude": ["node_modules", "lib", "**/*.stories.*", "**/*.test*"],
+  "exclude": ["node_modules", "lib"],
   "include": ["src"],
   "extends": "../../tsconfig.json",
   "compilerOptions": {

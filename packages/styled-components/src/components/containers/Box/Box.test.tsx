@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Box } from '.';
+import 'jest-styled-components';
 
 describe('Box', () => {
   const testId = 'box';
@@ -14,9 +15,11 @@ describe('Box', () => {
     expect(box).toHaveClass('foo');
   });
   it('should render custom css', () => {
-    render(<Box customCss="customCss" />);
+    render(<Box customCss="color: violet" />);
     const box = screen.getByTestId(testId);
-    expect(box).toHaveClass('custom');
+    expect(box).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
   it('should render screen size', () => {
     render(<Box size={Box.Sizes.Screen}>foo</Box>);

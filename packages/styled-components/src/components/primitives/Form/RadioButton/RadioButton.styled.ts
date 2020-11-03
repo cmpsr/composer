@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Typography } from 'components/primitives/Typography';
 import { getTheme } from 'utils/getTheme';
 import { StyledCssProps } from 'components/Components.styled.types';
-import { withCustomCss } from 'utils/withCustomCss';
+import { customCss } from 'utils/customCss';
 
 export const StyledTypography = styled(Typography)`
   display: inline-flex;
@@ -13,11 +13,7 @@ export const StyledLabel = styled.label`
   margin-left: 0.625rem;
 `;
 
-export const StyledInput = withCustomCss<
-  StyledCssProps &
-    React.ClassAttributes<StyledCssProps> &
-    React.InputHTMLAttributes<StyledCssProps>
->(styled.input`
+export const StyledInput = styled.input<StyledCssProps>`
   margin: 0 0 0 0.625rem;
   border-radius: 9999px;
   border-width: 2px;
@@ -49,4 +45,6 @@ export const StyledInput = withCustomCss<
   &:disabled {
     border-color: ${(props) => getTheme(props).colors.fillStatePrimaryDisabled};
   }
-`);
+
+  ${(props) => customCss(props)}
+`;

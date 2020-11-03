@@ -93,7 +93,7 @@ export const TwoColumnsDesktopOneMobileWithImages = () => (
       title="Create an Out-of-this-World website with this headline"
       subtitle="We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it."
       asset={{
-        contentType: 'image',
+        contentType: Asset.ContentType.Image,
         title: 'Image Title',
         url: 'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
       }}
@@ -102,7 +102,7 @@ export const TwoColumnsDesktopOneMobileWithImages = () => (
       title="Create an Out-of-this-World website with this headline"
       subtitle="We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it."
       asset={{
-        contentType: 'image',
+        contentType: Asset.ContentType.Image,
         title: 'Image Title',
         url: 'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
       }}
@@ -111,7 +111,7 @@ export const TwoColumnsDesktopOneMobileWithImages = () => (
       title="Create an Out-of-this-World website with this headline"
       subtitle="We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it."
       asset={{
-        contentType: 'image',
+        contentType: Asset.ContentType.Image,
         title: 'Image Title',
         url: 'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
       }}
@@ -120,7 +120,7 @@ export const TwoColumnsDesktopOneMobileWithImages = () => (
       title="Create an Out-of-this-World website with this headline"
       subtitle="We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it."
       asset={{
-        contentType: 'image',
+        contentType: Asset.ContentType.Image,
         title: 'Image Title',
         url: 'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
       }}
@@ -146,42 +146,42 @@ export const Playground = () => (
       asset={{
         title: '',
         url: 'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
-        contentType: 'image',
+        contentType: Asset.ContentType.Image,
       }}
     />
     <Asset
       asset={{
         title: '',
         url: 'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
-        contentType: 'image',
+        contentType: Asset.ContentType.Image,
       }}
     />
     <Asset
       asset={{
         title: '',
         url: 'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
-        contentType: 'image',
+        contentType: Asset.ContentType.Image,
       }}
     />
     <Asset
       asset={{
         title: '',
         url: 'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
-        contentType: 'image',
+        contentType: Asset.ContentType.Image,
       }}
     />
     <Asset
       asset={{
         title: '',
         url: 'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
-        contentType: 'image',
+        contentType: Asset.ContentType.Image,
       }}
     />
     <Asset
       asset={{
         title: '',
         url: 'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
-        contentType: 'image',
+        contentType: Asset.ContentType.Image,
       }}
     />
   </Grid>

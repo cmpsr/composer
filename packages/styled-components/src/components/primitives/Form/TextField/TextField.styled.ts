@@ -1,13 +1,9 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { StyledCssProps } from 'components/Components.styled.types';
-import { withCustomCss } from 'utils/withCustomCss';
+import { customCss } from 'utils/customCss';
 
-export const StyledInput = withCustomCss<
-  StyledCssProps &
-    React.ClassAttributes<StyledCssProps> &
-    React.InputHTMLAttributes<StyledCssProps>
->(styled.input`
+export const StyledInput = styled.input<StyledCssProps>`
   background-color: ${(props) => getTheme(props).colors.fillFormEnabled};
   position: relative;
   display: block;
@@ -50,4 +46,6 @@ export const StyledInput = withCustomCss<
     font-size: ${(props) => getTheme(props).Typography.md.fontSize.form};
     font-family: ${(props) => getTheme(props).Typography.md.fontFamily.form};
   }
-`);
+
+  ${(props) => customCss(props)}
+`;

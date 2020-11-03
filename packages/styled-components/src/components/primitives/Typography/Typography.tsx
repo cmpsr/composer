@@ -12,8 +12,10 @@ export const Typography = ({
   mode,
   htmlFor,
   testId = 'typography',
+  customCss,
 }: Props) => (
   <StyledTypography
+    css={customCss}
     as={tag}
     htmlFor={htmlFor}
     data-testid={testId}

@@ -36,6 +36,8 @@ export const StyledIconWrapper = styled.div`
 `;
 
 export const StyledTextField = styled(TextField)`
+  box-sizing: border-box;
+
   &.left {
     padding-left: 2.5rem;
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Grid } from './Grid';
+import 'jest-styled-components';
 
 describe('Grid', () => {
   it('should render', () => {
@@ -17,8 +18,10 @@ describe('Grid', () => {
     expect(grid).toHaveClass('foo');
   });
   it('should render custom CSS as a class', () => {
-    const { getByTestId } = render(<Grid customCss="customCss">foo</Grid>);
+    const { getByTestId } = render(<Grid customCss="color: violet">foo</Grid>);
     const grid = getByTestId('grid');
-    expect(grid).toHaveClass('custom');
+    expect(grid).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
 });

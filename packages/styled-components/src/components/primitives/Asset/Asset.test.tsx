@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Asset } from './Asset';
+import { Asset } from '.';
+import { ContentType } from './Asset.types';
 
 describe('Asset', () => {
   it('should render an image asset type', () => {
@@ -12,7 +13,7 @@ describe('Asset', () => {
     screen.getByTestId('video');
   });
 
-  const givenComponentRendered = (type: Asset.ContentType) =>
+  const givenComponentRendered = (type: ContentType) =>
     render(
       <Asset
         asset={{

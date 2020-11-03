@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { CurrencyField } from '.';
+import 'jest-styled-components';
 
 describe('CurrencyField', () => {
   const testId = 'currencyField';
@@ -80,5 +81,18 @@ describe('CurrencyField', () => {
     const input = screen.getByTestId(testId);
     fireEvent.change(input, { target: { value: 3 } });
     expect(mockOnChange).toBeCalledTimes(1);
+  });
+  it('should render custom CSS as a class', () => {
+    render(
+      <CurrencyField
+        name="currency-field"
+        placeholder="placeholder"
+        customCss="color: violet"
+      />
+    );
+    const input = screen.getByTestId(testId);
+    expect(input).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
 });

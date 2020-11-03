@@ -1,7 +1,7 @@
 import { Icon } from 'components/primitives/Icon';
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
-import { withCustomCss } from 'utils/withCustomCss';
+import { customCss } from 'utils/customCss';
 import { StyledCssProps } from 'components/Components.styled.types';
 
 export const StyledWrapper = styled.div`
@@ -37,11 +37,7 @@ export const StyledIcon = styled(Icon)`
   fill: currentColor;
 `;
 
-export const StyledInput = withCustomCss<
-  StyledCssProps &
-    React.ClassAttributes<StyledCssProps> &
-    React.InputHTMLAttributes<StyledCssProps>
->(styled.input`
+export const StyledInput = styled.input<StyledCssProps>`
   background-color: ${(props) => getTheme(props).colors.fillFormEnabled};
   position: relative;
   display: block;
@@ -92,4 +88,6 @@ export const StyledInput = withCustomCss<
     font-size: ${(props) => getTheme(props).Typography.md.fontSize.form};
     font-family: ${(props) => getTheme(props).Typography.md.fontFamily.form};
   }
-`);
+
+  ${(props) => customCss(props)}
+`;

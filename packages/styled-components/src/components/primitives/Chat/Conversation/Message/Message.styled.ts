@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { StyledBaseProps } from 'components/Components.styled.types';
+import { StyledCssProps } from 'components/Components.styled.types';
+
+type Props = StyledBaseProps & StyledCssProps;
 
 export const StyledMessage = styled.div`
   display: flex;
@@ -22,7 +25,7 @@ export const StyledMessage = styled.div`
   }
 `;
 
-export const StyledMessageWrapper = styled.div<StyledBaseProps>`
+export const StyledMessageWrapper = styled.div<Props>`
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
   padding: 0.25rem;

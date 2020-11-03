@@ -21,6 +21,7 @@ export const Message = ({
   className,
   testId = 'message',
   backgroundColor = BackgroundColors.Primary,
+  customCss,
   placement = Placements.Right,
   time,
   mediaFiles = [],
@@ -48,6 +49,7 @@ export const Message = ({
     >
       <StyledMessageWrapper
         data-testid={testId}
+        css={customCss}
         className={cn(placement, backgroundColor)}
       >
         {hasMedia && (

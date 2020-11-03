@@ -2,10 +2,9 @@ import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { StyledBaseProps } from 'components/Components.styled.types';
 import { StyledCssProps } from 'components/Components.styled.types';
+import { customCss } from 'utils/customCss';
 
-type Props = StyledBaseProps & StyledCssProps;
-
-export const StyledMessage = styled.div`
+export const StyledMessage = styled.div<StyledCssProps>`
   display: flex;
   flex-direction: column;
   margin-bottom: 0.5rem;
@@ -23,9 +22,11 @@ export const StyledMessage = styled.div`
     align-items: flex-end;
     justify-content: flex-end;
   }
+
+  ${(props) => customCss(props)}
 `;
 
-export const StyledMessageWrapper = styled.div<Props>`
+export const StyledMessageWrapper = styled.div<StyledBaseProps>`
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
   padding: 0.25rem;

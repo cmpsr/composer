@@ -45,11 +45,11 @@ export const Message = ({
   return (
     <StyledMessage
       data-testid="wrapperMessage"
+      css={customCss}
       className={cn(className, placement, { hasTime: !!time })}
     >
       <StyledMessageWrapper
         data-testid={testId}
-        css={customCss}
         className={cn(placement, backgroundColor)}
       >
         {hasMedia && (

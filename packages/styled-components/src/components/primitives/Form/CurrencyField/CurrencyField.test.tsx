@@ -6,93 +6,61 @@ import 'jest-styled-components';
 describe('CurrencyField', () => {
   const testId = 'currencyField';
   it('should render name', () => {
-    render(<CurrencyField name="foo" placeholder="placeholder" />);
+    givenComponentRendered();
     const input = screen.getByTestId(testId);
-    expect(input).toHaveAttribute('name', 'foo');
+    expect(input).toHaveAttribute('name', 'currency-field');
   });
   it('should render class', () => {
-    render(
-      <CurrencyField
-        name="currency-field"
-        className="foo"
-        placeholder="placeholder"
-      />
-    );
+    givenComponentRendered({ className: 'foo' });
     const input = screen.getByTestId(testId);
     expect(input).toHaveClass('foo');
   });
   it('should render type', () => {
-    render(
-      <CurrencyField
-        name="currency-field"
-        type="text"
-        placeholder="placeholder"
-      />
-    );
+    givenComponentRendered({ type: 'text' });
     const input = screen.getByTestId(testId);
     expect(input).toHaveAttribute('type', 'text');
   });
   it('should render aria label', () => {
-    render(
-      <CurrencyField
-        name="currency-field"
-        ariaLabel="foo"
-        placeholder="placeholder"
-      />
-    );
+    givenComponentRendered({ ariaLabel: 'foo' });
     const input = screen.getByTestId(testId);
     expect(input).toHaveAttribute('aria-label', 'foo');
   });
   it('should render required', () => {
-    render(
-      <CurrencyField name="currency-field" required placeholder="placeholder" />
-    );
+    givenComponentRendered({ required: true });
     const input = screen.getByTestId(testId);
     expect(input).toBeRequired();
   });
   it('should render disabled', () => {
-    render(
-      <CurrencyField name="currency-field" disabled placeholder="placeholder" />
-    );
+    givenComponentRendered({ disabled: true });
     const input = screen.getByTestId(testId);
     expect(input).toBeDisabled();
   });
   it('should render inputMode', () => {
-    render(
-      <CurrencyField
-        name="currency-field"
-        inputMode={CurrencyField.Modes.Numeric}
-        placeholder="placeholder"
-      />
-    );
+    givenComponentRendered({ inputMode: CurrencyField.Modes.Numeric });
     const input = screen.getByTestId(testId);
     expect(input).toHaveAttribute('inputmode', 'numeric');
   });
   it('should call onChange', () => {
     const mockOnChange = jest.fn();
-    render(
-      <CurrencyField
-        name="currency-field"
-        placeholder="placeholder"
-        required={true}
-        onChange={mockOnChange}
-      />
-    );
+    givenComponentRendered({ required: true, onChange: mockOnChange });
     const input = screen.getByTestId(testId);
     fireEvent.change(input, { target: { value: 3 } });
     expect(mockOnChange).toBeCalledTimes(1);
   });
   it('should render custom CSS as a class', () => {
-    render(
-      <CurrencyField
-        name="currency-field"
-        placeholder="placeholder"
-        customCss="color: violet"
-      />
-    );
+    givenComponentRendered({ customCss : 'color: violet' });
     const input = screen.getByTestId(testId);
     expect(input).toHaveStyleRule('color', 'violet', {
       modifier: '&&&',
     });
   });
+
+  const givenComponentRendered = (props?: any) =>
+    render(
+      <CurrencyField
+        name="currency-field"
+        placeholder="placeholder"
+        {...props}
+      />
+    );
 });

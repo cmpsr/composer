@@ -10,6 +10,7 @@ export * from './Form/ErrorField';
 export * from './Form/ExpandableTextField';
 export * from './Form/ExpandableTextFieldIcon';
 export * from './Form/RadioButton';
+export * from './Form/SearchField';
 export * from './Form/TextArea';
 export * from './Form/TextField';
 export * from './Icon';

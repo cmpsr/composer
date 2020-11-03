@@ -1,7 +1,7 @@
-import { BaseProps } from 'components/Components.types';
+import { CssCustomizableProps } from 'components/Components.types';
 import { ReactNode } from 'react';
 
-export type Props = BaseProps & {
+export type Props = CssCustomizableProps & {
   tag?: Tags;
   type?: Types;
   intensity?: Intensities;

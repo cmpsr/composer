@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { TextFieldWithLabel } from '.';
+import 'jest-styled-components';
 
 describe('TextFieldWithLabel', () => {
   const testId = 'textFieldWithLabel';
@@ -59,6 +60,20 @@ describe('TextFieldWithLabel', () => {
     givenComponentRendered({ inputMode: TextFieldWithLabel.Modes.Numeric });
     const textFieldWithLabel = screen.getByTestId(testId);
     expect(textFieldWithLabel).toHaveAttribute('inputmode', 'numeric');
+  });
+  it('should render label custom css', () => {
+    givenComponentRendered({ labelCustomCss: 'color: violet' });
+    const label = screen.getByTestId('typography');
+    expect(label).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
+  });
+  it('should render textfield custom css', () => {
+    givenComponentRendered({ textFieldCustomCss: 'color: violet' });
+    const textField = screen.getByTestId('textFieldWithLabel');
+    expect(textField).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
   const givenComponentRendered = (props?: any) =>
     render(

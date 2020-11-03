@@ -20,6 +20,13 @@ const mediaFiles = {
   two: [mediaFile, mediaFile],
 };
 
+
+const styles = `
+  background: #c3f7d3;
+  padding: 10px 10px;
+`;
+
+
 export const Placements = () => (
   <>
     <h1>Message placements</h1>
@@ -70,6 +77,7 @@ export const Playground = () => (
       time={text('Time', '10:30 Am')}
       onMediaClick={action('On media click')}
       mediaFiles={select('MediaFiles', mediaFiles, mediaFiles.none)}
+      customCss={text('Message styles', styles)}
     />
   </>
 );

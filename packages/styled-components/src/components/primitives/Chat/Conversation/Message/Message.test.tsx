@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Message } from '.';
+import 'jest-styled-components';
 
 describe('Message', () => {
   const wrapperTestId = 'wrapperMessage';
@@ -92,5 +93,12 @@ describe('Message', () => {
     const image = screen.getByTestId('imageContent');
     fireEvent.load(image);
     expect(mockOnLoadMedia).toHaveBeenCalledTimes(1);
+  });
+  it('should render custom CSS as a class', () => {
+    render(<Message customCss="color: violet" />);
+    const wrapper = screen.getByTestId(wrapperTestId);
+    expect(wrapper).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
 });

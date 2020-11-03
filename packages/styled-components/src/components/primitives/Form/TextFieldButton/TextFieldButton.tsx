@@ -14,9 +14,11 @@ export const TextFieldButton = ({
   onClick,
   buttonLabel = 'Button',
   testId = 'textFieldButton',
+  customCss,
 }: Props) => (
   <StyledWrapper data-testid={testId}>
     <StyledTextField
+      customCss={customCss}
       className={className}
       ariaLabel={ariaLabel}
       name={name}

@@ -1,14 +1,14 @@
-import { Shapes } from 'components/Components.types';
 import {
   ChangeEvent,
   ForwardRefExoticComponent,
   PropsWithoutRef,
   RefAttributes,
 } from 'react';
-import { CssCustomizableProps } from 'components/Components.types';
+import { CssCustomizableProps, Shapes } from 'components/Components.types';
 
 export type Props = CssCustomizableProps & {
   shape?: Shapes;
+  iconPosition?: IconPositions;
   ariaLabel?: string;
   name: string;
   placeholder: string;
@@ -16,24 +16,17 @@ export type Props = CssCustomizableProps & {
   disabled?: boolean;
   invalid?: boolean;
   type?: string;
-  maxLength?: number;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  inputMode?: Modes;
 };
+
+export enum IconPositions {
+  Left = 'left',
+  Right = 'right',
+}
 
 export type Type = ForwardRefExoticComponent<
   PropsWithoutRef<Props> & RefAttributes<HTMLInputElement>
 > & {
+  IconPositions?: typeof IconPositions;
   Shapes?: typeof Shapes;
-  Modes?: typeof Modes;
 };
-
-export enum Modes {
-  Text = 'text',
-  Decimal = 'decimal',
-  Numeric = 'numeric',
-  Tel = 'tel',
-  Search = 'search',
-  Email = 'email',
-  Url = 'url',
-}

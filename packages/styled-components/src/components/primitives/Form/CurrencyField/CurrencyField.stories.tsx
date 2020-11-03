@@ -10,15 +10,15 @@ export default {
 export const Shapes = () => (
   <>
     <h1>CurrencyField shapes</h1>
-    {Object.keys(CurrencyField.Shapes).map((shape: any) => (
-      <>
+    {Object.keys(CurrencyField.Shapes).map((shape: any, i) => (
+      <div key={i}>
         <CurrencyField
           name="default"
           shape={CurrencyField.Shapes[shape]}
           placeholder={shape}
         />
         <br />
-      </>
+      </div>
     ))}
   </>
 );
@@ -26,15 +26,15 @@ export const Shapes = () => (
 export const Modes = () => (
   <>
     <h1>CurrencyField Modes</h1>
-    {Object.keys(CurrencyField.Modes).map((mode: any) => (
-      <>
+    {Object.keys(CurrencyField.Modes).map((mode: any, i) => (
+      <div key={i}>
         <CurrencyField
           name="default"
           inputMode={CurrencyField.Modes[mode]}
           placeholder={mode}
         />
         <br />
-      </>
+      </div>
     ))}
   </>
 );

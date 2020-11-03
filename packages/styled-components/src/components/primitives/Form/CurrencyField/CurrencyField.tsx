@@ -31,7 +31,7 @@ export const CurrencyField: Type = forwardRef<HTMLInputElement, Props>(
     ref
   ) => (
     <StyledWrapper>
-      <StyledIconWrapper className={cn(shape)}>
+      <StyledIconWrapper className={shape}>
         <StyledIcon>
           <AttachMoney type={Icon.Types.Filled} />
         </StyledIcon>

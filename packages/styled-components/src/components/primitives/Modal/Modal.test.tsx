@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { Modal } from './';
+import 'jest-styled-components';
 
 describe('Modal', () => {
   it('should render modal when isOpen is true', () => {
@@ -33,12 +34,14 @@ describe('Modal', () => {
   });
   it('should render custom CSS class', () => {
     render(
-      <Modal isOpen customCss="customCss">
+      <Modal isOpen customCss="color: violet">
         content
       </Modal>
     );
     const modal = screen.getByText('content');
-    expect(modal).toHaveClass('custom');
+    expect(modal).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
   it('should render custom class', () => {
     render(
@@ -51,12 +54,14 @@ describe('Modal', () => {
   });
   it('should render custom CSS class on overlay', () => {
     render(
-      <Modal isOpen overlayCustomCss="overlayCustomCss">
+      <Modal isOpen overlayCustomCss="color: violet">
         content
       </Modal>
     );
     const overlay = screen.getByText('content').parentNode;
-    expect(overlay).toHaveClass('custom');
+    expect(overlay).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
   it('should render custom class on overlay', () => {
     render(

@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { TextArea } from '.';
+import 'jest-styled-components';
 
 describe('TextArea', () => {
   const testId = 'textArea';
@@ -18,10 +19,16 @@ describe('TextArea', () => {
   });
   it('should render custom Css', () => {
     render(
-      <TextArea placeholder="placeholder" name="text-area" customCss="foo" />
+      <TextArea
+        placeholder="placeholder"
+        name="text-area"
+        customCss="color: violet"
+      />
     );
     const textArea = screen.getByTestId(testId);
-    expect(textArea).toHaveClass('custom');
+    expect(textArea).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
   it('should render required', () => {
     render(<TextArea placeholder="placeholder" name="text-area" required />);

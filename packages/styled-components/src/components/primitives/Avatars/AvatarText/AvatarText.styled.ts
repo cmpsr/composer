@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { Typography } from 'components/primitives/Typography';
-import { withCustomCss } from 'utils/withCustomCss';
+import { customCss } from 'utils/customCss';
 import {
   StyledBaseProps,
   StyledCssProps,
@@ -46,7 +46,7 @@ export const StyledTypography = styled(Typography)`
   padding: 0.15rem;
 `;
 
-export const StyledHighlighter = withCustomCss(styled.div<Props>`
+export const StyledHighlighter = styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,4 +70,5 @@ export const StyledHighlighter = withCustomCss(styled.div<Props>`
     width: 4rem;
     height: 4rem;
   }
-`);
+  ${(props) => customCss(props)}
+`;

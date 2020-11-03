@@ -36,6 +36,13 @@ describe('TextFieldButtonButton', () => {
     fireEvent.change(textFieldButton, { target: { value: 'new value' } });
     expect(mockOnChange).toBeCalled();
   });
+  it('should custom css', () => {
+    givenComponentRendered({ customCss: 'color: violet' });
+    const textFieldButton = screen.getByTestId(testId).firstChild;
+    expect(textFieldButton).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
+  });
   const givenComponentRendered = (props?: any) =>
     render(<TextFieldButton name="foo" placeholder="foo" {...props} />);
 });

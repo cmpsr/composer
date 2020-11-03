@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
 import { Typography } from 'components/primitives/Typography';
 import { Props } from './RadioButton.types';
 import {

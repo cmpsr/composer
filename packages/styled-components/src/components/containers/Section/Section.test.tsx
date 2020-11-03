@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Section } from '.';
+import 'jest-styled-components';
 
 describe('Section', () => {
   it('should render with children', () => {
@@ -13,8 +14,10 @@ describe('Section', () => {
     expect(section).toHaveClass('foo');
   });
   it('should render custom css', () => {
-    render(<Section customCss="customCss" />);
+    render(<Section customCss="color: violet" />);
     const section = screen.getByTestId('section');
-    expect(section).toHaveClass('custom');
+    expect(section).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
 });

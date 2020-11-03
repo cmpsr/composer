@@ -1,10 +1,9 @@
-import { StyledBaseProps } from 'components/Components.styled.types';
+import { StyledCssProps } from 'components/Components.styled.types';
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
+import { customCss } from 'utils/customCss';
 
-type Props = StyledBaseProps;
-
-export const StyledTypography = styled.div<Props>`
+export const StyledTypography = styled.div<StyledCssProps>`
   &.headline1 {
     letter-spacing: ${(props) =>
       getTheme(props).Typography.sm.letterSpacing.headline1};
@@ -349,4 +348,6 @@ export const StyledTypography = styled.div<Props>`
       font-family: ${(props) => getTheme(props).Typography.md.fontFamily.bold};
     }
   }
+
+  ${(props) => customCss(props)}
 `;

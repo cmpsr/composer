@@ -15,6 +15,7 @@ export * from './Form/SearchField';
 export * from './Form/TextArea';
 export * from './Form/TextField';
 export * from './Form/TextFieldButton';
+export * from './Form/TextFieldWithLabel';
 export * from './Icon';
 export * from './Image';
 export * from './Link';

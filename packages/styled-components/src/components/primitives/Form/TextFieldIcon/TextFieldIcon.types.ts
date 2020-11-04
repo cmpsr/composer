@@ -1,4 +1,7 @@
-import { CssCustomizableProps } from 'components/Components.types';
+import {
+  CssCustomizableProps,
+  IconPositions,
+} from 'components/Components.types';
 import { ChangeEvent } from 'react';
 
 export type Props = CssCustomizableProps & {
@@ -13,8 +16,3 @@ export type Props = CssCustomizableProps & {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   icon?: React.ReactNode;
 };
-
-export enum IconPositions {
-  Left = 'left',
-  Right = 'right',
-}

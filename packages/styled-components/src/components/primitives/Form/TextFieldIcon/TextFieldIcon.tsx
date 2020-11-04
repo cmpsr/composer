@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import cn from 'classnames';
-import { Props, IconPositions } from './TextFieldIcon.types';
+import { Props } from './TextFieldIcon.types';
 import {
   StyledWrapper,
   StyledIcon,
   StyledIconWrapper,
   StyledTextField,
 } from './TextFieldIcon.styled';
+import { IconPositions } from 'components/Components.types';
 
 export const TextFieldIcon = ({
   className,

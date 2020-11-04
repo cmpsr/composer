@@ -2,8 +2,8 @@ import React, { forwardRef } from 'react';
 import cn from 'classnames';
 import { Icon } from 'components/primitives';
 import { search as Search } from 'components/primitives/Icon/icons/action';
-import { Props, IconPositions, Type } from './SearchField.types';
-import { Shapes } from 'components/Components.types';
+import { Props, Type } from './SearchField.types';
+import { Shapes, IconPositions } from 'components/Components.types';
 import {
   StyledWrapper,
   StyledIconWrapper,

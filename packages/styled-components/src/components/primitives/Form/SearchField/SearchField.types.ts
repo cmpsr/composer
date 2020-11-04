@@ -4,7 +4,11 @@ import {
   PropsWithoutRef,
   RefAttributes,
 } from 'react';
-import { CssCustomizableProps, Shapes } from 'components/Components.types';
+import {
+  CssCustomizableProps,
+  Shapes,
+  IconPositions,
+} from 'components/Components.types';
 
 export type Props = CssCustomizableProps & {
   shape?: Shapes;
@@ -18,11 +22,6 @@ export type Props = CssCustomizableProps & {
   type?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
-
-export enum IconPositions {
-  Left = 'left',
-  Right = 'right',
-}
 
 export type Type = ForwardRefExoticComponent<
   PropsWithoutRef<Props> & RefAttributes<HTMLInputElement>

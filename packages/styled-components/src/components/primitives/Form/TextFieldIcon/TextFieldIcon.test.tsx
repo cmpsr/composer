@@ -20,6 +20,11 @@ describe('TextFieldIcon', () => {
     const textFieldIcon = screen.getByTestId(testId);
     expect(textFieldIcon).toHaveClass('foo');
   });
+  it('should render wrapper class', () => {
+    givenComponentRendered({ wrapperClassName: 'foo' });
+    const textFieldIcon = screen.getByTestId(testId).parentElement;
+    expect(textFieldIcon).toHaveClass('foo');
+  });
   it('should render aria label', () => {
     givenComponentRendered({ ariaLabel: 'foo' });
     const textFieldIcon = screen.getByTestId(testId);

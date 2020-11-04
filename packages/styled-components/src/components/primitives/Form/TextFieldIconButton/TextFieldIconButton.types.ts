@@ -1,8 +1,8 @@
+import { ChangeEvent, ReactNode } from 'react';
 import {
   CssCustomizableProps,
   IconPositions,
 } from 'components/Components.types';
-import { ChangeEvent } from 'react';
 
 export type Props = CssCustomizableProps & {
   className?: string;
@@ -17,6 +17,6 @@ export type Props = CssCustomizableProps & {
   iconPosition?: IconPositions;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   onClick?: () => void;
-  buttonContent?: React.ReactNode;
-  icon?: React.ReactNode;
+  buttonContent?: ReactNode;
+  icon?: ReactNode;
 };

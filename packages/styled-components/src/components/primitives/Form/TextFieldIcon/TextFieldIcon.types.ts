@@ -16,4 +16,5 @@ export type Props = CssCustomizableProps & {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   icon?: React.ReactNode;
   wrapperCustomCss?: string;
+  wrapperClassName?: string;
 };

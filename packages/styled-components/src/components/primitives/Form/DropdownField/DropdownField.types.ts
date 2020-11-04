@@ -1,9 +1,9 @@
 import { CssCustomizableProps } from 'components/Components.types';
 
-export interface Option {
+export type Option = {
   label: string;
   value: any;
-}
+};
 
 export type Props = CssCustomizableProps & {
   options?: Option[];

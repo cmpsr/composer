@@ -1,11 +1,11 @@
 import React from 'react';
-import { DropdownNativeSelect } from '.';
+import { DropdownField } from '.';
 import { action } from '@storybook/addon-actions';
 import { text, boolean } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Primitives/Form/DropdownField/DropdownNativeSelect',
-  component: DropdownNativeSelect,
+  title: 'Primitives/Form/DropdownField',
+  component: DropdownField,
 };
 
 const options = [
@@ -17,7 +17,7 @@ const options = [
 export const Playground = () => (
   <>
     <h1>Playground</h1>
-    <DropdownNativeSelect
+    <DropdownField
       placeholder={text('Placeholder', 'placeholder')}
       name={text('Name', 'name')}
       disabled={boolean('Disabled', false)}

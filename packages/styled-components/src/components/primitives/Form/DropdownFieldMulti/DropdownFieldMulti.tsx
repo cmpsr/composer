@@ -19,7 +19,7 @@ import {
 } from './DropdownFieldMulti.styled';
 import { Typography } from 'components/primitives/Typography';
 
-export const DropdownMultiSelect = ({
+export const DropdownFieldMulti = ({
   className,
   options,
   placeholder = 'Select an item',
@@ -27,8 +27,13 @@ export const DropdownMultiSelect = ({
   testId = 'dropdownFieldMulti',
   disabled = false,
   customCss,
+  initialSelectedOption,
 }: Props) => {
-  const [selectedItems, setSelectedItems] = useState(new Set<Option>());
+  const defaultSet = new Set<Option>();
+  const initialOption = initialSelectedOption
+    ? defaultSet.add(initialSelectedOption)
+    : defaultSet;
+  const [selectedItems, setSelectedItems] = useState(initialOption);
 
   const addItem = (selectedItem: Option) => {
     if (!selectedItems.has(selectedItem)) {

@@ -4,6 +4,7 @@ export * from './Badges/IconicBadge';
 export * from './Badges/NumericBadge';
 export * from './Button';
 export * from './Chat/Conversation/Message';
+export * from './Chat/Conversation/MessageError';
 export * from './Chat/ConversationList';
 export * from './Chat/ConversationSummary';
 export * from './Dropdown';

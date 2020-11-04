@@ -14,6 +14,29 @@ const options = [
   { value: 3, label: 'Option 3' },
 ];
 
+export const Placeholder = () => (
+  <>
+    <h1>DropdownField placeholder</h1>
+    <DropdownField
+      placeholder={'Select an item'}
+      onItemChange={action('On click icon')}
+      options={options}
+    />
+  </>
+);
+
+export const InitialOption = () => (
+  <>
+    <h1>DropdownField initial option</h1>
+    <DropdownField
+      placeholder={'Select an item'}
+      onItemChange={action('On click icon')}
+      options={options}
+      initialSelectedOption={options[1]}
+    />
+  </>
+);
+
 export const Playground = () => (
   <>
     <h1>Playground</h1>

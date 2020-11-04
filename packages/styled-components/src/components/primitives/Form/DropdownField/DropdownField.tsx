@@ -29,7 +29,7 @@ export const DropdownField = forwardRef<HTMLSelectElement, Props>(
     )
 );
 
-export const DropdownMobile = forwardRef<HTMLSelectElement, Props>(
+const DropdownMobile = forwardRef<HTMLSelectElement, Props>(
   (
     {
       className,
@@ -84,7 +84,7 @@ export const DropdownMobile = forwardRef<HTMLSelectElement, Props>(
   }
 );
 
-export const DropdownDesktop = forwardRef<HTMLSelectElement, Props>(
+const DropdownDesktop = forwardRef<HTMLSelectElement, Props>(
   (
     {
       className,

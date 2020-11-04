@@ -1,11 +1,11 @@
+import { ChangeEvent, ReactNode } from 'react';
 import {
   CssCustomizableProps,
   IconPositions,
 } from 'components/Components.types';
-import { ChangeEvent } from 'react';
 
 export type Props = CssCustomizableProps & {
-  iconPosition?: IconPositions;
+  className?: string;
   ariaLabel?: string;
   name: string;
   placeholder: string;
@@ -13,8 +13,10 @@ export type Props = CssCustomizableProps & {
   disabled?: boolean;
   invalid?: boolean;
   type?: string;
+  value?: string | number;
+  iconPosition?: IconPositions;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  icon?: React.ReactNode;
-  wrapperCustomCss?: string;
-  wrapperClassName?: string;
+  onClick?: () => void;
+  buttonContent?: ReactNode;
+  icon?: ReactNode;
 };

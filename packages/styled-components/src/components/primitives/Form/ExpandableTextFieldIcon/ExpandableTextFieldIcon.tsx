@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import cn from 'classnames';
-import { IconPositions, Props } from './ExpandableTextFieldIcon.types';
-import { Shapes } from 'components/Components.types';
+import { Props } from './ExpandableTextFieldIcon.types';
+import { Shapes, IconPositions } from 'components/Components.types';
 import {
   StyledWrapper,
   StyledIconWrapper,

@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import cn from 'classnames';
-import { Props, IconPositions } from './TextFieldIcon.types';
+import { Props } from './TextFieldIcon.types';
 import {
   StyledWrapper,
   StyledIcon,
   StyledIconWrapper,
   StyledTextField,
 } from './TextFieldIcon.styled';
+import { IconPositions } from 'components/Components.types';
 
 export const TextFieldIcon = ({
   className,
@@ -22,6 +23,8 @@ export const TextFieldIcon = ({
   testId = 'textFieldIcon',
   icon,
   customCss,
+  wrapperCustomCss,
+  wrapperClassName,
 }: Props) => {
   const [focused, setFocus] = useState(false);
   const ref = useRef(null);
@@ -43,7 +46,7 @@ export const TextFieldIcon = ({
   }, []);
 
   return (
-    <StyledWrapper>
+    <StyledWrapper className={wrapperClassName} css={wrapperCustomCss}>
       <StyledTextField
         customCss={customCss}
         testId={testId}

@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
-import { StyledBaseProps } from 'components/Components.styled.types';
+import {
+  StyledBaseProps,
+  StyledCssProps,
+} from 'components/Components.styled.types';
 import { Icon } from 'components/primitives/Icon';
 import { TextField } from 'components/primitives/Form/TextField';
+import { customCss } from 'utils/customCss';
 
-export const StyledWrapper = styled.div`
+export const StyledWrapper = styled.div<StyledCssProps>`
   position: relative;
+
+  ${(props) => customCss(props)}
 `;
 
 export const StyledIcon = styled(Icon)<StyledBaseProps>`

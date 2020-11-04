@@ -15,3 +15,8 @@ export enum Shapes {
   SemiRounded = 'semiRounded',
   Rectangle = 'rectangle',
 }
+
+export enum IconPositions {
+  Left = 'left',
+  Right = 'right',
+}

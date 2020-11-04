@@ -1,36 +1,38 @@
 import React from 'react';
-import { TextFieldIcon } from '.';
+import { TextFieldIconButton } from '.';
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
 import { ErrorField } from 'components/primitives';
 import { favorite as Favorite, Icon } from 'components/primitives/Icon';
 
 export default {
-  title: 'Primitives/Form/TextFieldIcon',
-  component: TextFieldIcon,
+  title: 'Primitives/Form/TextFieldIconButton',
+  component: TextFieldIconButton,
 };
 
 export const IconPositions = () => (
   <>
-    <h1>TextFieldIcon IconPositions</h1>
-    {Object.keys(TextFieldIcon.IconPositions).map((iconPosition: any, i) => (
-      <div key={i}>
-        <TextFieldIcon
-          iconPosition={TextFieldIcon.IconPositions[iconPosition]}
-          placeholder={iconPosition}
-          name={iconPosition}
-          icon={<Favorite type={Icon.Types.Filled} />}
-        />
-        <br />
-      </div>
-    ))}
+    <h1>TextFieldIconButton IconPositions</h1>
+    {Object.keys(TextFieldIconButton.IconPositions).map(
+      (iconPosition: any, i) => (
+        <div key={i}>
+          <TextFieldIconButton
+            iconPosition={TextFieldIconButton.IconPositions[iconPosition]}
+            placeholder={iconPosition}
+            name={iconPosition}
+            icon={<Favorite type={Icon.Types.Filled} />}
+          />
+          <br />
+        </div>
+      )
+    )}
   </>
 );
 
 export const Disabled = () => (
   <>
-    <h1>TextFieldIcon disabled</h1>
-    <TextFieldIcon
+    <h1>TextFieldIconButton disabled</h1>
+    <TextFieldIconButton
       disabled
       placeholder="disabled"
       name="disabled"
@@ -41,8 +43,8 @@ export const Disabled = () => (
 
 export const Invalid = () => (
   <>
-    <h1>TextFieldIcon invalid</h1>
-    <TextFieldIcon
+    <h1>TextFieldIconButton invalid</h1>
+    <TextFieldIconButton
       invalid
       placeholder="invalid"
       name="invalid"
@@ -53,8 +55,8 @@ export const Invalid = () => (
 
 export const Error = () => (
   <>
-    <h1>TextFieldIcon error</h1>
-    <TextFieldIcon
+    <h1>TextFieldIconButton error</h1>
+    <TextFieldIconButton
       placeholder="error"
       name="error"
       icon={<Favorite type={Icon.Types.Filled} />}
@@ -66,15 +68,14 @@ export const Error = () => (
 export const Playground = () => (
   <>
     <h1>Playground</h1>
-    <TextFieldIcon
+    <TextFieldIconButton
       name="name"
       placeholder={text('Placeholder', 'Placeholder')}
       disabled={boolean('Disabled', false)}
       invalid={boolean('Invalid', false)}
       required={boolean('Required', false)}
       onChange={action('On change')}
-      customCss={text('Custom css', 'padding: 10px; border: 1px dashed blue;')}
-      wrapperCustomCss={text('Wrapper custom css', 'border: 1px dashed red;')}
+      customCss={text('Custom css', 'border: 1px dashed blue;')}
       icon={<Favorite type={Icon.Types.Filled} />}
     />
   </>

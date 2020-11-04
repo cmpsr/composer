@@ -11,28 +11,35 @@ import {
 } from './MessageError.styled';
 import { Icon, error as Error } from 'components/primitives/Icon';
 import { Props } from './MessageError.types';
+import { Message } from 'components/primitives';
 
 export const MessageError = ({
   text,
   className,
-  placement = StyledMessage.Placements.Left,
+  customCss,
+  testId = 'messageError',
+  placement = Message.Placements.Left,
   errorText,
   onErrorClick,
 }: Props) => {
   return (
-    <StyledMessageContainer className={cn(className, placement)}>
+    <StyledMessageContainer
+      data-testid={testId}
+      css={customCss}
+      className={cn(className, placement)}
+    >
       <StyledMessageWrapper>
         <StyledMessage
           text={text}
           placement={placement}
-          className={cn(placement)}
+          className={placement}
         />
         <StyledIconWrapper
           data-testid="errorIcon"
           onClick={onErrorClick}
-          className={cn(placement)}
+          className={placement}
         >
-          <StyledIcon viewBoxWidth={21} viewBoxHeight={24}>
+          <StyledIcon>
             <Error type={Icon.Types.Rounded} />
           </StyledIcon>
         </StyledIconWrapper>
@@ -51,4 +58,4 @@ export const MessageError = ({
   );
 };
 
-MessageError.Placement = StyledMessage.Placements;
+MessageError.Placements = Message.Placements;

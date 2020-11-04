@@ -3,12 +3,11 @@ import { getTheme } from 'utils/getTheme';
 import { Message } from 'components/primitives';
 import { Icon } from 'components/primitives/Icon';
 import { Typography } from 'components/primitives/Typography';
+import { StyledBaseProps } from 'components/Components.styled.types';
+import { StyledCssProps } from 'components/Components.styled.types';
+import { customCss } from 'utils/customCss';
 
-interface Props {
-  theme: any;
-}
-
-export const StyledMessageContainer = styled.div`
+export const StyledMessageContainer = styled.div<StyledCssProps>`
   display: flex;
   flex-direction: column;
 
@@ -19,6 +18,8 @@ export const StyledMessageContainer = styled.div`
   &.right {
     align-items: flex-end;
   }
+
+  ${(props) => customCss(props)}
 `;
 
 export const StyledMessageWrapper = styled.div`
@@ -53,8 +54,9 @@ export const StyledIconWrapper = styled.div`
   }
 `;
 
-export const StyledIcon = styled(Icon)<Props>`
+export const StyledIcon = styled(Icon)<StyledBaseProps>`
   fill: currentColor;
+  cursor: pointer;
   color: ${(props) => getTheme(props).colors.fillSystemError};
 `;
 
@@ -64,7 +66,7 @@ export const StyledErrorWrapper = styled.div`
   user-select: none;
 `;
 
-export const StyledErrorText = styled(Typography)`
+export const StyledErrorText = styled(Typography)<StyledBaseProps>`
   color: ${(props) => getTheme(props).colors.fillSystemError};
   margin: 0;
 `;

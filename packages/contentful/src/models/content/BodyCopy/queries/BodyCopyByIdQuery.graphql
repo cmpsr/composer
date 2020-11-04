@@ -1,7 +1,0 @@
-#import "../fragments/BodyCopy.graphql"
-
-query BodyCopyByIdQuery($id: String!) {
-  bodyCopy(id: $id) {
-    ...BodyCopy
-  }
-}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { DropdownField, DropdownMobile, DropdownDesktop } from './';
+import { DropdownField } from './';
 
 jest.mock('react-device-detect');
 
@@ -9,9 +9,9 @@ const options = [
   { value: 2, label: 'Option 2' },
   { value: 3, label: 'Option 3' },
 ];
+const deviceDetect = require('react-device-detect');
 
 describe('DropdownField', () => {
-  const deviceDetect = require('react-device-detect');
   it('should render desktop dropdown', () => {
     deviceDetect.isMobile = false;
     render(<DropdownField options={options} />);
@@ -25,6 +25,7 @@ describe('DropdownField', () => {
 });
 
 describe('DropdownMobile', () => {
+  beforeEach(() => (deviceDetect.isMobile = true));
   const testId = 'dropdownMobile';
   it('should render placeholder', () => {
     givenComponentRendered({ placeholder: 'foo' });
@@ -68,7 +69,7 @@ describe('DropdownMobile', () => {
   });
   const givenComponentRendered = (props?: any) =>
     render(
-      <DropdownMobile
+      <DropdownField
         options={options}
         placeholder="foo"
         onItemChange={() => {}}
@@ -78,6 +79,7 @@ describe('DropdownMobile', () => {
 });
 
 describe('DropdownDesktop', () => {
+  beforeEach(() => (deviceDetect.isMobile = false));
   const testId = 'dropdownDesktop';
   it('should render placeholder', () => {
     givenComponentRendered({ placeholder: 'foo' });
@@ -122,7 +124,7 @@ describe('DropdownDesktop', () => {
   });
   const givenComponentRendered = (props?: any) =>
     render(
-      <DropdownDesktop
+      <DropdownField
         options={options}
         placeholder="foo"
         onItemChange={() => {}}

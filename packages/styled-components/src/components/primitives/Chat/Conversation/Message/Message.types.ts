@@ -1,4 +1,6 @@
-export enum Colors {
+import { CssCustomizableProps } from 'components/Components.types';
+
+export enum BackgroundColors {
   Black = 'black',
   Primary = 'primary',
   Secondary = 'secondary',
@@ -14,11 +16,9 @@ type Media = {
   url: string;
 };
 
-export type Props = {
+export type Props = CssCustomizableProps & {
   text?: string;
-  className?: string;
-  testId?: string;
-  color?: Colors;
+  backgroundColor?: BackgroundColors;
   placement?: Placements;
   time?: string;
   mediaFiles?: Media[];

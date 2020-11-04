@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ConversationSummary } from './ConversationSummary';
+import 'jest-styled-components';
 
 describe('ConversationSummary', () => {
   const testID = 'conversationSummary';
@@ -24,7 +25,7 @@ describe('ConversationSummary', () => {
     render(
       <ConversationSummary
         id="1"
-        messageCss="customCss"
+        messageCss="color: violet"
         title="I'm a fancy title"
         description="I'm a fancy description"
         message="I'm the message"
@@ -32,7 +33,9 @@ describe('ConversationSummary', () => {
       />
     );
     const message = screen.getByText("I'm the message");
-    expect(message).toHaveClass('custom');
+    expect(message).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
   it('should render title, description, message and time', () => {
     render(

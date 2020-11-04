@@ -8,39 +8,32 @@ export default {
   component: Message,
 };
 
+const mediaFile = {
+  contentType: 'image/jpeg',
+  url: 'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
+};
+
 const mediaFiles = {
   none: [],
-  one: [
-    {
-      contentType: 'image/jpeg',
-      url:
-        'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
-    },
-  ],
-  two: [
-    {
-      contentType: 'image/jpeg',
-      url:
-        'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
-    },
-    {
-      contentType: 'image/jpeg',
-      url:
-        'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
-    },
-  ],
+  one: [mediaFile],
+  two: [mediaFile, mediaFile],
 };
+
+const styles = `
+  background: #c3f7d3;
+  padding: 10px;
+`;
 
 export const Placements = () => (
   <>
     <h1>Message placements</h1>
-    {Object.keys(Message.Placements).map((placement: any) => (
-      <>
+    {Object.keys(Message.Placements).map((placement: any, i) => (
+      <div key={i}>
         <Message
           placement={Message.Placements[placement]}
           text="I'm a fancy message"
         />
-      </>
+      </div>
     ))}
   </>
 );
@@ -48,11 +41,25 @@ export const Placements = () => (
 export const Colors = () => (
   <>
     <h1>Message colors</h1>
-    {Object.keys(Message.Colors).map((color: any) => (
-      <>
-        <Message color={Message.Colors[color]} text="I'm a fancy message" />
-      </>
+    {Object.keys(Message.BackgroundColors).map((backgroundColor: any, i) => (
+      <div key={i}>
+        <Message
+          backgroundColor={Message.BackgroundColors[backgroundColor]}
+          text="I'm a fancy message"
+        />
+      </div>
     ))}
+  </>
+);
+
+export const Media = () => (
+  <>
+    <h1>Message media</h1>
+    <Message
+      mediaFiles={mediaFiles.two}
+      onMediaClick={action('On media click')}
+      text="I'm a media message"
+    />
   </>
 );
 
@@ -66,9 +73,15 @@ export const Playground = () => (
         Message.Placements,
         Message.Placements.Left
       )}
+      backgroundColor={select(
+        'Message background color',
+        Message.BackgroundColors,
+        Message.BackgroundColors.Primary
+      )}
       time={text('Time', '10:30 Am')}
       onMediaClick={action('On media click')}
       mediaFiles={select('MediaFiles', mediaFiles, mediaFiles.none)}
+      customCss={text('Message styles', styles)}
     />
   </>
 );

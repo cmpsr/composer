@@ -8,6 +8,11 @@ export default {
   component: Image,
 };
 
+const styles = `
+  width: 10%;
+  cursor: pointer;
+`;
+
 export const Playground = () => (
   <Image
     image={{
@@ -18,5 +23,6 @@ export const Playground = () => (
       ),
     }}
     onLoad={action('Image loaded')}
+    customCss={text('Image styles', styles)}
   />
 );

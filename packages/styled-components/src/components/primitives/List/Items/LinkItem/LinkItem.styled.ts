@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { Icon } from 'components/primitives';
+import { StyledBaseProps } from 'components/Components.styled.types';
 
-interface Props {
-  theme: any;
-}
+type Props = StyledBaseProps;
 
 export const StyledAnchor = styled.a<Props>`
   color: inherit;

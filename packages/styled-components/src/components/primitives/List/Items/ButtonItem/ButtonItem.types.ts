@@ -1,9 +1,8 @@
+import { BaseProps } from 'components/Components.types';
 import { ReactNode } from 'react';
 
-export type Props = {
-  className?: string;
+export type Props = BaseProps & {
   children?: ReactNode;
   onClick?: () => void;
   disabled?: boolean;
-  testId?: string;
 };

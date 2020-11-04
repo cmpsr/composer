@@ -1,4 +1,6 @@
-export type Props = {
+import { BaseProps } from 'components/Components.types';
+
+export type Props = BaseProps & {
   id: string;
   title: string;
   description: string;
@@ -9,8 +11,6 @@ export type Props = {
   isActive?: boolean;
   isError?: boolean;
   time: string;
-  className?: string;
   messageCss?: string;
-  testId?: string;
   onClick?: (id: string) => void;
 };

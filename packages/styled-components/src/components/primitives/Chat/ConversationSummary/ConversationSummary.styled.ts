@@ -1,16 +1,15 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { Typography } from 'components/primitives/Typography';
+import { Props as TypographyProps } from 'components/primitives/Typography/Typography.types';
 import { Icon } from 'components/primitives/Icon';
 import { customCss } from 'utils/customCss';
+import {
+  StyledBaseProps,
+  StyledCssProps,
+} from 'components/Components.styled.types';
 
-interface CssProps {
-  css?: string;
-}
-
-interface Props extends CssProps {
-  theme: any;
-}
+type Props = StyledBaseProps & StyledCssProps;
 
 const truncate = `
   overflow: hidden;
@@ -72,7 +71,7 @@ export const StyledProfileDescription = styled(Typography)`
   ${truncate}
 `;
 
-export const StyledProfileMessage = styled(Typography)<Props>`
+export const StyledProfileMessage = styled(Typography)<StyledCssProps>`
   margin-top: 0rem;
   margin-bottom: 0rem;
   ${truncate}
@@ -82,7 +81,7 @@ export const StyledProfileMessage = styled(Typography)<Props>`
     color: ${(props) => getTheme(props).colors.fillSystemError};
   }
 
-  ${(props) => customCss(props)};
+  ${(props) => customCss(props)}
 `;
 
 export const StyledNotificationContainer = styled.div`

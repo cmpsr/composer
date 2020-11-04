@@ -2,11 +2,12 @@ import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
 import { Typography } from 'components/primitives/Typography';
 import { customCss } from 'utils/customCss';
+import {
+  StyledBaseProps,
+  StyledCssProps,
+} from 'components/Components.styled.types';
 
-interface Props {
-  css?: string;
-  theme: any;
-}
+type Props = StyledBaseProps & StyledCssProps;
 
 export const StyledAvatarText = styled.div<Props>`
   display: flex;
@@ -69,6 +70,5 @@ export const StyledHighlighter = styled.div<Props>`
     width: 4rem;
     height: 4rem;
   }
-
-  ${(props) => customCss(props)};
+  ${(props) => customCss(props)}
 `;

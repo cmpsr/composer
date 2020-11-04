@@ -8,7 +8,7 @@ import {
   StyledButton,
   StyledCloseContainer,
   StyledIcon,
-  StyledWrapper
+  StyledWrapper,
 } from './Modal.styled';
 
 const stopEventPropagation = (e: React.MouseEvent) => {
@@ -18,12 +18,14 @@ const stopEventPropagation = (e: React.MouseEvent) => {
 
 export const Modal = ({
   children,
+  className,
   customCss,
   overlayCustomCss,
+  overlayClassName,
   shape = Shapes.Rectangle,
   isOpen = false,
   showCloseButton: closeButton = false,
-  testId = 'modal'
+  testId = 'modal',
 }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(isOpen);
 
@@ -37,11 +39,11 @@ export const Modal = ({
     <StyledOverlay
       data-testid={testId}
       onClick={handleCloseModal}
-      className={cn({ custom: overlayCustomCss })}
+      className={overlayClassName}
       css={overlayCustomCss}
     >
       <StyledWrapper
-        className={cn(shape, { custom: customCss })}
+        className={cn(className, shape)}
         css={customCss}
         onClick={stopEventPropagation}
       >

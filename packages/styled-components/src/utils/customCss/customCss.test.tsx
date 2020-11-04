@@ -8,7 +8,7 @@ describe('customCss', () => {
   it('should return custom css class', () => {
     const style = 'color: white';
     const css = customCss({ css: style });
-    expect(css).toContain('&.custom');
+    expect(css).toContain('&&& {');
     expect(css).toContain(style);
   });
 });

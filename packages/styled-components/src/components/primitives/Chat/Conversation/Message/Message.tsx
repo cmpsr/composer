@@ -3,23 +3,25 @@ import cn from 'classnames';
 import {
   StyledMessage,
   StyledMessageWrapper,
-  TextWrapper,
-  TimeWrapper,
+  StyledTextWrapper,
+  StyledTimeWrapper,
   StyledMediaWrapper,
   StyledMediaLoader,
-  BadgeLoader,
-  NumberOfMediaFiles,
+  StyledBadgeLoader,
+  StyledNumberOfMediaFiles,
+  mediaPreviewStyling,
+  StyledImage,
 } from './Message.styled';
 import { Typography } from 'components/primitives/Typography';
-import { Image } from 'components/primitives/Image';
-import { Colors, Props, Placements } from './Message.types';
+import { BackgroundColors, Props, Placements } from './Message.types';
 import { Spinner } from 'components/primitives/Spinner';
 
 export const Message = ({
   text,
   className,
   testId = 'message',
-  color = Colors.Primary,
+  backgroundColor = BackgroundColors.Primary,
+  customCss,
   placement = Placements.Right,
   time,
   mediaFiles = [],
@@ -43,11 +45,12 @@ export const Message = ({
   return (
     <StyledMessage
       data-testid="wrapperMessage"
+      css={customCss}
       className={cn(className, placement, { hasTime: !!time })}
     >
       <StyledMessageWrapper
         data-testid={testId}
-        className={cn(placement, color)}
+        className={cn(placement, backgroundColor)}
       >
         {hasMedia && (
           <StyledMediaWrapper
@@ -59,15 +62,16 @@ export const Message = ({
                 data-testid="mediaLoader"
                 className={cn(placement, { hasText: !!text })}
               >
-                <BadgeLoader>
+                <StyledBadgeLoader>
                   <Spinner color={Spinner.Colors.White} />
-                </BadgeLoader>
+                </StyledBadgeLoader>
               </StyledMediaLoader>
             )}
-            <Image
+            <StyledImage
               className="imageWrapper"
               onLoad={handleMediaLoad}
-              imageClassName={cn('mediaPreview', placement, {
+              customCss={mediaPreviewStyling}
+              imageClassName={cn(placement, {
                 hasText: !!text,
                 isMediaLoaded: isMediaLoaded,
               })}
@@ -77,7 +81,7 @@ export const Message = ({
               }}
             />
             {hasMultipleMedia && isMediaLoaded && (
-              <NumberOfMediaFiles data-testid="mediaFilesIndicator">
+              <StyledNumberOfMediaFiles data-testid="mediaFilesIndicator">
                 <Typography
                   mode={Typography.Modes.Light100}
                   tag={Typography.Tags.H6}
@@ -85,12 +89,15 @@ export const Message = ({
                 >
                   +{mediaFiles.length}
                 </Typography>
-              </NumberOfMediaFiles>
+              </StyledNumberOfMediaFiles>
             )}
           </StyledMediaWrapper>
         )}
         {!!text && (
-          <TextWrapper className={cn({ hasMedia })} data-testid="textMessage">
+          <StyledTextWrapper
+            className={cn({ hasMedia })}
+            data-testid="textMessage"
+          >
             <Typography
               mode={Typography.Modes.Dark100}
               tag={Typography.Tags.Span}
@@ -98,11 +105,11 @@ export const Message = ({
             >
               {text}
             </Typography>
-          </TextWrapper>
+          </StyledTextWrapper>
         )}
       </StyledMessageWrapper>
       {time && (
-        <TimeWrapper className={cn({ hasTime: !!time })}>
+        <StyledTimeWrapper className={cn({ hasTime: !!time })}>
           <Typography
             mode={Typography.Modes.Dark50}
             tag={Typography.Tags.Span}
@@ -110,11 +117,11 @@ export const Message = ({
           >
             {time}
           </Typography>
-        </TimeWrapper>
+        </StyledTimeWrapper>
       )}
     </StyledMessage>
   );
 };
 
-Message.Colors = Colors;
+Message.BackgroundColors = BackgroundColors;
 Message.Placements = Placements;

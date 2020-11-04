@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import cn from 'classnames';
 import { Typography } from 'components/primitives/Typography';
 import { Props } from './RadioButton.types';
 import {
@@ -38,7 +37,7 @@ export const RadioButton = forwardRef<HTMLInputElement, Props>(
           ref={ref}
           name={name}
           css={customCss}
-          className={cn(className, { custom: customCss })}
+          className={className}
           aria-label={ariaLabel}
           type="radio"
           value={value}

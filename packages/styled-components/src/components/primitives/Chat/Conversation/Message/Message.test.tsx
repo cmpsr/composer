@@ -1,45 +1,45 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Message } from './Message';
+import { Message } from '.';
+import 'jest-styled-components';
 
 describe('Message', () => {
-  const WRAPPER_MESSAGE_DEFAULT_TEST_ID = 'wrapperMessage';
-  const MESSAGE_DEFAULT_TEST_ID = 'message';
+  const wrapperTestId = 'wrapperMessage';
+  const testId = 'message';
   const mediaFiles = [{ url: 'url', contentType: 'contentType' }];
   it('should render class', () => {
     render(<Message className="foo" text="I'm a fancy message" />);
-    const message = screen.getByTestId(WRAPPER_MESSAGE_DEFAULT_TEST_ID);
+    const message = screen.getByTestId(wrapperTestId);
     expect(message).toHaveClass('foo');
   });
   it('should render text', () => {
     render(<Message text="I'm a fancy message" />);
-    const message = screen.getByText("I'm a fancy message");
-    expect(message).toBeInTheDocument();
+    screen.getByText("I'm a fancy message");
   });
   it('should render primary color', () => {
     render(
-      <Message color={Message.Colors.Primary} text="I'm a fancy message" />
+      <Message backgroundColor={Message.BackgroundColors.Primary} text="I'm a fancy message" />
     );
-    const message = screen.getByTestId(MESSAGE_DEFAULT_TEST_ID);
-    expect(message).toHaveClass(Message.Colors.Primary);
+    const message = screen.getByTestId(testId);
+    expect(message).toHaveClass(Message.BackgroundColors.Primary);
   });
   it('should render secondary color', () => {
     render(
-      <Message color={Message.Colors.Secondary} text="I'm a fancy message" />
+      <Message backgroundColor={Message.BackgroundColors.Secondary} text="I'm a fancy message" />
     );
-    const message = screen.getByTestId(MESSAGE_DEFAULT_TEST_ID);
-    expect(message).toHaveClass(Message.Colors.Secondary);
+    const message = screen.getByTestId(testId);
+    expect(message).toHaveClass(Message.BackgroundColors.Secondary);
   });
   it('should render black color', () => {
-    render(<Message color={Message.Colors.Black} text="I'm a fancy message" />);
-    const message = screen.getByTestId(MESSAGE_DEFAULT_TEST_ID);
-    expect(message).toHaveClass(Message.Colors.Black);
+    render(<Message backgroundColor={Message.BackgroundColors.Black} text="I'm a fancy message" />);
+    const message = screen.getByTestId(testId);
+    expect(message).toHaveClass(Message.BackgroundColors.Black);
   });
   it('should render with left placement styles', () => {
     render(
       <Message placement={Message.Placements.Left} text="I'm a fancy message" />
     );
-    const message = screen.getByTestId(MESSAGE_DEFAULT_TEST_ID);
+    const message = screen.getByTestId(testId);
     expect(message).toHaveClass(Message.Placements.Left);
   });
   it('should render with right placement styles', () => {
@@ -49,7 +49,7 @@ describe('Message', () => {
         text="I'm a fancy message"
       />
     );
-    const message = screen.getByTestId(MESSAGE_DEFAULT_TEST_ID);
+    const message = screen.getByTestId(testId);
     expect(message).toHaveClass(Message.Placements.Right);
   });
   it('should render time with styles', () => {
@@ -93,5 +93,12 @@ describe('Message', () => {
     const image = screen.getByTestId('imageContent');
     fireEvent.load(image);
     expect(mockOnLoadMedia).toHaveBeenCalledTimes(1);
+  });
+  it('should render custom CSS as a class', () => {
+    render(<Message customCss="color: violet" />);
+    const wrapper = screen.getByTestId(wrapperTestId);
+    expect(wrapper).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
 });

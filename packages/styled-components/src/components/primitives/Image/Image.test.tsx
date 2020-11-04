@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { Image } from './Image';
+import 'jest-styled-components';
 
 describe('Image', () => {
   const imageContentTestId = 'imageContent';
@@ -42,5 +43,12 @@ describe('Image', () => {
     const image = screen.getByTestId(imageContentTestId);
     fireEvent.load(image);
     expect(mockOnLoad).toHaveBeenCalledTimes(1);
+  });
+  it('should render custom CSS as a class', () => {
+    render(<Image image={imageType} customCss="color: violet" />);
+    const image = screen.getByTestId(imageContentTestId);
+    expect(image).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
 });

@@ -7,6 +7,5 @@ type Props = StyledCssProps;
 export const StyledSectionChild = styled.div<Props>`
   padding-top: 2rem;
   padding-bottom: 2rem;
-
   ${(props) => customCss(props)}
 `;

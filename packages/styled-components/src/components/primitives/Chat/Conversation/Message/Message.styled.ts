@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { getTheme } from 'utils/getTheme';
+import { StyledBaseProps } from 'components/Components.styled.types';
+import { StyledCssProps } from 'components/Components.styled.types';
+import { customCss } from 'utils/customCss';
+import { Image } from 'components/primitives/Image';
 
-interface Props {
-  theme: any;
-}
-
-export const StyledMessage = styled.div`
+export const StyledMessage = styled.div<StyledCssProps>`
   display: flex;
   flex-direction: column;
   margin-bottom: 0.5rem;
@@ -23,9 +23,11 @@ export const StyledMessage = styled.div`
     align-items: flex-end;
     justify-content: flex-end;
   }
+
+  ${(props) => customCss(props)}
 `;
 
-export const StyledMessageWrapper = styled.div<Props>`
+export const StyledMessageWrapper = styled.div<StyledBaseProps>`
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
   padding: 0.25rem;
@@ -64,7 +66,7 @@ export const StyledMessageWrapper = styled.div<Props>`
   }
 `;
 
-export const TextWrapper = styled.div`
+export const StyledTextWrapper = styled.div`
   padding: 0.625rem 0.75rem;
 
   &.hasMedia {
@@ -72,14 +74,14 @@ export const TextWrapper = styled.div`
   }
 `;
 
-export const TimeWrapper = styled.div`
+export const StyledTimeWrapper = styled.div`
   &.hasTime {
     margin-bottom: 0.5rem;
     margin-top: 0.25rem;
   }
 `;
 
-export const StyledMediaWrapper = styled.div<Props>`
+export const StyledMediaWrapper = styled.div<StyledBaseProps>`
   position: relative;
   display: flex;
   justify-content: center;
@@ -95,42 +97,40 @@ export const StyledMediaWrapper = styled.div<Props>`
   .imageWrapper {
     display: flex;
   }
+`;
 
-  .mediaPreview {
+export const mediaPreviewStyling = `
     width: 100%;
+    height: 100%;
     user-select: none;
     max-width: 20rem;
     object-fit: cover;
     display: none;
     border-radius: 22px;
+    position: absolute;
 
     &.isMediaLoaded {
       display: block;
     }
-
     &.left {
       border-bottom-left-radius: 6px;
       border-bottom-right-radius: 22px;
-
       &.hasText {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
       }
     }
-
     &.right {
       border-bottom-left-radius: 22px;
       border-bottom-right-radius: 6px;
-
       &.hasText {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
       }
     }
-  }
 `;
 
-export const StyledMediaLoader = styled.div<Props>`
+export const StyledMediaLoader = styled.div<StyledBaseProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -160,7 +160,7 @@ export const StyledMediaLoader = styled.div<Props>`
   }
 `;
 
-export const NumberOfMediaFiles = styled.div<Props>`
+export const StyledNumberOfMediaFiles = styled.div<StyledBaseProps>`
   position: absolute;
   top: 0;
   right: 0;
@@ -181,7 +181,7 @@ export const NumberOfMediaFiles = styled.div<Props>`
   }
 `;
 
-export const BadgeLoader = styled.div<Props>`
+export const StyledBadgeLoader = styled.div<StyledBaseProps>`
   width: 3.125rem;
   height: 3.125rem;
   top: 0;
@@ -199,5 +199,14 @@ export const BadgeLoader = styled.div<Props>`
   @media (min-width: ${(props) => getTheme(props).breakpoints.md}) {
     width: 3.75rem;
     height: 3.75rem;
+  }
+`;
+
+export const StyledImage = styled(Image)`
+  &&& {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: relative;
   }
 `;

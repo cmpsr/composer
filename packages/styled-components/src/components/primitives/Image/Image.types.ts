@@ -1,8 +1,8 @@
-export type Props = {
-  className?: string;
+import { CssCustomizableProps } from 'components/Components.types';
+
+export type Props = CssCustomizableProps & {
   imageClassName?: string;
   image: Image;
-  testId?: string;
   onLoad?: () => void;
 };
 

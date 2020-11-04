@@ -1,7 +1,7 @@
-export type Props = {
-  className?: string;
+import { BaseProps } from 'components/Components.types';
+
+export type Props = BaseProps & {
   strokeWidth?: number;
-  testId?: string;
   size?: Sizes;
   color?: Colors;
 };

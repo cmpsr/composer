@@ -23,6 +23,7 @@ export const TextFieldIcon = ({
   testId = 'textFieldIcon',
   icon,
   customCss,
+  wrapperCustomCss,
 }: Props) => {
   const [focused, setFocus] = useState(false);
   const ref = useRef(null);
@@ -44,7 +45,7 @@ export const TextFieldIcon = ({
   }, []);
 
   return (
-    <StyledWrapper>
+    <StyledWrapper css={wrapperCustomCss}>
       <StyledTextField
         customCss={customCss}
         testId={testId}

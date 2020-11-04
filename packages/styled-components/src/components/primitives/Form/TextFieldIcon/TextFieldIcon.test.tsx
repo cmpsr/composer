@@ -59,6 +59,13 @@ describe('TextFieldIcon', () => {
       modifier: '&&&',
     });
   });
+  it('should render wrapper custom css', () => {
+    givenComponentRendered({ wrapperCustomCss: 'color: violet' });
+    const wrapper = screen.getByTestId(testId).parentElement;
+    expect(wrapper).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
+  });
   const givenComponentRendered = (props?: any) =>
     render(
       <TextFieldIcon

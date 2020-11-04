@@ -47,4 +47,11 @@ describe('MessageError', () => {
     fireEvent.click(errorIcon);
     expect(mockOnErrorClick).toBeCalledTimes(2);
   });
+  it('should render custom CSS as a class', () => {
+    render(<MessageError text="I'm a fancy message" customCss="color: violet" />);
+    const wrapper = screen.getByTestId(testId);
+    expect(wrapper).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
+  });
 });

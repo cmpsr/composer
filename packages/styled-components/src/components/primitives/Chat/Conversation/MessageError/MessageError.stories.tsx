@@ -18,7 +18,7 @@ export const Placement = () => (
     {Object.keys(MessageError.Placements).map((placement: any, i) => (
       <div key={i}>
         <MessageError
-          text="I'm fancy message"
+          text="I'm a fancy message"
           errorText="I'm an error"
           placement={MessageError.Placements[placement]}
         />

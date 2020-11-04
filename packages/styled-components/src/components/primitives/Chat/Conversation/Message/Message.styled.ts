@@ -98,7 +98,7 @@ export const StyledMediaWrapper = styled.div<StyledBaseProps>`
   }
 `;
 
-export const mediaPreview = `
+export const mediaPreviewStyling = `
     width: 100%;
     user-select: none;
     max-width: 20rem;

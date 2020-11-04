@@ -11,7 +11,7 @@ export default {
 const mediaFile = {
       contentType: 'image/jpeg',
       url:
-        'https://www.autobild.es/sites/autobild.es/public/styles/main_element/public/dc/fotos/tesla_model_S_001.jpg?itok=jttOEAGK',
+        'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
     };
 
 const mediaFiles = {
@@ -23,7 +23,7 @@ const mediaFiles = {
 
 const styles = `
   background: #c3f7d3;
-  padding: 10px 10px;
+  padding: 10px;
 `;
 
 

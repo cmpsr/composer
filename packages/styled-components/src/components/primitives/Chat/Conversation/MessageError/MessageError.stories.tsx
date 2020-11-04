@@ -5,7 +5,7 @@ import { text, select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Primitives/Chat/Conversation/MessageError',
-}
+};
 
 const styles = `
   background: #c3f7d3;

@@ -44,6 +44,7 @@ export const Playground = () => (
       placeholder={text('Placeholder', 'placeholder')}
       name={text('Name', 'name')}
       disabled={boolean('Disabled', false)}
+      invalid={boolean('Invalid', false)}
       onItemChange={action('On click icon')}
       options={options}
       customCss={text('Custom css', 'border: 1px dashed blue')}

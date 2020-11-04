@@ -20,6 +20,11 @@ describe('TextFieldIcon', () => {
     const textFieldIcon = screen.getByTestId(testId);
     expect(textFieldIcon).toHaveClass('foo');
   });
+  it('should render wrapper class', () => {
+    givenComponentRendered({ wrapperClassName: 'foo' });
+    const textFieldIcon = screen.getByTestId(testId).parentElement;
+    expect(textFieldIcon).toHaveClass('foo');
+  });
   it('should render aria label', () => {
     givenComponentRendered({ ariaLabel: 'foo' });
     const textFieldIcon = screen.getByTestId(testId);
@@ -56,6 +61,13 @@ describe('TextFieldIcon', () => {
     givenComponentRendered({ customCss: 'color: violet' });
     const textFieldIcon = screen.getByTestId(testId);
     expect(textFieldIcon).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
+  });
+  it('should render wrapper custom css', () => {
+    givenComponentRendered({ wrapperCustomCss: 'color: violet' });
+    const wrapper = screen.getByTestId(testId).parentElement;
+    expect(wrapper).toHaveStyleRule('color', 'violet', {
       modifier: '&&&',
     });
   });

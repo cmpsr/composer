@@ -3,6 +3,7 @@ import { getTheme } from 'utils/getTheme';
 import { StyledBaseProps } from 'components/Components.styled.types';
 import { StyledCssProps } from 'components/Components.styled.types';
 import { customCss } from 'utils/customCss';
+import { Image } from 'components/primitives/Image';
 
 export const StyledMessage = styled.div<StyledCssProps>`
   display: flex;
@@ -100,11 +101,14 @@ export const StyledMediaWrapper = styled.div<StyledBaseProps>`
 
 export const mediaPreviewStyling = `
     width: 100%;
+    height: 100%;
     user-select: none;
     max-width: 20rem;
     object-fit: cover;
     display: none;
     border-radius: 22px;
+    position: absolute;
+
     &.isMediaLoaded {
       display: block;
     }
@@ -195,5 +199,14 @@ export const StyledBadgeLoader = styled.div<StyledBaseProps>`
   @media (min-width: ${(props) => getTheme(props).breakpoints.md}) {
     width: 3.75rem;
     height: 3.75rem;
+  }
+`;
+
+export const StyledImage = styled(Image)`
+  &&& {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: relative;
   }
 `;

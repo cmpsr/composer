@@ -9,10 +9,9 @@ export default {
 };
 
 const mediaFile = {
-      contentType: 'image/jpeg',
-      url:
-        'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
-    };
+  contentType: 'image/jpeg',
+  url: 'https://avatars0.githubusercontent.com/u/67131017?s=200&v=4',
+};
 
 const mediaFiles = {
   none: [],
@@ -20,12 +19,10 @@ const mediaFiles = {
   two: [mediaFile, mediaFile],
 };
 
-
 const styles = `
   background: #c3f7d3;
   padding: 10px;
 `;
-
 
 export const Placements = () => (
   <>
@@ -46,7 +43,10 @@ export const Colors = () => (
     <h1>Message colors</h1>
     {Object.keys(Message.BackgroundColors).map((backgroundColor: any, i) => (
       <div key={i}>
-        <Message backgroundColor={Message.BackgroundColors[backgroundColor]} text="I'm a fancy message" />
+        <Message
+          backgroundColor={Message.BackgroundColors[backgroundColor]}
+          text="I'm a fancy message"
+        />
       </div>
     ))}
   </>
@@ -55,9 +55,13 @@ export const Colors = () => (
 export const Media = () => (
   <>
     <h1>Message media</h1>
-    <Message mediaFiles={mediaFiles.two} onMediaClick={action('On media click')} text="I'm a media message" />
+    <Message
+      mediaFiles={mediaFiles.two}
+      onMediaClick={action('On media click')}
+      text="I'm a media message"
+    />
   </>
-)
+);
 
 export const Playground = () => (
   <>

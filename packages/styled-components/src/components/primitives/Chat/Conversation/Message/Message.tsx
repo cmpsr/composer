@@ -10,9 +10,9 @@ import {
   StyledBadgeLoader,
   StyledNumberOfMediaFiles,
   mediaPreviewStyling,
+  StyledImage,
 } from './Message.styled';
 import { Typography } from 'components/primitives/Typography';
-import { Image } from 'components/primitives/Image';
 import { BackgroundColors, Props, Placements } from './Message.types';
 import { Spinner } from 'components/primitives/Spinner';
 
@@ -67,7 +67,7 @@ export const Message = ({
                 </StyledBadgeLoader>
               </StyledMediaLoader>
             )}
-            <Image
+            <StyledImage
               className="imageWrapper"
               onLoad={handleMediaLoad}
               customCss={mediaPreviewStyling}
@@ -94,7 +94,10 @@ export const Message = ({
           </StyledMediaWrapper>
         )}
         {!!text && (
-          <StyledTextWrapper className={cn({ hasMedia })} data-testid="textMessage">
+          <StyledTextWrapper
+            className={cn({ hasMedia })}
+            data-testid="textMessage"
+          >
             <Typography
               mode={Typography.Modes.Dark100}
               tag={Typography.Tags.Span}

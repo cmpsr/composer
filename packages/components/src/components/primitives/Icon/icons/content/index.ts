@@ -1,1 +1,1 @@
-export * from './contentIcons';
+export * from './ContentIcons';

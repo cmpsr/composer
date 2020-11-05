@@ -1,8 +1,0 @@
-.form-input {
-  @apply appearance-none bg-fill-form-enabled relative block w-full p-3 border text-dark-100 z-10 text-m-form-filled;
-}
-@screen md {
-  .form-input {
-    @apply appearance-none bg-fill-form-enabled relative block w-full p-3 border text-dark-100 z-10 text-d-form-filled;
-  }
-}

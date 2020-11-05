@@ -1,22 +1,14 @@
-import React, { ReactNode } from 'react';
-import cn from 'classnames';
-
-export const SECTION_DEFAULT_TEST_ID = 'section';
-
-type Props = {
-  children?: ReactNode;
-  className?: string;
-  testId?: string;
-};
+import React from 'react';
+import { Props } from './Section.types';
+import { StyledSection } from './Section.styled';
 
 export const Section = ({
   children,
   className,
-  testId = SECTION_DEFAULT_TEST_ID,
-}: Props) => {
-  return (
-    <section className={cn('mb-4', className)} data-testid={testId}>
-      {children}
-    </section>
-  );
-};
+  customCss,
+  testId = 'section',
+}: Props) => (
+  <StyledSection css={customCss} className={className} data-testid={testId}>
+    {children}
+  </StyledSection>
+);

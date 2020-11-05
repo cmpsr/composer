@@ -1,28 +1,17 @@
-import React from "react";
-import cn from "classnames";
-
-import { Video as VideoType } from "types";
-
-type Props = {
-  autoPlay?: boolean;
-  controls?: boolean;
-  className?: string;
-  video: VideoType;
-  testId?: string;
-};
-
-export const VIDEO_DEFAULT_TEST_ID = "video";
+import React from 'react';
+import { Props } from './Video.types';
+import { StyledVideo } from './Video.styled';
 
 export const Video = ({
   autoPlay,
   controls,
   className,
   video: { url },
-  testId = VIDEO_DEFAULT_TEST_ID,
+  testId = 'video',
 }: Props) => {
   return (
-    <video
-      className={cn("select-none", className)}
+    <StyledVideo
+      className={className}
       src={url}
       autoPlay={autoPlay}
       controls={controls}

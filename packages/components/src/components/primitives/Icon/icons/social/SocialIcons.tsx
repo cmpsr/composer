@@ -1,8 +1,5 @@
 import React from 'react';
-
-type Props = {
-  type: 'filled' | 'outlined' | 'rounded';
-};
+import { SvgProps as Props, Types } from '../../Icon.types';
 
 export const people_outline = ({ type }: Props) => {
   const path = {
@@ -358,7 +355,7 @@ export const sentiment_very_satisfied = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'filled' && (
+      {type === Types.Filled && (
         <>
           <circle cx="15.5" cy="9.5" r="1.5" />
           <circle cx="8.5" cy="9.5" r="1.5" />

@@ -1,54 +1,28 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
 import {
-  Typography,
-  TypographyTypes,
-  TypographyMode,
-} from 'components/primitives/Typography';
-import {
-  Circular,
-  CircularColor,
-} from 'components/primitives/Progress/Circular';
-import { Image } from 'components/primitives/Image';
-import { getStyles } from 'utils/getMessageClasses';
-
-export const MESSAGE_DEFAULT_TEST_ID = 'message';
-export const WRAPPER_MESSAGE_DEFAULT_TEST_ID = 'wrapperMessage';
-
-export enum MessageBackgroundColor {
-  Black100 = 'bg-fill-black-100',
-  Secondary600 = 'bg-fill-secondary-600',
-  Primary600 = 'bg-fill-primary-600',
-}
-
-export enum MessagePlacement {
-  Left = 'left',
-  Right = 'right',
-}
-
-type Media = {
-  contentType: string;
-  url: string;
-};
-
-type Props = {
-  text?: string;
-  className?: string;
-  testId?: string;
-  backgroundColor?: MessageBackgroundColor;
-  placement?: MessagePlacement;
-  time?: string;
-  mediaFiles?: Media[];
-  onMediaClick?: (mediaFiles: Media[]) => void;
-  onLoadMedia?: () => void;
-};
+  StyledMessage,
+  StyledMessageWrapper,
+  StyledTextWrapper,
+  StyledTimeWrapper,
+  StyledMediaWrapper,
+  StyledMediaLoader,
+  StyledBadgeLoader,
+  StyledNumberOfMediaFiles,
+  mediaPreviewStyling,
+  StyledImage,
+} from './Message.styled';
+import { Typography } from 'components/primitives/Typography';
+import { BackgroundColors, Props, Placements } from './Message.types';
+import { Spinner } from 'components/primitives/Spinner';
 
 export const Message = ({
   text,
   className,
-  testId = MESSAGE_DEFAULT_TEST_ID,
-  backgroundColor = MessageBackgroundColor.Primary600,
-  placement = MessagePlacement.Right,
+  testId = 'message',
+  backgroundColor = BackgroundColors.Primary,
+  customCss,
+  placement = Placements.Right,
   time,
   mediaFiles = [],
   onMediaClick,
@@ -67,93 +41,87 @@ export const Message = ({
     hasMultipleMedia: mediaFiles.length > 1,
     thumbnail: mediaFiles && mediaFiles[0]?.url,
   };
-  const {
-    wrapperClasses,
-    messageClasses,
-    timeClasses,
-    textWrapper,
-    mediaPreview,
-    numberOfMediaFiles,
-    mediaWrapper,
-    mediaLoader,
-    imageWrapper,
-    badgeLoader,
-  } = getStyles(
-    placement,
-    backgroundColor,
-    !!time,
-    !!text,
-    hasMedia,
-    isMediaLoaded
-  );
 
   return (
-    <div
-      data-testid={WRAPPER_MESSAGE_DEFAULT_TEST_ID}
-      className={cn(className, wrapperClasses)}
+    <StyledMessage
+      data-testid="wrapperMessage"
+      css={customCss}
+      className={cn(className, placement, { hasTime: !!time })}
     >
-      <div data-testid={testId} className={cn(messageClasses)}>
+      <StyledMessageWrapper
+        data-testid={testId}
+        className={cn(placement, backgroundColor)}
+      >
         {hasMedia && (
-          <div
-            className={mediaWrapper}
-            data-testid="mediaWrapper"
+          <StyledMediaWrapper
             onClick={onClickMediaFiles}
+            data-testid="mediaWrapper"
           >
             {!isMediaLoaded && (
-              <div data-testid="mediaLoader" className={mediaLoader}>
-                <div className={badgeLoader}>
-                  <Circular color={CircularColor.White} />
-                </div>
-              </div>
+              <StyledMediaLoader
+                data-testid="mediaLoader"
+                className={cn(placement, { hasText: !!text })}
+              >
+                <StyledBadgeLoader>
+                  <Spinner color={Spinner.Colors.White} />
+                </StyledBadgeLoader>
+              </StyledMediaLoader>
             )}
-            <Image
-              className={imageWrapper}
+            <StyledImage
+              className="imageWrapper"
               onLoad={handleMediaLoad}
-              imageClassName={mediaPreview}
+              customCss={mediaPreviewStyling}
+              imageClassName={cn(placement, {
+                hasText: !!text,
+                isMediaLoaded: isMediaLoaded,
+              })}
               image={{
                 title: 'Media Asset',
                 url: thumbnail,
               }}
             />
             {hasMultipleMedia && isMediaLoaded && (
-              <div
-                data-testid="mediaFilesIndicator"
-                className={numberOfMediaFiles}
-              >
+              <StyledNumberOfMediaFiles data-testid="mediaFilesIndicator">
                 <Typography
-                  mode={TypographyMode.Light100}
-                  tag={'h6'}
-                  type={TypographyTypes.Headline6}
+                  mode={Typography.Modes.Light100}
+                  tag={Typography.Tags.H6}
+                  type={Typography.Types.Headline6}
                 >
                   +{mediaFiles.length}
                 </Typography>
-              </div>
+              </StyledNumberOfMediaFiles>
             )}
-          </div>
+          </StyledMediaWrapper>
         )}
         {!!text && (
-          <div className={cn(textWrapper)} data-testid="textMessage">
+          <StyledTextWrapper
+            className={cn({ hasMedia })}
+            data-testid="textMessage"
+          >
             <Typography
-              mode={TypographyMode.Dark100}
-              tag={'span'}
-              type={TypographyTypes.Form}
+              mode={Typography.Modes.Dark100}
+              tag={Typography.Tags.Span}
+              type={Typography.Types.Form}
             >
               {text}
             </Typography>
-          </div>
+          </StyledTextWrapper>
         )}
-      </div>
+      </StyledMessageWrapper>
       {time && (
-        <div className={timeClasses}>
+        <StyledTimeWrapper className={cn({ hasTime: !!time })}>
           <Typography
-            mode={TypographyMode.Dark50}
-            tag={'span'}
-            type={TypographyTypes.Eyebrow}
+            mode={Typography.Modes.Dark50}
+            tag={Typography.Tags.Span}
+            type={Typography.Types.Eyebrow}
           >
             {time}
           </Typography>
-        </div>
+        </StyledTimeWrapper>
       )}
-    </div>
+    </StyledMessage>
   );
 };
+
+Message.BackgroundColors = BackgroundColors;
+Message.Placements = Placements;

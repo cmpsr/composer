@@ -1,32 +1,31 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import {
-  ConversationSummary,
-  CONVERSATION_SUMMARY_DEFAULT_TEST_ID,
-} from './ConversationSummary';
-import { AVATAR_TEXT_DEFAULT_TEST_ID } from '../../Avatars/AvatarText';
-import { NUMERIC_BADGE_DEFAULT_TEST_ID } from '../../Badges/NumericBadge';
+import { ConversationSummary } from './ConversationSummary';
+import 'jest-styled-components';
 
 describe('ConversationSummary', () => {
-  it('should render classname', () => {
+  const testID = 'conversationSummary';
+  const avatarTestId = 'avatarText';
+  const badgeTestId = 'numericBadge';
+  it('should render custom css class', () => {
     render(
       <ConversationSummary
         id="1"
-        className="className"
+        className="foo"
         title="I'm a fancy title"
         description="I'm a fancy description"
         message="I'm the message"
         time="02:30 PM"
       />
     );
-    const summary = screen.getByTestId(CONVERSATION_SUMMARY_DEFAULT_TEST_ID);
-    expect(summary).toHaveClass('className');
+    const summary = screen.getByTestId(testID);
+    expect(summary).toHaveClass('foo');
   });
-  it('should render message classname', () => {
+  it('should render custom css class for message', () => {
     render(
       <ConversationSummary
         id="1"
-        messageClassName="messageClassName"
+        messageCss="color: violet"
         title="I'm a fancy title"
         description="I'm a fancy description"
         message="I'm the message"
@@ -34,7 +33,9 @@ describe('ConversationSummary', () => {
       />
     );
     const message = screen.getByText("I'm the message");
-    expect(message).toHaveClass('messageClassName');
+    expect(message).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
   it('should render title, description, message and time', () => {
     render(
@@ -46,14 +47,10 @@ describe('ConversationSummary', () => {
         time="time"
       />
     );
-    const title = screen.getByText('title');
-    const description = screen.getByText('description');
-    const message = screen.getByText('message');
-    const time = screen.getByText('time');
-    expect(title).toBeInTheDocument();
-    expect(description).toBeInTheDocument();
-    expect(message).toBeInTheDocument();
-    expect(time).toBeInTheDocument();
+    screen.getByText('title');
+    screen.getByText('description');
+    screen.getByText('message');
+    screen.getByText('time');
   });
   it('should render unread messages', () => {
     render(
@@ -66,8 +63,7 @@ describe('ConversationSummary', () => {
         unreadMessages={5}
       />
     );
-    const unreadMessages = screen.getByText('5');
-    expect(unreadMessages).toBeInTheDocument();
+    screen.getByText('5');
   });
   it('should not render unread messages when is error', () => {
     render(
@@ -81,10 +77,10 @@ describe('ConversationSummary', () => {
         isError
       />
     );
-    const unreadMessages = screen.queryByTestId(NUMERIC_BADGE_DEFAULT_TEST_ID);
+    const unreadMessages = screen.queryByTestId(badgeTestId);
     expect(unreadMessages).not.toBeInTheDocument();
   });
-  it('should not render unread messages when unreadMessages is 0', () => {
+  it('should not render unread messages no unread messages', () => {
     render(
       <ConversationSummary
         id="1"
@@ -96,7 +92,7 @@ describe('ConversationSummary', () => {
         isError
       />
     );
-    const unreadMessages = screen.queryByTestId(NUMERIC_BADGE_DEFAULT_TEST_ID);
+    const unreadMessages = screen.queryByTestId(badgeTestId);
     expect(unreadMessages).not.toBeInTheDocument();
   });
   it('should render error icon', () => {
@@ -110,10 +106,9 @@ describe('ConversationSummary', () => {
         isError
       />
     );
-    const errorIcon = screen.getByTestId('icon');
-    expect(errorIcon).toBeInTheDocument();
+    screen.getByTestId('icon');
   });
-  it('should render different background when is active', () => {
+  it('should render active state when active', () => {
     render(
       <ConversationSummary
         id="1"
@@ -124,8 +119,8 @@ describe('ConversationSummary', () => {
         isActive
       />
     );
-    const summary = screen.getByTestId(CONVERSATION_SUMMARY_DEFAULT_TEST_ID);
-    expect(summary).toHaveClass('bg-fill-background-400');
+    const summary = screen.getByTestId(testID);
+    expect(summary).toHaveClass('active');
   });
   it('should render avatarText and highlight avatar', () => {
     render(
@@ -139,10 +134,9 @@ describe('ConversationSummary', () => {
         isHighlighted
       />
     );
-    const avatar = screen.getByTestId(AVATAR_TEXT_DEFAULT_TEST_ID);
-    const avatarHighlight = screen.getByTestId('avatarTextHighlight');
+    const avatar = screen.getByTestId(avatarTestId);
     expect(avatar).toHaveTextContent('AT');
-    expect(avatarHighlight).toBeInTheDocument();
+    screen.getByTestId('avatarTextHighlight');
   });
   it('should call onClick when clicked', () => {
     const mockOnClick = jest.fn();
@@ -156,7 +150,7 @@ describe('ConversationSummary', () => {
         onClick={mockOnClick}
       />
     );
-    const summary = screen.getByTestId(CONVERSATION_SUMMARY_DEFAULT_TEST_ID);
+    const summary = screen.getByTestId(testID);
     fireEvent.click(summary);
     expect(mockOnClick).toBeCalledWith('1');
     expect(mockOnClick).toBeCalledTimes(1);

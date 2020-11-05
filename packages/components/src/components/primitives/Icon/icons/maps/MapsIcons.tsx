@@ -1,8 +1,5 @@
 import React from 'react';
-
-type Props = {
-  type: 'filled' | 'outlined' | 'rounded';
-};
+import { SvgProps as Props, Types } from '../../Icon.types';
 
 export const atm = ({ type }: Props) => {
   const path = {
@@ -42,7 +39,7 @@ export const compass_calibration = ({ type }: Props) => {
 
   return (
     <>
-      {(type === 'filled' || type === 'rounded') && (
+      {(type === Types.Filled || type === Types.Rounded) && (
         <circle cx="12" cy="17" r="4" />
       )}
       <path d={path[type]} />
@@ -62,7 +59,7 @@ export const departure_board = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="5.5" cy="16.5" r="1.5" />
           <circle cx="12.5" cy="16.5" r="1.5" />
@@ -124,7 +121,7 @@ export const directions_bus = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="8.5" cy="14.5" r="1.5" />
           <circle cx="15.5" cy="14.5" r="1.5" />
@@ -148,7 +145,7 @@ export const directions_car = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="7.5" cy="14.5" r="1.5" />
           <circle cx="16.5" cy="14.5" r="1.5" />
@@ -197,7 +194,7 @@ export const directions_subway = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="8.5" cy="14.5" r="1.5" />
           <circle cx="15.5" cy="14.5" r="1.5" />
@@ -404,7 +401,7 @@ export const local_car_wash = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="7.5" cy="16.5" r="1.5" />
           <circle cx="16.5" cy="16.5" r="1.5" />
@@ -531,7 +528,7 @@ export const local_laundry_service = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="8" cy="6" r="1" />
           <circle cx="11" cy="6" r="1" />
@@ -594,7 +591,7 @@ export const local_offer = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && <circle cx="6.5" cy="6.5" r="1.5" />}
+      {type === Types.Outlined && <circle cx="6.5" cy="6.5" r="1.5" />}
     </>
   );
 };
@@ -690,7 +687,7 @@ export const local_printshop = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && <circle cx="18" cy="11.5" r="1" />}
+      {type === Types.Outlined && <circle cx="18" cy="11.5" r="1" />}
     </>
   );
 };
@@ -707,7 +704,7 @@ export const local_see = ({ type }: Props) => {
 
   return (
     <>
-      {(type === 'filled' || type === 'rounded') && (
+      {(type === Types.Filled || type === Types.Rounded) && (
         <circle cx="12" cy="12" r="3.2" />
       )}
       <path d={path[type]} />
@@ -741,7 +738,7 @@ export const local_taxi = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="7.5" cy="14.5" r="1.5" />
           <circle cx="16.5" cy="14.5" r="1.5" />
@@ -777,7 +774,7 @@ export const money = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'filled' && <path d="M2 4v16h20V4H2zm2 14V6h16v12H4z" />}
+      {type === Types.Filled && <path d="M2 4v16h20V4H2zm2 14V6h16v12H4z" />}
     </>
   );
 };
@@ -857,7 +854,7 @@ export const person_pin_circle = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'filled' && (
+      {type === Types.Filled && (
         <defs>
           <path d="M0 0h24v24H0V0z" id="a" />
         </defs>
@@ -893,7 +890,7 @@ export const place = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && <circle cx="12" cy="9" r="2.5" />}
+      {type === Types.Outlined && <circle cx="12" cy="9" r="2.5" />}
     </>
   );
 };
@@ -1019,7 +1016,7 @@ export const train = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="8.5" cy="14.5" r="1.5" />
           <circle cx="15.5" cy="14.5" r="1.5" />

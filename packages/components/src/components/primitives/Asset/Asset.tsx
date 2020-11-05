@@ -1,37 +1,29 @@
-import React from "react";
-import cn from "classnames";
-import { Video } from "../Video";
-import { Image } from "../Image";
+import React from 'react';
+import { Video } from 'components/primitives/Video';
+import { Image } from 'components/primitives/Image';
+import { Props, Type, ContentType } from './Asset.types';
 
-import { Asset as AssetType } from "types";
-
-type Props = {
-  className?: string;
-  imageClassName?: string;
-  asset: AssetType;
-  autoPlay?: boolean;
-  controls?: boolean;
-};
-
-export const Asset = ({
+export const Asset: Type = ({
   autoPlay,
   controls,
   className,
   imageClassName,
   asset: { contentType, title, url },
 }: Props) => {
-  return contentType.indexOf("video") >= 0 ? (
+  return contentType === ContentType.Video ? (
     <Video
-      className={cn("select-none", className)}
+      className={className}
       video={{ url }}
       autoPlay={autoPlay}
       controls={controls}
     />
   ) : (
     <Image
-      className={cn("select-none", className)}
+      className={className}
       imageClassName={imageClassName}
       image={{ title, url }}
     />
   );
 };
+
+Asset.ContentType = ContentType;

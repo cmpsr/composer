@@ -1,58 +1,65 @@
-import React, { ReactNode, useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
-import { Icon } from 'components/primitives';
-import { close as Close } from 'components/primitives/Icon/icons/navigation';
-import { getModalClasses } from 'utils/getModalClasses';
-import ReactModal from 'react-modal';
+import { Props } from './Modal.types';
+import { Shapes } from 'components/Components.types';
+import { Icon, close as Close } from 'components/primitives/Icon';
+import {
+  StyledOverlay,
+  StyledButton,
+  StyledCloseContainer,
+  StyledIcon,
+  StyledWrapper,
+} from './Modal.styled';
 
-export enum ModalShapes {
-  Rounded = 'rounded-modal-rounded',
-  SemiRounded = 'rounded-modal-semi-rounded',
-  Rectangle = 'rounded-modal-rectangle',
-}
-
-type Props = {
-  className?: string;
-  overlayClassName?: string;
-  onClick?: () => void;
-  shape?: ModalShapes;
-  isOpen?: boolean;
-  children?: ReactNode;
-  closeButton?: boolean;
+const stopEventPropagation = (e: React.MouseEvent) => {
+  e.stopPropagation();
+  e.nativeEvent.stopImmediatePropagation();
 };
 
 export const Modal = ({
   children,
   className,
+  customCss,
+  overlayCustomCss,
   overlayClassName,
-  shape,
+  shape = Shapes.Rectangle,
   isOpen = false,
-  closeButton = false,
+  showCloseButton: closeButton = false,
+  testId = 'modal',
 }: Props) => {
-  const [show, setShow] = useState(isOpen);
-  const { wrapper, overlay } = getModalClasses();
+  const [isModalOpen, setIsModalOpen] = useState(isOpen);
+
+  const handleCloseModal = () => setIsModalOpen(false);
 
   useEffect(() => {
-    setShow(isOpen);
+    setIsModalOpen(isOpen);
   }, [isOpen]);
 
-  return (
-    <ReactModal
-      className={cn(wrapper, className, shape)}
-      isOpen={show}
-      overlayClassName={cn(overlay, overlayClassName)}
-      ariaHideApp={false}
+  return isModalOpen ? (
+    <StyledOverlay
+      data-testid={testId}
+      onClick={handleCloseModal}
+      className={overlayClassName}
+      css={overlayCustomCss}
     >
-      {closeButton && (
-        <div className="flex justify-end">
-          <button className="focus:outline-none" onClick={() => setShow(false)}>
-            <Icon className="fill-current">
-              <Close type="filled" />
-            </Icon>
-          </button>
-        </div>
-      )}
-      {children}
-    </ReactModal>
-  );
+      <StyledWrapper
+        className={cn(className, shape)}
+        css={customCss}
+        onClick={stopEventPropagation}
+      >
+        {closeButton && (
+          <StyledCloseContainer>
+            <StyledButton onClick={handleCloseModal}>
+              <StyledIcon testId="close-button">
+                <Close type={Icon.Types.Filled} />
+              </StyledIcon>
+            </StyledButton>
+          </StyledCloseContainer>
+        )}
+        {children}
+      </StyledWrapper>
+    </StyledOverlay>
+  ) : null;
 };
+
+Modal.Shapes = Shapes;

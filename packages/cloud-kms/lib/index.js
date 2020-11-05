@@ -11,6 +11,7 @@ var _Kms = require("./Kms");
 Object.keys(_Kms).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _Kms[key]) return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {
@@ -24,6 +25,7 @@ var _types = require("./types");
 Object.keys(_types).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _types[key]) return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {

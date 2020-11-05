@@ -1,19 +1,7 @@
-import React, { ReactNode } from 'react';
-import cn from 'classnames';
-import {
-  Props as ConversationSummaryProps,
-  ConversationSummary,
-} from 'components/primitives/Chat/ConversationSummary';
-export const CONVERSATION_LIST_DEFAULT_TEST_ID = 'conversationList';
-
-type Props = {
-  id?: string;
-  conversations: ConversationSummaryProps[];
-  selectedConversationId?: string;
-  emptyCaseElement?: ReactNode;
-  className?: string;
-  testId?: string;
-};
+import React from 'react';
+import { ConversationSummary } from 'components/primitives/Chat/ConversationSummary';
+import { Props } from './ConversationList.types';
+import { StyledUnorderedList, StyledDivider } from './ConversationList.styled';
 
 export const ConversationList = ({
   id,
@@ -21,29 +9,27 @@ export const ConversationList = ({
   emptyCaseElement,
   className,
   selectedConversationId,
-  testId = CONVERSATION_LIST_DEFAULT_TEST_ID,
+  testId = 'conversationList',
 }: Props) => {
   const hasConversations = conversations.length > 0;
-  const renderConversations = () => {
-    return (
-      <ul className="list-none">
-        {conversations.map((conversation) => {
-          return (
-            <li key={conversation.id}>
-              <ConversationSummary
-                {...conversation}
-                isActive={conversation.id === selectedConversationId}
-              />
-              <div className="ml-8 border-b border-outline-background-400"></div>
-            </li>
-          );
-        })}
-      </ul>
-    );
-  };
+  const renderConversations = () => (
+    <StyledUnorderedList>
+      {conversations.map((conversation) => {
+        return (
+          <li key={conversation.id}>
+            <ConversationSummary
+              {...conversation}
+              isActive={conversation.id === selectedConversationId}
+            />
+            <StyledDivider />
+          </li>
+        );
+      })}
+    </StyledUnorderedList>
+  );
 
   return (
-    <div id={id} className={cn(className)} data-testid={testId}>
+    <div id={id} className={className} data-testid={testId}>
       {hasConversations ? renderConversations() : emptyCaseElement}
     </div>
   );

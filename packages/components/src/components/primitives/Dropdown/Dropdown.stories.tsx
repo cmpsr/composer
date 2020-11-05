@@ -1,127 +1,95 @@
 import React from 'react';
-import { text } from '@storybook/addon-knobs';
 import { Dropdown } from '.';
-import { LinkItem } from '../List';
-import { favorite as Favorite } from 'components/primitives/Icon/icons/action';
-import { Typography, TypographyTypes } from 'components/primitives';
+import { text } from '@storybook/addon-knobs';
+import { LinkItem } from 'components/primitives/List/Items';
+import { favorite as Favorite, Icon } from 'components/primitives/Icon';
+import styled from 'styled-components';
 
 export default {
-  title: 'Composer/Primitive/Dropdown',
+  title: 'Primitives/Dropdown',
   component: Dropdown,
 };
 
-export const basic = () => (
-  <Dropdown title={text('Dropdown title', 'Link')}>
-    <LinkItem title={text('Title 1', 'title')} />
-    <LinkItem title={text('Title 2', 'title')} />
-    <LinkItem title={text('Title 3', 'title')} />
-    <LinkItem title={text('Title 4', 'title')} />
-  </Dropdown>
+export const Titles = () => (
+  <>
+    <h1>Titles</h1>
+    <Dropdown title="Title">
+      <LinkItem title="title" />
+      <LinkItem title="title" />
+      <LinkItem title="title" />
+      <LinkItem title="title" />
+    </Dropdown>
+  </>
 );
 
-basic.story = {
-  name: 'basic',
-};
-
-export const withIcon = () => (
-  <Dropdown title={text('Dropdown title', 'Link')}>
-    <LinkItem
-      title={text('Title 1', 'title')}
-      icon={<Favorite type="filled" />}
-    />
-    <LinkItem
-      title={text('Title 2', 'title')}
-      icon={<Favorite type="filled" />}
-    />
-    <LinkItem
-      title={text('Title 3', 'title')}
-      icon={<Favorite type="filled" />}
-    />
-    <LinkItem
-      title={text('Title 4', 'title')}
-      icon={<Favorite type="filled" />}
-    />
-  </Dropdown>
+export const Icons = () => (
+  <>
+    <h1>Icons</h1>
+    <Dropdown title="Title">
+      <LinkItem title="title" icon={<Favorite type={Icon.Types.Filled} />} />
+      <LinkItem title="title" icon={<Favorite type={Icon.Types.Filled} />} />
+      <LinkItem title="title" icon={<Favorite type={Icon.Types.Filled} />} />
+      <LinkItem title="title" icon={<Favorite type={Icon.Types.Filled} />} />
+    </Dropdown>
+  </>
 );
 
-withIcon.story = {
-  name: 'with Icon',
-};
-
-export const twoColumns = () => (
-  <Dropdown title="Link">
-    <div className="flex">
-      <div>
-        <Typography
-          tag="h6"
-          type={TypographyTypes.Headline6}
-          className="py-4 px-6 whitespace-no-wrap"
-        >
-          {text('Subtitle 1', 'Item Sub - Title 1')}
-        </Typography>
-        <LinkItem
-          title={text('Title 1', 'title')}
-          icon={<Favorite type="filled" />}
-        />
-        <LinkItem
-          title={text('Title 2', 'title')}
-          icon={<Favorite type="filled" />}
-        />
-        <LinkItem
-          title={text('Title 3', 'title')}
-          icon={<Favorite type="filled" />}
-        />
-        <LinkItem
-          title={text('Title 4', 'title')}
-          icon={<Favorite type="filled" />}
-        />
-        <LinkItem
-          title={text('Title 5', 'title')}
-          icon={<Favorite type="filled" />}
-        />
-        <LinkItem
-          title={text('Title 6', 'title')}
-          icon={<Favorite type="filled" />}
-        />
-      </div>
-      <hr className="border h-auto my-3" />
-      <div>
-        <Typography
-          tag="h6"
-          type={TypographyTypes.Headline6}
-          className="py-4 px-6 whitespace-no-wrap"
-        >
-          {text('Subtitle 2', 'Item Sub - Title 2')}
-        </Typography>
-        <LinkItem
-          title={text('Title 7', 'title')}
-          icon={<Favorite type="filled" />}
-        />
-        <LinkItem
-          title={text('Title 8', 'title')}
-          icon={<Favorite type="filled" />}
-        />
-        <LinkItem
-          title={text('Title 9', 'title')}
-          icon={<Favorite type="filled" />}
-        />
-        <LinkItem
-          title={text('Title 10', 'title')}
-          icon={<Favorite type="filled" />}
-        />
-        <LinkItem
-          title={text('Title 11', 'title')}
-          icon={<Favorite type="filled" />}
-        />
-        <LinkItem
-          title={text('Title 12', 'title')}
-          icon={<Favorite type="filled" />}
-        />
-      </div>
-    </div>
-  </Dropdown>
+const StyledFlex = styled.div`
+  display: flex;
+`;
+export const Columns = () => (
+  <>
+    <h1>Columns</h1>
+    <Dropdown title="Title">
+      <StyledFlex>
+        <div>
+          {' '}
+          <LinkItem
+            title="title"
+            icon={<Favorite type={Icon.Types.Filled} />}
+          />
+          <LinkItem
+            title="title"
+            icon={<Favorite type={Icon.Types.Filled} />}
+          />
+          <LinkItem
+            title="title"
+            icon={<Favorite type={Icon.Types.Filled} />}
+          />
+          <LinkItem
+            title="title"
+            icon={<Favorite type={Icon.Types.Filled} />}
+          />
+        </div>
+        <div>
+          {' '}
+          <LinkItem
+            title="title"
+            icon={<Favorite type={Icon.Types.Filled} />}
+          />
+          <LinkItem
+            title="title"
+            icon={<Favorite type={Icon.Types.Filled} />}
+          />
+          <LinkItem
+            title="title"
+            icon={<Favorite type={Icon.Types.Filled} />}
+          />
+          <LinkItem
+            title="title"
+            icon={<Favorite type={Icon.Types.Filled} />}
+          />
+        </div>
+      </StyledFlex>
+    </Dropdown>
+  </>
 );
 
-twoColumns.story = {
-  name: 'Two columns',
-};
+export const Playground = () => (
+  <>
+    <h1>Playground</h1>
+    <Dropdown title={text('Title', 'Title')}>
+      {text('Content', 'Content')}
+    </Dropdown>
+  </>
+);

@@ -1,97 +1,38 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { Dropdown } from './Dropdown';
-import { LinkItem } from '../List';
-import { favorite as Favorite } from 'components/primitives/Icon/icons/action';
 
 describe('Dropdown', () => {
+  it('should render children when dropdown is open', () => {
+    render(
+      <Dropdown title="title">
+        <div>foo</div>
+      </Dropdown>
+    );
+    const expandMore = screen.getByTestId('expandMore');
+    fireEvent.click(expandMore);
+    screen.getByText('foo');
+  });
   it('should render title', () => {
-    const { getByText } = render(<Dropdown title="Link" />);
-    const dropdown = getByText('Link');
-    expect(dropdown).toBeInTheDocument();
+    render(<Dropdown title="foo" />);
+    screen.getByText('foo');
   });
   it('should render ExpandMore icon', () => {
-    const { getByTestId } = render(<Dropdown title="Link" />);
-    const icon = getByTestId('ExpandMore');
-    expect(icon).toBeInTheDocument();
+    render(<Dropdown title="title" />);
+    screen.getByTestId('expandMore');
   });
   it('should render ExpandLess icon on click', () => {
-    const { getByTestId } = render(<Dropdown title="Link" />);
-    const expandMore = getByTestId('ExpandMore');
-
+    render(<Dropdown title="title" />);
+    const expandMore = screen.getByTestId('expandMore');
     fireEvent.click(expandMore);
-
-    const expandLess = getByTestId('ExpandLess');
-    expect(expandLess).toBeInTheDocument();
+    screen.getByTestId('expandLess');
   });
   it('should close menu when click outside', () => {
-    const { getByTestId } = render(<Dropdown title="Link" />);
-    const expandMore = getByTestId('ExpandMore');
-
+    render(<Dropdown title="title" />);
+    const expandMore = screen.getByTestId('expandMore');
     fireEvent.click(expandMore);
-
-    const expandLess = getByTestId('ExpandLess');
-    expect(expandLess).toBeInTheDocument();
-
+    screen.getByTestId('expandLess');
     fireEvent.click(document);
-    expect(expandMore).toBeInTheDocument();
-  });
-  it('should open menu list', () => {
-    const { getByText } = render(
-      <Dropdown title="Link">
-        <LinkItem title="Item" />
-      </Dropdown>
-    );
-
-    const menu = getByText('Link');
-    fireEvent.click(menu);
-
-    const item = getByText('Item');
-
-    expect(item).toBeInTheDocument();
-  });
-  it('should render menu list two columns', () => {
-    const { getByText } = render(
-      <Dropdown title="Link">
-        <div className="flex">
-          <div>
-            <h6>Column 1</h6>
-            <LinkItem title="Item 1" />
-            <LinkItem title="Item 2" />
-            <LinkItem title="Item 3" />
-            <LinkItem title="Item 4" />
-          </div>
-          <div>
-            <h6>Column 2</h6>
-            <LinkItem title="Item 1" />
-            <LinkItem title="Item 2" />
-            <LinkItem title="Item 3" />
-            <LinkItem title="Item 4" />
-          </div>
-        </div>
-      </Dropdown>
-    );
-
-    const menu = getByText('Link');
-    fireEvent.click(menu);
-
-    const col1 = getByText('Column 1');
-    const col2 = getByText('Column 2');
-
-    expect(col1).toBeInTheDocument();
-    expect(col2).toBeInTheDocument();
-  });
-  it('should render item with icon', () => {
-    const { getByText, getByTestId } = render(
-      <Dropdown title="Link">
-        <LinkItem title="Item" icon={<Favorite type="filled" />} />
-      </Dropdown>
-    );
-
-    const menu = getByText('Link');
-    fireEvent.click(menu);
-
-    const icon = getByTestId('icon');
-    expect(icon).toBeInTheDocument();
+    screen.getByTestId('expandMore');
   });
 });

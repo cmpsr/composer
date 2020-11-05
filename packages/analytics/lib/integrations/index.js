@@ -8,6 +8,7 @@ var _types = require("./types");
 
 Object.keys(_types).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _types[key]) return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {
@@ -20,6 +21,7 @@ var _ga = require("./ga");
 
 Object.keys(_ga).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _ga[key]) return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {
@@ -32,6 +34,7 @@ var _segment = require("./segment");
 
 Object.keys(_segment).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _segment[key]) return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {

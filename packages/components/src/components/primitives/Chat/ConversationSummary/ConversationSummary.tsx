@@ -1,41 +1,22 @@
 import React from 'react';
 import cn from 'classnames';
+import { Typography } from 'components/primitives/Typography';
+import { AvatarText } from 'components/primitives/Avatars/AvatarText';
+import { NumericBadge } from 'components/primitives/Badges/NumericBadge';
+import { Icon, error as Error } from 'components/primitives/Icon';
+import { Props } from './ConversationSummary.types';
 import {
-  Typography,
-  TypographyTypes,
-  TypographyMode,
-} from 'components/primitives/Typography';
-import {
-  AvatarText,
-  AvatarSize,
-  AvatarBackgroundColor,
-} from 'components/primitives/Avatars/AvatarText';
-import {
-  NumericBadge,
-  BadgeColor,
-} from 'components/primitives/Badges/NumericBadge';
-import { Icon } from 'components/primitives/Icon';
-import { error as Error } from 'components/primitives/Icon/icons/alert';
-import { getConversationSummaryClasses } from 'utils/getConversationSummaryClasses';
-
-export const CONVERSATION_SUMMARY_DEFAULT_TEST_ID = 'conversationSummary';
-
-export type Props = {
-  id: string;
-  title: string;
-  description: string;
-  message: string;
-  unreadMessages?: number;
-  avatarText?: string;
-  isHighlighted?: boolean;
-  isActive?: boolean;
-  isError?: boolean;
-  time: string;
-  className?: string;
-  messageClassName?: string;
-  testId?: string;
-  onClick?: (id: string) => void;
-};
+  StyledContainer,
+  StyledProfileContainer,
+  StyledAvatarWrapper,
+  StyledProfileWrapper,
+  StyledProfileTitle,
+  StyledProfileDescription,
+  StyledProfileMessage,
+  StyledNotificationContainer,
+  StyledNotificationTime,
+  StyledIcon,
+} from './ConversationSummary.styled';
 
 export const ConversationSummary = ({
   id,
@@ -49,89 +30,73 @@ export const ConversationSummary = ({
   isError,
   time,
   className,
-  messageClassName,
-  testId = CONVERSATION_SUMMARY_DEFAULT_TEST_ID,
+  messageCss: messageClassName,
+  testId = 'conversationSummary',
   onClick,
 }: Props) => {
-  const {
-    wrapper,
-    avatarWrapper,
-    avatar,
-    profile,
-    profileWrapper,
-    profileTitle,
-    profileDescription,
-    profileMessage,
-    notification,
-    notificationTime,
-    notificationError,
-  } = getConversationSummaryClasses(isError, isActive);
   const showUnreadMessages = unreadMessages !== 0 && unreadMessages && !isError;
   return (
-    <div
+    <StyledContainer
       onClick={() => onClick(id)}
-      className={cn(className, wrapper)}
+      className={cn(className, { active: isActive })}
       data-testid={testId}
     >
-      <div className={profile}>
-        <div className={avatarWrapper}>
+      <StyledProfileContainer>
+        <StyledAvatarWrapper>
           <AvatarText
-            highlightClassName={avatar}
-            size={AvatarSize.Small}
-            backgroundColor={AvatarBackgroundColor.Primary600}
+            highlightClassName="margin-left: -0.22rem"
+            size={AvatarText.Sizes.Small}
+            backgroundColor={AvatarText.BackgroundColors.Primary600}
             text={avatarText}
             isHighlighted={isHighlighted}
           />
-        </div>
-        <div className={profileWrapper}>
-          <Typography
-            className={profileTitle}
-            mode={TypographyMode.Dark100}
-            tag={'p'}
-            type={TypographyTypes.Body}
+        </StyledAvatarWrapper>
+        <StyledProfileWrapper>
+          <StyledProfileTitle
+            mode={Typography.Modes.Dark100}
+            tag={Typography.Tags.Paragraph}
+            type={Typography.Types.Body}
           >
             <b>{title}</b>
-          </Typography>
-          <Typography
-            className={profileDescription}
-            mode={TypographyMode.Dark100}
-            tag={'p'}
-            type={TypographyTypes.Detail}
+          </StyledProfileTitle>
+          <StyledProfileDescription
+            mode={Typography.Modes.Dark100}
+            tag={Typography.Tags.Paragraph}
+            type={Typography.Types.Detail}
           >
             {description}
-          </Typography>
-          <Typography
-            className={cn(messageClassName, profileMessage)}
-            tag={'p'}
-            type={TypographyTypes.Detail}
+          </StyledProfileDescription>
+          <StyledProfileMessage
+            className={cn({ error: isError })}
+            tag={Typography.Tags.Paragraph}
+            type={Typography.Types.Detail}
+            css={messageClassName}
           >
             {message}
             {'\u00A0'}
-          </Typography>
-        </div>
-      </div>
-      <div className={notification}>
-        <Typography
-          className={notificationTime}
-          mode={TypographyMode.Dark50}
-          tag={'span'}
-          type={TypographyTypes.Detail}
+          </StyledProfileMessage>
+        </StyledProfileWrapper>
+      </StyledProfileContainer>
+      <StyledNotificationContainer>
+        <StyledNotificationTime
+          mode={Typography.Modes.Dark50}
+          tag={Typography.Tags.Span}
+          type={Typography.Types.Detail}
         >
           {time}
-        </Typography>
+        </StyledNotificationTime>
         {showUnreadMessages && (
-          <NumericBadge number={unreadMessages} color={BadgeColor.Secondary} />
+          <NumericBadge
+            number={unreadMessages}
+            color={NumericBadge.Color.Secondary}
+          />
         )}
         {isError && (
-          <Icon
-            viewBoxWidth={21}
-            viewBoxHeight={24}
-            className={notificationError}
-          >
-            <Error type="rounded" />
-          </Icon>
+          <StyledIcon viewBoxWidth={21} viewBoxHeight={24}>
+            <Error type={Icon.Types.Rounded} />
+          </StyledIcon>
         )}
-      </div>
-    </div>
+      </StyledNotificationContainer>
+    </StyledContainer>
   );
 };

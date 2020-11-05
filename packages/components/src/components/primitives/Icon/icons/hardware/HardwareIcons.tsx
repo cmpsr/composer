@@ -1,8 +1,5 @@
 import React from 'react';
-
-type Props = {
-  type: 'filled' | 'outlined' | 'rounded';
-};
+import { SvgProps as Props, Types } from '../../Icon.types';
 
 export const cast = ({ type }: Props) => {
   const path = {
@@ -532,7 +529,7 @@ export const speaker_group = ({ type }: Props) => {
 
   return (
     <>
-      {(type === 'filled' || type === 'rounded') && (
+      {(type === Types.Filled || type === Types.Rounded) && (
         <>
           <path d="M18.2 1H9.8C8.81 1 8 1.81 8 2.8v14.4c0 .99.81 1.79 1.8 1.79l8.4.01c.99 0 1.8-.81 1.8-1.8V2.8c0-.99-.81-1.8-1.8-1.8zM14 3c1.1 0 2 .89 2 2s-.9 2-2 2-2-.89-2-2 .9-2 2-2zm0 13.5c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" />
           <circle cx="14" cy="12.5" r="2.5" />
@@ -621,7 +618,7 @@ export const videogame_asset = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="14.5" cy="13.5" r="1.5" />
           <circle cx="18.5" cy="10.5" r="1.5" />

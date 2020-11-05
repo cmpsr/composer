@@ -1,8 +1,5 @@
 import React from 'react';
-
-type Props = {
-  type: 'filled' | 'outlined' | 'rounded';
-};
+import { SvgProps as Props, Types } from '../../Icon.types';
 
 export const call_made = ({ type }: Props) => {
   const path = {
@@ -151,7 +148,7 @@ export const cancel_presentation = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'filled' && (
+      {type === Types.Filled && (
         <path d="M21 19.1H3V5h18v14.1zM21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
       )}
       <path d={path[type]} />
@@ -443,7 +440,7 @@ export const location_on = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && <circle cx="12" cy="9" r="2.5" />}
+      {type === Types.Outlined && <circle cx="12" cy="9" r="2.5" />}
     </>
   );
 };
@@ -513,7 +510,7 @@ export const pause_presentation = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'filled' && <path d="M9 8h2v8H9zm4 0h2v8h-2z" />}
+      {type === Types.Filled && <path d="M9 8h2v8H9zm4 0h2v8h-2z" />}
     </>
   );
 };
@@ -530,7 +527,7 @@ export const person_add_disabled = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'filled' && <circle cx="15" cy="8" r="4" />}
+      {type === Types.Filled && <circle cx="15" cy="8" r="4" />}
       <path d={path[type]} />
     </>
   );
@@ -640,7 +637,7 @@ export const print_disabled = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && <circle cx="18" cy="11.51" r="1" />}
+      {type === Types.Outlined && <circle cx="18" cy="11.51" r="1" />}
     </>
   );
 };
@@ -701,7 +698,7 @@ export const sentiment_satisfied_alt = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'filled' && (
+      {type === Types.Filled && (
         <>
           <circle cx="15.5" cy="9.5" r="1.5" />
           <circle cx="8.5" cy="9.5" r="1.5" />

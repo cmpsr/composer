@@ -1,32 +1,22 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import cn from 'classnames';
-
-export const BOX_DEFAULT_TEST_ID = 'box';
-
-type Props = {
-  children?: ReactNode;
-  className?: string;
-  size?: 'full' | 'screen' | 'content';
-  testId?: string;
-};
+import { Props, Sizes } from './Box.types';
+import { StyledBox } from './Box.styled';
 
 export const Box = ({
   children,
   className,
   size,
-  testId = BOX_DEFAULT_TEST_ID,
-}: Props) => {
-  return (
-    <div
-      className={cn(
-        { 'w-screen h-screen': size === 'screen' },
-        { 'w-full h-full': size === 'full' },
-        { 'w-full h-full max-w-content mx-auto': size === 'content' },
-        className,
-      )}
-      data-testid={testId}
-    >
-      {children}
-    </div>
-  );
-};
+  customCss,
+  testId = 'box',
+}: Props) => (
+  <StyledBox
+    css={customCss}
+    className={cn(className, size)}
+    data-testid={testId}
+  >
+    {children}
+  </StyledBox>
+);
+
+Box.Sizes = Sizes;

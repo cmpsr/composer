@@ -1,20 +1,16 @@
-import { ReactNode, createElement } from 'react';
-import cn from 'classnames';
-import { getListClasses } from 'utils/getDropdownClasses';
-type Props = {
-  className?: string;
-  children?: ReactNode;
-  columns?: number;
-  tag?: 'div' | 'ul';
-};
+import React from 'react';
+import { Props, Tags } from './List.types';
+import { StyledList } from './List.styled';
 
-export const List = ({ className, children, tag = 'div' }: Props) => {
-  const { wrapper } = getListClasses();
-  return createElement(
-    tag,
-    {
-      className: cn(wrapper, className),
-    },
-    children
-  );
-};
+export const List = ({
+  className,
+  children,
+  tag = Tags.Div,
+  testId = 'list',
+}: Props) => (
+  <StyledList as={tag} className={className} data-testid={testId}>
+    {children}
+  </StyledList>
+);
+
+List.Tags = Tags;

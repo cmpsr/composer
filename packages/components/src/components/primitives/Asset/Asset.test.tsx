@@ -1,35 +1,26 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { Asset } from './Asset';
-import { IMAGE_DEFAULT_TEST_ID } from '../../primitives/Image';
-import { VIDEO_DEFAULT_TEST_ID } from '../../primitives/Video';
+import { render, screen } from '@testing-library/react';
+import { Asset } from '.';
+import { ContentType } from './Asset.types';
 
 describe('Asset', () => {
   it('should render an image asset type', () => {
-    const { getByTestId } = render(
-      <Asset
-        asset={{
-          contentType: 'image',
-          title: 'image title',
-          url:
-            'https://images.ctfassets.net/o9153kt66j4s/6Ru9unmOhMXrFwKtLV2SRU/7c902fd189741be40f5fef77340cbf1d/placeholder.svg',
-        }}
-      />,
-    );
-    const asset = getByTestId(IMAGE_DEFAULT_TEST_ID);
-    expect(asset.children.length).toBe(0);
+    givenComponentRendered(Asset.ContentType.Image);
+    screen.getByTestId('image');
   });
   it('should render a video asset type', () => {
-    const { getByTestId } = render(
+    givenComponentRendered(Asset.ContentType.Video);
+    screen.getByTestId('video');
+  });
+
+  const givenComponentRendered = (type: ContentType) =>
+    render(
       <Asset
         asset={{
-          contentType: 'video',
-          title: 'video title',
+          contentType: type,
+          title: 'title',
           url: '#',
         }}
-      />,
+      />
     );
-    const asset = getByTestId(VIDEO_DEFAULT_TEST_ID);
-    expect(asset.children.length).toBe(0);
-  });
 });

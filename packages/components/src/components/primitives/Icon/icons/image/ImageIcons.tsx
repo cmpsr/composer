@@ -1,8 +1,5 @@
 import React from 'react';
-
-type Props = {
-  type: 'filled' | 'outlined' | 'rounded';
-};
+import { SvgProps as Props, Types } from '../../Icon.types';
 
 export const camera_roll = ({ type }: Props) => {
   const path = {
@@ -29,7 +26,7 @@ export const add_a_photo = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'rounded' && (
+      {type === Types.Rounded && (
         <>
           <path d="M3 8c0 .55.45 1 1 1s1-.45 1-1V6h2c.55 0 1-.45 1-1s-.45-1-1-1H5V2c0-.55-.45-1-1-1s-1 .45-1 1v2H1c-.55 0-1 .45-1 1s.45 1 1 1h2v2z" />
           <circle cx="13" cy="14" r="3" />
@@ -142,7 +139,7 @@ export const blur_off = ({ type }: Props) => {
 
   return (
     <>
-      {(type === 'outlined' || type === 'rounded') && (
+      {(type === Types.Outlined || type === Types.Rounded) && (
         <>
           <circle cx="14" cy="6" r="1" />
           <path d="M13.8 11.48l.2.02c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5l.02.2c.09.67.61 1.19 1.28 1.28zM14 3.5c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5zm-4 0c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5z" />
@@ -185,10 +182,10 @@ export const brightness_1 = ({ type }: Props) => {
 
   return (
     <>
-      {(type === 'filled' || type === 'rounded') && (
+      {(type === Types.Filled || type === Types.Rounded) && (
         <circle cx="12" cy="12" r="10" />
       )}
-      {type === 'outlined' && <path d={path[type]} />}
+      {type === Types.Outlined && <path d={path[type]} />}
     </>
   );
 };
@@ -271,7 +268,7 @@ export const brightness_7 = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && <circle cx="12" cy="12" r="2" />}
+      {type === Types.Outlined && <circle cx="12" cy="12" r="2" />}
     </>
   );
 };
@@ -340,7 +337,7 @@ export const camera_alt = ({ type }: Props) => {
 
   return (
     <>
-      {(type === 'filled' || type === 'rounded') && (
+      {(type === Types.Filled || type === Types.Rounded) && (
         <circle cx="12" cy="12" r="3" />
       )}
       <path d={path[type]} />
@@ -425,7 +422,7 @@ export const collections_bookmark = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'filled' && <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z" />}
+      {type === Types.Filled && <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z" />}
       <path d={path[type]} />
     </>
   );
@@ -444,7 +441,7 @@ export const color_lens = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="6.5" cy="11.5" r="1.5" />
           <circle cx="9.5" cy="7.5" r="1.5" />
@@ -1303,13 +1300,13 @@ export const linked_camera = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'filled' && (
+      {type === Types.Filled && (
         <>
           <path d="M16 3.33c2.58 0 4.67 2.09 4.67 4.67H22c0-3.31-2.69-6-6-6v1.33M16 6c1.11 0 2 .89 2 2h1.33c0-1.84-1.49-3.33-3.33-3.33V6" />
           <circle cx="12" cy="14" r="3.2" />
         </>
       )}
-      {type === 'rounded' && <circle cx="12" cy="14" r="3" />}
+      {type === Types.Rounded && <circle cx="12" cy="14" r="3" />}
       <path d={path[type]} />
     </>
   );
@@ -1510,7 +1507,7 @@ export const nature_people = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {(type === 'outlined' || type === 'rounded') && (
+      {(type === Types.Outlined || type === Types.Rounded) && (
         <circle cx="4.5" cy="9.5" r="1.5" />
       )}
     </>
@@ -1552,7 +1549,7 @@ export const palette = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="6.5" cy="11.5" r="1.5" />
           <circle cx="9.5" cy="7.5" r="1.5" />
@@ -1667,7 +1664,7 @@ export const photo_camera = ({ type }: Props) => {
 
   return (
     <>
-      {(type === 'filled' || type === 'rounded') && (
+      {(type === Types.Filled || type === Types.Rounded) && (
         <circle cx="12" cy="12" r="3" />
       )}
       <path d={path[type]} />
@@ -1870,7 +1867,7 @@ export const style = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="11" cy="9" r="1" />
           <path d="M5.88 19.75c0 1.1.9 2 2 2h1.45l-3.45-8.34v6.34z" />
@@ -1893,7 +1890,7 @@ export const switch_camera = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <path d="M15 11H9V8.5L5.5 12 9 15.5V13h6v2.5l3.5-3.5L15 8.5z" />
       )}
     </>
@@ -1952,7 +1949,7 @@ export const timelapse = ({ type }: Props) => {
   return <path d={path[type]} />;
 };
 
-export const timer = ({ type }: Props) => {
+export const timer_crono = ({ type }: Props) => {
   const path = {
     filled:
       'M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42C16.07 4.74 14.12 4 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z',

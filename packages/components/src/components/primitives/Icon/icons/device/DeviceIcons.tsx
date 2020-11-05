@@ -1,8 +1,5 @@
 import React from 'react';
-
-type Props = {
-  type: 'filled' | 'outlined' | 'rounded';
-};
+import { SvgProps as Props, Types } from '../../Icon.types';
 
 export const access_alarm = ({ type }: Props) => {
   const path = {
@@ -32,7 +29,7 @@ export const access_time = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'filled' && (
+      {type === Types.Filled && (
         <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
       )}
     </>
@@ -247,7 +244,7 @@ export const brightness_high = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && <circle cx="12" cy="12" r="2.5" />}
+      {type === Types.Outlined && <circle cx="12" cy="12" r="2.5" />}
     </>
   );
 };

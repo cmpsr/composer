@@ -1,38 +1,20 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import cn from 'classnames';
-import { Icon } from 'components/primitives/Icon';
-
-export const ICONIC_BADGE_DEFAULT_TEST_ID = 'iconicBadge';
-
-export enum BadgeColor {
-  Error = 'bg-fill-system-error',
-  Primary = 'bg-fill-primary-900',
-  Secondary = 'bg-fill-secondary-900',
-}
-
-type Props = {
-  icon: ReactNode;
-  className?: string;
-  testId?: string;
-  color?: BadgeColor;
-};
+import { Props } from './IconicBadge.types';
+import { Color } from '../Badges.types';
+import { StyledContainer, StyledIcon } from './IconicBadge.styled';
 
 export const IconicBadge = ({
   icon,
-  color = BadgeColor.Secondary,
+  color = Color.Secondary,
   className,
-  testId = ICONIC_BADGE_DEFAULT_TEST_ID,
+  testId = 'iconicBadge',
 }: Props) => {
   return (
-    <div
-      className={cn(
-        className,
-        color,
-        'flex items-center justify-center rounded-full h-5 w-5'
-      )}
-      data-testid={testId}
-    >
-      <Icon className="p-0.15 fill-current text-fill-white">{icon}</Icon>
-    </div>
+    <StyledContainer className={cn(className, color)} data-testid={testId}>
+      <StyledIcon>{icon}</StyledIcon>
+    </StyledContainer>
   );
 };
+
+IconicBadge.Color = Color;

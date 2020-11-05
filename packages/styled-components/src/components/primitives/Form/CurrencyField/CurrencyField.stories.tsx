@@ -1,6 +1,7 @@
 import React from 'react';
 import { CurrencyField } from '.';
 import { boolean, text, select } from '@storybook/addon-knobs';
+import { Icon, person as Person } from 'components/primitives/Icon';
 
 export default {
   title: 'Primitives/Form/CurrencyField',
@@ -50,6 +51,22 @@ export const Invalid = () => (
   <>
     <h1>CurrencyField invalid</h1>
     <CurrencyField name="default" invalid placeholder="invalid" />
+  </>
+);
+
+const personIcon = (
+  <Icon>
+    <Person type={Icon.Types.Filled} />
+  </Icon>
+);
+export const Children = () => (
+  <>
+    <h1>CurrencyField with children</h1>
+    <CurrencyField
+      name="default"
+      placeholder="children"
+      children={personIcon}
+    />
   </>
 );
 

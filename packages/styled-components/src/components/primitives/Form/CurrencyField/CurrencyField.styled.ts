@@ -6,6 +6,7 @@ import { StyledCssProps } from 'components/Components.styled.types';
 
 export const StyledWrapper = styled.div`
   display: flex;
+  position: relative;
 `;
 
 export const StyledIconWrapper = styled.span`
@@ -90,4 +91,15 @@ export const StyledInput = styled.input<StyledCssProps>`
   }
 
   ${(props) => customCss(props)}
+`;
+
+export const StyledRightChildContainer = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  right: 0;
+  padding-right: 0.75rem;
+  z-index: 20;
 `;

@@ -48,11 +48,16 @@ describe('CurrencyField', () => {
     expect(mockOnChange).toBeCalledTimes(1);
   });
   it('should render custom CSS as a class', () => {
-    givenComponentRendered({ customCss : 'color: violet' });
+    givenComponentRendered({ customCss: 'color: violet' });
     const input = screen.getByTestId(testId);
     expect(input).toHaveStyleRule('color', 'violet', {
       modifier: '&&&',
     });
+  });
+  it('should render children', () => {
+    const children = <div data-testid="children">Children</div>;
+    givenComponentRendered({ children });
+    screen.getByTestId('children');
   });
 
   const givenComponentRendered = (props?: any) =>

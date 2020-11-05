@@ -1,7 +1,0 @@
-#import "../fragments/Header.graphql"
-
-query HeaderByIdQuery($id: String!) {
-  header(id: $id) {
-    ...Header
-  }
-}

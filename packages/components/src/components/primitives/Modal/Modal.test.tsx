@@ -1,55 +1,75 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { Modal } from './';
+import 'jest-styled-components';
 
 describe('Modal', () => {
   it('should render modal when isOpen is true', () => {
     render(<Modal isOpen>foo</Modal>);
-    const modal = screen.getByText('foo');
-    expect(modal).toBeInTheDocument();
+    screen.getByTestId('modal');
+  });
+  it('should not render modal when isOpen is true', () => {
+    render(<Modal isOpen={false}>foo</Modal>);
+    const component = screen.queryByTestId('modal');
+    expect(component).not.toBeInTheDocument();
   });
   it('should render close button', () => {
-    render(<Modal isOpen closeButton />);
-    const icon = screen.getByTestId('icon');
-    expect(icon).toBeInTheDocument();
+    render(<Modal isOpen showCloseButton />);
+    screen.getByTestId('close-button');
   });
   it('should render children', () => {
     render(<Modal isOpen>content</Modal>);
-    const body = screen.getByText('content');
-    expect(body).toBeInTheDocument();
+    screen.getByText('content');
   });
-  it('should close modal when click on close icon', () => {
+  it('should close modal when on close clicked', () => {
     render(
-      <Modal isOpen closeButton>
+      <Modal isOpen showCloseButton>
         content
       </Modal>
     );
-    const icon = screen.getByTestId('icon');
-    const modal = screen.getByText('content');
+    const icon = screen.getByTestId('close-button');
+    const modal = screen.getByTestId('modal');
     fireEvent.click(icon);
     expect(modal).not.toBeInTheDocument();
   });
-  it('should not render modal by default', () => {
-    render(<Modal>content</Modal>);
-    const modal = screen.queryByText('content');
-    expect(modal).not.toBeInTheDocument();
-  });
-  it('should render className on modal', () => {
+  it('should render custom CSS class', () => {
     render(
-      <Modal isOpen className="className">
+      <Modal isOpen customCss="color: violet">
         content
       </Modal>
     );
     const modal = screen.getByText('content');
-    expect(modal).toHaveClass('className');
+    expect(modal).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
-  it('should render overlayClassName on overlay', () => {
+  it('should render custom class', () => {
     render(
-      <Modal isOpen overlayClassName="overlayClassName">
+      <Modal isOpen className="foo">
+        content
+      </Modal>
+    );
+    const modal = screen.getByText('content');
+    expect(modal).toHaveClass('foo');
+  });
+  it('should render custom CSS class on overlay', () => {
+    render(
+      <Modal isOpen overlayCustomCss="color: violet">
         content
       </Modal>
     );
     const overlay = screen.getByText('content').parentNode;
-    expect(overlay).toHaveClass('overlayClassName');
+    expect(overlay).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
+  });
+  it('should render custom class on overlay', () => {
+    render(
+      <Modal isOpen overlayClassName="foo">
+        content
+      </Modal>
+    );
+    const overlay = screen.getByText('content').parentNode;
+    expect(overlay).toHaveClass('foo');
   });
 });

@@ -1,39 +1,41 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { Video, VIDEO_DEFAULT_TEST_ID } from './Video';
+import { render, screen } from '@testing-library/react';
+import { Video } from './Video';
 
 describe('Video', () => {
-  it('should render correctly with url', () => {
-    const { getByTestId } = render(<Video video={{ url: '#' }} />);
-    const video = getByTestId(VIDEO_DEFAULT_TEST_ID);
-    expect(video.children.length).toBe(0);
+  const testId = 'video';
+  it('should render', () => {
+    render(<Video video={{ url: '#' }} />);
+    screen.getByTestId(testId);
   });
-  it('should render class', () => {
-    const { getByTestId } = render(
-      <Video video={{ url: '#' }} className="foo" />,
-    );
-    const video = getByTestId(VIDEO_DEFAULT_TEST_ID);
-    expect(video.classList).toContain('foo');
+  it('should add custom css class', () => {
+    render(<Video video={{ url: '#' }} className="foo" />);
+    const video = screen.getByTestId(testId);
+    expect(video).toHaveClass('foo');
   });
-  it('should render src', () => {
-    const { getByTestId } = render(
-      <Video video={{ url: '#' }} className="foo" />,
-    );
-    const video = getByTestId(VIDEO_DEFAULT_TEST_ID);
-    expect(video.getAttribute('src')).toBe('#');
+  it('should set src attribute', () => {
+    render(<Video video={{ url: '#' }} className="foo" />);
+    const video = screen.getByTestId(testId);
+    expect(video).toHaveAttribute('src', '#');
   });
-  it('should add controls to the video', () => {
-    const { getByTestId } = render(
-      <Video video={{ url: '#' }} className="foo" controls={true} />,
-    );
-    const video = getByTestId(VIDEO_DEFAULT_TEST_ID) as HTMLVideoElement;
-    expect(video.controls).toBe(true);
+  it('should set controls to false by default', () => {
+    render(<Video video={{ url: '#' }} className="foo" />);
+    const video = screen.getByTestId(testId) as HTMLVideoElement;
+    expect(video.controls).toBeFalsy();
   });
-  it('should add autoplay to the video', () => {
-    const { getByTestId } = render(
-      <Video video={{ url: '#' }} className="foo" autoPlay={true} />,
-    );
-    const video = getByTestId(VIDEO_DEFAULT_TEST_ID) as HTMLVideoElement;
-    expect(video.autoplay).toBe(true);
+  it('should set controls', () => {
+    render(<Video video={{ url: '#' }} className="foo" controls={true} />);
+    const video = screen.getByTestId(testId) as HTMLVideoElement;
+    expect(video.controls).toBeTruthy();
+  });
+  it('should not autoplay by default', () => {
+    render(<Video video={{ url: '#' }} className="foo" />);
+    const video = screen.getByTestId(testId) as HTMLVideoElement;
+    expect(video.autoplay).toBeFalsy();
+  });
+  it('should set autoplay', () => {
+    render(<Video video={{ url: '#' }} className="foo" autoPlay={true} />);
+    const video = screen.getByTestId(testId) as HTMLVideoElement;
+    expect(video.autoplay).toBeTruthy();
   });
 });

@@ -1,16 +1,5 @@
-import React, { ReactNode } from 'react';
-
-export const ICON_DEFAULT_TEST_ID = 'icon';
-
-type Props = {
-  children?: ReactNode;
-  width?: number;
-  height?: number;
-  className?: string;
-  testId?: string;
-  viewBoxHeight?: number;
-  viewBoxWidth?: number;
-};
+import React from 'react';
+import { Props, Types } from './Icon.types';
 
 export const Icon = ({
   children,
@@ -19,7 +8,7 @@ export const Icon = ({
   viewBoxWidth = 24,
   viewBoxHeight = 24,
   className,
-  testId = ICON_DEFAULT_TEST_ID,
+  testId = 'icon',
 }: Props) => (
   <svg
     viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
@@ -31,3 +20,5 @@ export const Icon = ({
     {children}
   </svg>
 );
+
+Icon.Types = Types;

@@ -1,8 +1,5 @@
 import React from 'react';
-
-type Props = {
-  type: 'filled' | 'outlined' | 'rounded';
-};
+import { SvgProps as Props } from '../../Icon.types';
 
 export const attachment = ({ type }: Props) => {
   const path = {

@@ -1,8 +1,5 @@
 import React from 'react';
-
-type Props = {
-  type: 'filled' | 'outlined' | 'rounded';
-};
+import { SvgProps as Props, Types } from '../../Icon.types';
 
 export const ac_unit = ({ type }: Props) => {
   const path = {
@@ -82,7 +79,7 @@ export const casino = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="7.5" cy="16.5" r="1.5" />
           <circle cx="7.5" cy="7.5" r="1.5" />
@@ -305,7 +302,7 @@ export const spa = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'filled' && (
+      {type === Types.Filled && (
         <path d="M8.55 12c-1.07-.71-2.25-1.27-3.53-1.61 1.28.34 2.46.9 3.53 1.61zm10.43-1.61c-1.29.34-2.49.91-3.57 1.64 1.08-.73 2.28-1.3 3.57-1.64z" />
       )}
       <path d={path[type]} />

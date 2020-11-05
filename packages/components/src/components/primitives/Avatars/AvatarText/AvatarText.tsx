@@ -1,69 +1,61 @@
 import React from 'react';
 import cn from 'classnames';
-import { Typography, TypographyMode } from 'components/primitives/Typography';
 import {
-  getAvatarTextClasses,
-  getAvatarTypographyType,
-} from 'utils/getAvatarTextClasses';
+  StyledAvatarText,
+  StyledHighlighter,
+  StyledTypography,
+} from './AvatarText.styled';
+import { BackgroundColors, Sizes, Props } from './AvatarText.types';
+import { Typography } from 'components/primitives/Typography';
 
-export const AVATAR_TEXT_DEFAULT_TEST_ID = 'avatarText';
-
-export enum AvatarSize {
-  ExtraSmall = 'w-1.75 h-1.75',
-  Small = 'w-10 h-10',
-  Medium = 'w-12 h-12',
-  Large = 'w-3.5 h-3.5',
-}
-
-export enum AvatarBackgroundColor {
-  Primary900 = 'bg-fill-primary-900',
-  Primary600 = 'bg-fill-primary-600',
-}
-
-type Props = {
-  text: string;
-  className?: string;
-  highlightClassName?: string;
-  testId?: string;
-  size?: AvatarSize;
-  backgroundColor?: AvatarBackgroundColor;
-  isHighlighted?: boolean;
+const flatTypographyType = (size: Sizes) => {
+  switch (size) {
+    case Sizes.Large:
+    case Sizes.Medium:
+      return Typography.Types.Headline6;
+    case Sizes.Small:
+      return Typography.Types.Body;
+    case Sizes.ExtraSmall:
+      return Typography.Types.Eyebrow;
+  }
 };
 
 export const AvatarText = ({
   text,
   className,
   highlightClassName,
-  testId = AVATAR_TEXT_DEFAULT_TEST_ID,
-  size = AvatarSize.Large,
-  backgroundColor = AvatarBackgroundColor.Primary900,
+  testId = 'avatarText',
+  size = Sizes.Large,
+  backgroundColor = BackgroundColors.Primary900,
   isHighlighted,
 }: Props) => {
-  const { highlightClasses, avatarClasses, textClasses } = getAvatarTextClasses(
-    size,
-    backgroundColor
-  );
-  const typographyType = getAvatarTypographyType(size);
   const avatar = (
-    <div className={cn(className, avatarClasses)} data-testid={testId}>
-      <Typography
-        className={textClasses}
-        mode={TypographyMode.Light100}
-        tag="span"
-        type={typographyType}
+    <StyledAvatarText
+      className={cn(className, size, backgroundColor)}
+      data-testid={testId}
+    >
+      <StyledTypography
+        className={cn(size)}
+        mode={Typography.Modes.Light100}
+        tag={Typography.Tags.Span}
+        type={flatTypographyType(size)}
       >
         {text}
-      </Typography>
-    </div>
+      </StyledTypography>
+    </StyledAvatarText>
   );
   return isHighlighted ? (
-    <div
+    <StyledHighlighter
       data-testid="avatarTextHighlight"
-      className={cn(highlightClasses, highlightClassName)}
+      className={cn(size, highlightClassName ? 'custom' : '')}
+      css={highlightClassName}
     >
       {avatar}
-    </div>
+    </StyledHighlighter>
   ) : (
     avatar
   );
 };
+
+AvatarText.Sizes = Sizes;
+AvatarText.BackgroundColors = BackgroundColors;

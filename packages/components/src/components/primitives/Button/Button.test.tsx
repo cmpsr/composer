@@ -1,97 +1,70 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import {
-  Button,
-  BUTTON_DEFAULT_TEST_ID,
-  ButtonTypes,
-  ButtonShapes,
-} from './Button';
-import { Typography, TypographyTypes } from '../Typography';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { Button } from './Button';
 
 describe('Button', () => {
-  it('should render with text', () => {
-    const { getByText } = render(
+  const BUTTON_DEFAULT_TEST_ID = 'button';
+  it('should render with children', () => {
+    render(
       <Button>
-        <Typography tag="span" type={TypographyTypes.Button}>
-          foo
-        </Typography>
+        <div>foo</div>
       </Button>
     );
-    const button = getByText('foo');
-    expect(button).toBeInTheDocument();
+    const button = screen.getByTestId(BUTTON_DEFAULT_TEST_ID);
+    expect(button.children).toHaveLength(1);
   });
-  it('should render children', () => {
-    const { getByText } = render(<Button>foo</Button>);
-    const button = getByText('foo');
-    expect(button).toBeInTheDocument();
-  });
-  it('should render without text', () => {
-    const { getByTestId } = render(<Button />);
-    const button = getByTestId(BUTTON_DEFAULT_TEST_ID);
-    expect(button.children.length).toBe(0);
+  it('should render without children', () => {
+    render(<Button />);
+    const button = screen.getByTestId(BUTTON_DEFAULT_TEST_ID);
+    expect(button.children).toHaveLength(0);
   });
   it('should render primary', () => {
-    const { getByTestId } = render(<Button type={ButtonTypes.Primary} />);
-    const button = getByTestId(BUTTON_DEFAULT_TEST_ID);
-    expect(button.classList).toContain(ButtonTypes.Primary);
+    render(<Button type={Button.Types.Primary} />);
+    const button = screen.getByTestId(BUTTON_DEFAULT_TEST_ID);
+    expect(button).toHaveClass(Button.Types.Primary);
   });
   it('should render secondary', () => {
-    const { getByTestId } = render(<Button type={ButtonTypes.Secondary} />);
-    const button = getByTestId(BUTTON_DEFAULT_TEST_ID);
-    expect(button.classList).toContain(ButtonTypes.Secondary);
+    render(<Button type={Button.Types.Secondary} />);
+    const button = screen.getByTestId(BUTTON_DEFAULT_TEST_ID);
+    expect(button).toHaveClass(Button.Types.Secondary);
   });
   it('should render class', () => {
-    const { getByTestId } = render(<Button className="foo" />);
-    const button = getByTestId(BUTTON_DEFAULT_TEST_ID);
-    expect(button.classList).toContain('foo');
+    render(<Button className="foo" />);
+    const button = screen.getByTestId(BUTTON_DEFAULT_TEST_ID);
+    expect(button).toHaveClass('foo');
   });
   it('should render html type', () => {
-    const { getByTestId } = render(<Button htmlType="submit" />);
-    const button = getByTestId(BUTTON_DEFAULT_TEST_ID) as HTMLButtonElement;
+    render(<Button htmlType={Button.HtmlTypes.Submit} />);
+    const button = screen.getByTestId(
+      BUTTON_DEFAULT_TEST_ID
+    ) as HTMLButtonElement;
     expect(button.type).toBe('submit');
   });
-
-  it('should render primary button with state contained disabled', () => {
-    render(<Button disabled type={ButtonTypes.Primary} />);
-    const button = screen.getByTestId(
-      BUTTON_DEFAULT_TEST_ID
-    ) as HTMLButtonElement;
+  it('should render disabled button', () => {
+    render(<Button disabled />);
+    const button = screen.getByTestId(BUTTON_DEFAULT_TEST_ID);
     expect(button).toBeDisabled();
-    expect(button).toHaveClass('disabled:bg-fill-state-primary-disabled');
-  });
-  it('should render secondary button with state outlined disabled', () => {
-    render(<Button disabled type={ButtonTypes.Secondary} />);
-    const button = screen.getByTestId(
-      BUTTON_DEFAULT_TEST_ID
-    ) as HTMLButtonElement;
-    expect(button).toBeDisabled();
-    expect(button).toHaveClass('disabled:bg-fill-state-secondary-disabled');
   });
   it('should render button with rectangle shape', () => {
-    render(
-      <Button shape={ButtonShapes.Rectangle} type={ButtonTypes.Secondary} />
-    );
-    const button = screen.getByTestId(
-      BUTTON_DEFAULT_TEST_ID
-    ) as HTMLButtonElement;
-    expect(button).toHaveClass('rounded-btn-rectangle');
+    render(<Button shape={Button.Shapes.Rectangle} />);
+    const button = screen.getByTestId(BUTTON_DEFAULT_TEST_ID);
+    expect(button).toHaveClass('rectangle');
   });
-  it('should render button with semi rounded shape', () => {
-    render(
-      <Button shape={ButtonShapes.SemiRounded} type={ButtonTypes.Secondary} />
-    );
-    const button = screen.getByTestId(
-      BUTTON_DEFAULT_TEST_ID
-    ) as HTMLButtonElement;
-    expect(button).toHaveClass('rounded-btn-semi-rounded');
+  it('should render button with semi-rounded shape', () => {
+    render(<Button shape={Button.Shapes.SemiRounded} />);
+    const button = screen.getByTestId(BUTTON_DEFAULT_TEST_ID);
+    expect(button).toHaveClass('semiRounded');
   });
   it('should render button with rounded shape', () => {
-    render(
-      <Button shape={ButtonShapes.Rounded} type={ButtonTypes.Secondary} />
-    );
-    const button = screen.getByTestId(
-      BUTTON_DEFAULT_TEST_ID
-    ) as HTMLButtonElement;
-    expect(button).toHaveClass('rounded-btn-rounded');
+    render(<Button shape={Button.Shapes.Rounded} />);
+    const button = screen.getByTestId(BUTTON_DEFAULT_TEST_ID);
+    expect(button).toHaveClass('rounded');
+  });
+  it('should call onClick on click', () => {
+    const mockOnClick = jest.fn();
+    render(<Button onClick={mockOnClick} />);
+    const button = screen.getByTestId(BUTTON_DEFAULT_TEST_ID);
+    fireEvent.click(button);
+    expect(mockOnClick).toBeCalledTimes(1);
   });
 });

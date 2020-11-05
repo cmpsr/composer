@@ -1,21 +1,27 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { Grid, GRID_DEFAULT_TEST_ID } from './Grid';
+import { render, screen } from '@testing-library/react';
+import { Grid } from './Grid';
+import 'jest-styled-components';
 
 describe('Grid', () => {
-  it('should render with children', () => {
-    const { getByText } = render(<Grid>foo</Grid>);
-    const grid = getByText('foo');
-    expect(grid).toBeInTheDocument();
+  it('should render', () => {
+    render(<Grid />);
+    screen.getByTestId('grid');
   });
-  it('should render class', () => {
+  it('should render children', () => {
+    render(<Grid>foo</Grid>);
+    screen.getByText('foo');
+  });
+  it('should render custom class', () => {
     const { getByTestId } = render(<Grid className="foo">foo</Grid>);
-    const box = getByTestId(GRID_DEFAULT_TEST_ID);
-    expect(box.classList).toContain('foo');
+    const grid = getByTestId('grid');
+    expect(grid).toHaveClass('foo');
   });
-  it('should render default class', () => {
-    const { getByTestId } = render(<Grid>foo</Grid>);
-    const box = getByTestId(GRID_DEFAULT_TEST_ID);
-    expect(box.classList).toContain('grid');
+  it('should render custom CSS as a class', () => {
+    const { getByTestId } = render(<Grid customCss="color: violet">foo</Grid>);
+    const grid = getByTestId('grid');
+    expect(grid).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
 });

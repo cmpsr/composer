@@ -1,8 +1,5 @@
 import React from 'react';
-
-type Props = {
-  type: 'filled' | 'outlined' | 'rounded';
-};
+import { SvgProps as Props, Types } from '../../Icon.types';
 
 export const adb = ({ type }: Props) => {
   const path = {
@@ -173,7 +170,7 @@ export const drive_eta = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="7.5" cy="13.5" r="1.5" />
           <circle cx="16.5" cy="13.5" r="1.5" />
@@ -287,7 +284,7 @@ export const more = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="9" cy="12" r="1.5" />
           <circle cx="14" cy="12" r="1.5" />

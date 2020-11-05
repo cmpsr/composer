@@ -1,11 +1,18 @@
-import React, { ReactNode } from 'react';
-import cn from 'classnames';
+import React from 'react';
+import { Props } from './SectionChild.types';
+import { StyledSectionChild } from './SectionChild.styled';
 
-type Props = {
-  children?: ReactNode;
-  className?: string;
-};
-
-export const SectionChild = ({ children, className }: Props) => {
-  return <div className={cn('py-8', className)}>{children}</div>;
-};
+export const SectionChild = ({
+  children,
+  className,
+  customCss,
+  testId = 'sectionChild',
+}: Props) => (
+  <StyledSectionChild
+    data-testid={testId}
+    className={className}
+    css={customCss}
+  >
+    {children}
+  </StyledSectionChild>
+);

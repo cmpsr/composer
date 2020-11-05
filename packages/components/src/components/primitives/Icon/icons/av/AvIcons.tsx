@@ -1,8 +1,5 @@
 import React from 'react';
-
-type Props = {
-  type: 'filled' | 'outlined' | 'rounded';
-};
+import { SvgProps as Props, Types } from '../../Icon.types';
 
 export const _4k = ({ type }: Props) => {
   const path = {
@@ -42,7 +39,7 @@ export const airplay = ({ type }: Props) => {
 
   return (
     <>
-      {(type === 'filled' || type === 'outlined') && (
+      {(type === Types.Filled || type === Types.Outlined) && (
         <path d="M6 22h12l-6-6z" />
       )}
       <path d={path[type]} />
@@ -88,7 +85,7 @@ export const timer = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'rounded' && (
+      {type === Types.Rounded && (
         <>
           <circle cx="12" cy="17" r="1" />
           <circle cx="7" cy="12" r="1" />
@@ -252,10 +249,10 @@ export const fiber_manual_record = ({ type }: Props) => {
 
   return (
     <>
-      {(type === 'filled' || type === 'rounded') && (
+      {(type === Types.Filled || type === Types.Rounded) && (
         <circle cx="12" cy="12" r="8" />
       )}
-      {type === 'outlined' && <path d={path[type]} />}
+      {type === Types.Outlined && <path d={path[type]} />}
     </>
   );
 };
@@ -298,7 +295,7 @@ export const fiber_smart_record = ({ type }: Props) => {
 
   return (
     <>
-      {(type === 'filled' || type === 'rounded') && (
+      {(type === Types.Filled || type === Types.Rounded) && (
         <circle cx="9" cy="12" r="8" />
       )}
       <path d={path[type]} />
@@ -318,7 +315,7 @@ export const forward_10 = ({ type }: Props) => {
 
   return (
     <>
-      {(type === 'filled' || type === 'outlined') && (
+      {(type === Types.Filled || type === Types.Outlined) && (
         <path d="M18 13c0 3.31-2.69 6-6 6s-6-2.69-6-6 2.69-6 6-6v4l5-5-5-5v4c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8h-2z" />
       )}
       <path d={path[type]} />
@@ -338,7 +335,7 @@ export const forward_30 = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'filled' && (
+      {type === Types.Filled && (
         <path d="M18 13c0 3.31-2.69 6-6 6s-6-2.69-6-6 2.69-6 6-6v4l5-5-5-5v4c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8h-2z" />
       )}
       <path d={path[type]} />
@@ -358,7 +355,7 @@ export const forward_5 = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'filled' && (
+      {type === Types.Filled && (
         <path d="M18 13c0 3.31-2.69 6-6 6s-6-2.69-6-6 2.69-6 6-6v4l5-5-5-5v4c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8h-2z" />
       )}
       <path d={path[type]} />
@@ -750,7 +747,7 @@ export const radio = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && <circle cx="8" cy="16.48" r="2.5" />}
+      {type === Types.Outlined && <circle cx="8" cy="16.48" r="2.5" />}
     </>
   );
 };
@@ -768,7 +765,7 @@ export const recent_actors = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <>
           <circle cx="8" cy="9.94" r="1.95" />
           <path d="M11.89 15.35c0-1.3-2.59-1.95-3.89-1.95s-3.89.65-3.89 1.95V16h7.78v-.65z" />
@@ -840,7 +837,7 @@ export const replay_10 = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'filled' && (
+      {type === Types.Filled && (
         <path d="M11.99 5V1l-5 5 5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6h-2c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
       )}
       <path d={path[type]} />
@@ -860,7 +857,7 @@ export const replay_30 = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'filled' && (
+      {type === Types.Filled && (
         <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
       )}
       <path d={path[type]} />
@@ -880,7 +877,7 @@ export const replay_5 = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'filled' && (
+      {type === Types.Filled && (
         <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
       )}
       <path d={path[type]} />
@@ -976,10 +973,10 @@ export const speed = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <path d="M10.59 15.41a2 2 0 002.83 0l5.66-8.49-8.49 5.66a2 2 0 000 2.83z" />
       )}
-      {type === 'rounded' && (
+      {type === Types.Rounded && (
         <path d="M10.59 12.59a2 2 0 002.83 2.83l5.66-8.49z" />
       )}
     </>
@@ -1035,7 +1032,7 @@ export const surround_sound = ({ type }: Props) => {
 
   return (
     <>
-      {type === 'outlined' && (
+      {type === Types.Outlined && (
         <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z" />
       )}
       <path d={path[type]} />

@@ -1,8 +1,5 @@
 import React from 'react';
-
-type Props = {
-  type: 'filled' | 'outlined' | 'rounded';
-};
+import { SvgProps as Props, Types } from '../../Icon.types';
 
 export const check_box = ({ type }: Props) => {
   const path = {
@@ -56,7 +53,7 @@ export const radio_button_checked = ({ type }: Props) => {
   return (
     <>
       <path d={path[type]} />
-      {(type === 'outlined' || type === 'rounded') && (
+      {(type === Types.Outlined || type === Types.Rounded) && (
         <circle cx="12" cy="12" r="5" />
       )}
     </>

@@ -1,22 +1,27 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { render } from '@testing-library/react';
-
+import { render, screen } from '@testing-library/react';
 import { SectionChild } from '.';
+import 'jest-styled-components';
 
 describe('SectionChild', () => {
-  it('should match snapshot', () => {
-    const sectionChild = renderer.create(<SectionChild />);
-    const tree = sectionChild.toJSON();
-    expect(tree).toMatchSnapshot();
+  it('should render', () => {
+    render(<SectionChild />);
+    screen.getByTestId('sectionChild');
   });
-  it('should render class name', () => {
-    const { baseElement } = render(<SectionChild className="class-name" />);
-    expect(baseElement.innerHTML).toContain('class-name');
+  it('should render custom class', () => {
+    render(<SectionChild className="foo" />);
+    const sectionChild = screen.getByTestId('sectionChild');
+    expect(sectionChild).toHaveClass('foo');
+  });
+  it('should render custom CSS as class', () => {
+    render(<SectionChild customCss="color: violet" />);
+    const sectionChild = screen.getByTestId('sectionChild');
+    expect(sectionChild).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
   it('should render children', () => {
-    const children = <div data-testid="children-test-id">Hello</div>;
-    const { getByTestId } = render(<SectionChild>{children}</SectionChild>);
-    expect(getByTestId('children-test-id')).toBeInTheDocument();
+    render(<SectionChild>Children</SectionChild>);
+    screen.getByText('Children');
   });
 });

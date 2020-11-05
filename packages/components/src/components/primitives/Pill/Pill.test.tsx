@@ -1,16 +1,16 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Pill, PILL_DEFAULT_TEST_ID } from '.';
+import { Pill } from './Pill';
 
 describe('Pill', () => {
-  it('should render label content', () => {
-    render(<Pill label="TODAY" />);
-    const pill = screen.getByText('TODAY');
-    expect(pill).toBeInTheDocument();
+  const testId = 'pill';
+  it('should render label', () => {
+    render(<Pill label="foo" />);
+    screen.getByText('foo');
   });
-  it('should render className', () => {
-    render(<Pill label="TODAY" className="foo" />);
-    const pill = screen.getByTestId(PILL_DEFAULT_TEST_ID);
-    expect(pill.classList).toContain('foo');
+  it('should render class', () => {
+    render(<Pill label="foo" className="foo" />);
+    const pill = screen.getByTestId(testId);
+    expect(pill).toHaveClass('foo');
   });
 });

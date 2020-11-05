@@ -1,22 +1,16 @@
-import React, { ReactNode } from 'react';
-import cn from 'classnames';
-
-export const GRID_DEFAULT_TEST_ID = 'grid';
-
-type Props = {
-  children?: ReactNode;
-  className?: string;
-  testId?: string;
-};
+import React from 'react';
+import { Props } from './Grid.types';
+import { StyledGrid } from './Grid.styled';
 
 export const Grid = ({
   children,
   className,
-  testId = GRID_DEFAULT_TEST_ID,
+  customCss,
+  testId = 'grid',
 }: Props) => {
   return (
-    <div className={cn('grid', className)} data-testid={testId}>
+    <StyledGrid data-testid={testId} css={customCss} className={className}>
       {children}
-    </div>
+    </StyledGrid>
   );
 };

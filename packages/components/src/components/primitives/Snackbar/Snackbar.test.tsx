@@ -1,37 +1,20 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import {
-  Snackbar,
-  SnackbarTextPosition,
-  SNACKBAR_DEFAULT_TEST_ID,
-  SnackbarType,
-  showSnackbar,
-  SHOW_SNACKBAR_DEFAULT_TEST_ID,
-} from './Snackbar';
+import { Snackbar, showSnackbar } from './Snackbar';
 
 describe('Snackbar', () => {
-  it('should render data test id', () => {
-    const testId = 'testId';
-    render(<Snackbar testId={testId} />);
-    screen.getByTestId(testId);
-  });
+  const testId = 'snackbar';
   it('should render className', async () => {
-    render(<Snackbar className="snackbarClassName" />);
+    render(<Snackbar className="foo" />);
     showSnackbar({ message: 'message' });
     await screen.findByText('message');
-    const snackbar = screen.getByTestId(SNACKBAR_DEFAULT_TEST_ID).firstChild
-      .firstChild;
-    expect(snackbar).toHaveClass('snackbarClassName');
+    const snackbar = screen.getByTestId(testId).firstChild.firstChild;
+    expect(snackbar).toHaveClass('foo');
   });
 });
 
 describe('showSnackbar', () => {
-  it('should render data test id', async () => {
-    const testId = 'testId';
-    render(<Snackbar />);
-    showSnackbar({ message: 'message', testId });
-    await screen.findByTestId(testId);
-  });
+  const testId = 'showSnackbar';
   it('should render description and message', async () => {
     render(<Snackbar />);
     showSnackbar({ message: 'message', description: 'description' });
@@ -44,11 +27,11 @@ describe('showSnackbar', () => {
     showSnackbar({
       message: 'message',
       action: {
-        childAction: <div>action child</div>,
+        childAction: <div>foo</div>,
         onClickAction: mockOnClickAction,
       },
     });
-    await screen.findByText('action child');
+    await screen.findByText('foo');
     const button = screen.getByTestId('button');
     fireEvent.click(button);
     expect(mockOnClickAction).toBeCalledTimes(1);
@@ -57,43 +40,52 @@ describe('showSnackbar', () => {
     render(<Snackbar />);
     showSnackbar({
       message: 'message',
-      textPosition: SnackbarTextPosition.Right,
+      textPosition: Snackbar.TextPositions.Right,
     });
     const text = await screen.findByText('message');
-    expect(text.parentElement).toHaveClass('order-2');
+    expect(text.parentElement).toHaveClass('right');
+  });
+  it('should render text positioned left side', async () => {
+    render(<Snackbar />);
+    showSnackbar({
+      message: 'message',
+      textPosition: Snackbar.TextPositions.Left,
+    });
+    const text = await screen.findByText('message');
+    expect(text.parentElement).toHaveClass('left');
   });
   it('should render snackbar with success type background', async () => {
     render(<Snackbar />);
     showSnackbar({
       message: 'message',
-      type: SnackbarType.Success,
+      type: Snackbar.Types.Success,
     });
     await screen.findByText('message');
-    const snackbarBackground = screen.getByTestId(SHOW_SNACKBAR_DEFAULT_TEST_ID)
-      .parentElement.parentElement;
-    expect(snackbarBackground).toHaveClass('!bg-fill-system-success');
+    const snackbarBackground = screen.getByTestId(testId).parentElement
+      .parentElement;
+    expect(snackbarBackground).toHaveClass('success');
   });
   it('should render snackbar with warning type background', async () => {
     render(<Snackbar />);
     showSnackbar({
       message: 'message',
-      type: SnackbarType.Warning,
+      type: Snackbar.Types.Warning,
     });
     await screen.findByText('message');
-    const snackbarBackground = screen.getByTestId(SHOW_SNACKBAR_DEFAULT_TEST_ID)
-      .parentElement.parentElement;
-    expect(snackbarBackground).toHaveClass('!bg-fill-system-warning');
+    const snackbarBackground = screen.getByTestId(testId).parentElement
+      .parentElement;
+    expect(snackbarBackground).toHaveClass('warning');
   });
   it('should render snackbar with error type background', async () => {
     render(<Snackbar />);
     showSnackbar({
       message: 'message',
-      type: SnackbarType.Error,
+      type: Snackbar.Types.Error,
     });
     await screen.findByText('message');
-    const snackbarBackground = screen.getByTestId(SHOW_SNACKBAR_DEFAULT_TEST_ID)
-      .parentElement.parentElement;
-    expect(snackbarBackground).toHaveClass('!bg-fill-system-error');
+    const snackbarBackground = screen.getByTestId(testId).parentElement
+      .parentElement;
+    expect(snackbarBackground).toHaveClass('error');
   });
   it('should render snackbar with default type background', async () => {
     render(<Snackbar />);
@@ -101,8 +93,8 @@ describe('showSnackbar', () => {
       message: 'message',
     });
     await screen.findByText('message');
-    const snackbarBackground = screen.getByTestId(SHOW_SNACKBAR_DEFAULT_TEST_ID)
-      .parentElement.parentElement;
-    expect(snackbarBackground).toHaveClass('!bg-fill-black-400');
+    const snackbarBackground = screen.getByTestId(testId).parentElement
+      .parentElement;
+    expect(snackbarBackground).toHaveClass('default');
   });
 });

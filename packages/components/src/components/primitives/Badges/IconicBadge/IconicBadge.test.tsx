@@ -1,45 +1,33 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import {
-  ICONIC_BADGE_DEFAULT_TEST_ID,
-  IconicBadge,
-  BadgeColor,
-} from './IconicBadge';
-import { search as Search } from '../../Icon/icons/action';
+import { IconicBadge } from '.';
+import { Icon, search as Search } from 'components/primitives/Icon';
 
 describe('IconicBadge', () => {
+  const testId = 'iconicBadge';
+  const icon = <Search type={Icon.Types.Filled} />;
   it('should render icon', () => {
-    render(<IconicBadge icon={<Search type="filled" />} />);
-    const icon = screen.getByTestId('icon');
-    expect(icon).toBeInTheDocument();
+    render(<IconicBadge icon={icon} />);
+    screen.getByTestId('icon');
   });
   it('should render icon with primary color', () => {
-    render(
-      <IconicBadge color={BadgeColor.Primary} icon={<Search type="filled" />} />
-    );
-    const badge = screen.getByTestId(ICONIC_BADGE_DEFAULT_TEST_ID);
-    expect(badge).toHaveClass('bg-fill-primary-900');
+    render(<IconicBadge color={IconicBadge.Color.Primary} icon={icon} />);
+    const badge = screen.getByTestId(testId);
+    expect(badge).toHaveClass('primary');
   });
   it('should render with secondary color', () => {
-    render(
-      <IconicBadge
-        color={BadgeColor.Secondary}
-        icon={<Search type="filled" />}
-      />
-    );
-    const badge = screen.getByTestId(ICONIC_BADGE_DEFAULT_TEST_ID);
-    expect(badge).toHaveClass('bg-fill-secondary-900');
+    render(<IconicBadge color={IconicBadge.Color.Secondary} icon={icon} />);
+    const badge = screen.getByTestId(testId);
+    expect(badge).toHaveClass('secondary');
   });
-  it('should render icon with error system color', () => {
-    render(
-      <IconicBadge color={BadgeColor.Error} icon={<Search type="filled" />} />
-    );
-    const badge = screen.getByTestId(ICONIC_BADGE_DEFAULT_TEST_ID);
-    expect(badge).toHaveClass('bg-fill-system-error');
+  it('should render icon with error color', () => {
+    render(<IconicBadge color={IconicBadge.Color.Error} icon={icon} />);
+    const badge = screen.getByTestId(testId);
+    expect(badge).toHaveClass('error');
   });
   it('should render class', () => {
-    render(<IconicBadge className="dummy" icon={<Search type="filled" />} />);
-    const badge = screen.getByTestId(ICONIC_BADGE_DEFAULT_TEST_ID);
-    expect(badge).toHaveClass('dummy');
+    render(<IconicBadge className="foo" icon={icon} />);
+    const badge = screen.getByTestId(testId);
+    expect(badge).toHaveClass('foo');
   });
 });

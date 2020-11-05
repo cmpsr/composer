@@ -1,27 +1,22 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import {
-  ConversationList,
-  CONVERSATION_LIST_DEFAULT_TEST_ID,
-} from './ConversationList';
+import { ConversationList } from '.';
 
 describe('ConversationList', () => {
-  it('should render classname', () => {
-    render(<ConversationList className="className" conversations={[]} />);
-    const conversationList = screen.getByTestId(
-      CONVERSATION_LIST_DEFAULT_TEST_ID
-    );
-    expect(conversationList).toHaveClass('className');
+  const testId = 'conversationList';
+  it('should render class name', () => {
+    render(<ConversationList className="foo" conversations={[]} />);
+    const conversationList = screen.getByTestId(testId);
+    expect(conversationList).toHaveClass('foo');
   });
-  it('should render emptyCaseElement when conversations is empty', () => {
+  it('should render empty case', () => {
     render(
       <ConversationList
         conversations={[]}
         emptyCaseElement={<span>Empty</span>}
       />
     );
-    const emptyCaseElement = screen.getByText('Empty');
-    expect(emptyCaseElement).toBeInTheDocument();
+    screen.getByText('Empty');
   });
   it('should render conversations', () => {
     render(
@@ -32,7 +27,6 @@ describe('ConversationList', () => {
             title: 'title',
             description: 'description',
             message: 'message',
-            messageClassName: 'italic',
             time: 'time',
             avatarText: 'avatarText',
             isHighlighted: false,
@@ -46,7 +40,6 @@ describe('ConversationList', () => {
             title: 'title',
             description: 'description',
             message: 'message',
-            messageClassName: 'italic',
             time: 'time',
             avatarText: 'avatarText',
             isHighlighted: false,
@@ -58,13 +51,10 @@ describe('ConversationList', () => {
         ]}
       />
     );
-    const conversationList = screen.getByTestId(
-      CONVERSATION_LIST_DEFAULT_TEST_ID
-    );
+    const conversationList = screen.getByTestId(testId);
     const conversationUnOrderedList = conversationList.lastChild;
-    const conversationUnOrderedItems =
-      conversationList.lastChild.childNodes.length;
+    const conversationUnOrderedItems = conversationList.lastChild.childNodes;
     expect(conversationUnOrderedList).toBeInTheDocument();
-    expect(conversationUnOrderedItems).toBe(2);
+    expect(conversationUnOrderedItems).toHaveLength(2);
   });
 });

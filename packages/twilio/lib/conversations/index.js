@@ -22,6 +22,7 @@ var _TwilioConversation2 = require("../types/TwilioConversation");
 Object.keys(_TwilioConversation2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _TwilioConversation2[key]) return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {

@@ -1,38 +1,16 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
 import { usePopper } from 'react-popper';
-import { getStyles } from './Tooltip.styles';
-
-export const TOOLTIP_DEFAULT_TEST_ID = 'tooltip';
-
-export enum TooltipBackgroundColor {
-  Primary900 = 'bg-fill-primary-900',
-  Primary100 = 'bg-fill-primary-100',
-}
-
-export enum TooltipPlace {
-  Left = 'left',
-  Right = 'right',
-  Bottom = 'bottom',
-  Top = 'top',
-}
-
-type Props = {
-  place?: TooltipPlace;
-  element: React.ReactNode;
-  tooltip: React.ReactNode;
-  className?: string;
-  backgroundColor?: string;
-  testId?: string;
-};
+import { StyledPopper, StyledArrow } from './Tooltip.styled';
+import { Props, Places, BackgroundColors } from './Tooltip.types';
 
 export const Tooltip = ({
-  place = TooltipPlace.Top,
+  place = Places.Top,
   element,
   tooltip,
   className,
-  backgroundColor = TooltipBackgroundColor.Primary900,
-  testId = TOOLTIP_DEFAULT_TEST_ID,
+  backgroundColor = BackgroundColors.Primary900,
+  testId = 'tooltip',
 }: Props) => {
   const [showPopper, setShowPopper] = useState(false);
   const [referenceElement, setReferenceElement] = useState(null);
@@ -54,34 +32,36 @@ export const Tooltip = ({
       },
     ],
   });
-  const { arrowClasses, arrowBeforeClasses, arrowPlacementClasses, tooltipClasses } = getStyles(place, backgroundColor);
 
   return (
     <>
-      <a ref={setReferenceElement} onMouseEnter={() => setShowPopper(true)}
-        onMouseLeave={() => setShowPopper(false)} >
+      <a
+        ref={setReferenceElement}
+        onMouseEnter={() => setShowPopper(true)}
+        onMouseLeave={() => setShowPopper(false)}
+      >
         {element}
       </a>
       {showPopper && (
-        <div
+        <StyledPopper
           ref={setPopperElement}
           style={styles.popper}
           {...attributes.popper}
-          className={cn(
-            tooltipClasses,
-            className,
-          )}
+          className={cn(className, backgroundColor)}
           data-testid={testId}
         >
           {tooltip}
-          <div
+          <StyledArrow
             ref={setArrowElement}
             style={styles.arrow}
             data-placement={place}
-            className={cn(arrowClasses, arrowBeforeClasses, arrowPlacementClasses)}
+            className={cn(backgroundColor, place)}
           />
-        </div>
+        </StyledPopper>
       )}
     </>
   );
 };
+
+Tooltip.BackgroundColors = BackgroundColors;
+Tooltip.Places = Places;

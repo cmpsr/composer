@@ -4,5 +4,8 @@ node_modules
 # Local env files
 .env
 
+# build folder
+lib
+
 storybook-static
 yarn-error.log*

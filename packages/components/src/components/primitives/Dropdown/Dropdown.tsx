@@ -1,27 +1,25 @@
-import React, { useState, useEffect, useRef, ReactNode } from 'react';
-import cn from 'classnames';
-import { Icon, Typography, TypographyTypes } from 'components/primitives';
-import { List } from 'components/primitives/List';
+import React, { useState, useEffect, useRef } from 'react';
+import { Icon, Typography } from 'components/primitives';
 import {
   expand_more as ExpandMore,
   expand_less as ExpandLess,
-} from 'components/primitives/Icon/icons/navigation';
-
-type Props = {
-  title: string;
-  className?: string;
-  listWrapperClassName?: string;
-  children?: ReactNode;
-};
+} from 'components/primitives/Icon';
+import { Props } from './Dropdown.types';
+import {
+  StyledWrapper,
+  StyledAnchor,
+  StyledIcon,
+  StyledList,
+} from './Dropdown.styled';
 
 export const Dropdown = ({
   title,
   className,
   children,
-  listWrapperClassName,
+  testId = 'dropdown',
 }: Props) => {
   const node = useRef(null);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleClose = (e) => {
@@ -37,23 +35,24 @@ export const Dropdown = ({
   }, [node]);
 
   return (
-    <div ref={node} className="relative">
-      <a
-        className={cn('flex align-middle flex-1', className)}
+    <StyledWrapper ref={node} data-testid={testId}>
+      <StyledAnchor
+        className={className}
         role="button"
         onClick={() => setIsOpen((isOpen) => !isOpen)}
       >
-        <Typography tag="span" type={TypographyTypes.Body}>
+        <Typography tag={Typography.Tags.Span} type={Typography.Types.Body}>
           {title}
         </Typography>
-        <Icon
-          className="fill-current ml-2 pointer-events-none"
-          testId={isOpen ? 'ExpandLess' : 'ExpandMore'}
-        >
-          {isOpen ? <ExpandLess type="filled" /> : <ExpandMore type="filled" />}
-        </Icon>
-      </a>
-      {isOpen && <List className="min-w-10">{children}</List>}
-    </div>
+        <StyledIcon testId={isOpen ? 'expandLess' : 'expandMore'}>
+          {isOpen ? (
+            <ExpandLess type={Icon.Types.Filled} />
+          ) : (
+            <ExpandMore type={Icon.Types.Filled} />
+          )}
+        </StyledIcon>
+      </StyledAnchor>
+      {isOpen && <StyledList>{children}</StyledList>}
+    </StyledWrapper>
   );
 };

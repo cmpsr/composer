@@ -32,7 +32,19 @@ export const InitialOption = () => (
       placeholder={'Select an item'}
       onItemChange={action('On click icon')}
       options={options}
-      initialSelectedOption={options[2]}
+      initialSelectedOptions={[options[2]]}
+    />
+  </>
+);
+
+export const MultipleInitialOptions = () => (
+  <>
+    <h1>DropdownField multiple initial option</h1>
+    <DropdownFieldMulti
+      placeholder={'Select an item'}
+      onItemChange={action('On click icon')}
+      options={options}
+      initialSelectedOptions={[options[2], options[1]]}
     />
   </>
 );

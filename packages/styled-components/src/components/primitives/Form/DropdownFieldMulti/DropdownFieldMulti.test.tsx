@@ -9,6 +9,11 @@ describe('DropdownFieldMulti', () => {
     { value: 3, label: 'Option 3' },
   ];
   const testId = 'dropdownFieldMulti';
+  it('should render className', () => {
+    givenComponentRendered({ className: 'foo' });
+    const dropdown = screen.getByTestId(testId);
+    expect(dropdown).toHaveClass('foo');
+  });
   it('should render placeholder', () => {
     givenComponentRendered({ placeholder: 'foo' });
     screen.getByText('foo');
@@ -54,13 +59,27 @@ describe('DropdownFieldMulti', () => {
     screen.getByText('foo');
   });
   it('should render initial option', () => {
-    givenComponentRendered({ initialSelectedOption: options[1] });
+    givenComponentRendered({ initialSelectedOptions: [options[1]] });
     screen.getByText('Option 2');
+  });
+  it('should render multiple initial option', () => {
+    givenComponentRendered({
+      initialSelectedOptions: [options[1], options[2]],
+    });
+    screen.getByText('Option 2');
+    screen.getByText('Option 3');
   });
   it('should render disabled', () => {
     givenComponentRendered({ disabled: true });
     const dropdown = screen.getByTestId(testId);
     expect(dropdown).toBeDisabled();
+  });
+  it('should render custom css', () => {
+    givenComponentRendered({ customCss: 'color: violet' });
+    const dropdown = screen.getByTestId(testId);
+    expect(dropdown).toHaveStyleRule('color', 'violet', {
+      modifier: '&&&',
+    });
   });
   const givenComponentRendered = (props?: any) =>
     render(

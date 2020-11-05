@@ -10,6 +10,7 @@ export * from './Chat/ConversationSummary';
 export * from './Dropdown';
 export * from './Form/CurrencyField';
 export * from './Form/DropdownField';
+export * from './Form/DropdownFieldMulti';
 export * from './Form/ErrorField';
 export * from './Form/ExpandableTextField';
 export * from './Form/ExpandableTextFieldIcon';

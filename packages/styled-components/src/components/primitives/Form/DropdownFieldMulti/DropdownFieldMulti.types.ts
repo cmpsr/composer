@@ -8,7 +8,7 @@ export type Option = {
 export type Props = CssCustomizableProps & {
   options?: Option[];
   placeholder?: string;
-  initialSelectedOption?: Option;
+  initialSelectedOptions?: Option[];
   onItemChange?: (item: Option[]) => void;
   disabled?: boolean;
   name?: string;

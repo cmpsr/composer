@@ -27,35 +27,30 @@ export const DropdownFieldMulti = ({
   testId = 'dropdownFieldMulti',
   disabled = false,
   customCss,
-  initialSelectedOption,
+  initialSelectedOptions = [],
 }: Props) => {
-  const defaultSet = new Set<Option>();
-  const initialOption = initialSelectedOption
-    ? defaultSet.add(initialSelectedOption)
-    : defaultSet;
-  const [selectedItems, setSelectedItems] = useState(initialOption);
+  const initialOptions = initialSelectedOptions;
+  const [selectedItems, setSelectedItems] = useState(initialOptions);
 
   const addItem = (selectedItem: Option) => {
-    if (!selectedItems.has(selectedItem)) {
-      const newSet = new Set(selectedItems);
-      newSet.add(selectedItem);
-      setSelectedItems(newSet);
-      onItemChange && onItemChange(Array.from(newSet.values()));
+    if (!selectedItems.includes(selectedItem)) {
+      const newItems = [...selectedItems, selectedItem];
+      setSelectedItems(newItems);
+      onItemChange && onItemChange(newItems);
     }
   };
 
   const removeItem = (itemToRemove: Option) => {
-    if (selectedItems.has(itemToRemove)) {
-      const newSet = new Set(selectedItems);
-      newSet.delete(itemToRemove);
-      setSelectedItems(newSet);
-      onItemChange(Array.from(newSet.values()));
+    if (selectedItems.includes(itemToRemove)) {
+      let newItems = selectedItems;
+      newItems = newItems.filter((item) => item !== itemToRemove);
+      setSelectedItems(newItems);
+      onItemChange && onItemChange(newItems);
     }
   };
 
   const renderItems = () => {
     const items = [];
-
     selectedItems.forEach((item) => {
       const { value, label } = item;
       items.push(
@@ -97,7 +92,7 @@ export const DropdownFieldMulti = ({
             data-testid={testId}
             disabled={disabled}
           >
-            {(selectedItems.size && (
+            {(selectedItems.length > 0 && (
               <StyledFlex data-testid="items-selected">
                 {renderItems()}
               </StyledFlex>

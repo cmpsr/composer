@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.2.2
+
+### Patch Changes
+
+- 9e99a24: add missing dependency
+
 ## 0.2.1
 
 ### Patch Changes

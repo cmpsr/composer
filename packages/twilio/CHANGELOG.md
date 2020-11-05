@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.18
+
+### Patch Changes
+
+- 96f3c12: migrate components package from tailwind to styled-components
+
 ## 0.0.17
 
 ### Patch Changes

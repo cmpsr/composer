@@ -7,9 +7,10 @@ import {
   StyledIconWrapper,
   StyledInput,
   StyledIcon,
+  StyledRightChildContainer,
 } from './CurrencyField.styled';
-import { Props } from './CurrencyField.types';
-import { Modes, Type } from 'components/primitives/Form/TextField/TextField.types';
+import { Props, Type } from './CurrencyField.types';
+import { Modes } from 'components/primitives/Form/TextField/TextField.types';
 
 export const CurrencyField: Type = forwardRef<HTMLInputElement, Props>(
   (
@@ -27,6 +28,7 @@ export const CurrencyField: Type = forwardRef<HTMLInputElement, Props>(
       testId = 'currencyField',
       customCss,
       onChange,
+      children,
     }: Props,
     ref
   ) => (
@@ -50,6 +52,9 @@ export const CurrencyField: Type = forwardRef<HTMLInputElement, Props>(
         ref={ref}
         inputMode={inputMode}
       />
+      {children && (
+        <StyledRightChildContainer>{children}</StyledRightChildContainer>
+      )}
     </StyledWrapper>
   )
 );

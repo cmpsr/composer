@@ -1,7 +1,7 @@
-import colors from './colors';
-import typography from './typography';
+import { colors } from './colors';
+import { typography } from './typography';
 
-const theme = {
+export const theme = {
   colors,
   breakpoints: {
     sm: '640px',
@@ -28,13 +28,6 @@ const theme = {
       rectangle: '0',
     },
   },
-  Input: {
-    borderRadius: {
-      rounded: '1.5rem',
-      semiRounded: '0.25rem',
-      rectangle: '0'
-    }
-  },
   Modal: {
     borderRadius: {
       rounded: '1.375rem',
@@ -49,5 +42,3 @@ const theme = {
   },
   Typography: typography,
 };
-
-export default theme;

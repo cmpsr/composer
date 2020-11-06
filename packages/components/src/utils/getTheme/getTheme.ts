@@ -1,4 +1,4 @@
-import theme from 'styles/theme';
+import { theme } from 'styles/theme';
 
 export const getTheme = (props: any) =>
   isValidTheme(props) ? props.theme : theme;

@@ -3,7 +3,7 @@ import { IconicBadge } from '.';
 import { Icon, search as Search } from 'components/primitives/Icon';
 import { select, text } from '@storybook/addon-knobs';
 import { ThemeProvider } from 'styled-components';
-import theme from 'styles/theme';
+import { theme } from 'styles/theme';
 
 export default {
   title: 'Primitives/Badges/IconicBadge',

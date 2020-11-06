@@ -7,14 +7,12 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "files": [
-    "/lib"
-  ],
+  "files": ["/lib"],
   "scripts": {
     "storybook": "echo 'Starting Storybook' && start-storybook -p 8080 -c .storybook",
     "build-storybook": "build-storybook -c .storybook",

@@ -16,7 +16,6 @@ import {
   StyledToastContainer,
   StyledTypography,
 } from './Snackbar.styled';
-import './Snackbar.css';
 
 export const hideSnackbar = () => toast.dismiss();
 

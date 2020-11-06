@@ -7,18 +7,20 @@ import { Shapes } from 'components/Components.types';
 export const Button = ({
   children,
   className,
+  customCss,
   onClick,
   type = Types.Primary,
   htmlType = HtmlTypes.Button,
   testId = 'button',
   disabled = false,
-  shape = Shapes.Rectangle
+  shape = Shapes.Rectangle,
 }: Props) => (
   <StyledButton
     data-testid={testId}
     type={htmlType}
     onClick={onClick}
     className={cn(className, type, shape)}
+    css={customCss}
     disabled={disabled}
   >
     {children}

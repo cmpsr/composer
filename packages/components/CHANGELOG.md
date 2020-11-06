@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.2
+
+### Patch Changes
+
+- b39d907: add customCss prop to Button
+
 ## 0.1.1
 
 ### Patch Changes

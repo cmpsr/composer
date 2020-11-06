@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.3
+
+### Patch Changes
+
+- 579c35c: Move snackbar styles to styled component
+
 ## 0.1.2
 
 ### Patch Changes

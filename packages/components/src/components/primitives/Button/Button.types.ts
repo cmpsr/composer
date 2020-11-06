@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { BaseProps, Shapes } from 'components/Components.types';
+import { CssCustomizableProps, Shapes } from 'components/Components.types';
 
 export enum Types {
   Primary = 'primary',
@@ -12,7 +12,7 @@ export enum HtmlTypes {
   Reset = 'reset',
 }
 
-export type Props = BaseProps & {
+export type Props = CssCustomizableProps & {
   children?: ReactNode;
   onClick?: (...args: any[]) => void;
   type?: Types;

@@ -1,10 +1,9 @@
-import { StyledBaseProps } from 'components/Components.styled.types';
+import { StyledCssProps } from 'components/Components.styled.types';
 import styled from 'styled-components';
+import { customCss } from 'utils/customCss';
 import { getTheme } from 'utils/getTheme';
 
-type Props = StyledBaseProps;
-
-export const StyledButton = styled.button<Props>`
+export const StyledButton = styled.button<StyledCssProps>`
   text-align: center;
   user-select: none;
   font-weight: 500;
@@ -77,4 +76,6 @@ export const StyledButton = styled.button<Props>`
   &:focus {
     outline: none;
   }
+
+  ${(props) => customCss(props)}
 `;

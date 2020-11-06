@@ -6,9 +6,9 @@ import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
 import { withPerformance } from 'storybook-addon-performance';
 import { withKnobs } from '@storybook/addon-knobs';
 import { ThemeProvider } from 'styled-components';
-import theme from 'styles/theme';
+import { theme } from 'styles/theme';
 
-import '../src/styles/index.css';
+import 'styles/index.css';
 
 addParameters({
   viewport: {

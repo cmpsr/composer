@@ -2,7 +2,7 @@ import React from 'react';
 import { NumericBadge } from '.';
 import { number, select, text } from '@storybook/addon-knobs';
 import { ThemeProvider } from 'styled-components';
-import theme from 'styles/theme';
+import { theme } from 'styles/theme';
 
 export default {
   title: 'Primitives/Badges/NumericBadge',

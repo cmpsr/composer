@@ -1,5 +1,5 @@
 import { getTheme } from '.';
-import theme from 'styles/theme';
+import { theme } from 'styles/theme';
 
 describe('getTheme', () => {
   it('should return default theme if no theme provided', () => {

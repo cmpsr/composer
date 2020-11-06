@@ -1,4 +1,4 @@
-const typography = {
+export const typography = {
   colors: {
     dark100: '#000000',
     dark50: '#828282',
@@ -183,5 +183,3 @@ const typography = {
     },
   },
 };
-
-export default typography;

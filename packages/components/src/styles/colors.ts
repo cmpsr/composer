@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   fillPrimary900: '#414141ff',
   outlinePrimary900: '#979797ff',
   fillPrimary800: '#d8d8d8ff',
@@ -117,7 +117,5 @@ const colors = {
   fillStateUiPressed: '#c3c3c3ff',
   outlineStateUiPressed: '#00000000',
   fillStateUiDisabled: '#d5d5d5ff',
-  outlineStateUiDisabled: '#00000000'
+  outlineStateUiDisabled: '#00000000',
 };
-
-export default colors;

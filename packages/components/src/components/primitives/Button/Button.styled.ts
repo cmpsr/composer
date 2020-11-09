@@ -15,6 +15,8 @@ export const StyledButton = styled.button<StyledCssProps>`
   border-style: solid;
   border-width: 1px;
 
+  ${(props) => customCss(props)}
+
   &.primary {
     background-color: ${(props) => getTheme(props).colors.fillPrimary900};
     color: ${(props) => getTheme(props).colors.fillWhite};
@@ -76,6 +78,4 @@ export const StyledButton = styled.button<StyledCssProps>`
   &:focus {
     outline: none;
   }
-
-  ${(props) => customCss(props)}
 `;

@@ -23,6 +23,8 @@ export const StyledInput = styled.input<StyledCssProps>`
   height: 1.25rem;
   appearance: none;
 
+  ${(props) => customCss(props)}
+
   &:before {
     content: '';
     display: block;
@@ -45,6 +47,4 @@ export const StyledInput = styled.input<StyledCssProps>`
   &:disabled {
     border-color: ${(props) => getTheme(props).colors.fillStatePrimaryDisabled};
   }
-
-  ${(props) => customCss(props)}
 `;

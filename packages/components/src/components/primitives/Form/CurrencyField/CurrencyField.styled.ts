@@ -51,6 +51,8 @@ export const StyledInput = styled.input<StyledCssProps>`
   border: 1px solid ${(props) => getTheme(props).colors.outlineFormFilled};
   appearance: none;
 
+  ${(props) => customCss(props)}
+
   &.rounded {
     border-top-right-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
@@ -89,8 +91,6 @@ export const StyledInput = styled.input<StyledCssProps>`
     font-size: ${(props) => getTheme(props).Typography.md.fontSize.form};
     font-family: ${(props) => getTheme(props).Typography.md.fontFamily.form};
   }
-
-  ${(props) => customCss(props)}
 `;
 
 export const StyledRightChildContainer = styled.div`

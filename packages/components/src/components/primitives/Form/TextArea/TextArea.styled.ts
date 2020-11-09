@@ -40,6 +40,8 @@ export const StyledTextArea = styled.textarea<Props>`
     border-color: ${(props) => getTheme(props).colors.fillSystemError};
   }
 
+  ${(props) => customCss(props)}
+
   &:placeholder {
     color: ${(props) => getTheme(props).colors.outlineFormFilled};
   }
@@ -59,6 +61,4 @@ export const StyledTextArea = styled.textarea<Props>`
     font-size: ${(props) => getTheme(props).Typography.md.fontSize.form};
     font-family: ${(props) => getTheme(props).Typography.md.fontFamily.form};
   }
-
-  ${(props) => customCss(props)}
 `;

@@ -31,6 +31,8 @@ export const StyledButton = styled.button<StyledCssProps>`
     color: ${(props) => getTheme(props).Typography.colors.dark100};
   }
 
+  ${(props) => customCss(props)}
+
   &:focus {
     outline: none;
   }
@@ -42,8 +44,6 @@ export const StyledButton = styled.button<StyledCssProps>`
     border-color: ${(props) => getTheme(props).colors.outlineFormDisabled};
     color: ${(props) => getTheme(props).colors.outlineFormFilled};
   }
-
-  ${(props) => customCss(props)}
 `;
 
 export const StyledFlex = styled.div`

@@ -40,6 +40,8 @@ export const StyledWrapper = styled.div<Props>`
   position: absolute;
   animation: ${openAnimation} 0.5s ease-in-out;
 
+  ${(props) => customCss(props)}
+
   &:focus {
     outline: none;
   }
@@ -55,8 +57,6 @@ export const StyledWrapper = styled.div<Props>`
   &.rectangle {
     border-radius: ${(props) => getTheme(props).Modal.borderRadius.rectangle};
   }
-
-  ${(props) => customCss(props)}
 `;
 
 export const StyledCloseContainer = styled.div`

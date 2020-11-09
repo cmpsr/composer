@@ -52,6 +52,8 @@ export const StyledSelectMobile = styled.select<StyledCssProps>`
     color: ${(props) => getTheme(props).Typography.colors.dark100};
   }
 
+  ${(props) => customCss(props)}
+
   &:focus {
     outline: none;
   }
@@ -63,8 +65,6 @@ export const StyledSelectMobile = styled.select<StyledCssProps>`
     border-color: ${(props) => getTheme(props).colors.outlineFormDisabled};
     color: ${(props) => getTheme(props).colors.outlineFormFilled};
   }
-
-  ${(props) => customCss(props)}
 `;
 
 export const StyledUnorderedListDesktop = styled.ul<StyledBaseProps>`
@@ -115,6 +115,8 @@ export const StyledButtonDesktop = styled.button<StyledCssProps>`
     color: ${(props) => getTheme(props).Typography.colors.dark100};
   }
 
+  ${(props) => customCss(props)}
+
   &:focus {
     outline: none;
   }
@@ -126,6 +128,4 @@ export const StyledButtonDesktop = styled.button<StyledCssProps>`
     border-color: ${(props) => getTheme(props).colors.outlineFormDisabled};
     color: ${(props) => getTheme(props).colors.outlineFormFilled};
   }
-
-  ${(props) => customCss(props)}
 `;

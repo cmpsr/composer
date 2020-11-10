@@ -63,7 +63,10 @@ export const Message = ({
                 className={cn(placement, { hasText: !!text })}
               >
                 <StyledBadgeLoader>
-                  <Spinner color={Spinner.Colors.White} />
+                  <Spinner
+                    color={Spinner.Colors.White}
+                    size={Spinner.Sizes.Small}
+                  />
                 </StyledBadgeLoader>
               </StyledMediaLoader>
             )}

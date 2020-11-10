@@ -17,7 +17,7 @@ export const Sizes = () => (
     <h1>Spinner sizes</h1>
     {Object.keys(Spinner.Sizes).map((size: any) => (
       <>
-        <Spinner size={Spinner.Sizes[size]} />
+        <Spinner size={Spinner.Sizes[size]} color={Spinner.Colors.Primary} />
         <br />
       </>
     ))}
@@ -29,7 +29,7 @@ export const Colors = () => (
     <h1>Spinner colors</h1>
     {Object.keys(Spinner.Colors).map((color: any) => (
       <>
-        <Spinner color={Spinner.Colors[color]} />
+        <Spinner color={Spinner.Colors[color]} size={Spinner.Sizes.Small} />
         <br />
       </>
     ))}

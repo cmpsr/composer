@@ -14,7 +14,7 @@ export const ExpandableTextField: Type = forwardRef<HTMLInputElement, Props>(
       className,
       placeholder,
       onChange,
-      shape = Shapes.Rounded,
+      shape,
       customCss,
     }: Props,
     ref

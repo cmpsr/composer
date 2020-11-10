@@ -18,7 +18,7 @@ export const TextFieldIconButton = ({
   required,
   type = 'text',
   onClick,
-  iconPosition,
+  iconPosition = IconPositions.Left,
   buttonContent = 'Button',
   icon,
   disabled,

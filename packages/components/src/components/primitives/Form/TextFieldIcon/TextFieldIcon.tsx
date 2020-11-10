@@ -12,7 +12,7 @@ import { IconPositions } from 'components/Components.types';
 
 export const TextFieldIcon = ({
   className,
-  iconPosition,
+  iconPosition = IconPositions.Left,
   ariaLabel,
   name,
   placeholder,

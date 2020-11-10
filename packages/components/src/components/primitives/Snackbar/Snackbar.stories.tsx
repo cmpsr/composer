@@ -72,7 +72,6 @@ export const Positions = () => {
       showSnackbar({
         message: position,
         position: Snackbar.Positions[position],
-        textPosition: Snackbar.TextPositions.Right,
       });
     });
   }, []);
@@ -91,7 +90,6 @@ export const Types = () => {
       showSnackbar({
         message: type,
         type: Snackbar.Types[type],
-        textPosition: Snackbar.TextPositions.Right,
         position: Snackbar.Positions.TopCenter,
       });
     });

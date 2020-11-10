@@ -16,7 +16,6 @@ export const Shapes = () => (
         <SearchField
           shape={SearchField.Shapes[shape]}
           placeholder={shape}
-          iconPosition={SearchField.IconPositions.Left}
           name={shape}
         />
         <br />

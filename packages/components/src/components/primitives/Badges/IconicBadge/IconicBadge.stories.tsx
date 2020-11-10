@@ -12,18 +12,20 @@ export default {
 
 const icon = <Search type={Icon.Types.Filled} />;
 
-export const Iconic = () => <IconicBadge icon={icon} />;
-
-export const PrimaryColor = () => (
-  <IconicBadge color={IconicBadge.Color.Primary} icon={icon} />
+export const Iconic = () => (
+  <IconicBadge icon={icon} color={IconicBadge.Color.Primary} />
 );
 
-export const SecondaryColor = () => (
-  <IconicBadge color={IconicBadge.Color.Secondary} icon={icon} />
-);
-
-export const ErrorColor = () => (
-  <IconicBadge color={IconicBadge.Color.Error} icon={icon} />
+export const Colors = () => (
+  <>
+    <h1>IconicBadge colors</h1>
+    {Object.keys(IconicBadge.Color).map((color: any) => (
+      <>
+        <IconicBadge color={IconicBadge.Color[color]} icon={icon} />
+        <br />
+      </>
+    ))}
+  </>
 );
 
 export const Playground = () => (

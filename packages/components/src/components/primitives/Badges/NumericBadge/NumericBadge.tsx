@@ -7,7 +7,7 @@ import { StyledContainer, StyledTypography } from './NumericBadge.styled';
 
 export const NumericBadge = ({
   number,
-  color = Color.Secondary,
+  color,
   className,
   testId = 'numericBadge',
   maximumNumber = 9,

@@ -9,22 +9,28 @@ export default {
   component: NumericBadge,
 };
 
-export const Number = () => <NumericBadge number={3} />;
+export const Number = () => (
+  <NumericBadge number={3} color={NumericBadge.Color.Primary} />
+);
 
 export const MaximumReached = () => (
-  <NumericBadge number={12} maximumNumber={9} />
+  <NumericBadge
+    number={12}
+    maximumNumber={9}
+    color={NumericBadge.Color.Primary}
+  />
 );
 
-export const PrimaryColor = () => (
-  <NumericBadge color={NumericBadge.Color.Primary} number={5} />
-);
-
-export const SecondaryColor = () => (
-  <NumericBadge color={NumericBadge.Color.Secondary} number={5} />
-);
-
-export const ErrorColor = () => (
-  <NumericBadge color={NumericBadge.Color.Error} number={5} />
+export const Colors = () => (
+  <>
+    <h1>NumericBadge colors</h1>
+    {Object.keys(NumericBadge.Color).map((color: any) => (
+      <>
+        <NumericBadge color={NumericBadge.Color[color]} number={5} />
+        <br />
+      </>
+    ))}
+  </>
 );
 
 export const Playground = () => (

@@ -25,7 +25,7 @@ export const showSnackbar = ({
   message,
   description,
   textPosition,
-  type,
+  type = Snackbar.Types.Default,
   position,
   autoClose = 5000,
   action,

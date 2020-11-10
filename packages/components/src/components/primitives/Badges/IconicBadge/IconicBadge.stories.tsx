@@ -12,9 +12,7 @@ export default {
 
 const icon = <Search type={Icon.Types.Filled} />;
 
-export const Iconic = () => (
-  <IconicBadge icon={icon} color={IconicBadge.Color.Primary} />
-);
+export const Iconic = () => <IconicBadge icon={icon} />;
 
 export const Colors = () => (
   <>

@@ -46,7 +46,6 @@ export const TextPositions = () => {
       showSnackbar({
         message: textPosition,
         textPosition: Snackbar.TextPositions[textPosition],
-        type: Snackbar.Types.Default,
         position: Snackbar.Positions.TopCenter,
         action: {
           childAction: (
@@ -74,7 +73,6 @@ export const Positions = () => {
         message: position,
         position: Snackbar.Positions[position],
         textPosition: Snackbar.TextPositions.Right,
-        type: Snackbar.Types.Default,
       });
     });
   }, []);

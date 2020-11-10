@@ -9,16 +9,10 @@ export default {
   component: NumericBadge,
 };
 
-export const Number = () => (
-  <NumericBadge number={3} color={NumericBadge.Color.Primary} />
-);
+export const Number = () => <NumericBadge number={3} />;
 
 export const MaximumReached = () => (
-  <NumericBadge
-    number={12}
-    maximumNumber={9}
-    color={NumericBadge.Color.Primary}
-  />
+  <NumericBadge number={12} maximumNumber={9} />
 );
 
 export const Colors = () => (

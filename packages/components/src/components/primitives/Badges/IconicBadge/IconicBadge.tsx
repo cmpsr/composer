@@ -6,7 +6,7 @@ import { StyledContainer, StyledIcon } from './IconicBadge.styled';
 
 export const IconicBadge = ({
   icon,
-  color,
+  color = Color.Secondary,
   className,
   testId = 'iconicBadge',
 }: Props) => (

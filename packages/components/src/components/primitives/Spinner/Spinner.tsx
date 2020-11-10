@@ -7,8 +7,8 @@ export const Spinner = ({
   className,
   strokeWidth,
   testId = 'spinner',
-  size,
-  color,
+  size = Sizes.Small,
+  color = Colors.Primary,
 }: Props) => (
   <StyledSvg className={cn(className, size)} data-testid={testId}>
     <StyledCircle

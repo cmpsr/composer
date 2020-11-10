@@ -5,11 +5,11 @@ import { StyledPopper, StyledArrow } from './Tooltip.styled';
 import { Props, Places, BackgroundColors } from './Tooltip.types';
 
 export const Tooltip = ({
-  place,
+  place = Places.Top,
   element,
   tooltip,
   className,
-  backgroundColor,
+  backgroundColor = BackgroundColors.Primary900,
   testId = 'tooltip',
 }: Props) => {
   const [showPopper, setShowPopper] = useState(false);

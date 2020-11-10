@@ -20,9 +20,9 @@ export const Message = ({
   text,
   className,
   testId = 'message',
-  backgroundColor,
+  backgroundColor = BackgroundColors.Primary,
   customCss,
-  placement,
+  placement = Placements.Right,
   time,
   mediaFiles = [],
   onMediaClick,
@@ -63,10 +63,7 @@ export const Message = ({
                 className={cn(placement, { hasText: !!text })}
               >
                 <StyledBadgeLoader>
-                  <Spinner
-                    color={Spinner.Colors.White}
-                    size={Spinner.Sizes.Small}
-                  />
+                  <Spinner color={Spinner.Colors.White} />
                 </StyledBadgeLoader>
               </StyledMediaLoader>
             )}

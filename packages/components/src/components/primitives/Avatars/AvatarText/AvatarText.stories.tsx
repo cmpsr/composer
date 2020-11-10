@@ -12,11 +12,7 @@ export const Sizes = () => (
     <h1>AvatarText sizes</h1>
     {Object.keys(AvatarText.Sizes).map((size: any) => (
       <>
-        <AvatarText
-          size={AvatarText.Sizes[size]}
-          text="text"
-          backgroundColor={AvatarText.BackgroundColors.Primary900}
-        />
+        <AvatarText size={AvatarText.Sizes[size]} text="text" />
         <br />
       </>
     ))}
@@ -30,7 +26,6 @@ export const Colors = () => (
       <>
         <AvatarText
           backgroundColor={AvatarText.BackgroundColors[backgroundColor]}
-          size={AvatarText.Sizes.Medium}
           text="text"
         />
         <br />
@@ -42,12 +37,7 @@ export const Colors = () => (
 export const Highlight = () => (
   <>
     <h1>AvatarText highlight</h1>
-    <AvatarText
-      isHighlighted
-      text="OH"
-      size={AvatarText.Sizes.Medium}
-      backgroundColor={AvatarText.BackgroundColors.Primary900}
-    />
+    <AvatarText isHighlighted text="OH" />
   </>
 );
 

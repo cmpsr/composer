@@ -18,7 +18,7 @@ export const MessageError = ({
   className,
   customCss,
   testId = 'messageError',
-  placement,
+  placement = Message.Placements.Left,
   errorText,
   onErrorClick,
 }: Props) => (

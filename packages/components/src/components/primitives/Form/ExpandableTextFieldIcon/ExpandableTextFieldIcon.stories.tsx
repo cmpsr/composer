@@ -16,7 +16,6 @@ export const Shapes = () => (
       <div key={i}>
         <ExpandableTextFieldIcon
           shape={ExpandableTextFieldIcon.Shapes[shape]}
-          iconPosition={ExpandableTextFieldIcon.IconPositions.Left}
           placeholder={shape}
           onChange={action('On change')}
           icon={<Send type={Icon.Types.Rounded} />}

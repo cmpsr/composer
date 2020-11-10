@@ -17,7 +17,7 @@ export const ExpandableTextFieldIcon = ({
   onChange,
   onClickIcon,
   shape,
-  iconPosition,
+  iconPosition = IconPositions.Left,
   customCss,
   icon,
 }: Props) => {

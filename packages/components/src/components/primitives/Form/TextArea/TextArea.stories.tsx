@@ -32,6 +32,7 @@ export const Disabled = () => (
       value="disabled"
       placeholder="disabled"
       name="disabled"
+      shape={TextArea.Shapes.SemiRounded}
     />
   </>
 );
@@ -39,7 +40,13 @@ export const Disabled = () => (
 export const Invalid = () => (
   <>
     <h1>TextArea invalid</h1>
-    <TextArea invalid value="invalid" placeholder="invalid" name="invalid" />
+    <TextArea
+      invalid
+      value="invalid"
+      placeholder="invalid"
+      name="invalid"
+      shape={TextArea.Shapes.SemiRounded}
+    />
   </>
 );
 

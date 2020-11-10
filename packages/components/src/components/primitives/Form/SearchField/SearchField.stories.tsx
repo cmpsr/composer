@@ -16,6 +16,7 @@ export const Shapes = () => (
         <SearchField
           shape={SearchField.Shapes[shape]}
           placeholder={shape}
+          iconPosition={SearchField.IconPositions.Left}
           name={shape}
         />
         <br />
@@ -33,6 +34,7 @@ export const IconPositions = () => (
           iconPosition={SearchField.IconPositions[iconPosition]}
           placeholder={iconPosition}
           name={iconPosition}
+          shape={SearchField.Shapes.SemiRounded}
         />
         <br />
       </div>

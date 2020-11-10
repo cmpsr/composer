@@ -15,8 +15,8 @@ export const SearchField: Type = forwardRef<HTMLInputElement, Props>(
   (
     {
       className,
-      shape = Shapes.SemiRounded,
-      iconPosition = IconPositions.Left,
+      shape,
+      iconPosition,
       ariaLabel,
       name,
       placeholder,

@@ -19,7 +19,7 @@ export const CurrencyField: Type = forwardRef<HTMLInputElement, Props>(
       ariaLabel,
       name,
       placeholder,
-      shape = Shapes.SemiRounded,
+      shape,
       disabled = false,
       invalid = false,
       type = 'number',

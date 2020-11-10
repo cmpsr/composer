@@ -20,14 +20,20 @@ describe('MessageError', () => {
   });
   it('should render with left placement styles', () => {
     render(
-      <MessageError placement={MessageError.Placements.Left} text="I'm a fancy message" />
+      <MessageError
+        placement={MessageError.Placements.Left}
+        text="I'm a fancy message"
+      />
     );
     const message = screen.getByTestId(testId);
     expect(message).toHaveClass(MessageError.Placements.Left);
   });
   it('should render with right placement styles', () => {
     render(
-      <MessageError placement={MessageError.Placements.Right} text="I'm a fancy message" />
+      <MessageError
+        placement={MessageError.Placements.Right}
+        text="I'm a fancy message"
+      />
     );
     const message = screen.getByTestId(testId);
     expect(message).toHaveClass(MessageError.Placements.Right);
@@ -48,10 +54,12 @@ describe('MessageError', () => {
     expect(mockOnErrorClick).toBeCalledTimes(2);
   });
   it('should render custom CSS as a class', () => {
-    render(<MessageError text="I'm a fancy message" customCss="color: violet" />);
+    render(
+      <MessageError text="I'm a fancy message" customCss="color: violet" />
+    );
     const wrapper = screen.getByTestId(testId);
     expect(wrapper).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
 });

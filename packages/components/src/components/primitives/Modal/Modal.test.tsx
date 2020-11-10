@@ -40,7 +40,7 @@ describe('Modal', () => {
     );
     const modal = screen.getByText('content');
     expect(modal).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   it('should render custom class', () => {
@@ -60,7 +60,7 @@ describe('Modal', () => {
     );
     const overlay = screen.getByText('content').parentNode;
     expect(overlay).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   it('should render custom class on overlay', () => {

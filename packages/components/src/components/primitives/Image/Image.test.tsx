@@ -48,7 +48,7 @@ describe('Image', () => {
     render(<Image image={imageType} customCss="color: violet" />);
     const image = screen.getByTestId(imageContentTestId);
     expect(image).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
 });

@@ -49,7 +49,7 @@ describe('Typography', () => {
     );
     const typography = screen.getByTestId(testId);
     expect(typography).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
 });

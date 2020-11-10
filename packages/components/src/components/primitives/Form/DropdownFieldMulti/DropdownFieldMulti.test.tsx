@@ -78,7 +78,7 @@ describe('DropdownFieldMulti', () => {
     givenComponentRendered({ customCss: 'color: violet' });
     const dropdown = screen.getByTestId(testId);
     expect(dropdown).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   const givenComponentRendered = (props?: any) =>

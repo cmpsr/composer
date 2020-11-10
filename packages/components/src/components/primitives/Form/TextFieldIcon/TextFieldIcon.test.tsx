@@ -61,14 +61,14 @@ describe('TextFieldIcon', () => {
     givenComponentRendered({ customCss: 'color: violet' });
     const textFieldIcon = screen.getByTestId(testId);
     expect(textFieldIcon).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   it('should render wrapper custom css', () => {
     givenComponentRendered({ wrapperCustomCss: 'color: violet' });
     const wrapper = screen.getByTestId(testId).parentElement;
     expect(wrapper).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   const givenComponentRendered = (props?: any) =>

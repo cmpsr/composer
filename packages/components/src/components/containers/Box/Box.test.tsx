@@ -18,7 +18,7 @@ describe('Box', () => {
     render(<Box customCss="color: violet" />);
     const box = screen.getByTestId(testId);
     expect(box).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   it('should render screen size', () => {

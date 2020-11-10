@@ -18,20 +18,31 @@ describe('Message', () => {
   });
   it('should render primary color', () => {
     render(
-      <Message backgroundColor={Message.BackgroundColors.Primary} text="I'm a fancy message" />
+      <Message
+        backgroundColor={Message.BackgroundColors.Primary}
+        text="I'm a fancy message"
+      />
     );
     const message = screen.getByTestId(testId);
     expect(message).toHaveClass(Message.BackgroundColors.Primary);
   });
   it('should render secondary color', () => {
     render(
-      <Message backgroundColor={Message.BackgroundColors.Secondary} text="I'm a fancy message" />
+      <Message
+        backgroundColor={Message.BackgroundColors.Secondary}
+        text="I'm a fancy message"
+      />
     );
     const message = screen.getByTestId(testId);
     expect(message).toHaveClass(Message.BackgroundColors.Secondary);
   });
   it('should render black color', () => {
-    render(<Message backgroundColor={Message.BackgroundColors.Black} text="I'm a fancy message" />);
+    render(
+      <Message
+        backgroundColor={Message.BackgroundColors.Black}
+        text="I'm a fancy message"
+      />
+    );
     const message = screen.getByTestId(testId);
     expect(message).toHaveClass(Message.BackgroundColors.Black);
   });
@@ -98,7 +109,7 @@ describe('Message', () => {
     render(<Message customCss="color: violet" />);
     const wrapper = screen.getByTestId(wrapperTestId);
     expect(wrapper).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
 });

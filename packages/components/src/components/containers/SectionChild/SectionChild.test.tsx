@@ -17,7 +17,7 @@ describe('SectionChild', () => {
     render(<SectionChild customCss="color: violet" />);
     const sectionChild = screen.getByTestId('sectionChild');
     expect(sectionChild).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   it('should render children', () => {

@@ -27,7 +27,7 @@ describe('TextArea', () => {
     );
     const textArea = screen.getByTestId(testId);
     expect(textArea).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   it('should render required', () => {

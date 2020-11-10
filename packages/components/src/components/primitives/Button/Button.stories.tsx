@@ -13,7 +13,9 @@ export const Types = () => (
     <h1>Button types</h1>
     {Object.keys(Button.Types).map((type: any) => (
       <>
-        <Button type={Button.Types[type]}>{type} Button</Button>
+        <Button type={Button.Types[type]} shape={Button.Shapes.Rectangle}>
+          {type} Button
+        </Button>
         <br />
       </>
     ))}
@@ -25,7 +27,9 @@ export const Shapes = () => (
     <h1>Button shapes</h1>
     {Object.keys(Button.Shapes).map((shape: any) => (
       <>
-        <Button shape={Button.Shapes[shape]}>{shape} Button</Button>
+        <Button shape={Button.Shapes[shape]} type={Button.Types.Primary}>
+          {shape} Button
+        </Button>
         <br />
       </>
     ))}
@@ -37,7 +41,11 @@ export const Disabled = () => (
     <h1>Button types</h1>
     {Object.keys(Button.Types).map((type: any) => (
       <>
-        <Button type={Button.Types[type]} disabled>
+        <Button
+          type={Button.Types[type]}
+          shape={Button.Shapes.Rectangle}
+          disabled
+        >
           {type} Disabled Button
         </Button>
         <br />

@@ -33,6 +33,7 @@ export const IconPositions = () => (
           iconPosition={SearchField.IconPositions[iconPosition]}
           placeholder={iconPosition}
           name={iconPosition}
+          shape={SearchField.Shapes.SemiRounded}
         />
         <br />
       </div>

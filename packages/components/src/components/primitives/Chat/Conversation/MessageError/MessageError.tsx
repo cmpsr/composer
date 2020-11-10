@@ -21,41 +21,35 @@ export const MessageError = ({
   placement = Message.Placements.Left,
   errorText,
   onErrorClick,
-}: Props) => {
-  return (
-    <StyledMessageContainer
-      data-testid={testId}
-      css={customCss}
-      className={cn(className, placement)}
-    >
-      <StyledMessageWrapper>
-        <StyledMessage
-          text={text}
-          placement={placement}
-          className={placement}
-        />
-        <StyledIconWrapper
-          data-testid="errorIcon"
-          onClick={onErrorClick}
-          className={placement}
+}: Props) => (
+  <StyledMessageContainer
+    data-testid={testId}
+    css={customCss}
+    className={cn(className, placement)}
+  >
+    <StyledMessageWrapper>
+      <StyledMessage text={text} placement={placement} className={placement} />
+      <StyledIconWrapper
+        data-testid="errorIcon"
+        onClick={onErrorClick}
+        className={placement}
+      >
+        <StyledIcon>
+          <Error type={Icon.Types.Rounded} />
+        </StyledIcon>
+      </StyledIconWrapper>
+    </StyledMessageWrapper>
+    {errorText && (
+      <StyledErrorWrapper onClick={onErrorClick}>
+        <StyledErrorText
+          tag={StyledErrorText.Tags.Paragraph}
+          type={StyledErrorText.Types.Detail}
         >
-          <StyledIcon>
-            <Error type={Icon.Types.Rounded} />
-          </StyledIcon>
-        </StyledIconWrapper>
-      </StyledMessageWrapper>
-      {errorText && (
-        <StyledErrorWrapper onClick={onErrorClick}>
-          <StyledErrorText
-            tag={StyledErrorText.Tags.Paragraph}
-            type={StyledErrorText.Types.Detail}
-          >
-            {errorText}
-          </StyledErrorText>
-        </StyledErrorWrapper>
-      )}
-    </StyledMessageContainer>
-  );
-};
+          {errorText}
+        </StyledErrorText>
+      </StyledErrorWrapper>
+    )}
+  </StyledMessageContainer>
+);
 
 MessageError.Placements = Message.Placements;

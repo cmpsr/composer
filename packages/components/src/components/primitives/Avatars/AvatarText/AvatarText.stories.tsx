@@ -25,7 +25,7 @@ export const Colors = () => (
     {Object.keys(AvatarText.BackgroundColors).map((backgroundColor: any) => (
       <>
         <AvatarText
-          size={AvatarText.BackgroundColors[backgroundColor]}
+          backgroundColor={AvatarText.BackgroundColors[backgroundColor]}
           text="text"
         />
         <br />

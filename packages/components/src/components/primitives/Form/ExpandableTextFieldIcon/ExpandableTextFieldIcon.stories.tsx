@@ -37,6 +37,7 @@ export const IconPositions = () => (
             placeholder={iconPosition}
             icon={<Send type={Icon.Types.Rounded} />}
             onChange={action('On change')}
+            shape={ExpandableTextFieldIcon.Shapes.SemiRounded}
           />
           <br />
         </div>

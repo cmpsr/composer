@@ -47,7 +47,11 @@ export const TextFieldIconButton = ({
       icon={icon}
       iconPosition={iconPosition}
     />
-    <Button type={Button.Types.Primary} onClick={onClick}>
+    <Button
+      type={Button.Types.Primary}
+      shape={Button.Shapes.Rectangle}
+      onClick={onClick}
+    >
       <Typography tag={Typography.Tags.Span} type={Typography.Types.Button}>
         {buttonContent}
       </Typography>

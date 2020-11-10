@@ -34,7 +34,7 @@ describe('ConversationSummary', () => {
     );
     const message = screen.getByText("I'm the message");
     expect(message).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   it('should render title, description, message and time', () => {

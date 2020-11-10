@@ -9,22 +9,20 @@ export const Spinner = ({
   testId = 'spinner',
   size = Sizes.Small,
   color = Colors.Primary,
-}: Props) => {
-  return (
-    <StyledSvg className={cn(className, size)} data-testid={testId}>
-      <StyledCircle
-        stroke={color}
-        className={color}
-        cx={size === Sizes.Small ? 10 : 50}
-        cy={size === Sizes.Small ? 10 : 50}
-        r={size === Sizes.Small ? 9 : 20}
-        fill="none"
-        strokeWidth={strokeWidth ?? size === Sizes.Small ? 2 : 4}
-        strokeMiterlimit="10"
-      />
-    </StyledSvg>
-  );
-};
+}: Props) => (
+  <StyledSvg className={cn(className, size)} data-testid={testId}>
+    <StyledCircle
+      stroke={color}
+      className={color}
+      cx={size === Sizes.Small ? 10 : 50}
+      cy={size === Sizes.Small ? 10 : 50}
+      r={size === Sizes.Small ? 9 : 20}
+      fill="none"
+      strokeWidth={strokeWidth ?? size === Sizes.Small ? 2 : 4}
+      strokeMiterlimit="10"
+    />
+  </StyledSvg>
+);
 
 Spinner.Sizes = Sizes;
 Spinner.Colors = Colors;

@@ -33,6 +33,7 @@ export const Modes = () => (
           inputMode={TextField.Modes[mode]}
           placeholder={mode}
           name={mode}
+          shape={TextField.Shapes.SemiRounded}
         />
         <br />
       </div>
@@ -43,14 +44,24 @@ export const Modes = () => (
 export const Disabled = () => (
   <>
     <h1>TextField disabled</h1>
-    <TextField disabled placeholder="disabled" name="disabled" />
+    <TextField
+      disabled
+      placeholder="disabled"
+      name="disabled"
+      shape={TextField.Shapes.SemiRounded}
+    />
   </>
 );
 
 export const Invalid = () => (
   <>
     <h1>TextField invalid</h1>
-    <TextField invalid placeholder="invalid" name="invalid" />
+    <TextField
+      invalid
+      placeholder="invalid"
+      name="invalid"
+      shape={TextField.Shapes.SemiRounded}
+    />
   </>
 );
 

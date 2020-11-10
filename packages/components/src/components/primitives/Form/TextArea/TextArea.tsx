@@ -13,9 +13,9 @@ export const TextArea = ({
   required,
   placeholder,
   onChange,
-  shape = Shapes.SemiRounded,
+  shape,
   customCss,
-  testId = 'textArea'
+  testId = 'textArea',
 }: Props) => (
   <StyledTextArea
     data-testid={testId}

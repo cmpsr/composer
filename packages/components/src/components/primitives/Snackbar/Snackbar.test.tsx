@@ -91,6 +91,7 @@ describe('showSnackbar', () => {
     render(<Snackbar />);
     showSnackbar({
       message: 'message',
+      type: Snackbar.Types.Default,
     });
     await screen.findByText('message');
     const snackbarBackground = screen.getByTestId(testId).parentElement

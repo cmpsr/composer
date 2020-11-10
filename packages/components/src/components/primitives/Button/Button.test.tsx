@@ -38,7 +38,7 @@ describe('Button', () => {
     render(<Button customCss="color: violet" />);
     const button = screen.getByTestId(testId);
     expect(button).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   it('should render html type', () => {

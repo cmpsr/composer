@@ -41,7 +41,7 @@ describe('TextFieldButtonButton', () => {
     givenComponentRendered({ customCss: 'color: violet' });
     const textFieldButton = screen.getByTestId(testId).firstChild;
     expect(textFieldButton).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   const givenComponentRendered = (props?: any) =>

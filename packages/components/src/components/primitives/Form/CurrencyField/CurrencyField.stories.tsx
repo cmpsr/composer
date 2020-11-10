@@ -32,6 +32,7 @@ export const Modes = () => (
         <CurrencyField
           name="default"
           inputMode={CurrencyField.Modes[mode]}
+          shape={CurrencyField.Shapes.SemiRounded}
           placeholder={mode}
         />
         <br />
@@ -43,14 +44,24 @@ export const Modes = () => (
 export const Disabled = () => (
   <>
     <h1>CurrencyField disabled</h1>
-    <CurrencyField name="default" disabled placeholder="disabled" />
+    <CurrencyField
+      name="default"
+      disabled
+      placeholder="disabled"
+      shape={CurrencyField.Shapes.SemiRounded}
+    />
   </>
 );
 
 export const Invalid = () => (
   <>
     <h1>CurrencyField invalid</h1>
-    <CurrencyField name="default" invalid placeholder="invalid" />
+    <CurrencyField
+      name="default"
+      invalid
+      placeholder="invalid"
+      shape={CurrencyField.Shapes.SemiRounded}
+    />
   </>
 );
 
@@ -66,6 +77,7 @@ export const Children = () => (
       name="default"
       placeholder="children"
       children={personIcon}
+      shape={CurrencyField.Shapes.SemiRounded}
     />
   </>
 );

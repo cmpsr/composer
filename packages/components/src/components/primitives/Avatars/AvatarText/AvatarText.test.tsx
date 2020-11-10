@@ -3,14 +3,14 @@ import { render, screen } from '@testing-library/react';
 import { AvatarText } from './AvatarText';
 
 describe('AvatarText', () => {
-  const AVATAR_TEXT_DEFAULT_TEST_ID = 'avatarText';
+  const testId = 'avatarText';
   it('should render text', () => {
     render(<AvatarText text="foo" />);
     screen.getByText('foo');
   });
   it('should render class', () => {
     render(<AvatarText text="foo" className="foo" />);
-    const avatar = screen.getByTestId(AVATAR_TEXT_DEFAULT_TEST_ID);
+    const avatar = screen.getByTestId(testId);
     expect(avatar).toHaveClass('foo');
   });
   it('should render highlight', () => {
@@ -24,22 +24,22 @@ describe('AvatarText', () => {
   });
   it('should render extra small size', () => {
     render(<AvatarText text="foo" size={AvatarText.Sizes.ExtraSmall} />);
-    const avatar = screen.getByTestId(AVATAR_TEXT_DEFAULT_TEST_ID);
+    const avatar = screen.getByTestId(testId);
     expect(avatar).toHaveClass(AvatarText.Sizes.ExtraSmall);
   });
   it('should render small size', () => {
     render(<AvatarText text="foo" size={AvatarText.Sizes.Small} />);
-    const avatar = screen.getByTestId(AVATAR_TEXT_DEFAULT_TEST_ID);
+    const avatar = screen.getByTestId(testId);
     expect(avatar).toHaveClass(AvatarText.Sizes.Small);
   });
   it('should render medium size', () => {
     render(<AvatarText text="foo" size={AvatarText.Sizes.Medium} />);
-    const avatar = screen.getByTestId(AVATAR_TEXT_DEFAULT_TEST_ID);
+    const avatar = screen.getByTestId(testId);
     expect(avatar).toHaveClass(AvatarText.Sizes.Medium);
   });
   it('should render large size', () => {
     render(<AvatarText text="foo" size={AvatarText.Sizes.Large} />);
-    const avatar = screen.getByTestId(AVATAR_TEXT_DEFAULT_TEST_ID);
+    const avatar = screen.getByTestId(testId);
     expect(avatar).toHaveClass(AvatarText.Sizes.Large);
   });
   it('should render primary900 background', () => {
@@ -49,7 +49,7 @@ describe('AvatarText', () => {
         backgroundColor={AvatarText.BackgroundColors.Primary900}
       />
     );
-    const avatar = screen.getByTestId(AVATAR_TEXT_DEFAULT_TEST_ID);
+    const avatar = screen.getByTestId(testId);
     expect(avatar).toHaveClass(AvatarText.BackgroundColors.Primary900);
   });
   it('should render primary600 background', () => {
@@ -59,7 +59,7 @@ describe('AvatarText', () => {
         backgroundColor={AvatarText.BackgroundColors.Primary600}
       />
     );
-    const avatar = screen.getByTestId(AVATAR_TEXT_DEFAULT_TEST_ID);
+    const avatar = screen.getByTestId(testId);
     expect(avatar).toHaveClass(AvatarText.BackgroundColors.Primary600);
   });
 });

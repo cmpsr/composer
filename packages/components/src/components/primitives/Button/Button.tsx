@@ -9,11 +9,11 @@ export const Button = ({
   className,
   customCss,
   onClick,
-  type = Types.Primary,
+  type,
   htmlType = HtmlTypes.Button,
   testId = 'button',
   disabled = false,
-  shape = Shapes.Rectangle,
+  shape,
 }: Props) => (
   <StyledButton
     data-testid={testId}

@@ -8,7 +8,7 @@ export const TextField: Type = forwardRef<HTMLInputElement, Props>(
   (
     {
       className,
-      shape = Shapes.SemiRounded,
+      shape,
       ariaLabel,
       name,
       placeholder,

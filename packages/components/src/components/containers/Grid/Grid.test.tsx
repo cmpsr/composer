@@ -21,7 +21,7 @@ describe('Grid', () => {
     const { getByTestId } = render(<Grid customCss="color: violet">foo</Grid>);
     const grid = getByTestId('grid');
     expect(grid).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
 });

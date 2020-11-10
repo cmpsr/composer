@@ -65,14 +65,14 @@ describe('TextFieldWithLabel', () => {
     givenComponentRendered({ labelCustomCss: 'color: violet' });
     const label = screen.getByTestId('typography');
     expect(label).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   it('should render textfield custom css', () => {
     givenComponentRendered({ textFieldCustomCss: 'color: violet' });
     const textField = screen.getByTestId('textFieldWithLabel');
     expect(textField).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   const givenComponentRendered = (props?: any) =>

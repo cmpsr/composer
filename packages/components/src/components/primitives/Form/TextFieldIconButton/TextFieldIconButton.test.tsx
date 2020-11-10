@@ -59,7 +59,7 @@ describe('TextFieldIconButton', () => {
     givenComponentRendered({ customCss: 'color: violet' });
     const textFieldIconButton = screen.getByTestId(testId);
     expect(textFieldIconButton).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   const givenComponentRendered = (props?: any) =>

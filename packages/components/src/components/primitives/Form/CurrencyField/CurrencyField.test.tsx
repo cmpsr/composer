@@ -51,7 +51,7 @@ describe('CurrencyField', () => {
     givenComponentRendered({ customCss: 'color: violet' });
     const input = screen.getByTestId(testId);
     expect(input).toHaveStyleRule('color', 'violet', {
-      modifier: '&&&',
+      modifier: '&',
     });
   });
   it('should render children', () => {

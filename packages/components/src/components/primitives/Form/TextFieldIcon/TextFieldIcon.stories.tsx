@@ -35,6 +35,7 @@ export const Disabled = () => (
       placeholder="disabled"
       name="disabled"
       icon={<Favorite type={Icon.Types.Filled} />}
+      iconPosition={TextFieldIcon.IconPositions.Left}
     />
   </>
 );
@@ -47,6 +48,7 @@ export const Invalid = () => (
       placeholder="invalid"
       name="invalid"
       icon={<Favorite type={Icon.Types.Filled} />}
+      iconPosition={TextFieldIcon.IconPositions.Left}
     />
   </>
 );
@@ -58,6 +60,7 @@ export const Error = () => (
       placeholder="error"
       name="error"
       icon={<Favorite type={Icon.Types.Filled} />}
+      iconPosition={TextFieldIcon.IconPositions.Left}
     />
     <ErrorField error="Error" />
   </>

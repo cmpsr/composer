@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import cn from 'classnames';
 import { Props } from './TextFieldIcon.types';
+import { TextField } from 'components/primitives';
 import {
   StyledWrapper,
   StyledIcon,
@@ -11,7 +12,7 @@ import { IconPositions } from 'components/Components.types';
 
 export const TextFieldIcon = ({
   className,
-  iconPosition = IconPositions.Left,
+  iconPosition,
   ariaLabel,
   name,
   placeholder,
@@ -60,6 +61,7 @@ export const TextFieldIcon = ({
         ref={ref}
         disabled={disabled}
         invalid={invalid}
+        shape={TextField.Shapes.SemiRounded}
       />
       <StyledIconWrapper className={iconPosition}>
         <StyledIcon className={cn({ notFocused: !focused })}>{icon}</StyledIcon>

@@ -21,6 +21,7 @@ export const Places = () => (
           place={Tooltip.Places[place]}
           element={<span>Tooltip {place}</span>}
           tooltip={<span>{place}</span>}
+          backgroundColor={Tooltip.BackgroundColors.Primary900}
         />
         <br />
       </>
@@ -37,6 +38,7 @@ export const Colors = () => (
           backgroundColor={Tooltip.BackgroundColors[backgroundColor]}
           element={<span>Tooltip {backgroundColor}</span>}
           tooltip={<span>{backgroundColor}</span>}
+          place={Tooltip.Places.Top}
         />
         <br />
       </>

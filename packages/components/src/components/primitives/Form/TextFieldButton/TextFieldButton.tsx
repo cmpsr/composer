@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Typography } from 'components/primitives';
+import { Button, Typography, TextField } from 'components/primitives';
 import { Props } from './TextFieldButton.types';
 import { StyledWrapper, StyledTextField } from './TextFieldButton.styled';
 
@@ -26,8 +26,13 @@ export const TextFieldButton = ({
       required={required}
       placeholder={placeholder}
       onChange={onChange}
+      shape={TextField.Shapes.SemiRounded}
     />
-    <Button type={Button.Types.Primary} onClick={onClick}>
+    <Button
+      type={Button.Types.Primary}
+      shape={Button.Shapes.Rectangle}
+      onClick={onClick}
+    >
       <Typography tag={Typography.Tags.Span} type={Typography.Types.Button}>
         {buttonLabel}
       </Typography>

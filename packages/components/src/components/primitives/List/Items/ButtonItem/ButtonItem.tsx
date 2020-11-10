@@ -1,6 +1,7 @@
 import React from 'react';
 import { Props } from './ButtonItem.types';
 import { StyledButton } from './ButtonItem.styled';
+import { Button } from 'components/primitives';
 
 export const ButtonItem = ({
   className,
@@ -8,15 +9,15 @@ export const ButtonItem = ({
   onClick,
   disabled,
   testId = 'buttonItem',
-}: Props) => {
-  return (
-    <StyledButton
-      testId={testId}
-      className={className}
-      onClick={onClick}
-      disabled={disabled}
-    >
-      {children}
-    </StyledButton>
-  );
-};
+}: Props) => (
+  <StyledButton
+    testId={testId}
+    className={className}
+    onClick={onClick}
+    disabled={disabled}
+    type={Button.Types.Primary}
+    shape={Button.Shapes.Rectangle}
+  >
+    {children}
+  </StyledButton>
+);

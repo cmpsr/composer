@@ -22,7 +22,7 @@ export const Modal = ({
   customCss,
   overlayCustomCss,
   overlayClassName,
-  shape = Shapes.Rectangle,
+  shape,
   isOpen = false,
   showCloseButton: closeButton = false,
   testId = 'modal',

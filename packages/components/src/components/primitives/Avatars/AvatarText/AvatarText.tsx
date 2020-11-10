@@ -25,8 +25,8 @@ export const AvatarText = ({
   className,
   highlightClassName,
   testId = 'avatarText',
-  size = Sizes.Large,
-  backgroundColor = BackgroundColors.Primary900,
+  size,
+  backgroundColor,
   isHighlighted,
 }: Props) => {
   const avatar = (

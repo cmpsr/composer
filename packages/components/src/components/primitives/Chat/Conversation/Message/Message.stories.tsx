@@ -32,6 +32,7 @@ export const Placements = () => (
         <Message
           placement={Message.Placements[placement]}
           text="I'm a fancy message"
+          backgroundColor={Message.BackgroundColors.Primary}
         />
       </div>
     ))}
@@ -45,6 +46,7 @@ export const Colors = () => (
       <div key={i}>
         <Message
           backgroundColor={Message.BackgroundColors[backgroundColor]}
+          placement={Message.Placements.Right}
           text="I'm a fancy message"
         />
       </div>
@@ -57,6 +59,8 @@ export const Media = () => (
     <h1>Message media</h1>
     <Message
       mediaFiles={mediaFiles.two}
+      backgroundColor={Message.BackgroundColors.Primary}
+      placement={Message.Placements.Right}
       onMediaClick={action('On media click')}
       text="I'm a media message"
     />

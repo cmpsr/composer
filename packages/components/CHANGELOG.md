@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.4
+
+### Patch Changes
+
+- 3196932: Remove default types
+
 ## 0.1.3
 
 ### Patch Changes

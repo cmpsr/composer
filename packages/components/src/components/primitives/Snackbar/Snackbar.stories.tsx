@@ -12,6 +12,9 @@ export default {
 export const Message = () => {
   const config = {
     message: 'Message',
+    textPosition: Snackbar.TextPositions.Right,
+    type: Snackbar.Types.Default,
+    position: Snackbar.Positions.TopCenter,
   };
 
   useEffect(() => {
@@ -25,6 +28,9 @@ export const Description = () => {
   const config = {
     message: 'Message',
     description: 'Description',
+    textPosition: Snackbar.TextPositions.Right,
+    type: Snackbar.Types.Default,
+    position: Snackbar.Positions.TopCenter,
   };
 
   useEffect(() => {
@@ -40,6 +46,8 @@ export const TextPositions = () => {
       showSnackbar({
         message: textPosition,
         textPosition: Snackbar.TextPositions[textPosition],
+        type: Snackbar.Types.Default,
+        position: Snackbar.Positions.TopCenter,
         action: {
           childAction: (
             <Icon>
@@ -65,6 +73,8 @@ export const Positions = () => {
       showSnackbar({
         message: position,
         position: Snackbar.Positions[position],
+        textPosition: Snackbar.TextPositions.Right,
+        type: Snackbar.Types.Default,
       });
     });
   }, []);
@@ -83,6 +93,8 @@ export const Types = () => {
       showSnackbar({
         message: type,
         type: Snackbar.Types[type],
+        textPosition: Snackbar.TextPositions.Right,
+        position: Snackbar.Positions.TopCenter,
       });
     });
   }, []);

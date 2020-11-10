@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { toast } from 'react-toastify';
-import { Typography } from 'components/primitives/Typography';
+import { Typography, Button } from 'components/primitives';
 import {
   ShowSnackbarProps,
   SnackbarProps,
@@ -24,9 +24,9 @@ export const showSnackbar = ({
   testId = 'showSnackbar',
   message,
   description,
-  textPosition = TextPositions.Right,
-  type = Types.Default,
-  position = Positions.TopCenter,
+  textPosition,
+  type,
+  position,
   autoClose = 5000,
   action,
   onClose,
@@ -52,7 +52,12 @@ export const showSnackbar = ({
         )}
       </StyledInformation>
       {action ? (
-        <StyledButton className={textPosition} onClick={action.onClickAction}>
+        <StyledButton
+          className={textPosition}
+          onClick={action.onClickAction}
+          type={Button.Types.Primary}
+          shape={Button.Shapes.Rectangle}
+        >
           {action.childAction}
         </StyledButton>
       ) : null}

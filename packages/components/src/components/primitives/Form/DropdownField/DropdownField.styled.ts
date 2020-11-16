@@ -45,6 +45,21 @@ export const StyledSelectMobile = styled.select<StyledCssProps>`
   text-align: left;
   color: ${(props) => getTheme(props).colors.outlineFormFilled};
 
+  letter-spacing: ${(props) =>
+    getTheme(props).Typography.sm.letterSpacing.form};
+  line-height: ${(props) => getTheme(props).Typography.sm.lineHeight.form};
+  font-weight: ${(props) => getTheme(props).Typography.sm.fontWeight.form};
+  font-size: ${(props) => getTheme(props).Typography.sm.fontSize.form};
+  font-family: ${(props) => getTheme(props).Typography.sm.fontFamily.form};
+  @media (min-width: ${(props) => getTheme(props).breakpoints.md}) {
+    letter-spacing: ${(props) =>
+      getTheme(props).Typography.md.letterSpacing.form};
+    line-height: ${(props) => getTheme(props).Typography.md.lineHeight.form};
+    font-weight: ${(props) => getTheme(props).Typography.md.fontWeight.form};
+    font-size: ${(props) => getTheme(props).Typography.md.fontSize.form};
+    font-family: ${(props) => getTheme(props).Typography.md.fontFamily.form};
+  }
+
   &.invalid {
     border-color: ${(props) => getTheme(props).colors.fillSystemError};
   }

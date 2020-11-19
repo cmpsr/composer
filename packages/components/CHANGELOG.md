@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.6
+
+### Patch Changes
+
+- 1abea66: add customCss and messageClassName props to ConversationSummary
+
 ## 0.1.5
 
 ### Patch Changes

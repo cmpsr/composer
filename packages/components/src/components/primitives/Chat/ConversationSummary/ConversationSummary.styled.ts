@@ -35,6 +35,8 @@ export const StyledContainer = styled.div<Props>`
       background-color: ${(props) => getTheme(props).colors.fillBackground300};
     }
   }
+
+  ${(props) => customCss(props)};
 `;
 
 export const StyledProfileContainer = styled.div<Props>`

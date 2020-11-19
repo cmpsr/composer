@@ -11,6 +11,8 @@ export type Props = BaseProps & {
   isActive?: boolean;
   isError?: boolean;
   time: string;
-  messageCss?: string;
+  customCss?: string;
+  messageClassName?: string;
+  messageCustomCss?: string;
   onClick?: (id: string) => void;
 };

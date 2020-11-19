@@ -65,6 +65,8 @@ export const Playground = () => (
       unreadMessages={number('unreadMessages', 3)}
       onClick={action('On click')}
       isError={boolean('Is Error', false)}
+      customCss={text('Container custom css', '')}
+      messageCustomCss={text('Message custom css', '')}
     />
   </Container>
 );

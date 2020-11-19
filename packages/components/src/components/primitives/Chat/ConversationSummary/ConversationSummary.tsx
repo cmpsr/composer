@@ -30,7 +30,9 @@ export const ConversationSummary = ({
   isError,
   time,
   className,
-  messageCss: messageClassName,
+  customCss,
+  messageClassName,
+  messageCustomCss,
   testId = 'conversationSummary',
   onClick,
 }: Props) => {
@@ -40,6 +42,7 @@ export const ConversationSummary = ({
       onClick={() => onClick(id)}
       className={cn(className, { active: isActive })}
       data-testid={testId}
+      css={customCss}
     >
       <StyledProfileContainer>
         <StyledAvatarWrapper>
@@ -67,10 +70,10 @@ export const ConversationSummary = ({
             {description}
           </StyledProfileDescription>
           <StyledProfileMessage
-            className={cn({ error: isError })}
+            className={cn({ error: isError }, messageClassName)}
             tag={Typography.Tags.Paragraph}
             type={Typography.Types.Detail}
-            css={messageClassName}
+            css={messageCustomCss}
           >
             {message}
             {'\u00A0'}

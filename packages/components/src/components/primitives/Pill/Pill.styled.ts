@@ -11,5 +11,5 @@ export const StyledPill = styled.div<Props>`
   border: 1px solid ${(props) => getTheme(props).colors.fillPrimary700};
   width: auto;
   display: inline-block;
-  padding: 0.357rem 1.25rem;
+  padding: 0.375rem 1.25rem;
 `;

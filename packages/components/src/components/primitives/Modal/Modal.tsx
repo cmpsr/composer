@@ -24,12 +24,16 @@ export const Modal = ({
   overlayClassName,
   shape,
   isOpen = false,
-  showCloseButton: closeButton = false,
+  showCloseButton = false,
+  onClose,
   testId = 'modal',
 }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(isOpen);
 
-  const handleCloseModal = () => setIsModalOpen(false);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    onClose && onClose();
+  };
 
   useEffect(() => {
     setIsModalOpen(isOpen);
@@ -47,7 +51,7 @@ export const Modal = ({
         css={customCss}
         onClick={stopEventPropagation}
       >
-        {closeButton && (
+        {showCloseButton && (
           <StyledCloseContainer>
             <StyledButton onClick={handleCloseModal}>
               <StyledIcon testId="close-button">

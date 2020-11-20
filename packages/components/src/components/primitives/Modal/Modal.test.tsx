@@ -8,7 +8,7 @@ describe('Modal', () => {
     render(<Modal isOpen>foo</Modal>);
     screen.getByTestId('modal');
   });
-  it('should not render modal when isOpen is true', () => {
+  it('should not render modal when isOpen is false', () => {
     render(<Modal isOpen={false}>foo</Modal>);
     const component = screen.queryByTestId('modal');
     expect(component).not.toBeInTheDocument();
@@ -31,6 +31,17 @@ describe('Modal', () => {
     const modal = screen.getByTestId('modal');
     fireEvent.click(icon);
     expect(modal).not.toBeInTheDocument();
+  });
+  it('should call onClose when closed', () => {
+    const mockOnClose = jest.fn();
+    render(
+      <Modal isOpen showCloseButton onClose={mockOnClose}>
+        content
+      </Modal>
+    );
+    const icon = screen.getByTestId('close-button');
+    fireEvent.click(icon);
+    expect(mockOnClose).toBeCalledTimes(1);
   });
   it('should render custom CSS class', () => {
     render(

@@ -94,10 +94,7 @@ export const Message = ({
           </StyledMediaWrapper>
         )}
         {!!text && (
-          <StyledTextWrapper
-            className={cn({ hasMedia })}
-            data-testid="textMessage"
-          >
+          <StyledTextWrapper data-testid="textMessage">
             <Typography
               mode={Typography.Modes.Dark100}
               tag={Typography.Tags.Span}

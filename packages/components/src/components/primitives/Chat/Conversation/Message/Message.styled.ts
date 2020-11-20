@@ -67,11 +67,7 @@ export const StyledMessageWrapper = styled.div<StyledBaseProps>`
 `;
 
 export const StyledTextWrapper = styled.div`
-  padding: 0.625rem 0.75rem;
-
-  &.hasMedia {
-    padding-top: 0.5rem;
-  }
+  padding: 1rem;
 `;
 
 export const StyledTimeWrapper = styled.div`

@@ -5,6 +5,7 @@ export type Props = CssCustomizableProps & {
   overlayCustomCss?: string;
   overlayClassName?: string;
   onClick?: () => void;
+  onClose?: () => void;
   shape?: Shapes;
   isOpen?: boolean;
   children?: ReactNode;

@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 export default {
   title: 'Primitives/Modal',
-  component: Modal
+  component: Modal,
 };
 
 const TitleContainer = styled.div`
@@ -70,6 +70,7 @@ export const Playground = () => (
     customCss={text('Modal custom CSS', 'width: 30rem;')}
     isOpen={boolean('isOpen', true)}
     showCloseButton={boolean('Show close button', true)}
+    onClose={action('On close')}
   >
     <TitleContainer>
       <StyledTitle

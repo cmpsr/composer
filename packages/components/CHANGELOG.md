@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.8
+
+### Patch Changes
+
+- 5de92d0: add onClose callback to Modal
+
 ## 0.1.7
 
 ### Patch Changes

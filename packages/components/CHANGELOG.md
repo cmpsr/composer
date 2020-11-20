@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.7
+
+### Patch Changes
+
+- 6ec9958: fill Pill padding
+
 ## 0.1.6
 
 ### Patch Changes

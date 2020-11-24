@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.2.3
+
+### Patch Changes
+
+- 1390146: feat: Query Context - Release
+
 ## 0.2.2
 
 ### Patch Changes

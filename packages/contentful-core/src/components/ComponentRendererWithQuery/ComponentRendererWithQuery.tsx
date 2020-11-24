@@ -6,6 +6,7 @@ import { ComponentRenderer } from '../ComponentRenderer';
 export type ChildProps = {
   className?: string;
   componentMap?: any;
+  context?: any;
   queryMap?: any;
   type: string;
   variables: { [key: string]: string | boolean | number };
@@ -14,19 +15,21 @@ export type ChildProps = {
 export const ComponentRendererWithQuery = ({
   className,
   componentMap: componentMapOverride,
+  context,
   queryMap: queryMapOverride,
   type,
-  variables
+  variables,
 }: ChildProps): ReactElement | null => {
   try {
     const {
       componentMap: componentMapDefault,
-      queryMap: queryMapDefault
+      queryMap: queryMapDefault,
     } = useContext(ContentfulContext);
 
     const query = (queryMapOverride || queryMapDefault)[type]();
     const { data } = useQuery(query, {
-      variables
+      variables,
+      context,
     });
     if (!data) return null;
 

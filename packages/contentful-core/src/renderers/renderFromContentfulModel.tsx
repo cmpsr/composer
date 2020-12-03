@@ -8,10 +8,25 @@ export const renderFromContentfulModel = (
 ): ReactElement => {
   const { __typename: type } = item;
 
-  if (!type || !Object.keys(componentMap).includes(type)) return null;
+  if (!type) {
+    console.warn('{__typename} not specified on Entry data');
+    return null;
+  }
+
+  if (!Object.keys(componentMap).includes(type)) {
+    console.warn(`Type of, ${type}, not defined in componentMap`);
+    return null;
+  }
+
+  if (!item?.sys?.id) {
+    console.warn('Entry lacks sys.id`]', item);
+    return null;
+  }
+
+  const key = `${parentId}_${item.sys.id}_${index}`;
 
   return componentMap[type](
-    { ...item, key: `${parentId}_${item.sys.id}_${index}`, componentMap },
+    { ...item, key, componentMap },
     index
   );
 };

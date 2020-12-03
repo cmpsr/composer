@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.2.4
+
+### Patch Changes
+
+- 8e68215: update: Safeguard component rendering
+
 ## 0.2.3
 
 ### Patch Changes

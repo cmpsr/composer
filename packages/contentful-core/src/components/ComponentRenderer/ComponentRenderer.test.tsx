@@ -41,12 +41,22 @@ const FooterData = {
 };
 const BadData = { __typename: 'Bad', sys: { id: 'bad-id' }, title: 'It bad.' };
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+jest.spyOn(global.console, 'error').mockImplementation(() => {});
+
 describe('ComponentRenderer', () => {
   const componentMap = {
     Header,
     Hero,
     Footer,
   };
+
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
 
   it('renders all componentMap items based on data', () => {
     const { container } = render(

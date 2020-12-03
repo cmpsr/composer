@@ -9,17 +9,17 @@ export const renderFromContentfulModel = (
   const { __typename: type } = item;
 
   if (!type) {
-    console.warn('{__typename} not specified on Entry data');
+    console.warn('Undefined Type: \'{__typename}\' not specified on Entry data');
     return null;
   }
 
   if (!Object.keys(componentMap).includes(type)) {
-    console.warn(`Type of, ${type}, not defined in componentMap`);
+    console.warn(`Undefined Type: '${type}' not defined in componentMap`);
     return null;
   }
 
   if (!item?.sys?.id) {
-    console.warn('Entry lacks sys.id`]', item);
+    console.warn('Incomplete Data: \'sys.id\' missing from Entry data', item);
     return null;
   }
 

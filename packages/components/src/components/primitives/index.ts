@@ -33,6 +33,7 @@ export * from './Pill';
 export * from './Snackbar';
 export * from './Spinner';
 export * from './Stepper';
+export * from './Toggle';
 export * from './Tooltip';
 export * from './Typography';
 export * from './Video';

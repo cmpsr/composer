@@ -8,10 +8,14 @@ export default {
   component: Toggle,
 };
 
+export const Enabled = () => <Toggle on />;
+
+export const Disabled = () => <Toggle disabled />;
+
 export const Playground = () => (
   <Toggle
     onStateChanged={action('on state changed')}
-    enabled={boolean('Enabled', false)}
+    on={boolean('On', false)}
     disabled={boolean('Disabled', false)}
   />
 );

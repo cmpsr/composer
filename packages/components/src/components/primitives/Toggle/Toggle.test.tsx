@@ -9,10 +9,10 @@ describe('Toggle', () => {
     const toggle = screen.getByTestId(testId).lastChild;
     expect(toggle).toHaveClass('foo');
   });
-  it('should render enabled', () => {
-    render(<Toggle enabled />);
+  it('should render on', () => {
+    render(<Toggle on />);
     const toggle = screen.getByTestId(testId).lastChild;
-    expect(toggle).toHaveClass('enabled');
+    expect(toggle).toHaveClass('on');
   });
   it('should render disabled', () => {
     render(<Toggle disabled />);

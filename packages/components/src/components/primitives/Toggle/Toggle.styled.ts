@@ -10,8 +10,8 @@ type Props = StyledBaseProps & StyledCssProps;
 export const StyledLabel = styled.label`
   position: relative;
   display: inline-block;
-  width: 42px;
-  height: 24px;
+  width: 2.625rem;
+  height: 1.5rem;
 `;
 
 export const StyledInput = styled.input`
@@ -29,13 +29,13 @@ export const StyledSpan = styled.span<Props>`
   bottom: 0;
   background-color: ${(props) => getTheme(props).colors.fillBlack200};
   transition: 0.4s;
-  border-radius: 9999px;
+  border-radius: 1.875rem;
 
-  &.enabled {
+  &.on {
     background-color: ${(props) =>
       getTheme(props).colors.fillStatePrimaryEnabled};
     :before {
-      transform: translateX(16px);
+      transform: translateX(1rem);
     }
   }
 
@@ -51,15 +51,15 @@ export const StyledSpan = styled.span<Props>`
   :before {
     position: absolute;
     content: '';
-    height: 22px;
-    width: 22px;
-    left: 2px;
-    bottom: 1px;
+    height: 1.375rem;
+    width: 1.375rem;
+    left: 0.125rem;
+    bottom: 0.0625rem;
     background-color: ${(props) => getTheme(props).colors.fillStateUiEnabled};
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
-    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.17);
+    box-shadow: 0rem 0.125rem 0.1875rem 0rem rgba(0, 0, 0, 0.17);
   }
 
   :not(.disabled) {

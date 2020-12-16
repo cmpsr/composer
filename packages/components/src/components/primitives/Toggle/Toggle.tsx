@@ -1,29 +1,29 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { useState, MouseEvent, useEffect } from 'react';
 import cn from 'classnames';
 import { Props } from './Toggle.types';
 import { StyledLabel, StyledInput, StyledSpan } from './Toggle.styled';
 
 export const Toggle = ({
   className,
-  enabled,
+  on,
   testId = 'toggle',
   onStateChanged,
   disabled = false,
 }: Props) => {
-  const [isEnabled, setEnabled] = useState(enabled ?? false);
+  const [isOn, setOn] = useState(on ?? false);
 
-  const toggle = (e: MouseEvent<HTMLElement>) => {
+  const changeState = (e: MouseEvent<HTMLElement>) => {
     if (disabled) return;
     e.preventDefault();
-    onStateChanged(!isEnabled);
-    setEnabled(!isEnabled);
+    onStateChanged && onStateChanged(!isOn);
+    setOn(!isOn);
   };
 
   return (
-    <StyledLabel data-testid={testId} onClick={toggle}>
+    <StyledLabel data-testid={testId} onClick={changeState}>
       <StyledInput type="checkbox" disabled={disabled} />
       <StyledSpan
-        className={cn(className, { enabled: isEnabled, disabled })}
+        className={cn(className, { on: isOn, disabled })}
       ></StyledSpan>
     </StyledLabel>
   );

@@ -8,7 +8,9 @@ export default {
   component: Toggle,
 };
 
-export const Enabled = () => <Toggle on />;
+export const On = () => <Toggle on />;
+
+export const Off = () => <Toggle on={false} />;
 
 export const Disabled = () => <Toggle disabled />;
 

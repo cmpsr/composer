@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.10
+
+### Patch Changes
+
+- d6f5b29: Create Toggle component
+
 ## 0.1.9
 
 ### Patch Changes

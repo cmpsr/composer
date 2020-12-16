@@ -94,7 +94,7 @@ export const colors = {
   fillTransparent200: '#00000026',
   fillTransparent100: '#00000000',
   fillOverlay: '#00000066',
-  fillStatePrimaryEnabled: '#dd0303ff',
+  fillStatePrimaryEnabled: '#414141',
   outlineStatePrimaryEnabled: '#00000000',
   fillStatePrimaryHover: '#000000e6',
   outlineStatePrimaryHover: '#00000000',

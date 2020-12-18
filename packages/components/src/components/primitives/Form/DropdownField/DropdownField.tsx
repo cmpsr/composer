@@ -11,6 +11,7 @@ import {
   StyledListItemDesktop,
   StyledIconDesktop,
   StyledButtonDesktop,
+  StyledWrapper,
 } from './DropdownField.styled';
 import { Props } from './DropdownField.types';
 import {
@@ -122,8 +123,9 @@ const DropdownDesktop = forwardRef<HTMLSelectElement, Props>(
           getToggleButtonProps,
           getMenuProps,
           getItemProps,
+          getRootProps,
         }) => (
-          <div>
+          <StyledWrapper {...getRootProps({ refKey: 'innerRef' })}>
             <StyledButtonDesktop
               css={customCss}
               {...getToggleButtonProps()}
@@ -164,7 +166,7 @@ const DropdownDesktop = forwardRef<HTMLSelectElement, Props>(
                 ))}
               </StyledUnorderedListDesktop>
             )}
-          </div>
+          </StyledWrapper>
         )}
       </Downshift>
     );

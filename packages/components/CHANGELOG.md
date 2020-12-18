@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.11
+
+### Patch Changes
+
+- a42dec1: Change style of downshift dropdown field
+
 ## 0.1.10
 
 ### Patch Changes

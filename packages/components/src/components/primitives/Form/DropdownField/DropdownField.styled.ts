@@ -91,6 +91,13 @@ export const StyledUnorderedListDesktop = styled.ul<StyledBaseProps>`
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
   border-color: ${(props) => getTheme(props).colors.outlinePrimary900};
+  position: absolute;
+  background: white;
+  width: 100%;
+  max-height: 10rem;
+  overflow: auto;
+  padding: 0;
+  box-sizing: border-box;
 `;
 
 export const StyledListItemDesktop = styled.li<StyledBaseProps>`
@@ -143,4 +150,8 @@ export const StyledButtonDesktop = styled.button<StyledCssProps>`
   }
 
   ${(props) => customCss(props)}
+`;
+
+export const StyledWrapper = styled.div`
+  position: relative;
 `;

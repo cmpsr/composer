@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.2.5
+
+### Patch Changes
+
+- c44f186: Add loadingComponent for ComponentRendererWithQuery
+
 ## 0.2.4
 
 ### Patch Changes

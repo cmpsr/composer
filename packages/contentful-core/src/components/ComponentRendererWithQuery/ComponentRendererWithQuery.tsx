@@ -46,13 +46,11 @@ export const ComponentRendererWithQuery = ({
     const dataToParse = key.indexOf('Collection') >= 0 ? data[key].items[0] : data[key];
 
     return (
-      <>
-        <ComponentRenderer
-          className={className}
-          data={dataToParse}
-          componentMap={componentMapOverride || componentMapDefault}
-        />
-      </>
+      <ComponentRenderer
+        className={className}
+        data={dataToParse}
+        componentMap={componentMapOverride || componentMapDefault}
+      />
     );
   } catch (e) {
     console.log('error', e);

@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "@changesets/cli": "^2.11.1",
-    "lerna": "^3.20.2"
+    "lerna": "^4.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

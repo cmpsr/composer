@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.3.0
+
+### Minor Changes
+
+- aad777f: Bump version of apollo client
+
 ## 0.2.5
 
 ### Patch Changes

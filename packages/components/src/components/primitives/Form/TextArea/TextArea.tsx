@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
 import cn from 'classnames';
-import { Props } from './TextArea.types';
+import { Props, Type } from './TextArea.types';
 import { Shapes } from 'components/Components.types';
 import { StyledTextArea } from './TextArea.styled';
 
-export const TextArea = forwardRef<HTMLTextAreaElement, Props>(
+export const TextArea: Type = forwardRef<HTMLTextAreaElement, Props>(
   (
     {
       className,

@@ -19,7 +19,7 @@ export const StyledIcon = styled(Icon)`
   position: absolute;
   left: -2px;
   top: -2px;
-
+  cursor: pointer;
   ${(props) => `
     fill: currentColor;
     color: ${getTheme(props).colors.fillStatePrimaryEnabled}

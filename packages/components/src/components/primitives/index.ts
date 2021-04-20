@@ -8,6 +8,7 @@ export * from './Chat/Conversation/MessageError';
 export * from './Chat/ConversationList';
 export * from './Chat/ConversationSummary';
 export * from './Dropdown';
+export * from './Form/CheckBox';
 export * from './Form/CurrencyField';
 export * from './Form/DropdownField';
 export * from './Form/DropdownFieldMulti';

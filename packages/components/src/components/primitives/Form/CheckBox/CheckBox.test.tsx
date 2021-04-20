@@ -19,6 +19,14 @@ describe('CheckBox', () => {
     const checkBox = screen.getByTestId(testId);
     expect(checkBox).toBeDisabled();
   });
+  it('should render label', () => {
+    render(<CheckBox label="foo" />);
+    screen.getByText('foo');
+  });
+  it('should render icon when checked', () => {
+    render(<CheckBox checked />);
+    screen.getByTestId('icon');
+  });
   it('should call onChange', () => {
     const mockOnChange = jest.fn();
     render(<CheckBox onChange={mockOnChange} />);

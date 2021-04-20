@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.13
+
+### Patch Changes
+
+- d075b7e: Export from root folder checkbox
+
 ## 0.1.12
 
 ### Patch Changes

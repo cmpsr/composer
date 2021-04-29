@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.14
+
+### Patch Changes
+
+- c500cf9: add rest props for input text
+
 ## 0.1.13
 
 ### Patch Changes

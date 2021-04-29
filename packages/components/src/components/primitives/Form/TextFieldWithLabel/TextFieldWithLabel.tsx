@@ -25,6 +25,7 @@ export const TextFieldWithLabel: Type = forwardRef<HTMLInputElement, Props>(
       labelCustomCss,
       textFieldCustomCss,
       testId = 'textFieldWithLabel',
+      ...rest
     }: Props,
     ref
   ) => (
@@ -55,6 +56,7 @@ export const TextFieldWithLabel: Type = forwardRef<HTMLInputElement, Props>(
         invalid={invalid}
         shape={shape}
         inputMode={inputMode}
+        {...rest}
       />
     </>
   )

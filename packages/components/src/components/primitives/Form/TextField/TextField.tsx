@@ -21,6 +21,7 @@ export const TextField: Type = forwardRef<HTMLInputElement, Props>(
       inputMode,
       testId = 'textField',
       customCss,
+      ...rest
     }: Props,
     ref
   ) => (
@@ -40,6 +41,7 @@ export const TextField: Type = forwardRef<HTMLInputElement, Props>(
       ref={ref}
       maxLength={maxLength}
       inputMode={inputMode}
+      {...rest}
     />
   )
 );

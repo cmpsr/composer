@@ -29,6 +29,10 @@ const mockAvailablePhoneNumbers = jest.fn().mockReturnValue({
     list: mockListPhones,
   },
 });
+const mockCreatePhone = jest.fn();
+const mockIncomingPhoneNumbers = {
+  create: mockCreatePhone,
+};
 
 describe('TwilioSms', () => {
   const config = {
@@ -50,6 +54,7 @@ describe('TwilioSms', () => {
         create: mockSendSms,
       },
       availablePhoneNumbers: mockAvailablePhoneNumbers,
+      incomingPhoneNumbers: mockIncomingPhoneNumbers,
     });
   });
   afterAll(() => {
@@ -128,6 +133,36 @@ describe('TwilioSms', () => {
       const twilioSms = new TwilioSms(config);
       const phones = await twilioSms.availablePhones(areaCode);
       expect(phones).toStrictEqual(mockList);
+    });
+  });
+
+  describe('buy', () => {
+    const phoneNumber = '+12342303790';
+    const friendlyName = 'Friendly name';
+    const smsUrl = 'SMS url';
+    const smsMethod = 'POST';
+
+    test('should create and return phone', async () => {
+      const mockPhone = {
+        friendlyName: 'Friendly name',
+        phoneNumber: '(234) 230-3790',
+      };
+      mockCreatePhone.mockReturnValueOnce(mockPhone);
+      const twilioSms = new TwilioSms(config);
+      const phone = await twilioSms.buy(
+        phoneNumber,
+        friendlyName,
+        smsUrl,
+        smsMethod
+      );
+      expect(mockCreatePhone).toBeCalledTimes(1);
+      expect(mockCreatePhone).toBeCalledWith({
+        phoneNumber,
+        friendlyName,
+        smsUrl,
+        smsMethod,
+      });
+      expect(phone).toStrictEqual(mockPhone);
     });
   });
 });

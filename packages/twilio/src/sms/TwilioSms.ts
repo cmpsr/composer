@@ -29,4 +29,19 @@ export class TwilioSms {
       .local.list({ areaCode, mmsEnabled, smsEnabled, limit });
     return phones;
   }
+
+  async buy(
+    phoneNumber: string,
+    friendlyName: string,
+    smsUrl: string,
+    smsMethod: string
+  ) {
+    const phone = await this.twilioClient.incomingPhoneNumbers.create({
+      phoneNumber,
+      friendlyName,
+      smsUrl,
+      smsMethod,
+    });
+    return phone;
+  }
 }

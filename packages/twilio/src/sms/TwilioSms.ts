@@ -16,4 +16,32 @@ export class TwilioSms {
     });
     return sms;
   }
+
+  async availablePhones(
+    areaCode: number,
+    country: string = 'US',
+    mmsEnabled: boolean = true,
+    smsEnabled: boolean = true,
+    limit: number = 10
+  ) {
+    const phones = await this.twilioClient
+      .availablePhoneNumbers(country)
+      .local.list({ areaCode, mmsEnabled, smsEnabled, limit });
+    return phones;
+  }
+
+  async buy(
+    phoneNumber: string,
+    friendlyName: string,
+    smsUrl: string,
+    smsMethod: string
+  ) {
+    const phone = await this.twilioClient.incomingPhoneNumbers.create({
+      phoneNumber,
+      friendlyName,
+      smsUrl,
+      smsMethod,
+    });
+    return phone;
+  }
 }

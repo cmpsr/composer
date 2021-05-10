@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.0
+
+### Minor Changes
+
+- 038e017: Added support to buy phone numbers from twilio
+
 ## 0.0.18
 
 ### Patch Changes

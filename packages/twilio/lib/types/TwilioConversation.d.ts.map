@@ -1,1 +1,0 @@
-{"version":3,"file":"TwilioConversation.d.ts","sourceRoot":"","sources":["../../src/types/TwilioConversation.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,gBAAgB;IAC/B,UAAU,EAAE,MAAM,CAAC;IACnB,SAAS,EAAE,MAAM,CAAC;IAClB,SAAS,EAAE,MAAM,CAAC;CACnB;AAED,oBAAY,aAAa,GAAG,KAAK,GAAG,MAAM,CAAC"}

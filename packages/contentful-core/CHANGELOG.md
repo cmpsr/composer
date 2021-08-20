@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.3.1
+
+### Patch Changes
+
+- d745ae2: chore: Upgrade `contentful-core` Packages
+
 ## 0.3.0
 
 ### Minor Changes

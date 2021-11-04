@@ -25,9 +25,9 @@
   },
   "scripts": {
     "libbuild": "rimraf lib && yarn babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
-    "test": "jest --env=jest-environment-jsdom-sixteen --testPathIgnorePatterns=lib/",
-    "test:watch": "jest --watch --env=jest-environment-jsdom-sixteen --testPathIgnorePatterns=lib/",
-    "test:coverage": "jest --coverage --env=jest-environment-jsdom-sixteen --testPathIgnorePatterns=lib/",
+    "test": "jest --testPathIgnorePatterns=lib/",
+    "test:watch": "jest --watch --testPathIgnorePatterns=lib/",
+    "test:coverage": "jest --coverage --testPathIgnorePatterns=lib/",
     "graphql:schema": "node ./scripts/graphql-schema.js",
     "graphql:types": "node ./scripts/graphql-types.js",
     "graphql:possibleTypes": "node ./scripts/graphql-possibleTypes.js"

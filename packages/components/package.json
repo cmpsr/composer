@@ -16,10 +16,20 @@
     "/lib"
   ],
   "private": false,
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
   "peerDependencies": {
     "react": "^17.0.2"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.12"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }

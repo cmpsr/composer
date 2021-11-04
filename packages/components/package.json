@@ -1,0 +1,19 @@
+{
+  "name": "@cmpsr/components",
+  "repository": {
+    "url": "ssh://git@github.com:cmpsr/composer.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "version": "0.2.0",
+  "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "/lib"
+  ],
+  "private": false
+}

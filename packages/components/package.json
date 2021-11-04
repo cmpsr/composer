@@ -25,7 +25,10 @@
     "react": "^17.0.2"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.6.12"
+    "@chakra-ui/react": "^1.6.12",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "framer-motion": "^5"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",

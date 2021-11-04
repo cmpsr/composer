@@ -19,7 +19,9 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "storybook": "start-storybook -p 8080 -c .storybook",
+    "build-storybook": "build-storybook -c .storybook"
   },
   "peerDependencies": {
     "react": "^17.0.2"
@@ -31,8 +33,16 @@
     "framer-motion": "^5"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^6.3.12",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-docs": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-knobs": "^6.3.1",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/react": "^6.3.12",
     "@types/jest": "^27.0.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "storybook-chromatic": "^4.0.2"
   }
 }

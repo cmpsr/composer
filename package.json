@@ -41,7 +41,7 @@
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
     "babel-jest": "^27.3.1",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.2.3",
     "babel-plugin-graphql-tag": "^2.5.0",
     "babel-plugin-import-graphql": "^2.7.0",
     "babel-plugin-module-resolver": "^4.0.0",

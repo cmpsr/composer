@@ -15,5 +15,8 @@
   "files": [
     "/lib"
   ],
-  "private": false
+  "private": false,
+  "peerDependencies": {
+    "react": "^17.0.2"
+  }
 }

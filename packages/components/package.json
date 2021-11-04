@@ -18,5 +18,8 @@
   "private": false,
   "peerDependencies": {
     "react": "^17.0.2"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.6.12"
   }
 }

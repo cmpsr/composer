@@ -1,24 +1,15 @@
-import React, { FC, createContext, useContext } from 'react';
-import { ComposerContextProps, ComposerProviderProps } from '.';
-
-const ComposerContext = createContext<ComposerContextProps>(undefined);
+import React, { FC } from 'react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { ComposerProviderProps } from '.';
+import { defaultTheme } from '../';
 
 export const ComposerProvider: FC<ComposerProviderProps> = ({
   children,
   theme,
-}) => (
-  <ComposerContext.Provider value={{ theme }}>
-    {children}
-  </ComposerContext.Provider>
-);
-
-export const useComposerProvider = () => {
-  const context = useContext(ComposerContext);
-  if (context === undefined) {
-    throw new Error(
-      'useComposerProvider must be used within a ComposerProvider'
-    );
-  }
-
-  return context;
+}) => {
+  const extended = extendTheme({
+    ...defaultTheme,
+    ...(theme || {}),
+  });
+  return <ChakraProvider theme={extended}>{children}</ChakraProvider>;
 };

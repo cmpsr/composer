@@ -1,10 +1,7 @@
 import React from 'react';
 import { Theme } from '../../theme';
 
-export interface ComposerContextProps {
-  theme: Theme;
-}
-
-export interface ComposerProviderProps extends ComposerContextProps {
+export interface ComposerProviderProps {
+  theme?: Theme;
   children: React.ReactNode;
 }

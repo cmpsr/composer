@@ -1,30 +1,25 @@
 import React from 'react';
-import { renderHook } from '@testing-library/react-hooks';
-import { ComposerProvider, useComposerProvider } from '.';
+import { render, screen } from '@testing-library/react';
+import { useTheme } from '@chakra-ui/system';
+import { ComposerProvider } from '.';
 import { defaultTheme } from 'theme';
 
-const fakeTheme = defaultTheme;
+const ThemeWrapper = () => {
+  const theme = useTheme();
+  return <>{theme.__cssVars['--chakra-colors-alert-error-default']}</>;
+};
 
 describe('useComposerProvider', () => {
-  const givenComponentRenderedWithoutProvider = () =>
-    renderHook(useComposerProvider);
-  const givenComponentRendered = () =>
-    renderHook(useComposerProvider, {
-      wrapper: ({ children }) => (
-        <ComposerProvider theme={fakeTheme}>{children}</ComposerProvider>
-      ),
-    });
+  const givenComponentRendered = (children: React.ReactNode) =>
+    render(<ComposerProvider>{children}</ComposerProvider>);
 
-  test('should throw an error if not provided defined', () => {
-    const { result } = givenComponentRenderedWithoutProvider();
-    expect(result.error).toStrictEqual(
-      new Error('useComposerProvider must be used within a ComposerProvider')
-    );
+  test('should render component and children', () => {
+    givenComponentRendered(<>Children</>);
+    screen.getByText('Children');
   });
 
-  test('should render and provide theme', () => {
-    const { result } = givenComponentRendered();
-    expect(result.current.theme).toStrictEqual(fakeTheme);
-    expect(result.error).not.toBeDefined();
+  test('should add composer theme props to the theme', () => {
+    givenComponentRendered(<ThemeWrapper />);
+    screen.getByText(defaultTheme.colors['alert-error-default']);
   });
 });

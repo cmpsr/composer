@@ -21,7 +21,9 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "storybook": "start-storybook -p 8080 -c .storybook",
-    "build-storybook": "build-storybook -c .storybook"
+    "build-storybook": "build-storybook -c .storybook",
+    "gen:theme-typings": "chakra-cli tokens src/theme/ComposerTheme/theme.ts",
+    "postinstall": "npm run gen:theme-typings"
   },
   "peerDependencies": {
     "react": "^17.0.2"
@@ -33,6 +35,7 @@
     "framer-motion": "^5"
   },
   "devDependencies": {
+    "@chakra-ui/cli": "^1.5.3",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
     "@storybook/react": "^6.3.12",

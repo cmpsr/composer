@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { useTheme } from '@chakra-ui/system';
 import { ComposerProvider } from '.';
-import { defaultTheme } from 'theme';
+import { theme } from 'theme';
 
 const ThemeWrapper = () => {
   const theme = useTheme();
@@ -20,6 +20,6 @@ describe('useComposerProvider', () => {
 
   test('should add composer theme props to the theme', () => {
     givenComponentRendered(<ThemeWrapper />);
-    screen.getByText(defaultTheme.colors['alert-error-default']);
+    screen.getByText(theme.colors['alert-error-default']);
   });
 });

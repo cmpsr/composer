@@ -1,6 +1,4 @@
-import { defaultColors } from './colors';
-
-type Colors = typeof defaultColors;
+import { Colors } from './Colors';
 
 export interface Theme {
   colors: Colors;

@@ -1,5 +1,5 @@
 import { TextProps as ChakraTextProps } from '@chakra-ui/layout';
-import { textVariants } from '../../../theme/ComposerTheme/Components/Text';
+import { textVariants } from 'theme/ComposerTheme/Components/Text';
 
 export { textVariants };
 

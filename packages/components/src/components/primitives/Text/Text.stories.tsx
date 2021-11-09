@@ -34,10 +34,14 @@ All.args = {
   text: 'Composer rocks!',
 };
 
-const Template = (args) => <Text {...args} />;
+const Template = (args) => (
+  <Box bg="white" py="2rem">
+    <Text {...args} />
+  </Box>
+);
 export const Playground = Template.bind({});
 Playground.args = {
   children: 'Composer rocks!',
   as: 'h1',
-  variant: 'font-header-desktop-4XL',
+  variant: 'font-header-4XL',
 };

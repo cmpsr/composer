@@ -5,7 +5,7 @@ import { TextPairing } from '.';
 describe('TextPairing', () => {
   const label = 'Label';
   const subLabel = 'SubLabel';
-  const variant = 'typepairing-font-header-4XL';
+  const variant = 'textpairing-font-header-4XL';
   const givenComponentRendered = () =>
     renderWithProviders(
       <TextPairing label={label} subLabel={subLabel} variant={variant} />

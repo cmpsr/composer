@@ -3,7 +3,7 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 export const TextPairing: ComponentStyleConfig = {
   parts: ['label', 'subLabel'],
   variants: {
-    'typepairing-font-header-4XL': {
+    'textpairing-font-header-4XL': {
       label: {
         variant: 'font-header-4XL',
       },
@@ -15,7 +15,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '1rem',
       },
     },
-    'typepairing-font-header-3XL': {
+    'textpairing-font-header-3XL': {
       label: {
         variant: 'font-header-3XL',
       },
@@ -27,7 +27,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '1rem',
       },
     },
-    'typepairing-font-header-2XL': {
+    'textpairing-font-header-2XL': {
       label: {
         variant: 'font-header-2XL',
       },
@@ -39,7 +39,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '1rem',
       },
     },
-    'typepairing-font-header-XL': {
+    'textpairing-font-header-XL': {
       label: {
         variant: 'font-header-XL',
       },
@@ -51,7 +51,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.5rem',
       },
     },
-    'typepairing-font-header-L': {
+    'textpairing-font-header-L': {
       label: {
         variant: 'font-header-L',
       },
@@ -63,7 +63,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.5rem',
       },
     },
-    'typepairing-font-header-M': {
+    'textpairing-font-header-M': {
       label: {
         variant: 'font-header-M',
       },
@@ -75,7 +75,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.25rem',
       },
     },
-    'typepairing-font-body-display-2XL': {
+    'textpairing-font-body-display-2XL': {
       label: {
         variant: 'font-body-display-2XL',
       },
@@ -87,7 +87,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '1rem',
       },
     },
-    'typepairing-font-body-display-XL': {
+    'textpairing-font-body-display-XL': {
       label: {
         variant: 'font-body-display-XL',
       },
@@ -99,7 +99,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.75rem',
       },
     },
-    'typepairing-font-body-display-L': {
+    'textpairing-font-body-display-L': {
       label: {
         variant: 'font-body-display-L',
       },
@@ -111,7 +111,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.75rem',
       },
     },
-    'typepairing-font-body-display-M': {
+    'textpairing-font-body-display-M': {
       label: {
         variant: 'font-body-display-M',
       },
@@ -123,7 +123,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.5rem',
       },
     },
-    'typepairing-font-body-display-S': {
+    'textpairing-font-body-display-S': {
       label: {
         variant: 'font-body-display-S',
       },
@@ -135,7 +135,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.5rem',
       },
     },
-    'typepairing-font-body-bold': {
+    'textpairing-font-body-bold': {
       label: {
         variant: 'font-body-bold',
       },
@@ -147,7 +147,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.25rem',
       },
     },
-    'typepairing-font-body-medium': {
+    'textpairing-font-body-medium': {
       label: {
         variant: 'font-body-medium',
       },
@@ -159,7 +159,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.25rem',
       },
     },
-    'typepairing-font-body-regular-meta': {
+    'textpairing-font-body-regular-meta': {
       label: {
         variant: 'font-body-regular',
       },
@@ -171,7 +171,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.25rem',
       },
     },
-    'typepairing-font-body-bold-meta': {
+    'textpairing-font-body-bold-meta': {
       label: {
         variant: 'font-body-bold',
       },
@@ -183,7 +183,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.25rem',
       },
     },
-    'typepairing-font-body-medium-meta': {
+    'textpairing-font-body-medium-meta': {
       label: {
         variant: 'font-body-medium',
       },
@@ -195,7 +195,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.25rem',
       },
     },
-    'typepairing-font-body-meta-medium': {
+    'textpairing-font-body-meta-medium': {
       label: {
         variant: 'font-body-meta-medium',
       },
@@ -207,7 +207,7 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.125rem',
       },
     },
-    'typepairing-font-body-meta-bold': {
+    'textpairing-font-body-meta-bold': {
       label: {
         variant: 'font-body-meta-bold',
       },

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { TextPairing, TextPairingVariant, textPairingVariants } from '.';
+import { TextPairing, TextPairingProps, textPairingVariants } from '.';
 import { Text } from 'components';
 import { Box, Flex, Spacer, Stack, StackDivider } from '@chakra-ui/layout';
 
@@ -15,11 +15,7 @@ export default {
   },
 } as Meta;
 
-interface Props {
-  label: string;
-  subLabel: string;
-}
-const AllTemplate = ({ label, subLabel }: Props) => (
+const AllTemplate = ({ label, subLabel }: TextPairingProps) => (
   <Stack
     bg="white"
     spacing="2rem"
@@ -45,7 +41,7 @@ All.args = {
   subLabel: 'Oh, yeah!',
 };
 
-const Template = (args) => (
+const Template = (args: TextPairingProps) => (
   <Box bg="white" py="2rem">
     <TextPairing {...args} />
   </Box>

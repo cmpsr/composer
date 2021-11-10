@@ -6,6 +6,12 @@ import { Box, Flex, Spacer, Stack, StackDivider } from '@chakra-ui/layout';
 export default {
   component: Text,
   title: 'Components/Primitives/Text',
+  argTypes: {
+    variant: {
+      options: textVariants,
+      control: { type: 'select' },
+    },
+  },
 } as Meta;
 
 const AllTemplate = ({ text }: { text: string }) => (

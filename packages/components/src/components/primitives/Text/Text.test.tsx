@@ -1,9 +1,9 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen, renderWithProviders } from 'tests/renderWithProviders';
 import { Text } from '.';
 
 describe('Text', () => {
-  const givenComponentRendered = () => render(<Text>Hello</Text>);
+  const givenComponentRendered = () => renderWithProviders(<Text>Hello</Text>);
 
   test('should render child', () => {
     givenComponentRendered();

@@ -21,7 +21,7 @@ export const textPairingVariants = [
   'textpairing-font-body-regular-meta',
   'textpairing-font-body-meta-bold',
   'textpairing-font-body-meta-medium',
-];
+] as const;
 type TextPairingVariantTuple = typeof textPairingVariants;
 export type TextPairingVariant = TextPairingVariantTuple[number];
 

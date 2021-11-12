@@ -30,7 +30,7 @@ export const textVariants = [
   'font-link-body-large',
   'font-link-body-medium',
   'font-link-body-small',
-];
+] as const;
 
 const variants = textVariants.reduce(
   (acc, v) => ({

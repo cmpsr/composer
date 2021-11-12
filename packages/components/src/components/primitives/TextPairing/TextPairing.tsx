@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { Stack } from '@chakra-ui/layout';
 import { Text } from '../Text';
 import { TextPairingProps, TextPairingStyles } from '.';
 import { useStyleConfig } from '@chakra-ui/system';
 
-export const TextPairing: FunctionComponent<TextPairingProps> = ({
+export const TextPairing: FC<TextPairingProps> = ({
   variant,
   label,
   subLabel,

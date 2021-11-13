@@ -33,6 +33,7 @@
     "@chakra-ui/react": "^1.6.12",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@fontsource/inter": "^4.5.0",
     "framer-motion": "^5"
   },
   "devDependencies": {

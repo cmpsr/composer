@@ -9,6 +9,7 @@ import {
   Td,
   TableCaption,
   Box,
+  Flex,
 } from '@chakra-ui/react';
 
 import { defaultSpacing } from '.';
@@ -31,11 +32,24 @@ export const Spacing = () => {
         {Object.entries(defaultSpacing).map(([key, value]) => (
           <Tr key={key}>
             <Td>
-              <Box
-                width={value}
-                height="16px"
-                bgColor="text-secondary-ui-hover"
-              />
+              <Flex alignItems="center">
+                <Box
+                  width={value}
+                  height="16px"
+                  bgColor="text-secondary-ui-hover"
+                  mr="spacer-3"
+                />
+                <Box
+                  backgroundColor="text-secondary"
+                  color="white"
+                  width="auto"
+                  py="spacer-1"
+                  px="spacer-2"
+                  borderRadius="3px"
+                >
+                  {value}
+                </Box>
+              </Flex>
             </Td>
             <Td>
               <Box

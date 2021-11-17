@@ -1,16 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  Box,
-  Flex,
-} from '@chakra-ui/react';
+import { Table, Thead, Tbody, Tr, Th, Td, Box, Flex } from '@chakra-ui/react';
 
 import { defaultRadius } from '.';
 

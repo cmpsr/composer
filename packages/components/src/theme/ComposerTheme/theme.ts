@@ -5,6 +5,7 @@ import { defaultRadius } from './Radius';
 import { defaultSpacing } from './Spacing';
 import { components } from './Components';
 import { textStyles } from './styles';
+import { defaultTypography } from './Typography/typography';
 
 export const theme: Theme = {
   colors: defaultColors,
@@ -13,4 +14,5 @@ export const theme: Theme = {
   space: defaultSpacing,
   components,
   textStyles,
+  ...defaultTypography,
 };

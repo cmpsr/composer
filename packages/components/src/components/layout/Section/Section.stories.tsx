@@ -19,7 +19,7 @@ const Template: React.FC<StoryProps> = ({ content, ...rest }) => (
 );
 export const Playground = Template.bind({});
 Playground.args = {
-  padding: '1rem',
+  padding: 'spacer-4',
   border: '1px solid',
   borderColor: 'primary-ui-default',
   content: 'Composer rocks!',

@@ -1,10 +1,10 @@
 export const defaultColors = {
-  // Primary UI
-  'primary-ui-default': '#EF8A13',
-  'primary-ui-hover': '#FFAD4D',
-  'primary-ui-pressed': '#FF8A00',
-  'primary-ui-disabled': '#F2CFAF',
-  'primary-ui-focus': '#FFDEB7',
+  // Accent
+  'accent-default': '#EF8A13',
+  'accent-hover': '#FFAD4D',
+  'accent-pressed': '#FF8A00',
+  'accent-disabled': '#F2CFAF',
+  'accent-focus': '#FFDEB7',
   // Secondary UI
   'secondary-ui-default': '#4F4FFF',
   'secondary-ui-hover': '#6565FF',

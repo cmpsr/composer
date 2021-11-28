@@ -11,12 +11,12 @@ export const defaultColors = {
   'primary-ui-pressed': '#2323FF',
   'primary-ui-disabled': '#D2D2F0',
   'primary-ui-focus': '#C2C2FF',
-  // Tertiary UI
-  'tertiary-ui-default': '#00FBCE',
-  'tertiary-ui-hover': '#6DFFE5',
-  'tertiary-ui-pressed': '#00D5AF',
-  'tertiary-ui-disabled': '#7CCCBE',
-  'tertiary-ui-focus': '#ADFFF0',
+  // Seconday UI
+  'secondary-ui-default': '#00FBCE',
+  'secondary-ui-hover': '#6DFFE5',
+  'secondary-ui-pressed': '#00D5AF',
+  'secondary-ui-disabled': '#7CCCBE',
+  'secondary-ui-focus': '#ADFFF0',
   // Alert
   'alert-error-default': '#DB3B21',
   'alert-error-hover': '#F14A2F',

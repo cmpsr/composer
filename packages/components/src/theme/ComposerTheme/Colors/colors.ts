@@ -5,12 +5,12 @@ export const defaultColors = {
   'accent-pressed': '#FF8A00',
   'accent-disabled': '#F2CFAF',
   'accent-focus': '#FFDEB7',
-  // Secondary UI
-  'secondary-ui-default': '#4F4FFF',
-  'secondary-ui-hover': '#6565FF',
-  'secondary-ui-pressed': '#2323FF',
-  'secondary-ui-disabled': '#ADADD2',
-  'secondary-ui-focus': '#C2C2FF',
+  // Primary UI
+  'primary-ui-default': '#4F4FFF',
+  'primary-ui-hover': '#6565FF',
+  'primary-ui-pressed': '#2323FF',
+  'primary-ui-disabled': '#D2D2F0',
+  'primary-ui-focus': '#C2C2FF',
   // Tertiary UI
   'tertiary-ui-default': '#00FBCE',
   'tertiary-ui-hover': '#6DFFE5',

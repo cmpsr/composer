@@ -25,11 +25,11 @@ export const Spacing = () => {
                 <Box
                   width={value}
                   height="16px"
-                  bgColor="text-secondary-ui-hover"
+                  bgColor="text-link-primary-ui-hover"
                   mr="spacer-3"
                 />
                 <Box
-                  backgroundColor="text-secondary"
+                  backgroundColor="text-primary"
                   color="white"
                   width="auto"
                   py="spacer-1"
@@ -42,7 +42,7 @@ export const Spacing = () => {
             </Td>
             <Td>
               <Box
-                backgroundColor="text-secondary"
+                backgroundColor="text-primary"
                 color="white"
                 width="auto"
                 py="spacer-1"

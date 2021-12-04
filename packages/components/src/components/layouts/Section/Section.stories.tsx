@@ -21,7 +21,7 @@ export const Playground = Template.bind({});
 Playground.args = {
   padding: 'spacer-4',
   border: '1px solid',
-  borderColor: 'primary-ui-default',
+  borderColor: 'accent-default',
   content: 'Composer rocks!',
   width: '100%',
 };

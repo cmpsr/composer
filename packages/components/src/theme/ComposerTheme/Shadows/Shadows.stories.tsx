@@ -26,7 +26,7 @@ export const Shadows = () => {
                   <Box
                     width="60px"
                     height="60px"
-                    bgColor="text-secondary-ui-hover"
+                    bgColor="text-link-primary-ui-hover"
                     boxShadow={value}
                     borderRadius="radii-1"
                   />
@@ -35,7 +35,7 @@ export const Shadows = () => {
             </Td>
             <Td>
               <Box
-                backgroundColor="text-secondary"
+                backgroundColor="text-primary"
                 color="white"
                 width="auto"
                 py="spacer-1"

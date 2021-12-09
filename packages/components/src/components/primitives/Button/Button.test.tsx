@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, renderWithProviders } from 'tests/renderWithProviders';
 import { Button } from './Button';
 
-describe('Text', () => {
+describe('Button', () => {
   const givenComponentRendered = () =>
     renderWithProviders(<Button>Hello</Button>);
 

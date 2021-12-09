@@ -1,6 +1,6 @@
 import { ButtonProps as ChakraButtonProps } from '@chakra-ui/react';
 
-export const ButtonVariants = [
+export const buttonVariants = [
   'accent',
   'primary',
   'primary-alt',
@@ -8,7 +8,7 @@ export const ButtonVariants = [
   'secondary-alt',
   'destroy',
 ] as const;
-export type ButtonVariant = typeof ButtonVariants[number];
+export type ButtonVariant = typeof buttonVariants[number];
 export const ButtonSizes = ['xs', 'sm', 'md', 'lg'] as const;
 export type ButtonSize = typeof ButtonSizes[number];
 

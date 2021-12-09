@@ -1,9 +1,11 @@
 import { ButtonProps as ChakraButtonProps } from '@chakra-ui/react';
-import { Sizes } from '../../../theme/types';
 
 export const ButtonVariants = ['primary', 'secondary', 'tertiary'] as const;
-export type VariantType = typeof ButtonVariants[number];
+export type ButtonVariant = typeof ButtonVariants[number];
+export const ButtonSizes = ['xs', 'sm', 'md', 'lg'] as const;
+export type ButtonSize = typeof ButtonSizes[number];
+
 export interface ButtonProps extends ChakraButtonProps {
-  variant?: VariantType;
-  size?: Sizes;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
 }

@@ -2,8 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Button } from './Button';
 import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
-import { SIZES } from '../../../theme/types';
-import { ButtonVariants } from './types';
+import { ButtonSizes, ButtonVariants } from './types';
 
 export default {
   component: Button,
@@ -15,14 +14,14 @@ const AllTemplate = () => (
     {ButtonVariants.map((value) => (
       <VStack key={value}>
         <HStack>
-          {SIZES.map((size) => (
+          {ButtonSizes.map((size) => (
             <Button variant={value} size={size} key={size}>
               {value}
             </Button>
           ))}
         </HStack>
         <HStack key={value}>
-          {SIZES.map((size) => (
+          {ButtonSizes.map((size) => (
             <Button variant={value} size={size} key={size} disabled>
               {value}
             </Button>

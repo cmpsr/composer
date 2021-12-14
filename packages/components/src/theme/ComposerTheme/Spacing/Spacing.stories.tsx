@@ -25,7 +25,7 @@ export const Spacing = () => {
                 <Box
                   width={value}
                   height="16px"
-                  bgColor="text-link-primary-ui-hover"
+                  bgColor="text-link-primary-hover"
                   mr="spacer-3"
                 />
                 <Box

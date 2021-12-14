@@ -78,10 +78,10 @@ export const Button: ComponentStyleConfig = {
   },
   variants: {
     accent: generateButton('accent'),
-    primary: generateButton('primary-ui'),
-    secondary: generateButton('secondary-ui'),
-    'primary-alt': generateAltButton('primary-ui'),
-    'secondary-alt': generateAltButton('secondary-ui'),
+    primary: generateButton('primary'),
+    secondary: generateButton('secondary'),
+    'primary-alt': generateAltButton('primary'),
+    'secondary-alt': generateAltButton('secondary'),
     destroy: generateButton('alert-error'),
   },
   defaultProps: {

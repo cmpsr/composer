@@ -26,7 +26,7 @@ export const Shadows = () => {
                   <Box
                     width="60px"
                     height="60px"
-                    bgColor="text-link-primary-ui-hover"
+                    bgColor="text-link-primary-hover"
                     boxShadow={value}
                     borderRadius="radii-1"
                   />

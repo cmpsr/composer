@@ -7,7 +7,7 @@ const baseTextStyle = {
 
 const linkTextStyle = {
   ...baseTextStyle,
-  color: 'text-link-accent-ui-default',
+  color: 'text-link-accent-default',
   textDecorationLine: 'underline',
 };
 

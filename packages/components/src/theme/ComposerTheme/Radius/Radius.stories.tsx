@@ -25,7 +25,7 @@ export const Radius = () => {
                 <Box
                   width="60px"
                   height="60px"
-                  bgColor="text-link-primary-ui-hover"
+                  bgColor="text-link-primary-hover"
                   mr="spacer-3"
                   borderRadius={value}
                 />

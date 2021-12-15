@@ -51,29 +51,29 @@ const generateAltButton = (color: string) => ({
 
 export const Button: ComponentStyleConfig = {
   baseStyle: {
-    borderRadius: 'radii-2',
+    borderRadius: '0.375rem',
     color: 'text-light',
   },
   sizes: {
     xs: {
       textStyle: 'text-body-floating-label-medium',
-      px: 'spacer-2',
-      py: 'spacer-1',
+      px: '0.5rem',
+      py: '0.25rem',
     },
     sm: {
       textStyle: 'text-body-meta-medium',
-      px: 'spacer-3',
-      py: 'spacer-2',
+      px: '0.75rem',
+      py: '0.5rem',
     },
     md: {
       textStyle: 'text-body-medium',
-      px: 'spacer-4',
-      py: 'spacer-2',
+      px: '1rem',
+      py: '0.5rem',
     },
     lg: {
       textStyle: 'text-body-large-medium',
-      px: 'spacer-6',
-      py: 'spacer-3',
+      px: '1.5rem',
+      py: '0.75rem',
     },
   },
   variants: {

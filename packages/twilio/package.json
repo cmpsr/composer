@@ -22,7 +22,7 @@
   "dependencies": {
     "rimraf": "^3.0.2",
     "twilio": "^3.40.0",
-    "twilio-chat": "^3.3.4"
+    "twilio-chat": "^6.0.0"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
 }

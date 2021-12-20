@@ -56,22 +56,22 @@ export const Button: ComponentStyleConfig = {
   },
   sizes: {
     xs: {
-      textStyle: 'font-body-floating-label-medium',
+      textStyle: 'text-body-floating-label-medium',
       px: 'spacer-2',
       py: 'spacer-1',
     },
     sm: {
-      textStyle: 'font-body-meta-medium',
+      textStyle: 'text-body-meta-medium',
       px: 'spacer-3',
       py: 'spacer-2',
     },
     md: {
-      textStyle: 'font-body-medium',
+      textStyle: 'text-body-medium',
       px: 'spacer-4',
       py: 'spacer-2',
     },
     lg: {
-      textStyle: 'font-body-large-medium',
+      textStyle: 'text-body-large-medium',
       px: 'spacer-6',
       py: 'spacer-3',
     },

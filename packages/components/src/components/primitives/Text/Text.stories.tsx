@@ -49,5 +49,5 @@ export const Playground = Template.bind({});
 Playground.args = {
   children: 'Composer rocks!',
   as: 'h1',
-  variant: 'font-header-4XL',
+  variant: 'text-header-4XL',
 };

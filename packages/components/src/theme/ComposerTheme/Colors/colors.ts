@@ -74,4 +74,9 @@ export const defaultColors = {
   'ui-element-outline-default': '#E7E7E7',
   'ui-element-outline-active': '#D7DBE7',
   'ui-element-outline-disabled': '#F2F2F2',
+  // Button
+  'text-button-accent': '#FFFFFF',
+  'text-button-primary': '#FFFFFF',
+  'text-button-secondary': '#FFFFFF',
+  'text-button-alert': '#FFFFFF',
 };

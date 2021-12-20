@@ -36,7 +36,7 @@ export const Spacing = () => {
                   px="spacer-2"
                   borderRadius="3px"
                 >
-                  {value}
+                  {value}/{+value.substring(0, value.length - 3) * 16}px
                 </Box>
               </Flex>
             </Td>

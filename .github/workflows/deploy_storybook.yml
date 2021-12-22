@@ -1,5 +1,10 @@
 name: Build and Deploy to Cloud Run
-on: 'push'
+on: 
+  push:
+    branches:
+    - master
+    - 'with-chakra'
+
 
 env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}

@@ -18,12 +18,12 @@ export const Spinner: ComponentStyleConfig = {
   },
   sizes: {
     xs: {
-      px: 'spacer-3',
-      py: 'spacer-3',
+      px: '0.75rem',
+      py: '0.75rem',
     },
     s: {
-      px: 'spacer-4',
-      py: 'spacer-4',
+      px: '0.875rem',
+      py: '0.875rem',
     },
   },
   variants: {

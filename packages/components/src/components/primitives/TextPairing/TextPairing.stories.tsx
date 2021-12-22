@@ -25,7 +25,7 @@ const AllTemplate = ({ label, subLabel }: TextPairingProps) => (
     {textPairingVariants.map((variant) => (
       <Flex key={variant} px="1rem">
         <Box>
-          <Text variant="font-body-display-S">{variant}</Text>
+          <Text variant="text-body-display-S">{variant}</Text>
         </Box>
         <Spacer />
         <Box>

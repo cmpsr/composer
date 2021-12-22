@@ -25,7 +25,7 @@ export const Spacing = () => {
                 <Box
                   width={value}
                   height="16px"
-                  bgColor="text-link-primary-ui-hover"
+                  bgColor="text-link-primary-hover"
                   mr="spacer-3"
                 />
                 <Box
@@ -36,7 +36,7 @@ export const Spacing = () => {
                   px="spacer-2"
                   borderRadius="3px"
                 >
-                  {value}
+                  {value}/{+value.substring(0, value.length - 3) * 16}px
                 </Box>
               </Flex>
             </Td>

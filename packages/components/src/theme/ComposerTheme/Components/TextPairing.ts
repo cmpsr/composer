@@ -3,216 +3,216 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 export const TextPairing: ComponentStyleConfig = {
   parts: ['label', 'subLabel'],
   variants: {
-    'textpairing-font-header-4XL': {
+    'textpairing-header-4XL': {
       label: {
-        variant: 'font-header-4XL',
+        variant: 'text-header-4XL',
       },
       subLabel: {
-        variant: 'font-body-display-S',
+        variant: 'text-body-display-S',
       },
       columnGap: {
         sm: '1.25rem',
         md: '1rem',
       },
     },
-    'textpairing-font-header-3XL': {
+    'textpairing-header-3XL': {
       label: {
-        variant: 'font-header-3XL',
+        variant: 'text-header-3XL',
       },
       subLabel: {
-        variant: 'font-body-display-S',
+        variant: 'text-body-display-S',
       },
       columnGap: {
         sm: '1rem',
         md: '1rem',
       },
     },
-    'textpairing-font-header-2XL': {
+    'textpairing-header-2XL': {
       label: {
-        variant: 'font-header-2XL',
+        variant: 'text-header-2XL',
       },
       subLabel: {
-        variant: 'font-body-display-S',
+        variant: 'text-body-display-S',
       },
       columnGap: {
         sm: '0.75rem',
         md: '1rem',
       },
     },
-    'textpairing-font-header-XL': {
+    'textpairing-header-XL': {
       label: {
-        variant: 'font-header-XL',
+        variant: 'text-header-XL',
       },
       subLabel: {
-        variant: 'font-body-regular',
+        variant: 'text-body-regular',
       },
       columnGap: {
         sm: '0.5rem',
         md: '0.5rem',
       },
     },
-    'textpairing-font-header-L': {
+    'textpairing-header-L': {
       label: {
-        variant: 'font-header-L',
+        variant: 'text-header-L',
       },
       subLabel: {
-        variant: 'font-body-regular',
+        variant: 'text-body-regular',
       },
       columnGap: {
         sm: '0.25rem',
         md: '0.5rem',
       },
     },
-    'textpairing-font-header-M': {
+    'textpairing-header-M': {
       label: {
-        variant: 'font-header-M',
+        variant: 'text-header-M',
       },
       subLabel: {
-        variant: 'font-body-regular',
+        variant: 'text-body-regular',
       },
       columnGap: {
         sm: '0.25rem',
         md: '0.25rem',
       },
     },
-    'textpairing-font-body-display-2XL': {
+    'textpairing-body-display-2XL': {
       label: {
-        variant: 'font-body-display-2XL',
+        variant: 'text-body-display-2XL',
       },
       subLabel: {
-        variant: 'font-body-large-regular',
+        variant: 'text-body-large-regular',
       },
       columnGap: {
         sm: '1rem',
         md: '1rem',
       },
     },
-    'textpairing-font-body-display-XL': {
+    'textpairing-body-display-XL': {
       label: {
-        variant: 'font-body-display-XL',
+        variant: 'text-body-display-XL',
       },
       subLabel: {
-        variant: 'font-body-large-regular',
+        variant: 'text-body-large-regular',
       },
       columnGap: {
         sm: '0.75rem',
         md: '0.75rem',
       },
     },
-    'textpairing-font-body-display-L': {
+    'textpairing-body-display-L': {
       label: {
-        variant: 'font-body-display-L',
+        variant: 'text-body-display-L',
       },
       subLabel: {
-        variant: 'font-body-large-regular',
+        variant: 'text-body-large-regular',
       },
       columnGap: {
         sm: '0.75rem',
         md: '0.75rem',
       },
     },
-    'textpairing-font-body-display-M': {
+    'textpairing-body-display-M': {
       label: {
-        variant: 'font-body-display-M',
+        variant: 'text-body-display-M',
       },
       subLabel: {
-        variant: 'font-body-regular',
+        variant: 'text-body-regular',
       },
       columnGap: {
         sm: '0.5rem',
         md: '0.5rem',
       },
     },
-    'textpairing-font-body-display-S': {
+    'textpairing-body-display-S': {
       label: {
-        variant: 'font-body-display-S',
+        variant: 'text-body-display-S',
       },
       subLabel: {
-        variant: 'font-body-regular',
+        variant: 'text-body-regular',
       },
       columnGap: {
         sm: '0.5rem',
         md: '0.5rem',
       },
     },
-    'textpairing-font-body-bold': {
+    'textpairing-body-bold': {
       label: {
-        variant: 'font-body-bold',
+        variant: 'text-body-bold',
       },
       subLabel: {
-        variant: 'font-body-regular',
+        variant: 'text-body-regular',
       },
       columnGap: {
         sm: '0.25rem',
         md: '0.25rem',
       },
     },
-    'textpairing-font-body-medium': {
+    'textpairing-body-medium': {
       label: {
-        variant: 'font-body-medium',
+        variant: 'text-body-medium',
       },
       subLabel: {
-        variant: 'font-body-regular',
+        variant: 'text-body-regular',
       },
       columnGap: {
         sm: '0.25rem',
         md: '0.25rem',
       },
     },
-    'textpairing-font-body-regular-meta': {
+    'textpairing-body-regular-meta': {
       label: {
-        variant: 'font-body-regular',
+        variant: 'text-body-regular',
       },
       subLabel: {
-        variant: 'font-body-meta-regular',
+        variant: 'text-body-meta-regular',
       },
       columnGap: {
         sm: '0.25rem',
         md: '0.25rem',
       },
     },
-    'textpairing-font-body-bold-meta': {
+    'textpairing-body-bold-meta': {
       label: {
-        variant: 'font-body-bold',
+        variant: 'text-body-bold',
       },
       subLabel: {
-        variant: 'font-body-meta-regular',
+        variant: 'text-body-meta-regular',
       },
       columnGap: {
         sm: '0.25rem',
         md: '0.25rem',
       },
     },
-    'textpairing-font-body-medium-meta': {
+    'textpairing-body-medium-meta': {
       label: {
-        variant: 'font-body-medium',
+        variant: 'text-body-medium',
       },
       subLabel: {
-        variant: 'font-body-meta-regular',
+        variant: 'text-body-meta-regular',
       },
       columnGap: {
         sm: '0.25rem',
         md: '0.25rem',
       },
     },
-    'textpairing-font-body-meta-medium': {
+    'textpairing-body-meta-medium': {
       label: {
-        variant: 'font-body-meta-medium',
+        variant: 'text-body-meta-medium',
       },
       subLabel: {
-        variant: 'font-body-meta-regular',
+        variant: 'text-body-meta-regular',
       },
       columnGap: {
         sm: '0.125rem',
         md: '0.125rem',
       },
     },
-    'textpairing-font-body-meta-bold': {
+    'textpairing-body-meta-bold': {
       label: {
-        variant: 'font-body-meta-bold',
+        variant: 'text-body-meta-bold',
       },
       subLabel: {
-        variant: 'font-body-meta-regular',
+        variant: 'text-body-meta-regular',
       },
       columnGap: {
         sm: '0.125rem',

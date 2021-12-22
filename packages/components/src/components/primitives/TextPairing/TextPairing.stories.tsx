@@ -16,12 +16,7 @@ export default {
 } as Meta;
 
 const AllTemplate = ({ label, subLabel }: TextPairingProps) => (
-  <Stack
-    bg="white"
-    spacing="2rem"
-    py="2rem"
-    divider={<StackDivider borderColor="#888" />}
-  >
+  <Stack spacing="2rem" py="2rem" divider={<StackDivider borderColor="#888" />}>
     {textPairingVariants.map((variant) => (
       <Flex key={variant} px="1rem">
         <Box>
@@ -42,7 +37,7 @@ All.args = {
 };
 
 const Template = (args: TextPairingProps) => (
-  <Box bg="white" py="2rem">
+  <Box py="2rem">
     <TextPairing {...args} />
   </Box>
 );

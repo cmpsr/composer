@@ -28,6 +28,7 @@ jobs:
     - name: Build
       run: |-
         gcloud builds submit \
+          --timeout=1200s \
           --quiet \
           --tag "gcr.io/$PROJECT_ID/storybook-${GITHUB_REF##*/}:$GITHUB_SHA" .
 

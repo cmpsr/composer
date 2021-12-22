@@ -41,5 +41,6 @@ export const Spinner: ComponentStyleConfig = {
   defaultProps: {
     size: 's',
     variant: 'primary',
+    thickness: '0.125rem',
   },
 };

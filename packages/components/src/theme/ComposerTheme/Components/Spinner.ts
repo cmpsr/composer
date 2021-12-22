@@ -1,5 +1,6 @@
 import { keyframes } from '@chakra-ui/system';
 import { ComponentStyleConfig } from '@chakra-ui/theme';
+import { transparentize } from '@chakra-ui/theme-tools';
 
 const spin = keyframes({
   '0%': {
@@ -28,13 +29,13 @@ export const Spinner: ComponentStyleConfig = {
   variants: {
     accent: {
       borderColor: 'accent-default',
-      borderLeftColor: 'background-container-secondary',
-      borderBottomColor: 'background-container-secondary',
+      borderLeftColor: transparentize('accent-default', 0.3),
+      borderBottomColor: transparentize('accent-default', 0.3),
     },
     primary: {
-      borderColor: 'primary-ui-default',
-      borderLeftColor: 'background-container-secondary',
-      borderBottomColor: 'background-container-secondary',
+      borderColor: 'primary-default',
+      borderLeftColor: transparentize('primary-default', 0.3),
+      borderBottomColor: transparentize('primary-default', 0.3),
     },
   },
   defaultProps: {

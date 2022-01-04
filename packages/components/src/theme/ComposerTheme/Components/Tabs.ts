@@ -2,37 +2,34 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 
 export const Tabs: ComponentStyleConfig = {
   baseStyle: {
+    tablist: {
+      columnGap: '0.25rem',
+    },
     tab: {
+      textStyle: 'text-body-medium',
       _focus: {
-        boxShadow: 'elevation-outline',
-      },
-      marginRight: '0.25rem',
-      _last: {
-        marginRight: 0,
+        boxShadow: 'none',
       },
     },
   },
   variants: {
     line: {
+      color: 'text-secondary',
       tab: {
         _selected: {
-          color: 'text-primary',
           borderColor: 'primary-default',
+          color: 'text-primary',
         },
-        _focus: {
-          boxShadow: 'none',
-        },
-        color: 'text-secondary',
       },
     },
     rounded: {
       tab: {
-        _selected: {
-          color: 'text-link-primary-default',
-          backgroundColor: 'ui-element-default',
-        },
         borderRadius: '1.25rem',
         color: 'text-secondary',
+        _selected: {
+          backgroundColor: 'ui-element-default',
+          color: 'text-link-primary-default',
+        },
       },
     },
   },

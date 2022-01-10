@@ -6,19 +6,41 @@
   "license": "MIT",
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "lerna run libbuild --stream",
-    "build-storybook": "lerna run libbuild --stream --scope=@cmpsr/components && lerna run build-storybook --stream",
-    "test": "lerna run test --stream",
-    "test:watch": "lerna run --parallel test:watch --stream",
-    "test:coverage": "lerna run --parallel test:coverage --stream",
+    "build": "turbo run libbuild",
+    "build-storybook": "turbo run build-storybook",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch --parallel",
+    "test:coverage": "turbo run test:coverage",
     "lint": "eslint . --ext .tsx,.ts,.js",
     "lint-and-fix": "eslint . --ext .tsx,.ts,.js --fix",
-    "publish-ci": "lerna run libbuild --stream && lerna publish from-package -y --no-verify-access"
+    "publish-ci": "turbo run libbuild && lerna publish from-package -y --no-verify-access"
   },
   "private": true,
   "workspaces": [
     "packages/*"
   ],
+  "turbo": {
+    "baseBranch": "origin/master",
+    "pipeline": {
+      "libbuild": {
+        "dependsOn": ["^libbuild"],
+        "outputs": ["lib/**"]
+      },
+      "test": {
+        "outputs": []
+      },
+      "test:watch": {
+        "outputs": []
+      },
+      "test:coverage": {
+        "outputs": []
+      },
+      "build-storybook": {
+        "dependsOn": ["libbuild"],
+        "outputs": ["storybook-static/**"]
+      }
+    }
+  },
   "dependencies": {
     "@changesets/cli": "^2.11.1",
     "lerna": "^4.0.0"
@@ -58,6 +80,7 @@
     "prettier": "^2.0.5",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-test-renderer": "^16.13.1",
+    "turbo": "^1.0.24",
     "typescript": "^4.4.4"
   }
 }

@@ -4,7 +4,9 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
-  useStyleConfig,
+  useMultiStyleConfig,
+  RecursiveCSSObject,
+  CSSWithMultiValues,
 } from '@chakra-ui/react';
 
 import { SliderProps } from './types';
@@ -15,16 +17,22 @@ export const Slider: FC<SliderProps> = ({
   thumbProps,
   ...props
 }) => {
-  const styles = useStyleConfig('Slider', {
+  const { sliderBg, _focus, boxSize, bg } = useMultiStyleConfig('Slider', {
     variant: props.variant || 'default',
-  });
-  console.log('Styles', styles);
+  }) as Record<string, RecursiveCSSObject<CSSWithMultiValues>> & {
+    sliderBg: string;
+  };
+
   return (
-    <ChakraSlider colorScheme={String(styles.colorScheme)}>
-      <SliderTrack>
-        <SliderFilledTrack />
+    <ChakraSlider {...props}>
+      <SliderTrack bg={sliderBg} {...trackProps}>
+        <SliderFilledTrack bg={bg as string} {...filledTrackProps} />
       </SliderTrack>
-      <SliderThumb boxSize={20} />
+      <SliderThumb
+        _focus={_focus}
+        boxSize={boxSize as number}
+        {...thumbProps}
+      />
     </ChakraSlider>
   );
 };

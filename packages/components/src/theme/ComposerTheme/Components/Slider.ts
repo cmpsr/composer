@@ -1,16 +1,17 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
-// const generateColor = (color: string, variant?: boolean) => {
-//   return variant ? `${color}-${variant}` : `${color}-default`;
-// };
-
 export const Slider: ComponentStyleConfig = {
+  defaultProps: {
+    variant: 'default',
+  },
   variants: {
     default: {
-      colorScheme: 'red',
-    },
-    primary: {
-      colorScheme: 'green',
+      bg: 'primary-default',
+      sliderBg: 'primary-disabled',
+      boxSize: 3,
+      _focus: {
+        boxShadow: `0px 0px 0px 3px rgba(194, 194, 255, 1)`,
+      },
     },
   },
 };

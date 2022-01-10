@@ -19,8 +19,8 @@ describe('Avatar', () => {
     screen.getByText('CL');
   });
 
-  test('should render badge', () => {
+  test('should not render badge children', () => {
     givenComponentRendered(<Avatar.Badge>1</Avatar.Badge>);
-    screen.getByText('1');
+    expect(screen.queryByText('1')).toBeNull();
   });
 });

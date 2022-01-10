@@ -54,7 +54,7 @@ export const defaultColors = {
   // Text
   'text-light': '#FFFFFF',
   'text-primary': '#222222',
-  'text-secondary': '#4F5963',
+  'text-secondary': '#667085',
   'text-disabled': '#BDC4CC',
   'text-link-accent-default': '#EF8A13',
   'text-link-accent-hover': '#FFAD4C',

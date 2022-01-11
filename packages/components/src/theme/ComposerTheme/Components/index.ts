@@ -3,6 +3,7 @@ import { Spinner } from './Spinner';
 import { Tabs } from './Tabs';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
+import { Badge } from './Badge';
 
 export const components = {
   Button,
@@ -10,4 +11,5 @@ export const components = {
   Tabs,
   Text,
   TextPairing,
+  Badge,
 };

@@ -68,6 +68,9 @@ export const defaultColors = {
   'text-error': '#A72D1A',
   'text-warning': '#CB7600',
   'text-success': '#15793E',
+  'text-badge-solid': '#FFFFFF',
+  'text-badge-outline': '#4F4FFF',
+  'text-badge-subtle': '#4F4FFF',
   // UI Elements
   'ui-element-default': '#D5D5EB',
   'ui-element-divider': '#CACACA',

@@ -42,9 +42,7 @@ export const Playground = PlaygroundTemplate.bind({});
 
 Playground.args = {
   variant: 'default',
-  trackProps: {},
   thumbProps: {
     boxSize: 6,
   },
-  filledTrackProps: {},
 };

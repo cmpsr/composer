@@ -6,10 +6,10 @@ import { TextPairing } from './TextPairing';
 import { Badge } from './Badge';
 
 export const components = {
+  Badge,
   Button,
   Spinner,
   Tabs,
   Text,
   TextPairing,
-  Badge,
 };

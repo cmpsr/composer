@@ -4,24 +4,17 @@ import {
   AvatarBadge as ChakraAvatarBadge,
   useStyleConfig,
 } from '@chakra-ui/react';
-import {
-  AvatarProps,
-  AvatarBadgeProps,
-  AvatarStaticProps,
-  AvatarBadgeStyle,
-} from './types';
+import { AvatarProps, AvatarBadgeProps, AvatarBadgeStyle } from './types';
 
-export const Avatar: FC<AvatarProps> & AvatarStaticProps = (props) => (
-  <ChakraAvatar {...props} />
+export const Avatar: FC<AvatarProps> = ({ showBadge, size, ...rest }) => (
+  <ChakraAvatar size={size} {...rest}>
+    {showBadge && <AvatarBadge size={size} />}
+  </ChakraAvatar>
 );
 
-export const AvatarBadge: FC<AvatarBadgeProps> = ({
-  children: _children, // We need this awful hack to ensure no children is rendered
-  size,
-  ...rest
-}) => {
+const AvatarBadge: FC<AvatarBadgeProps> = ({ size, ...rest }) => {
   const styles = useStyleConfig('AvatarBadge', { size }) as AvatarBadgeStyle;
-  return <ChakraAvatarBadge {...styles} {...rest} />;
+  return (
+    <ChakraAvatarBadge data-testid="cmpsr.avatar.badge" {...styles} {...rest} />
+  );
 };
-
-Avatar.Badge = AvatarBadge;

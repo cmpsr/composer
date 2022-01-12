@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Avatar, avatarSizes } from '.';
+import { Avatar, AvatarProps, avatarSizes } from '.';
 import { Box, Flex } from 'components';
 
 export default {
@@ -29,14 +29,10 @@ const WithBadgeTemplate = () => (
     {avatarSizes.map((size) => (
       <Flex marginBottom="spacer-4" key={size}>
         <Box marginRight="spacer-4">
-          <Avatar name="Composer Logo" size={size}>
-            <Avatar.Badge size={size} />
-          </Avatar>
+          <Avatar name="Composer Logo" size={size} showBadge />
         </Box>
         <Box>
-          <Avatar name="Composer Logo" src={AVATAR_URL} size={size}>
-            <Avatar.Badge size={size} />
-          </Avatar>
+          <Avatar name="Composer Logo" src={AVATAR_URL} size={size} showBadge />
         </Box>
       </Flex>
     ))}
@@ -44,11 +40,7 @@ const WithBadgeTemplate = () => (
 );
 export const WithBadge = WithBadgeTemplate.bind({});
 
-const Template = ({ showBadge, size, ...args }) => (
-  <Avatar size={size} {...args}>
-    {showBadge && <Avatar.Badge size={size} />}
-  </Avatar>
-);
+const Template = (args: AvatarProps) => <Avatar {...args} />;
 export const Playground = Template.bind({});
 Playground.args = {
   src: AVATAR_URL,

@@ -6,7 +6,7 @@ import {
   SliderFilledTrack,
   SliderThumb,
   SliderTrack,
-  useMultiStyleConfig,
+  useStyleConfig,
 } from '@chakra-ui/react';
 
 import { SliderProps } from './types';
@@ -17,16 +17,14 @@ export const Slider: FC<SliderProps> = ({
   trackProps,
   ...props
 }) => {
-  const { sliderBg, _focus, boxSize, bg } = useMultiStyleConfig(
-    'Slider',
-    {}
-  ) as Record<string, RecursiveCSSObject<CSSWithMultiValues>> & {
-    sliderBg: string;
-  };
+  const { sliderBg, _focus, boxSize, bg } = useStyleConfig('Slider') as Record<
+    string,
+    RecursiveCSSObject<CSSWithMultiValues>
+  >;
 
   return (
     <ChakraSlider {...props}>
-      <SliderTrack bg={sliderBg} {...trackProps}>
+      <SliderTrack bg={sliderBg as string} {...trackProps}>
         <SliderFilledTrack bg={bg as string} {...filledTrackProps} />
       </SliderTrack>
       <SliderThumb

@@ -17,9 +17,10 @@ export const Slider: FC<SliderProps> = ({
   trackProps,
   ...props
 }) => {
-  const { sliderBg, _focus, boxSize, bg } = useMultiStyleConfig('Slider', {
-    variant: props.variant || 'default',
-  }) as Record<string, RecursiveCSSObject<CSSWithMultiValues>> & {
+  const { sliderBg, _focus, boxSize, bg } = useMultiStyleConfig(
+    'Slider',
+    {}
+  ) as Record<string, RecursiveCSSObject<CSSWithMultiValues>> & {
     sliderBg: string;
   };
 

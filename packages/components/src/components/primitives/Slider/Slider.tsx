@@ -1,20 +1,20 @@
 import React, { FC } from 'react';
 import {
+  CSSWithMultiValues,
+  RecursiveCSSObject,
   Slider as ChakraSlider,
-  SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  SliderTrack,
   useMultiStyleConfig,
-  RecursiveCSSObject,
-  CSSWithMultiValues,
 } from '@chakra-ui/react';
 
 import { SliderProps } from './types';
 
 export const Slider: FC<SliderProps> = ({
-  trackProps,
   filledTrackProps,
   thumbProps,
+  trackProps,
   ...props
 }) => {
   const { sliderBg, _focus, boxSize, bg } = useMultiStyleConfig('Slider', {

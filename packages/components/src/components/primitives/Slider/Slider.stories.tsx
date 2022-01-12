@@ -41,7 +41,6 @@ const PlaygroundTemplate = (args) => <Slider {...args} />;
 export const Playground = PlaygroundTemplate.bind({});
 
 Playground.args = {
-  variant: 'default',
   thumbProps: {
     boxSize: 6,
   },

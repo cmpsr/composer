@@ -36,11 +36,11 @@ export const defaultColors = {
   'alert-inform-pressed': '#1861AB',
   'alert-inform-disabled': '#8CB0D3',
   // Background
+  'background-card': '#FCFCFF',
   'background-light': '#FFFFFF',
   'background-dark': '#222222',
-  'background-container-primary': '#FCFCFF',
-  'background-container-secondary': '#EDEDF4',
-  'background-container-overlay': '#BCBCD7',
+  'background-page': '#EDEDF4',
+  'background-overlay': '#BCBCD7',
   'background-container-hover': '#FDFDFD',
   'background-container-pressed': '#E0E0E0',
   'background-container-disabled': '#EAEAEA',
@@ -54,7 +54,7 @@ export const defaultColors = {
   // Text
   'text-light': '#FFFFFF',
   'text-primary': '#222222',
-  'text-secondary': '#4F5963',
+  'text-secondary': '#667085',
   'text-disabled': '#BDC4CC',
   'text-link-accent-default': '#EF8A13',
   'text-link-accent-hover': '#FFAD4C',
@@ -72,7 +72,7 @@ export const defaultColors = {
   'text-badge-outline': '#4F4FFF',
   'text-badge-subtle': '#4F4FFF',
   // UI Elements
-  'ui-element-default': '#D5D5EB',
+  'background-static': '#D5D5EB',
   'ui-element-divider': '#CACACA',
   'ui-element-outline-default': '#E7E7E7',
   'ui-element-outline-active': '#D7DBE7',
@@ -82,4 +82,8 @@ export const defaultColors = {
   'text-button-primary': '#FFFFFF',
   'text-button-secondary': '#FFFFFF',
   'text-button-alert': '#FFFFFF',
+  'background-container-default': '',
+  'background-container-active': '',
+  'background-action-disabled': '',
+  'background-action-active': '',
 };

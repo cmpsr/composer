@@ -1,5 +1,6 @@
 import { Avatar, AvatarBadge } from './Avatar';
 import { Badge } from './Badge';
+import { Alert } from './Alert';
 import { Button } from './Button';
 import { Divider } from './Divider';
 import { Icon } from './Icon';
@@ -10,6 +11,7 @@ import { Text } from './Text';
 import { TextPairing } from './TextPairing';
 
 export const components = {
+  Alert,
   Avatar,
   AvatarBadge,
   Badge,

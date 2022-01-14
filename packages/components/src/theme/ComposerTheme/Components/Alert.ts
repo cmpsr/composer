@@ -82,7 +82,7 @@ export const Alert: ComponentStyleConfig = {
   baseStyle: {
     container: {
       borderRadius: '6px',
-      padding: '14px',
+      padding: '1rem',
     },
     icon: {
       boxSize: '24px',
@@ -104,7 +104,7 @@ export const Alert: ComponentStyleConfig = {
     title: {
       color: 'text-primary',
       textStyle: 'text-body-bold',
-      marginRight: '14px',
+      marginRight: '1rem',
     },
     description: {
       color: 'text-primary',

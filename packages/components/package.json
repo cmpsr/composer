@@ -24,6 +24,7 @@
     "storybook": "start-storybook -p 8080 -c .storybook",
     "build-storybook": "build-storybook -c .storybook",
     "gen:theme-typings": "chakra-cli tokens src/theme/ComposerTheme/theme.ts",
+    "gen:icons": "node scripts/generate_icons.js",
     "postinstall": "npm run gen:theme-typings"
   },
   "peerDependencies": {

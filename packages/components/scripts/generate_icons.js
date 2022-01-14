@@ -188,15 +188,26 @@ const tablerIcons = icons.map((icon) => {
 });
 const iconsFileContent = `${doNotEditHeader}
 import React from 'react';
-import { Icon } from '@chakra-ui/react';
+import {
+  CSSWithMultiValues,
+  Icon,
+  RecursiveCSSObject,
+  useStyleConfig,
+} from '@chakra-ui/react';
 import * as Tabler from './TablerIcons';
 import { IconProps } from './types';
 
-const withIcon = (Component: React.FC, { color }: IconProps) => (
-  <Icon color={color}>
-    <Component />
-  </Icon>
-);
+const withIcon = (Component: React.FC, props: IconProps) => {
+  const styles = useStyleConfig('Icon') as Record<
+    string,
+    RecursiveCSSObject<CSSWithMultiValues>
+  >;
+  return (
+    <Icon {...styles} {...props}>
+      <Component />
+    </Icon>
+  );
+};
 
 ${tablerIcons.join('\n')}
 `;
@@ -235,6 +246,7 @@ const Template = (args) => (
 export const All = Template.bind({});
 All.args = {
   color: 'primary-default',
+  boxSize: '1.5rem',
 };
 `;
 

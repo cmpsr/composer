@@ -29,7 +29,7 @@ describe('Alert', () => {
     ).root;
 
     expect(
-      alertInstance.findByProps({ 'data-testid': 'alert-icon' }).props.color
+      alertInstance.findByProps({ 'data-testid': 'cmpsr.alert-icon' }).props.color
     ).toBe('text-light');
   });
 
@@ -41,7 +41,7 @@ describe('Alert', () => {
     ).root;
 
     expect(
-      alertInstance.findByProps({ 'data-testid': 'alert-icon' }).props.color
+      alertInstance.findByProps({ 'data-testid': 'cmpsr.alert-icon' }).props.color
     ).toBe('alert-error-default');
   });
 
@@ -53,7 +53,7 @@ describe('Alert', () => {
     ).root;
 
     expect(
-      alertInstance.findByProps({ 'data-testid': 'alert-content-wrapper' })
+      alertInstance.findByProps({ 'data-testid': 'cmpsr.alert-content-wrapper' })
         .props.flexDir
     ).toBe('column');
   });
@@ -66,6 +66,6 @@ describe('Alert', () => {
         description="A description"
       />
     );
-    expect(screen.queryByTestId('alert-title')).toBeNull();
+    expect(screen.queryByTestId('cmpsr.alert-title')).toBeNull();
   });
 });

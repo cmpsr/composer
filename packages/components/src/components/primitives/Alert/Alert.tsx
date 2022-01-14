@@ -34,7 +34,7 @@ export const Alert: FC<AlertProps> = ({
     if (titleAlignment === 'top') {
       return {
         justifyContent: 'flex-start',
-        top: '14px',
+        top: '1rem',
       };
     }
 
@@ -52,12 +52,12 @@ export const Alert: FC<AlertProps> = ({
   return (
     <ChakraAlert status={state} variant={variant} {...props}>
       <AlertIcon
-        data-testid="alert-icon"
+        data-testid="cmpsr.alert-icon"
         status={state || 'info'}
         color={status[state]?.color || 'info'}
       />
-      <Box data-testid="alert-content-wrapper" display="flex" flexDir={calculateTitleAlignment()}>
-        {title && titleAlignment !== 'none' && <AlertTitle data-testid="alert-title">{title}</AlertTitle>}
+      <Box data-testid="cmpsr.alert-content-wrapper" display="flex" flexDir={calculateTitleAlignment()}>
+        {title && titleAlignment !== 'none' && <AlertTitle data-testid="cmpsr.alert-title">{title}</AlertTitle>}
         {description && <AlertDescription>{description}</AlertDescription>}
       </Box>
       <Box
@@ -81,7 +81,7 @@ const STATUSES = {
   error: { icon: IconAlertCircle, colorScheme: "red" },
 }
 
-export const AlertIcon: React.FC<AlertIconProps & { status: string }> = ({ status, ...props}) => {
+const AlertIcon: React.FC<AlertIconProps & { status: string }> = ({ status, ...props}) => {
   const { icon: BaseIcon } = STATUSES[status]
   const styles = useStyles()
 

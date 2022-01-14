@@ -1,14 +1,24 @@
-require('dotenv').config();
-const express = require('express');
-const { useTwilioSms } = require('@cmpsr/twilio/lib/sms');
+import dotenv from 'dotenv';
+import express, { Request, Response } from 'express';
+
+import { useTwilioSms } from '@cmpsr/twilio/lib/sms';
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());
 
 const twilioSms = useTwilioSms();
 
-app.get('/available-phones', async (req, res) => {
+app.get('/available-phones', async (req: Request<{}, {}, {}, {
+  areaCode: number,
+  country: string,
+  mmsEnabled: boolean,
+  smsEnabled: boolean,
+  limit: number
+}>, res: Response) => {
   const { areaCode, country, mmsEnabled, smsEnabled, limit } = req.query;
+
   const phones = await twilioSms.availablePhones(
     areaCode,
     country,
@@ -19,13 +29,22 @@ app.get('/available-phones', async (req, res) => {
   res.json(phones);
 });
 
-app.post('/send-sms', async (req, res) => {
+app.post('/send-sms', async (req: Request<{}, {}, {
+  message: string,
+  from: string,
+  to: string
+}>, res: Response) => {
   const { message, from, to } = req.body;
   const response = await twilioSms.send(message, from, to);
   res.json(response);
 });
 
-app.post('/buy-phone-number', async (req, res) => {
+app.post('/buy-phone-number', async (req: Request<{}, {}, {
+  phoneNumber: string,
+  friendlyName: string,
+  smsUrl: string,
+  smsMethod: string
+}>, res: Response) => {
   const { phoneNumber, friendlyName, smsUrl, smsMethod } = req.body;
   const phone = await twilioSms.buy(
     phoneNumber,

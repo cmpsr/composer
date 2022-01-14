@@ -1,8 +1,9 @@
-const express = require('express');
+import express, { Response } from 'express';
+import { TypedRequest } from '../getInstance';
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+router.post('/', async (req: TypedRequest, res: Response) => {
   const {
     twilioConversation,
     body: { friendlyName },
@@ -11,12 +12,12 @@ router.post('/', async (req, res) => {
   res.json(conversation);
 });
 
-router.get('/', async ({ twilioConversation }, res) => {
+router.get('/', async ({ twilioConversation }: TypedRequest, res: Response) => {
   const conversations = await twilioConversation.getConversations();
   res.json(conversations);
 });
 
-router.get('/:sid', async (req, res) => {
+router.get('/:sid', async (req: TypedRequest, res: Response) => {
   const {
     twilioConversation,
     params: { sid },
@@ -25,7 +26,7 @@ router.get('/:sid', async (req, res) => {
   res.json(conversation);
 });
 
-router.post('/add-webhook', async (req, res) => {
+router.post('/add-webhook', async (req: TypedRequest, res: Response) => {
   const {
     twilioConversation,
     body: { sid, webhook, method },
@@ -38,4 +39,5 @@ router.post('/add-webhook', async (req, res) => {
   res.json(twilioWebhook);
 });
 
-module.exports = router;
+
+export default router;

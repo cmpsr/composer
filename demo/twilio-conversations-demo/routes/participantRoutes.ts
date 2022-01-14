@@ -1,8 +1,9 @@
-const express = require('express');
+import express, { Response } from 'express';
+import { TypedRequest } from '../getInstance';
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+router.post('/', async (req: TypedRequest, res: Response) => {
   const {
     twilioConversation,
     body: { conversationSid, identity },
@@ -14,7 +15,7 @@ router.post('/', async (req, res) => {
   res.json(participant);
 });
 
-router.post('/sms', async (req, res) => {
+router.post('/sms', async (req: TypedRequest, res: Response) => {
   const {
     twilioConversation,
     body: { conversationSid, invitedPhone, inviterPhone },
@@ -27,4 +28,4 @@ router.post('/sms', async (req, res) => {
   res.json(participant);
 });
 
-module.exports = router;
+export default router;

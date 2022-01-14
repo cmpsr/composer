@@ -4,12 +4,15 @@ import { AlertProps, AlertStyles } from './types';
 import {
   Alert as ChakraAlert,
   AlertDescription,
-  AlertIcon,
+  AlertIconProps,
   AlertTitle,
   Box,
+  chakra,
   CloseButton,
   useMultiStyleConfig,
+  useStyles,
 } from '@chakra-ui/react';
+import { IconAlertCircle, IconAlertTriangle, IconCircleCheck, IconInfoCircle } from '../Icons';
 
 export const Alert: FC<AlertProps> = ({
   state,
@@ -44,12 +47,13 @@ export const Alert: FC<AlertProps> = ({
 
   const {
     icon: { status },
-  } = useMultiStyleConfig('Alert', { variant }) as AlertStyles;
+  } = useMultiStyleConfig('Alert', { variant, state }) as AlertStyles;
 
   return (
     <ChakraAlert status={state} variant={variant} {...props}>
       <AlertIcon
         data-testid="alert-icon"
+        status={state}
         color={status[state]?.color || 'info'}
       />
       <Box data-testid="alert-content-wrapper" display="flex" flexDir={calculateTitleAlignment()}>
@@ -69,3 +73,26 @@ export const Alert: FC<AlertProps> = ({
     </ChakraAlert>
   );
 };
+
+const STATUSES = {
+  info: { icon: IconInfoCircle, colorScheme: "blue" },
+  warning: { icon: IconAlertTriangle, colorScheme: "orange" },
+  success: { icon: IconCircleCheck, colorScheme: "green" },
+  error: { icon: IconAlertCircle, colorScheme: "red" },
+}
+
+export const AlertIcon: React.FC<AlertIconProps & { status: string }> = ({ status, ...props}) => {
+  const { icon: BaseIcon } = STATUSES[status]
+  const styles = useStyles()
+
+  return (
+    <chakra.span
+      display="inherit"
+      {...props}
+      className="chakra-alert__icon"
+      __css={styles.icon}
+    >
+      <BaseIcon w="100%" h="100%" />
+    </chakra.span>
+  )
+}

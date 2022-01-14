@@ -1,6 +1,7 @@
 export * from './Avatar';
 export * from './Badge';
 export * from './Button';
+export * from './Divider';
 export * from './Image';
 export * from './Slider';
 export * from './Spinner';

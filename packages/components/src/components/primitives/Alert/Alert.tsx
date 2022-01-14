@@ -53,7 +53,7 @@ export const Alert: FC<AlertProps> = ({
     <ChakraAlert status={state} variant={variant} {...props}>
       <AlertIcon
         data-testid="alert-icon"
-        status={state}
+        status={state || 'info'}
         color={status[state]?.color || 'info'}
       />
       <Box data-testid="alert-content-wrapper" display="flex" flexDir={calculateTitleAlignment()}>

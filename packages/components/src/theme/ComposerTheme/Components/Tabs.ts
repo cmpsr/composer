@@ -27,7 +27,7 @@ export const Tabs: ComponentStyleConfig = {
         borderRadius: '1.25rem',
         color: 'text-secondary',
         _selected: {
-          backgroundColor: 'ui-element-default',
+          backgroundColor: 'background-static',
           color: 'text-link-primary-default',
         },
       },

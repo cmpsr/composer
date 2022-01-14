@@ -1,6 +1,7 @@
 import { Avatar, AvatarBadge } from './Avatar';
 import { Badge } from './Badge';
 import { Button } from './Button';
+import { CircularProgress } from './CircularProgress';
 import { Divider } from './Divider';
 import { Icon } from './Icon';
 import { Slider } from './Slider';
@@ -14,6 +15,7 @@ export const components = {
   AvatarBadge,
   Badge,
   Button,
+  CircularProgress,
   Divider,
   Icon,
   Slider,

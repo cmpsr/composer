@@ -1,15 +1,13 @@
 import React from 'react';
-import { renderWithProviders } from 'tests/renderWithProviders';
+import { screen, renderWithProviders } from 'tests/renderWithProviders';
 import TestRendered from 'react-test-renderer';
 import { Divider } from './Divider';
 
 describe('Divider', () => {
   it('Should render', () => {
-    const { getByTestId } = renderWithProviders(
-      <Divider data-testid="divider-id" />
-    );
+    renderWithProviders(<Divider role="divider" />);
 
-    getByTestId('divider-id');
+    screen.getByRole('divider');
   });
 
   test('should render with orientation', () => {

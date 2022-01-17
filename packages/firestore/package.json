@@ -7,14 +7,12 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.0.21",
+  "version": "0.0.22",
   "author": "Steve Cox <stevejcox@me.com>",
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "files": [
-    "/lib"
-  ],
+  "files": ["/lib"],
   "scripts": {
     "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
     "test": "jest",

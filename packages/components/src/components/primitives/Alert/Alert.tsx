@@ -6,13 +6,18 @@ import {
   AlertDescription,
   AlertIconProps,
   AlertTitle,
-  Box,
   chakra,
   CloseButton,
   useMultiStyleConfig,
   useStyles,
 } from '@chakra-ui/react';
-import { IconAlertCircle, IconAlertTriangle, IconCircleCheck, IconInfoCircle } from '../Icons';
+import {
+  IconAlertCircle,
+  IconAlertTriangle,
+  IconCircleCheck,
+  IconInfoCircle,
+} from '../Icons';
+import { Flex } from 'components';
 
 export const Alert: FC<AlertProps> = ({
   state,
@@ -56,34 +61,41 @@ export const Alert: FC<AlertProps> = ({
         status={state || 'info'}
         color={status[state]?.color || 'info'}
       />
-      <Box data-testid="cmpsr.alert-content-wrapper" display="flex" flexDir={calculateTitleAlignment()}>
-        {title && titleAlignment !== 'none' && <AlertTitle data-testid="cmpsr.alert-title">{title}</AlertTitle>}
+      <Flex
+        data-testid="cmpsr.alert-content-wrapper"
+        flexDir={calculateTitleAlignment()}
+      >
+        {title && titleAlignment !== 'none' && (
+          <AlertTitle data-testid="cmpsr.alert-title">{title}</AlertTitle>
+        )}
         {description && <AlertDescription>{description}</AlertDescription>}
-      </Box>
-      <Box
+      </Flex>
+      <Flex
         position="absolute"
         right="8px"
         height="100%"
-        display="flex"
         flexDirection="column"
         {...calculateTrailingIconAlignment()}
       >
         <CloseButton />
-      </Box>
+      </Flex>
     </ChakraAlert>
   );
 };
 
 const STATUSES = {
-  info: { icon: IconInfoCircle, colorScheme: "blue" },
-  warning: { icon: IconAlertTriangle, colorScheme: "orange" },
-  success: { icon: IconCircleCheck, colorScheme: "green" },
-  error: { icon: IconAlertCircle, colorScheme: "red" },
-}
+  info: { icon: IconInfoCircle, colorScheme: 'blue' },
+  warning: { icon: IconAlertTriangle, colorScheme: 'orange' },
+  success: { icon: IconCircleCheck, colorScheme: 'green' },
+  error: { icon: IconAlertCircle, colorScheme: 'red' },
+};
 
-const AlertIcon: React.FC<AlertIconProps & { status: string }> = ({ status, ...props}) => {
-  const { icon: BaseIcon } = STATUSES[status]
-  const styles = useStyles()
+const AlertIcon: React.FC<AlertIconProps & { status: string }> = ({
+  status,
+  ...props
+}) => {
+  const { icon: BaseIcon } = STATUSES[status];
+  const styles = useStyles();
 
   return (
     <chakra.span
@@ -94,5 +106,5 @@ const AlertIcon: React.FC<AlertIconProps & { status: string }> = ({ status, ...p
     >
       <BaseIcon w="100%" h="100%" />
     </chakra.span>
-  )
-}
+  );
+};

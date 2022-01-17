@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.23
+
+### Patch Changes
+
+- 707e8aa: Remove lib folder
+
 ## 0.0.22
 
 ### Patch Changes

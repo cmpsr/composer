@@ -11,9 +11,17 @@ export default {
 const AllTemplate = () => {
   return (
     <VStack>
-      <Link />
+      <Link size="s" href="#" role="link">
+        Small link
+      </Link>
       <Divider />
-      <Link />
+      <Link size="m" href="#" role="link">
+        Medium link
+      </Link>
+      <Divider />
+      <Link href="#" role="link">
+        Default size
+      </Link>
       <Divider />
     </VStack>
   );

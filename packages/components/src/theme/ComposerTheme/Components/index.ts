@@ -10,6 +10,7 @@ import { Divider } from './Divider';
 import { Icon } from './Icon';
 import { Input } from './Input';
 import { Select } from './Select';
+import { Link } from './Link';
 import { Slider } from './Slider';
 import { Spinner } from './Spinner';
 import { Tabs } from './Tabs';
@@ -30,6 +31,7 @@ export const components = {
   Icon,
   Input,
   Select,
+  Link,
   Slider,
   Spinner,
   Tabs,

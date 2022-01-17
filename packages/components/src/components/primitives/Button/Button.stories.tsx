@@ -1,69 +1,49 @@
 import React from 'react';
-import { Button } from '.';
-import { action } from '@storybook/addon-actions';
-import { boolean, text, select } from '@storybook/addon-knobs';
+import { Meta } from '@storybook/react';
+import { Button } from './Button';
+import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
+import { ButtonSizes, buttonVariants } from './types';
 
 export default {
-  title: 'Primitives/Button',
   component: Button,
+  title: 'Components/Primitives/Button',
+  argTypes: {
+    variant: {
+      options: buttonVariants,
+      control: { type: 'select' },
+    },
+  },
+} as Meta;
+
+const AllTemplate = () => (
+  <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
+    {buttonVariants.map((variant) => (
+      <VStack key={variant}>
+        <HStack>
+          {ButtonSizes.map((size) => (
+            <Button variant={variant} size={size} key={size}>
+              {variant}
+            </Button>
+          ))}
+        </HStack>
+        <HStack key={variant}>
+          {ButtonSizes.map((size) => (
+            <Button variant={variant} size={size} key={size} isDisabled>
+              {variant}
+            </Button>
+          ))}
+        </HStack>
+      </VStack>
+    ))}
+  </VStack>
+);
+
+export const All = AllTemplate.bind({});
+
+const Template = (args) => <Button {...args}></Button>;
+export const Playground = Template.bind({});
+Playground.args = {
+  variant: 'primary',
+  size: 'md',
+  children: 'Composer button!',
 };
-
-export const Types = () => (
-  <>
-    <h1>Button types</h1>
-    {Object.keys(Button.Types).map((type: any) => (
-      <>
-        <Button type={Button.Types[type]} shape={Button.Shapes.Rectangle}>
-          {type} Button
-        </Button>
-        <br />
-      </>
-    ))}
-  </>
-);
-
-export const Shapes = () => (
-  <>
-    <h1>Button shapes</h1>
-    {Object.keys(Button.Shapes).map((shape: any) => (
-      <>
-        <Button shape={Button.Shapes[shape]} type={Button.Types.Primary}>
-          {shape} Button
-        </Button>
-        <br />
-      </>
-    ))}
-  </>
-);
-
-export const Disabled = () => (
-  <>
-    <h1>Button types</h1>
-    {Object.keys(Button.Types).map((type: any) => (
-      <>
-        <Button
-          type={Button.Types[type]}
-          shape={Button.Shapes.Rectangle}
-          disabled
-        >
-          {type} Disabled Button
-        </Button>
-        <br />
-      </>
-    ))}
-  </>
-);
-
-export const Playground = () => (
-  <>
-    <h1>Playground</h1>
-    <Button
-      onClick={action('Button clicked')}
-      disabled={boolean('Disabled', false)}
-      type={select('Button type', Button.Types, Button.Types.Primary)}
-      shape={select('Button shape', Button.Shapes, Button.Shapes.Rectangle)}
-    >
-      {text('Title', 'Button')}
-    </Button>
-  </>
-);

@@ -3,8 +3,6 @@ on:
   push:
     branches:
     - master
-    - 'with-chakra'
-
 
 env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}

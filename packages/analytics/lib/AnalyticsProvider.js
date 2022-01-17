@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.AnalyticsProvider = exports._AnalyticsProvider = void 0;
+exports._AnalyticsProvider = exports.AnalyticsProvider = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -34,7 +34,7 @@ const proxyToIntegrations = (integrations, func, args) => {
 }; // export for testing
 
 
-const _AnalyticsProvider = (_ref) => {
+const _AnalyticsProvider = _ref => {
   let {
     children
   } = _ref,

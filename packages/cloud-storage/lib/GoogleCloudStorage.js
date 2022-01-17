@@ -7,8 +7,12 @@ exports.GoogleCloudStorage = void 0;
 
 var _storage = require("@google-cloud/storage");
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 class GoogleCloudStorage {
   constructor(config) {
+    _defineProperty(this, "storage", void 0);
+
     this.storage = new _storage.Storage(config);
   }
 

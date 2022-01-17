@@ -81,11 +81,11 @@ const generateOtherVariants: PartsStyleFunction<typeof parts> = (props) => {
 export const Alert: ComponentStyleConfig = {
   baseStyle: {
     container: {
-      borderRadius: '6px',
+      borderRadius: '0.4rem',
       padding: '1rem',
     },
     icon: {
-      boxSize: '24px',
+      boxSize: '1.5rem',
       status: {
         success: {
           color: 'alert-success-default',

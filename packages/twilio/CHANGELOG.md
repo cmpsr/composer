@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.2
+
+### Patch Changes
+
+- 8b28f4e: improve jest config
+
 ## 0.1.1
 
 ### Patch Changes

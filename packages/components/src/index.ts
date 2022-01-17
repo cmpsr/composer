@@ -1,3 +1,2 @@
-export * from './components/primitives';
-export * from './components/containers';
-export * from './styles/theme';
+export * from './components';
+export * from './theme';

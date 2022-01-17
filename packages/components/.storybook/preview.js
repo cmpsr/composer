@@ -1,26 +1,34 @@
-import React from 'react';
-import { addParameters, addDecorator } from '@storybook/react';
-import { withA11y } from '@storybook/addon-a11y';
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
-import { withPerformance } from 'storybook-addon-performance';
-import { withKnobs } from '@storybook/addon-knobs';
-import { ThemeProvider } from 'styled-components';
-import { theme } from 'styles/theme';
+import { addDecorator } from '@storybook/react';
+import { ComposerProvider } from '../src/theme';
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/700.css';
 
-import 'styles/index.css';
-
-addParameters({
-  viewport: {
-    viewports: INITIAL_VIEWPORTS,
+export const parameters = {
+  backgrounds: {
+    default: 'light',
+    values: [
+      {
+        name: 'light',
+        value: '#FFFFFF',
+      },
+    ],
   },
-  decorators: [withA11y, withKnobs],
-  docs: {
-    container: DocsContainer,
-    page: DocsPage,
+  actions: { argTypesRegex: '^on[A-Z].*' },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
   },
-});
+};
 
-addDecorator(withPerformance);
-
-addDecorator((story) => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
+const theme = {
+  fonts: {
+    heading: 'Inter',
+    body: 'Inter',
+  },
+};
+addDecorator((story) => (
+  <ComposerProvider theme={theme}>{story()}</ComposerProvider>
+));

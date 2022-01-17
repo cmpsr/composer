@@ -1,48 +1,44 @@
 import React from 'react';
-import { Spinner } from '.';
-import { select, number } from '@storybook/addon-knobs';
-import styled from 'styled-components';
+import { Meta } from '@storybook/react';
+import { Spinner } from './Spinner';
+import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
+import { spinnerSizes, spinnerVariants } from './types';
 
 export default {
-  title: 'Primitives/Spinner',
   component: Spinner,
+  title: 'Components/Primitives/Spinner',
+  argTypes: {
+    variant: {
+      options: spinnerVariants,
+      control: { type: 'select' },
+    },
+  },
+} as Meta;
+
+const AllTemplate = () => (
+  <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
+    {spinnerVariants.map((variant) => (
+      <VStack key={variant}>
+        <HStack>
+          {spinnerSizes.map((size) => (
+            <Spinner variant={variant} size={size} key={size} />
+          ))}
+        </HStack>
+        <HStack key={variant}>
+          {spinnerSizes.map((size) => (
+            <Spinner variant={variant} size={size} key={size} />
+          ))}
+        </HStack>
+      </VStack>
+    ))}
+  </VStack>
+);
+
+export const All = AllTemplate.bind({});
+
+const Template = (args) => <Spinner {...args}></Spinner>;
+export const Playground = Template.bind({});
+Playground.args = {
+  variant: 'accent',
+  size: 'xs',
 };
-
-const Container = styled.div`
-  background: grey;
-`;
-
-export const Sizes = () => (
-  <Container>
-    <h1>Spinner sizes</h1>
-    {Object.keys(Spinner.Sizes).map((size: any) => (
-      <>
-        <Spinner size={Spinner.Sizes[size]} />
-        <br />
-      </>
-    ))}
-  </Container>
-);
-
-export const Colors = () => (
-  <Container>
-    <h1>Spinner colors</h1>
-    {Object.keys(Spinner.Colors).map((color: any) => (
-      <>
-        <Spinner color={Spinner.Colors[color]} />
-        <br />
-      </>
-    ))}
-  </Container>
-);
-
-export const Playground = () => (
-  <Container>
-    <h1>Playground</h1>
-    <Spinner
-      size={select('Size', Spinner.Sizes, Spinner.Sizes.Large)}
-      color={select('Color', Spinner.Colors, Spinner.Colors.Primary)}
-      strokeWidth={number('Stroke width', 2)}
-    />
-  </Container>
-);

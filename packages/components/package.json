@@ -7,52 +7,44 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.1.14",
+  "version": "1.1.0",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": ["/lib"],
+  "private": false,
   "scripts": {
-    "storybook": "echo 'Starting Storybook' && start-storybook -p 8080 -c .storybook",
-    "build-storybook": "build-storybook -c .storybook",
     "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && find lib -type f -name '*.test.*' -exec rm {} + && yarn tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
-    "test": "jest --env=jest-environment-jsdom-sixteen",
-    "test:watch": "jest --watch --env=jest-environment-jsdom-sixteen",
-    "test:coverage": "jest --coverage --env=jest-environment-jsdom-sixteen"
-  },
-  "dependencies": {
-    "@popperjs/core": "^2.4.4",
-    "@types/classnames": "^2.2.10",
-    "@types/styled-components": "^5.1.4",
-    "classnames": "^2.2.6",
-    "downshift": "^5.1.1",
-    "react-device-detect": "^1.11.14",
-    "react-markdown": "^4.3.1",
-    "react-popper": "^2.2.3",
-    "react-toastify": "^6.0.8",
-    "react-tooltip": "^4.2.6",
-    "rimraf": "^3.0.2",
-    "styled-components": "^5.2.0"
-  },
-  "devDependencies": {
-    "@storybook/addon-a11y": "^6.0.27",
-    "@storybook/addon-actions": "^6.0.27",
-    "@storybook/addon-docs": "^6.0.27",
-    "@storybook/addon-knobs": "^6.0.27",
-    "@storybook/addon-notes": "^5.3.21",
-    "@storybook/addon-viewport": "^6.0.27",
-    "@storybook/addons": "^6.0.27",
-    "@storybook/preset-typescript": "^3.0.0",
-    "@storybook/react": "^6.0.27",
-    "jest-styled-components": "^7.0.3",
-    "postcss-preset-env": "^6.7.0",
-    "storybook-addon-performance": "^0.13.0",
-    "storybook-chromatic": "^3.5.5",
-    "tsconfig-paths-webpack-plugin": "^3.2.0"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "storybook": "start-storybook -p 8080 -c .storybook",
+    "build-storybook": "build-storybook -c .storybook",
+    "gen:theme-typings": "chakra-cli tokens src/theme/ComposerTheme/theme.ts",
+    "gen:icons": "node scripts/generate_icons.js",
+    "postinstall": "npm run gen:theme-typings"
   },
   "peerDependencies": {
-    "react": "^16.13.1"
+    "react": "^17.0.2"
   },
-  "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
+  "dependencies": {
+    "@chakra-ui/react": "^1.7.3",
+    "@chakra-ui/theme-tools": "^1.3.1",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "framer-motion": "^5"
+  },
+  "devDependencies": {
+    "@chakra-ui/cli": "^1.6.0",
+    "@fontsource/inter": "^4.5.0",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/react": "^6.3.12",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@types/jest": "^27.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "storybook-chromatic": "^4.0.2"
+  }
 }

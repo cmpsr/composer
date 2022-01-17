@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.4.0
+
+### Minor Changes
+
+- 75195ae: Move components package to chakra-ui
+
 ## 0.3.1
 
 ### Patch Changes

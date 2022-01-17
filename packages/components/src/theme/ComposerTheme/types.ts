@@ -16,4 +16,9 @@ export interface Theme {
   textStyles: {
     [key: string]: SystemStyleObject;
   };
+  fonts?: {
+    heading?: string;
+    body?: string;
+    mono?: string;
+  };
 }

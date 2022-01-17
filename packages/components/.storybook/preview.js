@@ -1,5 +1,8 @@
 import { addDecorator } from '@storybook/react';
 import { ComposerProvider } from '../src/theme';
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/700.css';
 
 export const parameters = {
   backgrounds: {
@@ -20,4 +23,12 @@ export const parameters = {
   },
 };
 
-addDecorator((story) => <ComposerProvider>{story()}</ComposerProvider>);
+const theme = {
+  fonts: {
+    heading: 'Inter',
+    body: 'Inter',
+  },
+};
+addDecorator((story) => (
+  <ComposerProvider theme={theme}>{story()}</ComposerProvider>
+));

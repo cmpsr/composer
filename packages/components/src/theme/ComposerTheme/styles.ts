@@ -1,5 +1,4 @@
 const baseTextStyle = {
-  fontFamily: 'Inter',
   fontWeight: 'normal',
   color: 'text-primary',
   letterSpacing: 0,

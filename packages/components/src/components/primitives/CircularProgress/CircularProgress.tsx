@@ -20,6 +20,7 @@ export const CircularProgress: FC<CircularProgressProps> = ({
     <ChakraCircularProgress
       trackColor={trackColor as string}
       color={filledTrackColor as string}
+      data-testid="cmpsr.circular-progress"
       {...props}
     >
       {showLabel && (

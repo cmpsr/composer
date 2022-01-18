@@ -6,6 +6,7 @@ import { CircularProgress } from '.';
 describe('CircularProgress', () => {
   test('should render', () => {
     renderWithProviders(<CircularProgress value={10} />);
+    screen.getByTestId('cmpsr.circular-progress');
   });
 
   test('should render with a label', () => {

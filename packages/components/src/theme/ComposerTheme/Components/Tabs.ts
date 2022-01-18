@@ -13,19 +13,13 @@ export const Tabs: ComponentStyleConfig = {
   },
   sizes: {
     sm: ({ theme }) => ({
-      tab: {
-        ...theme.textStyles['text-body-medium'],
-      },
+      tab: theme.textStyles['text-body-medium'],
     }),
     md: ({ theme }) => ({
-      tab: {
-        ...theme.textStyles['text-body-medium'],
-      },
+      tab: theme.textStyles['text-body-medium'],
     }),
     lg: ({ theme }) => ({
-      tab: {
-        ...theme.textStyles['text-body-medium'],
-      },
+      tab: theme.textStyles['text-body-medium'],
     }),
   },
   variants: {

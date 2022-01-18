@@ -1,15 +1,15 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 export const Badge: ComponentStyleConfig = {
-  baseStyle: {
+  baseStyle: ({ theme }) => ({
     letterSpacing: '0.05em',
-  },
+    borderRadius: 'radii-half',
+    ...theme.textStyles['text-body-floating-label-bold'],
+  }),
   variants: {
     solid: {
       backgroundColor: 'primary-default',
-      fontStyle: 'text-body-floating-label-bold',
       color: 'text-badge-solid',
-      borderRadius: 'radii-half',
     },
     outline: {
       borderColor: 'primary-default',

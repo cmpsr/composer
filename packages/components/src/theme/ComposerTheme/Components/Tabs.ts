@@ -6,11 +6,27 @@ export const Tabs: ComponentStyleConfig = {
       columnGap: '0.25rem',
     },
     tab: {
-      textStyle: 'text-body-medium',
       _focus: {
         boxShadow: 'none',
       },
     },
+  },
+  sizes: {
+    sm: ({ theme }) => ({
+      tab: {
+        ...theme.textStyles['text-body-medium'],
+      },
+    }),
+    md: ({ theme }) => ({
+      tab: {
+        ...theme.textStyles['text-body-medium'],
+      },
+    }),
+    lg: ({ theme }) => ({
+      tab: {
+        ...theme.textStyles['text-body-medium'],
+      },
+    }),
   },
   variants: {
     line: {

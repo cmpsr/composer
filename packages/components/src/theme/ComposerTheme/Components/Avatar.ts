@@ -27,30 +27,30 @@ export const Avatar: ComponentStyleConfig = {
     },
   },
   sizes: {
-    xxl: {
+    xxl: ({ theme }) => ({
       ...getSize('8rem'),
-      textStyle: 'text-body-display-XL',
-    },
-    xl: {
+      ...theme.textStyles['text-body-display-XL'],
+    }),
+    xl: ({ theme }) => ({
       ...getSize('6rem'),
-      textStyle: 'text-body-display-L',
-    },
-    l: {
+      ...theme.textStyles['text-body-display-L'],
+    }),
+    l: ({ theme }) => ({
       ...getSize('4rem'),
-      textStyle: 'text-body-display-S',
-    },
-    m: {
+      ...theme.textStyles['text-body-display-S'],
+    }),
+    m: ({ theme }) => ({
       ...getSize('3rem'),
-      textStyle: 'text-body-display-XS',
-    },
-    s: {
+      ...theme.textStyles['text-body-display-XS'],
+    }),
+    s: ({ theme }) => ({
       ...getSize('2rem'),
-      textStyle: 'font-body-meta-regular',
-    },
-    xs: {
+      ...theme.textStyles['font-body-meta-regular'],
+    }),
+    xs: ({ theme }) => ({
       ...getSize('1.5rem'),
-      textStyle: 'font-body-floating-label-medium',
-    },
+      ...theme.textStyles['font-body-floating-label-medium'],
+    }),
   },
   defaultProps: {
     size: 'm',

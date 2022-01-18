@@ -15,5 +15,6 @@ export const ComposerProvider: FC<ComposerProviderProps> = ({
     ...defaultTheme,
     ...(theme || {}),
   });
+  console.log('extended', extended);
   return <ChakraProvider theme={extended}>{children}</ChakraProvider>;
 };

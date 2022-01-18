@@ -38,13 +38,22 @@ export const Checkbox: ComponentStyleConfig = {
   },
   sizes: {
     sm: {
-      textStyle: 'text-body-meta-regular',
+      label: {
+        fontSize: '0.88rem',
+        lineHeight: '1.25rem',
+      },
     },
     md: {
-      textStyle: 'text-body-regular',
+      label: {
+        fontSize: '1rem',
+        lineHeight: '1.15rem',
+      },
     },
     lg: {
-      textStyle: 'text-body-large-regular',
+      label: {
+        fontSize: '1.13rem',
+        lineHeight: '1.75rem',
+      },
     },
   },
   variants: {

@@ -6,15 +6,15 @@ export const Link: ComponentStyleConfig = {
   baseStyle: {
     color: 'text-link-primary-default',
     _hover: {
+      textDecoration: 'none',
       color: 'text-link-primary-hover',
     },
     _pressed: {
-      color: 'text-primary-link-pressed',
+      color: 'text-link-primary-pressed',
     },
     _visited: {
-      color: 'text-primary-link-pressed',
+      color: 'text-link-primary-pressed',
     },
-    // TODO TEST IN MOZILLA
     _focus: {
       borderRadius: '3px',
       boxShadow: `0 0 0 3px ${convertHexToRGBA(
@@ -22,7 +22,6 @@ export const Link: ComponentStyleConfig = {
         1
       )}`,
     },
-    // TODO TEST IN MOZILLA
     _focusVisible: {
       borderRadius: '3px',
       boxShadow: `0 0 0 3px ${convertHexToRGBA(
@@ -31,13 +30,15 @@ export const Link: ComponentStyleConfig = {
       )}`,
     },
   },
-  // CHECK IF WE NEED LARGE, BOLD AND OTHER VALUES
   sizes: {
     s: {
-      textStyle: 'text-body-meta-medium',
+      textStyle: 'text-link-body-small',
     },
     m: {
-      textStyle: 'text-body-medium',
+      textStyle: 'text-link-body-medium',
+    },
+    l: {
+      textStyle: 'text-link-body-large',
     },
   },
 };

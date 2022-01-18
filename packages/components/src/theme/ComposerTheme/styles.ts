@@ -7,7 +7,6 @@ const baseTextStyle = {
 const linkTextStyle = {
   ...baseTextStyle,
   color: 'text-link-accent-default',
-  textDecorationLine: 'underline',
 };
 
 export const textStyles = {

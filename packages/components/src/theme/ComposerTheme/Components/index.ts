@@ -9,6 +9,7 @@ import { Spinner } from './Spinner';
 import { Tabs } from './Tabs';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
+import { Radio } from './Radio';
 
 export const components = {
   Alert,
@@ -18,6 +19,7 @@ export const components = {
   Button,
   Divider,
   Icon,
+  Radio,
   Slider,
   Spinner,
   Tabs,

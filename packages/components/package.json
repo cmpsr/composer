@@ -15,7 +15,7 @@
   "files": ["/lib"],
   "private": false,
   "scripts": {
-    "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && find lib -type f -name '*.test.*' -exec rm {} + && yarn tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
+    "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} + && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",

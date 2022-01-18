@@ -4,6 +4,7 @@ import { Alert } from './Alert';
 import { Button } from './Button';
 import { Divider } from './Divider';
 import { Icon } from './Icon';
+import { Select } from './Select';
 import { Slider } from './Slider';
 import { Spinner } from './Spinner';
 import { Tabs } from './Tabs';
@@ -18,6 +19,7 @@ export const components = {
   Button,
   Divider,
   Icon,
+  Select,
   Slider,
   Spinner,
   Tabs,

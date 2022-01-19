@@ -2,9 +2,12 @@ import { Avatar, AvatarBadge } from './Avatar';
 import { Badge } from './Badge';
 import { Alert } from './Alert';
 import { Button } from './Button';
+import { Card } from './Card';
+import { Checkbox } from './Checkbox';
 import { Divider } from './Divider';
 import { Icon } from './Icon';
 import { Link } from './Link';
+import { Select } from './Select';
 import { Slider } from './Slider';
 import { Spinner } from './Spinner';
 import { Tabs } from './Tabs';
@@ -17,9 +20,12 @@ export const components = {
   AvatarBadge,
   Badge,
   Button,
+  Card,
+  Checkbox,
   Divider,
   Icon,
   Link,
+  Select,
   Slider,
   Spinner,
   Tabs,

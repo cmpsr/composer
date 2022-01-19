@@ -1,5 +1,13 @@
 # @cmpsr/components
 
+## 1.2.0
+
+### Minor Changes
+
+- 02a8c45: Implementation, tests and stories for the Composer's Alert component
+- cd1dc60: remove test and stories from distribution files
+- ad82482: Replace textStyle property for theme textStyles variants. The property textStyle doesn't work as expected (according to Chakra documentation) in Components theming.
+
 ## 1.1.0
 
 ### Minor Changes

@@ -7,14 +7,12 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "files": [
-    "/lib"
-  ],
+  "files": ["/lib"],
   "private": false,
   "scripts": {
     "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +",
@@ -23,7 +21,7 @@
     "test:coverage": "jest --coverage",
     "storybook": "start-storybook -p 8080 -c .storybook",
     "build-storybook": "build-storybook -c .storybook",
-    "gen:theme-typings": "chakra-cli tokens src/theme/ComposerTheme/theme.ts",
+    "gen:theme-typings": "./scripts/generate_theme_typings.sh",
     "gen:icons": "node scripts/generate_icons.js",
     "postinstall": "npm run gen:theme-typings"
   },

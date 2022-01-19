@@ -63,26 +63,26 @@ export const Button: ComponentStyleConfig = {
     borderRadius: '0.375rem',
   },
   sizes: {
-    xs: {
-      textStyle: 'text-body-floating-label-medium',
+    xs: ({ theme }) => ({
+      ...theme.textStyles['text-body-floating-label-medium'],
       px: '0.5rem',
       py: '0.25rem',
-    },
-    sm: {
-      textStyle: 'text-body-meta-medium',
+    }),
+    sm: ({ theme }) => ({
+      ...theme.textStyles['text-body-meta-medium'],
       px: '0.75rem',
       py: '0.5rem',
-    },
-    md: {
-      textStyle: 'text-body-medium',
+    }),
+    md: ({ theme }) => ({
+      ...theme.textStyles['text-body-medium'],
       px: '1rem',
       py: '0.5rem',
-    },
-    lg: {
-      textStyle: 'text-body-large-medium',
+    }),
+    lg: ({ theme }) => ({
+      ...theme.textStyles['text-body-large-medium'],
       px: '1.5rem',
       py: '0.75rem',
-    },
+    }),
   },
   variants: {
     accent: generateButton('accent'),

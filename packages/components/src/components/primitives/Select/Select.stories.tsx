@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react';
 import { Select } from '.';
 import { selectSizes } from './types';
 import { StackDivider, VStack } from '@chakra-ui/react';
+import { Text } from '..';
 
 export default {
   component: Select,
@@ -18,6 +19,12 @@ export default {
   },
 } as Meta;
 
+const sizeLabels = {
+  s: 'Small',
+  m: 'Medium',
+  l: 'Large',
+};
+
 const AllTemplate = () => {
   const [values, setValues] = React.useState({});
 
@@ -25,6 +32,7 @@ const AllTemplate = () => {
     <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
       {selectSizes.map((size) => (
         <VStack key={size}>
+          <Text>{sizeLabels[size]}</Text>
           <Select
             size={size}
             placeholder="Label"

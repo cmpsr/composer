@@ -24,10 +24,7 @@ export const CircularProgress: FC<CircularProgressProps> = ({
       {...props}
     >
       {showLabel && (
-        <Text
-          variant="text-body-meta-regular"
-          {...labelStyles as TextProps}
-        >
+        <Text variant="text-body-meta-regular" {...(labelStyles as TextProps)}>
           {props.value}%
         </Text>
       )}

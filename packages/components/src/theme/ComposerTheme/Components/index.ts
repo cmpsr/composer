@@ -5,6 +5,7 @@ import { Button } from './Button';
 import { Checkbox } from './Checkbox';
 import { Divider } from './Divider';
 import { Icon } from './Icon';
+import { Select } from './Select';
 import { Slider } from './Slider';
 import { Spinner } from './Spinner';
 import { Tabs } from './Tabs';
@@ -20,6 +21,7 @@ export const components = {
   Checkbox,
   Divider,
   Icon,
+  Select,
   Slider,
   Spinner,
   Tabs,

@@ -29,22 +29,27 @@ export const Link: FC<LinkProps> = ({
 
   if (icon)
     return (
-      <ChakraLink textStyle={textStyle as string} {...props}>
+      <ChakraLink
+        data-testid="composer-link-container"
+        textStyle={textStyle as string}
+        {...props}
+      >
         <Box
+          data-testid="composer-icon-wrapper"
           __css={{ '> svg': calculateMargin() }}
           display="flex"
           alignItems="center"
         >
           {iconPosition === 'left' && (
             <>
-              <Icon />
+              <Icon data-testid="composer-cloned-icon" />
               {children}
             </>
           )}
           {iconPosition === 'right' && (
             <>
               {children}
-              <Icon />
+              <Icon data-testid="composer-cloned-icon" />
             </>
           )}
         </Box>
@@ -52,7 +57,11 @@ export const Link: FC<LinkProps> = ({
     );
 
   return (
-    <ChakraLink textStyle={textStyle as string} {...props}>
+    <ChakraLink
+      data-testid="composer-link-container"
+      textStyle={textStyle as string}
+      {...props}
+    >
       {children}
     </ChakraLink>
   );

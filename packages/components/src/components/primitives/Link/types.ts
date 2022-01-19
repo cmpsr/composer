@@ -14,7 +14,7 @@ export interface LinkSizes {
 export interface LinkProps extends ChakraLinkProps {
   icon?: JSX.Element;
   iconPosition?: keyof LinkIconPositions;
-  size?: keyof LinkSizes;
+  size?: keyof LinkSizes | string;
 }
 
 export const marginSizes = {

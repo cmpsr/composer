@@ -4,6 +4,7 @@ export * from './Badge';
 export * from './Button';
 export * from './Divider';
 export * from './Image';
+export * from './Select';
 export * from './Slider';
 export * from './Spinner';
 export * from './Tabs';

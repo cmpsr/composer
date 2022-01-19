@@ -37,24 +37,21 @@ export const Checkbox: ComponentStyleConfig = {
     },
   },
   sizes: {
-    sm: {
+    sm: ({ theme }) => ({
       label: {
-        fontSize: '0.88rem',
-        lineHeight: '1.25rem',
+        ...theme.textStyles['text-body-meta-regular'],
       },
-    },
-    md: {
+    }),
+    md: ({ theme }) => ({
       label: {
-        fontSize: '1rem',
-        lineHeight: '1.15rem',
+        ...theme.textStyles['text-body-regular'],
       },
-    },
-    lg: {
+    }),
+    lg: ({ theme }) => ({
       label: {
-        fontSize: '1.13rem',
-        lineHeight: '1.75rem',
+        ...theme.textStyles['text-body-large-regular'],
       },
-    },
+    }),
   },
   variants: {
     prueba: {

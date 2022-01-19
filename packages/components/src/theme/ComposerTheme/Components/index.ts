@@ -2,6 +2,7 @@ import { Avatar, AvatarBadge } from './Avatar';
 import { Badge } from './Badge';
 import { Alert } from './Alert';
 import { Button } from './Button';
+import { Card } from './Card';
 import { Checkbox } from './Checkbox';
 import { Divider } from './Divider';
 import { Icon } from './Icon';
@@ -18,6 +19,7 @@ export const components = {
   AvatarBadge,
   Badge,
   Button,
+  Card,
   Checkbox,
   Divider,
   Icon,

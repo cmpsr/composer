@@ -8,7 +8,7 @@ export default {
   title: 'Components/Primitives/CircularProgress',
   argTypes: {
     size: {
-      control: { type: 'number' },
+      type: { name: 'string', required: false },
     },
     showLabel: {
       control: { type: 'boolean' },
@@ -41,5 +41,5 @@ export const Playground = Template.bind({});
 Playground.args = {
   value: 50,
   showLabel: false,
-  size: '120px',
+  size: '10rem',
 };

@@ -1,13 +1,20 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Checkbox } from './Checkbox';
+import { Checkbox, CheckboxProps } from '.';
 import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
 import { CheckboxSizes } from './types';
+import { Text } from '..';
 
 export default {
   component: Checkbox,
   title: 'Components/Primitives/Checkbox',
 } as Meta;
+
+const sizeLabels = {
+  s: 'Small',
+  m: 'Medium',
+  l: 'Large',
+};
 
 const AllTemplate = () => {
   const values = [
@@ -31,21 +38,24 @@ const AllTemplate = () => {
 
   return (
     <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
-      {values.map((val, key) => (
-        <HStack key={key}>
-          {CheckboxSizes.map((size) => (
-            <Checkbox key={size} size={size} {...val?.props}>
-              {val.label}
-            </Checkbox>
+      {CheckboxSizes.map((size) => (
+        <VStack key={size}>
+          <Text variant="text-header-L">{sizeLabels[size]}</Text>
+          {values.map((val, key) => (
+            <HStack key={key}>
+              <Checkbox key={size} size={size} {...val?.props}>
+                {val.label}
+              </Checkbox>
+            </HStack>
           ))}
-        </HStack>
+        </VStack>
       ))}
     </VStack>
   );
 };
 export const All = AllTemplate.bind({});
 
-const Template = (args) => <Checkbox {...args} defaultIsChecked></Checkbox>;
+const Template = (args: CheckboxProps) => <Checkbox {...args}></Checkbox>;
 export const Playground = Template.bind({});
 Playground.args = {
   size: 'md',

@@ -1,6 +1,6 @@
 import { CheckboxProps as ChakraCheckboxProps } from '@chakra-ui/react';
 
-export const CheckboxSizes = ['sm', 'md', 'lg'] as const;
+export const CheckboxSizes = ['s', 'm', 'l'] as const;
 export type CheckboxSize = typeof CheckboxSizes[number];
 
 export interface CheckboxProps extends ChakraCheckboxProps {

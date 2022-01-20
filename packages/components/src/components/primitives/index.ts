@@ -3,6 +3,7 @@ export * from './Avatar';
 export * from './Badge';
 export * from './Button';
 export * from './Card';
+export * from './CircularProgress';
 export * from './Checkbox';
 export * from './Divider';
 export * from './Image';

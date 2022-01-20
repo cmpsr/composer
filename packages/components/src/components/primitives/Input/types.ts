@@ -1,4 +1,5 @@
 import { InputProps as ChakraInputProps } from '@chakra-ui/react';
+import { ReactElement } from 'react';
 
 export const inputVariants = ['outline', 'flushed'] as const;
 export const inputSizes = ['s', 'm', 'l'] as const;
@@ -10,7 +11,7 @@ export interface InputProps extends ChakraInputProps {
   variant?: InputVariant;
   size?: InputSize;
   showTrailingIcon?: boolean;
-  trailingIcon?: React.ReactNode;
+  trailingIcon?: ReactElement;
   leftLabel?: string;
   rightLabel?: string;
 }

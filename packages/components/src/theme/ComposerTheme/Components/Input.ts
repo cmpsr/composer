@@ -1,35 +1,346 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
-import {
-  PartsStyleObject,
-  SystemStyleInterpolation,
-  SystemStyleObject,
-} from '@chakra-ui/theme-tools';
-import { inputAnatomy as parts } from '@chakra-ui/anatomy';
 import { inputStyles } from 'theme/ComposerTheme/styles';
 
-const sizes: Record<string, PartsStyleObject<typeof parts>> = {
-  l: {
-    field: { ...inputStyles.large },
+const textStyles = {
+  large: 'text-body-regular',
+  medium: 'text-body-regular',
+  small: 'text-body-meta-regular',
+};
+
+const iconContainerStyles = {
+  large: {
+    padding: '0.75rem 1rem',
   },
-  m: {
-    field: { ...inputStyles.medium },
+  medium: {
+    padding: '0.625rem 1rem',
   },
-  s: {
-    field: { ...inputStyles.small },
+  small: {
+    padding: '0.625rem 0.75rem',
   },
 };
 
-const baseStyle: SystemStyleInterpolation = {
-  field: {
-    borderRadius: '0.375rem',
-    color: 'text-primary',
-    backgroundColor: 'background-action-default',
-    border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-default)',
-    _placeholder: {
-      color: 'text-secondary',
-      textStyle: 'text-body-regular',
+const iconStyles = {
+  large: {
+    boxSize: '1.5rem',
+  },
+  medium: {
+    boxSize: '1.25rem',
+  },
+  small: {
+    boxSize: '1.25rem',
+  },
+};
+
+const fieldSpacing = {
+  large: {
+    paddingLeft: '3rem',
+  },
+  medium: {
+    paddingLeft: '2.75rem',
+  },
+  small: {
+    paddingLeft: '2.5rem',
+  },
+};
+
+const labelStyles = {
+  backgroundColor: 'background-static',
+  transitionProperty: 'var(--chakra-transition-property-common)',
+  transitionDuration: 'var(--chakra-transition-duration-normal)',
+  sizes: {
+    large: {
+      paddingX: '1rem',
+    },
+    medium: {
+      paddingX: '1rem',
+    },
+    small: {
+      paddingX: '0.75rem',
     },
   },
+  variants: {
+    outline: {
+      invalid: {
+        boxShadow: '0 0 0 0.125rem var(--chakra-colors-alert-error-default)',
+        border: '0px solid transparent',
+        borderColor: 'transparent',
+        position: 'relative',
+        zIndex: 1,
+      },
+      disabled: {
+        color: 'text-disabled',
+        borderColor: 'ui-element-outline-disabled',
+        border:
+          'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
+      },
+      hovered: {
+        borderColor: 'ui-element-outline-active',
+        border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-active)',
+      },
+    },
+    flushed: {
+      invalid: {},
+      disabled: {},
+      hovered: {},
+    },
+  },
+};
+
+const inputGroupStyles = {
+  outline: {
+    invalid: {
+      boxShadow: '0 0 0 0.125rem var(--chakra-colors-alert-error-default)',
+      border: '0px solid transparent',
+      borderColor: 'transparent',
+    },
+    focused: {
+      boxShadow: '0 0 0 0.188rem var(--chakra-colors-primary-focus)',
+    },
+  },
+  flushed: {
+    invalid: {
+      boxShadow: '0 0.125rem 0 0 var(--chakra-colors-alert-error-default)',
+      border: '0px solid transparent',
+      borderColor: 'transparent',
+      borderRadius: 0,
+    },
+    focused: {
+      boxShadow: '0 0.188rem 0 0 var(--chakra-colors-primary-focus)',
+      borderRadius: 0,
+    },
+    hovered: {},
+  },
+};
+
+const calculateSize = (size: string) => {
+  return ({ theme }) => {
+    return {
+      elementContainer: {
+        ...iconContainerStyles[size],
+      },
+      element: {
+        ...iconStyles[size],
+      },
+      leftLabel: {
+        ...labelStyles.sizes[size],
+        ...theme.textStyles[textStyles[size]],
+      },
+      rightLabel: {
+        ...labelStyles.sizes[size],
+        ...theme.textStyles[textStyles[size]],
+      },
+      field: {
+        ...inputStyles[size],
+        ...theme.textStyles[textStyles[size]],
+        withIcon: {
+          ...fieldSpacing[size],
+        },
+        _placeholder: {
+          ...theme.textStyles[textStyles[size]],
+        },
+      },
+    };
+  };
+};
+
+const sizes = {
+  l: calculateSize('large'),
+  m: calculateSize('medium'),
+  s: calculateSize('small'),
+};
+
+const getInputGroupStyle = (
+  props: {
+    isFocused: boolean;
+    isHovered: boolean;
+    isInvalid: boolean;
+    isDisabled: boolean;
+  },
+  variant = 'outline'
+) => {
+  if (props.isInvalid) {
+    return inputGroupStyles[variant].invalid;
+  }
+
+  if (props.isFocused) {
+    return inputGroupStyles[variant].focused;
+  }
+
+  return {};
+};
+
+const getLabelStyle = (
+  props: {
+    isFocused: boolean;
+    isHovered: boolean;
+    isInvalid: boolean;
+    isDisabled: boolean;
+  },
+  variant = 'outline'
+) => {
+  if (props.isInvalid) {
+    return labelStyles.variants[variant].invalid;
+  }
+
+  if (props.isDisabled) {
+    return labelStyles.variants[variant].disabled;
+  }
+
+  if (props.isHovered) {
+    return labelStyles.variants[variant].hovered;
+  }
+
+  return {};
+};
+
+const getIconStyle = (props: { isDisabled: boolean; hasContent: boolean }) => {
+  if (props.isDisabled) {
+    return {
+      color: 'text-disabled',
+    };
+  }
+
+  if (props.hasContent) {
+    return {
+      color: 'text-primary',
+    };
+  }
+
+  return {};
+};
+
+const baseStyle = (props) => {
+  const inputGroupConditionalStyle = getInputGroupStyle(props);
+  const labelConditionalStyle = getLabelStyle(props);
+  const iconConditionalStyle = getIconStyle(props);
+
+  return {
+    inputGroup: {
+      transitionProperty: 'var(--chakra-transition-property-common)',
+      transitionDuration: 'var(--chakra-transition-duration-normal)',
+      borderRadius: '0.375rem',
+      ...inputGroupConditionalStyle,
+    },
+    leftLabel: {
+      ...labelStyles,
+      ...labelConditionalStyle,
+      borderLeftRadius: '0.375rem',
+    },
+    rightLabel: {
+      ...labelStyles,
+      ...labelConditionalStyle,
+      borderRightRadius: '0.375rem',
+    },
+    element: {
+      color: 'text-secondary',
+      ...iconConditionalStyle,
+    },
+    elementContainer: {
+      height: '100%',
+    },
+    field: {
+      borderRadius: '0.375rem',
+      color: 'text-primary',
+      backgroundColor: 'background-action-default',
+      border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-default)',
+      _placeholder: {
+        color: 'text-secondary',
+        textStyle: 'text-body-regular',
+      },
+      _hover: {
+        backgroundColor: 'background-action-hover',
+        border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-active)',
+      },
+      // We need to remove the focus state from the chakra input so we can add the border shadow to the full input group.
+      _focus: {
+        boxShadow: 'none',
+        border:
+          'solid 0.063rem var(--chakra-colors-ui-element-outline-default)',
+        borderColor: 'ui-element-outline-default',
+      },
+      _invalid: {
+        boxShadow: 'none',
+        border: 'none',
+        borderColor: 'transparent',
+      },
+      _disabled: {
+        _placeholder: {
+          color: 'text-disabled',
+        },
+        color: 'text-secondary',
+        backgroundColor: 'background-action-disabled',
+        border:
+          'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
+      },
+    },
+  };
+};
+
+const flushedStyle = (props) => {
+  const inputGroupConditionalStyle = getInputGroupStyle(props, 'flushed');
+  const labelConditionalStyle = getLabelStyle(props, 'flushed');
+  const iconConditionalStyle = getIconStyle(props);
+
+  return {
+    inputGroup: {
+      borderRadius: 0,
+      ...inputGroupConditionalStyle,
+    },
+    leftLabel: {
+      ...labelStyles,
+      ...labelConditionalStyle,
+    },
+    rightLabel: {
+      ...labelStyles,
+      ...labelConditionalStyle,
+    },
+    element: {
+      color: 'text-secondary',
+      ...iconConditionalStyle,
+    },
+    elementContainer: {
+      height: '100%',
+    },
+    field: {
+      color: 'text-primary',
+      backgroundColor: 'background-action-default',
+      border: 'none',
+      borderColor: 'ui-element-outline-default',
+      borderRadius: 0,
+      _placeholder: {
+        color: 'text-secondary',
+        textStyle: 'text-body-regular',
+      },
+      _hover: {
+        backgroundColor: 'background-action-hover',
+        border: 'none',
+        borderBottom:
+          '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
+      },
+      // We need to remove the focus state from the chakra input so we can add the border shadow to the full input group.
+      _focus: {
+        boxShadow: 'none',
+        border: 'none',
+        borderBottom:
+          'solid 0.063rem var(--chakra-colors-ui-element-outline-default)',
+        borderColor: 'ui-element-outline-default',
+      },
+      _invalid: {
+        boxShadow: 'none',
+        border: 'none',
+        borderColor: 'transparent',
+      },
+      _disabled: {
+        _placeholder: {
+          color: 'text-disabled',
+        },
+        color: 'text-secondary',
+        backgroundColor: 'background-action-disabled',
+        border:
+          'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
+      },
+    },
+  };
 };
 
 export const Input: ComponentStyleConfig = {
@@ -40,5 +351,6 @@ export const Input: ComponentStyleConfig = {
   sizes,
   variants: {
     outline: baseStyle,
+    flushed: flushedStyle,
   },
 };

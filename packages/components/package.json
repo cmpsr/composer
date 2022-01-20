@@ -12,7 +12,9 @@
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "files": ["/lib"],
+  "files": [
+    "/lib"
+  ],
   "private": false,
   "scripts": {
     "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +",
@@ -22,8 +24,7 @@
     "storybook": "start-storybook -p 8080 -c .storybook",
     "build-storybook": "build-storybook -c .storybook",
     "gen:theme-typings": "./scripts/generate_theme_typings.sh",
-    "gen:icons": "node scripts/generate_icons.js",
-    "postinstall": "npm run gen:theme-typings"
+    "gen:icons": "node scripts/generate_icons.js"
   },
   "peerDependencies": {
     "react": "^17.0.2"

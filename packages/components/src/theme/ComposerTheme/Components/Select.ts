@@ -1,7 +1,10 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
-import { PartsStyleObject, SystemStyleInterpolation } from '@chakra-ui/theme-tools';
+import {
+  PartsStyleObject,
+  SystemStyleInterpolation,
+} from '@chakra-ui/theme-tools';
 import { selectAnatomy as parts } from '@chakra-ui/anatomy';
-import { inputStyles } from 'theme/ComposerTheme/styles';
+import { inputStyles } from '../styles';
 
 const iconSpacing = { paddingInlineEnd: '2rem' };
 

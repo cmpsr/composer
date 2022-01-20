@@ -1,6 +1,4 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
-import { convertHexToRGBA } from '../Colors/utils';
-import { defaultColors } from '../Colors';
 
 export const Link: ComponentStyleConfig = {
   baseStyle: {
@@ -16,18 +14,12 @@ export const Link: ComponentStyleConfig = {
       color: 'text-link-primary-pressed',
     },
     _focus: {
+      boxShadow: `0 0 0 3px var(--chakra-colors-primary-focus)`,
       borderRadius: '3px',
-      boxShadow: `0 0 0 3px ${convertHexToRGBA(
-        defaultColors['primary-focus'],
-        1
-      )}`,
     },
     _focusVisible: {
+      boxShadow: `0 0 0 3px var(--chakra-colors-primary-focus)`,
       borderRadius: '3px',
-      boxShadow: `0 0 0 3px ${convertHexToRGBA(
-        defaultColors['primary-focus'],
-        1
-      )}`,
     },
   },
   sizes: {

@@ -1,5 +1,14 @@
 # @cmpsr/components
 
+## 1.3.0
+
+### Minor Changes
+
+- d336c6c: create script to detect when chakra-ui/cli package is installed to generate theme typings conditionally
+- dbd68bf: implement card component and add new radii tokens
+- 7478470: Implementation of the select component, with its stories and tests
+- 3cfd8d7: add useBreakpointValue hook
+
 ## 1.2.0
 
 ### Minor Changes

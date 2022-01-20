@@ -29,6 +29,8 @@ const theme = {
     body: 'Inter',
   },
 };
-addDecorator((story) => (
-  <ComposerProvider theme={theme}>{story()}</ComposerProvider>
+addDecorator((StoryFn) => (
+  <ComposerProvider theme={theme}>
+    <StoryFn />
+  </ComposerProvider>
 ));

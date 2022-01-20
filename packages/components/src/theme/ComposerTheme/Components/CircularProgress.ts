@@ -18,4 +18,7 @@ export const CircularProgress: ComponentStyleConfig = {
       backgroundColor: 'primary-default',
     },
   },
+  defaultProps: {
+    size: '5rem',
+  },
 };

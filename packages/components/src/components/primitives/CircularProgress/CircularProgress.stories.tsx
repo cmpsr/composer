@@ -41,5 +41,4 @@ export const Playground = Template.bind({});
 Playground.args = {
   value: 50,
   showLabel: false,
-  size: '10rem',
 };

@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 1.3.2
+
+### Patch Changes
+
+- 69b3b22: transpile tabler icons
+
 ## 1.3.1
 
 ### Patch Changes

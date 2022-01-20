@@ -15,7 +15,7 @@ const sizes = {
 };
 
 jest.mock('@chakra-ui/react', () => ({
-  ...jest.requireActual('@chakra-ui/react'),
+  ...(jest.requireActual('@chakra-ui/react') as Record<string, any>),
   useStyleConfig: (component, { size }) => ({ textStyle: sizes[size] }),
 }));
 

@@ -84,10 +84,22 @@ export const Input: FC<InputProps> = ({
         {...conditionalInputStyles}
         {...props}
         data-testid="cmpsr.input"
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onFocus={(evt) => {
+          props.onFocus && props.onFocus(evt);
+          setFocused(true);
+        }}
+        onBlur={(evt) => {
+          props.onBlur && props.onBlur(evt);
+          setFocused(false);
+        }}
+        onMouseEnter={(evt) => {
+          props.onMouseEnter && props.onMouseEnter(evt);
+          setHovered(true);
+        }}
+        onMouseLeave={(evt) => {
+          props.onMouseLeave && props.onMouseLeave(evt);
+          setHovered(false);
+        }}
         onChange={(evt) => {
           setHasContent(evt.target.value.length > 0);
           props.onChange && props.onChange(evt);

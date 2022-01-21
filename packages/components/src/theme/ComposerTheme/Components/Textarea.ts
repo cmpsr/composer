@@ -1,4 +1,5 @@
 import { ComponentStyleConfig } from "@chakra-ui/react";
+import { inputStyles } from "../styles";
 
 const baseStyle = {
   backgroundColor: 'background-action-default',
@@ -25,10 +26,26 @@ const baseStyle = {
     boxShadow: '0 0 0 0.188rem var(--chakra-colors-primary-focus)',
   },
 }
-
+const textStyles = {
+  medium: 'text-body-regular',
+  small: 'text-body-meta-regular',
+};
 export const Textarea: ComponentStyleConfig = {
   baseStyle,
   variants: {
     outline: baseStyle
   },
+  sizes: {
+    s: ({ theme }) => ({
+      ...inputStyles.small,
+      ...theme.textStyles[textStyles.small],
+    }),
+    m: ({ theme }) => ({
+      ...inputStyles.medium,
+      ...theme.textStyles[textStyles.medium],
+    }),
+  },
+  defaultProps: {
+    size: 's'
+  }
 }

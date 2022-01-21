@@ -2,37 +2,64 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Textarea } from './Textarea';
 import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
-// import { textareaVariants } from './types';
-// import { ButtonSizes, buttonVariants } from './types';
+import { textareaSizes } from './types';
 
 export default {
   component: Textarea,
   title: 'Components/Primitives/Textarea',
   argTypes: {
-    variant: {
-      // options: textareaVariants,
+    size: {
+      options: textareaSizes,
       control: { type: 'select' },
+    },
+    isInvalid: {
+      control: { type: 'boolean' },
+    },
+    isDisabled: {
+      control: { type: 'boolean' },
     },
   },
 } as Meta;
+
+const placeholder = 'Text input area...';
+const defaultValue = 'Filled text input area...';
 
 const AllTemplate = () => (
   <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
     <VStack>
       <HStack>
-        <Textarea placeholder="label" />
-        <Textarea placeholder="label" defaultValue="label" />
+        <Textarea placeholder={placeholder} />
+        <Textarea placeholder={placeholder} size="m" />
       </HStack>
     </VStack>
     <VStack>
       <HStack>
-        <Textarea isInvalid />
+        <Textarea defaultValue={defaultValue} />
+        <Textarea defaultValue={defaultValue} size="m" />
       </HStack>
     </VStack>
     <VStack>
       <HStack>
-        <Textarea isDisabled placeholder="hello" />
-        <Textarea isDisabled defaultValue="label" />
+        <Textarea placeholder={placeholder} isInvalid />
+        <Textarea placeholder={placeholder} size="m" isInvalid />
+      </HStack>
+    </VStack>
+    <VStack>
+      <HStack>
+        <Textarea defaultValue={defaultValue} isInvalid />
+        <Textarea defaultValue={defaultValue} size="m" isInvalid />
+      </HStack>
+    </VStack>
+    <VStack>
+      <HStack>
+        <Textarea placeholder={placeholder} isDisabled />
+        <Textarea placeholder={placeholder} size="m" isDisabled />
+      </HStack>
+    </VStack>
+    <VStack>
+      <HStack>
+        <Textarea defaultValue={defaultValue} isDisabled />
+        <Textarea defaultValue={defaultValue} size="m" isDisabled />
       </HStack>
     </VStack>
   </VStack>
@@ -43,7 +70,7 @@ export const All = AllTemplate.bind({});
 const Template = (args) => <Textarea {...args} />;
 export const Playground = Template.bind({});
 Playground.args = {
-  variant: 'primary',
-  size: 'md',
-  children: 'Composer button!',
+  size: 's',
+  isInvalid: false,
+  isDisabled: false,
 };

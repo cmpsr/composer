@@ -1,3 +1,4 @@
+import { Accordion } from './Accordion';
 import { Avatar, AvatarBadge } from './Avatar';
 import { Badge } from './Badge';
 import { Alert } from './Alert';
@@ -15,6 +16,7 @@ import { Text } from './Text';
 import { TextPairing } from './TextPairing';
 
 export const components = {
+  Accordion,
   Alert,
   Avatar,
   AvatarBadge,

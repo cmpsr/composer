@@ -13,6 +13,7 @@ import { Spinner } from './Spinner';
 import { Tabs } from './Tabs';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
+import { Textarea } from './Textarea';
 
 export const components = {
   Alert,
@@ -31,4 +32,5 @@ export const components = {
   Tabs,
   Text,
   TextPairing,
+  Textarea
 };

@@ -1,54 +1,38 @@
 import React, { FC } from 'react';
-import { Box, Link as ChakraLink, useStyleConfig } from '@chakra-ui/react';
+import { Box, Link as ChakraLink, Text } from '@chakra-ui/react';
 
 import { LinkProps } from './types';
-import { marginSizes, linkIconSizes } from './types';
 
 export const Link: FC<LinkProps> = ({
   children,
   icon,
-  iconPosition = 'left',
+  iconPosition = 'trailing',
   size = 'm',
   ...props
 }) => {
-  const { textStyle } = useStyleConfig('Link', {
-    size: size,
-  });
-
-  const calculateMargin = () =>
-    iconPosition === 'left'
-      ? { marginRight: marginSizes[size] }
-      : iconPosition === 'right'
-      ? { marginLeft: marginSizes[size] }
-      : {};
-
   const Icon: React.FC = () =>
     React.cloneElement(icon, {
-      boxSize: linkIconSizes[size],
+      size,
     });
 
   if (icon)
     return (
-      <ChakraLink
-        data-testid="composer-link-container"
-        textStyle={textStyle as string}
-        {...props}
-      >
+      <ChakraLink size={size} data-testid="composer-link-container" {...props}>
         <Box
+          gap="spacer-1"
           data-testid="composer-icon-wrapper"
-          __css={{ '> svg': calculateMargin() }}
           display="flex"
           alignItems="center"
         >
-          {iconPosition === 'left' && (
+          {iconPosition === 'trailing' && (
             <>
               <Icon data-testid="composer-cloned-icon" />
-              {children}
+              <Text isTruncated>{children}</Text>
             </>
           )}
-          {iconPosition === 'right' && (
+          {iconPosition === 'leading' && (
             <>
-              {children}
+              <Text isTruncated>{children}</Text>
               <Icon data-testid="composer-cloned-icon" />
             </>
           )}
@@ -57,12 +41,8 @@ export const Link: FC<LinkProps> = ({
     );
 
   return (
-    <ChakraLink
-      data-testid="composer-link-container"
-      textStyle={textStyle as string}
-      {...props}
-    >
-      {children}
+    <ChakraLink size={size} data-testid="composer-link-container" {...props}>
+      <Text isTruncated>{children}</Text>
     </ChakraLink>
   );
 };

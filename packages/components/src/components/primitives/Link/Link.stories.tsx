@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Link } from './Link';
 import { VStack, Divider } from '@chakra-ui/react';
+import { linkSizes, linkIconPositions } from './types';
 import * as Icons from '../Icons';
 
 export default {
@@ -12,45 +13,29 @@ export default {
 const AllTemplate = () => {
   return (
     <VStack>
-      <Link size="s" href="#" role="link">
-        Small link
-      </Link>
-      <Divider />
-      <Link size="m" href="#" role="link">
-        Medium link
-      </Link>
-      <Divider />
-      <Link size="l" href="#" role="link">
-        Large link
-      </Link>
-      <Divider />
-
-      <Link
-        size="s"
-        icon={<Icons.IconExternalLink />}
-        href="#"
-        isExternal
-        role="link"
-      >
-        Link with icon
-      </Link>
-      <Divider />
-
-      <Link
-        size="m"
-        iconPosition={'right'}
-        icon={<Icons.IconExternalLink />}
-        href="#"
-        isExternal
-        role="link"
-      >
-        Link with icon
-      </Link>
-      <Divider />
-
-      <Link size="l" icon={<Icons.IconLink />} href="#" isExternal role="link">
-        Link with icon
-      </Link>
+      {linkSizes.map((size, key) => (
+        <>
+          <Link size={size} key={key} role="link" href="#">
+            Size {size.toUpperCase()} link
+          </Link>
+          <Divider />
+          {linkIconPositions.map((position) => (
+            <>
+              <Link
+                iconPosition={position}
+                icon={<Icons.IconExternalLink />}
+                size={size}
+                key={key}
+                role="link"
+                href="#"
+              >
+                Size {size.toUpperCase()} link with {position} icon
+              </Link>
+              <Divider />
+            </>
+          ))}
+        </>
+      ))}
     </VStack>
   );
 };

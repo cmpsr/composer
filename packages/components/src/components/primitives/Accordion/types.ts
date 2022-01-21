@@ -10,7 +10,9 @@ import { FC } from 'react';
 export const accordionVariants = ['highlight'] as const;
 export type AccordionVariant = typeof accordionVariants[number];
 
-export type AccordionProps = ChakraAccordionProps;
+export interface AccordionProps extends ChakraAccordionProps {
+  variant?: AccordionVariant;
+}
 
 export type AccordionItemProps = ChakraAccordionItemProps;
 export type AccordionButtonProps = ChakraAccordionButtonProps;

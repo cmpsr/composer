@@ -6,6 +6,7 @@ import { Input } from '.';
 import { ComposerProvider } from 'theme';
 import { useMultiStyleConfig } from '@chakra-ui/react';
 import {
+  flushedStyle,
   getIconStyle,
   getInputGroupStyle,
   getLabelStyle,
@@ -25,6 +26,65 @@ jest.mock('@chakra-ui/react', () => ({
     rightLabel: {},
   }),
 }));
+
+const mockFlushedStyle = {
+  inputGroup: {
+    borderRadius: 0,
+    ...getInputGroupStyle({}, 'flushed'),
+  },
+  leftLabel: {
+    ...labelStyles,
+    ...getLabelStyle({}, 'flushed'),
+  },
+  rightLabel: {
+    ...labelStyles,
+    ...getLabelStyle({}, 'flushed'),
+  },
+  element: {
+    color: 'text-secondary',
+    ...getIconStyle({}),
+  },
+  elementContainer: {
+    height: '100%',
+  },
+  field: {
+    color: 'text-primary',
+    backgroundColor: 'background-action-default',
+    border: 'none',
+    borderColor: 'ui-element-outline-default',
+    borderRadius: 0,
+    _placeholder: {
+      color: 'text-secondary',
+      textStyle: 'text-body-regular',
+    },
+    _hover: {
+      backgroundColor: 'background-action-hover',
+      border: 'none',
+      borderBottom:
+        '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
+    },
+    _focus: {
+      boxShadow: 'none',
+      border: 'none',
+      borderBottom:
+        'solid 0.063rem var(--chakra-colors-ui-element-outline-default)',
+      borderColor: 'ui-element-outline-default',
+    },
+    _invalid: {
+      boxShadow: 'none',
+      border: 'none',
+      borderColor: 'transparent',
+    },
+    _disabled: {
+      _placeholder: {
+        color: 'text-disabled',
+      },
+      color: 'text-secondary',
+      backgroundColor: 'background-action-disabled',
+      border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
+    },
+  },
+};
 
 describe('Input', () => {
   test('it should render', () => {
@@ -176,6 +236,10 @@ describe('Input', () => {
           expect(getIconStyle({ isDisabled, hasContent })).toEqual(expected);
         }
       );
+    });
+    test('should return proper flushed style', () => {
+      const result = flushedStyle({});
+      expect(result).toEqual(mockFlushedStyle);
     });
   });
 });

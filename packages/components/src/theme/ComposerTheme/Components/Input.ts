@@ -200,8 +200,8 @@ export const getLabelStyle = (
 };
 
 export const getIconStyle = (props: {
-  isDisabled: boolean;
-  hasContent: boolean;
+  isDisabled?: boolean;
+  hasContent?: boolean;
 }) => {
   if (props.isDisabled) {
     return iconStyles.disabled;
@@ -281,7 +281,7 @@ const baseStyle = (props) => {
   };
 };
 
-const flushedStyle = (props) => {
+export const flushedStyle = (props) => {
   const inputGroupConditionalStyle = getInputGroupStyle(props, 'flushed');
   const labelConditionalStyle = getLabelStyle(props, 'flushed');
   const iconConditionalStyle = getIconStyle(props);

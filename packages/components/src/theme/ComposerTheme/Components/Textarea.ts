@@ -26,24 +26,27 @@ const baseStyle = {
     boxShadow: '0 0 0 0.188rem var(--chakra-colors-primary-focus)',
   },
 }
+
 const textStyles = {
   medium: 'text-body-regular',
   small: 'text-body-meta-regular',
 };
+
+const calculateSize = (size: string) => {
+  return ({ theme }) => ({
+    ...inputStyles[size],
+    ...theme.textStyles[textStyles[size]],
+  })
+}
+
 export const Textarea: ComponentStyleConfig = {
   baseStyle,
   variants: {
     outline: baseStyle
   },
   sizes: {
-    s: ({ theme }) => ({
-      ...inputStyles.small,
-      ...theme.textStyles[textStyles.small],
-    }),
-    m: ({ theme }) => ({
-      ...inputStyles.medium,
-      ...theme.textStyles[textStyles.medium],
-    }),
+    s: calculateSize('small'),
+    m: calculateSize('medium'),
   },
   defaultProps: {
     size: 's'

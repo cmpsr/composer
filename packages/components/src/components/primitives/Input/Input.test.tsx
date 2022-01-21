@@ -5,6 +5,14 @@ import { fireEvent, screen } from '@testing-library/react';
 import { Input } from '.';
 import { ComposerProvider } from 'theme';
 import { useMultiStyleConfig } from '@chakra-ui/react';
+import {
+  getIconStyle,
+  getInputGroupStyle,
+  getLabelStyle,
+  iconStyles,
+  inputGroupStyles,
+  labelStyles,
+} from 'theme/ComposerTheme/Components/Input';
 
 jest.mock('@chakra-ui/react', () => ({
   ...(jest.requireActual('@chakra-ui/react') as any),
@@ -122,5 +130,52 @@ describe('Input', () => {
         hasContent: true,
       })
     );
+  });
+
+  describe('Input theme methods', () => {
+    describe('getInputGroupStyle', () => {
+      it.each`
+        isInvalid | isFocused | expected
+        ${false}  | ${false}  | ${{}}
+        ${true}   | ${false}  | ${inputGroupStyles.outline.invalid}
+        ${false}  | ${true}   | ${inputGroupStyles.outline.focused}
+      `(
+        'should return proper style when isInvalid is $isInvalid and $isFocused is $isFocused',
+        async ({ isInvalid, isFocused, expected }) => {
+          expect(getInputGroupStyle({ isInvalid, isFocused })).toEqual(
+            expected
+          );
+        }
+      );
+    });
+    describe('getLabelStyle', () => {
+      it.each`
+        isInvalid | isDisabled | isHovered | expected
+        ${false}  | ${false}   | ${false}  | ${{}}
+        ${true}   | ${false}   | ${false}  | ${labelStyles.variants.outline.invalid}
+        ${false}  | ${true}    | ${false}  | ${labelStyles.variants.outline.disabled}
+        ${false}  | ${false}   | ${true}   | ${labelStyles.variants.outline.hovered}
+      `(
+        'should return proper style when isInvalid is $isInvalid, $isDisabled is $isDisabled and isHovered is $isHovered',
+        async ({ isInvalid, isDisabled, isHovered, expected }) => {
+          expect(getLabelStyle({ isInvalid, isDisabled, isHovered })).toEqual(
+            expected
+          );
+        }
+      );
+    });
+    describe('getIconStyle', () => {
+      it.each`
+        isDisabled | hasContent | expected
+        ${false}   | ${false}   | ${{}}
+        ${true}    | ${false}   | ${iconStyles.disabled}
+        ${false}   | ${true}    | ${iconStyles.withContent}
+      `(
+        'should return proper style when isDisabled is $isDisabled and $hasContent is $hasContent',
+        async ({ isDisabled, hasContent, expected }) => {
+          expect(getIconStyle({ isDisabled, hasContent })).toEqual(expected);
+        }
+      );
+    });
   });
 });

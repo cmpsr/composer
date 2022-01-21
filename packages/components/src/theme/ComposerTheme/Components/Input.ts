@@ -19,7 +19,7 @@ const iconContainerStyles = {
   },
 };
 
-const iconStyles = {
+export const iconStyles = {
   large: {
     boxSize: '1.5rem',
   },
@@ -28,6 +28,12 @@ const iconStyles = {
   },
   small: {
     boxSize: '1.25rem',
+  },
+  disabled: {
+    color: 'text-disabled',
+  },
+  withContent: {
+    color: 'text-primary',
   },
 };
 
@@ -43,7 +49,7 @@ const fieldSpacing = {
   },
 };
 
-const labelStyles = {
+export const labelStyles = {
   backgroundColor: 'background-static',
   transitionProperty: 'var(--chakra-transition-property-common)',
   transitionDuration: 'var(--chakra-transition-duration-normal)',
@@ -86,7 +92,7 @@ const labelStyles = {
   },
 };
 
-const inputGroupStyles = {
+export const inputGroupStyles = {
   outline: {
     invalid: {
       boxShadow: '0 0 0 0.125rem var(--chakra-colors-alert-error-default)',
@@ -149,12 +155,12 @@ const sizes = {
   s: calculateSize('small'),
 };
 
-const getInputGroupStyle = (
+export const getInputGroupStyle = (
   props: {
-    isFocused: boolean;
-    isHovered: boolean;
-    isInvalid: boolean;
-    isDisabled: boolean;
+    isFocused?: boolean;
+    isHovered?: boolean;
+    isInvalid?: boolean;
+    isDisabled?: boolean;
   },
   variant = 'outline'
 ) => {
@@ -169,12 +175,12 @@ const getInputGroupStyle = (
   return {};
 };
 
-const getLabelStyle = (
+export const getLabelStyle = (
   props: {
-    isFocused: boolean;
-    isHovered: boolean;
-    isInvalid: boolean;
-    isDisabled: boolean;
+    isFocused?: boolean;
+    isHovered?: boolean;
+    isInvalid?: boolean;
+    isDisabled?: boolean;
   },
   variant = 'outline'
 ) => {
@@ -193,17 +199,16 @@ const getLabelStyle = (
   return {};
 };
 
-const getIconStyle = (props: { isDisabled: boolean; hasContent: boolean }) => {
+export const getIconStyle = (props: {
+  isDisabled: boolean;
+  hasContent: boolean;
+}) => {
   if (props.isDisabled) {
-    return {
-      color: 'text-disabled',
-    };
+    return iconStyles.disabled;
   }
 
   if (props.hasContent) {
-    return {
-      color: 'text-primary',
-    };
+    return iconStyles.withContent;
   }
 
   return {};

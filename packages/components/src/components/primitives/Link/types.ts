@@ -1,30 +1,13 @@
 import { LinkProps as ChakraLinkProps } from '@chakra-ui/react';
 
-export interface LinkIconPositions {
-  left: 'left';
-  right: 'right';
-}
+export const linkIconPositions = ['leading', 'trailing'] as const;
+export const linkSizes = ['s', 'm', 'l'] as const;
 
-export interface LinkSizes {
-  s: 's';
-  m: 'm';
-  l: 'l';
-}
+type LinkIconPositions = typeof linkIconPositions[number];
+type LinkSizes = typeof linkSizes[number];
 
 export interface LinkProps extends ChakraLinkProps {
   icon?: JSX.Element;
-  iconPosition?: keyof LinkIconPositions;
-  size?: keyof LinkSizes | string;
+  iconPosition?: LinkIconPositions;
+  size?: LinkSizes | string;
 }
-
-export const marginSizes = {
-  s: 'spacer-1',
-  m: 'spacer-2',
-  l: 'spacer-3',
-} as const;
-
-export const linkIconSizes = {
-  s: '1rem',
-  m: '1.5rem',
-  l: '2rem',
-} as const;

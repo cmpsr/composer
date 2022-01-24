@@ -1,5 +1,6 @@
 import { Avatar, AvatarBadge } from './Avatar';
 import { Badge } from './Badge';
+import { Breadcrumb } from './Breadcrumb';
 import { Alert } from './Alert';
 import { Button } from './Button';
 import { Card } from './Card';
@@ -19,6 +20,7 @@ export const components = {
   Avatar,
   AvatarBadge,
   Badge,
+  Breadcrumb,
   Button,
   Card,
   CircularProgress,

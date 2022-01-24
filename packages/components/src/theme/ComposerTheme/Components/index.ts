@@ -11,6 +11,7 @@ import { Input } from './Input';
 import { Select } from './Select';
 import { Slider } from './Slider';
 import { Spinner } from './Spinner';
+import { Switch } from './Switch';
 import { Tabs } from './Tabs';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
@@ -30,6 +31,7 @@ export const components = {
   Select,
   Slider,
   Spinner,
+  Switch,
   Tabs,
   Text,
   TextPairing,

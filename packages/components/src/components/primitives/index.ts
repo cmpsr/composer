@@ -11,6 +11,7 @@ export * from './Input';
 export * from './Select';
 export * from './Slider';
 export * from './Spinner';
+export * from './Switch';
 export * from './Tabs';
 export * from './Text';
 export * from './TextPairing';

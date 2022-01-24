@@ -40,7 +40,7 @@ const Template = () => {
       <VStack>
         {variants.map((variant) => (
           <>
-            <Heading size={'md'}>{variant.toUpperCase()}</Heading>
+            <Heading size="md">{variant.toUpperCase()}S</Heading>
             {toastContentVariations.map(
               ({ title, description, isClosable, status }, index) => {
                 return (

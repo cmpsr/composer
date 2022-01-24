@@ -36,6 +36,24 @@ All.args = {
   subLabel: 'Oh, yeah!',
 };
 
+const ResponsiveTemplate = (args: TextPairingProps) => (
+  <Box py="2rem">
+    <TextPairing
+      {...args}
+      variant={{
+        base: 'textpairing-body-bold',
+        md: 'textpairing-header-L',
+        lg: 'textpairing-header-4XL',
+      }}
+    />
+  </Box>
+);
+export const ResponsiveVariant = ResponsiveTemplate.bind({});
+ResponsiveVariant.args = {
+  label: 'Label',
+  subLabel: 'SubLabel',
+};
+
 const Template = (args: TextPairingProps) => (
   <Box py="2rem">
     <TextPairing {...args} />

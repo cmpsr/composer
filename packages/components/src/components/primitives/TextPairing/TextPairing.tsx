@@ -3,14 +3,16 @@ import { Stack } from '@chakra-ui/layout';
 import { Text } from '../Text';
 import { TextPairingProps, TextPairingStyles } from '.';
 import { useStyleConfig } from '@chakra-ui/system';
+import { useResponsiveValue } from 'hooks/useResponsiveValue';
 
 export const TextPairing: FC<TextPairingProps> = ({
   variant,
   label,
   subLabel,
 }) => {
+  const responsiveVariant = useResponsiveValue(variant);
   const styles = useStyleConfig('TextPairing', {
-    variant,
+    variant: responsiveVariant,
   }) as TextPairingStyles;
   return (
     <Stack spacing={styles.columnGap}>

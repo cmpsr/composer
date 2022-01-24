@@ -44,4 +44,7 @@ const variants = textVariants.reduce(
 
 export const Text: ComponentStyleConfig = {
   variants,
+  defaultProps: {
+    variant: 'text-body-regular',
+  },
 };

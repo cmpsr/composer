@@ -19,6 +19,8 @@ export default {
 
 const Template = () => {
   const toastContentVariations: UseToastOptions[] = [
+    { title: 'Info', status: 'info' },
+    { title: 'Error', description: 'Error description', status: 'error' },
     {
       title: 'Warning',
       description: 'Warning description',
@@ -31,8 +33,6 @@ const Template = () => {
       isClosable: true,
       status: 'success',
     },
-    { title: 'Error', description: 'Error description', status: 'error' },
-    { title: 'Info', status: 'info' },
   ];
 
   return (
@@ -40,21 +40,30 @@ const Template = () => {
       <VStack>
         {variants.map((variant) => (
           <>
-            <Heading>{variant.toUpperCase()}</Heading>
-            <HStack>
-              {toastContentVariations.map((content, index) => (
-                <ToastWrapper
-                  key={index}
-                  toastOptions={{
-                    ...content,
-                    variant,
-                    duration: 3000,
-                  }}
-                >
-                  <Button>{`${variant} variant`}</Button>
-                </ToastWrapper>
-              ))}
-            </HStack>
+            <Heading size={'md'}>{variant.toUpperCase()}</Heading>
+            {toastContentVariations.map(
+              ({ title, description, isClosable, status }, index) => {
+                return (
+                  <HStack key={index}>
+                    <ToastWrapper
+                      toastOptions={{
+                        title,
+                        description,
+                        isClosable,
+                        status,
+                        variant,
+                        duration: 3000,
+                      }}
+                    >
+                      <Button>
+                        {status} {isClosable && 'closable '}
+                        {description && 'with description '}
+                      </Button>
+                    </ToastWrapper>
+                  </HStack>
+                );
+              }
+            )}
             <Divider mt={5} />
           </>
         ))}

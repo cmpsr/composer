@@ -13,7 +13,6 @@ import {
   AccordionItemProps,
   AccordionButtonProps,
   AccordionPanelProps,
-  AccordionIconProps,
 } from './types';
 
 export const Accordion: FC<AccordionProps> & AccordionStaticMembers = (
@@ -31,11 +30,8 @@ const AccordionButton: FC<AccordionButtonProps> = (props) => (
 const AccordionPanel: FC<AccordionPanelProps> = (props) => (
   <ChakraAccordionPanel {...props} />
 );
-const AccordionIcon: FC<AccordionIconProps> = (props) => (
-  <ChakraAccordionIcon {...props} />
-);
 
 Accordion.Item = AccordionItem;
 Accordion.Button = AccordionButton;
 Accordion.Panel = AccordionPanel;
-Accordion.Icon = AccordionIcon;
+Accordion.Icon = ChakraAccordionIcon;

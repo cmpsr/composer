@@ -1,5 +1,9 @@
 import React, { FC } from 'react';
 import { Text as ChakraText } from '@chakra-ui/react';
 import { TextProps } from '.';
+import { useResponsiveValue } from 'hooks/useResponsiveValue';
 
-export const Text: FC<TextProps> = (props) => <ChakraText {...props} />;
+export const Text: FC<TextProps> = ({ variant, ...rest }) => {
+  const responsiveVariant = useResponsiveValue(variant);
+  return <ChakraText variant={responsiveVariant} {...rest} />;
+};

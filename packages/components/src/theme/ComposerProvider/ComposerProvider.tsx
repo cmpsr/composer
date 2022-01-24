@@ -7,7 +7,12 @@ import { theme as defaultTheme } from '../';
 export const ComposerProvider: FC<ComposerProviderProps> = ({
   children,
   theme = {},
+  resetCSS = true,
 }) => {
   const extended = extendTheme(defaultTheme, theme);
-  return <ChakraProvider theme={extended}>{children}</ChakraProvider>;
+  return (
+    <ChakraProvider theme={extended} resetCSS={resetCSS}>
+      {children}
+    </ChakraProvider>
+  );
 };

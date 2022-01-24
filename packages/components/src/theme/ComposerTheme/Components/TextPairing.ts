@@ -220,4 +220,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
     },
   },
+  defaultProps: {
+    variant: 'textpairing-body-bold',
+  },
 };

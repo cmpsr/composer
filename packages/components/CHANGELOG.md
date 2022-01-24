@@ -1,5 +1,19 @@
 # @cmpsr/components
 
+## 1.5.0
+
+### Minor Changes
+
+- e6f8710: add support for responsive variant to Text and TextPairing
+
+## 1.4.0
+
+### Minor Changes
+
+- 17ac393: update storybook version and deprecate postCSS
+- dc52c64: add resetCSS prop to provider
+- 9c8902b: Implementation of CircularProgess component, with tests and stories included
+
 ## 1.3.2
 
 ### Patch Changes

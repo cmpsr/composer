@@ -12,7 +12,9 @@
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "files": ["/lib"],
+  "files": [
+    "/lib"
+  ],
   "private": false,
   "scripts": {
     "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx,.js' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +",
@@ -32,6 +34,7 @@
     "@chakra-ui/theme-tools": "^1.3.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@testing-library/jest-dom": "^5.16.1",
     "framer-motion": "^5"
   },
   "devDependencies": {

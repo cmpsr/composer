@@ -25,6 +25,9 @@ const baseStyle = {
     borderColor: 'ui-element-outline-default',
     boxShadow: '0 0 0 0.188rem var(--chakra-colors-primary-focus)',
   },
+  _invalid: {
+    borderColor: 'alert-error-default'
+  }
 }
 
 const textStyles = {

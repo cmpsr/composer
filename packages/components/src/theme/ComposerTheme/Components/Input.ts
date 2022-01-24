@@ -214,7 +214,7 @@ export const getIconStyle = (props: {
   return {};
 };
 
-const baseStyle = (props) => {
+const outlineStyle = (props) => {
   const inputGroupConditionalStyle = getInputGroupStyle(props);
   const labelConditionalStyle = getLabelStyle(props);
   const iconConditionalStyle = getIconStyle(props);
@@ -349,13 +349,26 @@ export const flushedStyle = (props) => {
 };
 
 export const Input: ComponentStyleConfig = {
-  baseStyle,
+  baseStyle: {
+    field: {
+      border: 'none',
+      _hover: {
+        boxShadow: 'none',
+        border: 'none',
+      },
+      _focus: {
+        boxShadow: 'none',
+        border: 'none',
+      },
+    },
+  },
   defaultProps: {
     size: 'm',
+    variant: 'outline',
   },
   sizes,
   variants: {
-    outline: baseStyle,
+    outline: outlineStyle,
     flushed: flushedStyle,
   },
 };

@@ -2,6 +2,57 @@ import { ComponentStyleConfig } from '@chakra-ui/react';
 import { alertAnatomy as parts } from '@chakra-ui/anatomy';
 import { PartsStyleFunction } from '@chakra-ui/theme-tools';
 
+const solidToastVariant: PartsStyleFunction<typeof parts> = ({ status }) => {
+  const alertStatus = status === 'info' ? 'inform' : status;
+  return {
+    container: {
+      backgroundColor: `alert-${alertStatus}-default`,
+      color: 'text-light',
+    },
+    title: { fontStyle: 'text-body-bold', color: 'text-light' },
+    description: { fontStyle: 'text-body-regular', color: 'text-light' },
+    icon: {
+      boxSize: '1rem',
+      height: '25px',
+      color: 'text-light',
+    },
+  };
+};
+
+const subtleToastVariant: PartsStyleFunction<typeof parts> = ({
+  status,
+  variant,
+}) => {
+  let accentType;
+  const hasAccent = variant.includes('-accent');
+  if (hasAccent)
+    accentType = (variant as string).substring(0, variant.indexOf('-accent'));
+
+  const alertStatus = status === 'info' ? 'inform' : status;
+  const accents = {
+    top: {
+      borderTop: `4px solid var(--chakra-colors-alert-${alertStatus}-default)`,
+    },
+    left: {
+      borderLeft: `4px solid var(--chakra-colors-alert-${alertStatus}-default)`,
+    },
+  };
+
+  return {
+    container: {
+      backgroundColor: `background-${alertStatus}`,
+      ...accents[accentType],
+    },
+    title: { fontStyle: 'text-body-bold', color: 'text-primary' },
+    description: { fontStyle: 'text-body-regular', color: 'text-primary' },
+    icon: {
+      boxSize: '1rem',
+      color: `alert-${alertStatus}-default`,
+      height: '25px',
+    },
+  };
+};
+
 const defaultContainerColorScheme = {
   success: {
     backgroundColor: 'background-success',
@@ -116,6 +167,13 @@ export const Alert: ComponentStyleConfig = {
     variant: 'solid',
   },
   variants: {
+    // Toast component is built with the Alert component and uses it's theme implementation
+    // for alerts, so we need new variants in order to provide custom toast styles.
+    'solid-toast': solidToastVariant,
+    'subtle-toast': subtleToastVariant,
+    'left-accent-toast': subtleToastVariant,
+    'top-accent-toast': subtleToastVariant,
+    // Alerts
     solid: variantSolid,
     subtle: generateOtherVariants,
     'left-accent': generateOtherVariants,

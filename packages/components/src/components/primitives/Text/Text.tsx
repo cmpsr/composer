@@ -1,13 +1,9 @@
 import React, { FC } from 'react';
-import { Text as ChakraText, useBreakpointValue } from '@chakra-ui/react';
+import { Text as ChakraText } from '@chakra-ui/react';
 import { TextProps } from '.';
+import { useResponsiveValue } from 'hooks/useResponsiveValue';
 
 export const Text: FC<TextProps> = ({ variant, ...rest }) => {
-  const responsiveVariant = variant
-    ? typeof variant === 'string'
-      ? variant
-      : useBreakpointValue(variant)
-    : undefined;
-
+  const responsiveVariant = useResponsiveValue(variant);
   return <ChakraText variant={responsiveVariant} {...rest} />;
 };

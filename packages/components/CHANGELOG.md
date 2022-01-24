@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 1.5.0
+
+### Minor Changes
+
+- e6f8710: add support for responsive variant to Text and TextPairing
+
 ## 1.4.0
 
 ### Minor Changes

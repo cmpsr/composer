@@ -33,50 +33,50 @@ describe('Link and icon components', () => {
   });
 
   it('Should render a link with an icon on left side as default', () => {
-    renderWithProviders(
+    const linkComponent = TestRenderer.create(
       <Link role="link" data-testid="testId" icon={icon}>
         {textElement}
       </Link>
-    );
+    ).root;
 
-    const linkComponent = screen.queryAllByTestId('testId');
-    const [parentNode, firstChild, secondChild] = linkComponent;
-    expect(parentNode.nodeName).toBe('A');
-    expect(firstChild.nodeName).toBe('I');
-    expect(secondChild.nodeName).toBe('SPAN');
+    const flexWrapper = linkComponent.findByProps({
+      'data-testid': 'flex-icon-container',
+    });
+
+    expect(flexWrapper.props.flexDirection).toBe('row');
   });
 
   it('Should render a link with an icon on the right side', () => {
-    renderWithProviders(
-      <Link iconPosition="leading" role="link" data-testid="testId" icon={icon}>
+    const linkComponent = TestRenderer.create(
+      <Link role="link" iconPosition="leading" data-testid="testId" icon={icon}>
         {textElement}
       </Link>
-    );
+    ).root;
 
-    const linkComponent = screen.queryAllByTestId('testId');
-    const [parentNode, firstChild, secondChild] = linkComponent;
-    expect(parentNode.nodeName).toBe('A');
-    expect(firstChild.nodeName).toBe('SPAN');
-    expect(secondChild.nodeName).toBe('I');
+    const flexWrapper = linkComponent.findByProps({
+      'data-testid': 'flex-icon-container',
+    });
+
+    expect(flexWrapper.props.flexDirection).toBe('row-reverse');
   });
 
   it('Should render a link with an icon on the left side', () => {
-    renderWithProviders(
+    const linkComponent = TestRenderer.create(
       <Link
-        iconPosition="trailing"
         role="link"
+        iconPosition="trailing"
         data-testid="testId"
         icon={icon}
       >
         {textElement}
       </Link>
-    );
+    ).root;
 
-    const linkComponent = screen.queryAllByTestId('testId');
-    const [parentNode, firstChild, secondChild] = linkComponent;
-    expect(parentNode.nodeName).toBe('A');
-    expect(firstChild.nodeName).toBe('I');
-    expect(secondChild.nodeName).toBe('SPAN');
+    const flexWrapper = linkComponent.findByProps({
+      'data-testid': 'flex-icon-container',
+    });
+
+    expect(flexWrapper.props.flexDirection).toBe('row');
   });
 
   it('Should render a simple link without icon', () => {

@@ -1,5 +1,11 @@
 import React, { FC } from 'react';
-import { Box, Link as ChakraLink, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Link as ChakraLink,
+  Text,
+  Flex,
+  FlexboxProps,
+} from '@chakra-ui/react';
 
 import { LinkProps } from './types';
 
@@ -15,6 +21,11 @@ export const Link: FC<LinkProps> = ({
       size,
     });
 
+  const flexDirection = {
+    trailing: 'row',
+    leading: 'row-reverse',
+  }[iconPosition] as FlexboxProps['flexDirection'];
+
   if (icon)
     return (
       <ChakraLink size={size} data-testid="composer-link-container" {...props}>
@@ -24,18 +35,10 @@ export const Link: FC<LinkProps> = ({
           display="flex"
           alignItems="center"
         >
-          {iconPosition === 'trailing' && (
-            <>
-              <Icon data-testid="composer-cloned-icon" />
-              <Text isTruncated>{children}</Text>
-            </>
-          )}
-          {iconPosition === 'leading' && (
-            <>
-              <Text isTruncated>{children}</Text>
-              <Icon data-testid="composer-cloned-icon" />
-            </>
-          )}
+          <Flex data-testid="flex-icon-container" flexDirection={flexDirection}>
+            <Icon data-testid="composer-cloned-icon" />
+            <Text isTruncated>{children}</Text>
+          </Flex>
         </Box>
       </ChakraLink>
     );

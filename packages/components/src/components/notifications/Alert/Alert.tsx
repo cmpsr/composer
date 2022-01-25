@@ -16,7 +16,7 @@ import {
   IconAlertTriangle,
   IconCircleCheck,
   IconInfoCircle,
-} from '../Icons';
+} from '../../primitives/Icons';
 import { Flex } from 'components';
 
 export const Alert: FC<AlertProps> = ({

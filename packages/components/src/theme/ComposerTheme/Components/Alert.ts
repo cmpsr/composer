@@ -167,8 +167,9 @@ export const Alert: ComponentStyleConfig = {
     variant: 'solid',
   },
   variants: {
-    // Toast component is built with the Alert component and uses it's theme implementation
-    // for alerts, so we need new variants in order to provide custom toast styles.
+    // Toast component is built with the Alert component
+    // so it uses this theme implementation. To add custom toast styles,
+    // we need these new variants.
     'solid-toast': solidToastVariant,
     'subtle-toast': subtleToastVariant,
     'left-accent-toast': subtleToastVariant,

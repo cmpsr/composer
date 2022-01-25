@@ -22,7 +22,7 @@ describe('Toast component', () => {
       screen.getByTestId(wrapperId);
     });
 
-    it('Should render when wrapped component triggers the toast', () => {
+    it('Should render the right content after trigger the toast', () => {
       const text = 'show toast';
       renderWithProviders(
         <ToastWrapper toastOptions={toastOptions}>

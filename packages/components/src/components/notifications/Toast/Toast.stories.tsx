@@ -1,16 +1,9 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { ToastWrapper } from './Toast';
-import {
-  Button,
-  Divider,
-  Heading,
-  HStack,
-  VStack,
-  UseToastOptions,
-} from '@chakra-ui/react';
+import { Button, Divider, Heading, HStack, VStack } from '@chakra-ui/react';
 
-import { variants } from './types';
+import { variants, ToastOptions } from './types';
 
 export default {
   title: 'Components/Notifications/Toast',
@@ -18,8 +11,8 @@ export default {
 } as Meta;
 
 const Template = () => {
-  const toastContentVariations: UseToastOptions[] = [
-    { title: 'Info', status: 'info' },
+  const toastContentVariations: ToastOptions[] = [
+    { title: 'Info', status: 'inform' },
     { title: 'Error', description: 'Error description', status: 'error' },
     {
       title: 'Warning',
@@ -52,7 +45,7 @@ const Template = () => {
                         isClosable,
                         status,
                         variant,
-                        duration: 3000,
+                        duration: 300000,
                       }}
                     >
                       <Button>
@@ -71,4 +64,5 @@ const Template = () => {
     </>
   );
 };
+
 export const AllTemplate = Template.bind({});

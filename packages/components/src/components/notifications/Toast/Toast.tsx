@@ -9,8 +9,16 @@ export const ToastWrapper: FC<ToastProps> = ({
   as,
 }) => {
   const toast = useToast();
+  const { status, ...rest } = toastOptions;
+
   return (
-    <Box as={as} onClick={() => toast({ ...toastOptions })}>
+    <Box
+      data-testid="composer-toast-box-wrapper"
+      as={as}
+      onClick={() =>
+        toast({ status: status === 'inform' ? 'info' : status, ...rest })
+      }
+    >
       {children}
     </Box>
   );

@@ -12,6 +12,9 @@ export default {
       options: buttonVariants,
       control: { type: 'select' },
     },
+    isLoading: {
+      control: { type: 'boolean' },
+    },
   },
 } as Meta;
 

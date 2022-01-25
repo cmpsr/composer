@@ -7,9 +7,25 @@ const generateButton = (color: string, textColor?: string) => {
     opacity: 1,
     color: transparentize(`text-button-${textColor || color}`, 0.5),
   };
+
+  let loadingStyles = {
+    borderColor: `${color}-default`,
+    borderBottomColor: transparentize(`${color}-default`, 0.3),
+    borderLeftColor: transparentize(`${color}-default`, 0.3),
+  };
+
+  if (color === 'secondary' || color === 'alert-error') {
+    loadingStyles = {
+      borderColor: 'text-light',
+      borderBottomColor: transparentize('text-light', 0.3),
+      borderLeftColor: transparentize('text-light', 0.3),
+    };
+  }
+
   return {
     color: `text-button-${textColor || color}`,
     backgroundColor: `${color}-default`,
+    loading: loadingStyles,
     _disabled,
     _hover: {
       backgroundColor: `${color}-hover`,
@@ -35,11 +51,27 @@ const generateAltButton = (color: string) => {
     color: transparentize(`text-link-${color}-default`, 0.5),
     borderColor: transparentize(`text-link-${color}-default`, 0.5),
   };
+
+  let loadingStyles = {
+    borderColor: `${color}-default`,
+    borderBottomColor: transparentize(`${color}-default`, 0.3),
+    borderLeftColor: transparentize(`${color}-default`, 0.3),
+  };
+
+  if (color === 'secondary') {
+    loadingStyles = {
+      borderColor: `primary-default`,
+      borderBottomColor: transparentize(`primary-default`, 0.3),
+      borderLeftColor: transparentize(`primary-default`, 0.3),
+    };
+  }
+
   return {
     backgroundColor: 'background-action-default',
     color: `text-link-${color}-default`,
     border: '1px solid',
     borderColor: `text-link-${color}-default`,
+    loading: loadingStyles,
     _disabled,
     _hover: {
       backgroundColor: 'background-action-hover',
@@ -67,21 +99,37 @@ export const Button: ComponentStyleConfig = {
       ...theme.textStyles['text-body-floating-label-medium'],
       px: '0.5rem',
       py: '0.25rem',
+      loading: {
+        px: '0.4rem',
+        py: '0.4rem',
+      },
     }),
     sm: ({ theme }) => ({
       ...theme.textStyles['text-body-meta-medium'],
       px: '0.75rem',
       py: '0.5rem',
+      loading: {
+        px: '0.4rem',
+        py: '0.4rem',
+      },
     }),
     md: ({ theme }) => ({
       ...theme.textStyles['text-body-medium'],
       px: '1rem',
       py: '0.5rem',
+      loading: {
+        px: '0.5rem',
+        py: '0.5rem',
+      },
     }),
     lg: ({ theme }) => ({
       ...theme.textStyles['text-body-large-medium'],
       px: '1.5rem',
       py: '0.75rem',
+      loading: {
+        px: '0.55rem',
+        py: '0.55rem',
+      },
     }),
   },
   variants: {

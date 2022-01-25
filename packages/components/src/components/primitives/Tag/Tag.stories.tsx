@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Tag, TagLabel, TagLeftIcon, TagRightIcon } from './Tag';
+import { Tag } from './Tag';
 import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
 import { IconAlertCircle } from '../Icons';
 import { TagSizes } from './types';
@@ -25,30 +25,30 @@ const AllTemplate = () => (
     </HStack>
     <HStack spacing={50}>
       <Tag size="s">
-        <TagLeftIcon as={IconAlertCircle} />
-        <TagLabel>Hello</TagLabel>
+        <Tag.LeftIcon as={IconAlertCircle} />
+        <Tag.Label>Hello</Tag.Label>
       </Tag>
       <Tag size="m">
-        <TagLeftIcon as={IconAlertCircle} />
-        <TagLabel>Hello</TagLabel>
+        <Tag.LeftIcon as={IconAlertCircle} />
+        <Tag.Label>Hello</Tag.Label>
       </Tag>
       <Tag>
-        <TagLeftIcon as={IconAlertCircle} />
-        <TagLabel>Hello</TagLabel>
+        <Tag.LeftIcon as={IconAlertCircle} />
+        <Tag.Label>Hello</Tag.Label>
       </Tag>
     </HStack>
     <HStack spacing={50}>
       <Tag size="s">
-        <TagLabel>Hello</TagLabel>
-        <TagRightIcon as={IconAlertCircle} />
+        <Tag.Label>Hello</Tag.Label>
+        <Tag.RightIcon as={IconAlertCircle} />
       </Tag>
       <Tag size="m">
-        <TagLabel>Hello</TagLabel>
-        <TagRightIcon as={IconAlertCircle} />
+        <Tag.Label>Hello</Tag.Label>
+        <Tag.RightIcon as={IconAlertCircle} />
       </Tag>
       <Tag>
-        <TagLabel>Hello</TagLabel>
-        <TagRightIcon as={IconAlertCircle} />
+        <Tag.Label>Hello</Tag.Label>
+        <Tag.RightIcon as={IconAlertCircle} />
       </Tag>
     </HStack>
   </VStack>

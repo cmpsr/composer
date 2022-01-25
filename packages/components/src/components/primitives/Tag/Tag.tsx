@@ -1,15 +1,17 @@
 import React, { FC } from 'react';
 import {
   Tag as ChakraTag,
-  TagLabel as ChakraTabLabel,
-  TagLabelProps,
+  TagLeftIcon,
+  TagRightIcon,
+  TagLabel,
 } from '@chakra-ui/react';
 import { TagProps } from './types';
+import { TagStaticMembers } from '.';
 
-export const Tag: FC<TagProps> = (props) => <ChakraTag {...props} />;
-
-export const TagLabel: FC<TagLabelProps> = (props) => (
-  <ChakraTabLabel {...props} />
+export const Tag: FC<TagProps> & TagStaticMembers = (props) => (
+  <ChakraTag {...props} />
 );
 
-export { TagLeftIcon, TagRightIcon } from '@chakra-ui/react';
+Tag.LeftIcon = TagLeftIcon;
+Tag.RightIcon = TagRightIcon;
+Tag.Label = TagLabel;

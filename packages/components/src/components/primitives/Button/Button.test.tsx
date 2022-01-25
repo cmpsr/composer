@@ -10,4 +10,9 @@ describe('Button', () => {
     givenComponentRendered();
     screen.getByText(/Hello/i);
   });
+
+  test('should render spinner if loading', () => {
+    renderWithProviders(<Button isLoading>Hello</Button>);
+    expect(screen.queryByTestId('cmpsr.button-spinner')).not.toBeFalsy();
+  });
 });

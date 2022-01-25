@@ -11,5 +11,10 @@ export const Button: FC<ButtonProps> = (props) => {
     isLoading: props.isLoading,
   }) as { loading: SpinnerProps };
 
-  return <ChakraButton spinner={<Spinner {...loading} />} {...props} />;
+  return (
+    <ChakraButton
+      spinner={<Spinner data-testid="cmpsr.button-spinner" {...loading} />}
+      {...props}
+    />
+  );
 };

@@ -36,6 +36,13 @@ const AllTemplate = () => (
             </Button>
           ))}
         </HStack>
+        <HStack key={variant}>
+          {ButtonSizes.map((size) => (
+            <Button variant={variant} size={size} key={size} isLoading>
+              {variant}
+            </Button>
+          ))}
+        </HStack>
       </VStack>
     ))}
   </VStack>
@@ -49,4 +56,5 @@ Playground.args = {
   variant: 'primary',
   size: 'md',
   children: 'Composer button!',
+  isLoading: false,
 };

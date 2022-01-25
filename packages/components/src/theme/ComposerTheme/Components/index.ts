@@ -7,6 +7,7 @@ import { CircularProgress } from './CircularProgress';
 import { Checkbox } from './Checkbox';
 import { Divider } from './Divider';
 import { Icon } from './Icon';
+import { Input } from './Input';
 import { Select } from './Select';
 import { Slider } from './Slider';
 import { Spinner } from './Spinner';
@@ -25,6 +26,7 @@ export const components = {
   Checkbox,
   Divider,
   Icon,
+  Input,
   Select,
   Slider,
   Spinner,

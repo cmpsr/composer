@@ -23,7 +23,7 @@ COPY . ./
 
 # Install production dependencies.
 RUN yarn install
-RUN yarn run build-storybook --scope @cmpsr/components
+RUN yarn run build-storybook
 
 # The standard nginx container just runs nginx. The configuration file added
 # below will be used by nginx.

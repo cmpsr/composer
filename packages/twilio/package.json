@@ -12,7 +12,9 @@
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "files": ["/lib"],
+  "files": [
+    "/lib"
+  ],
   "scripts": {
     "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
     "test": "jest",
@@ -20,7 +22,6 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "classnames": "^2.3.1",
     "rimraf": "^3.0.2",
     "twilio": "^3.72.0"
   },

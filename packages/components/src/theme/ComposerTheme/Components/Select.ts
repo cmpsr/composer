@@ -69,6 +69,7 @@ export const Select: ComponentStyleConfig = {
   baseStyle,
   defaultProps: {
     size: 'm',
+    iconSize: 'm',
     error: false,
   },
   sizes,

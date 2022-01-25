@@ -1,37 +1,33 @@
 import React, { FC } from 'react';
 import {
   Accordion as ChakraAccordion,
-  AccordionItem as ChakraAccordionItem,
+  AccordionItem,
   AccordionButton as ChakraAccordionButton,
-  AccordionPanel as ChakraAccordionPanel,
-  AccordionIcon as ChakraAccordionIcon,
+  AccordionPanel,
+  AccordionIcon,
 } from '@chakra-ui/react';
 
 import {
   AccordionProps,
-  AccordionStaticMembers,
-  AccordionItemProps,
   AccordionButtonProps,
-  AccordionPanelProps,
+  AccordionStaticMembers,
 } from './types';
 
 export const Accordion: FC<AccordionProps> & AccordionStaticMembers = (
   props
 ) => {
-  return <ChakraAccordion {...props} />;
+  return <ChakraAccordion _expanded={{ bg: '#]]]' }} {...props} />;
 };
 
-const AccordionItem: FC<AccordionItemProps> = (props) => (
-  <ChakraAccordionItem {...props} />
-);
-const AccordionButton: FC<AccordionButtonProps> = (props) => (
-  <ChakraAccordionButton {...props} />
-);
-const AccordionPanel: FC<AccordionPanelProps> = (props) => (
-  <ChakraAccordionPanel {...props} />
-);
+const AccordionButton: FC<AccordionButtonProps> = ({ highlight, ...props }) => {
+  let expanded = null;
+  if (highlight) {
+    expanded = { bg: 'background-action-active' };
+  }
+  return <ChakraAccordionButton _expanded={expanded} {...props} />;
+};
 
 Accordion.Item = AccordionItem;
 Accordion.Button = AccordionButton;
 Accordion.Panel = AccordionPanel;
-Accordion.Icon = ChakraAccordionIcon;
+Accordion.Icon = AccordionIcon;

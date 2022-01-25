@@ -6,13 +6,4 @@ export const Accordion: ComponentStyleConfig = {
       textStyle: 'text-body-regular',
     },
   },
-  variants: {
-    highlight: {
-      button: {
-        _expanded: {
-          background: 'background-action-active',
-        },
-      },
-    },
-  },
 };

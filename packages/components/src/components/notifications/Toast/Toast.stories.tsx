@@ -45,7 +45,6 @@ const Template = () => {
                         isClosable,
                         status,
                         variant,
-                        duration: 300000,
                       }}
                     >
                       <Button>

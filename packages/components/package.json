@@ -7,25 +7,22 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "1.1.0",
+  "version": "1.5.0",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "files": [
-    "/lib"
-  ],
+  "files": ["/lib"],
   "private": false,
   "scripts": {
-    "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +",
+    "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx,.js' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "storybook": "start-storybook -p 8080 -c .storybook",
     "build-storybook": "build-storybook -c .storybook",
-    "gen:theme-typings": "chakra-cli tokens src/theme/ComposerTheme/theme.ts",
-    "gen:icons": "node scripts/generate_icons.js",
-    "postinstall": "npm run gen:theme-typings"
+    "gen:theme-typings": "./scripts/generate_theme_typings.sh",
+    "gen:icons": "node scripts/generate_icons.js"
   },
   "peerDependencies": {
     "react": "^17.0.2"
@@ -40,9 +37,9 @@
   "devDependencies": {
     "@chakra-ui/cli": "^1.6.0",
     "@fontsource/inter": "^4.5.0",
-    "@storybook/addon-essentials": "^6.3.12",
-    "@storybook/addon-links": "^6.3.12",
-    "@storybook/react": "^6.3.12",
+    "@storybook/addon-essentials": "^6.4.13",
+    "@storybook/addon-links": "^6.4.13",
+    "@storybook/react": "^6.4.13",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.0.2",
     "react": "^17.0.2",

@@ -16,3 +16,4 @@ export * from './Spinner';
 export * from './Tabs';
 export * from './Text';
 export * from './TextPairing';
+export * from './Tag'

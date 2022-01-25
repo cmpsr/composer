@@ -6,7 +6,7 @@ import { alertStates, alertVariants, alertTitleAlignments } from './types';
 
 export default {
   component: Alert,
-  title: 'Components/Primitives/Alert',
+  title: 'Components/Notifications/Alert',
   argTypes: {
     state: {
       options: alertStates,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { ToastWrapper } from './Toast';
-import { Button, Divider, Heading, HStack, VStack } from '@chakra-ui/react';
+import { Button, Divider, Heading, HStack, Flex } from '@chakra-ui/react';
 
 import { variants, ToastOptions } from './types';
 
@@ -30,7 +30,7 @@ const Template = () => {
 
   return (
     <>
-      <VStack>
+      <Flex direction="column" justifyContent="flex-start" ml="15" gap="2">
         {variants.map((variant) => (
           <>
             <Heading size="md">{variant.toUpperCase()}S</Heading>
@@ -59,7 +59,7 @@ const Template = () => {
             <Divider mt={5} />
           </>
         ))}
-      </VStack>
+      </Flex>
     </>
   );
 };

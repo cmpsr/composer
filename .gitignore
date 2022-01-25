@@ -4,3 +4,4 @@ packages/node_modules
 coverage
 quokka.js
 .turbo
+.DS_Store

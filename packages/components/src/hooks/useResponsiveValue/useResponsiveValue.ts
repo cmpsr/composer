@@ -6,5 +6,5 @@ export const useResponsiveValue = <T extends string>(
   value
     ? typeof value === 'string'
       ? value
-      : useBreakpointValue(value)
+      : useBreakpointValue(value, 'base')
     : undefined;

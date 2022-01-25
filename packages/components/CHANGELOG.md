@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 1.5.1
+
+### Patch Changes
+
+- cab25ab: Add default breakpoint to useBreakpointValue
+
 ## 1.5.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.3
+
+### Patch Changes
+
+- 3599686: Remove deprecated twilio-chat implementation, add docs and demo app for the twilio conversataion and sms modules
+
 ## 0.1.2
 
 ### Patch Changes

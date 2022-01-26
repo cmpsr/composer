@@ -50,6 +50,7 @@ describe('Toast component', () => {
           ).root;
 
           expect(toastInstance.props.toastOptions.variant).toBe(variant);
+          expect(toastInstance.props.toastOptions.status).toBe(status);
         });
       });
     });

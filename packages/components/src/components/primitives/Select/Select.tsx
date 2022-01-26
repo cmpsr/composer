@@ -5,7 +5,7 @@ import { SelectProps } from './types';
 export const Select: FC<SelectProps> = ({ value, placeholder, ...props }) => {
   const {
     field: { color, placeholderColor },
-  } = useMultiStyleConfig('Select', { value }) as {
+  } = useMultiStyleConfig('Select', { value, iconSize: props.iconSize }) as {
     field: { color: string; placeholderColor: string };
   };
 
@@ -16,6 +16,12 @@ export const Select: FC<SelectProps> = ({ value, placeholder, ...props }) => {
   }
 
   return (
-    <ChakraSelect data-testid="cmpsr.select" color={textColor} textColor={textColor} placeholder={placeholder} {...props} />
+    <ChakraSelect
+      data-testid="cmpsr.select"
+      color={textColor}
+      textColor={textColor}
+      placeholder={placeholder}
+      {...props}
+    />
   );
 };

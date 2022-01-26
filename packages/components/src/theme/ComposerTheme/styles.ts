@@ -204,3 +204,18 @@ export const inputStyles = {
     minW: '8rem',
   },
 };
+
+export const iconSizes = {
+  large: {
+    boxSize: '1.5rem',
+  },
+  medium: {
+    boxSize: '1.25rem',
+  },
+  small: {
+    boxSize: '1rem',
+  },
+  'extra-small': {
+    boxSize: '0.75rem',
+  },
+};

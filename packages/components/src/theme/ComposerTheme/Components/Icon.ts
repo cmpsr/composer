@@ -1,6 +1,9 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
 export const Icon: ComponentStyleConfig = {
+  defaultProps: {
+    size: 'm',
+  },
   sizes: {
     s: {
       boxSize: '1.25rem',

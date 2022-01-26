@@ -15,7 +15,7 @@ import * as Tabler from './TablerIcons';
 import { IconProps } from './types';
 
 const withIcon = (Component: React.FC, props: IconProps) => {
-  const styles = useStyleConfig('Icon', { size: props?.size || 'm' }) as Record<
+  const styles = useStyleConfig('Icon', { size: props?.size }) as Record<
     string,
     RecursiveCSSObject<CSSWithMultiValues>
   >;

@@ -22,29 +22,27 @@ export const Link: FC<LinkProps> = ({
     });
 
   const flexDirection = {
-    trailing: 'row',
-    leading: 'row-reverse',
+    trailing: 'row-reverse',
+    leading: 'row',
   }[iconPosition] as FlexboxProps['flexDirection'];
 
   if (icon)
     return (
-      <ChakraLink size={size} data-testid="composer-link-container" {...props}>
-        <Box
+      <ChakraLink size={size} data-testid="cmpsr.link.container" {...props}>
+        <Flex
           gap="spacer-1"
-          data-testid="composer-icon-wrapper"
-          display="flex"
           alignItems="center"
+          data-testid="cmpsr.flex.container"
+          flexDirection={flexDirection}
         >
-          <Flex data-testid="flex-icon-container" flexDirection={flexDirection}>
-            <Icon data-testid="composer-cloned-icon" />
-            <Text isTruncated>{children}</Text>
-          </Flex>
-        </Box>
+          <Text isTruncated>{children}</Text>
+          <Icon />
+        </Flex>
       </ChakraLink>
     );
 
   return (
-    <ChakraLink size={size} data-testid="composer-link-container" {...props}>
+    <ChakraLink size={size} data-testid="cmpsr.link.container" {...props}>
       <Text isTruncated>{children}</Text>
     </ChakraLink>
   );

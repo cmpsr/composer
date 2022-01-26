@@ -9,5 +9,5 @@ type LinkSizes = typeof linkSizes[number];
 export interface LinkProps extends ChakraLinkProps {
   icon?: JSX.Element;
   iconPosition?: LinkIconPositions;
-  size?: LinkSizes | string;
+  size?: LinkSizes;
 }

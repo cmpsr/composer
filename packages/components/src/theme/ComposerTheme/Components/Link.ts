@@ -25,16 +25,22 @@ export const Link: ComponentStyleConfig = {
   },
   sizes: {
     s: ({ theme }) => ({
-      ...theme.textStyles['text-link-body-small'],
-      color: 'text-link-primary-default',
+      ' p': {
+        ...theme.textStyles['text-link-body-small'],
+        color: 'text-link-primary-default',
+      },
     }),
     m: ({ theme }) => ({
-      ...theme.textStyles['text-link-body-medium'],
-      color: 'text-link-primary-default',
+      ' p': {
+        ...theme.textStyles['text-link-body-medium'],
+        color: 'text-link-primary-default',
+      },
     }),
     l: ({ theme }) => ({
-      ...theme.textStyles['text-link-body-large'],
-      color: 'text-link-primary-default',
+      ' p': {
+        ...theme.textStyles['text-link-body-large'],
+        color: 'text-link-primary-default',
+      },
     }),
   },
 };

@@ -1,3 +1,3 @@
 import { SimpleGridProps } from '@chakra-ui/react';
 
-export interface GridProps extends SimpleGridProps {}
+export type GridProps = SimpleGridProps;

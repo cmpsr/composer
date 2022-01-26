@@ -15,18 +15,14 @@ import {
 
 export const Accordion: FC<AccordionProps> & AccordionStaticMembers = (
   props
-) => {
-  return <ChakraAccordion {...props} />;
-};
+) => <ChakraAccordion {...props} />;
 
-const AccordionButton: FC<AccordionButtonProps> = ({ highlight, ...props }) => {
-  return (
-    <ChakraAccordionButton
-      {...(highlight && { bg: 'background-action-active' })}
-      {...props}
-    />
-  );
-};
+const AccordionButton: FC<AccordionButtonProps> = ({ highlight, ...props }) => (
+  <ChakraAccordionButton
+    _expanded={highlight && { bg: 'background-action-active' }}
+    {...props}
+  />
+);
 
 Accordion.Item = AccordionItem;
 Accordion.Button = AccordionButton;

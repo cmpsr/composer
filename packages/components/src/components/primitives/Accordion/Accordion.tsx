@@ -20,11 +20,12 @@ export const Accordion: FC<AccordionProps> & AccordionStaticMembers = (
 };
 
 const AccordionButton: FC<AccordionButtonProps> = ({ highlight, ...props }) => {
-  let expanded = null;
-  if (highlight) {
-    expanded = { bg: 'background-action-active' };
-  }
-  return <ChakraAccordionButton _expanded={expanded} {...props} />;
+  return (
+    <ChakraAccordionButton
+      {...(highlight && { bg: 'background-action-active' })}
+      {...props}
+    />
+  );
 };
 
 Accordion.Item = AccordionItem;

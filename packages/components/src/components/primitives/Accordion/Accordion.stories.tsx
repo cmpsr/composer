@@ -12,20 +12,6 @@ export default {
 
 const AVATAR_URL = 'https://avatars0.githubusercontent.com/u/67131017?s=200';
 
-// const AllTemplate = () => (
-//   <VStack
-//     divider={<StackDivider borderColor="gray.200" />}
-//     spacing={4}
-//     align="stretch"
-//   >
-//     {accordionVariants.map((variant, id) => (
-//       <Template variant={variant} key={id} />
-//     ))}
-//   </VStack>
-// );
-
-// export const All = AllTemplate.bind({});
-
 const WithImageAndTextPairingTemplate = (args) => (
   <Accordion {...args}>
     <Accordion.Item>

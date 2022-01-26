@@ -1,9 +1,9 @@
 import {
   TabsProps as ChakraTabsProps,
-  TabListProps as ChakraTabListProps,
-  TabPanelsProps as ChakraTabPanelsProps,
-  TabProps as ChakraTabProps,
-  TabPanelProps as ChakraTabPanelProps,
+  TabListProps,
+  TabPanelsProps,
+  TabProps,
+  TabPanelProps,
 } from '@chakra-ui/react';
 import { FC } from 'react';
 
@@ -13,10 +13,6 @@ export type TabsVariant = typeof tabsVariants[number];
 export interface TabsProps extends ChakraTabsProps {
   variant?: TabsVariant;
 }
-export interface TabListProps extends ChakraTabListProps {}
-export interface TabPanelsProps extends ChakraTabPanelsProps {}
-export interface TabPanelProps extends ChakraTabPanelProps {}
-export interface TabProps extends ChakraTabProps {}
 
 export interface TabsStaticMembers {
   Item: FC<TabProps>;

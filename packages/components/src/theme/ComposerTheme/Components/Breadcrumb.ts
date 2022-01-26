@@ -5,6 +5,9 @@ export const Breadcrumb: ComponentStyleConfig = {
     link: {
       textStyle: 'text-body-medium',
       color: 'text-link-primary-default',
+      _active: {
+        color: 'red',
+      },
     },
   },
 };

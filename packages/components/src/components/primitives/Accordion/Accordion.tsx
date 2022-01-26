@@ -16,7 +16,7 @@ import {
 export const Accordion: FC<AccordionProps> & AccordionStaticMembers = (
   props
 ) => {
-  return <ChakraAccordion _expanded={{ bg: '#]]]' }} {...props} />;
+  return <ChakraAccordion {...props} />;
 };
 
 const AccordionButton: FC<AccordionButtonProps> = ({ highlight, ...props }) => {

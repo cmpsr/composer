@@ -134,7 +134,7 @@ class FirestoreDb implements IDatabase {
   }
 
   private removeHiddenFields(obj: object): object {
-    var newObj = { ...obj };
+    const newObj = { ...obj };
     delete newObj['_createdAt'];
     delete newObj['_deleted'];
     return newObj;

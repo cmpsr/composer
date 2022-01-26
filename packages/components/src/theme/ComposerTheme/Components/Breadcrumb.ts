@@ -2,11 +2,11 @@ import { ComponentStyleConfig } from '@chakra-ui/react';
 
 export const Breadcrumb: ComponentStyleConfig = {
   baseStyle: {
-    link: {
+    item: {
       textStyle: 'text-body-medium',
       color: 'text-link-primary-default',
-      _active: {
-        color: 'red',
+      span: {
+        color: 'text-secondary',
       },
     },
   },

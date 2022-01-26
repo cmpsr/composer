@@ -1,3 +1,1 @@
-import { ImageProps as ChakraImageProps } from '@chakra-ui/react';
-
-export interface ImageProps extends ChakraImageProps {}
+export { ImageProps } from '@chakra-ui/react';

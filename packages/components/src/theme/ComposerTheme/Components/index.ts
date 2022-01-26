@@ -1,3 +1,4 @@
+import { Accordion } from './Accordion';
 import { Avatar, AvatarBadge } from './Avatar';
 import { Badge } from './Badge';
 import { Alert } from './Alert';
@@ -14,8 +15,10 @@ import { Spinner } from './Spinner';
 import { Tabs } from './Tabs';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
+import { Radio } from './Radio';
 
 export const components = {
+  Accordion,
   Alert,
   Avatar,
   AvatarBadge,
@@ -28,6 +31,7 @@ export const components = {
   Icon,
   Input,
   Select,
+  Radio,
   Slider,
   Spinner,
   Tabs,

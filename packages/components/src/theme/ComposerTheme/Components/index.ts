@@ -16,6 +16,7 @@ import { Spinner } from './Spinner';
 import { Tabs } from './Tabs';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
+import { Radio } from './Radio';
 
 export const components = {
   Accordion,
@@ -32,6 +33,7 @@ export const components = {
   Icon,
   Input,
   Select,
+  Radio,
   Slider,
   Spinner,
   Tabs,

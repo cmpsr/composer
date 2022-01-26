@@ -41,3 +41,19 @@ const AllTemplate = () => {
 };
 
 export const All = AllTemplate.bind({});
+
+const Template = (args) => (
+  <VStack>
+    <Link href="#" role="link" {...args}>
+      Playground
+    </Link>
+  </VStack>
+);
+
+export const Playground = Template.bind({});
+
+Playground.args = {
+  size: 'l',
+  icon: <Icons.IconExternalLink />,
+  iconPosition: 'leading',
+};

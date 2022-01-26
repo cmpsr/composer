@@ -337,7 +337,7 @@ describe('TwilioConversation', () => {
       url: '/v1/Services/service_id/Media/media_id',
       is_multipart_upstream: false,
     };
-    let originalFetch = global.fetch;
+    const originalFetch = global.fetch;
     const mockFetch = jest.fn().mockReturnValue({
       ok: true,
       json: () => media,

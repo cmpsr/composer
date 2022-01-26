@@ -24,20 +24,22 @@
     "storybook": "start-storybook -p 8080 -c .storybook",
     "build-storybook": "build-storybook -c .storybook",
     "gen:theme-typings": "chakra-cli tokens src/theme/ComposerTheme/theme.ts",
+    "gen:icons": "node scripts/generate_icons.js",
     "postinstall": "npm run gen:theme-typings"
   },
   "peerDependencies": {
     "react": "^17.0.2"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.6.12",
+    "@chakra-ui/react": "^1.7.3",
+    "@chakra-ui/theme-tools": "^1.3.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@fontsource/inter": "^4.5.0",
     "framer-motion": "^5"
   },
   "devDependencies": {
-    "@chakra-ui/cli": "^1.5.3",
+    "@chakra-ui/cli": "^1.6.0",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
     "@storybook/react": "^6.3.12",

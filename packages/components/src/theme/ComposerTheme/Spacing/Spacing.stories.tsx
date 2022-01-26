@@ -25,24 +25,24 @@ export const Spacing = () => {
                 <Box
                   width={value}
                   height="16px"
-                  bgColor="text-secondary-ui-hover"
+                  bgColor="text-link-primary-hover"
                   mr="spacer-3"
                 />
                 <Box
-                  backgroundColor="text-secondary"
+                  backgroundColor="text-primary"
                   color="white"
                   width="auto"
                   py="spacer-1"
                   px="spacer-2"
                   borderRadius="3px"
                 >
-                  {value}
+                  {value}/{+value.substring(0, value.length - 3) * 16}px
                 </Box>
               </Flex>
             </Td>
             <Td>
               <Box
-                backgroundColor="text-secondary"
+                backgroundColor="text-primary"
                 color="white"
                 width="auto"
                 py="spacer-1"

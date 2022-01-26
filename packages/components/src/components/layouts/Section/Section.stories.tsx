@@ -14,14 +14,14 @@ interface StoryProps extends SectionProps {
 
 const Template: React.FC<StoryProps> = ({ content, ...rest }) => (
   <Section {...rest}>
-    <Text variant="font-body-display-L">{content}</Text>
+    <Text variant="text-body-display-L">{content}</Text>
   </Section>
 );
 export const Playground = Template.bind({});
 Playground.args = {
   padding: 'spacer-4',
   border: '1px solid',
-  borderColor: 'primary-ui-default',
+  borderColor: 'accent-default',
   content: 'Composer rocks!',
   width: '100%',
 };

@@ -7,171 +7,171 @@ const baseTextStyle = {
 
 const linkTextStyle = {
   ...baseTextStyle,
-  color: 'text-link-primary-ui-default',
+  color: 'text-link-accent-default',
   textDecorationLine: 'underline',
 };
 
 export const textStyles = {
   // Headers
-  'font-header-4XL': {
+  'text-header-4XL': {
     ...baseTextStyle,
     fontWeight: 'bold',
     fontSize: ['3.75rem', '4.5rem'],
     lineHeight: ['3.75rem', '4.5rem'],
   },
-  'font-header-3XL': {
+  'text-header-3XL': {
     ...baseTextStyle,
     fontWeight: 'bold',
     fontSize: ['3rem', '3.75rem'],
     lineHeight: ['3rem', '3.75rem'],
   },
-  'font-header-2XL': {
+  'text-header-2XL': {
     ...baseTextStyle,
     fontWeight: 'bold',
     fontSize: ['2.25rem', '3rem'],
     lineHeight: ['2.75rem', '3rem'],
   },
-  'font-header-XL': {
+  'text-header-XL': {
     ...baseTextStyle,
     fontWeight: 'bold',
     fontSize: ['1.875rem', '2.25rem'],
     lineHeight: ['2.5rem', '2.75rem'],
   },
-  'font-header-L': {
+  'text-header-L': {
     ...baseTextStyle,
     fontWeight: 'bold',
     fontSize: '1.5rem',
     lineHeight: ['2rem', '2.25rem'],
   },
-  'font-header-M': {
+  'text-header-M': {
     ...baseTextStyle,
     fontWeight: 'bold',
     fontSize: '1.25rem',
     lineHeight: ['2.25rem', '1.5rem'],
   },
-  'font-header-S': {
+  'text-header-S': {
     ...baseTextStyle,
     fontWeight: 'bold',
     fontSize: '1rem',
     lineHeight: '1.25rem',
   },
-  'font-header-XS': {
+  'text-header-XS': {
     ...baseTextStyle,
     fontWeight: 'bold',
     fontSize: '0.88rem',
     lineHeight: ['1.25rem', '1.13rem'],
   },
   // Body
-  'font-body-display-2XL': {
+  'text-body-display-2XL': {
     ...baseTextStyle,
     fontSize: '3.75rem',
     lineHeight: '4.5rem',
   },
-  'font-body-display-XL': {
+  'text-body-display-XL': {
     ...baseTextStyle,
     fontSize: '3rem',
     lineHeight: '3.5rem',
   },
-  'font-body-display-L': {
+  'text-body-display-L': {
     ...baseTextStyle,
     fontSize: '2.25rem',
     lineHeight: '2.75rem',
   },
-  'font-body-display-M': {
+  'text-body-display-M': {
     ...baseTextStyle,
     fontSize: '1.88rem',
     lineHeight: '2.25rem',
   },
-  'font-body-display-S': {
+  'text-body-display-S': {
     ...baseTextStyle,
     fontSize: '1.5rem',
     lineHeight: '1.88rem',
   },
-  'font-body-display-XS': {
+  'text-body-display-XS': {
     ...baseTextStyle,
     fontSize: '1.25rem',
     lineHeight: '1.88rem',
   },
-  'font-body-large-regular': {
+  'text-body-large-regular': {
     ...baseTextStyle,
     fontSize: '1.13rem',
     lineHeight: '1.75rem',
   },
-  'font-body-large-medium': {
+  'text-body-large-medium': {
     ...baseTextStyle,
     fontWeight: 'medium',
     fontSize: '1.13rem',
     lineHeight: '1.75rem',
   },
-  'font-body-large-bold': {
+  'text-body-large-bold': {
     ...baseTextStyle,
     fontWeight: 'bold',
     fontSize: '1.13rem',
     lineHeight: '1.75rem',
   },
-  'font-body-regular': {
+  'text-body-regular': {
     ...baseTextStyle,
     fontSize: '1rem',
     lineHeight: '1.15rem',
   },
-  'font-body-medium': {
+  'text-body-medium': {
     ...baseTextStyle,
     fontWeight: 'medium',
     fontSize: '1rem',
     lineHeight: '1.15rem',
   },
-  'font-body-bold': {
+  'text-body-bold': {
     ...baseTextStyle,
     fontWeight: 'bold',
     fontSize: '1rem',
     lineHeight: '1.15rem',
   },
-  'font-body-meta-regular': {
+  'text-body-meta-regular': {
     ...baseTextStyle,
     fontSize: '0.88rem',
     lineHeight: '1.25rem',
   },
-  'font-body-meta-medium': {
+  'text-body-meta-medium': {
     ...baseTextStyle,
     fontWeight: 'medium',
     fontSize: '0.88rem',
     lineHeight: '1.25rem',
   },
-  'font-body-meta-bold': {
+  'text-body-meta-bold': {
     ...baseTextStyle,
     fontWeight: 'bold',
     fontSize: '0.88rem',
     lineHeight: '1.25rem',
   },
-  'font-body-floating-label-regular': {
+  'text-body-floating-label-regular': {
     ...baseTextStyle,
     fontSize: '0.75rem',
     lineHeight: '1.125rem',
   },
-  'font-body-floating-label-medium': {
+  'text-body-floating-label-medium': {
     ...baseTextStyle,
     fontWeight: 'medium',
     fontSize: '0.75rem',
     lineHeight: '1.125rem',
   },
-  'font-body-floating-label-bold': {
+  'text-body-floating-label-bold': {
     ...baseTextStyle,
     fontWeight: 'bold',
     fontSize: '0.75rem',
     lineHeight: '1.125rem',
   },
   // Link
-  'font-link-body-large': {
+  'text-link-body-large': {
     ...linkTextStyle,
     fontSize: '1.75rem',
     lineHeight: '2.25rem',
   },
-  'font-link-body-medium': {
+  'text-link-body-medium': {
     ...linkTextStyle,
     fontSize: '1.25rem',
     lineHeight: '1.5rem',
   },
-  'font-link-body-small': {
+  'text-link-body-small': {
     ...linkTextStyle,
     fontSize: '1rem',
     lineHeight: '1.25rem',

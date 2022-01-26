@@ -25,12 +25,12 @@ export const Radius = () => {
                 <Box
                   width="60px"
                   height="60px"
-                  bgColor="text-secondary-ui-hover"
+                  bgColor="text-link-primary-hover"
                   mr="spacer-3"
                   borderRadius={value}
                 />
                 <Box
-                  backgroundColor="text-secondary"
+                  backgroundColor="text-primary"
                   color="white"
                   width="auto"
                   py="spacer-1"
@@ -43,7 +43,7 @@ export const Radius = () => {
             </Td>
             <Td>
               <Box
-                backgroundColor="text-secondary"
+                backgroundColor="text-primary"
                 color="white"
                 width="auto"
                 py="spacer-1"

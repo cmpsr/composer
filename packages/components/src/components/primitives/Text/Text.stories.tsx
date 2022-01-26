@@ -15,12 +15,7 @@ export default {
 } as Meta;
 
 const AllTemplate = ({ text }: { text: string }) => (
-  <Stack
-    bg="white"
-    spacing="2rem"
-    py="2rem"
-    divider={<StackDivider borderColor="#888" />}
-  >
+  <Stack spacing="2rem" py="2rem" divider={<StackDivider borderColor="#888" />}>
     {textVariants.map((variant) => (
       <Flex key={variant} px="1rem">
         <Box>
@@ -41,7 +36,7 @@ All.args = {
 };
 
 const Template = (args) => (
-  <Box bg="white" py="2rem">
+  <Box py="2rem">
     <Text {...args} />
   </Box>
 );
@@ -49,5 +44,5 @@ export const Playground = Template.bind({});
 Playground.args = {
   children: 'Composer rocks!',
   as: 'h1',
-  variant: 'font-header-4XL',
+  variant: 'text-header-4XL',
 };

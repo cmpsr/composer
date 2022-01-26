@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 1.6.0
+
+### Minor Changes
+
+- 9f208ca: Implementation of Input component, with their tests and stories
+- 96a0c87: Implementation of a new iconSize prop inside the Select component to be able to change the icon size of the Select component
+
 ## 1.5.1
 
 ### Patch Changes

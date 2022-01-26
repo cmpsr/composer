@@ -9,11 +9,11 @@ const solidToastVariant: PartsStyleFunction<typeof parts> = ({ status }) => {
       backgroundColor: `alert-${alertStatus}-default`,
       color: 'text-light',
     },
-    title: { fontStyle: 'text-body-bold', color: 'text-light' },
-    description: { fontStyle: 'text-body-regular', color: 'text-light' },
+    title: { textStyle: 'text-body-bold', color: 'text-light' },
+    description: { textStyle: 'text-body-regular', color: 'text-light' },
     icon: {
       boxSize: '1rem',
-      height: '25px',
+      height: '1.5rem',
       color: 'text-light',
     },
   };
@@ -31,10 +31,10 @@ const subtleToastVariant: PartsStyleFunction<typeof parts> = ({
   const alertStatus = status === 'info' ? 'inform' : status;
   const accents = {
     top: {
-      borderTop: `4px solid var(--chakra-colors-alert-${alertStatus}-default)`,
+      borderTop: `0.25rem solid var(--chakra-colors-alert-${alertStatus}-default)`,
     },
     left: {
-      borderLeft: `4px solid var(--chakra-colors-alert-${alertStatus}-default)`,
+      borderLeft: `0.25rem solid var(--chakra-colors-alert-${alertStatus}-default)`,
     },
   };
 
@@ -43,12 +43,12 @@ const subtleToastVariant: PartsStyleFunction<typeof parts> = ({
       backgroundColor: `background-${alertStatus}`,
       ...accents[accentType],
     },
-    title: { fontStyle: 'text-body-bold', color: 'text-primary' },
-    description: { fontStyle: 'text-body-regular', color: 'text-primary' },
+    title: { textStyle: 'text-body-bold', color: 'text-primary' },
+    description: { textStyle: 'text-body-regular', color: 'text-primary' },
     icon: {
       boxSize: '1rem',
       color: `alert-${alertStatus}-default`,
-      height: '25px',
+      height: '1.5rem',
     },
   };
 };

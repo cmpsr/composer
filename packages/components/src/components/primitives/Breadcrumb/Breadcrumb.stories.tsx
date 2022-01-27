@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Breadcrumb } from './Breadcrumb';
+import { IconChevronRight } from '../Icons';
 
 export default {
   component: Breadcrumb,
@@ -21,3 +22,7 @@ const Template = (args) => (
   </Breadcrumb>
 );
 export const Playground = Template.bind({});
+
+Playground.args = {
+  separator: <IconChevronRight />,
+};

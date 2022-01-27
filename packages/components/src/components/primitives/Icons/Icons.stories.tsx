@@ -849,5 +849,4 @@ export const All = Template.bind({});
 All.args = {
   color: 'primary-default',
   boxSize: '1.5rem',
-  size: 'm',
 };

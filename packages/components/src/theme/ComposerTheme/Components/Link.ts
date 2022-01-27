@@ -2,6 +2,10 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 
 export const Link: ComponentStyleConfig = {
   baseStyle: {
+    p: {
+      textDecorationLine: 'none',
+      textDecoration: 'none',
+    },
     maxWidth: '100%',
     color: 'text-link-primary-default',
     _hover: {

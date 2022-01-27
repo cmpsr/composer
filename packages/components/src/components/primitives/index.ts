@@ -21,4 +21,5 @@ export * from './Switch';
 export * from './Tabs';
 export * from './Tag';
 export * from './Text';
+export * from './Tooltip';
 export * from './TextPairing';

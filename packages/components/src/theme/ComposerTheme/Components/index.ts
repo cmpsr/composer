@@ -11,9 +11,11 @@ import { Divider } from './Divider';
 import { Icon } from './Icon';
 import { Input } from './Input';
 import { Select } from './Select';
+import { Link } from './Link';
 import { Slider } from './Slider';
 import { Spinner } from './Spinner';
 import { Tabs } from './Tabs';
+import { Tag } from './Tag';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
 import { Radio } from './Radio';
@@ -32,11 +34,13 @@ export const components = {
   Divider,
   Icon,
   Input,
+  Link,
   Select,
   Radio,
   Slider,
   Spinner,
   Tabs,
+  Tag,
   Text,
   TextPairing,
 };

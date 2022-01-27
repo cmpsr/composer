@@ -3,6 +3,9 @@ on:
   pull_request:
     paths:
     - "packages/components/**"
+  push:
+    branches:
+    - master
 
 jobs:
   chromatic:

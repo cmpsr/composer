@@ -1,4 +1,4 @@
-import { TagProps as ChakraTagProps } from '@chakra-ui/react';
+import { StyleProps, TagProps as ChakraTagProps } from '@chakra-ui/react';
 import { FC } from 'react';
 import { IconProps } from '../Icons';
 
@@ -10,4 +10,11 @@ export interface TagProps extends ChakraTagProps {
   label: string;
   icon?: FC<IconProps>;
   iconPosition?: 'left' | 'right';
+}
+
+export interface TagStyle {
+  container: StyleProps;
+  label: StyleProps;
+  leftIcon: StyleProps;
+  rightIcon: StyleProps;
 }

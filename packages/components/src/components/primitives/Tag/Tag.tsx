@@ -6,7 +6,7 @@ import {
   TagLabel,
   useStyleConfig,
 } from '@chakra-ui/react';
-import { TagProps } from './types';
+import { TagProps, TagStyle } from './types';
 
 export const Tag: FC<TagProps> = ({
   label,
@@ -20,7 +20,7 @@ export const Tag: FC<TagProps> = ({
     label: labelStyle,
     leftIcon,
     rightIcon,
-  } = useStyleConfig('Tag', { size }) as any;
+  } = useStyleConfig('Tag', { size }) as TagStyle;
   return (
     <ChakraTag {...container} {...rest}>
       {icon && iconPosition !== 'right' && (

@@ -4,15 +4,15 @@ import { screen, renderWithProviders } from 'tests/renderWithProviders';
 
 import { Link } from './Link';
 import { linkSizes } from './types';
+import { IconExternalLink } from '../Icons';
 
-const icon = <i data-testid="test.id" />;
 const textElement = <span data-testid="test.id">span component</span>;
 
 describe('Sizes', () => {
   linkSizes.forEach((size) => {
     it(`Should render the right containers for the size ${size}`, () => {
       const component = TestRenderer.create(
-        <Link size={size} href="#" icon={icon} role="link">
+        <Link size={size} href="#" icon={IconExternalLink} role="link">
           {textElement}
         </Link>
       ).root;
@@ -34,7 +34,7 @@ describe('Link and icon components', () => {
 
   it('Should render a link with an icon on left side as default', () => {
     const linkComponent = TestRenderer.create(
-      <Link role="link" data-testid="test.id" icon={icon}>
+      <Link role="link" data-testid="test.id" icon={IconExternalLink}>
         {textElement}
       </Link>
     ).root;
@@ -52,7 +52,7 @@ describe('Link and icon components', () => {
         role="link"
         iconPosition="trailing"
         data-testid="test.id"
-        icon={icon}
+        icon={IconExternalLink}
       >
         {textElement}
       </Link>
@@ -71,7 +71,7 @@ describe('Link and icon components', () => {
         role="link"
         iconPosition="leading"
         data-testid="test.id"
-        icon={icon}
+        icon={IconExternalLink}
       >
         {textElement}
       </Link>

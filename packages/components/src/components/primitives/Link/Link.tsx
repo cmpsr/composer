@@ -1,17 +1,17 @@
-import React, { FC, cloneElement } from 'react';
+import React, { FC } from 'react';
 import { Link as ChakraLink, Text, Flex } from '@chakra-ui/react';
 
 import { LinkProps } from './types';
 
 export const Link: FC<LinkProps> = ({
   children,
-  icon,
+  icon: Icon,
   iconPosition = 'trailing',
   size = 'm',
   ...props
 }) => (
   <ChakraLink size={size} data-testid="cmpsr.link.container" {...props}>
-    {icon ? (
+    {Icon ? (
       <Flex
         gap="spacer-1"
         alignItems="center"
@@ -19,9 +19,7 @@ export const Link: FC<LinkProps> = ({
         flexDirection={iconPosition === 'leading' ? 'row-reverse' : 'row'}
       >
         <Text isTruncated>{children}</Text>
-        {cloneElement(icon, {
-          size,
-        })}
+        <Icon size={size} />
       </Flex>
     ) : (
       <Text isTruncated>{children}</Text>

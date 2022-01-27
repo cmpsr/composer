@@ -23,7 +23,7 @@ const AllTemplate = () => {
             <>
               <Link
                 iconPosition={position}
-                icon={<Icons.IconExternalLink />}
+                icon={Icons.IconExternalLink}
                 size={size}
                 key={key}
                 role="link"
@@ -42,9 +42,14 @@ const AllTemplate = () => {
 
 export const All = AllTemplate.bind({});
 
-const Template = (args) => (
+const Template = ({ showIcon, ...args }) => (
   <VStack>
-    <Link href="#" role="link" {...args}>
+    <Link
+      href="#"
+      role="link"
+      {...(showIcon && { icon: Icons.IconExternalLink })}
+      {...args}
+    >
       Playground
     </Link>
   </VStack>
@@ -54,6 +59,6 @@ export const Playground = Template.bind({});
 
 Playground.args = {
   size: 'l',
-  icon: <Icons.IconExternalLink />,
   iconPosition: 'leading',
+  showIcon: true,
 };

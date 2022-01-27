@@ -36,7 +36,7 @@ export const components = {
   Slider,
   Spinner,
   Tabs,
-  Tag
+  Tag,
   Text,
   TextPairing,
 };

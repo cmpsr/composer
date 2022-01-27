@@ -35,6 +35,23 @@ All.args = {
   text: 'Composer rocks!',
 };
 
+const ResponsiveTemplate = (args) => (
+  <Box py="2rem">
+    <Text
+      {...args}
+      variant={{
+        base: 'text-header-L',
+        md: 'text-header-2XL',
+        lg: 'text-header-4XL',
+      }}
+    />
+  </Box>
+);
+export const ResponsiveVariant = ResponsiveTemplate.bind({});
+ResponsiveVariant.args = {
+  children: 'Composer rocks!',
+};
+
 const Template = (args) => (
   <Box py="2rem">
     <Text {...args} />

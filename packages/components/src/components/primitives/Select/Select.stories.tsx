@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Select } from '.';
-import { selectSizes } from './types';
+import { iconSizes, selectSizes } from './types';
 import { StackDivider, VStack } from '@chakra-ui/react';
 import { Text } from '..';
 
@@ -11,6 +11,10 @@ export default {
   argTypes: {
     size: {
       options: selectSizes,
+      control: { type: 'select' },
+    },
+    iconSize: {
+      options: iconSizes,
       control: { type: 'select' },
     },
     isDisabled: {
@@ -100,6 +104,7 @@ const Template = (args) => (
 );
 export const Playground = Template.bind({});
 Playground.args = {
-  size: 'lg',
+  size: 'l',
+  iconSize: 'l',
   isDisabled: false,
 };

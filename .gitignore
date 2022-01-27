@@ -2,3 +2,6 @@ node_modules
 packages/node_modules
 .env
 coverage
+quokka.js
+.turbo
+.DS_Store

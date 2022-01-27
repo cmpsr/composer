@@ -1,3 +1,4 @@
+export * from './Accordion';
 export * from './Alert';
 export * from './Avatar';
 export * from './Badge';
@@ -7,6 +8,8 @@ export * from './CircularProgress';
 export * from './Checkbox';
 export * from './Divider';
 export * from './Image';
+export * from './Input';
+export * from './Radio';
 export * from './Select';
 export * from './Slider';
 export * from './Spinner';

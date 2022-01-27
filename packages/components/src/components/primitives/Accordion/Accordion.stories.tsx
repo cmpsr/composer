@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Accordion } from './Accordion';
-import { StackDivider, VStack } from '@chakra-ui/layout';
 import { Text, TextPairing, Avatar } from '..';
 import { Box, Flex } from '../../layouts';
 

@@ -20,12 +20,13 @@ const AllTemplate = () => (
   <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
     <HStack spacing={50}>
       {TagSizes.map((size) => (
-        <Tag size={size} label="Hello" />
+        <Tag key={size} size={size} label="Hello" />
       ))}
     </HStack>
     <HStack spacing={50}>
       {TagSizes.map((size) => (
         <Tag
+          key={size}
           size={size}
           label="Hello"
           icon={IconAlertCircle}
@@ -36,6 +37,7 @@ const AllTemplate = () => (
     <HStack spacing={50}>
       {TagSizes.map((size) => (
         <Tag
+          key={size}
           size={size}
           label="Hello"
           icon={IconAlertCircle}

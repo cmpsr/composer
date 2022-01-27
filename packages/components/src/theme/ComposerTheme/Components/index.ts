@@ -8,11 +8,7 @@ import { CircularProgress } from './CircularProgress';
 import { Checkbox } from './Checkbox';
 import { Divider } from './Divider';
 import { Icon } from './Icon';
-<<<<<<< HEAD
-import { Link } from './Link';
-=======
 import { Input } from './Input';
->>>>>>> 65110b0c59143abd8cb4f173f087c95356597fb7
 import { Select } from './Select';
 import { Link } from './Link';
 import { Slider } from './Slider';
@@ -34,13 +30,9 @@ export const components = {
   Checkbox,
   Divider,
   Icon,
-<<<<<<< HEAD
-  Link,
-=======
   Input,
->>>>>>> 65110b0c59143abd8cb4f173f087c95356597fb7
-  Select,
   Link,
+  Select,
   Radio,
   Slider,
   Spinner,

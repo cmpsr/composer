@@ -41,8 +41,6 @@ const AllTemplate = () => {
 };
 
 export const All = AllTemplate.bind({});
-<<<<<<< HEAD
-=======
 
 const Template = (args) => (
   <VStack>
@@ -59,4 +57,3 @@ Playground.args = {
   icon: <Icons.IconExternalLink />,
   iconPosition: 'leading',
 };
->>>>>>> 65110b0c59143abd8cb4f173f087c95356597fb7

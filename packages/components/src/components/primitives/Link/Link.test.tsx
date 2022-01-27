@@ -43,7 +43,7 @@ describe('Link and icon components', () => {
       'data-testid': 'cmpsr.flex.container',
     });
 
-    expect(flexWrapper.props.flexDirection).toBe('row-reverse');
+    expect(flexWrapper.props.flexDirection).toBe('row');
   });
 
   it('Should render a link with an icon on the right side', () => {
@@ -62,7 +62,7 @@ describe('Link and icon components', () => {
       'data-testid': 'cmpsr.flex.container',
     });
 
-    expect(flexWrapper.props.flexDirection).toBe('row-reverse');
+    expect(flexWrapper.props.flexDirection).toBe('row');
   });
 
   it('Should render a link with an icon on the left side', () => {
@@ -81,7 +81,7 @@ describe('Link and icon components', () => {
       'data-testid': 'cmpsr.flex.container',
     });
 
-    expect(flexWrapper.props.flexDirection).toBe('row');
+    expect(flexWrapper.props.flexDirection).toBe('row-reverse');
   });
 
   it('Should render a simple link without icon', () => {

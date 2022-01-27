@@ -4,14 +4,33 @@ import {
   TagLeftIcon,
   TagRightIcon,
   TagLabel,
+  useStyleConfig,
 } from '@chakra-ui/react';
 import { TagProps } from './types';
-import { TagStaticMembers } from '.';
 
-export const Tag: FC<TagProps> & TagStaticMembers = (props) => (
-  <ChakraTag {...props} />
-);
-
-Tag.LeftIcon = TagLeftIcon;
-Tag.RightIcon = TagRightIcon;
-Tag.Label = TagLabel;
+export const Tag: FC<TagProps> = ({
+  label,
+  icon,
+  iconPosition,
+  size,
+  ...rest
+}) => {
+  const {
+    container,
+    label: labelStyle,
+    fontStyle,
+    leftIcon,
+    rightIcon,
+  } = useStyleConfig('Tag', { size }) as any;
+  return (
+    <ChakraTag {...fontStyle} {...container} {...rest}>
+      {icon && iconPosition !== 'right' && (
+        <TagLeftIcon {...leftIcon} as={icon} />
+      )}
+      <TagLabel {...labelStyle}>{label}</TagLabel>
+      {icon && iconPosition === 'right' && (
+        <TagRightIcon {...rightIcon} as={icon} />
+      )}
+    </ChakraTag>
+  );
+};

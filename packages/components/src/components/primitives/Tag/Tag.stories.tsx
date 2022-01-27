@@ -19,45 +19,39 @@ export default {
 const AllTemplate = () => (
   <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
     <HStack spacing={50}>
-      <Tag size="s">Hello</Tag>
-      <Tag size="m">Hello</Tag>
-      <Tag>Hello</Tag>
+      {TagSizes.map((size) => (
+        <Tag size={size} label="Hello" />
+      ))}
     </HStack>
     <HStack spacing={50}>
-      <Tag size="s">
-        <Tag.LeftIcon as={IconAlertCircle} />
-        <Tag.Label>Hello</Tag.Label>
-      </Tag>
-      <Tag size="m">
-        <Tag.LeftIcon as={IconAlertCircle} />
-        <Tag.Label>Hello</Tag.Label>
-      </Tag>
-      <Tag>
-        <Tag.LeftIcon as={IconAlertCircle} />
-        <Tag.Label>Hello</Tag.Label>
-      </Tag>
+      {TagSizes.map((size) => (
+        <Tag
+          size={size}
+          label="Hello"
+          icon={IconAlertCircle}
+          iconPosition="left"
+        />
+      ))}
     </HStack>
     <HStack spacing={50}>
-      <Tag size="s">
-        <Tag.Label>Hello</Tag.Label>
-        <Tag.RightIcon as={IconAlertCircle} />
-      </Tag>
-      <Tag size="m">
-        <Tag.Label>Hello</Tag.Label>
-        <Tag.RightIcon as={IconAlertCircle} />
-      </Tag>
-      <Tag>
-        <Tag.Label>Hello</Tag.Label>
-        <Tag.RightIcon as={IconAlertCircle} />
-      </Tag>
+      {TagSizes.map((size) => (
+        <Tag
+          size={size}
+          label="Hello"
+          icon={IconAlertCircle}
+          iconPosition="right"
+        />
+      ))}
     </HStack>
   </VStack>
 );
 
 export const All = AllTemplate.bind({});
 
-const Template = (args) => <Tag {...args}>hello</Tag>;
+const Template = (args) => <Tag {...args} icon={IconAlertCircle} />;
 export const Playground = Template.bind({});
 Playground.args = {
-  size: 's',
+  size: 'l',
+  label: 'Hello',
+  iconPosition: 'left',
 };

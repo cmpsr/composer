@@ -14,5 +14,6 @@ export * from './Select';
 export * from './Slider';
 export * from './Spinner';
 export * from './Tabs';
+export * from './Tag';
 export * from './Text';
 export * from './TextPairing';

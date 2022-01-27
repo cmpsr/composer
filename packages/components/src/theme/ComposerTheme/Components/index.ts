@@ -13,6 +13,7 @@ import { Select } from './Select';
 import { Slider } from './Slider';
 import { Spinner } from './Spinner';
 import { Tabs } from './Tabs';
+import { Tag } from './Tag';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
 import { Radio } from './Radio';
@@ -35,6 +36,7 @@ export const components = {
   Slider,
   Spinner,
   Tabs,
+  Tag,
   Text,
   TextPairing,
 };

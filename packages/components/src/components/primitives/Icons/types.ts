@@ -1,8 +1,8 @@
 const iconSizes = ['s', 'm', 'l'] as const;
-type IconSizes = typeof iconSizes[number];
+type IconSize = typeof iconSizes[number];
 
 export interface IconProps {
   color?: string;
   boxSize?: string;
-  size?: IconSizes;
+  size?: IconSize;
 }

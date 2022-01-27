@@ -48,8 +48,8 @@ const AllTemplate = () => (
 
 export const All = AllTemplate.bind({});
 
-const Template = (args) => (
-  <Tag {...args} icon={args.showIcon ? IconAlertCircle : undefined} />
+const Template = ({ showIcon, label, ...args }) => (
+  <Tag label={label} {...args} icon={showIcon ? IconAlertCircle : undefined} />
 );
 export const Playground = Template.bind({});
 Playground.args = {

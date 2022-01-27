@@ -18,18 +18,25 @@ export const Tag: FC<TagProps> = ({
   const {
     container,
     label: labelStyle,
-    fontStyle,
     leftIcon,
     rightIcon,
   } = useStyleConfig('Tag', { size }) as any;
   return (
-    <ChakraTag {...fontStyle} {...container} {...rest}>
+    <ChakraTag {...container} {...rest}>
       {icon && iconPosition !== 'right' && (
-        <TagLeftIcon {...leftIcon} as={icon} />
+        <TagLeftIcon
+          data-testid="cmpsr.tag.left-icon"
+          {...leftIcon}
+          as={icon}
+        />
       )}
       <TagLabel {...labelStyle}>{label}</TagLabel>
       {icon && iconPosition === 'right' && (
-        <TagRightIcon {...rightIcon} as={icon} />
+        <TagRightIcon
+          data-testid="cmpsr.tag.right-icon"
+          {...rightIcon}
+          as={icon}
+        />
       )}
     </ChakraTag>
   );

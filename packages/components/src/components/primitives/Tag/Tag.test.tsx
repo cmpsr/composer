@@ -3,35 +3,25 @@ import '@testing-library/jest-dom';
 import { renderWithProviders } from 'tests/renderWithProviders';
 import { screen } from '@testing-library/react';
 import { Tag } from './Tag';
-import { IconAlertCircle } from '../Icons';
+import { IconAdjustments } from '../Icons';
 
 describe('Tag', () => {
   test('should render default tag component with a simple text', () => {
-    renderWithProviders(<Tag>Hello</Tag>);
+    renderWithProviders(<Tag label="Hello" />);
     screen.getByText(/Hello/i);
   });
 
-  test('should render a tag with leading icon', () => {
+  test('should render a tag with a left icon', () => {
     renderWithProviders(
-      <Tag>
-        <Tag.RightIcon as={IconAlertCircle} data-testid="cmpsr.leadingIcon" />
-        <Tag.Label data-testid="cmpsr.label">Hello</Tag.Label>
-      </Tag>
+      <Tag label="Hello" icon={IconAdjustments} iconPosition="left" />
     );
-
-    screen.getByTestId('cmpsr.label');
-    screen.getByTestId('cmpsr.leadingIcon');
+    screen.getByTestId('cmpsr.tag.left-icon');
   });
 
-  test('should render a tag with trailing icon', () => {
+  test('should render a tag a right icon', () => {
     renderWithProviders(
-      <Tag>
-        <Tag.Label data-testid="cmpsr.label">Hello</Tag.Label>
-        <Tag.RightIcon as={IconAlertCircle} data-testid="cmpsr.trailingIcon" />
-      </Tag>
+      <Tag label="Hello" icon={IconAdjustments} iconPosition="right" />
     );
-
-    screen.getByTestId('cmpsr.label');
-    screen.getByTestId('cmpsr.trailingIcon');
+    screen.getByTestId('cmpsr.tag.right-icon');
   });
 });

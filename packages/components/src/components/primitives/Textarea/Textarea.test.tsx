@@ -22,9 +22,7 @@ describe('Textarea', () => {
   test('should render an invalid textarea', () => {
     renderWithProviders(<Textarea isInvalid />);
     const textarea = screen.getByTestId(testId);
-    expect(textarea).toHaveStyle({
-      borderColor: `var(--chakra-colors-alert-error-default)`,
-    });
+    expect(textarea).toBeInvalid();
   });
 
   test('should render a disabled textarea', () => {

@@ -1,5 +1,5 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
-import { inputStyles } from 'theme/ComposerTheme/styles';
+import { inputStyles } from '../styles';
 
 const textStyles = {
   large: 'text-body-regular',

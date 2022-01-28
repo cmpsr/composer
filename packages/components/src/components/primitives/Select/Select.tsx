@@ -5,7 +5,7 @@ import { SelectProps } from './types';
 export const Select: FC<SelectProps> = ({ value, placeholder, ...props }) => {
   const {
     field: { color, placeholderColor },
-  } = useMultiStyleConfig('Select', { value }) as {
+  } = useMultiStyleConfig('Select', { value, iconSize: props.iconSize }) as {
     field: { color: string; placeholderColor: string };
   };
 

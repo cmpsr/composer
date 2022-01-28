@@ -29,38 +29,36 @@ const Template = () => {
   ];
 
   return (
-    <>
-      <Flex direction="column" justifyContent="flex-start" ml="15" gap="2">
-        {variants.map((variant) => (
-          <>
-            <Heading size="md">{variant.toUpperCase()}S</Heading>
-            {toastContentVariations.map(
-              ({ title, description, isClosable, status }, index) => {
-                return (
-                  <HStack key={index}>
-                    <ToastWrapper
-                      toastOptions={{
-                        title,
-                        description,
-                        isClosable,
-                        status,
-                        variant,
-                      }}
-                    >
-                      <Button>
-                        {status} {isClosable && 'closable '}
-                        {description && 'with description '}
-                      </Button>
-                    </ToastWrapper>
-                  </HStack>
-                );
-              }
-            )}
-            <Divider mt={5} />
-          </>
-        ))}
-      </Flex>
-    </>
+    <Flex direction="column" justifyContent="flex-start" ml="15" gap="2">
+      {variants.map((variant) => (
+        <>
+          <Heading size="md">{variant.toUpperCase()}S</Heading>
+          {toastContentVariations.map(
+            ({ title, description, isClosable, status }, index) => {
+              return (
+                <HStack key={index}>
+                  <ToastWrapper
+                    toastOptions={{
+                      title,
+                      description,
+                      isClosable,
+                      status,
+                      variant,
+                    }}
+                  >
+                    <Button>
+                      {status} {isClosable && 'closable '}
+                      {description && 'with description '}
+                    </Button>
+                  </ToastWrapper>
+                </HStack>
+              );
+            }
+          )}
+          <Divider mt={5} />
+        </>
+      ))}
+    </Flex>
   );
 };
 

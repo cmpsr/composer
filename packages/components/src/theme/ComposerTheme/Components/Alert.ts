@@ -1,9 +1,10 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 import { alertAnatomy as parts } from '@chakra-ui/anatomy';
 import { PartsStyleFunction } from '@chakra-ui/theme-tools';
+import { getAlertStatus } from '../../../utils';
 
 const solidToastVariant: PartsStyleFunction<typeof parts> = ({ status }) => {
-  const alertStatus = status === 'info' ? 'inform' : status;
+  const alertStatus = getAlertStatus(status);
   return {
     container: {
       backgroundColor: `alert-${alertStatus}-default`,
@@ -28,7 +29,7 @@ const subtleToastVariant: PartsStyleFunction<typeof parts> = ({
   if (hasAccent)
     accentType = (variant as string).substring(0, variant.indexOf('-accent'));
 
-  const alertStatus = status === 'info' ? 'inform' : status;
+  const alertStatus = getAlertStatus(status);
   const accents = {
     top: {
       borderTop: `0.25rem solid var(--chakra-colors-alert-${alertStatus}-default)`,

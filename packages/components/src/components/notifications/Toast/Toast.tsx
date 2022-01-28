@@ -2,24 +2,17 @@ import React, { FC } from 'react';
 import { Box, useToast } from '@chakra-ui/react';
 
 import { ToastProps } from './types';
+import { getAlertChakraStatus } from 'utils';
 
-export const ToastWrapper: FC<ToastProps> = ({
-  children,
-  toastOptions,
-  as,
-}) => {
+export const ToastWrapper: FC<ToastProps> = ({ toastOptions, ...props }) => {
   const toast = useToast();
   const { status, ...rest } = toastOptions;
 
   return (
     <Box
       data-testid="cmpsr.toast.box-wrapper"
-      as={as}
-      onClick={() =>
-        toast({ status: status === 'inform' ? 'info' : status, ...rest })
-      }
-    >
-      {children}
-    </Box>
+      onClick={() => toast({ status: getAlertChakraStatus(status), ...rest })}
+      {...props}
+    />
   );
 };

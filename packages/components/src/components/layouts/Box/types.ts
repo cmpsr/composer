@@ -1,3 +1,1 @@
-import { BoxProps as ChakraBoxProps } from '@chakra-ui/react';
-
-export interface BoxProps extends ChakraBoxProps {}
+export { BoxProps } from '@chakra-ui/react';

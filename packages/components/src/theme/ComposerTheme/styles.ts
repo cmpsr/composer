@@ -7,7 +7,7 @@ const baseTextStyle = {
 const linkTextStyle = {
   ...baseTextStyle,
   color: 'text-link-accent-default',
-  textDecorationLine: 'underline',
+  textDecoration: 'underline',
 };
 
 export const textStyles = {
@@ -202,5 +202,20 @@ export const inputStyles = {
     py: '0.375rem',
     minH: '2rem',
     minW: '8rem',
+  },
+};
+
+export const iconSizes = {
+  large: {
+    boxSize: '1.5rem',
+  },
+  medium: {
+    boxSize: '1.25rem',
+  },
+  small: {
+    boxSize: '1rem',
+  },
+  'extra-small': {
+    boxSize: '0.75rem',
   },
 };

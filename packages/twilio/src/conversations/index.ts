@@ -7,4 +7,3 @@ export const useTwilioConversation = (
 ) => new TwilioConversation({ accountSid, authToken, serviceId });
 
 export { TwilioConversation };
-export * from 'types/TwilioConversation';

@@ -31,11 +31,12 @@ export class Plaid {
     const token = await this.client.exchangePublicToken(
       this.config.publicToken
     );
-    this.privateToken = {
+    const privateToken = {
       accessToken: token.access_token,
       itemId: token.item_id,
     };
-    return this.privateToken!;
+    this.privateToken = privateToken;
+    return privateToken;
   }
 
   async getAuth(accountIds: string[] = undefined) {
@@ -73,7 +74,7 @@ export class Plaid {
   async getIdentity() {
     const { accessToken } = await this.getAccessToken();
     const { accounts } = await this.client.getIdentity(accessToken);
-    var identities = accounts.map((account) => {
+    const identities = accounts.map((account) => {
       return account.owners;
     });
     return [].concat(...identities); // flat identities array
@@ -87,7 +88,7 @@ export class Plaid {
 
   async createAssetReport(
     options: CreateAssetsReportOptions,
-    daysRequested: number = 730
+    daysRequested = 730
   ) {
     const { accessToken } = await this.getAccessToken();
     const report = await this.client.createAssetReport(
@@ -101,7 +102,7 @@ export class Plaid {
   async refreshAssetReport(
     reportAccessToken: string,
     options: CreateAssetsReportOptions = undefined,
-    daysRequested: number = 730
+    daysRequested = 730
   ) {
     const report = await this.client.refreshAssetReport(
       reportAccessToken,
@@ -111,10 +112,7 @@ export class Plaid {
     return report;
   }
 
-  async getAssetReport(
-    reportAccessToken: string,
-    includeInsights: boolean = false
-  ) {
+  async getAssetReport(reportAccessToken: string, includeInsights = false) {
     const report = this.client.getAssetReport(
       reportAccessToken,
       includeInsights

@@ -14,6 +14,7 @@ import { Select } from './Select';
 import { Link } from './Link';
 import { Slider } from './Slider';
 import { Spinner } from './Spinner';
+import { Switch } from './Switch';
 import { Tabs } from './Tabs';
 import { Tag } from './Tag';
 import { Text } from './Text';
@@ -39,6 +40,7 @@ export const components = {
   Radio,
   Slider,
   Spinner,
+  Switch,
   Tabs,
   Tag,
   Text,

@@ -12,6 +12,7 @@ export * from './Image';
 export * from './Icons';
 export * from './Input';
 export * from './Link';
+export * from './Progress';
 export * from './Radio';
 export * from './Select';
 export * from './Slider';

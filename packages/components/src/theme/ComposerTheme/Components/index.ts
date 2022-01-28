@@ -12,6 +12,7 @@ import { Icon } from './Icon';
 import { Input } from './Input';
 import { Select } from './Select';
 import { Link } from './Link';
+import { Progress } from './Progress';
 import { Slider } from './Slider';
 import { Spinner } from './Spinner';
 import { Switch } from './Switch';
@@ -36,6 +37,7 @@ export const components = {
   Icon,
   Input,
   Link,
+  Progress,
   Select,
   Radio,
   Slider,

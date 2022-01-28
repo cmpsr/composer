@@ -7,10 +7,17 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import * as Icons from './Icons';
+import { iconSizes } from './types';
 import { Box, Flex, Grid } from 'components';
 
 export default {
   title: 'Components/Primitives/Icons',
+  argTypes: {
+    size: {
+      options: iconSizes,
+      control: { type: 'select' },
+    },
+  },
 } as Meta;
 
 const Template = (args) => (
@@ -848,5 +855,4 @@ const Template = (args) => (
 export const All = Template.bind({});
 All.args = {
   color: 'primary-default',
-  boxSize: '1.5rem',
 };

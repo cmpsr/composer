@@ -19,7 +19,7 @@ export const Link: FC<LinkProps> = ({
         flexDirection={iconPosition === 'leading' ? 'row-reverse' : 'row'}
       >
         <Text isTruncated>{children}</Text>
-        <Icon size={size} />
+        <Icon size={size === 'l' ? 'm' : size} />
       </Flex>
     ) : (
       <Text isTruncated>{children}</Text>

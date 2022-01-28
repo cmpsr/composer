@@ -33,10 +33,10 @@ export const Tag: ComponentStyleConfig = {
         ...theme.textStyles['text-body-floating-label-medium'],
       },
       leftIcon: {
-        boxSize: '0.75em',
+        boxSize: theme.components.Icon.sizes.xs.boxSize,
       },
       rightIcon: {
-        boxSize: '0.75em',
+        boxSize: theme.components.Icon.sizes.xs.boxSize,
       },
     }),
     m: ({ theme }) => ({
@@ -47,10 +47,10 @@ export const Tag: ComponentStyleConfig = {
         ...theme.textStyles['text-body-meta-medium'],
       },
       leftIcon: {
-        boxSize: '0.75em',
+        boxSize: theme.components.Icon.sizes.xs.boxSize,
       },
       rightIcon: {
-        boxSize: '0.75em',
+        boxSize: theme.components.Icon.sizes.xs.boxSize,
       },
     }),
     l: ({ theme }) => ({
@@ -61,10 +61,10 @@ export const Tag: ComponentStyleConfig = {
         ...theme.textStyles['text-body-medium'],
       },
       leftIcon: {
-        boxSize: '1em',
+        boxSize: theme.components.Icon.sizes.s.boxSize,
       },
       rightIcon: {
-        boxSize: '1em',
+        boxSize: theme.components.Icon.sizes.s.boxSize,
       },
     }),
   },

@@ -7,6 +7,7 @@ module.exports = {
           components: './src/components',
           theme: './src/theme',
           hooks: './src/hooks',
+          utils: './src/utils',
         },
       },
     ],

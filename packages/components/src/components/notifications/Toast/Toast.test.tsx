@@ -6,7 +6,7 @@ import { variants, ToastOptions, statuses } from './types';
 import { Button } from '@chakra-ui/react';
 
 describe('Toast component', () => {
-  const wrapperId = 'composer-toast-box-wrapper';
+  const wrapperId = 'cmpsr.toast.box-wrapper';
 
   describe('Content', () => {
     const toastOptions: ToastOptions = {

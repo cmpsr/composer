@@ -13,7 +13,7 @@ export const ToastWrapper: FC<ToastProps> = ({
 
   return (
     <Box
-      data-testid="composer-toast-box-wrapper"
+      data-testid="cmpsr.toast.box-wrapper"
       as={as}
       onClick={() =>
         toast({ status: status === 'inform' ? 'info' : status, ...rest })

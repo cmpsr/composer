@@ -1,7 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
-import { PartsStyleFunction, PartsStyleObject } from '@chakra-ui/theme-tools';
+import { PartsStyleObject } from '@chakra-ui/theme-tools';
 import { selectAnatomy as parts } from '@chakra-ui/anatomy';
-import { iconSizes, inputStyles } from '../styles';
+import { inputStyles } from '../styles';
 
 const iconSpacing = { paddingInlineEnd: '2rem' };
 
@@ -17,22 +17,14 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   },
 };
 
-const sizeNames = {
-  l: 'large',
-  m: 'medium',
-  s: 'small',
-  xs: 'extra-small',
-};
-
-const baseStyle: PartsStyleFunction<typeof parts> = ({ iconSize }) => {
-  const sizeName = sizeNames[iconSize];
-  const { boxSize: iconBoxSize } = iconSizes[sizeName];
-
-  return {
+export const Select: ComponentStyleConfig = {
+  baseStyle: ({ theme }) => ({
     icon: {
       '> svg': {
         // Icons are styled with inline style, which has highest priority, so !important is required to be able to override them.
-        boxSize: `${iconBoxSize} !important`,
+        boxSize: `${theme.components.Icon.sizes.m.boxSize}  !important`,
+        width: `${theme.components.Icon.sizes.m.boxSize}  !important`,
+        height: `${theme.components.Icon.sizes.m.boxSize}  !important`,
       },
     },
     field: {
@@ -62,18 +54,10 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ iconSize }) => {
         boxShadow: '0 0 0 0.125rem var(--chakra-colors-alert-error-default)',
       },
     },
-  };
-};
-
-export const Select: ComponentStyleConfig = {
-  baseStyle,
+  }),
   defaultProps: {
     size: 'm',
-    iconSize: 'm',
     error: false,
   },
   sizes,
-  variants: {
-    outline: baseStyle,
-  },
 };

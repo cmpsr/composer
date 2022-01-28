@@ -1,9 +1,8 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { HStack, StackDivider, VStack } from '@chakra-ui/react';
-import { Text } from '..';
 import { Switch } from '.';
 import { switchLabelPositions, switchSizes } from './types';
+import { Grid, Text } from 'components';
 
 export default {
   component: Switch,
@@ -17,12 +16,6 @@ export default {
       option: switchLabelPositions,
       control: { type: 'select' },
     },
-    isDisabled: {
-      control: { type: 'boolean' },
-    },
-    label: {
-      control: { type: 'text' },
-    },
   },
 } as Meta;
 
@@ -34,9 +27,14 @@ const sizeLabels = {
 
 const AllTemplate = () => {
   return (
-    <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
+    <Grid columns={5} spacing="spacer-4" width="100%">
+      <Text variant="text-body-bold">Size</Text>
+      <Text variant="text-body-bold">Left label</Text>
+      <Text variant="text-body-bold">Right label</Text>
+      <Text variant="text-body-bold">No label</Text>
+      <Text variant="text-body-bold">Disabled</Text>
       {switchSizes.map((size) => (
-        <HStack key={size}>
+        <>
           <Text>{sizeLabels[size]}</Text>
           {switchLabelPositions.map((labelPosition) => (
             <Switch
@@ -46,9 +44,10 @@ const AllTemplate = () => {
               label="Test"
             />
           ))}
-        </HStack>
+          <Switch size={size} isDisabled label="Test" labelPosition="right" />
+        </>
       ))}
-    </VStack>
+    </Grid>
   );
 };
 

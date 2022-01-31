@@ -8,7 +8,7 @@ export const IconButton: FC<IconButtonProps> = ({ ...props }) => {
     icon: { width: string; height: string };
   };
 
-  const Icon = React.cloneElement(props.icon, { ...icon });
+  const Icon = React.cloneElement(props.icon, { ...icon, 'data-testid': 'cmpsr.icon.button.icon' });
 
-  return <ChakraIconButton {...iconButtonStyles} {...props} icon={Icon} />;
+  return <ChakraIconButton {...iconButtonStyles} {...props} icon={Icon} data-testid="cmpsr.icon.button" />;
 };

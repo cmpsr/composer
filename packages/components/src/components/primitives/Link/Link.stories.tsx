@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Link } from './Link';
 import { VStack, Divider } from '@chakra-ui/react';
-import { linkSizes, linkIconPositions } from './types';
+import { linkSizes } from './types';
 import * as Icons from '../Icons';
 
 export default {
@@ -19,21 +19,27 @@ const AllTemplate = () => {
             Size {size.toUpperCase()} link
           </Link>
           <Divider />
-          {linkIconPositions.map((position) => (
-            <>
-              <Link
-                iconPosition={position}
-                icon={Icons.IconExternalLink}
-                size={size}
-                key={key}
-                role="link"
-                href="#"
-              >
-                Size {size.toUpperCase()} link with {position} icon
-              </Link>
-              <Divider />
-            </>
-          ))}
+
+          <>
+            <Link
+              leftIcon={Icons.IconExternalLink}
+              size={size}
+              role="link"
+              href="#"
+            >
+              Size {size.toUpperCase()} link with left icon
+            </Link>
+            <Divider />
+            <Link
+              rightIcon={Icons.IconExternalLink}
+              size={size}
+              role="link"
+              href="#"
+            >
+              Size {size.toUpperCase()} link with right icon
+            </Link>
+            <Divider />
+          </>
         </>
       ))}
     </VStack>
@@ -42,12 +48,13 @@ const AllTemplate = () => {
 
 export const All = AllTemplate.bind({});
 
-const Template = ({ showIcon, ...args }) => (
+const Template = ({ showLeftIcon, showRightIcon, ...args }) => (
   <VStack>
     <Link
       href="#"
       role="link"
-      {...(showIcon && { icon: Icons.IconExternalLink })}
+      {...(showLeftIcon && { leftIcon: Icons.IconExternalLink })}
+      {...(showRightIcon && { rightIcon: Icons.IconExternalLink })}
       {...args}
     >
       Playground
@@ -59,6 +66,6 @@ export const Playground = Template.bind({});
 
 Playground.args = {
   size: 'l',
-  iconPosition: 'leading',
-  showIcon: true,
+  showLeftIcon: true,
+  showRightIcon: true,
 };

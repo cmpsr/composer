@@ -6,98 +6,65 @@ import { Link } from './Link';
 import { linkSizes } from './types';
 import { IconExternalLink } from '../Icons';
 
-const textElement = <span data-testid="test.id">span component</span>;
-
 describe('Sizes', () => {
-  linkSizes.forEach((size) => {
-    it(`Should render the right containers for the size ${size}`, () => {
+  it('should render an anchor', () => {
+    renderWithProviders(
+      <Link role="link" data-testid="test.id">
+        Link
+      </Link>
+    );
+
+    const linkComponent = screen.getByTestId('test.id');
+    expect(linkComponent.nodeName).toBe('A');
+  });
+
+  it('should render children', () => {
+    renderWithProviders(
+      <Link role="link" data-testid="test.id">
+        Link
+      </Link>
+    );
+    screen.getByText('Link');
+  });
+
+  it.each(linkSizes)(
+    `should render the right containers for the size %s`,
+    (size) => {
       const component = TestRenderer.create(
-        <Link size={size} href="#" icon={IconExternalLink} role="link">
-          {textElement}
+        <Link size={size} href="#" role="link">
+          Link
         </Link>
       ).root;
 
       const linkContainer = component.findByProps({
         'data-testid': 'cmpsr.link.container',
       });
-
       expect(linkContainer.props.size).toEqual(size);
-    });
-  });
+    }
+  );
 });
 
 describe('Link and icon components', () => {
-  it('Should render', () => {
+  it('should render', () => {
     renderWithProviders(<Link data-testid="test.id" />);
     screen.getByTestId('test.id');
   });
 
-  it('Should render a link with an icon on left side as default', () => {
-    const linkComponent = TestRenderer.create(
-      <Link role="link" data-testid="test.id" icon={IconExternalLink}>
-        {textElement}
-      </Link>
-    ).root;
-
-    const flexWrapper = linkComponent.findByProps({
-      'data-testid': 'cmpsr.flex.container',
-    });
-
-    expect(flexWrapper.props.flexDirection).toBe('row');
-  });
-
-  it('Should render a link with an icon on the right side', () => {
-    const linkComponent = TestRenderer.create(
-      <Link
-        role="link"
-        iconPosition="trailing"
-        data-testid="test.id"
-        icon={IconExternalLink}
-      >
-        {textElement}
-      </Link>
-    ).root;
-
-    const flexWrapper = linkComponent.findByProps({
-      'data-testid': 'cmpsr.flex.container',
-    });
-
-    expect(flexWrapper.props.flexDirection).toBe('row');
-  });
-
-  it('Should render a link with an icon on the left side', () => {
-    const linkComponent = TestRenderer.create(
-      <Link
-        role="link"
-        iconPosition="leading"
-        data-testid="test.id"
-        icon={IconExternalLink}
-      >
-        {textElement}
-      </Link>
-    ).root;
-
-    const flexWrapper = linkComponent.findByProps({
-      'data-testid': 'cmpsr.flex.container',
-    });
-
-    expect(flexWrapper.props.flexDirection).toBe('row-reverse');
-  });
-
-  it('Should render a simple link without icon', () => {
+  it('should render a link with an icon on the right side', () => {
     renderWithProviders(
-      <Link role="link" data-testid="test.id">
-        {textElement}
+      <Link role="link" data-testid="test.id" rightIcon={IconExternalLink}>
+        Link
       </Link>
     );
+    screen.getByTestId('cmpsr.link.right-icon');
+  });
 
-    const linkComponent = screen.queryAllByTestId('test.id');
-    const [parentNode, firstChild] = linkComponent;
-
-    expect(linkComponent.length).toBe(2);
-    expect(parentNode.nodeName).toBe('A');
-    expect(firstChild.nodeName).toBe('SPAN');
-    expect(firstChild.nodeName).not.toBe('I');
-    expect(parentNode.nodeName).not.toBe('I');
+  it('should render a link with an icon on the left side', () => {
+    renderWithProviders(
+      <Link role="link" data-testid="test.id" leftIcon={IconExternalLink}>
+        Link
+      </Link>
+    );
+    screen.getByTestId('cmpsr.link.left-icon');
   });
 });

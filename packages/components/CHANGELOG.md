@@ -1,5 +1,27 @@
 # @cmpsr/components
 
+## 1.7.0
+
+### Minor Changes
+
+- 3cb65d0: implement Tag component
+- 27e7753: Implement Accordion component
+- 828cedf: Breadcrumb component
+- d43134d: Implementation of the Switch/Toggle component with tests and stories
+- 8fe0f03: create progress component
+- 7c8ecdb: Adding of Link component, tests and storybook.
+
+### Patch Changes
+
+- 0fb66d4: COM-135 feat: Adding Radio button component
+
+## 1.6.0
+
+### Minor Changes
+
+- 9f208ca: Implementation of Input component, with their tests and stories
+- 96a0c87: Implementation of a new iconSize prop inside the Select component to be able to change the icon size of the Select component
+
 ## 1.5.1
 
 ### Patch Changes

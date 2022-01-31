@@ -1,5 +1,5 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
-import { inputStyles } from 'theme/ComposerTheme/styles';
+import { inputStyles } from '../styles';
 
 const textStyles = {
   large: 'text-body-regular',
@@ -20,15 +20,6 @@ const iconContainerStyles = {
 };
 
 export const iconStyles = {
-  large: {
-    boxSize: '1.5rem',
-  },
-  medium: {
-    boxSize: '1.25rem',
-  },
-  small: {
-    boxSize: '1.25rem',
-  },
   disabled: {
     color: 'text-disabled',
   },
@@ -118,14 +109,14 @@ export const inputGroupStyles = {
   },
 };
 
-const calculateSize = (size: string) => {
+const calculateSize = (size: string, iconSize: string) => {
   return ({ theme }) => {
     return {
       elementContainer: {
         ...iconContainerStyles[size],
       },
       element: {
-        ...iconStyles[size],
+        boxSize: theme.components.Icon.sizes[iconSize].boxSize,
       },
       leftLabel: {
         ...labelStyles.sizes[size],
@@ -150,9 +141,9 @@ const calculateSize = (size: string) => {
 };
 
 const sizes = {
-  l: calculateSize('large'),
-  m: calculateSize('medium'),
-  s: calculateSize('small'),
+  l: calculateSize('large', 'l'),
+  m: calculateSize('medium', 'm'),
+  s: calculateSize('small', 'm'),
 };
 
 export const getInputGroupStyle = (

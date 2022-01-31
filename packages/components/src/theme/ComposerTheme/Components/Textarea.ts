@@ -16,6 +16,7 @@ const baseStyle = {
   _disabled: {
     backgroundColor: 'background-action-disabled',
     borderColor: 'ui-element-outline-disabled',
+    color: 'text-disabled',
     _placeholder: {
       color: 'text-disabled'
     }

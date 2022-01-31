@@ -12,11 +12,9 @@ export const Link: FC<LinkProps> = ({
   ...props
 }) => (
   <ChakraLink size={size} data-testid="cmpsr.link.container" {...props}>
-    <Flex direction="row" alignItems="center">
+    <Flex direction="row" alignItems="center" columnGap="0.5rem">
       {LeadingIcon && <LeadingIcon size={getIconSize(size)} data-testid="cmpsr.link.leading-icon" />}
-      <Text {...(LeadingIcon && { ml: '0.5rem' })} {...(TrailingIcon && { mr: '0.5rem' })} isTruncated>
-        {children}
-      </Text>
+      <Text isTruncated>{children}</Text>
       {TrailingIcon && <TrailingIcon size={getIconSize(size)} data-testid="cmpsr.link.trailing-icon" />}
     </Flex>
   </ChakraLink>

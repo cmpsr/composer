@@ -1,11 +1,17 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Slider } from './Slider';
 import { VStack, StackDivider, HStack, Divider } from '@chakra-ui/layout';
+import { Slider } from './Slider';
 
 export default {
   component: Slider,
   title: 'Components/Primitives/Slider',
+  argTypes: {
+    orientation: {
+      options: ['vertical', 'horizontal'],
+      control: { type: 'select' },
+    },
+  },
 } as Meta;
 
 const Template = () => {
@@ -41,7 +47,6 @@ const PlaygroundTemplate = (args) => <Slider {...args} />;
 export const Playground = PlaygroundTemplate.bind({});
 
 Playground.args = {
-  thumbProps: {
-    boxSize: 6,
-  },
+  minH: 200,
+  orientation: 'horizontal',
 };

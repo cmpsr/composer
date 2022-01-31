@@ -86,6 +86,7 @@ export const Alert: ComponentStyleConfig = {
     },
     icon: {
       ...theme.components.Icon.sizes.l,
+      alignSelf: 'flex-start',
       svg: {
         ...theme.components.Icon.sizes.l,
       },

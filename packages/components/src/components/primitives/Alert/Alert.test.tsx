@@ -28,10 +28,7 @@ describe('Alert', () => {
       </ComposerProvider>
     ).root;
 
-    expect(
-      alertInstance.findByProps({ 'data-testid': 'cmpsr.alert-icon' }).props
-        .color
-    ).toBe('text-light');
+    expect(alertInstance.findByProps({ 'data-testid': 'cmpsr.alert-icon' }).props.color).toBe('text-light');
   });
 
   test('should reflect the correct state (subtle)', () => {
@@ -41,10 +38,7 @@ describe('Alert', () => {
       </ComposerProvider>
     ).root;
 
-    expect(
-      alertInstance.findByProps({ 'data-testid': 'cmpsr.alert-icon' }).props
-        .color
-    ).toBe('alert-error-default');
+    expect(alertInstance.findByProps({ 'data-testid': 'cmpsr.alert-icon' }).props.color).toBe('alert-error-default');
   });
 
   test('should wrap up the subtitle if titleAligment is top', () => {
@@ -62,13 +56,7 @@ describe('Alert', () => {
   });
 
   test('should hide the title if titleAligment is none', () => {
-    renderWithProviders(
-      <Alert
-        titleAlignment="none"
-        title="A title"
-        description="A description"
-      />
-    );
+    renderWithProviders(<Alert titleAlignment="none" title="A title" description="A description" />);
     expect(screen.queryByTestId('cmpsr.alert-title')).toBeNull();
   });
 

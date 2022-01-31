@@ -1,9 +1,15 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
 export const Accordion: ComponentStyleConfig = {
-  baseStyle: {
+  baseStyle: ({ theme }) => ({
+    icon: theme.components.Icon.sizes.l,
+    button: {
+      px: '1rem',
+      py: '0.5rem',
+    },
     panel: {
+      padding: '1rem',
       textStyle: 'text-body-regular',
     },
-  },
+  }),
 };

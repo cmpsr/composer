@@ -21,6 +21,7 @@ import { Tag } from './Tag';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
 import { Radio } from './Radio';
+import { CloseButton } from './CloseButton';
 
 export const components = {
   Accordion,
@@ -33,6 +34,7 @@ export const components = {
   Card,
   CircularProgress,
   Checkbox,
+  CloseButton,
   Divider,
   Icon,
   Input,

@@ -26,6 +26,7 @@ max_line_length = 1000
 
 [*.ts*]
 quote_type = single
+max_line_length = 120
 
 [*.js*]
 quote_type = single

@@ -41,6 +41,19 @@ const AllTemplate = () => (
             </Button>
           ))}
         </HStack>
+        <HStack key={variant}>
+          {ButtonSizes.map((size) => (
+            <Button
+              variant={variant}
+              size={size}
+              key={size}
+              trailingIcon={Icons.IconExternalLink}
+              leadingIcon={Icons.IconExternalLink}
+            >
+              {variant}
+            </Button>
+          ))}
+        </HStack>
       </VStack>
     ))}
   </VStack>

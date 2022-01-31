@@ -1,26 +1,22 @@
-export {
-  BreadcrumbProps,
-  BreadcrumbItemProps,
-  BreadcrumbLinkProps,
-  BreadcrumbSeparatorProps,
-} from '@chakra-ui/react';
-import {
-  BreadcrumbItemProps,
-  BreadcrumbLinkProps,
-  BreadcrumbSeparatorProps,
-} from '@chakra-ui/react';
+import { SpaceProps } from '@chakra-ui/react';
 import { FC } from 'react';
-import { IconProps } from '..';
+import { IconProps, TextProps } from '..';
+import { FlexProps } from '../../layouts';
 
 export interface BreadcrumbItem {
   text: string;
-  link?: string;
-  leftIcon?: FC<IconProps>;
-  rightIcon?: FC<IconProps>;
+  href?: string;
+  leadingIcon?: FC<IconProps>;
+  trailingIcon?: FC<IconProps>;
 }
 
-export interface BreadcrumbStaticMembers {
-  Item: FC<BreadcrumbItemProps>;
-  Link: FC<BreadcrumbLinkProps>;
-  Separator: FC<BreadcrumbSeparatorProps>;
+export interface BreadcrumbProps extends SpaceProps {
+  items: BreadcrumbItem[];
+  separator?: string | React.ReactElement;
+}
+
+export interface BreadcrumbStyle {
+  container: FlexProps;
+  separator: TextProps;
+  lastItem: TextProps;
 }

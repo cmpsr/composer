@@ -1,13 +1,18 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 export const Breadcrumb: ComponentStyleConfig = {
-  baseStyle: {
-    item: {
-      textStyle: 'text-body-medium',
-      color: 'text-link-primary-default',
-      span: {
-        color: 'text-secondary',
-      },
+  parts: ['container', 'separator', 'lastItem'],
+  baseStyle: ({ theme }) => ({
+    container: {
+      columnGap: '0.5rem',
     },
-  },
+    separator: {
+      ...theme.textStyles['text-body-medium'],
+      color: 'text-primary',
+    },
+    lastItem: {
+      ...theme.textStyles['text-body-medium'],
+      color: 'text-secondary',
+    },
+  }),
 };

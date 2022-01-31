@@ -1,7 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { PartsStyleFunction, PartsStyleObject } from '@chakra-ui/theme-tools';
 import { selectAnatomy as parts } from '@chakra-ui/anatomy';
-import { iconSizes, inputStyles } from '../styles';
+import { inputStyles } from '../styles';
 
 const iconSpacing = { paddingInlineEnd: '2rem' };
 
@@ -17,22 +17,12 @@ const sizes: Record<string, PartsStyleObject<typeof parts>> = {
   },
 };
 
-const sizeNames = {
-  l: 'large',
-  m: 'medium',
-  s: 'small',
-  xs: 'extra-small',
-};
-
-const baseStyle: PartsStyleFunction<typeof parts> = ({ iconSize }) => {
-  const sizeName = sizeNames[iconSize];
-  const { boxSize: iconBoxSize } = iconSizes[sizeName];
-
+const baseStyle: PartsStyleFunction<typeof parts> = ({ theme, iconSize }) => {
   return {
     icon: {
       '> svg': {
         // Icons are styled with inline style, which has highest priority, so !important is required to be able to override them.
-        boxSize: `${iconBoxSize} !important`,
+        boxSize: `${theme.components.Icon.sizes[iconSize].boxSize} !important`,
       },
     },
     field: {

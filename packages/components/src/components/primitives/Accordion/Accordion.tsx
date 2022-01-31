@@ -7,21 +7,12 @@ import {
   AccordionIcon,
 } from '@chakra-ui/react';
 
-import {
-  AccordionProps,
-  AccordionButtonProps,
-  AccordionStaticMembers,
-} from './types';
+import { AccordionProps, AccordionButtonProps, AccordionStaticMembers } from './types';
 
-export const Accordion: FC<AccordionProps> & AccordionStaticMembers = (
-  props
-) => <ChakraAccordion {...props} />;
+export const Accordion: FC<AccordionProps> & AccordionStaticMembers = (props) => <ChakraAccordion {...props} />;
 
 const AccordionButton: FC<AccordionButtonProps> = ({ highlight, ...props }) => (
-  <ChakraAccordionButton
-    _expanded={highlight && { bg: 'background-action-active' }}
-    {...props}
-  />
+  <ChakraAccordionButton _expanded={highlight && { bg: 'background-action-active' }} {...props} />
 );
 
 Accordion.Item = AccordionItem;

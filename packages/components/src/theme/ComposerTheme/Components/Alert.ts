@@ -79,13 +79,17 @@ const generateOtherVariants: PartsStyleFunction<typeof parts> = (props) => {
 };
 
 export const Alert: ComponentStyleConfig = {
-  baseStyle: {
+  baseStyle: ({ theme }) => ({
     container: {
       borderRadius: '0.4rem',
       padding: '1rem',
     },
     icon: {
-      boxSize: '1.5rem',
+      ...theme.components.Icon.sizes.l,
+      alignSelf: 'flex-start',
+      svg: {
+        ...theme.components.Icon.sizes.l,
+      },
       status: {
         success: {
           color: 'alert-success-default',
@@ -111,7 +115,7 @@ export const Alert: ComponentStyleConfig = {
       textStyle: 'text-body-regular',
       paddingRight: '1.7rem',
     },
-  },
+  }),
   defaultProps: {
     variant: 'solid',
   },

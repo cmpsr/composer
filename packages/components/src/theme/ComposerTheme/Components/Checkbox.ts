@@ -15,8 +15,10 @@ export const Checkbox: ComponentStyleConfig = {
       color: 'text-primary',
       _checked: {
         background: 'primary-default',
+        borderColor: 'primary-default',
         _hover: {
           background: 'primary-hover',
+          borderColor: 'primary-hover',
         },
         _disabled: {
           borderColor: 'ui-element-outline-disabled',
@@ -37,23 +39,35 @@ export const Checkbox: ComponentStyleConfig = {
     },
   },
   sizes: {
-    s: {
+    s: ({ theme }) => ({
       control: { h: 3, w: 3 },
       label: { textStyle: 'text-body-meta-regular' },
-      icon: { fontSize: '0.45rem' },
-    },
-    m: {
+      icon: {
+        boxSize: theme.components.Icon.sizes.xs.boxSize,
+        height: theme.components.Icon.sizes.xs.boxSize,
+        width: theme.components.Icon.sizes.xs.boxSize,
+      },
+    }),
+    m: ({ theme }) => ({
       control: { w: 4, h: 4 },
       label: { textStyle: 'text-body-regular' },
-      icon: { fontSize: '0.625rem' },
-    },
-    l: {
+      icon: {
+        boxSize: theme.components.Icon.sizes.s.boxSize,
+        height: theme.components.Icon.sizes.s.boxSize,
+        width: theme.components.Icon.sizes.s.boxSize,
+      },
+    }),
+    l: ({ theme }) => ({
       control: { w: 5, h: 5 },
       label: { textStyle: 'text-body-large-regular' },
-      icon: { fontSize: '0.625rem' },
-    },
+      icon: {
+        boxSize: theme.components.Icon.sizes.m.boxSize,
+        height: theme.components.Icon.sizes.m.boxSize,
+        width: theme.components.Icon.sizes.m.boxSize,
+      },
+    }),
   },
   defaultProps: {
-    size: 'md',
+    size: 'm',
   },
 };

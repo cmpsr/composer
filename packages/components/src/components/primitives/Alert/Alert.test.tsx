@@ -1,7 +1,7 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { screen, renderWithProviders } from 'tests/renderWithProviders';
-import { ComposerProvider } from '../../../theme/ComposerProvider';
+import { ComposerProvider } from 'theme/ComposerProvider';
 import { Alert } from '.';
 
 describe('Alert', () => {
@@ -29,7 +29,8 @@ describe('Alert', () => {
     ).root;
 
     expect(
-      alertInstance.findByProps({ 'data-testid': 'cmpsr.alert-icon' }).props.color
+      alertInstance.findByProps({ 'data-testid': 'cmpsr.alert-icon' }).props
+        .color
     ).toBe('text-light');
   });
 
@@ -41,7 +42,8 @@ describe('Alert', () => {
     ).root;
 
     expect(
-      alertInstance.findByProps({ 'data-testid': 'cmpsr.alert-icon' }).props.color
+      alertInstance.findByProps({ 'data-testid': 'cmpsr.alert-icon' }).props
+        .color
     ).toBe('alert-error-default');
   });
 
@@ -53,8 +55,9 @@ describe('Alert', () => {
     ).root;
 
     expect(
-      alertInstance.findByProps({ 'data-testid': 'cmpsr.alert-content-wrapper' })
-        .props.flexDir
+      alertInstance.findByProps({
+        'data-testid': 'cmpsr.alert-content-wrapper',
+      }).props.flexDir
     ).toBe('column');
   });
 
@@ -67,5 +70,16 @@ describe('Alert', () => {
       />
     );
     expect(screen.queryByTestId('cmpsr.alert-title')).toBeNull();
+  });
+
+  test('should not show close button when showClose is falsy', () => {
+    renderWithProviders(<Alert title="A title" showClose={false} />);
+    const closeButton = screen.queryByLabelText('Close');
+    expect(closeButton).toBeNull();
+  });
+
+  test('should show close button by default', () => {
+    renderWithProviders(<Alert title="A title" />);
+    screen.getByLabelText('Close');
   });
 });

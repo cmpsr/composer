@@ -25,6 +25,7 @@ export const Alert: FC<AlertProps> = ({
   variant,
   title,
   description,
+  showClose = true,
   ...props
 }) => {
   const calculateTitleAlignment = () => {
@@ -77,7 +78,7 @@ export const Alert: FC<AlertProps> = ({
         flexDirection="column"
         {...calculateTrailingIconAlignment()}
       >
-        <CloseButton />
+        {showClose && <CloseButton />}
       </Flex>
     </ChakraAlert>
   );

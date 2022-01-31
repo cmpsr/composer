@@ -61,9 +61,9 @@ const generateAltButton = (color: string) => {
 
   if (color === 'secondary') {
     loadingStyles = {
-      borderColor: `primary-default`,
-      borderBottomColor: transparentize(`primary-default`, 0.3),
-      borderLeftColor: transparentize(`primary-default`, 0.3),
+      borderColor: 'primary-default',
+      borderBottomColor: transparentize('primary-default', 0.3),
+      borderLeftColor: transparentize('primary-default', 0.3),
     };
   }
 

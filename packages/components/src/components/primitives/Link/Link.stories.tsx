@@ -21,21 +21,11 @@ const AllTemplate = () => {
           <Divider />
 
           <>
-            <Link
-              leftIcon={Icons.IconExternalLink}
-              size={size}
-              role="link"
-              href="#"
-            >
+            <Link leadingIcon={Icons.IconExternalLink} size={size} role="link" href="#">
               Size {size.toUpperCase()} link with left icon
             </Link>
             <Divider />
-            <Link
-              rightIcon={Icons.IconExternalLink}
-              size={size}
-              role="link"
-              href="#"
-            >
+            <Link trailingIcon={Icons.IconExternalLink} size={size} role="link" href="#">
               Size {size.toUpperCase()} link with right icon
             </Link>
             <Divider />
@@ -48,13 +38,13 @@ const AllTemplate = () => {
 
 export const All = AllTemplate.bind({});
 
-const Template = ({ showLeftIcon, showRightIcon, ...args }) => (
+const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
   <VStack>
     <Link
       href="#"
       role="link"
-      {...(showLeftIcon && { leftIcon: Icons.IconExternalLink })}
-      {...(showRightIcon && { rightIcon: Icons.IconExternalLink })}
+      {...(showLeadingIcon && { leadingIcon: Icons.IconExternalLink })}
+      {...(showTrailingIcon && { trailingIcon: Icons.IconExternalLink })}
       {...args}
     >
       Playground
@@ -66,6 +56,6 @@ export const Playground = Template.bind({});
 
 Playground.args = {
   size: 'l',
-  showLeftIcon: true,
-  showRightIcon: true,
+  showLeadingIcon: true,
+  showTrailingIcon: true,
 };

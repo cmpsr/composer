@@ -6,7 +6,7 @@ export const linkSizes = ['s', 'm', 'l'] as const;
 type LinkSizes = typeof linkSizes[number];
 
 export interface LinkProps extends ChakraLinkProps {
-  leftIcon?: FC<IconProps>;
   size?: LinkSizes;
-  rightIcon?: FC<IconProps>;
+  leadingIcon?: FC<IconProps>;
+  trailingIcon?: FC<IconProps>;
 }

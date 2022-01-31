@@ -18,8 +18,8 @@ const baseStyle = {
     borderColor: 'ui-element-outline-disabled',
     color: 'text-disabled',
     _placeholder: {
-      color: 'text-disabled'
-    }
+      color: 'text-disabled',
+    },
   },
   _focus: {
     backgroundColor: 'background-action-default',
@@ -27,8 +27,8 @@ const baseStyle = {
     boxShadow: '0 0 0 0.188rem var(--chakra-colors-primary-focus)',
   },
   _invalid: {
-    borderColor: 'alert-error-default'
-  }
+    borderColor: 'alert-error-default',
+  },
 }
 
 const textStyles = {
@@ -46,13 +46,13 @@ const calculateSize = (size: string) => {
 export const Textarea: ComponentStyleConfig = {
   baseStyle,
   variants: {
-    outline: baseStyle
+    outline: baseStyle,
   },
   sizes: {
     s: calculateSize('small'),
     m: calculateSize('medium'),
   },
   defaultProps: {
-    size: 's'
-  }
+    size: 's',
+  },
 }

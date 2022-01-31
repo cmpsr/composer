@@ -48,5 +48,5 @@ export const components = {
   Tag,
   Text,
   TextPairing,
-  Textarea
+  Textarea,
 };

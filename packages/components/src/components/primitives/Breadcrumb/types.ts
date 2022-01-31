@@ -18,5 +18,6 @@ export interface BreadcrumbProps extends SpaceProps {
 export interface BreadcrumbStyle {
   container: FlexProps;
   separator: TextProps;
+  separatorIcon: IconProps;
   lastItem: TextProps;
 }

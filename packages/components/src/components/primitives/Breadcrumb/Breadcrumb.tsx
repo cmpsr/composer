@@ -8,7 +8,9 @@ export const Breadcrumb: FC<BreadcrumbProps> = ({ items, separator, ...props }) 
   const copy = [...items];
   const last = copy.pop();
 
-  const { container, separator: separatorStyle, lastItem } = useStyleConfig('Breadcrumb') as BreadcrumbStyle;
+  const { container, separatorIcon, separator: separatorStyle, lastItem } = useStyleConfig(
+    'Breadcrumb'
+  ) as BreadcrumbStyle;
 
   return (
     <Flex {...container} {...props} direction="row">
@@ -24,7 +26,7 @@ export const Breadcrumb: FC<BreadcrumbProps> = ({ items, separator, ...props }) 
               separator
             )
           ) : (
-            <IconChevronRight size="m" />
+            <IconChevronRight {...separatorIcon} size="m" color="text-secondary" />
           )}
         </Fragment>
       ))}

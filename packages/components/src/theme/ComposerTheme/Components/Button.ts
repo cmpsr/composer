@@ -1,3 +1,4 @@
+import { cssVar } from '@chakra-ui/react';
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { transparentize } from '@chakra-ui/theme-tools';
 
@@ -90,6 +91,8 @@ const generateAltButton = (color: string) => {
   };
 };
 
+const $spinnerSize = cssVar('spinner-size');
+
 export const Button: ComponentStyleConfig = {
   baseStyle: {
     borderRadius: '0.375rem',
@@ -99,36 +102,44 @@ export const Button: ComponentStyleConfig = {
       ...theme.textStyles['text-body-floating-label-medium'],
       px: '0.5rem',
       py: '0.25rem',
+      [$spinnerSize.variable]: '0.75rem',
       loading: {
-        px: '0.4rem',
-        py: '0.4rem',
+        width: $spinnerSize.reference,
+        height: $spinnerSize.reference,
+        padding: 0,
       },
     }),
     sm: ({ theme }) => ({
       ...theme.textStyles['text-body-meta-medium'],
       px: '0.75rem',
       py: '0.5rem',
+      [$spinnerSize.variable]: '0.75rem',
       loading: {
-        px: '0.4rem',
-        py: '0.4rem',
+        width: $spinnerSize.reference,
+        height: $spinnerSize.reference,
+        padding: 0,
       },
     }),
     md: ({ theme }) => ({
       ...theme.textStyles['text-body-medium'],
       px: '1rem',
       py: '0.5rem',
+      [$spinnerSize.variable]: '1rem',
       loading: {
-        px: '0.5rem',
-        py: '0.5rem',
+        width: $spinnerSize.reference,
+        height: $spinnerSize.reference,
+        padding: 0,
       },
     }),
     lg: ({ theme }) => ({
       ...theme.textStyles['text-body-large-medium'],
       px: '1.5rem',
       py: '0.75rem',
+      [$spinnerSize.variable]: '1rem',
       loading: {
-        px: '0.55rem',
-        py: '0.55rem',
+        width: $spinnerSize.reference,
+        height: $spinnerSize.reference,
+        padding: 0,
       },
     }),
   },

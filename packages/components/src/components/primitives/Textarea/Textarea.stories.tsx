@@ -12,12 +12,6 @@ export default {
       options: textareaSizes,
       control: { type: 'select' },
     },
-    isInvalid: {
-      control: { type: 'boolean' },
-    },
-    isDisabled: {
-      control: { type: 'boolean' },
-    },
   },
 } as Meta;
 
@@ -73,4 +67,5 @@ Playground.args = {
   size: 's',
   isInvalid: false,
   isDisabled: false,
+  placeholder: '',
 };

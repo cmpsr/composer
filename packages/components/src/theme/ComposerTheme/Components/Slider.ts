@@ -1,12 +1,23 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
+const sharedSizeStyle = {
+  thumb: { w: '1rem', h: '1rem' },
+};
+
 export const Slider: ComponentStyleConfig = {
   baseStyle: {
     bg: 'primary-default',
-    sliderBg: 'primary-disabled',
-    boxSize: 3,
-    _focus: {
-      boxShadow: `0px 0px 0px 3px rgba(194, 194, 255, 1)`,
+    sliderBg: 'background-action-active',
+    thumb: {
+      backgroundColor: 'background-action-default',
     },
+    _focus: {
+      boxShadow: `0 0 0 3px var(--chakra-colors-primary-focus)`,
+    },
+  },
+  sizes: {
+    sm: sharedSizeStyle,
+    md: sharedSizeStyle,
+    lg: sharedSizeStyle,
   },
 };

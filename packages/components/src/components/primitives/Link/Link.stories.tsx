@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Link } from './Link';
 import { VStack, Divider } from '@chakra-ui/react';
-import { linkSizes, linkIconPositions } from './types';
+import { linkSizes } from './types';
 import * as Icons from '../Icons';
 
 export default {
@@ -19,21 +19,17 @@ const AllTemplate = () => {
             Size {size.toUpperCase()} link
           </Link>
           <Divider />
-          {linkIconPositions.map((position) => (
-            <>
-              <Link
-                iconPosition={position}
-                icon={Icons.IconExternalLink}
-                size={size}
-                key={key}
-                role="link"
-                href="#"
-              >
-                Size {size.toUpperCase()} link with {position} icon
-              </Link>
-              <Divider />
-            </>
-          ))}
+
+          <>
+            <Link leadingIcon={Icons.IconExternalLink} size={size} role="link" href="#">
+              Size {size.toUpperCase()} link with left icon
+            </Link>
+            <Divider />
+            <Link trailingIcon={Icons.IconExternalLink} size={size} role="link" href="#">
+              Size {size.toUpperCase()} link with right icon
+            </Link>
+            <Divider />
+          </>
         </>
       ))}
     </VStack>
@@ -42,12 +38,13 @@ const AllTemplate = () => {
 
 export const All = AllTemplate.bind({});
 
-const Template = ({ showIcon, ...args }) => (
+const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
   <VStack>
     <Link
       href="#"
       role="link"
-      {...(showIcon && { icon: Icons.IconExternalLink })}
+      {...(showLeadingIcon && { leadingIcon: Icons.IconExternalLink })}
+      {...(showTrailingIcon && { trailingIcon: Icons.IconExternalLink })}
       {...args}
     >
       Playground
@@ -59,6 +56,6 @@ export const Playground = Template.bind({});
 
 Playground.args = {
   size: 'l',
-  iconPosition: 'leading',
-  showIcon: true,
+  showLeadingIcon: true,
+  showTrailingIcon: true,
 };

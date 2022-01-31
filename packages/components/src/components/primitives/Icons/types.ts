@@ -1,5 +1,5 @@
-const iconSizes = ['s', 'm', 'l'] as const;
-type IconSize = typeof iconSizes[number];
+export const iconSizes = ['xs', 's', 'm', 'l'] as const;
+export type IconSize = typeof iconSizes[number];
 
 export interface IconProps {
   color?: string;

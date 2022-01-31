@@ -58,6 +58,6 @@ export const All = AllTemplate.bind({});
 const Template = (args: CheckboxProps) => <Checkbox {...args}></Checkbox>;
 export const Playground = Template.bind({});
 Playground.args = {
-  size: 'md',
+  size: 'm',
   children: 'Label',
 };

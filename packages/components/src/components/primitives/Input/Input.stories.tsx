@@ -56,7 +56,7 @@ const AllTemplate = () => {
                     variant={variant}
                     size={size}
                     value={values[`${variant}-${size}`]}
-                    placeholder="Label"
+                    placeholder={`${variant}-${size}`}
                     onChange={(evt) =>
                       setValues({
                         ...values,
@@ -76,7 +76,7 @@ const AllTemplate = () => {
                     variant={variant}
                     size={size}
                     value={values[`${variant}-${size}`]}
-                    placeholder="Label"
+                    placeholder={`${variant}-${size}`}
                     trailingIcon={<IconCloud />}
                     showTrailingIcon
                     onChange={(evt) =>
@@ -98,7 +98,7 @@ const AllTemplate = () => {
                     variant={variant}
                     size={size}
                     value={values[`${variant}-${size}`]}
-                    placeholder="Label"
+                    placeholder={`${variant}-${size}`}
                     isInvalid
                     onChange={(evt) =>
                       setValues({
@@ -119,7 +119,7 @@ const AllTemplate = () => {
                     variant={variant}
                     size={size}
                     value={values[`${variant}-${size}`]}
-                    placeholder="Label"
+                    placeholder={`${variant}-${size}`}
                     isDisabled
                     onChange={(evt) =>
                       setValues({

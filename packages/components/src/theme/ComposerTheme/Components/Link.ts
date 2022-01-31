@@ -1,5 +1,10 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
+const sharedLinkStyles = {
+  color: 'text-link-primary-default',
+  textDecoration: 'none',
+};
+
 export const Link: ComponentStyleConfig = {
   baseStyle: {
     maxWidth: '100%',
@@ -26,23 +31,20 @@ export const Link: ComponentStyleConfig = {
   sizes: {
     s: ({ theme }) => ({
       p: {
-        ...theme.textStyles['text-link-body-small'],
-        color: 'text-link-primary-default',
-        textDecoration: 'none',
+        ...theme.textStyles['text-body-meta-medium'],
+        ...sharedLinkStyles,
       },
     }),
     m: ({ theme }) => ({
       p: {
-        ...theme.textStyles['text-link-body-medium'],
-        color: 'text-link-primary-default',
-        textDecoration: 'none',
+        ...theme.textStyles['text-body-medium'],
+        ...sharedLinkStyles,
       },
     }),
     l: ({ theme }) => ({
       p: {
-        ...theme.textStyles['text-link-body-large'],
-        color: 'text-link-primary-default',
-        textDecoration: 'none',
+        ...theme.textStyles['text-body-large-medium'],
+        ...sharedLinkStyles,
       },
     }),
   },

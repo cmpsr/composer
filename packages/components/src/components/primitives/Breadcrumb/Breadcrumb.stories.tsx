@@ -1,28 +1,40 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Breadcrumb } from './Breadcrumb';
-import { IconChevronRight } from '../Icons';
+import { IconCheck, IconWorld } from '..';
 
 export default {
   component: Breadcrumb,
   title: 'Components/Primitives/Breadcrumb',
+  argTypes: {
+    separator: {
+      options: ['icon', '/'],
+      control: { type: 'select' },
+    },
+  },
 } as Meta;
 
-const Template = (args) => (
-  <Breadcrumb {...args}>
-    <Breadcrumb.Item>
-      <Breadcrumb.Link href="#">Home</Breadcrumb.Link>
-    </Breadcrumb.Item>
-    <Breadcrumb.Item>
-      <Breadcrumb.Link href="#">Docs</Breadcrumb.Link>
-    </Breadcrumb.Item>
-    <Breadcrumb.Item isCurrentPage>
-      <Breadcrumb.Link href="#">Breadcrumb</Breadcrumb.Link>
-    </Breadcrumb.Item>
-  </Breadcrumb>
+const items = [
+  {
+    leadingIcon: IconWorld,
+    trailingIcon: IconCheck,
+    text: 'Composer',
+    href: '#',
+  },
+  {
+    text: 'Really',
+    href: '#',
+  },
+  {
+    text: 'Rocks!',
+  },
+];
+const Template = ({ separator, items }) => (
+  <Breadcrumb items={items} separator={separator === '/' ? separator : null} />
 );
 export const Playground = Template.bind({});
 
 Playground.args = {
-  separator: <IconChevronRight />,
+  items,
+  separator: 'icon',
 };

@@ -56,4 +56,5 @@ Playground.args = {
   description: 'This is a description.',
   state: 'success',
   titleAlignment: 'top',
+  showClose: false,
 };

@@ -18,4 +18,5 @@ export interface AlertProps extends ChakraAlertProps {
   titleAlignment?: AlertTitleAlignment;
   title?: string;
   variant?: AlertStyle;
+  showClose?: boolean;
 }

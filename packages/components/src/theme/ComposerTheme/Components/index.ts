@@ -24,6 +24,7 @@ import { TextPairing } from './TextPairing';
 import { Radio } from './Radio';
 import { CloseButton } from './CloseButton';
 import { Symbols } from './Symbols';
+import { IconButton } from './IconButton';
 
 export const components = {
   Accordion,
@@ -38,6 +39,7 @@ export const components = {
   CloseButton,
   Divider,
   Icon,
+  IconButton,
   Input,
   Kbd: Symbols,
   Link,

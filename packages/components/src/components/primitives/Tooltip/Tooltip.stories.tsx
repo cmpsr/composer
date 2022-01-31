@@ -26,7 +26,7 @@ export default {
 const AllTemplate = () => (
   <VStack
     spacing="2rem"
-    py="2rem"
+    p="10rem"
     divider={<StackDivider borderColor="#888" />}
   >
     {tooltipSides.map((side) => (
@@ -36,7 +36,7 @@ const AllTemplate = () => (
             key={position}
             side={side}
             positioning={position}
-            label="This is the tooltip content."
+            label="This is the tooltip content. Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap"
           >
             <span>
               <Button>

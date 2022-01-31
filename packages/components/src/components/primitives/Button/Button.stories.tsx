@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react';
 import { Button } from './Button';
 import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
 import { ButtonSizes, buttonVariants } from './types';
+import * as Icons from '../Icons';
 
 export default {
   component: Button,
@@ -47,11 +48,19 @@ const AllTemplate = () => (
 
 export const All = AllTemplate.bind({});
 
-const Template = (args) => <Button {...args}></Button>;
+const Template = (args) => (
+  <Button
+    {...args}
+    {...(args.showLeadingIcon && { leadingIcon: Icons.IconExternalLink })}
+    {...(args.showTrailingIcon && { trailingIcon: Icons.IconExternalLink })}
+  ></Button>
+);
 export const Playground = Template.bind({});
 Playground.args = {
   variant: 'primary',
   size: 'm',
   children: 'Composer button!',
   isLoading: false,
+  showLeadingIcon: true,
+  showTrailingIcon: true,
 };

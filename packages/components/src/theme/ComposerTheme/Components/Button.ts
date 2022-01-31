@@ -93,16 +93,24 @@ const generateAltButton = (color: string) => {
 
 const $spinnerSize = cssVar('spinner-size');
 
+const iconSizes = {
+  xs: '0.75rem',
+  s: '1rem',
+  m: '1.25rem',
+  l: '1.25rem',
+};
+
 export const Button: ComponentStyleConfig = {
   baseStyle: {
     borderRadius: '0.375rem',
   },
   sizes: {
-    xs: ({ theme }) => ({
+    xs: ({ theme, iconSize }) => ({
       ...theme.textStyles['text-body-floating-label-medium'],
       px: '0.5rem',
       py: '0.25rem',
       [$spinnerSize.variable]: '0.75rem',
+      iconSize: iconSizes[iconSize || 'xs'],
       loading: {
         width: $spinnerSize.reference,
         height: $spinnerSize.reference,
@@ -114,6 +122,7 @@ export const Button: ComponentStyleConfig = {
       px: '0.75rem',
       py: '0.5rem',
       [$spinnerSize.variable]: '0.75rem',
+      iconSize: iconSizes[iconSize || 's'],
       loading: {
         width: $spinnerSize.reference,
         height: $spinnerSize.reference,
@@ -125,6 +134,7 @@ export const Button: ComponentStyleConfig = {
       px: '1rem',
       py: '0.5rem',
       [$spinnerSize.variable]: '1rem',
+      iconSize: iconSizes[iconSize || 'm'],
       loading: {
         width: $spinnerSize.reference,
         height: $spinnerSize.reference,
@@ -136,6 +146,7 @@ export const Button: ComponentStyleConfig = {
       px: '1.5rem',
       py: '0.75rem',
       [$spinnerSize.variable]: '1rem',
+      iconSize: iconSizes[iconSize || 'l'],
       loading: {
         width: $spinnerSize.reference,
         height: $spinnerSize.reference,

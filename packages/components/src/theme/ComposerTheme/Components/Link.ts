@@ -70,7 +70,7 @@ const getSizes = () => {
 
   linkSizes.forEach((size) => {
     sizes[size] = (props) =>
-      buttonVariants.includes(props.variant)
+      isButtonVariant(props.variant)
         ? getButtonSize(LINK_SIZES_DETAILS[size].buttonSize, props)
         : {
             p: {

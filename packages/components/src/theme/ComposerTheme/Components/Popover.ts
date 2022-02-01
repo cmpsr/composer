@@ -1,4 +1,4 @@
-import { cssVar } from '@chakra-ui/react';
+import { ComponentMultiStyleConfig, cssVar } from '@chakra-ui/react';
 
 const $arrowBg = cssVar('popper-arrow-bg');
 const $backgroundCardColor = cssVar('chakra-colors-background-card');
@@ -46,7 +46,8 @@ const baseStyle = {
   },
 };
 
-export const Popover = {
+export const Popover: ComponentMultiStyleConfig = {
+  parts: [],
   baseStyle,
   defaultProps: {
     headerProps: {

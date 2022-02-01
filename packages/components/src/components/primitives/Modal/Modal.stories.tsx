@@ -15,10 +15,6 @@ export default {
       option: ModalSizes,
       control: { type: 'select' },
     },
-    alignment: {
-      option: FooterAlignments,
-      control: { type: 'select' },
-    },
   },
 } as Meta;
 
@@ -113,7 +109,7 @@ const FooterWidthLink = () => {
             primaryAction={{ title: 'Primary CTA' }}
             secondaryAction={{ title: 'Secondary CTA', action: onClose }}
             linkAction={{
-              children: 'Tertiary CTA Link',
+              label: 'Tertiary CTA Link',
               icon: Icons.IconExternalLink,
             }}
           ></Modal.Footer>

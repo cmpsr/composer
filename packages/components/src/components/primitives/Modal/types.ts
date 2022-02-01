@@ -35,11 +35,15 @@ type ButtonActions = {
   action?: () => void;
 };
 
+interface LinkActionProps extends LinkProps {
+  label?: string;
+}
+
 export interface ModalFooterProps extends ChakraModalFooterProps {
   variant?: string;
   primaryAction?: ButtonActions;
   secondaryAction?: ButtonActions;
-  linkAction?: LinkProps;
+  linkAction?: LinkActionProps;
   alignment?: FooterAlignment;
 }
 

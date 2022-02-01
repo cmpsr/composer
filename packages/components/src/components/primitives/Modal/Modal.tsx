@@ -76,6 +76,8 @@ export const ModalFooter: FC<ModalFooterProps> = ({
   };
 
   const renderStackedFooter = () => {
+    const { label } = linkAction;
+
     return (
       <Flex w="full" flexDir="column" alignItems="center">
         <Button variant="primary" w="full" onClick={primaryAction.action}>
@@ -89,7 +91,11 @@ export const ModalFooter: FC<ModalFooterProps> = ({
         >
           {secondaryAction.title}
         </Button>
-        {linkAction && <Link textAlign="center" mt="1rem" {...linkAction} />}
+        {linkAction && (
+          <Link textAlign="center" role="link" mt="1rem" {...linkAction}>
+            {label}
+          </Link>
+        )}
       </Flex>
     );
   };

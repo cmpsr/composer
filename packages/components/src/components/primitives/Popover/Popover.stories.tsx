@@ -4,6 +4,7 @@ import { StackDivider, VStack } from '@chakra-ui/layout';
 import { Popover } from './Popover';
 import { popoverPositionings } from './types';
 import { Button, Text } from '..';
+import { Box } from 'components';
 
 export default {
   component: Popover,
@@ -17,7 +18,7 @@ export default {
 } as Meta;
 
 const AllTemplate = () => (
-  <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
+  <VStack divider={<StackDivider borderColor="gray.200" />} padding="10rem" spacing={4}>
     {popoverPositionings.map((positioning) => {
       return (
         <Popover
@@ -29,7 +30,7 @@ const AllTemplate = () => (
             primaryAction: { label: 'Primary', onClick: () => alert('Primary action') },
             secondaryAction: { label: 'Secondary', onClick: () => alert('Secondary action') },
           }}
-          content={<Text>Popover content</Text>}
+          content={<Text>Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap</Text>}
         >
           <Button>Click me {positioning}</Button>
         </Popover>
@@ -41,9 +42,11 @@ const AllTemplate = () => (
 export const All = AllTemplate.bind({});
 
 const Template = (args) => (
-  <Popover {...args} content={<Text>Popover content</Text>}>
-    <Button>Click me</Button>
-  </Popover>
+  <Box p="24rem">
+    <Popover {...args} content={<Text>Popover content</Text>}>
+      <Button>Click me</Button>
+    </Popover>
+  </Box>
 );
 export const Playground = Template.bind({});
 Playground.args = {

@@ -26,6 +26,7 @@ import { Radio } from './Radio';
 import { CloseButton } from './CloseButton';
 import { Symbols } from './Symbols';
 import { IconButton } from './IconButton';
+import { Popover } from './Popover';
 
 export const components = {
   Accordion,
@@ -47,6 +48,7 @@ export const components = {
   Modal,
   ProgressCircular,
   Progress: ProgressBar,
+  Popover,
   Select,
   Radio,
   Slider,

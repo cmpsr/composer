@@ -8,31 +8,49 @@ import {
   PopoverArrow as ChakraPopoverArrow,
   PopoverContent as ChakraPopoverContent,
   PopoverCloseButton as ChakraPopoverCloseButton,
+  chakra,
+  useStyles,
 } from '@chakra-ui/react';
 import { PopoverProps, PopoverHeaderProps, PopoverFooterProps } from './types';
 import { Button } from 'components/primitives/Button';
-import { Text } from '..';
+import { Text, TextProps } from 'components';
 
-export const Popover: FC<PopoverProps> = ({ children, headerProps, footerProps, showFooter, content, positioning }) => {
+export const Popover: FC<PopoverProps> = ({
+  children,
+  headerProps: { showCloseButton, ...ownHeaderProps } = {},
+  footerProps,
+  showFooter,
+  content,
+  positioning,
+  ...props
+}) => {
   return (
-    <ChakraPopover placement={positioning}>
-      <ChakraPopoverTrigger>{children}</ChakraPopoverTrigger>
-      <ChakraPopoverContent>
+    <ChakraPopover placement={positioning} {...props}>
+      <ChakraPopoverTrigger>
+        <chakra.span h="full" display="inline-block">
+          {children}
+        </chakra.span>
+      </ChakraPopoverTrigger>
+      <ChakraPopoverContent data-testid="cmpsr.popover.content">
         <ChakraPopoverArrow />
-        {headerProps.showCloseButton && <ChakraPopoverCloseButton />}
-        <PopoverHeader {...headerProps} />
+        {showCloseButton && <ChakraPopoverCloseButton data-testid="cmpsr.popover.close.button" />}
+        <PopoverHeader {...ownHeaderProps} />
         <ChakraPopoverBody>{content}</ChakraPopoverBody>
-        {showFooter && <PopoverFooter {...footerProps} />}
+        {showFooter && <PopoverFooter data-testid="cmpsr.popover.footer" {...footerProps} />}
       </ChakraPopoverContent>
     </ChakraPopover>
   );
 };
 
 const PopoverHeader: FC<PopoverHeaderProps> = ({ label, subtitle, ...props }) => {
+  const {
+    header: { subtitle: subtitleStyles },
+  } = useStyles() as { header: { subtitle: TextProps } };
+
   return (
-    <ChakraPopoverHeader {...props}>
+    <ChakraPopoverHeader data-testid="cmpsr.popover.label" {...props}>
       {label}
-      <Text>{subtitle}</Text>
+      <Text {...subtitleStyles}>{subtitle}</Text>
     </ChakraPopoverHeader>
   );
 };
@@ -41,12 +59,17 @@ const PopoverFooter: FC<PopoverFooterProps> = ({ primaryAction, secondaryAction,
   return (
     <ChakraPopoverFooter {...props}>
       {primaryAction && (
-        <Button variant="primary" onClick={primaryAction.onClick}>
+        <Button data-testid="cmpsr.popover.primary.action" flex="1" variant="primary" onClick={primaryAction.onClick}>
           {primaryAction.label}
         </Button>
       )}
       {secondaryAction && (
-        <Button variant="secondary" onClick={secondaryAction.onClick}>
+        <Button
+          flex="1"
+          data-testid="cmpsr.popover.secondary.action"
+          variant="primary-alt"
+          onClick={secondaryAction.onClick}
+        >
           {secondaryAction.label}
         </Button>
       )}

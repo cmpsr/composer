@@ -4,6 +4,10 @@ const sizes = {
   xs: {
     width: '1.5rem',
     height: '1.5rem',
+    loading: {
+      width: '0.75rem',
+      height: '0.75rem',
+    },
     icon: {
       size: 'xs',
     },
@@ -11,6 +15,10 @@ const sizes = {
   s: {
     width: '2.25rem',
     height: '2.25rem',
+    loading: {
+      width: '0.75rem',
+      height: '0.75rem',
+    },
     icon: {
       size: 's',
     },
@@ -18,6 +26,10 @@ const sizes = {
   m: {
     width: '2.5rem',
     height: '2.5rem',
+    loading: {
+      width: '1rem',
+      height: '1rem',
+    },
     icon: {
       size: 'm',
     },
@@ -25,6 +37,10 @@ const sizes = {
   l: {
     width: '3.25rem',
     height: '3.25rem',
+    loading: {
+      width: '1rem',
+      height: '1rem',
+    },
     icon: {
       size: 'l',
     },
@@ -38,4 +54,7 @@ export const IconButton: ComponentStyleConfig = {
     };
   },
   sizes,
+  defaultProps: {
+    size: 'm',
+  },
 };

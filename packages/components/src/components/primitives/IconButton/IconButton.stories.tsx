@@ -52,4 +52,5 @@ Playground.args = {
   variant: 'primary',
   size: 'l',
   isDisabled: false,
+  isLoading: false,
 };

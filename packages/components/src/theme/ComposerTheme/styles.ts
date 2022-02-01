@@ -111,19 +111,19 @@ export const textStyles = {
   'text-body-regular': {
     ...baseTextStyle,
     fontSize: '1rem',
-    lineHeight: '1.15rem',
+    lineHeight: '1.5rem',
   },
   'text-body-medium': {
     ...baseTextStyle,
     fontWeight: 'medium',
     fontSize: '1rem',
-    lineHeight: '1.15rem',
+    lineHeight: '1.5rem',
   },
   'text-body-bold': {
     ...baseTextStyle,
     fontWeight: 'bold',
     fontSize: '1rem',
-    lineHeight: '1.15rem',
+    lineHeight: '1.5rem',
   },
   'text-body-meta-regular': {
     ...baseTextStyle,

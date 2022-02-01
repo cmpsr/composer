@@ -17,9 +17,6 @@ export default {
       options: iconButtonVariants,
       control: { type: 'select' },
     },
-    isDisabled: {
-      control: { type: 'boolean' },
-    },
   },
 } as Meta;
 
@@ -53,5 +50,6 @@ const Template = (args) => <IconButton icon={<IconCloud />} {...args} />;
 export const Playground = Template.bind({});
 Playground.args = {
   variant: 'primary',
-  size: 'md',
+  size: 'l',
+  isDisabled: false,
 };

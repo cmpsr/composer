@@ -9,7 +9,7 @@ import {
   ModalBody,
   ModalCloseButton,
 } from '@chakra-ui/react';
-import { Flex } from '../../layouts';
+import { Flex, Grid, Box } from '../../layouts';
 import { Button, Link, TextPairing, Avatar } from '..';
 import { ModalProps, ModalFooterProps, ModalStaticMembers, ModalHeaderProps } from './types';
 
@@ -41,18 +41,18 @@ export const ModalFooter: FC<ModalFooterProps> = ({
 
   const renderFullWidthFooter = () => {
     return (
-      <Flex w="full" justifyContent="space-between">
-        <Flex flex={1}>
+      <Grid w="full" justifyContent="space-between" templateColumns="repeat(2, 1fr)" gap={2}>
+        <Box>
+          <Button variant="primary-alt" w="full" onClick={secondaryAction.action}>
+            {secondaryAction.title}
+          </Button>
+        </Box>
+        <Box>
           <Button variant="primary" w="full" onClick={primaryAction.action}>
             {primaryAction.title}
           </Button>
-        </Flex>
-        <Flex flex={1}>
-          <Button variant="primary-alt" ml="1rem" w="full" onClick={secondaryAction.action}>
-            {secondaryAction.title}
-          </Button>
-        </Flex>
-      </Flex>
+        </Box>
+      </Grid>
     );
   };
 
@@ -72,7 +72,7 @@ export const ModalFooter: FC<ModalFooterProps> = ({
 
   const renderRightAlignedFooter = () => {
     return (
-      <Flex w="full" justifyContent="space-between">
+      <Flex w="full" justifyContent="flex-end">
         {linkAction && (
           <Flex alignItems="center">
             <Link textAlign="center" {...linkAction} />

@@ -27,7 +27,7 @@ const linkBaseStyle = {
 const isButtonVariant = (variant) => buttonVariants.includes(variant);
 
 const getButtonVariants = () => {
-  let variants = {};
+  const variants = {};
   buttonVariants.forEach((variant) => {
     variants[variant] = ({ theme }) => ({
       p: { color: theme.components.Button.variants[variant].color },
@@ -52,7 +52,7 @@ const getButtonSize = (size, props) => {
 };
 
 const getSizes = () => {
-  let sizes = {};
+  const sizes = {};
   const LINK_SIZES_DETAILS = {
     s: {
       buttonSize: 'sm',

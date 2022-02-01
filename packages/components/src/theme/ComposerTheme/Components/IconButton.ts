@@ -5,40 +5,36 @@ const sizes = {
     width: '1.5rem',
     height: '1.5rem',
     icon: {
-      width: '0.75rem',
-      height: '0.75rem',
+      size: 'xs',
     },
   },
   s: {
     width: '2.25rem',
     height: '2.25rem',
     icon: {
-      width: '1rem',
-      height: '1rem',
+      size: 's',
     },
   },
   m: {
     width: '2.5rem',
     height: '2.5rem',
     icon: {
-      width: '1.25rem',
-      height: '1.25rem',
+      size: 'm',
     },
   },
   l: {
     width: '3.25rem',
     height: '3.25rem',
     icon: {
-      width: '1.5rem',
-      height: '1.5rem',
+      size: 'l',
     },
   },
 };
 
 export const IconButton: ComponentStyleConfig = {
-  baseStyle: ({ round }) => {
+  baseStyle: ({ rounded }) => {
     return {
-      borderRadius: round ? 'full' : undefined,
+      borderRadius: rounded ? 'full' : 'radii-2',
     };
   },
   sizes,

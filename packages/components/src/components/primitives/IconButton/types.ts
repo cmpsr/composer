@@ -1,4 +1,5 @@
 import { IconButtonProps as ChakraIconButtonProps } from '@chakra-ui/react';
+import { IconProps } from 'components';
 
 export const iconButtonSizes = ['xs', 's', 'm', 'l'] as const;
 export const iconButtonVariants = [
@@ -14,8 +15,9 @@ export const iconButtonVariants = [
 export type IconButtonSize = typeof iconButtonSizes[number];
 export type IconButtonVariant = typeof iconButtonVariants[number];
 
-export interface IconButtonProps extends ChakraIconButtonProps {
+export interface IconButtonProps extends Omit<ChakraIconButtonProps, 'rounded' | 'iconProps'> {
   size?: IconButtonSize;
   variant?: IconButtonVariant;
-  round?: boolean;
+  rounded?: boolean;
+  iconProps?: IconProps;
 }

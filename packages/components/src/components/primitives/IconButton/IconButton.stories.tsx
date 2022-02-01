@@ -36,7 +36,7 @@ const AllTemplate = () => (
         </HStack>
         <HStack key={variant}>
           {iconButtonSizes.map((size) => (
-            <IconButton icon={<IconCloud />} aria-label={size} variant={variant} size={size} key={size} round />
+            <IconButton icon={<IconCloud />} aria-label={size} variant={variant} size={size} key={size} rounded />
           ))}
         </HStack>
       </VStack>

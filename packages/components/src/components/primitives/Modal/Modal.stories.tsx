@@ -39,11 +39,7 @@ const AllTemplate = () => {
       {ModalSizes.map((size, key) => (
         <HStack key={key}>
           {FooterAlignments.map((alignment) => (
-            <Button
-              variant="primary"
-              onClick={() => handleSizeClick(size, alignment)}
-              key={alignment}
-            >
+            <Button variant="primary" onClick={() => handleSizeClick(size, alignment)} key={alignment}>
               Open Size {size} Footer {alignment}
             </Button>
           ))}
@@ -52,11 +48,7 @@ const AllTemplate = () => {
       <Modal isOpen={isOpen} onClose={onClose} size={size}>
         <Modal.Overlay />
         <Modal.Content>
-          <Modal.Header
-            label={LABEL}
-            subLabel={SUBLABEL}
-            avatarUrl={AVATAR_URL}
-          />
+          <Modal.Header label={LABEL} subLabel={SUBLABEL} avatarUrl={AVATAR_URL} />
           <Modal.CloseButton />
           <Modal.Body>
             <Text variant="text-body-large-medium">Swap item</Text>
@@ -90,11 +82,7 @@ const FooterWidthLink = () => {
       <Modal isOpen={isOpen} onClose={onClose} size={ModalSizes[3]}>
         <Modal.Overlay />
         <Modal.Content>
-          <Modal.Header
-            label={LABEL}
-            subLabel={SUBLABEL}
-            avatarUrl={AVATAR_URL}
-          />
+          <Modal.Header label={LABEL} subLabel={SUBLABEL} avatarUrl={AVATAR_URL} />
           <Modal.CloseButton />
           <Modal.Body>
             <Text variant="text-body-large-medium">Swap item</Text>
@@ -109,8 +97,8 @@ const FooterWidthLink = () => {
             primaryAction={{ title: 'Primary CTA' }}
             secondaryAction={{ title: 'Secondary CTA', action: onClose }}
             linkAction={{
-              label: 'Tertiary CTA Link',
-              icon: Icons.IconExternalLink,
+              children: 'Tertiary CTA Link',
+              leadingIcon: Icons.IconExternalLink,
             }}
           ></Modal.Footer>
         </Modal.Content>
@@ -132,11 +120,7 @@ const Template = (args) => {
       <Modal isOpen={isOpen} onClose={onClose} {...args}>
         <Modal.Overlay />
         <Modal.Content>
-          <Modal.Header
-            label={LABEL}
-            subLabel={SUBLABEL}
-            avatarUrl={AVATAR_URL}
-          />
+          <Modal.Header label={LABEL} subLabel={SUBLABEL} avatarUrl={AVATAR_URL} />
           <Modal.CloseButton />
           <Modal.Body>
             <Text variant="text-body-large-medium">Swap item</Text>

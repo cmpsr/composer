@@ -11,32 +11,18 @@ import {
 } from '@chakra-ui/react';
 import { Flex } from '../../layouts';
 import { Button, Link, TextPairing, Avatar } from '..';
-import {
-  ModalProps,
-  ModalFooterProps,
-  ModalStaticMembers,
-  ModalHeaderProps,
-} from './types';
+import { ModalProps, ModalFooterProps, ModalStaticMembers, ModalHeaderProps } from './types';
 
 export const Modal: FC<ModalProps> & ModalStaticMembers = (props) => {
   return <ChakraModal {...props} />;
 };
 
-export const ModalHeader: FC<ModalHeaderProps> = ({
-  avatarUrl,
-  label,
-  subLabel,
-  ...props
-}) => {
+export const ModalHeader: FC<ModalHeaderProps> = ({ avatarUrl, label, subLabel, ...props }) => {
   return (
     <ChakraModalHeader {...props}>
       <Flex flex="1" textAlign="left" alignItems="center">
         <Avatar name="Composer Logo" src={avatarUrl} size="s" mr={2} />
-        <TextPairing
-          label={label}
-          subLabel={subLabel}
-          variant="textpairing-header-M"
-        />
+        <TextPairing label={label} subLabel={subLabel} variant="textpairing-header-M" />
       </Flex>
     </ChakraModalHeader>
   );
@@ -62,12 +48,7 @@ export const ModalFooter: FC<ModalFooterProps> = ({
           </Button>
         </Flex>
         <Flex flex={1}>
-          <Button
-            variant="primary-alt"
-            ml="1rem"
-            w="full"
-            onClick={secondaryAction.action}
-          >
+          <Button variant="primary-alt" ml="1rem" w="full" onClick={secondaryAction.action}>
             {secondaryAction.title}
           </Button>
         </Flex>
@@ -76,26 +57,15 @@ export const ModalFooter: FC<ModalFooterProps> = ({
   };
 
   const renderStackedFooter = () => {
-    const { label } = linkAction;
-
     return (
       <Flex w="full" flexDir="column" alignItems="center">
         <Button variant="primary" w="full" onClick={primaryAction.action}>
           {primaryAction.title}
         </Button>
-        <Button
-          variant="primary-alt"
-          mt="1rem"
-          w="full"
-          onClick={secondaryAction.action}
-        >
+        <Button variant="primary-alt" mt="1rem" w="full" onClick={secondaryAction.action}>
           {secondaryAction.title}
         </Button>
-        {linkAction && (
-          <Link textAlign="center" role="link" mt="1rem" {...linkAction}>
-            {label}
-          </Link>
-        )}
+        {linkAction && <Link textAlign="center" role="link" mt="1rem" {...linkAction} />}
       </Flex>
     );
   };
@@ -110,11 +80,7 @@ export const ModalFooter: FC<ModalFooterProps> = ({
         )}
         <Flex justifyContent="flex-end">
           {secondaryAction && (
-            <Button
-              variant="primary-alt"
-              mr={!isStacked && '1rem'}
-              onClick={secondaryAction.action}
-            >
+            <Button variant="primary-alt" mr={!isStacked && '1rem'} onClick={secondaryAction.action}>
               {secondaryAction.title}
             </Button>
           )}

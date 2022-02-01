@@ -111,7 +111,7 @@ const FooterWidthLink = () => {
           <Modal.Footer
             alignment="right-aligned"
             primaryAction={{ title: 'Primary CTA' }}
-            secondaryAction={{ title: 'Secondary Cta', action: onClose }}
+            secondaryAction={{ title: 'Secondary CTA', action: onClose }}
             linkAction={{
               children: 'Tertiary CTA Link',
               icon: Icons.IconExternalLink,

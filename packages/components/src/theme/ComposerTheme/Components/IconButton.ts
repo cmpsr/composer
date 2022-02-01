@@ -7,6 +7,7 @@ const sizes = {
     loading: {
       width: '0.75rem',
       height: '0.75rem',
+      padding: 0,
     },
     icon: {
       size: 'xs',
@@ -18,6 +19,7 @@ const sizes = {
     loading: {
       width: '0.75rem',
       height: '0.75rem',
+      padding: 0,
     },
     icon: {
       size: 's',
@@ -29,6 +31,7 @@ const sizes = {
     loading: {
       width: '1rem',
       height: '1rem',
+      padding: 0,
     },
     icon: {
       size: 'm',
@@ -40,6 +43,7 @@ const sizes = {
     loading: {
       width: '1rem',
       height: '1rem',
+      padding: 0,
     },
     icon: {
       size: 'l',

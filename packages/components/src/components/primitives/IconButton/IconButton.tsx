@@ -2,13 +2,11 @@ import React, { FC } from 'react';
 import { IconButton as ChakraIconButton, useMultiStyleConfig } from '@chakra-ui/react';
 import { IconButtonProps } from './types';
 import { SpinnerProps, Spinner } from 'components/primitives/Spinner';
+import { theme } from 'theme/ComposerTheme';
 
-const iconButtonSizeToButtonSize = {
-  xs: 'xs',
-  s: 'sm',
-  m: 'md',
-  l: 'lg',
-};
+const {
+  components: { Button },
+} = theme;
 
 export const IconButton: FC<IconButtonProps> = ({ rounded, ...props }) => {
   const { icon, loading: iconButtonLoading, ...iconButtonStyles } = useMultiStyleConfig('IconButton', {
@@ -20,19 +18,15 @@ export const IconButton: FC<IconButtonProps> = ({ rounded, ...props }) => {
     loading: SpinnerProps;
   };
 
-  const { loading: buttonLoading } = useMultiStyleConfig('Button', {
-    variant: props.variant,
-    size: iconButtonSizeToButtonSize[props.size],
-  }) as {
-    loading: SpinnerProps;
-  };
-
   const Icon = React.cloneElement(props.icon, { 'data-testid': 'cmpsr.icon.button.icon', ...icon, ...props.iconProps });
+
+  const buttonStyles = Button.variants[props.variant || 'primary'] as { loading: SpinnerProps };
+  const buttonLoadingStyles = buttonStyles?.loading || {};
 
   return (
     <ChakraIconButton
       data-testid="cmpsr.icon.button"
-      spinner={<Spinner data-testid="cmpsr.icon.button.spinner" {...buttonLoading} {...iconButtonLoading} />}
+      spinner={<Spinner data-testid="cmpsr.icon.button.spinner" {...buttonLoadingStyles} {...iconButtonLoading} />}
       {...iconButtonStyles}
       {...props}
       icon={Icon}

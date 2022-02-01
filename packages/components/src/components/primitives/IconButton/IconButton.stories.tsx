@@ -29,14 +29,20 @@ const AllTemplate = () => (
             <IconButton icon={<IconCloud />} aria-label={size} variant={variant} size={size} key={size} />
           ))}
         </HStack>
-        <HStack key={variant}>
+        <HStack>
           {iconButtonSizes.map((size) => (
             <IconButton icon={<IconCloud />} aria-label={size} variant={variant} size={size} key={size} isDisabled />
           ))}
         </HStack>
-        <HStack key={variant}>
+        <HStack>
           {iconButtonSizes.map((size) => (
             <IconButton icon={<IconCloud />} aria-label={size} variant={variant} size={size} key={size} rounded />
+          ))}
+        </HStack>
+
+        <HStack>
+          {iconButtonSizes.map((size) => (
+            <IconButton icon={<IconCloud />} aria-label={size} variant={variant} size={size} key={size} isLoading />
           ))}
         </HStack>
       </VStack>

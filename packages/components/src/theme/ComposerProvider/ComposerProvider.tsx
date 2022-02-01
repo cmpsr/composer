@@ -10,6 +10,7 @@ export const ComposerProvider: FC<ComposerProviderProps> = ({
   resetCSS = true,
 }) => {
   const extended = extendTheme(defaultTheme, theme);
+  console.log(extended);
   return (
     <ChakraProvider theme={extended} resetCSS={resetCSS}>
       {children}

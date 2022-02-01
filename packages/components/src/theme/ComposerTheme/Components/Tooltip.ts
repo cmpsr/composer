@@ -5,14 +5,15 @@ const $secondaryColor = cssVar('chakra-colors-text-secondary');
 const $arrowBg = cssVar('popper-arrow-bg');
 
 export const Tooltip: ComponentStyleConfig = {
-  baseStyle: {
+  baseStyle: ({ theme }) => ({
     bg: 'text-secondary',
     [$arrowBg.variable]: $secondaryColor.reference,
     padding: '0.5rem',
-    color: 'text-light',
     borderRadius: '0.25rem',
-    textStyle: 'text-body-meta-regular',
-  },
+    boxShadow: 'none',
+    ...theme.textStyles['text-body-meta-regular'],
+    color: 'text-light',
+  }),
   defaultProps: {
     side: 'top',
     positioning: 'center',

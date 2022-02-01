@@ -2,4 +2,4 @@
 "@cmpsr/components": minor
 ---
 
-Implement Accordion component
+fix icon sizes for every component

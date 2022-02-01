@@ -1,25 +1,36 @@
 import React from 'react';
 import { screen, renderWithProviders } from 'tests/renderWithProviders';
 import { Breadcrumb } from '.';
+import { IconCheck, IconWorld } from '..';
 
 describe('Breadcrumb', () => {
-  const givenComponentRendered = () =>
-    renderWithProviders(
-      <Breadcrumb>
-        <Breadcrumb.Item>
-          <Breadcrumb.Link href="#">Home</Breadcrumb.Link>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <Breadcrumb.Link href="#">Docs</Breadcrumb.Link>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item isCurrentPage>
-          <Breadcrumb.Link href="#">Breadcrumb</Breadcrumb.Link>
-        </Breadcrumb.Item>
-      </Breadcrumb>
-    );
+  const items = [
+    {
+      leadingIcon: IconWorld,
+      trailingIcon: IconCheck,
+      text: 'Composer',
+      href: '#',
+    },
+    {
+      text: 'Really',
+      href: '#',
+    },
+    {
+      text: 'Rocks!',
+    },
+  ];
 
-  test('should render child', () => {
+  const givenComponentRendered = (separator: string = null) =>
+    renderWithProviders(<Breadcrumb items={items} separator={separator} />);
+
+  test('should render all items', () => {
     givenComponentRendered();
-    screen.getByText(/Breadcrumb/i);
+    items.forEach(({ text }) => screen.getByText(text));
+  });
+
+  test('should render custom separator', () => {
+    givenComponentRendered('/');
+    const separators = screen.getAllByText('/');
+    expect(separators).toHaveLength(2);
   });
 });

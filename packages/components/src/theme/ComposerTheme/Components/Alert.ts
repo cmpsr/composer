@@ -13,8 +13,10 @@ const solidToastVariant: PartsStyleFunction<typeof parts> = ({ status }) => {
     title: { textStyle: 'text-body-bold', color: 'text-light' },
     description: { textStyle: 'text-body-regular', color: 'text-light' },
     icon: {
-      boxSize: '1rem',
-      height: '1.5rem',
+      margin: '0.25rem 0.25rem 0 0',
+      ' svg': {
+        boxSize: '1rem',
+      },
       color: 'text-light',
     },
   };
@@ -47,9 +49,11 @@ const subtleToastVariant: PartsStyleFunction<typeof parts> = ({
     title: { textStyle: 'text-body-bold', color: 'text-primary' },
     description: { textStyle: 'text-body-regular', color: 'text-primary' },
     icon: {
-      boxSize: '1rem',
+      margin: '0.25rem 0.25rem 0 0',
+      ' svg': {
+        boxSize: '1rem',
+      },
       color: `alert-${alertStatus}-default`,
-      height: '1.5rem',
     },
   };
 };
@@ -131,13 +135,17 @@ const generateOtherVariants: PartsStyleFunction<typeof parts> = (props) => {
 };
 
 export const Alert: ComponentStyleConfig = {
-  baseStyle: {
+  baseStyle: ({ theme }) => ({
     container: {
       borderRadius: '0.4rem',
       padding: '1rem',
     },
     icon: {
-      boxSize: '1.5rem',
+      ...theme.components.Icon.sizes.l,
+      alignSelf: 'flex-start',
+      svg: {
+        ...theme.components.Icon.sizes.l,
+      },
       status: {
         success: {
           color: 'alert-success-default',
@@ -163,7 +171,7 @@ export const Alert: ComponentStyleConfig = {
       textStyle: 'text-body-regular',
       paddingRight: '1.7rem',
     },
-  },
+  }),
   defaultProps: {
     variant: 'solid',
   },

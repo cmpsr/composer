@@ -1,9 +1,10 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
+import { VStack, Flex } from '@chakra-ui/react';
+
 import { Divider } from './Divider';
 import { Text } from '../Text';
 import { DividerOrientations } from './types';
-import { VStack } from '@chakra-ui/react';
 
 export default {
   component: Divider,
@@ -19,10 +20,10 @@ export default {
 const AllTemplate = () => (
   <VStack spacing={4}>
     {DividerOrientations.map((orientation, id) => (
-      <>
+      <Flex key={id} width="full" flexDirection="column" alignItems="center">
         <Text variant="text-header-L">{orientation}</Text>
-        <Template orientation={orientation} key={id} />
-      </>
+        <Template orientation={orientation} />
+      </Flex>
     ))}
   </VStack>
 );

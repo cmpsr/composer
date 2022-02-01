@@ -17,6 +17,7 @@ import {
   IconCircleCheck,
   IconInfoCircle,
 } from '../../primitives/Icons';
+
 import { Flex } from 'components';
 
 export const Alert: FC<AlertProps> = ({
@@ -25,6 +26,7 @@ export const Alert: FC<AlertProps> = ({
   variant,
   title,
   description,
+  showClose = true,
   ...props
 }) => {
   const calculateTitleAlignment = () => {
@@ -56,18 +58,9 @@ export const Alert: FC<AlertProps> = ({
 
   return (
     <ChakraAlert status={state} variant={variant} {...props}>
-      <AlertIcon
-        data-testid="cmpsr.alert-icon"
-        status={state || 'info'}
-        color={status[state]?.color || 'info'}
-      />
-      <Flex
-        data-testid="cmpsr.alert-content-wrapper"
-        flexDir={calculateTitleAlignment()}
-      >
-        {title && titleAlignment !== 'none' && (
-          <AlertTitle data-testid="cmpsr.alert-title">{title}</AlertTitle>
-        )}
+      <AlertIcon data-testid="cmpsr.alert-icon" status={state || 'info'} color={status[state]?.color || 'info'} />
+      <Flex data-testid="cmpsr.alert-content-wrapper" flexDir={calculateTitleAlignment()}>
+        {title && titleAlignment !== 'none' && <AlertTitle data-testid="cmpsr.alert-title">{title}</AlertTitle>}
         {description && <AlertDescription>{description}</AlertDescription>}
       </Flex>
       <Flex
@@ -77,7 +70,7 @@ export const Alert: FC<AlertProps> = ({
         flexDirection="column"
         {...calculateTrailingIconAlignment()}
       >
-        <CloseButton />
+        {showClose && <CloseButton />}
       </Flex>
     </ChakraAlert>
   );
@@ -90,20 +83,12 @@ const STATUSES = {
   error: { icon: IconAlertCircle, colorScheme: 'red' },
 };
 
-const AlertIcon: React.FC<AlertIconProps & { status: string }> = ({
-  status,
-  ...props
-}) => {
+const AlertIcon: React.FC<AlertIconProps & { status: string }> = ({ status, ...props }) => {
   const { icon: BaseIcon } = STATUSES[status];
   const styles = useStyles();
 
   return (
-    <chakra.span
-      display="inherit"
-      {...props}
-      className="chakra-alert__icon"
-      __css={styles.icon}
-    >
+    <chakra.span display="inherit" {...props} className="chakra-alert__icon" __css={styles.icon}>
       <BaseIcon w="100%" h="100%" />
     </chakra.span>
   );

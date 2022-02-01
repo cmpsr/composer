@@ -1,5 +1,20 @@
 # @cmpsr/components
 
+## 1.8.0
+
+### Minor Changes
+
+- 7613951: Slider: change thumb size and add orientation to playground story
+- 14f5c73: re-implement Breadcrumb to accept items instead of composing it
+- 80c9301: Accordion: use custom padding for accordion and improve playground examples
+- 4f3ebfa: fix icon sizes for every component
+- 71cc77f: Implementation of the Button loading state with a storybook and test
+
+### Patch Changes
+
+- ce78d3d: add support for leading and trailing icon to Link component
+- 3bf768f: Alert: align title icon and add capability to show or hide close button
+
 ## 1.7.0
 
 ### Minor Changes

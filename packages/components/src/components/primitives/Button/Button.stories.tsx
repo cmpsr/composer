@@ -41,7 +41,7 @@ const AllTemplate = () => (
             </Button>
           ))}
         </HStack>
-        <HStack key={variant}>
+        <HStack>
           {ButtonSizes.map((size) => (
             <Button
               variant={variant}
@@ -61,11 +61,11 @@ const AllTemplate = () => (
 
 export const All = AllTemplate.bind({});
 
-const Template = (args) => (
+const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
   <Button
     {...args}
-    {...(args.showLeadingIcon && { leadingIcon: Icons.IconExternalLink })}
-    {...(args.showTrailingIcon && { trailingIcon: Icons.IconExternalLink })}
+    {...(showLeadingIcon && { leadingIcon: Icons.IconExternalLink })}
+    {...(showTrailingIcon && { trailingIcon: Icons.IconExternalLink })}
   ></Button>
 );
 export const Playground = Template.bind({});

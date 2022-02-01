@@ -15,14 +15,14 @@ export const Button: FC<ButtonProps> = ({
     size: props.size,
     isLoading: props.isLoading,
     iconSize: props.iconSize,
-  }) as { loading: SpinnerProps; iconSize: string };
+  }) as { loading: SpinnerProps; iconSize: 's' | 'm' | 'xs' | 'l' };
 
   return (
     <ChakraButton spinner={<Spinner data-testid="cmpsr.button.spinner" {...loading} />} {...props}>
       <Flex direction="row" alignItems="center" columnGap="0.5rem">
-        {LeadingIcon && <LeadingIcon data-testid="cmpsr.button.icon.leading" boxSize={iconSize} />}
+        {LeadingIcon && <LeadingIcon data-testid="cmpsr.button.icon.leading" size={iconSize} />}
         {children}
-        {TrailingIcon && <TrailingIcon data-testid="cmpsr.button.icon.trailing" boxSize={iconSize} />}
+        {TrailingIcon && <TrailingIcon data-testid="cmpsr.button.icon.trailing" size={iconSize} />}
       </Flex>
     </ChakraButton>
   );

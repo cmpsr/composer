@@ -3,22 +3,23 @@ import {
   PopoverHeaderProps as ChakraPopoverHeaderProps,
   PopoverFooterProps as ChakraPopoverFooterProps,
 } from '@chakra-ui/react';
+import { ButtonVariant } from 'components/primitives/Button/types';
 
 export const popoverPositionings = ['bottom', 'top', 'left', 'right'] as const;
 
 export type PopoverPositioning = typeof popoverPositionings[number];
 
 export type PopoverAction = {
-  label?: string;
-  onClick?: () => void;
+  label: string;
+  onClick: () => void;
+  variant?: ButtonVariant;
 };
 
 export interface PopoverProps extends Omit<ChakraPopoverProps, 'headerProps' | 'footerProps'> {
   positioning?: PopoverPositioning;
-  showFooter?: boolean;
   headerProps?: PopoverHeaderProps;
   footerProps?: PopoverFooterProps;
-  content?: React.ReactNode;
+  body?: React.ReactNode;
 }
 
 export interface PopoverHeaderProps extends ChakraPopoverHeaderProps {

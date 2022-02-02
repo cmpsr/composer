@@ -4,7 +4,13 @@ import { renderWithProviders } from 'tests/renderWithProviders';
 import { Button } from 'components';
 import { Popover } from './Popover';
 
+const mockFn = jest.fn();
+
 describe('Popover', () => {
+  beforeEach(() => {
+    mockFn.mockClear();
+  });
+
   it('should render', () => {
     renderWithProviders(
       <Popover>
@@ -26,9 +32,9 @@ describe('Popover', () => {
     expect(screen.getByTestId('cmpsr.popover.close.button')).toBeTruthy();
   });
 
-  it('should hide the footer if showFooter is false', () => {
+  it('should hide the footer if footerProps is falsy', () => {
     renderWithProviders(
-      <Popover isOpen showFooter={false}>
+      <Popover isOpen footerProps={null}>
         <Button>Click me</Button>
       </Popover>
     );
@@ -58,7 +64,7 @@ describe('Popover', () => {
 
   it('should show the primary action', () => {
     renderWithProviders(
-      <Popover isOpen showFooter footerProps={{ primaryAction: { label: 'Primary action' } }}>
+      <Popover isOpen footerProps={{ primaryAction: { label: 'Primary action', onClick: mockFn } }}>
         <Button>Click me</Button>
       </Popover>
     );
@@ -68,7 +74,7 @@ describe('Popover', () => {
 
   it('should show the secondary action', () => {
     renderWithProviders(
-      <Popover isOpen showFooter footerProps={{ secondaryAction: { label: 'Secondary action' } }}>
+      <Popover isOpen footerProps={{ secondaryAction: { label: 'Secondary action', onClick: mockFn } }}>
         <Button>Click me</Button>
       </Popover>
     );
@@ -77,28 +83,26 @@ describe('Popover', () => {
   });
 
   it('should execute the primary action', () => {
-    const actionMock = jest.fn();
     renderWithProviders(
-      <Popover isOpen showFooter footerProps={{ primaryAction: { label: 'Primary action', onClick: actionMock } }}>
+      <Popover isOpen footerProps={{ primaryAction: { label: 'Primary action', onClick: mockFn } }}>
         <Button>Click me</Button>
       </Popover>
     );
 
     fireEvent.click(screen.getByTestId('cmpsr.popover.primary.action'));
 
-    expect(actionMock).toBeCalled();
+    expect(mockFn).toBeCalled();
   });
 
   it('should execute the secondary action', () => {
-    const actionMock = jest.fn();
     renderWithProviders(
-      <Popover isOpen showFooter footerProps={{ secondaryAction: { label: 'Secondary action', onClick: actionMock } }}>
+      <Popover isOpen footerProps={{ secondaryAction: { label: 'Secondary action', onClick: mockFn } }}>
         <Button>Click me</Button>
       </Popover>
     );
 
     fireEvent.click(screen.getByTestId('cmpsr.popover.secondary.action'));
 
-    expect(actionMock).toBeCalled();
+    expect(mockFn).toBeCalled();
   });
 });

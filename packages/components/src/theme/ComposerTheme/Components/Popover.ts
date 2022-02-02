@@ -17,22 +17,20 @@ const baseStyle = {
     },
   },
   header: {
-    color: 'text-primary',
-    textStyle: 'text-header-M',
     paddingX: '1rem',
     paddingY: '1rem',
     border: 'none',
-    subtitle: {
-      marginTop: '0.25rem',
-      color: 'text-secondary',
-      textStyle: 'text-body-regular',
-    },
   },
   body: {
     color: 'text-primary',
     textStyle: 'text-body-regular',
     paddingX: '1rem',
-    paddingY: '0.5rem',
+    paddingTop: '0.5rem',
+    paddingBottom: '1rem',
+    withFooter: {
+      paddingX: '1rem',
+      paddingY: '0.5rem',
+    },
   },
   footer: {
     border: 'none',

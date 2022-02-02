@@ -219,6 +219,20 @@ export const TextPairing: ComponentStyleConfig = {
         md: '0.125rem',
       },
     },
+    'textpairing-popover-title': {
+      label: {
+        color: 'text-primary',
+        variant: 'text-header-M',
+      },
+      subLabel: {
+        color: 'text-secondary',
+        variant: 'text-body-regular',
+      },
+      columnGap: {
+        sm: '0.25rem',
+        md: '0.25rem',
+      },
+    },
   },
   defaultProps: {
     variant: 'textpairing-body-bold',

@@ -23,6 +23,7 @@ export const textPairingVariants = [
   'textpairing-body-regular-meta',
   'textpairing-body-meta-bold',
   'textpairing-body-meta-medium',
+  'textpairing-popover-title',
 ] as const;
 export type TextPairingVariant = typeof textPairingVariants[number];
 
@@ -31,6 +32,7 @@ export type TextPairingStyles = CSSObject &
   {
     [key in TextPairingParts]: {
       variant: TextVariant;
+      color: string;
     };
   } & { columnGap: string };
 

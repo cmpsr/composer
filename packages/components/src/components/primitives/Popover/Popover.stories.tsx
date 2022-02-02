@@ -23,13 +23,12 @@ const AllTemplate = () => (
         <Popover
           key={positioning}
           positioning={positioning}
-          showFooter
           headerProps={{ label: 'Header', subtitle: 'Subtitle', showCloseButton: true }}
           footerProps={{
             primaryAction: { label: 'Primary', onClick: () => alert('Primary action') },
             secondaryAction: { label: 'Secondary', onClick: () => alert('Secondary action') },
           }}
-          content={<Text>Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap</Text>}
+          body={<Text>Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap</Text>}
         >
           <Button>Click me {positioning}</Button>
         </Popover>
@@ -42,7 +41,7 @@ export const All = AllTemplate.bind({});
 
 const Template = (args) => (
   <Box px="20rem" py="14rem">
-    <Popover {...args} content={<Text>Popover content</Text>}>
+    <Popover {...args} body={<Text>Popover body</Text>}>
       <Button>Click me</Button>
     </Popover>
   </Box>
@@ -50,7 +49,6 @@ const Template = (args) => (
 export const Playground = Template.bind({});
 Playground.args = {
   positioning: 'bottom',
-  showFooter: true,
   headerProps: { label: 'Header', subtitle: 'Subtitle', showCloseButton: true },
   footerProps: {
     primaryAction: { label: 'Primary', onClick: () => alert('Primary action') },

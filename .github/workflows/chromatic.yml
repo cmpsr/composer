@@ -18,7 +18,7 @@ jobs:
     - run: yarn && yarn build-storybook
     - uses: chromaui/action@v1
       with:
-        appCode: cc7b1csiu9
+        appCode: ${{ secrets.CHROMATIC_TOKEN }}
         token: ${{ secrets.GITHUB_TOKEN }}
         storybookBuildDir: "./packages/components/storybook-static"
         autoAcceptChanges: "master"

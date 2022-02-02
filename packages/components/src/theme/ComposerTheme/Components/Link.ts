@@ -53,28 +53,25 @@ const getButtonSize = (size, props) => {
 
 const getSizes = () => {
   const sizes = {};
-  const LINK_SIZES_DETAILS = {
-    s: {
-      buttonSize: 'sm',
-      textStyleToken: 'text-body-meta-medium',
-    },
-    m: {
-      buttonSize: 'md',
-      textStyleToken: 'text-body-medium',
-    },
-    l: {
-      buttonSize: 'lg',
-      textStyleToken: 'text-body-large-medium',
-    },
-  };
-
   linkSizes.forEach((size) => {
     sizes[size] = (props) =>
       isButtonVariant(props.variant)
-        ? getButtonSize(LINK_SIZES_DETAILS[size].buttonSize, props)
+        ? getButtonSize(size, props)
         : {
             p: {
-              ...props.theme.textStyles[LINK_SIZES_DETAILS[size].textStyleToken],
+              ...props.theme.textStyles[
+                {
+                  s: {
+                    textStyleToken: 'text-body-meta-medium',
+                  },
+                  m: {
+                    textStyleToken: 'text-body-medium',
+                  },
+                  l: {
+                    textStyleToken: 'text-body-large-medium',
+                  },
+                }[size].textStyleToken
+              ],
               color: 'text-link-primary-default',
             },
           };

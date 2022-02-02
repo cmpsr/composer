@@ -18,7 +18,7 @@ jobs:
     - run: yarn
     - run: npx chromatic --project-token=$PROJECT_TOKEN --build-script-name='build-storybook' --skip
       env:
-        PROJECT_TOKEN: cc7b1csiu9
+        PROJECT_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
         CHROMATIC_BRANCH: ${{ github.head_ref }}
         CHROMATIC_SHA: ${{ github.sha }}
         CHROMATIC_SLUG: ${{ github.repository }}

@@ -3,8 +3,7 @@ import { Meta } from '@storybook/react';
 import { StackDivider, VStack } from '@chakra-ui/layout';
 import { Popover } from './Popover';
 import { popoverPositionings } from './types';
-import { Button, Text } from '..';
-import { Box } from 'components';
+import { Box, Button, Text } from 'components';
 
 export default {
   component: Popover,
@@ -42,7 +41,7 @@ const AllTemplate = () => (
 export const All = AllTemplate.bind({});
 
 const Template = (args) => (
-  <Box p="24rem">
+  <Box px="20rem" py="14rem">
     <Popover {...args} content={<Text>Popover content</Text>}>
       <Button>Click me</Button>
     </Popover>

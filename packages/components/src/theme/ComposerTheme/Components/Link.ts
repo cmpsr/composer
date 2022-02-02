@@ -5,7 +5,7 @@ import { linkSizes } from 'components/primitives/Link/types';
 const linkBaseStyle = {
   maxWidth: '100%',
   color: 'text-link-primary-default',
-  borderRadius: '4px',
+  borderRadius: '0.25rem',
   _hover: {
     textDecoration: 'none',
     color: 'text-link-primary-hover',
@@ -17,10 +17,10 @@ const linkBaseStyle = {
     color: 'text-link-primary-pressed',
   },
   _focus: {
-    boxShadow: `0 0 0 4px var(--chakra-colors-primary-focus)`,
+    boxShadow: `0 0 0 0.25rem var(--chakra-colors-primary-focus)`,
   },
   _focusVisible: {
-    boxShadow: `0 0 0 4px var(--chakra-colors-primary-focus)`,
+    boxShadow: `0 0 0 0.25rem var(--chakra-colors-primary-focus)`,
   },
 };
 

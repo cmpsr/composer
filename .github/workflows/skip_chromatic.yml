@@ -1,8 +1,8 @@
 name: "Chromatic"
 on:
   pull_request:
-    paths-ignore:
-    - "packages/components/**"
+    paths:
+    - "!packages/components/**"
   push:
     branches-ignore:
     - master

@@ -17,25 +17,25 @@ export default {
 
 const AllTemplate = () => (
   <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
-    {buttonVariants.map((variant) => (
-      <VStack key={variant}>
+    {buttonVariants.map((variant, i) => (
+      <VStack key={`${variant}-${i}`}>
         <HStack>
-          {ButtonSizes.map((size) => (
-            <Button variant={variant} size={size} key={size}>
+          {ButtonSizes.map((size, i) => (
+            <Button variant={variant} size={size} key={`${size}-${i}`}>
               {variant}
             </Button>
           ))}
         </HStack>
-        <HStack key={variant}>
-          {ButtonSizes.map((size) => (
-            <Button variant={variant} size={size} key={size} isDisabled>
+        <HStack>
+          {ButtonSizes.map((size, i) => (
+            <Button variant={variant} size={size} key={`${size}-${i}-disabled`} isDisabled>
               {variant}
             </Button>
           ))}
         </HStack>
-        <HStack key={variant}>
-          {ButtonSizes.map((size) => (
-            <Button variant={variant} size={size} key={size} isLoading>
+        <HStack>
+          {ButtonSizes.map((size, i) => (
+            <Button variant={variant} size={size} key={`${size}-${i}-loading`} isLoading>
               {variant}
             </Button>
           ))}

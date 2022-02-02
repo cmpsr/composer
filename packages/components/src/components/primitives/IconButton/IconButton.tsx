@@ -12,6 +12,8 @@ export const IconButton: FC<IconButtonProps> = ({ rounded, ...props }) => {
   const { icon, loading: iconButtonLoading, ...iconButtonStyles } = useMultiStyleConfig('IconButton', {
     rounded: rounded,
     size: props.size,
+    variant: props.variant,
+    isLoading: props.isLoading,
   }) as {
     borderRadius: string;
     icon: { width: string; height: string };

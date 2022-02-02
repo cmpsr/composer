@@ -1,4 +1,5 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
+import { transparentize } from '@chakra-ui/theme-tools';
 
 const sizes = {
   xs: {
@@ -60,5 +61,19 @@ export const IconButton: ComponentStyleConfig = {
   sizes,
   defaultProps: {
     size: 'm',
+  },
+  variants: {
+    ghost: ({ isLoading }) => {
+      return {
+        loading: {
+          borderColor: 'text-link-secondary-default',
+          borderBottomColor: transparentize('text-link-secondary-default', 0.3),
+          borderLeftColor: transparentize('text-link-secondary-default', 0.3),
+        },
+        _disabled: {
+          opacity: isLoading ? 1 : 0.4,
+        },
+      };
+    },
   },
 };

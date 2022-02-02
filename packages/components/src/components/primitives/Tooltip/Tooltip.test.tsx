@@ -17,12 +17,10 @@ describe('Tooltip', () => {
       fireEvent.mouseOver(screen.getByRole('button'));
     });
 
-    await waitFor(() =>
-      expect(screen.queryByTestId('cmpsr.tooltip')).toBeTruthy()
-    );
+    await waitFor(() => expect(screen.queryByTestId('cmpsr.tooltip')).toBeTruthy());
   });
 
-  test('it should render children', async () => {
+  test('it should render children', () => {
     renderWithProviders(
       <Tooltip label="Test!" side="bottom" positioning="center">
         <Button data-testid="test">Hover me!</Button>
@@ -49,7 +47,7 @@ describe('Tooltip', () => {
       ${'right'}  | ${'right'}  | ${'right-end'}
     `(
       'should return proper positioning when side is $side and positioning is $positioning',
-      async ({ side, positioning, placement }) => {
+      ({ side, positioning, placement }) => {
         expect(calculateTooltipPlacement(side, positioning)).toEqual(placement);
       }
     );

@@ -46,7 +46,7 @@ const AllTemplate = () => (
             <Button
               variant={variant}
               size={size}
-              key={size}
+              key={`${size}-${i}-with-icon`}
               trailingIcon={Icons.IconExternalLink}
               leadingIcon={Icons.IconExternalLink}
             >

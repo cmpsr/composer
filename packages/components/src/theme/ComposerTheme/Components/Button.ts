@@ -109,7 +109,7 @@ export const Button: ComponentStyleConfig = {
         padding: 0,
       },
     }),
-    sm: ({ theme }) => ({
+    s: ({ theme }) => ({
       ...theme.textStyles['text-body-meta-medium'],
       px: '0.75rem',
       py: '0.5rem',
@@ -120,7 +120,7 @@ export const Button: ComponentStyleConfig = {
         padding: 0,
       },
     }),
-    md: ({ theme }) => ({
+    m: ({ theme }) => ({
       ...theme.textStyles['text-body-medium'],
       px: '1rem',
       py: '0.5rem',
@@ -131,7 +131,7 @@ export const Button: ComponentStyleConfig = {
         padding: 0,
       },
     }),
-    lg: ({ theme }) => ({
+    l: ({ theme }) => ({
       ...theme.textStyles['text-body-large-medium'],
       px: '1.5rem',
       py: '0.75rem',

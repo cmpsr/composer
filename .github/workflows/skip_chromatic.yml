@@ -1,0 +1,24 @@
+name: "Chromatic"
+on:
+  pull_request:
+    paths-ignore:
+    - "packages/components/**"
+  push:
+    branches-ignore:
+    - master
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+    - run: yarn
+    - run: npx chromatic --project-token=$PROJECT_TOKEN --build-script-name='build-storybook' --skip
+      env:
+        PROJECT_TOKEN: cc7b1csiu9
+        CHROMATIC_BRANCH: ${{ github.head_ref }}
+        CHROMATIC_SHA: ${{ github.sha }}
+        CHROMATIC_SLUG: ${{ github.repository }}

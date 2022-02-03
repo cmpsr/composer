@@ -5,6 +5,7 @@ const baseStyle = {
   backgroundColor: 'background-action-default',
   textStyle: "text-body-meta-regular",
   color: 'text-primary',
+  borderRadius: 'radii-2',
   _placeholder: {
     color: 'text-secondary',
   },
@@ -35,6 +36,7 @@ const baseStyle = {
 const textStyles = {
   medium: 'text-body-regular',
   small: 'text-body-meta-regular',
+
 };
 
 const calculateSize = (size: string) => {

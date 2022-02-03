@@ -51,7 +51,7 @@ const Template = (args) => <Button {...args}></Button>;
 export const Playground = Template.bind({});
 Playground.args = {
   variant: 'primary',
-  size: 'md',
+  size: 'm',
   children: 'Composer button!',
   isLoading: false,
 };

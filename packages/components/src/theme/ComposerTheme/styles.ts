@@ -180,7 +180,6 @@ export const textStyles = {
 export const inputStyles = {
   large: {
     borderRadius: '0.4rem',
-    fontSize: 'text-body-regular',
     px: '0.8rem',
     minH: '3rem',
     minW: '8rem',
@@ -188,7 +187,6 @@ export const inputStyles = {
 
   medium: {
     borderRadius: '0.4rem',
-    fontSize: 'text-body-regular',
     px: '0.8rem',
     py: '0.5rem',
     minH: '2.5rem',
@@ -197,7 +195,6 @@ export const inputStyles = {
 
   small: {
     borderRadius: '0.4rem',
-    fontSize: 'text-body-meta-regular',
     px: '0.5rem',
     py: '0.375rem',
     minH: '2rem',

@@ -1,5 +1,16 @@
 # @cmpsr/components
 
+## 1.9.0
+
+### Minor Changes
+
+- f049ae2: Button: fix button sizes
+- f21ccb2: Link: add button appearance to link based on variants
+
+### Patch Changes
+
+- a923564: fix line height of text-body-\* text styles
+
 ## 1.8.0
 
 ### Minor Changes

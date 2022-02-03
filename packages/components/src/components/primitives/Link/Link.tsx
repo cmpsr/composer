@@ -9,9 +9,10 @@ export const Link: FC<LinkProps> = ({
   leadingIcon: LeadingIcon,
   trailingIcon: TrailingIcon,
   size = 'm',
+  variant,
   ...props
 }) => (
-  <ChakraLink size={size} data-testid="cmpsr.link.container" {...props}>
+  <ChakraLink size={size} variant={variant} data-testid="cmpsr.link.container" {...props}>
     <Flex direction="row" alignItems="center" columnGap="0.5rem">
       {LeadingIcon && <LeadingIcon size={getIconSize(size)} data-testid="cmpsr.link.leading-icon" />}
       <Text isTruncated>{children}</Text>

@@ -42,6 +42,8 @@
     "@storybook/addon-essentials": "^6.4.13",
     "@storybook/addon-links": "^6.4.13",
     "@storybook/react": "^6.4.13",
+    "@swc/core": "^1.2.136",
+    "@swc/jest": "^0.2.17",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.0.2",
     "react": "^17.0.2",

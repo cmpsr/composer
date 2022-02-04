@@ -21,6 +21,7 @@ import { Tag } from './Tag';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
 import { Radio } from './Radio';
+import { PinInput } from './PinInput';
 
 export const components = {
   Accordion,
@@ -38,8 +39,9 @@ export const components = {
   Link,
   ProgressCircular,
   Progress: ProgressBar,
-  Select,
+  PinInput,
   Radio,
+  Select,
   Slider,
   Spinner,
   Switch,

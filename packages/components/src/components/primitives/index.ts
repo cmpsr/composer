@@ -22,3 +22,4 @@ export * from './Tabs';
 export * from './Tag';
 export * from './Text';
 export * from './TextPairing';
+export * from './PinInput';

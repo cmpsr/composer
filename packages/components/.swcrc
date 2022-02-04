@@ -6,5 +6,12 @@
       "decorators": false,
       "dynamicImport": false
     }
+  },
+  "module": {
+    "type": "commonjs",
+    "strict": false,
+    "strictMode": true,
+    "lazy": false,
+    "noInterop": false
   }
 }

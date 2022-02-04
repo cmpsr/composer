@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { StackDivider, VStack } from '@chakra-ui/layout';
 import { Popover } from './Popover';
 import { popoverPositionings } from './types';
-import { Box, Button, Text } from 'components';
+import { Box, Button } from 'components';
 
 export default {
   component: Popover,
@@ -28,7 +28,7 @@ const AllTemplate = () => (
             primaryAction: { label: 'Primary', onClick: () => alert('Primary action') },
             secondaryAction: { label: 'Secondary', onClick: () => alert('Secondary action') },
           }}
-          body={<Text>Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap</Text>}
+          body="Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap"
         >
           <Button>Click me {positioning}</Button>
         </Popover>
@@ -41,7 +41,7 @@ export const All = AllTemplate.bind({});
 
 const Template = (args) => (
   <Box px="20rem" py="14rem">
-    <Popover {...args} body={<Text>Popover body</Text>}>
+    <Popover {...args} body={'Popover body'}>
       <Button>Click me</Button>
     </Popover>
   </Box>

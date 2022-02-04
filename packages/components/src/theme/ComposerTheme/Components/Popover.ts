@@ -23,7 +23,6 @@ const baseStyle = {
   },
   body: {
     color: 'text-primary',
-    textStyle: 'text-body-regular',
     paddingX: '1rem',
     paddingTop: '0.5rem',
     paddingBottom: '1rem',

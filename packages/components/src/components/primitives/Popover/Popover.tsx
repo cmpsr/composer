@@ -13,7 +13,7 @@ import {
   CSSObject,
 } from '@chakra-ui/react';
 import { PopoverProps, PopoverHeaderProps, PopoverFooterProps } from './types';
-import { TextPairing, Button } from 'components';
+import { TextPairing, Button, Text } from 'components';
 
 export const Popover: FC<PopoverProps> = ({
   children,
@@ -44,7 +44,9 @@ export const Popover: FC<PopoverProps> = ({
         <ChakraPopoverArrow />
         {showCloseButton && <ChakraPopoverCloseButton data-testid="cmpsr.popover.close.button" />}
         <PopoverHeader {...ownHeaderProps} />
-        <ChakraPopoverBody {...conditionalBodyStyle}>{body}</ChakraPopoverBody>
+        <ChakraPopoverBody {...conditionalBodyStyle}>
+          <Text variant="text-body-regular">{body}</Text>
+        </ChakraPopoverBody>
         {footerProps && <PopoverFooter data-testid="cmpsr.popover.footer" {...footerProps} />}
       </ChakraPopoverContent>
     </ChakraPopover>
@@ -54,7 +56,7 @@ export const Popover: FC<PopoverProps> = ({
 const PopoverHeader: FC<PopoverHeaderProps> = ({ label, subtitle, ...props }) => {
   return (
     <ChakraPopoverHeader data-testid="cmpsr.popover.label" {...props}>
-      <TextPairing label={label} subLabel={subtitle} variant="textpairing-popover-title" />
+      <TextPairing label={label} subLabel={subtitle} subLabelColor="text-secondary" />
     </ChakraPopoverHeader>
   );
 };

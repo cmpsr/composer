@@ -2,7 +2,7 @@ name: 'Linter'
 on: 'push'
 
 jobs:
-  jest:
+  linter:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -10,3 +10,5 @@ jobs:
       run: yarn
     - name: Run linter
       run: yarn lint
+    - name: Run type check
+      run: yarn type:check

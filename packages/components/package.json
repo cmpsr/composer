@@ -24,7 +24,8 @@
     "storybook": "start-storybook -p 8080 -c .storybook",
     "build-storybook": "build-storybook -c .storybook",
     "gen:theme-typings": "./scripts/generate_theme_typings.sh",
-    "gen:icons": "node scripts/generate_icons.js"
+    "gen:icons": "node scripts/generate_icons.js",
+    "type:check": "yarn tsc --project tsconfig.json --noEmit"
   },
   "peerDependencies": {
     "react": "^17.0.2"

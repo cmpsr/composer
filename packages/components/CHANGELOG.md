@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 1.11.2
+
+### Patch Changes
+
+- 9810e1d: fix: typescript and swc paths aliases
+- 9810e1d: fix: swcrc aliases
+
 ## 1.11.1
 
 ### Patch Changes

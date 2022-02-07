@@ -19,7 +19,7 @@ const AllTemplate = () => (
   <VStack>
     <HStack spacing={50}>
       {CloseButtonSizes.map((size) => (
-        <CloseButton size={size} />
+        <CloseButton key={size} size={size} />
       ))}
     </HStack>
   </VStack>

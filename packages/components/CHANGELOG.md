@@ -1,5 +1,15 @@
 # @cmpsr/components
 
+## 1.11.0
+
+### Minor Changes
+
+- ae89f55: Select: fix icon, colors and text of select component
+
+### Patch Changes
+
+- 1293112: fix: define aliases in swcrc file
+
 ## 1.10.0
 
 ### Minor Changes

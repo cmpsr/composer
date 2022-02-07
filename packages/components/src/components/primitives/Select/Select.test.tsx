@@ -1,8 +1,8 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { screen } from '@testing-library/react';
-import { renderWithProviders } from 'tests/renderWithProviders';
-import { ComposerProvider } from 'theme';
+import { renderWithProviders } from '@tests/renderWithProviders';
+import { ComposerProvider } from '@theme';
 import { Select } from '.';
 
 describe('Select', () => {

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Link as ChakraLink } from '@chakra-ui/react';
 import { LinkProps } from './types';
-import { Flex, IconSize, Text } from 'components';
+import { Flex, IconSize, Text } from '@components';
 
 export const Link: FC<LinkProps> = ({
   children,

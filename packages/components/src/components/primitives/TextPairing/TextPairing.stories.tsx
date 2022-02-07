@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { TextPairing, TextPairingProps, textPairingVariants } from '.';
-import { Text } from 'components';
+import { Text } from '@components';
 import { Box, Flex, Spacer, Stack, StackDivider } from '@chakra-ui/layout';
 
 export default {

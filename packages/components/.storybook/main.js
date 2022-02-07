@@ -49,9 +49,9 @@ module.exports = {
         ...config.resolve,
         alias: {
           ...config.resolve.alias,
-          components: path.resolve(__dirname, '../src/components'),
-          theme: path.resolve(__dirname, '../src/theme'),
-          hooks: path.resolve(__dirname, '../src/hooks'),
+          '@components': path.resolve(__dirname, '../src/components'),
+          '@theme': path.resolve(__dirname, '../src/theme'),
+          '@hooks': path.resolve(__dirname, '../src/hooks'),
           '@emotion/core': '@emotion/react',
           'emotion-theming': '@emotion/react',
         },

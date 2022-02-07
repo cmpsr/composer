@@ -8,7 +8,6 @@ export default {
   component: Card,
   title: 'Components/Primitives/Card',
   args: {
-    padding: 'spacer-3',
     children: (
       <Box>
         {Array(6)

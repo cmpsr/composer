@@ -1,5 +1,13 @@
 # @cmpsr/components
 
+## 1.10.0
+
+### Minor Changes
+
+- 38bee36: Card: update default padding of card to be 20px
+- 157522c: Breadcrumb: align container vertically
+- f58249c: Button: update button styles and add icons
+
 ## 1.9.0
 
 ### Minor Changes

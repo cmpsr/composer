@@ -1,20 +1,16 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { CloseButton } from './CloseButton';
-import { HStack, Text, VStack } from '@chakra-ui/react';
+import { HStack, VStack } from '@chakra-ui/react';
+import { CloseButtonSizes } from '.';
 
 export default {
   component: CloseButton,
   title: 'Components/Primitives/CloseButton',
   argTypes: {
     size: {
-      type: { name: 'string', required: false },
-    },
-    showLabel: {
-      control: { type: 'boolean' },
-    },
-    value: {
-      control: { type: 'number' },
+      options: CloseButtonSizes,
+      control: { type: 'select' },
     },
   },
 } as Meta;
@@ -22,20 +18,19 @@ export default {
 const AllTemplate = () => (
   <VStack>
     <HStack spacing={50}>
-      <CloseButton />
-      <CloseButton size="m" />
-      <CloseButton size="s" />
+      {CloseButtonSizes.map((size) => (
+        <CloseButton size={size} />
+      ))}
     </HStack>
   </VStack>
 );
 
 export const All = AllTemplate.bind({});
 
-const Template = (args) => <CloseButton {...args}></CloseButton>;
+const Template = (args) => <CloseButton {...args} />;
 
 export const Playground = Template.bind({});
 
 Playground.args = {
-  value: 50,
-  showLabel: false,
+  size: 'l',
 };

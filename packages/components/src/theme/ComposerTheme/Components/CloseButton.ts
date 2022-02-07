@@ -1,38 +1,40 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
-import { cssVar } from '@chakra-ui/theme-tools';
 
-const $size = cssVar('close-button-size');
-console.log('>>', $size.reference)
+const baseStyle = {
+  color: 'text-primary',
+  bg: 'background-light',
+  borderRadius: 'radii-2',
+  _hover: {
+    bg: 'background-action-hover',
+  },
+  _active: {
+    bg: 'background-action-pressed',
+  },
+  _focus: {
+    boxShadow: 'none',
+  },
+}
+
 export const CloseButton: ComponentStyleConfig = {
-  baseStyle: {
-    w: [$size.reference],
-    h: [$size.reference],
-    color: 'text-primary',
-    _hover: {
-      bg: 'background-action-hover',
-    },
-    _active: {
-      bg: 'background-action-pressed',
-    },
-    _focus: {
-      boxShadow: 'none',
-    },
+  baseStyle,
+  variants: {
+    solid: baseStyle,
   },
   sizes: {
     s: {
-      [$size.variable]: "1.5rem",
-      fontSize: "0.625rem", //10px
-      // fontSize: "1rem", //16px
+      height: "1.5rem",
+      minWidth: "1.5rem",
+      fontSize: "1rem",
     },
     m: {
-      [$size.variable]: "2rem",
-      fontSize: "1rem", // 16px
-      // fontSize: "1.5rem",  // 24px
+      height: "2rem",
+      minWidth: '2rem',
+      fontSize: "1.5rem",
     },
     l: {
-      [$size.variable]: '2.5rem',
-      fontSize: '1rem', // 16px
-      // fontSize: '1.5rem', // 24px
+      height: '2.5rem',
+      width: '2.5rem',
+      fontSize: '1.5rem',
     },
   },
   defaultProps: {

@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 1.11.1
+
+### Patch Changes
+
+- f817f32: fix: swcrc aliases
+
 ## 1.11.0
 
 ### Minor Changes

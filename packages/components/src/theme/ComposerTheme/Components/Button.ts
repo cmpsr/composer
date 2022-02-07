@@ -6,7 +6,7 @@ const generateButton = (color: string, textColor?: string) => {
   const _disabled = {
     backgroundColor: `${color}-disabled`,
     opacity: 1,
-    color: transparentize(`text-button-${textColor || color}`, 0.5),
+    color: transparentize(`text-button-${textColor || color}`, 0.6),
   };
 
   let loadingStyles = {
@@ -49,8 +49,8 @@ const generateAltButton = (color: string) => {
   const _disabled = {
     backgroundColor: 'background-container-disabled',
     opacity: 1,
-    color: transparentize(`text-link-${color}-default`, 0.5),
-    borderColor: transparentize(`text-link-${color}-default`, 0.5),
+    color: transparentize(`text-link-${color}-default`, 0.6),
+    borderColor: transparentize(`text-link-${color}-default`, 0.6),
   };
 
   let loadingStyles = {

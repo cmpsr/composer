@@ -5,7 +5,13 @@
       "tsx": true,
       "decorators": false,
       "dynamicImport": false
-    }
+    },
+    "paths": {
+      "components": ["./src/components"],
+      "theme": ["./src/theme"],
+      "hooks": ["./src/hooks"]
+    },
+    "baseUrl": "."
   },
   "module": {
     "type": "commonjs",

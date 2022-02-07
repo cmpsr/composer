@@ -1,6 +1,5 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
-import { buttonVariants } from 'components/primitives/Button/types';
-import { linkSizes } from 'components/primitives/Link/types';
+import { buttonVariants, linkSizes } from 'components';
 
 const linkBaseStyle = {
   maxWidth: '100%',

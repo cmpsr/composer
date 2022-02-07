@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 1.11.3
+
+### Patch Changes
+
+- 34b5a1c: generate ts types
+
 ## 1.11.2
 
 ### Patch Changes

@@ -1,11 +1,5 @@
 name: "Chromatic"
-on:
-  pull_request:
-    paths:
-    - "packages/components/**"
-  push:
-    branches:
-    - master
+on: 'push'
 
 jobs:
   chromatic:

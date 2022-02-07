@@ -1,6 +1,6 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import { screen, renderWithProviders } from 'tests/renderWithProviders';
+import { screen, renderWithProviders } from '@tests/renderWithProviders';
 
 import { Link } from './Link';
 import { linkSizes } from './types';

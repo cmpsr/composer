@@ -12,7 +12,7 @@ import {
   useStyles,
 } from '@chakra-ui/react';
 import { IconAlertCircle, IconAlertTriangle, IconCircleCheck, IconInfoCircle } from '../Icons';
-import { Flex } from 'components';
+import { Flex } from '@components';
 
 export const Alert: FC<AlertProps> = ({
   state,

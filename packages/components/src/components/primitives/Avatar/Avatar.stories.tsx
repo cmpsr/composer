@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Avatar, AvatarProps, avatarSizes } from '.';
-import { Box, Flex } from 'components';
+import { Box, Flex } from '@components';
 
 export default {
   component: Avatar,
@@ -13,12 +13,7 @@ const AVATAR_URL = 'https://avatars0.githubusercontent.com/u/67131017?s=200';
 const WithoutImageTemplate = () => (
   <Flex>
     {avatarSizes.map((size) => (
-      <Avatar
-        name="Composer Logo"
-        key={size}
-        size={size}
-        marginRight="spacer-4"
-      />
+      <Avatar name="Composer Logo" key={size} size={size} marginRight="spacer-4" />
     ))}
   </Flex>
 );

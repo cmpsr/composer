@@ -1,7 +1,7 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import { screen, renderWithProviders } from 'tests/renderWithProviders';
-import { ComposerProvider } from 'theme/ComposerProvider';
+import { screen, renderWithProviders } from '@tests/renderWithProviders';
+import { ComposerProvider } from '@theme';
 import { Alert } from '.';
 
 describe('Alert', () => {

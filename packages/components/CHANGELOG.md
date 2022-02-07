@@ -1,5 +1,68 @@
 # @cmpsr/components
 
+## 1.11.3
+
+### Patch Changes
+
+- 34b5a1c: generate ts types
+
+## 1.11.2
+
+### Patch Changes
+
+- 9810e1d: fix: typescript and swc paths aliases
+- 9810e1d: fix: swcrc aliases
+
+## 1.11.1
+
+### Patch Changes
+
+- f817f32: fix: swcrc aliases
+
+## 1.11.0
+
+### Minor Changes
+
+- ae89f55: Select: fix icon, colors and text of select component
+
+### Patch Changes
+
+- 1293112: fix: define aliases in swcrc file
+
+## 1.10.0
+
+### Minor Changes
+
+- 38bee36: Card: update default padding of card to be 20px
+- 157522c: Breadcrumb: align container vertically
+- f58249c: Button: update button styles and add icons
+
+## 1.9.0
+
+### Minor Changes
+
+- f049ae2: Button: fix button sizes
+- f21ccb2: Link: add button appearance to link based on variants
+
+### Patch Changes
+
+- a923564: fix line height of text-body-\* text styles
+
+## 1.8.0
+
+### Minor Changes
+
+- 7613951: Slider: change thumb size and add orientation to playground story
+- 14f5c73: re-implement Breadcrumb to accept items instead of composing it
+- 80c9301: Accordion: use custom padding for accordion and improve playground examples
+- 4f3ebfa: fix icon sizes for every component
+- 71cc77f: Implementation of the Button loading state with a storybook and test
+
+### Patch Changes
+
+- ce78d3d: add support for leading and trailing icon to Link component
+- 3bf768f: Alert: align title icon and add capability to show or hide close button
+
 ## 1.7.0
 
 ### Minor Changes

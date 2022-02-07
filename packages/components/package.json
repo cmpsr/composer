@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "1.7.0",
+  "version": "1.11.3",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -17,14 +17,16 @@
   ],
   "private": false,
   "scripts": {
-    "libbuild": "rimraf lib && babel src --out-dir lib --extensions '.ts,.tsx,.js' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +",
+    "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore '**/*.test.ts,**/*.stories.ts' && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "storybook": "start-storybook -p 8080 -c .storybook",
     "build-storybook": "build-storybook -c .storybook",
     "gen:theme-typings": "./scripts/generate_theme_typings.sh",
-    "gen:icons": "node scripts/generate_icons.js"
+    "gen:icons": "node scripts/generate_icons.js",
+    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:emit": "tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "peerDependencies": {
     "react": "^17.0.2"
@@ -42,10 +44,15 @@
     "@storybook/addon-essentials": "^6.4.13",
     "@storybook/addon-links": "^6.4.13",
     "@storybook/react": "^6.4.13",
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.136",
+    "@swc/jest": "^0.2.17",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "storybook-chromatic": "^4.0.2"
+    "storybook-addon-turbo-build": "^1.0.1",
+    "storybook-chromatic": "^4.0.2",
+    "swc-loader": "^0.1.15"
   }
 }

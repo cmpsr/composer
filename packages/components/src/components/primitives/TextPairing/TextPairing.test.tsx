@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, renderWithProviders } from 'tests/renderWithProviders';
+import { screen, renderWithProviders } from '@tests/renderWithProviders';
 import { TextPairing } from '.';
 
 describe('TextPairing', () => {
@@ -7,9 +7,7 @@ describe('TextPairing', () => {
   const subLabel = 'SubLabel';
   const variant = 'textpairing-header-4XL';
   const givenComponentRendered = () =>
-    renderWithProviders(
-      <TextPairing label={label} subLabel={subLabel} variant={variant} />
-    );
+    renderWithProviders(<TextPairing label={label} subLabel={subLabel} variant={variant} />);
 
   test('should render label and sub label', () => {
     givenComponentRendered();

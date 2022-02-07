@@ -6,7 +6,7 @@ const generateButton = (color: string, textColor?: string) => {
   const _disabled = {
     backgroundColor: `${color}-disabled`,
     opacity: 1,
-    color: transparentize(`text-button-${textColor || color}`, 0.5),
+    color: transparentize(`text-button-${textColor || color}`, 0.6),
   };
 
   let loadingStyles = {
@@ -49,8 +49,8 @@ const generateAltButton = (color: string) => {
   const _disabled = {
     backgroundColor: 'background-container-disabled',
     opacity: 1,
-    color: transparentize(`text-link-${color}-default`, 0.5),
-    borderColor: transparentize(`text-link-${color}-default`, 0.5),
+    color: transparentize(`text-link-${color}-default`, 0.6),
+    borderColor: transparentize(`text-link-${color}-default`, 0.6),
   };
 
   let loadingStyles = {
@@ -109,7 +109,7 @@ export const Button: ComponentStyleConfig = {
         padding: 0,
       },
     }),
-    sm: ({ theme }) => ({
+    s: ({ theme }) => ({
       ...theme.textStyles['text-body-meta-medium'],
       px: '0.75rem',
       py: '0.5rem',
@@ -120,7 +120,7 @@ export const Button: ComponentStyleConfig = {
         padding: 0,
       },
     }),
-    md: ({ theme }) => ({
+    m: ({ theme }) => ({
       ...theme.textStyles['text-body-medium'],
       px: '1rem',
       py: '0.5rem',
@@ -131,7 +131,7 @@ export const Button: ComponentStyleConfig = {
         padding: 0,
       },
     }),
-    lg: ({ theme }) => ({
+    l: ({ theme }) => ({
       ...theme.textStyles['text-body-large-medium'],
       px: '1.5rem',
       py: '0.75rem',

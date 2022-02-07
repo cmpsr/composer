@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { Button } from './Button';
-import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
-import { ButtonSizes, buttonVariants } from './types';
+import { VStack } from '@chakra-ui/layout';
+import { buttonSizes, buttonVariants } from './types';
+import * as Icons from '../Icons';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 
 export default {
   component: Button,
@@ -16,42 +18,78 @@ export default {
 } as Meta;
 
 const AllTemplate = () => (
-  <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
-    {buttonVariants.map((variant) => (
-      <VStack key={variant}>
-        <HStack>
-          {ButtonSizes.map((size) => (
-            <Button variant={variant} size={size} key={size}>
-              {variant}
-            </Button>
+  <Table variant="simple">
+    <Thead>
+      <Tr>
+        <Th>State</Th>
+        <Th>XS</Th>
+        <Th>S</Th>
+        <Th>M</Th>
+        <Th>L</Th>
+      </Tr>
+    </Thead>
+    <Tbody>
+      {buttonVariants.map((variant, i) => (
+        <Fragment key={i}>
+          {['Default', 'Leading Icon', 'Trailing Icon', 'Both Icons', 'Disabled', 'Loading'].map((state, i) => (
+            <Tr key={`${state}-${i}`}>
+              <Td>{state}</Td>
+              {buttonSizes.map((size, i) => (
+                <Td key={`${variant}-${size}-${i}-${state}`}>
+                  <Button
+                    variant={variant}
+                    size={size}
+                    {...{
+                      ...(state === 'Disabled' && {
+                        isDisabled: true,
+                      }),
+                    }}
+                    {...{
+                      ...(state === 'Loading' && {
+                        isLoading: true,
+                      }),
+                    }}
+                    {...{
+                      ...(state === 'Both Icons' && {
+                        trailingIcon: Icons.IconExternalLink,
+                        leadingIcon: Icons.IconExternalLink,
+                      }),
+                    }}
+                    {...{ ...(state === 'Trailing Icon' && { trailingIcon: Icons.IconExternalLink }) }}
+                    {...{ ...(state === 'Leading Icon' && { leadingIcon: Icons.IconExternalLink }) }}
+                  >
+                    {variant}
+                  </Button>
+                </Td>
+              ))}
+            </Tr>
           ))}
-        </HStack>
-        <HStack key={variant}>
-          {ButtonSizes.map((size) => (
-            <Button variant={variant} size={size} key={size} isDisabled>
-              {variant}
-            </Button>
-          ))}
-        </HStack>
-        <HStack key={variant}>
-          {ButtonSizes.map((size) => (
-            <Button variant={variant} size={size} key={size} isLoading>
-              {variant}
-            </Button>
-          ))}
-        </HStack>
-      </VStack>
-    ))}
+        </Fragment>
+      ))}
+    </Tbody>
+  </Table>
+);
+export const All = AllTemplate.bind({});
+
+const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
+  <VStack>
+    <Button
+      {...(showLeadingIcon && { leadingIcon: Icons.IconExternalLink })}
+      {...(showTrailingIcon && { trailingIcon: Icons.IconExternalLink })}
+      {...args}
+    >
+      Playground
+    </Button>
   </VStack>
 );
 
-export const All = AllTemplate.bind({});
-
-const Template = (args) => <Button {...args}></Button>;
 export const Playground = Template.bind({});
 Playground.args = {
   variant: 'primary',
-  size: 'md',
+  size: 'm',
   children: 'Composer button!',
   isLoading: false,
+  showLeadingIcon: true,
+  showTrailingIcon: true,
+  isDisabled: false,
 };

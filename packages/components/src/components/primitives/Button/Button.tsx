@@ -1,10 +1,7 @@
 import React, { FC } from 'react';
 import { Button as ChakraButton, useMultiStyleConfig } from '@chakra-ui/react';
 import { ButtonProps } from './types';
-import { Spinner } from 'components/primitives/Spinner';
-import { SpinnerProps } from 'components/primitives/Spinner/types';
-import { Flex } from 'components/layouts';
-import { IconSize } from '..';
+import { Flex, IconSize, Spinner, SpinnerProps } from 'components';
 
 export const Button: FC<ButtonProps> = ({
   children,

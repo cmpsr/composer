@@ -3,13 +3,9 @@ import { Stack } from '@chakra-ui/layout';
 import { Text } from '../Text';
 import { TextPairingProps, TextPairingStyles } from '.';
 import { useStyleConfig } from '@chakra-ui/system';
-import { useResponsiveValue } from 'hooks/useResponsiveValue';
+import { useResponsiveValue } from '@hooks';
 
-export const TextPairing: FC<TextPairingProps> = ({
-  variant,
-  label,
-  subLabel,
-}) => {
+export const TextPairing: FC<TextPairingProps> = ({ variant, label, subLabel }) => {
   const responsiveVariant = useResponsiveValue(variant);
   const styles = useStyleConfig('TextPairing', {
     variant: responsiveVariant,

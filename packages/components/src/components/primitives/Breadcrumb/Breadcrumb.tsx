@@ -1,5 +1,5 @@
 import { useStyleConfig } from '@chakra-ui/react';
-import { Flex } from 'components';
+import { Flex } from '@components';
 import React, { FC, Fragment } from 'react';
 import { IconChevronRight, Link, Text } from '..';
 import { BreadcrumbProps, BreadcrumbStyle } from './types';

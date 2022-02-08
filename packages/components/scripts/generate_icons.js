@@ -224,7 +224,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import * as Icons from './Icons';
 import { iconSizes } from './types';
-import { Box, Flex, Grid } from 'components';
+import { Box, Flex, Grid } from '@components';
 
 export default {
   title: 'Components/Primitives/Icons',

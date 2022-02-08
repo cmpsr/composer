@@ -7,9 +7,10 @@
       "dynamicImport": false
     },
     "paths": {
-      "components": ["./src/components"],
-      "theme": ["./src/theme"],
-      "hooks": ["./src/hooks"]
+      "@components": ["./src/components"],
+      "@hooks": ["./src/hooks"],
+      "@tests/*": ["./src/tests/*"],
+      "@theme": ["./src/theme"]
     },
     "baseUrl": "."
   },

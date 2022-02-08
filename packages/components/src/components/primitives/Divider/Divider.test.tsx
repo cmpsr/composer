@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, renderWithProviders } from 'tests/renderWithProviders';
+import { screen, renderWithProviders } from '@tests/renderWithProviders';
 import TestRendered from 'react-test-renderer';
 import { Divider } from './Divider';
 
@@ -11,12 +11,8 @@ describe('Divider', () => {
   });
 
   test('should render with orientation', () => {
-    const horizontalInstance = TestRendered.create(
-      <Divider orientation="horizontal" />
-    ).root;
-    const verticalInstance = TestRendered.create(
-      <Divider orientation="vertical" />
-    ).root;
+    const horizontalInstance = TestRendered.create(<Divider orientation="horizontal" />).root;
+    const verticalInstance = TestRendered.create(<Divider orientation="vertical" />).root;
 
     expect(horizontalInstance.findByProps({ orientation: 'horizontal' }));
     expect(verticalInstance.findByProps({ orientation: 'vertical' }));

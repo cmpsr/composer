@@ -1,6 +1,6 @@
 import { TextProps as ChakraTextProps } from '@chakra-ui/layout';
 import { ResponsiveValue } from '@chakra-ui/react';
-import { textVariants } from 'theme/ComposerTheme/Components/Text';
+import { textVariants } from '../../../theme/ComposerTheme/Components/Text';
 
 export { textVariants };
 

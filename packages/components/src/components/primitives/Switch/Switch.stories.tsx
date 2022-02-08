@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Switch } from '.';
 import { switchLabelPositions, switchSizes } from './types';
-import { Grid, Text } from 'components';
+import { Grid, Text } from '@components';
 
 export default {
   component: Switch,
@@ -37,12 +37,7 @@ const AllTemplate = () => {
         <>
           <Text>{sizeLabels[size]}</Text>
           {switchLabelPositions.map((labelPosition) => (
-            <Switch
-              key={labelPosition}
-              size={size}
-              labelPosition={labelPosition}
-              label="Test"
-            />
+            <Switch key={labelPosition} size={size} labelPosition={labelPosition} label="Test" />
           ))}
           <Switch size={size} isDisabled label="Test" labelPosition="right" />
         </>

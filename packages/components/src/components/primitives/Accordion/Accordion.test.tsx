@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  fireEvent,
-  screen,
-  renderWithProviders,
-} from 'tests/renderWithProviders';
+import { fireEvent, screen, renderWithProviders } from '@tests/renderWithProviders';
 import { Accordion } from './Accordion';
 
 describe('Accordion', () => {

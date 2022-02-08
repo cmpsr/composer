@@ -1,6 +1,6 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
-export const Progress: ComponentStyleConfig = {
+export const ProgressBar: ComponentStyleConfig = {
   baseStyle: {
     filledTrack: {
       bgColor: 'primary-default',

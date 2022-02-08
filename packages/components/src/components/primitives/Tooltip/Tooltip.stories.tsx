@@ -1,9 +1,8 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { VStack, StackDivider, HStack } from '@chakra-ui/layout';
-import { Tooltip } from '.';
 import { tooltipPositions, TooltipProps, tooltipSides } from './types';
-import { Box, Button } from 'components';
+import { Box, Button, Tooltip } from '@components';
 
 export default {
   component: Tooltip,

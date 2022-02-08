@@ -1,8 +1,8 @@
 import React from 'react';
-import { Tooltip, Button } from '..';
+import { Tooltip, Button } from '@components';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import { renderWithProviders } from 'tests/renderWithProviders';
+import { renderWithProviders } from '@tests/renderWithProviders';
 import { calculateTooltipPlacement } from '.';
 
 describe('Tooltip', () => {

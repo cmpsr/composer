@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { IconButton as ChakraIconButton, useMultiStyleConfig } from '@chakra-ui/react';
 import { IconButtonProps } from './types';
-import { SpinnerProps, Spinner } from 'components/primitives/Spinner';
-import { theme } from 'theme/ComposerTheme';
+import { SpinnerProps, Spinner } from '@components';
+import { theme } from '@theme';
 
 const {
   components: { Button },

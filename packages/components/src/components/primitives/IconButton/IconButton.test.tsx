@@ -1,8 +1,8 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import { renderWithProviders } from 'tests/renderWithProviders';
-import { IconButton } from 'components/primitives/IconButton';
-import { IconCloud } from 'components/primitives/Icons';
+import { renderWithProviders } from '@tests/renderWithProviders';
+import { IconButton } from '@components';
+import { IconCloud } from '@components';
 
 describe('IconButton', () => {
   test('it should render', () => {

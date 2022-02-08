@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Section, SectionProps } from '.';
-import { Text } from 'components';
+import { Text } from '@components';
 
 export default {
   title: 'Components/Layouts/Section',

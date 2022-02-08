@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, renderWithProviders } from 'tests/renderWithProviders';
+import { screen, renderWithProviders } from '@tests/renderWithProviders';
 import { Avatar } from './Avatar';
 
 interface RendererParams {
@@ -7,9 +7,7 @@ interface RendererParams {
 }
 
 describe('Avatar', () => {
-  const givenComponentRendered = (
-    { showBadge }: RendererParams = { showBadge: false }
-  ) =>
+  const givenComponentRendered = ({ showBadge }: RendererParams = { showBadge: false }) =>
     renderWithProviders(
       <Avatar
         src="https://avatars0.githubusercontent.com/u/67131017?s=200"

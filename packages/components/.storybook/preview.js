@@ -1,3 +1,4 @@
+import React from 'react';
 import { addDecorator } from '@storybook/react';
 import { ComposerProvider } from '../src/theme';
 import '@fontsource/inter/300.css';

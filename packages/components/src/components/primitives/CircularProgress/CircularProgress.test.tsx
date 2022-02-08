@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import { renderWithProviders } from 'tests/renderWithProviders';
+import { renderWithProviders } from '@tests/renderWithProviders';
 import { CircularProgress } from '.';
 
 describe('CircularProgress', () => {

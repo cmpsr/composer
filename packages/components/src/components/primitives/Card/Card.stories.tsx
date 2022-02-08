@@ -2,13 +2,12 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Card } from './Card';
 import { CardProps } from './types';
-import { Box, Text } from 'components';
+import { Box, Text } from '@components';
 
 export default {
   component: Card,
   title: 'Components/Primitives/Card',
   args: {
-    padding: 'spacer-3',
     children: (
       <Box>
         {Array(6)

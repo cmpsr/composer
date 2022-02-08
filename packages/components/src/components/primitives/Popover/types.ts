@@ -3,7 +3,7 @@ import {
   PopoverHeaderProps as ChakraPopoverHeaderProps,
   PopoverFooterProps as ChakraPopoverFooterProps,
 } from '@chakra-ui/react';
-import { ButtonVariant } from 'components/primitives/Button/types';
+import { ButtonVariant } from '@components';
 
 export const popoverPositionings = ['bottom', 'top', 'left', 'right'] as const;
 

@@ -13,7 +13,7 @@ import {
   CSSObject,
 } from '@chakra-ui/react';
 import { PopoverProps, PopoverHeaderProps, PopoverFooterProps } from './types';
-import { TextPairing, Button, Text } from 'components';
+import { TextPairing, Button, Text } from '@components';
 
 export const Popover: FC<PopoverProps> = ({
   children,

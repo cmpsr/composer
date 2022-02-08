@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { StackDivider, VStack } from '@chakra-ui/layout';
 import { Popover } from './Popover';
 import { popoverPositionings } from './types';
-import { Box, Button } from 'components';
+import { Box, Button } from '@components';
 
 export default {
   component: Popover,

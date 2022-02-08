@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
-import { renderWithProviders } from 'tests/renderWithProviders';
-import { Button } from 'components';
+import { renderWithProviders } from '@tests/renderWithProviders';
+import { Button } from '@components';
 import { Popover } from './Popover';
 
 const mockFn = jest.fn();

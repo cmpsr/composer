@@ -1,6 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { renderWithProviders } from 'tests/renderWithProviders';
+import { renderWithProviders } from '@tests/renderWithProviders';
 import { screen } from '@testing-library/react';
 import { Textarea } from './Textarea';
 

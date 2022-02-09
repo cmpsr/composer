@@ -5,13 +5,13 @@ import { inputStyles } from '../styles';
 
 const sizes: Record<string, PartsStyleInterpolation> = {
   l: ({ theme }) => ({
-    field: { ...inputStyles.large, py: '0.75rem', px: '1rem', ...theme.textStyles['text-body-regular'] },
+    field: { ...inputStyles.large, py: '0.75rem', px: '1rem', height: '3rem', ...theme.textStyles['text-body-regular'] },
   }),
   m: ({ theme }) => ({
-    field: { ...inputStyles.medium, px: '0.75rem', ...theme.textStyles['text-body-regular'] },
+    field: { ...inputStyles.medium, px: '0.75rem', height: '2.5rem', ...theme.textStyles['text-body-regular'] },
   }),
   s: ({ theme }) => ({
-    field: { ...inputStyles.small, px: '0.75rem', ...theme.textStyles['text-body-meta-regular'] },
+    field: { ...inputStyles.small, px: '0.75rem', height: '2rem', ...theme.textStyles['text-body-meta-regular'] },
   }),
 };
 

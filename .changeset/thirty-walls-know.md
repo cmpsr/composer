@@ -2,4 +2,6 @@
 "@cmpsr/components": minor
 ---
 
-Apply feedback to Tabs, Link, Progress components
+Add proper color when Link is pressed
+Rename Progress components to be consistent with design
+Remove Tabs underline and use proper background color

@@ -3,17 +3,15 @@ import { PartsStyleFunction, PartsStyleInterpolation } from '@chakra-ui/theme-to
 import { selectAnatomy as parts } from '@chakra-ui/anatomy';
 import { inputStyles } from '../styles';
 
-const iconSpacing = { paddingInlineEnd: '2rem' };
-
 const sizes: Record<string, PartsStyleInterpolation> = {
   l: ({ theme }) => ({
-    field: { ...iconSpacing, ...inputStyles.large, ...theme.textStyles['text-body-regular'] },
+    field: { ...inputStyles.large, py: '0.75rem', px: '1rem', ...theme.textStyles['text-body-regular'] },
   }),
   m: ({ theme }) => ({
-    field: { ...iconSpacing, ...inputStyles.medium, ...theme.textStyles['text-body-regular'] },
+    field: { ...inputStyles.medium, px: '0.75rem', ...theme.textStyles['text-body-regular'] },
   }),
   s: ({ theme }) => ({
-    field: { ...iconSpacing, ...inputStyles.small, ...theme.textStyles['text-body-meta-regular'] },
+    field: { ...inputStyles.small, px: '0.75rem', ...theme.textStyles['text-body-meta-regular'] },
   }),
 };
 

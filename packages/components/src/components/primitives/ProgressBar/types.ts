@@ -1,0 +1,8 @@
+import { ProgressProps as ChakraProgressBarProps } from '@chakra-ui/progress';
+
+export const progressBarSizes = ['xs', 's', 'm', 'l', 'xl'] as const;
+type ProgressBarSize = typeof progressBarSizes[number];
+
+export interface ProgressBarProps extends ChakraProgressBarProps {
+  size?: ProgressBarSize;
+}

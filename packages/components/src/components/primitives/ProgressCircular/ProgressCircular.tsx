@@ -1,26 +1,20 @@
 import React, { FC } from 'react';
-import {
-  CircularProgress as ChakraCircularProgress,
-  useMultiStyleConfig,
-} from '@chakra-ui/react';
-import { CircularProgressProps } from './types';
+import { CircularProgress as ChakraProgressCircular, useMultiStyleConfig } from '@chakra-ui/react';
+import { ProgressCircularProps } from './types';
 import { Text, TextProps } from '..';
 
-export const CircularProgress: FC<CircularProgressProps> = ({
-  showLabel,
-  ...props
-}) => {
+export const ProgressCircular: FC<ProgressCircularProps> = ({ showLabel, ...props }) => {
   const {
     label: labelStyles,
     filledTrack: { backgroundColor: filledTrackColor },
     track: { backgroundColor: trackColor },
-  } = useMultiStyleConfig('CircularProgress', {});
+  } = useMultiStyleConfig('ProgressCircular', {});
 
   return (
-    <ChakraCircularProgress
+    <ChakraProgressCircular
       trackColor={trackColor as string}
       color={filledTrackColor as string}
-      data-testid="cmpsr.circular-progress"
+      data-testid="cmpsr.progress-circular"
       {...props}
     >
       {showLabel && (
@@ -28,6 +22,6 @@ export const CircularProgress: FC<CircularProgressProps> = ({
           {props.value}%
         </Text>
       )}
-    </ChakraCircularProgress>
+    </ChakraProgressCircular>
   );
 };

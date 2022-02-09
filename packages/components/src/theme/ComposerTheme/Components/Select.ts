@@ -1,17 +1,31 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { PartsStyleFunction, PartsStyleInterpolation } from '@chakra-ui/theme-tools';
 import { selectAnatomy as parts } from '@chakra-ui/anatomy';
-import { inputStyles } from '../styles';
 
 const sizes: Record<string, PartsStyleInterpolation> = {
   l: ({ theme }) => ({
-    field: { ...inputStyles.large, py: '0.75rem', px: '1rem', height: '3rem', ...theme.textStyles['text-body-regular'] },
+    field: {
+      py: '0.75rem',
+      px: '1rem',
+      height: '3rem',
+      ...theme.textStyles['text-body-regular'],
+    },
   }),
   m: ({ theme }) => ({
-    field: { ...inputStyles.medium, px: '0.75rem', height: '2.5rem', ...theme.textStyles['text-body-regular'] },
+    field: {
+      px: '0.75rem',
+      py: '0.5rem',
+      height: '2.5rem',
+      ...theme.textStyles['text-body-regular'],
+    },
   }),
   s: ({ theme }) => ({
-    field: { ...inputStyles.small, px: '0.75rem', height: '2rem', ...theme.textStyles['text-body-meta-regular'] },
+    field: {
+      px: '0.75rem',
+      py: '0.375rem',
+      height: '2rem',
+      ...theme.textStyles['text-body-meta-regular'],
+    },
   }),
 };
 
@@ -35,6 +49,8 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ theme, iconSize }) => {
       boxShadow: 'none',
       color: 'text-primary',
       placeholderColor: 'text-secondary',
+      minW: '8rem',
+      borderRadius: 'radii-2',
       _hover: {
         backgroundColor: 'background-action-hover',
         borderWidth: '0.063rem',

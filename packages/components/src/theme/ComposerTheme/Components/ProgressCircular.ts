@@ -1,6 +1,6 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
-export const CircularProgress: ComponentStyleConfig = {
+export const ProgressCircular: ComponentStyleConfig = {
   baseStyle: {
     label: {
       color: 'text-secondary',

@@ -25,6 +25,9 @@ export const Tabs: ComponentStyleConfig = {
   variants: {
     line: {
       color: 'text-secondary',
+      tablist: {
+        border: 0,
+      },
       tab: {
         _selected: {
           borderColor: 'primary-default',
@@ -37,7 +40,7 @@ export const Tabs: ComponentStyleConfig = {
         borderRadius: '1.25rem',
         color: 'text-secondary',
         _selected: {
-          backgroundColor: 'background-static',
+          backgroundColor: 'background-action-active',
           color: 'text-link-primary-default',
         },
       },

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { CircularProgress } from './CircularProgress';
+import { ProgressCircular } from './ProgressCircular';
 import { HStack, Text, VStack } from '@chakra-ui/react';
 
 export default {
-  component: CircularProgress,
-  title: 'Components/Primitives/CircularProgress',
+  component: ProgressCircular,
+  title: 'Components/Primitives/ProgressCircular',
   argTypes: {
     size: {
       type: { name: 'string', required: false },
@@ -23,18 +23,18 @@ const AllTemplate = () => (
   <VStack>
     <HStack>
       <Text>Default</Text>
-      <CircularProgress value={50} />
+      <ProgressCircular value={50} />
     </HStack>
     <HStack>
       <Text>With Label</Text>
-      <CircularProgress value={50} showLabel />
+      <ProgressCircular value={50} showLabel />
     </HStack>
   </VStack>
 );
 
 export const All = AllTemplate.bind({});
 
-const Template = (args) => <CircularProgress {...args}></CircularProgress>;
+const Template = (args) => <ProgressCircular {...args} />;
 
 export const Playground = Template.bind({});
 

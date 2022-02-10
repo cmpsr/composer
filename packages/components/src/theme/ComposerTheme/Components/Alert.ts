@@ -5,15 +5,19 @@ import { PartsStyleFunction } from '@chakra-ui/theme-tools';
 const defaultContainerColorScheme = {
   success: {
     backgroundColor: 'background-success',
+    borderStartColor: 'alert-success-default'
   },
   error: {
     backgroundColor: 'background-error',
+    borderStartColor: 'alert-error-default'
   },
   warning: {
     backgroundColor: 'background-warning',
+    borderStartColor: 'alert-warning-default'
   },
   info: {
     backgroundColor: 'background-inform',
+    borderStartColor: 'alert-inform-default'
   },
 };
 
@@ -29,7 +33,7 @@ const containerColorScheme = {
       backgroundColor: 'alert-warning-default',
     },
     info: {
-      backgroundColor: 'alert-info-default',
+      backgroundColor: 'alert-inform-default',
     },
   },
   subtle: defaultContainerColorScheme,

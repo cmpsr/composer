@@ -119,6 +119,13 @@ export const Alert: ComponentStyleConfig = {
       textStyle: 'text-body-regular',
       paddingRight: '1.7rem',
     },
+    closeButton: {
+      height: '1.5rem',
+      width: '1.5rem',
+      '& svg': {
+        boxSize: '1rem',
+      }
+    }
   }),
   defaultProps: {
     variant: 'solid',

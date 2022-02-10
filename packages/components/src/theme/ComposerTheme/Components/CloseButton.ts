@@ -2,7 +2,7 @@ import { ComponentStyleConfig } from '@chakra-ui/react';
 
 const baseStyle = {
   container: {
-    bg: 'background-light',
+    bg: 'transparent',
     borderRadius: 'radii-2',
     _hover: {
       bg: 'background-action-hover',

@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.23
+
+### Patch Changes
+
+- c9d69bd: "replace babel with swc"
+
 ## 0.0.22
 
 ### Patch Changes

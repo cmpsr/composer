@@ -1,5 +1,13 @@
 # @cmpsr/components
 
+## 1.12.0
+
+### Minor Changes
+
+- 7a95d00: Add proper color when Link is pressed
+  Rename Progress components to be consistent with design
+  Remove Tabs underline and use proper background color
+
 ## 1.11.3
 
 ### Patch Changes

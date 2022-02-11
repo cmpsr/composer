@@ -7,13 +7,6 @@ const linkBaseStyle = {
   borderRadius: '0.25rem',
   _hover: {
     textDecoration: 'none',
-    color: 'text-link-primary-hover',
-  },
-  _pressed: {
-    color: 'text-link-primary-pressed',
-  },
-  _visited: {
-    color: 'text-link-primary-pressed',
   },
   _focus: {
     boxShadow: `0 0 0 0.25rem var(--chakra-colors-primary-focus)`,
@@ -72,6 +65,18 @@ const getSizes = () => {
                 }[size].textStyleToken
               ],
               color: 'text-link-primary-default',
+            },
+            _hover: {
+              p: { color: 'text-link-primary-hover' },
+              svg: { color: 'text-link-primary-hover' },
+            },
+            _active: {
+              p: { color: 'text-link-primary-pressed' },
+              svg: { color: 'text-link-primary-pressed' },
+            },
+            _focus: {
+              p: { color: 'text-link-primary-hover' },
+              svg: { color: 'text-link-primary-hover' },
             },
           };
   });

@@ -11,7 +11,7 @@ import { SwitchProps } from './types';
 const generateRandomId = () => Math.random().toString(36).slice(2);
 
 export const Switch: FC<SwitchProps> = ({ label, labelPosition = 'left', id, ...props }) => {
-  const componentId = id ?? generateRandomId();
+  const componentId = id ?? `cmpsr.${generateRandomId()}`;
   const isLeftLabel = labelPosition === 'left';
 
   const { label: labelStyle } = useMultiStyleConfig('Switch', {
@@ -25,13 +25,13 @@ export const Switch: FC<SwitchProps> = ({ label, labelPosition = 'left', id, ...
         <ChakraFormLabel
           {...labelStyle}
           data-testid={`cmpsr.switch-${labelPosition}-label`}
-          htmlFor={`cmpsr.${componentId}`}
+          htmlFor={componentId}
           order={isLeftLabel ? '1' : '2'}
         >
           {label}
         </ChakraFormLabel>
       )}
-      <ChakraSwitch {...props} id={`cmpsr.${componentId}`} order={isLeftLabel ? '2' : '1'} />
+      <ChakraSwitch {...props} id={componentId} order={isLeftLabel ? '2' : '1'} />
     </ChakraFormControl>
   );
 };

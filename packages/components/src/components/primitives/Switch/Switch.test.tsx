@@ -9,7 +9,7 @@ describe('Switch', () => {
     expect(screen.queryByTestId('cmpsr.switch')).not.toBeFalsy();
   });
 
-  test('it should render a label', () => {
+  test('it should render left label', () => {
     renderWithProviders(<Switch label="Test1" labelPosition="left" />);
     const label = screen.queryByTestId('cmpsr.switch-left-label');
     const labelText = screen.queryByText('Test1');

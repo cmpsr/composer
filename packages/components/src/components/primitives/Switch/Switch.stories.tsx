@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Meta } from '@storybook/react';
 import { Switch } from '.';
 import { switchLabelPositions, switchSizes } from './types';

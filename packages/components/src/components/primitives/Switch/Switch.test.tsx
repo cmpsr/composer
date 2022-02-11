@@ -1,6 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import { renderWithProviders } from '@tests/renderWithProviders';
+import { renderWithProviders, screen } from '@tests/renderWithProviders';
 import { Switch } from '.';
 
 describe('Switch', () => {

@@ -24,13 +24,15 @@
     "access": "public"
   },
   "scripts": {
-    "libbuild": "rimraf lib && yarn babel src --out-dir lib --extensions '.ts,.tsx' --copy-files && tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly",
+    "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore '**/*.test.ts'",
     "test": "jest --testPathIgnorePatterns=lib/",
     "test:watch": "jest --watch --testPathIgnorePatterns=lib/",
     "test:coverage": "jest --coverage --testPathIgnorePatterns=lib/",
     "graphql:schema": "node ./scripts/graphql-schema.js",
     "graphql:types": "node ./scripts/graphql-types.js",
-    "graphql:possibleTypes": "node ./scripts/graphql-possibleTypes.js"
+    "graphql:possibleTypes": "node ./scripts/graphql-possibleTypes.js",
+    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:emit": "tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "bugs": {
     "url": "https://github.com/cmpsr/composer/issues"

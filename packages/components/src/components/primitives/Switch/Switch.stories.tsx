@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { Switch } from '.';
 import { switchLabelPositions, switchSizes } from './types';
-import { Grid, Text } from '@components';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 
 export default {
   component: Switch,
@@ -19,30 +19,53 @@ export default {
   },
 } as Meta;
 
-const sizeLabels = {
-  s: 'Small',
-  m: 'Medium',
-  l: 'Large',
-};
-
 const AllTemplate = () => {
   return (
-    <Grid columns={5} spacing="spacer-4" width="100%">
-      <Text variant="text-body-bold">Size</Text>
-      <Text variant="text-body-bold">Left label</Text>
-      <Text variant="text-body-bold">Right label</Text>
-      <Text variant="text-body-bold">No label</Text>
-      <Text variant="text-body-bold">Disabled</Text>
-      {switchSizes.map((size) => (
-        <Fragment key={size}>
-          <Text>{sizeLabels[size]}</Text>
-          {switchLabelPositions.map((labelPosition) => (
-            <Switch key={labelPosition} size={size} labelPosition={labelPosition} label="Test" />
-          ))}
-          <Switch size={size} isDisabled label="Test" labelPosition="right" />
-        </Fragment>
-      ))}
-    </Grid>
+    <Table variant="simple">
+      <Thead>
+        <Tr>
+          <Th>State</Th>
+          <Th>S</Th>
+          <Th>M</Th>
+          <Th>L</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
+        {['Left label', 'Right label', 'No label', 'Disabled', 'Checked'].map((state, i) => (
+          <Tr key={`${state}-${i}`}>
+            <Td>{state}</Td>
+            {switchSizes.map((size, i) => (
+              <Td key={`${size}-${i}-${state}`}>
+                <Switch
+                  size={size}
+                  label={state === 'No label' ? '' : 'Label'}
+                  {...{
+                    ...(state === 'Left label' && {
+                      labelPosition: 'left',
+                    }),
+                  }}
+                  {...{
+                    ...(state === 'Right label' && {
+                      labelPosition: 'right',
+                    }),
+                  }}
+                  {...{
+                    ...(state === 'Disabled' && {
+                      isDisabled: true,
+                    }),
+                  }}
+                  {...{
+                    ...(state === 'Checked' && {
+                      isChecked: true,
+                    }),
+                  }}
+                />
+              </Td>
+            ))}
+          </Tr>
+        ))}
+      </Tbody>
+    </Table>
   );
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { Switch } from '.';
 import { switchLabelPositions, switchSizes } from './types';
@@ -13,7 +13,7 @@ export default {
       control: { type: 'select' },
     },
     labelPosition: {
-      option: switchLabelPositions,
+      options: switchLabelPositions,
       control: { type: 'select' },
     },
   },
@@ -34,13 +34,13 @@ const AllTemplate = () => {
       <Text variant="text-body-bold">No label</Text>
       <Text variant="text-body-bold">Disabled</Text>
       {switchSizes.map((size) => (
-        <>
+        <Fragment key={size}>
           <Text>{sizeLabels[size]}</Text>
           {switchLabelPositions.map((labelPosition) => (
             <Switch key={labelPosition} size={size} labelPosition={labelPosition} label="Test" />
           ))}
           <Switch size={size} isDisabled label="Test" labelPosition="right" />
-        </>
+        </Fragment>
       ))}
     </Grid>
   );
@@ -53,7 +53,6 @@ export const Playground = Template.bind({});
 
 Playground.args = {
   size: 's',
-  labelPosition: 'left',
   isDisabled: false,
   label: 'Label',
 };

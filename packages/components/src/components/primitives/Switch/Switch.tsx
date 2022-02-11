@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import {
   FormControl as ChakraFormControl,
   FormLabel as ChakraFormLabel,
@@ -10,55 +10,28 @@ import { SwitchProps } from './types';
 
 const generateRandomId = () => Math.random().toString(36).slice(2);
 
-export const Switch: FC<SwitchProps> = ({ label, labelPosition, ...props }) => {
-  const [componentId] = useState(generateRandomId());
+export const Switch: FC<SwitchProps> = ({ label, labelPosition = 'left', id, ...props }) => {
+  const componentId = id ?? generateRandomId();
+  const isLeftLabel = labelPosition === 'left';
 
-  const [isChecked, setChecked] = useState(props.isChecked);
-
-  useEffect(() => {
-    setChecked(props.isChecked);
-  }, [props.isChecked]);
-
-  const { rightLabel, leftLabel } = useMultiStyleConfig('Switch', {
-    variant: props.variant,
+  const { label: labelStyle } = useMultiStyleConfig('Switch', {
     size: props.size,
     isDisabled: props.isDisabled,
-    isChecked,
-  }) as { rightLabel: ChakraFormLabelProps; leftLabel: ChakraFormLabelProps };
+  }) as { label: ChakraFormLabelProps };
 
   return (
-    <ChakraFormControl
-      display="flex"
-      alignItems="center"
-      data-testid="cmpsr.switch"
-    >
-      {label && labelPosition === 'left' && (
+    <ChakraFormControl display="flex" alignItems="center" data-testid="cmpsr.switch" gap="0.5rem">
+      {label && (
         <ChakraFormLabel
-          {...leftLabel}
-          data-testid="cmpsr.switch-left-label"
+          {...labelStyle}
+          data-testid={`cmpsr.switch-${labelPosition}-label`}
           htmlFor={`cmpsr.${componentId}`}
+          order={isLeftLabel ? '1' : '2'}
         >
           {label}
         </ChakraFormLabel>
       )}
-      <ChakraSwitch
-        {...props}
-        isChecked={isChecked}
-        onChange={(evt) => {
-          setChecked(evt.target.checked);
-          props.onChange && props.onChange(evt);
-        }}
-        id={`cmpsr.${componentId}`}
-      />
-      {label && labelPosition === 'right' && (
-        <ChakraFormLabel
-          {...rightLabel}
-          data-testid="cmpsr.switch-right-label"
-          htmlFor={`cmpsr.${componentId}`}
-        >
-          {label}
-        </ChakraFormLabel>
-      )}
+      <ChakraSwitch {...props} id={`cmpsr.${componentId}`} order={isLeftLabel ? '2' : '1'} />
     </ChakraFormControl>
   );
 };

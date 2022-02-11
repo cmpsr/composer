@@ -55,7 +55,7 @@ export const Tag: ComponentStyleConfig = {
     }),
     l: ({ theme }) => ({
       container: {
-        padding: '0.375rem 0.75rem',
+        padding: '0.25rem 0.75rem',
       },
       label: {
         ...theme.textStyles['text-body-medium'],

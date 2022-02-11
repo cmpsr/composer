@@ -48,17 +48,13 @@ const styleBySize = {
   },
 };
 
-const getSizeStyleFunction = (size: string) => {
-  return ({ theme }) => {
-    const { _color, ...labelStyle } = theme.textStyles[styleBySize[size].label.textStyle];
-    return {
-      ...styleBySize[size],
-      label: {
-        ...labelStyle,
-      },
-    };
-  };
-};
+const getSizeStyleFunction = (size: string) => (props) => ({
+  ...styleBySize[size],
+  label: {
+    ...props.theme.textStyles[styleBySize[size].label.textStyle],
+    color: props.isDisabled ? 'text-disabled' : 'text-primary',
+  },
+});
 
 const sizes = {
   s: getSizeStyleFunction('s'),
@@ -91,7 +87,6 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => {
     thumb: { marginLeft: '0.125rem' },
     label: {
       margin: 0,
-      color: props.isDisabled ? 'text-disabled' : 'text-primary',
     },
   };
 };

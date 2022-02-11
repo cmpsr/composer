@@ -50,7 +50,7 @@ const styleBySize = {
 
 const getSizeStyleFunction = (size: string) => {
   return ({ theme }) => {
-    const { color, ...labelStyle } = theme.textStyles[styleBySize[size].label.textStyle];
+    const { _color, ...labelStyle } = theme.textStyles[styleBySize[size].label.textStyle];
     return {
       ...styleBySize[size],
       label: {

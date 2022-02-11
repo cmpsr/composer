@@ -31,7 +31,7 @@ module.exports = {
   // coverageDirectory: undefined,
 
   // An array of regexp pattern strings used to skip coverage collection
-  coveragePathIgnorePatterns: ['/node_modules/'],
+  coveragePathIgnorePatterns: ['/node_modules/', '/lib/'],
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -82,9 +82,9 @@ module.exports = {
   // ],
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
-  moduleNameMapper: {
-    '^.+\\.module\\.css$': 'identity-obj-proxy',
-  },
+  // moduleNameMapper: {
+  //   '^.+\\.module\\.css$': 'identity-obj-proxy',
+  // },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -146,10 +146,7 @@ module.exports = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: [
-    //   "**/__tests__/**/*.[jt]s?(x)",
-    '**/?(*.)+(spec|test).ts?(x)',
-  ],
+  testMatch: ['**/?(*.)+(spec|test).ts?(x)'],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: ['/node_modules/'],
@@ -171,12 +168,11 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    '^.+\\.(js|ts|tsx)$': '../../node_modules/babel-jest',
-    '^.+\\.css$': '<rootDir>/config/jest/cssTransform.js',
+    '^.+\\.(js|ts|tsx)$': '../../node_modules/@swc/jest',
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: ['/node_modules/', '^.+\\.module\\.css$'],
+  transformIgnorePatterns: ['/node_modules/', '/lib/'],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

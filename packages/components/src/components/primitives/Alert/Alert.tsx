@@ -37,7 +37,7 @@ export const Alert: FC<AlertProps> = ({
     if (titleAlignment === 'top') {
       return {
         justifyContent: 'flex-start',
-        top: '1rem',
+        top: '0.75rem',
       };
     }
 

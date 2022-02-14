@@ -5,19 +5,19 @@ import { PartsStyleFunction } from '@chakra-ui/theme-tools';
 const defaultContainerColorScheme = {
   success: {
     backgroundColor: 'background-success',
-    borderStartColor: 'alert-success-default'
+    borderStartColor: 'alert-success-default',
   },
   error: {
     backgroundColor: 'background-error',
-    borderStartColor: 'alert-error-default'
+    borderStartColor: 'alert-error-default',
   },
   warning: {
     backgroundColor: 'background-warning',
-    borderStartColor: 'alert-warning-default'
+    borderStartColor: 'alert-warning-default',
   },
   info: {
     backgroundColor: 'background-inform',
-    borderStartColor: 'alert-inform-default'
+    borderStartColor: 'alert-inform-default',
   },
 };
 
@@ -78,6 +78,7 @@ const generateOtherVariants: PartsStyleFunction<typeof parts> = (props) => {
   return {
     container: {
       ...(containerColorScheme[variant]?.[status] || {}),
+      ...(variant === 'left-accent' && { pr: '0.5rem' }),
     },
   };
 };
@@ -88,7 +89,7 @@ export const Alert: ComponentStyleConfig = {
       borderRadius: '0.4rem',
       py: '0.75rem',
       pl: '1rem',
-      pr: '0.25rem'
+      pr: '0.25rem',
     },
     icon: {
       ...theme.components.Icon.sizes.l,
@@ -120,14 +121,15 @@ export const Alert: ComponentStyleConfig = {
     description: {
       color: 'text-primary',
       textStyle: 'text-body-regular',
-      paddingRight: '2.375rem',
+      paddingRight: '2.125rem',
     },
+    // TODO: Remove this closeButton styles once our custom implementation of this component is merged into master
     closeButton: {
       boxSize: '1.5rem',
       '& svg': {
         boxSize: '1rem',
-      }
-    }
+      },
+    },
   }),
   defaultProps: {
     variant: 'solid',

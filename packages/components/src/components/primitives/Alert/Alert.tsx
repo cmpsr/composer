@@ -62,11 +62,12 @@ export const Alert: FC<AlertProps> = ({
       </Flex>
       <Flex
         position="absolute"
-        right="0.25rem"
+        right={variant === 'left-accent' ? '0.5rem' : '0.25rem'}
         height="100%"
         flexDirection="column"
         {...calculateTrailingIconAlignment()}
       >
+        {/* TODO: Replace this component with our custom implementation of this component once it is merged into master */}
         {showClose && (
           <CloseButton aria-label="close alert" __css={closeButton} onClick={onClose}>
             <IconX />

@@ -10,6 +10,7 @@ import {
   IconButton,
   useMultiStyleConfig,
   useStyles,
+  CloseButton,
 } from '@chakra-ui/react';
 import { IconAlertCircle, IconAlertTriangle, IconCircleCheck, IconInfoCircle, IconX } from '../Icons';
 import { Flex } from '@components';
@@ -67,9 +68,9 @@ export const Alert: FC<AlertProps> = ({
         {...calculateTrailingIconAlignment()}
       >
         {showClose && (
-          <IconButton aria-label="close alert" __css={closeButton} onClick={onClose}>
+          <CloseButton aria-label="close alert" __css={closeButton} onClick={onClose}>
             <IconX />
-          </IconButton>
+          </CloseButton>
         )}
       </Flex>
     </ChakraAlert>

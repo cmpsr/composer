@@ -112,7 +112,7 @@ export const Alert: ComponentStyleConfig = {
     title: {
       color: 'text-primary',
       textStyle: 'text-body-bold',
-      marginRight: '1rem',
+      marginRight: '0.75rem',
     },
     description: {
       color: 'text-primary',

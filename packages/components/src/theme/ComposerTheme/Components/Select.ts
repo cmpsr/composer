@@ -5,15 +5,18 @@ import { selectAnatomy as parts } from '@chakra-ui/anatomy';
 const sizes: Record<string, PartsStyleInterpolation> = {
   l: ({ theme }) => ({
     field: {
+      pl: '1rem',
+      pr: '3rem',
       py: '0.75rem',
-      px: '1rem',
       height: '3rem',
       ...theme.textStyles['text-body-regular'],
     },
+    icon: {
+      right: '1rem'
+    }
   }),
   m: ({ theme }) => ({
     field: {
-      px: '0.75rem',
       py: '0.5rem',
       height: '2.5rem',
       ...theme.textStyles['text-body-regular'],
@@ -21,7 +24,6 @@ const sizes: Record<string, PartsStyleInterpolation> = {
   }),
   s: ({ theme }) => ({
     field: {
-      px: '0.75rem',
       py: '0.375rem',
       height: '2rem',
       ...theme.textStyles['text-body-meta-regular'],
@@ -32,6 +34,8 @@ const sizes: Record<string, PartsStyleInterpolation> = {
 const baseStyle: PartsStyleFunction<typeof parts> = ({ theme, iconSize }) => {
   return {
     icon: {
+      boxSize: '1.25rem',
+      right: '0.75rem',
       '> svg': {
         // Icons are styled with inline style, which has highest priority, so !important is required to be able to override them.
         boxSize: `${theme.components.Icon.sizes[iconSize].boxSize} !important`,
@@ -51,6 +55,8 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ theme, iconSize }) => {
       placeholderColor: 'text-secondary',
       minW: '8rem',
       borderRadius: 'radii-2',
+      pl: '0.75rem',
+      pr: '2.75rem',
       _hover: {
         backgroundColor: 'background-action-hover',
         borderWidth: '0.063rem',

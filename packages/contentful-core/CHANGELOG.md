@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.4.1
+
+### Patch Changes
+
+- c9d69bd: "replace babel with swc"
+
 ## 0.4.0
 
 ### Minor Changes

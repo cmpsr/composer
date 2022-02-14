@@ -1,16 +1,16 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import { renderWithProviders } from '@tests/renderWithProviders';
-import { CircularProgress } from '.';
+import { ProgressCircular } from '.';
 
-describe('CircularProgress', () => {
+describe('ProgressCircular', () => {
   test('should render', () => {
-    renderWithProviders(<CircularProgress value={10} />);
-    screen.getByTestId('cmpsr.circular-progress');
+    renderWithProviders(<ProgressCircular value={10} />);
+    screen.getByTestId('cmpsr.progress-circular');
   });
 
   test('should render with a label', () => {
-    renderWithProviders(<CircularProgress showLabel value={50} />);
+    renderWithProviders(<ProgressCircular showLabel value={50} />);
     screen.getByText('50%');
   });
 });

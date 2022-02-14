@@ -1,5 +1,25 @@
 # @cmpsr/components
 
+## 1.13.0
+
+### Minor Changes
+
+- cc5ae3d: Update Tag L size to have same padding as design
+- f700cee: Update textStyles to have correct rem values
+- 045f197: Fix Switch styles and refactor the component
+
+### Patch Changes
+
+- c9d69bd: "replace babel with swc"
+
+## 1.12.0
+
+### Minor Changes
+
+- 7a95d00: Add proper color when Link is pressed
+  Rename Progress components to be consistent with design
+  Remove Tabs underline and use proper background color
+
 ## 1.11.3
 
 ### Patch Changes

@@ -6,9 +6,6 @@
     "outDir": "lib",
     "rootDir": "src",
     "declaration": true,
-    "baseUrl": "src",
-    "paths": {
-      "types": ["./types"]
-    }
+    "baseUrl": "."
   }
 }

@@ -1,45 +1,18 @@
-import {
-  anatomy,
-  calc,
-  cssVar,
-  PartsStyleFunction,
-  SystemStyleFunction,
-  SystemStyleObject,
-} from '@chakra-ui/theme-tools';
+import { anatomy, cssVar, PartsStyleFunction, SystemStyleFunction } from '@chakra-ui/theme-tools';
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
-const parts = anatomy('switch').parts(
-  'container',
-  'track',
-  'thumb',
-  'leftLabel',
-  'rightLabel'
-);
+const parts = anatomy('switch').parts('container', 'track', 'thumb', 'label');
 
 const $width = cssVar('switch-track-width');
 const $height = cssVar('switch-track-height');
 
-const $diff = cssVar('switch-track-diff');
-const diffValue = calc.subtract($width, $height);
-
-const $translateX = cssVar('switch-thumb-x');
-
-const omit = (key, obj) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { [key]: omitted, ...rest } = obj;
-  return rest;
-};
-
 const styleBySize = {
-  small: {
+  s: {
     container: {
       [$width.variable]: '1.625rem',
       [$height.variable]: '1rem',
     },
-    leftLabel: {
-      textStyle: 'text-body-meta-regular',
-    },
-    rightLabel: {
+    label: {
       textStyle: 'text-body-meta-regular',
     },
     thumb: {
@@ -47,15 +20,12 @@ const styleBySize = {
       height: '0.75rem',
     },
   },
-  medium: {
+  m: {
     container: {
       [$width.variable]: '2.125rem',
       [$height.variable]: '1.25rem',
     },
-    leftLabel: {
-      textStyle: 'text-body-regular',
-    },
-    rightLabel: {
+    label: {
       textStyle: 'text-body-regular',
     },
     thumb: {
@@ -63,15 +33,12 @@ const styleBySize = {
       height: '1rem',
     },
   },
-  large: {
+  l: {
     container: {
       [$width.variable]: '3.125rem',
       [$height.variable]: '1.75rem',
     },
-    leftLabel: {
-      textStyle: 'text-body-large-regular',
-    },
-    rightLabel: {
+    label: {
       textStyle: 'text-body-large-regular',
     },
     thumb: {
@@ -81,86 +48,45 @@ const styleBySize = {
   },
 };
 
-const getSizeStyleFunction = (size: string) => {
-  return ({ theme }) => {
-    const leftLabelStyle = omit(
-      'color',
-      theme.textStyles[styleBySize[size].leftLabel.textStyle]
-    );
-    const rightLabelStyle = omit(
-      'color',
-      theme.textStyles[styleBySize[size].rightLabel.textStyle]
-    );
-
-    return {
-      ...styleBySize[size],
-      leftLabel: {
-        ...leftLabelStyle,
-      },
-      rightLabel: {
-        ...rightLabelStyle,
-      },
-    };
-  };
-};
+const getSizeStyleFunction = (size: string) => (props) => ({
+  ...styleBySize[size],
+  label: {
+    ...props.theme.textStyles[styleBySize[size].label.textStyle],
+    color: props.isDisabled ? 'text-disabled' : 'text-primary',
+  },
+});
 
 const sizes = {
-  s: getSizeStyleFunction('small'),
-  m: getSizeStyleFunction('medium'),
-  l: getSizeStyleFunction('large'),
+  s: getSizeStyleFunction('s'),
+  m: getSizeStyleFunction('m'),
+  l: getSizeStyleFunction('l'),
 };
 
-const baseStyleTrack: SystemStyleFunction = (props) => {
-  const getCheckedColor = () => {
-    if (props.isDisabled) {
-      return 'background-action-disabled';
-    }
-
-    return 'primary-default';
-  };
-
-  return {
-    p: '0.125rem',
-    bg: 'background-action-active',
-    alignItems: 'center',
-    _focus: {
-      boxShadow: '0 0 0 0.188rem var(--chakra-colors-primary-focus)',
-    },
+const baseStyleTrack: SystemStyleFunction = () => ({
+  p: '0',
+  bg: 'background-action-active',
+  alignItems: 'center',
+  _focus: {
+    boxShadow: '0 0 0 0.1875rem var(--chakra-colors-primary-focus)',
+  },
+  _disabled: {
+    opacity: 1,
+    bgColor: 'background-action-disabled',
+  },
+  _checked: {
     _disabled: {
-      opacity: 1,
-      bgColor: 'background-action-disabled',
+      bg: 'background-action-disabled',
     },
-    _checked: {
-      bg: getCheckedColor(),
-    },
-  };
-};
-
-const baseStyleThumb: SystemStyleObject = {
-  marginLeft: '0.125rem',
-};
+    bg: 'primary-default',
+  },
+});
 
 const baseStyle: PartsStyleFunction<typeof parts> = (props) => {
-  const labelColor = props.isDisabled ? 'text-disabled' : 'text-primary';
   return {
-    container: {
-      [$diff.variable]: diffValue,
-      [$translateX.variable]: $diff.reference,
-      _rtl: {
-        [$translateX.variable]: calc($diff).negate().toString(),
-      },
-    },
     track: baseStyleTrack(props),
-    thumb: baseStyleThumb,
-    leftLabel: {
-      marginRight: '0.5rem',
-      marginBottom: 0,
-      color: labelColor,
-    },
-    rightLabel: {
-      marginLeft: '0.5rem',
-      marginBottom: 0,
-      color: labelColor,
+    thumb: { marginLeft: '0.125rem' },
+    label: {
+      margin: 0,
     },
   };
 };

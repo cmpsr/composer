@@ -12,8 +12,8 @@ const sizes: Record<string, PartsStyleInterpolation> = {
       ...theme.textStyles['text-body-regular'],
     },
     icon: {
-      right: '1rem'
-    }
+      right: '1rem',
+    },
   }),
   m: ({ theme }) => ({
     field: {

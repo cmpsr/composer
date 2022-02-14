@@ -86,11 +86,14 @@ export const Alert: ComponentStyleConfig = {
   baseStyle: ({ theme }) => ({
     container: {
       borderRadius: '0.4rem',
-      padding: '1rem',
+      py: '0.75rem',
+      pl: '1rem',
+      pr: '0.25rem'
     },
     icon: {
       ...theme.components.Icon.sizes.l,
       alignSelf: 'flex-start',
+      marginInlineEnd: '0.625rem',
       svg: {
         ...theme.components.Icon.sizes.l,
       },
@@ -112,16 +115,15 @@ export const Alert: ComponentStyleConfig = {
     title: {
       color: 'text-primary',
       textStyle: 'text-body-bold',
-      marginRight: '0.75rem',
+      marginInlineEnd: '0.75rem',
     },
     description: {
       color: 'text-primary',
       textStyle: 'text-body-regular',
-      paddingRight: '1.7rem',
+      paddingRight: '2.375rem',
     },
     closeButton: {
-      height: '1.5rem',
-      width: '1.5rem',
+      boxSize: '1.5rem',
       '& svg': {
         boxSize: '1rem',
       }

@@ -62,7 +62,7 @@ export const Alert: FC<AlertProps> = ({
       </Flex>
       <Flex
         position="absolute"
-        right="0.5rem"
+        right="0.25rem"
         height="100%"
         flexDirection="column"
         {...calculateTrailingIconAlignment()}

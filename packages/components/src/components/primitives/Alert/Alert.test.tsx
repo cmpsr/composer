@@ -68,6 +68,6 @@ describe('Alert', () => {
 
   test('should show close button by default', () => {
     renderWithProviders(<Alert title="A title" />);
-    screen.getByLabelText('Close');
+    screen.getByRole('button');
   });
 });

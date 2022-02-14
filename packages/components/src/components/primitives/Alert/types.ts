@@ -20,5 +20,5 @@ export interface AlertProps extends ChakraAlertProps {
   title?: string;
   variant?: AlertStyle;
   showClose?: boolean;
-  onClose?: () => void
+  onClose?: () => void;
 }

@@ -7,7 +7,6 @@ import {
   AlertIconProps,
   AlertTitle,
   chakra,
-  IconButton,
   useMultiStyleConfig,
   useStyles,
   CloseButton,

@@ -2,21 +2,20 @@ import { ComponentStyleConfig } from '@chakra-ui/react';
 import { transparentize } from '@chakra-ui/theme-tools';
 
 const baseStyle = {
-  container: {
-    bg: 'transparent',
-    borderRadius: 'radii-2',
-    _hover: {
-      bg: transparentize('background-action-hover', 0.15),
-    },
-    _active: {
-      bg: transparentize('background-action-pressed', 0.2),
-    },
-    _focus: {
-      boxShadow: 'none',
-    },
+  backgroundColor: 'transparent',
+  borderRadius: 'radii-2',
+  color: 'text-primary',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  _hover: {
+    backgroundColor: transparentize('background-action-hover', 0.15),
   },
-  icon: {
-    color: 'text-primary',
+  _active: {
+    backgroundColor: transparentize('background-action-pressed', 0.2),
+  },
+  _focus: {
+    boxShadow: 'none',
   },
 };
 
@@ -24,29 +23,23 @@ export const CloseButton: ComponentStyleConfig = {
   baseStyle,
   sizes: {
     s: {
-      container: {
-        height: '1.5rem',
-        minWidth: '1.5rem',
-      },
-      icon: {
+      height: '1.5rem',
+      minWidth: '1.5rem',
+      '& svg': {
         boxSize: '1rem',
       },
     },
     m: {
-      container: {
-        height: '2rem',
-        minWidth: '2rem',
-      },
-      icon: {
+      height: '2rem',
+      minWidth: '2rem',
+      '& svg': {
         boxSize: '1.5rem',
       },
     },
     l: {
-      container: {
-        height: '2.5rem',
-        minWidth: '2.5rem',
-      },
-      icon: {
+      height: '2.5rem',
+      minWidth: '2.5rem',
+      '& svg': {
         boxSize: '1.5rem',
       },
     },

@@ -1,4 +1,3 @@
-import { PinInputField } from '@chakra-ui/react';
 import React from 'react';
 import { renderWithProviders } from '@tests/renderWithProviders';
 import { PinInput } from './PinInput';

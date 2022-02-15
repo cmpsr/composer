@@ -6,6 +6,6 @@
     "outDir": "lib",
     "rootDir": "src",
     "declaration": true,
-    "baseUrl": "src"
+    "baseUrl": "."
   }
 }

@@ -6,10 +6,10 @@
     "outDir": "lib",
     "rootDir": "src",
     "declaration": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "constants": ["src/constants"],
-      "types": ["src/types"]
+      "constants": ["./src/constants"],
+      "types": ["./src/types"]
     }
   }
 }

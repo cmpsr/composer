@@ -1,14 +1,15 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
+import { transparentize } from '@chakra-ui/theme-tools';
 
 const baseStyle = {
   container: {
     bg: 'transparent',
     borderRadius: 'radii-2',
     _hover: {
-      bg: 'background-action-hover',
+      bg: transparentize('background-action-hover', 0.15),
     },
     _active: {
-      bg: 'background-action-pressed',
+      bg: transparentize('background-action-pressed', 0.2),
     },
     _focus: {
       boxShadow: 'none',

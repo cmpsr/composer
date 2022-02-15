@@ -8,8 +8,3 @@ export type CloseButtonSize = typeof CloseButtonSizes[number];
 export interface CloseButtonProps extends Omit<ChakraIconButtonProps, 'aria-label'> {
   size?: CloseButtonSize;
 }
-
-export interface CloseButtonStyle {
-  container: StyleProps;
-  icon: IconProps;
-}

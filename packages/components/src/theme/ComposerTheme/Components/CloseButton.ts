@@ -45,6 +45,6 @@ export const CloseButton: ComponentStyleConfig = {
     },
   },
   defaultProps: {
-    size: 'l',
+    size: 'm',
   },
 };

@@ -17,7 +17,10 @@ const variantOutline: SystemStyleObject = {
     borderColor: 'ui-element-outline-disabled',
     opacity: 1,
     cursor: 'not-allowed',
-    color: 'text-disabled',
+    color: 'text-secondary',
+    _placeholder: {
+      color: 'text-disabled',
+    },
   },
   _invalid: {
     borderColor: 'alert-error-default',
@@ -57,27 +60,27 @@ const variantFlushed: SystemStyleObject = {
     bg: 'background-action-disabled',
     cursor: 'not-allowed',
     borderBottomStyle: 'none',
-    color: 'text-disabled',
+    color: 'text-secondary',
+    _placeholder: {
+      color: 'text-disabled',
+    },
   },
 };
 
 const sizes: Record<string, SystemStyleFunction> = {
   s: ({ theme }) => ({
     ...theme.textStyles['text-body-meta-regular'],
-    w: 8,
-    h: 8,
+    boxSize: '2rem',
     borderRadius: 'radii-2',
   }),
   m: ({ theme }) => ({
     ...theme.textStyles['text-body-regular'],
-    w: 10,
-    h: 10,
+    boxSize: '2.5rem',
     borderRadius: 'radii-2',
   }),
   l: ({ theme }) => ({
     ...theme.textStyles['text-body-regular'],
-    w: 12,
-    h: 12,
+    boxSize: '3rem',
     borderRadius: 'radii-2',
   }),
 };
@@ -88,6 +91,14 @@ const variants = {
 };
 
 export const PinInput: ComponentStyleConfig = {
+  baseStyle: {
+    _placeholder: {
+      color: 'text-secondary',
+    },
+  },
   sizes,
   variants,
+  defaultProps: {
+    size: 'l',
+  },
 };

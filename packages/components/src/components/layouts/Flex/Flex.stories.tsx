@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Flex } from './Flex';
+import { Flex } from '.';
 import { Box, Text } from '@components';
 
 export default {

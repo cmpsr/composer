@@ -10,6 +10,6 @@ export interface PinInputProps extends Omit<ChakraPinInputProps, 'children'> {
   variant?: PinInputVariant;
   size?: PinInputSize;
   numOfDigits?: number;
-  pinInputFieldProps?: PinInputFieldProps
+  pinInputFieldProps?: PinInputFieldProps;
 }
 

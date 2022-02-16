@@ -1,5 +1,6 @@
 import { CSSObject, ResponsiveValue } from '@chakra-ui/system';
 import { ComponentDefaultProps } from '@chakra-ui/theme';
+import { Colors } from '@theme/ComposerTheme/Colors';
 import { TextVariant } from '../Text';
 
 export const textPairingVariants = [
@@ -33,9 +34,10 @@ export type TextPairingStyles = CSSObject &
     };
   } & { columnGap: string };
 
-export interface TextPairingProps
-  extends Omit<ComponentDefaultProps, 'variant'> {
+export interface TextPairingProps extends Omit<ComponentDefaultProps, 'variant'> {
   variant?: ResponsiveValue<TextPairingVariant>;
   label: string;
   subLabel: string;
+  labelColor?: keyof Colors;
+  subLabelColor?: keyof Colors;
 }

@@ -38,6 +38,23 @@ export const Component: ComponentStyleConfig = {
 };
 ```
 
+- always use `rem`/`em` instead of `px`, do not use either for `0` (see for more details [[1]](https://uxdesign.cc/why-designers-should-move-from-px-to-rem-and-how-to-do-that-in-figma-c0ea23e07a15)[[2]](https://medium.com/weekly-webtips/to-increase-a11y-use-rem-instead-of-px-96ee9d9dc9ad)[[3]](https://www.csun.edu/universal-design-center/web-accessibility-criteria-resizable-text))
+
+```typescript
+export const Component: ComponentStyleConfig = {
+  sizes: {
+    xs: {
+      p: "1rem", // 👍
+      p: "16px", // 👎
+      p: 0, // 👍
+      p: "0", // 👍
+      p: "0rem", // 👎
+      p: "0px", // 👎
+    },
+  },
+};
+```
+
 - We have also defined [spacings](https://storybook.cmpsr.io/?path=/story/theme-spacing--spacing) and [border radius](https://storybook.cmpsr.io/?path=/story/theme-radius--radius) **but** unless specified in [figma](#design-resources) do not use those values while theming:
 
 ```typescript

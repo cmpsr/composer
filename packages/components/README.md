@@ -6,7 +6,10 @@ The composer component library is an _opinionated_ wrapper on top of [chakra-ui]
 
 ## Design resources
 
-- [Figma file](https://www.figma.com/file/ewqGU2UQxmYiO8JWaRawP0/Composer---Design-System?node-id=1370%3A25384)
+- Figma files:
+  - [Components](https://www.figma.com/file/ewqGU2UQxmYiO8JWaRawP0/Composer---Design-System?node-id=1370%3A25384)
+  - [Tokens](https://www.figma.com/file/3biY2irNNtLNnt719pvIun/Composer---Tokens?node-id=218%3A14821)
+  - [Icons](https://www.figma.com/file/EVqzz5IwHOADFvr5yYhgvO/Composer---Icons-%26-Illustrations?node-id=8%3A2)
 - [Storybook](https://storybook.cmpsr.io/)
 
 ## Implementing new components

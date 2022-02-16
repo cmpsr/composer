@@ -76,7 +76,7 @@ export const Component: ComponentStyleConfig = {
 };
 ```
 
-- All components with multiple variants or sizes must have a `defaultProps` section in their props with the default `variant` and or `size`. If the default values are not defined in figma ping the design team or add a comment in the pull request and will get those values for you.
+- All components with multiple variants or sizes must have a `defaultProps` section in their props with the default `variant` and or `size`. If the default values are not defined in figma ping the design team in [slack](https://impulsumstudio.slack.com/archives/GRS2V5NUB) or add a comment in the pull request and will get those values for you.
 
 ```typescript
 export const Component: ComponentStyleConfig = {

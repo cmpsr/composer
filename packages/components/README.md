@@ -23,7 +23,7 @@ All the UI customisation applied to a component must be defined inside the theme
 
 The theme of a component will be defined in a file with the name of the component inside the `packages/components/src/theme/ComposerTheme/Components` folder. This is true for components that already exists in chakra and for new components added by us, like [TextPairing](https://github.com/cmpsr/composer/blob/master/packages/components/src/theme/ComposerTheme/Components/TextPairing.ts). Once defined the component has to be re-exported from the [index file](https://github.com/cmpsr/composer/blob/master/packages/components/src/theme/ComposerTheme/Components/index.ts).
 
-- The text style applied to a component should be one of the text styles [already defined](https://storybook.cmpsr.io/?path=/story/components-primitives-text--all). In some cases applying it using the `textStyle` prop is not possible (chakra will not apply it to the component) and we have to apply the properties of the style _one by one_, in those cases use the functional option and theme `theme` param to apply the styles:
+- The text style applied to a component should be one of the text styles [already defined](https://storybook.cmpsr.io/?path=/story/components-primitives-text--all). In some cases applying it using the `textStyle` prop is not possible (chakra will not apply it to the component) and we have to apply the properties of the style _one by one_, in those cases use the functional option `theme` param to apply the styles:
 
 ```typescript
 export const Component: ComponentStyleConfig = {

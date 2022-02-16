@@ -272,6 +272,25 @@ export * from "./Component";
 export * from "./types"; // It is ok to only re-export ComponentProps
 ```
 
+- if you have to import a component or hook in the component you are currently working on it should be imported from `@/components` or `@hooks` unless the imported file is in the same folder as your component. You can use the relative path import if you are going only going one level out:
+
+```typescript
+import { OtherComponent } from "@components"; // 👍
+import { useResponsiveValue } from "@hooks"; // 👍
+import { OtherComponent } from "."; // 👍
+import { ComponentProps } from "./types"; // 👍
+import { OtherComponent } from ".."; // 👍
+import { OtherComponent } from "../OtherComponent"; // 👍
+import { OtherComponent } from "../../OtherComponent"; // 👎
+```
+
+- you can only import other components directly from chakra if the component does not exists in our library:
+
+```typescript
+import { VStack } from "@chakra-ui/react"; // 👍
+import { Button } from "@chakra-ui/react"; // 👎
+```
+
 ### Special cases
 
 There are a few cases of components that we will use literally as it from chakra (like [Box](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/layouts/Box) or [Flex](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/layouts/Flex)). In those cases we will only add an `index.ts` and a `Component.stories.tsx`. The index file will just re-export the component and its props from chakra:

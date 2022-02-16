@@ -334,3 +334,7 @@ export const Component: ComponentStyleConfig = {
   },
 };
 ```
+
+### Releasing your changes
+
+Before creating the pull request you have to generate a changeset for your components, follow the instructions in [here](https://github.com/cmpsr/composer#changesets).

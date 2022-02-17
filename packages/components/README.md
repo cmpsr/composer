@@ -18,6 +18,13 @@ For the time being only components defined in [figma](#design-resources) will be
 
 When adding new components to the library ideally you will reuse the chakra's equivalent as much as possible (see an [example](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/primitives/Divider/Divider.tsx)), unless you find that the _counterpart_ does fit the specs (see an [example](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/primitives/Breadcrumb/Breadcrumb.tsx)).
 
+It is required to add stories for all component, the storybook can be started by executing `yarn storybook` from the `./packages/components` folder.
+
+```bash
+cd packages/components
+yarn storybook
+```
+
 The implementation of a component will be divided in two parts, theming and implementation. Ideally when a new component is added to the library the main focus of the pull request will be on the theme and not in the implementation of the component.
 
 ### Theming components

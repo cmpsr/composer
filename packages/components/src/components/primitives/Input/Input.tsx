@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FC, cloneElement } from 'react';
 import {
   Input as ChakraInput,
   InputGroup as ChakraInputGroup,
@@ -10,16 +10,9 @@ import {
   InputAddonProps,
   InputGroupProps,
 } from '@chakra-ui/react';
-import { FC } from 'react';
 import { InputProps } from './types';
 
-export const Input: FC<InputProps> = ({
-  trailingIcon,
-  showTrailingIcon,
-  leftLabel,
-  rightLabel,
-  ...props
-}) => {
+export const Input: FC<InputProps> = ({ leadingIcon: LeadingIcon, leftLabel, rightLabel, ...props }) => {
   const [isFocused, setFocused] = useState(false);
   const [isHovered, setHovered] = useState(false);
   const [hasContent, setHasContent] = useState(false);
@@ -47,67 +40,47 @@ export const Input: FC<InputProps> = ({
     leftLabel: InputAddonProps;
     rightLabel: InputAddonProps;
   };
-
-  let IconElement = null;
-
-  if (trailingIcon) {
-    IconElement = React.cloneElement(trailingIcon, {
-      'data-testid': 'cmpsr.input-icon',
-      ...element,
-    });
-  }
-
-  const willShowIcon = showTrailingIcon && trailingIcon && !leftLabel;
-
-  let conditionalInputStyles = {};
-
-  if (willShowIcon) {
-    conditionalInputStyles = {
-      ...conditionalInputStyles,
-      ...fieldWithIconStyles,
-    };
-  }
+  const showLeadingIcon = LeadingIcon && !leftLabel;
 
   return (
     <ChakraInputGroup {...inputGroupStyles} data-testid="cmpsr.input-group">
-      {willShowIcon && (
+      {showLeadingIcon && (
         <ChakraInputLeftElement
           {...elementContainer}
           pointerEvents="none"
-          children={IconElement}
+          children={cloneElement(LeadingIcon, {
+            'data-testid': 'cmpsr.input-icon',
+            ...element,
+          })}
         />
       )}
-      {leftLabel && (
-        <ChakraInputLeftAddon {...leftLabelStyle} children={leftLabel} />
-      )}
+      {leftLabel && <ChakraInputLeftAddon {...leftLabelStyle} children={leftLabel} />}
       <ChakraInput
-        {...conditionalInputStyles}
+        {...{ ...(showLeadingIcon && { ...fieldWithIconStyles }) }}
         {...props}
         data-testid="cmpsr.input"
         onFocus={(evt) => {
-          props.onFocus && props.onFocus(evt);
+          props?.onFocus?.(evt);
           setFocused(true);
         }}
         onBlur={(evt) => {
-          props.onBlur && props.onBlur(evt);
+          props?.onBlur?.(evt);
           setFocused(false);
         }}
         onMouseEnter={(evt) => {
-          props.onMouseEnter && props.onMouseEnter(evt);
+          props?.onMouseEnter?.(evt);
           setHovered(true);
         }}
         onMouseLeave={(evt) => {
-          props.onMouseLeave && props.onMouseLeave(evt);
+          props?.onMouseLeave?.(evt);
           setHovered(false);
         }}
         onChange={(evt) => {
-          setHasContent(evt.target.value.length > 0);
-          props.onChange && props.onChange(evt);
+          setHasContent?.(evt.target.value.length > 0);
+          props?.onChange?.(evt);
         }}
       />
-      {rightLabel && (
-        <ChakraInputRightAddon {...rightLabelStyle} children={rightLabel} />
-      )}
+      {rightLabel && <ChakraInputRightAddon {...rightLabelStyle} children={rightLabel} />}
     </ChakraInputGroup>
   );
 };

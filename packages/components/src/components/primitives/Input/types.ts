@@ -10,8 +10,7 @@ type InputSize = typeof inputSizes[number];
 export interface InputProps extends ChakraInputProps {
   variant?: InputVariant;
   size?: InputSize;
-  showTrailingIcon?: boolean;
-  trailingIcon?: ReactElement;
+  leadingIcon?: ReactElement;
   leftLabel?: string;
   rightLabel?: string;
 }

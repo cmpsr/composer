@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Image } from './Image';
+import { Image } from '.';
 
 export default {
   component: Image,

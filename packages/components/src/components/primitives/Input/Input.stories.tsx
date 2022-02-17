@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
-import { HStack, StackDivider, VStack } from '@chakra-ui/react';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Input } from '.';
 import { inputSizes, inputVariants } from './types';
 import { IconCloud } from '../Icons';
-import { Text } from '..';
 
 export default {
   component: Input,
@@ -18,137 +17,114 @@ export default {
       options: inputSizes,
       control: { type: 'select' },
     },
-    showTrailingIcon: {
-      control: { type: 'boolean' },
-    },
-    isInvalid: {
-      control: { type: 'boolean' },
-    },
-    isDisabled: {
-      control: { type: 'boolean' },
-    },
     leftLabel: {
       type: { name: 'string', required: false },
     },
     rightLabel: {
       type: { name: 'string', required: false },
     },
-    placeholder: {
-      type: { name: 'string', required: false },
-    },
   },
 } as Meta;
 
 const AllTemplate = () => {
-  const [values, setValues] = React.useState({});
-
+  const states = {
+    outline: ['default', 'leadingIcon', 'error', 'disabled', 'bothAddons', 'leftAddon', 'rightAddon', 'filled'],
+    flushed: ['default', 'leadingIcon', 'error', 'disabled', 'filled'],
+  };
   return (
-    <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
-      {inputVariants.map((variant) => (
-        <HStack key={variant}>
-          <HStack>
-            <VStack>
-              <Text>{variant}</Text>
-              {inputSizes.map((size) => (
-                <VStack key={size}>
-                  <Input
-                    key={`${variant}-${size}`}
-                    variant={variant}
-                    size={size}
-                    value={values[`${variant}-${size}`]}
-                    placeholder={`${variant}-${size}`}
-                    onChange={(evt) =>
-                      setValues({
-                        ...values,
-                        [`${variant}-${size}`]: evt.target.value,
-                      })
-                    }
-                  />
-                </VStack>
-              ))}
-            </VStack>
-            <VStack>
-              <Text>{variant} - With Icon</Text>
-              {inputSizes.map((size) => (
-                <VStack key={size}>
-                  <Input
-                    key={`${variant}-${size}`}
-                    variant={variant}
-                    size={size}
-                    value={values[`${variant}-${size}`]}
-                    placeholder={`${variant}-${size}`}
-                    trailingIcon={<IconCloud />}
-                    showTrailingIcon
-                    onChange={(evt) =>
-                      setValues({
-                        ...values,
-                        [`${variant}-${size}`]: evt.target.value,
-                      })
-                    }
-                  />
-                </VStack>
-              ))}
-            </VStack>
-            <VStack>
-              <Text>{variant} - Error</Text>
-              {inputSizes.map((size) => (
-                <VStack key={size}>
-                  <Input
-                    key={`${variant}-${size}`}
-                    variant={variant}
-                    size={size}
-                    value={values[`${variant}-${size}`]}
-                    placeholder={`${variant}-${size}`}
-                    isInvalid
-                    onChange={(evt) =>
-                      setValues({
-                        ...values,
-                        [`${variant}-${size}`]: evt.target.value,
-                      })
-                    }
-                  />
-                </VStack>
-              ))}
-            </VStack>
-            <VStack>
-              <Text>{variant} - Disabled</Text>
-              {inputSizes.map((size) => (
-                <VStack key={size}>
-                  <Input
-                    key={`${variant}-${size}`}
-                    variant={variant}
-                    size={size}
-                    value={values[`${variant}-${size}`]}
-                    placeholder={`${variant}-${size}`}
-                    isDisabled
-                    onChange={(evt) =>
-                      setValues({
-                        ...values,
-                        [`${variant}-${size}`]: evt.target.value,
-                      })
-                    }
-                  />
-                </VStack>
-              ))}
-            </VStack>
-          </HStack>
-        </HStack>
-      ))}
-    </VStack>
+    <Table variant="simple">
+      <Thead>
+        <Tr>
+          <Th>Variant</Th>
+          <Th>State</Th>
+          <Th>S</Th>
+          <Th>M</Th>
+          <Th>L</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
+        {inputVariants.map((variant, i) => (
+          <Fragment key={i}>
+            <Tr>
+              <Td rowSpan={9}>{variant}</Td>
+            </Tr>
+            {states[variant].map((state, i) => (
+              <Tr key={`${state}-${i}`}>
+                <Td>{state}</Td>
+                {inputSizes.map((size, i) => (
+                  <Td key={`${variant}-${size}-${i}-${state}`}>
+                    <Input
+                      variant={variant}
+                      size={size}
+                      placeholder={state}
+                      {...{
+                        ...(state === 'disabled' && {
+                          isDisabled: true,
+                        }),
+                      }}
+                      {...{
+                        ...(state === 'error' && {
+                          isInvalid: true,
+                        }),
+                      }}
+                      {...{
+                        ...(state === 'leadingIcon' && {
+                          leadingIcon: <IconCloud />,
+                        }),
+                      }}
+                      {...{
+                        ...(state === 'bothAddons' && {
+                          leftLabel: 'Label',
+                          rightLabel: 'Label',
+                        }),
+                      }}
+                      {...{
+                        ...(state === 'leftAddon' && {
+                          leftLabel: 'Label',
+                        }),
+                      }}
+                      {...{
+                        ...(state === 'rightAddon' && {
+                          rightLabel: 'Label',
+                        }),
+                      }}
+                      {...{
+                        ...(state === 'filled' && {
+                          value: 'Filled',
+                        }),
+                      }}
+                    />
+                  </Td>
+                ))}
+              </Tr>
+            ))}
+          </Fragment>
+        ))}
+      </Tbody>
+    </Table>
   );
 };
 
 export const All = AllTemplate.bind({});
 
-const Template = (args) => <Input trailingIcon={<IconCloud />} {...args} />;
+const Template = (args) => (
+  <Input
+    {...{
+      ...(args.showLeadingIcon && {
+        leadingIcon: <IconCloud />,
+      }),
+    }}
+    {...args}
+  />
+);
 export const Playground = Template.bind({});
 Playground.args = {
-  variant: 'flushed',
+  variant: 'outline',
   size: 'l',
-  showTrailingIcon: false,
-  placeholder: 'A placeholder',
+  placeholder: 'Placeholder',
   leftLabel: '',
   rightLabel: '',
   isInvalid: false,
   isDisabled: false,
+  showLeadingIcon: true,
 };

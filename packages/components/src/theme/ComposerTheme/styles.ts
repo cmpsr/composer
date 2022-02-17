@@ -57,8 +57,8 @@ export const textStyles = {
   'text-header-XS': {
     ...baseTextStyle,
     fontWeight: 'bold',
-    fontSize: '0.88rem',
-    lineHeight: ['1.25rem', '1.13rem'],
+    fontSize: '0.875rem',
+    lineHeight: ['1.25rem', '1.125rem'],
   },
   // Body
   'text-body-display-2XL': {
@@ -78,34 +78,34 @@ export const textStyles = {
   },
   'text-body-display-M': {
     ...baseTextStyle,
-    fontSize: '1.88rem',
+    fontSize: '1.875rem',
     lineHeight: '2.25rem',
   },
   'text-body-display-S': {
     ...baseTextStyle,
     fontSize: '1.5rem',
-    lineHeight: '1.88rem',
+    lineHeight: '1.875rem',
   },
   'text-body-display-XS': {
     ...baseTextStyle,
     fontSize: '1.25rem',
-    lineHeight: '1.88rem',
+    lineHeight: '1.875rem',
   },
   'text-body-large-regular': {
     ...baseTextStyle,
-    fontSize: '1.13rem',
+    fontSize: '1.125rem',
     lineHeight: '1.75rem',
   },
   'text-body-large-medium': {
     ...baseTextStyle,
     fontWeight: 'medium',
-    fontSize: '1.13rem',
+    fontSize: '1.125rem',
     lineHeight: '1.75rem',
   },
   'text-body-large-bold': {
     ...baseTextStyle,
     fontWeight: 'bold',
-    fontSize: '1.13rem',
+    fontSize: '1.125rem',
     lineHeight: '1.75rem',
   },
   'text-body-regular': {
@@ -127,19 +127,19 @@ export const textStyles = {
   },
   'text-body-meta-regular': {
     ...baseTextStyle,
-    fontSize: '0.88rem',
+    fontSize: '0.875rem',
     lineHeight: '1.25rem',
   },
   'text-body-meta-medium': {
     ...baseTextStyle,
     fontWeight: 'medium',
-    fontSize: '0.88rem',
+    fontSize: '0.75rem',
     lineHeight: '1.25rem',
   },
   'text-body-meta-bold': {
     ...baseTextStyle,
     fontWeight: 'bold',
-    fontSize: '0.88rem',
+    fontSize: '0.875rem',
     lineHeight: '1.25rem',
   },
   'text-body-floating-label-regular': {
@@ -180,23 +180,28 @@ export const textStyles = {
 export const inputStyles = {
   large: {
     borderRadius: '0.4rem',
-    px: '0.8rem',
+    ps: '1rem',
+    pe: '1rem',
+    p: '0.75rem 1rem',
+    px: '1rem',
     minH: '3rem',
     minW: '8rem',
   },
-
   medium: {
     borderRadius: '0.4rem',
-    px: '0.8rem',
-    py: '0.5rem',
+    ps: '0.75rem',
+    pe: '0.75rem',
+    p: '0.5rem 0.75rem',
+    px: '0.75rem',
     minH: '2.5rem',
     minW: '8rem',
   },
-
   small: {
     borderRadius: '0.4rem',
-    px: '0.5rem',
-    py: '0.375rem',
+    ps: '0.75rem',
+    pe: '0.75rem',
+    px: '0.75rem',
+    p: '0.375rem 0.75rem',
     minH: '2rem',
     minW: '8rem',
   },

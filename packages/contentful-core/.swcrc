@@ -1,0 +1,24 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "decorators": false,
+      "dynamicImport": false
+    },
+    "paths": {
+      "context": ["./src/context"],
+      "constants/*": ["./src/constants/*"],
+      "renderers": ["./src/renderers"],
+      "utils": ["./src/utils"]
+    },
+    "baseUrl": "."
+  },
+  "module": {
+    "type": "commonjs",
+    "strict": false,
+    "strictMode": true,
+    "lazy": false,
+    "noInterop": false
+  }
+}

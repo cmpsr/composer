@@ -1,14 +1,14 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Symbols } from '.';
+import { Symbol, SymbolProps } from '.';
 
 export default {
-  component: Symbols,
-  title: 'Components/Primitives/Symbols',
+  component: Symbol,
+  title: 'Components/Primitives/Symbol',
   argTypes: {},
 } as Meta;
 
-const Template = (args) => <Symbols {...args} />;
+const Template = (args: SymbolProps) => <Symbol {...args} />;
 export const Playground = Template.bind({});
 
 Playground.args = {

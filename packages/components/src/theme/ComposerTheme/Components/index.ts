@@ -21,6 +21,7 @@ import { Tag } from './Tag';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
 import { Radio } from './Radio';
+import { Symbols } from './Symbols';
 
 export const components = {
   Accordion,
@@ -43,6 +44,7 @@ export const components = {
   Slider,
   Spinner,
   Switch,
+  Symbols,
   Tabs,
   Tag,
   Text,

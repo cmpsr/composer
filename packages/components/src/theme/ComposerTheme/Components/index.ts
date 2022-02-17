@@ -22,6 +22,7 @@ import { Text } from './Text';
 import { TextPairing } from './TextPairing';
 import { Radio } from './Radio';
 import { CloseButton } from './CloseButton';
+import { Symbols } from './Symbols';
 
 export const components = {
   Accordion,
@@ -37,6 +38,7 @@ export const components = {
   Divider,
   Icon,
   Input,
+  Kbd: Symbols,
   Link,
   ProgressCircular,
   Progress: ProgressBar,

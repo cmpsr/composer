@@ -1,1 +1,1 @@
-export * from './Divider';
+export { Divider, DividerProps } from '@chakra-ui/react';

@@ -10,20 +10,20 @@ describe('Input', () => {
     expect(screen.queryByTestId('cmpsr.input-group')).toBeTruthy();
   });
 
-  test('it should show icon when showTrailingIcon is true and there is an icon', () => {
+  test('should show icon when leadingIcon is provided', () => {
     const result = TestRenderer.create(
       <ComposerProvider>
-        <Input showTrailingIcon trailingIcon={<div />} />
+        <Input leadingIcon={<div />} />
       </ComposerProvider>
     );
 
     expect(result.root.findByProps({ 'data-testid': 'cmpsr.input-icon' })).toBeTruthy();
   });
 
-  test('should not show icon when showTrailingIcon, there is an icon but there is a leftLabel', () => {
+  test('should not show icon when leadingIcon, there is an icon but there is a leftLabel', () => {
     const result = TestRenderer.create(
       <ComposerProvider>
-        <Input showTrailingIcon trailingIcon={<div />} leftLabel="label" />
+        <Input leadingIcon={<div />} leftLabel="label" />
       </ComposerProvider>
     );
 

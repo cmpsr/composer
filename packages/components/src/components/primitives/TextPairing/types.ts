@@ -23,8 +23,7 @@ export const textPairingVariants = [
   'textpairing-body-meta-bold',
   'textpairing-body-meta-medium',
 ] as const;
-type TextPairingVariantTuple = typeof textPairingVariants;
-export type TextPairingVariant = TextPairingVariantTuple[number];
+export type TextPairingVariant = typeof textPairingVariants[number];
 
 type TextPairingParts = 'label' | 'subLabel';
 export type TextPairingStyles = CSSObject &

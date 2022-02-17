@@ -1,7 +1,6 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import { renderWithProviders } from '@tests/renderWithProviders';
-import { Symbols } from '..';
+import { renderWithProviders, screen } from '@tests/renderWithProviders';
+import { Symbols } from '.';
 
 describe('Symbols', () => {
   it('should render', () => {

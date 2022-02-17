@@ -2,6 +2,7 @@ import { CSSObject, ResponsiveValue } from '@chakra-ui/system';
 import { ComponentDefaultProps } from '@chakra-ui/theme';
 import { Colors } from '@theme/ComposerTheme/Colors';
 import { TextVariant } from '../Text';
+import { ColorProps } from '@chakra-ui/react';
 
 export const textPairingVariants = [
   'textpairing-header-4XL',
@@ -37,6 +38,6 @@ export interface TextPairingProps extends Omit<ComponentDefaultProps, 'variant'>
   variant?: ResponsiveValue<TextPairingVariant>;
   label: string;
   subLabel: string;
-  labelColor?: keyof Colors;
-  subLabelColor?: keyof Colors;
+  labelColor?: keyof Colors | ThisType<ColorProps['color']>;
+  subLabelColor?: keyof Colors | ThisType<ColorProps['color']>;
 }

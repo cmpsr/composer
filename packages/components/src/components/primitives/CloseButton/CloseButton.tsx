@@ -6,6 +6,12 @@ import { IconX } from '../Icons';
 export const CloseButton: FC<CloseButtonProps> = ({ size, ...rest }) => {
   const styles = useStyleConfig('CloseButton', { size }) as StyleProps;
   return (
-    <IconButton aria-label="close button" data-testid="cmpsr.closeButton" icon={<IconX />} __css={styles} {...rest} />
+    <IconButton
+      aria-label={rest['aria-label'] || 'close button'}
+      data-testid="cmpsr.closeButton"
+      icon={<IconX size={size === 's' ? size : 'l'} />}
+      __css={styles}
+      {...rest}
+    />
   );
 };

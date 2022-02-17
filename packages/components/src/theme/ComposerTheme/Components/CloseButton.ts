@@ -25,23 +25,14 @@ export const CloseButton: ComponentStyleConfig = {
     s: {
       height: '1.5rem',
       minWidth: '1.5rem',
-      '& svg': {
-        boxSize: '1rem',
-      },
     },
     m: {
       height: '2rem',
       minWidth: '2rem',
-      '& svg': {
-        boxSize: '1.5rem',
-      },
     },
     l: {
       height: '2.5rem',
       minWidth: '2.5rem',
-      '& svg': {
-        boxSize: '1.5rem',
-      },
     },
   },
   defaultProps: {

@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
 import { Link as ChakraLink } from '@chakra-ui/react';
 import { LinkProps } from './types';
-import { IconSize, Text } from '..';
-import { Flex } from '../../layouts';
+import { Flex, IconSize, Text } from '@components';
 
 export const Link: FC<LinkProps> = ({
   children,
   leadingIcon: LeadingIcon,
   trailingIcon: TrailingIcon,
   size = 'm',
+  variant,
   ...props
 }) => (
-  <ChakraLink size={size} data-testid="cmpsr.link.container" {...props}>
+  <ChakraLink size={size} variant={variant} data-testid="cmpsr.link.container" {...props}>
     <Flex direction="row" alignItems="center" columnGap="0.5rem">
       {LeadingIcon && <LeadingIcon size={getIconSize(size)} data-testid="cmpsr.link.leading-icon" />}
       <Text isTruncated>{children}</Text>

@@ -11,14 +11,7 @@ import {
   useMultiStyleConfig,
   useStyles,
 } from '@chakra-ui/react';
-import {
-  IconAlertCircle,
-  IconAlertTriangle,
-  IconCircleCheck,
-  IconInfoCircle,
-} from '../../primitives/Icons';
-
-import { Flex } from 'components';
+import { Flex, IconAlertCircle, IconAlertTriangle, IconCircleCheck, IconInfoCircle } from '@components';
 
 export const Alert: FC<AlertProps> = ({
   state,

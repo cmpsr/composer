@@ -1,8 +1,8 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { screen } from '@testing-library/react';
-import { renderWithProviders } from 'tests/renderWithProviders';
-import { ComposerProvider } from 'theme';
+import { renderWithProviders } from '@tests/renderWithProviders';
+import { ComposerProvider } from '@theme';
 import { Select } from '.';
 
 describe('Select', () => {
@@ -20,9 +20,7 @@ describe('Select', () => {
       </ComposerProvider>
     );
 
-    expect(
-      result.root.findByProps({ 'data-testid': 'cmpsr.select' }).props.color
-    ).toBe('text-secondary');
+    expect(result.root.findByProps({ 'data-testid': 'cmpsr.select' }).props.textColor).toBe('text-secondary');
   });
 
   test('it should have the correct color when the placeholder is not selected', () => {
@@ -34,8 +32,6 @@ describe('Select', () => {
       </ComposerProvider>
     );
 
-    expect(
-      result.root.findByProps({ 'data-testid': 'cmpsr.select' }).props.color
-    ).toBe('text-primary');
+    expect(result.root.findByProps({ 'data-testid': 'cmpsr.select' }).props.textColor).toBe('text-primary');
   });
 });

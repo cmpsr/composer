@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Grid } from './Grid';
-import { Box, Text } from 'components';
+import { Box, Text } from '@components';
 
 export default {
   component: Grid,
@@ -11,11 +11,7 @@ export default {
 const Template = ({ children, ...rest }) => (
   <Grid {...rest}>
     {[1, 2, 3, 4, 5].map((index) => (
-      <Box
-        key={index}
-        padding="spacer-4"
-        border="1px solid var(--chakra-colors-accent-default)"
-      >
+      <Box key={index} padding="spacer-4" border="1px solid var(--chakra-colors-accent-default)">
         <Text variant="text-body-bold">
           {children}:{` ${index}`}
         </Text>

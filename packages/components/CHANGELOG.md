@@ -1,5 +1,73 @@
 # @cmpsr/components
 
+## 1.13.0
+
+### Minor Changes
+
+- cc5ae3d: Update Tag L size to have same padding as design
+- f700cee: Update textStyles to have correct rem values
+- 045f197: Fix Switch styles and refactor the component
+
+### Patch Changes
+
+- c9d69bd: "replace babel with swc"
+
+## 1.12.0
+
+### Minor Changes
+
+- 7a95d00: Add proper color when Link is pressed
+  Rename Progress components to be consistent with design
+  Remove Tabs underline and use proper background color
+
+## 1.11.3
+
+### Patch Changes
+
+- 34b5a1c: generate ts types
+
+## 1.11.2
+
+### Patch Changes
+
+- 9810e1d: fix: typescript and swc paths aliases
+- 9810e1d: fix: swcrc aliases
+
+## 1.11.1
+
+### Patch Changes
+
+- f817f32: fix: swcrc aliases
+
+## 1.11.0
+
+### Minor Changes
+
+- ae89f55: Select: fix icon, colors and text of select component
+
+### Patch Changes
+
+- 1293112: fix: define aliases in swcrc file
+
+## 1.10.0
+
+### Minor Changes
+
+- 38bee36: Card: update default padding of card to be 20px
+- 157522c: Breadcrumb: align container vertically
+- f58249c: Button: update button styles and add icons
+
+## 1.9.0
+
+### Minor Changes
+
+- f049ae2: Button: fix button sizes
+- f21ccb2: Link: add button appearance to link based on variants
+
+### Patch Changes
+
+- a923564: fix line height of text-body-\* text styles
+
 ## 1.8.0
 
 ### Minor Changes

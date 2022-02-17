@@ -5,6 +5,7 @@ export const Breadcrumb: ComponentStyleConfig = {
   baseStyle: ({ theme }) => ({
     container: {
       columnGap: '0.5rem',
+      alignItems: 'center',
     },
     separator: {
       ...theme.textStyles['text-body-medium'],

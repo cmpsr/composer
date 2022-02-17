@@ -57,8 +57,8 @@ export const Input: FC<InputProps> = ({ leadingIcon: LeadingIcon, leftLabel, rig
       {leftLabel && <ChakraInputLeftAddon {...leftLabelStyle} children={leftLabel} />}
       <ChakraInput
         {...{ ...(showLeadingIcon && { ...fieldWithIconStyles }) }}
-        {...props}
         data-testid="cmpsr.input"
+        {...props}
         onFocus={(evt) => {
           props?.onFocus?.(evt);
           setFocused(true);

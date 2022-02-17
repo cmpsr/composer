@@ -37,10 +37,17 @@ const baseStyle = {
     padding: '1rem',
     display: 'inline-flex',
     gap: '0.5rem',
+    ' .chakra-button': {
+      paddingY: '0.5rem',
+    },
   },
   closeButton: {
     top: '1rem',
     right: '1rem',
+    boxSize: '1rem',
+    '> svg': {
+      boxSize: '1rem',
+    },
   },
 };
 

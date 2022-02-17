@@ -24,6 +24,7 @@
     "storybook": "start-storybook -p 8080 -c .storybook",
     "build-storybook": "build-storybook -c .storybook",
     "gen:theme-typings": "./scripts/generate_theme_typings.sh",
+    "postinstall": "npm run gen:theme-typings",
     "gen:icons": "node scripts/generate_icons.js",
     "type:check": "yarn tsc --project tsconfig.json --noEmit",
     "type:emit": "tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"

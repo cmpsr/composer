@@ -53,9 +53,16 @@ const sizes = {
 };
 
 export const IconButton: ComponentStyleConfig = {
-  baseStyle: ({ rounded }) => {
+  baseStyle: ({ rounded, theme, variant }) => {
+    const buttonStyles = theme.components.Button;
+    const buttonVariant = buttonStyles.variants[variant || 'primary'];
+    const buttonLoadingStyles = buttonVariant.loading;
+
     return {
       borderRadius: rounded ? 'full' : 'radii-2',
+      loading: {
+        ...buttonLoadingStyles,
+      },
     };
   },
   sizes,

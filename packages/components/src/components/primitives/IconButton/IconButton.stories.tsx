@@ -52,7 +52,7 @@ const AllTemplate = () => (
 
 export const All = AllTemplate.bind({});
 
-const Template = (args) => <IconButton icon={<IconCloud />} {...args} />;
+const Template = (args) => <IconButton icon={<IconCloud />} isLoading {...args} />;
 export const Playground = Template.bind({});
 Playground.args = {
   variant: 'primary',

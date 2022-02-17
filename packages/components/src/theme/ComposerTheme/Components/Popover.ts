@@ -17,7 +17,8 @@ const baseStyle = {
     },
   },
   header: {
-    paddingX: '1rem',
+    paddingLeft: '1rem',
+    paddingRight: '3.5rem',
     paddingY: '1rem',
     border: 'none',
   },

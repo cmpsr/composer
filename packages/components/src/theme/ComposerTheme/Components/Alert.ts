@@ -113,7 +113,7 @@ export const Alert: ComponentStyleConfig = {
   baseStyle: ({ theme }) => ({
     container: {
       borderRadius: '0.4rem',
-      padding: '0.875rem 1.125rem',
+      padding: '0.75rem 1rem',
     },
     icon: {
       ...theme.components.Icon.sizes.l,

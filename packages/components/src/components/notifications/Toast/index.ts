@@ -1,1 +1,2 @@
-export * from './Toast';
+export { UseToastOptions } from '@chakra-ui/react';
+export * from './useToast';

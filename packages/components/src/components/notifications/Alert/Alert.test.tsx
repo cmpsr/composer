@@ -24,17 +24,17 @@ describe('Alert', () => {
   test('should reflect the correct state (solid)', () => {
     const alertInstance = TestRenderer.create(
       <ComposerProvider>
-        <Alert state="success" />
+        <Alert status="success" />
       </ComposerProvider>
     ).root;
 
     expect(alertInstance.findByProps({ 'data-testid': 'cmpsr.alert-icon' }).props.color).toBe('text-light');
   });
 
-  test('should reflect the correct state (subtle)', () => {
+  test('should reflect the correct status (subtle)', () => {
     const alertInstance = TestRenderer.create(
       <ComposerProvider>
-        <Alert variant="subtle" state="error" />
+        <Alert variant="subtle" status="error" />
       </ComposerProvider>
     ).root;
 
@@ -44,7 +44,7 @@ describe('Alert', () => {
   test('should wrap up the subtitle if titleAligment is top', () => {
     const alertInstance = TestRenderer.create(
       <ComposerProvider>
-        <Alert titleAlignment="top" variant="subtle" state="error" />
+        <Alert titleAlignment="top" variant="subtle" status="error" />
       </ComposerProvider>
     ).root;
 

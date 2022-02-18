@@ -14,7 +14,7 @@ import {
 import { Flex, IconAlertCircle, IconAlertTriangle, IconCircleCheck, IconInfoCircle } from '@components';
 
 export const Alert: FC<AlertProps> = ({
-  state,
+  status,
   titleAlignment,
   variant,
   title,
@@ -22,14 +22,6 @@ export const Alert: FC<AlertProps> = ({
   showClose = true,
   ...props
 }) => {
-  const calculateTitleAlignment = () => {
-    if (titleAlignment === 'top') {
-      return 'column';
-    }
-
-    return 'row';
-  };
-
   const calculateTrailingIconAlignment = () => {
     if (titleAlignment === 'top') {
       return {
@@ -46,13 +38,13 @@ export const Alert: FC<AlertProps> = ({
   };
 
   const {
-    icon: { status },
-  } = useMultiStyleConfig('Alert', { variant, state }) as AlertStyles;
+    icon: { status: iconStatus },
+  } = useMultiStyleConfig('Alert', { variant, status }) as AlertStyles;
 
   return (
-    <ChakraAlert status={state} variant={variant} {...props}>
-      <AlertIcon data-testid="cmpsr.alert-icon" status={state || 'info'} color={status[state]?.color || 'info'} />
-      <Flex data-testid="cmpsr.alert-content-wrapper" flexDir={calculateTitleAlignment()}>
+    <ChakraAlert status={status} variant={variant} {...props}>
+      <AlertIcon data-testid="cmpsr.alert-icon" status={status || 'info'} color={iconStatus[status]?.color || 'info'} />
+      <Flex data-testid="cmpsr.alert-content-wrapper" flexDir={titleAlignment === 'top' ? 'column' : 'row'}>
         {title && titleAlignment !== 'none' && <AlertTitle data-testid="cmpsr.alert-title">{title}</AlertTitle>}
         {description && <AlertDescription>{description}</AlertDescription>}
       </Flex>

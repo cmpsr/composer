@@ -1,25 +1,46 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
+import { transparentize } from '@chakra-ui/theme-tools';
 
 export const Modal: ComponentStyleConfig = {
-  baseStyle: () => {
-    return {
-      header: {
-        padding: '1.25rem',
-      },
-      body: {
-        padding: '1.25rem',
-      },
-      footer: {
-        padding: '1.25rem',
-      },
-    };
+  baseStyle: {
+    overlay: {
+      backgroundColor: transparentize('background-overlay', 0.75),
+    },
+    dialog: {
+      boxShadow: 'elevation-modals',
+      backgroundColor: 'background-card',
+    },
+    header: {
+      padding: '1.25rem',
+      paddingInlineStart: 0,
+      paddingInlineEnd: 0,
+      backgroundColor: 'background-card',
+      borderRadius: '0.5rem',
+    },
+    body: {
+      padding: '1.25rem',
+      paddingInlineStart: 0,
+      paddingInlineEnd: 0,
+      backgroundColor: 'background-card',
+      borderRadius: '0.5rem',
+    },
+    footer: {
+      padding: '1.25rem',
+      paddingInlineStart: 0,
+      paddingInlineEnd: 0,
+      backgroundColor: 'background-card',
+      borderRadius: '0.5rem',
+    },
   },
   sizes: {
-    '20rem': { dialog: { maxW: '20rem' } },
-    '24rem': { dialog: { maxW: '24rem' } },
-    '28rem': { dialog: { maxW: '28rem' } },
-    '32rem': { dialog: { maxW: '32rem' } },
-    '36rem': { dialog: { maxW: '36rem' } },
-    'full-width': { dialog: { maxW: '100vw', minH: '100vh', my: 0 } },
+    auto: {
+      dialog: {
+        maxW: 'none',
+        width: 'auto',
+      },
+    },
+  },
+  defaultProps: {
+    size: 'auto',
   },
 };

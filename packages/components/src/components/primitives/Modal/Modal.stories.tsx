@@ -1,148 +1,229 @@
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react';
-import { Modal } from './Modal';
-import { Button } from '..';
-import { Text } from '..';
-import { ModalSizes, FooterAlignments } from './types';
-import { VStack, HStack, StackDivider } from '@chakra-ui/react';
-import * as Icons from '../Icons';
+import { Avatar, Button, Flex, Modal, Text, TextPairing, modalSizes } from '@components';
 
 export default {
   component: Modal,
   title: 'Components/Primitives/Modal',
   argTypes: {
     size: {
-      option: ModalSizes,
+      options: modalSizes,
       control: { type: 'select' },
+      defaultValue: modalSizes[0],
     },
   },
 } as Meta;
 
 const AVATAR_URL = 'https://avatars0.githubusercontent.com/u/67131017?s=200';
-const LABEL = 'Header-M';
-const SUBLABEL = 'Sublabel';
+const TITLE = 'Header - M';
+const SUBTITLE = 'Body - Regular';
 
-const AllTemplate = () => {
-  const [size, setSize] = useState(ModalSizes[0]);
-  const [footerAlignment, setFooterAlignment] = useState(FooterAlignments[0]);
-  const [isOpen, setIsOpen] = useState(false);
-  const onClose = () => setIsOpen(false);
+const Header = () => (
+  <Modal.Header>
+    <Flex alignItems="center">
+      <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr={2} />
+      <TextPairing label={TITLE} subLabel={SUBTITLE} variant="textpairing-header-M" />
+    </Flex>
+  </Modal.Header>
+);
 
-  const handleSizeClick = (newSize, footerAlignment) => {
-    setSize(newSize);
-    setFooterAlignment(footerAlignment);
-    setIsOpen(true);
-  };
+const Footer = ({ onClose }) => (
+  <Modal.Footer>
+    <Button variant="primary-alt" mr="1rem" onClick={onClose}>
+      Cancel
+    </Button>
+    <Button variant="primary" onClick={onClose}>
+      Accept
+    </Button>
+  </Modal.Footer>
+);
 
+export const TitleOnlyHeader = (args) => {
+  const [isOpen, setIsOpen] = useState(true);
+  const handleClose = () => setIsOpen(false);
   return (
-    <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
-      {ModalSizes.map((size, key) => (
-        <HStack key={key}>
-          {FooterAlignments.map((alignment) => (
-            <Button variant="primary" onClick={() => handleSizeClick(size, alignment)} key={alignment}>
-              Open Size {size} Footer {alignment}
+    <>
+      <Button variant="primary" onClick={() => setIsOpen(true)}>
+        Open Modal
+      </Button>
+      <Modal isOpen={isOpen} onClose={handleClose} {...args}>
+        <Modal.Overlay />
+        <Modal.Content>
+          <Modal.Header>
+            <Text variant="text-header-M">{TITLE}</Text>
+          </Modal.Header>
+          <Modal.CloseButton />
+          <Modal.Body>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+          </Modal.Body>
+          <Footer onClose={handleClose} />
+        </Modal.Content>
+      </Modal>
+    </>
+  );
+};
+
+export const FullHeader = (args) => {
+  const [isOpen, setIsOpen] = useState(true);
+  const handleClose = () => setIsOpen(false);
+  return (
+    <>
+      <Button variant="primary" onClick={() => setIsOpen(true)}>
+        Open Modal
+      </Button>
+      <Modal isOpen={isOpen} onClose={handleClose} {...args}>
+        <Modal.Overlay />
+        <Modal.Content>
+          <Header />
+          <Modal.CloseButton />
+          <Modal.Body>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+          </Modal.Body>
+          <Footer onClose={handleClose} />
+        </Modal.Content>
+      </Modal>
+    </>
+  );
+};
+
+export const StackedActions = (args) => {
+  const [isOpen, setIsOpen] = useState(true);
+  const handleClose = () => setIsOpen(false);
+  return (
+    <>
+      <Button variant="primary" onClick={() => setIsOpen(true)}>
+        Open Modal
+      </Button>
+      <Modal isOpen={isOpen} onClose={handleClose} {...args}>
+        <Modal.Overlay />
+        <Modal.Content>
+          <Header />
+          <Modal.CloseButton />
+          <Modal.Body>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+          </Modal.Body>
+          <Modal.Footer flexDirection="column">
+            <Button variant="primary-alt" onClick={handleClose} isFullWidth mb="0.5rem">
+              Cancel
             </Button>
-          ))}
-        </HStack>
-      ))}
-      <Modal isOpen={isOpen} onClose={onClose} size={size}>
-        <Modal.Overlay />
-        <Modal.Content>
-          <Modal.Header label={LABEL} subLabel={SUBLABEL} avatarUrl={AVATAR_URL} />
-          <Modal.CloseButton />
-          <Modal.Body>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-          </Modal.Body>
-          <Modal.Footer
-            alignment={footerAlignment}
-            primaryAction={{ title: 'Primary CTA' }}
-            secondaryAction={{ title: 'Secondary Cta', action: onClose }}
-          ></Modal.Footer>
-        </Modal.Content>
-      </Modal>
-    </VStack>
-  );
-};
-
-export const All = AllTemplate.bind({});
-
-const FooterWidthLink = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const onClose = () => setIsOpen(false);
-  return (
-    <>
-      <Button variant="primary" onClick={() => setIsOpen(true)}>
-        Open Modal
-      </Button>
-      <Modal isOpen={isOpen} onClose={onClose} size={ModalSizes[3]}>
-        <Modal.Overlay />
-        <Modal.Content>
-          <Modal.Header label={LABEL} subLabel={SUBLABEL} avatarUrl={AVATAR_URL} />
-          <Modal.CloseButton />
-          <Modal.Body>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-          </Modal.Body>
-          <Modal.Footer
-            alignment="right-aligned"
-            primaryAction={{ title: 'Primary CTA' }}
-            secondaryAction={{ title: 'Secondary CTA', action: onClose }}
-            linkAction={{
-              children: 'Tertiary CTA Link',
-              leadingIcon: Icons.IconExternalLink,
-            }}
-          ></Modal.Footer>
+            <Button variant="primary" onClick={handleClose} isFullWidth>
+              Accept
+            </Button>
+          </Modal.Footer>
         </Modal.Content>
       </Modal>
     </>
   );
 };
 
-export const FooterWithLink = FooterWidthLink.bind({});
-
-const Template = (args) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const onClose = () => setIsOpen(false);
+export const FullWidthActions = (args) => {
+  const [isOpen, setIsOpen] = useState(true);
+  const handleClose = () => setIsOpen(false);
   return (
     <>
       <Button variant="primary" onClick={() => setIsOpen(true)}>
         Open Modal
       </Button>
-      <Modal isOpen={isOpen} onClose={onClose} {...args}>
+      <Modal isOpen={isOpen} onClose={handleClose} {...args}>
         <Modal.Overlay />
         <Modal.Content>
-          <Modal.Header label={LABEL} subLabel={SUBLABEL} avatarUrl={AVATAR_URL} />
+          <Header />
           <Modal.CloseButton />
           <Modal.Body>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
-            <Text variant="text-body-large-medium">Swap item</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
           </Modal.Body>
-          <Modal.Footer
-            alignment={FooterAlignments[0]}
-            primaryAction={{ title: 'Primary CTA' }}
-            secondaryAction={{ title: 'Secondary Cta', action: onClose }}
-          ></Modal.Footer>
+          <Modal.Footer columnGap="1rem">
+            <Button variant="primary-alt" onClick={handleClose} isFullWidth>
+              Cancel
+            </Button>
+            <Button variant="primary" onClick={handleClose} isFullWidth>
+              Accept
+            </Button>
+          </Modal.Footer>
         </Modal.Content>
       </Modal>
     </>
   );
 };
 
-export const Playground = Template.bind({});
+export const FixedWidth = (args) => {
+  const [isOpen, setIsOpen] = useState(true);
+  const handleClose = () => setIsOpen(false);
+  return (
+    <>
+      <Button variant="primary" onClick={() => setIsOpen(true)}>
+        Open Modal
+      </Button>
+      <Modal isOpen={isOpen} onClose={handleClose} {...args}>
+        <Modal.Overlay />
+        <Modal.Content width="40rem">
+          <Header />
+          <Modal.CloseButton />
+          <Modal.Body>
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
+            </Text>
+          </Modal.Body>
+          <Footer onClose={handleClose} />
+        </Modal.Content>
+      </Modal>
+    </>
+  );
+};
 
+const PlaygroundTemplate = ({ showHeader, showFooter, showCloseButton, ...args }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClose = () => setIsOpen(false);
+  return (
+    <>
+      <Button variant="primary" onClick={() => setIsOpen(true)}>
+        Open Modal
+      </Button>
+      <Modal isOpen={isOpen} onClose={handleClose} {...args}>
+        <Modal.Overlay />
+        <Modal.Content>
+          {showHeader && <Header />}
+          {showCloseButton && <Modal.CloseButton />}
+          <Modal.Body>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+            <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet</Text>
+          </Modal.Body>
+          {showFooter && <Footer onClose={handleClose} />}
+        </Modal.Content>
+      </Modal>
+    </>
+  );
+};
+export const Playground = PlaygroundTemplate.bind({});
 Playground.args = {
-  size: ModalSizes[0],
+  showHeader: true,
+  showFooter: true,
+  showCloseButton: true,
+  size: 'auto',
 };

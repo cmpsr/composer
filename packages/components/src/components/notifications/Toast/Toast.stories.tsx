@@ -1,65 +1,52 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { ToastWrapper } from './Toast';
-import { Button, Divider, Heading, HStack, Flex } from '@chakra-ui/react';
-
-import { variants, ToastOptions } from './types';
+import { alertStatuses, alertTitleAlignments, alertVariants, Button, useToast, UseToastOptions } from '@components';
 
 export default {
   title: 'Components/Notifications/Toast',
-  component: ToastWrapper,
+  argTypes: {
+    status: {
+      options: alertStatuses,
+      control: { type: 'select' },
+      defaultValue: 'success',
+    },
+    titleAlignment: {
+      options: alertTitleAlignments,
+      control: { type: 'select' },
+      defaultValue: 'top',
+    },
+    variant: {
+      options: ['subtle', 'solid', 'left-accent', 'top-accent'],
+      control: { type: 'select' },
+      defaultValue: 'solid',
+    },
+    position: {
+      options: ['top', 'top-left', 'top-right', 'bottom', 'bottom-left', 'bottom-right'],
+      control: { type: 'select' },
+      defaultValue: 'bottom',
+    },
+  },
 } as Meta;
 
-const Template = () => {
-  const toastContentVariations: ToastOptions[] = [
-    { title: 'Info', status: 'inform' },
-    { title: 'Error', description: 'Error description', status: 'error' },
-    {
-      title: 'Warning',
-      description: 'Warning description',
-      isClosable: true,
-      status: 'warning',
-    },
-    {
-      title: 'Success',
-      description: 'Success description',
-      isClosable: true,
-      status: 'success',
-    },
-  ];
-
+const Template = (args: UseToastOptions) => {
+  const toast = useToast();
   return (
-    <Flex direction="column" justifyContent="flex-start" ml="15" gap="2">
-      {variants.map((variant) => (
-        <>
-          <Heading size="md">{variant.toUpperCase()}S</Heading>
-          {toastContentVariations.map(
-            ({ title, description, isClosable, status }, index) => {
-              return (
-                <HStack key={index}>
-                  <ToastWrapper
-                    toastOptions={{
-                      title,
-                      description,
-                      isClosable,
-                      status,
-                      variant,
-                    }}
-                  >
-                    <Button>
-                      {status} {isClosable && 'closable '}
-                      {description && 'with description '}
-                    </Button>
-                  </ToastWrapper>
-                </HStack>
-              );
-            }
-          )}
-          <Divider mt={5} />
-        </>
-      ))}
-    </Flex>
+    <Button
+      onClick={() =>
+        toast({
+          ...args,
+        })
+      }
+    >
+      Click to show Toast
+    </Button>
   );
 };
 
-export const AllTemplate = Template.bind({});
+export const Playground = Template.bind({});
+
+Playground.args = {
+  title: 'Composer rocks!',
+  description: 'And this description rocks even more!',
+  duration: 4000,
+};

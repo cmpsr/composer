@@ -1,2 +1,1 @@
-export * from './Flex';
-export * from './types';
+export { Flex, FlexProps } from '@chakra-ui/react';

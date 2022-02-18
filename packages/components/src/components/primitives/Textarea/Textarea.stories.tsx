@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Textarea } from './Textarea';
 import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
-import { textareaSizes } from './types';
+import { textareaSizes, textareaVariants } from './types';
 
 export default {
   component: Textarea,
@@ -19,43 +19,44 @@ const placeholder = 'Text input area...';
 const defaultValue = 'Filled text input area...';
 
 const AllTemplate = () => (
-  <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
-    <VStack>
-      <HStack>
-        <Textarea placeholder={placeholder} />
-        <Textarea placeholder={placeholder} size="m" />
-      </HStack>
-    </VStack>
-    <VStack>
-      <HStack>
-        <Textarea defaultValue={defaultValue} />
-        <Textarea defaultValue={defaultValue} size="m" />
-      </HStack>
-    </VStack>
-    <VStack>
-      <HStack>
-        <Textarea placeholder={placeholder} isInvalid />
-        <Textarea placeholder={placeholder} size="m" isInvalid />
-      </HStack>
-    </VStack>
-    <VStack>
-      <HStack>
-        <Textarea defaultValue={defaultValue} isInvalid />
-        <Textarea defaultValue={defaultValue} size="m" isInvalid />
-      </HStack>
-    </VStack>
-    <VStack>
-      <HStack>
-        <Textarea placeholder={placeholder} isDisabled />
-        <Textarea placeholder={placeholder} size="m" isDisabled />
-      </HStack>
-    </VStack>
-    <VStack>
-      <HStack>
-        <Textarea defaultValue={defaultValue} isDisabled />
-        <Textarea defaultValue={defaultValue} size="m" isDisabled />
-      </HStack>
-    </VStack>
+  <VStack divider={<StackDivider borderColor="gray.200" />}>
+    {textareaVariants.map((variant) => (
+      <VStack key={variant} spacing={4}>
+        <VStack>
+          <HStack>
+            {textareaSizes.map((size) => (
+              <Textarea key={size} placeholder={placeholder} size={size} variant={variant} />
+            ))}
+          </HStack>
+        </VStack>
+        <VStack>
+          <HStack>
+            {textareaSizes.map((size) => (
+              <Textarea key={size} placeholder={placeholder} size={size} isInvalid variant={variant} />
+            ))}
+          </HStack>
+        </VStack>
+        <VStack>
+          <HStack>
+            {textareaSizes.map((size) => (
+              <Textarea key={size} placeholder={placeholder} size={size} isDisabled variant={variant} />
+            ))}
+          </HStack>
+          <HStack>
+            {textareaSizes.map((size) => (
+              <Textarea
+                key={size}
+                placeholder={placeholder}
+                size={size}
+                isDisabled
+                variant={variant}
+                defaultValue={defaultValue}
+              />
+            ))}
+          </HStack>
+        </VStack>
+      </VStack>
+    ))}
   </VStack>
 );
 

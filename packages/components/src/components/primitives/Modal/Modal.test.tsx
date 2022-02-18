@@ -1,10 +1,7 @@
 import React from 'react';
-import {
-  screen,
-  renderWithProviders,
-  fireEvent,
-} from 'tests/renderWithProviders';
+import { screen, renderWithProviders, fireEvent } from '@tests/renderWithProviders';
 import { Modal } from '.';
+import { Button, Text } from '@components';
 
 describe('Modal', () => {
   const label = 'Label';
@@ -15,23 +12,19 @@ describe('Modal', () => {
 
   const givenComponentRendered = ({ isOpen = false }) =>
     renderWithProviders(
-      <Modal isOpen={isOpen} size="20rem" onClose={mockOnClose}>
+      <Modal isOpen={isOpen} size="auto" onClose={mockOnClose}>
         <Modal.Overlay />
         <Modal.Content>
-          <Modal.Header label={label} subLabel={subLabel} />
+          <Modal.Header>
+            <Text>{label} </Text>
+            <Text>{subLabel} </Text>
+          </Modal.Header>
           <Modal.CloseButton />
           <Modal.Body>modal content</Modal.Body>
-          <Modal.Footer
-            alignment="right-aligned"
-            primaryAction={{
-              title: 'Primary CTA',
-              action: mockOnPrimaryClick,
-            }}
-            secondaryAction={{
-              title: 'Secondary CTA',
-              action: mockOnSecondaryClick,
-            }}
-          ></Modal.Footer>
+          <Modal.Footer>
+            <Button onClick={mockOnPrimaryClick}>Primary CTA</Button>
+            <Button onClick={mockOnSecondaryClick}>Secondary CTA</Button>
+          </Modal.Footer>
         </Modal.Content>
       </Modal>
     );

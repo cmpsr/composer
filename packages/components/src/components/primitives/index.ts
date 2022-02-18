@@ -12,6 +12,7 @@ export * from './Image';
 export * from './Icons';
 export * from './Input';
 export * from './Link';
+export * from './Modal';
 export * from './ProgressBar';
 export * from './ProgressCircular';
 export * from './Radio';

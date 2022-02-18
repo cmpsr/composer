@@ -1,49 +1,24 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 import { alertAnatomy as parts } from '@chakra-ui/anatomy';
 import { PartsStyleFunction } from '@chakra-ui/theme-tools';
-import { getAlertStatus } from '../../../utils';
 
-const solidToastVariant: PartsStyleFunction<typeof parts> = ({ status }) => {
-  const alertStatus = getAlertStatus(status);
-  return {
-    container: {
-      backgroundColor: `alert-${alertStatus}-default`,
-      color: 'text-light',
-    },
-    title: { textStyle: 'text-body-bold', color: 'text-light' },
-    description: { textStyle: 'text-body-regular', color: 'text-light' },
-    icon: {
-      margin: '0.25rem 0.25rem 0 0',
-      ' svg': {
-        boxSize: '1rem',
-      },
-      color: 'text-light',
-    },
-  };
-};
-
-const subtleToastVariant: PartsStyleFunction<typeof parts> = ({
-  status,
-  variant,
-}) => {
+const subtleToastVariant: PartsStyleFunction<typeof parts> = ({ status, variant }) => {
   let accentType;
   const hasAccent = variant.includes('-accent');
-  if (hasAccent)
-    accentType = (variant as string).substring(0, variant.indexOf('-accent'));
+  if (hasAccent) accentType = (variant as string).substring(0, variant.indexOf('-accent'));
 
-  const alertStatus = getAlertStatus(status);
   const accents = {
     top: {
-      borderTop: `0.25rem solid var(--chakra-colors-alert-${alertStatus}-default)`,
+      borderTop: `0.25rem solid var(--chakra-colors-alert-${status}-default)`,
     },
     left: {
-      borderLeft: `0.25rem solid var(--chakra-colors-alert-${alertStatus}-default)`,
+      borderLeft: `0.25rem solid var(--chakra-colors-alert-${status}-default)`,
     },
   };
 
   return {
     container: {
-      backgroundColor: `background-${alertStatus}`,
+      backgroundColor: `background-${status}`,
       ...accents[accentType],
     },
     title: { textStyle: 'text-body-bold', color: 'text-primary' },
@@ -53,7 +28,7 @@ const subtleToastVariant: PartsStyleFunction<typeof parts> = ({
       ' svg': {
         boxSize: '1rem',
       },
-      color: `alert-${alertStatus}-default`,
+      color: `alert-${status}-default`,
     },
   };
 };
@@ -69,7 +44,7 @@ const defaultContainerColorScheme = {
     backgroundColor: 'background-warning',
   },
   info: {
-    backgroundColor: 'background-inform',
+    backgroundColor: 'background-info',
   },
 };
 
@@ -97,7 +72,7 @@ const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
 
   return {
     container: {
-      ...(containerColorScheme[variant]?.[status] || {}),
+      ...containerColorScheme[variant]?.[status],
     },
     title: {
       color: 'text-light',
@@ -129,7 +104,7 @@ const generateOtherVariants: PartsStyleFunction<typeof parts> = (props) => {
 
   return {
     container: {
-      ...(containerColorScheme[variant]?.[status] || {}),
+      ...containerColorScheme[variant]?.[status],
     },
   };
 };
@@ -138,7 +113,7 @@ export const Alert: ComponentStyleConfig = {
   baseStyle: ({ theme }) => ({
     container: {
       borderRadius: '0.4rem',
-      padding: '1rem',
+      padding: '0.875rem 1.125rem',
     },
     icon: {
       ...theme.components.Icon.sizes.l,
@@ -157,7 +132,7 @@ export const Alert: ComponentStyleConfig = {
           color: 'alert-error-default',
         },
         info: {
-          color: 'alert-inform-default',
+          color: 'alert-info-default',
         },
       },
     },
@@ -176,14 +151,7 @@ export const Alert: ComponentStyleConfig = {
     variant: 'solid',
   },
   variants: {
-    // Toast component is built with the Alert component
-    // so it uses this theme implementation. To add custom toast styles,
-    // we need these new variants.
-    'solid-toast': solidToastVariant,
-    'subtle-toast': subtleToastVariant,
-    'left-accent-toast': subtleToastVariant,
     'top-accent-toast': subtleToastVariant,
-    // Alerts
     solid: variantSolid,
     subtle: generateOtherVariants,
     'left-accent': generateOtherVariants,

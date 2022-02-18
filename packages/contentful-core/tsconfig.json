@@ -1,19 +1,18 @@
 {
-  "exclude": [
-    "node_modules",
-    "lib",
-    "**/*.stories.*",
-    "**/*.test*"
-  ],
-  "include": [
-    "src"
-  ],
+  "exclude": ["node_modules", "lib", "**/*.stories.*", "**/*.test*"],
+  "include": ["src"],
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "lib",
     "rootDir": "src",
     "declaration": true,
     "resolveJsonModule": true,
-    "baseUrl": "src"
+    "baseUrl": ".",
+    "paths": {
+      "context": ["./src/context"],
+      "constants/*": ["./src/constants/*"],
+      "renderers": ["./src/renderers"],
+      "utils": ["./src/utils"]
+    }
   }
 }

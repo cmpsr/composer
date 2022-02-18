@@ -1,6 +1,14 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { transparentize } from '@chakra-ui/theme-tools';
 
+const commonStyle = {
+  padding: '1.25rem',
+  paddingInlineStart: 0,
+  paddingInlineEnd: 0,
+  backgroundColor: 'background-card',
+  borderRadius: '0.5rem',
+};
+
 export const Modal: ComponentStyleConfig = {
   baseStyle: {
     overlay: {
@@ -10,27 +18,9 @@ export const Modal: ComponentStyleConfig = {
       boxShadow: 'elevation-modals',
       backgroundColor: 'background-card',
     },
-    header: {
-      padding: '1.25rem',
-      paddingInlineStart: 0,
-      paddingInlineEnd: 0,
-      backgroundColor: 'background-card',
-      borderRadius: '0.5rem',
-    },
-    body: {
-      padding: '1.25rem',
-      paddingInlineStart: 0,
-      paddingInlineEnd: 0,
-      backgroundColor: 'background-card',
-      borderRadius: '0.5rem',
-    },
-    footer: {
-      padding: '1.25rem',
-      paddingInlineStart: 0,
-      paddingInlineEnd: 0,
-      backgroundColor: 'background-card',
-      borderRadius: '0.5rem',
-    },
+    header: commonStyle,
+    body: commonStyle,
+    footer: commonStyle,
   },
   sizes: {
     auto: {

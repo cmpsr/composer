@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { Textarea } from './Textarea';
-import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { textareaSizes, textareaVariants } from './types';
 
 export default {
@@ -12,52 +12,54 @@ export default {
       options: textareaSizes,
       control: { type: 'select' },
     },
+    variant: {
+      options: textareaVariants,
+      control: { type: 'select' },
+    },
   },
 } as Meta;
 
-const placeholder = 'Text input area...';
-const defaultValue = 'Filled text input area...';
+const states = ['default', 'filled', 'error', 'disabled', 'disabled-and-filled'];
 
 const AllTemplate = () => (
-  <VStack divider={<StackDivider borderColor="gray.200" />}>
-    {textareaVariants.map((variant) => (
-      <VStack key={variant} spacing={4}>
-        <VStack>
-          <HStack>
-            {textareaSizes.map((size) => (
-              <Textarea key={size} placeholder={placeholder} size={size} variant={variant} />
-            ))}
-          </HStack>
-        </VStack>
-        <VStack>
-          <HStack>
-            {textareaSizes.map((size) => (
-              <Textarea key={size} placeholder={placeholder} size={size} isInvalid variant={variant} />
-            ))}
-          </HStack>
-        </VStack>
-        <VStack>
-          <HStack>
-            {textareaSizes.map((size) => (
-              <Textarea key={size} placeholder={placeholder} size={size} isDisabled variant={variant} />
-            ))}
-          </HStack>
-          <HStack>
-            {textareaSizes.map((size) => (
-              <Textarea
-                key={size}
-                placeholder={placeholder}
-                size={size}
-                isDisabled
-                variant={variant}
-                defaultValue={defaultValue}
-              />
-            ))}
-          </HStack>
-        </VStack>
-      </VStack>
-    ))}
-  </VStack>
+  <Table variant="simple">
+    <Thead>
+      <Tr>
+        <Th>Variant</Th>
+        <Th>State</Th>
+        <Th>S</Th>
+        <Th>M</Th>
+        <Th>L</Th>
+      </Tr>
+    </Thead>
+    <Tbody>
+      {textareaVariants.map((variant, i) => (
+        <Fragment key={`${variant}-${i}`}>
+          <Tr>
+            <Td rowSpan={6}>{variant}</Td>
+          </Tr>
+          {states.map((state, i) => (
+            <Tr key={`${variant}-${state}-${i}`}>
+              <Td>{state}</Td>
+              {textareaSizes.map((size, i) => (
+                <Td key={`${variant}-${state}-${size}-${i}`}>
+                  <Textarea
+                    key={size}
+                    placeholder="Text input area..."
+                    size={size}
+                    variant={variant}
+                    isDisabled={['disabled', 'disabled-and-filled'].includes(state)}
+                    isInvalid={state === 'error'}
+                    defaultValue={['filled', 'disabled-and-filled'].includes(state) ? 'Filled text input area...' : ''}
+                  />
+                </Td>
+              ))}
+            </Tr>
+          ))}
+        </Fragment>
+      ))}
+    </Tbody>
+  </Table>
 );
 
 export const All = AllTemplate.bind({});
@@ -66,6 +68,7 @@ const Template = (args) => <Textarea {...args} />;
 export const Playground = Template.bind({});
 Playground.args = {
   size: 's',
+  variant: 'outline',
   isInvalid: false,
   isDisabled: false,
   placeholder: '',

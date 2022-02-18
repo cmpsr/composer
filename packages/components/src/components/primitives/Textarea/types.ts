@@ -1,4 +1,4 @@
-import { TextareaProps as ChakraTextareaProps } from "@chakra-ui/react";
+import { TextareaProps as ChakraTextareaProps } from '@chakra-ui/react';
 
 export const textareaVariants = ['outline', 'flushed'] as const;
 export const textareaSizes = ['s', 'm', 'l'] as const;

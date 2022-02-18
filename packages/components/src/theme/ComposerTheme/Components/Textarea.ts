@@ -1,5 +1,5 @@
-import { ComponentStyleConfig } from "@chakra-ui/react";
-import { inputStyles } from "../styles";
+import { ComponentStyleConfig } from '@chakra-ui/react';
+import { inputStyles } from '../styles';
 
 const baseStyle = {
   bg: 'background-action-default',
@@ -31,7 +31,7 @@ const baseStyle = {
     border: 'none',
     boxShadow: '0 0 0 0.125rem var(--chakra-colors-alert-error-default)',
   },
-}
+};
 
 const textStyles = {
   medium: 'text-body-regular',
@@ -43,9 +43,9 @@ const calculateSize = (size: string) => {
     ...inputStyles[size],
     ...theme.textStyles[textStyles[size]],
     padding: '0.625rem',
-    pr: '0.75rem'
-  })
-}
+    pr: '0.75rem',
+  });
+};
 
 export const Textarea: ComponentStyleConfig = {
   baseStyle,
@@ -83,4 +83,4 @@ export const Textarea: ComponentStyleConfig = {
     size: 's',
     variant: 'outline',
   },
-}
+};

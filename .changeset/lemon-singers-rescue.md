@@ -2,4 +2,4 @@
 "@cmpsr/components": minor
 ---
 
-implemente close button component
+implement close button component

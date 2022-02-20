@@ -11,8 +11,7 @@ import {
   useStyles,
 } from '@chakra-ui/react';
 import { IconAlertCircle, IconAlertTriangle, IconCircleCheck, IconInfoCircle } from '../Icons';
-import { Flex } from '@components';
-import { CloseButton } from '..';
+import { Flex, CloseButton } from '@components';
 
 export const Alert: FC<AlertProps> = ({
   state,

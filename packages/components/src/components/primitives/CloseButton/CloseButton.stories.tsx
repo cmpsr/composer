@@ -2,14 +2,14 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { CloseButton } from './CloseButton';
 import { HStack, VStack } from '@chakra-ui/react';
-import { CloseButtonSizes } from '.';
+import { closeButtonSizes } from '.';
 
 export default {
   component: CloseButton,
   title: 'Components/Primitives/CloseButton',
   argTypes: {
     size: {
-      options: CloseButtonSizes,
+      options: closeButtonSizes,
       control: { type: 'select' },
     },
   },
@@ -18,7 +18,7 @@ export default {
 const AllTemplate = () => (
   <VStack>
     <HStack spacing={50}>
-      {CloseButtonSizes.map((size) => (
+      {closeButtonSizes.map((size) => (
         <CloseButton key={size} size={size} />
       ))}
     </HStack>

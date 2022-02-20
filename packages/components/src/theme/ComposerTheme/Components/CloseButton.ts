@@ -24,18 +24,18 @@ export const CloseButton: ComponentStyleConfig = {
   sizes: {
     s: {
       height: '1.5rem',
-      minWidth: '1.5rem',
+      width: '1.5rem',
     },
     m: {
       height: '2rem',
-      minWidth: '2rem',
+      width: '2rem',
     },
     l: {
       height: '2.5rem',
-      minWidth: '2.5rem',
+      width: '2.5rem',
     },
   },
   defaultProps: {
-    size: 'm',
+    size: 'l',
   },
 };

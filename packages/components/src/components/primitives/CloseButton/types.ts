@@ -1,9 +1,8 @@
-import { IconButtonProps as ChakraIconButtonProps } from '@chakra-ui/react';
+import { CloseButtonProps as ChakraCloseButtonProps } from '@chakra-ui/react';
 
 export const closeButtonSizes = ['s', 'm', 'l'] as const;
 export type CloseButtonSize = typeof closeButtonSizes[number];
 
-export interface CloseButtonProps extends Omit<ChakraIconButtonProps, 'aria-label'> {
+export interface CloseButtonProps extends ChakraCloseButtonProps {
   size?: CloseButtonSize;
-  "aria-label"?: string;
 }

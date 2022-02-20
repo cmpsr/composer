@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react';
 import { TextPairing, TextPairingProps, textPairingVariants } from '.';
 import { Text } from '@components';
 import { Box, Flex, Spacer, Stack, StackDivider } from '@chakra-ui/layout';
+import { defaultColors } from '@theme/ComposerTheme/Colors';
 
 export default {
   component: TextPairing,
@@ -10,6 +11,14 @@ export default {
   argTypes: {
     variant: {
       options: textPairingVariants,
+      control: { type: 'select' },
+    },
+    labelColor: {
+      options: defaultColors,
+      control: { type: 'select' },
+    },
+    subLabelColor: {
+      options: defaultColors,
       control: { type: 'select' },
     },
   },

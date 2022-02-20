@@ -24,6 +24,7 @@
     "storybook": "start-storybook -p 8080 -c .storybook",
     "build-storybook": "build-storybook -c .storybook",
     "gen:theme-typings": "./scripts/generate_theme_typings.sh",
+    "postinstall": "npm run gen:theme-typings",
     "gen:icons": "node scripts/generate_icons.js",
     "type:check": "yarn tsc --project tsconfig.json --noEmit",
     "type:emit": "tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
@@ -39,7 +40,7 @@
     "framer-motion": "^5"
   },
   "devDependencies": {
-    "@chakra-ui/cli": "^1.7.0",
+    "@chakra-ui/cli": "^1.8.1",
     "@fontsource/inter": "^4.5.0",
     "@storybook/addon-essentials": "^6.4.13",
     "@storybook/addon-links": "^6.4.13",

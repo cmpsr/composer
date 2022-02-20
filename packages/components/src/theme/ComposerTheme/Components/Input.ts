@@ -12,7 +12,7 @@ const iconContainerStyles = {
     padding: '0.75rem 1rem',
   },
   medium: {
-    padding: '0.625rem 1rem',
+    padding: '0.625rem 0.75rem',
   },
   small: {
     padding: '0.625rem 0.75rem',
@@ -33,7 +33,7 @@ const fieldSpacing = {
     paddingLeft: '3rem',
   },
   medium: {
-    paddingLeft: '2.75rem',
+    paddingLeft: '2.5rem',
   },
   small: {
     paddingLeft: '2.5rem',
@@ -47,12 +47,15 @@ export const labelStyles = {
   sizes: {
     large: {
       paddingX: '1rem',
+      paddingY: '0.75rem',
     },
     medium: {
       paddingX: '1rem',
+      paddingY: '0.5rem',
     },
     small: {
       paddingX: '0.75rem',
+      paddingY: '0.375rem',
     },
   },
   variants: {
@@ -67,8 +70,7 @@ export const labelStyles = {
       disabled: {
         color: 'text-disabled',
         borderColor: 'ui-element-outline-disabled',
-        border:
-          'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
+        border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
       },
       hovered: {
         borderColor: 'ui-element-outline-active',
@@ -110,30 +112,30 @@ export const inputGroupStyles = {
 };
 
 const calculateSize = (size: string, iconSize: string) => {
-  return ({ theme }) => {
+  return (props) => {
     return {
       elementContainer: {
         ...iconContainerStyles[size],
       },
       element: {
-        boxSize: theme.components.Icon.sizes[iconSize].boxSize,
+        boxSize: props.theme.components.Icon.sizes[iconSize].boxSize,
       },
       leftLabel: {
         ...labelStyles.sizes[size],
-        ...theme.textStyles[textStyles[size]],
+        ...props.theme.textStyles[textStyles[size]],
       },
       rightLabel: {
         ...labelStyles.sizes[size],
-        ...theme.textStyles[textStyles[size]],
+        ...props.theme.textStyles[textStyles[size]],
       },
       field: {
+        ...props.theme.textStyles[textStyles[size]],
         ...inputStyles[size],
-        ...theme.textStyles[textStyles[size]],
         withIcon: {
           ...fieldSpacing[size],
         },
         _placeholder: {
-          ...theme.textStyles[textStyles[size]],
+          ...props.theme.textStyles[textStyles[size]],
         },
       },
     };
@@ -190,10 +192,7 @@ export const getLabelStyle = (
   return {};
 };
 
-export const getIconStyle = (props: {
-  isDisabled?: boolean;
-  hasContent?: boolean;
-}) => {
+export const getIconStyle = (props: { isDisabled?: boolean; hasContent?: boolean }) => {
   if (props.isDisabled) {
     return iconStyles.disabled;
   }
@@ -250,8 +249,7 @@ const outlineStyle = (props) => {
       // We need to remove the focus state from the chakra input so we can add the border shadow to the full input group.
       _focus: {
         boxShadow: 'none',
-        border:
-          'solid 0.063rem var(--chakra-colors-ui-element-outline-default)',
+        border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-default)',
         borderColor: 'ui-element-outline-default',
       },
       _invalid: {
@@ -265,8 +263,7 @@ const outlineStyle = (props) => {
         },
         color: 'text-secondary',
         backgroundColor: 'background-action-disabled',
-        border:
-          'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
+        border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
       },
     },
   };
@@ -310,15 +307,13 @@ export const flushedStyle = (props) => {
       _hover: {
         backgroundColor: 'background-action-hover',
         border: 'none',
-        borderBottom:
-          '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
+        borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
       },
       // We need to remove the focus state from the chakra input so we can add the border shadow to the full input group.
       _focus: {
         boxShadow: 'none',
         border: 'none',
-        borderBottom:
-          'solid 0.063rem var(--chakra-colors-ui-element-outline-default)',
+        borderBottom: 'solid 0.063rem var(--chakra-colors-ui-element-outline-default)',
         borderColor: 'ui-element-outline-default',
       },
       _invalid: {
@@ -332,8 +327,7 @@ export const flushedStyle = (props) => {
         },
         color: 'text-secondary',
         backgroundColor: 'background-action-disabled',
-        border:
-          'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
+        border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
       },
     },
   };

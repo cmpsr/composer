@@ -69,6 +69,9 @@ const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
         },
       },
     },
+    closeButton: {
+      color: 'text-light',
+    },
   };
 };
 

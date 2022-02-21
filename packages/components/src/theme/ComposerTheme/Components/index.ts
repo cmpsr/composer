@@ -11,6 +11,7 @@ import { Icon } from './Icon';
 import { Input } from './Input';
 import { Select } from './Select';
 import { Link } from './Link';
+import { Modal } from './Modal';
 import { ProgressBar } from './ProgressBar';
 import { ProgressCircular } from './ProgressCircular';
 import { Slider } from './Slider';
@@ -21,6 +22,7 @@ import { Tag } from './Tag';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
 import { Radio } from './Radio';
+import { CloseButton } from './CloseButton';
 import { Symbols } from './Symbols';
 
 export const components = {
@@ -33,11 +35,13 @@ export const components = {
   Button,
   Card,
   Checkbox,
+  CloseButton,
   Divider,
   Icon,
   Input,
   Kbd: Symbols,
   Link,
+  Modal,
   ProgressCircular,
   Progress: ProgressBar,
   Select,

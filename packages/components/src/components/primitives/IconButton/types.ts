@@ -7,9 +7,7 @@ export const iconButtonVariants = ['accent', 'primary', 'primary-alt', 'secondar
 export type IconButtonSize = typeof iconButtonSizes[number];
 export type IconButtonVariant = typeof iconButtonVariants[number];
 
-export interface IconButtonProps extends Omit<ChakraIconButtonProps, 'rounded' | 'iconProps'> {
+export interface IconButtonProps extends ChakraIconButtonProps {
   size?: IconButtonSize;
   variant?: IconButtonVariant;
-  rounded?: boolean;
-  iconProps?: IconProps;
 }

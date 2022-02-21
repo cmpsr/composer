@@ -2,7 +2,7 @@ import { ComponentStyleConfig } from '@chakra-ui/react';
 import { alertAnatomy as parts } from '@chakra-ui/anatomy';
 import { PartsStyleFunction } from '@chakra-ui/theme-tools';
 
-const defaultContainerColorScheme = {
+const containerStatusesColors = {
   success: {
     backgroundColor: 'background-success',
     borderStartColor: 'alert-success-default',
@@ -16,12 +16,12 @@ const defaultContainerColorScheme = {
     borderStartColor: 'alert-warning-default',
   },
   info: {
-    backgroundColor: 'background-inform',
-    borderStartColor: 'alert-inform-default',
+    backgroundColor: 'background-info',
+    borderStartColor: 'alert-info-default',
   },
 };
 
-const containerColorScheme = {
+const containerVariantsColors = {
   solid: {
     success: {
       backgroundColor: 'alert-success-default',
@@ -33,11 +33,11 @@ const containerColorScheme = {
       backgroundColor: 'alert-warning-default',
     },
     info: {
-      backgroundColor: 'alert-inform-default',
+      backgroundColor: 'alert-info-default',
     },
   },
-  subtle: defaultContainerColorScheme,
-  'left-accent': defaultContainerColorScheme,
+  subtle: containerStatusesColors,
+  'left-accent': containerStatusesColors,
 };
 
 const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
@@ -45,7 +45,7 @@ const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
 
   return {
     container: {
-      ...(containerColorScheme[variant]?.[status] || {}),
+      ...containerVariantsColors[variant]?.[status],
     },
     title: {
       color: 'text-light',
@@ -69,18 +69,15 @@ const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
         },
       },
     },
-    closeButton: {
-      color: 'text-light',
-    },
   };
 };
 
-const generateOtherVariants: PartsStyleFunction<typeof parts> = (props) => {
+const generateVariantByStatus: PartsStyleFunction<typeof parts> = (props) => {
   const { status, variant } = props;
 
   return {
     container: {
-      ...(containerColorScheme[variant]?.[status] || {}),
+      ...containerVariantsColors[variant]?.[status],
       ...(variant === 'left-accent' && { pr: '0.5rem' }),
     },
   };
@@ -89,18 +86,13 @@ const generateOtherVariants: PartsStyleFunction<typeof parts> = (props) => {
 export const Alert: ComponentStyleConfig = {
   baseStyle: ({ theme }) => ({
     container: {
-      borderRadius: '0.4rem',
+      borderRadius: '0.375rem',
       py: '0.75rem',
-      pl: '1rem',
-      pr: '0.25rem',
+      px: '1rem',
     },
     icon: {
-      ...theme.components.Icon.sizes.l,
       alignSelf: 'flex-start',
       marginInlineEnd: '0.625rem',
-      svg: {
-        ...theme.components.Icon.sizes.l,
-      },
       status: {
         success: {
           color: 'alert-success-default',
@@ -112,26 +104,16 @@ export const Alert: ComponentStyleConfig = {
           color: 'alert-error-default',
         },
         info: {
-          color: 'alert-inform-default',
+          color: 'alert-info-default',
         },
       },
     },
     title: {
-      color: 'text-primary',
-      textStyle: 'text-body-bold',
-      marginInlineEnd: '0.75rem',
+      ...theme.textStyles['text-body-bold'],
+      marginInlineEnd: '0',
     },
     description: {
-      color: 'text-primary',
-      textStyle: 'text-body-regular',
-      paddingRight: '2.125rem',
-    },
-    // TODO: Remove this closeButton styles once our custom implementation of this component is merged into master
-    closeButton: {
-      boxSize: '1.5rem',
-      '& svg': {
-        boxSize: '1rem',
-      },
+      ...theme.textStyles['text-body-regular'],
     },
   }),
   defaultProps: {
@@ -139,7 +121,7 @@ export const Alert: ComponentStyleConfig = {
   },
   variants: {
     solid: variantSolid,
-    subtle: generateOtherVariants,
-    'left-accent': generateOtherVariants,
+    subtle: generateVariantByStatus,
+    'left-accent': generateVariantByStatus,
   },
 };

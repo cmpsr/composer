@@ -1,1 +1,1 @@
-export * from './Image';
+export { Image, ImageProps } from '@chakra-ui/react';

@@ -4,7 +4,7 @@ import { inputStyles } from '../styles';
 const baseStyle = {
   bg: 'background-action-default',
   color: 'text-primary',
-  borderRadius: 'radii-2',
+  borderRadius: '0.375rem',
   _placeholder: {
     color: 'text-secondary',
   },
@@ -34,16 +34,25 @@ const baseStyle = {
 };
 
 const textStyles = {
+  large: 'text-body-regular',
   medium: 'text-body-regular',
   small: 'text-body-meta-regular',
+};
+
+const spacing = {
+  large: {
+    pl: '1rem',
+    pr: '1.625rem',
+  },
+  small: { padding: '0.75rem' },
+  medium: { padding: '0.75rem' },
 };
 
 const calculateSize = (size: string) => {
   return ({ theme }) => ({
     ...inputStyles[size],
     ...theme.textStyles[textStyles[size]],
-    padding: '0.625rem',
-    pr: '0.75rem',
+    ...spacing[size],
   });
 };
 
@@ -77,7 +86,7 @@ export const Textarea: ComponentStyleConfig = {
   sizes: {
     s: calculateSize('small'),
     m: calculateSize('medium'),
-    l: calculateSize('medium'),
+    l: calculateSize('large'),
   },
   defaultProps: {
     size: 's',

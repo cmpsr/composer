@@ -21,6 +21,7 @@ import { Tag } from './Tag';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
 import { Radio } from './Radio';
+import { CloseButton } from './CloseButton';
 import { Symbols } from './Symbols';
 
 export const components = {
@@ -33,6 +34,7 @@ export const components = {
   Button,
   Card,
   Checkbox,
+  CloseButton,
   Divider,
   Icon,
   Input,

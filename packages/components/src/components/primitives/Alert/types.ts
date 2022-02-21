@@ -1,4 +1,4 @@
-import { AlertProps as ChakraAlertProps } from '@chakra-ui/react';
+import { AlertProps as ChakraAlertProps, StyleProps } from '@chakra-ui/react';
 
 export const alertStates = ['success', 'warning', 'error', 'info'] as const;
 export const alertTitleAlignments = ['none', 'left', 'top'] as const;
@@ -10,6 +10,7 @@ export type AlertStyle = typeof alertVariants[number];
 
 export type AlertStyles = {
   icon: { status: { [key: string]: { color: string } } };
+  closeButton: StyleProps;
 };
 
 export interface AlertProps extends ChakraAlertProps {

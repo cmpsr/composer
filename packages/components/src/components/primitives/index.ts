@@ -6,6 +6,7 @@ export * from './Breadcrumb';
 export * from './Button';
 export * from './Card';
 export * from './Checkbox';
+export * from './CloseButton';
 export * from './Divider';
 export * from './Image';
 export * from './Icons';

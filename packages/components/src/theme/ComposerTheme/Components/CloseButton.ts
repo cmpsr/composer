@@ -12,7 +12,7 @@ const baseStyle = {
     backgroundColor: transparentize('background-action-pressed', 0.2),
   },
   _focus: {
-    boxShadow: '0 0 0 3px var(--chakra-colors-primary-focus)',
+    boxShadow: '0 0 0 0.1875rem var(--chakra-colors-primary-focus)',
   },
 };
 

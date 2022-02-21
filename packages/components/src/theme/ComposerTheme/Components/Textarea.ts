@@ -1,6 +1,29 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 import { inputStyles } from '../styles';
 
+const textStyles = {
+  large: 'text-body-regular',
+  medium: 'text-body-regular',
+  small: 'text-body-meta-regular',
+};
+
+const spacing = {
+  large: {
+    pl: '1rem',
+    pr: '1.625rem',
+  },
+  small: { padding: '0.75rem' },
+  medium: { padding: '0.75rem' },
+};
+
+const calculateSize = (size: string) => {
+  return ({ theme }) => ({
+    ...inputStyles[size],
+    ...theme.textStyles[textStyles[size]],
+    ...spacing[size],
+  });
+};
+
 const baseStyle = {
   bg: 'background-action-default',
   color: 'text-primary',
@@ -33,57 +56,36 @@ const baseStyle = {
   },
 };
 
-const textStyles = {
-  large: 'text-body-regular',
-  medium: 'text-body-regular',
-  small: 'text-body-meta-regular',
-};
-
-const spacing = {
-  large: {
-    pl: '1rem',
-    pr: '1.625rem',
+const flushed = {
+  bg: 'background-action-default',
+  borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
+  pl: '0.75rem',
+  pr: '0.75rem',
+  _hover: {
+    bg: 'background-action-hover',
+    border: 'none',
+    borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
   },
-  small: { padding: '0.75rem' },
-  medium: { padding: '0.75rem' },
+  _focus: {
+    borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
+    bg: 'background-action-default',
+    boxShadow: '0 0.188rem 0 0 var(--chakra-colors-primary-focus)',
+  },
+  _invalid: {
+    borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
+    boxShadow: '0 0.125rem 0 0 var(--chakra-colors-alert-error-default)',
+  },
+  _disabled: {
+    color: 'text-secondary',
+  },
 };
 
-const calculateSize = (size: string) => {
-  return ({ theme }) => ({
-    ...inputStyles[size],
-    ...theme.textStyles[textStyles[size]],
-    ...spacing[size],
-  });
-};
 
 export const Textarea: ComponentStyleConfig = {
   baseStyle,
   variants: {
     outline: baseStyle,
-    flushed: {
-      bg: 'background-action-default',
-      borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
-      pl: '0.75rem',
-      pr: '0.75rem',
-      _hover: {
-        bg: 'background-action-hover',
-        border: 'none',
-        borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
-      },
-      _focus: {
-        border: 'none',
-        borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
-        bg: 'background-action-default',
-        boxShadow: '0 0.188rem 0 0 var(--chakra-colors-primary-focus)',
-      },
-      _invalid: {
-        borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
-        boxShadow: '0 0.125rem 0 0 var(--chakra-colors-alert-error-default)',
-      },
-      _disabled: {
-        color: 'text-secondary',
-      },
-    },
+    flushed,
   },
   sizes: {
     s: calculateSize('small'),

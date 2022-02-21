@@ -16,6 +16,10 @@ export default {
       options: alertVariants,
       control: { type: 'select' },
     },
+    titleAlignment: {
+      options: ['top', 'left'],
+      control: { type: 'select' },
+    },
   },
 } as Meta;
 
@@ -107,5 +111,4 @@ Playground.args = {
   showDescription: true,
   showTitle: true,
   showClose: true,
-  titleAlignment: 'top',
 };

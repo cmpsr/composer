@@ -11,6 +11,7 @@ import { Icon } from './Icon';
 import { Input } from './Input';
 import { Select } from './Select';
 import { Link } from './Link';
+import { Modal } from './Modal';
 import { ProgressBar } from './ProgressBar';
 import { ProgressCircular } from './ProgressCircular';
 import { Slider } from './Slider';
@@ -40,6 +41,7 @@ export const components = {
   Input,
   Kbd: Symbols,
   Link,
+  Modal,
   ProgressCircular,
   Progress: ProgressBar,
   Select,

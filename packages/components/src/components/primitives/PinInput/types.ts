@@ -1,3 +1,4 @@
+import React, { FC } from 'react';
 import { PinInputProps as ChakraPinInputProps, PinInputFieldProps } from '@chakra-ui/react';
 
 export const pinInputVariants = ['outline', 'flushed'] as const;
@@ -11,5 +12,9 @@ export interface PinInputProps extends Omit<ChakraPinInputProps, 'children'> {
   size?: PinInputSize;
   numOfDigits?: number;
   pinInputFieldProps?: PinInputFieldProps;
+  children?: React.ReactNode;
 }
 
+export interface PinInputStaticMembers {
+  Field: FC<PinInputFieldProps>;
+}

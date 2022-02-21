@@ -90,6 +90,6 @@ export const PinInput: ComponentStyleConfig = {
   variants,
   defaultProps: {
     size: 'l',
-    variant: 'outline'
+    variant: 'outline',
   },
 };

@@ -34,25 +34,29 @@ export const All = () => (
     </Thead>
     <Tbody>
       {pinInputVariants.map((variant, i) => (
-        <Fragment key={i}>
+        <Fragment key={`${variant}-${i}`}>
           <Tr>
             <Td rowSpan={6}>{variant}</Td>
           </Tr>
           {states.map((state, i) => (
-            <Tr>
+            <Tr key={`${variant}-${state}-${i}`}>
               <Td>{state}</Td>
               {pinInputSizes.map((size, i) => (
-                <Td>
+                <Td key={`${variant}-${state}-${size}-${i}`}>
                   <PinInput
                     size={size}
                     variant={variant}
                     type="alphanumeric"
-                    numOfDigits={4}
                     isDisabled={['disabled', 'disabled-and-filled'].includes(state)}
                     defaultValue={
                       ['filled', 'disabled-and-filled'].includes(state) ? `${size}${size}${size}${size}` : ''
                     }
-                  />
+                  >
+                    <PinInput.Field />
+                    <PinInput.Field />
+                    <PinInput.Field />
+                    <PinInput.Field />
+                  </PinInput>
                 </Td>
               ))}
             </Tr>

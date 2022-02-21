@@ -49,7 +49,7 @@ export const defaultColors = {
   'background-container-pressed': '#E0E0E0',
   'background-dark': '#222222',
   'background-error': '#FFDDD8',
-  'background-inform': '#E4F2FF',
+  'background-info': '#E4F2FF',
   'background-light': '#FFFFFF',
   'background-overlay': '#BCBCD7',
   'background-page': '#EDEDF4',

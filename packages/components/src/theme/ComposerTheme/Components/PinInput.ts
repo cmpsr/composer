@@ -8,10 +8,6 @@ const variantOutline: SystemStyleObject = {
     borderColor: 'ui-element-outline-default',
     bg: 'background-action-hover',
   },
-  _readOnly: {
-    boxShadow: 'none !important',
-    userSelect: 'all',
-  },
   _disabled: {
     bg: 'background-action-disabled',
     borderColor: 'ui-element-outline-disabled',
@@ -28,7 +24,7 @@ const variantOutline: SystemStyleObject = {
   },
   _focus: {
     bg: 'background-action-hover',
-    borderWidth: '3px',
+    borderWidth: '0.188rem',
     borderColor: 'primary-focus',
     boxShadow: 'none',
   },
@@ -43,14 +39,10 @@ const variantFlushed: SystemStyleObject = {
     borderColor: 'ui-element-outline-active',
     bg: 'background-action-hover',
   },
-  _readOnly: {
-    boxShadow: 'none !important',
-    userSelect: 'all',
-  },
   _invalid: {
     borderColor: 'alert-error-default',
     boxShadow: `none`,
-    borderBottomWidth: '2px',
+    borderBottomWidth: '0.125rem',
   },
   _focus: {
     borderColor: 'ui-element-outline-default',
@@ -59,7 +51,7 @@ const variantFlushed: SystemStyleObject = {
   _disabled: {
     bg: 'background-action-disabled',
     cursor: 'not-allowed',
-    borderBottomStyle: 'none',
+    borderBottom: 'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
     color: 'text-secondary',
     _placeholder: {
       color: 'text-disabled',
@@ -71,17 +63,14 @@ const sizes: Record<string, SystemStyleFunction> = {
   s: ({ theme }) => ({
     ...theme.textStyles['text-body-meta-regular'],
     boxSize: '2rem',
-    borderRadius: 'radii-2',
   }),
   m: ({ theme }) => ({
     ...theme.textStyles['text-body-regular'],
     boxSize: '2.5rem',
-    borderRadius: 'radii-2',
   }),
   l: ({ theme }) => ({
     ...theme.textStyles['text-body-regular'],
     boxSize: '3rem',
-    borderRadius: 'radii-2',
   }),
 };
 
@@ -92,6 +81,7 @@ const variants = {
 
 export const PinInput: ComponentStyleConfig = {
   baseStyle: {
+    borderRadius: '0.375rem',
     _placeholder: {
       color: 'text-secondary',
     },

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { HStack, PinInput as ChakraPinInput, PinInputField as ChakraPinInputField } from '@chakra-ui/react';
 import { PinInputProps } from './types';
 
-export const PinInput: FC<PinInputProps> = ({ numOfDigits = 1, placeholder = '0', pinInputFieldProps, ...rest }) => {
+export const PinInput: FC<PinInputProps> = ({ numOfDigits = 4, placeholder = '0', pinInputFieldProps, ...rest }) => {
   const digits = Array.from(Array(numOfDigits).keys());
 
   return (

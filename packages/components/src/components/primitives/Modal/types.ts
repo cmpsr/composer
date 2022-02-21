@@ -5,8 +5,8 @@ import {
   ModalHeaderProps,
   ModalFooterProps,
   ModalBodyProps,
-  CloseButtonProps,
 } from '@chakra-ui/react';
+import { CloseButtonProps } from '@components';
 import { FC } from 'react';
 
 export {
@@ -15,7 +15,6 @@ export {
   ModalHeaderProps,
   ModalFooterProps,
   ModalBodyProps,
-  CloseButtonProps,
 } from '@chakra-ui/react';
 
 export const modalSizes = ['auto', 'full'] as const;

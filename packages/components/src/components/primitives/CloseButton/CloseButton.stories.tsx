@@ -1,8 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { CloseButton } from './CloseButton';
-import { HStack, VStack } from '@chakra-ui/react';
-import { closeButtonSizes } from '.';
+import { CloseButton, closeButtonSizes } from '.';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 
 export default {
   component: CloseButton,
@@ -15,17 +14,26 @@ export default {
   },
 } as Meta;
 
-const AllTemplate = () => (
-  <VStack>
-    <HStack spacing={50}>
-      {closeButtonSizes.map((size) => (
-        <CloseButton key={size} size={size} />
-      ))}
-    </HStack>
-  </VStack>
+export const All = () => (
+  <Table variant="simple">
+    <Thead>
+      <Tr>
+        <Th>S</Th>
+        <Th>M</Th>
+        <Th>L</Th>
+      </Tr>
+    </Thead>
+    <Tbody>
+      <Tr>
+        {closeButtonSizes.map((size) => (
+          <Td key={size}>
+            <CloseButton key={size} size={size} />
+          </Td>
+        ))}
+      </Tr>
+    </Tbody>
+  </Table>
 );
-
-export const All = AllTemplate.bind({});
 
 const Template = (args) => <CloseButton {...args} />;
 

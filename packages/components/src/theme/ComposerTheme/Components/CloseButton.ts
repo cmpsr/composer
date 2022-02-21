@@ -3,19 +3,16 @@ import { transparentize } from '@chakra-ui/theme-tools';
 
 const baseStyle = {
   backgroundColor: 'transparent',
-  borderRadius: 'radii-2',
+  borderRadius: '0.375rem',
   color: 'text-primary',
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
   _hover: {
     backgroundColor: transparentize('background-action-hover', 0.15),
   },
   _active: {
-    backgroundColor: transparentize('background-action-pressed', 0.2),
+    backgroundColor: transparentize('background-action-pressed', 0.15),
   },
   _focus: {
-    boxShadow: 'none',
+    boxShadow: '0 0 0 3px var(--chakra-colors-primary-focus)',
   },
 };
 

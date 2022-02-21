@@ -6,7 +6,7 @@ export const PinInput: FC<PinInputProps> = ({ numOfDigits = 4, placeholder = '0'
   const digits = Array.from(Array(numOfDigits).keys());
 
   return (
-    <Flex columnGap="0.5rem">
+    <Flex justifyContent="center" columnGap="0.5rem">
       <ChakraPinInput data-testid="cmpsr.pin-input" placeholder={placeholder} {...rest}>
         {digits.map((digit) => (
           <ChakraPinInputField key={digit} {...pinInputFieldProps} />

@@ -34,7 +34,7 @@ const generateButton = (color: string, textColor?: string) => {
     },
     _focus: {
       backgroundColor: `${color}-hover`,
-      boxShadow: `0 0 0 3px var(--chakra-colors-${color}-focus)`,
+      boxShadow: `0 0 0 0.1875rem var(--chakra-colors-${color}-focus)`,
     },
     _pressed: {
       backgroundColor: `${color}-pressed`,
@@ -80,7 +80,7 @@ const generateAltButton = (color: string) => {
     },
     _focus: {
       backgroundColor: 'background-action-hover',
-      boxShadow: `0 0 0 3px var(--chakra-colors-${color}-focus)`,
+      boxShadow: `0 0 0 0.1875rem var(--chakra-colors-${color}-focus)`,
     },
     _pressed: {
       backgroundColor: 'background-action-pressed',

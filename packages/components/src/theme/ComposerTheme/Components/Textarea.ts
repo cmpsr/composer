@@ -63,6 +63,8 @@ export const Textarea: ComponentStyleConfig = {
     flushed: {
       bg: 'background-action-default',
       borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
+      pl: '0.75rem',
+      pr: '0.75rem',
       _hover: {
         bg: 'background-action-hover',
         border: 'none',

@@ -12,6 +12,10 @@ export default {
       defaultValue: modalSizes[0],
     },
   },
+  parameters: {
+    chromatic: { delay: 300 },
+  },
+  decorators: [(storyFn) => <div style={{ width: '1200px', height: '800px' }}>Container {storyFn()}</div>],
 } as Meta;
 
 const AVATAR_URL = 'https://avatars0.githubusercontent.com/u/67131017?s=200';
@@ -21,7 +25,7 @@ const SUBTITLE = 'Body - Regular';
 const Header = () => (
   <Modal.Header>
     <Flex alignItems="center">
-      <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr={2} />
+      <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr="1.25rem" />
       <TextPairing label={TITLE} subLabel={SUBTITLE} variant="textpairing-header-M" />
     </Flex>
   </Modal.Header>
@@ -50,7 +54,9 @@ export const TitleOnlyHeader = (args) => {
         <Modal.Overlay />
         <Modal.Content>
           <Modal.Header>
-            <Text variant="text-header-M">{TITLE}</Text>
+            <Text mt="0.25rem" variant="text-header-M">
+              {TITLE}
+            </Text>
           </Modal.Header>
           <Modal.CloseButton />
           <Modal.Body>

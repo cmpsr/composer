@@ -10,7 +10,7 @@ import {
   CloseButtonProps,
 } from '@components';
 
-export const Alert: FC<AlertProps> & AlertStaticMembers = ({ status = 'info', children, variant, title, ...props }) => {
+export const Alert: FC<AlertProps> & AlertStaticMembers = ({ status = 'info', children, variant, ...props }) => {
   const { icon } = useMultiStyleConfig('Alert', { variant, status }) as AlertStyles;
   const ICONS = {
     info: IconInfoCircle,

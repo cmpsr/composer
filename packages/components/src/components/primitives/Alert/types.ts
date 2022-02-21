@@ -1,23 +1,24 @@
-import { AlertProps as ChakraAlertProps, StyleProps } from '@chakra-ui/react';
+import { FC } from 'react';
+import { AlertDescriptionProps, AlertProps as ChakraAlertProps, AlertTitleProps } from '@chakra-ui/react';
+import { CloseButtonProps } from '@components';
 
-export const alertStates = ['success', 'warning', 'error', 'info'] as const;
-export const alertTitleAlignments = ['none', 'left', 'top'] as const;
+export const alertStatuses = ['success', 'warning', 'error', 'info'] as const;
 export const alertVariants = ['solid', 'subtle', 'left-accent'] as const;
 
-export type AlertState = typeof alertStates[number];
-export type AlertTitleAlignment = typeof alertTitleAlignments[number];
-export type AlertStyle = typeof alertVariants[number];
+export type AlertStatus = typeof alertStatuses[number];
+export type AlertVariant = typeof alertVariants[number];
 
 export type AlertStyles = {
   icon: { status: { [key: string]: { color: string } } };
-  closeButton: StyleProps;
 };
 
+export interface AlertStaticMembers {
+  Title: FC<AlertTitleProps>;
+  Description: FC<AlertDescriptionProps>;
+  CloseButton: FC<CloseButtonProps>;
+}
+
 export interface AlertProps extends ChakraAlertProps {
-  description?: string;
-  state?: AlertState;
-  titleAlignment?: AlertTitleAlignment;
-  title?: string;
-  variant?: AlertStyle;
-  showClose?: boolean;
+  status?: AlertStatus;
+  variant?: AlertVariant;
 }

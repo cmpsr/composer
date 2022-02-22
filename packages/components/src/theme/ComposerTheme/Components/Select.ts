@@ -53,8 +53,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ theme, iconSize }) => {
       boxShadow: 'none',
       color: 'text-primary',
       placeholderColor: 'text-secondary',
-      minW: '8rem',
-      borderRadius: 'radii-2',
+      borderRadius: '0.375rem',
       pl: '0.75rem',
       pr: '2.75rem',
       _hover: {

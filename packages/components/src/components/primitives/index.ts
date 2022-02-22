@@ -9,6 +9,7 @@ export * from './Checkbox';
 export * from './CloseButton';
 export * from './Divider';
 export * from './Image';
+export * from './IconButton';
 export * from './Icons';
 export * from './Input';
 export * from './Link';

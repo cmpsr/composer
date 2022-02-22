@@ -22,9 +22,11 @@ import { Tag } from './Tag';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
 import { Textarea } from './Textarea';
+import { Tooltip } from './Tooltip';
 import { Radio } from './Radio';
 import { CloseButton } from './CloseButton';
 import { Symbols } from './Symbols';
+import { IconButton } from './IconButton';
 
 export const components = {
   Accordion,
@@ -39,6 +41,7 @@ export const components = {
   CloseButton,
   Divider,
   Icon,
+  IconButton,
   Input,
   Kbd: Symbols,
   Link,
@@ -55,4 +58,5 @@ export const components = {
   Text,
   TextPairing,
   Textarea,
+  Tooltip,
 };

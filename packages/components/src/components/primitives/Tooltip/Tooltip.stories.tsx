@@ -1,67 +1,58 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { VStack, StackDivider, HStack } from '@chakra-ui/layout';
-import { tooltipPositions, TooltipProps, tooltipSides } from './types';
-import { Box, Button, Tooltip } from '@components';
+import { Box, Button, Tooltip, TooltipProps } from '@components';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
+
+const sides = ['auto', 'top', 'bottom', 'left', 'right'];
+const positions = ['', '-start', '-end'];
+const combinations = sides.map((side) => positions.map((position) => `${side}${position}`));
+const placements = [].concat(...combinations);
 
 export default {
   component: Tooltip,
   title: 'Components/Primitives/Tooltip',
   argTypes: {
-    side: {
-      options: tooltipSides,
+    placement: {
+      options: placements,
       control: { type: 'select' },
-    },
-    positioning: {
-      options: tooltipPositions,
-      control: { type: 'select' },
-    },
-    label: {
-      control: { type: 'text' },
+      defaultValue: placements[0],
     },
   },
 } as Meta;
 
-const AllTemplate = () => (
-  <VStack
-    spacing="2rem"
-    p="10rem"
-    divider={<StackDivider borderColor="#888" />}
-  >
-    {tooltipSides.map((side) => (
-      <HStack key={side}>
-        {tooltipPositions.map((position) => (
-          <Tooltip
-            key={position}
-            side={side}
-            positioning={position}
-            label="This is the tooltip content. Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap"
-          >
-            <span>
-              <Button>
-                {side} - {position}
-              </Button>
-            </span>
-          </Tooltip>
-        ))}
-      </HStack>
-    ))}
-  </VStack>
+export const All = () => (
+  <Table variant="simple">
+    <Thead>
+      <Tr>
+        <Th>Placement</Th>
+        <Th>Tooltip</Th>
+      </Tr>
+    </Thead>
+    <Tbody>
+      {placements.map((placement) => (
+        <Tr key={placement}>
+          <Td>{placement}</Td>
+          <Td py="3rem">
+            <Tooltip label="This is the tooltip content" placement={placement} isOpen>
+              <Button>{placement}</Button>
+            </Tooltip>
+          </Td>
+        </Tr>
+      ))}
+    </Tbody>
+  </Table>
 );
 
-export const All = AllTemplate.bind({});
-
 const Template = (args: TooltipProps) => (
-  <Box py="3rem" px="12rem">
+  <Box p="12rem">
     <Tooltip {...args}>
-      <Button>Hover me!</Button>
+      <Button size="l">Hover me!</Button>
     </Tooltip>
   </Box>
 );
 
 export const Playground = Template.bind({});
 Playground.args = {
-  side: 'top',
-  positioning: 'center',
+  placement: 'auto',
   label: 'This is the tooltip content.',
 };

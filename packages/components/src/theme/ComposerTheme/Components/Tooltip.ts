@@ -14,8 +14,4 @@ export const Tooltip: ComponentStyleConfig = {
     ...theme.textStyles['text-body-meta-regular'],
     color: 'text-light',
   }),
-  defaultProps: {
-    side: 'auto',
-    positioning: 'center',
-  },
 };

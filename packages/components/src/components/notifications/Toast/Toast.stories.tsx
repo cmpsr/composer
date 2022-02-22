@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Meta } from '@storybook/react';
-import { alertStatuses, alertTitleAlignments, alertVariants, Button, useToast, UseToastOptions } from '@components';
+import { alertStatuses, toastVariants, Button, useToast, UseToastOptions } from '@components';
 
 export default {
   title: 'Components/Notifications/Toast',
@@ -10,13 +10,8 @@ export default {
       control: { type: 'select' },
       defaultValue: 'success',
     },
-    titleAlignment: {
-      options: alertTitleAlignments,
-      control: { type: 'select' },
-      defaultValue: 'top',
-    },
     variant: {
-      options: ['subtle', 'solid', 'left-accent', 'top-accent'],
+      options: toastVariants,
       control: { type: 'select' },
       defaultValue: 'solid',
     },
@@ -25,8 +20,81 @@ export default {
       control: { type: 'select' },
       defaultValue: 'bottom',
     },
+    titleAlignment: {
+      options: ['top', 'left'],
+      control: { type: 'select' },
+      defaultValue: 'left',
+    },
   },
+  parameters: {
+    chromatic: { delay: 300 },
+  },
+  decorators: [(storyFn) => <div style={{ width: '1200px', height: '800px' }}>{storyFn()}</div>],
 } as Meta;
+
+export const SolidSuccess = () => {
+  const toast = useToast();
+
+  useEffect(() => {
+    toast({
+      title: 'Title',
+      description: 'This is a description',
+      isClosable: true,
+      variant: 'solid',
+      status: 'success',
+    });
+  }, []);
+
+  return null;
+};
+
+export const SubtleWarning = () => {
+  const toast = useToast();
+
+  useEffect(() => {
+    toast({
+      title: 'Title',
+      description: 'This is a description',
+      isClosable: true,
+      variant: 'subtle',
+      status: 'warning',
+    });
+  }, []);
+
+  return null;
+};
+
+export const LeftAccentError = () => {
+  const toast = useToast();
+
+  useEffect(() => {
+    toast({
+      title: 'Title',
+      description: 'This is a description',
+      isClosable: true,
+      variant: 'left-accent',
+      status: 'error',
+    });
+  }, []);
+
+  return null;
+};
+
+export const TopAccentInfo = () => {
+  const toast = useToast();
+
+  useEffect(() => {
+    toast({
+      title: 'Title',
+      description: 'This is a description',
+      isClosable: true,
+      variant: 'top-accent',
+      status: 'info',
+    });
+  }, []);
+
+  return null;
+};
 
 const Template = (args: UseToastOptions) => {
   const toast = useToast();
@@ -46,7 +114,8 @@ const Template = (args: UseToastOptions) => {
 export const Playground = Template.bind({});
 
 Playground.args = {
-  title: 'Composer rocks!',
-  description: 'And this description rocks even more!',
-  duration: 4000,
+  title: 'Title',
+  description: 'This is a description',
+  isClosable: true,
+  duration: 3000,
 };

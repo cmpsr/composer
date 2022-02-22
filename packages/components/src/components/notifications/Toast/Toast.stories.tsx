@@ -27,7 +27,7 @@ export default {
     },
   },
   parameters: {
-    chromatic: { delay: 500 },
+    chromatic: { delay: 800 },
   },
   decorators: [(storyFn) => <div style={{ width: '1200px', height: '800px' }}>Container {storyFn()}</div>],
 } as Meta;

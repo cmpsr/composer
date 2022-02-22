@@ -27,7 +27,7 @@ export default {
     },
   },
   parameters: {
-    chromatic: { delay: 500 },
+    chromatic: { delay: 300 },
   },
   decorators: [
     (Story) => (

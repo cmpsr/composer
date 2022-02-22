@@ -27,9 +27,9 @@ export default {
     },
   },
   parameters: {
-    chromatic: { delay: 800 },
+    chromatic: { delay: 500 },
   },
-  decorators: [(storyFn) => <div style={{ width: '1200px', height: '900px' }}>Container {storyFn()}</div>],
+  decorators: [(storyFn) => <div style={{ width: '1200px', height: '1000px' }}>{storyFn()}</div>],
 } as Meta;
 
 export const SolidSuccess = () => {
@@ -38,7 +38,7 @@ export const SolidSuccess = () => {
   useEffect(() => {
     toast({
       title: 'Title',
-      duration: 3000,
+      duration: 1000,
       description: 'This is a description',
       isClosable: true,
       variant: 'solid',
@@ -55,7 +55,7 @@ export const SubtleWarning = () => {
   useEffect(() => {
     toast({
       title: 'Title',
-      duration: 4000,
+      duration: 2000,
       description: 'This is a description',
       isClosable: true,
       variant: 'subtle',
@@ -72,28 +72,11 @@ export const LeftAccentError = () => {
   useEffect(() => {
     toast({
       title: 'Title',
-      duration: 5000,
+      duration: 3000,
       description: 'This is a description',
       isClosable: true,
       variant: 'left-accent',
       status: 'error',
-    });
-  }, []);
-
-  return null;
-};
-
-export const TopAccentInfo = () => {
-  const toast = useToast();
-
-  useEffect(() => {
-    toast({
-      title: 'Title',
-      duration: 6000,
-      description: 'This is a description',
-      isClosable: true,
-      variant: 'top-accent',
-      status: 'info',
     });
   }, []);
 

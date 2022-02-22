@@ -33,6 +33,9 @@ describe('Tooltip', () => {
   describe('calculateTooltipPlacement', () => {
     it.each`
       side        | positioning | placement
+      ${'auto'}   | ${'center'} | ${'auto'}
+      ${'auto'}   | ${'left'}   | ${'auto-start'}
+      ${'auto'}   | ${'right'}  | ${'auto-end'}
       ${'top'}    | ${'center'} | ${'top'}
       ${'top'}    | ${'left'}   | ${'top-start'}
       ${'top'}    | ${'right'}  | ${'top-end'}

@@ -1,6 +1,6 @@
 import { TooltipProps as ChakraTooltipProps } from '@chakra-ui/react';
 
-export const tooltipSides = ['top', 'bottom', 'left', 'right'] as const;
+export const tooltipSides = ['auto', 'top', 'bottom', 'left', 'right'] as const;
 export const tooltipPositions = ['left', 'right', 'center'] as const;
 
 export type TooltipSide = typeof tooltipSides[number];

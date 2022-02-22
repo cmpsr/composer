@@ -15,7 +15,7 @@ export const Tooltip: ComponentStyleConfig = {
     color: 'text-light',
   }),
   defaultProps: {
-    side: 'top',
+    side: 'auto',
     positioning: 'center',
   },
 };

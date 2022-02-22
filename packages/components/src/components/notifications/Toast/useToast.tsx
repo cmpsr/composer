@@ -1,6 +1,6 @@
 import React from 'react';
 import { useToast as useToastChakra } from '@chakra-ui/react';
-import { Alert, AlertProps, Flex } from '@components';
+import { Alert, Flex } from '@components';
 import { UseToastOptions } from './types';
 
 export const useToast = () => {
@@ -18,31 +18,29 @@ export const useToast = () => {
       render,
       description,
       titleAlignment = 'left',
-      ...alertOptions
+      status = 'success',
+      variant = 'solid',
     } = options;
     const isTitleLeftAligned = titleAlignment === 'left';
     return toast({
-      render: render
-        ? render
-        : ({ onClose }) => (
-            <Alert {...(alertOptions as AlertProps)}>
-              <Flex direction={isTitleLeftAligned ? 'row' : 'column'}>
-                {title && <Alert.Title {...{ ...(isTitleLeftAligned && { mr: '0.75rem' }) }}>{title}</Alert.Title>}
-                {description && <Alert.Description>{description}</Alert.Description>}
-                {isClosable && (
-                  <Alert.CloseButton
-                    onClick={onClose}
-                    color={alertOptions.variant === 'solid' ? 'text-light' : 'text-primary'}
-                  />
-                )}
-              </Flex>
-            </Alert>
-          ),
       position,
       duration,
       id,
       onCloseComplete,
       containerStyle,
+      render: render
+        ? render
+        : ({ onClose }) => (
+            <Alert variant={variant} status={status}>
+              <Flex direction={isTitleLeftAligned ? 'row' : 'column'}>
+                {title && <Alert.Title {...{ ...(isTitleLeftAligned && { mr: '0.75rem' }) }}>{title}</Alert.Title>}
+                {description && <Alert.Description>{description}</Alert.Description>}
+                {isClosable && (
+                  <Alert.CloseButton onClick={onClose} color={variant === 'solid' ? 'text-light' : 'text-primary'} />
+                )}
+              </Flex>
+            </Alert>
+          ),
       ...options,
     });
   };

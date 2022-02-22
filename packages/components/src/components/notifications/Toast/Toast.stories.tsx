@@ -112,3 +112,6 @@ Playground.args = {
   description: 'This is a description',
   isClosable: true,
 };
+Playground.parameters = {
+  chromatic: { disableSnapshot: true },
+};

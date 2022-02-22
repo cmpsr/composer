@@ -40,37 +40,6 @@ const containerVariantsColors = {
   'left-accent': containerStatusesColors,
 };
 
-const subtleToastVariant: PartsStyleFunction<typeof parts> = ({ status, variant }) => {
-  let accentType;
-  const hasAccent = variant.includes('-accent');
-  if (hasAccent) accentType = (variant as string).substring(0, variant.indexOf('-accent'));
-
-  const accents = {
-    top: {
-      borderTop: `0.25rem solid var(--chakra-colors-alert-${status}-default)`,
-    },
-    left: {
-      borderLeft: `0.25rem solid var(--chakra-colors-alert-${status}-default)`,
-    },
-  };
-
-  return {
-    container: {
-      backgroundColor: `background-${status}`,
-      ...accents[accentType],
-    },
-    title: { textStyle: 'text-body-bold', color: 'text-primary' },
-    description: { textStyle: 'text-body-regular', color: 'text-primary' },
-    icon: {
-      margin: '0.25rem 0.25rem 0 0',
-      ' svg': {
-        boxSize: '1rem',
-      },
-      color: `alert-${status}-default`,
-    },
-  };
-};
-
 const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
   const { status, variant } = props;
 
@@ -151,7 +120,6 @@ export const Alert: ComponentStyleConfig = {
     variant: 'solid',
   },
   variants: {
-    'top-accent-toast': subtleToastVariant,
     solid: variantSolid,
     subtle: generateVariantByStatus,
     'left-accent': generateVariantByStatus,

@@ -38,7 +38,7 @@ export const SolidSuccess = () => {
   useEffect(() => {
     toast({
       title: 'Title',
-      duration: 500,
+      duration: 3000,
       description: 'This is a description',
       isClosable: true,
       variant: 'solid',
@@ -55,7 +55,7 @@ export const SubtleWarning = () => {
   useEffect(() => {
     toast({
       title: 'Title',
-      duration: 1000,
+      duration: 4000,
       description: 'This is a description',
       isClosable: true,
       variant: 'subtle',
@@ -72,7 +72,7 @@ export const LeftAccentError = () => {
   useEffect(() => {
     toast({
       title: 'Title',
-      duration: 2000,
+      duration: 5000,
       description: 'This is a description',
       isClosable: true,
       variant: 'left-accent',
@@ -89,7 +89,7 @@ export const TopAccentInfo = () => {
   useEffect(() => {
     toast({
       title: 'Title',
-      duration: 3000,
+      duration: 6000,
       description: 'This is a description',
       isClosable: true,
       variant: 'top-accent',

@@ -27,7 +27,7 @@ export default {
     },
   },
   parameters: {
-    chromatic: { delay: 2000 },
+    chromatic: { delay: 500 },
   },
   decorators: [(storyFn) => <div style={{ width: '1200px', height: '800px' }}>Container {storyFn()}</div>],
 } as Meta;
@@ -38,7 +38,7 @@ export const SolidSuccess = () => {
   useEffect(() => {
     toast({
       title: 'Title',
-      duration: 3000,
+      duration: 500,
       description: 'This is a description',
       isClosable: true,
       variant: 'solid',
@@ -55,7 +55,7 @@ export const SubtleWarning = () => {
   useEffect(() => {
     toast({
       title: 'Title',
-      duration: 3000,
+      duration: 1000,
       description: 'This is a description',
       isClosable: true,
       variant: 'subtle',
@@ -72,7 +72,7 @@ export const LeftAccentError = () => {
   useEffect(() => {
     toast({
       title: 'Title',
-      duration: 3000,
+      duration: 2000,
       description: 'This is a description',
       isClosable: true,
       variant: 'left-accent',

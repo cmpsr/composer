@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Meta } from '@storybook/react';
-import { alertStatuses, toastVariants, Button, useToast, UseToastOptions } from '@components';
+import { alertStatuses, alertVariants, Button, useToast, UseToastOptions } from '@components';
 
 export default {
   title: 'Components/Notifications/Toast',
@@ -11,7 +11,7 @@ export default {
       defaultValue: 'success',
     },
     variant: {
-      options: toastVariants,
+      options: alertVariants,
       control: { type: 'select' },
       defaultValue: 'solid',
     },
@@ -29,7 +29,7 @@ export default {
   parameters: {
     chromatic: { delay: 800 },
   },
-  decorators: [(storyFn) => <div style={{ width: '1200px', height: '800px' }}>Container {storyFn()}</div>],
+  decorators: [(storyFn) => <div style={{ width: '1200px', height: '900px' }}>Container {storyFn()}</div>],
 } as Meta;
 
 export const SolidSuccess = () => {

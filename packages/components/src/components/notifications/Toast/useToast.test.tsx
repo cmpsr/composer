@@ -1,14 +1,11 @@
 import React from 'react';
-import { screen } from '@tests/renderWithProviders';
-import { renderHook, act } from '@testing-library/react-hooks';
-import { ComposerProvider } from '@theme';
+import { screen, act } from '@tests/renderWithProviders';
+import { renderHookWithProviders } from '@tests/renderHookWithProviders';
 import { useToast } from './useToast';
-
-const wrapper = ({ children }) => <ComposerProvider>{children}</ComposerProvider>;
 
 describe('useToast', () => {
   test('should render custom component when provided', () => {
-    const { result } = renderHook(() => useToast(), { wrapper });
+    const { result } = renderHookWithProviders(() => useToast());
     act(() => {
       result.current({ title: 'foo', render: () => <div>foo</div> });
     });
@@ -16,10 +13,10 @@ describe('useToast', () => {
   });
 
   test('should render Alert by default when render is not provided', () => {
-    const { result } = renderHook(() => useToast(), { wrapper });
+    const { result } = renderHookWithProviders(() => useToast());
     act(() => {
       result.current({ title: 'title' });
     });
-    screen.getByTestId('cmpsr.alert');
+    screen.getByTestId('cmpsr.alert.toast');
   });
 });

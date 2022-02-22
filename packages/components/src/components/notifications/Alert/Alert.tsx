@@ -21,7 +21,7 @@ export const Alert: FC<AlertProps> & AlertStaticMembers = ({ status = 'info', ch
   const BaseIcon = ICONS[status];
 
   return (
-    <ChakraAlert data-testid="cmpsr.alert" status={status} variant={variant} {...props}>
+    <ChakraAlert status={status} variant={variant} {...props}>
       <BaseIcon data-testid="cmpsr.alert.icon" size="l" {...icon} color={icon.status[status]?.color} />
       {children}
     </ChakraAlert>

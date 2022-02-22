@@ -45,7 +45,10 @@ const baseStyle = {
     top: '1rem',
     right: '1rem',
     boxSize: '1rem',
-    '> svg': {
+    ' button': {
+      boxSize: '1rem',
+    },
+    ' svg': {
       boxSize: '1rem',
     },
   },

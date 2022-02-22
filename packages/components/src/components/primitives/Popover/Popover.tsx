@@ -13,7 +13,7 @@ import {
   CSSObject,
 } from '@chakra-ui/react';
 import { PopoverProps, PopoverHeaderProps, PopoverFooterProps } from './types';
-import { TextPairing, Button, Text } from '@components';
+import { TextPairing, Button, Text, CloseButton } from '@components';
 
 export const Popover: FC<PopoverProps> = ({
   children,
@@ -42,7 +42,11 @@ export const Popover: FC<PopoverProps> = ({
       </ChakraPopoverTrigger>
       <ChakraPopoverContent data-testid="cmpsr.popover.content">
         <ChakraPopoverArrow />
-        {showCloseButton && <ChakraPopoverCloseButton data-testid="cmpsr.popover.close.button" />}
+        {showCloseButton && (
+          <ChakraPopoverCloseButton data-testid="cmpsr.popover.close.button">
+            <CloseButton />
+          </ChakraPopoverCloseButton>
+        )}
         <PopoverHeader {...ownHeaderProps} />
         <ChakraPopoverBody {...conditionalBodyStyle}>
           <Text variant="text-body-regular">{body}</Text>

@@ -29,7 +29,7 @@ export default {
   parameters: {
     chromatic: { delay: 2000 },
   },
-  decorators: [(storyFn) => <div style={{ width: '1200px', height: '800px' }}>{storyFn()}</div>],
+  decorators: [(storyFn) => <div style={{ width: '1200px', height: '800px' }}>Container {storyFn()}</div>],
 } as Meta;
 
 export const SolidSuccess = () => {

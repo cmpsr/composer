@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { IconButton } from './IconButton';
-import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
 import { iconButtonSizes, iconButtonVariants } from './types';
 import { IconCloud } from '@components';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
@@ -21,38 +20,7 @@ export default {
   },
 } as Meta;
 
-const AllTemplate = () => (
-  <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
-    {iconButtonVariants.map((variant) => (
-      <VStack key={variant}>
-        <HStack>
-          {iconButtonSizes.map((size) => (
-            <IconButton icon={<IconCloud />} aria-label={size} variant={variant} size={size} key={size} />
-          ))}
-        </HStack>
-        <HStack>
-          {iconButtonSizes.map((size) => (
-            <IconButton icon={<IconCloud />} aria-label={size} variant={variant} size={size} key={size} isDisabled />
-          ))}
-        </HStack>
-        <HStack>
-          {iconButtonSizes.map((size) => (
-            <IconButton icon={<IconCloud />} aria-label={size} variant={variant} size={size} key={size} isRound />
-          ))}
-        </HStack>
-        <HStack>
-          {iconButtonSizes.map((size) => (
-            <IconButton icon={<IconCloud />} aria-label={size} variant={variant} size={size} key={size} isLoading />
-          ))}
-        </HStack>
-      </VStack>
-    ))}
-  </VStack>
-);
-
-export const All = AllTemplate.bind({});
-
-export const AllTemplate1 = () => (
+export const All = () => (
   <Table variant="simple">
     <Thead>
       <Tr>

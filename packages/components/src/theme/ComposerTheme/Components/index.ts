@@ -21,6 +21,7 @@ import { Tabs } from './Tabs';
 import { Tag } from './Tag';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
+import { Tooltip } from './Tooltip';
 import { Radio } from './Radio';
 import { CloseButton } from './CloseButton';
 import { Symbols } from './Symbols';
@@ -55,4 +56,5 @@ export const components = {
   Tag,
   Text,
   TextPairing,
+  Tooltip,
 };

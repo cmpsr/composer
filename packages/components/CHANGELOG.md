@@ -1,5 +1,20 @@
 # @cmpsr/components
 
+## 1.14.0
+
+### Minor Changes
+
+- aa13995: implement Modal component
+- 7a93d81: implement close button component
+- 3f0cbba: TextPairing: allow theme color for label and subLabel
+- babbbb4: Input: use proper spacing on flushed version and refactor logic of the component
+- db0c3cc: Implementation of Symbol components with a base story and a test
+- 3906956: Implementation of IconButton component, including tests and stories
+
+### Patch Changes
+
+- 2dcd716: fix alert component styles
+
 ## 1.13.0
 
 ### Minor Changes

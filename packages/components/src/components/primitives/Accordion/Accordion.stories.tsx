@@ -1,8 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Accordion } from './Accordion';
-import { Text, TextPairing, Avatar } from '..';
-import { Box, Flex } from '../../layouts';
+import { Box, Flex, Text, TextPairing, Avatar, Accordion } from '@components';
 
 export default {
   component: Accordion,
@@ -20,81 +18,42 @@ const AccordionPanel = () =>
     </Accordion.Panel>
   ) as JSX.Element;
 
-const WithImageAndTextPairingTemplate = (args) => (
-  <Accordion {...args}>
-    <Accordion.Item>
-      <Accordion.Button>
-        <Flex flex="1" textAlign="left" alignItems="center">
-          <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr={2} />
-          <TextPairing label="Section 1 title" subLabel="Description" variant="textpairing-body-medium" />
-        </Flex>
-        <Accordion.Icon />
-      </Accordion.Button>
-      <AccordionPanel />
-    </Accordion.Item>
-    <Accordion.Item>
-      <Accordion.Button>
-        <Flex flex="1" textAlign="left" alignItems="center">
-          <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr={2} />
-          <TextPairing label="Section 2 title" subLabel="Description" variant="textpairing-body-medium" />
-        </Flex>
-        <Accordion.Icon />
-      </Accordion.Button>
-      <AccordionPanel />
-    </Accordion.Item>
-  </Accordion>
+const AcordionItem = ({ highlight = false, showMediaItem = true, showTextPairing = true, index }) => (
+  <Accordion.Item>
+    <Accordion.Button highlight={highlight}>
+      <Flex flex="1" textAlign="left" alignItems="center">
+        {showMediaItem && <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr={2} />}
+        {showTextPairing ? (
+          <TextPairing
+            label={`Section ${index} title`}
+            subLabel="Description"
+            subLabelColor="text-secondary"
+            variant="textpairing-body-medium"
+          />
+        ) : (
+          <Box flex="1" textAlign="left">
+            <Text variant="text-body-medium">Section {index} title</Text>
+          </Box>
+        )}
+      </Flex>
+      <Accordion.Icon />
+    </Accordion.Button>
+    <AccordionPanel />
+  </Accordion.Item>
 );
 
-export const WithImageAndTextPairing = WithImageAndTextPairingTemplate.bind({});
+const generateAcordionItems = ({ numOfItems = 2, ...rest }) => {
+  return Array.from(Array(numOfItems)).map((_, index) => <AcordionItem key={index} index={index + 1} {...rest} />);
+};
 
-const BgButtonHighlight = (args) => (
-  <Accordion {...args}>
-    <Accordion.Item>
-      <Accordion.Button highlight>
-        <Box flex="1" textAlign="left">
-          <Text variant="text-body-medium">Section 1 title</Text>
-        </Box>
-        <Accordion.Icon />
-      </Accordion.Button>
-      <AccordionPanel />
-    </Accordion.Item>
-    <Accordion.Item>
-      <Accordion.Button highlight>
-        <Box flex="1" textAlign="left">
-          <Text variant="text-body-medium">Section 2 title</Text>
-        </Box>
-        <Accordion.Icon />
-      </Accordion.Button>
-      <AccordionPanel />
-    </Accordion.Item>
-  </Accordion>
+export const WithImageAndTextPairing = () => <Accordion>{generateAcordionItems({})}</Accordion>;
+
+export const BackgroundHighlight = () => (
+  <Accordion>{generateAcordionItems({ highlight: true, showMediaItem: false, showTextPairing: false })}</Accordion>
 );
 
-export const BackgroundHighlight = BgButtonHighlight.bind({});
-
-const Template = (args) => (
-  <Accordion>
-    {Array(args.numberOfItems)
-      .fill('')
-      .map((_, i) => (
-        <Accordion.Item key={i}>
-          <Accordion.Button highlight={args.highlight}>
-            <Flex flex="1" textAlign="left" alignItems="center">
-              {args.showMediaItem && <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr={2} />}
-              {args.showTextPairing ? (
-                <TextPairing label={`Section ${i} title`} subLabel="Description" variant="textpairing-body-medium" />
-              ) : (
-                <Box flex="1" textAlign="left">
-                  <Text variant="text-body-medium">Section {i} title</Text>
-                </Box>
-              )}
-            </Flex>
-            <Accordion.Icon />
-          </Accordion.Button>
-          <AccordionPanel />
-        </Accordion.Item>
-      ))}
-  </Accordion>
+const Template = ({ indexberOfItems, ...rest }) => (
+  <Accordion>{generateAcordionItems({ numOfItems: indexberOfItems, ...rest })}</Accordion>
 );
 
 export const Playground = Template.bind({});
@@ -102,5 +61,5 @@ Playground.args = {
   highlight: true,
   showMediaItem: true,
   showTextPairing: true,
-  numberOfItems: 5,
+  indexberOfItems: 5,
 };

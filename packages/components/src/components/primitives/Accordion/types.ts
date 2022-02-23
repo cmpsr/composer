@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/react';
 import { FC } from 'react';
 
-export type AccordionProps = ChakraAccordionProps;
+export type AccordionProps = Omit<ChakraAccordionProps, 'variant'>;
 
 export interface AccordionButtonProps extends ChakraAccordionButtonProps {
   highlight?: boolean;

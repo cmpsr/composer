@@ -40,7 +40,7 @@ const baseStyle = {
       paddingY: '0.5rem',
     },
   },
-}
+};
 
 export const Popover: ComponentMultiStyleConfig = {
   parts: [],

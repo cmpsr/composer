@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { callAllHandlers } from '@chakra-ui/utils';
 import {
   Popover as ChakraPopover,
   PopoverTrigger,
@@ -13,7 +14,6 @@ import {
 } from '@chakra-ui/react';
 import { PopoverProps, PopoverStaticMembers } from './types';
 import { CloseButton } from '@components';
-import { callAllHandlers } from '@chakra-ui/utils';
 
 export const Popover: FC<PopoverProps> & PopoverStaticMembers = (props) => <ChakraPopover {...props} />;
 

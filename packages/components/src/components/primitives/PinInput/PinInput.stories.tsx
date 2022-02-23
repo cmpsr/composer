@@ -48,6 +48,7 @@ export const All = () => (
                     variant={variant}
                     type="alphanumeric"
                     isDisabled={['disabled', 'disabled-and-filled'].includes(state)}
+                    isInvalid={state === 'error'}
                     defaultValue={
                       ['filled', 'disabled-and-filled'].includes(state) ? `${size}${size}${size}${size}` : ''
                     }

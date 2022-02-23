@@ -1,11 +1,7 @@
 import React, { FC } from 'react';
-import {
-  Flex,
-  PinInput as ChakraPinInput,
-  PinInputField as ChakraPinInputField,
-  PinInputFieldProps,
-} from '@chakra-ui/react';
+import { PinInput as ChakraPinInput, PinInputField as ChakraPinInputField, PinInputFieldProps } from '@chakra-ui/react';
 import { PinInputProps, PinInputStaticMembers } from './types';
+import { Flex } from '@components';
 
 const renderFieldsByNumOfDigits: (numOfDigits: number, pinInputFieldProps: PinInputFieldProps) => React.ReactNode[] = (
   numOfDigits,
@@ -34,6 +30,4 @@ export const PinInput: FC<PinInputProps> & PinInputStaticMembers = ({
   );
 };
 
-const InputField: FC<PinInputFieldProps> = (props) => <ChakraPinInputField {...props} />;
-
-PinInput.Field = InputField;
+PinInput.Field = ChakraPinInputField;

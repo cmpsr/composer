@@ -1,9 +1,9 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Stack, HStack, VStack } from '@chakra-ui/layout';
+import { Button, TextPairing, Text } from '@components';
 import { Popover } from './Popover';
 import { popoverPositionings } from './types';
-import { Button, TextPairing, Text } from '@components';
 
 export default {
   component: Popover,
@@ -16,41 +16,38 @@ export default {
   },
 } as Meta;
 
-const AllTemplate = ({ positioning, children }) => (
-  <Popover key={positioning} placement={positioning}>
+const PopoverTemplate = ({ positioning, showCloseButton = true, showFooter = true, children, ...rest }) => (
+  <Popover placement={positioning} {...rest}>
     <Popover.Trigger>{children}</Popover.Trigger>
     <Popover.Content>
       <Popover.Arrow />
-      <Popover.CloseButton />
+      {showCloseButton && <Popover.CloseButton />}
       <Popover.Header>
-        <TextPairing
-          label="Header"
-          labelColor="text-primary"
-          subLabel="Subtitle"
-          labelColorsubLabelColor="text-secondary"
-        />
+        <TextPairing label="Header" labelColor="text-primary" subLabel="Subtitle" subLabelColor="text-secondary" />
       </Popover.Header>
       <Popover.Body>
         <Text variant="text-body-regular">Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap</Text>
       </Popover.Body>
-      <Popover.Footer>
-        <Button
-          data-testid="cmpsr.popover.primary.action"
-          flex="1"
-          variant="primary"
-          onClick={() => alert('Primary action')}
-        >
-          Primary
-        </Button>
-        <Button
-          data-testid="cmpsr.popover.primary.action"
-          flex="1"
-          variant="primary-alt"
-          onClick={() => alert('Secondary action')}
-        >
-          Secondary
-        </Button>
-      </Popover.Footer>
+      {showFooter && (
+        <Popover.Footer>
+          <Button
+            data-testid="cmpsr.popover.primary.action"
+            flex="1"
+            variant="primary"
+            onClick={() => alert('Primary action')}
+          >
+            Primary
+          </Button>
+          <Button
+            data-testid="cmpsr.popover.primary.action"
+            flex="1"
+            variant="primary-alt"
+            onClick={() => alert('Secondary action')}
+          >
+            Secondary
+          </Button>
+        </Popover.Footer>
+      )}
     </Popover.Content>
   </Popover>
 );
@@ -58,63 +55,31 @@ const AllTemplate = ({ positioning, children }) => (
 export const All = () => (
   <Stack py="15rem" px="40rem" spacing={4}>
     <HStack justifyContent="center">
-      <AllTemplate positioning="top">
+      <PopoverTemplate positioning="top">
         <Button>Click me - Top</Button>
-      </AllTemplate>
+      </PopoverTemplate>
     </HStack>
     <HStack justifyContent="space-between">
-      <AllTemplate positioning="left">
+      <PopoverTemplate positioning="left">
         <Button>Click me - Left</Button>
-      </AllTemplate>
-      <AllTemplate positioning="right">
+      </PopoverTemplate>
+      <PopoverTemplate positioning="right">
         <Button>Click me - Right</Button>
-      </AllTemplate>
+      </PopoverTemplate>
     </HStack>
     <HStack justifyContent="center">
-      <AllTemplate positioning="bottom">
+      <PopoverTemplate positioning="bottom">
         <Button>Click me - Bottom</Button>
-      </AllTemplate>
+      </PopoverTemplate>
     </HStack>
   </Stack>
 );
 
-const PlaygroundTemplate = ({ positioning, showCloseButton, showFooter }) => (
+const PlaygroundTemplate = (props) => (
   <VStack padding="15rem">
-    <Popover placement={positioning} isOpen={true}>
-      <Popover.Trigger>
-        <Button>Button</Button>
-      </Popover.Trigger>
-      <Popover.Content>
-        <Popover.Arrow />
-        {showCloseButton && <Popover.CloseButton />}
-        <Popover.Header>
-          <TextPairing label="Header" labelColor="text-primary" subLabel="Subtitle" subLabelColor="text-secondary" />
-        </Popover.Header>
-        <Popover.Body>
-          <Text variant="text-body-regular">Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap</Text>
-        </Popover.Body>
-        {showFooter && (
-          <Popover.Footer>
-            <Button
-              data-testid="cmpsr.popover.primary.action"
-              flex="1"
-              variant="primary"
-              onClick={() => alert('Primary action')}
-            >
-              Primary
-            </Button>
-            <Button
-              data-testid="cmpsr.popover.primary.action"
-              flex="1"
-              variant="primary-alt"
-              onClick={() => alert('Secondary action')}
-            >
-              Secondary
-            </Button>
-          </Popover.Footer>
-        )}
-      </Popover.Content>
-    </Popover>
+    <PopoverTemplate isOpen={true} {...props}>
+      <Button>Button</Button>
+    </PopoverTemplate>
   </VStack>
 );
 

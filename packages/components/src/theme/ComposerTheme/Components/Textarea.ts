@@ -8,10 +8,7 @@ const textStyles = {
 };
 
 const spacing = {
-  large: {
-    pl: '1rem',
-    pr: '1.625rem',
-  },
+  large: { px: '1rem' },
   small: { padding: '0.75rem' },
   medium: { padding: '0.75rem' },
 };
@@ -59,8 +56,6 @@ const baseStyle = {
 const flushed = {
   bg: 'background-action-default',
   borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
-  pl: '0.75rem',
-  pr: '0.75rem',
   _hover: {
     bg: 'background-action-hover',
     border: 'none',
@@ -79,7 +74,6 @@ const flushed = {
     color: 'text-secondary',
   },
 };
-
 
 export const Textarea: ComponentStyleConfig = {
   baseStyle,

@@ -47,7 +47,7 @@ const generateButton = (color: string, textColor?: string) => {
 
 const generateAltButton = (color: string) => {
   const _disabled = {
-    backgroundColor: 'background-container-disabled',
+    backgroundColor: 'background-action-disabled',
     opacity: 1,
     color: transparentize(`text-link-${color}-default`, 0.6),
     borderColor: transparentize(`text-link-${color}-default`, 0.6),

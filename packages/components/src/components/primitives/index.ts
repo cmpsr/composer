@@ -1,5 +1,4 @@
 export * from './Accordion';
-export * from './Alert';
 export * from './Avatar';
 export * from './Badge';
 export * from './Breadcrumb';
@@ -9,6 +8,7 @@ export * from './Checkbox';
 export * from './CloseButton';
 export * from './Divider';
 export * from './Image';
+export * from './IconButton';
 export * from './Icons';
 export * from './Input';
 export * from './Link';
@@ -26,3 +26,4 @@ export * from './Tag';
 export * from './Text';
 export * from './TextPairing';
 export * from './PinInput';
+export * from './Tooltip';

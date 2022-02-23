@@ -6,7 +6,7 @@ import { Flex } from '@components';
 
 export default {
   component: Alert,
-  title: 'Components/Primitives/Alert',
+  title: 'Components/Notifications/Alert',
   argTypes: {
     status: {
       options: alertStatuses,

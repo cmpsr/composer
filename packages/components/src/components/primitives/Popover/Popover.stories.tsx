@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { StackDivider, VStack } from '@chakra-ui/layout';
 import { Popover } from './Popover';
 import { popoverPositionings } from './types';
-import { Box, Button } from '@components';
+import { Button, TextPairing, Text } from '@components';
 
 export default {
   component: Popover,
@@ -16,42 +16,92 @@ export default {
   },
 } as Meta;
 
-const AllTemplate = () => (
+export const All = () => (
   <VStack divider={<StackDivider borderColor="gray.200" />} padding="10rem" spacing={4}>
     {popoverPositionings.map((positioning) => {
       return (
-        <Popover
-          key={positioning}
-          positioning={positioning}
-          headerProps={{ label: 'Header', subtitle: 'Subtitle', showCloseButton: true }}
-          footerProps={{
-            primaryAction: { label: 'Primary', onClick: () => alert('Primary action') },
-            secondaryAction: { label: 'Secondary', onClick: () => alert('Secondary action') },
-          }}
-          body="Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap"
-        >
-          <Button>Click me {positioning}</Button>
+        <Popover key={positioning} placement={positioning}>
+          <Popover.Trigger>
+            <Button>Click me {positioning}</Button>
+          </Popover.Trigger>
+          <Popover.Content>
+            <Popover.Arrow />
+            <Popover.CloseButton />
+            <Popover.Header>
+              <TextPairing label="Header" subLabel="Subtitle" subLabelColor="text-secondary" />
+            </Popover.Header>
+            <Popover.Body>
+              <Text variant="text-body-regular">Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap</Text>
+            </Popover.Body>
+            <Popover.Footer>
+              <Button
+                data-testid="cmpsr.popover.primary.action"
+                flex="1"
+                variant="primary"
+                onClick={() => alert('Primary action')}
+              >
+                Primary
+              </Button>
+              <Button
+                data-testid="cmpsr.popover.primary.action"
+                flex="1"
+                variant="primary-alt"
+                onClick={() => alert('Secondary action')}
+              >
+                Secondary
+              </Button>
+            </Popover.Footer>
+          </Popover.Content>
         </Popover>
       );
     })}
   </VStack>
 );
 
-export const All = AllTemplate.bind({});
-
-const Template = (args) => (
-  <Box px="20rem" py="14rem">
-    <Popover {...args} body={'Popover body'}>
-      <Button>Click me</Button>
+const PlaygroundTemplate = ({ positioning, showCloseButton, showFooter }) => (
+  <VStack padding="15rem">
+    <Popover placement={positioning} isOpen={true}>
+      <Popover.Trigger>
+        <Button>Button</Button>
+      </Popover.Trigger>
+      <Popover.Content>
+        <Popover.Arrow />
+        {showCloseButton && <Popover.CloseButton />}
+        <Popover.Header>
+          <TextPairing label="Header" subLabel="Subtitle" subLabelColor="text-secondary" />
+        </Popover.Header>
+        <Popover.Body>
+          <Text variant="text-body-regular">Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap</Text>
+        </Popover.Body>
+        {showFooter && (
+          <Popover.Footer>
+            <Button
+              data-testid="cmpsr.popover.primary.action"
+              flex="1"
+              variant="primary"
+              onClick={() => alert('Primary action')}
+            >
+              Primary
+            </Button>
+            <Button
+              data-testid="cmpsr.popover.primary.action"
+              flex="1"
+              variant="primary-alt"
+              onClick={() => alert('Secondary action')}
+            >
+              Secondary
+            </Button>
+          </Popover.Footer>
+        )}
+      </Popover.Content>
     </Popover>
-  </Box>
+  </VStack>
 );
-export const Playground = Template.bind({});
+
+export const Playground = PlaygroundTemplate.bind({});
+
 Playground.args = {
   positioning: 'bottom',
-  headerProps: { label: 'Header', subtitle: 'Subtitle', showCloseButton: true },
-  footerProps: {
-    primaryAction: { label: 'Primary', onClick: () => alert('Primary action') },
-    secondaryAction: { label: 'Secondary', onClick: () => alert('Secondary action') },
-  },
+  showCloseButton: true,
+  showFooter: true,
 };

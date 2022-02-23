@@ -12,6 +12,7 @@ const baseStyle = {
     borderRadius: 'radii-popover',
     [$arrowBg.variable]: $backgroundCardColor.reference,
     border: 'none',
+    py: '1rem',
     _focus: {
       boxShadow: 'elevation-default',
     },
@@ -19,48 +20,29 @@ const baseStyle = {
   header: {
     paddingLeft: '1rem',
     paddingRight: '3.5rem',
-    paddingY: '1rem',
+    paddingTop: 0,
+    paddingBottom: '1rem',
     border: 'none',
   },
   body: {
     color: 'text-primary',
     paddingX: '1rem',
-    paddingTop: '0.5rem',
-    paddingBottom: '1rem',
-    withFooter: {
-      paddingX: '1rem',
-      paddingY: '0.5rem',
-    },
+    paddingBottom: 0,
   },
   footer: {
     border: 'none',
-    padding: '1rem',
+    px: '1rem',
+    paddingTop: '1rem',
+    paddingBottom: 0,
     display: 'inline-flex',
     gap: '0.5rem',
     ' .chakra-button': {
       paddingY: '0.5rem',
     },
   },
-  closeButton: {
-    top: '1rem',
-    right: '1rem',
-    boxSize: '1rem',
-    ' button': {
-      boxSize: '1rem',
-    },
-    ' svg': {
-      boxSize: '1rem',
-    },
-  },
-};
+}
 
 export const Popover: ComponentMultiStyleConfig = {
   parts: [],
   baseStyle,
-  defaultProps: {
-    headerProps: {
-      showCloseButton: true,
-    },
-    showFooter: true,
-  },
 };

@@ -69,9 +69,7 @@ export const All = () => (
 );
 
 const Template = (args) => <PinInput {...args} />;
-
 export const Playground = Template.bind({});
-
 Playground.args = {
   variant: 'outline',
   size: 'l',

@@ -1,15 +1,12 @@
 import React, { FC } from 'react';
-import { PinInput as ChakraPinInput, PinInputField as ChakraPinInputField, PinInputFieldProps } from '@chakra-ui/react';
+import { PinInput as ChakraPinInput, PinInputField } from '@chakra-ui/react';
 import { PinInputProps, PinInputStaticMembers } from './types';
-import { Flex } from '@components';
+import { Flex, FlexProps } from '@components';
 
-const renderFieldsByNumOfDigits: (numOfDigits: number, pinInputFieldProps: PinInputFieldProps) => React.ReactNode[] = (
-  numOfDigits,
-  pinInputFieldProps
-) => {
+const renderFieldsByNumOfDigits: (numOfDigits: number) => React.ReactNode[] = (numOfDigits) => {
   const fields: React.ReactNode[] = [];
   for (let digit = 0; digit < numOfDigits; digit++) {
-    fields.push(<ChakraPinInputField key={digit} {...pinInputFieldProps} />);
+    fields.push(<PinInputField key={digit} />);
   }
   return fields;
 };
@@ -18,16 +15,18 @@ export const PinInput: FC<PinInputProps> & PinInputStaticMembers = ({
   children,
   numOfDigits = 4,
   placeholder = '0',
-  pinInputFieldProps,
   ...rest
 }) => {
   return (
-    <Flex justifyContent="center" columnGap="0.5rem">
-      <ChakraPinInput data-testid="cmpsr.pin-input" placeholder={placeholder} {...rest}>
-        {children || renderFieldsByNumOfDigits(numOfDigits, pinInputFieldProps)}
+    <PinInput.Container>
+      <ChakraPinInput placeholder={placeholder} {...rest}>
+        {children || renderFieldsByNumOfDigits(numOfDigits)}
       </ChakraPinInput>
-    </Flex>
+    </PinInput.Container>
   );
 };
 
-PinInput.Field = ChakraPinInputField;
+const PinInputContainer = (props: FlexProps) => <Flex columnGap="0.5rem" {...props} />;
+
+PinInput.Field = PinInputField;
+PinInput.Container = PinInputContainer;

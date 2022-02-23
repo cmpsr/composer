@@ -1,5 +1,16 @@
 # @cmpsr/components
 
+## 1.15.0
+
+### Minor Changes
+
+- 75d4ae6: Implement Toast component, tests and stories
+- 9f4d6f8: Implementation of the tooltip component with tests and stories
+
+### Patch Changes
+
+- f96b916: fix select component styles
+
 ## 1.14.0
 
 ### Minor Changes

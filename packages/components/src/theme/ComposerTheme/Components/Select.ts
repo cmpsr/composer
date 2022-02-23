@@ -1,25 +1,41 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { PartsStyleFunction, PartsStyleInterpolation } from '@chakra-ui/theme-tools';
 import { selectAnatomy as parts } from '@chakra-ui/anatomy';
-import { inputStyles } from '../styles';
-
-const iconSpacing = { paddingInlineEnd: '2rem' };
 
 const sizes: Record<string, PartsStyleInterpolation> = {
   l: ({ theme }) => ({
-    field: { ...iconSpacing, ...inputStyles.large, ...theme.textStyles['text-body-regular'] },
+    field: {
+      pl: '1rem',
+      pr: '3rem',
+      py: '0.75rem',
+      height: '3rem',
+      ...theme.textStyles['text-body-regular'],
+    },
+    icon: {
+      right: '1rem',
+    },
   }),
   m: ({ theme }) => ({
-    field: { ...iconSpacing, ...inputStyles.medium, ...theme.textStyles['text-body-regular'] },
+    field: {
+      py: '0.5rem',
+      height: '2.5rem',
+      ...theme.textStyles['text-body-regular'],
+    },
   }),
   s: ({ theme }) => ({
-    field: { ...iconSpacing, ...inputStyles.small, ...theme.textStyles['text-body-meta-regular'] },
+    field: {
+      py: '0.375rem',
+      height: '2rem',
+      ...theme.textStyles['text-body-meta-regular'],
+    },
   }),
 };
 
 const baseStyle: PartsStyleFunction<typeof parts> = ({ theme, iconSize }) => {
   return {
     icon: {
+      boxSize: '1.25rem',
+      right: '0.75rem',
       '> svg': {
         // Icons are styled with inline style, which has highest priority, so !important is required to be able to override them.
         boxSize: `${theme.components.Icon.sizes[iconSize].boxSize} !important`,
@@ -37,6 +53,9 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ theme, iconSize }) => {
       boxShadow: 'none',
       color: 'text-primary',
       placeholderColor: 'text-secondary',
+      borderRadius: '0.375rem',
+      pl: '0.75rem',
+      pr: '2.75rem',
       _hover: {
         backgroundColor: 'background-action-hover',
         borderWidth: '0.063rem',

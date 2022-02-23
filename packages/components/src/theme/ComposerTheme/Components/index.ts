@@ -1,32 +1,33 @@
 import { Accordion } from './Accordion';
+import { Alert } from './Alert';
 import { Avatar, AvatarBadge } from './Avatar';
 import { Badge } from './Badge';
 import { Breadcrumb } from './Breadcrumb';
-import { Alert } from './Alert';
 import { Button } from './Button';
 import { Card } from './Card';
 import { Checkbox } from './Checkbox';
+import { CloseButton } from './CloseButton';
 import { Divider } from './Divider';
 import { Icon } from './Icon';
+import { IconButton } from './IconButton';
 import { Input } from './Input';
-import { Select } from './Select';
 import { Link } from './Link';
 import { Modal } from './Modal';
+import { PinInput } from './PinInput';
 import { ProgressBar } from './ProgressBar';
 import { ProgressCircular } from './ProgressCircular';
+import { Popover } from './Popover';
+import { Radio } from './Radio';
+import { Select } from './Select';
 import { Slider } from './Slider';
 import { Spinner } from './Spinner';
 import { Switch } from './Switch';
+import { Symbols } from './Symbols';
 import { Tabs } from './Tabs';
 import { Tag } from './Tag';
 import { Text } from './Text';
 import { TextPairing } from './TextPairing';
 import { Tooltip } from './Tooltip';
-import { Radio } from './Radio';
-import { CloseButton } from './CloseButton';
-import { Symbols } from './Symbols';
-import { IconButton } from './IconButton';
-import { Popover } from './Popover';
 
 export const components = {
   Accordion,
@@ -46,11 +47,11 @@ export const components = {
   Kbd: Symbols,
   Link,
   Modal,
-  ProgressCircular,
+  PinInput,
   Progress: ProgressBar,
-  Popover,
-  Select,
+  ProgressCircular,
   Radio,
+  Select,
   Slider,
   Spinner,
   Switch,

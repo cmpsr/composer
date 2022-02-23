@@ -7,22 +7,21 @@ import { Box, Text } from '@components';
 export default {
   component: Card,
   title: 'Components/Primitives/Card',
-  args: {
-    children: (
-      <Box>
-        {Array(6)
-          .fill("I'm a Card")
-          .map((v, i) => (
-            <Text variant="text-body-large-medium" key={i}>
-              {v}
-            </Text>
-          ))}
-      </Box>
-    ),
-  },
 } as Meta;
 
-const Template = (args: CardProps) => <Card {...args} />;
+const Template = (args: CardProps) => (
+  <Card {...args}>
+    <Box>
+      {Array(6)
+        .fill("I'm a Card")
+        .map((v, i) => (
+          <Text variant="text-body-large-medium" key={i}>
+            {v}
+          </Text>
+        ))}
+    </Box>
+  </Card>
+);
 
 export const WithOutlined = Template.bind({});
 WithOutlined.args = { outlined: true };

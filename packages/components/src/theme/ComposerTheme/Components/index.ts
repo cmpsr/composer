@@ -50,6 +50,7 @@ export const components = {
   PinInput,
   Progress: ProgressBar,
   ProgressCircular,
+  Popover,
   Radio,
   Select,
   Slider,

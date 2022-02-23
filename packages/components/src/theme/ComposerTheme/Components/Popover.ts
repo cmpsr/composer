@@ -1,7 +1,4 @@
-import { ComponentMultiStyleConfig, cssVar } from '@chakra-ui/react';
-
-const $arrowBg = cssVar('popper-arrow-bg');
-const $backgroundCardColor = cssVar('chakra-colors-background-card');
+import { ComponentMultiStyleConfig } from '@chakra-ui/react';
 
 const baseStyle = {
   popper: {
@@ -10,7 +7,7 @@ const baseStyle = {
   content: {
     boxShadow: 'elevation-default',
     borderRadius: 'radii-popover',
-    [$arrowBg.variable]: $backgroundCardColor.reference,
+    background: 'background-card',
     border: 'none',
     py: '1rem',
     _focus: {
@@ -36,9 +33,6 @@ const baseStyle = {
     paddingBottom: 0,
     display: 'inline-flex',
     gap: '0.5rem',
-    ' .chakra-button': {
-      paddingY: '0.5rem',
-    },
   },
 };
 

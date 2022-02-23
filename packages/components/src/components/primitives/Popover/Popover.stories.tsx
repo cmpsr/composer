@@ -23,7 +23,12 @@ const AllTemplate = ({ positioning, children }) => (
       <Popover.Arrow />
       <Popover.CloseButton />
       <Popover.Header>
-        <TextPairing label="Header" subLabel="Subtitle" subLabelColor="text-secondary" />
+        <TextPairing
+          label="Header"
+          labelColor="text-primary"
+          subLabel="Subtitle"
+          labelColorsubLabelColor="text-secondary"
+        />
       </Popover.Header>
       <Popover.Body>
         <Text variant="text-body-regular">Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap</Text>
@@ -83,7 +88,7 @@ const PlaygroundTemplate = ({ positioning, showCloseButton, showFooter }) => (
         <Popover.Arrow />
         {showCloseButton && <Popover.CloseButton />}
         <Popover.Header>
-          <TextPairing label="Header" subLabel="Subtitle" subLabelColor="text-secondary" />
+          <TextPairing label="Header" labelColor="text-primary" subLabel="Subtitle" subLabelColor="text-secondary" />
         </Popover.Header>
         <Popover.Body>
           <Text variant="text-body-regular">Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap Swap</Text>

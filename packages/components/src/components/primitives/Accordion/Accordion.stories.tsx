@@ -21,14 +21,15 @@ const AccordionPanel = () =>
 const AcordionItem = ({ highlight = false, showMediaItem = true, showTextPairing = true, index }) => (
   <Accordion.Item>
     <Accordion.Button highlight={highlight}>
-      <Flex flex="1" textAlign="left" alignItems="center">
-        {showMediaItem && <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr={2} />}
+      <Flex flex="1" textAlign="left" alignItems="center" mr="1.063rem">
+        {showMediaItem && <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr="1.25rem" />}
         {showTextPairing ? (
           <TextPairing
             label={`Section ${index} title`}
+            labelColor="text-primary"
             subLabel="Description"
             subLabelColor="text-secondary"
-            variant="textpairing-body-medium"
+            variant="textpairing-body-medium-meta"
           />
         ) : (
           <Box flex="1" textAlign="left">

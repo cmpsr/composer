@@ -1,18 +1,31 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
+import { orient } from '@chakra-ui/theme-tools';
 
-const sharedSizeStyle = {
-  thumb: { w: '1rem', h: '1rem' },
-};
+const sharedSizeStyle = (props) => ({
+  thumb: {
+    w: '1rem',
+    h: '1rem',
+  },
+  track: orient({
+    orientation: props.orientation,
+    horizontal: { h: '0.375rem' },
+    vertical: { w: '0.375rem' },
+  }),
+});
 
 export const Slider: ComponentStyleConfig = {
   baseStyle: {
-    bg: 'primary-default',
-    sliderBg: 'background-action-active',
-    thumb: {
-      backgroundColor: 'background-action-default',
+    track: {
+      bg: 'background-action-active',
     },
-    _focus: {
-      boxShadow: `0 0 0 0.1875rem var(--chakra-colors-primary-focus)`,
+    filledTrack: {
+      bg: 'primary-default',
+    },
+    thumb: {
+      bg: 'background-action-default',
+      _focus: {
+        boxShadow: `0 0 0 0.188rem var(--chakra-colors-primary-focus)`,
+      },
     },
   },
   sizes: {

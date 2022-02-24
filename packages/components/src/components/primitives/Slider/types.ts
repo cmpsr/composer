@@ -1,13 +1,17 @@
+import { FC } from 'react';
 import {
   SliderProps as ChakraSliderProps,
-  SliderTrackProps as ChakraSliderTrackProps,
-  SliderThumbProps as ChakraSliderTumbProps,
-  BoxProps,
+  SliderTrackProps,
+  SliderInnerTrackProps,
+  SliderThumbProps,
+  SliderMarkProps,
 } from '@chakra-ui/react';
 
-// SliderFilledTrack props matches with Box props
-export interface SliderProps extends ChakraSliderProps {
-  filledTrackProps?: BoxProps;
-  trackProps?: ChakraSliderTrackProps;
-  thumbProps?: ChakraSliderTumbProps;
+export type SliderProps = Omit<ChakraSliderProps, 'size'>;
+
+export interface SliderStaticMembers {
+  Track: FC<SliderTrackProps>;
+  FilledTrack: FC<SliderInnerTrackProps>;
+  Thumb: FC<SliderThumbProps>;
+  Mark: FC<SliderMarkProps>;
 }

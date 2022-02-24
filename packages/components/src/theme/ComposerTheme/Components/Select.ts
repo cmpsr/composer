@@ -5,9 +5,11 @@ import { selectAnatomy as parts } from '@chakra-ui/anatomy';
 const sizes: Record<string, PartsStyleInterpolation> = {
   l: ({ theme }) => ({
     field: {
+      // pl: '1rem',
+      // pr: '3rem',
+      py: '0.75rem',
       pl: '1rem',
       pr: '3rem',
-      py: '0.75rem',
       height: '3rem',
       ...theme.textStyles['text-body-regular'],
     },
@@ -18,6 +20,8 @@ const sizes: Record<string, PartsStyleInterpolation> = {
   m: ({ theme }) => ({
     field: {
       py: '0.5rem',
+      pl: '0.75rem',
+      pr: '2.75rem',
       height: '2.5rem',
       ...theme.textStyles['text-body-regular'],
     },
@@ -25,6 +29,8 @@ const sizes: Record<string, PartsStyleInterpolation> = {
   s: ({ theme }) => ({
     field: {
       py: '0.375rem',
+      pl: '0.75rem',
+      pr: '2.75rem',
       height: '2rem',
       ...theme.textStyles['text-body-meta-regular'],
     },
@@ -54,8 +60,8 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ theme, iconSize }) => {
       color: 'text-primary',
       placeholderColor: 'text-secondary',
       borderRadius: '0.375rem',
-      pl: '0.75rem',
-      pr: '2.75rem',
+      // pl: '1rem',
+      // pr: '3rem',
       _hover: {
         backgroundColor: 'background-action-hover',
         borderWidth: '0.0625rem',
@@ -71,6 +77,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ theme, iconSize }) => {
         borderWidth: '0.0625rem',
         borderColor: 'ui-element-outline-disabled',
         disabledPlaceHolderColor: 'text-disabled',
+        opacity: 1,
       },
       _invalid: {
         borderColor: 'transparent',
@@ -90,5 +97,37 @@ export const Select: ComponentStyleConfig = {
   sizes,
   variants: {
     outline: baseStyle,
+    flushed: {
+      field: {
+        bg: 'background-action-default',
+        border: 'none',
+        borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-default)',
+        paddingInlineStart: '0.75rem',
+        paddingInlineEnd: '2.5rem',
+        // pl: '0.75rem',
+        // pr: '2.5rem',
+        _hover: {
+          bg: 'background-action-hover',
+          borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
+        },
+        _focus: {
+          border: 'none',
+          borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-default)',
+          bg: 'background-action-default',
+          boxShadow: '0 0.188rem 0 0 var(--chakra-colors-primary-focus)',
+        },
+        _disabled: {
+          backgroundColor: 'background-action-disabled',
+          borderWidth: '0.063rem',
+          borderColor: 'ui-element-outline-disabled',
+          disabledPlaceHolderColor: 'text-disabled',
+          opacity: 1,
+        },
+        _invalid: {
+          border: 'none',
+          boxShadow: '0 0.125rem 0 0 var(--chakra-colors-alert-error-default)',
+        },
+      }
+    }
   },
 };

@@ -14,7 +14,7 @@ export const Select: FC<SelectProps> = ({ value, placeholder, ...props }) => {
     field: { color: string; placeholderColor: string; _disabled: { disabledPlaceHolderColor: string } };
   };
 
-  let textColor = color;
+  let textColor = props?.isDisabled ? disabledPlaceHolderColor : color;
 
   if (placeholder && (!value || value === '')) {
     textColor = props?.isDisabled ? disabledPlaceHolderColor : placeholderColor;
@@ -26,6 +26,7 @@ export const Select: FC<SelectProps> = ({ value, placeholder, ...props }) => {
       textColor={textColor}
       placeholder={placeholder}
       icon={<IconChevronDown />}
+      value={value}
       {...props}
     />
   );

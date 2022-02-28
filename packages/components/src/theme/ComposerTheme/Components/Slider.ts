@@ -24,7 +24,7 @@ export const Slider: ComponentStyleConfig = {
     thumb: {
       bg: 'background-action-default',
       _focus: {
-        boxShadow: `0 0 0 0.188rem var(--chakra-colors-primary-focus)`,
+        boxShadow: `0 0 0 0.1875rem var(--chakra-colors-primary-focus)`,
       },
     },
   },

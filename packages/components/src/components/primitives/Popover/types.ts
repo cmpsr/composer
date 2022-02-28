@@ -8,7 +8,7 @@ import {
   PopoverCloseButtonProps,
 } from '@chakra-ui/react';
 
-export { PopoverProps } from '@chakra-ui/react'
+export { PopoverProps } from '@chakra-ui/react';
 
 export interface PopoverStaticMembers {
   Trigger: FC;

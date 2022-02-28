@@ -53,25 +53,27 @@ const PopoverTemplate = ({ positioning, showCloseButton = true, showFooter = tru
 );
 
 export const All = () => (
-  <Stack py="15rem" px="40rem" spacing={4}>
-    <HStack justifyContent="center">
-      <PopoverTemplate positioning="top">
-        <Button>Click me - Top</Button>
-      </PopoverTemplate>
-    </HStack>
-    <HStack justifyContent="space-between">
-      <PopoverTemplate positioning="left">
-        <Button>Click me - Left</Button>
-      </PopoverTemplate>
-      <PopoverTemplate positioning="right">
-        <Button>Click me - Right</Button>
-      </PopoverTemplate>
-    </HStack>
-    <HStack justifyContent="center">
-      <PopoverTemplate positioning="bottom">
-        <Button>Click me - Bottom</Button>
-      </PopoverTemplate>
-    </HStack>
+  <Stack py="15rem" alignItems="center">
+    <Stack width="50%">
+      <HStack justifyContent="center">
+        <PopoverTemplate positioning="top">
+          <Button>Click me - Top</Button>
+        </PopoverTemplate>
+      </HStack>
+      <HStack justifyContent="space-between">
+        <PopoverTemplate positioning="left">
+          <Button>Click me - Left</Button>
+        </PopoverTemplate>
+        <PopoverTemplate positioning="right">
+          <Button>Click me - Right</Button>
+        </PopoverTemplate>
+      </HStack>
+      <HStack justifyContent="center">
+        <PopoverTemplate positioning="bottom">
+          <Button>Click me - Bottom</Button>
+        </PopoverTemplate>
+      </HStack>
+    </Stack>
   </Stack>
 );
 

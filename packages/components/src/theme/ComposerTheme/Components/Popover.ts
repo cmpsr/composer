@@ -1,4 +1,5 @@
 import { ComponentMultiStyleConfig } from '@chakra-ui/react';
+// import { popoverAnatomy as parts } from "@chakra-ui/anatomy"
 
 const baseStyle = {
   popper: {
@@ -33,6 +34,10 @@ const baseStyle = {
     paddingBottom: 0,
     display: 'inline-flex',
     gap: '0.5rem',
+  },
+  arrow: {
+    // Arrow is styled by inline styles, !important is required to override them.
+    background: 'var(--chakra-colors-background-card) !important',
   },
 };
 

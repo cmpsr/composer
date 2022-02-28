@@ -24,7 +24,7 @@ const variantOutline: SystemStyleObject = {
   },
   _focus: {
     bg: 'background-action-hover',
-    borderWidth: '0.188rem',
+    borderWidth: '0.1875rem',
     borderColor: 'primary-focus',
     boxShadow: 'none',
   },
@@ -46,12 +46,12 @@ const variantFlushed: SystemStyleObject = {
   },
   _focus: {
     borderColor: 'ui-element-outline-default',
-    boxShadow: `0 0.188rem 0 0 var(--chakra-colors-primary-focus)`,
+    boxShadow: `0 0.1875rem 0 0 var(--chakra-colors-primary-focus)`,
   },
   _disabled: {
     bg: 'background-action-disabled',
     cursor: 'not-allowed',
-    borderBottom: 'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
+    borderBottom: 'solid 0.0625 var(--chakra-colors-ui-element-outline-disabled)',
     color: 'text-secondary',
     _placeholder: {
       color: 'text-disabled',

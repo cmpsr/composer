@@ -5,7 +5,7 @@ const baseStyle = {
   container: {
     bg: 'background-container-default',
     color: 'text-secondary',
-    border: '0.063rem solid var(--chakra-colors-ui-element-outline-default)',
+    border: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
     borderRadius: '0.375rem',
   },
   label: {
@@ -41,7 +41,7 @@ export const Tag: ComponentStyleConfig = {
     }),
     m: ({ theme }) => ({
       container: {
-        padding: '0.063rem 0.5rem',
+        padding: '0.0625rem 0.5rem',
       },
       label: {
         ...theme.textStyles['text-body-meta-medium'],

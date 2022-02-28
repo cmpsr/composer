@@ -49,7 +49,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ theme, iconSize }) => {
     field: {
       backgroundColor: 'background-action-default',
       // Using borderColor will not override the border-color set in the theme, as the border property has higher priority
-      border: '0.063rem solid var(--chakra-colors-ui-element-outline-default)',
+      border: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
       boxShadow: 'none',
       color: 'text-primary',
       placeholderColor: 'text-secondary',
@@ -58,17 +58,17 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ theme, iconSize }) => {
       pr: '2.75rem',
       _hover: {
         backgroundColor: 'background-action-hover',
-        borderWidth: '0.063rem',
+        borderWidth: '0.0625rem',
         borderColor: 'ui-element-outline-active',
       },
       _focus: {
         backgroundColor: 'background-action-hover',
         borderColor: 'ui-element-outline-default',
-        boxShadow: '0 0 0 0.188rem var(--chakra-colors-primary-focus)',
+        boxShadow: '0 0 0 0.1875rem var(--chakra-colors-primary-focus)',
       },
       _disabled: {
         backgroundColor: 'background-action-disabled',
-        borderWidth: '0.063rem',
+        borderWidth: '0.0625rem',
         borderColor: 'ui-element-outline-disabled',
         disabledPlaceHolderColor: 'text-disabled',
       },

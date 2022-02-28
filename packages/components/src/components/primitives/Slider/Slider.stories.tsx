@@ -4,12 +4,14 @@ import { VStack, StackDivider, HStack } from '@chakra-ui/layout';
 import { Text } from '@components';
 import { Slider } from './Slider';
 
+const orientations = ['horizontal', 'vertical'];
+
 export default {
   component: Slider,
   title: 'Components/Primitives/Slider',
   argTypes: {
     orientation: {
-      options: ['vertical', 'horizontal'],
+      options: orientations,
       control: { type: 'select' },
     },
   },
@@ -25,7 +27,6 @@ const SliderTemplate = (props) => (
 );
 
 const values = [0, 20, 40, 60, 80, 100, 60, 60];
-const orientations = ['horizontal', 'vertical'];
 const size = {
   horizontal: { minW: '25rem' },
   vertical: { minH: '20rem' },

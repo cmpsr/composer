@@ -70,11 +70,11 @@ export const labelStyles = {
       disabled: {
         color: 'text-disabled',
         borderColor: 'ui-element-outline-disabled',
-        border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
+        border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-disabled)',
       },
       hovered: {
         borderColor: 'ui-element-outline-active',
-        border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-active)',
+        border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-active)',
       },
     },
     flushed: {
@@ -93,7 +93,7 @@ export const inputGroupStyles = {
       borderColor: 'transparent',
     },
     focused: {
-      boxShadow: '0 0 0 0.188rem var(--chakra-colors-primary-focus)',
+      boxShadow: '0 0 0 0.1875rem var(--chakra-colors-primary-focus)',
     },
   },
   flushed: {
@@ -104,7 +104,7 @@ export const inputGroupStyles = {
       borderRadius: 0,
     },
     focused: {
-      boxShadow: '0 0.188rem 0 0 var(--chakra-colors-primary-focus)',
+      boxShadow: '0 0.1875rem 0 0 var(--chakra-colors-primary-focus)',
       borderRadius: 0,
     },
     hovered: {},
@@ -237,19 +237,19 @@ const outlineStyle = (props) => {
       borderRadius: '0.375rem',
       color: 'text-primary',
       backgroundColor: 'background-action-default',
-      border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-default)',
+      border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-default)',
       _placeholder: {
         color: 'text-secondary',
         textStyle: 'text-body-regular',
       },
       _hover: {
         backgroundColor: 'background-action-hover',
-        border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-active)',
+        border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-active)',
       },
       // We need to remove the focus state from the chakra input so we can add the border shadow to the full input group.
       _focus: {
         boxShadow: 'none',
-        border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-default)',
+        border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-default)',
         borderColor: 'ui-element-outline-default',
       },
       _invalid: {
@@ -263,7 +263,7 @@ const outlineStyle = (props) => {
         },
         color: 'text-secondary',
         backgroundColor: 'background-action-disabled',
-        border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
+        border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-disabled)',
       },
     },
   };
@@ -307,13 +307,13 @@ export const flushedStyle = (props) => {
       _hover: {
         backgroundColor: 'background-action-hover',
         border: 'none',
-        borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
+        borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-active)',
       },
       // We need to remove the focus state from the chakra input so we can add the border shadow to the full input group.
       _focus: {
         boxShadow: 'none',
         border: 'none',
-        borderBottom: 'solid 0.063rem var(--chakra-colors-ui-element-outline-default)',
+        borderBottom: 'solid 0.0625 var(--chakra-colors-ui-element-outline-default)',
         borderColor: 'ui-element-outline-default',
       },
       _invalid: {
@@ -327,7 +327,7 @@ export const flushedStyle = (props) => {
         },
         color: 'text-secondary',
         backgroundColor: 'background-action-disabled',
-        border: 'solid 0.063rem var(--chakra-colors-ui-element-outline-disabled)',
+        border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-disabled)',
       },
     },
   };

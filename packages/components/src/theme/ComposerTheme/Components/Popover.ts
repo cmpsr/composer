@@ -1,5 +1,4 @@
 import { ComponentMultiStyleConfig } from '@chakra-ui/react';
-// import { popoverAnatomy as parts } from "@chakra-ui/anatomy"
 
 const baseStyle = {
   popper: {

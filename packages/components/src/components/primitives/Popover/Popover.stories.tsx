@@ -3,21 +3,20 @@ import { Meta } from '@storybook/react';
 import { Stack, HStack, VStack } from '@chakra-ui/layout';
 import { Button, TextPairing, Text } from '@components';
 import { Popover } from './Popover';
-import { popoverPositionings } from './types';
 
 export default {
   component: Popover,
   title: 'Components/Primitives/Popover',
   argTypes: {
-    positioning: {
-      options: popoverPositionings,
+    placement: {
+      options: ['bottom', 'top', 'left', 'right'],
       control: { type: 'select' },
     },
   },
 } as Meta;
 
-const PopoverTemplate = ({ positioning, showCloseButton = true, showFooter = true, children, ...rest }) => (
-  <Popover placement={positioning} {...rest}>
+const PopoverTemplate = ({ showCloseButton = true, showFooter = true, children, ...rest }) => (
+  <Popover {...rest}>
     <Popover.Trigger>{children}</Popover.Trigger>
     <Popover.Content>
       <Popover.Arrow />
@@ -56,20 +55,20 @@ export const All = () => (
   <Stack py="15rem" alignItems="center">
     <Stack width="50%">
       <HStack justifyContent="center">
-        <PopoverTemplate positioning="top">
+        <PopoverTemplate placement="top">
           <Button>Click me - Top</Button>
         </PopoverTemplate>
       </HStack>
       <HStack justifyContent="space-between">
-        <PopoverTemplate positioning="left">
+        <PopoverTemplate placement="left">
           <Button>Click me - Left</Button>
         </PopoverTemplate>
-        <PopoverTemplate positioning="right">
+        <PopoverTemplate placement="right">
           <Button>Click me - Right</Button>
         </PopoverTemplate>
       </HStack>
       <HStack justifyContent="center">
-        <PopoverTemplate positioning="bottom">
+        <PopoverTemplate placement="bottom">
           <Button>Click me - Bottom</Button>
         </PopoverTemplate>
       </HStack>
@@ -88,7 +87,7 @@ const PlaygroundTemplate = (props) => (
 export const Playground = PlaygroundTemplate.bind({});
 
 Playground.args = {
-  positioning: 'bottom',
+  placement: 'bottom',
   showCloseButton: true,
   showFooter: true,
 };

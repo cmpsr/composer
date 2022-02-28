@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import {
-  PopoverProps as ChakraPopoverProps,
   PopoverHeaderProps,
   PopoverFooterProps,
   PopoverContentProps,
@@ -9,13 +8,7 @@ import {
   PopoverCloseButtonProps,
 } from '@chakra-ui/react';
 
-export const popoverPositionings = ['bottom', 'top', 'left', 'right'] as const;
-
-export type PopoverPositioning = typeof popoverPositionings[number];
-
-export interface PopoverProps extends Omit<ChakraPopoverProps, 'headerProps' | 'footerProps'> {
-  positioning?: PopoverPositioning;
-}
+export { PopoverProps } from '@chakra-ui/react'
 
 export interface PopoverStaticMembers {
   Trigger: FC;

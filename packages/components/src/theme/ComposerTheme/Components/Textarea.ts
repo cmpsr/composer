@@ -1,4 +1,5 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
+import { SystemStyleFunction } from '@chakra-ui/theme-tools';
 import { inputStyles } from '../styles';
 
 const textStyles = {
@@ -8,9 +9,16 @@ const textStyles = {
 };
 
 const spacing = {
-  large: { px: '1rem' },
-  small: { padding: '0.75rem' },
-  medium: { padding: '0.75rem' },
+  l: {
+    py: '0.75rem',
+    px: '1rem',
+  },
+  m: {
+    padding: '0.75rem',
+  },
+  s: {
+    padding: '0.75rem',
+  },
 };
 
 const generateSize = (size: string) => {
@@ -53,10 +61,24 @@ const baseStyle = {
   },
 };
 
-const flushed = {
+const flushedInlinePadding = {
+  l: {
+    paddingInlineStart: '1rem',
+    paddingInlineEnd: '1rem',
+  },
+  m: {
+    paddingInlineStart: '0.75rem',
+    paddingInlineEnd: '0.75rem',
+  },
+  s: {
+    paddingInlineStart: '0.75rem',
+    paddingInlineEnd: '0.75rem',
+  },
+};
+
+const generateFlushed: SystemStyleFunction = ({ size }) => ({
   bg: 'background-action-default',
-  paddingInlineStart: '0.75rem',
-  paddingInlineEnd: '0.75rem',
+  ...flushedInlinePadding[size],
   borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-active)',
   _hover: {
     bg: 'background-action-hover',
@@ -75,13 +97,13 @@ const flushed = {
   _disabled: {
     color: 'text-secondary',
   },
-};
+});
 
 export const Textarea: ComponentStyleConfig = {
   baseStyle,
   variants: {
-    outline: baseStyle,
-    flushed,
+    outline: {},
+    flushed: generateFlushed,
   },
   sizes: {
     s: generateSize('s'),

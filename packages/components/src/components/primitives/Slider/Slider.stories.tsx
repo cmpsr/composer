@@ -25,7 +25,7 @@ const SliderTemplate = (props) => (
 );
 
 const values = [0, 20, 40, 60, 80, 100, 60, 60];
-const sliderOrientations = ['horizontal', 'vertical'];
+const orientations = ['horizontal', 'vertical'];
 const size = {
   horizontal: { minW: '25rem' },
   vertical: { minH: '20rem' },
@@ -34,7 +34,7 @@ const size = {
 export const All = () => {
   return (
     <HStack divider={<StackDivider />} justify="space-around">
-      {sliderOrientations.map((orientation) => {
+      {orientations.map((orientation) => {
         const Container = orientation === 'horizontal' ? VStack : HStack;
 
         return (

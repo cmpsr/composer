@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { VStack, StackDivider, Stack, HStack } from '@chakra-ui/layout';
+import { VStack, StackDivider, HStack } from '@chakra-ui/layout';
+import { Text } from '@components';
 import { Slider } from './Slider';
 
 export default {
@@ -23,29 +24,33 @@ const SliderTemplate = (props) => (
   </Slider>
 );
 
-export const All = () => {
-  const values = [0, 20, 40, 60, 80, 100];
-  const sliderOrientations = ['horizontal', 'vertical'];
+const values = [0, 20, 40, 60, 80, 100, 60, 60];
+const sliderOrientations = ['horizontal', 'vertical'];
 
+export const All = () => {
   return (
-    <Stack divider={<StackDivider />} spacing="2rem">
+    <HStack divider={<StackDivider />} justify="space-around">
       {sliderOrientations.map((orientation) => {
         const Container = orientation === 'horizontal' ? VStack : HStack;
 
         return (
-          <Container key={orientation} justify="space-between" spacing="1.5rem">
-            {values.map((value) => (
-              <SliderTemplate
-                key={value}
-                value={value}
-                orientation={orientation}
-                minH={orientation === 'horizontal' ? 0 : 200}
-              />
-            ))}
-          </Container>
+          <VStack spacing="1rem">
+            <Text>{orientation}</Text>
+            <Container key={orientation} spacing="1.5rem">
+              {values.map((value) => (
+                <SliderTemplate
+                  key={value}
+                  value={value}
+                  orientation={orientation}
+                  minH={orientation === 'horizontal' ? 0 : '20rem'}
+                  minW={orientation === 'horizontal' ? '25rem' : 0}
+                />
+              ))}
+            </Container>
+          </VStack>
         );
       })}
-    </Stack>
+    </HStack>
   );
 };
 

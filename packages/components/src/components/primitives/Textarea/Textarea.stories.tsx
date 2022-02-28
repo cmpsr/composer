@@ -71,5 +71,5 @@ Playground.args = {
   variant: 'outline',
   isInvalid: false,
   isDisabled: false,
-  placeholder: '',
+  placeholder: 'Placeholder',
 };

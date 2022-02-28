@@ -2,9 +2,9 @@ import { ComponentStyleConfig } from '@chakra-ui/react';
 import { inputStyles } from '../styles';
 
 const textStyles = {
-  large: 'text-body-regular',
-  medium: 'text-body-regular',
-  small: 'text-body-meta-regular',
+  l: 'text-body-regular',
+  m: 'text-body-regular',
+  s: 'text-body-meta-regular',
 };
 
 const spacing = {
@@ -13,7 +13,7 @@ const spacing = {
   medium: { padding: '0.75rem' },
 };
 
-const calculateSize = (size: string) => {
+const generateSize = (size: string) => {
   return ({ theme }) => ({
     ...inputStyles[size],
     ...theme.textStyles[textStyles[size]],
@@ -30,7 +30,7 @@ const baseStyle = {
   },
   _hover: {
     bg: 'background-action-hover',
-    borderWidth: '0.063rem',
+    borderWidth: '0.0625rem',
     borderColor: 'ui-element-outline-active',
   },
   _disabled: {
@@ -45,7 +45,7 @@ const baseStyle = {
   _focus: {
     bg: 'background-action-default',
     borderColor: 'ui-element-outline-default',
-    boxShadow: '0 0 0 0.188rem var(--chakra-colors-primary-focus)',
+    boxShadow: '0 0 0 0.1875rem var(--chakra-colors-primary-focus)',
   },
   _invalid: {
     border: 'none',
@@ -55,19 +55,21 @@ const baseStyle = {
 
 const flushed = {
   bg: 'background-action-default',
-  borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
+  paddingInlineStart: '0.75rem',
+  paddingInlineEnd: '0.75rem',
+  borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-active)',
   _hover: {
     bg: 'background-action-hover',
     border: 'none',
-    borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
+    borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-active)',
   },
   _focus: {
-    borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
+    borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-active)',
     bg: 'background-action-default',
-    boxShadow: '0 0.188rem 0 0 var(--chakra-colors-primary-focus)',
+    boxShadow: '0 0.1875rem 0 0 var(--chakra-colors-primary-focus)',
   },
   _invalid: {
-    borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
+    borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-active)',
     boxShadow: '0 0.125rem 0 0 var(--chakra-colors-alert-error-default)',
   },
   _disabled: {
@@ -82,12 +84,12 @@ export const Textarea: ComponentStyleConfig = {
     flushed,
   },
   sizes: {
-    s: calculateSize('small'),
-    m: calculateSize('medium'),
-    l: calculateSize('large'),
+    s: generateSize('s'),
+    m: generateSize('m'),
+    l: generateSize('l'),
   },
   defaultProps: {
-    size: 's',
+    size: 'm',
     variant: 'outline',
   },
 };

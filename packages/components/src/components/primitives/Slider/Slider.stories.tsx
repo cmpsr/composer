@@ -26,6 +26,10 @@ const SliderTemplate = (props) => (
 
 const values = [0, 20, 40, 60, 80, 100, 60, 60];
 const sliderOrientations = ['horizontal', 'vertical'];
+const size = {
+  horizontal: { minW: '25rem' },
+  vertical: { minH: '20rem' },
+};
 
 export const All = () => {
   return (
@@ -34,17 +38,11 @@ export const All = () => {
         const Container = orientation === 'horizontal' ? VStack : HStack;
 
         return (
-          <VStack spacing="1rem">
+          <VStack key={orientation} spacing="1rem">
             <Text>{orientation}</Text>
-            <Container key={orientation} spacing="1.5rem">
+            <Container spacing="1.5rem">
               {values.map((value) => (
-                <SliderTemplate
-                  key={value}
-                  value={value}
-                  orientation={orientation}
-                  minH={orientation === 'horizontal' ? 0 : '20rem'}
-                  minW={orientation === 'horizontal' ? '25rem' : 0}
-                />
+                <SliderTemplate key={value} value={value} orientation={orientation} {...size[orientation]} />
               ))}
             </Container>
           </VStack>

@@ -5,8 +5,6 @@ import { selectAnatomy as parts } from '@chakra-ui/anatomy';
 const sizes: Record<string, PartsStyleInterpolation> = {
   l: ({ theme }) => ({
     field: {
-      // pl: '1rem',
-      // pr: '3rem',
       py: '0.75rem',
       pl: '1rem',
       pr: '3rem',
@@ -60,8 +58,6 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ theme, iconSize }) => {
       color: 'text-primary',
       placeholderColor: 'text-secondary',
       borderRadius: '0.375rem',
-      // pl: '1rem',
-      // pr: '3rem',
       _hover: {
         backgroundColor: 'background-action-hover',
         borderWidth: '0.0625rem',
@@ -87,25 +83,29 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ theme, iconSize }) => {
   };
 };
 
+const flushedSpacing = {
+  l: { paddingInlineStart: '1rem', pr: '2.75rem', pt: '0.625rem' },
+  m: { paddingInlineStart: '0.75rem', pr: '2.5rem', py: '0.5rem' },
+  s: { paddingInlineStart: '0.75rem', pr: '2.5rem', },
+}
+
 export const Select: ComponentStyleConfig = {
   baseStyle,
   defaultProps: {
     size: 'm',
     iconSize: 'm',
+    variant: 'outline',
     error: false,
   },
   sizes,
   variants: {
     outline: baseStyle,
-    flushed: {
+    flushed: ({ size }) => ({
       field: {
         bg: 'background-action-default',
         border: 'none',
         borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-default)',
-        paddingInlineStart: '0.75rem',
-        paddingInlineEnd: '2.5rem',
-        // pl: '0.75rem',
-        // pr: '2.5rem',
+        ...flushedSpacing[size],
         _hover: {
           bg: 'background-action-hover',
           borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
@@ -128,6 +128,6 @@ export const Select: ComponentStyleConfig = {
           boxShadow: '0 0.125rem 0 0 var(--chakra-colors-alert-error-default)',
         },
       }
-    }
+    })
   },
 };

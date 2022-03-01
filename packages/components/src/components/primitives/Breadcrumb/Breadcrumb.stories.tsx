@@ -39,7 +39,7 @@ export const All = () => {
     <VStack>
       <VStack alignItems="flex-start" spacing="3rem">
         {totalBreadcrumbs.map((item) => (
-          <Template numOfItems={item + 2} showLeadingIcon={item === 0} showTrailingIcon={item === 0} />
+          <Template key={item} numOfItems={item + 2} showLeadingIcon={item === 0} showTrailingIcon={item === 0} />
         ))}
       </VStack>
     </VStack>

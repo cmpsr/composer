@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { chakra, forwardRef, StyleProps, StylesProvider, useMultiStyleConfig, useStyles } from '@chakra-ui/react';
 import { getValidChildren } from '@chakra-ui/react-utils';
-import { Flex, IconChevronRight, Link, Text } from '@components';
+import { Flex, IconChevronRight, Link, Text, FlexProps } from '@components';
 import { BreadcrumbProps, BreadcrumbStaticMembers } from './types';
 
 const LastItem = forwardRef((props, ref) => {
@@ -45,7 +45,10 @@ const BreadcrumbItem = ({ isLastChild, separator, ...rest }) => {
 };
 
 export const Breadcrumb: FC<BreadcrumbProps> & BreadcrumbStaticMembers = ({ children, separator, ...rest }) => {
-  const styles = useMultiStyleConfig('Breadcrumb', {});
+  const styles = useMultiStyleConfig('Breadcrumb', {}) as {
+    container: FlexProps;
+  };
+
   const validChildren = getValidChildren(children);
   const count = validChildren.length;
 

@@ -2,46 +2,55 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Breadcrumb } from './Breadcrumb';
 import { IconCheck, IconWorld } from '..';
-import { IconChevronLeft } from '@components';
+import { VStack } from '@chakra-ui/react';
 
 export default {
   component: Breadcrumb,
   title: 'Components/Primitives/Breadcrumb',
   argTypes: {
     separator: {
-      options: ['icon', '/'],
+      options: ['default', '|', '/'],
       control: { type: 'select' },
     },
   },
 } as Meta;
 
-const Template = (args) => (
-  <>
-    <Breadcrumb {...args}>
-      <Breadcrumb.Item href="#" leadingIcon={IconWorld} trailingIcon={IconCheck}>
-        Composer
-      </Breadcrumb.Item>
-      <Breadcrumb.Item href="#">Really</Breadcrumb.Item>
-      <Breadcrumb.Item href="#">Rocks!</Breadcrumb.Item>
+const Template = ({ showLeadingIcon = false, showTrailingIcon = false, separator = null, numOfItems, ...rest }) => {
+  const items = Array.from(Array(numOfItems).keys());
+  return (
+    <Breadcrumb separator={separator !== 'default' ? separator : null} {...rest}>
+      {items.map((item) => (
+        <Breadcrumb.Item
+          key={item}
+          href="#"
+          leadingIcon={showLeadingIcon && IconWorld}
+          trailingIcon={showTrailingIcon && IconCheck}
+        >
+          {item === items.length - 1 ? 'Active Breadcrumb' : 'Default link'}
+        </Breadcrumb.Item>
+      ))}
     </Breadcrumb>
-    <Breadcrumb {...args} separator="/">
-      <Breadcrumb.Item href="#" leadingIcon={IconWorld} trailingIcon={IconCheck}>
-        Composer
-      </Breadcrumb.Item>
-      <Breadcrumb.Item href="#">Really</Breadcrumb.Item>
-      <Breadcrumb.Item href="#">Rocks!</Breadcrumb.Item>
-    </Breadcrumb>
-    <Breadcrumb {...args} separator={<IconChevronLeft />}>
-      <Breadcrumb.Item href="#" leadingIcon={IconWorld} trailingIcon={IconCheck}>
-        Composer
-      </Breadcrumb.Item>
-      <Breadcrumb.Item href="#">Really</Breadcrumb.Item>
-      <Breadcrumb.Item href="#">Rocks!</Breadcrumb.Item>
-    </Breadcrumb>
-  </>
-);
+  );
+};
+
+export const All = () => {
+  const totalBreadcrumbs = Array.from(Array(4).keys());
+  return (
+    <VStack>
+      <VStack alignItems="flex-start" spacing="3rem">
+        {totalBreadcrumbs.map((item) => (
+          <Template numOfItems={item + 2} showLeadingIcon={item === 0} showTrailingIcon={item === 0} />
+        ))}
+      </VStack>
+    </VStack>
+  );
+};
+
 export const Playground = Template.bind({});
 
 Playground.args = {
   separator: 'icon',
+  showLeadingIcon: false,
+  showTrailingIcon: false,
+  numOfItems: 3,
 };

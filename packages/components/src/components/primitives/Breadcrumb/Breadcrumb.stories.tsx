@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Breadcrumb } from './Breadcrumb';
 import { IconCheck, IconWorld } from '..';
+import { IconChevronLeft } from '@components';
 
 export default {
   component: Breadcrumb,
@@ -29,8 +30,43 @@ const items = [
     text: 'Rocks!',
   },
 ];
-const Template = ({ separator, items }) => (
-  <Breadcrumb items={items} separator={separator === '/' ? separator : null} />
+// const Template = ({ separator, items }) => (
+//   <Breadcrumb items={items} separator={separator === '/' ? separator : null} />
+// );
+
+const Template = ({ separator }) => (
+  <>
+    <Breadcrumb>
+      <Breadcrumb.Item href="#" leadingIcon={IconWorld} trailingIcon={IconCheck}>
+        Composer
+      </Breadcrumb.Item>
+      {/* <Breadcrumb.Separator /> */}
+      <Breadcrumb.Item href="#">Really</Breadcrumb.Item>
+      {/* <Breadcrumb.Separator icon="/" /> */}
+      <Breadcrumb.Item href="#">Rocks!</Breadcrumb.Item>
+      {/* <Breadcrumb.Separator icon={<IconChevronLeft />} /> */}
+    </Breadcrumb>
+    <Breadcrumb separator="/">
+      <Breadcrumb.Item href="#" leadingIcon={IconWorld} trailingIcon={IconCheck}>
+        Composer
+      </Breadcrumb.Item>
+      {/* <Breadcrumb.Separator /> */}
+      <Breadcrumb.Item href="#">Really</Breadcrumb.Item>
+      {/* <Breadcrumb.Separator icon="/" /> */}
+      <Breadcrumb.Item href="#">Rocks!</Breadcrumb.Item>
+      {/* <Breadcrumb.Separator icon={<IconChevronLeft />} /> */}
+    </Breadcrumb>
+    <Breadcrumb separator={<IconChevronLeft />}>
+      <Breadcrumb.Item href="#" leadingIcon={IconWorld} trailingIcon={IconCheck}>
+        Composer
+      </Breadcrumb.Item>
+      {/* <Breadcrumb.Separator /> */}
+      <Breadcrumb.Item href="#">Really</Breadcrumb.Item>
+      {/* <Breadcrumb.Separator icon="/" /> */}
+      <Breadcrumb.Item href="#">Rocks!</Breadcrumb.Item>
+      {/* <Breadcrumb.Separator icon={<IconChevronLeft />} /> */}
+    </Breadcrumb>
+  </>
 );
 export const Playground = Template.bind({});
 

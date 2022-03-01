@@ -6,15 +6,16 @@ export const Breadcrumb: ComponentStyleConfig = {
     container: {
       columnGap: '0.5rem',
       alignItems: 'center',
+      display: 'flex'
     },
     separator: {
       ...theme.textStyles['text-body-medium'],
-      color: 'text-primary',
-    },
-    separatorIcon: {
-      size: 'm',
       color: 'text-secondary',
     },
+    // separatorIcon: {
+    //   size: 'm',
+    //   color: 'text-secondary',
+    // },
     lastItem: {
       ...theme.textStyles['text-body-medium'],
       color: 'text-secondary',

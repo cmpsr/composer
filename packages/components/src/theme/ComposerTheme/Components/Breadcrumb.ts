@@ -3,7 +3,7 @@ import { ComponentStyleConfig } from '@chakra-ui/react';
 const secondaryText = (theme) => ({
   ...theme.textStyles['text-body-medium'],
   color: 'text-secondary',
-})
+});
 
 export const Breadcrumb: ComponentStyleConfig = {
   parts: ['container', 'separator', 'separatorIcon', 'lastItem'],

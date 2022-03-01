@@ -31,14 +31,14 @@ const Separator = ({ icon, ...rest }) => {
   });
 };
 
-const BreadcrumbItem = ({ isLastChild, separator, ...rest }) => {
+const BreadcrumbItem = ({ isLastChild, separator, href, ...rest }) => {
   if (isLastChild) {
     return <LastItem {...rest} />;
   }
 
   return (
     <>
-      <Link size="m" {...rest} />
+      <Link size="m" href={href} {...rest} />
       <Separator icon={separator} />
     </>
   );

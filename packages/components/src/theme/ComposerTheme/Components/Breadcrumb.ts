@@ -1,4 +1,4 @@
-import { ComponentMultiStyleConfig, ComponentStyleConfig } from '@chakra-ui/react';
+import { ComponentMultiStyleConfig } from '@chakra-ui/react';
 
 const secondaryText = (theme) => ({
   ...theme.textStyles['text-body-medium'],

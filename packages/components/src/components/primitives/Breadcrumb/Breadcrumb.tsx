@@ -1,10 +1,48 @@
-import { StylesProvider, useMultiStyleConfig, useStyles } from '@chakra-ui/react';
-import { Flex } from '@components';
 import React, { FC } from 'react';
-import { IconChevronRight, Link, Text } from '@components';
+import { chakra, forwardRef, StyleProps, StylesProvider, useMultiStyleConfig, useStyles } from '@chakra-ui/react';
 import { getValidChildren } from '@chakra-ui/react-utils';
+import { Flex, IconChevronRight, Link, Text } from '@components';
+import { BreadcrumbProps, BreadcrumbStaticMembers } from './types';
 
-import { BreadcrumbProps, BreadcrumbStaticMembers, BreadcrumbStyle } from './types';
+const LastItem = forwardRef((props, ref) => {
+  const styles = useStyles() as {
+    lastItem: StyleProps;
+  };
+  return <chakra.span aria-current="page" ref={ref} {...props} __css={styles.lastItem} />;
+});
+
+const Separator = ({ icon, ...rest }) => {
+  const styles = useStyles() as {
+    separator: StyleProps;
+  };
+
+  let separator = <IconChevronRight {...rest} />;
+
+  if (icon) {
+    if (typeof icon === 'string') {
+      separator = <Text>{icon}</Text>;
+    } else {
+      separator = icon;
+    }
+  }
+
+  return React.cloneElement(separator, {
+    ...styles.separator,
+  });
+};
+
+const BreadcrumbItem = ({ isLastChild, separator, ...rest }) => {
+  if (isLastChild) {
+    return <LastItem {...rest} />;
+  }
+
+  return (
+    <>
+      <Link size="m" {...rest} />
+      <Separator icon={separator} />
+    </>
+  );
+};
 
 export const Breadcrumb: FC<BreadcrumbProps> & BreadcrumbStaticMembers = ({ children, separator, ...rest }) => {
   const styles = useMultiStyleConfig('Breadcrumb', {});
@@ -25,32 +63,4 @@ export const Breadcrumb: FC<BreadcrumbProps> & BreadcrumbStaticMembers = ({ chil
   );
 };
 
-Breadcrumb.Item = ({ isLastChild, separator, ...rest }) => {
-  const styles = useStyles();
-  if (isLastChild) {
-    return <Text {...styles.lastItem} {...rest} />;
-  }
-  return (
-    <>
-      <Link size="m" {...rest} />
-      <Separator icon={separator} />
-    </>
-  );
-};
-
-const Separator = ({ icon, ...rest }) => {
-  const styles = useStyles();
-  let separator = <IconChevronRight {...rest} />;
-
-  if (icon) {
-    if (typeof icon === 'string') {
-      separator = <Text {...styles.separator}>{icon}</Text>;
-    } else {
-      separator = icon;
-    }
-  }
-
-  return React.cloneElement(separator, {
-    ...styles.separator,
-  });
-};
+Breadcrumb.Item = BreadcrumbItem;

@@ -15,62 +15,33 @@ export default {
   },
 } as Meta;
 
-const items = [
-  {
-    leadingIcon: IconWorld,
-    trailingIcon: IconCheck,
-    text: 'Composer',
-    href: '#',
-  },
-  {
-    text: 'Really',
-    href: '#',
-  },
-  {
-    text: 'Rocks!',
-  },
-];
-// const Template = ({ separator, items }) => (
-//   <Breadcrumb items={items} separator={separator === '/' ? separator : null} />
-// );
-
-const Template = ({ separator }) => (
+const Template = (args) => (
   <>
-    <Breadcrumb>
+    <Breadcrumb {...args}>
       <Breadcrumb.Item href="#" leadingIcon={IconWorld} trailingIcon={IconCheck}>
         Composer
       </Breadcrumb.Item>
-      {/* <Breadcrumb.Separator /> */}
       <Breadcrumb.Item href="#">Really</Breadcrumb.Item>
-      {/* <Breadcrumb.Separator icon="/" /> */}
       <Breadcrumb.Item href="#">Rocks!</Breadcrumb.Item>
-      {/* <Breadcrumb.Separator icon={<IconChevronLeft />} /> */}
     </Breadcrumb>
-    <Breadcrumb separator="/">
+    <Breadcrumb {...args} separator="/">
       <Breadcrumb.Item href="#" leadingIcon={IconWorld} trailingIcon={IconCheck}>
         Composer
       </Breadcrumb.Item>
-      {/* <Breadcrumb.Separator /> */}
       <Breadcrumb.Item href="#">Really</Breadcrumb.Item>
-      {/* <Breadcrumb.Separator icon="/" /> */}
       <Breadcrumb.Item href="#">Rocks!</Breadcrumb.Item>
-      {/* <Breadcrumb.Separator icon={<IconChevronLeft />} /> */}
     </Breadcrumb>
-    <Breadcrumb separator={<IconChevronLeft />}>
+    <Breadcrumb {...args} separator={<IconChevronLeft />}>
       <Breadcrumb.Item href="#" leadingIcon={IconWorld} trailingIcon={IconCheck}>
         Composer
       </Breadcrumb.Item>
-      {/* <Breadcrumb.Separator /> */}
       <Breadcrumb.Item href="#">Really</Breadcrumb.Item>
-      {/* <Breadcrumb.Separator icon="/" /> */}
       <Breadcrumb.Item href="#">Rocks!</Breadcrumb.Item>
-      {/* <Breadcrumb.Separator icon={<IconChevronLeft />} /> */}
     </Breadcrumb>
   </>
 );
 export const Playground = Template.bind({});
 
 Playground.args = {
-  items,
   separator: 'icon',
 };

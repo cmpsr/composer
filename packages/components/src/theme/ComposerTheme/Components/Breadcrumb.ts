@@ -1,12 +1,12 @@
-import { ComponentStyleConfig } from '@chakra-ui/react';
+import { ComponentMultiStyleConfig, ComponentStyleConfig } from '@chakra-ui/react';
 
 const secondaryText = (theme) => ({
   ...theme.textStyles['text-body-medium'],
   color: 'text-secondary',
 });
 
-export const Breadcrumb: ComponentStyleConfig = {
-  parts: ['container', 'separator', 'separatorIcon', 'lastItem'],
+export const Breadcrumb: ComponentMultiStyleConfig = {
+  parts: ['container', 'separator', 'lastItem'],
   baseStyle: ({ theme }) => ({
     container: {
       columnGap: '0.5rem',

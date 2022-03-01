@@ -1,20 +1,17 @@
 import React, { FC } from 'react';
-import { chakra, forwardRef, StyleProps, StylesProvider, useMultiStyleConfig, useStyles } from '@chakra-ui/react';
+import { chakra, forwardRef, StylesProvider, useMultiStyleConfig, useStyles } from '@chakra-ui/react';
 import { getValidChildren } from '@chakra-ui/react-utils';
-import { Flex, IconChevronRight, Link, Text, FlexProps } from '@components';
+import { Flex, IconChevronRight, Link, Text } from '@components';
 import { BreadcrumbProps, BreadcrumbStaticMembers } from './types';
+import { BreadcrumbStyle } from '.';
 
 const LastItem = forwardRef((props, ref) => {
-  const styles = useStyles() as {
-    lastItem: StyleProps;
-  };
+  const styles = useStyles() as BreadcrumbStyle;
   return <chakra.span aria-current="page" ref={ref} {...props} __css={styles.lastItem} />;
 });
 
 const Separator = ({ icon, ...rest }) => {
-  const styles = useStyles() as {
-    separator: StyleProps;
-  };
+  const styles = useStyles() as BreadcrumbStyle;
 
   let separator = <IconChevronRight {...rest} />;
 
@@ -45,9 +42,7 @@ const BreadcrumbItem = ({ isLastChild, separator, href, ...rest }) => {
 };
 
 export const Breadcrumb: FC<BreadcrumbProps> & BreadcrumbStaticMembers = ({ children, separator, ...rest }) => {
-  const styles = useMultiStyleConfig('Breadcrumb', {}) as {
-    container: FlexProps;
-  };
+  const styles = useMultiStyleConfig('Breadcrumb', {}) as BreadcrumbStyle;
 
   const validChildren = getValidChildren(children);
   const count = validChildren.length;

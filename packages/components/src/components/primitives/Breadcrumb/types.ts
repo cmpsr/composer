@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { SpaceProps } from '@chakra-ui/react';
+import { FlexProps, SpaceProps, StyleProps } from '@chakra-ui/react';
 import { LinkProps } from '@components';
 
 type Separator = string | React.ReactElement;
@@ -15,4 +15,10 @@ export interface BreadcrumbItem extends LinkProps {
 
 export interface BreadcrumbStaticMembers {
   Item: FC<BreadcrumbItem>;
+}
+
+export type BreadcrumbStyle = {
+  container: FlexProps;
+  separator: StyleProps;
+  lastItem: StyleProps;
 }

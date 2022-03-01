@@ -49,7 +49,7 @@ export const All = () => {
 export const Playground = Template.bind({});
 
 Playground.args = {
-  separator: 'icon',
+  separator: 'default',
   showLeadingIcon: false,
   showTrailingIcon: false,
   numOfItems: 3,

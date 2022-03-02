@@ -2,8 +2,7 @@ import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { Select } from '.';
 import { selectSizes, selectVariants } from './types';
-import { StackDivider, VStack, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
-import { Text } from '..';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 
 export default {
   component: Select,
@@ -13,85 +12,16 @@ export default {
       options: selectSizes,
       control: { type: 'select' },
     },
-    isDisabled: {
-      control: { type: 'boolean' },
+    variant: {
+      options: selectVariants,
+      control: { type: 'select' },
     },
   },
 } as Meta;
 
-const sizeLabels = {
-  s: 'Small',
-  m: 'Medium',
-  l: 'Large',
-};
-
-export const All = () => {
-  const [values, setValues] = React.useState({});
-  console.log('>>', values);
-  return (
-    <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
-      {selectSizes.map((size) => (
-        <VStack key={size}>
-          <Text>{sizeLabels[size]}</Text>
-          <Select
-            size={size}
-            placeholder="Label"
-            value={values[`${size}-placeholder`]}
-            // onChange={(evt) =>
-            //   setValues({
-            //     ...values,
-            //     [`${size}-placeholder`]: evt.target.value,
-            //   })
-            // }
-          >
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </Select>
-          <Select
-            size={size}
-            value={values[`${size}-without-placeholder`]}
-            onChange={(evt) =>
-              setValues({
-                ...values,
-                [`${size}-without-placeholder`]: evt.target.value,
-              })
-            }
-          >
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </Select>
-          <Select size={size} placeholder="Label" isDisabled>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </Select>
-          <Select
-            size={size}
-            placeholder="Label"
-            isInvalid
-            value={values[`${size}-invalid`]}
-            onChange={(evt) =>
-              setValues({
-                ...values,
-                [`${size}-invalid`]: evt.target.value,
-              })
-            }
-          >
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-          </Select>
-        </VStack>
-      ))}
-    </VStack>
-  );
-};
-
 const states = ['default', 'filled', 'error', 'disabled', 'disabled-and-filled'];
 
-const SelectTemplate = ({ size, variant, state, initialValue }) => {
+const Template = ({ size, variant, state, initialValue, ...rest }) => {
   const [value, setValue] = React.useState(initialValue);
   return (
     <Select
@@ -102,6 +32,7 @@ const SelectTemplate = ({ size, variant, state, initialValue }) => {
       isDisabled={['disabled', 'disabled-and-filled'].includes(state)}
       onChange={(e) => setValue(e.target.value)}
       value={value}
+      {...rest}
     >
       <option value="option1">Option 1</option>
       <option value="option2">Option 2</option>
@@ -110,7 +41,7 @@ const SelectTemplate = ({ size, variant, state, initialValue }) => {
   );
 };
 
-export const T = () => (
+export const All = () => (
   <Table variant="simple">
     <Thead>
       <Tr>
@@ -132,7 +63,7 @@ export const T = () => (
               <Td>{state}</Td>
               {selectSizes.map((size, i) => (
                 <Td key={`${variant}-${size}-${i}-${state}`}>
-                  <SelectTemplate
+                  <Template
                     state={state}
                     variant={variant}
                     size={size}
@@ -148,15 +79,12 @@ export const T = () => (
   </Table>
 );
 
-const Template = (args) => (
-  <Select {...args}>
-    <option value="option1">Option 1</option>
-    <option value="option2">Option 2</option>
-    <option value="option3">Option 3</option>
-  </Select>
-);
 export const Playground = Template.bind({});
+
 Playground.args = {
   size: 'l',
+  variant: 'outline',
   isDisabled: false,
+  isInvalid: false,
+  placeholder: 'Select an option',
 };

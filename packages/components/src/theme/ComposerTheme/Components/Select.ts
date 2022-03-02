@@ -41,10 +41,10 @@ const sizes: Record<string, PartsStyleInterpolation> = {
 };
 
 const iconPosition = {
-  l: { right: '1rem', },
-  m: { right: '0.75rem', },
-  s: { right: '0.75rem', },
-}
+  l: { right: '1rem' },
+  m: { right: '0.75rem' },
+  s: { right: '0.75rem' },
+};
 
 const baseStyle: PartsStyleFunction<typeof parts> = ({ size, value, placeholder }) => ({
   icon: {
@@ -89,7 +89,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ size, value, placeholder 
       boxShadow: '0 0 0 0.125rem var(--chakra-colors-alert-error-default)',
     },
   },
-})
+});
 
 const flushedSpacing = {
   l: { paddingInlineStart: '1rem', pr: '2.75rem', pt: '0.625rem' },

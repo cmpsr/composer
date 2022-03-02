@@ -28,6 +28,9 @@ const sizes: Record<string, PartsStyleInterpolation> = {
       height: '2.5rem',
       ...theme.textStyles['text-body-regular'],
     },
+    icon: {
+      right: '0.75rem'
+    }
   }),
   s: ({ theme }) => ({
     field: {
@@ -37,19 +40,15 @@ const sizes: Record<string, PartsStyleInterpolation> = {
       height: '2rem',
       ...theme.textStyles['text-body-meta-regular'],
     },
+    icon: {
+      right: '0.75rem'
+    }
   }),
-};
-
-const iconPosition = {
-  l: { right: '1rem' },
-  m: { right: '0.75rem' },
-  s: { right: '0.75rem' },
 };
 
 const baseStyle: PartsStyleFunction<typeof parts> = ({ size, value, placeholder }) => ({
   icon: {
     boxSize: '1.25rem',
-    ...iconPosition[size],
     '> svg': {
       // Icons are styled with inline style, which has highest priority, so !important is required to be able to override them.
       boxSize: '1.25rem !important',
@@ -98,7 +97,6 @@ const flushedSpacing = {
 };
 
 const flushedStyle: PartsStyleFunction<typeof parts> = ({ size, value, placeholder }) => ({
-  icon: iconPosition[size],
   field: {
     bg: 'background-action-default',
     border: 'none',

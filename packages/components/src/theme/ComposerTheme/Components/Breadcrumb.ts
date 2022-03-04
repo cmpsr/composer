@@ -1,23 +1,31 @@
-import { ComponentStyleConfig } from '@chakra-ui/react';
+import { ComponentMultiStyleConfig } from '@chakra-ui/react';
+import { breadcrumbAnatomy as parts } from '@chakra-ui/anatomy';
 
-export const Breadcrumb: ComponentStyleConfig = {
-  parts: ['container', 'separator', 'separatorIcon', 'lastItem'],
+export const Breadcrumb: ComponentMultiStyleConfig = {
+  parts: parts.keys,
   baseStyle: ({ theme }) => ({
     container: {
-      columnGap: '0.5rem',
-      alignItems: 'center',
+      '> ol': {
+        display: 'flex',
+        flexWrap: 'wrap',
+      },
+    },
+    item: {
+      ...theme.textStyles['text-body-medium'],
+      color: 'text-secondary',
     },
     separator: {
       ...theme.textStyles['text-body-medium'],
-      color: 'text-primary',
-    },
-    separatorIcon: {
-      size: 'm',
       color: 'text-secondary',
     },
-    lastItem: {
-      ...theme.textStyles['text-body-medium'],
-      color: 'text-secondary',
+    link: {
+      ...theme.components.Link.sizes.m,
+      _hover: {
+        textDecoration: 'none',
+      },
+      _focus: {
+        boxShadow: `0 0 0 0.1875rem var(--chakra-colors-primary-focus)`,
+      },
     },
   }),
 };

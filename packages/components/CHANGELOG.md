@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 1.16.0
+
+### Minor Changes
+
+- c44cefd: implement textarea component
+- cabd521: feat: adds PinInput component
+
 ## 1.15.0
 
 ### Minor Changes

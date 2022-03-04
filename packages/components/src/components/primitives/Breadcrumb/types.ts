@@ -21,4 +21,4 @@ export type BreadcrumbStyle = {
   container: FlexProps;
   separator: StyleProps;
   lastItem: StyleProps;
-}
+};

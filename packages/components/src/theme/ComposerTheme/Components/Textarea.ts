@@ -102,7 +102,7 @@ const generateFlushed: SystemStyleFunction = ({ size }) => ({
 export const Textarea: ComponentStyleConfig = {
   baseStyle,
   variants: {
-    outline: {},
+    outline: baseStyle,
     flushed: generateFlushed,
   },
   sizes: {

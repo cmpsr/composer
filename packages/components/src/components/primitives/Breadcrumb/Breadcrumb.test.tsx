@@ -3,12 +3,12 @@ import { screen, renderWithProviders } from '@tests/renderWithProviders';
 import { Breadcrumb } from '.';
 
 describe('Breadcrumb', () => {
-  const givenComponentRendered = (separator: string = null, numOfItems = 3) => {
+  const givenComponentRendered = (separator: string = undefined, numOfItems = 3) => {
     const items = Array.from(Array(numOfItems).keys());
     return renderWithProviders(
       <Breadcrumb separator={separator}>
         {items.map((item) => (
-          <Breadcrumb.Item key={item} data-testid="compsr.breadcrum-item" href="#">
+          <Breadcrumb.Item key={item} data-testid="cmpsr.breadcrumb.item" href="#">
             {`Item ${item + 1}`}
           </Breadcrumb.Item>
         ))}
@@ -18,7 +18,7 @@ describe('Breadcrumb', () => {
 
   test('should render all items', () => {
     givenComponentRendered();
-    const items = screen.getAllByTestId('compsr.breadcrum-item');
+    const items = screen.getAllByTestId('cmpsr.breadcrumb.item');
     expect(items).toHaveLength(3);
   });
 
@@ -28,15 +28,10 @@ describe('Breadcrumb', () => {
     expect(links).toHaveLength(2);
   });
 
-  test("last item doesn't have href attribute set", () => {
+  test('last item should not be a link', () => {
     givenComponentRendered();
-    const lastChild = screen.getByText('Item 3');
-    expect(lastChild.getAttribute('href')).toBe(null);
-  });
-
-  test('should render custom separator', () => {
-    givenComponentRendered('/');
-    const separators = screen.getAllByText('/');
-    expect(separators).toHaveLength(2);
+    const items = screen.getAllByTestId('cmpsr.breadcrumb.item');
+    const lastChild = items[2];
+    expect(lastChild.children[0].getAttribute('href')).toBe(null);
   });
 });

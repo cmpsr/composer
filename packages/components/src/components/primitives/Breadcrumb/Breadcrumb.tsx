@@ -1,64 +1,36 @@
-import React, { FC } from 'react';
-import { chakra, forwardRef, StylesProvider, useMultiStyleConfig, useStyles } from '@chakra-ui/react';
-import { getValidChildren } from '@chakra-ui/react-utils';
-import { Flex, IconChevronRight, Link, Text } from '@components';
-import { BreadcrumbProps, BreadcrumbStaticMembers } from './types';
-import { BreadcrumbStyle } from '.';
+import React, { cloneElement } from 'react';
+import { Breadcrumb as ChakraBreadcrumb, BreadcrumbItem, BreadcrumbLink, forwardRef } from '@chakra-ui/react';
+import { IconChevronRight, Link, Text } from '@components';
+import { BreadcrumbItemProps, BreadcrumbProps } from './types';
 
-const LastItem = forwardRef((props, ref) => {
-  const styles = useStyles() as BreadcrumbStyle;
-  return <chakra.span aria-current="page" ref={ref} {...props} __css={styles.lastItem} />;
-});
+const Breadcrumb = forwardRef<BreadcrumbProps, typeof ChakraBreadcrumb>(
+  ({ separator = <IconChevronRight size="m" color="text-secondary" />, ...rest }, ref) => (
+    <ChakraBreadcrumb ref={ref} separator={separator} spacing="0.5rem" {...rest} />
+  )
+);
 
-const Separator = ({ icon, ...rest }) => {
-  const styles = useStyles() as BreadcrumbStyle;
+const Item = forwardRef<BreadcrumbItemProps, typeof BreadcrumbItem>(
+  ({ isLastChild, href, separator, spacing, 'data-testid': testId, ...rest }, ref) => (
+    <BreadcrumbItem ref={ref} data-testid={testId}>
+      {isLastChild ? (
+        <Text color="inherit">{rest.children}</Text>
+      ) : (
+        <>
+          <BreadcrumbLink href={href}>
+            <Link size="m" as="span" {...rest} />
+          </BreadcrumbLink>
+          {typeof separator === 'string' ? (
+            <Text mx={spacing}>{separator}</Text>
+          ) : (
+            cloneElement(separator, {
+              mx: spacing,
+            })
+          )}
+        </>
+      )}
+    </BreadcrumbItem>
+  )
+);
 
-  let separator = <IconChevronRight {...rest} />;
-
-  if (icon) {
-    if (typeof icon === 'string') {
-      separator = <Text>{icon}</Text>;
-    } else {
-      separator = icon;
-    }
-  }
-
-  return React.cloneElement(separator, {
-    ...styles.separator,
-  });
-};
-
-const BreadcrumbItem = ({ isLastChild, separator, href, leadingIcon, trailingIcon, ...rest }) => {
-  if (isLastChild) {
-    return <LastItem {...rest} />;
-  }
-
-  return (
-    <>
-      <Link size="m" href={href} leadingIcon={leadingIcon} trailingIcon={trailingIcon} {...rest} />
-      <Separator icon={separator} />
-    </>
-  );
-};
-
-export const Breadcrumb: FC<BreadcrumbProps> & BreadcrumbStaticMembers = ({ children, separator, ...rest }) => {
-  const styles = useMultiStyleConfig('Breadcrumb', {}) as BreadcrumbStyle;
-
-  const validChildren = getValidChildren(children);
-  const count = validChildren.length;
-
-  const clones = validChildren.map((child, index) =>
-    React.cloneElement(child, {
-      separator,
-      isLastChild: count === index + 1,
-    })
-  );
-
-  return (
-    <Flex __css={styles.container} {...rest}>
-      <StylesProvider value={styles}>{clones}</StylesProvider>
-    </Flex>
-  );
-};
-
-Breadcrumb.Item = BreadcrumbItem;
+const BreadcrumbNamespace = Object.assign(Breadcrumb, { Item });
+export { BreadcrumbNamespace as Breadcrumb };

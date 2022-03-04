@@ -1,19 +1,31 @@
 import { ComponentMultiStyleConfig } from '@chakra-ui/react';
-
-const secondaryText = (theme) => ({
-  ...theme.textStyles['text-body-medium'],
-  color: 'text-secondary',
-});
+import { breadcrumbAnatomy as parts } from '@chakra-ui/anatomy';
 
 export const Breadcrumb: ComponentMultiStyleConfig = {
-  parts: ['container', 'separator', 'lastItem'],
+  parts: parts.keys,
   baseStyle: ({ theme }) => ({
     container: {
-      columnGap: '0.5rem',
-      alignItems: 'center',
-      display: 'flex',
+      '> ol': {
+        display: 'flex',
+        flexWrap: 'wrap',
+      },
     },
-    separator: { ...secondaryText(theme) },
-    lastItem: { ...secondaryText(theme) },
+    item: {
+      ...theme.textStyles['text-body-medium'],
+      color: 'text-secondary',
+    },
+    separator: {
+      ...theme.textStyles['text-body-medium'],
+      color: 'text-secondary',
+    },
+    link: {
+      ...theme.components.Link.sizes.m,
+      _hover: {
+        textDecoration: 'none',
+      },
+      _focus: {
+        boxShadow: `0 0 0 0.1875rem var(--chakra-colors-primary-focus)`,
+      },
+    },
   }),
 };

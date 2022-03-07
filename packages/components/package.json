@@ -49,7 +49,7 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
-    "@swc/jest": "^0.2.17",
+    "@swc/jest": "^0.2.20",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.0.2",
     "react": "^17.0.2",

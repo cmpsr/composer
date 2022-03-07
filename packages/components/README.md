@@ -189,6 +189,13 @@ export interface FlexProps extends ChakraFlexProps {}
 
 - In the `Component.tsx` is where the actual implementation of the component will be. The goal is to have the minimum amount of code possible, _i.e._ only add logic to a chakra component if there are no other options.
 
+- All components has to be exported as [forward references](https://reactjs.org/docs/forwarding-refs.html) using the `forwardRef` function [exposed by chakra](https://chakra-ui.com/docs/components/recipes/as-prop#option-1-using-forwardref-from-chakra-uireact) and not `React.forwardRef`. This rule might not be followed in the examples shown in the documentation for simplicity.
+
+```typescript
+export { forwardRef } from "@chakra-ui/react"; // 👍
+export { forwardRef } from "react"; // 👎
+```
+
 - From the implementation file you should never access a theme file, if you need to assign some theme props by code use the `useStyleConfig` ([docs](https://chakra-ui.com/docs/theming/component-style#usestyleconfig-api)) or `useMultiStyleConfig` ([docs](https://chakra-ui.com/docs/theming/component-style#usemultistyleconfig-api)) and then apply the props:
 
 ```typescript

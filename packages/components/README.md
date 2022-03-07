@@ -325,6 +325,36 @@ import { VStack } from "@chakra-ui/react"; // 👍
 import { Button } from "@chakra-ui/react"; // 👎
 ```
 
+### Using dot notation
+
+We will favour using dot notation over _composed component names_.
+
+```typescript
+// 👍
+const Component = forwardRef<ComponentProps, 'div'>((props, ref) => (
+    <div ref={ref} {...props}/>
+  )
+);
+const Child = forwardRef<ComponentChildProps, 'div'>((props, ref) => (
+    <div ref={ref} {...props}/>
+  )
+);
+const ComponentNamespace = Object.assign(Component, { Child });
+export { ComponentNamespace as Component };
+
+// 👎
+export Component = forwardRef<ComponentProps, 'div'>((props, ref) => (
+    <div ref={ref} {...props}/>
+  )
+);
+export const ComponentChild = forwardRef<ComponentChildProps, 'div'>((props, ref) => (
+    <div ref={ref} {...props}/>
+  )
+);
+```
+
+You can take a look to the implementation of the [Slider](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/primitives/Slider/Slider.tsx) or [Breadcrumb](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/primitives/Breadcrumb/Breadcrumb.tsx) components for more details about how we do it.
+
 ### Special cases
 
 There are a few cases of components that we will use literally as it from chakra (like [Box](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/layouts/Box) or [Flex](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/layouts/Flex)). In those cases we will only add an `index.ts` and a `Component.stories.tsx`. The index file will just re-export the component and its props from chakra:

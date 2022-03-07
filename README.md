@@ -16,6 +16,6 @@ Once this PR has been merged into `master`, the workflows action defined in `./.
 
 Merging the `Package Versions` PR will automate the publishing of the changed packages to npm.
 
-## Adding new UI components to the library
+## Adding new UI components to the library
 
 For adding new components follow the [implementation guidelines](https://github.com/cmpsr/composer/blob/master/packages/components/README.md).

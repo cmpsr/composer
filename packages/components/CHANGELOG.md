@@ -1,5 +1,13 @@
 # @cmpsr/components
 
+## 1.17.0
+
+### Minor Changes
+
+- 299d639: fix: storybook documentation code
+- de1e5d6: feat: refactor Breadcrumb component
+- 8d1b131: feat: refactor Slider to use composition with dot notation
+
 ## 1.16.0
 
 ### Minor Changes

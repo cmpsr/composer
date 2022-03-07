@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Meta } from '@storybook/react';
 import { VStack, StackDivider, HStack } from '@chakra-ui/layout';
 import { Slider, SliderProps, Text } from '@components';

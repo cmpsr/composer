@@ -48,7 +48,7 @@
     "@storybook/react": "^6.4.13",
     "@testing-library/jest-dom": "^5.16.2",
     "@swc/cli": "^0.1.55",
-    "@swc/core": "^1.2.136",
+    "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.17",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.0.2",

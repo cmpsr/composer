@@ -22,6 +22,11 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
 };
 
 const theme = {

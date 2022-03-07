@@ -2,4 +2,4 @@
 "@cmpsr/components": minor
 ---
 
-feat: adds PinInput component
+feat: refactor Breadcrumb component

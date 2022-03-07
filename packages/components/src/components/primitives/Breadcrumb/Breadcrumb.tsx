@@ -1,36 +1,36 @@
-import { useStyleConfig } from '@chakra-ui/react';
-import { Flex } from '@components';
-import React, { FC, Fragment } from 'react';
-import { IconChevronRight, Link, Text } from '..';
-import { BreadcrumbProps, BreadcrumbStyle } from './types';
+import React, { cloneElement } from 'react';
+import { Breadcrumb as ChakraBreadcrumb, BreadcrumbItem, BreadcrumbLink, forwardRef } from '@chakra-ui/react';
+import { IconChevronRight, Link, Text } from '@components';
+import { BreadcrumbItemProps, BreadcrumbProps } from './types';
 
-export const Breadcrumb: FC<BreadcrumbProps> = ({ items, separator, ...props }) => {
-  const copy = [...items];
-  const last = copy.pop();
+const Breadcrumb = forwardRef<BreadcrumbProps, typeof ChakraBreadcrumb>(
+  ({ separator = <IconChevronRight size="m" color="text-secondary" />, ...rest }, ref) => (
+    <ChakraBreadcrumb ref={ref} separator={separator} spacing="0.5rem" {...rest} />
+  )
+);
 
-  const { container, separatorIcon, separator: separatorStyle, lastItem } = useStyleConfig(
-    'Breadcrumb'
-  ) as BreadcrumbStyle;
-
-  return (
-    <Flex {...container} {...props} direction="row">
-      {copy.map(({ text, ...others }, index) => (
-        <Fragment key={index}>
-          <Link size="m" {...others}>
-            {text}
-          </Link>
-          {separator ? (
-            typeof separator === 'string' ? (
-              <Text {...separatorStyle}>{separator}</Text>
-            ) : (
-              separator
-            )
+const Item = forwardRef<BreadcrumbItemProps, typeof BreadcrumbItem>(
+  ({ isLastChild, href, separator, spacing, 'data-testid': testId, ...rest }, ref) => (
+    <BreadcrumbItem ref={ref} data-testid={testId}>
+      {isLastChild ? (
+        <Text color="inherit">{rest.children}</Text>
+      ) : (
+        <>
+          <BreadcrumbLink href={href}>
+            <Link size="m" as="span" {...rest} />
+          </BreadcrumbLink>
+          {typeof separator === 'string' ? (
+            <Text mx={spacing}>{separator}</Text>
           ) : (
-            <IconChevronRight {...separatorIcon} size="m" color="text-secondary" />
+            cloneElement(separator, {
+              mx: spacing,
+            })
           )}
-        </Fragment>
-      ))}
-      <Text {...lastItem}>{last.text}</Text>
-    </Flex>
-  );
-};
+        </>
+      )}
+    </BreadcrumbItem>
+  )
+);
+
+const BreadcrumbNamespace = Object.assign(Breadcrumb, { Item });
+export { BreadcrumbNamespace as Breadcrumb };

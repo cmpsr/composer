@@ -12,6 +12,11 @@
       "@tests/*": ["./src/tests/*"],
       "@theme": ["./src/theme"]
     },
+    "minify": {
+      "keepClassnames": true,
+      "keepFnames": true
+    },
+    "keepClassNames": true,
     "baseUrl": "."
   },
   "module": {

@@ -1,36 +1,37 @@
 import React from 'react';
 import { screen, renderWithProviders } from '@tests/renderWithProviders';
 import { Breadcrumb } from '.';
-import { IconCheck, IconWorld } from '..';
 
 describe('Breadcrumb', () => {
-  const items = [
-    {
-      leadingIcon: IconWorld,
-      trailingIcon: IconCheck,
-      text: 'Composer',
-      href: '#',
-    },
-    {
-      text: 'Really',
-      href: '#',
-    },
-    {
-      text: 'Rocks!',
-    },
-  ];
-
-  const givenComponentRendered = (separator: string = null) =>
-    renderWithProviders(<Breadcrumb items={items} separator={separator} />);
+  const givenComponentRendered = (separator: string = undefined, numOfItems = 3) => {
+    const items = Array.from(Array(numOfItems).keys());
+    return renderWithProviders(
+      <Breadcrumb separator={separator}>
+        {items.map((item) => (
+          <Breadcrumb.Item key={item} data-testid="cmpsr.breadcrumb.item" href="#">
+            {`Item ${item + 1}`}
+          </Breadcrumb.Item>
+        ))}
+      </Breadcrumb>
+    );
+  };
 
   test('should render all items', () => {
     givenComponentRendered();
-    items.forEach(({ text }) => screen.getByText(text));
+    const items = screen.getAllByTestId('cmpsr.breadcrumb.item');
+    expect(items).toHaveLength(3);
   });
 
-  test('should render custom separator', () => {
-    givenComponentRendered('/');
-    const separators = screen.getAllByText('/');
-    expect(separators).toHaveLength(2);
+  test('should render 2 links', () => {
+    givenComponentRendered();
+    const links = screen.getAllByRole('link');
+    expect(links).toHaveLength(2);
+  });
+
+  test('last item should not be a link', () => {
+    givenComponentRendered();
+    const items = screen.getAllByTestId('cmpsr.breadcrumb.item');
+    const lastChild = items[2];
+    expect(lastChild.children[0].getAttribute('href')).toBe(null);
   });
 });

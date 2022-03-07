@@ -2,4 +2,4 @@
 "@cmpsr/components": minor
 ---
 
-implement textarea component
+fix: storybook documentation code

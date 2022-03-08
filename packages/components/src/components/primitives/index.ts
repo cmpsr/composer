@@ -7,6 +7,7 @@ export * from './Card';
 export * from './Checkbox';
 export * from './CloseButton';
 export * from './Divider';
+export * from './Dropdown';
 export * from './Image';
 export * from './IconButton';
 export * from './Icons';

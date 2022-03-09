@@ -5,6 +5,7 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  MenuGroup,
 } from '@chakra-ui/react';
 import { DropdownStaticMembers } from './types';
 
@@ -16,3 +17,4 @@ Dropdown.Menu = Menu;
 Dropdown.Button = MenuButton;
 Dropdown.List = MenuList;
 Dropdown.Item = MenuItem;
+Dropdown.Group = MenuGroup;

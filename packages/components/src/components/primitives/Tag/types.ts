@@ -1,15 +1,11 @@
-import { StyleProps, TagProps as ChakraTagProps } from '@chakra-ui/react';
 import { FC } from 'react';
-import { IconProps } from '../Icons';
+import { StyleProps, TagLabelProps, TagLeftIcon, TagProps as ChakraTagProps } from '@chakra-ui/react';
 
-export const TagSizes = ['s', 'm', 'l'] as const;
-export type TagSize = typeof TagSizes[number];
+export const tagSizes = ['s', 'm', 'l'] as const;
+export type TagSize = typeof tagSizes[number];
 
 export interface TagProps extends ChakraTagProps {
   size?: TagSize;
-  label: string;
-  icon?: FC<IconProps>;
-  iconPosition?: 'left' | 'right';
 }
 
 export interface TagStyle {
@@ -17,4 +13,10 @@ export interface TagStyle {
   label: StyleProps;
   leftIcon: StyleProps;
   rightIcon: StyleProps;
+}
+
+export interface TagStaticMembers {
+  LeftIcon: typeof TagLeftIcon;
+  RightIcon: typeof TagLeftIcon;
+  Label: FC<TagLabelProps>;
 }

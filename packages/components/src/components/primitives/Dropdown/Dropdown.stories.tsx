@@ -20,8 +20,12 @@ const Template = (args) => (
   </Dropdown>
 );
 
-export const Playground = Template.bind({});
+export const Default = Template.bind({});
 
-Playground.args = {
-  size: 'l',
+Default.args = {};
+
+export const Opened = Template.bind({});
+
+Opened.args = {
+  isOpen: true,
 };

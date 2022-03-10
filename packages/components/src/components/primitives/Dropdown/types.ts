@@ -15,6 +15,9 @@ export {
   MenuItemProps as DropdownItemProps,
   MenuListProps as DropdownListProps,
   MenuGroupProps as DropdownGroupProps,
+  MenuOptionGroupProps as DropdownOptionGroupProps,
+  MenuItemOptionProps as DropdownItemOptionProps,
+  MenuDividerProps as DropdownDividerProps,
 } from '@chakra-ui/react';
 
 export interface DropdownStaticMembers {

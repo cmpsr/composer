@@ -1,6 +1,8 @@
-import React, { FC } from 'react';
-import { Select as ChakraSelect } from '@chakra-ui/react';
+import React from 'react';
+import { forwardRef, Select as ChakraSelect } from '@chakra-ui/react';
 import { SelectProps } from './types';
 import { IconChevronDown } from '@components';
 
-export const Select: FC<SelectProps> = (props) => <ChakraSelect icon={<IconChevronDown />} {...props} />;
+export const Select = forwardRef<SelectProps, typeof ChakraSelect>((props, ref) => (
+  <ChakraSelect ref={ref} icon={<IconChevronDown />} {...props} />
+));

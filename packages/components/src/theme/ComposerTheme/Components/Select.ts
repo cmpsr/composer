@@ -29,8 +29,8 @@ const sizes: Record<string, PartsStyleInterpolation> = {
       ...theme.textStyles['text-body-regular'],
     },
     icon: {
-      right: '0.75rem'
-    }
+      right: '0.75rem',
+    },
   }),
   s: ({ theme }) => ({
     field: {
@@ -41,12 +41,12 @@ const sizes: Record<string, PartsStyleInterpolation> = {
       ...theme.textStyles['text-body-meta-regular'],
     },
     icon: {
-      right: '0.75rem'
-    }
+      right: '0.75rem',
+    },
   }),
 };
 
-const baseStyle: PartsStyleFunction<typeof parts> = ({ size, value, placeholder }) => ({
+const baseStyle: PartsStyleFunction<typeof parts> = ({ value, placeholder }) => ({
   icon: {
     boxSize: '1.25rem',
     '> svg': {

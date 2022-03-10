@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { MenuButtonProps, MenuGroupProps, MenuItemProps, MenuListProps, MenuProps } from "@chakra-ui/react";
+import { MenuButtonProps, MenuDividerProps, MenuGroupProps, MenuItemOptionProps, MenuItemProps, MenuListProps, MenuOptionGroupProps } from "@chakra-ui/react";
 
 export {
     MenuProps as DropdownProps,
@@ -9,8 +9,10 @@ export {
     MenuGroupProps as DropdownGroupProps,
 } from '@chakra-ui/react';
 export interface DropdownStaticMembers {
-    Menu: FC<MenuProps>;
     Group: FC<MenuGroupProps>;
+    Divider: FC<MenuDividerProps>;
+    OptionGroup: FC<MenuOptionGroupProps>;
+    ItemOption: FC<MenuItemOptionProps>;
     Button: FC<MenuButtonProps>;
     List: FC<MenuListProps>;
     Item: FC<MenuItemProps>;

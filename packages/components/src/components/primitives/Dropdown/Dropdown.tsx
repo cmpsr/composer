@@ -6,15 +6,20 @@ import {
   MenuList,
   MenuItem,
   MenuGroup,
+  MenuDivider,
+  MenuOptionGroup,
+  MenuItemOption,
 } from '@chakra-ui/react';
 import { DropdownStaticMembers } from './types';
 
 export const Dropdown: FC<MenuProps> & DropdownStaticMembers = (props) => {
-  return <Dropdown.Menu {...props} />;
+  return <Menu {...props} />;
 };
 
-Dropdown.Menu = Menu;
 Dropdown.Button = MenuButton;
 Dropdown.List = MenuList;
 Dropdown.Item = MenuItem;
 Dropdown.Group = MenuGroup;
+Dropdown.Divider = MenuDivider;
+Dropdown.OptionGroup = MenuOptionGroup;
+Dropdown.ItemOption = MenuItemOption;

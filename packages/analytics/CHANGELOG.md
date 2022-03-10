@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.25
+
+### Patch Changes
+
+- de1e5d6: chore: code formatting changes
+
 ## 0.0.24
 
 ### Patch Changes

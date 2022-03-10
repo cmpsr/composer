@@ -189,6 +189,13 @@ export interface FlexProps extends ChakraFlexProps {}
 
 - In the `Component.tsx` is where the actual implementation of the component will be. The goal is to have the minimum amount of code possible, _i.e._ only add logic to a chakra component if there are no other options.
 
+- All components has to be exported as [forward references](https://reactjs.org/docs/forwarding-refs.html) using the `forwardRef` function [exposed by chakra](https://chakra-ui.com/docs/components/recipes/as-prop#option-1-using-forwardref-from-chakra-uireact) and not `React.forwardRef`. This rule might not be followed in the examples shown in the documentation for simplicity.
+
+```typescript
+export { forwardRef } from "@chakra-ui/react"; // 👍
+export { forwardRef } from "react"; // 👎
+```
+
 - From the implementation file you should never access a theme file, if you need to assign some theme props by code use the `useStyleConfig` ([docs](https://chakra-ui.com/docs/theming/component-style#usestyleconfig-api)) or `useMultiStyleConfig` ([docs](https://chakra-ui.com/docs/theming/component-style#usemultistyleconfig-api)) and then apply the props:
 
 ```typescript
@@ -317,6 +324,36 @@ import { OtherComponent } from "../../OtherComponent"; // 👎
 import { VStack } from "@chakra-ui/react"; // 👍
 import { Button } from "@chakra-ui/react"; // 👎
 ```
+
+### Using dot notation
+
+We will favour using dot notation over _composed component names_.
+
+```typescript
+// 👍
+const Component = forwardRef<ComponentProps, 'div'>((props, ref) => (
+    <div ref={ref} {...props}/>
+  )
+);
+const Child = forwardRef<ComponentChildProps, 'div'>((props, ref) => (
+    <div ref={ref} {...props}/>
+  )
+);
+const ComponentNamespace = Object.assign(Component, { Child });
+export { ComponentNamespace as Component };
+
+// 👎
+export Component = forwardRef<ComponentProps, 'div'>((props, ref) => (
+    <div ref={ref} {...props}/>
+  )
+);
+export const ComponentChild = forwardRef<ComponentChildProps, 'div'>((props, ref) => (
+    <div ref={ref} {...props}/>
+  )
+);
+```
+
+You can take a look to the implementation of the [Slider](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/primitives/Slider/Slider.tsx) or [Breadcrumb](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/primitives/Breadcrumb/Breadcrumb.tsx) components for more details about how we do it.
 
 ### Special cases
 

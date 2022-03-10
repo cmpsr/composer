@@ -5,7 +5,6 @@ import { Dropdown } from '.';
 export default {
   component: Dropdown,
   title: 'Components/Primitives/Dropdown',
-  argTypes: {},
 } as Meta;
 
 const Template = (args) => (
@@ -21,8 +20,6 @@ const Template = (args) => (
 );
 
 export const Default = Template.bind({});
-
-Default.args = {};
 
 export const Opened = Template.bind({});
 

@@ -48,7 +48,6 @@ export const All = AllTemplate.bind({});
 
 const Template = ({ showLeftIcon, showRightIcon, label, ...args }) => (
   <Tag {...args}>
-    ``
     {showLeftIcon && <Tag.LeftIcon as={IconAlertCircle} />}
     <Tag.Label>{label}</Tag.Label>
     {showRightIcon && <Tag.RightIcon as={IconAlertCircle} />}

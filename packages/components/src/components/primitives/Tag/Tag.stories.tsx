@@ -46,11 +46,11 @@ const AllTemplate = () => (
 
 export const All = AllTemplate.bind({});
 
-const Template = ({ showLeftIcon, showRightIcon, label, ...args }) => (
+const Template = ({ showIcon, iconPosition, label, ...args }) => (
   <Tag {...args}>
-    {showLeftIcon && <Tag.LeftIcon as={IconAlertCircle} />}
+    {showIcon && iconPosition === 'left' && <Tag.LeftIcon as={IconAlertCircle} />}
     <Tag.Label>{label}</Tag.Label>
-    {showRightIcon && <Tag.RightIcon as={IconAlertCircle} />}
+    {showIcon && iconPosition === 'right' && <Tag.RightIcon as={IconAlertCircle} />}
   </Tag>
 );
 
@@ -59,6 +59,6 @@ export const Playground = Template.bind({});
 Playground.args = {
   size: 'l',
   label: 'Hello',
-  showLeftIcon: false,
-  showRightIcon: false,
+  iconPosition: 'left',
+  showIcon: true,
 };

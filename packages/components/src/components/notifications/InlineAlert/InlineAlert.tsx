@@ -1,14 +1,7 @@
 import React from 'react';
-import { Flex, IconAlertCircle, IconAlertTriangle, IconCircleCheck, IconInfoCircle, Text } from '@components';
+import { Flex, Text, ALERT_ICONS } from '@components';
 import { FlexProps, forwardRef, useMultiStyleConfig } from '@chakra-ui/react';
 import { InlineAlertProps, InlineAlertStyles } from './types';
-
-const ICONS = {
-  info: IconInfoCircle,
-  warning: IconAlertTriangle,
-  success: IconCircleCheck,
-  error: IconAlertCircle,
-};
 
 export const InlineAlert = forwardRef<InlineAlertProps & FlexProps, typeof Flex>((props, ref) => {
   const { status = 'info', showIcon, message, ...rest } = props;
@@ -16,7 +9,7 @@ export const InlineAlert = forwardRef<InlineAlertProps & FlexProps, typeof Flex>
     status,
   }) as InlineAlertStyles;
 
-  const BaseIcon = ICONS[status];
+  const BaseIcon = ALERT_ICONS[status];
 
   return (
     <Flex ref={ref} {...styles.container} {...rest}>

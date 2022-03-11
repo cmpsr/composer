@@ -1,20 +1,16 @@
 import { ComponentMultiStyleConfig } from '@chakra-ui/theme';
 
-const messageStylesByStatus = {
+const messageColor = {
   success: {
-    textStyle: 'body-meta-regular',
     color: 'text-success',
   },
   error: {
-    textStyle: 'body-meta-regular',
     color: 'text-error',
   },
   warning: {
-    textStyle: 'body-meta-regular',
     color: 'text-warning',
   },
   info: {
-    textStyle: 'body-meta-regular',
     color: 'text-secondary',
   },
 };
@@ -28,7 +24,8 @@ export const InlineAlert: ComponentMultiStyleConfig = {
         gap: '0.5rem',
       },
       message: {
-        ...messageStylesByStatus[status],
+        textStyle: 'body-meta-regular',
+        ...messageColor[status],
       },
       icon: {
         ...rest.theme.components.Alert.baseStyle(rest).icon.status[status],

@@ -20,7 +20,7 @@ export const InlineAlert = forwardRef<InlineAlertProps & FlexProps, typeof Flex>
 
   return (
     <Flex ref={ref} {...styles.container} {...rest}>
-      {showIcon && <BaseIcon {...styles.icon} />}
+      {showIcon && <BaseIcon {...styles.icon} data-testid="cmpsr.inline-alert.icon" />}
       <Text {...styles.message}>{message}</Text>
     </Flex>
   );

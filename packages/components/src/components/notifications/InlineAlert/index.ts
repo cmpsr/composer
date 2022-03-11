@@ -1,2 +1,2 @@
-export * from './InlineAlert'
-export * from './types'
+export * from './InlineAlert';
+export * from './types';

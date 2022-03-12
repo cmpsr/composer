@@ -86,13 +86,20 @@ const baseStyle = (props) => {
   };
 };
 
-const flushedStyle = {
+const flushedStyle = props => ({
   root: {
     bg: 'background-action-default',
   },
   field: {
     border: 'none',
     borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
+    ...(() => {
+      if (props.size === 'l') {
+        return {
+          py: '0.71875rem'
+        }
+      }
+    })(),
     _hover: {},
     _focus: {
       border: 'none',
@@ -102,7 +109,8 @@ const flushedStyle = {
     },
     _invalid: {
       border: 'none',
-      boxShadow: '0 0.125rem 0 0 var(--chakra-colors-alert-error-default)',
+      boxShadow: 'none',
+      borderBottom: '0.125rem solid var(--chakra-colors-alert-error-default)',
     },
   },
   stepperGroup: {
@@ -118,7 +126,7 @@ const flushedStyle = {
       borderBottomEndRadius: 0,
     },
   },
-};
+});
 
 export const NumberInput: ComponentMultiStyleConfig = {
   parts: parts.keys,
@@ -148,13 +156,31 @@ export const NumberInput: ComponentMultiStyleConfig = {
     },
     m: {
       root: {
-        // textStyle: 'text-body-regular',
+        textStyle: 'text-body-regular',
       },
+      field: {
+        paddingStart: 0,
+        paddingInlineStart: 0,
+        paddingEnd: 0,
+        paddingInlineEnd: 0,
+        py: '0.5rem',
+        pl: '0.75rem',
+        pr: '2.3125rem',
+      }
     },
     l: {
       root: {
-        // textStyle: 'text-body-regular',
+        textStyle: 'text-body-regular',
       },
+      field: {
+        paddingStart: 0,
+        paddingInlineStart: 0,
+        paddingEnd: 0,
+        paddingInlineEnd: 0,
+        py: '0.75rem',
+        pl: '1rem',
+        pr: '2.5625rem',
+      }
     },
   },
   defaultProps: {

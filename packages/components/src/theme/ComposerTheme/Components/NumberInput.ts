@@ -109,13 +109,15 @@ const flushedStyle = props => ({
     },
     _invalid: {
       border: 'none',
-      boxShadow: 'none',
-      borderBottom: '0.125rem solid var(--chakra-colors-alert-error-default)',
+      boxShadow: '0 0.125rem 0 0 var(--chakra-colors-alert-error-default)',
+
     },
   },
   stepperGroup: {
     border: 0,
     margin: 0,
+    bg: 'red',
+    height: props.isInvalid ? '100%' : 'calc(100% - 1px)'
   },
   stepper: {
     borderRadius: 0,

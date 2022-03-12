@@ -1,7 +1,7 @@
 import { numberInputAnatomy as parts } from '@chakra-ui/anatomy';
 import { ComponentMultiStyleConfig } from '@chakra-ui/react';
 
-const baseStyle = props => {
+const baseStyle = (props) => {
   return {
     root: {
       bg: 'background-action-default',
@@ -10,14 +10,13 @@ const baseStyle = props => {
     field: {
       borderColor: 'none',
       border: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
-      textStyle: 'text-body-meta-regular',
+      borderRadius: '0.375rem',
       _placeholder: {
-        textStyle: 'text-body-meta-regular',
         color: 'text-secondary',
       },
       _hover: {
         borderColor: 'ui-element-outline-default',
-        bg: 'background-action-hover'
+        bg: 'background-action-hover',
       },
       _focus: {
         bg: 'background-action-default',
@@ -36,9 +35,9 @@ const baseStyle = props => {
         opacity: 1,
         color: 'text-secondary',
         _placeholder: {
-          color: 'text-disabled'
-        }
-      }
+          color: 'text-disabled',
+        },
+      },
     },
     stepperGroup: {
       borderLeft: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
@@ -46,7 +45,7 @@ const baseStyle = props => {
         if (props.isDisabled) {
           return {
             borderLeft: '0.0625rem solid var(--chakra-colors-ui-element-outline-disabled)',
-          }
+          };
         }
       })(),
       ...(() => {
@@ -54,31 +53,79 @@ const baseStyle = props => {
           return {
             border: '0.0625rem solid  var(--chakra-colors-alert-error-default)',
             borderRightRadius: '0.3125rem',
-          }
+          };
         }
-      })()
+      })(),
     },
     stepper: {
       bg: 'background-action-active',
-      borderLeft: 'none',
+      borderLeft: 0,
       borderColor: 'ui-element-outline-default',
       _active: {
         bg: 'background-action-pressed',
-        color: 'text-secondary'
+        color: 'text-secondary',
       },
       _disabled: {
         bg: 'background-action-disabled',
-        color: 'text-disabled'
-      }
-    }
-  }
-}
+        color: 'text-disabled',
+      },
+      _first: {
+        borderTopEndRadius: '0.3125rem',
+        opacity: 1,
+      },
+      _last: {
+        opacity: 1,
+        borderBottomEndRadius: '0.3125rem',
+        borderTopWidth: '0.0625rem',
+        mt: '-0.0625rem',
+        _disabled: {
+          borderTopColor: 'var(--chakra-colors-ui-element-outline-disabled)',
+        },
+      },
+    },
+  };
+};
+
+const flushedStyle = {
+  root: {
+    bg: 'background-action-default',
+  },
+  field: {
+    border: 'none',
+    borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
+    _hover: {},
+    _focus: {
+      border: 'none',
+      borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
+      bg: 'background-action-default',
+      boxShadow: '0 0.1875rem 0 0 var(--chakra-colors-primary-focus)',
+    },
+    _invalid: {
+      border: 'none',
+      boxShadow: '0 0.125rem 0 0 var(--chakra-colors-alert-error-default)',
+    },
+  },
+  stepperGroup: {
+    border: 0,
+    margin: 0,
+  },
+  stepper: {
+    borderRadius: 0,
+    _first: {
+      borderTopEndRadius: 0,
+    },
+    _last: {
+      borderBottomEndRadius: 0,
+    },
+  },
+};
 
 export const NumberInput: ComponentMultiStyleConfig = {
   parts: parts.keys,
   baseStyle,
   variants: {
-    outline: baseStyle
+    outline: baseStyle,
+    flushed: flushedStyle,
   },
   sizes: {
     s: {
@@ -86,26 +133,18 @@ export const NumberInput: ComponentMultiStyleConfig = {
         textStyle: 'text-body-meta-regular',
       },
       field: {
+        paddingStart: 0,
+        paddingInlineStart: 0,
+        paddingEnd: 0,
+        paddingInlineEnd: 0,
         py: '0.375rem',
         pl: '0.75rem',
         pr: '2.3125rem',
-        borderRadius: '0.375rem',
+        textStyle: 'text-body-meta-regular',
+        _placeholder: {
+          textStyle: 'text-body-meta-regular',
+        },
       },
-      stepper: {
-        _first: {
-          borderTopEndRadius: '0.3125rem',
-          opacity: 1,
-        },
-        _last: {
-          opacity: 1,
-          borderBottomEndRadius: '0.3125rem',
-          borderTopWidth: '0.0625rem',
-          mt: "-0.0625rem",
-          _disabled: {
-            borderTopColor: 'var(--chakra-colors-ui-element-outline-disabled)',
-          }
-        },
-      }
     },
     m: {
       root: {
@@ -119,7 +158,7 @@ export const NumberInput: ComponentMultiStyleConfig = {
     },
   },
   defaultProps: {
-    size: 'm',
+    size: 'l',
     variant: 'outline',
   },
 };

@@ -29,6 +29,7 @@ import { Text } from './Text';
 import { TextPairing } from './TextPairing';
 import { Textarea } from './Textarea';
 import { Tooltip } from './Tooltip';
+import { Dropdown } from './Dropdown';
 
 export const components = {
   Accordion,
@@ -47,6 +48,7 @@ export const components = {
   Input,
   Kbd: Symbols,
   Link,
+  Menu: Dropdown,
   Modal,
   PinInput,
   Progress: ProgressBar,

@@ -66,5 +66,6 @@ module.exports = {
     'react/prop-types': 0,
     'react/no-children-prop': 0,
     '@typescript-eslint/no-unused-vars': ['error'],
+    'eol-last': ['error', 'always'],
   },
 };

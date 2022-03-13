@@ -33,7 +33,7 @@ export const All = () => (
         <Tr key={placement}>
           <Td>{placement}</Td>
           <Td py="3rem">
-            <Tooltip label="This is the tooltip content" placement={placement} isOpen>
+            <Tooltip label="This is the tooltip content" placement={placement}>
               <Button>{placement}</Button>
             </Tooltip>
           </Td>
@@ -41,6 +41,14 @@ export const All = () => (
       ))}
     </Tbody>
   </Table>
+);
+
+export const Opened = () => (
+  <Box p="12rem">
+    <Tooltip isOpen placement="top" label="This is the tooltip content.">
+      <Button size="l">Tooltip already visible!</Button>
+    </Tooltip>
+  </Box>
 );
 
 const Template = (args: TooltipProps) => (

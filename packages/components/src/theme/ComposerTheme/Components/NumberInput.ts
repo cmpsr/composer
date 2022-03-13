@@ -44,17 +44,17 @@ const baseStyleField: SystemStyleObject = {
   },
 };
 
-const flushedStyleField: SystemStyleFunction = (props) => ({
+const flushedSpacing = {
+  // Override only large size to 11.5px
+  l: {
+    py: '0.71875rem',
+  },
+};
+
+const flushedStyleField: SystemStyleFunction = ({ size }) => ({
   border: 'none',
   borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
-  ...(() => {
-    if (props.size === 'l') {
-      return {
-        py: '0.71875rem',
-      };
-    }
-  })(),
-  _hover: {},
+  ...flushedSpacing[size],
   _focus: {
     border: 'none',
     borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
@@ -67,30 +67,28 @@ const flushedStyleField: SystemStyleFunction = (props) => ({
   },
 });
 
-const baseStyleStepperGroup: SystemStyleFunction = (props) => ({
+// Stepper Group does not allow to add _invalid and _disabled properties directly, so we add them manually
+const stepperGroupBorders = {
+  _invalid: {
+    borderLeft: '0.0625rem solid var(--chakra-colors-ui-element-outline-disabled)',
+  },
+  _disabled: {
+    border: '0.0625rem solid  var(--chakra-colors-alert-error-default)',
+    borderRightRadius: '0.3125rem',
+  },
+};
+
+const baseStyleStepperGroup: SystemStyleFunction = ({ isDisabled, isInvalid }) => ({
   borderLeft: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
-  ...(() => {
-    if (props.isDisabled) {
-      return {
-        borderLeft: '0.0625rem solid var(--chakra-colors-ui-element-outline-disabled)',
-      };
-    }
-  })(),
-  ...(() => {
-    if (props.isInvalid) {
-      return {
-        border: '0.0625rem solid  var(--chakra-colors-alert-error-default)',
-        borderRightRadius: '0.3125rem',
-      };
-    }
-  })(),
+  ...stepperGroupBorders[isDisabled && '_invalid'],
+  ...stepperGroupBorders[isInvalid && '_disabled'],
 });
 
-const flushedStyleStepperGroup: SystemStyleFunction = (props) => ({
+const flushedStyleStepperGroup: SystemStyleFunction = ({ isInvalid }) => ({
   border: 0,
   margin: 0,
   bg: 'red',
-  height: props.isInvalid ? '100%' : 'calc(100% - 1px)',
+  height: isInvalid ? '100%' : 'calc(100% - 0.0625rem)',
 });
 
 const baseStyleStepper: SystemStyleObject = {
@@ -130,14 +128,12 @@ const flushedStyleStepper: SystemStyleObject = {
   },
 };
 
-const baseStyle: PartsStyleFunction<typeof parts> = (props) => {
-  return {
-    root: baseStyleRoot,
-    field: baseStyleField,
-    stepperGroup: baseStyleStepperGroup(props),
-    stepper: baseStyleStepper,
-  };
-};
+const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
+  root: baseStyleRoot,
+  field: baseStyleField,
+  stepperGroup: baseStyleStepperGroup(props),
+  stepper: baseStyleStepper,
+})
 
 const flushedStyle: PartsStyleFunction<typeof parts> = (props) => ({
   root: flushedStyleRoot,

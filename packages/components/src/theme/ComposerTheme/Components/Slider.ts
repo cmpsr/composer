@@ -12,7 +12,7 @@ const sharedSizeStyle = (props) => ({
     _focus: {
       w: '1rem',
       h: '1rem',
-    }
+    },
   },
   track: orient({
     orientation: props.orientation,

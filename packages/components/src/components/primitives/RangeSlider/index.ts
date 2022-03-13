@@ -1,2 +1,2 @@
-export * from './RangeSlider'
-export * from './types'
+export * from './RangeSlider';
+export * from './types';

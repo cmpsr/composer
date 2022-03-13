@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
-import { NumberInput } from '.';
-import { InputSize, inputSizes, InputVariant, inputVariants } from '../Input/types';
+import { NumberInput, NumberInputProps } from '.';
+import { inputSizes, inputVariants } from '@components';
 
 export default {
   component: NumberInput,
@@ -19,18 +19,7 @@ export default {
   },
 } as Meta;
 
-const Template = ({
-  variant,
-  size,
-  state,
-  showStepper = true,
-  ...rest
-}: {
-  variant: InputVariant;
-  size: InputSize;
-  state: string;
-  showStepper?: boolean;
-}) => (
+const Template = ({ variant, size, state, ...rest }: NumberInputProps & { state: string }) => (
   <NumberInput
     maxWidth="12.5rem"
     variant={variant}
@@ -41,12 +30,10 @@ const Template = ({
     {...rest}
   >
     <NumberInput.Field placeholder="Placeholder" />
-    {showStepper && (
-      <NumberInput.Stepper>
-        <NumberInput.IncrementStepper />
-        <NumberInput.DecrementStepper />
-      </NumberInput.Stepper>
-    )}
+    <NumberInput.Stepper>
+      <NumberInput.IncrementStepper />
+      <NumberInput.DecrementStepper />
+    </NumberInput.Stepper>
   </NumberInput>
 );
 
@@ -96,5 +83,4 @@ Playground.args = {
   isInvalid: false,
   isDisabled: false,
   step: 1,
-  showStepper: true,
 };

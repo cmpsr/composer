@@ -133,7 +133,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
   field: baseStyleField,
   stepperGroup: baseStyleStepperGroup(props),
   stepper: baseStyleStepper,
-})
+});
 
 const flushedStyle: PartsStyleFunction<typeof parts> = (props) => ({
   root: flushedStyleRoot,

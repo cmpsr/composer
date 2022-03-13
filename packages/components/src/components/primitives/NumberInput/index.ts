@@ -1,2 +1,2 @@
-export * from './NumberInput'
-export * from './types'
+export * from './NumberInput';
+export * from './types';

@@ -51,11 +51,11 @@ export const All = () => {
                       isInvalid={state === 'error'}
                       defaultValue={['filled', 'disabled-and-filled'].includes(state) && 10}
                     >
-                      <NumberInput.NumberInputField placeholder="Placeholder" />
-                      <NumberInput.NumberInputStepper>
+                      <NumberInput.Field placeholder="Placeholder" />
+                      <NumberInput.Stepper>
                         <NumberInput.IncrementStepper />
                         <NumberInput.DecrementStepper />
-                      </NumberInput.NumberInputStepper>
+                      </NumberInput.Stepper>
                     </NumberInput>
                   </Td>
                 ))}

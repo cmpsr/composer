@@ -61,7 +61,7 @@ export const labelStyles = {
   variants: {
     outline: {
       invalid: {
-        boxShadow: '0 0 0 0.125rem var(--chakra-colors-alert-error-default)',
+        boxShadow: '0 0 0 0.0625rem var(--chakra-colors-alert-error-default)',
         border: '0px solid transparent',
         borderColor: 'transparent',
         position: 'relative',

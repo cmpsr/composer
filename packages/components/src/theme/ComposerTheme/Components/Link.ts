@@ -70,7 +70,7 @@ export const Link: ComponentStyleConfig = {
   baseStyle: (props) => {
     const buttonBaseStyle = {
       ...props.theme.components.Button.baseStyle,
-      display: 'flex',
+      display: 'inline-flex',
       _hover: {
         textDecorationLine: 'none',
       },

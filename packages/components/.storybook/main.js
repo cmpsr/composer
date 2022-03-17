@@ -3,8 +3,10 @@ const path = require('path');
 module.exports = {
   stories: ['../src/**/*.stories.tsx'],
   addons: [
+    '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
+    'storybook-dark-mode',
     'storybook-addon-turbo-build',
   ],
   features: { postcss: false },

@@ -4,6 +4,7 @@ import { ComposerProvider } from '../src/theme';
 import '@fontsource/inter/300.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/700.css';
+import '@storybook/addon-console';
 
 export const parameters = {
   backgrounds: {

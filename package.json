@@ -7,9 +7,10 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "turbo run libbuild",
+    "components:build-storybook": "turbo run components:build-storybook",
+    "components:storybook": "turbo run components:storybook",
     "type:check": "turbo run type:check",
     "type:emit": "turbo run type:emit",
-    "build-storybook": "turbo run build-storybook",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch --parallel",
     "test:coverage": "turbo run test:coverage",
@@ -24,6 +25,12 @@
   "turbo": {
     "baseBranch": "origin/master",
     "pipeline": {
+      "components:storybook": {
+        "dependsOn": [
+          "@cmpsr/components#storybook"
+        ],
+        "outputs": []
+      },
       "libbuild": {
         "dependsOn": [
           "^libbuild"
@@ -31,6 +38,9 @@
         "outputs": [
           "lib/**"
         ]
+      },
+      "storybook": {
+        "outputs": []
       },
       "test": {
         "outputs": []
@@ -46,14 +56,6 @@
       },
       "type:emit": {
         "outputs": []
-      },
-      "build-storybook": {
-        "dependsOn": [
-          "@cmpsr/components#libbuild"
-        ],
-        "outputs": [
-          "storybook-static/**"
-        ]
       }
     }
   },

@@ -4,6 +4,12 @@
 
 The composer component library is an _opinionated_ wrapper on top of [chakra-ui](https://chakra-ui.com/) that allows defining a branded theme instead of a generic one designed to work with the composer ecosystem.
 
+## Running the app
+
+- Run `yarn install`
+- Run `yarn run storybook`
+- Browse `http://localhost:8080`
+
 ## Design resources
 
 - Figma files:

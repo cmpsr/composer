@@ -1,7 +1,44 @@
-node_modules
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
 packages/node_modules
+jspm_packages/
+packages/jspm_packages
+
+# Dotenv environment variables file
 .env
+
+# testing
 coverage
+
+# yarn
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*
+
+#Others
 quokka.js
 .turbo
 .DS_Store
+
+# IDE idea
+## User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+## File-based project format
+*.iws
+
+### JIRA plugin
+atlassian-ide-plugin.xml

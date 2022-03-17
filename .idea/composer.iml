@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/analytics/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/analytics/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/cloud-kms/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/cloud-kms/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/cloud-logger/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/cloud-logger/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/cloud-storage/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/cloud-storage/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/components/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/components/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/components/storybook-static" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/contentful-core/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/contentful-core/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/firebase-dynamic-link/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/firebase-dynamic-link/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/firestore/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/firestore/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/plaid/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/plaid/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/plaid-link/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/plaid-link/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/twilio/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/twilio/lib" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

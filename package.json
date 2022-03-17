@@ -30,15 +30,15 @@
           "@cmpsr/components#storybook"
         ],
         "outputs": []
-      }
-    },
-    "components:build-storybook": {
-      "dependsOn": [
-        "@cmpsr/components#libbuild"
-      ],
-      "outputs": [
-        "storybook-static/**"
-      ],
+      },
+      "components:build-storybook": {
+        "dependsOn": [
+          "@cmpsr/components#libbuild"
+        ],
+        "outputs": [
+          "storybook-static/**"
+        ]
+      },
       "libbuild": {
         "dependsOn": [
           "^libbuild"

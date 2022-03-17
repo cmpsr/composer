@@ -7,7 +7,6 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "turbo run libbuild",
-    "components:build-storybook": "turbo run components:build-storybook",
     "components:storybook": "turbo run components:storybook",
     "type:check": "turbo run type:check",
     "type:emit": "turbo run type:emit",

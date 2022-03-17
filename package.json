@@ -30,7 +30,7 @@
           "@cmpsr/components#storybook"
         ],
         "outputs": []
-      },
+      }
     },
     "components:build-storybook": {
       "dependsOn": [

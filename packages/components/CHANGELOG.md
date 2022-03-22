@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 1.18.0
+
+### Minor Changes
+
+- 7b49ff6: feat: remove Link Text wrapper
+- 7b101ec: Implementation of the Dropdown component, including stories and tests.
+
 ## 1.17.0
 
 ### Minor Changes

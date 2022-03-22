@@ -1,9 +1,9 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Tag } from './Tag';
-import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
 import { IconAlertCircle } from '@components';
 import { tagSizes } from './types';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 
 export default {
   component: Tag,
@@ -13,38 +13,49 @@ export default {
       options: tagSizes,
       control: { type: 'select' },
     },
+    iconPosition: {
+      options: ['left', 'right'],
+      control: { type: 'radio' },
+    },
   },
 } as Meta;
 
-const AllTemplate = () => (
-  <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
-    <HStack spacing={50}>
+export const All = () => (
+  <Table variant="simple">
+    <Thead>
+      <Tr>
+        <Th>Size</Th>
+        <Th>Label only</Th>
+        <Th>With left icon</Th>
+        <Th>With right Icon</Th>
+      </Tr>
+    </Thead>
+    <Tbody>
       {tagSizes.map((size) => (
-        <Tag key={size} size={size}>
-          <Tag.Label>Hello</Tag.Label>
-        </Tag>
+        <Tr key="size">
+          <Td>{size.toUpperCase()}</Td>
+          <Td>
+            <Tag size={size} href="#">
+              <Tag.Label>Hello</Tag.Label>
+            </Tag>
+          </Td>
+          <Td>
+            <Tag size={size}>
+              <Tag.LeftIcon as={IconAlertCircle} />
+              <Tag.Label>Hello</Tag.Label>
+            </Tag>
+          </Td>
+          <Td>
+            <Tag size={size}>
+              <Tag.Label>Hello</Tag.Label>
+              <Tag.RightIcon as={IconAlertCircle} />
+            </Tag>
+          </Td>
+        </Tr>
       ))}
-    </HStack>
-    <HStack spacing={50}>
-      {tagSizes.map((size) => (
-        <Tag key={size} size={size}>
-          <Tag.LeftIcon as={IconAlertCircle} />
-          <Tag.Label>Hello</Tag.Label>
-        </Tag>
-      ))}
-    </HStack>
-    <HStack spacing={50}>
-      {tagSizes.map((size) => (
-        <Tag key={size} size={size}>
-          <Tag.Label>Hello</Tag.Label>
-          <Tag.RightIcon as={IconAlertCircle} />
-        </Tag>
-      ))}
-    </HStack>
-  </VStack>
+    </Tbody>
+  </Table>
 );
-
-export const All = AllTemplate.bind({});
 
 const Template = ({ showIcon, iconPosition, label, ...args }) => (
   <Tag {...args}>

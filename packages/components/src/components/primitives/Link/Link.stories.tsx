@@ -36,7 +36,7 @@ export const All = () => (
           <Td>{size.toUpperCase()}</Td>
           <Td>
             <Link size={size} href="#">
-              Size link
+              Size {size.toUpperCase()} link
             </Link>
           </Td>
           <Td>

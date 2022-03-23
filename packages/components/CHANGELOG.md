@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 1.19.0
+
+### Minor Changes
+
+- 51b0eb0: feat: remove flex wrapper inside Link
+- 6cea888: feat: refactor Tag to use dot notation
+
 ## 1.18.0
 
 ### Minor Changes

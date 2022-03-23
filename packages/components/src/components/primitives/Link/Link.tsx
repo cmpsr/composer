@@ -11,11 +11,12 @@ export const Link = forwardRef<LinkProps, typeof ChakraLink>(
       variant={variant}
       data-testid="cmpsr.link.container"
       alignItems="center"
+      columnGap="0.5rem"
       {...props}
     >
-      {LeadingIcon && <LeadingIcon size={getIconSize(size)} data-testid="cmpsr.link.leading-icon" mr="0.5rem" />}
+      {LeadingIcon && <LeadingIcon size={getIconSize(size)} data-testid="cmpsr.link.leading-icon" />}
       {children}
-      {TrailingIcon && <TrailingIcon size={getIconSize(size)} data-testid="cmpsr.link.trailing-icon" ml="0.5rem" />}
+      {TrailingIcon && <TrailingIcon size={getIconSize(size)} data-testid="cmpsr.link.trailing-icon" />}
     </ChakraLink>
   )
 );

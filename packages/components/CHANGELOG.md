@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 1.19.2
+
+### Patch Changes
+
+- 2f969d1: fix: make Theme props partials
+
 ## 1.19.1
 
 ### Patch Changes

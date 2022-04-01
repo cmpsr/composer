@@ -5,20 +5,22 @@ import { Shadows } from './Shadows';
 import { Radius } from './Radius';
 import { Spacing } from './Spacing';
 
+export interface FontFamilies {
+  heading?: string;
+  body?: string;
+  mono?: string;
+}
+
 export interface Theme {
-  colors: Colors;
-  radii: Radius;
-  shadows: Shadows;
-  space: Spacing;
+  colors: Partial<Colors>;
+  radii: Partial<Radius>;
+  shadows: Partial<Shadows>;
+  space: Partial<Spacing>;
   components: {
     [key: string]: ComponentStyleConfig;
   };
   textStyles: {
     [key: string]: SystemStyleObject;
   };
-  fonts?: {
-    heading?: string;
-    body?: string;
-    mono?: string;
-  };
+  fonts?: Partial<FontFamilies>;
 }

@@ -4,6 +4,7 @@ import { Link } from './Link';
 import { linkSizes, linkVariants } from './types';
 import * as Icons from '../Icons';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { Text } from '@components';
 
 export default {
   component: Link,
@@ -36,7 +37,7 @@ export const All = () => (
           <Td>{size.toUpperCase()}</Td>
           <Td>
             <Link size={size} href="#">
-              Size link
+              Size {size.toUpperCase()} link
             </Link>
           </Td>
           <Td>
@@ -94,6 +95,16 @@ const AllVariantsTemplate = () => (
 );
 
 export const AllVariants = AllVariantsTemplate.bind({});
+
+export const WrappedByText = () => (
+  <Text>
+    A{' '}
+    <Link _hover={{ textDecoration: 'underline' }} href="#">
+      link
+    </Link>{' '}
+    in the middle of a text with a custom decoration
+  </Text>
+);
 
 const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
   <Link

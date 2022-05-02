@@ -1,5 +1,17 @@
 # @cmpsr/components
 
+## 1.19.2
+
+### Patch Changes
+
+- 2f969d1: fix: make Theme props partials
+
+## 1.19.1
+
+### Patch Changes
+
+- 88c6921: fix: update engines.node to support v14
+
 ## 1.19.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.4.2
+
+### Patch Changes
+
+- 87716f6: Move dependencies to peer and dev in contentful-core
+
 ## 0.4.1
 
 ### Patch Changes

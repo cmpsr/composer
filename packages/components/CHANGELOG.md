@@ -1,5 +1,31 @@
 # @cmpsr/components
 
+## 1.19.2
+
+### Patch Changes
+
+- 2f969d1: fix: make Theme props partials
+
+## 1.19.1
+
+### Patch Changes
+
+- 88c6921: fix: update engines.node to support v14
+
+## 1.19.0
+
+### Minor Changes
+
+- 51b0eb0: feat: remove flex wrapper inside Link
+- 6cea888: feat: refactor Tag to use dot notation
+
+## 1.18.0
+
+### Minor Changes
+
+- 7b49ff6: feat: remove Link Text wrapper
+- 7b101ec: Implementation of the Dropdown component, including stories and tests.
+
 ## 1.17.0
 
 ### Minor Changes

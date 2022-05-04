@@ -51,7 +51,7 @@ const variantFlushed: SystemStyleObject = {
   _disabled: {
     bg: 'background-action-disabled',
     cursor: 'not-allowed',
-    borderBottom: 'solid 0.0625 var(--chakra-colors-ui-element-outline-disabled)',
+    borderBottom: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-disabled)',
     color: 'text-secondary',
     _placeholder: {
       color: 'text-disabled',

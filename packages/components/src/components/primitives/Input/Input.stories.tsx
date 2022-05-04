@@ -28,7 +28,23 @@ export default {
 
 const AllTemplate = () => {
   const states = {
-    outline: ['default', 'leadingIcon', 'error', 'disabled', 'bothAddons', 'leftAddon', 'rightAddon', 'filled'],
+    outline: [
+      'default',
+      'leadingIcon',
+      'bothAddons',
+      'leftAddon',
+      'rightAddon',
+      'filled',
+      'disabled',
+      'disabled-and-filled',
+      'disabled-bothAddons',
+      'disabled-leftAddon',
+      'disabled-rightAddon',
+      'error',
+      'error-bothAddons',
+      'error-leftAddon',
+      'error-rightAddon',
+    ],
     flushed: ['default', 'leadingIcon', 'error', 'disabled', 'filled'],
   };
   return (
@@ -46,7 +62,7 @@ const AllTemplate = () => {
         {inputVariants.map((variant, i) => (
           <Fragment key={i}>
             <Tr>
-              <Td rowSpan={9}>{variant}</Td>
+              <Td rowSpan={16}>{variant}</Td>
             </Tr>
             {states[variant].map((state, i) => (
               <Tr key={`${state}-${i}`}>
@@ -60,6 +76,12 @@ const AllTemplate = () => {
                       {...{
                         ...(state === 'disabled' && {
                           isDisabled: true,
+                        }),
+                      }}
+                      {...{
+                        ...(state === 'disabled-and-filled' && {
+                          isDisabled: true,
+                          value: 'Filled',
                         }),
                       }}
                       {...{
@@ -91,6 +113,44 @@ const AllTemplate = () => {
                       {...{
                         ...(state === 'filled' && {
                           value: 'Filled',
+                        }),
+                      }}
+                      {...{
+                        ...(state === 'disabled-bothAddons' && {
+                          leftLabel: 'Label',
+                          rightLabel: 'Label',
+                          isDisabled: true,
+                        }),
+                      }}
+                      {...{
+                        ...(state === 'disabled-leftAddon' && {
+                          leftLabel: 'Label',
+                          isDisabled: true,
+                        }),
+                      }}
+                      {...{
+                        ...(state === 'disabled-rightAddon' && {
+                          rightLabel: 'Label',
+                          isDisabled: true,
+                        }),
+                      }}
+                      {...{
+                        ...(state === 'error-bothAddons' && {
+                          leftLabel: 'Label',
+                          rightLabel: 'Label',
+                          isInvalid: true,
+                        }),
+                      }}
+                      {...{
+                        ...(state === 'error-leftAddon' && {
+                          leftLabel: 'Label',
+                          isInvalid: true,
+                        }),
+                      }}
+                      {...{
+                        ...(state === 'error-rightAddon' && {
+                          rightLabel: 'Label',
+                          isInvalid: true,
                         }),
                       }}
                     />

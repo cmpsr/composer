@@ -1,10 +1,8 @@
 import { FlexProps, StyleProps } from '@chakra-ui/react';
 import { AlertStatus } from '@components/notifications';
 
-export interface InlineAlertProps {
-  showIcon?: boolean;
+export interface InlineAlertProps extends FlexProps {
   status?: AlertStatus;
-  message: string;
 }
 
 export type InlineAlertStyles = {
@@ -12,3 +10,8 @@ export type InlineAlertStyles = {
   message: StyleProps;
   icon: { color: string };
 };
+
+export interface InlineAlertContextProps {
+  status: AlertStatus;
+  styles: InlineAlertStyles;
+}

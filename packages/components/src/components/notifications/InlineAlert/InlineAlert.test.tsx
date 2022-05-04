@@ -3,8 +3,19 @@ import { screen, renderWithProviders } from '@tests/renderWithProviders';
 import '@testing-library/jest-dom';
 import { InlineAlert } from './InlineAlert';
 
+interface RendererProps {
+  message: string;
+  showIcon?: boolean;
+}
+
 describe('InlineAlert', () => {
-  const givenComponentRendered = (props) => renderWithProviders(<InlineAlert {...props} />);
+  const givenComponentRendered = ({ message, showIcon = false }: RendererProps) =>
+    renderWithProviders(
+      <InlineAlert>
+        {showIcon && <InlineAlert.Icon />}
+        <InlineAlert.Message>{message}</InlineAlert.Message>
+      </InlineAlert>
+    );
 
   test('should render a generic message without icon', () => {
     givenComponentRendered({ message: 'Hello' });

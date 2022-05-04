@@ -29,10 +29,15 @@ export const All = () => (
         <Tr key={`${status}-${i}`}>
           <Td>{status}</Td>
           <Td>
-            <InlineAlert status={status} message={`${status} message`} showIcon />
+            <InlineAlert status={status}>
+              <InlineAlert.Icon />
+              <InlineAlert.Message>{`${status} message`}</InlineAlert.Message>
+            </InlineAlert>
           </Td>
           <Td>
-            <InlineAlert status={status} message={`${status} message`} />
+            <InlineAlert status={status}>
+              <InlineAlert.Message>{`${status} message`}</InlineAlert.Message>
+            </InlineAlert>
           </Td>
         </Tr>
       ))}
@@ -40,7 +45,12 @@ export const All = () => (
   </Table>
 );
 
-const Template = (args) => <InlineAlert {...args} />;
+const Template = ({ showIcon, message, status }) => (
+  <InlineAlert status={status}>
+    {showIcon && <InlineAlert.Icon />}
+    <InlineAlert.Message>{message}</InlineAlert.Message>
+  </InlineAlert>
+);
 
 export const Playground = Template.bind({});
 

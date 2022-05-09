@@ -1,0 +1,44 @@
+import { ApolloClient } from '@apollo/client';
+import { getApolloClient } from '.';
+
+const mockCreateLink = jest.fn();
+jest.mock('@cmpsr/contentful-core/lib/client', () => ({
+  createContentfulLink: (params: Record<string, unknown>) => mockCreateLink(params),
+}));
+
+describe('getApolloClient', () => {
+  test('should return an ApolloClient', () => {
+    const client = getApolloClient();
+    expect(client).toBeInstanceOf(ApolloClient);
+  });
+
+  test('should create link with env variables if no values provided', () => {
+    getApolloClient();
+    expect(mockCreateLink).toBeCalledTimes(1);
+    expect(mockCreateLink).toBeCalledWith({
+      space: process.env.CONTENTFUL_SPACE_ID,
+      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY,
+    });
+  });
+
+  test('should create link with preview token if preview', () => {
+    getApolloClient(true);
+    expect(mockCreateLink).toBeCalledTimes(1);
+    expect(mockCreateLink).toBeCalledWith({
+      space: process.env.CONTENTFUL_SPACE_ID,
+      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_PREVIEW,
+    });
+  });
+
+  test('should use provided values', () => {
+    const preview = true;
+    const space = 'new_space';
+    const previewToken = 'new_preview_token';
+    getApolloClient(preview, space, '', previewToken);
+    expect(mockCreateLink).toBeCalledTimes(1);
+    expect(mockCreateLink).toBeCalledWith({
+      space,
+      accessToken: previewToken,
+    });
+  });
+});

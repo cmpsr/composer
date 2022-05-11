@@ -1,5 +1,19 @@
 # @cmpsr/components
 
+## 1.20.0
+
+### Minor Changes
+
+- 0562913: Inline Alert component implemented, it includes stories and unit tests
+- 30db055: feat: expose createBreakpoints function
+
+## 1.19.3
+
+### Patch Changes
+
+- b00111c: fix Input and PinInput styles
+- 4ffbe85: fix radio component styles and update its stories
+
 ## 1.19.2
 
 ### Patch Changes

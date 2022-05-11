@@ -1,13 +1,9 @@
 import { RadioProps as ChakraRadioProps } from '@chakra-ui/react';
 
-export const radioVariants = [
-  'default',
-] as const;
-export type RadioVariant = typeof radioVariants[number];
-export const RadioSizes = ['s', 'm', 'l'] as const;
-export type RadioSize = typeof RadioSizes[number];
+export const radioSizes = ['s', 'm', 'l'] as const;
 
-export interface RadioProps extends ChakraRadioProps {
-  variant?: RadioVariant;
+export type RadioSize = typeof radioSizes[number];
+
+export interface RadioProps extends Omit<ChakraRadioProps, 'variant'> {
   size?: RadioSize;
 }

@@ -11,6 +11,7 @@ import { Divider } from './Divider';
 import { Icon } from './Icon';
 import { IconButton } from './IconButton';
 import { Input } from './Input';
+import { InlineAlert } from './InlineAlert';
 import { Link } from './Link';
 import { Modal } from './Modal';
 import { PinInput } from './PinInput';
@@ -45,6 +46,7 @@ export const components = {
   Icon,
   IconButton,
   Input,
+  InlineAlert,
   Kbd: Symbols,
   Link,
   Menu: Dropdown,

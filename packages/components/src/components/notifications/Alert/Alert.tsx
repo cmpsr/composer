@@ -10,15 +10,17 @@ import {
   CloseButtonProps,
 } from '@components';
 
+export const ALERT_ICONS = {
+  info: IconInfoCircle,
+  warning: IconAlertTriangle,
+  success: IconCircleCheck,
+  error: IconAlertCircle,
+};
+
 export const Alert: FC<AlertProps> & AlertStaticMembers = ({ status = 'info', children, variant, ...props }) => {
   const { icon } = useMultiStyleConfig('Alert', { variant, status }) as AlertStyles;
-  const ICONS = {
-    info: IconInfoCircle,
-    warning: IconAlertTriangle,
-    success: IconCircleCheck,
-    error: IconAlertCircle,
-  };
-  const BaseIcon = ICONS[status];
+
+  const BaseIcon = ALERT_ICONS[status];
 
   return (
     <ChakraAlert status={status} variant={variant} {...props}>

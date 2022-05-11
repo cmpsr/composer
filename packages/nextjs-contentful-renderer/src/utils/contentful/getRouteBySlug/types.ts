@@ -1,4 +1,4 @@
-export interface RouteVariants {
+export interface RouteVariant {
   traffic: number;
   page: string;
   utmCampaign?: string;
@@ -6,5 +6,5 @@ export interface RouteVariants {
 
 export interface Route {
   id: string;
-  variants: RouteVariants;
+  variants: RouteVariant[];
 }

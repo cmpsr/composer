@@ -27,6 +27,7 @@
   "devDependencies": {
     "@apollo/client": "^3.6.2",
     "@cmpsr/components": "^1.20.0",
+    "@cmpsr/contentful-core": "^0.4.2",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",

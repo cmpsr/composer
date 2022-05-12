@@ -1,5 +1,5 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { createContentfulLink } from '@cmpsr/contentful-core/lib/client';
+import { createContentfulLink } from '@cmpsr/contentful-core';
 
 export const getApolloClient = (
   preview = false,

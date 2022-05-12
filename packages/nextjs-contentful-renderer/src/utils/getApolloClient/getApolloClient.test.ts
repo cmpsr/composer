@@ -2,7 +2,7 @@ import { ApolloClient } from '@apollo/client';
 import { getApolloClient } from '.';
 
 const mockCreateLink = jest.fn();
-jest.mock('@cmpsr/contentful-core/lib/client', () => ({
+jest.mock('@cmpsr/contentful-core', () => ({
   createContentfulLink: (params: Record<string, unknown>) => mockCreateLink(params),
 }));
 

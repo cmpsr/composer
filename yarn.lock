@@ -2502,6 +2502,15 @@
     openurl "^1.1.1"
     yargs "^13.3.0"
 
+"@cmpsr/contentful-core@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@cmpsr/contentful-core/-/contentful-core-0.5.0.tgz#dad1e5db00945d21f941525cfb063e218f594249"
+  integrity sha512-xoENtaHceHTpJKPEglHv/89gGAN5FGcw7EvCmmRqaSCxx3ZTHzS2j1H8yC/Du/mt/ydsbNE4Hc5/68sMMxxYww==
+  dependencies:
+    apollo-link-contentful "^0.1.3"
+    cross-fetch "^3.1.4"
+    invariant "^2.2.4"
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"

@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.5.0
+
+### Minor Changes
+
+- c88c8f1: feat: expose createContentfulLink function
+
 ## 0.4.2
 
 ### Patch Changes

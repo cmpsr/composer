@@ -20,7 +20,7 @@
     "type:emit": "tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "dependencies": {
-    "@cmpsr/contentful-core": "^0.4.2",
+    "@cmpsr/contentful-core": "^0.5.0",
     "cookies": "^0.8.0",
     "esbuild": "^0.14.38",
     "mdx-bundler": "^9.0.0"

@@ -5,7 +5,8 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
-    "/lib"
+    "/lib",
+    "package.json"
   ],
   "repository": "ssh://git@github.com:cmpsr/composer.git",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
@@ -17,17 +18,17 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "type:check": "yarn tsc --project tsconfig.json --noEmit",
-    "type:emit": "tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
+    "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "dependencies": {
-    "@cmpsr/contentful-core": "^0.5.0",
+    "@cmpsr/contentful-core": "^0.5.2",
     "cookies": "^0.8.0",
     "esbuild": "^0.14.38",
     "mdx-bundler": "^9.0.0"
   },
   "devDependencies": {
     "@apollo/client": "^3.6.2",
-    "@cmpsr/components": "^1.20.0",
+    "@cmpsr/components": "^1.20.2",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",
@@ -41,7 +42,7 @@
   },
   "peerDependencies": {
     "@apollo/client": "^3.6.2",
-    "@cmpsr/components": "^1.20.0",
+    "@cmpsr/components": "^1.20.2",
     "next": "^12.1.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"

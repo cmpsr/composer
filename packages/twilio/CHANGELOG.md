@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.5
+
+### Patch Changes
+
+- 8289ef7: fix: use project config to emit types
+
 ## 0.1.4
 
 ### Patch Changes

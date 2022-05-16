@@ -11,6 +11,6 @@ export const getApolloClient = (
     link: createContentfulLink({
       space,
       accessToken: preview ? previewAccessToken : deliveryAccessToken,
-    }),
+    }) as any,
     cache: new InMemoryCache({}),
   });

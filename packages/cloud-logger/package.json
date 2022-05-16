@@ -13,7 +13,8 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
-    "/lib"
+    "/lib",
+    "package.json"
   ],
   "scripts": {
     "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore '**/*.test.ts'",

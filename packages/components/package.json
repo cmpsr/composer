@@ -14,7 +14,8 @@
   "types": "./lib/index.d.ts",
   "files": [
     "/lib",
-    "/scripts"
+    "/scripts",
+    "package.json"
   ],
   "private": false,
   "scripts": {

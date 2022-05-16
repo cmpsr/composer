@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 1.20.2
+
+### Patch Changes
+
+- 41d0505: fix: include package.json in release
+
 ## 1.20.1
 
 ### Patch Changes

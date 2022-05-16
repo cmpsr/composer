@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 1.20.1
+
+### Patch Changes
+
+- 8289ef7: fix: use project config to emit types
+
 ## 1.20.0
 
 ### Minor Changes

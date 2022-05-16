@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.5.1
+
+### Patch Changes
+
+- 8289ef7: fix: use project config to emit types
+
 ## 0.5.0
 
 ### Minor Changes

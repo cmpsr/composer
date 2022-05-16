@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.6
+
+### Patch Changes
+
+- 41d0505: fix: include package.json in release
+
 ## 0.1.5
 
 ### Patch Changes

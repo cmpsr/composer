@@ -4,9 +4,11 @@ This is a library to render content from [contentful](https://www.contentful.com
 
 ## Using the library
 
-The library exposes the following methods:
+The library exposes the following:
 
 - `getPageContent(context: GetServerSidePropsContext, domain?: string)`. This method takes the nextjs' `context` object and get the page slug to use it to retrieve the content from contentful. To avoid collisions between similar routes in different projects stored in the same contentful space you can pass domain parameter to this function, or you can set the `SITE_DOMAIN` env variable to avoid having to pass it in every single call.
+- `generateMdx(blocks: Block[]): Promise<Model[]>`. This function takes the output of the `getPageContent` and compiles the code to MDX using [mdx-bundler](https://github.com/kentcdodds/mdx-bundler).
+- `MdxRenderer` component. Takes the compiled MDX code from `generateMdx` and renders the content using react. The component accepts the `content` to render and a custom `componentMap` that can be used to render custom components.
 
 ## Requirements
 
@@ -20,6 +22,16 @@ SITE_DOMAIN=
 ```
 
 The `CONTENTFUL_ACCESS_TOKEN_PREVIEW` is only needed if you will be rendering non published content.
+
+### Peer dependencies
+
+The following dependencies should be provided to the library:
+
+- @apollo/client `>= 3.6.2`
+- @cmpsr/components `>= 1.20.0`
+- next `>= 12.1.6`
+- react `>= 18.1.0`
+- react-dom `>= 18.1.0`
 
 ## Example of usage
 

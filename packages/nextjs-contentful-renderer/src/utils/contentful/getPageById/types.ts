@@ -15,16 +15,16 @@ interface PageMeta {
   content: string;
 }
 
-interface Block {
+export interface Block {
   models: Model[];
-  propsValues: PropValue[];
+  propsValues: PropsValue[];
 }
 
-type Model = ResponsiveValue<string>;
+export type Model = ResponsiveValue<string>;
 
-type PropValue = ResponsiveValue<Record<string, string>>;
+export type PropsValue = ResponsiveValue<Record<string, string>>;
 
-interface ResponsiveValue<T> {
+export interface ResponsiveValue<T> {
   base?: T;
   md?: T;
   lg?: T;

@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@cmpsr/contentful-core": "^0.5.2",
-    "cookies": "^0.8.0",
+    "cookie": "^0.5.0",
     "esbuild": "^0.14.38",
     "mdx-bundler": "^9.0.0"
   },

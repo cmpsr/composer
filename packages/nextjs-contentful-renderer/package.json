@@ -1,6 +1,6 @@
 {
   "name": "@cmpsr/nextjs-contentful-renderer",
-  "version": "0.0.1-canary.0",
+  "version": "0.0.1-beta.0",
   "description": "Utility functions to retrieve and render content from contentful in mdx format",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -46,5 +46,6 @@
     "next": "^12.1.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
-  }
+  },
+  "gitHead": "6ed57ef588712950eed22c96da22cff216a4b6fc"
 }

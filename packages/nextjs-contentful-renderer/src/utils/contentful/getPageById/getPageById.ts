@@ -41,7 +41,7 @@ export const getPageById = async (
   const { id, title, metaConfiguration, contentCollection } = data.page;
   const content = contentCollection.items.map((item) => {
     return {
-      mdxModels: item.modelsCollection.items,
+      models: item.modelsCollection.items,
       propsValues: item.propsValue || [],
     };
   });

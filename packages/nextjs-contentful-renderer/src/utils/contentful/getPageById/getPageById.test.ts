@@ -61,7 +61,7 @@ describe('getPageById', () => {
       metaConfiguration: {},
       content: [
         {
-          mdxModels: [{ base: '# H1' }, { base: '## H2' }],
+          models: [{ base: '# H1' }, { base: '## H2' }],
           propsValues: [],
         },
       ],

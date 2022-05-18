@@ -124,10 +124,10 @@ export const StackedActions = (args) => {
             <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
           </Modal.Body>
           <Modal.Footer flexDirection="column">
-            <Button variant="primary-alt" onClick={handleClose} isFullWidth mb="0.5rem">
+            <Button variant="primary-alt" onClick={handleClose} width="100%" mb="0.5rem">
               Cancel
             </Button>
-            <Button variant="primary" onClick={handleClose} isFullWidth>
+            <Button variant="primary" onClick={handleClose} width="100%">
               Accept
             </Button>
           </Modal.Footer>
@@ -159,10 +159,10 @@ export const FullWidthActions = (args) => {
             <Text variant="text-body-large-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
           </Modal.Body>
           <Modal.Footer columnGap="1rem">
-            <Button variant="primary-alt" onClick={handleClose} isFullWidth>
+            <Button variant="primary-alt" onClick={handleClose} width="100%">
               Cancel
             </Button>
-            <Button variant="primary" onClick={handleClose} isFullWidth>
+            <Button variant="primary" onClick={handleClose} width="100%">
               Accept
             </Button>
           </Modal.Footer>

@@ -111,14 +111,11 @@ export const inputGroupStyles = {
   },
 };
 
-const calculateSize = (size: string, iconSize: string) => {
+const calculateSize = (size: string) => {
   return (props) => {
     return {
       elementContainer: {
         ...iconContainerStyles[size],
-      },
-      element: {
-        boxSize: props.theme.components.Icon.sizes[iconSize].boxSize,
       },
       leftLabel: {
         ...labelStyles.sizes[size],
@@ -143,9 +140,9 @@ const calculateSize = (size: string, iconSize: string) => {
 };
 
 const sizes = {
-  l: calculateSize('large', 'l'),
-  m: calculateSize('medium', 'm'),
-  s: calculateSize('small', 'm'),
+  l: calculateSize('large'),
+  m: calculateSize('medium'),
+  s: calculateSize('small'),
 };
 
 export const getInputGroupStyle = (

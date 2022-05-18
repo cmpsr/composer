@@ -12,7 +12,7 @@ export const getPageContent = async (
 ): Promise<Page> => {
   const preview = context.query.preview !== undefined;
 
-  const apolloClient = getApolloClient(preview);
+  const apolloClient = getApolloClient({ preview });
 
   const slug = getSlug(context.query.slug || '/');
 

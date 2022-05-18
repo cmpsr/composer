@@ -22,7 +22,7 @@ describe('getApolloClient', () => {
   });
 
   test('should create link with preview token if preview', () => {
-    getApolloClient(true);
+    getApolloClient({ preview: true });
     expect(mockCreateLink).toBeCalledTimes(1);
     expect(mockCreateLink).toBeCalledWith({
       space: process.env.CONTENTFUL_SPACE_ID,
@@ -33,12 +33,12 @@ describe('getApolloClient', () => {
   test('should use provided values', () => {
     const preview = true;
     const space = 'new_space';
-    const previewToken = 'new_preview_token';
-    getApolloClient(preview, space, '', previewToken);
+    const previewAccessToken = 'new_preview_token';
+    getApolloClient({ preview, space, deliveryAccessToken: '', previewAccessToken });
     expect(mockCreateLink).toBeCalledTimes(1);
     expect(mockCreateLink).toBeCalledWith({
       space,
-      accessToken: previewToken,
+      accessToken: previewAccessToken,
     });
   });
 });

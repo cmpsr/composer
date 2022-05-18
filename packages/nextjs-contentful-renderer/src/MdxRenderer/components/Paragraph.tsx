@@ -4,4 +4,4 @@ import { Text } from '.';
 /**
  * We need this wrapper to avoid issues with mdx-bundler generating nested paragraph tags.
  */
-export const Paragraph = (props) => (typeof props.children === 'string' ? <Text {...props} /> : <>{props.children}</>);
+export const Paragraph = (props) => (props.children === 'string' ? <Text {...props} /> : <>{props.children}</>);

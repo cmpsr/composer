@@ -18,12 +18,12 @@ const components: any = Object.keys(Composer).reduce(
   },
   {
     p: Paragraph,
-    h1: (props: Composer.TextProps) => <Composer.Text as="h1" variant="text-header-4XL" {...props} />,
-    h2: (props: Composer.TextProps) => <Composer.Text as="h2" variant="text-header-3XL" {...props} />,
-    h3: (props: Composer.TextProps) => <Composer.Text as="h3" variant="text-header-2XL" {...props} />,
-    h4: (props: Composer.TextProps) => <Composer.Text as="h4" variant="text-header-XL" {...props} />,
-    h5: (props: Composer.TextProps) => <Composer.Text as="h5" variant="text-header-L" {...props} />,
-    h6: (props: Composer.TextProps) => <Composer.Text as="h6" variant="text-header-M" {...props} />,
+    h1: (props: Composer.TextProps) => <Text as="h1" variant="text-header-4XL" {...props} />,
+    h2: (props: Composer.TextProps) => <Text as="h2" variant="text-header-3XL" {...props} />,
+    h3: (props: Composer.TextProps) => <Text as="h3" variant="text-header-2XL" {...props} />,
+    h4: (props: Composer.TextProps) => <Text as="h4" variant="text-header-XL" {...props} />,
+    h5: (props: Composer.TextProps) => <Text as="h5" variant="text-header-L" {...props} />,
+    h6: (props: Composer.TextProps) => <Text as="h6" variant="text-header-M" {...props} />,
     a: (props: Composer.LinkProps) => <Composer.Link display="inline-flex" {...props} />,
     img: Composer.Image,
   }

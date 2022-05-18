@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 1.20.3
+
+### Patch Changes
+
+- fb122d4: update chakra packages to latest version to support React 18
+
 ## 1.20.2
 
 ### Patch Changes

@@ -1,5 +1,5 @@
 /* eslint-disable prefer-rest-params */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { AnalyticsContext } from './AnalyticsContext';
 import {
   Segment,
@@ -19,6 +19,7 @@ const supportedIntegrations = {
 export interface IAnalyticsProvider {
   segment?: ISegmentConfig;
   ga?: IGAConfig;
+  children: ReactNode;
 }
 
 const ssr = !(

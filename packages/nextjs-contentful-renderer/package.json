@@ -6,6 +6,7 @@
   "types": "./lib/index.d.ts",
   "files": [
     "/lib",
+    "/client",
     "package.json"
   ],
   "repository": "ssh://git@github.com:cmpsr/composer.git",

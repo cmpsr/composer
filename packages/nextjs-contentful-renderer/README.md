@@ -36,11 +36,8 @@ The following dependencies should be provided to the library:
 ## Example of usage
 
 ```typescript
-import {
-  MdxRenderer,
-  generateMdx,
-  getPageContent,
-} from "@cmpsr/nextjs-contentful-renderer";
+import { generateMdx, getPageContent } from "@cmpsr/nextjs-contentful-renderer";
+import { MdxRenderer } from "@cmpsr/nextjs-contentful-renderer/client";
 
 const Page: NextPage<PageProps> = ({ content, title, metaConfiguration }) => {
   const metaTags = Object.values(metaConfiguration) || [];

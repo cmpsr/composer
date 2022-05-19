@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
 import * as Composer from '@cmpsr/components';
+import * as Icons from '@cmpsr/components/lib/components/primitives/Icons';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { Paragraph, Text } from './components';
 import { MdxRendererProps } from './types';
@@ -45,10 +46,10 @@ const components: any = Object.keys(Composer).reduce(
   }
 );
 
-export const MdxRenderer: FC<MdxRendererProps> = ({ content = {}, componentMap = {} }) => {
+export const MdxRenderer: FC<MdxRendererProps> = ({ content = {}, componentMap = {},  mdxGlobals = {}) => {
   const [isClient, setIsClient] = useState(false);
   const code = Composer.useBreakpointValue(content) || content.base;
-  const MdxComponent = useMemo(() => getMDXComponent(code), [code]);
+  const MdxComponent = useMemo(() => getMDXComponent(code, { ...Icons, ...mdxGlobals }), [code, mdxGlobals]);
 
   useEffect(() => {
     setIsClient(true);

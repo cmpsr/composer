@@ -4,4 +4,5 @@ import { Model } from '../utils/contentful/getPageById/types';
 export interface MdxRendererProps {
   content: Model;
   componentMap?: ComponentMap;
+  mdxGlobals: Record<string, unknown>;
 }

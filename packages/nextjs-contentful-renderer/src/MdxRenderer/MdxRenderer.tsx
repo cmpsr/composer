@@ -46,7 +46,7 @@ const components: any = Object.keys(Composer).reduce(
   }
 );
 
-export const MdxRenderer: FC<MdxRendererProps> = ({ content = {}, componentMap = {},  mdxGlobals = {}) => {
+export const MdxRenderer: FC<MdxRendererProps> = ({ content = {}, componentMap = {}, mdxGlobals = {} }) => {
   const [isClient, setIsClient] = useState(false);
   const code = Composer.useBreakpointValue(content) || content.base;
   const MdxComponent = useMemo(() => getMDXComponent(code, { ...Icons, ...mdxGlobals }), [code, mdxGlobals]);

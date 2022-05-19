@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC, useEffect, useMemo, useState } from 'react';
 import * as Composer from '@cmpsr/components';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { Paragraph, Text } from './components';
@@ -46,11 +46,13 @@ const components: any = Object.keys(Composer).reduce(
 );
 
 export const MdxRenderer: FC<MdxRendererProps> = ({ content = {}, componentMap = {} }) => {
-  const hasNoMdx = Object.values(content).every((item) => !item);
-  if (hasNoMdx) {
-    return null;
-  }
+  const [isClient, setIsClient] = useState(false);
   const code = Composer.useBreakpointValue(content) || content.base;
   const MdxComponent = useMemo(() => getMDXComponent(code), [code]);
-  return typeof window === 'undefined' ? null : <MdxComponent components={{ ...components, Text, ...componentMap }} />;
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  return !isClient ? null : <MdxComponent components={{ ...components, Text, ...componentMap }} />;
 };

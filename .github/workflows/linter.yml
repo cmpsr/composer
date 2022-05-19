@@ -28,5 +28,9 @@ jobs:
       run: yarn
     - name: Run linter
       run: yarn lint
+    - name: Build
+      run: yarn build
+    - name: Generate types
+      run: yarn type:emit
     - name: Run type check
       run: yarn type:check

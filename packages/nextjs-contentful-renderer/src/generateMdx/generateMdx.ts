@@ -71,11 +71,32 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
     const patternToGetRgxGroups = getRgxInstance();
     const rgxGroups = patternToGetRgxGroups.exec(match) || [];
     const propName = rgxGroups[1];
+    const fieldType = rgxGroups[2];
+    const listPattern = rgxGroups[3];
     const defaultValue = rgxGroups[4] || '';
 
     const propValue = values[propName];
     const newValue = propValue ? propValue : defaultValue;
-    mdxCopy = replaceAll(match, newValue)(mdxCopy);
+
+    let searchValue = match;
+    if (fieldType === 'list' && listPattern) {
+      searchValue = escapeCharactersInListPattern(searchValue);
+    }
+
+    mdxCopy = replaceAll(searchValue, newValue)(mdxCopy);
   });
   return mdxCopy;
+};
+
+const escapeCharactersInListPattern = (match: string) => {
+  // e.g. (opt1|opt2|opt3) -> \\(opt1\\|opt2\\|opt3\\)
+  let newStr = match.replace('(', '\\(');
+  newStr = newStr.replace(')', '\\)');
+
+  // Calling the replaceAll function with the following args looks like a call with the same args, but it doesn't:
+  // First arg is to search for pipe character |, then add \\ before it to escape it.
+  // Second arg is the final character of the new str, that function will return this string \\| literally
+  // | --> \\|
+  newStr = replaceAll('\\|', '\\|')(newStr);
+  return newStr;
 };

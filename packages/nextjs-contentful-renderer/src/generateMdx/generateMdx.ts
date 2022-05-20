@@ -88,15 +88,6 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
   return mdxCopy;
 };
 
-const escapeCharactersInListPattern = (match: string) => {
-  // e.g. (opt1|opt2|opt3) -> \\(opt1\\|opt2\\|opt3\\)
-  let newStr = match.replace('(', '\\(');
-  newStr = newStr.replace(')', '\\)');
-
-  // Calling the replaceAll function with the following args looks like a call with the same args, but it doesn't:
-  // First arg is to search for pipe character |, then add \\ before it to escape it.
-  // Second arg is the final character of the new str, that function will return this string \\| literally
-  // | --> \\|
-  newStr = replaceAll('\\|', '\\|')(newStr);
-  return newStr;
-};
+// Escape characters (, ), | to \\(, \\), \\|
+const escapeCharactersInListPattern = (match: string) =>
+  replaceAll('\\|', '\\|')(match.replace('(', '\\(').replace(')', '\\)'));

@@ -13,13 +13,13 @@ const mockTheme = {
 };
 
 describe('getThemeByPageId', () => {
+  const preview = true;
+  const mockQuery = jest.fn();
   const getMockApolloClient: any = (mockQuery: jest.Mock<any, any>) => {
     return {
       query: (params: Record<string, unknown>) => mockQuery(params),
     };
   };
-
-  const preview = true;
 
   test('should return default theme', async () => {
     const mockQuery = jest.fn();
@@ -45,7 +45,6 @@ describe('getThemeByPageId', () => {
   });
 
   test('should return the first occurrence if there is more than one as default', async () => {
-    const mockQuery = jest.fn();
     const mockApolloClient = getMockApolloClient(mockQuery);
 
     mockQuery.mockResolvedValue({
@@ -72,7 +71,6 @@ describe('getThemeByPageId', () => {
   });
 
   test('should return the first item if there is none as default', async () => {
-    const mockQuery = jest.fn();
     const mockApolloClient = getMockApolloClient(mockQuery);
 
     mockQuery.mockResolvedValue({
@@ -99,7 +97,6 @@ describe('getThemeByPageId', () => {
   });
 
   test('should return an empty object if there is no theme configured', async () => {
-    const mockQuery = jest.fn();
     const mockApolloClient = getMockApolloClient(mockQuery);
 
     mockQuery.mockResolvedValue({

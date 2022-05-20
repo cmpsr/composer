@@ -18,11 +18,6 @@ export const getRouteBySlug = async (
                 traffic
                 utmCampaign
                 page {
-                  ... on MdxPage {
-                    sys {
-                      id
-                    }
-                  }
                   ... on Page {
                     sys {
                       id

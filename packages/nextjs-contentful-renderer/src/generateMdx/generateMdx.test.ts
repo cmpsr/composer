@@ -224,9 +224,8 @@ describe('generateMdx', () => {
       },
     ]);
   });
-  // List are not supported yet
-  test.skip('should return code with replaced list values', async () => {
-    const code = '<Text>Value {{list:(1|2)}}</Text>';
+  test('should return code with replaced list values', async () => {
+    const code = '<Text>Value {{value:list(1|2)}}</Text>';
     const fakeBlocks = [
       {
         models: [
@@ -250,6 +249,29 @@ describe('generateMdx', () => {
         lg: '<Text>Value 2</Text>',
         xl: '<Text>Value 2</Text>',
         xxl: '<Text>Value 2</Text>',
+      },
+    ]);
+  });
+  test('should return code with replaced list values with default value', async () => {
+    const code = '<Text>Value {{value:list(1|2):3}}</Text>';
+    const fakeBlocks = [
+      {
+        models: [
+          {
+            base: code,
+          },
+        ],
+        propsValues: [],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([
+      {
+        base: '<Text>Value 3</Text>',
+        md: '<Text>Value 3</Text>',
+        lg: '<Text>Value 3</Text>',
+        xl: '<Text>Value 3</Text>',
+        xxl: '<Text>Value 3</Text>',
       },
     ]);
   });

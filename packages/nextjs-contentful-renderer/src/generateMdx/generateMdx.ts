@@ -71,11 +71,23 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
     const patternToGetRgxGroups = getRgxInstance();
     const rgxGroups = patternToGetRgxGroups.exec(match) || [];
     const propName = rgxGroups[1];
+    const fieldType = rgxGroups[2];
+    const listPattern = rgxGroups[3];
     const defaultValue = rgxGroups[4] || '';
 
     const propValue = values[propName];
     const newValue = propValue ? propValue : defaultValue;
-    mdxCopy = replaceAll(match, newValue)(mdxCopy);
+
+    let searchValue = match;
+    if (fieldType === 'list' && listPattern) {
+      searchValue = escapeCharactersInListPattern(searchValue);
+    }
+
+    mdxCopy = replaceAll(searchValue, newValue)(mdxCopy);
   });
   return mdxCopy;
 };
+
+// Escape characters (, ), | to \\(, \\), \\|
+const escapeCharactersInListPattern = (match: string) =>
+  replaceAll('\\|', '\\|')(match.replace('(', '\\(').replace(')', '\\)'));

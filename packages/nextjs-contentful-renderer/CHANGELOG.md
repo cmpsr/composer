@@ -1,5 +1,12 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 1.1.0
+
+### Minor Changes
+
+- 5358a18: feat: remove MdxPage from contentful query
+- a517c23: feat: add support for list props
+
 ## 1.0.1
 
 ### Patch Changes

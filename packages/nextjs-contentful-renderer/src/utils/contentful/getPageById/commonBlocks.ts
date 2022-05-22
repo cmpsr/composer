@@ -1,7 +1,7 @@
-import { CommonBlock } from './types';
+import { Block, CommonBlock } from './types';
 
 export const addCommonBlock = (commonBlocks: { items?: CommonBlock[] }) => {
-  return (currentContent: Array<{ mdxModels: []; propsValues: [] }>) => {
+  return (currentContent: Block[]) => {
     let content = [...currentContent];
     const block = getDefaultCommonBlock(commonBlocks);
     content = insertCommonBlock(content, block);
@@ -25,11 +25,7 @@ const getDefaultCommonBlock = (commonBlocks: { items?: CommonBlock[] }) => {
   return block;
 };
 
-const insertCommonBlock = (
-  content: Array<{ mdxModels: []; propsValues: [] }>,
-  commonBlock: CommonBlock,
-  defaultPosition = 0
-) => {
+const insertCommonBlock = (content: Block[], commonBlock: CommonBlock, defaultPosition = 0) => {
   if (!commonBlock) return content;
 
   const contentCopy = [...content];

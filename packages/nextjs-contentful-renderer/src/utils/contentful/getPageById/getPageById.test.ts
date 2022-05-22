@@ -1,4 +1,34 @@
 import { getPageById } from '.';
+import { addCommonBlock } from './commonBlocks';
+
+const dummyMainContentItem = {
+  modelsCollection: {
+    items: [
+      {
+        base: '# H1',
+      },
+      {
+        base: '## H2',
+      },
+    ],
+  },
+  propsValues: [],
+};
+
+const dummyCommonBlock = {
+  default: false,
+  position: 1,
+  block: {
+    propsValue: [],
+    modelsCollection: {
+      items: [
+        {
+          base: '- opt1',
+        },
+      ],
+    },
+  },
+};
 
 describe('getPageById', () => {
   const mockQuery = jest.fn();
@@ -9,40 +39,10 @@ describe('getPageById', () => {
         title: 'Page title',
         metaConfiguration: {},
         contentCollection: {
-          items: [
-            {
-              modelsCollection: {
-                items: [
-                  {
-                    base: '# H1',
-                  },
-                  {
-                    base: '## H2',
-                  },
-                ],
-              },
-              propsValues: [],
-            },
-          ],
+          items: [dummyMainContentItem],
         },
         navigationBarsCollection: {
-          items: [
-            {
-              default: false,
-              position: 1,
-              block: {
-                id: '1',
-                propsValue: [],
-                modelsCollection: {
-                  items: [
-                    {
-                      base: '- opt1',
-                    },
-                  ],
-                },
-              },
-            },
-          ],
+          items: [dummyCommonBlock],
         },
       },
     },
@@ -88,6 +88,96 @@ describe('getPageById', () => {
           propsValues: [],
         },
       ],
+    });
+  });
+
+  describe('commonBlocks', () => {
+    test('should return an empty array if common blocks is null', () => {
+      const commonBlocks = addCommonBlock(null)([]);
+      expect(commonBlocks.length).toBe(0);
+    });
+
+    test('should return an empty array if there are no common blocks', () => {
+      const commonBlocks = addCommonBlock({ items: [] })([]);
+      expect(commonBlocks.length).toBe(0);
+    });
+
+    test('should return a default common block', () => {
+      const commonBlocks = addCommonBlock({ items: [dummyCommonBlock] })([]);
+      expect(commonBlocks.length).toBe(1);
+      expect(commonBlocks[0]).toStrictEqual({
+        models: [{ base: '- opt1' }],
+        propsValues: [],
+      });
+    });
+
+    test('should return the first occurrence if there is more than one item as default', () => {
+      const commonBlocks = addCommonBlock({ items: [dummyCommonBlock, dummyCommonBlock] })([]);
+      expect(commonBlocks.length).toBe(1);
+      expect(commonBlocks[0]).toStrictEqual({
+        models: [{ base: '- opt1' }],
+        propsValues: [],
+      });
+    });
+
+    test('should return the first item if there are no items as default', () => {
+      const nonDefaultCommonBlock = { ...dummyCommonBlock, default: false };
+      const commonBlocks = addCommonBlock({
+        items: [nonDefaultCommonBlock, nonDefaultCommonBlock],
+      })([]);
+      expect(commonBlocks.length).toBe(1);
+      expect(commonBlocks[0]).toStrictEqual({
+        models: [{ base: '- opt1' }],
+        propsValues: [],
+      });
+    });
+
+    test('should insert commonBlock at the beginning', () => {
+      const commonBlocks = addCommonBlock({
+        items: [dummyCommonBlock],
+      })([
+        {
+          models: [{ base: '# H1' }, { base: '## H2' }],
+          propsValues: [],
+        },
+      ]);
+      expect(commonBlocks.length).toBe(2);
+      expect(commonBlocks[0]).toStrictEqual({
+        models: [{ base: '- opt1' }],
+        propsValues: [],
+      });
+    });
+
+    test('should insert commonBlock if position has a negative value', () => {
+      const commonBlocks = addCommonBlock({
+        items: [{ ...dummyCommonBlock, position: -1 }],
+      })([
+        {
+          models: [{ base: '# H1' }, { base: '## H2' }],
+          propsValues: [],
+        },
+      ]);
+      expect(commonBlocks.length).toBe(2);
+      expect(commonBlocks[0]).toStrictEqual({
+        models: [{ base: '- opt1' }],
+        propsValues: [],
+      });
+    });
+
+    test('should insert commonBlock at the end', () => {
+      const commonBlocks = addCommonBlock({
+        items: [{ ...dummyCommonBlock, position: 2 }],
+      })([
+        {
+          models: [{ base: '# H1' }, { base: '## H2' }],
+          propsValues: [],
+        },
+      ]);
+      expect(commonBlocks.length).toBe(2);
+      expect(commonBlocks[1]).toStrictEqual({
+        models: [{ base: '- opt1' }],
+        propsValues: [],
+      });
     });
   });
 });

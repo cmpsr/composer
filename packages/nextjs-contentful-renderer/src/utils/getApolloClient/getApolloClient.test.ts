@@ -18,6 +18,7 @@ describe('getApolloClient', () => {
     expect(mockCreateLink).toBeCalledWith({
       space: process.env.CONTENTFUL_SPACE_ID,
       accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY,
+      environment: process.env.CONTENTFUL_ENVIRONMENT,
     });
   });
 
@@ -27,18 +28,21 @@ describe('getApolloClient', () => {
     expect(mockCreateLink).toBeCalledWith({
       space: process.env.CONTENTFUL_SPACE_ID,
       accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_PREVIEW,
+      environment: process.env.CONTENTFUL_ENVIRONMENT,
     });
   });
 
   test('should use provided values', () => {
     const preview = true;
     const space = 'new_space';
+    const environment = 'dev';
     const previewAccessToken = 'new_preview_token';
-    getApolloClient({ preview, space, deliveryAccessToken: '', previewAccessToken });
+    getApolloClient({ preview, space, deliveryAccessToken: '', previewAccessToken, environment });
     expect(mockCreateLink).toBeCalledTimes(1);
     expect(mockCreateLink).toBeCalledWith({
       space,
       accessToken: previewAccessToken,
+      environment,
     });
   });
 });

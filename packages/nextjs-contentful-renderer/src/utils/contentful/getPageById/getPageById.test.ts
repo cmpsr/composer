@@ -25,6 +25,25 @@ describe('getPageById', () => {
             },
           ],
         },
+        navigationBarsCollection: {
+          items: [
+            {
+              default: false,
+              position: 1,
+              block: {
+                id: '1',
+                propsValue: [],
+                modelsCollection: {
+                  items: [
+                    {
+                      base: '- opt1',
+                    },
+                  ],
+                },
+              },
+            },
+          ],
+        },
       },
     },
   });
@@ -60,6 +79,10 @@ describe('getPageById', () => {
       title: 'Page title',
       metaConfiguration: {},
       content: [
+        {
+          models: [{ base: '- opt1' }],
+          propsValues: [],
+        },
         {
           models: [{ base: '# H1' }, { base: '## H2' }],
           propsValues: [],

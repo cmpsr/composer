@@ -1,5 +1,5 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
-import { Page } from './types';
+import { CommonBlock, Page } from './types';
 
 export const getPageById = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
@@ -13,6 +13,25 @@ export const getPageById = async (
           id
           title
           metaConfiguration
+          navigationBarsCollection {
+            items {
+              default
+              position
+              block {
+                propsValue
+                modelsCollection(limit: 1) {
+                  items {
+                    id
+                    base
+                    md
+                    lg
+                    xl
+                    xxl
+                  }
+                }
+              }
+            }
+          }
           contentCollection {
             items {
               modelsCollection {
@@ -38,13 +57,63 @@ export const getPageById = async (
 
   if (!data.page) return undefined;
 
-  const { id, title, metaConfiguration, contentCollection } = data.page;
-  const content = contentCollection.items.map((item) => {
+  const { id, title, metaConfiguration, contentCollection, navigationBarsCollection } = data.page;
+  let content = contentCollection.items.map((item) => {
     return {
       models: item.modelsCollection.items,
       propsValues: item.propsValue || [],
     };
   });
 
+  content = addCommonBlock(content, navigationBarsCollection);
   return { id, title, content, metaConfiguration };
+};
+
+const addCommonBlock = (
+  currentContent: Array<{ mdxModels: []; propsValues: [] }>,
+  commonBlocks: { items?: CommonBlock[] }
+) => {
+  let content = [...currentContent];
+  const block = getDefaultCommonBlock(commonBlocks);
+  content = insertCommonBlock(content, block);
+  return content;
+};
+
+const getDefaultCommonBlock = (commonBlocks: { items?: CommonBlock[] }) => {
+  const blocks = commonBlocks?.items || [];
+  const hasCommonBlocks = blocks.length > 0;
+
+  if (!hasCommonBlocks) return null;
+
+  let block = blocks[0];
+  const defaultBlock = blocks.find((item) => item.default);
+
+  if (defaultBlock) {
+    block = defaultBlock;
+  }
+
+  return block;
+};
+
+const insertCommonBlock = (
+  content: Array<{ mdxModels: []; propsValues: [] }>,
+  commonBlock: CommonBlock,
+  defaultPosition = 0
+) => {
+  if (!commonBlock) return content;
+
+  const contentCopy = [...content];
+
+  const item = {
+    models: commonBlock?.block?.modelsCollection?.items,
+    propsValues: commonBlock?.block?.propsValue || [],
+  };
+
+  let position = defaultPosition;
+  if (commonBlock.position) {
+    position = commonBlock.position - 1;
+  }
+
+  contentCopy.splice(position, 0, item);
+  return contentCopy;
 };

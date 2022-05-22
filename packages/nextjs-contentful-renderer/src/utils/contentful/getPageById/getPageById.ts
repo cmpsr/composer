@@ -1,5 +1,8 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
-import { CommonBlock, Page } from './types';
+import { composeRight } from '../../functional';
+import { addCommonBlock } from './commonBlocks';
+import { CommonBlockFragment, ModelCollectionFragment } from './fragments';
+import { Page } from './types';
 
 export const getPageById = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
@@ -15,39 +18,21 @@ export const getPageById = async (
           metaConfiguration
           navigationBarsCollection {
             items {
-              default
-              position
-              block {
-                propsValue
-                modelsCollection(limit: 1) {
-                  items {
-                    id
-                    base
-                    md
-                    lg
-                    xl
-                    xxl
-                  }
-                }
-              }
+              ...CommonBlockFragment
             }
           }
           contentCollection {
             items {
               modelsCollection {
-                items {
-                  base
-                  md
-                  lg
-                  xl
-                  xxl
-                }
+                ...ModelCollectionFragment
               }
               propsValue
             }
           }
         }
       }
+      ${ModelCollectionFragment}
+      ${CommonBlockFragment}
     `,
     variables: {
       pageId,
@@ -58,62 +43,19 @@ export const getPageById = async (
   if (!data.page) return undefined;
 
   const { id, title, metaConfiguration, contentCollection, navigationBarsCollection } = data.page;
-  let content = contentCollection.items.map((item) => {
-    return {
-      models: item.modelsCollection.items,
-      propsValues: item.propsValue || [],
-    };
-  });
-
-  content = addCommonBlock(content, navigationBarsCollection);
+  const content = composeRight(getMainContent(contentCollection), addCommonBlock(navigationBarsCollection))([]);
   return { id, title, content, metaConfiguration };
 };
 
-const addCommonBlock = (
-  currentContent: Array<{ mdxModels: []; propsValues: [] }>,
-  commonBlocks: { items?: CommonBlock[] }
-) => {
-  let content = [...currentContent];
-  const block = getDefaultCommonBlock(commonBlocks);
-  content = insertCommonBlock(content, block);
-  return content;
-};
+const getMainContent = (contentCollection) => {
+  return (currentContent) => {
+    const pageContent = contentCollection.items.map((item) => {
+      return {
+        models: item.modelsCollection.items,
+        propsValues: item.propsValue || [],
+      };
+    });
 
-const getDefaultCommonBlock = (commonBlocks: { items?: CommonBlock[] }) => {
-  const blocks = commonBlocks?.items || [];
-  const hasCommonBlocks = blocks.length > 0;
-
-  if (!hasCommonBlocks) return null;
-
-  let block = blocks[0];
-  const defaultBlock = blocks.find((item) => item.default);
-
-  if (defaultBlock) {
-    block = defaultBlock;
-  }
-
-  return block;
-};
-
-const insertCommonBlock = (
-  content: Array<{ mdxModels: []; propsValues: [] }>,
-  commonBlock: CommonBlock,
-  defaultPosition = 0
-) => {
-  if (!commonBlock) return content;
-
-  const contentCopy = [...content];
-
-  const item = {
-    models: commonBlock?.block?.modelsCollection?.items,
-    propsValues: commonBlock?.block?.propsValue || [],
+    return [...currentContent, ...pageContent];
   };
-
-  let position = defaultPosition;
-  if (commonBlock.position) {
-    position = commonBlock.position - 1;
-  }
-
-  contentCopy.splice(position, 0, item);
-  return contentCopy;
 };

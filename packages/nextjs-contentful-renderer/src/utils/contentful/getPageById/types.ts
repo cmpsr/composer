@@ -35,5 +35,10 @@ export interface ResponsiveValue<T> {
 export interface CommonBlock {
   default: boolean;
   position: number;
-  block: { propsValue: PropsValue[]; modelsCollection: { items: Model[] } };
+  block: BlockResult;
+}
+
+export interface BlockResult {
+  propsValue: PropsValue[];
+  modelsCollection: { items: Model[] };
 }

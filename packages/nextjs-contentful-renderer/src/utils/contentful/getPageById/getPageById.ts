@@ -1,8 +1,8 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
-import { composeRight } from '../../functional';
+import { compose } from '../../functional';
 import { addCommonBlock } from './commonBlocks';
 import { CommonBlockFragment, ModelCollectionFragment } from './fragments';
-import { Page } from './types';
+import { Block, BlockResult, Page } from './types';
 
 export const getPageById = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
@@ -17,6 +17,11 @@ export const getPageById = async (
           title
           metaConfiguration
           navigationBarsCollection {
+            items {
+              ...CommonBlockFragment
+            }
+          }
+          footersCollection {
             items {
               ...CommonBlockFragment
             }
@@ -42,19 +47,21 @@ export const getPageById = async (
 
   if (!data.page) return undefined;
 
-  const { id, title, metaConfiguration, contentCollection, navigationBarsCollection } = data.page;
-  const content = composeRight(getMainContent(contentCollection), addCommonBlock(navigationBarsCollection))([]);
+  const { id, title, metaConfiguration, contentCollection, navigationBarsCollection, footersCollection } = data.page;
+  const content = compose(
+    getMainContent(contentCollection),
+    addCommonBlock(navigationBarsCollection),
+    addCommonBlock(footersCollection)
+  )([]);
   return { id, title, content, metaConfiguration };
 };
 
-const getMainContent = (contentCollection) => {
-  return (currentContent) => {
-    const pageContent = contentCollection.items.map((item) => {
-      return {
-        models: item.modelsCollection.items,
-        propsValues: item.propsValue || [],
-      };
-    });
+const getMainContent = (contentCollection: { items: BlockResult[] }) => {
+  return (currentContent: Block[]) => {
+    const pageContent = contentCollection.items.map((item) => ({
+      models: item.modelsCollection.items,
+      propsValues: item.propsValue || [],
+    }));
 
     return [...currentContent, ...pageContent];
   };

@@ -1,10 +1,10 @@
 import { Block, CommonBlock } from './types';
 
-export const addCommonBlock = (commonBlocks: { items?: CommonBlock[] }) => {
+export const addCommonBlock = (commonBlocks: { items?: CommonBlock[] }, defaultPosition?: number) => {
   return (currentContent: Block[]) => {
     let content = [...currentContent];
     const block = getDefaultCommonBlock(commonBlocks);
-    content = insertCommonBlock(content, block);
+    content = insertCommonBlock(content, block, defaultPosition);
     return content;
   };
 };

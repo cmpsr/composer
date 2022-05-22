@@ -3,35 +3,23 @@ import { addCommonBlock } from './commonBlocks';
 
 const dummyMainContentItem = {
   modelsCollection: {
-    items: [
-      {
-        base: '# H1',
-      },
-      {
-        base: '## H2',
-      },
-    ],
+    items: [{ base: '# H1' }, { base: '## H2' }],
   },
   propsValues: [],
 };
 
-const dummyCommonBlock = {
+const getDummyCommonBlock = (baseText: string) => ({
   default: false,
   position: 1,
   block: {
     propsValue: [],
-    modelsCollection: {
-      items: [
-        {
-          base: '- opt1',
-        },
-      ],
-    },
+    modelsCollection: { items: [{ base: baseText }] },
   },
-};
+});
 
 describe('getPageById', () => {
   const mockQuery = jest.fn();
+  const dummyNavbarBlock = getDummyCommonBlock('- opt1');
   mockQuery.mockResolvedValue({
     data: {
       page: {
@@ -42,7 +30,15 @@ describe('getPageById', () => {
           items: [dummyMainContentItem],
         },
         navigationBarsCollection: {
-          items: [dummyCommonBlock],
+          items: [dummyNavbarBlock],
+        },
+        footersCollection: {
+          items: [
+            {
+              ...getDummyCommonBlock('footer'),
+              position: 4,
+            },
+          ],
         },
       },
     },
@@ -87,6 +83,10 @@ describe('getPageById', () => {
           models: [{ base: '# H1' }, { base: '## H2' }],
           propsValues: [],
         },
+        {
+          models: [{ base: 'footer' }],
+          propsValues: [],
+        },
       ],
     });
   });
@@ -103,7 +103,7 @@ describe('getPageById', () => {
     });
 
     test('should return a default common block', () => {
-      const commonBlocks = addCommonBlock({ items: [dummyCommonBlock] })([]);
+      const commonBlocks = addCommonBlock({ items: [dummyNavbarBlock] })([]);
       expect(commonBlocks.length).toBe(1);
       expect(commonBlocks[0]).toStrictEqual({
         models: [{ base: '- opt1' }],
@@ -112,7 +112,7 @@ describe('getPageById', () => {
     });
 
     test('should return the first occurrence if there is more than one item as default', () => {
-      const commonBlocks = addCommonBlock({ items: [dummyCommonBlock, dummyCommonBlock] })([]);
+      const commonBlocks = addCommonBlock({ items: [dummyNavbarBlock, dummyNavbarBlock] })([]);
       expect(commonBlocks.length).toBe(1);
       expect(commonBlocks[0]).toStrictEqual({
         models: [{ base: '- opt1' }],
@@ -121,7 +121,7 @@ describe('getPageById', () => {
     });
 
     test('should return the first item if there are no items as default', () => {
-      const nonDefaultCommonBlock = { ...dummyCommonBlock, default: false };
+      const nonDefaultCommonBlock = { ...dummyNavbarBlock, default: false };
       const commonBlocks = addCommonBlock({
         items: [nonDefaultCommonBlock, nonDefaultCommonBlock],
       })([]);
@@ -134,7 +134,7 @@ describe('getPageById', () => {
 
     test('should insert commonBlock at the beginning', () => {
       const commonBlocks = addCommonBlock({
-        items: [dummyCommonBlock],
+        items: [dummyNavbarBlock],
       })([
         {
           models: [{ base: '# H1' }, { base: '## H2' }],
@@ -150,7 +150,7 @@ describe('getPageById', () => {
 
     test('should insert commonBlock if position has a negative value', () => {
       const commonBlocks = addCommonBlock({
-        items: [{ ...dummyCommonBlock, position: -1 }],
+        items: [{ ...dummyNavbarBlock, position: -1 }],
       })([
         {
           models: [{ base: '# H1' }, { base: '## H2' }],
@@ -166,7 +166,7 @@ describe('getPageById', () => {
 
     test('should insert commonBlock at the end', () => {
       const commonBlocks = addCommonBlock({
-        items: [{ ...dummyCommonBlock, position: 2 }],
+        items: [{ ...dummyNavbarBlock, position: 2 }],
       })([
         {
           models: [{ base: '# H1' }, { base: '## H2' }],

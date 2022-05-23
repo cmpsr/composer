@@ -1,6 +1,5 @@
 import { ButtonProps as ChakraButtonProps } from '@chakra-ui/react';
-import { FC } from 'react';
-import { IconProps } from '../Icons';
+import React from 'react';
 
 export const buttonVariants = ['accent', 'primary', 'primary-alt', 'secondary', 'secondary-alt', 'destroy'] as const;
 export type ButtonVariant = typeof buttonVariants[number];
@@ -10,6 +9,6 @@ export type ButtonSize = typeof buttonSizes[number];
 export interface ButtonProps extends ChakraButtonProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
-  leadingIcon?: FC<IconProps>;
-  trailingIcon?: FC<IconProps>;
+  leadingIcon?: React.ReactElement;
+  trailingIcon?: React.ReactElement;
 }

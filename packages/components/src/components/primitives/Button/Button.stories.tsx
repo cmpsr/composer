@@ -4,6 +4,7 @@ import { Button } from './Button';
 import { buttonSizes, buttonVariants } from './types';
 import * as Icons from '../Icons';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
+import { IconSize } from '../Icons';
 
 export default {
   component: Button,
@@ -19,6 +20,8 @@ export default {
     },
   },
 } as Meta;
+
+const getIcon = (size: IconSize) => <Icons.IconExternalLink size={size === 'l' ? 'm' : size} />;
 
 const AllTemplate = () => (
   <Table variant="simple">
@@ -54,12 +57,12 @@ const AllTemplate = () => (
                     }}
                     {...{
                       ...(state === 'Both Icons' && {
-                        trailingIcon: Icons.IconExternalLink,
-                        leadingIcon: Icons.IconExternalLink,
+                        trailingIcon: getIcon(size),
+                        leadingIcon: getIcon(size),
                       }),
                     }}
-                    {...{ ...(state === 'Trailing Icon' && { trailingIcon: Icons.IconExternalLink }) }}
-                    {...{ ...(state === 'Leading Icon' && { leadingIcon: Icons.IconExternalLink }) }}
+                    {...{ ...(state === 'Trailing Icon' && { trailingIcon: getIcon(size) }) }}
+                    {...{ ...(state === 'Leading Icon' && { leadingIcon: getIcon(size) }) }}
                   >
                     {variant}
                   </Button>
@@ -76,8 +79,8 @@ export const All = AllTemplate.bind({});
 
 const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
   <Button
-    {...(showLeadingIcon && { leadingIcon: Icons.IconExternalLink })}
-    {...(showTrailingIcon && { trailingIcon: Icons.IconExternalLink })}
+    {...(showLeadingIcon && { leadingIcon: getIcon(args.size) })}
+    {...(showTrailingIcon && { trailingIcon: getIcon(args.size) })}
     {...args}
   >
     Playground

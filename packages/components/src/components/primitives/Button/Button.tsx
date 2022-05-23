@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button as ChakraButton, forwardRef, useMultiStyleConfig } from '@chakra-ui/react';
 import { ButtonProps } from './types';
-import { Flex, IconSize, Spinner, SpinnerProps } from '@components';
+import { Flex, Spinner, SpinnerProps } from '@components';
 
 export const Button = forwardRef<ButtonProps, typeof ChakraButton>(
-  ({ children, variant, size, isLoading, leadingIcon: LeadingIcon, trailingIcon: TrailingIcon, ...props }, ref) => {
+  ({ children, variant, size, isLoading, leadingIcon, trailingIcon, ...props }, ref) => {
     const { loading } = useMultiStyleConfig('Button', {
       variant,
       size,
@@ -21,13 +21,11 @@ export const Button = forwardRef<ButtonProps, typeof ChakraButton>(
         {...props}
       >
         <Flex direction="row" alignItems="center" columnGap="0.5rem">
-          {LeadingIcon && <LeadingIcon size={getIconSize(size)} data-testid="cmpsr.button.leading-icon" />}
+          {leadingIcon}
           {children}
-          {TrailingIcon && <TrailingIcon size={getIconSize(size)} data-testid="cmpsr.button.trailing-icon" />}
+          {trailingIcon}
         </Flex>
       </ChakraButton>
     );
   }
 );
-
-const getIconSize = (size: string): IconSize => (size === 'l' ? 'm' : size) as IconSize;

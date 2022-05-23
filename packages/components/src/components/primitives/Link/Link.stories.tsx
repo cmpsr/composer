@@ -4,7 +4,7 @@ import { Link } from './Link';
 import { linkSizes, linkVariants } from './types';
 import * as Icons from '../Icons';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
-import { Text } from '@components';
+import { Text, IconSize } from '@components';
 
 export default {
   component: Link,
@@ -20,6 +20,8 @@ export default {
     },
   },
 } as Meta;
+
+const getIcon = (size: IconSize) => <Icons.IconExternalLink size={size === 'l' ? 'm' : size} />;
 
 export const All = () => (
   <Table variant="simple">
@@ -41,12 +43,12 @@ export const All = () => (
             </Link>
           </Td>
           <Td>
-            <Link size={size} href="#" leadingIcon={Icons.IconExternalLink}>
+            <Link size={size} href="#" leadingIcon={getIcon(size)}>
               Size {size.toUpperCase()} link with leading icon
             </Link>
           </Td>
           <Td>
-            <Link size={size} href="#" trailingIcon={Icons.IconExternalLink}>
+            <Link size={size} href="#" trailingIcon={getIcon(size)}>
               Size {size.toUpperCase()} link with trailing icon
             </Link>
           </Td>
@@ -79,8 +81,8 @@ const AllVariantsTemplate = () => (
                     role="link"
                     variant={variant}
                     size={size}
-                    {...{ ...(state === 'Trailing Icon' && { trailingIcon: Icons.IconExternalLink }) }}
-                    {...{ ...(state === 'Leading Icon' && { leadingIcon: Icons.IconExternalLink }) }}
+                    leadingIcon={getIcon(size)}
+                    trailingIcon={getIcon(size)}
                   >
                     Link with {variant}
                   </Link>
@@ -110,8 +112,8 @@ const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
   <Link
     href="#"
     role="link"
-    {...(showLeadingIcon && { leadingIcon: Icons.IconExternalLink })}
-    {...(showTrailingIcon && { trailingIcon: Icons.IconExternalLink })}
+    {...(showLeadingIcon && { leadingIcon: getIcon(args.size) })}
+    {...(showTrailingIcon && { trailingIcon: getIcon(args.size) })}
     {...args}
   >
     Playground

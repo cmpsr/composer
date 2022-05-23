@@ -41,7 +41,7 @@ describe('Link', () => {
 
   it('should render a link with a trailing icon', () => {
     renderWithProviders(
-      <Link role="link" trailingIcon={IconExternalLink}>
+      <Link role="link" trailingIcon={<IconExternalLink data-testid="cmpsr.link.trailing-icon" />}>
         Link
       </Link>
     );
@@ -50,7 +50,7 @@ describe('Link', () => {
 
   it('should render a link with a leading icon', () => {
     renderWithProviders(
-      <Link role="link" leadingIcon={IconExternalLink}>
+      <Link role="link" leadingIcon={<IconExternalLink data-testid="cmpsr.link.leading-icon" />}>
         Link
       </Link>
     );
@@ -59,7 +59,11 @@ describe('Link', () => {
 
   it('should render a link with leading and trailing icons', () => {
     renderWithProviders(
-      <Link role="link" leadingIcon={IconExternalLink} trailingIcon={IconExternalLink}>
+      <Link
+        role="link"
+        leadingIcon={<IconExternalLink data-testid="cmpsr.link.leading-icon" />}
+        trailingIcon={<IconExternalLink data-testid="cmpsr.link.trailing-icon" />}
+      >
         Link
       </Link>
     );

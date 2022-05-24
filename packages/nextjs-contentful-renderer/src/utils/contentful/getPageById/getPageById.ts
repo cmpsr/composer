@@ -1,12 +1,12 @@
-import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
-import { Page } from './types';
+import { gql } from '@apollo/client';
+import { GetPageById, Page } from './types';
 
-export const getPageById = async (
-  apolloClient: ApolloClient<NormalizedCacheObject>,
-  pageId: string,
-  preview: boolean,
-  skipTheme = false
-): Promise<Page | undefined> => {
+export const getPageById = async ({
+  apolloClient,
+  pageId,
+  preview,
+  skipTheme,
+}: GetPageById): Promise<Page | undefined> => {
   const { data } = await apolloClient.query({
     query: gql`
       query getPageById($pageId: String!, $preview: Boolean, $skipTheme: Boolean!) {
@@ -52,5 +52,5 @@ export const getPageById = async (
     };
   });
 
-  return { id, title, content, metaConfiguration, theme: theme.theme };
+  return { id, title, content, metaConfiguration, theme: theme?.theme };
 };

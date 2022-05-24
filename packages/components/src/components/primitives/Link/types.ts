@@ -9,7 +9,7 @@ type LinkSize = typeof linkSizes[number];
 
 export interface LinkProps extends ChakraLinkProps {
   size?: LinkSize;
-  leadingIcon?: React.ReactNode;
-  trailingIcon?: React.ReactNode;
+  leadingIcon?: React.ReactElement;
+  trailingIcon?: React.ReactElement;
   variant?: LinkVariant;
 }

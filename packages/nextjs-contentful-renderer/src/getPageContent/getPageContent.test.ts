@@ -47,7 +47,7 @@ describe('getPageContent', () => {
     mockGetVisitedPageIdFromCookies.mockReturnValueOnce('page_id');
     await getPageContent(fakeContext);
     expect(mockGetPageById).toBeCalledTimes(1);
-    expect(mockGetPageById).toBeCalledWith(expect.anything(), 'page_id', true);
+    expect(mockGetPageById).toBeCalledWith({ apolloClient: expect.anything(), pageId: 'page_id', preview: true });
   });
   test('should return page content for page id stored in cookies if exists', async () => {
     mockGetVisitedPageIdFromCookies.mockReturnValueOnce('page_id');
@@ -74,7 +74,7 @@ describe('getPageContent', () => {
     mockGetPageId.mockReturnValueOnce('page_id');
     await getPageContent(fakeContext);
     expect(mockGetPageById).toBeCalledTimes(1);
-    expect(mockGetPageById).toBeCalledWith(expect.anything(), 'page_id', true);
+    expect(mockGetPageById).toBeCalledWith({ apolloClient: expect.anything(), pageId: 'page_id', preview: true });
   });
   test('should set cookie with returned page id', async () => {
     mockGetRouteBySlug.mockResolvedValueOnce({});

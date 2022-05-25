@@ -39,26 +39,25 @@ describe('getPageById', () => {
   const preview = true;
 
   test('should query apollo to retrieve data', async () => {
-    await getPageById({ apolloClient: mockApolloClient, pageId, preview, skipTheme: false });
+    await getPageById(mockApolloClient, pageId, preview);
     expect(mockQuery).toBeCalledTimes(1);
     expect(mockQuery).toBeCalledWith({
       query: expect.anything(),
       variables: {
         pageId,
         preview,
-        skipTheme: false,
       },
     });
   });
 
   test('should return undefined if no data returned', async () => {
     mockQuery.mockResolvedValueOnce({ data: { page: null } });
-    const page = await getPageById({ apolloClient: mockApolloClient, pageId, preview });
+    const page = await getPageById(mockApolloClient, pageId, preview);
     expect(page).not.toBeDefined();
   });
 
   test('should return page data', async () => {
-    const page = await getPageById({ apolloClient: mockApolloClient, pageId, preview });
+    const page = await getPageById(mockApolloClient, pageId, preview);
     expect(page).toStrictEqual({
       id: 'page_id',
       title: 'Page title',
@@ -75,7 +74,7 @@ describe('getPageById', () => {
 
   test('should return page without theme', async () => {
     mockQuery.mockResolvedValueOnce({ data: { page: { ...dummyPage, theme: null } } });
-    const page = await getPageById({ apolloClient: mockApolloClient, pageId, preview, skipTheme: true });
+    const page = await getPageById(mockApolloClient, pageId, preview);
     expect(page).toStrictEqual({
       id: 'page_id',
       title: 'Page title',

@@ -1,19 +1,21 @@
-import { gql } from '@apollo/client';
-import { GetPageById, Page } from './types';
+import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
+import { Page } from './types';
 
-export const getPageById = async ({
-  apolloClient,
-  pageId,
-  preview,
-  skipTheme,
-}: GetPageById): Promise<Page | undefined> => {
+export const getPageById = async (
+  apolloClient: ApolloClient<NormalizedCacheObject>,
+  pageId: string,
+  preview: boolean
+): Promise<Page | undefined> => {
   const { data } = await apolloClient.query({
     query: gql`
-      query getPageById($pageId: String!, $preview: Boolean, $skipTheme: Boolean!) {
+      query getPageById($pageId: String!, $preview: Boolean) {
         page(id: $pageId, preview: $preview) {
           id
           title
           metaConfiguration
+          theme {
+            theme
+          }
           contentCollection {
             items {
               modelsCollection {
@@ -28,23 +30,19 @@ export const getPageById = async ({
               propsValue
             }
           }
-          theme @skip(if: $skipTheme) {
-            defaultTheme
-            theme
-          }
         }
       }
     `,
     variables: {
       pageId,
       preview,
-      skipTheme,
     },
   });
 
   if (!data.page) return undefined;
 
-  const { id, title, metaConfiguration, contentCollection, theme } = data.page;
+  const { id, title, metaConfiguration, contentCollection } = data.page;
+  const theme = data.page.theme?.theme || undefined;
   const content = contentCollection.items.map((item) => {
     return {
       models: item.modelsCollection.items,
@@ -52,5 +50,5 @@ export const getPageById = async ({
     };
   });
 
-  return { id, title, content, metaConfiguration, theme: theme?.theme };
+  return { id, title, content, metaConfiguration, theme };
 };

@@ -8,8 +8,7 @@ import { getSlug } from '../utils/getSlug';
 
 export const getPageContent = async (
   context: GetServerSidePropsContext,
-  domain: string | undefined = undefined,
-  skipTheme?: boolean
+  domain: string | undefined = undefined
 ): Promise<Page> => {
   const preview = context.query.preview !== undefined;
 
@@ -19,7 +18,7 @@ export const getPageContent = async (
 
   const existingPageId = getVisitedPageIdFromCookies(context, slug);
   if (existingPageId) {
-    const page = await getPageById({ apolloClient, pageId: existingPageId, preview, skipTheme });
+    const page = await getPageById(apolloClient, existingPageId, preview);
     if (page) {
       return page;
     }
@@ -29,7 +28,7 @@ export const getPageContent = async (
   if (!route) return undefined;
 
   const pageId = getPageId(route, context.query.utm_campaign);
-  const pageContent = await getPageById({ apolloClient, pageId, preview, skipTheme });
+  const pageContent = await getPageById(apolloClient, pageId, preview);
   setCookie(context, slug, pageId);
   return pageContent;
 };

@@ -1,11 +1,11 @@
-import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+import { Theme } from '@cmpsr/components';
 
 export interface Page {
   id: string;
   title: string;
   metaConfiguration?: PageMetaData;
   content: Block[];
-  theme: Record<string, unknown>;
+  theme: Partial<Theme>;
 }
 
 interface PageMetaData {
@@ -33,11 +33,4 @@ export interface ResponsiveValue<T> {
   lg?: T;
   xl?: T;
   xxl?: T;
-}
-
-export interface GetPageById {
-  apolloClient: ApolloClient<NormalizedCacheObject>;
-  pageId: string;
-  preview?: boolean;
-  skipTheme?: boolean;
 }

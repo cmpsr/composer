@@ -1,5 +1,4 @@
 import { getPageById } from '.';
-import { addCommonBlock } from './commonBlocks';
 
 const dummyMainContentItem = {
   modelsCollection: {
@@ -82,75 +81,6 @@ describe('getPageById', () => {
           propsValues: [],
         },
       ],
-    });
-  });
-
-  describe('commonBlocks', () => {
-    test('should return an empty array if common blocks fields are null', () => {
-      const commonBlocks = addCommonBlock(null)([]);
-      expect(commonBlocks.length).toBe(0);
-    });
-    test('should insert commonBlock at the beginning', () => {
-      const commonBlocks = addCommonBlock(dummyBlock)([
-        {
-          models: [{ base: '# H1' }, { base: '## H2' }],
-          propsValues: [],
-        },
-      ]);
-      expect(commonBlocks.length).toBe(2);
-      expect(commonBlocks[0]).toStrictEqual({
-        models: [{ base: '- opt1' }],
-        propsValues: [],
-      });
-    });
-    test('should insert commonBlock if position has a negative value', () => {
-      const commonBlocks = addCommonBlock(
-        dummyBlock,
-        -1
-      )([
-        {
-          models: [{ base: '# H1' }, { base: '## H2' }],
-          propsValues: [],
-        },
-      ]);
-      expect(commonBlocks.length).toBe(2);
-      expect(commonBlocks[0]).toStrictEqual({
-        models: [{ base: '- opt1' }],
-        propsValues: [],
-      });
-    });
-    test('should insert commonBlock at the end', () => {
-      const commonBlocks = addCommonBlock(
-        dummyBlock,
-        2
-      )([
-        {
-          models: [{ base: '# H1' }, { base: '## H2' }],
-          propsValues: [],
-        },
-      ]);
-      expect(commonBlocks.length).toBe(2);
-      expect(commonBlocks[1]).toStrictEqual({
-        models: [{ base: '- opt1' }],
-        propsValues: [],
-      });
-    });
-
-    test('should insert a block if position arg is a function', () => {
-      const commonBlocks = addCommonBlock(
-        dummyBlock,
-        (content) => content.length
-      )([
-        {
-          models: [{ base: '# H1' }, { base: '## H2' }],
-          propsValues: [],
-        },
-      ]);
-      expect(commonBlocks.length).toBe(2);
-      expect(commonBlocks[1]).toStrictEqual({
-        models: [{ base: '- opt1' }],
-        propsValues: [],
-      });
     });
   });
 });

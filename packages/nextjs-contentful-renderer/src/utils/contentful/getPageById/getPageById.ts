@@ -1,6 +1,6 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
 import { composeRight } from '../../functional';
-import { addCommonBlock } from './commonBlocks';
+import { addBlockByPosition, pushBlocksCollection } from '../addBlocks';
 import { ModelCollectionFragment } from './fragments';
 import { Page } from './types';
 
@@ -43,19 +43,6 @@ export const getPageById = async (
   if (!data.page) return undefined;
 
   const { id, title, metaConfiguration, contentCollection, navbar } = data.page;
-  const content = composeRight(getMainContent(contentCollection), addCommonBlock(navbar, 0))([]);
+  const content = composeRight(addBlockByPosition(navbar), pushBlocksCollection(contentCollection?.items || []))([]);
   return { id, title, content, metaConfiguration };
-};
-
-const getMainContent = (contentCollection) => {
-  return (currentContent) => {
-    const pageContent = contentCollection.items.map((item) => {
-      return {
-        models: item.modelsCollection.items,
-        propsValues: item.propsValue || [],
-      };
-    });
-
-    return [...currentContent, ...pageContent];
-  };
 };

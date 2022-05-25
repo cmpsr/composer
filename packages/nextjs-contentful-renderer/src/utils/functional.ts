@@ -1,3 +1,2 @@
-export const compose = (f, g) => (x) => f(g(x));
-export const flip = (fn) => (...args) => fn(...args.reverse());
-export const composeRight = flip(compose);
+export const compose = (...fns) => (initialVal) => fns.reduce((val, fn) => fn(val), initialVal);
+export const composeRight = (...fns) => (initialVal) => fns.reduceRight((val, fn) => fn(val), initialVal);

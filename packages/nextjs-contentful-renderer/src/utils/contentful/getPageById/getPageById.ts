@@ -1,5 +1,5 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
-import { composeRight } from '../../functional';
+import { compose } from '../../functional';
 import { addBlockByPosition, pushBlocksCollection } from '../addBlocks';
 import { ModelCollectionFragment } from './fragments';
 import { Page } from './types';
@@ -22,10 +22,11 @@ export const getPageById = async (
             }
             propsValue
           }
-          footersCollection {
-            items {
-              ...CommonBlockFragment
+          footer {
+            modelsCollection(limit: 1) {
+              ...ModelFragment
             }
+            propsValue
           }
           contentCollection {
             items {
@@ -47,7 +48,13 @@ export const getPageById = async (
 
   if (!data.page) return undefined;
 
-  const { id, title, metaConfiguration, contentCollection, navbar } = data.page;
-  const content = composeRight(addBlockByPosition(navbar), pushBlocksCollection(contentCollection?.items || []))([]);
+  const { id, title, metaConfiguration, contentCollection, navbar, footer } = data.page;
+
+  const content = compose(
+    addBlockByPosition(navbar),
+    pushBlocksCollection(contentCollection?.items || []),
+    addBlockByPosition(footer, (currContent) => currContent.length)
+  )([]);
+
   return { id, title, content, metaConfiguration };
 };

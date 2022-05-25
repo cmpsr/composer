@@ -20,7 +20,6 @@ const getDummyCommonBlock = (baseText: string) => ({
 
 describe('getPageById', () => {
   const mockQuery = jest.fn();
-  const dummyNavbarBlock = getDummyCommonBlock('- opt1');
   mockQuery.mockResolvedValue({
     data: {
       page: {
@@ -31,6 +30,7 @@ describe('getPageById', () => {
           items: [dummyMainContentItem],
         },
         navbar: getDummyCommonBlock('- opt1'),
+        footer: getDummyCommonBlock('footer'),
       },
     },
   });

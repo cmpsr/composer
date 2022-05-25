@@ -79,7 +79,7 @@ describe('getPageById', () => {
       id: 'page_id',
       title: 'Page title',
       metaConfiguration: {},
-      theme: undefined,
+      theme: null,
       content: [
         {
           models: [{ base: '# H1' }, { base: '## H2' }],

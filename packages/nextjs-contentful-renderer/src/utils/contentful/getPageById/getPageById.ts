@@ -42,13 +42,11 @@ export const getPageById = async (
   if (!data.page) return undefined;
 
   const { id, title, metaConfiguration, contentCollection } = data.page;
-  const theme = data.page.theme?.theme || undefined;
-  const content = contentCollection.items.map((item) => {
-    return {
-      models: item.modelsCollection.items,
-      propsValues: item.propsValue || [],
-    };
-  });
+  const theme = data.page.theme?.theme || null;
+  const content = contentCollection.items.map((item) => ({
+    models: item.modelsCollection.items,
+    propsValues: item.propsValue || [],
+  }));
 
   return { id, title, content, metaConfiguration, theme };
 };

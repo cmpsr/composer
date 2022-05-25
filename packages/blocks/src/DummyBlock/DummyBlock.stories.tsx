@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
+
 import { DummyBlock } from './DummyBlock';
 
 export default {
@@ -7,11 +8,6 @@ export default {
   title: 'Blocks/DummyBlock',
 } as Meta;
 
-const Template = ({ args }) => (
-  <DummyBlock {...args} />
-);
+const Template = () => <DummyBlock />;
 
 export const Playground = Template.bind({});
-Playground.args = {
-  children: 'dummy',
-};

@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { Button } from '@cmpsr/components';
-import { DummyBlockProps } from './types';
+import { Box } from '@cmpsr/components';
 
-export const DummyBlock: FC<DummyBlockProps> = (props) => <Button {...props} />;
+export const DummyBlock: FC = (props) => <Box {...props}>DummyBlock</Box>;

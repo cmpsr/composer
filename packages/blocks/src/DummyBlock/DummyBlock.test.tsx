@@ -3,10 +3,10 @@ import { screen, renderWithProviders } from '@tests/renderWithProviders';
 import { DummyBlock } from './DummyBlock';
 
 describe('DummyBlock', () => {
-  const givenComponentRendered = () => renderWithProviders(<DummyBlock>Hello</DummyBlock>);
+  const givenComponentRendered = () => renderWithProviders(<DummyBlock />);
 
-  test('should render child', () => {
+  test('should render dummy block', () => {
     givenComponentRendered();
-    screen.getByText(/Hello/i);
+    screen.getByText(/DummyBlock/i);
   });
 });

@@ -5,7 +5,7 @@ export const linkVariants = buttonVariants;
 type LinkVariant = typeof linkVariants[number];
 
 export const linkSizes = ['s', 'm', 'l'] as const;
-type LinkSize = typeof linkSizes[number];
+export type LinkSize = typeof linkSizes[number];
 
 export interface LinkProps extends ChakraLinkProps {
   size?: LinkSize;

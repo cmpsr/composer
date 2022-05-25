@@ -1,7 +1,6 @@
 import React from 'react';
 import { forwardRef, IconProps, Link as ChakraLink } from '@chakra-ui/react';
-import { LinkProps } from './types';
-import { IconSize } from '../Icons';
+import { LinkProps, LinkSize } from './types';
 
 export const Link = forwardRef<LinkProps, typeof ChakraLink>(
   ({ children, leadingIcon, trailingIcon, size = 'm', variant, ...props }, ref) => {
@@ -26,7 +25,7 @@ export const Link = forwardRef<LinkProps, typeof ChakraLink>(
   }
 );
 
-const getIcon = (icon: React.ReactElement<IconProps>, size: IconSize) => {
+const getIcon = (icon: React.ReactElement<IconProps>, size: LinkSize) => {
   if (!React.isValidElement(icon)) {
     return null;
   }
@@ -34,4 +33,4 @@ const getIcon = (icon: React.ReactElement<IconProps>, size: IconSize) => {
   return React.cloneElement(icon, { size: getIconSize(size) } as Partial<IconProps>);
 };
 
-const getIconSize = (size: IconSize) => (size === 'l' ? 'm' : size);
+const getIconSize = (size: LinkSize) => (size === 'l' ? 'm' : size);

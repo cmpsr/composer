@@ -1,1 +1,5 @@
-export interface DummyBlockProps {}
+import React from 'react';
+
+export interface DummyBlockProps {
+  children: React.ReactNode;
+}

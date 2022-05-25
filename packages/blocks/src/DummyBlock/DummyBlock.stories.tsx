@@ -4,16 +4,14 @@ import { DummyBlock } from './DummyBlock';
 
 export default {
   component: DummyBlock,
-  title: 'Blocks/DummyBlock'
+  title: 'Blocks/DummyBlock',
 } as Meta;
 
 const Template = ({ args }) => (
-  <DummyBlock {...args}>
-    Dummy Block
-  </DummyBlock>
+  <DummyBlock {...args} />
 );
 
 export const Playground = Template.bind({});
 Playground.args = {
-  variant: 'primary',
+  children: 'dummy',
 };

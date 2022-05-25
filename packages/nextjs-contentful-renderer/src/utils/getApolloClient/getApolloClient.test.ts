@@ -18,6 +18,7 @@ describe('getApolloClient', () => {
     expect(mockCreateLink).toBeCalledWith({
       space: process.env.CONTENTFUL_SPACE_ID,
       accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY,
+      environment: process.env.CONTENTFUL_ENVIRONMENT,
     });
   });
 
@@ -27,6 +28,7 @@ describe('getApolloClient', () => {
     expect(mockCreateLink).toBeCalledWith({
       space: process.env.CONTENTFUL_SPACE_ID,
       accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_PREVIEW,
+      environment: process.env.CONTENTFUL_ENVIRONMENT,
     });
   });
 
@@ -39,6 +41,7 @@ describe('getApolloClient', () => {
     expect(mockCreateLink).toBeCalledWith({
       space,
       accessToken: previewAccessToken,
+      environment: process.env.CONTENTFUL_ENVIRONMENT,
     });
   });
 });

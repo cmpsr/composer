@@ -1,6 +1,5 @@
 import React from 'react';
-import { addDecorator } from '@storybook/react';
-import { ComposerProvider } from '../src/theme';
+import { ComposerProvider } from '@cmpsr/components';
 import '@fontsource/inter/300.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/700.css';
@@ -35,8 +34,11 @@ const theme = {
     body: 'Inter',
   },
 };
-addDecorator((StoryFn) => (
-  <ComposerProvider theme={theme}>
-    <StoryFn />
-  </ComposerProvider>
-));
+
+export const decorators = [
+  (Story) => (
+    <ComposerProvider theme={theme}>
+      <Story />
+    </ComposerProvider>
+  ),
+];

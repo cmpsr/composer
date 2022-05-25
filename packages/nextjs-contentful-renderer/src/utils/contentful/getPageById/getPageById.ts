@@ -1,8 +1,8 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
-import { compose } from '../../functional';
-import { addCommonBlock } from './commonBlocks';
-import { CommonBlockFragment, ModelCollectionFragment } from './fragments';
-import { Block, BlockResult, Page } from './types';
+import { composeRight } from '../../functional';
+import { addBlockByPosition, pushBlocksCollection } from '../addBlocks';
+import { ModelCollectionFragment } from './fragments';
+import { Page } from './types';
 
 export const getPageById = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
@@ -16,10 +16,11 @@ export const getPageById = async (
           id
           title
           metaConfiguration
-          navigationBarsCollection {
-            items {
-              ...CommonBlockFragment
+          navbar {
+            modelsCollection(limit: 1) {
+              ...ModelFragment
             }
+            propsValue
           }
           footersCollection {
             items {
@@ -37,7 +38,6 @@ export const getPageById = async (
         }
       }
       ${ModelCollectionFragment}
-      ${CommonBlockFragment}
     `,
     variables: {
       pageId,
@@ -47,22 +47,7 @@ export const getPageById = async (
 
   if (!data.page) return undefined;
 
-  const { id, title, metaConfiguration, contentCollection, navigationBarsCollection, footersCollection } = data.page;
-  const content = compose(
-    getMainContent(contentCollection),
-    addCommonBlock(navigationBarsCollection),
-    addCommonBlock(footersCollection)
-  )([]);
+  const { id, title, metaConfiguration, contentCollection, navbar } = data.page;
+  const content = composeRight(addBlockByPosition(navbar), pushBlocksCollection(contentCollection?.items || []))([]);
   return { id, title, content, metaConfiguration };
-};
-
-const getMainContent = (contentCollection: { items: BlockResult[] }) => {
-  return (currentContent: Block[]) => {
-    const pageContent = contentCollection.items.map((item) => ({
-      models: item.modelsCollection.items,
-      propsValues: item.propsValue || [],
-    }));
-
-    return [...currentContent, ...pageContent];
-  };
 };

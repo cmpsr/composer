@@ -24,7 +24,7 @@ const AllTemplate = () => (
   <Table variant="simple">
     <Thead>
       <Tr>
-        <Th>State</Th>
+        <Th>States</Th>
         <Th>XS</Th>
         <Th>S</Th>
         <Th>M</Th>

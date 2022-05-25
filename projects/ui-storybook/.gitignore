@@ -1,7 +1,5 @@
 # Node dependencies
 node_modules
 
-# build folder
-lib
-
+storybook-static
 yarn-error.log*

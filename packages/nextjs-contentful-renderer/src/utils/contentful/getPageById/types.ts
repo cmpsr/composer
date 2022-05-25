@@ -37,3 +37,8 @@ export interface CommonBlock {
   position: number;
   block: { propsValue: PropsValue[]; modelsCollection: { items: Model[] } };
 }
+
+export interface BlockResult {
+  propsValue: PropsValue[];
+  modelsCollection: { items: Model[] };
+}

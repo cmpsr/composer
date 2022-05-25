@@ -1,7 +1,7 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
 import { composeRight } from '../../functional';
 import { addCommonBlock } from './commonBlocks';
-import { CommonBlockFragment, ModelCollectionFragment } from './fragments';
+import { ModelCollectionFragment } from './fragments';
 import { Page } from './types';
 
 export const getPageById = async (
@@ -16,10 +16,11 @@ export const getPageById = async (
           id
           title
           metaConfiguration
-          navigationBarsCollection {
-            items {
-              ...CommonBlockFragment
+          navbar {
+            modelsCollection(limit: 1) {
+              ...ModelFragment
             }
+            propsValue
           }
           contentCollection {
             items {
@@ -32,7 +33,6 @@ export const getPageById = async (
         }
       }
       ${ModelCollectionFragment}
-      ${CommonBlockFragment}
     `,
     variables: {
       pageId,
@@ -42,8 +42,8 @@ export const getPageById = async (
 
   if (!data.page) return undefined;
 
-  const { id, title, metaConfiguration, contentCollection, navigationBarsCollection } = data.page;
-  const content = composeRight(getMainContent(contentCollection), addCommonBlock(navigationBarsCollection))([]);
+  const { id, title, metaConfiguration, contentCollection, navbar } = data.page;
+  const content = composeRight(getMainContent(contentCollection), addCommonBlock(navbar, 0))([]);
   return { id, title, content, metaConfiguration };
 };
 

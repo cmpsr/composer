@@ -15,18 +15,14 @@ const dummyMainContentItem = {
   propsValues: [],
 };
 
-const dummyCommonBlock = {
-  default: false,
-  position: 1,
-  block: {
-    propsValue: [],
-    modelsCollection: {
-      items: [
-        {
-          base: '- opt1',
-        },
-      ],
-    },
+const dummyBlock = {
+  propsValue: [],
+  modelsCollection: {
+    items: [
+      {
+        base: '- opt1',
+      },
+    ],
   },
 };
 
@@ -41,9 +37,7 @@ describe('getPageById', () => {
         contentCollection: {
           items: [dummyMainContentItem],
         },
-        navigationBarsCollection: {
-          items: [dummyCommonBlock],
-        },
+        navbar: dummyBlock,
       },
     },
   });
@@ -92,50 +86,12 @@ describe('getPageById', () => {
   });
 
   describe('commonBlocks', () => {
-    test('should return an empty array if common blocks is null', () => {
+    test('should return an empty array if common blocks fields are null', () => {
       const commonBlocks = addCommonBlock(null)([]);
       expect(commonBlocks.length).toBe(0);
     });
-
-    test('should return an empty array if there are no common blocks', () => {
-      const commonBlocks = addCommonBlock({ items: [] })([]);
-      expect(commonBlocks.length).toBe(0);
-    });
-
-    test('should return a default common block', () => {
-      const commonBlocks = addCommonBlock({ items: [dummyCommonBlock] })([]);
-      expect(commonBlocks.length).toBe(1);
-      expect(commonBlocks[0]).toStrictEqual({
-        models: [{ base: '- opt1' }],
-        propsValues: [],
-      });
-    });
-
-    test('should return the first occurrence if there is more than one item as default', () => {
-      const commonBlocks = addCommonBlock({ items: [dummyCommonBlock, dummyCommonBlock] })([]);
-      expect(commonBlocks.length).toBe(1);
-      expect(commonBlocks[0]).toStrictEqual({
-        models: [{ base: '- opt1' }],
-        propsValues: [],
-      });
-    });
-
-    test('should return the first item if there are no items as default', () => {
-      const nonDefaultCommonBlock = { ...dummyCommonBlock, default: false };
-      const commonBlocks = addCommonBlock({
-        items: [nonDefaultCommonBlock, nonDefaultCommonBlock],
-      })([]);
-      expect(commonBlocks.length).toBe(1);
-      expect(commonBlocks[0]).toStrictEqual({
-        models: [{ base: '- opt1' }],
-        propsValues: [],
-      });
-    });
-
     test('should insert commonBlock at the beginning', () => {
-      const commonBlocks = addCommonBlock({
-        items: [dummyCommonBlock],
-      })([
+      const commonBlocks = addCommonBlock(dummyBlock)([
         {
           models: [{ base: '# H1' }, { base: '## H2' }],
           propsValues: [],
@@ -147,11 +103,11 @@ describe('getPageById', () => {
         propsValues: [],
       });
     });
-
     test('should insert commonBlock if position has a negative value', () => {
-      const commonBlocks = addCommonBlock({
-        items: [{ ...dummyCommonBlock, position: -1 }],
-      })([
+      const commonBlocks = addCommonBlock(
+        dummyBlock,
+        -1
+      )([
         {
           models: [{ base: '# H1' }, { base: '## H2' }],
           propsValues: [],
@@ -163,11 +119,28 @@ describe('getPageById', () => {
         propsValues: [],
       });
     });
-
     test('should insert commonBlock at the end', () => {
-      const commonBlocks = addCommonBlock({
-        items: [{ ...dummyCommonBlock, position: 2 }],
-      })([
+      const commonBlocks = addCommonBlock(
+        dummyBlock,
+        2
+      )([
+        {
+          models: [{ base: '# H1' }, { base: '## H2' }],
+          propsValues: [],
+        },
+      ]);
+      expect(commonBlocks.length).toBe(2);
+      expect(commonBlocks[1]).toStrictEqual({
+        models: [{ base: '- opt1' }],
+        propsValues: [],
+      });
+    });
+
+    test('should insert a block if position arg is a function', () => {
+      const commonBlocks = addCommonBlock(
+        dummyBlock,
+        (content) => content.length
+      )([
         {
           models: [{ base: '# H1' }, { base: '## H2' }],
           propsValues: [],

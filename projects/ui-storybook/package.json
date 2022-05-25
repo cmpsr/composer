@@ -1,0 +1,43 @@
+{
+  "name": "@cmpsr/ui-storybook",
+  "repository": {
+    "url": "ssh://git@github.com:cmpsr/composer.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "version": "0.0.1",
+  "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "storybook": "start-storybook -p 8080 -c .storybook",
+    "build-storybook": "build-storybook -c .storybook"
+  },
+  "peerDependencies": {
+    "react": "^18.1.0"
+  },
+  "dependencies": {
+    "@cmpsr/components": "1.20.3"
+  },
+  "devDependencies": {
+    "@fontsource/inter": "^4.5.0",
+    "@storybook/addon-actions": "^6.5.4",
+    "@storybook/addon-essentials": "^6.5.4",
+    "@storybook/addon-interactions": "^6.5.4",
+    "@storybook/addon-links": "^6.5.4",
+    "@storybook/builder-webpack5": "^6.5.4",
+    "@storybook/manager-webpack5": "^6.5.4",
+    "@storybook/react": "^6.5.4",
+    "@storybook/testing-library": "^0.0.11",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "storybook-addon-turbo-build": "^1.0.1",
+    "storybook-chromatic": "^4.0.2",
+    "swc-loader": "^0.1.15"
+  },
+  "engines": {
+    "node": ">=14 <17"
+  }
+}

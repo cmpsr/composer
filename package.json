@@ -15,11 +15,13 @@
     "test:coverage": "turbo run test:coverage",
     "lint": "eslint . --ext .tsx,.ts,.js",
     "lint-and-fix": "eslint . --ext .tsx,.ts,.js --fix",
-    "publish-ci": "turbo run libbuild && turbo run type:emit && lerna publish from-package -y --no-verify-access"
+    "publish-ci": "turbo run libbuild && turbo run type:emit && lerna publish from-package -y --no-verify-access",
+    "storybook": "turbo run storybook"
   },
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "projects/*"
   ],
   "turbo": {
     "baseBranch": "origin/master",
@@ -47,6 +49,9 @@
       "type:emit": {
         "outputs": []
       },
+      "storybook": {
+        "outputs": []
+      },
       "build-storybook": {
         "dependsOn": [
           "@cmpsr/components#libbuild"
@@ -62,6 +67,13 @@
     "lerna": "^4.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.12",
+    "@storybook/addon-actions": "^6.4.22",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-interactions": "^6.4.22",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/react": "^6.4.22",
+    "@storybook/testing-library": "^0.0.11",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^13.2.0",
     "@types/connect-redis": "^0.0.13",
@@ -72,6 +84,7 @@
     "@types/redis": "^2.8.18",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
+    "babel-loader": "^8.2.5",
     "chromatic": "^5.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",

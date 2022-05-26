@@ -1,8 +1,6 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
-import { compose } from '../../functional';
-import { addBlockByPosition, pushBlocksCollection } from '../addBlocks';
-import { ModelCollectionFragment } from './fragments';
-import { Page } from './types';
+import { ModelCollectionFragment, ModelFragment } from './fragments';
+import { Block, BlockResult, Page } from './types';
 
 export const getPageById = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
@@ -17,10 +15,9 @@ export const getPageById = async (
           title
           metaConfiguration
           navbar {
-            modelsCollection(limit: 1) {
+            model {
               ...ModelFragment
             }
-            propsValue
           }
           contentCollection {
             items {
@@ -33,6 +30,7 @@ export const getPageById = async (
         }
       }
       ${ModelCollectionFragment}
+      ${ModelFragment}
     `,
     variables: {
       pageId,
@@ -43,6 +41,25 @@ export const getPageById = async (
   if (!data.page) return undefined;
 
   const { id, title, metaConfiguration, contentCollection, navbar } = data.page;
-  const content = compose(addBlockByPosition(navbar), pushBlocksCollection(contentCollection?.items || []))([]);
+  let content = [];
+
+  if (navbar) {
+    content.push({ models: [navbar?.model || {}], propsValues: [] });
+  }
+
+  content = addMainContent(contentCollection?.items, content);
+
   return { id, title, content, metaConfiguration };
+};
+
+const addMainContent = (blocksResult: BlockResult[], currentContent: Block[]) => {
+  const pageContent = blocksResult?.map(getBlock) || [];
+  return [...currentContent, ...pageContent];
+};
+
+const getBlock = (blockResult: BlockResult) => {
+  return {
+    models: blockResult?.modelsCollection?.items,
+    propsValues: blockResult?.propsValue || [],
+  };
 };

@@ -1,14 +1,21 @@
 import { gql } from '@apollo/client';
 
+export const ModelFragment = gql`
+  fragment ModelFragment on Mdx {
+    id
+    base
+    md
+    lg
+    xl
+    xxl
+  }
+`;
+
 export const ModelCollectionFragment = gql`
-  fragment ModelFragment on BlockModelsCollection {
+  fragment ModelCollectionFragment on BlockModelsCollection {
     items {
-      id
-      base
-      md
-      lg
-      xl
-      xxl
+      ...ModelFragment
     }
   }
+  ${ModelFragment}
 `;

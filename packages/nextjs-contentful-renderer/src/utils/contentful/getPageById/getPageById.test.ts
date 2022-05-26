@@ -14,14 +14,10 @@ const dummyMainContentItem = {
   propsValues: [],
 };
 
-const dummyBlock = {
+const dummyNavbar = {
   propsValue: [],
-  modelsCollection: {
-    items: [
-      {
-        base: '- opt1',
-      },
-    ],
+  model: {
+    base: '- opt1',
   },
 };
 
@@ -36,7 +32,7 @@ describe('getPageById', () => {
         contentCollection: {
           items: [dummyMainContentItem],
         },
-        navbar: dummyBlock,
+        navbar: dummyNavbar,
       },
     },
   });

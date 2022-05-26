@@ -1,8 +1,11 @@
+import { Theme } from '@cmpsr/components';
+
 export interface Page {
   id: string;
   title: string;
   metaConfiguration?: PageMetaData;
   content: Block[];
+  theme: Partial<Theme>;
 }
 
 interface PageMetaData {

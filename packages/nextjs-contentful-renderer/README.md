@@ -9,6 +9,7 @@ The library exposes the following:
 - `getPageContent(context: GetServerSidePropsContext, domain?: string)`. This method takes the nextjs' `context` object and get the page slug to use it to retrieve the content from contentful. To avoid collisions between similar routes in different projects stored in the same contentful space you can pass domain parameter to this function, or you can set the `SITE_DOMAIN` env variable to avoid having to pass it in every single call.
 - `generateMdx(blocks: Block[]): Promise<Model[]>`. This function takes the output of the `getPageContent` and compiles the code to MDX using [mdx-bundler](https://github.com/kentcdodds/mdx-bundler).
 - `MdxRenderer` component. Takes the compiled MDX code from `generateMdx` and renders the content using react. The component accepts the `content` to render and a custom `componentMap` that can be used to render custom components.
+- `getDefaultTheme(preview: boolean, domain: string)` retrieve the default theme for a given domain or undefined if no default theme is defined. By default `preview` is set to `false` and `domain` to `process.env.SITE_DOMAIN`. This call use a cache first approach for data fetching. Taking into account that the default theme can not be loaded at the app level because [nextjs Custom app does not support data fetching](https://nextjs.org/docs/advanced-features/custom-app#caveats) we strongly recommend that each page has a theme associated to avoid a second request to contentful.
 
 ## Requirements
 
@@ -38,12 +39,20 @@ The following dependencies should be provided to the library:
 ```typescript
 import { generateMdx, getPageContent } from "@cmpsr/nextjs-contentful-renderer";
 import { MdxRenderer } from "@cmpsr/nextjs-contentful-renderer/client";
+import { ComposerProvider } from "@cmpsr/components";
 
 const Page: NextPage<PageProps> = ({ content, title, metaConfiguration }) => {
   const metaTags = Object.values(metaConfiguration) || [];
 
+  const Wrapper = ({ children }) =>
+    theme ? (
+      <ComposerProvider theme={theme}>{children}</ComposerProvider>
+    ) : (
+      <>{children}</>
+    );
+
   return (
-    <>
+    <Wrapper>
       <Head>
         <title>{title}</title>
         {metaTags.map((metaTag) => {
@@ -54,10 +63,10 @@ const Page: NextPage<PageProps> = ({ content, title, metaConfiguration }) => {
           return <meta key={metaTag.propertyValue} {...props} />;
         })}
       </Head>
-      {content.map((block, index) => {
-        return <MdxRenderer key={index} content={block} />;
-      })}
-    </>
+      {content.map((block, index) => (
+        <MdxRenderer key={index} content={block} componentMap={components} />
+      ))}
+    </Wrapper>
   );
 };
 
@@ -65,6 +74,10 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
   context: GetServerSidePropsContext
 ) => {
   const page = (await getPageContent(context)) || pageNotFound;
+  let theme = page.theme;
+  if (!theme) {
+    theme = await getDefaultTheme(context.query.preview !== undefined);
+  }
 
   const content: Model[] = await generateMdx(page.content);
   return {
@@ -72,6 +85,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
       title: page.title,
       content,
       metaConfiguration: page.metaConfiguration,
+      theme: theme || null,
     },
   };
 };

@@ -13,6 +13,9 @@ export const getPageById = async (
           id
           title
           metaConfiguration
+          theme {
+            theme
+          }
           contentCollection {
             items {
               modelsCollection {
@@ -39,12 +42,11 @@ export const getPageById = async (
   if (!data.page) return undefined;
 
   const { id, title, metaConfiguration, contentCollection } = data.page;
-  const content = contentCollection.items.map((item) => {
-    return {
-      models: item.modelsCollection.items,
-      propsValues: item.propsValue || [],
-    };
-  });
+  const theme = data.page.theme?.theme || null;
+  const content = contentCollection.items.map((item) => ({
+    models: item.modelsCollection.items,
+    propsValues: item.propsValue || [],
+  }));
 
-  return { id, title, content, metaConfiguration };
+  return { id, title, content, metaConfiguration, theme };
 };

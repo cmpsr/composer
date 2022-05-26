@@ -19,6 +19,9 @@ export const getPageById = async (
               ...ModelFragment
             }
           }
+          theme {
+            theme
+          }
           contentCollection {
             items {
               modelsCollection {
@@ -41,6 +44,7 @@ export const getPageById = async (
   if (!data.page) return undefined;
 
   const { id, title, metaConfiguration, contentCollection, navbar } = data.page;
+  const theme = data.page.theme?.theme || null;
   let content = [];
 
   if (navbar) {
@@ -49,17 +53,16 @@ export const getPageById = async (
 
   content = addMainContent(contentCollection?.items, content);
 
-  return { id, title, content, metaConfiguration };
+  return { id, title, content, metaConfiguration, theme };
 };
 
 const addMainContent = (blocksResult: BlockResult[], currentContent: Block[]) => {
   const pageContent = blocksResult?.map(getBlock) || [];
+
   return [...currentContent, ...pageContent];
 };
 
-const getBlock = (blockResult: BlockResult) => {
-  return {
-    models: blockResult?.modelsCollection?.items,
-    propsValues: blockResult?.propsValue || [],
-  };
-};
+const getBlock = (blockResult: BlockResult) => ({
+  models: blockResult?.modelsCollection?.items,
+  propsValues: blockResult?.propsValue || [],
+});

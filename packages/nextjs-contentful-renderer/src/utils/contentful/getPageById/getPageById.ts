@@ -1,4 +1,5 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
+import { compose } from '../../functional';
 import { ModelCollectionFragment, ModelFragment } from './fragments';
 import { Block, BlockResult, Model, Page } from './types';
 
@@ -49,33 +50,36 @@ export const getPageById = async (
   if (!data.page) return undefined;
 
   const { id, title, metaConfiguration, contentCollection, navbar, footer } = data.page;
-  let content = [];
-  content = addNavbar(navbar, content);
-  content = addMainContent(contentCollection?.items, content);
-  content = addFooter(footer, content);
+  const content = compose(addNavbar(navbar), addMainContent(contentCollection?.items), addFooter(footer))([]);
 
   const theme = data.page.theme?.theme || null;
 
   return { id, title, content, metaConfiguration, theme };
 };
 
-const addNavbar = (navbar: { model: Model }, content: Block[]) => {
-  if (!navbar) {
-    return content;
-  }
-  return [{ models: [navbar?.model || {}], propsValues: [] }, ...content];
+const addNavbar = (navbar: { model: Model }) => {
+  return (content: Block[]) => {
+    if (!navbar) {
+      return content;
+    }
+    return [{ models: [navbar?.model || {}], propsValues: [] }, ...content];
+  };
 };
 
-const addFooter = (footer: { model: Model }, content: Block[]) => {
-  if (!footer) {
-    return content;
-  }
-  return [...content, { models: [footer?.model || {}], propsValues: [] }];
+const addFooter = (footer: { model: Model }) => {
+  return (content: Block[]) => {
+    if (!footer) {
+      return content;
+    }
+    return [...content, { models: [footer?.model || {}], propsValues: [] }];
+  };
 };
 
-const addMainContent = (blocksResult: BlockResult[], currentContent: Block[]) => {
-  const pageContent = blocksResult?.map(getBlock) || [];
-  return [...currentContent, ...pageContent];
+const addMainContent = (blocksResult: BlockResult[]) => {
+  return (currentContent: Block[]) => {
+    const pageContent = blocksResult?.map(getBlock) || [];
+    return [...currentContent, ...pageContent];
+  };
 };
 
 const getBlock = (blockResult: BlockResult) => ({

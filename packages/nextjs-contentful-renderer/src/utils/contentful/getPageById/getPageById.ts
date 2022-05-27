@@ -1,6 +1,6 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
 import { ModelCollectionFragment, ModelFragment } from './fragments';
-import { Block, BlockResult, Page } from './types';
+import { Block, BlockResult, Model, Page } from './types';
 
 export const getPageById = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
@@ -19,14 +19,13 @@ export const getPageById = async (
               ...ModelFragment
             }
           }
-          theme {
-            theme
-          }
           footer {
-            modelsCollection(limit: 1) {
+            model {
               ...ModelFragment
             }
-            propsValue
+          }
+          theme {
+            theme
           }
           contentCollection {
             items {
@@ -49,22 +48,33 @@ export const getPageById = async (
 
   if (!data.page) return undefined;
 
-  const { id, title, metaConfiguration, contentCollection, navbar } = data.page;
-  const theme = data.page.theme?.theme || null;
+  const { id, title, metaConfiguration, contentCollection, navbar, footer } = data.page;
   let content = [];
-
-  if (navbar) {
-    content.push({ models: [navbar?.model || {}], propsValues: [] });
-  }
-
+  content = addNavbar(navbar, content);
   content = addMainContent(contentCollection?.items, content);
+  content = addFooter(footer, content);
+
+  const theme = data.page.theme?.theme || null;
 
   return { id, title, content, metaConfiguration, theme };
 };
 
+const addNavbar = (navbar: { model: Model }, content: Block[]) => {
+  if (!navbar) {
+    return content;
+  }
+  return [{ models: [navbar?.model || {}], propsValues: [] }, ...content];
+};
+
+const addFooter = (footer: { model: Model }, content: Block[]) => {
+  if (!footer) {
+    return content;
+  }
+  return [...content, { models: [footer?.model || {}], propsValues: [] }];
+};
+
 const addMainContent = (blocksResult: BlockResult[], currentContent: Block[]) => {
   const pageContent = blocksResult?.map(getBlock) || [];
-
   return [...currentContent, ...pageContent];
 };
 

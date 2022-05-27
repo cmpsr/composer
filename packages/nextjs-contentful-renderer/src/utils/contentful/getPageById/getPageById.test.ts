@@ -13,12 +13,19 @@ const dummyNavbar = {
   },
 };
 
+const dummyFooter = {
+  model: {
+    base: 'footer',
+  },
+};
+
 const dummyPage = {
   id: 'page_id',
   title: 'Page title',
   metaConfiguration: {},
   theme: { theme: {} },
   navbar: dummyNavbar,
+  footer: dummyFooter,
   contentCollection: {
     items: [dummyMainContentItem],
   },
@@ -70,6 +77,10 @@ describe('getPageById', () => {
         },
         {
           models: [{ base: '# H1' }, { base: '## H2' }],
+          propsValues: [],
+        },
+        {
+          models: [{ base: 'footer' }],
           propsValues: [],
         },
       ],

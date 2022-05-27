@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 2.0.0
+
+### Major Changes
+
+- e951e88: Link component refactor to accept a react element instead of component in its leading and trailing icon props
+- e46976b: refactor button component to accept a react element instead a component in its leading and trailing icon props
+
 ## 1.20.3
 
 ### Patch Changes

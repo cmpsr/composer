@@ -32,8 +32,8 @@ const Template = ({ showLeadingIcon, showTrailingIcon, separator = 'default', nu
       {items.map((item) => (
         <Breadcrumb.Item
           key={item}
-          leadingIcon={showLeadingIcon && IconWorld}
-          trailingIcon={showTrailingIcon && IconCheck}
+          leadingIcon={showLeadingIcon && <IconWorld />}
+          trailingIcon={showTrailingIcon && <IconCheck />}
           href="#"
         >
           {item === items.length - 1 ? 'Active Breadcrumb' : 'Default link'}

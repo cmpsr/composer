@@ -41,12 +41,12 @@ export const All = () => (
             </Link>
           </Td>
           <Td>
-            <Link size={size} href="#" leadingIcon={Icons.IconExternalLink}>
+            <Link size={size} href="#" leadingIcon={<Icons.IconExternalLink />}>
               Size {size.toUpperCase()} link with leading icon
             </Link>
           </Td>
           <Td>
-            <Link size={size} href="#" trailingIcon={Icons.IconExternalLink}>
+            <Link size={size} href="#" trailingIcon={<Icons.IconExternalLink />}>
               Size {size.toUpperCase()} link with trailing icon
             </Link>
           </Td>
@@ -79,8 +79,8 @@ const AllVariantsTemplate = () => (
                     role="link"
                     variant={variant}
                     size={size}
-                    {...{ ...(state === 'Trailing Icon' && { trailingIcon: Icons.IconExternalLink }) }}
-                    {...{ ...(state === 'Leading Icon' && { leadingIcon: Icons.IconExternalLink }) }}
+                    {...{ ...(state === 'Trailing Icon' && { trailingIcon: <Icons.IconExternalLink /> }) }}
+                    {...{ ...(state === 'Leading Icon' && { leadingIcon: <Icons.IconExternalLink /> }) }}
                   >
                     Link with {variant}
                   </Link>
@@ -110,8 +110,8 @@ const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
   <Link
     href="#"
     role="link"
-    {...(showLeadingIcon && { leadingIcon: Icons.IconExternalLink })}
-    {...(showTrailingIcon && { trailingIcon: Icons.IconExternalLink })}
+    {...(showLeadingIcon && { leadingIcon: <Icons.IconExternalLink /> })}
+    {...(showTrailingIcon && { trailingIcon: <Icons.IconExternalLink /> })}
     {...args}
   >
     Playground

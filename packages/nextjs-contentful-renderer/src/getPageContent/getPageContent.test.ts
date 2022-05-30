@@ -14,9 +14,14 @@ jest.mock('../utils/getPageId', () => ({
 
 const mockGetPageById = jest.fn();
 const mockGetRouteBySlug = jest.fn();
+const mockSetDefaultNavbar = jest.fn();
 jest.mock('../utils/contentful', () => ({
   getPageById: (...params) => mockGetPageById(...params),
   getRouteBySlug: (...params) => mockGetRouteBySlug(...params),
+}));
+
+jest.mock('../configNavbar', () => ({
+  configNavbar: (...params) => mockSetDefaultNavbar(...params),
 }));
 
 describe('getPageContent', () => {

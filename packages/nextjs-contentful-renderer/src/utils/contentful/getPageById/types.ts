@@ -6,6 +6,7 @@ export interface Page {
   metaConfiguration?: PageMetaData;
   content: Block[];
   theme: Partial<Theme>;
+  navbar: { model: Model };
 }
 
 interface PageMetaData {

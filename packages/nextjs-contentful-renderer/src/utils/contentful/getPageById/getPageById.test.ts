@@ -14,18 +14,12 @@ const dummyMainContentItem = {
   propsValues: [],
 };
 
-const dummyNavbar = {
-  model: {
-    base: '- opt1',
-  },
-};
-
 const dummyPage = {
   id: 'page_id',
   title: 'Page title',
   metaConfiguration: {},
   theme: { theme: {} },
-  navbar: dummyNavbar,
+  navbar: { model: {} },
   contentCollection: {
     items: [dummyMainContentItem],
   },
@@ -70,11 +64,8 @@ describe('getPageById', () => {
       title: 'Page title',
       metaConfiguration: {},
       theme: {},
+      navbar: { model: {} },
       content: [
-        {
-          models: [{ base: '- opt1' }],
-          propsValues: [],
-        },
         {
           models: [{ base: '# H1' }, { base: '## H2' }],
           propsValues: [],
@@ -91,11 +82,26 @@ describe('getPageById', () => {
       title: 'Page title',
       metaConfiguration: {},
       theme: null,
+      navbar: { model: {} },
       content: [
         {
-          models: [{ base: '- opt1' }],
+          models: [{ base: '# H1' }, { base: '## H2' }],
           propsValues: [],
         },
+      ],
+    });
+  });
+
+  test('should return page without navbar', async () => {
+    mockQuery.mockResolvedValueOnce({ data: { page: { ...dummyPage, theme: null, navbar: null } } });
+    const page = await getPageById(mockApolloClient, pageId, preview);
+    expect(page).toStrictEqual({
+      id: 'page_id',
+      title: 'Page title',
+      metaConfiguration: {},
+      theme: null,
+      navbar: null,
+      content: [
         {
           models: [{ base: '# H1' }, { base: '## H2' }],
           propsValues: [],

@@ -1,6 +1,6 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
 import { ModelCollectionFragment, ModelFragment } from './fragments';
-import { Block, BlockResult, Page } from './types';
+import { BlockResult, Page } from './types';
 
 export const getPageById = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
@@ -11,7 +11,7 @@ export const getPageById = async (
     query: gql`
       query getPageById($pageId: String!, $preview: Boolean) {
         page(id: $pageId, preview: $preview) {
-          id
+          i
           title
           metaConfiguration
           navbar {
@@ -43,23 +43,17 @@ export const getPageById = async (
 
   if (!data.page) return undefined;
 
-  const { id, title, metaConfiguration, contentCollection, navbar } = data.page;
+  const { id, title, metaConfiguration, contentCollection } = data.page;
   const theme = data.page.theme?.theme || null;
-  let content = [];
+  const navbar = data.page.navbar || null;
 
-  if (navbar) {
-    content.push({ models: [navbar?.model || {}], propsValues: [] });
-  }
+  const content = addMainContent(contentCollection?.items);
 
-  content = addMainContent(contentCollection?.items, content);
-
-  return { id, title, content, metaConfiguration, theme };
+  return { id, title, content, metaConfiguration, theme, navbar };
 };
 
-const addMainContent = (blocksResult: BlockResult[], currentContent: Block[]) => {
-  const pageContent = blocksResult?.map(getBlock) || [];
-
-  return [...currentContent, ...pageContent];
+const addMainContent = (blocksResult: BlockResult[]) => {
+  return blocksResult?.map(getBlock) || [];
 };
 
 const getBlock = (blockResult: BlockResult) => ({

@@ -26,9 +26,7 @@
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "peerDependencies": {
-    "react": "^18.1.0"
-  },
-  "dependencies": {
+    "react": "^18.1.0",
     "@cmpsr/components": "1.20.3"
   },
   "devDependencies": {
@@ -36,7 +34,6 @@
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",
     "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react-hooks": "^8.0.0",
     "@types/jest": "^27.0.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

@@ -5,4 +5,4 @@ coverage
 quokka.js
 .turbo
 .DS_Store
-.vscode/settings.json
+.yalc

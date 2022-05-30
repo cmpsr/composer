@@ -1,5 +1,20 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 2.0.0
+
+### Patch Changes
+
+- Updated dependencies [e951e88]
+- Updated dependencies [e46976b]
+  - @cmpsr/components@2.0.0
+
+## 1.2.0
+
+### Minor Changes
+
+- 7486e18: feat: add getDefaultTheme function
+- 4b5f7cf: Add environment parameter and set it to the apollo client instance
+
 ## 1.1.0
 
 ### Minor Changes

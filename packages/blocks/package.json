@@ -27,7 +27,7 @@
   },
   "peerDependencies": {
     "react": "^18.1.0",
-    "@cmpsr/components": "1.20.3"
+    "@cmpsr/components": "2.0.0"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.55",

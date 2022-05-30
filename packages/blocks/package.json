@@ -1,5 +1,5 @@
 {
-  "name": "@cmpsr/components",
+  "name": "@cmpsr/blocks",
   "repository": {
     "url": "ssh://git@github.com:cmpsr/composer.git"
   },
@@ -7,46 +7,33 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "2.1.0",
+  "version": "1.0.0",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
     "/lib",
-    "/scripts",
     "package.json"
   ],
-  "private": false,
+  "private": true,
   "scripts": {
-    "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore '**/*.test.ts,**/*.stories.ts' && yarn type:emit",
+    "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore '**/*.test.ts,**/*.stories.ts' && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "gen:theme-typings": "./scripts/generate_theme_typings.sh",
-    "postinstall": "npm run gen:theme-typings",
-    "gen:icons": "node scripts/generate_icons.js",
     "type:check": "yarn tsc --project tsconfig.json --noEmit",
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "peerDependencies": {
-    "react": "^18.1.0"
-  },
-  "dependencies": {
-    "@chakra-ui/react": "^2.0.0",
-    "@chakra-ui/react-utils": "^2.0.0",
-    "@chakra-ui/theme-tools": "^2.0.0",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "framer-motion": "^5"
+    "react": "^18.1.0",
+    "@cmpsr/components": "2.1.0"
   },
   "devDependencies": {
-    "@chakra-ui/cli": "^2.0.0",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",
     "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react-hooks": "^8.0.0",
     "@types/jest": "^27.0.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

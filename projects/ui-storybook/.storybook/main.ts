@@ -5,7 +5,12 @@ module.exports = {
     builder: 'webpack5',
   },
   stories: ['../../../packages/components/src/**/*.stories.tsx', '../../../packages/blocks/src/**/*.stories.tsx'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', 'storybook-addon-turbo-build'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    'storybook-addon-turbo-build',
+    '@storybook/addon-viewport',
+  ],
   features: { postcss: false },
   refs: {
     '@chakra-ui/react': {

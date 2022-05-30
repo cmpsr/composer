@@ -4,7 +4,7 @@ module.exports = {
   core: {
     builder: 'webpack5',
   },
-  stories: ['../../../packages/components/src/**/*.stories.tsx'],
+  stories: ['../../../packages/components/src/**/*.stories.tsx', '../../../packages/blocks/src/**/*.stories.tsx'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials', 'storybook-addon-turbo-build'],
   features: { postcss: false },
   refs: {
@@ -45,6 +45,7 @@ module.exports = {
         alias: {
           ...config.resolve.alias,
           '@cmpsr/components': path.resolve(__dirname, '../../../packages/components/src'),
+          '@cmpsr/blocks': path.resolve(__dirname, '../../../packages/blocks/src'),
           '@components': path.resolve(__dirname, '../../../packages/components/src/components'),
           '@theme': path.resolve(__dirname, '../../../packages/components/src/theme'),
           '@hooks': path.resolve(__dirname, '../../../packages/components/src/hooks'),

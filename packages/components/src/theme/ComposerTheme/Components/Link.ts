@@ -1,7 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { buttonVariants, linkSizes } from '@components';
 
-const linkBaseStyle = {
+export const linkBaseStyle = {
   display: 'inline-flex',
   color: 'text-link-primary-default',
   borderRadius: '0.25rem',

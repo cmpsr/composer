@@ -1,6 +1,7 @@
 import { cssVar } from '@chakra-ui/react';
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { transparentize } from '@chakra-ui/theme-tools';
+import { linkBaseStyle } from './Link';
 
 const generateButton = (color: string, textColor?: string) => {
   const _disabled = {
@@ -150,6 +151,9 @@ export const Button: ComponentStyleConfig = {
     'primary-alt': generateAltButton('primary'),
     'secondary-alt': generateAltButton('secondary'),
     destroy: generateButton('alert-error', 'alert'),
+    link: {
+      ...linkBaseStyle,
+    },
   },
   defaultProps: {
     size: 'md',

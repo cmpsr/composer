@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Alert, Button, Flex } from '@cmpsr/components';
+import { Alert, Button, Flex, Text } from '@cmpsr/components';
 import { CookieBannerProps } from './types';
 
 export const CookieBanner: FC<CookieBannerProps> = ({
@@ -49,32 +49,32 @@ export const CookieBanner: FC<CookieBannerProps> = ({
 
   const handleAllowRequiredOnly = () => updatePolicy('required');
 
+  const child = typeof children === 'string' ? <Text color="text-secondary">{children}</Text> : children;
+
   return shouldShow ? (
     <Flex
-      direction={['column', null, 'row']}
+      direction={{ base: 'column', lg: 'row' }}
       alignItems="center"
       bg="background-info"
-      pr={['1rem', null, '0']}
-      py="1rem"
-      borderRadius="0.375rem"
+      pr="1rem"
+      py="1.5rem"
       {...rest}
     >
-      <Alert pt="0" variant="subtle" pr={['0', null, '2rem']} pb={['2rem', null, '0']}>
-        <Alert.Description>{children}</Alert.Description>
+      <Alert variant="subtle" pt="0" pr={{ base: '0', lg: '2rem' }} pb={{ base: '2rem', lg: '0' }}>
+        <Alert.Description>{child}</Alert.Description>
       </Alert>
       <Flex
-        px="1rem"
         justifyContent="center"
         alignItems="center"
         direction="row"
-        pr={['0', null, '1.5rem']}
-        pb={['1.5rem', null, '0']}
+        pr={{ base: '0', lg: '1.5rem' }}
+        pb={{ base: '1.5rem', lg: '0' }}
       >
         <Button variant="link" onClick={handleAllowRequiredOnly}>
           {acceptRequiredOnlyCta}
         </Button>
       </Flex>
-      <Flex px="1rem" justifyContent="center" alignItems="center" direction="row">
+      <Flex justifyContent="center" alignItems="center" direction="row">
         <Button variant="primary" onClick={handleAllowAllCookies}>
           {acceptAllCta}
         </Button>

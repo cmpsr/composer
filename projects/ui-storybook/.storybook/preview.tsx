@@ -5,6 +5,7 @@ import '@fontsource/inter/500.css';
 import '@fontsource/inter/700.css';
 
 const breakpoints = createBreakpoints({
+  base: '0px',
   sm: '414px',
   md: '768px',
   lg: '1024px',
@@ -39,23 +40,23 @@ export const parameters = {
     viewports: {
       sm: {
         name: 'sm (414px)',
-        styles: { width: '413px', height: '100%' },
+        styles: { width: '414px', height: '100%' },
       },
       md: {
         name: 'md (768px)',
-        styles: { width: '767px', height: '100%' },
+        styles: { width: '768px', height: '100%' },
       },
       lg: {
         name: 'lg (1024px)',
-        styles: { width: '1023px', height: '100%' },
+        styles: { width: '1024px', height: '100%' },
       },
       xl: {
         name: 'xl (1280px)',
-        styles: { width: '1279px', height: '100%' },
+        styles: { width: '1280px', height: '100%' },
       },
       xxl: {
         name: 'xxl (1440px)',
-        styles: { width: '1439px', height: '100%' },
+        styles: { width: '1440px', height: '100%' },
       },
     },
   },

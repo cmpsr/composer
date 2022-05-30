@@ -156,7 +156,7 @@ export const Button: ComponentStyleConfig = {
     },
   },
   defaultProps: {
-    size: 'md',
+    size: 'm',
     variant: 'primary',
   },
 };

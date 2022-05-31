@@ -63,18 +63,15 @@ export const CookieBanner: FC<CookieBannerProps> = ({
       <Alert variant="subtle" pt="0" pr={{ base: '0', lg: '2rem' }} pb={{ base: '2rem', lg: '0' }}>
         <Alert.Description>{child}</Alert.Description>
       </Alert>
-      <Flex
+       <Flex
         justifyContent="center"
         alignItems="center"
-        direction="row"
-        pr={{ base: '0', lg: '1.5rem' }}
-        pb={{ base: '1.5rem', lg: '0' }}
+        direction={{base: 'column', lg: 'row'}}
+        gap="1.5rem"
       >
         <Button variant="link" onClick={handleAllowRequiredOnly}>
           {acceptRequiredOnlyCta}
         </Button>
-      </Flex>
-      <Flex justifyContent="center" alignItems="center" direction="row">
         <Button variant="primary" onClick={handleAllowAllCookies}>
           {acceptAllCta}
         </Button>

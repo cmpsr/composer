@@ -15,7 +15,7 @@ export const linkBaseStyle = {
     boxShadow: `0 0 0 0.25rem var(--chakra-colors-primary-focus)`,
   },
 };
-
+//
 const isButtonVariant = (variant) => linkVariants.includes(variant);
 
 const getButtonVariants = () => {

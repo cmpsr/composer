@@ -5,7 +5,7 @@ describe('useScrollPosition', () => {
   const originalPageYOffset = window.pageYOffset;
 
   afterAll(() => {
-    window.pageYOffset = originalPageYOffset;
+    Object.defineProperty(window, 'pageYOffset', { value: originalPageYOffset });
   });
 
   test('should return scroll position default value 0', () => {
@@ -16,7 +16,7 @@ describe('useScrollPosition', () => {
   });
 
   test('should return scroll position when page y has scrolled', () => {
-    window.pageYOffset = 100;
+    Object.defineProperty(window, 'pageYOffset', { value: 100 });
     const {
       result: { current },
     } = renderHookWithProviders(useScrollPosition);

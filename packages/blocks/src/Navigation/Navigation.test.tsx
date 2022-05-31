@@ -47,7 +47,7 @@ describe('Navigation', () => {
     expect(navigation).not.toHaveStyle(`position: sticky`);
   });
   test('should not make navigation sticky when sticky is provided and page is not scrolled', () => {
-    mockUseScrollPosition.mockReturnValue(0);
+    mockUseScrollPosition.mockReturnValueOnce(0);
     givenComponentRendered({ sticky: true });
     const navigation = screen.getByTestId('navigation');
     expect(navigation).not.toHaveStyle(`position: sticky`);

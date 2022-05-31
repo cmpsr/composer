@@ -16,7 +16,7 @@
     "/lib",
     "package.json"
   ],
-  "private": true,
+  "private": false,
   "scripts": {
     "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore '**/*.test.ts,**/*.stories.ts' && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +",
     "test": "jest",

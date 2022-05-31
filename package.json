@@ -1,6 +1,6 @@
 {
   "name": "composer",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "index.js",
   "author": "Steve Cox <stevejcox@me.com>",
   "license": "MIT",

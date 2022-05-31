@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 2.2.0
+
+### Minor Changes
+
+- 465da90: feat: add new hook useScrollPosition
+
 ## 2.1.0
 
 ### Minor Changes

@@ -1,5 +1,17 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 4.0.0
+
+### Minor Changes
+
+- c657ab3: feat: expose @cmpsr/blocks to MdxRenderer
+
+### Patch Changes
+
+- Updated dependencies [465da90]
+  - @cmpsr/components@2.2.0
+  - @cmpsr/blocks@2.0.0
+
 ## 3.0.0
 
 ### Patch Changes

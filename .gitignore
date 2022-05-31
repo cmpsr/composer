@@ -6,3 +6,4 @@ quokka.js
 .turbo
 .DS_Store
 .yalc
+yarn-error.log*

@@ -2,6 +2,7 @@ import React from 'react';
 import { Text } from '@cmpsr/components';
 import { fireEvent, renderWithProviders, screen } from '@tests/renderWithProviders';
 import { CookieBanner } from './CookieBanner';
+import '@testing-library/jest-dom';
 
 describe('CookieBanner', () => {
   afterEach(() => {
@@ -17,7 +18,6 @@ describe('CookieBanner', () => {
         <Text data-testid="children-container">Hello</Text>
       </CookieBanner>
     );
-    screen.getByText('Hello');
     screen.getByTestId('children-container');
   });
   test('should not render component after accepting all cookies', () => {
@@ -26,9 +26,9 @@ describe('CookieBanner', () => {
         <Text>Hello</Text>
       </CookieBanner>
     );
-    expect(screen.queryByTestId('cookie-banner')).not.toBe(null);
+    expect(screen.queryByTestId('cookie-banner')).toBeInTheDocument();
     fireEvent.click(screen.getByText('All'));
-    expect(screen.queryByTestId('cookie-banner')).toBe(null);
+    expect(screen.queryByTestId('cookie-banner')).not.toBeInTheDocument();
   });
   test('should not render component after accepting required cookies', () => {
     renderWithProviders(
@@ -36,9 +36,9 @@ describe('CookieBanner', () => {
         <Text>Hello</Text>
       </CookieBanner>
     );
-    expect(screen.queryByTestId('cookie-banner')).not.toBe(null);
+    expect(screen.queryByTestId('cookie-banner')).toBeInTheDocument();
     fireEvent.click(screen.getByText('RequiredOnly'));
-    expect(screen.queryByTestId('cookie-banner')).toBe(null);
+    expect(screen.queryByTestId('cookie-banner')).not.toBeInTheDocument();
   });
   test('should not render component if cookies already accepted', () => {
     localStorage.setItem('cmpsr-cookies-policy', JSON.stringify({ cookieVersion: '1.0.0', allow: 'all' }));
@@ -47,7 +47,7 @@ describe('CookieBanner', () => {
         <Text>Hello</Text>
       </CookieBanner>
     );
-    expect(screen.queryByTestId('cookie-banner')).toBe(null);
+    expect(screen.queryByTestId('cookie-banner')).not.toBeInTheDocument();
   });
   test('should render component if cookies already accepted but different version', () => {
     localStorage.setItem('cmpsr-cookies-policy', JSON.stringify({ cookieVersion: '1.0.0', allow: 'all' }));
@@ -56,7 +56,7 @@ describe('CookieBanner', () => {
         <Text>Hello</Text>
       </CookieBanner>
     );
-    expect(screen.queryByTestId('cookie-banner')).not.toBe(null);
+    expect(screen.queryByTestId('cookie-banner')).toBeInTheDocument();
   });
   test('should work as expected with custom cookieKey', () => {
     renderWithProviders(
@@ -64,9 +64,9 @@ describe('CookieBanner', () => {
         <Text>Hello</Text>
       </CookieBanner>
     );
-    expect(screen.queryByTestId('cookie-banner')).not.toBe(null);
+    expect(screen.queryByTestId('cookie-banner')).toBeInTheDocument();
     fireEvent.click(screen.getByText('RequiredOnly'));
-    expect(screen.queryByTestId('cookie-banner')).toBe(null);
+    expect(screen.queryByTestId('cookie-banner')).not.toBeInTheDocument();
     expect(localStorage.getItem('custom-key')).toContain('1.0.0');
   });
 });

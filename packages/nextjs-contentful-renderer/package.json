@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@apollo/client": "^3.6.2",
+    "@cmpsr/blocks": "^1.1.0",
     "@cmpsr/components": "^2.1.0",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
@@ -43,6 +44,7 @@
   },
   "peerDependencies": {
     "@apollo/client": "^3.6.2",
+    "@cmpsr/blocks": "^1.1.0",
     "@cmpsr/components": "^2.1.0",
     "next": "^12.1.6",
     "react": "^18.1.0",

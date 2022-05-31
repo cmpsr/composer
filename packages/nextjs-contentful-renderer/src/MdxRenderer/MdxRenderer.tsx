@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
 import * as Composer from '@cmpsr/components';
+import * as Blocks from '@cmpsr/blocks';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { Paragraph, Text } from './components';
 import { MdxRendererProps } from './types';
@@ -20,7 +21,7 @@ const renderHeader = ({ children, ...props }: Composer.TextProps, as: 'h1' | 'h2
   );
 };
 
-const components: any = Object.keys(Composer).reduce(
+const composerComponents: any = Object.keys(Composer).reduce(
   (acc, key) => {
     const descriptor = Reflect.getOwnPropertyDescriptor(Composer, key);
     if (
@@ -44,6 +45,15 @@ const components: any = Object.keys(Composer).reduce(
     img: Composer.Image,
   }
 );
+
+const components: any = Object.keys(Blocks).reduce((acc, key) => {
+  const descriptor = Reflect.getOwnPropertyDescriptor(Blocks, key);
+  if (descriptor?.get && (typeof descriptor.get() === 'function' || typeof descriptor?.get()?.render === 'function')) {
+    return { ...acc, [key]: descriptor.get() };
+  } else {
+    return acc;
+  }
+}, composerComponents);
 
 export const MdxRenderer: FC<MdxRendererProps> = ({ content = {}, componentMap = {} }) => {
   const [isClient, setIsClient] = useState(false);

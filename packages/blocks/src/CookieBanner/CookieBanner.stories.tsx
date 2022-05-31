@@ -1,8 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Link, Text } from '@cmpsr/components';
+import { Link, Text, Button } from '@cmpsr/components';
 import { CookieBanner } from './CookieBanner';
-import { Button } from '@chakra-ui/button';
 
 export default {
   component: CookieBanner,

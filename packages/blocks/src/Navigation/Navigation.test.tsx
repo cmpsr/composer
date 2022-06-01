@@ -34,22 +34,15 @@ describe('Navigation', () => {
     givenComponentRendered();
     screen.getByTestId('desktop-navigation');
   });
-  test('should make navigation sticky when page is scrolled and sticky property is provided', () => {
-    mockUseScrollPosition.mockReturnValueOnce(10);
+  test('should make navigation sticky when sticky property is provided', () => {
     givenComponentRendered({ sticky: true });
     const navigation = screen.getByTestId('navigation');
     expect(navigation).toHaveStyle(`position: sticky`);
   });
-  test('should not make navigation sticky when page is scrolled', () => {
+  test('should add elevation when page is scrolled', () => {
     mockUseScrollPosition.mockReturnValueOnce(10);
     givenComponentRendered();
     const navigation = screen.getByTestId('navigation');
-    expect(navigation).not.toHaveStyle(`position: sticky`);
-  });
-  test('should not make navigation sticky when sticky is provided and page is not scrolled', () => {
-    mockUseScrollPosition.mockReturnValueOnce(0);
-    givenComponentRendered({ sticky: true });
-    const navigation = screen.getByTestId('navigation');
-    expect(navigation).not.toHaveStyle(`position: sticky`);
+    expect(navigation).toHaveStyle('box-shadow: var(--chakra-shadows-elevation-interactive)');
   });
 });

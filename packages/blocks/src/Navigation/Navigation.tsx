@@ -19,7 +19,9 @@ export const Navigation: FC<NavigationProps> = ({ sticky = false, ...props }) =>
       alignItems="center"
       gap="0.75rem"
       minHeight={{ base: '4.75rem', lg: '5rem' }}
-      {...(sticky && scrollPosition && { position: 'sticky', top: 0, boxShadow: 'elevation-interactive' })}
+      transition="box-shadow ease-in-out .15s;"
+      {...(sticky && { position: 'sticky', top: 0 })}
+      {...(scrollPosition && { boxShadow: 'elevation-interactive' })}
     >
       {showBaseNavigation ? <BaseNavigation {...props} /> : <DesktopNavigation {...props} />}
     </Flex>

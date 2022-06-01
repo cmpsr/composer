@@ -31,6 +31,4 @@ WithTextPairing.args = {
 };
 
 export const Playground = Template.bind({});
-Playground.args = {
-  ...defaultArgs,
-};
+Playground.args = defaultArgs;

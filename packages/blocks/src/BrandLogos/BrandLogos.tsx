@@ -21,12 +21,12 @@ export const BrandLogos: FC<BrandLogosProps> = ({
   textVariant,
 }) => (
   <Flex
-    data-testid="brand-logos"
+    data-testid="cmpsr.component.brand-logos"
     bg={backgroundColor}
     flexDirection="column"
     alignItems="center"
     py={{ base: '3.5rem', md: '4rem', lg: '5.5rem', xl: '7rem' }}
-    px={{ base: '2rem' }}
+    px="2rem"
     gap={{ base: '2rem', md: '2.75rem', lg: '4.75rem' }}
   >
     {title && description ? (
@@ -46,21 +46,16 @@ export const BrandLogos: FC<BrandLogosProps> = ({
         {title || description}
       </Text>
     ) : null}
-    <Grid
-      spacingY={{ base: '4rem', lg: '3.75px', xl: '3.5rem' }}
-      spacingX={{ base: '2rem', md: '2.75rem', lg: '4.5rem', xl: '7rem' }}
-      columns={{ base: 2, lg: 4 }}
-      justifyItems="center"
+    <Flex
+      columnGap={{ base: '4rem', lg: '3.75rem', xl: '3.5rem' }}
+      rowGap={{ base: '2rem', md: '2.75rem', lg: '4.5rem', xl: '7rem' }}
+      justifyContent="center"
+      flexWrap="wrap"
+      maxWidth="76.75rem"
     >
       {logos.map((logo, i) => (
-        <Image
-          key={i}
-          src={logo}
-          alt={`Brand logo ${i}`}
-          width="100%"
-          maxWidth={{ base: '10rem', md: '11.25rem', xl: '12.5rem' }}
-        />
+        <Image key={i} src={logo} alt={`Brand logo ${i}`} maxWidth={{ base: '10rem', md: '11.25rem', xl: '12.5rem' }} />
       ))}
-    </Grid>
+    </Flex>
   </Flex>
 );

@@ -1,5 +1,15 @@
 import React, { FC } from 'react';
-import { Flex, Grid, Image, Text, TextPairing } from '@cmpsr/components';
+import {
+  Flex,
+  Grid,
+  Image,
+  Text,
+  TextPairing,
+  TextPairingVariant,
+  textPairingVariants,
+  TextVariant,
+  textVariants,
+} from '@cmpsr/components';
 
 import { BrandLogosProps } from './types';
 
@@ -8,8 +18,7 @@ export const BrandLogos: FC<BrandLogosProps> = ({
   title,
   description,
   logos,
-  textVariant = 'text-header-2XL',
-  textPairingVariant = 'textpairing-header-2XL',
+  textVariant,
 }) => (
   <Flex
     data-testid="brand-logos"
@@ -21,9 +30,21 @@ export const BrandLogos: FC<BrandLogosProps> = ({
     gap={{ base: '2rem', md: '2.75rem', lg: '4.75rem' }}
   >
     {title && description ? (
-      <TextPairing variant={textPairingVariant} label={title} subLabel={description} />
+      <TextPairing
+        {...(textPairingVariants.includes(textVariant as TextPairingVariant) && {
+          variant: textVariant as TextPairingVariant,
+        })}
+        label={title}
+        subLabel={description}
+      />
     ) : title || description ? (
-      <Text variant={textVariant}>{title || description}</Text>
+      <Text
+        {...(textVariants.includes(textVariant as TextVariant) && {
+          variant: textVariant as TextVariant,
+        })}
+      >
+        {title || description}
+      </Text>
     ) : null}
     <Grid
       spacingY={{ base: '4rem', lg: '3.75px', xl: '3.5rem' }}

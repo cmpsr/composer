@@ -13,8 +13,7 @@ const Template = (args) => <BrandLogos {...args} />;
 const defaultArgs = {
   logos: Array(8).fill('https://avatars0.githubusercontent.com/u/67131017?s=200'),
   backgroundColor: 'background-page',
-  textVariant: 'text-header-2XL',
-  textPairingVariant: 'textpairing-header-2XL',
+  textVariant: 'textpairing-header-2XL',
 };
 
 export const WithText = Template.bind({});

@@ -11,7 +11,7 @@ export const getPageById = async (
     query: gql`
       query getPageById($pageId: String!, $preview: Boolean) {
         page(id: $pageId, preview: $preview) {
-          i
+          id
           title
           metaConfiguration
           navbar {

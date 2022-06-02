@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 2.3.0
+
+### Minor Changes
+
+- fe12d7a: feat: dummy
+
 ## 2.2.0
 
 ### Minor Changes

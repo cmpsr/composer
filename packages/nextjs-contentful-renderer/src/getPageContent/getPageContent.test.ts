@@ -14,9 +14,14 @@ jest.mock('../utils/getPageId', () => ({
 
 const mockGetPageById = jest.fn();
 const mockGetRouteBySlug = jest.fn();
+const mockConfigNavbar = jest.fn();
 jest.mock('../utils/contentful', () => ({
   getPageById: (...params) => mockGetPageById(...params),
   getRouteBySlug: (...params) => mockGetRouteBySlug(...params),
+}));
+
+jest.mock('../configNavbar', () => ({
+  configNavbar: (...params) => mockConfigNavbar(...params),
 }));
 
 describe('getPageContent', () => {
@@ -82,6 +87,13 @@ describe('getPageContent', () => {
     await getPageContent(fakeContext);
     expect(mockSetCookie).toBeCalledTimes(1);
     expect(mockSetCookie).toBeCalledWith(fakeContext, '/home', 'page_id');
+  });
+  test('should configure navbar', async () => {
+    mockGetRouteBySlug.mockResolvedValueOnce({});
+    mockGetPageId.mockReturnValueOnce('page_id');
+    mockGetPageById.mockResolvedValueOnce({ ...fakePageContent, navbar: {} });
+    await getPageContent(fakeContext);
+    expect(mockConfigNavbar).toBeCalledTimes(1);
   });
   test('should return page content', async () => {
     mockGetRouteBySlug.mockResolvedValueOnce({});

@@ -35,8 +35,3 @@ export interface ResponsiveValue<T> {
   xl?: T;
   xxl?: T;
 }
-
-export interface BlockResult {
-  propsValue: PropsValue[];
-  modelsCollection: { items: Model[] };
-}

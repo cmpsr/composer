@@ -23,4 +23,10 @@ describe('BrandLogos', () => {
     const text = brandLogos.firstChild.childNodes;
     expect(text).toHaveLength(1);
   });
+  test('should not render title or description when not provided', () => {
+    givenComponentRendered();
+    const brandLogos = screen.getByTestId('brand-logos');
+    const containerChildrens = brandLogos.childNodes;
+    expect(containerChildrens).toHaveLength(1);
+  });
 });

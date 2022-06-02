@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, renderWithProviders } from '@tests/renderWithProviders';
+import { renderWithProviders } from '@tests/renderWithProviders';
 
 import { BrandLogos } from './BrandLogos';
 import { BrandLogosProps } from './types';
@@ -12,21 +12,23 @@ describe('BrandLogos', () => {
     renderWithProviders(<BrandLogos {...defaultProps} {...props} />);
 
   test('should render text pairing when title and description are provided', () => {
-    givenComponentRendered({ title: 'Title', description: 'Description' });
-    const brandLogos = screen.getByTestId('brand-logos');
-    const textPairing = brandLogos.firstChild.childNodes;
+    const { container } = givenComponentRendered({ title: 'Title', description: 'Description' });
+    const textPairing = container.firstChild.firstChild.childNodes;
     expect(textPairing).toHaveLength(2);
   });
-  test('should render text when title or description are provided', () => {
-    givenComponentRendered({ title: 'Title' });
-    const brandLogos = screen.getByTestId('brand-logos');
-    const text = brandLogos.firstChild.childNodes;
+  test('should render text when title is provided', () => {
+    const { container } = givenComponentRendered({ title: 'Title' });
+    const text = container.firstChild.firstChild.childNodes;
+    expect(text).toHaveLength(1);
+  });
+  test('should render text when description is provided', () => {
+    const { container } = givenComponentRendered({ description: 'Description' });
+    const text = container.firstChild.firstChild.childNodes;
     expect(text).toHaveLength(1);
   });
   test('should not render title or description when not provided', () => {
-    givenComponentRendered();
-    const brandLogos = screen.getByTestId('brand-logos');
-    const containerChildrens = brandLogos.childNodes;
+    const { container } = givenComponentRendered();
+    const containerChildrens = container.firstChild.childNodes;
     expect(containerChildrens).toHaveLength(1);
   });
 });

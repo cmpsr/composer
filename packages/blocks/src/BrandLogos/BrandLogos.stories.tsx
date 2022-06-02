@@ -20,6 +20,7 @@ export const WithText = Template.bind({});
 WithText.args = {
   ...defaultArgs,
   title: 'Title',
+  textVariant: 'text-header-2XL',
 };
 
 export const WithTextPairing = Template.bind({});
@@ -30,4 +31,4 @@ WithTextPairing.args = {
 };
 
 export const Playground = Template.bind({});
-Playground.args = defaultArgs;
+Playground.args = { ...defaultArgs, title: 'Title', description: 'Description' };

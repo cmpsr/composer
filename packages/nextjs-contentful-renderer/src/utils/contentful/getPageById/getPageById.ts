@@ -1,4 +1,5 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
+import { ModelCollectionFragment, ModelFragment } from './fragments';
 import { Page } from './types';
 
 export const getPageById = async (
@@ -13,25 +14,26 @@ export const getPageById = async (
           id
           title
           metaConfiguration
+          navbar {
+            model {
+              ...ModelFragment
+            }
+          }
           theme {
             theme
           }
           contentCollection {
             items {
               modelsCollection {
-                items {
-                  base
-                  md
-                  lg
-                  xl
-                  xxl
-                }
+                ...ModelCollectionFragment
               }
               propsValue
             }
           }
         }
       }
+      ${ModelCollectionFragment}
+      ${ModelFragment}
     `,
     variables: {
       pageId,
@@ -43,10 +45,12 @@ export const getPageById = async (
 
   const { id, title, metaConfiguration, contentCollection } = data.page;
   const theme = data.page.theme?.theme || null;
+  const navbar = data.page.navbar || null;
+
   const content = contentCollection.items.map((item) => ({
     models: item.modelsCollection.items,
     propsValues: item.propsValue || [],
   }));
 
-  return { id, title, content, metaConfiguration, theme };
+  return { id, title, content, metaConfiguration, theme, navbar };
 };

@@ -35,13 +35,14 @@ describe('getApolloClient', () => {
   test('should use provided values', () => {
     const preview = true;
     const space = 'new_space';
+    const environment = 'dev';
     const previewAccessToken = 'new_preview_token';
-    getApolloClient({ preview, space, deliveryAccessToken: '', previewAccessToken });
+    getApolloClient({ preview, space, deliveryAccessToken: '', previewAccessToken, environment });
     expect(mockCreateLink).toBeCalledTimes(1);
     expect(mockCreateLink).toBeCalledWith({
       space,
       accessToken: previewAccessToken,
-      environment: process.env.CONTENTFUL_ENVIRONMENT,
+      environment,
     });
   });
 });

@@ -33,7 +33,7 @@ export const getPageContent = async (
   setCookie(context, slug, pageId);
 
   if (pageContent) {
-    pageContent.content = await configNavbar(pageContent);
+    pageContent.content = configNavbar(pageContent);
   }
 
   return pageContent;

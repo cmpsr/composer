@@ -1,22 +1,13 @@
-import { Block, Model, Page } from 'src/utils/contentful/getPageById/types';
+import { Block, Navbar, Page } from 'src/utils/contentful/getPageById/types';
 
-export const configNavbar = async (page: Partial<Page>): Promise<Block[]> => {
-  const pageNavbar = page?.navbar;
-  const content = page?.content;
+export const configNavbar = (page: Partial<Page>): Block[] =>
+  page.navbar ? concatNavbar(page.content, page.navbar) : page.content;
 
-  if (pageNavbar) {
-    return concatNavbar(content, pageNavbar);
-  }
-  return content;
-};
-
-const concatNavbar = (originalContent: Block[], navbar: { model: Model }) => {
+const concatNavbar = (originalContent: Block[], navbar: Navbar) => {
   const content = Array.from(originalContent || []);
   const navbarBlock = convertNavbarToBlock(navbar);
   content.unshift(navbarBlock);
   return content;
 };
 
-const convertNavbarToBlock = (navbar: { model: Model }) => {
-  return { models: [navbar?.model || {}], propsValues: [] };
-};
+const convertNavbarToBlock = (navbar: Navbar) => ({ models: [navbar.model || {}], propsValues: [] });

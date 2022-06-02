@@ -11,20 +11,15 @@ const dummyPageContent = {
   content: dummyContent,
 };
 
-describe('setDefaultNavbar', () => {
-  test('should return null if there is no default navbar', async () => {
-    const newContent = await configNavbar({ content: null });
-    expect(newContent).toBeNull();
-  });
-
-  test('should return original content if there is no default navbar', async () => {
-    const newContent = await configNavbar(dummyPageContent);
+describe('configNavbar', () => {
+  test('should return content if there is no navbar', () => {
+    const newContent = configNavbar(dummyPageContent);
     expect(newContent).toStrictEqual(dummyContent);
   });
 
-  test('should return an array with navbar if it has a navbar but content is null', async () => {
+  test('should return an array with navbar if it has a navbar but content is null', () => {
     const navbar = { model: { base: '- opt 1' } };
-    const newContent = await configNavbar({ content: null, navbar });
+    const newContent = configNavbar({ content: null, navbar });
     expect(newContent).toStrictEqual([
       {
         models: [{ base: '- opt 1' }],
@@ -33,9 +28,9 @@ describe('setDefaultNavbar', () => {
     ]);
   });
 
-  test('should concat navbar to content', async () => {
+  test('should concat navbar to content', () => {
     const navbar = { model: { base: '- opt 1' } };
-    const newContent = await configNavbar({ content: dummyContent, navbar });
+    const newContent = configNavbar({ content: dummyContent, navbar });
     expect(newContent).toStrictEqual([
       {
         models: [{ base: '- opt 1' }],

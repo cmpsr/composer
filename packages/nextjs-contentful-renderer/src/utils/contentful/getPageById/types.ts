@@ -1,12 +1,16 @@
 import { Theme } from '@cmpsr/components';
 
+export interface Navbar {
+  model: Model;
+}
+
 export interface Page {
   id: string;
   title: string;
   metaConfiguration?: PageMetaData;
   content: Block[];
   theme: Partial<Theme>;
-  navbar: { model: Model };
+  navbar: Navbar;
 }
 
 interface PageMetaData {

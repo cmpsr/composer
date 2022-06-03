@@ -5,13 +5,20 @@ import { TextPairingProps, TextPairingStyles } from '.';
 import { useStyleConfig } from '@chakra-ui/system';
 import { useResponsiveValue } from '@hooks';
 
-export const TextPairing: FC<TextPairingProps> = ({ variant, label, subLabel, labelColor, subLabelColor }) => {
+export const TextPairing: FC<TextPairingProps> = ({
+  variant,
+  label,
+  subLabel,
+  labelColor,
+  subLabelColor,
+  textAlign,
+}) => {
   const responsiveVariant = useResponsiveValue(variant);
   const styles = useStyleConfig('TextPairing', {
     variant: responsiveVariant,
   }) as TextPairingStyles;
   return (
-    <Stack spacing={styles.columnGap}>
+    <Stack spacing={styles.columnGap} textAlign={textAlign}>
       <Text variant={styles.label.variant} color={labelColor}>
         {label}
       </Text>

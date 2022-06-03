@@ -1,5 +1,18 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 5.0.0
+
+### Minor Changes
+
+- e56ac08: feat: add navbar support
+
+### Patch Changes
+
+- Updated dependencies [ae4b778]
+- Updated dependencies [f0308a7]
+  - @cmpsr/components@2.3.0
+  - @cmpsr/blocks@3.0.0
+
 ## 4.0.0
 
 ### Minor Changes

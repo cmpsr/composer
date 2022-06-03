@@ -1,5 +1,16 @@
 # @cmpsr/blocks
 
+## 3.0.0
+
+### Minor Changes
+
+- f0308a7: feat: add new Navigation block
+
+### Patch Changes
+
+- Updated dependencies [ae4b778]
+  - @cmpsr/components@2.3.0
+
 ## 2.0.0
 
 ### Patch Changes

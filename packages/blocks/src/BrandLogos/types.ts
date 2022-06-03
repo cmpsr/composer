@@ -1,8 +1,7 @@
-import { TextPairingVariant, TextVariant } from '@cmpsr/components';
-import { Colors } from '@cmpsr/components/lib/theme/ComposerTheme/Colors';
+import { TextPairingVariant, TextVariant, Theme } from '@cmpsr/components';
 
 export interface BrandLogosProps {
-  backgroundColor?: Colors;
+  backgroundColor?: ThisType<Theme['colors']>;
   title?: string;
   description?: string;
   logos: Array<string>;

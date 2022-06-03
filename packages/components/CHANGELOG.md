@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 2.3.0
+
+### Minor Changes
+
+- ae4b778: feat: add text align property to TextPairing
+
 ## 2.2.0
 
 ### Minor Changes

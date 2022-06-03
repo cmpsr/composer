@@ -45,7 +45,7 @@ export const Testimonial: FC<TestimonialProps> = ({
       <Text variant={testimonyTextVariant ?? { base: 'text-body-display-M', lg: 'text-body-display-L' }}>
         {testimony}
       </Text>
-      <Flex gap={{ base: '0.5rem' }}>
+      <Flex gap={{ base: '0.5rem' }} flexWrap="wrap">
         <Text variant="text-body-medium">{name}</Text>
         {association && (
           <Flex gap={{ base: '0.5rem' }}>

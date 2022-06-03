@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const ModelFragment = gql`
-  fragment ModelFragment on Mdx {
+  fragment ModelFragment on Model {
     id
     base
     md

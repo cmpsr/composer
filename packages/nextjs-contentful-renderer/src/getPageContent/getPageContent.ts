@@ -1,4 +1,5 @@
 import { GetServerSidePropsContext } from 'next';
+import { configNavbar } from '../configNavbar';
 import { getPageById, getRouteBySlug } from '../utils/contentful';
 import { Page } from '../utils/contentful/getPageById/types';
 import { getVisitedPageIdFromCookies, setCookie } from '../utils/cookies';
@@ -30,5 +31,10 @@ export const getPageContent = async (
   const pageId = getPageId(route, context.query.utm_campaign);
   const pageContent = await getPageById(apolloClient, pageId, preview);
   setCookie(context, slug, pageId);
+
+  if (pageContent) {
+    pageContent.content = configNavbar(pageContent);
+  }
+
   return pageContent;
 };

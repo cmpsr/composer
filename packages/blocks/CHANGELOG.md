@@ -1,5 +1,12 @@
 # @cmpsr/blocks
 
+## 3.1.0
+
+### Minor Changes
+
+- 99701d0: feat: create testimonial block
+- 0ebaf8b: feat: create BrandLogos block
+
 ## 3.0.0
 
 ### Minor Changes

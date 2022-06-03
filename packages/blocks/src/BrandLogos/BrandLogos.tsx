@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import {
   Flex,
-  Grid,
   Image,
   Text,
   TextPairing,

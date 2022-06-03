@@ -34,11 +34,14 @@ export type TextPairingStyles = CSSObject &
     };
   } & { columnGap: string };
 
+export const textPairingTextAlignments = ['start', 'end', 'left', 'right', 'center'] as const;
+export type TextPairingTextAlign = typeof textPairingTextAlignments[number];
+
 export interface TextPairingProps extends Omit<ComponentDefaultProps, 'variant'> {
   variant?: ResponsiveValue<TextPairingVariant>;
   label: string;
   subLabel: string;
   labelColor?: keyof Colors | ThisType<ColorProps['color']>;
   subLabelColor?: keyof Colors | ThisType<ColorProps['color']>;
-  textAlign?: 'start' | 'end' | 'left' | 'right' | 'center';
+  textAlign?: TextPairingTextAlign;
 }

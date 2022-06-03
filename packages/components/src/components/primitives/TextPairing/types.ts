@@ -40,4 +40,5 @@ export interface TextPairingProps extends Omit<ComponentDefaultProps, 'variant'>
   subLabel: string;
   labelColor?: keyof Colors | ThisType<ColorProps['color']>;
   subLabelColor?: keyof Colors | ThisType<ColorProps['color']>;
+  textAlign?: 'start' | 'end' | 'left' | 'right' | 'center';
 }

@@ -35,6 +35,7 @@ export const BrandLogos: FC<BrandLogosProps> = ({
         })}
         label={title}
         subLabel={description}
+        textAlign="center"
       />
     ) : title || description ? (
       <Text

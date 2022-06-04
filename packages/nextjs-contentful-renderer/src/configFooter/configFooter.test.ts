@@ -11,32 +11,23 @@ const dummyPageContent = {
   content: dummyContent,
 };
 
+const mockInsertSection = jest.fn();
+
+jest.mock('../utils/insertSection', () => ({
+  insertSection: (...params) => mockInsertSection(...params),
+}));
+
 describe('configFooter', () => {
-  test('should return content if there is no footer', () => {
-    const newContent = configFooter(dummyPageContent);
-    expect(newContent).toStrictEqual(dummyContent);
+  test('should be called without footer', () => {
+    configFooter(dummyPageContent);
+    expect(mockInsertSection).toBeCalledTimes(1);
+    expect(mockInsertSection).toHaveBeenCalledWith(dummyContent, undefined, 'push');
   });
 
-  test('should return an array with footer if it has a footer but content is null', () => {
-    const footer = { model: { base: 'footer' } };
-    const newContent = configFooter({ content: null, footer });
-    expect(newContent).toStrictEqual([
-      {
-        models: [{ base: 'footer' }],
-        propsValues: [],
-      },
-    ]);
-  });
-
-  test('should concat footer to content', () => {
-    const footer = { model: { base: 'footer' } };
-    const newContent = configFooter({ content: dummyContent, footer });
-    expect(newContent).toStrictEqual([
-      ...dummyContent,
-      {
-        models: [{ base: 'footer' }],
-        propsValues: [],
-      },
-    ]);
+  test('should be called with footer', () => {
+    const footer = { model: {} };
+    configFooter({ ...dummyPageContent, footer });
+    expect(mockInsertSection).toBeCalledTimes(1);
+    expect(mockInsertSection).toHaveBeenCalledWith(dummyContent, footer, 'push');
   });
 });

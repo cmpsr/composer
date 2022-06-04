@@ -1,10 +1,6 @@
 import { Theme } from '@cmpsr/components';
 
-export interface Navbar {
-  model: Model;
-}
-
-export interface Footer {
+export interface Section {
   model: Model;
 }
 
@@ -14,8 +10,8 @@ export interface Page {
   metaConfiguration?: PageMetaData;
   content: Block[];
   theme: Partial<Theme>;
-  navbar: Navbar;
-  footer: Footer;
+  navbar: Section;
+  footer: Section;
 }
 
 interface PageMetaData {

@@ -4,6 +4,10 @@ export interface Navbar {
   model: Model;
 }
 
+export interface Footer {
+  model: Model;
+}
+
 export interface Page {
   id: string;
   title: string;
@@ -11,6 +15,7 @@ export interface Page {
   content: Block[];
   theme: Partial<Theme>;
   navbar: Navbar;
+  footer: Footer;
 }
 
 interface PageMetaData {

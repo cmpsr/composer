@@ -1,5 +1,6 @@
 import { GetServerSidePropsContext } from 'next';
 import { configNavbar } from '../configNavbar';
+import { configFooter } from '../configFooter';
 import { getPageById, getRouteBySlug } from '../utils/contentful';
 import { Page } from '../utils/contentful/getPageById/types';
 import { getVisitedPageIdFromCookies, setCookie } from '../utils/cookies';
@@ -34,6 +35,7 @@ export const getPageContent = async (
 
   if (pageContent) {
     pageContent.content = configNavbar(pageContent);
+    pageContent.content = configFooter(pageContent);
   }
 
   return pageContent;

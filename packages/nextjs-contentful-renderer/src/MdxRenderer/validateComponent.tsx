@@ -10,8 +10,8 @@ function isFunctionComponent(component: FC<any>) {
 }
 
 const isStyledComponent = (component: { withComponent: () => any }) =>
-  component.hasOwnProperty('__emotion_base') ||
-  (component.hasOwnProperty('withComponent') && typeof component.withComponent === 'function');
+  !!Object.getOwnPropertyDescriptor(component, '__emotion_base') ||
+  (!!Object.getOwnPropertyDescriptor(component, 'withComponent') && typeof component.withComponent === 'function');
 
 const isHook = (component: { name?: string; displayName?: string }, componentKey?: string) => {
   const name = component.name || component.displayName || componentKey || '';

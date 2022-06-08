@@ -4,6 +4,7 @@ import { Colors } from './Colors';
 import { Shadows } from './Shadows';
 import { Radius } from './Radius';
 import { Spacing } from './Spacing';
+import { BaseBreakpointConfig, GlobalStyles } from '@chakra-ui/theme-tools';
 
 export interface FontFamilies {
   heading?: string;
@@ -23,4 +24,6 @@ export interface Theme {
     [key: string]: SystemStyleObject;
   };
   fonts?: Partial<FontFamilies>;
+  breakpoints?: BaseBreakpointConfig;
+  styles?: GlobalStyles;
 }

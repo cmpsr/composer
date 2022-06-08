@@ -33,18 +33,10 @@ export const Hero: FC<HeroProps> = ({
       maxWidth={{ lg: '24.375rem', xl: '32.125rem' }}
     >
       <TextPairing variant={textPairingVariant} label={title} subLabel={description} textAlign={contentAlignment} />
-      {(primaryCta?.copy || secondaryCta?.copy) && (
+      {(primaryCta || secondaryCta) && (
         <Flex gap="1rem" flexDirection={{ base: 'column', md: 'row' }}>
-          {primaryCta?.copy && (
-            <Link variant={primaryCta.variant || 'primary'} href={primaryCta.href} target="_blank" size="l">
-              {primaryCta.copy}
-            </Link>
-          )}
-          {secondaryCta?.copy && (
-            <Link variant={secondaryCta.variant || 'primary-alt'} href={secondaryCta.href} target="_blank" size="l">
-              {secondaryCta.copy}
-            </Link>
-          )}
+          {primaryCta && <Link target="_blank" size="l" {...primaryCta} />}
+          {secondaryCta && <Link target="_blank" size="l" {...secondaryCta} />}
         </Flex>
       )}
     </Flex>

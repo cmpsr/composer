@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
-import { ButtonVariant, ImageProps, TextPairingVariant, Theme } from '@cmpsr/components';
+import { ImageProps, LinkProps, TextPairingVariant, Theme } from '@cmpsr/components';
 
 export interface HeroProps {
   backgroundColor?: ThisType<Theme['colors']>;
   title: string;
   description: string;
-  primaryCta?: { copy: string; variant?: ButtonVariant; href: string };
-  secondaryCta?: { copy: string; variant?: ButtonVariant; href: string };
+  primaryCta?: LinkProps;
+  secondaryCta?: LinkProps;
   image: ReactNode;
   imageUrl: string;
   imagePosition?: 'left' | 'right';

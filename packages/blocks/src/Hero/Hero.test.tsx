@@ -16,11 +16,11 @@ describe('Hero', () => {
   const givenComponentRendered = (props?: any) => renderWithProviders(<Hero {...defaultProps} {...props} />);
 
   test('should render primaryCta when provided', () => {
-    givenComponentRendered({ primaryCta: { copy: 'primaryFoo', href: '#', variant: 'primary' } });
+    givenComponentRendered({ primaryCta: { children: 'primaryFoo', href: '#', variant: 'primary' } });
     screen.getByText('primaryFoo');
   });
   test('should render secondaryCta when provided', () => {
-    givenComponentRendered({ secondaryCta: { copy: 'secondaryFoo', href: '#', variant: 'secondary' } });
+    givenComponentRendered({ secondaryCta: { children: 'secondaryFoo', href: '#', variant: 'secondary' } });
     screen.getByText('secondaryFoo');
   });
 });

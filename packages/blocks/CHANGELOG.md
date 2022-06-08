@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 3.2.0
+
+### Minor Changes
+
+- c44391d: feat: create new Hero block, add maxHeight for brand logos, allow logoHref for navigation, allow linkProps for testimonial
+
 ## 3.1.0
 
 ### Minor Changes

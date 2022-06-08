@@ -12,7 +12,6 @@ export const Testimonial: FC<TestimonialProps> = ({
   name,
   association,
   link,
-  linkProps,
 }) => (
   <Flex
     backgroundColor={backgroundColor}
@@ -58,11 +57,7 @@ export const Testimonial: FC<TestimonialProps> = ({
           </Flex>
         )}
       </Flex>
-      {link && (
-        <Link href={link.href} target="_blank" size="s" {...linkProps}>
-          {link.label}
-        </Link>
-      )}
+      {link && <Link target="_blank" size="s" {...link} />}
     </Flex>
   </Flex>
 );

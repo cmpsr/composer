@@ -34,7 +34,7 @@ WithAssociation.args = {
 export const WithLink = Template.bind({});
 WithLink.args = {
   ...defaultArgs,
-  link: { label: 'Read more', href: '#' },
+  link: { children: 'Read more', href: '#' },
 };
 
 export const Playground = Template.bind({});
@@ -42,5 +42,5 @@ Playground.args = {
   ...defaultArgs,
   legend: 'The universe',
   association: 'Composer Studio',
-  link: { label: 'Read more', href: '#' },
+  link: { children: 'Read more', href: '#' },
 };

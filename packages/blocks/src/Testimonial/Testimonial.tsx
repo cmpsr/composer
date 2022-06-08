@@ -12,9 +12,9 @@ export const Testimonial: FC<TestimonialProps> = ({
   name,
   association,
   link,
+  linkProps,
 }) => (
   <Flex
-    data-testid="testimonial"
     backgroundColor={backgroundColor}
     px={{ base: '1.5rem', lg: '2.75rem', xl: '6.625rem' }}
     py={{ base: '3.5rem', md: '5.5rem', xl: '7rem' }}
@@ -38,7 +38,9 @@ export const Testimonial: FC<TestimonialProps> = ({
     >
       {legend && (
         <Flex flexDirection="column" gap="0.75rem" alignSelf="start">
-          <Text variant={{ base: 'text-header-S', lg: 'text-header-XS' }}>{legend}</Text>
+          <Text as="h3" variant={{ base: 'text-header-S', lg: 'text-header-XS' }}>
+            {legend}
+          </Text>
           <Divider />
         </Flex>
       )}
@@ -57,7 +59,7 @@ export const Testimonial: FC<TestimonialProps> = ({
         )}
       </Flex>
       {link && (
-        <Link href={link.href} target="_blank" size="s">
+        <Link href={link.href} target="_blank" size="s" {...linkProps}>
           {link.label}
         </Link>
       )}

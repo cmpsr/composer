@@ -5,5 +5,6 @@ export interface BrandLogosProps {
   title?: string;
   description?: string;
   logos: Array<string>;
+  logosMaxHeight?: string;
   textVariant?: TextVariant | TextPairingVariant;
 }

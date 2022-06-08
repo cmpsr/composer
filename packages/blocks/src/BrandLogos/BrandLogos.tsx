@@ -18,6 +18,7 @@ export const BrandLogos: FC<BrandLogosProps> = ({
   description,
   logos,
   textVariant,
+  logosMaxHeight,
 }) => (
   <Flex
     data-testid="cmpsr.component.brand-logos"
@@ -50,11 +51,18 @@ export const BrandLogos: FC<BrandLogosProps> = ({
       columnGap={{ base: '4rem', lg: '3.75rem', xl: '3.5rem' }}
       rowGap={{ base: '2rem', md: '2.75rem', lg: '4.5rem', xl: '7rem' }}
       justifyContent="center"
+      alignItems="center"
       flexWrap="wrap"
       maxWidth="76.75rem"
     >
       {logos.map((logo, i) => (
-        <Image key={i} src={logo} alt={`Brand logo ${i}`} maxWidth={{ base: '10rem', md: '11.25rem', xl: '12.5rem' }} />
+        <Image
+          maxHeight={logosMaxHeight}
+          key={i}
+          src={logo}
+          alt={`Brand logo ${i}`}
+          maxWidth={{ base: '10rem', md: '11.25rem', xl: '12.5rem' }}
+        />
       ))}
     </Flex>
   </Flex>

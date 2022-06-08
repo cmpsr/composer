@@ -2,12 +2,18 @@ import React, { FC, Fragment } from 'react';
 import { Flex, Box, Image, IconButton, IconMenu2, IconX, useDisclosure, Link, Text, Divider } from '@cmpsr/components';
 import { NavigationProps } from './types';
 
-export const BaseNavigation: FC<Omit<NavigationProps, 'sticky'>> = ({ actions, anchors, logoUrl }) => {
+export const BaseNavigation: FC<Omit<NavigationProps, 'sticky'>> = ({ actions, anchors, logoUrl, logoHref }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <IconButton icon={<IconMenu2 />} aria-label="Hamburger menu button" variant="ghost" size="l" onClick={onOpen} />
-      <Image src={logoUrl} alt="navigation logotype" height="2rem" />
+      {logoHref ? (
+        <Link href={logoHref}>
+          <Image src={logoUrl} alt="navigation logotype" height="2rem" />
+        </Link>
+      ) : (
+        <Image src={logoUrl} alt="navigation logotype" height="2rem" />
+      )}
       {isOpen && (
         <Flex
           width="100%"

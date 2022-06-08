@@ -1,5 +1,17 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 6.0.0
+
+### Major Changes
+
+- f8d65f5: feat: rename Mdx to Model
+
+### Patch Changes
+
+- Updated dependencies [99701d0]
+- Updated dependencies [0ebaf8b]
+  - @cmpsr/blocks@3.1.0
+
 ## 5.0.0
 
 ### Minor Changes

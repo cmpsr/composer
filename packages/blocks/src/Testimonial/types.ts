@@ -1,9 +1,9 @@
-import { TextVariant, Theme } from '@cmpsr/components';
+import { LinkProps, TextVariant, Theme } from '@cmpsr/components';
 
 export interface TestimonialProps {
   backgroundColor?: ThisType<Theme['colors']>;
   legend?: string;
-  link?: { label: string; href: string };
+  link?: LinkProps;
   association?: string;
   name: string;
   testimony: string;

@@ -49,6 +49,7 @@ const Template = (args) => {
 const defaultArgs = {
   anchors: Array(5).fill({ label: 'Default Link', href: '#' }),
   logoUrl: 'https://avatars0.githubusercontent.com/u/67131017?s=200',
+  logoHref: '#',
 };
 export const Sticky = Template.bind({});
 Sticky.args = {

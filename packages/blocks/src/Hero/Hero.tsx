@@ -8,7 +8,7 @@ export const Hero: FC<HeroProps> = ({
   textPairingProps,
   primaryCta,
   secondaryCta,
-  contentAlignment,
+  contentAlignment = 'start',
   imagePosition = 'right',
   imageProps,
 }) => (

@@ -1,3 +1,4 @@
+import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { GetServerSidePropsContext } from 'next';
 import { configNavbar } from '../configNavbar';
 import { getPageById, getRouteBySlug } from '../utils/contentful';
@@ -19,7 +20,7 @@ export const getPageContent = async (
 
   const existingPageId = getVisitedPageIdFromCookies(context, slug);
   if (existingPageId) {
-    const page = await getPageById(apolloClient, existingPageId, preview);
+    const page = await getPageByIdAndConfigNavbar(apolloClient, existingPageId, preview);
     if (page) {
       return page;
     }
@@ -29,12 +30,20 @@ export const getPageContent = async (
   if (!route) return undefined;
 
   const pageId = getPageId(route, context.query.utm_campaign);
-  const pageContent = await getPageById(apolloClient, pageId, preview);
+  const page = await getPageByIdAndConfigNavbar(apolloClient, pageId, preview);
   setCookie(context, slug, pageId);
 
-  if (pageContent) {
-    pageContent.content = configNavbar(pageContent);
-  }
+  return page;
+};
 
-  return pageContent;
+const getPageByIdAndConfigNavbar = async (
+  apolloClient: ApolloClient<NormalizedCacheObject>,
+  pageId: string,
+  preview: boolean
+) => {
+  const page = await getPageById(apolloClient, pageId, preview);
+  if (page) {
+    page.content = configNavbar(page);
+  }
+  return page;
 };

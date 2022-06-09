@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 3.3.0
+
+### Minor Changes
+
+- d09879f: feat: unify image properties into imageProps
+
 ## 3.2.0
 
 ### Minor Changes

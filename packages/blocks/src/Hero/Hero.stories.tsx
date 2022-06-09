@@ -12,8 +12,11 @@ const Template = (args) => <Hero {...args} />;
 
 const defaultArgs = {
   backgroundColor: 'background-page',
-  title: 'The next generation of care for women and families',
-  description: 'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
+  textPairingProps: {
+    label: 'The next generation of care for women and families',
+    subLabel: 'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
+    variant: 'textpairing-header-4XL',
+  },
   primaryCta: { children: 'Default', href: '#', variant: 'primary' },
   secondaryCta: { children: 'Default', href: '#', variant: 'primary-alt' },
   contentAlignment: 'start',

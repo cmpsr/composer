@@ -5,14 +5,12 @@ import { HeroProps } from './types';
 
 export const Hero: FC<HeroProps> = ({
   backgroundColor = 'background-page',
-  title,
-  description,
+  textPairingProps,
   primaryCta,
   secondaryCta,
   contentAlignment,
   imagePosition = 'right',
   imageProps,
-  textPairingVariant = 'textpairing-header-4XL',
 }) => (
   <Flex
     backgroundColor={backgroundColor}
@@ -31,7 +29,7 @@ export const Hero: FC<HeroProps> = ({
       alignItems={contentAlignment}
       maxWidth={{ lg: '24.375rem', xl: '32.125rem' }}
     >
-      <TextPairing variant={textPairingVariant} label={title} subLabel={description} textAlign={contentAlignment} />
+      <TextPairing textAlign={contentAlignment} {...textPairingProps} />
       {(primaryCta || secondaryCta) && (
         <Flex gap="1rem" flexDirection={{ base: 'column', md: 'row' }}>
           {primaryCta && <Link target="_blank" size="l" {...primaryCta} />}

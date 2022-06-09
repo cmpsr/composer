@@ -6,8 +6,10 @@ import { Hero } from './Hero';
 describe('Hero', () => {
   const defaultProps = {
     backgroundColor: 'background-page',
-    title: 'The next generation of care for women and families',
-    description: 'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
+    textPairingProps: {
+      label: 'The next generation of care for women and families',
+      subLabel: 'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
+    },
     contentAlignment: 'start',
     imageProps: { maxWidth: '20rem', src: 'https://avatars0.githubusercontent.com/u/67131017?s=200' },
     imagePosition: 'right',

@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { ImageProps, LinkProps, TextPairingVariant, Theme } from '@cmpsr/components';
 
 export interface HeroProps {
@@ -7,8 +6,6 @@ export interface HeroProps {
   description: string;
   primaryCta?: LinkProps;
   secondaryCta?: LinkProps;
-  image: ReactNode;
-  imageUrl: string;
   imagePosition?: 'left' | 'right';
   imageProps?: ImageProps;
   textPairingVariant?: TextPairingVariant;

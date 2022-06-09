@@ -9,8 +9,7 @@ describe('Hero', () => {
     title: 'The next generation of care for women and families',
     description: 'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
     contentAlignment: 'start',
-    imageUrl: 'https://avatars0.githubusercontent.com/u/67131017?s=200',
-    imageProps: { maxWidth: '20rem' },
+    imageProps: { maxWidth: '20rem', src: 'https://avatars0.githubusercontent.com/u/67131017?s=200' },
     imagePosition: 'right',
   };
   const givenComponentRendered = (props?: any) => renderWithProviders(<Hero {...defaultProps} {...props} />);

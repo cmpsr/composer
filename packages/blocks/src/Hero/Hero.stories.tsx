@@ -17,8 +17,7 @@ const defaultArgs = {
   primaryCta: { children: 'Default', href: '#', variant: 'primary' },
   secondaryCta: { children: 'Default', href: '#', variant: 'primary-alt' },
   contentAlignment: 'start',
-  imageUrl: 'https://avatars0.githubusercontent.com/u/67131017?s=200',
-  imageProps: { maxWidth: '20rem' },
+  imageProps: { maxWidth: '20rem', src: 'https://avatars0.githubusercontent.com/u/67131017?s=200' },
   imagePosition: 'right',
 };
 

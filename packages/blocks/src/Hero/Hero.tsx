@@ -10,7 +10,6 @@ export const Hero: FC<HeroProps> = ({
   primaryCta,
   secondaryCta,
   contentAlignment,
-  imageUrl,
   imagePosition = 'right',
   imageProps,
   textPairingVariant = 'textpairing-header-4XL',
@@ -22,7 +21,7 @@ export const Hero: FC<HeroProps> = ({
     alignItems="center"
     justifyContent="center"
   >
-    <Image src={imageUrl} alt="hero image" width="100%" {...imageProps} />
+    <Image alt="hero image" width="100%" {...imageProps} />
     <Flex
       flexDirection={{ base: 'column' }}
       px={{ base: '1.5rem', lg: 0 }}

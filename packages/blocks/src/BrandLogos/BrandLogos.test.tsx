@@ -22,9 +22,4 @@ describe('BrandLogos', () => {
     const text = container.firstChild.firstChild.childNodes;
     expect(text).toHaveLength(1);
   });
-  test('should not render title or description when not provided', () => {
-    const { container } = givenComponentRendered();
-    const containerChildrens = container.firstChild.childNodes;
-    expect(containerChildrens).toHaveLength(1);
-  });
 });

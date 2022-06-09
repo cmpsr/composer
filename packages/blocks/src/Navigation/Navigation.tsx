@@ -20,6 +20,7 @@ export const Navigation: FC<NavigationProps> = ({ sticky = false, ...props }) =>
       gap="0.75rem"
       minHeight={{ base: '4.75rem', lg: '5rem' }}
       transition="box-shadow ease-in-out .15s;"
+      zIndex={1}
       {...(sticky && { position: 'sticky', top: 0 })}
       {...(scrollPosition && { boxShadow: 'elevation-interactive' })}
     >

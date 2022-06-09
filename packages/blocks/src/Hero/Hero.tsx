@@ -5,15 +5,12 @@ import { HeroProps } from './types';
 
 export const Hero: FC<HeroProps> = ({
   backgroundColor = 'background-page',
-  title,
-  description,
+  textPairingProps,
   primaryCta,
   secondaryCta,
-  contentAlignment,
-  imageUrl,
+  contentAlignment = 'start',
   imagePosition = 'right',
   imageProps,
-  textPairingVariant = 'textpairing-header-4XL',
 }) => (
   <Flex
     backgroundColor={backgroundColor}
@@ -22,7 +19,7 @@ export const Hero: FC<HeroProps> = ({
     alignItems="center"
     justifyContent="center"
   >
-    <Image src={imageUrl} alt="hero image" width="100%" {...imageProps} />
+    <Image alt="hero image" width="100%" {...imageProps} />
     <Flex
       flexDirection={{ base: 'column' }}
       px={{ base: '1.5rem', lg: 0 }}
@@ -32,7 +29,7 @@ export const Hero: FC<HeroProps> = ({
       alignItems={contentAlignment}
       maxWidth={{ lg: '24.375rem', xl: '32.125rem' }}
     >
-      <TextPairing variant={textPairingVariant} label={title} subLabel={description} textAlign={contentAlignment} />
+      <TextPairing textAlign={contentAlignment} {...textPairingProps} />
       {(primaryCta || secondaryCta) && (
         <Flex gap="1rem" flexDirection={{ base: 'column', md: 'row' }}>
           {primaryCta && <Link target="_blank" size="l" {...primaryCta} />}

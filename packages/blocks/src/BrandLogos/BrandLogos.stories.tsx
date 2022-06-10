@@ -25,11 +25,19 @@ WithText.args = {
 export const WithTextPairing = Template.bind({});
 WithTextPairing.args = {
   ...defaultArgs,
-  textProps: { label: 'Title', subLabel: 'Description', variant: 'textpairing-header-2XL' },
+  textProps: {
+    labelProps: { children: 'Title' },
+    subLabelProps: { children: 'Description' },
+    variant: 'textpairing-header-2XL',
+  },
 };
 
 export const Playground = Template.bind({});
 Playground.args = {
   ...defaultArgs,
-  textProps: { label: 'Title', subLabel: 'Description', variant: 'textpairing-header-2XL' },
+  textProps: {
+    labelProps: { children: 'Title' },
+    subLabelProps: { children: 'Description' },
+    variant: 'textpairing-header-2XL',
+  },
 };

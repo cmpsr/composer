@@ -10,7 +10,7 @@ export const BrandLogos: FC<BrandLogosProps> = ({
   textProps,
 }) => {
   const isTextPairing = (textProps: TextPairingProps | TextProps): textProps is TextPairingProps =>
-    !!(textProps as TextPairingProps)?.label;
+    !!(textProps as TextPairingProps)?.labelProps;
   return (
     <Flex
       data-testid="cmpsr.component.brand-logos"

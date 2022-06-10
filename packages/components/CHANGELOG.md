@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 3.0.0
+
+### Major Changes
+
+- f292607: feat: feat: allow TextPairing to receive all Text props"
+
 ## 2.4.0
 
 ### Minor Changes

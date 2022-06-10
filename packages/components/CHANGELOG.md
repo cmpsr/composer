@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 2.4.0
+
+### Minor Changes
+
+- adba0b1: feat: add subLabel whiteSapce prop to TextPairing"
+
 ## 2.3.0
 
 ### Minor Changes

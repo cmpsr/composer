@@ -1,5 +1,12 @@
 # @cmpsr/blocks
 
+## 4.0.0
+
+### Patch Changes
+
+- Updated dependencies [adba0b1]
+  - @cmpsr/components@2.4.0
+
 ## 3.3.0
 
 ### Minor Changes

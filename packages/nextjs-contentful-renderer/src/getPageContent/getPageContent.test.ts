@@ -54,11 +54,12 @@ describe('getPageContent', () => {
     expect(mockGetPageById).toBeCalledTimes(1);
     expect(mockGetPageById).toBeCalledWith(expect.anything(), 'page_id', true);
   });
-  test('should return page content for page id stored in cookies if exists', async () => {
+  test('should return page content for page id stored in cookies if exists and config navbar', async () => {
     mockGetVisitedPageIdFromCookies.mockReturnValueOnce('page_id');
     mockGetPageById.mockResolvedValueOnce(fakePageContent);
     const pageContent = await getPageContent(fakeContext);
     expect(pageContent).toStrictEqual(fakePageContent);
+    expect(mockConfigNavbar).toBeCalledTimes(1);
   });
   test('should request route for slug if no content for page in cookies', async () => {
     mockGetVisitedPageIdFromCookies.mockReturnValueOnce('page_id');

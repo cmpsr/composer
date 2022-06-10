@@ -13,7 +13,9 @@ describe('BrandLogos', () => {
     renderWithProviders(<BrandLogos {...defaultProps} {...props} />);
 
   test('should render text pairing when title and description are provided', () => {
-    const { container } = givenComponentRendered({ textProps: { label: 'Title', subLabel: 'Description' } });
+    const { container } = givenComponentRendered({
+      textProps: { labelProps: { children: 'Title' }, subLabelProps: { children: 'Description' } },
+    });
     const textPairing = container.firstChild.firstChild.childNodes;
     expect(textPairing).toHaveLength(2);
   });

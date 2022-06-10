@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 8.0.1
+
+### Patch Changes
+
+- aa9bcfb: fix: config navbar when page loaded from cookies
+
 ## 8.0.0
 
 ### Patch Changes

@@ -26,7 +26,11 @@ const Header = () => (
   <Modal.Header>
     <Flex alignItems="center">
       <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr="1.25rem" />
-      <TextPairing label={TITLE} subLabel={SUBTITLE} variant="textpairing-header-M" />
+      <TextPairing
+        labelProps={{ children: TITLE }}
+        subLabelProps={{ children: SUBTITLE }}
+        variant="textpairing-header-M"
+      />
     </Flex>
   </Modal.Header>
 );

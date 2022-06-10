@@ -12,6 +12,7 @@ export const TextPairing: FC<TextPairingProps> = ({
   labelColor,
   subLabelColor,
   textAlign,
+  subLabelWhiteSpace,
 }) => {
   const responsiveVariant = useResponsiveValue(variant);
   const styles = useStyleConfig('TextPairing', {
@@ -22,7 +23,7 @@ export const TextPairing: FC<TextPairingProps> = ({
       <Text variant={styles.label.variant} color={labelColor}>
         {label}
       </Text>
-      <Text variant={styles.subLabel.variant} color={subLabelColor}>
+      <Text variant={styles.subLabel.variant} color={subLabelColor} whiteSpace={subLabelWhiteSpace}>
         {subLabel}
       </Text>
     </Stack>

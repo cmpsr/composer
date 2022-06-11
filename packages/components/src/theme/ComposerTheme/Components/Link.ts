@@ -21,7 +21,10 @@ const isButtonVariant = (variant) => linkVariants.includes(variant);
 const getButtonVariants = () => {
   const variants = {};
   linkVariants.forEach((variant) => {
-    variants[variant] = ({ theme }) => theme.components.Button.variants[variant];
+    variants[variant] = ({ theme, ...rest }) => {
+      const variantContent = theme.components.Button.variants[variant];
+      return typeof variantContent === 'function' ? variantContent(rest) : variantContent;
+    };
   });
   return variants;
 };

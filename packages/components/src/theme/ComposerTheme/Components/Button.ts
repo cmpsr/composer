@@ -46,7 +46,13 @@ const generateButton = (color: string, textColor?: string) => {
   };
 };
 
-const generateAltButton = (color: string) => {
+const generateAltButton = (color: string, size: string) => {
+  const altButtonStylesBySize = {
+    xs: { height: '1.5rem' },
+    s: { height: '2.25rem' },
+    m: { height: '2.5rem' },
+    l: { height: '3.25rem' },
+  };
   const _disabled = {
     backgroundColor: 'background-action-disabled',
     opacity: 1,
@@ -74,6 +80,7 @@ const generateAltButton = (color: string) => {
     border: '1px solid',
     borderColor: `text-link-${color}-default`,
     loading: loadingStyles,
+    ...altButtonStylesBySize[size],
     _disabled,
     _hover: {
       backgroundColor: 'background-action-hover',
@@ -148,8 +155,8 @@ export const Button: ComponentStyleConfig = {
     accent: generateButton('accent'),
     primary: generateButton('primary'),
     secondary: generateButton('secondary'),
-    'primary-alt': generateAltButton('primary'),
-    'secondary-alt': generateAltButton('secondary'),
+    'primary-alt': ({ size }) => generateAltButton('primary', size),
+    'secondary-alt': ({ size }) => generateAltButton('secondary', size),
     destroy: generateButton('alert-error', 'alert'),
     link: {
       ...linkBaseStyle,

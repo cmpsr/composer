@@ -127,6 +127,7 @@ export const Button: ComponentStyleConfig = {
         height: $spinnerSize.reference,
         padding: 0,
       },
+      fontSize: '0.875rem',
     }),
     m: ({ theme }) => ({
       ...theme.textStyles['text-body-medium'],

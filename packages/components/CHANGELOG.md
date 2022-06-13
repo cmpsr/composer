@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 3.1.0
+
+### Minor Changes
+
+- c06accb: feat: add breakpoints and styles props to Theme
+
 ## 3.0.0
 
 ### Major Changes

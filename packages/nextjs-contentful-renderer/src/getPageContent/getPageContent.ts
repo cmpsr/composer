@@ -21,7 +21,7 @@ export const getPageContent = async (
 
   const existingPageId = getVisitedPageIdFromCookies(context, slug);
   if (existingPageId) {
-    const page = await getPageByIdAndConfigNavbar(apolloClient, existingPageId, preview);
+    const page = await getPageByIdAndConfigNavbarAndFooter(apolloClient, existingPageId, preview);
     if (page) {
       return page;
     }
@@ -31,13 +31,13 @@ export const getPageContent = async (
   if (!route) return undefined;
 
   const pageId = getPageId(route, context.query.utm_campaign);
-  const page = await getPageByIdAndConfigNavbar(apolloClient, pageId, preview);
+  const page = await getPageByIdAndConfigNavbarAndFooter(apolloClient, pageId, preview);
   setCookie(context, slug, pageId);
 
   return page;
 };
 
-const getPageByIdAndConfigNavbar = async (
+const getPageByIdAndConfigNavbarAndFooter = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
   pageId: string,
   preview: boolean
@@ -45,6 +45,7 @@ const getPageByIdAndConfigNavbar = async (
   const page = await getPageById(apolloClient, pageId, preview);
   if (page) {
     page.content = configNavbar(page);
+    page.content = configFooter(page);
   }
   return page;
 };

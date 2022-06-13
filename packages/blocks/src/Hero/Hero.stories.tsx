@@ -8,9 +8,80 @@ export default {
   title: 'Blocks/Hero',
 } as Meta;
 
-const Template = (args) => <Hero {...args} />;
+export const ImageLeft = () => (
+  <Hero
+    imagePosition="left"
+    backgroundColor="background-page"
+    textPairingProps={{
+      labelProps: { children: 'The next generation of care for women and families' },
+      subLabelProps: {
+        children: 'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
+      },
+      variant: 'textpairing-header-4XL',
+    }}
+    primaryCta={{ children: 'Default', href: '#', variant: 'primary' }}
+    secondaryCta={{ children: 'Default', href: '#', variant: 'primary-alt' }}
+    contentAlignment="start"
+    imageProps={{ maxWidth: '20rem', src: 'https://avatars0.githubusercontent.com/u/67131017?s=200' }}
+  />
+);
 
-const defaultArgs = {
+export const ContentCentered = () => (
+  <Hero
+    imagePosition="right"
+    backgroundColor="background-page"
+    textPairingProps={{
+      labelProps: { children: 'The next generation of care for women and families' },
+      subLabelProps: {
+        children: 'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
+      },
+      variant: 'textpairing-header-4XL',
+    }}
+    primaryCta={{ children: 'Default', href: '#', variant: 'primary' }}
+    secondaryCta={{ children: 'Default', href: '#', variant: 'primary-alt' }}
+    contentAlignment="center"
+    imageProps={{ maxWidth: '20rem', src: 'https://avatars0.githubusercontent.com/u/67131017?s=200' }}
+  />
+);
+
+export const NoCta = () => (
+  <Hero
+    imagePosition="right"
+    backgroundColor="background-page"
+    textPairingProps={{
+      labelProps: { children: 'The next generation of care for women and families' },
+      subLabelProps: {
+        children: 'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
+      },
+      variant: 'textpairing-header-4XL',
+    }}
+    contentAlignment="center"
+    imageProps={{ maxWidth: '20rem', src: 'https://avatars0.githubusercontent.com/u/67131017?s=200' }}
+  />
+);
+
+const Template = ({
+  backgroundColor,
+  textPairingProps,
+  primaryCta,
+  secondaryCta,
+  contentAlignment,
+  imageProps,
+  imagePosition,
+}) => (
+  <Hero
+    backgroundColor={backgroundColor}
+    textPairingProps={textPairingProps}
+    primaryCta={primaryCta}
+    secondaryCta={secondaryCta}
+    contentAlignment={contentAlignment}
+    imageProps={imageProps}
+    imagePosition={imagePosition}
+  />
+);
+
+export const Playground = Template.bind({});
+Playground.args = {
   backgroundColor: 'background-page',
   textPairingProps: {
     labelProps: { children: 'The next generation of care for women and families' },
@@ -24,28 +95,4 @@ const defaultArgs = {
   contentAlignment: 'start',
   imageProps: { maxWidth: '20rem', src: 'https://avatars0.githubusercontent.com/u/67131017?s=200' },
   imagePosition: 'right',
-};
-
-export const ImageLeft = Template.bind({});
-ImageLeft.args = {
-  ...defaultArgs,
-  imagePosition: 'left',
-};
-
-export const ContentCentered = Template.bind({});
-ContentCentered.args = {
-  ...defaultArgs,
-  contentAlignment: 'center',
-};
-
-export const NoCta = Template.bind({});
-NoCta.args = {
-  ...defaultArgs,
-  primaryCta: undefined,
-  secondaryCta: undefined,
-};
-
-export const Playground = Template.bind({});
-Playground.args = {
-  ...defaultArgs,
 };

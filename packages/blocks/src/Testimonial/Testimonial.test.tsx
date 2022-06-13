@@ -34,7 +34,7 @@ describe('Testimonial', () => {
     screen.getByText('association');
   });
   test('should render link when provided', () => {
-    givenComponentRendered({ link: { label: 'link', href: '#' } });
+    givenComponentRendered({ link: { children: 'link', href: '#' } });
     screen.getByText('link');
   });
 });

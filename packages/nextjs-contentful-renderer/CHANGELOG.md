@@ -1,5 +1,49 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 11.0.0
+
+### Patch Changes
+
+- Updated dependencies [c06accb]
+  - @cmpsr/components@3.1.0
+  - @cmpsr/blocks@6.0.0
+
+## 10.0.0
+
+### Patch Changes
+
+- Updated dependencies [f292607]
+  - @cmpsr/components@3.0.0
+  - @cmpsr/blocks@5.0.0
+
+## 9.0.0
+
+### Patch Changes
+
+- Updated dependencies [adba0b1]
+  - @cmpsr/components@2.4.0
+  - @cmpsr/blocks@4.0.0
+
+## 8.0.1
+
+### Patch Changes
+
+- aa9bcfb: fix: config navbar when page loaded from cookies
+
+## 8.0.0
+
+### Patch Changes
+
+- Updated dependencies [d09879f]
+  - @cmpsr/blocks@3.3.0
+
+## 7.0.0
+
+### Patch Changes
+
+- Updated dependencies [c44391d]
+  - @cmpsr/blocks@3.2.0
+
 ## 6.0.0
 
 ### Major Changes

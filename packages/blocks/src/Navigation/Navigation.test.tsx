@@ -45,4 +45,9 @@ describe('Navigation', () => {
     const navigation = screen.getByTestId('navigation');
     expect(navigation).toHaveStyle('box-shadow: var(--chakra-shadows-elevation-interactive)');
   });
+  test('should render logo wrapped within a link when logoHref is provided', () => {
+    givenComponentRendered({ logoHref: 'foo' });
+    const link = screen.getAllByTestId('cmpsr.link.container')[0];
+    expect(link).toHaveAttribute('href', 'foo');
+  });
 });

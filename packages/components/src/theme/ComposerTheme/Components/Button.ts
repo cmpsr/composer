@@ -46,41 +46,23 @@ const generateButton = (color: string, textColor?: string) => {
   };
 };
 
-const generateAltButton = (color: string, size: string) => {
-  const altButtonStylesBySize = {
-    xs: { height: '1.5rem' },
-    s: { height: '2.25rem' },
-    m: { height: '2.5rem' },
-    l: { height: '3.25rem' },
-  };
+const generateAltButton = (color: string) => {
   const _disabled = {
     backgroundColor: 'background-action-disabled',
     opacity: 1,
     color: transparentize(`text-link-${color}-default`, 0.6),
-    borderColor: transparentize(`text-link-${color}-default`, 0.6),
+    outlineColor: `${color}-disabled`,
   };
-
-  let loadingStyles = {
-    borderColor: `${color}-default`,
-    borderBottomColor: transparentize(`${color}-default`, 0.3),
-    borderLeftColor: transparentize(`${color}-default`, 0.3),
-  };
-
-  if (color === 'secondary') {
-    loadingStyles = {
-      borderColor: 'primary-default',
-      borderBottomColor: transparentize('primary-default', 0.3),
-      borderLeftColor: transparentize('primary-default', 0.3),
-    };
-  }
 
   return {
     backgroundColor: 'background-action-default',
     color: `text-link-${color}-default`,
-    border: '1px solid',
-    borderColor: `text-link-${color}-default`,
-    loading: loadingStyles,
-    ...altButtonStylesBySize[size],
+    outline: `1px solid var(--chakra-colors-text-link-${color}-default)`,
+    loading: {
+      borderColor: 'primary-default',
+      borderBottomColor: transparentize('primary-default', 0.3),
+      borderLeftColor: transparentize('primary-default', 0.3),
+    },
     _disabled,
     _hover: {
       backgroundColor: 'background-action-hover',
@@ -155,8 +137,8 @@ export const Button: ComponentStyleConfig = {
     accent: generateButton('accent'),
     primary: generateButton('primary'),
     secondary: generateButton('secondary'),
-    'primary-alt': ({ size }) => generateAltButton('primary', size),
-    'secondary-alt': ({ size }) => generateAltButton('secondary', size),
+    'primary-alt': generateAltButton('primary'),
+    'secondary-alt': generateAltButton('secondary'),
     destroy: generateButton('alert-error', 'alert'),
     link: {
       ...linkBaseStyle,

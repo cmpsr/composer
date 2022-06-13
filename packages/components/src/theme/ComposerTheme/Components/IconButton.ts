@@ -8,11 +8,10 @@ const _disabled = {
 };
 
 export const IconButton: ComponentStyleConfig = {
-  baseStyle: ({ isRound, theme, variant, ...rest }) => {
+  baseStyle: ({ isRound, theme, variant }) => {
     const buttonStyles = theme.components.Button;
     const buttonVariant = buttonStyles.variants[variant];
-    const buttonLoadingStyles =
-      typeof buttonVariant === 'function' ? buttonVariant(rest).loading : buttonVariant.loading;
+    const buttonLoadingStyles = buttonVariant.loading;
 
     return {
       borderRadius: isRound ? 'full' : '0.375rem',

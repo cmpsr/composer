@@ -55,7 +55,7 @@ export const NoCta = () => (
       },
       variant: 'textpairing-header-4XL',
     }}
-    contentAlignment="center"
+    contentAlignment="start"
     imageProps={{ maxWidth: '20rem', src: 'https://avatars0.githubusercontent.com/u/67131017?s=200' }}
   />
 );

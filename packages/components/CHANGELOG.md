@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 3.2.0
+
+### Minor Changes
+
+- 7d3f0cc: feat: reexport keyframes from chakra-ui
+
 ## 3.1.0
 
 ### Minor Changes

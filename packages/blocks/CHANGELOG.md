@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 7.1.0
+
+### Minor Changes
+
+- 49fe2c2: feat: create Footer block
+
 ## 7.0.0
 
 ### Patch Changes

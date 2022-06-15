@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 3.3.0
+
+### Minor Changes
+
+- e2b62ae: feat: export accordion types
+
 ## 3.2.0
 
 ### Minor Changes

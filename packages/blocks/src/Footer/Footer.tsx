@@ -15,6 +15,7 @@ export const Footer: FC<FooterProps> = ({
     backgroundColor={backgroundColor}
     px={{ base: '1.5rem', lg: '2.75rem' }}
     py={{ base: '3.5rem', md: '5.5rem', xl: '5.75rem' }}
+    justifyContent="center"
   >
     <Flex maxWidth="66.75rem" flexDirection="column" width="100%">
       <Image alt="Footer image" width="100%" mb={{ base: '2.75rem', md: '3rem' }} {...imageProps} />

@@ -19,6 +19,11 @@ export const getPageById = async (
               ...ModelFragment
             }
           }
+          footer {
+            model {
+              ...ModelFragment
+            }
+          }
           theme {
             theme
           }
@@ -46,11 +51,12 @@ export const getPageById = async (
   const { id, title, metaConfiguration, contentCollection } = data.page;
   const theme = data.page.theme?.theme || null;
   const navbar = data.page.navbar || null;
+  const footer = data.page.footer || null;
 
   const content = contentCollection.items.map((item) => ({
     models: item.modelsCollection.items,
     propsValues: item.propsValue || [],
   }));
 
-  return { id, title, content, metaConfiguration, theme, navbar };
+  return { id, title, content, metaConfiguration, theme, navbar, footer };
 };

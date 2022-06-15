@@ -20,6 +20,7 @@ const dummyPage = {
   metaConfiguration: {},
   theme: { theme: {} },
   navbar: { model: {} },
+  footer: { model: {} },
   contentCollection: {
     items: [dummyMainContentItem],
   },
@@ -65,6 +66,7 @@ describe('getPageById', () => {
       metaConfiguration: {},
       theme: {},
       navbar: { model: {} },
+      footer: { model: {} },
       content: [
         {
           models: [{ base: '# H1' }, { base: '## H2' }],
@@ -83,6 +85,7 @@ describe('getPageById', () => {
       metaConfiguration: {},
       theme: null,
       navbar: { model: {} },
+      footer: { model: {} },
       content: [
         {
           models: [{ base: '# H1' }, { base: '## H2' }],
@@ -101,6 +104,26 @@ describe('getPageById', () => {
       metaConfiguration: {},
       theme: null,
       navbar: null,
+      footer: { model: {} },
+      content: [
+        {
+          models: [{ base: '# H1' }, { base: '## H2' }],
+          propsValues: [],
+        },
+      ],
+    });
+  });
+
+  test('should return page without footer', async () => {
+    mockQuery.mockResolvedValueOnce({ data: { page: { ...dummyPage, theme: null, navbar: null, footer: null } } });
+    const page = await getPageById(mockApolloClient, pageId, preview);
+    expect(page).toStrictEqual({
+      id: 'page_id',
+      title: 'Page title',
+      metaConfiguration: {},
+      theme: null,
+      navbar: null,
+      footer: null,
       content: [
         {
           models: [{ base: '# H1' }, { base: '## H2' }],

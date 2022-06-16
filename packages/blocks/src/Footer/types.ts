@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
-import { DividerProps, ImageProps, LinkProps, Theme } from '@cmpsr/components';
+import { DividerProps, FlexProps, ImageProps, LinkProps } from '@cmpsr/components';
 
-export interface FooterProps {
-  backgroundColor?: ThisType<Theme['colors']>;
+export interface FooterProps extends FlexProps {
   imageProps: ImageProps;
   linkGroups: Array<{ title: string; items: Array<LinkProps> }>;
   copyGroup?: ReactNode;

@@ -1,5 +1,7 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 12.1.2
+
 ## 12.1.1
 
 ## 12.1.0

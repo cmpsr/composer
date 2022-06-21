@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 3.3.1
+
+### Patch Changes
+
+- ae74dcc: fix(InlineAlert): use appropriate textStyle token
+
 ## 3.3.0
 
 ### Minor Changes

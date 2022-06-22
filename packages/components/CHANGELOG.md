@@ -1,5 +1,17 @@
 # @cmpsr/components
 
+## 3.4.0
+
+### Minor Changes
+
+- 63d863c: feat: add new brand icons
+
+## 3.3.1
+
+### Patch Changes
+
+- ae74dcc: fix(InlineAlert): use appropriate textStyle token
+
 ## 3.3.0
 
 ### Minor Changes

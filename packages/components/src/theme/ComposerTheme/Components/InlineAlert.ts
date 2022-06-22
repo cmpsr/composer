@@ -24,7 +24,7 @@ export const InlineAlert: ComponentMultiStyleConfig = {
         gap: '0.5rem',
       },
       message: {
-        textStyle: 'body-meta-regular',
+        textStyle: 'text-body-meta-regular',
         ...messageColor[status],
       },
       icon: {

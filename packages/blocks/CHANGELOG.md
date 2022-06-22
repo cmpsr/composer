@@ -1,5 +1,16 @@
 # @cmpsr/blocks
 
+## 7.2.2
+
+## 7.2.1
+
+## 7.2.0
+
+### Minor Changes
+
+- ceecb5a: feat: justify footer content
+- d6582b9: feat: remove footer container and allow FlexProps
+
 ## 7.1.0
 
 ### Minor Changes

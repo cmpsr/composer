@@ -137,6 +137,10 @@ const icons = [
   'user-circle',
   'user',
   'users',
+  'brand-facebook',
+  'brand-twitter',
+  'brand-linkedin',
+  'brand-instagram',
 ].sort();
 
 const fs = require('fs');

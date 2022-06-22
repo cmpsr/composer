@@ -126,6 +126,30 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconBrandFacebook {...args} />
+      </Box>
+      <Box>IconBrandFacebook</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconBrandInstagram {...args} />
+      </Box>
+      <Box>IconBrandInstagram</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconBrandLinkedin {...args} />
+      </Box>
+      <Box>IconBrandLinkedin</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconBrandTwitter {...args} />
+      </Box>
+      <Box>IconBrandTwitter</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconCalendar {...args} />
       </Box>
       <Box>IconCalendar</Box>

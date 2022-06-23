@@ -244,7 +244,7 @@ const outlineStyle = (props) => {
         border: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-active)',
       },
       // We need to remove the focus state from the chakra input so we can add the border shadow to the full input group.
-      _focus: {
+      _focusVisible: {
         boxShadow: 'none',
         border: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-default)',
         borderColor: 'ui-element-outline-default',
@@ -308,7 +308,7 @@ export const flushedStyle = (props) => {
         borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-active)',
       },
       // We need to remove the focus state from the chakra input so we can add the border shadow to the full input group.
-      _focus: {
+      _focusVisible: {
         boxShadow: 'none',
         border: 'none',
         borderBottom: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-default)',
@@ -332,6 +332,7 @@ export const flushedStyle = (props) => {
 };
 
 export const Input: ComponentStyleConfig = {
+  parts: ['element', 'elementContainer', 'inputGroup', 'field', 'leftLabel', 'rightLabel'],
   baseStyle: {
     field: {
       border: 'none',
@@ -339,7 +340,7 @@ export const Input: ComponentStyleConfig = {
         boxShadow: 'none',
         border: 'none',
       },
-      _focus: {
+      _focusVisible: {
         boxShadow: 'none',
         border: 'none',
       },

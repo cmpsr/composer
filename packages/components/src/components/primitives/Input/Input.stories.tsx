@@ -167,10 +167,10 @@ const AllTemplate = () => {
 
 export const All = AllTemplate.bind({});
 
-const Template = (args) => (
+const Template = ({ showLeadingIcon, ...args }) => (
   <Input
     {...{
-      ...(args.showLeadingIcon && {
+      ...(showLeadingIcon && {
         leadingIcon: <IconCloud />,
       }),
     }}

@@ -332,6 +332,7 @@ export const flushedStyle = (props) => {
 };
 
 export const Input: ComponentStyleConfig = {
+  parts: ['element', 'elementContainer', 'inputGroup', 'field', 'leftLabel', 'rightLabel'],
   baseStyle: {
     field: {
       border: 'none',

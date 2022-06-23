@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 3.4.1
+
+### Patch Changes
+
+- 0abd4e6: fix(Input): focus and invalid states
+
 ## 3.4.0
 
 ### Minor Changes

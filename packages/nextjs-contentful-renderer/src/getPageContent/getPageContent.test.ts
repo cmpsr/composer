@@ -15,6 +15,7 @@ jest.mock('../utils/getPageId', () => ({
 const mockGetPageById = jest.fn();
 const mockGetRouteBySlug = jest.fn();
 const mockConfigNavbar = jest.fn();
+const mockConfigFooter = jest.fn();
 jest.mock('../utils/contentful', () => ({
   getPageById: (...params) => mockGetPageById(...params),
   getRouteBySlug: (...params) => mockGetRouteBySlug(...params),
@@ -22,6 +23,10 @@ jest.mock('../utils/contentful', () => ({
 
 jest.mock('../configNavbar', () => ({
   configNavbar: (...params) => mockConfigNavbar(...params),
+}));
+
+jest.mock('../configFooter', () => ({
+  configFooter: (...params) => mockConfigFooter(...params),
 }));
 
 describe('getPageContent', () => {
@@ -95,6 +100,13 @@ describe('getPageContent', () => {
     mockGetPageById.mockResolvedValueOnce({ ...fakePageContent, navbar: {} });
     await getPageContent(fakeContext);
     expect(mockConfigNavbar).toBeCalledTimes(1);
+  });
+  test('should configure footer', async () => {
+    mockGetRouteBySlug.mockResolvedValueOnce({});
+    mockGetPageId.mockReturnValueOnce('page_id');
+    mockGetPageById.mockResolvedValueOnce({ ...fakePageContent, footer: {} });
+    await getPageContent(fakeContext);
+    expect(mockConfigFooter).toBeCalledTimes(1);
   });
   test('should return page content', async () => {
     mockGetRouteBySlug.mockResolvedValueOnce({});

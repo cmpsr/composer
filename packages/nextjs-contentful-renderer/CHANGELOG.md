@@ -1,5 +1,29 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 12.1.5
+
+## 12.1.4
+
+## 12.1.3
+
+## 12.1.2
+
+## 12.1.1
+
+## 12.1.0
+
+### Minor Changes
+
+- 953b6c1: feat: add support for footer to the Page
+
+## 12.0.0
+
+### Patch Changes
+
+- Updated dependencies [7d3f0cc]
+  - @cmpsr/components@3.2.0
+  - @cmpsr/blocks@7.0.0
+
 ## 11.0.0
 
 ### Patch Changes

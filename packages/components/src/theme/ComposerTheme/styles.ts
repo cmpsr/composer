@@ -133,7 +133,7 @@ export const textStyles = {
   'text-body-meta-medium': {
     ...baseTextStyle,
     fontWeight: 'medium',
-    fontSize: '0.875rem',
+    fontSize: '0.75rem',
     lineHeight: '1.25rem',
   },
   'text-body-meta-bold': {

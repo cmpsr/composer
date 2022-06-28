@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 7.3.0
+
+### Minor Changes
+
+- d896836: feat: added MediaBlock component
+
 ## 7.2.3
 
 ## 7.2.2

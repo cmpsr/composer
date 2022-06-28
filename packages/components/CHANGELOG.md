@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 3.4.2
+
+### Patch Changes
+
+- 105ef56: update font size for body-meta-medium font styles
+
 ## 3.4.1
 
 ### Patch Changes

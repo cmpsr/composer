@@ -1,5 +1,15 @@
 # @cmpsr/blocks
 
+## 8.0.0
+
+### Major Changes
+
+- 7539927: feat: Refactor Hero block to use composition and dot notation
+
+### Minor Changes
+
+- cb394dc: feat: support new variation of components for MediaBlock
+
 ## 7.3.0
 
 ### Minor Changes

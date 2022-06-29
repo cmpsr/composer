@@ -73,5 +73,4 @@ const HeroLegend: FC<TextProps> = (props) => (
 );
 Hero.Legend = HeroLegend;
 
-const HeroMediaBlock: FC<MediaBlockProps> & MediaBlockStaticMembers = MediaBlock;
-Hero.MediaBlock = HeroMediaBlock;
+Hero.MediaBlock = MediaBlock;

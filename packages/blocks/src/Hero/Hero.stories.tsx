@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
+import { IconMail } from '@cmpsr/components';
 
 import { Hero } from './Hero';
 
@@ -62,6 +63,57 @@ export const NoCta = () => (
         }}
         variant="textpairing-header-4XL"
       />
+    </Hero.Content>
+    <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
+  </Hero>
+);
+
+export const All = () => (
+  <Hero>
+    <Hero.Content>
+      <Hero.ContentGroup>
+        <Hero.Tag>Hello</Hero.Tag>
+        <Hero.Legend>Breaking news</Hero.Legend>
+        <Hero.TextPairing
+          labelProps={{ children: 'There is life elsewhere in the universe' }}
+          subLabelProps={{
+            color: 'text-secondary',
+            children:
+              'We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it.',
+          }}
+          variant="textpairing-header-4XL"
+        />
+      </Hero.ContentGroup>
+      <Hero.ContentGroup gap="1.5rem">
+        <Hero.MediaBlock>
+          <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
+          <Hero.MediaBlock.TextPairing labelProps={{ children: 'Label' }} subLabelProps={{ children: 'SubLabel' }} />
+        </Hero.MediaBlock>
+        <Hero.MediaBlock>
+          <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
+          <Hero.MediaBlock.TextPairing labelProps={{ children: 'Label' }} subLabelProps={{ children: 'SubLabel' }} />
+        </Hero.MediaBlock>
+        <Hero.MediaBlock>
+          <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
+          <Hero.MediaBlock.TextPairing labelProps={{ children: 'Label' }} subLabelProps={{ children: 'SubLabel' }} />
+        </Hero.MediaBlock>
+      </Hero.ContentGroup>
+      <Hero.ContentGroup>
+        <Hero.LinkGroup alignItems={{ base: 'center', md: 'start' }}>
+          <Hero.Link children="Default" variant="primary" />
+          <Hero.Link children="Default" variant="primary-alt" />
+        </Hero.LinkGroup>
+        <Hero.Disclaimer>
+          *By clicking on Launch Mission you accept our space laws and rules for traveling through the universe.
+        </Hero.Disclaimer>
+        <Hero.Link size="s" children="I need help >" />
+      </Hero.ContentGroup>
+      <Hero.ContentGroup flexDirection="row">
+        <Hero.Link size="l" leadingIcon={<IconMail />} />
+        <Hero.Link size="l" leadingIcon={<IconMail />} />
+        <Hero.Link size="l" leadingIcon={<IconMail />} />
+        <Hero.Link size="l" leadingIcon={<IconMail />} />
+      </Hero.ContentGroup>
     </Hero.Content>
     <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
   </Hero>

@@ -1,6 +1,20 @@
 import React, { FC } from 'react';
-import { Flex, Link, TextPairing, Image, ImageProps, FlexProps, TextPairingProps, LinkProps } from '@cmpsr/components';
+import {
+  Flex,
+  Link,
+  TextPairing,
+  Image,
+  ImageProps,
+  FlexProps,
+  TextPairingProps,
+  LinkProps,
+  TagProps,
+  Tag,
+  Text,
+  TextProps,
+} from '@cmpsr/components';
 
+import { MediaBlockProps, MediaBlock, MediaBlockStaticMembers } from '../MediaBlock';
 import { HeroProps, HeroStaticMembers, HeroContentProps } from './types';
 
 export const Hero: FC<HeroProps> & HeroStaticMembers = (props) => (
@@ -42,3 +56,22 @@ Hero.LinkGroup = HeroLinkGroup;
 
 const HeroLink: FC<LinkProps> = (props) => <Link target="_blank" size="l" {...props} />;
 Hero.Link = HeroLink;
+
+const HeroTag: FC<TagProps> = (props) => <Tag size="m" alignSelf="start" {...props} />;
+Hero.Tag = HeroTag;
+
+const HeroContentGroup: FC<FlexProps> = (props) => <Flex gap="1rem" flexDirection="column" {...props} />;
+Hero.ContentGroup = HeroContentGroup;
+
+const HeroDisclaimer: FC<TextProps> = (props) => (
+  <Text color="text-secondary" variant="text-body-meta-regular" {...props} />
+);
+Hero.Disclaimer = HeroDisclaimer;
+
+const HeroLegend: FC<TextProps> = (props) => (
+  <Text color="text-secondary" variant="text-header-L" textTransform="uppercase" {...props} />
+);
+Hero.Legend = HeroLegend;
+
+const HeroMediaBlock: FC<MediaBlockProps> & MediaBlockStaticMembers = MediaBlock;
+Hero.MediaBlock = HeroMediaBlock;

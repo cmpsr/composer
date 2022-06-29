@@ -1,5 +1,12 @@
 # @cmpsr/ui-storybook
 
+## 0.0.14
+
+### Patch Changes
+
+- Updated dependencies [105ef56]
+  - @cmpsr/components@3.4.2
+
 ## 0.0.13
 
 ### Patch Changes

@@ -14,7 +14,7 @@ import {
   TextProps,
 } from '@cmpsr/components';
 
-import { MediaBlockProps, MediaBlock, MediaBlockStaticMembers } from '../MediaBlock';
+import { MediaBlock } from '../MediaBlock';
 import { HeroProps, HeroStaticMembers, HeroContentProps } from './types';
 
 export const Hero: FC<HeroProps> & HeroStaticMembers = (props) => (

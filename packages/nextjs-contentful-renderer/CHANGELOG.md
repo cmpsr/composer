@@ -1,5 +1,13 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 13.0.0
+
+### Patch Changes
+
+- Updated dependencies [7539927]
+- Updated dependencies [cb394dc]
+  - @cmpsr/blocks@8.0.0
+
 ## 12.1.6
 
 ## 12.1.5

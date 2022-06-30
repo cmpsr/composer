@@ -1,9 +1,8 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { TextPairing, textPairingVariants, textPairingTextAlignments } from '.';
-import { Text } from '@components';
 import { Box, Flex, Spacer, Stack, StackDivider } from '@chakra-ui/layout';
-import { defaultColors } from '@theme/ComposerTheme/Colors';
+import { Text } from '@components';
+import { TextPairing, textPairingVariants } from '.';
 
 export default {
   component: TextPairing,
@@ -13,16 +12,8 @@ export default {
       options: textPairingVariants,
       control: { type: 'select' },
     },
-    labelColor: {
-      options: defaultColors,
-      control: { type: 'select' },
-    },
-    subLabelColor: {
-      options: defaultColors,
-      control: { type: 'select' },
-    },
     textAlign: {
-      options: textPairingTextAlignments,
+      options: ['start', 'center', 'end'],
       control: { type: 'select' },
     },
   },
@@ -37,12 +28,10 @@ const AllTemplate = ({ label, subLabel, textAlign }) => (
         </Box>
         <Spacer />
         <Box>
-          <TextPairing
-            variant={variant}
-            labelProps={{ children: label }}
-            subLabelProps={{ children: subLabel }}
-            textAlign={textAlign}
-          />
+          <TextPairing variant={variant} textAlign={textAlign}>
+            <TextPairing.Label>{label}</TextPairing.Label>
+            <TextPairing.SubLabel>{subLabel}</TextPairing.SubLabel>
+          </TextPairing>
         </Box>
       </Flex>
     ))}
@@ -57,26 +46,25 @@ All.args = {
 const ResponsiveTemplate = () => (
   <Box py="2rem">
     <TextPairing
-      labelProps={{ children: 'Label' }}
-      subLabelProps={{ children: 'SubLabel' }}
       variant={{
         base: 'textpairing-body-bold',
         md: 'textpairing-header-L',
         lg: 'textpairing-header-4XL',
       }}
-    />
+    >
+      <TextPairing.Label>Label</TextPairing.Label>
+      <TextPairing.SubLabel>SubLabel</TextPairing.SubLabel>
+    </TextPairing>
   </Box>
 );
 export const ResponsiveVariant = ResponsiveTemplate.bind({});
 
 const Template = ({ label, subLabel, variant, textAlign, otherLabelProps = {}, otherSubLabelProps = {} }) => (
   <Box py="2rem">
-    <TextPairing
-      labelProps={{ children: label, ...otherLabelProps }}
-      subLabelProps={{ children: subLabel, ...otherSubLabelProps }}
-      variant={variant}
-      textAlign={textAlign}
-    />
+    <TextPairing variant={variant} textAlign={textAlign}>
+      <TextPairing.Label children={label} {...otherLabelProps} />
+      <TextPairing.SubLabel children={subLabel} {...otherSubLabelProps} />
+    </TextPairing>
   </Box>
 );
 export const Playground = Template.bind({});

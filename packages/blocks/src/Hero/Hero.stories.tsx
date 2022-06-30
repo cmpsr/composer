@@ -19,13 +19,12 @@ export const ImageLeft = () => (
   <Hero>
     <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
     <Hero.Content>
-      <Hero.TextPairing
-        labelProps={{ children: 'The next generation of care for women and families' }}
-        subLabelProps={{
-          children: 'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
-        }}
-        variant="textpairing-header-4XL"
-      />
+      <Hero.TextPairing variant="textpairing-header-4XL">
+        <Hero.TextPairing.Label>The next generation of care for women and families</Hero.TextPairing.Label>
+        <Hero.TextPairing.SubLabel>
+          We’re setting a new standard of care for families across geographies, cultures, and backgrounds.
+        </Hero.TextPairing.SubLabel>
+      </Hero.TextPairing>
       <Hero.LinkGroup>
         <Hero.Link children="Default" variant="primary" />
         <Hero.Link children="Default" variant="primary-alt" />
@@ -37,13 +36,12 @@ export const ImageLeft = () => (
 export const ContentCentered = () => (
   <Hero>
     <Hero.Content contentAlignment="center">
-      <Hero.TextPairing
-        labelProps={{ children: 'The next generation of care for women and families' }}
-        subLabelProps={{
-          children: 'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
-        }}
-        variant="textpairing-header-4XL"
-      />
+      <Hero.TextPairing variant="textpairing-header-4XL">
+        <Hero.TextPairing.Label>The next generation of care for women and families</Hero.TextPairing.Label>
+        <Hero.TextPairing.SubLabel>
+          We’re setting a new standard of care for families across geographies, cultures, and backgrounds.
+        </Hero.TextPairing.SubLabel>
+      </Hero.TextPairing>
       <Hero.LinkGroup>
         <Hero.Link children="Default" variant="primary" />
         <Hero.Link children="Default" variant="primary-alt" />
@@ -56,13 +54,12 @@ export const ContentCentered = () => (
 export const NoCta = () => (
   <Hero>
     <Hero.Content contentAlignment="start">
-      <Hero.TextPairing
-        labelProps={{ children: 'The next generation of care for women and families' }}
-        subLabelProps={{
-          children: 'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
-        }}
-        variant="textpairing-header-4XL"
-      />
+      <Hero.TextPairing variant="textpairing-header-4XL">
+        <Hero.TextPairing.Label>The next generation of care for women and families</Hero.TextPairing.Label>
+        <Hero.TextPairing.SubLabel>
+          We’re setting a new standard of care for families across geographies, cultures, and backgrounds.
+        </Hero.TextPairing.SubLabel>
+      </Hero.TextPairing>
     </Hero.Content>
     <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
   </Hero>
@@ -74,28 +71,35 @@ export const All = () => (
       <Hero.ContentGroup>
         <Hero.Tag>Hello</Hero.Tag>
         <Hero.Legend>Breaking news</Hero.Legend>
-        <Hero.TextPairing
-          labelProps={{ children: 'There is life elsewhere in the universe' }}
-          subLabelProps={{
-            color: 'text-secondary',
-            children:
-              'We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it.',
-          }}
-          variant="textpairing-header-4XL"
-        />
+        <Hero.TextPairing variant="textpairing-header-4XL">
+          <Hero.TextPairing.Label>There is life elsewhere in the universe</Hero.TextPairing.Label>
+          <Hero.TextPairing.SubLabel color="text-secondary">
+            We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
+            three ways we could find it.
+          </Hero.TextPairing.SubLabel>
+        </Hero.TextPairing>
       </Hero.ContentGroup>
       <Hero.ContentGroup gap="1.5rem">
         <Hero.MediaBlock>
           <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
-          <Hero.MediaBlock.TextPairing labelProps={{ children: 'Label' }} subLabelProps={{ children: 'SubLabel' }} />
+          <Hero.MediaBlock.TextPairing>
+            <Hero.MediaBlock.TextPairing.Label>Label</Hero.MediaBlock.TextPairing.Label>
+            <Hero.MediaBlock.TextPairing.SubLabel>SubLabel</Hero.MediaBlock.TextPairing.SubLabel>
+          </Hero.MediaBlock.TextPairing>
         </Hero.MediaBlock>
         <Hero.MediaBlock>
           <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
-          <Hero.MediaBlock.TextPairing labelProps={{ children: 'Label' }} subLabelProps={{ children: 'SubLabel' }} />
+          <Hero.MediaBlock.TextPairing>
+            <Hero.MediaBlock.TextPairing.Label>Label</Hero.MediaBlock.TextPairing.Label>
+            <Hero.MediaBlock.TextPairing.SubLabel>SubLabel</Hero.MediaBlock.TextPairing.SubLabel>
+          </Hero.MediaBlock.TextPairing>
         </Hero.MediaBlock>
         <Hero.MediaBlock>
           <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
-          <Hero.MediaBlock.TextPairing labelProps={{ children: 'Label' }} subLabelProps={{ children: 'SubLabel' }} />
+          <Hero.MediaBlock.TextPairing>
+            <Hero.MediaBlock.TextPairing.Label>Label</Hero.MediaBlock.TextPairing.Label>
+            <Hero.MediaBlock.TextPairing.SubLabel>SubLabel</Hero.MediaBlock.TextPairing.SubLabel>
+          </Hero.MediaBlock.TextPairing>
         </Hero.MediaBlock>
       </Hero.ContentGroup>
       <Hero.ContentGroup>
@@ -138,21 +142,18 @@ const Template = ({
       <Hero.ContentGroup>
         <Hero.Tag>{tag}</Hero.Tag>
         <Hero.Legend>{legend}</Hero.Legend>
-        <Hero.TextPairing
-          labelProps={{ children: label }}
-          subLabelProps={{
-            children: subLabel,
-          }}
-          variant="textpairing-header-4XL"
-        />
+        <Hero.TextPairing variant="textpairing-header-4XL">
+          <Hero.TextPairing.Label>{label}</Hero.TextPairing.Label>
+          <Hero.TextPairing.SubLabel>{subLabel}</Hero.TextPairing.SubLabel>
+        </Hero.TextPairing>
       </Hero.ContentGroup>
       <Hero.ContentGroup gap="1.5rem">
         <Hero.MediaBlock>
           <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
-          <Hero.MediaBlock.TextPairing
-            labelProps={{ children: mediaBlockLabel }}
-            subLabelProps={{ children: mediaBlockSubLabel }}
-          />
+          <Hero.MediaBlock.TextPairing>
+            <Hero.MediaBlock.TextPairing.Label>{mediaBlockLabel}</Hero.MediaBlock.TextPairing.Label>
+            <Hero.MediaBlock.TextPairing.SubLabel>{mediaBlockSubLabel}</Hero.MediaBlock.TextPairing.SubLabel>
+          </Hero.MediaBlock.TextPairing>
         </Hero.MediaBlock>
       </Hero.ContentGroup>
       <Hero.ContentGroup>

@@ -11,23 +11,21 @@ describe('Hero', () => {
           <Hero.ContentGroup>
             <Hero.Tag>Tag</Hero.Tag>
             <Hero.Legend>Legend</Hero.Legend>
-            <Hero.TextPairing
-              labelProps={{ children: 'There is life elsewhere in the universe' }}
-              subLabelProps={{
-                color: 'text-secondary',
-                children:
-                  'We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it.',
-              }}
-              variant="textpairing-header-4XL"
-            />
+            <Hero.TextPairing variant="textpairing-header-4XL">
+              <Hero.TextPairing.Label>There is life elsewhere in the universe</Hero.TextPairing.Label>
+              <Hero.TextPairing.SubLabel color="text-secondary">
+                We are right now on the verge of finding out whether there is life elsewhere in the universe, and there
+                are three ways we could find it.
+              </Hero.TextPairing.SubLabel>
+            </Hero.TextPairing>
           </Hero.ContentGroup>
           <Hero.ContentGroup gap="1.5rem">
             <Hero.MediaBlock>
               <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
-              <Hero.MediaBlock.TextPairing
-                labelProps={{ children: 'MediaBlock' }}
-                subLabelProps={{ children: 'SubLabel' }}
-              />
+              <Hero.MediaBlock.TextPairing>
+                <Hero.MediaBlock.TextPairing.Label>MediaBlock</Hero.MediaBlock.TextPairing.Label>
+                <Hero.MediaBlock.TextPairing.SubLabel>SubLabel</Hero.MediaBlock.TextPairing.SubLabel>
+              </Hero.MediaBlock.TextPairing>
             </Hero.MediaBlock>
           </Hero.ContentGroup>
           <Hero.ContentGroup>

@@ -6,7 +6,6 @@ import {
   Image,
   ImageProps,
   FlexProps,
-  TextPairingProps,
   LinkProps,
   TagProps,
   Tag,
@@ -46,8 +45,7 @@ const HeroContent: FC<HeroContentProps> = ({ contentAlignment = 'start', ...rest
 );
 Hero.Content = HeroContent;
 
-const HeroTextPairing: FC<TextPairingProps> = (props) => <TextPairing {...props} />;
-Hero.TextPairing = HeroTextPairing;
+Hero.TextPairing = TextPairing;
 
 const HeroLinkGroup: FC<FlexProps> = (props) => (
   <Flex gap="1rem" flexDirection={{ base: 'column', md: 'row' }} {...props} />

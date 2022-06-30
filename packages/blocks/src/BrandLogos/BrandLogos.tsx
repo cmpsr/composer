@@ -21,7 +21,14 @@ export const BrandLogos: FC<BrandLogosProps> = ({
       px="2rem"
       gap={{ base: '2rem', md: '2.75rem', lg: '4.75rem' }}
     >
-      {isTextPairing(textProps) ? <TextPairing textAlign="center" {...textProps} /> : <Text {...textProps} />}
+      {isTextPairing(textProps) ? (
+        <TextPairing textAlign="center" {...textProps}>
+          <TextPairing.Label {...textProps.labelProps} />
+          <TextPairing.SubLabel {...textProps.subLabelProps} />
+        </TextPairing>
+      ) : (
+        <Text {...textProps} />
+      )}
       <Flex
         columnGap={{ base: '4rem', lg: '3.75rem', xl: '3.5rem' }}
         rowGap={{ base: '2rem', md: '2.75rem', lg: '4.5rem', xl: '7rem' }}

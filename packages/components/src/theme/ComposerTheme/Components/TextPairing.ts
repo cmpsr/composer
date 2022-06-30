@@ -1,7 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
 export const TextPairing: ComponentStyleConfig = {
-  parts: ['label', 'subLabel'],
+  parts: ['label', 'subLabel', 'columnGap'],
   variants: {
     'textpairing-header-4XL': {
       label: {

@@ -43,3 +43,5 @@ export interface TextPairingStaticMembers {
   Label: FC<TextProps>;
   SubLabel: FC<TextProps>;
 }
+
+export type TextPairingType = FC<TextPairingProps> & TextPairingStaticMembers;

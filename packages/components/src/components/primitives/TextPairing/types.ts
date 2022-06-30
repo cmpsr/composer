@@ -40,8 +40,8 @@ export interface TextPairingProps extends Omit<ComponentDefaultProps, 'variant'>
 }
 
 export interface TextPairingStaticMembers {
-  Label: FC<TextProps>;
-  SubLabel: FC<TextProps>;
+  Label: FC<TextProps & Omit<TextProps, 'variant'>>;
+  SubLabel: FC<TextProps & Omit<TextProps, 'variant'>>;
 }
 
 export type TextPairingType = FC<TextPairingProps> & TextPairingStaticMembers;

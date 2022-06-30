@@ -1,7 +1,7 @@
 import React, { createContext, FC, useContext } from 'react';
 import { useStyleConfig } from '@chakra-ui/system';
 import { useResponsiveValue } from '@hooks';
-import { Flex, Text, TextVariant, TextProps } from '@components';
+import { Flex, Text, TextProps, TextVariant } from '@components';
 
 import { TextPairingStyles, TextPairingType } from '.';
 
@@ -31,15 +31,10 @@ export const TextPairing: TextPairingType = ({ variant, ...props }) => {
   );
 };
 
-const TextPairingLabel: FC<TextProps & Omit<TextProps, 'variant'>> = (props) => {
-  const { labelVariant } = useContext(TextPairingContext);
-  return <Text variant={labelVariant} {...props} />;
+const TextPairingText: FC<TextProps & { variantProp: string }> = ({ variantProp, ...props }) => {
+  const context = useContext(TextPairingContext);
+  return <Text variant={context[variantProp]} {...props} />;
 };
 
-const TextPairingSubLabel: FC<TextProps & Omit<TextProps, 'variant'>> = (props) => {
-  const { subLabelVariant } = useContext(TextPairingContext);
-  return <Text variant={subLabelVariant} {...props} />;
-};
-
-TextPairing.Label = TextPairingLabel;
-TextPairing.SubLabel = TextPairingSubLabel;
+TextPairing.Label = (props) => <TextPairingText {...props} variantProp="labelVariant" />;
+TextPairing.SubLabel = (props) => <TextPairingText {...props} variantProp="subLabelVariant" />;

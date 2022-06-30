@@ -14,9 +14,9 @@ import {
 } from '@cmpsr/components';
 
 import { MediaBlock } from '../MediaBlock';
-import { HeroProps, HeroStaticMembers, HeroContentProps } from './types';
+import { HeroType, HeroContentProps } from './types';
 
-export const Hero: FC<HeroProps> & HeroStaticMembers = (props) => (
+export const Hero: HeroType = (props) => (
   <Flex
     backgroundColor={props.backgroundColor ?? 'background-page'}
     flexDirection={{ base: 'column', lg: 'row' }}

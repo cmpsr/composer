@@ -20,3 +20,5 @@ export interface HeroStaticMembers {
   MediaBlock: MediaBlockType;
   Tag: FC<TagProps>;
 }
+
+export type HeroType = FC<HeroContentProps> & HeroStaticMembers;

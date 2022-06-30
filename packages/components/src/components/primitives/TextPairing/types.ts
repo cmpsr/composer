@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { CSSObject, ResponsiveValue } from '@chakra-ui/system';
 import { ComponentDefaultProps } from '@chakra-ui/theme';
+import { FlexProps } from '@cmpsr/components';
 
 import { TextVariant } from '../Text';
 import { TextProps } from '..';
@@ -33,7 +34,7 @@ export type TextPairingStyles = CSSObject &
     [key in TextPairingParts]: {
       variant: TextVariant;
     };
-  } & { columnGap: string };
+  } & { container: FlexProps };
 
 export interface TextPairingProps extends Omit<ComponentDefaultProps, 'variant'> {
   variant?: ResponsiveValue<TextPairingVariant>;

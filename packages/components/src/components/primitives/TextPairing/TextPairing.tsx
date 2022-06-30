@@ -26,7 +26,7 @@ export const TextPairing: TextPairingType = ({ variant, ...props }) => {
         subLabelVariant: styles.subLabel.variant,
       }}
     >
-      <Flex flexDirection="column" gap={styles.columnGap} {...props} />
+      <Flex flexDirection="column" {...styles.container} {...props} />
     </TextPairingContext.Provider>
   );
 };

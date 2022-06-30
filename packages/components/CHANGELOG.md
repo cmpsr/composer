@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 4.0.0
+
+### Major Changes
+
+- 5f3d719: feat: update TextPairing to use dot notation - composition
+
 ## 3.4.2
 
 ### Patch Changes

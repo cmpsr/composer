@@ -8,7 +8,10 @@ describe('TextPairing', () => {
   const variant = 'textpairing-header-4XL';
   const givenComponentRendered = () =>
     renderWithProviders(
-      <TextPairing labelProps={{ children: label }} subLabelProps={{ children: subLabel }} variant={variant} />
+      <TextPairing variant={variant}>
+        <TextPairing.Label>{label}</TextPairing.Label>
+        <TextPairing.SubLabel>{subLabel}</TextPairing.SubLabel>
+      </TextPairing>
     );
 
   test('should render label and sub label', () => {

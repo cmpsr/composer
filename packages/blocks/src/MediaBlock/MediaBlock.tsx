@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Flex, Image, TextPairing } from '@cmpsr/components';
-import { MediaBlockProps, MediaBlockStaticMembers } from './types';
+import { MediaBlockType } from './types';
 
-export const MediaBlock: FC<MediaBlockProps> & MediaBlockStaticMembers = (props) => {
+export const MediaBlock: MediaBlockType = (props) => {
   const { variant = 'horizontal', justifyContent = 'start', ...rest } = props;
   const isHorizontal = variant === 'horizontal';
   return (

@@ -26,11 +26,10 @@ const WithImageAndTextPairingTemplate = (args) => (
       <Accordion.Button>
         <Flex flex="1" textAlign="left" alignItems="center">
           <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr={2} />
-          <TextPairing
-            labelProps={{ children: 'Section 1 title' }}
-            subLabelProps={{ children: 'Description' }}
-            variant="textpairing-body-medium"
-          />
+          <TextPairing variant="textpairing-body-medium">
+            <TextPairing.Label children="Section 1 title" />
+            <TextPairing.SubLabel children="Description" />
+          </TextPairing>
         </Flex>
         <Accordion.Icon />
       </Accordion.Button>
@@ -40,11 +39,10 @@ const WithImageAndTextPairingTemplate = (args) => (
       <Accordion.Button>
         <Flex flex="1" textAlign="left" alignItems="center">
           <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr={2} />
-          <TextPairing
-            labelProps={{ children: 'Section 2 title' }}
-            subLabelProps={{ children: 'Description' }}
-            variant="textpairing-body-medium"
-          />
+          <TextPairing variant="textpairing-body-medium">
+            <TextPairing.Label children="Section 2 title" />
+            <TextPairing.SubLabel children="Description" />
+          </TextPairing>
         </Flex>
         <Accordion.Icon />
       </Accordion.Button>
@@ -90,11 +88,10 @@ const Template = (args) => (
             <Flex flex="1" textAlign="left" alignItems="center">
               {args.showMediaItem && <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr={2} />}
               {args.showTextPairing ? (
-                <TextPairing
-                  labelProps={{ children: `Section ${i} title` }}
-                  subLabelProps={{ children: 'Description' }}
-                  variant="textpairing-body-medium"
-                />
+                <TextPairing variant="textpairing-body-medium">
+                  <TextPairing.Label children={`Section ${i} title`} />
+                  <TextPairing.SubLabel children="Description" />
+                </TextPairing>
               ) : (
                 <Box flex="1" textAlign="left">
                   <Text variant="text-body-medium">Section {i} title</Text>

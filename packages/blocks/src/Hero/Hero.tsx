@@ -6,7 +6,6 @@ import {
   Image,
   ImageProps,
   FlexProps,
-  TextPairingProps,
   LinkProps,
   TagProps,
   Tag,
@@ -15,9 +14,9 @@ import {
 } from '@cmpsr/components';
 
 import { MediaBlock } from '../MediaBlock';
-import { HeroProps, HeroStaticMembers, HeroContentProps } from './types';
+import { HeroType, HeroContentProps } from './types';
 
-export const Hero: FC<HeroProps> & HeroStaticMembers = (props) => (
+export const Hero: HeroType = (props) => (
   <Flex
     backgroundColor={props.backgroundColor ?? 'background-page'}
     flexDirection={{ base: 'column', lg: 'row' }}
@@ -46,8 +45,7 @@ const HeroContent: FC<HeroContentProps> = ({ contentAlignment = 'start', ...rest
 );
 Hero.Content = HeroContent;
 
-const HeroTextPairing: FC<TextPairingProps> = (props) => <TextPairing {...props} />;
-Hero.TextPairing = HeroTextPairing;
+Hero.TextPairing = TextPairing;
 
 const HeroLinkGroup: FC<FlexProps> = (props) => (
   <Flex gap="1rem" flexDirection={{ base: 'column', md: 'row' }} {...props} />

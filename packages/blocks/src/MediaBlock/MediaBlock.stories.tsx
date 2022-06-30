@@ -36,16 +36,10 @@ export const AllTemplate = () => (
               <Td>{variant}</Td>
               <Td>
                 <MediaBlock variant={variant} alignItems={alignment}>
-                  <MediaBlock.TextPairing
-                    labelProps={{
-                      children: alignment,
-                      textTransform: 'capitalize',
-                    }}
-                    subLabelProps={{
-                      children: `${variant} - ${alignment}`,
-                    }}
-                    variant="textpairing-header-M"
-                  />
+                  <MediaBlock.TextPairing variant="textpairing-header-M">
+                    <MediaBlock.TextPairing.Label textTransform="capitalize">{alignment}</MediaBlock.TextPairing.Label>
+                    <MediaBlock.TextPairing.SubLabel children={`${variant} - ${alignment}`} />
+                  </MediaBlock.TextPairing>
                   <MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" width="100px" />
                 </MediaBlock>
               </Td>
@@ -58,16 +52,10 @@ export const AllTemplate = () => (
           <Td>{'horizontal space between'}</Td>
           <Td>
             <MediaBlock variant={'horizontal'} alignItems={alignment} justifyContent="space-between">
-              <MediaBlock.TextPairing
-                labelProps={{
-                  children: alignment,
-                  textTransform: 'capitalize',
-                }}
-                subLabelProps={{
-                  children: `horizontal - ${alignment}`,
-                }}
-                variant="textpairing-header-M"
-              />
+              <MediaBlock.TextPairing variant="textpairing-header-M">
+                <MediaBlock.TextPairing.Label textTransform="capitalize">{alignment}</MediaBlock.TextPairing.Label>
+                <MediaBlock.TextPairing.SubLabel children={`horizontal - ${alignment}`} />
+              </MediaBlock.TextPairing>
               <MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" width="100px" />
             </MediaBlock>
           </Td>
@@ -84,11 +72,10 @@ const Template = ({ variant, label, subLabel, imageWidth, contentAlignment, spac
     justifyContent={spaceBetween ? 'space-between' : undefined}
   >
     <MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" width={imageWidth} />
-    <MediaBlock.TextPairing
-      labelProps={{ children: label }}
-      subLabelProps={{ children: subLabel }}
-      variant="textpairing-header-M"
-    />
+    <MediaBlock.TextPairing variant="textpairing-header-M">
+      <MediaBlock.TextPairing.Label>{label}</MediaBlock.TextPairing.Label>
+      <MediaBlock.TextPairing.SubLabel>{subLabel}</MediaBlock.TextPairing.SubLabel>
+    </MediaBlock.TextPairing>
   </MediaBlock>
 );
 

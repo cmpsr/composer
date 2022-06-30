@@ -7,7 +7,10 @@ describe('MediaBlock', () => {
     renderWithProviders(
       <MediaBlock>
         <MediaBlock.Image />
-        <MediaBlock.TextPairing labelProps={{ children: 'Label' }} subLabelProps={{ children: 'SubLabel' }} />
+        <MediaBlock.TextPairing>
+          <MediaBlock.TextPairing.Label>Label</MediaBlock.TextPairing.Label>
+          <MediaBlock.TextPairing.SubLabel>SubLabel</MediaBlock.TextPairing.SubLabel>
+        </MediaBlock.TextPairing>
       </MediaBlock>
     );
     screen.getByRole('img');

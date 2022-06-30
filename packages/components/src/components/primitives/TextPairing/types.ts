@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { CSSObject, ResponsiveValue } from '@chakra-ui/system';
 import { ComponentDefaultProps } from '@chakra-ui/theme';
-import { FlexProps } from '@cmpsr/components';
 
+import { FlexProps } from '../../layouts';
 import { TextVariant } from '../Text';
 import { TextProps } from '..';
 

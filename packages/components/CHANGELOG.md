@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 4.1.0
+
+### Minor Changes
+
+- c0086a6: feat: add column gap to parts of textpairing
+
 ## 4.0.0
 
 ### Major Changes

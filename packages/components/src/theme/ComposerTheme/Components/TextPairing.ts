@@ -1,7 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
 export const TextPairing: ComponentStyleConfig = {
-  parts: ['label', 'subLabel'],
+  parts: ['label', 'subLabel', 'container'],
   variants: {
     'textpairing-header-4XL': {
       label: {
@@ -10,9 +10,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-display-S',
       },
-      columnGap: {
-        sm: '1.25rem',
-        md: '1rem',
+      container: {
+        gap: {
+          sm: '1.25rem',
+          md: '1rem',
+        },
       },
     },
     'textpairing-header-3XL': {
@@ -22,9 +24,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-display-S',
       },
-      columnGap: {
-        sm: '1rem',
-        md: '1rem',
+      container: {
+        gap: {
+          sm: '1rem',
+          md: '1rem',
+        },
       },
     },
     'textpairing-header-2XL': {
@@ -34,9 +38,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-display-S',
       },
-      columnGap: {
-        sm: '0.75rem',
-        md: '1rem',
+      container: {
+        gap: {
+          sm: '0.75rem',
+          md: '1rem',
+        },
       },
     },
     'textpairing-header-XL': {
@@ -46,9 +52,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-regular',
       },
-      columnGap: {
-        sm: '0.5rem',
-        md: '0.5rem',
+      container: {
+        gap: {
+          sm: '0.5rem',
+          md: '0.5rem',
+        },
       },
     },
     'textpairing-header-L': {
@@ -58,9 +66,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-regular',
       },
-      columnGap: {
-        sm: '0.25rem',
-        md: '0.5rem',
+      container: {
+        gap: {
+          sm: '0.25rem',
+          md: '0.5rem',
+        },
       },
     },
     'textpairing-header-M': {
@@ -70,9 +80,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-regular',
       },
-      columnGap: {
-        sm: '0.25rem',
-        md: '0.25rem',
+      container: {
+        gap: {
+          sm: '0.25rem',
+          md: '0.25rem',
+        },
       },
     },
     'textpairing-body-display-2XL': {
@@ -82,9 +94,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-large-regular',
       },
-      columnGap: {
-        sm: '1rem',
-        md: '1rem',
+      container: {
+        gap: {
+          sm: '1rem',
+          md: '1rem',
+        },
       },
     },
     'textpairing-body-display-XL': {
@@ -94,9 +108,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-large-regular',
       },
-      columnGap: {
-        sm: '0.75rem',
-        md: '0.75rem',
+      container: {
+        gap: {
+          sm: '0.75rem',
+          md: '0.75rem',
+        },
       },
     },
     'textpairing-body-display-L': {
@@ -106,9 +122,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-large-regular',
       },
-      columnGap: {
-        sm: '0.75rem',
-        md: '0.75rem',
+      container: {
+        gap: {
+          sm: '0.75rem',
+          md: '0.75rem',
+        },
       },
     },
     'textpairing-body-display-M': {
@@ -118,9 +136,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-regular',
       },
-      columnGap: {
-        sm: '0.5rem',
-        md: '0.5rem',
+      container: {
+        gap: {
+          sm: '0.5rem',
+          md: '0.5rem',
+        },
       },
     },
     'textpairing-body-display-S': {
@@ -130,9 +150,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-regular',
       },
-      columnGap: {
-        sm: '0.5rem',
-        md: '0.5rem',
+      container: {
+        gap: {
+          sm: '0.5rem',
+          md: '0.5rem',
+        },
       },
     },
     'textpairing-body-bold': {
@@ -142,9 +164,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-regular',
       },
-      columnGap: {
-        sm: '0.25rem',
-        md: '0.25rem',
+      container: {
+        gap: {
+          sm: '0.25rem',
+          md: '0.25rem',
+        },
       },
     },
     'textpairing-body-medium': {
@@ -154,9 +178,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-regular',
       },
-      columnGap: {
-        sm: '0.25rem',
-        md: '0.25rem',
+      container: {
+        gap: {
+          sm: '0.25rem',
+          md: '0.25rem',
+        },
       },
     },
     'textpairing-body-regular-meta': {
@@ -166,9 +192,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-meta-regular',
       },
-      columnGap: {
-        sm: '0.25rem',
-        md: '0.25rem',
+      container: {
+        gap: {
+          sm: '0.25rem',
+          md: '0.25rem',
+        },
       },
     },
     'textpairing-body-bold-meta': {
@@ -178,9 +206,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-meta-regular',
       },
-      columnGap: {
-        sm: '0.25rem',
-        md: '0.25rem',
+      container: {
+        gap: {
+          sm: '0.25rem',
+          md: '0.25rem',
+        },
       },
     },
     'textpairing-body-medium-meta': {
@@ -190,9 +220,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-meta-regular',
       },
-      columnGap: {
-        sm: '0.25rem',
-        md: '0.25rem',
+      container: {
+        gap: {
+          sm: '0.25rem',
+          md: '0.25rem',
+        },
       },
     },
     'textpairing-body-meta-medium': {
@@ -202,9 +234,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-meta-regular',
       },
-      columnGap: {
-        sm: '0.125rem',
-        md: '0.125rem',
+      container: {
+        gap: {
+          sm: '0.125rem',
+          md: '0.125rem',
+        },
       },
     },
     'textpairing-body-meta-bold': {
@@ -214,9 +248,11 @@ export const TextPairing: ComponentStyleConfig = {
       subLabel: {
         variant: 'text-body-meta-regular',
       },
-      columnGap: {
-        sm: '0.125rem',
-        md: '0.125rem',
+      container: {
+        gap: {
+          sm: '0.125rem',
+          md: '0.125rem',
+        },
       },
     },
   },

@@ -3,7 +3,7 @@ import { Block, Section } from '../../contentful/getPageById/types';
 export const insertSection = (originalContent: Block[], section: Section, method: 'unshift' | 'push') => {
   if (!section) return originalContent;
 
-  const content = Array.from(originalContent || []);
+  const content = originalContent || [];
   const sectionBlock = convertSectionToBlock(section);
   content[method](sectionBlock);
   return content;

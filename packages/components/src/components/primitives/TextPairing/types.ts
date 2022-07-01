@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { CSSObject, ResponsiveValue } from '@chakra-ui/system';
 import { ComponentDefaultProps } from '@chakra-ui/theme';
 
-import { FlexProps } from '../../layouts';
+import { FlexProps } from '@components';
 import { TextVariant } from '../Text';
 import { TextProps } from '..';
 

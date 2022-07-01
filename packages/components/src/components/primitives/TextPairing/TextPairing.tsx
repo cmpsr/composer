@@ -15,18 +15,18 @@ export const TextPairingContext = createContext<{
 
 export const TextPairing: TextPairingType = ({ variant, ...props }) => {
   const responsiveVariant = useResponsiveValue(variant);
-  const styles = useStyleConfig('TextPairing', {
+  const { container, label, subLabel } = useStyleConfig('TextPairing', {
     variant: responsiveVariant,
   }) as TextPairingStyles;
 
   return (
     <TextPairingContext.Provider
       value={{
-        labelVariant: styles.label.variant,
-        subLabelVariant: styles.subLabel.variant,
+        labelVariant: label.variant,
+        subLabelVariant: subLabel.variant,
       }}
     >
-      <Flex flexDirection="column" {...styles.container} {...props} />
+      <Flex flexDirection="column" {...container} {...props} />
     </TextPairingContext.Provider>
   );
 };

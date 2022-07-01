@@ -12,21 +12,14 @@ jest.mock('../utils/getPageId', () => ({
   getPageId: (...params) => mockGetPageId(...params),
 }));
 
-const mockGetPageById = jest.fn();
 const mockGetRouteBySlug = jest.fn();
-const mockConfigNavbar = jest.fn();
-const mockConfigFooter = jest.fn();
 jest.mock('../utils/contentful', () => ({
-  getPageById: (...params) => mockGetPageById(...params),
   getRouteBySlug: (...params) => mockGetRouteBySlug(...params),
 }));
 
-jest.mock('../configNavbar', () => ({
-  configNavbar: (...params) => mockConfigNavbar(...params),
-}));
-
-jest.mock('../configFooter', () => ({
-  configFooter: (...params) => mockConfigFooter(...params),
+const mockGetPageById = jest.fn();
+jest.mock('../utils/getPageById', () => ({
+  getPageById: (...params) => mockGetPageById(...params),
 }));
 
 describe('getPageContent', () => {
@@ -59,12 +52,12 @@ describe('getPageContent', () => {
     expect(mockGetPageById).toBeCalledTimes(1);
     expect(mockGetPageById).toBeCalledWith(expect.anything(), 'page_id', true);
   });
-  test('should return page content for page id stored in cookies if exists and config navbar', async () => {
+  test('should return page content for page id stored in cookies if exists', async () => {
     mockGetVisitedPageIdFromCookies.mockReturnValueOnce('page_id');
     mockGetPageById.mockResolvedValueOnce(fakePageContent);
     const pageContent = await getPageContent(fakeContext);
     expect(pageContent).toStrictEqual(fakePageContent);
-    expect(mockConfigNavbar).toBeCalledTimes(1);
+    expect(mockGetPageById).toBeCalledTimes(1);
   });
   test('should request route for slug if no content for page in cookies', async () => {
     mockGetVisitedPageIdFromCookies.mockReturnValueOnce('page_id');
@@ -93,20 +86,6 @@ describe('getPageContent', () => {
     await getPageContent(fakeContext);
     expect(mockSetCookie).toBeCalledTimes(1);
     expect(mockSetCookie).toBeCalledWith(fakeContext, '/home', 'page_id');
-  });
-  test('should configure navbar', async () => {
-    mockGetRouteBySlug.mockResolvedValueOnce({});
-    mockGetPageId.mockReturnValueOnce('page_id');
-    mockGetPageById.mockResolvedValueOnce({ ...fakePageContent, navbar: {} });
-    await getPageContent(fakeContext);
-    expect(mockConfigNavbar).toBeCalledTimes(1);
-  });
-  test('should configure footer', async () => {
-    mockGetRouteBySlug.mockResolvedValueOnce({});
-    mockGetPageId.mockReturnValueOnce('page_id');
-    mockGetPageById.mockResolvedValueOnce({ ...fakePageContent, footer: {} });
-    await getPageContent(fakeContext);
-    expect(mockConfigFooter).toBeCalledTimes(1);
   });
   test('should return page content', async () => {
     mockGetRouteBySlug.mockResolvedValueOnce({});

@@ -1,5 +1,13 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 14.1.0
+
+### Minor Changes
+
+- 3b40e76: feat: implement getStaticPageContent
+
+## 14.0.1
+
 ## 14.0.0
 
 ### Patch Changes

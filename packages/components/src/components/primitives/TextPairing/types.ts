@@ -2,8 +2,7 @@ import { FC } from 'react';
 import { CSSObject, ResponsiveValue } from '@chakra-ui/system';
 import { ComponentDefaultProps } from '@chakra-ui/theme';
 
-import { TextVariant } from '../Text';
-import { TextProps } from '..';
+import { FlexProps, TextVariant, TextProps } from '@components';
 
 export const textPairingVariants = [
   'textpairing-header-4XL',
@@ -33,7 +32,7 @@ export type TextPairingStyles = CSSObject &
     [key in TextPairingParts]: {
       variant: TextVariant;
     };
-  } & { columnGap: string };
+  } & { container: FlexProps };
 
 export interface TextPairingProps extends Omit<ComponentDefaultProps, 'variant'> {
   variant?: ResponsiveValue<TextPairingVariant>;

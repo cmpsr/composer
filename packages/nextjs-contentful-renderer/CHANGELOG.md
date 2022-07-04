@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 14.2.0
+
+### Minor Changes
+
+- 13cc1d7: feat: add getStaticRoutes function
+
 ## 14.1.0
 
 ### Minor Changes

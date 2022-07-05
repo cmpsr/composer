@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 14.3.0
+
+### Minor Changes
+
+- fef6df6: feat: add support to nextjs preview mode to getPageContent
+
 ## 14.2.0
 
 ### Minor Changes

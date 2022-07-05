@@ -41,6 +41,46 @@ describe('getPageContent', () => {
     expect(mockGetVisitedPageIdFromCookies).toBeCalledTimes(1);
     expect(mockGetVisitedPageIdFromCookies).toBeCalledWith(context, '/');
   });
+  describe('nextjs preview mode', () => {
+    test('should use nextjs preview mode over param', async () => {
+      const preview = true;
+      const context: any = {
+        preview,
+        query: {
+          slug: '/home',
+          preview: !preview,
+        },
+      };
+      await getPageContent(context);
+      expect(mockGetRouteBySlug).toBeCalledTimes(1);
+      expect(mockGetRouteBySlug).toBeCalledWith(expect.anything(), '/home', preview, undefined);
+    });
+    test('should not use nextjs preview mode if false', async () => {
+      const preview = false;
+      const context: any = {
+        preview,
+        query: {
+          slug: '/home',
+          preview: !preview,
+        },
+      };
+      await getPageContent(context);
+      expect(mockGetRouteBySlug).toBeCalledTimes(1);
+      expect(mockGetRouteBySlug).toBeCalledWith(expect.anything(), '/home', !preview, undefined);
+    });
+    test('should not use nextjs preview mode if undefined', async () => {
+      const context: any = {
+        preview: undefined,
+        query: {
+          slug: '/home',
+          preview: true,
+        },
+      };
+      await getPageContent(context);
+      expect(mockGetRouteBySlug).toBeCalledTimes(1);
+      expect(mockGetRouteBySlug).toBeCalledWith(expect.anything(), '/home', true, undefined);
+    });
+  });
   test('should return undefined if no slug match', async () => {
     mockGetRouteBySlug.mockResolvedValueOnce(undefined);
     const pageContent = await getPageContent(fakeContext);

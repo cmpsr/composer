@@ -3,57 +3,61 @@ import { replaceAll } from '../utils/replaceAll';
 import { Block, Model, PropsValue, ResponsiveValue } from '../utils/contentful/getPageById/types';
 
 const breakpoints = ['base', 'md', 'lg', 'xl', 'xxl'];
-const defaultBreakpointValues: Model = breakpoints.reduce((acc, curr) => ((acc[curr] = ''), acc), {});
 
 export const generateMdx = async (blocks: Block[]): Promise<Model[]> => {
   const promises = blocks.map(async ({ models, propsValues }) => {
-    const filledModels = fillMissingBreakpoints(models, '');
-    const filledProps = fillMissingBreakpoints(propsValues, {});
-    const mdxModelsUpdated = filledModels.map((mdxModel, index) =>
-      replaceValuesByBreakpoint(mdxModel, filledProps[index] || {})
+    const mdxModelsUpdated = models.map((mdxModel, index) =>
+      replaceValuesByBreakpoint(mdxModel, propsValues[index] || {})
     );
 
-    const bundled = combineModels(mdxModelsUpdated);
-    for (const breakpoint of breakpoints) {
-      bundled[breakpoint] = await bundler(bundled[breakpoint]);
-    }
-    return bundled;
+    const bundledModels = mdxModelsUpdated.map(async (model) => {
+      const bundled: Model = {};
+      for await (const breakpoint of breakpoints) {
+        if (model[breakpoint]) {
+          bundled[breakpoint] = await bundler(model[breakpoint]);
+        }
+      }
+      return bundled;
+    });
+    return Promise.all(bundledModels);
   });
 
-  return await Promise.all(promises);
+  const all = await Promise.all(promises);
+  return all.reduce((acc, val) => acc.concat(val), []);
 };
 
-const fillMissingBreakpoints = <T>(values: ResponsiveValue<T>[], defaultValue: T): ResponsiveValue<T>[] =>
-  values.map((value) => {
-    const transformed: ResponsiveValue<T> = {
-      base: value.base || defaultValue,
-    };
-    breakpoints.forEach((breakpoint, index) => {
-      transformed[breakpoint] = value[breakpoint] || transformed[breakpoints[index - 1]];
-    });
-    return transformed;
-  });
+const getBreakpointValue = <T>(values: ResponsiveValue<T>, breakpoint: string) => {
+  if (values[breakpoint]) return values[breakpoint];
+  const index = breakpoints.indexOf(breakpoint);
+  if (index === -1) return undefined;
+  if (index === 0) return values.base;
+  return getBreakpointValue(values, breakpoints[index - 1]);
+};
+
+const mergeValues = <T>(values: ResponsiveValue<T>, breakpoint: string) => {
+  let merged = values.base || {};
+  const index = breakpoints.indexOf(breakpoint);
+  if (index === -1) return undefined;
+  for (let i = 1; i <= index; i++) {
+    const currentValue = values[breakpoints[i]];
+    if (currentValue) {
+      merged = { ...merged, ...currentValue };
+    }
+  }
+  return merged;
+};
 
 const replaceValuesByBreakpoint = (mdxModel: Model, values: PropsValue): Model =>
-  breakpoints.reduce(
-    (acc, breakpoint) => ({
-      ...acc,
-      [breakpoint]: replacePropValues(mdxModel[breakpoint], values[breakpoint]),
-    }),
-    {}
-  );
-
-const combineModels = (models: Model[]): Model =>
-  models.reduce(
-    (model, item) => ({
-      base: model.base += item.base,
-      md: model.md += item.md,
-      lg: model.lg += item.lg,
-      xl: model.xl += item.xl,
-      xxl: model.xxl += item.xxl,
-    }),
-    { ...defaultBreakpointValues }
-  );
+  breakpoints.reduce((acc, breakpoint) => {
+    if (mdxModel[breakpoint] || values[breakpoint]) {
+      return {
+        ...acc,
+        [breakpoint]: replacePropValues(getBreakpointValue(mdxModel, breakpoint), mergeValues(values, breakpoint)),
+      };
+    } else {
+      return acc;
+    }
+  }, {});
 
 const bundler = async (code: string): Promise<string> => (await bundleMDX({ source: code.trim() })).code;
 

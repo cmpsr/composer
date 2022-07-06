@@ -82,10 +82,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
     const propValue = values[propName];
     const newValue = propValue ? propValue : defaultValue;
 
-    let searchValue = match;
-    if (fieldType === 'list' && listPattern) {
-      searchValue = escapeCharactersInListPattern(searchValue);
-    }
+    const searchValue = fieldType === 'list' && listPattern ? escapeCharactersInListPattern(match) : match;
 
     mdxCopy = replaceAll(searchValue, newValue)(mdxCopy);
   });

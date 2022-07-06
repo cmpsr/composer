@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 14.4.0
+
+### Minor Changes
+
+- e81e8c3: feat: improve mdx generation
+
 ## 14.3.0
 
 ### Minor Changes

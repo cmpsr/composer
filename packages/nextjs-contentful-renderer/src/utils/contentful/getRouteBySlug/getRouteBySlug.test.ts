@@ -48,6 +48,7 @@ describe('getRouteBySlug', () => {
     const route = await getRouteBySlug(mockApolloClient, slug, preview);
     expect(route).toStrictEqual({
       id: 'route_id',
+      slug,
       variants: [
         {
           traffic: 1,

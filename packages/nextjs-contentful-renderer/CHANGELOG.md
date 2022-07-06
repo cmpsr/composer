@@ -1,5 +1,23 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 14.4.0
+
+### Minor Changes
+
+- e81e8c3: feat: improve mdx generation
+
+## 14.3.0
+
+### Minor Changes
+
+- fef6df6: feat: add support to nextjs preview mode to getPageContent
+
+## 14.2.0
+
+### Minor Changes
+
+- 13cc1d7: feat: add getStaticRoutes function
+
 ## 14.1.0
 
 ### Minor Changes

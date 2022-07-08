@@ -10,6 +10,7 @@ module.exports = {
     '@storybook/addon-essentials',
     'storybook-addon-turbo-build',
     '@storybook/addon-viewport',
+    'storybook-addon-designs',
   ],
   features: { postcss: false },
   refs: {

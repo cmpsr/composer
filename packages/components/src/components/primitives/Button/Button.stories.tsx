@@ -4,6 +4,7 @@ import { Button } from './Button';
 import { buttonSizes, buttonVariants } from './types';
 import * as Icons from '../Icons';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
+import { withDesign } from 'storybook-addon-designs';
 
 export default {
   component: Button,
@@ -18,6 +19,7 @@ export default {
       control: { type: 'select' },
     },
   },
+  decorators: [withDesign],
 } as Meta;
 
 const AllTemplate = () => (
@@ -81,6 +83,13 @@ const AllTemplate = () => (
   </Table>
 );
 export const All = AllTemplate.bind({});
+
+All.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ewqGU2UQxmYiO8JWaRawP0/Composer---Design-System-(Community)?node-id=810%3A9965',
+  },
+};
 
 const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
   <Button

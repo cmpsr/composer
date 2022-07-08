@@ -39,9 +39,9 @@ export const BaseNavigation: FC<Omit<NavigationProps, 'sticky'>> = ({ actions, a
             flexDirection="column"
             overflow="auto"
           >
-            {anchors.map(({ label, href }, i: number) => (
+            {anchors.map(({ label, href, ...rest }, i: number) => (
               <Fragment key={i}>
-                <Link href={href} size="l">
+                <Link href={href} size="l" {...rest}>
                   <Text variant="text-body-display-L" color="text-link-secondary-default">
                     {label}
                   </Text>

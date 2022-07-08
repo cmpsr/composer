@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 9.1.0
+
+### Minor Changes
+
+- d826d1f: feat: spread link properties on navigation block anchors
+
 ## 9.0.1
 
 ## 9.0.0

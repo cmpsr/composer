@@ -1,57 +1,66 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
+import { Text, TextPairing } from '@components';
 
 import { NumberedList } from './NumberedList';
-import { Text, TextPairing } from '@components';
 
 export default {
   component: NumberedList,
   title: 'Components/Primitives/NumberedList',
 } as Meta;
 
-export const List = () => (
+export const Simple = () => (
   <NumberedList>
     <NumberedList.Item>
-      <Text>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum.
-      </Text>
-      <Text>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum.
-      </Text>
+      <Text>Item</Text>
     </NumberedList.Item>
     <NumberedList.Item>
-      World
+      <TextPairing>
+        <TextPairing.Label>Item</TextPairing.Label>
+        <TextPairing.SubLabel>Description</TextPairing.SubLabel>
+      </TextPairing>
+    </NumberedList.Item>
+    <NumberedList.Item>
+      <Text>Item</Text>
+    </NumberedList.Item>
+    <NumberedList.Item>
+      <Text>Item</Text>
+    </NumberedList.Item>
+  </NumberedList>
+);
+
+export const Nested = () => (
+  <NumberedList>
+    <NumberedList.Item>
+      <Text>Item</Text>
+    </NumberedList.Item>
+    <NumberedList.Item>
+      <Text>Item</Text>
       <NumberedList>
         <NumberedList.Item>
           <TextPairing>
-            <TextPairing.Label>Label</TextPairing.Label>
-            <TextPairing.SubLabel>SubLabel</TextPairing.SubLabel>
+            <TextPairing.Label>Item</TextPairing.Label>
+            <TextPairing.SubLabel>Description</TextPairing.SubLabel>
           </TextPairing>
-        </NumberedList.Item>
-        <NumberedList.Item>
-          World
           <NumberedList>
             <NumberedList.Item>
-              <TextPairing>
-                <TextPairing.Label>Label</TextPairing.Label>
-                <TextPairing.SubLabel>SubLabel</TextPairing.SubLabel>
-              </TextPairing>
+              <Text>Item</Text>
             </NumberedList.Item>
-            <NumberedList.Item>World</NumberedList.Item>
+            <NumberedList.Item>
+              <Text>Item</Text>
+            </NumberedList.Item>
+            <NumberedList.Item>
+              <Text>Item</Text>
+            </NumberedList.Item>
           </NumberedList>
+        </NumberedList.Item>
+        <NumberedList.Item>
+          <Text>Item</Text>
         </NumberedList.Item>
       </NumberedList>
     </NumberedList.Item>
-
-    <NumberedList.Item>Three</NumberedList.Item>
-    <NumberedList.Item>Four</NumberedList.Item>
+    <NumberedList.Item>
+      <Text>Item</Text>
+    </NumberedList.Item>
   </NumberedList>
 );

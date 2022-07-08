@@ -1,18 +1,8 @@
-import React, { cloneElement, FC } from 'react';
-import { Box, Flex, FlexProps, Text, TextVariant } from '@components';
+import React, { cloneElement, FC, Children, isValidElement } from 'react';
 import { getValidChildren } from '@chakra-ui/react-utils';
 
-interface NumberedListProps extends FlexProps {
-  number?: number;
-}
-
-interface NumberedListItemProps extends NumberedListProps {
-  indexTextVariants?: TextVariant;
-}
-
-interface NumberedListStaticMembers {
-  Item: FC<NumberedListItemProps>;
-}
+import { Box, Flex, Text } from '@components';
+import { NumberedListProps, NumberedListStaticMembers, NumberedListItemProps } from './types';
 
 export const NumberedList: FC<NumberedListProps> & NumberedListStaticMembers = ({ children, number, ...props }) => {
   const validChildren = getValidChildren(children);
@@ -35,21 +25,18 @@ const NumberedListItem: FC<NumberedListItemProps> = ({
   number,
   children,
   ...props
-}) => {
-  return (
-    <Flex as="li" direction="row" alignItems="start" {...props} gap="0.25rem">
-      <Box>
-        <Text variant={indexTextVariants}>{number}.</Text>
-      </Box>
-      <Box>
-        {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.type === NumberedList) {
-            return cloneElement(child, { number, paddingTop: '0.75rem' });
-          } else return child;
-        })}
-      </Box>
-    </Flex>
-  );
-};
-
+}) => (
+  <Flex as="li" direction="row" alignItems="start" {...props} gap="0.25rem">
+    <Box>
+      <Text variant={indexTextVariants}>{number}.</Text>
+    </Box>
+    <Box>
+      {Children.map(children, (child) => {
+        if (isValidElement(child) && child.type === NumberedList) {
+          return cloneElement(child, { number, paddingTop: '0.75rem' });
+        } else return child;
+      })}
+    </Box>
+  </Flex>
+);
 NumberedList.Item = NumberedListItem;

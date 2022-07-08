@@ -11,7 +11,7 @@ export const getPageContent = async (
   context: GetServerSidePropsContext,
   domain: string | undefined = undefined
 ): Promise<Page> => {
-  const preview = context.query.preview !== undefined;
+  const preview = context.preview || context.query.preview !== undefined;
 
   const apolloClient = getApolloClient({ preview });
 

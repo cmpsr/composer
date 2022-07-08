@@ -6,5 +6,6 @@ export interface RouteVariant {
 
 export interface Route {
   id: string;
+  slug: string;
   variants: RouteVariant[];
 }

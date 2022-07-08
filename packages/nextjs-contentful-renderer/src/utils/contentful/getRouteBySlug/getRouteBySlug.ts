@@ -18,10 +18,8 @@ export const getRouteBySlug = async (
                 traffic
                 utmCampaign
                 page {
-                  ... on Page {
-                    sys {
-                      id
-                    }
+                  sys {
+                    id
                   }
                 }
               }
@@ -40,6 +38,7 @@ export const getRouteBySlug = async (
   const result = data.route.items.map((route) => {
     return {
       id: route.id,
+      slug,
       variants: route.variants.items.map((variant: any) => ({
         traffic: variant.traffic,
         page: variant.page.sys.id,

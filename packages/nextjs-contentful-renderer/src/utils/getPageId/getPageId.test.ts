@@ -3,6 +3,7 @@ import { getPageId } from '.';
 describe('getPageId', () => {
   const route = {
     id: 'route_id',
+    slug: 'slug',
     variants: [
       {
         traffic: 0.7,

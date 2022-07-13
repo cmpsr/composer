@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 4.2.0
+
+### Minor Changes
+
+- bf0bfa0: feat: create new primitive component NumberedList
+
 ## 4.1.0
 
 ### Minor Changes

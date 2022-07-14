@@ -9,6 +9,7 @@ import { Meta } from '@storybook/react';
 import * as Icons from './Icons';
 import { iconSizes } from './types';
 import { Box, Flex, Grid } from '@components';
+import { getFigmaDesignLink } from '@theme';
 
 export default {
   title: 'Components/Primitives/Icons',
@@ -18,6 +19,7 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('icons'),
 } as Meta;
 
 const Template = (args) => (

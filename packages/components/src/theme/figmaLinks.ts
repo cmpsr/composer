@@ -48,6 +48,8 @@ export const hero = getLink('100%3A11018');
 export const mediaBlock = getLink('822%3A11077');
 export const navigation = getLink('31%3A11779');
 export const testimonial = getLink('30%3A14114');
+export const icons =
+  'https://www.figma.com/file/EVqzz5IwHOADFvr5yYhgvO/Composer---Icons-%26-Illustrations-(Community)?node-id=2%3A5';
 
 const components = {
   // Notifications
@@ -83,6 +85,7 @@ const components = {
   textPairing,
   textarea,
   tooltip,
+  icons,
   // Theme
   colors,
   radius,

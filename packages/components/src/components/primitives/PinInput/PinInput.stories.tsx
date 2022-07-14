@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { PinInput } from './PinInput';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { pinInputSizes, pinInputVariants } from './types';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: PinInput,

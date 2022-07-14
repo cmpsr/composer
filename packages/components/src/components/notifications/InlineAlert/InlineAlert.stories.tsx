@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { InlineAlert } from './InlineAlert';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { alertStatuses } from '@components/notifications';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: InlineAlert,

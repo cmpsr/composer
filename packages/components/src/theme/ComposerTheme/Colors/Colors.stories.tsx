@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { defaultColors } from '.';
 import { Center, Grid, Flex, Heading, Square, Box } from '@chakra-ui/react';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 interface Props {
   token: string;

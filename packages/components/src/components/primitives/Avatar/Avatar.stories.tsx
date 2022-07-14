@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Avatar, AvatarProps, avatarSizes } from '.';
 import { Box, Flex } from '@components';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Avatar,

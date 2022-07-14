@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Text, textVariants } from '.';
 import { Box, Flex, Spacer, Stack, StackDivider } from '@chakra-ui/layout';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Text,

@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { Accordion } from './Accordion';
 import { Text, TextPairing, Avatar } from '..';
 import { Box, Flex } from '../../layouts';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Accordion,

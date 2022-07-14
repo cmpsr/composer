@@ -4,7 +4,7 @@ import { Radio } from './Radio';
 import { RadioGroup as ChakraRadioGroup, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Stack } from '@chakra-ui/layout';
 import { radioSizes } from './types';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Radio,

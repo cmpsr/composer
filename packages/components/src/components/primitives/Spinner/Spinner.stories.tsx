@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { Spinner } from './Spinner';
 import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
 import { spinnerSizes, spinnerVariants } from './types';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Spinner,

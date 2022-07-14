@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Meta } from '@storybook/react';
 import { alertStatuses, alertVariants, Button, useToast, UseToastOptions } from '@components';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   title: 'Components/Notifications/Toast',

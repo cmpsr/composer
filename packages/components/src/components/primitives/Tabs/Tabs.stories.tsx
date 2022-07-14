@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { Tabs } from './Tabs';
 import { tabsVariants } from './types';
 import { StackDivider, VStack } from '@chakra-ui/react';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Tabs,

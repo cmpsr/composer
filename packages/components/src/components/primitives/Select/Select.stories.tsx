@@ -4,7 +4,7 @@ import { Select } from '.';
 import { iconSizes, selectSizes } from './types';
 import { StackDivider, VStack } from '@chakra-ui/react';
 import { Text } from '..';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Select,

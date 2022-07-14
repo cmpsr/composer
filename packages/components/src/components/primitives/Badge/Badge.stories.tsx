@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { Badge } from './Badge';
 import { StackDivider, VStack } from '@chakra-ui/layout';
 import { badgeVariants } from './types';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Badge,

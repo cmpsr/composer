@@ -4,7 +4,7 @@ import { IconButton } from './IconButton';
 import { iconButtonSizes, iconButtonVariants } from './types';
 import { IconCloud } from '@components';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: IconButton,

@@ -4,7 +4,7 @@ import { Link } from './Link';
 import { linkSizes, linkVariants } from './types';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { IconExternalLink, Text } from '@components';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Link,

@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { VStack } from '@chakra-ui/react';
 import { Divider } from '.';
 import { Flex, Text } from '@components';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 const dividerOrientations = ['horizontal', 'vertical'];
 

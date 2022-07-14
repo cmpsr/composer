@@ -4,7 +4,7 @@ import { Tag } from './Tag';
 import { IconAlertCircle } from '@components';
 import { tagSizes } from './types';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Tag,

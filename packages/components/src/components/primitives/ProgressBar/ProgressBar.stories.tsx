@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { ProgressBar } from './ProgressBar';
 import { Divider, Box } from '@chakra-ui/react';
 import { progressBarSizes } from './types';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: ProgressBar,

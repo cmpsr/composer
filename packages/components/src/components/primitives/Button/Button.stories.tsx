@@ -4,7 +4,7 @@ import { Button } from './Button';
 import { buttonSizes, buttonVariants } from './types';
 import * as Icons from '../Icons';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Button,

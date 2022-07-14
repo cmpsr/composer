@@ -4,7 +4,7 @@ import { Checkbox, CheckboxProps } from '.';
 import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
 import { CheckboxSizes } from './types';
 import { Text } from '..';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Checkbox,

@@ -4,7 +4,7 @@ import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Input } from '.';
 import { inputSizes, inputVariants } from './types';
 import { IconCloud } from '../Icons';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Input,

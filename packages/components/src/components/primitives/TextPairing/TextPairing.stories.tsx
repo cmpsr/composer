@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { Box, Flex, Spacer, Stack, StackDivider } from '@chakra-ui/layout';
 import { Text } from '@components';
 import { TextPairing, textPairingVariants } from '.';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: TextPairing,

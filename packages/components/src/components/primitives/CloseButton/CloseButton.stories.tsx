@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { CloseButton, closeButtonSizes } from '.';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: CloseButton,

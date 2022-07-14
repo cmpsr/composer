@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Breadcrumb } from './Breadcrumb';
 import { Flex, IconCheck, IconWorld } from '@components';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Breadcrumb,

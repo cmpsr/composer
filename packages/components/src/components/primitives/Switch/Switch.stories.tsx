@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { Switch } from '.';
 import { switchLabelPositions, switchSizes } from './types';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Switch,

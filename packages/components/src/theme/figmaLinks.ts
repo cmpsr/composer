@@ -40,7 +40,14 @@ export const colors = getLink('1110%3A11092');
 export const radius = getLink('809%3A9938');
 export const shadows = getLink('806%3A9207');
 export const spacing = getLink('806%3A9208');
-export const other = getLink('');
+// Blocks
+export const brandLogos = getLink('34%3A12612');
+export const cookieBanner = getLink('30%3A12941');
+export const footer = getLink('35%3A13814');
+export const hero = getLink('100%3A11018');
+export const mediaBlock = getLink('822%3A11077');
+export const navigation = getLink('31%3A11779');
+export const testimonial = getLink('30%3A14114');
 
 const components = {
   // Notifications
@@ -81,6 +88,14 @@ const components = {
   radius,
   shadows,
   spacing,
+  // Blocks
+  brandLogos,
+  cookieBanner,
+  footer,
+  hero,
+  mediaBlock,
+  navigation,
+  testimonial,
 };
 
 export const getFigmaDesignLink = (component: keyof typeof components) => ({

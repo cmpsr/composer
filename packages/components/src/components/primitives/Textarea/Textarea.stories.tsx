@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { Textarea } from './Textarea';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { textareaSizes, textareaVariants } from './types';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: Textarea,

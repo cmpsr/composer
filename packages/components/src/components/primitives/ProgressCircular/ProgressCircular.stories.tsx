@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { ProgressCircular } from './ProgressCircular';
 import { HStack, Text, VStack } from '@chakra-ui/react';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   component: ProgressCircular,

@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { Table, Thead, Tbody, Tr, Th, Td, Box, Flex } from '@chakra-ui/react';
 
 import { defaultSpacing } from '.';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 export default {
   title: 'Theme/Spacing',

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Meta } from '@storybook/react';
 import { VStack, StackDivider, HStack } from '@chakra-ui/layout';
 import { Slider, SliderProps, Text } from '@components';
-import { getFigmaDesignLink } from '@components/figmaLinks';
+import { getFigmaDesignLink } from '@theme/figmaLinks';
 
 const orientations = ['horizontal', 'vertical'];
 

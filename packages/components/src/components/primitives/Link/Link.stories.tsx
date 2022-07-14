@@ -4,6 +4,7 @@ import { Link } from './Link';
 import { linkSizes, linkVariants } from './types';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { IconExternalLink, Text } from '@components';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Link,
@@ -18,6 +19,7 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('link'),
 } as Meta;
 
 export const All = () => (
@@ -55,7 +57,9 @@ export const All = () => (
   </Table>
 );
 
-const AllVariantsTemplate = () => (
+All.parameters = FIGMA_LINK;
+
+export const AllVariants = () => (
   <Table variant="simple">
     <Thead>
       <Tr>
@@ -92,8 +96,6 @@ const AllVariantsTemplate = () => (
     </Tbody>
   </Table>
 );
-
-export const AllVariants = AllVariantsTemplate.bind({});
 
 export const WrappedByText = () => (
   <Text>

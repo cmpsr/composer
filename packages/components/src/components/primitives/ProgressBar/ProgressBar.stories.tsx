@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react';
 import { ProgressBar } from './ProgressBar';
 import { Divider, Box } from '@chakra-ui/react';
 import { progressBarSizes } from './types';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: ProgressBar,
@@ -13,17 +14,16 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('progressBar'),
 } as Meta;
 
-const AllTemplate = () =>
+export const All = () =>
   progressBarSizes.map((size, key) => (
     <Box key={key}>
       <ProgressBar value={20} size={size} />
       <Divider my={3} />
     </Box>
   ));
-
-export const All = AllTemplate.bind({});
 
 const Template = ({ ...args }) => <ProgressBar {...args} />;
 

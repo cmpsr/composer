@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react';
 import { Box, Flex, Spacer, Stack, StackDivider } from '@chakra-ui/layout';
 import { Text } from '@components';
 import { TextPairing, textPairingVariants } from '.';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: TextPairing,
@@ -17,9 +18,10 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('textPairing'),
 } as Meta;
 
-const AllTemplate = ({ label, subLabel, textAlign }) => (
+export const All = ({ label, subLabel, textAlign }) => (
   <Stack spacing="2rem" py="2rem" divider={<StackDivider borderColor="#888" />}>
     {textPairingVariants.map((variant) => (
       <Flex key={variant} px="1rem">
@@ -37,13 +39,13 @@ const AllTemplate = ({ label, subLabel, textAlign }) => (
     ))}
   </Stack>
 );
-export const All = AllTemplate.bind({});
+
 All.args = {
   label: 'Composer rocks',
   subLabel: 'Oh, yeah!',
 };
 
-const ResponsiveTemplate = () => (
+export const ResponsiveVariant = () => (
   <Box py="2rem">
     <TextPairing
       variant={{
@@ -57,7 +59,6 @@ const ResponsiveTemplate = () => (
     </TextPairing>
   </Box>
 );
-export const ResponsiveVariant = ResponsiveTemplate.bind({});
 
 const Template = ({ label, subLabel, variant, textAlign, otherLabelProps = {}, otherSubLabelProps = {} }) => (
   <Box py="2rem">

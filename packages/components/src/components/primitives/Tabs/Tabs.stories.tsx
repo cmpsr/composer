@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react';
 import { Tabs } from './Tabs';
 import { tabsVariants } from './types';
 import { StackDivider, VStack } from '@chakra-ui/react';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Tabs,
@@ -13,16 +14,16 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('tabs'),
 } as Meta;
 
-const AllTemplate = () => (
+export const All = () => (
   <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
     {tabsVariants.map((variant, id) => (
       <Template variant={variant} key={id} />
     ))}
   </VStack>
 );
-export const All = AllTemplate.bind({});
 
 const Template = (args) => (
   <Tabs {...args}>

@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react';
 import { PinInput } from './PinInput';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { pinInputSizes, pinInputVariants } from './types';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: PinInput,
@@ -17,6 +18,7 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('pinInput'),
 } as Meta;
 
 const states = ['default', 'filled', 'error', 'disabled', 'disabled-and-filled'];

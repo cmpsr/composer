@@ -4,6 +4,7 @@ import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Input } from '.';
 import { inputSizes, inputVariants } from './types';
 import { IconCloud } from '../Icons';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Input,
@@ -24,9 +25,10 @@ export default {
       type: { name: 'string', required: false },
     },
   },
+  parameters: getFigmaDesignLink('input'),
 } as Meta;
 
-const AllTemplate = () => {
+export const All = () => {
   const states = {
     outline: [
       'default',
@@ -164,8 +166,6 @@ const AllTemplate = () => {
     </Table>
   );
 };
-
-export const All = AllTemplate.bind({});
 
 const Template = ({ showLeadingIcon, ...args }) => (
   <Input

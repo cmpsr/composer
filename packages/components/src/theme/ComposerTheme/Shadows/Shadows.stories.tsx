@@ -3,9 +3,11 @@ import { Meta } from '@storybook/react';
 import { Table, Thead, Tbody, Tr, Th, Td, Box, Flex } from '@chakra-ui/react';
 
 import { defaultShadows } from '.';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   title: 'Theme/Shadows',
+  parameters: getFigmaDesignLink('shadows'),
 } as Meta;
 
 export const Shadows = () => {

@@ -3,9 +3,11 @@ import { Meta } from '@storybook/react';
 import { Table, Thead, Tbody, Tr, Th, Td, Box, Flex } from '@chakra-ui/react';
 
 import { defaultSpacing } from '.';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   title: 'Theme/Spacing',
+  parameters: getFigmaDesignLink('spacing'),
 } as Meta;
 
 export const Spacing = () => {
@@ -22,12 +24,7 @@ export const Spacing = () => {
           <Tr key={key}>
             <Td>
               <Flex alignItems="center">
-                <Box
-                  width={value}
-                  height="16px"
-                  bgColor="text-link-primary-hover"
-                  mr="spacer-3"
-                />
+                <Box width={value} height="16px" bgColor="text-link-primary-hover" mr="spacer-3" />
                 <Box
                   backgroundColor="text-primary"
                   color="white"

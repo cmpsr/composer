@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react';
 import { InlineAlert } from './InlineAlert';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { alertStatuses } from '@components/notifications';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: InlineAlert,
@@ -13,6 +14,7 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('inlineAlert'),
 } as Meta;
 
 export const All = () => (

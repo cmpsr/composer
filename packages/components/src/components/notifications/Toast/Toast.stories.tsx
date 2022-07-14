@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Meta } from '@storybook/react';
 import { alertStatuses, alertVariants, Button, useToast, UseToastOptions } from '@components';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   title: 'Components/Notifications/Toast',
@@ -28,6 +29,7 @@ export default {
   },
   parameters: {
     chromatic: { delay: 300 },
+    ...getFigmaDesignLink('toast'),
   },
   decorators: [
     (Story) => (

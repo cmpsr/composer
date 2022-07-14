@@ -3,10 +3,12 @@ import { Meta } from '@storybook/react';
 import { Accordion } from './Accordion';
 import { Text, TextPairing, Avatar } from '..';
 import { Box, Flex } from '../../layouts';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Accordion,
   title: 'Components/Primitives/Accordion',
+  parameters: getFigmaDesignLink('accordion'),
 } as Meta;
 
 const AVATAR_URL = 'https://avatars0.githubusercontent.com/u/67131017?s=200';
@@ -20,7 +22,7 @@ const AccordionPanel = () =>
     </Accordion.Panel>
   ) as JSX.Element;
 
-const WithImageAndTextPairingTemplate = (args) => (
+export const WithImageAndTextPairing = (args) => (
   <Accordion {...args}>
     <Accordion.Item>
       <Accordion.Button>
@@ -51,9 +53,7 @@ const WithImageAndTextPairingTemplate = (args) => (
   </Accordion>
 );
 
-export const WithImageAndTextPairing = WithImageAndTextPairingTemplate.bind({});
-
-const BgButtonHighlight = (args) => (
+export const BackgroundHighlight = (args) => (
   <Accordion {...args}>
     <Accordion.Item>
       <Accordion.Button highlight>
@@ -75,8 +75,6 @@ const BgButtonHighlight = (args) => (
     </Accordion.Item>
   </Accordion>
 );
-
-export const BackgroundHighlight = BgButtonHighlight.bind({});
 
 const Template = (args) => (
   <Accordion>

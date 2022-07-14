@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Box, Button, Tooltip, TooltipProps } from '@components';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 const sides = ['auto', 'top', 'bottom', 'left', 'right'];
 const positions = ['', '-start', '-end'];
@@ -18,6 +19,7 @@ export default {
       defaultValue: placements[0],
     },
   },
+  parameters: getFigmaDesignLink('tooltip'),
 } as Meta;
 
 export const All = () => (

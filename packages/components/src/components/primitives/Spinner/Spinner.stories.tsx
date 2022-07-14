@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react';
 import { Spinner } from './Spinner';
 import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
 import { spinnerSizes, spinnerVariants } from './types';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Spinner,
@@ -13,9 +14,10 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('spinner'),
 } as Meta;
 
-const AllTemplate = () => (
+export const All = () => (
   <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
     {spinnerVariants.map((variant) => (
       <VStack key={variant}>
@@ -33,8 +35,6 @@ const AllTemplate = () => (
     ))}
   </VStack>
 );
-
-export const All = AllTemplate.bind({});
 
 const Template = (args) => <Spinner {...args}></Spinner>;
 export const Playground = Template.bind({});

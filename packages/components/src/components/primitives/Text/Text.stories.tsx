@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Text, textVariants } from '.';
 import { Box, Flex, Spacer, Stack, StackDivider } from '@chakra-ui/layout';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Text,
@@ -12,9 +13,10 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('text'),
 } as Meta;
 
-const AllTemplate = ({ text }: { text: string }) => (
+export const All = ({ text }: { text: string }) => (
   <Stack spacing="2rem" py="2rem" divider={<StackDivider borderColor="#888" />}>
     {textVariants.map((variant) => (
       <Flex key={variant} px="1rem">
@@ -30,12 +32,11 @@ const AllTemplate = ({ text }: { text: string }) => (
   </Stack>
 );
 
-export const All = AllTemplate.bind({});
 All.args = {
   text: 'Composer rocks!',
 };
 
-const ResponsiveTemplate = (args) => (
+export const ResponsiveVariant = (args) => (
   <Box py="2rem">
     <Text
       {...args}
@@ -47,7 +48,6 @@ const ResponsiveTemplate = (args) => (
     />
   </Box>
 );
-export const ResponsiveVariant = ResponsiveTemplate.bind({});
 ResponsiveVariant.args = {
   children: 'Composer rocks!',
 };

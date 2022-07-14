@@ -4,6 +4,7 @@ import { Select } from '.';
 import { iconSizes, selectSizes } from './types';
 import { StackDivider, VStack } from '@chakra-ui/react';
 import { Text } from '..';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Select,
@@ -21,6 +22,7 @@ export default {
       control: { type: 'boolean' },
     },
   },
+  parameters: getFigmaDesignLink('select'),
 } as Meta;
 
 const sizeLabels = {
@@ -29,7 +31,7 @@ const sizeLabels = {
   l: 'Large',
 };
 
-const AllTemplate = () => {
+export const All = () => {
   const [values, setValues] = React.useState({});
 
   return (
@@ -92,8 +94,6 @@ const AllTemplate = () => {
     </VStack>
   );
 };
-
-export const All = AllTemplate.bind({});
 
 const Template = (args) => (
   <Select {...args}>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { ProgressCircular } from './ProgressCircular';
 import { HStack, Text, VStack } from '@chakra-ui/react';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: ProgressCircular,
@@ -17,9 +18,10 @@ export default {
       control: { type: 'number' },
     },
   },
+  parameters: getFigmaDesignLink('progressCircular'),
 } as Meta;
 
-const AllTemplate = () => (
+export const All = () => (
   <VStack>
     <HStack>
       <Text>Default</Text>
@@ -31,8 +33,6 @@ const AllTemplate = () => (
     </HStack>
   </VStack>
 );
-
-export const All = AllTemplate.bind({});
 
 const Template = (args) => <ProgressCircular {...args} />;
 

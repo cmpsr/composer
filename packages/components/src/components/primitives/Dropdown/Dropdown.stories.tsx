@@ -1,10 +1,12 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Dropdown } from '.';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Dropdown,
   title: 'Components/Primitives/Dropdown',
+  parameters: getFigmaDesignLink('dropdown'),
 } as Meta;
 
 const PlaygroundItems = ({ showDivider }) => (

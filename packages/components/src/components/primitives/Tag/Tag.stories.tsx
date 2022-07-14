@@ -4,6 +4,7 @@ import { Tag } from './Tag';
 import { IconAlertCircle } from '@components';
 import { tagSizes } from './types';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Tag,
@@ -18,6 +19,7 @@ export default {
       control: { type: 'radio' },
     },
   },
+  parameters: getFigmaDesignLink('tag'),
 } as Meta;
 
 export const All = () => (

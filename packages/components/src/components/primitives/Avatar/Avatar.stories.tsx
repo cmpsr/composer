@@ -2,24 +2,25 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Avatar, AvatarProps, avatarSizes } from '.';
 import { Box, Flex } from '@components';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Avatar,
   title: 'Components/Primitives/Avatar',
+  parameters: getFigmaDesignLink('avatar'),
 } as Meta;
 
 const AVATAR_URL = 'https://avatars0.githubusercontent.com/u/67131017?s=200';
 
-const WithoutImageTemplate = () => (
+export const WithoutImage = () => (
   <Flex>
     {avatarSizes.map((size) => (
       <Avatar name="Composer Logo" key={size} size={size} marginRight="spacer-4" />
     ))}
   </Flex>
 );
-export const WithoutImage = WithoutImageTemplate.bind({});
 
-const WithBadgeTemplate = () => (
+export const WithBadge = () => (
   <Flex direction="column">
     {avatarSizes.map((size) => (
       <Flex marginBottom="spacer-4" key={size}>
@@ -33,7 +34,6 @@ const WithBadgeTemplate = () => (
     ))}
   </Flex>
 );
-export const WithBadge = WithBadgeTemplate.bind({});
 
 const Template = (args: AvatarProps) => <Avatar {...args} />;
 export const Playground = Template.bind({});

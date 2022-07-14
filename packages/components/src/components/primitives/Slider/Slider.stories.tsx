@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Meta } from '@storybook/react';
 import { VStack, StackDivider, HStack } from '@chakra-ui/layout';
 import { Slider, SliderProps, Text } from '@components';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 const orientations = ['horizontal', 'vertical'];
 
@@ -14,6 +15,7 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('slider'),
 } as Meta;
 
 const values = [0, 20, 40, 60, 80, 100];
@@ -82,6 +84,7 @@ export const WithCustomThumb = ({ boxSize }) => {
     </Slider>
   );
 };
+
 WithCustomThumb.args = {
   boxSize: '3rem',
 };

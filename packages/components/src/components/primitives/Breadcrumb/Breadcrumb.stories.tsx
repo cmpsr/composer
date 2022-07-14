@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Breadcrumb } from './Breadcrumb';
 import { Flex, IconCheck, IconWorld } from '@components';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Breadcrumb,
@@ -12,6 +13,7 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('breadCrumb'),
 } as Meta;
 
 export const All = () => {

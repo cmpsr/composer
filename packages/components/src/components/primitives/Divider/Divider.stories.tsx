@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react';
 import { VStack } from '@chakra-ui/react';
 import { Divider } from '.';
 import { Flex, Text } from '@components';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 const dividerOrientations = ['horizontal', 'vertical'];
 
@@ -15,9 +16,10 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('divider'),
 } as Meta;
 
-export const AllTemplate = () => (
+export const All = () => (
   <VStack spacing={4}>
     {dividerOrientations.map((orientation) => (
       <Flex key={orientation} width="full" flexDirection="column" alignItems="center">

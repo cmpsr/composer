@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 import { Alert, alertStatuses, alertVariants } from '.';
 import { Flex } from '@components';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Alert,
@@ -21,9 +22,10 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('alert'),
 } as Meta;
 
-const AllTemplate = () => {
+export const All = () => {
   return (
     <Table variant="simple">
       <Thead>
@@ -92,7 +94,6 @@ const AllTemplate = () => {
     </Table>
   );
 };
-export const All = AllTemplate.bind({});
 
 const Template = ({ titleAlignment, showDescription, showTitle, showClose, variant, status }) => (
   <Alert variant={variant} status={status}>

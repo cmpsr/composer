@@ -4,6 +4,7 @@ import { Radio } from './Radio';
 import { RadioGroup as ChakraRadioGroup, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Stack } from '@chakra-ui/layout';
 import { radioSizes } from './types';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Radio,
@@ -14,6 +15,7 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('radio'),
 } as Meta;
 
 const states = ['default', 'error', 'disabled', 'disabled-and-checked'];

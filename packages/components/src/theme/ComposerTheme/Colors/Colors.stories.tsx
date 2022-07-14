@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { defaultColors } from '.';
 import { Center, Grid, Flex, Heading, Square, Box } from '@chakra-ui/react';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 interface Props {
   token: string;
@@ -11,13 +12,7 @@ interface Props {
 
 const Component = ({ token, color, borderColor }: Props) => (
   <Flex>
-    <Square
-      bg={color}
-      size="60px"
-      borderColor={borderColor}
-      borderWidth={2}
-      borderRadius="radii-1"
-    />
+    <Square bg={color} size="60px" borderColor={borderColor} borderWidth={2} borderRadius="radii-1" />
     <Center px="1rem">
       <Flex direction="column">
         <Heading size="md" color="text-primary">
@@ -42,6 +37,7 @@ const Component = ({ token, color, borderColor }: Props) => (
 export default {
   component: Component,
   title: 'Theme/Colors',
+  parameters: getFigmaDesignLink('colors'),
 } as Meta;
 
 const Template = ({ borderColor }: { borderColor: string }) => {
@@ -67,12 +63,7 @@ const Template = ({ borderColor }: { borderColor: string }) => {
             <Heading color="text-primary">{category.toUpperCase()}</Heading>
             <Grid padding="1rem" templateColumns="repeat(2, 1fr)" gap={6}>
               {categorizedColor[category].map(({ token, color }) => (
-                <Component
-                  key={token}
-                  token={token}
-                  color={color}
-                  borderColor={borderColor}
-                />
+                <Component key={token} token={token} color={color} borderColor={borderColor} />
               ))}
             </Grid>
           </Box>

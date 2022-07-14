@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react';
 import { Textarea } from './Textarea';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { textareaSizes, textareaVariants } from './types';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Textarea,
@@ -17,11 +18,12 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: getFigmaDesignLink('textarea'),
 } as Meta;
 
 const states = ['default', 'filled', 'error', 'disabled', 'disabled-and-filled'];
 
-const AllTemplate = () => (
+export const All = () => (
   <Table variant="simple">
     <Thead>
       <Tr>
@@ -61,8 +63,6 @@ const AllTemplate = () => (
     </Tbody>
   </Table>
 );
-
-export const All = AllTemplate.bind({});
 
 const Template = (args) => <Textarea {...args} />;
 export const Playground = Template.bind({});

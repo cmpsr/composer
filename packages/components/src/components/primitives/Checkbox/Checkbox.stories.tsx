@@ -4,10 +4,12 @@ import { Checkbox, CheckboxProps } from '.';
 import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
 import { CheckboxSizes } from './types';
 import { Text } from '..';
+import { getFigmaDesignLink } from '@components/figmaLinks';
 
 export default {
   component: Checkbox,
   title: 'Components/Primitives/Checkbox',
+  parameters: getFigmaDesignLink('checkbox'),
 } as Meta;
 
 const sizeLabels = {
@@ -16,7 +18,7 @@ const sizeLabels = {
   l: 'Large',
 };
 
-const AllTemplate = () => {
+export const All = () => {
   const values = [
     { label: 'Default' },
     { label: 'Disabled', props: { isDisabled: true } },
@@ -53,7 +55,6 @@ const AllTemplate = () => {
     </VStack>
   );
 };
-export const All = AllTemplate.bind({});
 
 const Template = (args: CheckboxProps) => <Checkbox {...args}></Checkbox>;
 export const Playground = Template.bind({});

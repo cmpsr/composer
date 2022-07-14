@@ -57,8 +57,6 @@ export const All = () => (
   </Table>
 );
 
-All.parameters = FIGMA_LINK;
-
 export const AllVariants = () => (
   <Table variant="simple">
     <Thead>

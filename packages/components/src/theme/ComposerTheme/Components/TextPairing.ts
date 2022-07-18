@@ -12,7 +12,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '1.25rem',
+          base: '1.25rem',
           md: '1rem',
         },
       },
@@ -26,7 +26,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '1rem',
+          base: '1rem',
           md: '1rem',
         },
       },
@@ -40,7 +40,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.75rem',
+          base: '0.75rem',
           md: '1rem',
         },
       },
@@ -54,7 +54,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.5rem',
+          base: '0.5rem',
           md: '0.5rem',
         },
       },
@@ -68,7 +68,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.25rem',
+          base: '0.25rem',
           md: '0.5rem',
         },
       },
@@ -82,7 +82,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.25rem',
+          base: '0.25rem',
           md: '0.25rem',
         },
       },
@@ -96,7 +96,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '1rem',
+          base: '1rem',
           md: '1rem',
         },
       },
@@ -110,7 +110,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.75rem',
+          base: '0.75rem',
           md: '0.75rem',
         },
       },
@@ -124,7 +124,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.75rem',
+          base: '0.75rem',
           md: '0.75rem',
         },
       },
@@ -138,7 +138,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.5rem',
+          base: '0.5rem',
           md: '0.5rem',
         },
       },
@@ -152,7 +152,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.5rem',
+          base: '0.5rem',
           md: '0.5rem',
         },
       },
@@ -166,7 +166,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.25rem',
+          base: '0.25rem',
           md: '0.25rem',
         },
       },
@@ -180,7 +180,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.25rem',
+          base: '0.25rem',
           md: '0.25rem',
         },
       },
@@ -194,7 +194,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.25rem',
+          base: '0.25rem',
           md: '0.25rem',
         },
       },
@@ -208,7 +208,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.25rem',
+          base: '0.25rem',
           md: '0.25rem',
         },
       },
@@ -222,7 +222,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.25rem',
+          base: '0.25rem',
           md: '0.25rem',
         },
       },
@@ -236,7 +236,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.125rem',
+          base: '0.125rem',
           md: '0.125rem',
         },
       },
@@ -250,7 +250,7 @@ export const TextPairing: ComponentStyleConfig = {
       },
       container: {
         gap: {
-          sm: '0.125rem',
+          base: '0.125rem',
           md: '0.125rem',
         },
       },

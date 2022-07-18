@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 14.4.5
+
+### Patch Changes
+
+- 671520d: fix: package release
+
 ## 14.4.4
 
 ### Patch Changes

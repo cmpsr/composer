@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 14.4.4
+
+### Patch Changes
+
+- 63234fb: feat: mark client package as public
+
 ## 14.4.3
 
 ## 14.4.2

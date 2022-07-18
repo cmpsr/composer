@@ -15,7 +15,7 @@
     "test:coverage": "turbo run test:coverage",
     "lint": "eslint . --ext .tsx,.ts,.js",
     "lint-and-fix": "eslint . --ext .tsx,.ts,.js --fix",
-    "publish-ci": "turbo run libbuild && turbo run type:emit && changeset publish",
+    "publish-ci": "turbo run libbuild && turbo run type:emit && lerna publish from-package -y --no-verify-access",
     "storybook": "turbo run storybook"
   },
   "private": true,

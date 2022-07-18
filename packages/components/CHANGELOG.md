@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 4.3.0
+
+### Minor Changes
+
+- a3aec10: feat: apply column gap in TextPairing from base breakpoint
+
 ## 4.2.0
 
 ### Minor Changes

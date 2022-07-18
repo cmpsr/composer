@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 14.4.6
+
+### Patch Changes
+
+- 491c2d8: set nextjs-contentful-renderer as public
+
 ## 14.4.5
 
 ### Patch Changes

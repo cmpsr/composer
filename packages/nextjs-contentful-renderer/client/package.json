@@ -1,5 +1,6 @@
 {
   "type": "commonjs",
   "main": "./index.js",
-  "types": "./index.d.ts"
+  "types": "./index.d.ts",
+  "private": false
 }

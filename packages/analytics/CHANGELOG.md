@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.28
+
+### Patch Changes
+
+- ea10a7d: update dependecies to latest version in @cmpsr/analytics project
+
 ## 0.0.27
 
 ### Patch Changes

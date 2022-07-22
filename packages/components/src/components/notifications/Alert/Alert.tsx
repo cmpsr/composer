@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { AlertProps, AlertStaticMembers, AlertStyles } from './types';
-import { Alert as ChakraAlert, AlertDescription, AlertTitle, useMultiStyleConfig } from '@chakra-ui/react';
+import { AlertProps, AlertStaticMembers, AlertIconStyles, AlertIconProps } from './types';
+import { Alert as ChakraAlert, AlertDescription, AlertTitle, useStyles } from '@chakra-ui/react';
 import {
   CloseButton,
   IconAlertCircle,
@@ -18,16 +18,22 @@ export const ALERT_ICONS = {
 };
 
 export const Alert: FC<AlertProps> & AlertStaticMembers = ({ status = 'info', children, variant, ...props }) => {
-  const { icon } = useMultiStyleConfig('Alert', { variant, status }) as AlertStyles;
-
-  const BaseIcon = ALERT_ICONS[status];
-
   return (
     <ChakraAlert status={status} variant={variant} {...props}>
-      <BaseIcon data-testid="cmpsr.alert.icon" size="l" {...icon} color={icon.status[status]?.color} />
-      {children}
+      {React.Children.map(children, (child) => {
+        if (React.isValidElement(child) && child.type === Alert.Icon) {
+          return React.cloneElement(child, { status });
+        } else return child;
+      })}
     </ChakraAlert>
   );
+};
+
+const Icon = ({ status }: AlertIconProps) => {
+  const { icon } = useStyles() as AlertIconStyles;
+  const BaseIcon = ALERT_ICONS[status];
+
+  return <BaseIcon data-testid="cmpsr.alert.icon" size="l" {...icon} color={icon.status[status]?.color} />;
 };
 
 const AlertCloseButton: FC<CloseButtonProps> = (props) => (
@@ -37,3 +43,4 @@ const AlertCloseButton: FC<CloseButtonProps> = (props) => (
 Alert.Title = AlertTitle;
 Alert.Description = AlertDescription;
 Alert.CloseButton = AlertCloseButton;
+Alert.Icon = Icon;

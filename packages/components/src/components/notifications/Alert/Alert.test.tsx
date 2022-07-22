@@ -7,7 +7,9 @@ describe('Alert', () => {
   test('should reflect the correct status (solid)', () => {
     const alertInstance = TestRenderer.create(
       <ComposerProvider>
-        <Alert status="success" />
+        <Alert status="success">
+          <Alert.Icon />
+        </Alert>
       </ComposerProvider>
     ).root;
 
@@ -17,7 +19,9 @@ describe('Alert', () => {
   test('should reflect the correct status (subtle)', () => {
     const alertInstance = TestRenderer.create(
       <ComposerProvider>
-        <Alert variant="subtle" status="error" />
+        <Alert variant="subtle" status="error">
+          <Alert.Icon />
+        </Alert>
       </ComposerProvider>
     ).root;
 

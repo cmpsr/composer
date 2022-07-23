@@ -61,6 +61,7 @@ export const CookieBanner: FC<CookieBannerProps> = ({
       {...rest}
     >
       <Alert variant="subtle" pt="0" pr={{ base: '0', lg: '2rem' }} pb={{ base: '2rem', lg: '0' }}>
+        <Alert.Icon />
         <Alert.Description>{child}</Alert.Description>
       </Alert>
       <Flex justifyContent="center" alignItems="center" direction={{ base: 'column', lg: 'row' }} gap="1.5rem">

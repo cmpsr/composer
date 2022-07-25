@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Link, textVariants } from '@cmpsr/components';
+import { textVariants } from '@cmpsr/components';
 
 import { Testimonial } from './Testimonial';
 
@@ -17,7 +17,7 @@ export default {
 
 export const WithLegend = () => (
   <Testimonial>
-    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
+    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" />
     <Testimonial.Content>
       <Testimonial.Legend>The universe</Testimonial.Legend>
       <Testimonial.Testimony variant="text-body-display-M">
@@ -31,7 +31,7 @@ export const WithLegend = () => (
 
 export const WithAssociation = () => (
   <Testimonial>
-    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
+    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" />
     <Testimonial.Content>
       <Testimonial.Testimony variant="text-body-display-M">
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
@@ -47,16 +47,14 @@ export const WithAssociation = () => (
 
 export const WithLink = () => (
   <Testimonial>
-    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
+    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" />
     <Testimonial.Content>
       <Testimonial.Testimony variant="text-body-display-M">
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
         three ways we could find it.
       </Testimonial.Testimony>
       <Testimonial.Author>John Doe</Testimonial.Author>
-      <Link target="_blank" size="s" href="#">
-        Read more
-      </Link>
+      <Testimonial.Link href="#">Read more</Testimonial.Link>
     </Testimonial.Content>
   </Testimonial>
 );
@@ -71,7 +69,7 @@ const Template = ({ backgroundColor, imageUrl, testimony, testimonyTextVariant, 
         {name}
         {association && <Testimonial.Author.Association>{association}</Testimonial.Author.Association>}
       </Testimonial.Author>
-      {link && <Link target="_blank" size="s" {...link} />}
+      {link && <Testimonial.Link target="_blank" size="s" href="#" {...link} />}
     </Testimonial.Content>
   </Testimonial>
 );
@@ -79,7 +77,7 @@ const Template = ({ backgroundColor, imageUrl, testimony, testimonyTextVariant, 
 export const Playground = Template.bind({});
 Playground.args = {
   backgroundColor: 'background-page',
-  imageUrl: 'https://avatars0.githubusercontent.com/u/67131017?s=200',
+  imageUrl: 'https://avatars0.githubusercontent.com/u/67131017?s=500',
   testimony:
     'We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it.',
   testimonyTextVariant: 'text-body-display-M',

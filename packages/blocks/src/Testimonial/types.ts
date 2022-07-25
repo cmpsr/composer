@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { FlexProps, ImageProps, TextProps } from '@cmpsr/components';
+import { FlexProps, ImageProps, LinkProps, TextProps } from '@cmpsr/components';
 export { FlexProps as TestimonialProps } from '@cmpsr/components';
 
 export interface TestimonialAuthorStaticMembers {
@@ -12,4 +12,5 @@ export interface TestimonialStaticMembers {
   Legend: FC<TextProps>;
   Testimony: FC<TextProps>;
   Author: FC<TextProps> & TestimonialAuthorStaticMembers;
+  Link: FC<LinkProps>;
 }

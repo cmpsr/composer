@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from '@cmpsr/components';
 import { screen, renderWithProviders } from '@tests/renderWithProviders';
 
 import { Testimonial } from './Testimonial';
@@ -20,7 +19,7 @@ describe('Testimonial', () => {
   test('should render image', () => {
     renderWithProviders(
       <Testimonial>
-        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
+        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
       </Testimonial>
     );
     screen.getByRole('img');
@@ -28,7 +27,7 @@ describe('Testimonial', () => {
   test('should render legend', () => {
     renderWithProviders(
       <Testimonial>
-        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
+        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
         <Testimonial.Content>
           <Testimonial.Legend>legend</Testimonial.Legend>
           <Testimonial.Testimony>testimony</Testimonial.Testimony>
@@ -41,7 +40,7 @@ describe('Testimonial', () => {
   test('should render testimony', () => {
     renderWithProviders(
       <Testimonial>
-        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
+        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
         <Testimonial.Content>
           <Testimonial.Legend>legend</Testimonial.Legend>
           <Testimonial.Testimony>testimony</Testimonial.Testimony>
@@ -54,7 +53,7 @@ describe('Testimonial', () => {
   test('should render name and association', () => {
     renderWithProviders(
       <Testimonial>
-        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
+        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
         <Testimonial.Content>
           <Testimonial.Testimony>testimony</Testimonial.Testimony>
           <Testimonial.Author>
@@ -70,13 +69,11 @@ describe('Testimonial', () => {
   test('should render link', () => {
     renderWithProviders(
       <Testimonial>
-        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
+        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
         <Testimonial.Content>
           <Testimonial.Testimony>testimony</Testimonial.Testimony>
           <Testimonial.Author>name</Testimonial.Author>
-          <Link target="_blank" size="s" href="#">
-            linking
-          </Link>
+          <Testimonial.Link href="#">linking</Testimonial.Link>
         </Testimonial.Content>
       </Testimonial>
     );

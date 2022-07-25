@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Flex, Image, ImageProps, FlexProps, Text, TextProps, Divider } from '@cmpsr/components';
+import { Flex, Image, ImageProps, FlexProps, Text, TextProps, Divider, LinkProps, Link } from '@cmpsr/components';
 
 import { TestimonialAuthorStaticMembers, TestimonialProps, TestimonialStaticMembers } from './types';
 
@@ -23,7 +23,7 @@ const TestimonialImage: FC<ImageProps> = (props) => (
   <Image
     alt="testimony image"
     maxWidth={{ md: '34.75rem', lg: '19.6875rem', xl: '31.25rem' }}
-    width={{ base: '100%' }}
+    width="100%"
     borderRadius="0.375rem"
     alignSelf={{ md: 'center' }}
     {...props}
@@ -32,12 +32,7 @@ const TestimonialImage: FC<ImageProps> = (props) => (
 Testimonial.Image = TestimonialImage;
 
 const FlexContent: FC<FlexProps> = (props) => (
-  <Flex
-    gap={{ base: '1.5rem' }}
-    flexDirection="column"
-    maxWidth={{ lg: '36.8125rem', xl: '33.5rem', xxl: '43.5rem' }}
-    {...props}
-  />
+  <Flex gap="1.5rem" flexDirection="column" maxWidth={{ lg: '36.8125rem', xl: '33.5rem', xxl: '43.5rem' }} {...props} />
 );
 Testimonial.Content = FlexContent;
 
@@ -55,13 +50,13 @@ const TestimonialTestimony: FC<TextProps> = (props) => (
 Testimonial.Testimony = TestimonialTestimony;
 
 const TestimonialAuthorAssociation: FC<TextProps> = (props) => (
-  <Flex gap={{ base: '0.5rem' }}>
+  <Flex gap="0.5rem">
     <Divider orientation="vertical" />
     <Text variant="text-body-regular" color="text-secondary" {...props} />
   </Flex>
 );
 const TestimonialAuthor: FC<TextProps> & TestimonialAuthorStaticMembers = ({ children, ...props }) => (
-  <Flex gap={{ base: '0.5rem' }} flexWrap="wrap">
+  <Flex gap="0.5rem" flexWrap="wrap">
     {React.Children.map(children, (child) =>
       typeof child === 'string' ? <Text variant="text-body-medium" {...props} children={child} /> : child
     )}
@@ -69,3 +64,6 @@ const TestimonialAuthor: FC<TextProps> & TestimonialAuthorStaticMembers = ({ chi
 );
 TestimonialAuthor.Association = TestimonialAuthorAssociation;
 Testimonial.Author = TestimonialAuthor;
+
+const TestimonialLink: FC<LinkProps> = (props) => <Link target="_blank" size="s" {...props} />;
+Testimonial.Link = TestimonialLink;

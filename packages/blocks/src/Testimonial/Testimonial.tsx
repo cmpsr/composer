@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Flex, Image, ImageProps, FlexProps, Text, TextProps, Divider } from '@cmpsr/components';
 
-import { TestimonialProps, TestimonialStaticMembers } from './types';
+import { TestimonialAuthorStaticMembers, TestimonialProps, TestimonialStaticMembers } from './types';
 
 export const Testimonial: FC<TestimonialProps> & TestimonialStaticMembers = ({
   backgroundColor = 'background-page',
@@ -48,3 +48,19 @@ const TestimonialLegend: FC<TextProps> = (props) => (
   </Flex>
 );
 Testimonial.Legend = TestimonialLegend;
+
+const TestimonialAuthorAssociation: FC<TextProps> = (props) => (
+  <Flex gap={{ base: '0.5rem' }}>
+    <Divider orientation="vertical" />
+    <Text variant="text-body-regular" color="text-secondary" {...props} />
+  </Flex>
+);
+const TestimonialAuthor: FC<TextProps> & TestimonialAuthorStaticMembers = ({ children, ...props }) => (
+  <Flex gap={{ base: '0.5rem' }} flexWrap="wrap">
+    {React.Children.map(children, (child) =>
+      typeof child === 'string' ? <Text variant="text-body-medium" {...props} children={child} /> : child
+    )}
+  </Flex>
+);
+TestimonialAuthor.Association = TestimonialAuthorAssociation;
+Testimonial.Author = TestimonialAuthor;

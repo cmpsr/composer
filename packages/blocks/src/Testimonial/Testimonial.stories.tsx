@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Divider, Flex, Link, Text } from '@cmpsr/components';
+import { Link, Text } from '@cmpsr/components';
 
 import { Testimonial } from './Testimonial';
 
@@ -18,9 +18,7 @@ export const WithLegend = () => (
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
         three ways we could find it.
       </Text>
-      <Flex gap={{ base: '0.5rem' }} flexWrap="wrap">
-        <Text variant="text-body-medium">John Doe</Text>
-      </Flex>
+      <Testimonial.Author>John Doe</Testimonial.Author>
     </Testimonial.Content>
   </Testimonial>
 );
@@ -33,15 +31,10 @@ export const WithAssociation = () => (
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
         three ways we could find it.
       </Text>
-      <Flex gap={{ base: '0.5rem' }} flexWrap="wrap">
-        <Text variant="text-body-medium">John Doe</Text>
-        <Flex gap={{ base: '0.5rem' }}>
-          <Divider orientation="vertical" />
-          <Text variant="text-body-regular" color="text-secondary">
-            Composer Studio
-          </Text>
-        </Flex>
-      </Flex>
+      <Testimonial.Author>
+        John Doe
+        <Testimonial.Author.Association>Composer Studio</Testimonial.Author.Association>
+      </Testimonial.Author>
     </Testimonial.Content>
   </Testimonial>
 );
@@ -54,9 +47,7 @@ export const WithLink = () => (
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
         three ways we could find it.
       </Text>
-      <Flex gap={{ base: '0.5rem' }} flexWrap="wrap">
-        <Text variant="text-body-medium">John Doe</Text>
-      </Flex>
+      <Testimonial.Author>John Doe</Testimonial.Author>
       <Link target="_blank" size="s" href="#">
         Read more
       </Link>
@@ -68,28 +59,14 @@ const Template = ({ backgroundColor, imageUrl, testimony, testimonyTextVariant, 
   <Testimonial backgroundColor={backgroundColor}>
     <Testimonial.Image src={imageUrl} />
     <Testimonial.Content>
-      {legend && (
-        <Flex flexDirection="column" gap="0.75rem" alignSelf="start">
-          <Text as="h3" variant={{ base: 'text-header-S', lg: 'text-header-XS' }}>
-            {legend}
-          </Text>
-          <Divider />
-        </Flex>
-      )}
+      {legend && <Testimonial.Legend>{legend}</Testimonial.Legend>}
       <Text variant={testimonyTextVariant ?? { base: 'text-body-display-M', lg: 'text-body-display-L' }}>
         {testimony}
       </Text>
-      <Flex gap={{ base: '0.5rem' }} flexWrap="wrap">
-        <Text variant="text-body-medium">{name}</Text>
-        {association && (
-          <Flex gap={{ base: '0.5rem' }}>
-            <Divider orientation="vertical" />
-            <Text variant="text-body-regular" color="text-secondary">
-              {association}
-            </Text>
-          </Flex>
-        )}
-      </Flex>
+      <Testimonial.Author>
+        {name}
+        {association && <Testimonial.Author.Association>{association}</Testimonial.Author.Association>}
+      </Testimonial.Author>
       {link && <Link target="_blank" size="s" {...link} />}
     </Testimonial.Content>
   </Testimonial>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Flex, Link, Text } from '@cmpsr/components';
+import { Link, Text } from '@cmpsr/components';
 import { screen, renderWithProviders } from '@tests/renderWithProviders';
 
 import { Testimonial } from './Testimonial';
@@ -25,48 +25,42 @@ describe('Testimonial', () => {
     );
     screen.getByRole('img');
   });
-  test('should render legend when provided', () => {
+  test('should render legend', () => {
     renderWithProviders(
       <Testimonial>
         <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         <Testimonial.Content>
           <Testimonial.Legend>legend</Testimonial.Legend>
           <Text variant="text-body-display-M">testimony</Text>
-          <Flex gap={{ base: '0.5rem' }} flexWrap="wrap">
-            <Text variant="text-body-medium">Name</Text>
-          </Flex>
+          <Testimonial.Author>name</Testimonial.Author>
         </Testimonial.Content>
       </Testimonial>
     );
     screen.getByRole('heading', { name: 'legend', level: 3 });
   });
-  test('should render association when provided', () => {
+  test('should render name and association', () => {
     renderWithProviders(
       <Testimonial>
         <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         <Testimonial.Content>
           <Text variant="text-body-display-M">testimony</Text>
-          <Flex gap={{ base: '0.5rem' }} flexWrap="wrap">
-            <Text variant="text-body-medium">John Doe</Text>
-            <Flex gap={{ base: '0.5rem' }}>
-              <Divider orientation="vertical" />
-              <Text color="text-secondary">association</Text>
-            </Flex>
-          </Flex>
+          <Testimonial.Author>
+            name
+            <Testimonial.Author.Association>association</Testimonial.Author.Association>
+          </Testimonial.Author>
         </Testimonial.Content>
       </Testimonial>
     );
+    screen.getByText('name');
     screen.getByText('association');
   });
-  test('should render link when provided', () => {
+  test('should render link', () => {
     renderWithProviders(
       <Testimonial>
         <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         <Testimonial.Content>
           <Text variant="text-body-display-M">testimony</Text>
-          <Flex gap={{ base: '0.5rem' }} flexWrap="wrap">
-            <Text variant="text-body-medium">John Doe</Text>
-          </Flex>
+          <Testimonial.Author>name</Testimonial.Author>
           <Link target="_blank" size="s" href="#">
             linking
           </Link>

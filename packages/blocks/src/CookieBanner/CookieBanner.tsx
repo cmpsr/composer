@@ -55,7 +55,7 @@ export const CookieBanner: FC<CookieBannerProps> = ({
     <Flex
       direction={{ base: 'column', lg: 'row' }}
       alignItems="center"
-      bg="background-info"
+      bg="background-inform"
       pr="1rem"
       py="1.5rem"
       {...rest}

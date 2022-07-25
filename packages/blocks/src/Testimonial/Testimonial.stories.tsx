@@ -13,12 +13,7 @@ export const WithLegend = () => (
   <Testimonial>
     <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
     <Testimonial.Content>
-      <Flex flexDirection="column" gap="0.75rem" alignSelf="start">
-        <Text as="h3" variant={{ base: 'text-header-S', lg: 'text-header-XS' }}>
-          The universe
-        </Text>
-        <Divider />
-      </Flex>
+      <Testimonial.Legend>The universe</Testimonial.Legend>
       <Text variant="text-body-display-M">
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
         three ways we could find it.

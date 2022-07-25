@@ -30,12 +30,7 @@ describe('Testimonial', () => {
       <Testimonial>
         <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         <Testimonial.Content>
-          <Flex flexDirection="column" gap="0.75rem" alignSelf="start">
-            <Text as="h3" variant={{ base: 'text-header-S', lg: 'text-header-XS' }}>
-              legend
-            </Text>
-            <Divider />
-          </Flex>
+          <Testimonial.Legend>legend</Testimonial.Legend>
           <Text variant="text-body-display-M">testimony</Text>
           <Flex gap={{ base: '0.5rem' }} flexWrap="wrap">
             <Text variant="text-body-medium">Name</Text>
@@ -43,7 +38,7 @@ describe('Testimonial', () => {
         </Testimonial.Content>
       </Testimonial>
     );
-    screen.getByText('legend');
+    screen.getByRole('heading', { name: 'legend', level: 3 });
   });
   test('should render association when provided', () => {
     renderWithProviders(

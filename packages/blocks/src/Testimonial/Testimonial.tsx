@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Flex, Image, ImageProps, FlexProps } from '@cmpsr/components';
+import { Flex, Image, ImageProps, FlexProps, Text, TextProps, Divider } from '@cmpsr/components';
 
 import { TestimonialProps, TestimonialStaticMembers } from './types';
 
@@ -40,3 +40,11 @@ const FlexContent: FC<FlexProps> = (props) => (
   />
 );
 Testimonial.Content = FlexContent;
+
+const TestimonialLegend: FC<TextProps> = (props) => (
+  <Flex flexDirection="column" gap="0.75rem" alignSelf="start">
+    <Text as="h3" variant={{ base: 'text-header-S', lg: 'text-header-XS' }} {...props} />
+    <Divider />
+  </Flex>
+);
+Testimonial.Legend = TestimonialLegend;

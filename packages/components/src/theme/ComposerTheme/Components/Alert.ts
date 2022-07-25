@@ -16,7 +16,7 @@ const containerStatusesColors = {
     borderStartColor: 'alert-warning-default',
   },
   info: {
-    backgroundColor: 'background-info',
+    backgroundColor: 'background-inform',
     borderStartColor: 'alert-info-default',
   },
 };

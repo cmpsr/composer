@@ -15,26 +15,68 @@ describe('Testimonial', () => {
       dispatchEvent: jest.fn(),
     })),
   });
-  const defaultProps = {
-    backgroundColor: 'background-page',
-    imageUrl: 'https://avatars0.githubusercontent.com/u/67131017?s=200',
-    testimony:
-      'We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it.',
-    testimonyTextVariant: 'text-body-display-M',
-    name: 'John Doe',
-  };
-  const givenComponentRendered = (props?: any) => renderWithProviders(<Testimonial {...defaultProps} {...props} />);
 
-  test('should render legend when provided', () => {
-    givenComponentRendered({ legend: 'legend' });
-    screen.getByText('legend');
+  test('should render image', () => {
+    renderWithProviders(
+      <Testimonial>
+        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
+      </Testimonial>
+    );
+    screen.getByRole('img');
   });
-  test('should render association when provided', () => {
-    givenComponentRendered({ association: 'association' });
+  test('should render legend', () => {
+    renderWithProviders(
+      <Testimonial>
+        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
+        <Testimonial.Content>
+          <Testimonial.Legend>legend</Testimonial.Legend>
+          <Testimonial.Testimony>testimony</Testimonial.Testimony>
+          <Testimonial.Author>name</Testimonial.Author>
+        </Testimonial.Content>
+      </Testimonial>
+    );
+    screen.getByRole('heading', { name: 'legend', level: 3 });
+  });
+  test('should render testimony', () => {
+    renderWithProviders(
+      <Testimonial>
+        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
+        <Testimonial.Content>
+          <Testimonial.Legend>legend</Testimonial.Legend>
+          <Testimonial.Testimony>testimony</Testimonial.Testimony>
+          <Testimonial.Author>name</Testimonial.Author>
+        </Testimonial.Content>
+      </Testimonial>
+    );
+    screen.getByText('testimony');
+  });
+  test('should render name and association', () => {
+    renderWithProviders(
+      <Testimonial>
+        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
+        <Testimonial.Content>
+          <Testimonial.Testimony>testimony</Testimonial.Testimony>
+          <Testimonial.Author>
+            name
+            <Testimonial.Author.Association>association</Testimonial.Author.Association>
+          </Testimonial.Author>
+        </Testimonial.Content>
+      </Testimonial>
+    );
+    screen.getByText('name');
     screen.getByText('association');
   });
-  test('should render link when provided', () => {
-    givenComponentRendered({ link: { children: 'link', href: '#' } });
-    screen.getByText('link');
+  test('should render link', () => {
+    renderWithProviders(
+      <Testimonial>
+        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
+        <Testimonial.Content>
+          <Testimonial.Testimony>testimony</Testimonial.Testimony>
+          <Testimonial.Author>name</Testimonial.Author>
+          <Testimonial.Link href="#">linking</Testimonial.Link>
+        </Testimonial.Content>
+      </Testimonial>
+    );
+    screen.getByRole('link', { name: 'linking' });
   });
 });

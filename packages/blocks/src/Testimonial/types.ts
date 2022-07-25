@@ -1,4 +1,5 @@
-import { LinkProps, TextVariant, Theme } from '@cmpsr/components';
+import { FC } from 'react';
+import { ImageProps, LinkProps, TextVariant, Theme } from '@cmpsr/components';
 
 export interface TestimonialProps {
   backgroundColor?: ThisType<Theme['colors']>;
@@ -8,5 +9,8 @@ export interface TestimonialProps {
   name: string;
   testimony: string;
   testimonyTextVariant?: TextVariant;
-  imageUrl: string;
+}
+
+export interface TestimonialStaticMembers {
+  Image: FC<ImageProps>;
 }

@@ -17,14 +17,22 @@ describe('Testimonial', () => {
   });
   const defaultProps = {
     backgroundColor: 'background-page',
-    imageUrl: 'https://avatars0.githubusercontent.com/u/67131017?s=200',
     testimony:
       'We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it.',
     testimonyTextVariant: 'text-body-display-M',
     name: 'John Doe',
   };
-  const givenComponentRendered = (props?: any) => renderWithProviders(<Testimonial {...defaultProps} {...props} />);
+  const givenComponentRendered = (props?: any) =>
+    renderWithProviders(
+      <Testimonial {...defaultProps} {...props}>
+        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
+      </Testimonial>
+    );
 
+  test('should render image', () => {
+    givenComponentRendered();
+    screen.getByRole('img');
+  });
   test('should render legend when provided', () => {
     givenComponentRendered({ legend: 'legend' });
     screen.getByText('legend');

@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
-import { Flex, Image, Text, Divider, Link } from '@cmpsr/components';
+import { Flex, Image, Text, Divider, Link, ImageProps } from '@cmpsr/components';
 
-import { TestimonialProps } from './types';
+import { TestimonialProps, TestimonialStaticMembers } from './types';
 
-export const Testimonial: FC<TestimonialProps> = ({
+export const Testimonial: FC<TestimonialProps> & TestimonialStaticMembers = ({
   backgroundColor = 'background-page',
-  imageUrl,
   legend,
   testimony,
   testimonyTextVariant,
   name,
   association,
   link,
+  children,
 }) => (
   <Flex
     backgroundColor={backgroundColor}
@@ -22,14 +22,7 @@ export const Testimonial: FC<TestimonialProps> = ({
     alignItems={{ lg: 'center' }}
     justifyContent={{ lg: 'center' }}
   >
-    <Image
-      src={imageUrl}
-      alt="testimony image"
-      maxWidth={{ md: '34.75rem', lg: '19.6875rem', xl: '31.25rem' }}
-      width={{ base: '100%' }}
-      borderRadius="0.375rem"
-      alignSelf={{ md: 'center' }}
-    />
+    {children}
     <Flex
       gap={{ base: '1.5rem' }}
       flexDirection="column"
@@ -61,3 +54,15 @@ export const Testimonial: FC<TestimonialProps> = ({
     </Flex>
   </Flex>
 );
+
+const TestimonialImage: FC<ImageProps> = (props) => (
+  <Image
+    alt="testimony image"
+    maxWidth={{ md: '34.75rem', lg: '19.6875rem', xl: '31.25rem' }}
+    width={{ base: '100%' }}
+    borderRadius="0.375rem"
+    alignSelf={{ md: 'center' }}
+    {...props}
+  />
+);
+Testimonial.Image = TestimonialImage;

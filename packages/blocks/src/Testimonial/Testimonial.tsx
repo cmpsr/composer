@@ -1,17 +1,11 @@
 import React, { FC } from 'react';
-import { Flex, Image, Text, Divider, Link, ImageProps } from '@cmpsr/components';
+import { Flex, Image, ImageProps, FlexProps } from '@cmpsr/components';
 
 import { TestimonialProps, TestimonialStaticMembers } from './types';
 
 export const Testimonial: FC<TestimonialProps> & TestimonialStaticMembers = ({
   backgroundColor = 'background-page',
-  legend,
-  testimony,
-  testimonyTextVariant,
-  name,
-  association,
-  link,
-  children,
+  ...flexProps
 }) => (
   <Flex
     backgroundColor={backgroundColor}
@@ -21,38 +15,8 @@ export const Testimonial: FC<TestimonialProps> & TestimonialStaticMembers = ({
     flexDirection={{ base: 'column', lg: 'row' }}
     alignItems={{ lg: 'center' }}
     justifyContent={{ lg: 'center' }}
-  >
-    {children}
-    <Flex
-      gap={{ base: '1.5rem' }}
-      flexDirection="column"
-      maxWidth={{ lg: '36.8125rem', xl: '33.5rem', xxl: '43.5rem' }}
-    >
-      {legend && (
-        <Flex flexDirection="column" gap="0.75rem" alignSelf="start">
-          <Text as="h3" variant={{ base: 'text-header-S', lg: 'text-header-XS' }}>
-            {legend}
-          </Text>
-          <Divider />
-        </Flex>
-      )}
-      <Text variant={testimonyTextVariant ?? { base: 'text-body-display-M', lg: 'text-body-display-L' }}>
-        {testimony}
-      </Text>
-      <Flex gap={{ base: '0.5rem' }} flexWrap="wrap">
-        <Text variant="text-body-medium">{name}</Text>
-        {association && (
-          <Flex gap={{ base: '0.5rem' }}>
-            <Divider orientation="vertical" />
-            <Text variant="text-body-regular" color="text-secondary">
-              {association}
-            </Text>
-          </Flex>
-        )}
-      </Flex>
-      {link && <Link target="_blank" size="s" {...link} />}
-    </Flex>
-  </Flex>
+    {...flexProps}
+  />
 );
 
 const TestimonialImage: FC<ImageProps> = (props) => (
@@ -66,3 +30,13 @@ const TestimonialImage: FC<ImageProps> = (props) => (
   />
 );
 Testimonial.Image = TestimonialImage;
+
+const FlexContent: FC<FlexProps> = (props) => (
+  <Flex
+    gap={{ base: '1.5rem' }}
+    flexDirection="column"
+    maxWidth={{ lg: '36.8125rem', xl: '33.5rem', xxl: '43.5rem' }}
+    {...props}
+  />
+);
+Testimonial.Content = FlexContent;

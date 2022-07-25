@@ -10,5 +10,6 @@ export interface TestimonialStaticMembers {
   Image: FC<ImageProps>;
   Content: FC<FlexProps>;
   Legend: FC<TextProps>;
+  Testimony: FC<TextProps>;
   Author: FC<TextProps> & TestimonialAuthorStaticMembers;
 }

@@ -49,6 +49,11 @@ const TestimonialLegend: FC<TextProps> = (props) => (
 );
 Testimonial.Legend = TestimonialLegend;
 
+const TestimonialTestimony: FC<TextProps> = (props) => (
+  <Text variant={{ base: 'text-body-display-M', lg: 'text-body-display-L' }} {...props} />
+);
+Testimonial.Testimony = TestimonialTestimony;
+
 const TestimonialAuthorAssociation: FC<TextProps> = (props) => (
   <Flex gap={{ base: '0.5rem' }}>
     <Divider orientation="vertical" />

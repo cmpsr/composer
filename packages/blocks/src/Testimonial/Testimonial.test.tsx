@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Text } from '@cmpsr/components';
+import { Link } from '@cmpsr/components';
 import { screen, renderWithProviders } from '@tests/renderWithProviders';
 
 import { Testimonial } from './Testimonial';
@@ -31,19 +31,32 @@ describe('Testimonial', () => {
         <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         <Testimonial.Content>
           <Testimonial.Legend>legend</Testimonial.Legend>
-          <Text variant="text-body-display-M">testimony</Text>
+          <Testimonial.Testimony>testimony</Testimonial.Testimony>
           <Testimonial.Author>name</Testimonial.Author>
         </Testimonial.Content>
       </Testimonial>
     );
     screen.getByRole('heading', { name: 'legend', level: 3 });
   });
+  test('should render testimony', () => {
+    renderWithProviders(
+      <Testimonial>
+        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
+        <Testimonial.Content>
+          <Testimonial.Legend>legend</Testimonial.Legend>
+          <Testimonial.Testimony>testimony</Testimonial.Testimony>
+          <Testimonial.Author>name</Testimonial.Author>
+        </Testimonial.Content>
+      </Testimonial>
+    );
+    screen.getByText('testimony');
+  });
   test('should render name and association', () => {
     renderWithProviders(
       <Testimonial>
         <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         <Testimonial.Content>
-          <Text variant="text-body-display-M">testimony</Text>
+          <Testimonial.Testimony>testimony</Testimonial.Testimony>
           <Testimonial.Author>
             name
             <Testimonial.Author.Association>association</Testimonial.Author.Association>
@@ -59,7 +72,7 @@ describe('Testimonial', () => {
       <Testimonial>
         <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         <Testimonial.Content>
-          <Text variant="text-body-display-M">testimony</Text>
+          <Testimonial.Testimony>testimony</Testimonial.Testimony>
           <Testimonial.Author>name</Testimonial.Author>
           <Link target="_blank" size="s" href="#">
             linking

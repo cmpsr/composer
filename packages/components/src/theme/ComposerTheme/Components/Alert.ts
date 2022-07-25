@@ -17,7 +17,7 @@ const containerStatusesColors = {
   },
   info: {
     backgroundColor: 'background-inform',
-    borderStartColor: 'alert-info-default',
+    borderStartColor: 'alert-inform-default',
   },
 };
 
@@ -33,7 +33,7 @@ const containerVariantsColors = {
       backgroundColor: 'alert-warning-default',
     },
     info: {
-      backgroundColor: 'alert-info-default',
+      backgroundColor: 'alert-inform-default',
     },
   },
   subtle: containerStatusesColors,
@@ -104,7 +104,7 @@ export const Alert: ComponentStyleConfig = {
           color: 'alert-error-default',
         },
         info: {
-          color: 'alert-info-default',
+          color: 'alert-inform-default',
         },
       },
     },

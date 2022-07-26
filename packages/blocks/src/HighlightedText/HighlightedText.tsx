@@ -34,7 +34,7 @@ const HighlightedTextLinkGroup: FC<FlexProps> = (props) => (
 HighlightedText.LinkGroup = HighlightedTextLinkGroup;
 
 const HighlightedTextLink: FC<LinkProps> = (props) => (
-  <Link target="_blank" size="l" justifyContent={{ base: 'center' }} {...props} />
+  <Link target="_blank" size="l" justifyContent="center" {...props} />
 );
 HighlightedText.Link = HighlightedTextLink;
 

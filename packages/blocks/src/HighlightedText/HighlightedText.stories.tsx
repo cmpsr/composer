@@ -8,8 +8,8 @@ export default {
   component: HighlightedText,
   title: 'Blocks/HighlightedText',
   argTypes: {
-    variant: {
-      options: ['right', 'left'],
+    contentAlignment: {
+      options: ['start', 'center', 'end'],
       control: { type: 'select' },
     },
   },

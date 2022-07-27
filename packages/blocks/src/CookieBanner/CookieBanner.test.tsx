@@ -8,14 +8,20 @@ describe('CookieBanner', () => {
   afterEach(() => {
     localStorage.clear();
   });
-  test('should render children', () => {
-    renderWithProviders(<CookieBanner>Hello</CookieBanner>);
+  test('should render content', () => {
+    renderWithProviders(
+      <CookieBanner>
+        <CookieBanner.Content>Hello</CookieBanner.Content>
+      </CookieBanner>
+    );
     screen.getByText('Hello');
   });
   test('should render custom children', () => {
     renderWithProviders(
       <CookieBanner>
-        <Text data-testid="children-container">Hello</Text>
+        <CookieBanner.Content>
+          <Text data-testid="children-container">Hello</Text>
+        </CookieBanner.Content>
       </CookieBanner>
     );
     screen.getByTestId('children-container');
@@ -23,7 +29,9 @@ describe('CookieBanner', () => {
   test('should not render component after accepting all cookies', () => {
     renderWithProviders(
       <CookieBanner data-testid="cookie-banner" acceptAllCta="All">
-        <Text>Hello</Text>
+        <CookieBanner.Content>
+          <Text>Hello</Text>
+        </CookieBanner.Content>
       </CookieBanner>
     );
     expect(screen.queryByTestId('cookie-banner')).toBeInTheDocument();
@@ -33,7 +41,9 @@ describe('CookieBanner', () => {
   test('should not render component after accepting required cookies', () => {
     renderWithProviders(
       <CookieBanner data-testid="cookie-banner" acceptRequiredOnlyCta="RequiredOnly">
-        <Text>Hello</Text>
+        <CookieBanner.Content>
+          <Text>Hello</Text>
+        </CookieBanner.Content>
       </CookieBanner>
     );
     expect(screen.queryByTestId('cookie-banner')).toBeInTheDocument();
@@ -44,7 +54,9 @@ describe('CookieBanner', () => {
     localStorage.setItem('cmpsr-cookies-policy', JSON.stringify({ cookieVersion: '1.0.0', allow: 'all' }));
     renderWithProviders(
       <CookieBanner data-testid="cookie-banner">
-        <Text>Hello</Text>
+        <CookieBanner.Content>
+          <Text>Hello</Text>
+        </CookieBanner.Content>
       </CookieBanner>
     );
     expect(screen.queryByTestId('cookie-banner')).not.toBeInTheDocument();
@@ -53,7 +65,9 @@ describe('CookieBanner', () => {
     localStorage.setItem('cmpsr-cookies-policy', JSON.stringify({ cookieVersion: '1.0.0', allow: 'all' }));
     renderWithProviders(
       <CookieBanner data-testid="cookie-banner" cookieVersion="1.0.1">
-        <Text>Hello</Text>
+        <CookieBanner.Content>
+          <Text>Hello</Text>
+        </CookieBanner.Content>
       </CookieBanner>
     );
     expect(screen.queryByTestId('cookie-banner')).toBeInTheDocument();
@@ -61,7 +75,9 @@ describe('CookieBanner', () => {
   test('should work as expected with custom cookieKey', () => {
     renderWithProviders(
       <CookieBanner data-testid="cookie-banner" acceptRequiredOnlyCta="RequiredOnly" cookieKey="custom-key">
-        <Text>Hello</Text>
+        <CookieBanner.Content>
+          <Text>Hello</Text>
+        </CookieBanner.Content>
       </CookieBanner>
     );
     expect(screen.queryByTestId('cookie-banner')).toBeInTheDocument();

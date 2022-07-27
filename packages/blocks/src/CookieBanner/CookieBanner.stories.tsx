@@ -10,10 +10,12 @@ export default {
 
 export const StringChild = () => (
   <>
-    <CookieBanner
-      children="We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it."
-      cookieKey="string-child-cookie-key"
-    />
+    <CookieBanner cookieKey="string-child-cookie-key">
+      <CookieBanner.Content>
+        We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
+        three ways we could find it.
+      </CookieBanner.Content>
+    </CookieBanner>
     <Text mt="3rem">Click the button below if the component is not shown</Text>
     <Button
       mt="0.5rem"
@@ -29,15 +31,14 @@ export const StringChild = () => (
 
 export const CustomChild = () => (
   <>
-    <CookieBanner
-      children={
+    <CookieBanner cookieKey="custom-child-cookie-key">
+      <CookieBanner.Content>
         <Text variant="text-body-regular" color="text-secondary">
           We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
           three ways we could find it. <Link>Cookies Settings</Link>
         </Text>
-      }
-      cookieKey="custom-child-cookie-key"
-    />
+      </CookieBanner.Content>
+    </CookieBanner>
     <Text mt="3rem">Click the button below if the component is not shown</Text>
     <Button
       mt="0.5rem"
@@ -54,11 +55,12 @@ export const CustomChild = () => (
 const Template = ({ copy, acceptAllCta, acceptRequiredOnlyCta }) => (
   <>
     <CookieBanner
-      children={copy}
       cookieKey="playground-child-cookie-key"
       acceptAllCta={acceptAllCta}
       acceptRequiredOnlyCta={acceptRequiredOnlyCta}
-    />
+    >
+      <CookieBanner.Content>{copy}</CookieBanner.Content>
+    </CookieBanner>
     <Text mt="3rem">Click the button below if the component is not shown</Text>
     <Button
       mt="0.5rem"

@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Alert, Button, Flex, Text } from '@cmpsr/components';
-import { CookieBannerProps } from './types';
+import { Alert, AlertProps, Button, Flex, Text } from '@cmpsr/components';
+import { CookieBannerProps, CookieBannerStaticMembers } from './types';
 
-export const CookieBanner: FC<CookieBannerProps> = ({
+export const CookieBanner: FC<CookieBannerProps> & CookieBannerStaticMembers = ({
   children,
   acceptAllCta = 'Allow all Cookies',
   acceptRequiredOnlyCta = 'Allow functional only',
@@ -49,8 +49,6 @@ export const CookieBanner: FC<CookieBannerProps> = ({
 
   const handleAllowRequiredOnly = () => updatePolicy('required');
 
-  const child = typeof children === 'string' ? <Text color="text-secondary">{children}</Text> : children;
-
   return shouldShow ? (
     <Flex
       direction={{ base: 'column', lg: 'row' }}
@@ -60,9 +58,7 @@ export const CookieBanner: FC<CookieBannerProps> = ({
       py="1.5rem"
       {...rest}
     >
-      <Alert variant="subtle" pt="0" pr={{ base: '0', lg: '2rem' }} pb={{ base: '2rem', lg: '0' }}>
-        <Alert.Description>{child}</Alert.Description>
-      </Alert>
+      {children}
       <Flex justifyContent="center" alignItems="center" direction={{ base: 'column', lg: 'row' }} gap="1.5rem">
         <Button variant="link" onClick={handleAllowRequiredOnly}>
           {acceptRequiredOnlyCta}
@@ -74,3 +70,10 @@ export const CookieBanner: FC<CookieBannerProps> = ({
     </Flex>
   ) : null;
 };
+
+const CookieBannerContent: FC<AlertProps> = ({ children, ...props }) => (
+  <Alert variant="subtle" pt="0" pr={{ base: '0', lg: '2rem' }} pb={{ base: '2rem', lg: '0' }} {...props}>
+    {typeof children === 'string' ? <Text color="text-secondary">{children}</Text> : children}
+  </Alert>
+);
+CookieBanner.Content = CookieBannerContent;

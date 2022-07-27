@@ -50,6 +50,9 @@ export const Opened = () => (
     </Tooltip>
   </Box>
 );
+Opened.parameters = {
+  chromatic: { disableSnapshot: true },
+};
 
 const Template = (args: TooltipProps) => (
   <Box p="12rem">

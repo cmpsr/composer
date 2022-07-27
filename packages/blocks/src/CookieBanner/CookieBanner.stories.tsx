@@ -54,12 +54,12 @@ export const CustomChild = () => (
 
 const Template = ({ copy, acceptAllCta, acceptRequiredOnlyCta }) => (
   <>
-    <CookieBanner
-      cookieKey="playground-child-cookie-key"
-      acceptAllCta={acceptAllCta}
-      acceptRequiredOnlyCta={acceptRequiredOnlyCta}
-    >
+    <CookieBanner cookieKey="playground-child-cookie-key">
       <CookieBanner.Content>{copy}</CookieBanner.Content>
+      <CookieBanner.Actions>
+        <CookieBanner.Actions.AcceptRequired>{acceptRequiredOnlyCta}</CookieBanner.Actions.AcceptRequired>
+        <CookieBanner.Actions.AcceptAll>{acceptAllCta}</CookieBanner.Actions.AcceptAll>
+      </CookieBanner.Actions>
     </CookieBanner>
     <Text mt="3rem">Click the button below if the component is not shown</Text>
     <Button

@@ -28,9 +28,13 @@ describe('CookieBanner', () => {
   });
   test('should not render component after accepting all cookies', () => {
     renderWithProviders(
-      <CookieBanner data-testid="cookie-banner" acceptAllCta="All">
+      <CookieBanner data-testid="cookie-banner">
         <CookieBanner.Content>
           <Text>Hello</Text>
+          <CookieBanner.Actions>
+            <CookieBanner.Actions.AcceptRequired />
+            <CookieBanner.Actions.AcceptAll>All</CookieBanner.Actions.AcceptAll>
+          </CookieBanner.Actions>
         </CookieBanner.Content>
       </CookieBanner>
     );
@@ -40,9 +44,13 @@ describe('CookieBanner', () => {
   });
   test('should not render component after accepting required cookies', () => {
     renderWithProviders(
-      <CookieBanner data-testid="cookie-banner" acceptRequiredOnlyCta="RequiredOnly">
+      <CookieBanner data-testid="cookie-banner">
         <CookieBanner.Content>
           <Text>Hello</Text>
+          <CookieBanner.Actions>
+            <CookieBanner.Actions.AcceptRequired>RequiredOnly</CookieBanner.Actions.AcceptRequired>
+            <CookieBanner.Actions.AcceptAll />
+          </CookieBanner.Actions>
         </CookieBanner.Content>
       </CookieBanner>
     );
@@ -74,9 +82,13 @@ describe('CookieBanner', () => {
   });
   test('should work as expected with custom cookieKey', () => {
     renderWithProviders(
-      <CookieBanner data-testid="cookie-banner" acceptRequiredOnlyCta="RequiredOnly" cookieKey="custom-key">
+      <CookieBanner data-testid="cookie-banner" cookieKey="custom-key">
         <CookieBanner.Content>
           <Text>Hello</Text>
+          <CookieBanner.Actions>
+            <CookieBanner.Actions.AcceptRequired>RequiredOnly</CookieBanner.Actions.AcceptRequired>
+            <CookieBanner.Actions.AcceptAll />
+          </CookieBanner.Actions>
         </CookieBanner.Content>
       </CookieBanner>
     );

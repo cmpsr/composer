@@ -5,7 +5,6 @@ import { Footer } from './Footer';
 
 describe('Footer', () => {
   const defaultProps = {
-    imageProps: { src: 'https://avatars0.githubusercontent.com/u/67131017?s=200', maxWidth: '4.25rem' },
     linkGroups: [
       {
         title: 'Group 1',
@@ -33,8 +32,17 @@ describe('Footer', () => {
       },
     ],
   };
-  const givenComponentRendered = (props?: any) => renderWithProviders(<Footer {...defaultProps} {...props} />);
+  const givenComponentRendered = (props?: any) =>
+    renderWithProviders(
+      <Footer {...defaultProps} {...props}>
+        <Footer.Logo alt="Logo" />
+      </Footer>
+    );
 
+  test('should render content', () => {
+    givenComponentRendered();
+    screen.getByRole('img', { name: 'Logo' });
+  });
   test('should render copyGroup when provided', () => {
     givenComponentRendered({ copyGroup: <span>copyGroup</span> });
     screen.getByText('copyGroup');

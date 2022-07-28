@@ -1,18 +1,18 @@
 import React, { FC } from 'react';
-import { Divider, Flex, Image, Link, Text } from '@cmpsr/components';
+import { Divider, Flex, Image, ImageProps, Link, Text } from '@cmpsr/components';
 
-import { FooterProps } from './types';
+import { FooterProps, FooterStaticMembers } from './types';
 
-export const Footer: FC<FooterProps> = ({
-  imageProps,
+export const Footer: FC<FooterProps> & FooterStaticMembers = ({
   linkGroups,
   copyGroup,
   bottomContent,
   dividerProps,
+  children,
   ...props
 }) => (
   <Flex maxWidth="66.75rem" flexDirection="column" width="100%" {...props}>
-    <Image alt="Footer image" width="100%" mb={{ base: '2.75rem', md: '3rem' }} {...imageProps} />
+    {children}
     <Flex flexDirection={{ base: 'column', lg: 'row' }} gap={{ base: '2.75rem', md: '3rem' }}>
       <Flex gap={{ base: '2.75rem', lg: '1.5rem' }} flexDirection={{ base: 'column', md: 'row' }} flex={{ lg: 1 }}>
         {linkGroups?.map(({ title, items }, i) => (
@@ -36,3 +36,8 @@ export const Footer: FC<FooterProps> = ({
     )}
   </Flex>
 );
+
+const FooterLogo: FC<ImageProps> = (props) => (
+  <Image alt="Footer image" width="100%" mb={{ base: '2.75rem', md: '3rem' }} {...props} />
+);
+Footer.Logo = FooterLogo;

@@ -12,7 +12,6 @@ export default {
 export const NoBottomContent = () => (
   <Footer
     backgroundColor="background-page"
-    imageProps={{ src: 'https://avatars0.githubusercontent.com/u/67131017?s=200', maxWidth: '4.25rem' }}
     copyGroup={
       <Flex flexDirection="column" gap="1.25rem" maxWidth={{ lg: '27.625rem' }}>
         <Text variant="text-body-bold">Title</Text>
@@ -48,13 +47,14 @@ export const NoBottomContent = () => (
         ],
       },
     ]}
-  />
+  >
+    <Footer.Logo src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="4.25rem" />
+  </Footer>
 );
 
 export const NoCopyGroup = () => (
   <Footer
     backgroundColor="background-page"
-    imageProps={{ src: 'https://avatars0.githubusercontent.com/u/67131017?s=200', maxWidth: '4.25rem' }}
     linkGroups={[
       {
         title: 'Group 1',
@@ -81,17 +81,15 @@ export const NoCopyGroup = () => (
         ],
       },
     ]}
-  />
+  >
+    <Footer.Logo src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="4.25rem" />
+  </Footer>
 );
 
 const Template = ({ backgroundColor, imageProps, bottomContent, linkGroups, copyGroup }) => (
-  <Footer
-    backgroundColor={backgroundColor}
-    imageProps={imageProps}
-    bottomContent={bottomContent}
-    linkGroups={linkGroups}
-    copyGroup={copyGroup}
-  />
+  <Footer backgroundColor={backgroundColor} bottomContent={bottomContent} linkGroups={linkGroups} copyGroup={copyGroup}>
+    <Footer.Logo {...imageProps} />
+  </Footer>
 );
 
 export const Playground = Template.bind({});

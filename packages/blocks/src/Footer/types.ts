@@ -4,10 +4,10 @@ import { DividerProps, FlexProps, ImageProps, LinkProps } from '@cmpsr/component
 export interface FooterProps extends FlexProps {
   linkGroups: Array<{ title: string; items: Array<LinkProps> }>;
   copyGroup?: ReactNode;
-  bottomContent?: ReactNode;
   dividerProps?: DividerProps;
 }
 
 export interface FooterStaticMembers {
   Logo: FC<ImageProps>;
+  Bottom: FC<DividerProps>;
 }

@@ -87,8 +87,9 @@ export const NoCopyGroup = () => (
 );
 
 const Template = ({ backgroundColor, imageProps, bottomContent, linkGroups, copyGroup }) => (
-  <Footer backgroundColor={backgroundColor} bottomContent={bottomContent} linkGroups={linkGroups} copyGroup={copyGroup}>
+  <Footer backgroundColor={backgroundColor} linkGroups={linkGroups} copyGroup={copyGroup}>
     <Footer.Logo {...imageProps} />
+    <Footer.Bottom>{bottomContent}</Footer.Bottom>
   </Footer>
 );
 
@@ -96,7 +97,7 @@ export const Playground = Template.bind({});
 Playground.args = {
   backgroundColor: 'background-page',
   imageProps: { src: 'https://avatars0.githubusercontent.com/u/67131017?s=200', maxWidth: '4.25rem' },
-  bottomContent: <span>Bottom content</span>,
+  bottomContent: 'Bottom content',
   linkGroups: [
     {
       title: 'Group 1',

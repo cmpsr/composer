@@ -32,10 +32,11 @@ describe('Footer', () => {
       },
     ],
   };
-  const givenComponentRendered = (props?: any) =>
+  const givenComponentRendered = (props = {}, renderBottom = false) =>
     renderWithProviders(
       <Footer {...defaultProps} {...props}>
         <Footer.Logo alt="Logo" />
+        {renderBottom && <Footer.Bottom>Bottom content</Footer.Bottom>}
       </Footer>
     );
 
@@ -47,8 +48,9 @@ describe('Footer', () => {
     givenComponentRendered({ copyGroup: <span>copyGroup</span> });
     screen.getByText('copyGroup');
   });
-  test('should render bottomContent when provided', () => {
-    givenComponentRendered({ bottomContent: <span>bottomContent</span> });
-    screen.getByText('bottomContent');
+  test('should render bottom content with separator', () => {
+    givenComponentRendered({}, true);
+    screen.getByRole('separator');
+    screen.getByText('Bottom content');
   });
 });

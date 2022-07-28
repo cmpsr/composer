@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
-import { Divider, Flex, Image, ImageProps, Link, Text } from '@cmpsr/components';
+import { Divider, DividerProps, Flex, Image, ImageProps, Link, Text } from '@cmpsr/components';
 
 import { FooterProps, FooterStaticMembers } from './types';
 
 export const Footer: FC<FooterProps> & FooterStaticMembers = ({
   linkGroups,
   copyGroup,
-  bottomContent,
   dividerProps,
   children,
   ...props
@@ -28,12 +27,6 @@ export const Footer: FC<FooterProps> & FooterStaticMembers = ({
       </Flex>
       {copyGroup}
     </Flex>
-    {bottomContent && (
-      <>
-        <Divider width="100%" my={{ base: '2.75rem', md: '4rem' }} {...dividerProps} />
-        {bottomContent}
-      </>
-    )}
   </Flex>
 );
 
@@ -41,3 +34,11 @@ const FooterLogo: FC<ImageProps> = (props) => (
   <Image alt="Footer image" width="100%" mb={{ base: '2.75rem', md: '3rem' }} {...props} />
 );
 Footer.Logo = FooterLogo;
+
+const FooterBottom: FC<DividerProps> = ({ children, ...props }) => (
+  <>
+    <Divider width="100%" my={{ base: '2.75rem', md: '4rem' }} {...props} />
+    {children}
+  </>
+);
+Footer.Bottom = FooterBottom;

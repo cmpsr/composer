@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Flex, LinkProps, Text } from '@cmpsr/components';
+import { LinkProps, Text } from '@cmpsr/components';
 
 import { Footer } from './Footer';
 
@@ -80,8 +80,8 @@ const Template = ({ backgroundColor, imageProps, bottomContent, linkGroups, show
         {linkGroups.map(({ title, items }, index: number) => (
           <Footer.Content.LinkGroup key={index}>
             <Footer.Content.LinkGroup.Title>{title}</Footer.Content.LinkGroup.Title>
-            {items.map((item: LinkProps) => (
-              <Footer.Content.LinkGroup.Link {...item} />
+            {items.map((item: LinkProps, index: number) => (
+              <Footer.Content.LinkGroup.Link key={index} {...item} />
             ))}
           </Footer.Content.LinkGroup>
         ))}

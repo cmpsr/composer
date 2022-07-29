@@ -16,7 +16,7 @@ describe('Footer', () => {
             <Footer.Content.LinkGroup.Link href="#">Link 3</Footer.Content.LinkGroup.Link>
           </Footer.Content.LinkGroup>
         </Footer.Content.Links>
-        {renderCopyGroup && <span>copyGroup</span>}
+        {renderCopyGroup && <Footer.Content.CopyGroup>copyGroup</Footer.Content.CopyGroup>}
         {renderBottom && <Footer.Bottom>Bottom content</Footer.Bottom>}
       </Footer>
     );

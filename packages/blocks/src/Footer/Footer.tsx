@@ -43,6 +43,7 @@ const FooterContent: FC<FlexProps> & FooterContentStaticMembers = (props) => (
 );
 FooterContent.Links = FooterContentLinks;
 FooterContent.LinkGroup = FooterContentLinkGroup;
+FooterContent.CopyGroup = Flex;
 Footer.Content = FooterContent;
 
 const FooterBottom: FC<DividerProps> = ({ children, ...props }) => (

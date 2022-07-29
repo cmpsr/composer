@@ -10,6 +10,7 @@ export interface FooterLinkGroupStaticMember {
 export interface FooterContentStaticMembers {
   Links: FC<FlexProps>;
   LinkGroup: FC<FlexProps> & FooterLinkGroupStaticMember;
+  CopyGroup: FC<FlexProps>;
 }
 
 export interface FooterStaticMembers {

@@ -33,14 +33,13 @@ export const NoBottomContent = () => (
           <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
         </Footer.Content.LinkGroup>
       </Footer.Content.Links>
-      {/** Copy Group */}
-      <Flex flexDirection="column" gap="1.25rem" maxWidth={{ lg: '27.625rem' }}>
+      <Footer.Content.CopyGroup flexDirection="column" gap="1.25rem" maxWidth={{ lg: '27.625rem' }}>
         <Text variant="text-body-bold">Title</Text>
         <Text variant="text-body-regular" color="text-secondary">
           We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
           three ways we could find it.
         </Text>
-      </Flex>
+      </Footer.Content.CopyGroup>
     </Footer.Content>
   </Footer>
 );
@@ -73,7 +72,7 @@ export const NoCopyGroup = () => (
   </Footer>
 );
 
-const Template = ({ backgroundColor, imageProps, bottomContent, linkGroups, copyGroup }) => (
+const Template = ({ backgroundColor, imageProps, bottomContent, linkGroups, showCopyGroup }) => (
   <Footer backgroundColor={backgroundColor}>
     <Footer.Logo {...imageProps} />
     <Footer.Content>
@@ -87,7 +86,15 @@ const Template = ({ backgroundColor, imageProps, bottomContent, linkGroups, copy
           </Footer.Content.LinkGroup>
         ))}
       </Footer.Content.Links>
-      {copyGroup}
+      {showCopyGroup && (
+        <Footer.Content.CopyGroup flexDirection="column" gap="1.25rem" maxWidth={{ lg: '27.625rem' }}>
+          <Text variant="text-body-bold">Title</Text>
+          <Text variant="text-body-regular" color="text-secondary">
+            We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
+            three ways we could find it.
+          </Text>
+        </Footer.Content.CopyGroup>
+      )}
     </Footer.Content>
     <Footer.Bottom>{bottomContent}</Footer.Bottom>
   </Footer>
@@ -124,13 +131,5 @@ Playground.args = {
       ],
     },
   ],
-  copyGroup: (
-    <Flex flexDirection="column" gap="1.25rem" maxWidth={{ lg: '27.625rem' }}>
-      <Text variant="text-body-bold">Title</Text>
-      <Text variant="text-body-regular" color="text-secondary">
-        We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
-        three ways we could find it.
-      </Text>
-    </Flex>
-  ),
+  showCopyGroup: true,
 };

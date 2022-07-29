@@ -25,8 +25,8 @@ export default {
 export const WithAuthor = () => (
   <Quote>
     <Quote.Text>
-      "We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three
-      ways we could find it."
+      &ldquo;We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
+      three ways we could find it.&rdquo;
     </Quote.Text>
     <Quote.Author>
       <Quote.Author.Avatar name="John Doe" src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
@@ -41,8 +41,8 @@ export const WithAuthor = () => (
 export const WithoutAuthor = () => (
   <Quote>
     <Quote.Text>
-      "We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three
-      ways we could find it."
+      &ldquo;We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
+      three ways we could find it.&rdquo;
     </Quote.Text>
   </Quote>
 );

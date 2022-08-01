@@ -54,26 +54,15 @@ const generateAltButton = (color: string) => {
     borderColor: transparentize(`text-link-${color}-default`, 0.6),
   };
 
-  let loadingStyles = {
-    borderColor: `${color}-default`,
-    borderBottomColor: transparentize(`${color}-default`, 0.3),
-    borderLeftColor: transparentize(`${color}-default`, 0.3),
-  };
-
-  if (color === 'secondary') {
-    loadingStyles = {
-      borderColor: 'primary-default',
-      borderBottomColor: transparentize('primary-default', 0.3),
-      borderLeftColor: transparentize('primary-default', 0.3),
-    };
-  }
-
   return {
     backgroundColor: 'background-action-default',
     color: `text-link-${color}-default`,
-    border: '1px solid',
-    borderColor: `text-link-${color}-default`,
-    loading: loadingStyles,
+    outline: `1px solid var(--chakra-colors-text-link-${color}-default)`,
+    loading: {
+      borderColor: 'primary-default',
+      borderBottomColor: transparentize('primary-default', 0.3),
+      borderLeftColor: transparentize('primary-default', 0.3),
+    },
     _disabled,
     _hover: {
       backgroundColor: 'background-action-hover',

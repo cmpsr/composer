@@ -1,17 +1,11 @@
 import React, { FC } from 'react';
-import { Flex, Image, Text, Divider, Link } from '@cmpsr/components';
+import { Flex, Image, ImageProps, FlexProps, Text, TextProps, Divider, LinkProps, Link } from '@cmpsr/components';
 
-import { TestimonialProps } from './types';
+import { TestimonialAuthorStaticMembers, TestimonialProps, TestimonialStaticMembers } from './types';
 
-export const Testimonial: FC<TestimonialProps> = ({
+export const Testimonial: FC<TestimonialProps> & TestimonialStaticMembers = ({
   backgroundColor = 'background-page',
-  imageUrl,
-  legend,
-  testimony,
-  testimonyTextVariant,
-  name,
-  association,
-  link,
+  ...flexProps
 }) => (
   <Flex
     backgroundColor={backgroundColor}
@@ -21,43 +15,55 @@ export const Testimonial: FC<TestimonialProps> = ({
     flexDirection={{ base: 'column', lg: 'row' }}
     alignItems={{ lg: 'center' }}
     justifyContent={{ lg: 'center' }}
-  >
-    <Image
-      src={imageUrl}
-      alt="testimony image"
-      maxWidth={{ md: '34.75rem', lg: '19.6875rem', xl: '31.25rem' }}
-      width={{ base: '100%' }}
-      borderRadius="0.375rem"
-      alignSelf={{ md: 'center' }}
-    />
-    <Flex
-      gap={{ base: '1.5rem' }}
-      flexDirection="column"
-      maxWidth={{ lg: '36.8125rem', xl: '33.5rem', xxl: '43.5rem' }}
-    >
-      {legend && (
-        <Flex flexDirection="column" gap="0.75rem" alignSelf="start">
-          <Text as="h3" variant={{ base: 'text-header-S', lg: 'text-header-XS' }}>
-            {legend}
-          </Text>
-          <Divider />
-        </Flex>
-      )}
-      <Text variant={testimonyTextVariant ?? { base: 'text-body-display-M', lg: 'text-body-display-L' }}>
-        {testimony}
-      </Text>
-      <Flex gap={{ base: '0.5rem' }} flexWrap="wrap">
-        <Text variant="text-body-medium">{name}</Text>
-        {association && (
-          <Flex gap={{ base: '0.5rem' }}>
-            <Divider orientation="vertical" />
-            <Text variant="text-body-regular" color="text-secondary">
-              {association}
-            </Text>
-          </Flex>
-        )}
-      </Flex>
-      {link && <Link target="_blank" size="s" {...link} />}
-    </Flex>
+    {...flexProps}
+  />
+);
+
+const TestimonialImage: FC<ImageProps> = (props) => (
+  <Image
+    alt="testimony image"
+    maxWidth={{ md: '34.75rem', lg: '19.6875rem', xl: '31.25rem' }}
+    width="100%"
+    borderRadius="0.375rem"
+    alignSelf={{ md: 'center' }}
+    {...props}
+  />
+);
+Testimonial.Image = TestimonialImage;
+
+const FlexContent: FC<FlexProps> = (props) => (
+  <Flex gap="1.5rem" flexDirection="column" maxWidth={{ lg: '36.8125rem', xl: '33.5rem', xxl: '43.5rem' }} {...props} />
+);
+Testimonial.Content = FlexContent;
+
+const TestimonialLegend: FC<TextProps> = (props) => (
+  <Flex flexDirection="column" gap="0.75rem" alignSelf="start">
+    <Text as="h3" variant={{ base: 'text-header-S', lg: 'text-header-XS' }} {...props} />
+    <Divider />
   </Flex>
 );
+Testimonial.Legend = TestimonialLegend;
+
+const TestimonialTestimony: FC<TextProps> = (props) => (
+  <Text variant={{ base: 'text-body-display-M', lg: 'text-body-display-L' }} {...props} />
+);
+Testimonial.Testimony = TestimonialTestimony;
+
+const TestimonialAuthorAssociation: FC<TextProps> = (props) => (
+  <Flex gap="0.5rem">
+    <Divider orientation="vertical" />
+    <Text variant="text-body-regular" color="text-secondary" {...props} />
+  </Flex>
+);
+const TestimonialAuthor: FC<TextProps> & TestimonialAuthorStaticMembers = ({ children, ...props }) => (
+  <Flex gap="0.5rem" flexWrap="wrap">
+    {React.Children.map(children, (child) =>
+      typeof child === 'string' ? <Text variant="text-body-medium" {...props} children={child} /> : child
+    )}
+  </Flex>
+);
+TestimonialAuthor.Association = TestimonialAuthorAssociation;
+Testimonial.Author = TestimonialAuthor;
+
+const TestimonialLink: FC<LinkProps> = (props) => <Link target="_blank" size="s" {...props} />;
+Testimonial.Link = TestimonialLink;

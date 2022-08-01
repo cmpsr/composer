@@ -1,5 +1,73 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 14.4.6
+
+### Patch Changes
+
+- 491c2d8: set nextjs-contentful-renderer as public
+
+## 14.4.5
+
+### Patch Changes
+
+- 671520d: fix: package release
+
+## 14.4.4
+
+### Patch Changes
+
+- 63234fb: feat: mark client package as public
+
+## 14.4.3
+
+## 14.4.2
+
+## 14.4.1
+
+## 14.4.0
+
+### Minor Changes
+
+- e81e8c3: feat: improve mdx generation
+
+## 14.3.0
+
+### Minor Changes
+
+- fef6df6: feat: add support to nextjs preview mode to getPageContent
+
+## 14.2.0
+
+### Minor Changes
+
+- 13cc1d7: feat: add getStaticRoutes function
+
+## 14.1.0
+
+### Minor Changes
+
+- 3b40e76: feat: implement getStaticPageContent
+
+## 14.0.1
+
+## 14.0.0
+
+### Patch Changes
+
+- Updated dependencies [5f3d719]
+  - @cmpsr/components@4.0.0
+  - @cmpsr/blocks@9.0.0
+
+## 13.0.0
+
+### Patch Changes
+
+- Updated dependencies [7539927]
+- Updated dependencies [cb394dc]
+  - @cmpsr/blocks@8.0.0
+
+## 12.1.6
+
 ## 12.1.5
 
 ## 12.1.4

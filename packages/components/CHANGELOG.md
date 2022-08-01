@@ -1,5 +1,35 @@
 # @cmpsr/components
 
+## 4.3.0
+
+### Minor Changes
+
+- a3aec10: feat: apply column gap in TextPairing from base breakpoint
+
+## 4.2.0
+
+### Minor Changes
+
+- bf0bfa0: feat: create new primitive component NumberedList
+
+## 4.1.0
+
+### Minor Changes
+
+- c0086a6: feat: add column gap to parts of textpairing
+
+## 4.0.0
+
+### Major Changes
+
+- 5f3d719: feat: update TextPairing to use dot notation - composition
+
+## 3.4.2
+
+### Patch Changes
+
+- 105ef56: update font size for body-meta-medium font styles
+
 ## 3.4.1
 
 ### Patch Changes

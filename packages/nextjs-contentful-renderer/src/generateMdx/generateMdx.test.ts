@@ -7,91 +7,85 @@ jest.mock('mdx-bundler', () => ({
 }));
 
 describe('generateMdx', () => {
-  test('should return empty array for empty array', async () => {
-    const mdx = await generateMdx([]);
-    expect(mdx).toStrictEqual([]);
-  });
-  test('should return given code for all breakpoints', async () => {
+  test('should only render breakpoint with models', async () => {
     const code = '<Text>Title</Text>';
+    const fakeBlocks = [{ models: [{ base: code }], propsValues: [] }];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: code }]);
+  });
+  test('should render all breakpoint with models', async () => {
+    const code = '<Text>Title</Text>';
+    const fakeBlocks = [{ models: [{ base: code, lg: code }], propsValues: [] }];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: code, lg: code }]);
+  });
+  test('should replace props', async () => {
     const fakeBlocks = [
       {
-        models: [
-          {
-            base: code,
-          },
-        ],
-        propsValues: [],
+        models: [{ base: '<Text>{{title:string}}</Text>' }],
+        propsValues: [{ base: { title: 'base' } }],
       },
     ];
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([
       {
-        base: code,
-        md: code,
-        lg: code,
-        xl: code,
-        xxl: code,
+        base: '<Text>base</Text>',
       },
     ]);
   });
-  test('should return given code for each breakpoints', async () => {
+  test('should replace props in all breakpoints', async () => {
     const fakeBlocks = [
       {
-        models: [
-          {
-            base: '<Text>Title base</Text>',
-            md: '<Text>Title md</Text>',
-            lg: '<Text>Title lg</Text>',
-            xl: '<Text>Title xl</Text>',
-            xxl: '<Text>Title xxl</Text>',
-          },
-        ],
-        propsValues: [],
-      },
-    ];
-    const mdx = await generateMdx(fakeBlocks);
-    expect(mdx).toStrictEqual(fakeBlocks[0].models);
-  });
-  test('should return appropriate code for each breakpoint', async () => {
-    const code = '<Text>Title</Text>';
-    const largeCode = '<Text>Large Title</Text>';
-    const fakeBlocks = [
-      {
-        models: [
-          {
-            base: code,
-            lg: largeCode,
-          },
-        ],
-        propsValues: [],
+        models: [{ base: '<Text>{{title:string}}</Text>', lg: '<Text size="m">{{title:string}}</Text>' }],
+        propsValues: [{ base: { title: 'base' }, lg: { title: 'lg' } }],
       },
     ];
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([
       {
-        base: code,
-        md: code,
-        lg: largeCode,
-        xl: largeCode,
-        xxl: largeCode,
+        base: '<Text>base</Text>',
+        lg: '<Text size="m">lg</Text>',
       },
     ]);
   });
-  test('should return code with replaced string values', async () => {
-    const code = '<Text>Title {{title:string}}</Text>';
+  test('should reuse props values', async () => {
     const fakeBlocks = [
       {
-        models: [
-          {
-            base: code,
-          },
-        ],
+        models: [{ base: '<Text>{{title:string}}</Text>', xxl: '<Text size="m">{{title:string}}</Text>' }],
+        propsValues: [{ base: { title: 'title' } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([
+      {
+        base: '<Text>title</Text>',
+        xxl: '<Text size="m">title</Text>',
+      },
+    ]);
+  });
+  test('should reuse model and set different prop values', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<Text>{{title:string}}</Text>' }],
+        propsValues: [{ base: { title: 'base' }, xxl: { title: 'xxl' } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([
+      {
+        base: '<Text>base</Text>',
+        xxl: '<Text>xxl</Text>',
+      },
+    ]);
+  });
+  test('should merge prop values', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<Text>{{title:string}}-{{subtitle:string}}</Text>' }],
         propsValues: [
           {
-            base: { title: 'base' },
-            md: { title: 'md' },
-            lg: { title: 'lg' },
-            xl: { title: 'xl' },
+            base: { title: 'base', subtitle: 'subtitle' },
+            lg: { subtitle: 'large subtitle' },
             xxl: { title: 'xxl' },
           },
         ],
@@ -100,39 +94,9 @@ describe('generateMdx', () => {
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([
       {
-        base: '<Text>Title base</Text>',
-        md: '<Text>Title md</Text>',
-        lg: '<Text>Title lg</Text>',
-        xl: '<Text>Title xl</Text>',
-        xxl: '<Text>Title xxl</Text>',
-      },
-    ]);
-  });
-  test('should return code with replaced string values for breakpoint', async () => {
-    const code = '<Text>Title {{title:string}}</Text>';
-    const fakeBlocks = [
-      {
-        models: [
-          {
-            base: code,
-          },
-        ],
-        propsValues: [
-          {
-            base: { title: 'base' },
-            lg: { title: 'lg' },
-          },
-        ],
-      },
-    ];
-    const mdx = await generateMdx(fakeBlocks);
-    expect(mdx).toStrictEqual([
-      {
-        base: '<Text>Title base</Text>',
-        md: '<Text>Title base</Text>',
-        lg: '<Text>Title lg</Text>',
-        xl: '<Text>Title lg</Text>',
-        xxl: '<Text>Title lg</Text>',
+        base: '<Text>base-subtitle</Text>',
+        lg: '<Text>base-large subtitle</Text>',
+        xxl: '<Text>xxl-large subtitle</Text>',
       },
     ]);
   });
@@ -162,67 +126,25 @@ describe('generateMdx', () => {
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([
       {
-        base: '<Text>Title base</Text><Text>Title base1</Text>',
-        md: '<Text>Title base</Text><Text>Title base1</Text>',
-        lg: '<Text>Title lg</Text><Text>Title base1</Text>',
-        xl: '<Text>Title lg</Text><Text>Title base1</Text>',
-        xxl: '<Text>Title lg</Text><Text>Title base1</Text>',
+        base: '<Text>Title base</Text>',
+        lg: '<Text>Title lg</Text>',
+      },
+      {
+        base: '<Text>Title base1</Text>',
       },
     ]);
   });
   test('should return code with replaced number values', async () => {
     const code = '<Text>Value {{value:number}}</Text>';
-    const fakeBlocks = [
-      {
-        models: [
-          {
-            base: code,
-          },
-        ],
-        propsValues: [
-          {
-            base: { value: '1' },
-            md: { value: '2' },
-            lg: { value: '3' },
-            xl: { value: '4' },
-            xxl: { value: '5' },
-          },
-        ],
-      },
-    ];
+    const fakeBlocks = [{ models: [{ base: code }], propsValues: [{ base: { value: '1' } }] }];
     const mdx = await generateMdx(fakeBlocks);
-    expect(mdx).toStrictEqual([
-      {
-        base: '<Text>Value 1</Text>',
-        md: '<Text>Value 2</Text>',
-        lg: '<Text>Value 3</Text>',
-        xl: '<Text>Value 4</Text>',
-        xxl: '<Text>Value 5</Text>',
-      },
-    ]);
+    expect(mdx).toStrictEqual([{ base: '<Text>Value 1</Text>' }]);
   });
   test('should return code with replaced values with default value', async () => {
     const code = '<Text>Must use {{value:number:default value}}</Text>';
-    const fakeBlocks = [
-      {
-        models: [
-          {
-            base: code,
-          },
-        ],
-        propsValues: [],
-      },
-    ];
+    const fakeBlocks = [{ models: [{ base: code }], propsValues: [] }];
     const mdx = await generateMdx(fakeBlocks);
-    expect(mdx).toStrictEqual([
-      {
-        base: '<Text>Must use default value</Text>',
-        md: '<Text>Must use default value</Text>',
-        lg: '<Text>Must use default value</Text>',
-        xl: '<Text>Must use default value</Text>',
-        xxl: '<Text>Must use default value</Text>',
-      },
-    ]);
+    expect(mdx).toStrictEqual([{ base: '<Text>Must use default value</Text>' }]);
   });
   test('should return code with replaced list values', async () => {
     const code = '<Text>Value {{value:list(1|2)}}</Text>';
@@ -245,34 +167,14 @@ describe('generateMdx', () => {
     expect(mdx).toStrictEqual([
       {
         base: '<Text>Value 1</Text>',
-        md: '<Text>Value 1</Text>',
         lg: '<Text>Value 2</Text>',
-        xl: '<Text>Value 2</Text>',
-        xxl: '<Text>Value 2</Text>',
       },
     ]);
   });
   test('should return code with replaced list values with default value', async () => {
     const code = '<Text>Value {{value:list(1|2):3}}</Text>';
-    const fakeBlocks = [
-      {
-        models: [
-          {
-            base: code,
-          },
-        ],
-        propsValues: [],
-      },
-    ];
+    const fakeBlocks = [{ models: [{ base: code }], propsValues: [] }];
     const mdx = await generateMdx(fakeBlocks);
-    expect(mdx).toStrictEqual([
-      {
-        base: '<Text>Value 3</Text>',
-        md: '<Text>Value 3</Text>',
-        lg: '<Text>Value 3</Text>',
-        xl: '<Text>Value 3</Text>',
-        xxl: '<Text>Value 3</Text>',
-      },
-    ]);
+    expect(mdx).toStrictEqual([{ base: '<Text>Value 3</Text>' }]);
   });
 });

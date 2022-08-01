@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.0.27",
+  "version": "0.0.28",
   "author": "Steve Cox <stevejcox@me.com>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -25,11 +25,11 @@
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "dependencies": {
-    "js-cookie": "^2.2.1",
+    "js-cookie": "^3.0.1",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
-    "@types/js-cookie": "^2.2.5"
+    "@types/js-cookie": "^3.0.2"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
 }

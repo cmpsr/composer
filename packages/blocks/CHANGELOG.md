@@ -1,5 +1,40 @@
 # @cmpsr/blocks
 
+## 9.1.2
+
+## 9.1.1
+
+## 9.1.0
+
+### Minor Changes
+
+- d826d1f: feat: spread link properties on navigation block anchors
+
+## 9.0.1
+
+## 9.0.0
+
+### Patch Changes
+
+- Updated dependencies [5f3d719]
+  - @cmpsr/components@4.0.0
+
+## 8.0.0
+
+### Major Changes
+
+- 7539927: feat: Refactor Hero block to use composition and dot notation
+
+### Minor Changes
+
+- cb394dc: feat: support new variation of components for MediaBlock
+
+## 7.3.0
+
+### Minor Changes
+
+- d896836: feat: added MediaBlock component
+
 ## 7.2.3
 
 ## 7.2.2

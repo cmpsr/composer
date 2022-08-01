@@ -1,7 +1,6 @@
-import { ComponentStyleConfig } from '@chakra-ui/react';
+import { ComponentStyleConfig } from '@chakra-ui/theme';
 
 const baseStyle = {
-  fontStyle: 'text-body-medium',
   container: {
     bg: 'background-container-default',
     color: 'text-secondary',
@@ -10,16 +9,20 @@ const baseStyle = {
   },
   label: {
     color: 'text-secondary',
+    textStyle: 'text-body-medium',
   },
   leftIcon: {
     marginInlineEnd: '0.25rem',
+    textStyle: 'text-body-medium',
   },
   rightIcon: {
     marginInlineStart: '0.25rem',
+    textStyle: 'text-body-medium',
   },
 };
 
 export const Tag: ComponentStyleConfig = {
+  parts: ['container', 'label', 'closeButton', 'leftIcon', 'rightIcon'],
   baseStyle: baseStyle,
   variants: {
     subtle: baseStyle,

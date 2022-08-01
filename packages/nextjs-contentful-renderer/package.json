@@ -1,15 +1,21 @@
 {
   "name": "@cmpsr/nextjs-contentful-renderer",
-  "version": "12.1.5",
+  "version": "14.4.6",
   "description": "Utility functions to retrieve and render content from contentful in mdx format",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
+  "repository": {
+    "url": "ssh://git@github.com:cmpsr/composer.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
   "files": [
     "/lib",
     "/client",
     "package.json"
   ],
-  "repository": "ssh://git@github.com:cmpsr/composer.git",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "private": false,
@@ -29,8 +35,8 @@
   },
   "devDependencies": {
     "@apollo/client": "^3.6.2",
-    "@cmpsr/blocks": "^7.2.3",
-    "@cmpsr/components": "^3.4.1",
+    "@cmpsr/blocks": "^9.1.2",
+    "@cmpsr/components": "^4.3.0",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",
@@ -44,8 +50,8 @@
   },
   "peerDependencies": {
     "@apollo/client": "^3.6.2",
-    "@cmpsr/blocks": "^7.0.0",
-    "@cmpsr/components": "^3.2.0",
+    "@cmpsr/blocks": "^9.0.0",
+    "@cmpsr/components": "^4.0.0",
     "next": "^12.1.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"

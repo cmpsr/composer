@@ -1,4 +1,4 @@
-import { Block, Section } from '../contentful/getPageById/types';
+import { Block, Section } from '../../contentful/getPageById/types';
 
 export const insertSection = (originalContent: Block[], section: Section, method: 'unshift' | 'push') => {
   if (!section) return originalContent;

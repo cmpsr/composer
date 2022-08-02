@@ -35,7 +35,7 @@ export const Alert: FC<AlertProps> & AlertStaticMembers = ({ status = 'info', ..
   );
 };
 
-const Icon = () => {
+const AlertIcon = () => {
   const { icon } = useAlertStyles() as AlertStyles;
   const { status } = useAlertContext();
   const BaseIcon = ALERT_ICONS[status];
@@ -50,4 +50,4 @@ const AlertCloseButton: FC<CloseButtonProps> = (props) => (
 Alert.Title = AlertTitle;
 Alert.Description = AlertDescription;
 Alert.CloseButton = AlertCloseButton;
-Alert.Icon = Icon;
+Alert.Icon = AlertIcon;

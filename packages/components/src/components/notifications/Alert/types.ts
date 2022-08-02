@@ -24,6 +24,4 @@ export interface AlertProps extends ChakraAlertProps {
   variant?: AlertVariant;
 }
 
-export interface AlertIconProps {
-  status?: AlertStatus;
-}
+export type AlertIconProps = {};

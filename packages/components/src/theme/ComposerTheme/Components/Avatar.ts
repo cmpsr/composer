@@ -25,65 +25,56 @@ export const Avatar: ComponentStyleConfig = {
     label: {
       textColor: 'text-secondary',
     },
-  },
-  sizes: {
-    xxl: ({ theme }) => ({
-      ...getSize('8rem'),
-      ...theme.textStyles['text-body-display-XL'],
-    }),
-    xl: ({ theme }) => ({
-      ...getSize('6rem'),
-      ...theme.textStyles['text-body-display-L'],
-    }),
-    l: ({ theme }) => ({
-      ...getSize('4rem'),
-      ...theme.textStyles['text-body-display-S'],
-    }),
-    m: ({ theme }) => ({
-      ...getSize('3rem'),
-      ...theme.textStyles['text-body-display-XS'],
-    }),
-    s: ({ theme }) => ({
-      ...getSize('2rem'),
-      ...theme.textStyles['font-body-meta-regular'],
-    }),
-    xs: ({ theme }) => ({
-      ...getSize('1.5rem'),
-      ...theme.textStyles['font-body-floating-label-medium'],
-    }),
-  },
-  defaultProps: {
-    size: 'm',
-  },
-};
-
-export const AvatarBadge: ComponentStyleConfig = {
-  baseStyle: {
-    backgroundColor: 'alert-success-default',
-    borderColor: 'background-container-card',
+    badge: {
+      backgroundColor: 'alert-success-default',
+      borderColor: 'var(--chakra-colors-background-container-card)',
+    },
   },
   sizes: {
     xxl: {
-      boxSize: '3.375rem',
+      ...getSize('8rem'),
+      textStyle: 'text-body-display-XL',
+      badge: {
+        boxSize: '3.375rem',
+      },
     },
     xl: {
-      boxSize: '2.5rem',
+      ...getSize('6rem'),
+      textStyle: 'text-body-display-L',
+      badge: {
+        boxSize: '2.5rem',
+      },
     },
     l: {
-      boxSize: '1.75rem',
+      ...getSize('4rem'),
+      textStyle: 'text-body-display-S',
+      badge: {
+        boxSize: '1.75rem',
+      },
     },
     m: {
-      boxSize: '1.25rem',
+      ...getSize('3rem'),
+      textStyle: 'text-body-display-XS',
+      badge: {
+        boxSize: '1.25rem',
+      },
     },
     s: {
-      boxSize: '0.875rem',
+      ...getSize('2rem'),
+      textStyle: 'font-body-meta-regular',
+      badge: {
+        boxSize: '0.875rem',
+      },
     },
     xs: {
-      boxSize: '0.625rem',
+      ...getSize('1.5rem'),
+      textStyle: 'font-body-floating-label-medium',
+      badge: {
+        boxSize: '0.625rem',
+      },
     },
   },
   defaultProps: {
-    variant: 'solid',
     size: 'm',
   },
 };

@@ -1,6 +1,6 @@
 import { Accordion } from './Accordion';
 import { Alert } from './Alert';
-import { Avatar, AvatarBadge } from './Avatar';
+import { Avatar } from './Avatar';
 import { Badge } from './Badge';
 import { Breadcrumb } from './Breadcrumb';
 import { Button } from './Button';
@@ -35,7 +35,6 @@ export const components = {
   Accordion,
   Alert,
   Avatar,
-  AvatarBadge,
   Badge,
   Breadcrumb,
   Button,

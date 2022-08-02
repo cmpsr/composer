@@ -89,6 +89,7 @@ export const CookieBanner: FC<CookieBannerProps> & CookieBannerStaticMembers = (
 
 const CookieBannerContent: FC<AlertProps> = ({ children, ...props }) => (
   <Alert variant="subtle" pt="0" pr={{ base: '0', lg: '2rem' }} pb={{ base: '2rem', lg: '0' }} {...props}>
+    <Alert.Icon />
     {typeof children === 'string' ? <Text color="text-secondary">{children}</Text> : children}
   </Alert>
 );

@@ -2,4 +2,4 @@
 "@cmpsr/components": patch
 ---
 
-set alert icon optional
+feat: set alert icon optional using dot notation

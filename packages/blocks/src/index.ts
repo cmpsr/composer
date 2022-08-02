@@ -1,3 +1,4 @@
+export * from './AccordionGallery';
 export * from './BrandLogos';
 export * from './CookieBanner';
 export * from './Footer';

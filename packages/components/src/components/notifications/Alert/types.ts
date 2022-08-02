@@ -8,7 +8,7 @@ export const alertVariants = ['solid', 'subtle', 'left-accent'] as const;
 export type AlertStatus = typeof alertStatuses[number];
 export type AlertVariant = typeof alertVariants[number];
 
-export type AlertIconStyles = {
+export type AlertStyles = {
   icon: { status: { [key: string]: { color: string } } };
 };
 

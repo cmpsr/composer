@@ -6,7 +6,7 @@ import {
   AccordionPanel,
   useAccordionContext,
   useAccordionItemState,
-  useStyleConfig,
+  useAccordionStyles,
 } from '@chakra-ui/react';
 
 import { AccordionProps, AccordionButtonProps, AccordionStaticMembers } from './types';
@@ -21,7 +21,7 @@ const AccordionButton: FC<AccordionButtonProps> = ({ highlight, ...props }) => (
 const AccordionIcon: FC<IconProps> = (props) => {
   const { isOpen, isDisabled } = useAccordionItemState();
   const { reduceMotion } = useAccordionContext();
-  const styles = useStyleConfig('Accordion') as { icon: IconProps };
+  const styles = useAccordionStyles() as { icon: IconProps };
 
   const iconStyles: IconProps = {
     opacity: isDisabled ? 0.4 : 1,

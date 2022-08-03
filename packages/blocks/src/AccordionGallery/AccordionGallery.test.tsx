@@ -93,4 +93,18 @@ describe('AccordionGallery', () => {
     );
     screen.getByRole('img', { name: 'image 1' });
   });
+  test('should preseve onClick provided to Accordion Button', () => {
+    const mockOnClick = jest.fn();
+    renderWithProviders(
+      <AccordionGallery defaultImage={0}>
+        <AccordionGallery.Accordion>
+          <AccordionGallery.Accordion.Item>
+            <AccordionGallery.Accordion.Button onClick={mockOnClick}>button</AccordionGallery.Accordion.Button>
+          </AccordionGallery.Accordion.Item>
+        </AccordionGallery.Accordion>
+      </AccordionGallery>
+    );
+    fireEvent.click(screen.getByText('button'));
+    expect(mockOnClick).toHaveBeenCalledTimes(1);
+  });
 });

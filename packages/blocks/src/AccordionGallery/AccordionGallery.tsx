@@ -1,4 +1,4 @@
-import React, { FC, useState, isValidElement, Children, ReactElement, useRef, createContext } from 'react';
+import React, { FC, useState, isValidElement, Children, ReactElement, useRef, createContext, useEffect } from 'react';
 import {
   Accordion,
   AccordionProps,
@@ -9,6 +9,7 @@ import {
   TextPairingProps,
   useBreakpointValue,
   Text,
+  TextProps,
 } from '@cmpsr/components';
 import { AccordionGalleryProps, AccordionGalleryStaticMembers } from './types';
 import {
@@ -19,24 +20,26 @@ import {
 
 export const AccordionGalleryContext = createContext({ setActiveItem: null, images: null });
 
-// Add support for legend, icon etc...
 export const AccordionGallery: FC<AccordionGalleryProps> & AccordionGalleryStaticMembers = ({
   children,
-  defaultImage = null,
+  defaultImage = 0,
   ...rest
 }) => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
-  const [activeItem, setActiveItem] = useState(0);
+  const [activeItem, setActiveItem] = useState(null);
   const images = useRef({});
+
+  useEffect(() => {
+    setActiveItem(defaultImage);
+  }, []);
 
   let textPairing: ReactElement<TextPairingProps> = null;
   let accordion: ReactElement<AccordionProps> = null;
-  let legend: ReactElement<TextPairingProps> = null;
+  let legend: ReactElement<TextProps> = null;
 
   Children.map(children, (child) => {
     if (isValidElement(child)) {
       switch (child.type) {
-        // Create custom component AccordionGalleryLegend with default stylings (?)
         case Text:
           legend = child;
           break;
@@ -58,11 +61,11 @@ export const AccordionGallery: FC<AccordionGalleryProps> & AccordionGalleryStati
         justifyContent="center"
         {...rest}
       >
-        {!isMobile && images.current[activeItem] && <AccordionGalleryImage {...images.current[activeItem]} />}
+        {!isMobile && images.current?.[activeItem] && <AccordionGalleryImage {...images.current[activeItem]} />}
         <Flex flexDirection="column" gap={{ base: '2rem', md: '1.5rem', lg: '3rem' }}>
           {legend}
           {textPairing}
-          {isMobile && images.current[activeItem] && <AccordionGalleryImage {...images.current[activeItem]} />}
+          {isMobile && images.current?.[activeItem] && <AccordionGalleryImage {...images.current[activeItem]} />}
           {accordion}
         </Flex>
       </Flex>

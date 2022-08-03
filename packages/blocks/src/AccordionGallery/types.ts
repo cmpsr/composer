@@ -12,7 +12,7 @@ export { ImageProps as AccordionGalleryImageProps } from '@cmpsr/components';
 
 export interface AccordionGalleryProps extends FlexProps {
   children: ReactNode;
-  defaultImage?: ImageProps;
+  defaultImage?: number;
 }
 
 export interface AccordionGalleryItemProps {

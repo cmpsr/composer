@@ -2,7 +2,6 @@ import React, { FC, useEffect, useMemo, useState } from 'react';
 import * as Composer from '@cmpsr/components';
 import * as Blocks from '@cmpsr/blocks';
 import { getMDXComponent } from 'mdx-bundler/client';
-import { Paragraph, Text } from './components';
 import { MdxRendererProps } from './types';
 
 const renderHeader = ({ children, ...props }: Composer.TextProps, as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') => {
@@ -15,9 +14,9 @@ const renderHeader = ({ children, ...props }: Composer.TextProps, as: 'h1' | 'h2
     h6: 'text-header-M' as const,
   };
   return (
-    <Text as={as} variant={variants[as]} {...props}>
+    <Composer.Text as={as} variant={variants[as]} {...props}>
       {children}
-    </Text>
+    </Composer.Text>
   );
 };
 
@@ -34,7 +33,7 @@ const composerComponents: any = Object.keys(Composer).reduce(
     }
   },
   {
-    p: Paragraph,
+    p: Composer.Text,
     h1: (props: Composer.TextProps) => renderHeader(props, 'h1'),
     h2: (props: Composer.TextProps) => renderHeader(props, 'h2'),
     h3: (props: Composer.TextProps) => renderHeader(props, 'h3'),
@@ -64,5 +63,5 @@ export const MdxRenderer: FC<MdxRendererProps> = ({ content = {}, componentMap =
     setIsClient(true);
   }, []);
 
-  return !isClient ? null : <MdxComponent components={{ ...components, Text, ...componentMap }} />;
+  return !isClient ? null : <MdxComponent components={{ ...components, ...componentMap }} />;
 };

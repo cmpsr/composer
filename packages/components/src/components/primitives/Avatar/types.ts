@@ -12,8 +12,6 @@ export interface AvatarProps extends ChakraAvatarProps {
   showBadge?: boolean;
 }
 
-export type AvatarBadgeProps = Omit<ChakraAvatarBadgeProps, 'children'> & {
-  size?: AvatarSize;
-};
+export type AvatarBadgeProps = Omit<ChakraAvatarBadgeProps, 'children'>;
 
 export type AvatarBadgeStyle = StyleProps;

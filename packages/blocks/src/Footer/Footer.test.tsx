@@ -4,43 +4,38 @@ import { screen, renderWithProviders } from '@tests/renderWithProviders';
 import { Footer } from './Footer';
 
 describe('Footer', () => {
-  const defaultProps = {
-    imageProps: { src: 'https://avatars0.githubusercontent.com/u/67131017?s=200', maxWidth: '4.25rem' },
-    linkGroups: [
-      {
-        title: 'Group 1',
-        items: [
-          { children: 'Default Link', href: '#' },
-          { children: 'Default Link', href: '#' },
-          { children: 'Default Link', href: '#' },
-        ],
-      },
-      {
-        title: 'Group 2',
-        items: [
-          { children: 'Default Link', href: '#' },
-          { children: 'Default Link', href: '#' },
-          { children: 'Default Link', href: '#' },
-        ],
-      },
-      {
-        title: 'Group 3',
-        items: [
-          { children: 'Default Link', href: '#' },
-          { children: 'Default Link', href: '#' },
-          { children: 'Default Link', href: '#' },
-        ],
-      },
-    ],
-  };
-  const givenComponentRendered = (props?: any) => renderWithProviders(<Footer {...defaultProps} {...props} />);
+  const givenComponentRendered = ({ renderCopyGroup = false, renderBottom = false } = {}) =>
+    renderWithProviders(
+      <Footer>
+        <Footer.Logo alt="Logo" />
+        <Footer.Content.Links>
+          <Footer.Content.LinkGroup>
+            <Footer.Content.LinkGroup.Title as="h3">Group 1</Footer.Content.LinkGroup.Title>
+            <Footer.Content.LinkGroup.Link href="#">Link 1</Footer.Content.LinkGroup.Link>
+            <Footer.Content.LinkGroup.Link href="#">Link 2</Footer.Content.LinkGroup.Link>
+            <Footer.Content.LinkGroup.Link href="#">Link 3</Footer.Content.LinkGroup.Link>
+          </Footer.Content.LinkGroup>
+        </Footer.Content.Links>
+        {renderCopyGroup && <Footer.Content.CopyGroup>copyGroup</Footer.Content.CopyGroup>}
+        {renderBottom && <Footer.Bottom>Bottom content</Footer.Bottom>}
+      </Footer>
+    );
 
+  test('should render content', () => {
+    givenComponentRendered();
+    screen.getByRole('img', { name: 'Logo' });
+    screen.getByRole('heading', { name: 'Group 1' });
+    screen.getByRole('link', { name: 'Link 1' });
+    screen.getByRole('link', { name: 'Link 2' });
+    screen.getByRole('link', { name: 'Link 3' });
+  });
   test('should render copyGroup when provided', () => {
-    givenComponentRendered({ copyGroup: <span>copyGroup</span> });
+    givenComponentRendered({ renderCopyGroup: true });
     screen.getByText('copyGroup');
   });
-  test('should render bottomContent when provided', () => {
-    givenComponentRendered({ bottomContent: <span>bottomContent</span> });
-    screen.getByText('bottomContent');
+  test('should render bottom content with separator', () => {
+    givenComponentRendered({ renderBottom: true });
+    screen.getByRole('separator');
+    screen.getByText('Bottom content');
   });
 });

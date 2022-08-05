@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Image, TextPairing } from '@cmpsr/components';
+import { Flex, Image, Link, Tag, TextPairing } from '@cmpsr/components';
 import { MediaBlockType } from './types';
 
 export const MediaBlock: MediaBlockType = (props) => {
@@ -19,3 +19,5 @@ export const MediaBlock: MediaBlockType = (props) => {
 
 MediaBlock.Image = Image;
 MediaBlock.TextPairing = TextPairing;
+MediaBlock.Tag = Tag;
+MediaBlock.Link = Link;

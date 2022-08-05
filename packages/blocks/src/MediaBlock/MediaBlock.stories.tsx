@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Meta } from '@storybook/react';
 import { MediaBlock, mediaBlockVariants } from '.';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
@@ -20,38 +20,49 @@ export default {
   },
 } as Meta;
 
-export const AllTemplate = () => (
+export const AllVertical = () => (
   <Table variant="simple">
     <Thead>
       <Tr>
-        <Th>Variant</Th>
         <Th>Content alignment</Th>
       </Tr>
     </Thead>
     <Tbody>
-      {mediaBlockVariants.map((variant, index) => (
-        <Fragment key={index}>
-          {alignments.map((alignment) => (
-            <Tr key={variant + alignment}>
-              <Td>{variant}</Td>
-              <Td>
-                <MediaBlock variant={variant} alignItems={alignment}>
-                  <MediaBlock.TextPairing variant="textpairing-header-M">
-                    <MediaBlock.TextPairing.Label textTransform="capitalize">{alignment}</MediaBlock.TextPairing.Label>
-                    <MediaBlock.TextPairing.SubLabel children={`${variant} - ${alignment}`} />
-                  </MediaBlock.TextPairing>
-                  <MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" width="100px" />
-                </MediaBlock>
-              </Td>
-            </Tr>
-          ))}
-        </Fragment>
+      {alignments.map((alignment) => (
+        <Tr key={'vertical' + alignment}>
+          <Td>
+            <MediaBlock variant="vertical" alignItems={alignment}>
+              <MediaBlock.TextPairing variant="textpairing-header-M">
+                <MediaBlock.TextPairing.Label textTransform="capitalize">{alignment}</MediaBlock.TextPairing.Label>
+                <MediaBlock.TextPairing.SubLabel children={`vertical - ${alignment}`} />
+              </MediaBlock.TextPairing>
+              <MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" width="100px" />
+              <MediaBlock.Tag size="s">
+                <MediaBlock.Tag.Label>Tag</MediaBlock.Tag.Label>
+              </MediaBlock.Tag>
+              <MediaBlock.Link href="#" size="s">
+                Link
+              </MediaBlock.Link>
+            </MediaBlock>
+          </Td>
+        </Tr>
       ))}
+    </Tbody>
+  </Table>
+);
+
+export const Horizontal = () => (
+  <Table variant="simple">
+    <Thead>
+      <Tr>
+        <Th>Content alignment</Th>
+      </Tr>
+    </Thead>
+    <Tbody>
       {alignments.map((alignment) => (
         <Tr key={'horizontal' + alignment}>
-          <Td>{'horizontal space between'}</Td>
           <Td>
-            <MediaBlock variant={'horizontal'} alignItems={alignment} justifyContent="space-between">
+            <MediaBlock variant="horizontal" alignItems={alignment} justifyContent="space-between">
               <MediaBlock.TextPairing variant="textpairing-header-M">
                 <MediaBlock.TextPairing.Label textTransform="capitalize">{alignment}</MediaBlock.TextPairing.Label>
                 <MediaBlock.TextPairing.SubLabel children={`horizontal - ${alignment}`} />

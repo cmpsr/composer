@@ -17,7 +17,7 @@ const messageColor = {
 
 export const InlineAlert: ComponentMultiStyleConfig = {
   parts: ['container', 'description', 'icon'],
-  baseStyle: ({ status, ...rest }) => {
+  baseStyle: ({ status, theme }) => {
     return {
       container: {
         alignItems: 'center',
@@ -28,7 +28,7 @@ export const InlineAlert: ComponentMultiStyleConfig = {
         ...messageColor[status],
       },
       icon: {
-        ...rest.theme.components.Alert.baseStyle(rest).icon.status[status],
+        ...theme.components.Alert.baseStyle.icon.status[status],
       },
     };
   },

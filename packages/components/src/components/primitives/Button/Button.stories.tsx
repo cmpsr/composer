@@ -87,9 +87,7 @@ const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
     {...(showLeadingIcon && { leadingIcon: <Icons.IconExternalLink /> })}
     {...(showTrailingIcon && { trailingIcon: <Icons.IconExternalLink /> })}
     {...args}
-  >
-    Playground
-  </Button>
+  />
 );
 
 export const Playground = Template.bind({});

@@ -74,7 +74,6 @@ export const labelStyles = {
       },
       hovered: {
         borderColor: 'ui-element-outline-active',
-        border: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-active)',
       },
     },
     flushed: {

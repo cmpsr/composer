@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
-import { AlertProps, AlertStaticMembers, AlertStyles } from './types';
-import { Alert as ChakraAlert, AlertDescription, AlertTitle, useMultiStyleConfig } from '@chakra-ui/react';
+import { AlertProps, AlertStaticMembers, AlertStyles, AlertStatus } from './types';
+import { Alert as ChakraAlert, AlertDescription, AlertTitle, useAlertStyles } from '@chakra-ui/react';
+import { createContext } from '@chakra-ui/react-utils';
 import {
   CloseButton,
   IconAlertCircle,
@@ -17,17 +18,29 @@ export const ALERT_ICONS = {
   error: IconAlertCircle,
 };
 
-export const Alert: FC<AlertProps> & AlertStaticMembers = ({ status = 'info', children, variant, ...props }) => {
-  const { icon } = useMultiStyleConfig('Alert', { variant, status }) as AlertStyles;
+interface AlertContext {
+  status: AlertStatus;
+}
 
+const [AlertProvider, useAlertContext] = createContext<AlertContext>({
+  name: 'AlertContext',
+  errorMessage: 'useAlertContext: `context` is undefined. Seems you forgot to wrap alert components in `<Alert />`',
+});
+
+export const Alert: FC<AlertProps> & AlertStaticMembers = ({ status = 'info', ...props }) => {
+  return (
+    <AlertProvider value={{ status }}>
+      <ChakraAlert status={status} {...props} />
+    </AlertProvider>
+  );
+};
+
+const AlertIcon = () => {
+  const { icon } = useAlertStyles() as AlertStyles;
+  const { status } = useAlertContext();
   const BaseIcon = ALERT_ICONS[status];
 
-  return (
-    <ChakraAlert status={status} variant={variant} {...props}>
-      <BaseIcon data-testid="cmpsr.alert.icon" size="l" {...icon} color={icon.status[status]?.color} />
-      {children}
-    </ChakraAlert>
-  );
+  return <BaseIcon data-testid="cmpsr.alert.icon" size="l" {...icon} color={icon.status[status]?.color} />;
 };
 
 const AlertCloseButton: FC<CloseButtonProps> = (props) => (
@@ -37,3 +50,4 @@ const AlertCloseButton: FC<CloseButtonProps> = (props) => (
 Alert.Title = AlertTitle;
 Alert.Description = AlertDescription;
 Alert.CloseButton = AlertCloseButton;
+Alert.Icon = AlertIcon;

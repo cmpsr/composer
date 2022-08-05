@@ -1,6 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { screen, renderWithProviders } from '@tests/renderWithProviders';
+import { screen, renderWithProviders, fireEvent } from '@tests/renderWithProviders';
 
 import { Navigation } from './Navigation';
 
@@ -11,43 +11,71 @@ jest.mock('@cmpsr/components', () => {
   return {
     ...actualLib,
     useScrollPosition: () => mockUseScrollPosition(),
-    useBreakpointValue: (p) => mockUseBreakpointValue(p),
+    useBreakpointValue: () => mockUseBreakpointValue(),
   };
 });
 
 describe('Navigation', () => {
-  const defaultProps = {
-    sticky: false,
-    anchors: [{ label: 'label', href: '#' }],
-    actions: <button>action</button>,
-    logoUrl: 'logoUrl',
-  };
-  const givenComponentRendered = (props?: any) => renderWithProviders(<Navigation {...defaultProps} {...props} />);
+  const givenComponentRendered = ({ sticky = false, logoHref = undefined } = {}) =>
+    renderWithProviders(
+      <Navigation sticky={sticky}>
+        <Navigation.Logo href={logoHref} alt="Logo" />
+        <Navigation.Links>
+          <Navigation.Link href="#">Link 1</Navigation.Link>
+          <Navigation.Link href="#">Link 2</Navigation.Link>
+        </Navigation.Links>
+        <Navigation.Actions>
+          <Navigation.Action href="#">Action 1</Navigation.Action>
+          <Navigation.Action href="#">Action 2</Navigation.Action>
+        </Navigation.Actions>
+      </Navigation>
+    );
 
-  test('should show BaseNavigation for base breakpoint', () => {
+  test('should render all content in desktop', () => {
+    mockUseBreakpointValue.mockReturnValueOnce(false);
+    givenComponentRendered();
+    screen.getByRole('navigation');
+    screen.getByRole('img', { name: 'Logo' });
+    screen.getByRole('link', { name: 'Link 1' });
+    screen.getByRole('link', { name: 'Link 2' });
+    screen.getByRole('link', { name: 'Action 1' });
+    screen.getByRole('link', { name: 'Action 2' });
+  });
+  test('should render hamburger menu for base breakpoints', () => {
     mockUseBreakpointValue.mockReturnValueOnce(true);
     givenComponentRendered();
     screen.getByLabelText('Hamburger menu button');
   });
-  test('should show DesktopNavigation for lg breakpoint', () => {
+  test('should render all content in mobile when opened', () => {
+    mockUseBreakpointValue.mockReturnValueOnce(true);
+    givenComponentRendered();
+    fireEvent.click(screen.getByLabelText('Hamburger menu button'));
+    screen.getByRole('navigation');
+    screen.getByRole('img', { name: 'Logo' });
+    screen.getByRole('link', { name: 'Link 1' });
+    screen.getByRole('link', { name: 'Link 2' });
+    screen.getByRole('link', { name: 'Action 1' });
+    screen.getByRole('link', { name: 'Action 2' });
+  });
+  test('should not render hamburger menu for desktop breakpoint', () => {
     mockUseBreakpointValue.mockReturnValueOnce(false);
     givenComponentRendered();
-    screen.getByTestId('desktop-navigation');
+    expect(screen.queryByTestId('desktop-navigation')).toBeNull();
   });
-  test('should make navigation sticky when sticky property is provided', () => {
+  test('should make navigation sticky', () => {
     givenComponentRendered({ sticky: true });
-    const navigation = screen.getByTestId('navigation');
+    const navigation = screen.getByRole('navigation');
     expect(navigation).toHaveStyle(`position: sticky`);
   });
   test('should add elevation when page is scrolled', () => {
     mockUseScrollPosition.mockReturnValueOnce(10);
     givenComponentRendered();
-    const navigation = screen.getByTestId('navigation');
+    const navigation = screen.getByRole('navigation');
     expect(navigation).toHaveStyle('box-shadow: var(--chakra-shadows-elevation-interactive)');
   });
-  test('should render logo wrapped within a link when logoHref is provided', () => {
-    givenComponentRendered({ logoHref: 'foo' });
-    const link = screen.getAllByTestId('cmpsr.link.container')[0];
+  test('should render logo wrapped within a link when href is provided', () => {
+    givenComponentRendered({ sticky: true, logoHref: 'foo' });
+    const link = screen.getByRole('img', { name: 'Logo' }).parentNode;
     expect(link).toHaveAttribute('href', 'foo');
   });
 });

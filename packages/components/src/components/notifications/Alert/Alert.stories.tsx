@@ -23,7 +23,7 @@ export default {
   },
 } as Meta;
 
-const AllTemplate = () => {
+export const All = () => {
   return (
     <Table variant="simple">
       <Thead>
@@ -55,6 +55,7 @@ const AllTemplate = () => {
                 {alertStatuses.map((status, i) => (
                   <Td key={`${variant}-${status}-${i}`}>
                     <Alert variant={variant} status={status}>
+                      <Alert.Icon />
                       {(state === 'Description, Close' || state === 'Description') && (
                         <>
                           <Alert.Description>This is a description</Alert.Description>
@@ -92,10 +93,10 @@ const AllTemplate = () => {
     </Table>
   );
 };
-export const All = AllTemplate.bind({});
 
-const Template = ({ titleAlignment, showDescription, showTitle, showClose, variant, status }) => (
+const Template = ({ titleAlignment, showDescription, showTitle, showClose, variant, status, showIcon }) => (
   <Alert variant={variant} status={status}>
+    {showIcon && <Alert.Icon />}
     <Flex direction={titleAlignment === 'top' ? 'column' : 'row'}>
       {showTitle && <Alert.Title mr={titleAlignment === 'left' ? '0.75rem' : '0'}>Title</Alert.Title>}
       {showDescription && <Alert.Description>This is a description</Alert.Description>}
@@ -111,4 +112,5 @@ Playground.args = {
   showDescription: true,
   showTitle: true,
   showClose: true,
+  showIcon: true,
 };

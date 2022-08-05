@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   Tag as ChakraTag,
   TagLeftIcon,
   TagRightIcon,
   TagLabel,
   useStyles,
-  forwardRef,
   StyleProps,
+  forwardRef,
+  ChakraComponent,
 } from '@chakra-ui/react';
-import { TagProps } from './types';
+import { TagProps, TagStaticMembers } from './types';
+import { IconProps } from '../Icons';
 
-const Tag = forwardRef<TagProps, typeof ChakraTag>((props, ref) => <ChakraTag ref={ref} {...props} />);
+export const Tag = forwardRef((props, ref) => <ChakraTag ref={ref} {...props} />) as FC<TagProps> & TagStaticMembers;
 
 const LeftIcon = forwardRef((props, ref) => {
   const styles = useStyles() as { leftIcon: StyleProps };
@@ -22,6 +24,6 @@ const RightIcon = forwardRef((props, ref) => {
   return <TagRightIcon ref={ref} {...styles.rightIcon} {...props} />;
 });
 
-const TagNamespace = Object.assign(Tag, { LeftIcon, RightIcon, Label: TagLabel });
-
-export { TagNamespace as Tag };
+Tag.LeftIcon = LeftIcon as ChakraComponent<'svg', IconProps>;
+Tag.RightIcon = RightIcon as ChakraComponent<'svg', IconProps>;
+Tag.Label = TagLabel;

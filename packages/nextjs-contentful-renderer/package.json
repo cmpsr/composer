@@ -1,0 +1,60 @@
+{
+  "name": "@cmpsr/nextjs-contentful-renderer",
+  "version": "14.4.6",
+  "description": "Utility functions to retrieve and render content from contentful in mdx format",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "repository": {
+    "url": "ssh://git@github.com:cmpsr/composer.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "files": [
+    "/lib",
+    "/client",
+    "package.json"
+  ],
+  "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore '**/*.test.ts'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
+  },
+  "dependencies": {
+    "@cmpsr/contentful-core": "^0.5.2",
+    "cookie": "^0.5.0",
+    "esbuild": "^0.14.38",
+    "mdx-bundler": "^9.0.0"
+  },
+  "devDependencies": {
+    "@apollo/client": "^3.6.2",
+    "@cmpsr/blocks": "^9.1.2",
+    "@cmpsr/components": "^4.3.0",
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.150",
+    "@swc/jest": "^0.2.20",
+    "@types/cookie": "^0.5.1",
+    "@types/jest": "^27.5.0",
+    "jest": "^28.1.0",
+    "next": "^12.1.6",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "typescript": "^4.6.4"
+  },
+  "peerDependencies": {
+    "@apollo/client": "^3.6.2",
+    "@cmpsr/blocks": "^9.0.0",
+    "@cmpsr/components": "^4.0.0",
+    "next": "^12.1.6",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "gitHead": "6ed57ef588712950eed22c96da22cff216a4b6fc"
+}

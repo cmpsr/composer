@@ -54,12 +54,20 @@ const AllTemplate = () => (
                     }}
                     {...{
                       ...(state === 'Both Icons' && {
-                        trailingIcon: Icons.IconExternalLink,
-                        leadingIcon: Icons.IconExternalLink,
+                        trailingIcon: <Icons.IconExternalLink />,
+                        leadingIcon: <Icons.IconExternalLink />,
                       }),
                     }}
-                    {...{ ...(state === 'Trailing Icon' && { trailingIcon: Icons.IconExternalLink }) }}
-                    {...{ ...(state === 'Leading Icon' && { leadingIcon: Icons.IconExternalLink }) }}
+                    {...{
+                      ...(state === 'Trailing Icon' && {
+                        trailingIcon: <Icons.IconExternalLink />,
+                      }),
+                    }}
+                    {...{
+                      ...(state === 'Leading Icon' && {
+                        leadingIcon: <Icons.IconExternalLink />,
+                      }),
+                    }}
                   >
                     {variant}
                   </Button>
@@ -76,12 +84,10 @@ export const All = AllTemplate.bind({});
 
 const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
   <Button
-    {...(showLeadingIcon && { leadingIcon: Icons.IconExternalLink })}
-    {...(showTrailingIcon && { trailingIcon: Icons.IconExternalLink })}
+    {...(showLeadingIcon && { leadingIcon: <Icons.IconExternalLink /> })}
+    {...(showTrailingIcon && { trailingIcon: <Icons.IconExternalLink /> })}
     {...args}
-  >
-    Playground
-  </Button>
+  />
 );
 
 export const Playground = Template.bind({});

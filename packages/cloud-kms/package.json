@@ -7,13 +7,14 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.0.23",
+  "version": "0.0.25",
   "author": "Steve Cox <stevejcox@me.com>",
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
-    "/lib"
+    "/lib",
+    "package.json"
   ],
   "scripts": {
     "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore '**/*.test.ts'",
@@ -21,7 +22,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "type:check": "yarn tsc --project tsconfig.json --noEmit",
-    "type:emit": "tsc -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
+    "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "dependencies": {
     "@google-cloud/kms": "^2.0.0",

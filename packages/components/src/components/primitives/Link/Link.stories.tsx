@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { Link } from './Link';
 import { linkSizes, linkVariants } from './types';
-import * as Icons from '../Icons';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { IconExternalLink, Text } from '@components';
 
 export default {
   component: Link,
@@ -40,12 +40,12 @@ export const All = () => (
             </Link>
           </Td>
           <Td>
-            <Link size={size} href="#" leadingIcon={Icons.IconExternalLink}>
+            <Link size={size} href="#" leadingIcon={<IconExternalLink />}>
               Size {size.toUpperCase()} link with leading icon
             </Link>
           </Td>
           <Td>
-            <Link size={size} href="#" trailingIcon={Icons.IconExternalLink}>
+            <Link size={size} href="#" trailingIcon={<IconExternalLink />}>
               Size {size.toUpperCase()} link with trailing icon
             </Link>
           </Td>
@@ -78,8 +78,8 @@ const AllVariantsTemplate = () => (
                     role="link"
                     variant={variant}
                     size={size}
-                    {...{ ...(state === 'Trailing Icon' && { trailingIcon: Icons.IconExternalLink }) }}
-                    {...{ ...(state === 'Leading Icon' && { leadingIcon: Icons.IconExternalLink }) }}
+                    {...{ ...(state === 'Trailing Icon' && { trailingIcon: <IconExternalLink /> }) }}
+                    {...{ ...(state === 'Leading Icon' && { leadingIcon: <IconExternalLink /> }) }}
                   >
                     Link with {variant}
                   </Link>
@@ -95,12 +95,22 @@ const AllVariantsTemplate = () => (
 
 export const AllVariants = AllVariantsTemplate.bind({});
 
+export const WrappedByText = () => (
+  <Text>
+    A{' '}
+    <Link _hover={{ textDecoration: 'underline' }} href="#">
+      link
+    </Link>{' '}
+    in the middle of a text with a custom decoration
+  </Text>
+);
+
 const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
   <Link
     href="#"
     role="link"
-    {...(showLeadingIcon && { leadingIcon: Icons.IconExternalLink })}
-    {...(showTrailingIcon && { trailingIcon: Icons.IconExternalLink })}
+    {...(showLeadingIcon && { leadingIcon: <IconExternalLink /> })}
+    {...(showTrailingIcon && { trailingIcon: <IconExternalLink /> })}
     {...args}
   >
     Playground

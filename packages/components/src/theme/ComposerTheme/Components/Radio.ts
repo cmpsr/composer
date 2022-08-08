@@ -32,6 +32,7 @@ export const Radio: ComponentStyleConfig = {
       color: 'text-light',
       borderColor: 'ui-element-outline-default',
       _focus: {
+        boxShadow: `0 0 0 0.1875rem var(--chakra-colors-primary-focus)`,
         _invalid: {
           borderColor: 'alert-error-default',
         },

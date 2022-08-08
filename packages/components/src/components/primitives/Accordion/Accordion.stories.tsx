@@ -26,7 +26,10 @@ const WithImageAndTextPairingTemplate = (args) => (
       <Accordion.Button>
         <Flex flex="1" textAlign="left" alignItems="center">
           <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr={2} />
-          <TextPairing label="Section 1 title" subLabel="Description" variant="textpairing-body-medium" />
+          <TextPairing variant="textpairing-body-medium">
+            <TextPairing.Label children="Section 1 title" />
+            <TextPairing.SubLabel children="Description" />
+          </TextPairing>
         </Flex>
         <Accordion.Icon />
       </Accordion.Button>
@@ -36,7 +39,10 @@ const WithImageAndTextPairingTemplate = (args) => (
       <Accordion.Button>
         <Flex flex="1" textAlign="left" alignItems="center">
           <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr={2} />
-          <TextPairing label="Section 2 title" subLabel="Description" variant="textpairing-body-medium" />
+          <TextPairing variant="textpairing-body-medium">
+            <TextPairing.Label children="Section 2 title" />
+            <TextPairing.SubLabel children="Description" />
+          </TextPairing>
         </Flex>
         <Accordion.Icon />
       </Accordion.Button>
@@ -82,7 +88,10 @@ const Template = (args) => (
             <Flex flex="1" textAlign="left" alignItems="center">
               {args.showMediaItem && <Avatar name="Composer Logo" src={AVATAR_URL} size="s" mr={2} />}
               {args.showTextPairing ? (
-                <TextPairing label={`Section ${i} title`} subLabel="Description" variant="textpairing-body-medium" />
+                <TextPairing variant="textpairing-body-medium">
+                  <TextPairing.Label children={`Section ${i} title`} />
+                  <TextPairing.SubLabel children="Description" />
+                </TextPairing>
               ) : (
                 <Box flex="1" textAlign="left">
                   <Text variant="text-body-medium">Section {i} title</Text>

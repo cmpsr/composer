@@ -15,6 +15,7 @@ export * from './Input';
 export * from './Link';
 export * from './Modal';
 export * from './NumberInput';
+export * from './NumberedList';
 export * from './PinInput';
 export * from './ProgressBar';
 export * from './ProgressCircular';
@@ -28,5 +29,5 @@ export * from './Tabs';
 export * from './Tag';
 export * from './Text';
 export * from './TextPairing';
-export * from './Textarea'
+export * from './Textarea';
 export * from './Tooltip';

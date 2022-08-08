@@ -1,11 +1,12 @@
-import { FlexProps, ImageProps, TextPairingType, LinkProps, Tag } from '@cmpsr/components';
+import { FlexProps, ImageProps, TextPairingType, LinkProps, Tag, CardProps } from '@cmpsr/components';
 import { FC } from 'react';
 
 export const mediaBlockVariants = ['vertical', 'horizontal'] as const;
 export type MediaBlockVariant = typeof mediaBlockVariants[number];
 
-export interface MediaBlockProps extends FlexProps {
+export interface MediaBlockProps extends FlexProps, CardProps {
   variant?: MediaBlockVariant;
+  bounded?: boolean;
   alignItems?: 'start' | 'center' | 'end';
 }
 

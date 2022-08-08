@@ -44,17 +44,9 @@ const baseStyleField: SystemStyleObject = {
   },
 };
 
-const flushedSpacing = {
-  // Override only large size to 11.5px
-  l: {
-    py: '0.71875rem',
-  },
-};
-
-const flushedStyleField: SystemStyleFunction = ({ size }) => ({
+const flushedStyleField: SystemStyleObject = {
   border: 'none',
   borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
-  ...flushedSpacing[size],
   _focus: {
     border: 'none',
     borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
@@ -65,7 +57,7 @@ const flushedStyleField: SystemStyleFunction = ({ size }) => ({
     border: 'none',
     boxShadow: '0 0.125rem 0 0 var(--chakra-colors-alert-error-default)',
   },
-});
+};
 
 // Stepper Group does not allow to add _invalid and _disabled properties directly, so we add them manually
 const stepperGroupBorders = {
@@ -137,7 +129,7 @@ const baseStyle: PartsStyleFunction<typeof parts> = (props) => ({
 
 const flushedStyle: PartsStyleFunction<typeof parts> = (props) => ({
   root: flushedStyleRoot,
-  field: flushedStyleField(props),
+  field: flushedStyleField,
   stepperGroup: flushedStyleStepperGroup(props),
   stepper: flushedStyleStepper,
 });

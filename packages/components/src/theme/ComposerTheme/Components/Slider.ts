@@ -5,14 +5,6 @@ const sharedSizeStyle = (props) => ({
   thumb: {
     w: '1rem',
     h: '1rem',
-    _active: {
-      w: '1.125rem',
-      h: '1.125rem',
-    },
-    _focus: {
-      w: '1rem',
-      h: '1rem',
-    },
   },
   track: orient({
     orientation: props.orientation,

@@ -24,10 +24,10 @@ describe('AccordionGallery', () => {
   test('should render text pairing', () => {
     renderWithProviders(
       <AccordionGallery>
-        <AccordionGallery.TextPairing>
-          <AccordionGallery.TextPairing.Label>label</AccordionGallery.TextPairing.Label>
-          <AccordionGallery.TextPairing.Label>sublabel</AccordionGallery.TextPairing.Label>
-        </AccordionGallery.TextPairing>
+        <AccordionGallery.Title>
+          <AccordionGallery.Title.Label>label</AccordionGallery.Title.Label>
+          <AccordionGallery.Title.Label>sublabel</AccordionGallery.Title.Label>
+        </AccordionGallery.Title>
       </AccordionGallery>
     );
     screen.getByText('label');
@@ -80,7 +80,7 @@ describe('AccordionGallery', () => {
   });
   test('should render default image', () => {
     renderWithProviders(
-      <AccordionGallery defaultImage={0}>
+      <AccordionGallery defaultImage={1}>
         <AccordionGallery.Accordion>
           <AccordionGallery.Accordion.Item>
             <AccordionGallery.Accordion.Image src="image 1" alt="image 1" />
@@ -91,20 +91,35 @@ describe('AccordionGallery', () => {
         </AccordionGallery.Accordion>
       </AccordionGallery>
     );
-    screen.getByRole('img', { name: 'image 1' });
+    screen.getByRole('img', { name: 'image 2' });
   });
-  test('should preseve onClick provided to Accordion Button', () => {
-    const mockOnClick = jest.fn();
+  test('should render custom default image', () => {
     renderWithProviders(
-      <AccordionGallery defaultImage={0}>
+      <AccordionGallery defaultImage={<AccordionGallery.Accordion.Image src="default image" alt="default image" />}>
         <AccordionGallery.Accordion>
           <AccordionGallery.Accordion.Item>
-            <AccordionGallery.Accordion.Button onClick={mockOnClick}>button</AccordionGallery.Accordion.Button>
+            <AccordionGallery.Accordion.Image src="image 1" alt="image 1" />
+          </AccordionGallery.Accordion.Item>
+          <AccordionGallery.Accordion.Item>
+            <AccordionGallery.Accordion.Image src="image 2" alt="image 2" />
+          </AccordionGallery.Accordion.Item>
+        </AccordionGallery.Accordion>
+      </AccordionGallery>
+    );
+    screen.getByRole('img', { name: 'default image' });
+  });
+  test('should preserve onChange provided to Accordion', () => {
+    const mockOnChange = jest.fn();
+    renderWithProviders(
+      <AccordionGallery defaultImage={0}>
+        <AccordionGallery.Accordion onChange={mockOnChange}>
+          <AccordionGallery.Accordion.Item>
+            <AccordionGallery.Accordion.Button>button</AccordionGallery.Accordion.Button>
           </AccordionGallery.Accordion.Item>
         </AccordionGallery.Accordion>
       </AccordionGallery>
     );
     fireEvent.click(screen.getByText('button'));
-    expect(mockOnClick).toHaveBeenCalledTimes(1);
+    expect(mockOnChange).toHaveBeenCalledTimes(1);
   });
 });

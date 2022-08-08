@@ -13,11 +13,11 @@ export const Basic = () => (
       <AccordionGallery.Accordion.Item>
         <AccordionGallery.Accordion.Image width="200px" src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         <AccordionGallery.Accordion.Button>
-          <AccordionGallery.TextPairing variant="textpairing-header-M" textAlign="left">
-            <AccordionGallery.TextPairing.Label>
+          <AccordionGallery.Title variant="textpairing-header-M" textAlign="left">
+            <AccordionGallery.Title.Label>
               The next generation of care for women and families
-            </AccordionGallery.TextPairing.Label>
-          </AccordionGallery.TextPairing>
+            </AccordionGallery.Title.Label>
+          </AccordionGallery.Title>
         </AccordionGallery.Accordion.Button>
         <AccordionGallery.Accordion.Panel>
           We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
@@ -31,11 +31,11 @@ export const Basic = () => (
           src="https://avatars0.githubusercontent.com/u/67131017?s=200"
         />
         <AccordionGallery.Accordion.Button>
-          <AccordionGallery.TextPairing variant="textpairing-header-M" textAlign="left">
-            <AccordionGallery.TextPairing.Label>
+          <AccordionGallery.Title variant="textpairing-header-M" textAlign="left">
+            <AccordionGallery.Title.Label>
               The next generation of care for women and families
-            </AccordionGallery.TextPairing.Label>
-          </AccordionGallery.TextPairing>
+            </AccordionGallery.Title.Label>
+          </AccordionGallery.Title>
         </AccordionGallery.Accordion.Button>
         <AccordionGallery.Accordion.Panel>
           We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
@@ -51,23 +51,18 @@ export const WithTitles = () => (
     <AccordionGallery.Legend variant="text-header-M" color="primary-default" textTransform="uppercase">
       Legend
     </AccordionGallery.Legend>
-    <AccordionGallery.TextPairing
-      variant="textpairing-header-2XL"
-      textAlign={{ base: 'unset', md: 'center', lg: 'unset' }}
-    >
-      <AccordionGallery.TextPairing.Label>
-        The next generation of care for women and families
-      </AccordionGallery.TextPairing.Label>
-    </AccordionGallery.TextPairing>
+    <AccordionGallery.Title variant="textpairing-header-2XL" textAlign={{ base: 'unset', md: 'center', lg: 'unset' }}>
+      <AccordionGallery.Title.Label>The next generation of care for women and families</AccordionGallery.Title.Label>
+    </AccordionGallery.Title>
     <AccordionGallery.Accordion allowToggle>
       <AccordionGallery.Accordion.Item>
         <AccordionGallery.Accordion.Image width="600px" src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         <AccordionGallery.Accordion.Button>
-          <AccordionGallery.TextPairing variant="textpairing-header-M" textAlign="left">
-            <AccordionGallery.TextPairing.Label>
+          <AccordionGallery.Title variant="textpairing-header-M" textAlign="left">
+            <AccordionGallery.Title.Label>
               The next generation of care for women and families
-            </AccordionGallery.TextPairing.Label>
-          </AccordionGallery.TextPairing>
+            </AccordionGallery.Title.Label>
+          </AccordionGallery.Title>
         </AccordionGallery.Accordion.Button>
         <AccordionGallery.Accordion.Panel>
           We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
@@ -81,11 +76,64 @@ export const WithTitles = () => (
           src="https://avatars0.githubusercontent.com/u/67131017?s=200"
         />
         <AccordionGallery.Accordion.Button>
-          <AccordionGallery.TextPairing variant="textpairing-header-M" textAlign="left">
-            <AccordionGallery.TextPairing.Label>
+          <AccordionGallery.Title variant="textpairing-header-M" textAlign="left">
+            <AccordionGallery.Title.Label>
               The next generation of care for women and families
-            </AccordionGallery.TextPairing.Label>
-          </AccordionGallery.TextPairing>
+            </AccordionGallery.Title.Label>
+          </AccordionGallery.Title>
+        </AccordionGallery.Accordion.Button>
+        <AccordionGallery.Accordion.Panel>
+          We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
+          three ways we could find it.
+        </AccordionGallery.Accordion.Panel>
+      </AccordionGallery.Accordion.Item>
+    </AccordionGallery.Accordion>
+  </AccordionGallery>
+);
+
+export const WithDefaultImage = () => (
+  <AccordionGallery
+    defaultImage={
+      <AccordionGallery.Accordion.Image
+        filter="invert(0.5)"
+        width="600px"
+        src="https://avatars0.githubusercontent.com/u/67131017?s=200"
+      />
+    }
+  >
+    <AccordionGallery.Legend variant="text-header-M" color="primary-default" textTransform="uppercase">
+      Legend
+    </AccordionGallery.Legend>
+    <AccordionGallery.Title variant="textpairing-header-2XL" textAlign={{ base: 'unset', md: 'center', lg: 'unset' }}>
+      <AccordionGallery.Title.Label>The next generation of care for women and families</AccordionGallery.Title.Label>
+    </AccordionGallery.Title>
+    <AccordionGallery.Accordion allowToggle>
+      <AccordionGallery.Accordion.Item>
+        <AccordionGallery.Accordion.Image width="600px" src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
+        <AccordionGallery.Accordion.Button>
+          <AccordionGallery.Title variant="textpairing-header-M" textAlign="left">
+            <AccordionGallery.Title.Label>
+              The next generation of care for women and families
+            </AccordionGallery.Title.Label>
+          </AccordionGallery.Title>
+        </AccordionGallery.Accordion.Button>
+        <AccordionGallery.Accordion.Panel>
+          We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
+          three ways we could find it.
+        </AccordionGallery.Accordion.Panel>
+      </AccordionGallery.Accordion.Item>
+      <AccordionGallery.Accordion.Item>
+        <AccordionGallery.Accordion.Image
+          filter="invert(1)"
+          width="600px"
+          src="https://avatars0.githubusercontent.com/u/67131017?s=200"
+        />
+        <AccordionGallery.Accordion.Button>
+          <AccordionGallery.Title variant="textpairing-header-M" textAlign="left">
+            <AccordionGallery.Title.Label>
+              The next generation of care for women and families
+            </AccordionGallery.Title.Label>
+          </AccordionGallery.Title>
         </AccordionGallery.Accordion.Button>
         <AccordionGallery.Accordion.Panel>
           We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
@@ -101,20 +149,17 @@ const Template = ({ legend, label, subLabel, itemLabel, itemPanel }) => (
     <AccordionGallery.Legend variant="text-header-M" color="primary-default" textTransform="uppercase">
       {legend}
     </AccordionGallery.Legend>
-    <AccordionGallery.TextPairing
-      variant="textpairing-header-2XL"
-      textAlign={{ base: 'unset', md: 'center', lg: 'unset' }}
-    >
-      <AccordionGallery.TextPairing.Label>{label}</AccordionGallery.TextPairing.Label>
-      <AccordionGallery.TextPairing.SubLabel>{subLabel}</AccordionGallery.TextPairing.SubLabel>
-    </AccordionGallery.TextPairing>
+    <AccordionGallery.Title variant="textpairing-header-2XL" textAlign={{ base: 'unset', md: 'center', lg: 'unset' }}>
+      <AccordionGallery.Title.Label>{label}</AccordionGallery.Title.Label>
+      <AccordionGallery.Title.SubLabel>{subLabel}</AccordionGallery.Title.SubLabel>
+    </AccordionGallery.Title>
     <AccordionGallery.Accordion allowToggle>
       <AccordionGallery.Accordion.Item>
         <AccordionGallery.Accordion.Image width="200px" src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         <AccordionGallery.Accordion.Button>
-          <AccordionGallery.TextPairing variant="textpairing-header-M" textAlign="left">
-            <AccordionGallery.TextPairing.Label>{itemLabel}</AccordionGallery.TextPairing.Label>
-          </AccordionGallery.TextPairing>
+          <AccordionGallery.Title variant="textpairing-header-M" textAlign="left">
+            <AccordionGallery.Title.Label>{itemLabel}</AccordionGallery.Title.Label>
+          </AccordionGallery.Title>
         </AccordionGallery.Accordion.Button>
         <AccordionGallery.Accordion.Panel>{itemPanel}</AccordionGallery.Accordion.Panel>
       </AccordionGallery.Accordion.Item>

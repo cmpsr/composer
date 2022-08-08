@@ -1,4 +1,14 @@
-import React, { FC, useState, isValidElement, Children, ReactElement, useRef, createContext, useEffect } from 'react';
+import React, {
+  FC,
+  useState,
+  isValidElement,
+  Children,
+  ReactElement,
+  useRef,
+  createContext,
+  useEffect,
+  cloneElement,
+} from 'react';
 import {
   Accordion,
   AccordionProps,
@@ -18,7 +28,7 @@ import {
   AccordionGalleryItem,
 } from './components';
 
-export const AccordionGalleryContext = createContext({ setActiveItem: null, images: null });
+export const AccordionGalleryContext = createContext({ images: null });
 
 export const AccordionGallery: FC<AccordionGalleryProps> & AccordionGalleryStaticMembers = ({
   children,
@@ -30,12 +40,23 @@ export const AccordionGallery: FC<AccordionGalleryProps> & AccordionGalleryStati
   const images = useRef({});
 
   useEffect(() => {
-    setActiveItem(defaultImage);
+    if (typeof defaultImage !== 'number') {
+      images.current['default'] = defaultImage;
+      setActiveItem('default');
+    } else {
+      setActiveItem(defaultImage);
+    }
   }, []);
 
   let textPairing: ReactElement<TextPairingProps> = null;
   let accordion: ReactElement<AccordionProps> = null;
   let legend: ReactElement<TextProps> = null;
+
+  const handleAccordionChange = (index: number) => {
+    const selectedImageIndex = index !== -1 ? index : typeof defaultImage === 'number' ? defaultImage : 'default';
+    accordion.props?.onChange?.(index);
+    setActiveItem(selectedImageIndex);
+  };
 
   Children.map(children, (child) => {
     if (isValidElement(child)) {
@@ -54,19 +75,19 @@ export const AccordionGallery: FC<AccordionGalleryProps> & AccordionGalleryStati
   });
 
   return (
-    <AccordionGalleryContext.Provider value={{ setActiveItem, images }}>
+    <AccordionGalleryContext.Provider value={{ images }}>
       <Flex
         gap={{ md: '2rem', lg: '3rem', xxl: '5.75rem' }}
         alignItems={{ md: 'center' }}
         justifyContent="center"
         {...rest}
       >
-        {!isMobile && images.current?.[activeItem] && <AccordionGalleryImage {...images.current[activeItem]} />}
+        {!isMobile && images.current?.[activeItem] ? images.current[activeItem] : null}
         <Flex flexDirection="column" gap={{ base: '2rem', md: '1.5rem', lg: '3rem' }}>
           {legend}
           {textPairing}
-          {isMobile && images.current?.[activeItem] && <AccordionGalleryImage {...images.current[activeItem]} />}
-          {accordion}
+          {isMobile && images.current?.[activeItem] ? images.current[activeItem] : null}
+          {accordion && cloneElement(accordion, { onChange: handleAccordionChange })}
         </Flex>
       </Flex>
     </AccordionGalleryContext.Provider>
@@ -82,6 +103,6 @@ const AccordionGalleryAccordion: FC<AccordionProps> &
   Icon: Accordion.Icon,
 });
 
-AccordionGallery.TextPairing = TextPairing;
+AccordionGallery.Title = TextPairing;
 AccordionGallery.Accordion = AccordionGalleryAccordion;
 AccordionGallery.Legend = Text;

@@ -24,13 +24,13 @@ const AllTemplate = () => {
     {
       label: 'Default - Selected',
       props: {
-        defaultIsChecked: true,
+        defaultChecked: true,
       },
     },
     {
       label: 'Disabled - Selected',
       props: {
-        defaultIsChecked: true,
+        defaultChecked: true,
         isDisabled: true,
       },
     },

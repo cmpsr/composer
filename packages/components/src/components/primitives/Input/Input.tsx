@@ -50,6 +50,7 @@ export const Input: FC<InputProps> = ({ leadingIcon: LeadingIcon, leftLabel, rig
           pointerEvents="none"
           children={cloneElement(LeadingIcon, {
             'data-testid': 'cmpsr.input-icon',
+            size: props.size === 'l' ? 'l' : 'm',
             ...element,
           })}
         />

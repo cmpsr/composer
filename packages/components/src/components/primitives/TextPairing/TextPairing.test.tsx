@@ -7,7 +7,12 @@ describe('TextPairing', () => {
   const subLabel = 'SubLabel';
   const variant = 'textpairing-header-4XL';
   const givenComponentRendered = () =>
-    renderWithProviders(<TextPairing label={label} subLabel={subLabel} variant={variant} />);
+    renderWithProviders(
+      <TextPairing variant={variant}>
+        <TextPairing.Label>{label}</TextPairing.Label>
+        <TextPairing.SubLabel>{subLabel}</TextPairing.SubLabel>
+      </TextPairing>
+    );
 
   test('should render label and sub label', () => {
     givenComponentRendered();

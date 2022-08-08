@@ -16,8 +16,8 @@ const containerStatusesColors = {
     borderStartColor: 'alert-warning-default',
   },
   info: {
-    backgroundColor: 'background-info',
-    borderStartColor: 'alert-info-default',
+    backgroundColor: 'background-inform',
+    borderStartColor: 'alert-inform-default',
   },
 };
 
@@ -33,7 +33,7 @@ const containerVariantsColors = {
       backgroundColor: 'alert-warning-default',
     },
     info: {
-      backgroundColor: 'alert-info-default',
+      backgroundColor: 'alert-inform-default',
     },
   },
   subtle: containerStatusesColors,
@@ -84,7 +84,7 @@ const generateVariantByStatus: PartsStyleFunction<typeof parts> = (props) => {
 };
 
 export const Alert: ComponentStyleConfig = {
-  baseStyle: ({ theme }) => ({
+  baseStyle: {
     container: {
       borderRadius: '0.375rem',
       py: '0.75rem',
@@ -104,18 +104,18 @@ export const Alert: ComponentStyleConfig = {
           color: 'alert-error-default',
         },
         info: {
-          color: 'alert-info-default',
+          color: 'alert-inform-default',
         },
       },
     },
     title: {
-      ...theme.textStyles['text-body-bold'],
+      textStyle: 'text-body-bold',
       marginInlineEnd: '0',
     },
     description: {
-      ...theme.textStyles['text-body-regular'],
+      textStyle: 'text-body-regular',
     },
-  }),
+  },
   defaultProps: {
     variant: 'solid',
   },

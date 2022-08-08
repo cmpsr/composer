@@ -1,6 +1,5 @@
 export const defaultSpacing = {
-  'spacer-0': '0rem',
-  'spacer-px': '1px',
+  'spacer-px': '0.0625rem',
   'spacer-half': '0.125rem',
   'spacer-1': '0.25rem',
   'spacer-2': '0.5rem',
@@ -22,7 +21,7 @@ export const defaultSpacing = {
   'spacer-36': '9rem',
   'spacer-40': '10rem',
   'spacer-44': '11rem',
-  'spacer-48': '12rem',
+  'spacer-48': '12.25rem',
   'spacer-52': '13rem',
   'spacer-56': '14rem',
   'spacer-60': '15rem',
@@ -30,4 +29,5 @@ export const defaultSpacing = {
   'spacer-72': '18rem',
   'spacer-80': '20rem',
   'spacer-86': '24rem',
+  'spacer-0': '0rem',
 };

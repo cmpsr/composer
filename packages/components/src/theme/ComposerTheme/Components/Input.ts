@@ -61,7 +61,7 @@ export const labelStyles = {
   variants: {
     outline: {
       invalid: {
-        boxShadow: '0 0 0 0.125rem var(--chakra-colors-alert-error-default)',
+        boxShadow: '0 0 0 0.0625rem var(--chakra-colors-alert-error-default)',
         border: '0px solid transparent',
         borderColor: 'transparent',
         position: 'relative',
@@ -70,11 +70,10 @@ export const labelStyles = {
       disabled: {
         color: 'text-disabled',
         borderColor: 'ui-element-outline-disabled',
-        border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-disabled)',
+        border: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-disabled)',
       },
       hovered: {
         borderColor: 'ui-element-outline-active',
-        border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-active)',
       },
     },
     flushed: {
@@ -111,14 +110,11 @@ export const inputGroupStyles = {
   },
 };
 
-const calculateSize = (size: string, iconSize: string) => {
+const calculateSize = (size: string) => {
   return (props) => {
     return {
       elementContainer: {
         ...iconContainerStyles[size],
-      },
-      element: {
-        boxSize: props.theme.components.Icon.sizes[iconSize].boxSize,
       },
       leftLabel: {
         ...labelStyles.sizes[size],
@@ -143,9 +139,9 @@ const calculateSize = (size: string, iconSize: string) => {
 };
 
 const sizes = {
-  l: calculateSize('large', 'l'),
-  m: calculateSize('medium', 'm'),
-  s: calculateSize('small', 'm'),
+  l: calculateSize('large'),
+  m: calculateSize('medium'),
+  s: calculateSize('small'),
 };
 
 export const getInputGroupStyle = (
@@ -237,19 +233,19 @@ const outlineStyle = (props) => {
       borderRadius: '0.375rem',
       color: 'text-primary',
       backgroundColor: 'background-action-default',
-      border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-default)',
+      border: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-default)',
       _placeholder: {
         color: 'text-secondary',
         textStyle: 'text-body-regular',
       },
       _hover: {
         backgroundColor: 'background-action-hover',
-        border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-active)',
+        border: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-active)',
       },
       // We need to remove the focus state from the chakra input so we can add the border shadow to the full input group.
-      _focus: {
+      _focusVisible: {
         boxShadow: 'none',
-        border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-default)',
+        border: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-default)',
         borderColor: 'ui-element-outline-default',
       },
       _invalid: {
@@ -258,12 +254,13 @@ const outlineStyle = (props) => {
         borderColor: 'transparent',
       },
       _disabled: {
+        opacity: 1,
         _placeholder: {
           color: 'text-disabled',
         },
         color: 'text-secondary',
         backgroundColor: 'background-action-disabled',
-        border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-disabled)',
+        border: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-disabled)',
       },
     },
   };
@@ -310,10 +307,10 @@ export const flushedStyle = (props) => {
         borderBottom: '0.0625rem solid var(--chakra-colors-ui-element-outline-active)',
       },
       // We need to remove the focus state from the chakra input so we can add the border shadow to the full input group.
-      _focus: {
+      _focusVisible: {
         boxShadow: 'none',
         border: 'none',
-        borderBottom: 'solid 0.0625 var(--chakra-colors-ui-element-outline-default)',
+        borderBottom: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-default)',
         borderColor: 'ui-element-outline-default',
       },
       _invalid: {
@@ -327,13 +324,14 @@ export const flushedStyle = (props) => {
         },
         color: 'text-secondary',
         backgroundColor: 'background-action-disabled',
-        border: 'solid 0.0625 var(--chakra-colors-ui-element-outline-disabled)',
+        border: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-disabled)',
       },
     },
   };
 };
 
 export const Input: ComponentStyleConfig = {
+  parts: ['element', 'elementContainer', 'inputGroup', 'field', 'leftLabel', 'rightLabel'],
   baseStyle: {
     field: {
       border: 'none',
@@ -341,7 +339,7 @@ export const Input: ComponentStyleConfig = {
         boxShadow: 'none',
         border: 'none',
       },
-      _focus: {
+      _focusVisible: {
         boxShadow: 'none',
         border: 'none',
       },

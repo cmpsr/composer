@@ -1,0 +1,1 @@
+export { createContentfulLink } from './client';

@@ -1,8 +1,8 @@
+import { FC } from 'react';
 import { CSSObject, ResponsiveValue } from '@chakra-ui/system';
 import { ComponentDefaultProps } from '@chakra-ui/theme';
-import { Colors } from '@theme/ComposerTheme/Colors';
-import { TextVariant } from '../Text';
-import { ColorProps } from '@chakra-ui/react';
+
+import { FlexProps, TextVariant, TextProps } from '@components';
 
 export const textPairingVariants = [
   'textpairing-header-4XL',
@@ -32,12 +32,15 @@ export type TextPairingStyles = CSSObject &
     [key in TextPairingParts]: {
       variant: TextVariant;
     };
-  } & { columnGap: string };
+  } & { container: FlexProps };
 
 export interface TextPairingProps extends Omit<ComponentDefaultProps, 'variant'> {
   variant?: ResponsiveValue<TextPairingVariant>;
-  label: string;
-  subLabel: string;
-  labelColor?: keyof Colors | ThisType<ColorProps['color']>;
-  subLabelColor?: keyof Colors | ThisType<ColorProps['color']>;
 }
+
+export interface TextPairingStaticMembers {
+  Label: FC<TextProps & Omit<TextProps, 'variant'>>;
+  SubLabel: FC<TextProps & Omit<TextProps, 'variant'>>;
+}
+
+export type TextPairingType = FC<TextPairingProps> & TextPairingStaticMembers;

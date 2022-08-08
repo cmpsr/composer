@@ -3,8 +3,8 @@ import {
   AccordionItemProps,
   AccordionButtonProps as ChakraAccordionButtonProps,
   AccordionPanelProps,
-  IconProps,
 } from '@chakra-ui/react';
+import { IconProps } from '@components';
 import { FC } from 'react';
 
 export type AccordionProps = ChakraAccordionProps;

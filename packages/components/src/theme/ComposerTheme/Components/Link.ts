@@ -1,8 +1,8 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
-import { buttonVariants, linkSizes } from '@components';
+import { linkVariants, linkSizes } from '@components';
 
-const linkBaseStyle = {
-  maxWidth: '100%',
+export const linkBaseStyle = {
+  display: 'inline-flex',
   color: 'text-link-primary-default',
   borderRadius: '0.25rem',
   _hover: {
@@ -16,32 +16,20 @@ const linkBaseStyle = {
   },
 };
 
-const isButtonVariant = (variant) => buttonVariants.includes(variant);
+const isButtonVariant = (variant) => linkVariants.includes(variant);
 
 const getButtonVariants = () => {
   const variants = {};
-  buttonVariants.forEach((variant) => {
-    variants[variant] = ({ theme }) => ({
-      p: { color: theme.components.Button.variants[variant].color },
-      ...theme.components.Button.variants[variant],
-    });
+  linkVariants.forEach((variant) => {
+    variants[variant] = ({ theme }) => theme.components.Button.variants[variant];
   });
   return variants;
 };
 
-const getButtonSize = (size, props) => {
-  const { fontSize, lineHeight, letterSpacing, fontweight } = props.theme.components.Button.sizes[size](props);
-  return {
-    p: {
-      fontSize,
-      lineHeight,
-      letterSpacing,
-      fontweight,
-    },
-    color: 'text-link-primary-default',
-    ...props.theme.components.Button.sizes[size](props),
-  };
-};
+const getButtonSize = (size, props) => ({
+  ...props.theme.components.Button.sizes[size](props),
+  color: 'text-link-primary-default',
+});
 
 const getSizes = () => {
   const sizes = {};
@@ -50,33 +38,28 @@ const getSizes = () => {
       isButtonVariant(props.variant)
         ? getButtonSize(size, props)
         : {
-            p: {
-              ...props.theme.textStyles[
-                {
-                  s: {
-                    textStyleToken: 'text-body-meta-medium',
-                  },
-                  m: {
-                    textStyleToken: 'text-body-medium',
-                  },
-                  l: {
-                    textStyleToken: 'text-body-large-medium',
-                  },
-                }[size].textStyleToken
-              ],
-              color: 'text-link-primary-default',
-            },
+            ...props.theme.textStyles[
+              {
+                s: {
+                  textStyleToken: 'text-body-meta-medium',
+                },
+                m: {
+                  textStyleToken: 'text-body-medium',
+                },
+                l: {
+                  textStyleToken: 'text-body-large-medium',
+                },
+              }[size].textStyleToken
+            ],
+            color: 'text-link-primary-default',
             _hover: {
-              p: { color: 'text-link-primary-hover' },
-              svg: { color: 'text-link-primary-hover' },
+              color: 'text-link-primary-hover',
             },
             _active: {
-              p: { color: 'text-link-primary-pressed' },
-              svg: { color: 'text-link-primary-pressed' },
+              color: 'text-link-primary-pressed',
             },
             _focus: {
-              p: { color: 'text-link-primary-hover' },
-              svg: { color: 'text-link-primary-hover' },
+              color: 'text-link-primary-hover',
             },
           };
   });
@@ -87,7 +70,7 @@ export const Link: ComponentStyleConfig = {
   baseStyle: (props) => {
     const buttonBaseStyle = {
       ...props.theme.components.Button.baseStyle,
-      display: 'flex',
+      display: 'inline-flex',
       _hover: {
         textDecorationLine: 'none',
       },
@@ -96,4 +79,8 @@ export const Link: ComponentStyleConfig = {
   },
   sizes: getSizes(),
   variants: getButtonVariants(),
+  defaultProps: {
+    size: 'l',
+    variant: undefined,
+  },
 };

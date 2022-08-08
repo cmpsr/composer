@@ -16,9 +16,12 @@ export interface AlertStaticMembers {
   Title: FC<AlertTitleProps>;
   Description: FC<AlertDescriptionProps>;
   CloseButton: FC<CloseButtonProps>;
+  Icon: FC<AlertIconProps>;
 }
 
 export interface AlertProps extends ChakraAlertProps {
   status?: AlertStatus;
   variant?: AlertVariant;
 }
+
+export type AlertIconProps = {};

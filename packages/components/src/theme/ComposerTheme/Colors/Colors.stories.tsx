@@ -13,8 +13,7 @@ const Component = ({ token, color, borderColor }: Props) => (
   <Flex>
     <Square
       bg={color}
-      width="60px"
-      height="60px"
+      size="60px"
       borderColor={borderColor}
       borderWidth={2}
       borderRadius="radii-1"

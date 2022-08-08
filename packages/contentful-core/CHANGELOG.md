@@ -1,5 +1,29 @@
 # @cmpsr/contentful-core
 
+## 0.5.2
+
+### Patch Changes
+
+- 41d0505: fix: include package.json in release
+
+## 0.5.1
+
+### Patch Changes
+
+- 8289ef7: fix: use project config to emit types
+
+## 0.5.0
+
+### Minor Changes
+
+- c88c8f1: feat: expose createContentfulLink function
+
+## 0.4.2
+
+### Patch Changes
+
+- 87716f6: Move dependencies to peer and dev in contentful-core
+
 ## 0.4.1
 
 ### Patch Changes

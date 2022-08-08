@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { Button } from './Button';
-import { VStack } from '@chakra-ui/layout';
 import { buttonSizes, buttonVariants } from './types';
 import * as Icons from '../Icons';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
@@ -12,6 +11,10 @@ export default {
   argTypes: {
     variant: {
       options: buttonVariants,
+      control: { type: 'select' },
+    },
+    size: {
+      options: buttonSizes,
       control: { type: 'select' },
     },
   },
@@ -51,12 +54,20 @@ const AllTemplate = () => (
                     }}
                     {...{
                       ...(state === 'Both Icons' && {
-                        trailingIcon: Icons.IconExternalLink,
-                        leadingIcon: Icons.IconExternalLink,
+                        trailingIcon: <Icons.IconExternalLink />,
+                        leadingIcon: <Icons.IconExternalLink />,
                       }),
                     }}
-                    {...{ ...(state === 'Trailing Icon' && { trailingIcon: Icons.IconExternalLink }) }}
-                    {...{ ...(state === 'Leading Icon' && { leadingIcon: Icons.IconExternalLink }) }}
+                    {...{
+                      ...(state === 'Trailing Icon' && {
+                        trailingIcon: <Icons.IconExternalLink />,
+                      }),
+                    }}
+                    {...{
+                      ...(state === 'Leading Icon' && {
+                        leadingIcon: <Icons.IconExternalLink />,
+                      }),
+                    }}
                   >
                     {variant}
                   </Button>
@@ -72,15 +83,11 @@ const AllTemplate = () => (
 export const All = AllTemplate.bind({});
 
 const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
-  <VStack>
-    <Button
-      {...(showLeadingIcon && { leadingIcon: Icons.IconExternalLink })}
-      {...(showTrailingIcon && { trailingIcon: Icons.IconExternalLink })}
-      {...args}
-    >
-      Playground
-    </Button>
-  </VStack>
+  <Button
+    {...(showLeadingIcon && { leadingIcon: <Icons.IconExternalLink /> })}
+    {...(showTrailingIcon && { trailingIcon: <Icons.IconExternalLink /> })}
+    {...args}
+  />
 );
 
 export const Playground = Template.bind({});

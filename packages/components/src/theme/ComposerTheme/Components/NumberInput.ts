@@ -191,7 +191,7 @@ export const NumberInput: ComponentMultiStyleConfig = {
   },
   sizes,
   defaultProps: {
-    size: 'l',
+    size: 'm',
     variant: 'outline',
   },
 };

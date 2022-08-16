@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
   NumberInput as ChakraNumberInput,
   NumberInputField,
@@ -12,7 +12,9 @@ import {
 import { NumberInputProps } from './types';
 import { IconCaretDown, IconCaretUp } from '@components';
 
-const NumberInput: FC<NumberInputProps> = ChakraNumberInput;
+const NumberInput = forwardRef<NumberInputProps, typeof ChakraNumberInput>((props, ref) => (
+  <ChakraNumberInput ref={ref} {...props} />
+));
 
 const IncrementStepper = forwardRef<NumberIncrementStepperProps, typeof ChakraIncrementStepper>((props, ref) => (
   <ChakraIncrementStepper ref={ref} {...props}>

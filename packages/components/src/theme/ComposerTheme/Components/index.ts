@@ -14,6 +14,7 @@ import { Input } from './Input';
 import { InlineAlert } from './InlineAlert';
 import { Link } from './Link';
 import { Modal } from './Modal';
+import { NumberInput } from './NumberInput';
 import { PinInput } from './PinInput';
 import { ProgressBar } from './ProgressBar';
 import { ProgressCircular } from './ProgressCircular';
@@ -50,6 +51,7 @@ export const components = {
   Link,
   Menu: Dropdown,
   Modal,
+  NumberInput,
   PinInput,
   Progress: ProgressBar,
   ProgressCircular,

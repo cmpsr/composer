@@ -1,5 +1,5 @@
 ---
-"@cmpsr/components": minor
+"@cmpsr/components": major
 ---
 
-add new variant to select component
+feat(Select): add new variant and remove iconSize prop

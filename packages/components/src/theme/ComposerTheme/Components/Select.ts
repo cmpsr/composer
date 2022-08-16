@@ -2,10 +2,10 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { PartsStyleFunction, PartsStyleInterpolation } from '@chakra-ui/theme-tools';
 import { selectAnatomy as parts } from '@chakra-ui/anatomy';
 
-const placeholderWasSelected = (placeholder, value) => placeholder && (!value || value === '');
+const isDisplayingPlaceholder = (placeholder?: string, value?: string) => !value && placeholder;
 
-const getDefaultTextColor = (placeholder, value) =>
-  placeholderWasSelected(placeholder, value) ? 'text-secondary' : 'text-primary';
+const getDefaultTextColor = (placeholder?: string, value?: string) =>
+  isDisplayingPlaceholder(placeholder, value) ? 'text-secondary' : 'text-primary';
 
 const sizes: Record<string, PartsStyleInterpolation> = {
   l: ({ theme }) => ({
@@ -118,7 +118,7 @@ const flushedStyle: PartsStyleFunction<typeof parts> = ({ size, value, placehold
       borderWidth: '0.063rem',
       borderColor: 'ui-element-outline-disabled',
       opacity: 1,
-      color: placeholderWasSelected(placeholder, value) ? 'text-disabled' : 'text-secondary',
+      color: isDisplayingPlaceholder(placeholder, value) ? 'text-disabled' : 'text-secondary',
     },
     _invalid: {
       border: 'none',

@@ -20,6 +20,7 @@ export * from './PinInput';
 export * from './ProgressBar';
 export * from './ProgressCircular';
 export * from './Radio';
+export * from './RangeSlider';
 export * from './Select';
 export * from './Slider';
 export * from './Spinner';

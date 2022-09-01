@@ -13,7 +13,7 @@ export default {
 export const Sticky = () => (
   <>
     <Navigation sticky>
-      <Navigation.Logo src="https://avatars0.githubusercontent.com/u/67131017?s=200" href="#" />
+      <Navigation.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" href="#" />
       <Navigation.Links>
         <Navigation.Link href="#" showDivider>
           Default Link
@@ -53,7 +53,7 @@ export const Sticky = () => (
 const Template = ({ anchors, logoUrl, logoHref, sticky }) => (
   <>
     <Navigation sticky={sticky}>
-      <Navigation.Logo src={logoUrl} href={logoHref} />
+      <Navigation.Image src={logoUrl} href={logoHref} />
       <Navigation.Links>
         {anchors.map(({ label, href }, index: number) => (
           <Navigation.Link key={index} href={href}>

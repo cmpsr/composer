@@ -1,9 +1,9 @@
 import React from 'react';
-import { Flex, Image, TextPairing } from '@cmpsr/components';
+import { Card, Flex, Image, Link, Tag, TextPairing } from '@cmpsr/components';
 import { MediaBlockType } from './types';
 
 export const MediaBlock: MediaBlockType = (props) => {
-  const { variant = 'horizontal', justifyContent = 'start', ...rest } = props;
+  const { variant = 'vertical', justifyContent = 'start', bounded, ...rest } = props;
   const isHorizontal = variant === 'horizontal';
   return (
     <Flex
@@ -12,6 +12,11 @@ export const MediaBlock: MediaBlockType = (props) => {
       justifyContent={justifyContent}
       alignItems="start"
       textAlign={isHorizontal ? 'start' : props.alignItems}
+      {...{
+        ...(bounded && {
+          as: Card,
+        }),
+      }}
       {...rest}
     />
   );
@@ -19,3 +24,5 @@ export const MediaBlock: MediaBlockType = (props) => {
 
 MediaBlock.Image = Image;
 MediaBlock.TextPairing = TextPairing;
+MediaBlock.Tag = Tag;
+MediaBlock.Link = Link;

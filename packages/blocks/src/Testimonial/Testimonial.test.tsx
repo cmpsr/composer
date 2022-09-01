@@ -29,7 +29,7 @@ describe('Testimonial', () => {
       <Testimonial>
         <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
         <Testimonial.Content>
-          <Testimonial.Legend>legend</Testimonial.Legend>
+          <Testimonial.Overline>legend</Testimonial.Overline>
           <Testimonial.Testimony>testimony</Testimonial.Testimony>
           <Testimonial.Author>name</Testimonial.Author>
         </Testimonial.Content>
@@ -42,7 +42,7 @@ describe('Testimonial', () => {
       <Testimonial>
         <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
         <Testimonial.Content>
-          <Testimonial.Legend>legend</Testimonial.Legend>
+          <Testimonial.Overline>legend</Testimonial.Overline>
           <Testimonial.Testimony>testimony</Testimonial.Testimony>
           <Testimonial.Author>name</Testimonial.Author>
         </Testimonial.Content>
@@ -73,7 +73,7 @@ describe('Testimonial', () => {
         <Testimonial.Content>
           <Testimonial.Testimony>testimony</Testimonial.Testimony>
           <Testimonial.Author>name</Testimonial.Author>
-          <Testimonial.Link href="#">linking</Testimonial.Link>
+          <Testimonial.Action href="#">linking</Testimonial.Action>
         </Testimonial.Content>
       </Testimonial>
     );

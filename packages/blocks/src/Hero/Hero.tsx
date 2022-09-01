@@ -13,7 +13,7 @@ import {
   TextProps,
 } from '@cmpsr/components';
 
-import { MediaBlock } from '../MediaBlock';
+import { MediaBlock, MediaBlockType } from '../MediaBlock';
 import { HeroType, HeroContentProps } from './types';
 
 export const Hero: HeroType = (props) => (
@@ -71,4 +71,9 @@ const HeroLegend: FC<TextProps> = (props) => (
 );
 Hero.Legend = HeroLegend;
 
-Hero.MediaBlock = MediaBlock;
+const HeroMediaBlock: MediaBlockType = (props) => <MediaBlock variant="horizontal" {...props} />;
+HeroMediaBlock.Image = MediaBlock.Image;
+HeroMediaBlock.TextPairing = MediaBlock.TextPairing;
+HeroMediaBlock.Tag = MediaBlock.Tag;
+HeroMediaBlock.Link = MediaBlock.Link;
+Hero.MediaBlock = HeroMediaBlock;

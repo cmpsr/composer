@@ -19,16 +19,16 @@ export const ImageLeft = () => (
   <Hero>
     <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
     <Hero.Content>
-      <Hero.TextPairing variant="textpairing-header-4XL">
-        <Hero.TextPairing.Label>The next generation of care for women and families</Hero.TextPairing.Label>
-        <Hero.TextPairing.SubLabel>
+      <Hero.Title variant="textpairing-header-4XL">
+        <Hero.Title.Label>The next generation of care for women and families</Hero.Title.Label>
+        <Hero.Title.SubLabel>
           We’re setting a new standard of care for families across geographies, cultures, and backgrounds.
-        </Hero.TextPairing.SubLabel>
-      </Hero.TextPairing>
-      <Hero.LinkGroup>
-        <Hero.Link children="Default" variant="primary" />
-        <Hero.Link children="Default" variant="primary-alt" />
-      </Hero.LinkGroup>
+        </Hero.Title.SubLabel>
+      </Hero.Title>
+      <Hero.Actions>
+        <Hero.Action children="Default" variant="primary" />
+        <Hero.Action children="Default" variant="primary-alt" />
+      </Hero.Actions>
     </Hero.Content>
   </Hero>
 );
@@ -36,16 +36,16 @@ export const ImageLeft = () => (
 export const ContentCentered = () => (
   <Hero>
     <Hero.Content contentAlignment="center">
-      <Hero.TextPairing variant="textpairing-header-4XL">
-        <Hero.TextPairing.Label>The next generation of care for women and families</Hero.TextPairing.Label>
-        <Hero.TextPairing.SubLabel>
+      <Hero.Title variant="textpairing-header-4XL">
+        <Hero.Title.Label>The next generation of care for women and families</Hero.Title.Label>
+        <Hero.Title.SubLabel>
           We’re setting a new standard of care for families across geographies, cultures, and backgrounds.
-        </Hero.TextPairing.SubLabel>
-      </Hero.TextPairing>
-      <Hero.LinkGroup>
-        <Hero.Link children="Default" variant="primary" />
-        <Hero.Link children="Default" variant="primary-alt" />
-      </Hero.LinkGroup>
+        </Hero.Title.SubLabel>
+      </Hero.Title>
+      <Hero.Actions>
+        <Hero.Action children="Default" variant="primary" />
+        <Hero.Action children="Default" variant="primary-alt" />
+      </Hero.Actions>
     </Hero.Content>
     <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
   </Hero>
@@ -54,12 +54,12 @@ export const ContentCentered = () => (
 export const NoCta = () => (
   <Hero>
     <Hero.Content contentAlignment="start">
-      <Hero.TextPairing variant="textpairing-header-4XL">
-        <Hero.TextPairing.Label>The next generation of care for women and families</Hero.TextPairing.Label>
-        <Hero.TextPairing.SubLabel>
+      <Hero.Title variant="textpairing-header-4XL">
+        <Hero.Title.Label>The next generation of care for women and families</Hero.Title.Label>
+        <Hero.Title.SubLabel>
           We’re setting a new standard of care for families across geographies, cultures, and backgrounds.
-        </Hero.TextPairing.SubLabel>
-      </Hero.TextPairing>
+        </Hero.Title.SubLabel>
+      </Hero.Title>
     </Hero.Content>
     <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
   </Hero>
@@ -68,18 +68,18 @@ export const NoCta = () => (
 export const All = () => (
   <Hero>
     <Hero.Content>
-      <Hero.ContentGroup>
+      <Hero.ContentContainer>
         <Hero.Tag>Hello</Hero.Tag>
-        <Hero.Legend>Breaking news</Hero.Legend>
-        <Hero.TextPairing variant="textpairing-header-4XL">
-          <Hero.TextPairing.Label>There is life elsewhere in the universe</Hero.TextPairing.Label>
-          <Hero.TextPairing.SubLabel color="text-secondary">
+        <Hero.Overline>Breaking news</Hero.Overline>
+        <Hero.Title variant="textpairing-header-4XL">
+          <Hero.Title.Label>There is life elsewhere in the universe</Hero.Title.Label>
+          <Hero.Title.SubLabel color="text-secondary">
             We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
             three ways we could find it.
-          </Hero.TextPairing.SubLabel>
-        </Hero.TextPairing>
-      </Hero.ContentGroup>
-      <Hero.ContentGroup gap="1.5rem">
+          </Hero.Title.SubLabel>
+        </Hero.Title>
+      </Hero.ContentContainer>
+      <Hero.ContentContainer gap="1.5rem">
         <Hero.MediaBlock>
           <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
           <Hero.MediaBlock.TextPairing>
@@ -101,23 +101,23 @@ export const All = () => (
             <Hero.MediaBlock.TextPairing.SubLabel>SubLabel</Hero.MediaBlock.TextPairing.SubLabel>
           </Hero.MediaBlock.TextPairing>
         </Hero.MediaBlock>
-      </Hero.ContentGroup>
-      <Hero.ContentGroup>
-        <Hero.LinkGroup alignItems={{ base: 'center', md: 'start' }}>
-          <Hero.Link children="Default" variant="primary" />
-          <Hero.Link children="Default" variant="primary-alt" />
-        </Hero.LinkGroup>
+      </Hero.ContentContainer>
+      <Hero.ContentContainer>
+        <Hero.Actions alignItems={{ base: 'center', md: 'start' }}>
+          <Hero.Action children="Default" variant="primary" />
+          <Hero.Action children="Default" variant="primary-alt" />
+        </Hero.Actions>
         <Hero.Disclaimer>
           *By clicking on Launch Mission you accept our space laws and rules for traveling through the universe.
         </Hero.Disclaimer>
-        <Hero.Link size="s" children="I need help >" />
-      </Hero.ContentGroup>
-      <Hero.ContentGroup flexDirection="row">
-        <Hero.Link size="l" leadingIcon={<IconMail />} />
-        <Hero.Link size="l" leadingIcon={<IconMail />} />
-        <Hero.Link size="l" leadingIcon={<IconMail />} />
-        <Hero.Link size="l" leadingIcon={<IconMail />} />
-      </Hero.ContentGroup>
+        <Hero.Action size="s" children="I need help >" />
+      </Hero.ContentContainer>
+      <Hero.ContentContainer flexDirection="row">
+        <Hero.Action size="l" leadingIcon={<IconMail />} />
+        <Hero.Action size="l" leadingIcon={<IconMail />} />
+        <Hero.Action size="l" leadingIcon={<IconMail />} />
+        <Hero.Action size="l" leadingIcon={<IconMail />} />
+      </Hero.ContentContainer>
     </Hero.Content>
     <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
   </Hero>
@@ -139,15 +139,15 @@ const Template = ({
   <Hero flexDirection={{ base: 'column', lg: variant === 'left' ? 'row' : 'row-reverse' }}>
     <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
     <Hero.Content contentAlignment={contentAlignment}>
-      <Hero.ContentGroup>
+      <Hero.ContentContainer>
         <Hero.Tag>{tag}</Hero.Tag>
-        <Hero.Legend>{legend}</Hero.Legend>
-        <Hero.TextPairing variant="textpairing-header-4XL">
-          <Hero.TextPairing.Label>{label}</Hero.TextPairing.Label>
-          <Hero.TextPairing.SubLabel>{subLabel}</Hero.TextPairing.SubLabel>
-        </Hero.TextPairing>
-      </Hero.ContentGroup>
-      <Hero.ContentGroup gap="1.5rem">
+        <Hero.Overline>{legend}</Hero.Overline>
+        <Hero.Title variant="textpairing-header-4XL">
+          <Hero.Title.Label>{label}</Hero.Title.Label>
+          <Hero.Title.SubLabel>{subLabel}</Hero.Title.SubLabel>
+        </Hero.Title>
+      </Hero.ContentContainer>
+      <Hero.ContentContainer gap="1.5rem">
         <Hero.MediaBlock>
           <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
           <Hero.MediaBlock.TextPairing>
@@ -155,14 +155,14 @@ const Template = ({
             <Hero.MediaBlock.TextPairing.SubLabel>{mediaBlockSubLabel}</Hero.MediaBlock.TextPairing.SubLabel>
           </Hero.MediaBlock.TextPairing>
         </Hero.MediaBlock>
-      </Hero.ContentGroup>
-      <Hero.ContentGroup>
-        <Hero.LinkGroup>
-          <Hero.Link children={primaryCtaCopy} variant="primary" />
-          <Hero.Link children={secondaryCtaCopy} variant="primary-alt" />
-        </Hero.LinkGroup>
+      </Hero.ContentContainer>
+      <Hero.ContentContainer>
+        <Hero.Actions>
+          <Hero.Action children={primaryCtaCopy} variant="primary" />
+          <Hero.Action children={secondaryCtaCopy} variant="primary-alt" />
+        </Hero.Actions>
         <Hero.Disclaimer>{disclaimer}</Hero.Disclaimer>
-      </Hero.ContentGroup>
+      </Hero.ContentContainer>
     </Hero.Content>
   </Hero>
 );

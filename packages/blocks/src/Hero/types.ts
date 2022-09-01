@@ -1,23 +1,23 @@
 import { FC } from 'react';
-import { FlexProps, ImageProps, LinkProps, TagProps, TextPairingType, TextProps } from '@cmpsr/components';
+import { Flex, FlexProps, Image, Link, TagProps, Text, TextPairing } from '@cmpsr/components';
 export { FlexProps as HeroProps } from '@cmpsr/components';
 
-import { MediaBlockType } from '../MediaBlock';
+import { MediaBlock } from '../MediaBlock';
 
 export interface HeroContentProps extends FlexProps {
   contentAlignment?: 'start' | 'end' | 'left' | 'right' | 'center';
 }
 
 export interface HeroStaticMembers {
-  Image: FC<ImageProps>;
+  Image: typeof Image;
   Content: FC<HeroContentProps>;
-  ContentGroup: FC<FlexProps>;
-  Disclaimer: FC<TextProps>;
-  TextPairing: TextPairingType;
-  Legend: FC<TextProps>;
-  Link: FC<LinkProps>;
-  LinkGroup: FC<FlexProps>;
-  MediaBlock: MediaBlockType;
+  ContentContainer: typeof Flex;
+  Disclaimer: typeof Text;
+  Title: typeof TextPairing;
+  Overline: typeof Text;
+  Action: typeof Link;
+  Actions: typeof Flex;
+  MediaBlock: typeof MediaBlock;
   Tag: FC<TagProps>;
 }
 

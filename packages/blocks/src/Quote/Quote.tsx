@@ -7,7 +7,7 @@ export const Quote: FC<FlexProps> & QuoteStaticMembers = (props) => (
 );
 
 const QuoteText: FC<TextProps> = (props) => <Text variant="text-body-display-L" {...props} />;
-Quote.Text = QuoteText;
+Quote.Title = QuoteText;
 
 const QuoteAuthorAvatar: FC<AvatarProps> = (props) => (
   <Avatar backgroundColor="primary-disabled" color="text-secondary" size="m" {...props} />

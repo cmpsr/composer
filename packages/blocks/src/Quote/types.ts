@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { AvatarProps, FlexProps, TextPairingType, TextProps } from '@cmpsr/components';
+import { AvatarProps, FlexProps, Text, TextPairingType } from '@cmpsr/components';
 export { FlexProps as QuoteProps } from '@cmpsr/components';
 
 export interface QuoteAuthorStaticProps {
@@ -8,6 +8,6 @@ export interface QuoteAuthorStaticProps {
 }
 
 export interface QuoteStaticMembers {
-  Text: FC<TextProps>;
+  Title: typeof Text;
   Author: FC<FlexProps> & QuoteAuthorStaticProps;
 }

@@ -1,32 +1,8 @@
-import React, { FC } from 'react';
-import { Select as ChakraSelect, useMultiStyleConfig } from '@chakra-ui/react';
+import React from 'react';
+import { forwardRef, Select as ChakraSelect } from '@chakra-ui/react';
 import { SelectProps } from './types';
-import { IconChevronDown } from '..';
+import { IconChevronDown } from '@components';
 
-export const Select: FC<SelectProps> = ({ value, placeholder, ...props }) => {
-  const {
-    field: {
-      color,
-      placeholderColor,
-      _disabled: { disabledPlaceHolderColor },
-    },
-  } = useMultiStyleConfig('Select', { value, iconSize: props.iconSize }) as {
-    field: { color: string; placeholderColor: string; _disabled: { disabledPlaceHolderColor: string } };
-  };
-
-  let textColor = color;
-
-  if (placeholder && (!value || value === '')) {
-    textColor = props?.isDisabled ? disabledPlaceHolderColor : placeholderColor;
-  }
-
-  return (
-    <ChakraSelect
-      data-testid="cmpsr.select"
-      textColor={textColor}
-      placeholder={placeholder}
-      icon={<IconChevronDown />}
-      {...props}
-    />
-  );
-};
+export const Select = forwardRef<SelectProps, typeof ChakraSelect>((props, ref) => (
+  <ChakraSelect ref={ref} icon={<IconChevronDown />} {...props} />
+));

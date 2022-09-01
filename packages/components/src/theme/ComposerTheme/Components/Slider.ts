@@ -17,6 +17,7 @@ export const Slider: ComponentStyleConfig = {
   baseStyle: {
     track: {
       bg: 'background-action-active',
+      borderRadius: 'radii-half',
     },
     filledTrack: {
       bg: 'primary-default',

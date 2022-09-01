@@ -7,14 +7,14 @@ describe('MediaBlock', () => {
     renderWithProviders(
       <MediaBlock>
         <MediaBlock.Image />
-        <MediaBlock.TextPairing>
-          <MediaBlock.TextPairing.Label>Label</MediaBlock.TextPairing.Label>
-          <MediaBlock.TextPairing.SubLabel>SubLabel</MediaBlock.TextPairing.SubLabel>
-        </MediaBlock.TextPairing>
+        <MediaBlock.Title>
+          <MediaBlock.Title.Label>Label</MediaBlock.Title.Label>
+          <MediaBlock.Title.SubLabel>SubLabel</MediaBlock.Title.SubLabel>
+        </MediaBlock.Title>
         <MediaBlock.Tag>
           <MediaBlock.Tag.Label>Tag</MediaBlock.Tag.Label>
         </MediaBlock.Tag>
-        <MediaBlock.Link>Link</MediaBlock.Link>
+        <MediaBlock.Action>Link</MediaBlock.Action>
       </MediaBlock>
     );
     screen.getByRole('img');

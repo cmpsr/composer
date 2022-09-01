@@ -1,15 +1,15 @@
 import { FC } from 'react';
-import { FlexProps, LinkProps, TextPairingType, TextProps } from '@cmpsr/components';
+import { Flex, FlexProps, Link, Text, TextPairing } from '@cmpsr/components';
 
 export interface HighlightedTextProps extends FlexProps {
   contentAlignment?: 'start' | 'end' | 'center';
 }
 
 export interface HighlightedTextStaticMembers {
-  TextPairing: TextPairingType;
-  Legend: FC<TextProps>;
-  Link: FC<LinkProps>;
-  LinkGroup: FC<FlexProps>;
+  Title: typeof TextPairing;
+  Overline: typeof Text;
+  Action: typeof Link;
+  Actions: typeof Flex;
 }
 
 export type HighlightedTextType = FC<HighlightedTextProps> & HighlightedTextStaticMembers;

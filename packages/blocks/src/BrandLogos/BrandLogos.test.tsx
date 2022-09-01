@@ -7,13 +7,13 @@ describe('BrandLogos', () => {
   test('should render text pairing when title and description are provided', () => {
     const { container } = renderWithProviders(
       <BrandLogos>
-        <BrandLogos.TextPairing>
-          <BrandLogos.TextPairing.Label>Title</BrandLogos.TextPairing.Label>
-          <BrandLogos.TextPairing.SubLabel>Description</BrandLogos.TextPairing.SubLabel>
-        </BrandLogos.TextPairing>
-        <BrandLogos.ImagesContainer>
+        <BrandLogos.Title>
+          <BrandLogos.Title.Label>Title</BrandLogos.Title.Label>
+          <BrandLogos.Title.SubLabel>Description</BrandLogos.Title.SubLabel>
+        </BrandLogos.Title>
+        <BrandLogos.ImageContainer>
           <BrandLogos.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
-        </BrandLogos.ImagesContainer>
+        </BrandLogos.ImageContainer>
       </BrandLogos>
     );
     const textPairing = container.firstChild.firstChild.childNodes;
@@ -22,10 +22,12 @@ describe('BrandLogos', () => {
   test('should render text when title is provided', () => {
     const { container } = renderWithProviders(
       <BrandLogos>
-        <BrandLogos.Text>Title</BrandLogos.Text>
-        <BrandLogos.ImagesContainer>
+        <BrandLogos.Title>
+          <BrandLogos.Title.Label>Title</BrandLogos.Title.Label>
+        </BrandLogos.Title>
+        <BrandLogos.ImageContainer>
           <BrandLogos.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
-        </BrandLogos.ImagesContainer>
+        </BrandLogos.ImageContainer>
       </BrandLogos>
     );
     const text = container.firstChild.firstChild.childNodes;
@@ -34,9 +36,9 @@ describe('BrandLogos', () => {
   test('should render image', () => {
     renderWithProviders(
       <BrandLogos>
-        <BrandLogos.ImagesContainer>
+        <BrandLogos.ImageContainer>
           <BrandLogos.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
-        </BrandLogos.ImagesContainer>
+        </BrandLogos.ImageContainer>
       </BrandLogos>
     );
     screen.getByRole('img');

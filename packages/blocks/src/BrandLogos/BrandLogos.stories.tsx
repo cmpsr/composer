@@ -10,44 +10,46 @@ export default {
 
 export const WithText = () => (
   <BrandLogos backgroundColor="background-page">
-    <BrandLogos.Text variant="text-header-2XL">Title</BrandLogos.Text>
-    <BrandLogos.ImagesContainer>
+    <BrandLogos.Title variant="textpairing-header-2XL">
+      <BrandLogos.Title.Label>Title</BrandLogos.Title.Label>
+    </BrandLogos.Title>
+    <BrandLogos.ImageContainer>
       {Array(8)
         .fill('https://avatars0.githubusercontent.com/u/67131017?s=200')
         .map((image, i) => (
           <BrandLogos.Image src={image} key={i} maxHeight="12.5rem" />
         ))}
-    </BrandLogos.ImagesContainer>
+    </BrandLogos.ImageContainer>
   </BrandLogos>
 );
 
 export const WithTextPairing = () => (
   <BrandLogos backgroundColor="background-page">
-    <BrandLogos.TextPairing variant="textpairing-header-2XL" textAlign="center">
-      <BrandLogos.TextPairing.Label>Title</BrandLogos.TextPairing.Label>
-      <BrandLogos.TextPairing.SubLabel>Description</BrandLogos.TextPairing.SubLabel>
-    </BrandLogos.TextPairing>
-    <BrandLogos.ImagesContainer>
+    <BrandLogos.Title variant="textpairing-header-2XL" textAlign="center">
+      <BrandLogos.Title.Label>Title</BrandLogos.Title.Label>
+      <BrandLogos.Title.SubLabel>Description</BrandLogos.Title.SubLabel>
+    </BrandLogos.Title>
+    <BrandLogos.ImageContainer>
       {Array(8)
         .fill('https://avatars0.githubusercontent.com/u/67131017?s=200')
         .map((image, i) => (
           <BrandLogos.Image src={image} key={i} maxHeight="12.5rem" />
         ))}
-    </BrandLogos.ImagesContainer>
+    </BrandLogos.ImageContainer>
   </BrandLogos>
 );
 
 const Template = ({ logos, backgroundColor, logosMaxHeight, label, subLabel }) => (
   <BrandLogos backgroundColor={backgroundColor}>
-    <BrandLogos.TextPairing variant="textpairing-header-2XL" textAlign="center">
-      <BrandLogos.TextPairing.Label>{label}</BrandLogos.TextPairing.Label>
-      <BrandLogos.TextPairing.SubLabel>{subLabel}</BrandLogos.TextPairing.SubLabel>
-    </BrandLogos.TextPairing>
-    <BrandLogos.ImagesContainer>
+    <BrandLogos.Title variant="textpairing-header-2XL" textAlign="center">
+      <BrandLogos.Title.Label>{label}</BrandLogos.Title.Label>
+      <BrandLogos.Title.SubLabel>{subLabel}</BrandLogos.Title.SubLabel>
+    </BrandLogos.Title>
+    <BrandLogos.ImageContainer>
       {logos.map((image, i) => (
         <BrandLogos.Image src={image} key={i} maxHeight={logosMaxHeight} />
       ))}
-    </BrandLogos.ImagesContainer>
+    </BrandLogos.ImageContainer>
   </BrandLogos>
 );
 

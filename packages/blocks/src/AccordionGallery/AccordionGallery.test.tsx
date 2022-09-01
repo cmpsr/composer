@@ -16,7 +16,7 @@ describe('AccordionGallery', () => {
   test('should render legend', () => {
     renderWithProviders(
       <AccordionGallery>
-        <AccordionGallery.Legend>legend</AccordionGallery.Legend>
+        <AccordionGallery.Overline>Overline</AccordionGallery.Overline>
       </AccordionGallery>
     );
     screen.getByText('legend');

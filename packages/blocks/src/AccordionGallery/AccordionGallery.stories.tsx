@@ -14,9 +14,7 @@ export const Basic = () => (
         <AccordionGallery.Accordion.Image width="200px" src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         <AccordionGallery.Accordion.Button>
           <AccordionGallery.Title variant="textpairing-header-M" textAlign="left">
-            <AccordionGallery.Title.Label>
-              The next generation of care for women and families
-            </AccordionGallery.Title.Label>
+            <AccordionGallery.Title.Label>There is life elsewhere in the universe</AccordionGallery.Title.Label>
           </AccordionGallery.Title>
         </AccordionGallery.Accordion.Button>
         <AccordionGallery.Accordion.Panel>
@@ -32,9 +30,7 @@ export const Basic = () => (
         />
         <AccordionGallery.Accordion.Button>
           <AccordionGallery.Title variant="textpairing-header-M" textAlign="left">
-            <AccordionGallery.Title.Label>
-              The next generation of care for women and families
-            </AccordionGallery.Title.Label>
+            <AccordionGallery.Title.Label>There is life elsewhere in the universe</AccordionGallery.Title.Label>
           </AccordionGallery.Title>
         </AccordionGallery.Accordion.Button>
         <AccordionGallery.Accordion.Panel>
@@ -52,16 +48,14 @@ export const WithTitles = () => (
       Legend
     </AccordionGallery.Legend>
     <AccordionGallery.Title variant="textpairing-header-2XL" textAlign={{ base: 'unset', md: 'center', lg: 'unset' }}>
-      <AccordionGallery.Title.Label>The next generation of care for women and families</AccordionGallery.Title.Label>
+      <AccordionGallery.Title.Label>There is life elsewhere in the universe</AccordionGallery.Title.Label>
     </AccordionGallery.Title>
     <AccordionGallery.Accordion allowToggle>
       <AccordionGallery.Accordion.Item>
         <AccordionGallery.Accordion.Image width="600px" src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         <AccordionGallery.Accordion.Button>
           <AccordionGallery.Title variant="textpairing-header-M" textAlign="left">
-            <AccordionGallery.Title.Label>
-              The next generation of care for women and families
-            </AccordionGallery.Title.Label>
+            <AccordionGallery.Title.Label>There is life elsewhere in the universe</AccordionGallery.Title.Label>
           </AccordionGallery.Title>
         </AccordionGallery.Accordion.Button>
         <AccordionGallery.Accordion.Panel>
@@ -77,9 +71,7 @@ export const WithTitles = () => (
         />
         <AccordionGallery.Accordion.Button>
           <AccordionGallery.Title variant="textpairing-header-M" textAlign="left">
-            <AccordionGallery.Title.Label>
-              The next generation of care for women and families
-            </AccordionGallery.Title.Label>
+            <AccordionGallery.Title.Label>There is life elsewhere in the universe</AccordionGallery.Title.Label>
           </AccordionGallery.Title>
         </AccordionGallery.Accordion.Button>
         <AccordionGallery.Accordion.Panel>
@@ -105,16 +97,14 @@ export const WithDefaultImage = () => (
       Legend
     </AccordionGallery.Legend>
     <AccordionGallery.Title variant="textpairing-header-2XL" textAlign={{ base: 'unset', md: 'center', lg: 'unset' }}>
-      <AccordionGallery.Title.Label>The next generation of care for women and families</AccordionGallery.Title.Label>
+      <AccordionGallery.Title.Label>There is life elsewhere in the universe</AccordionGallery.Title.Label>
     </AccordionGallery.Title>
     <AccordionGallery.Accordion allowToggle>
       <AccordionGallery.Accordion.Item>
         <AccordionGallery.Accordion.Image width="600px" src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         <AccordionGallery.Accordion.Button>
           <AccordionGallery.Title variant="textpairing-header-M" textAlign="left">
-            <AccordionGallery.Title.Label>
-              The next generation of care for women and families
-            </AccordionGallery.Title.Label>
+            <AccordionGallery.Title.Label>There is life elsewhere in the universe</AccordionGallery.Title.Label>
           </AccordionGallery.Title>
         </AccordionGallery.Accordion.Button>
         <AccordionGallery.Accordion.Panel>
@@ -130,9 +120,7 @@ export const WithDefaultImage = () => (
         />
         <AccordionGallery.Accordion.Button>
           <AccordionGallery.Title variant="textpairing-header-M" textAlign="left">
-            <AccordionGallery.Title.Label>
-              The next generation of care for women and families
-            </AccordionGallery.Title.Label>
+            <AccordionGallery.Title.Label>There is life elsewhere in the universe</AccordionGallery.Title.Label>
           </AccordionGallery.Title>
         </AccordionGallery.Accordion.Button>
         <AccordionGallery.Accordion.Panel>

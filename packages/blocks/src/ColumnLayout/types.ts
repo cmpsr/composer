@@ -3,7 +3,7 @@ import { FlexProps, TextPairingType, Link, Flex } from '@cmpsr/components';
 import { MediaBlock } from '../';
 
 export interface ColumnLayoutStaticMembers {
-  TextPairing: TextPairingType;
+  Title: TextPairingType;
   Link: typeof Link;
   LinkGroup: typeof Flex;
   Column: typeof MediaBlock;

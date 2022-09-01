@@ -10,14 +10,13 @@ export default {
 
 export const Bounded = () => (
   <ColumnLayout backgroundColor="background-overlay" p="1.5rem" gap="1.5rem">
-    <ColumnLayout.TextPairing variant="textpairing-header-XL" textAlign="center">
-      <ColumnLayout.TextPairing.Label>
-        The next generation of care for women and families
-      </ColumnLayout.TextPairing.Label>
-      <ColumnLayout.TextPairing.SubLabel color="text-secondary">
-        We’re setting a new standard of care for families across geographies, cultures, and backgrounds.
-      </ColumnLayout.TextPairing.SubLabel>
-    </ColumnLayout.TextPairing>
+    <ColumnLayout.Title variant="textpairing-header-XL" textAlign="center">
+      <ColumnLayout.Title.Label>There is life elsewhere in the universe</ColumnLayout.Title.Label>
+      <ColumnLayout.Title.SubLabel color="text-secondary">
+        We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
+        three ways we could find it.
+      </ColumnLayout.Title.SubLabel>
+    </ColumnLayout.Title>
     <ColumnLayout.ColumnGroup gap="1rem" justifyContent="center" flexWrap="wrap">
       <ColumnLayout.Column variant="vertical" maxWidth="250px" bounded filled>
         <ColumnLayout.Column.Image
@@ -65,11 +64,9 @@ export const Bounded = () => (
 
 export const Unbounded = () => (
   <ColumnLayout backgroundColor="background-overlay" p="1.5rem" gap="3rem">
-    <ColumnLayout.TextPairing variant="textpairing-header-XL" textAlign="center">
-      <ColumnLayout.TextPairing.Label>
-        The next generation of care for women and families
-      </ColumnLayout.TextPairing.Label>
-    </ColumnLayout.TextPairing>
+    <ColumnLayout.Title variant="textpairing-header-XL" textAlign="center">
+      <ColumnLayout.Title.Label>The next generation of care for women and families</ColumnLayout.Title.Label>
+    </ColumnLayout.Title>
     <ColumnLayout.ColumnGroup gap="2rem" justifyContent="center" flexWrap="wrap">
       <ColumnLayout.Column variant="vertical" maxWidth="220px">
         <ColumnLayout.Column.Image
@@ -131,10 +128,10 @@ export const Unbounded = () => (
 
 const Template = ({ label, subLabel, tagLabel, columnLabel, columnSubLabel, linkLabel, bounded, filled }) => (
   <ColumnLayout backgroundColor="background-overlay" p="1.5rem" gap="3rem">
-    <ColumnLayout.TextPairing variant="textpairing-header-XL" textAlign="center">
-      <ColumnLayout.TextPairing.Label>{label}</ColumnLayout.TextPairing.Label>
-      <ColumnLayout.TextPairing.SubLabel color="text-secondary">{subLabel}</ColumnLayout.TextPairing.SubLabel>
-    </ColumnLayout.TextPairing>
+    <ColumnLayout.Title variant="textpairing-header-XL" textAlign="center">
+      <ColumnLayout.Title.Label>{label}</ColumnLayout.Title.Label>
+      <ColumnLayout.Title.SubLabel color="text-secondary">{subLabel}</ColumnLayout.Title.SubLabel>
+    </ColumnLayout.Title>
     <ColumnLayout.ColumnGroup gap="2rem" justifyContent="center" flexWrap="wrap">
       {Array(6).fill(
         <ColumnLayout.Column variant="vertical" maxWidth="220px" bounded={bounded} filled={filled}>
@@ -162,8 +159,9 @@ const Template = ({ label, subLabel, tagLabel, columnLabel, columnSubLabel, link
 
 export const Playground = Template.bind({});
 Playground.args = {
-  label: 'The next generation of care for women and families',
-  subLabel: 'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
+  label: 'There is life elsewhere in the universe',
+  subLabel:
+    'We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it.',
   tagLabel: 'Tech',
   columnLabel: 'Composer',
   columnSubLabel: 'the most advanced web and landing page builder for non-programmers',

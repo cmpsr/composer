@@ -7,6 +7,6 @@ export const ColumnLayout: ColumnLayoutType = (props) => <Flex flexDirection="co
 
 ColumnLayout.ColumnGroup = Flex;
 ColumnLayout.Column = MediaBlock;
-ColumnLayout.TextPairing = TextPairing;
+ColumnLayout.Title = TextPairing;
 ColumnLayout.Link = Link;
 ColumnLayout.LinkGroup = Flex;

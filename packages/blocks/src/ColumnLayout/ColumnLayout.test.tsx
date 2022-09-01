@@ -6,14 +6,12 @@ describe('ColumnLayout', () => {
   test('should render ColumnLayout parts', () => {
     renderWithProviders(
       <ColumnLayout backgroundColor="background-overlay" p="1.5rem" gap="1.5rem">
-        <ColumnLayout.TextPairing variant="textpairing-header-XL" textAlign="center">
-          <ColumnLayout.TextPairing.Label>
-            The next generation of care for women and families
-          </ColumnLayout.TextPairing.Label>
-          <ColumnLayout.TextPairing.SubLabel color="text-secondary">
+        <ColumnLayout.Title variant="textpairing-header-XL" textAlign="center">
+          <ColumnLayout.Title.Label>The next generation of care for women and families</ColumnLayout.Title.Label>
+          <ColumnLayout.Title.SubLabel color="text-secondary">
             We’re setting a new standard of care for families across geographies, cultures, and backgrounds.
-          </ColumnLayout.TextPairing.SubLabel>
-        </ColumnLayout.TextPairing>
+          </ColumnLayout.Title.SubLabel>
+        </ColumnLayout.Title>
         <ColumnLayout.ColumnGroup
           gap="1rem"
           justifyContent="center"

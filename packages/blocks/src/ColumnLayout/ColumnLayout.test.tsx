@@ -12,7 +12,7 @@ describe('ColumnLayout', () => {
             We’re setting a new standard of care for families across geographies, cultures, and backgrounds.
           </ColumnLayout.Title.SubLabel>
         </ColumnLayout.Title>
-        <ColumnLayout.ColumnGroup
+        <ColumnLayout.ColumnContainer
           gap="1rem"
           justifyContent="center"
           flexWrap="wrap"
@@ -31,10 +31,10 @@ describe('ColumnLayout', () => {
               </ColumnLayout.Column.TextPairing.SubLabel>
             </ColumnLayout.Column.TextPairing>
           </ColumnLayout.Column>
-        </ColumnLayout.ColumnGroup>
-        <ColumnLayout.LinkGroup gap="1rem" justifyContent="center" data-testid="cmpsr.block.column-layout.link-group">
-          <ColumnLayout.Link variant="primary">Primary</ColumnLayout.Link>
-        </ColumnLayout.LinkGroup>
+        </ColumnLayout.ColumnContainer>
+        <ColumnLayout.Actions gap="1rem" justifyContent="center" data-testid="cmpsr.block.column-layout.link-group">
+          <ColumnLayout.Action variant="primary">Primary</ColumnLayout.Action>
+        </ColumnLayout.Actions>
       </ColumnLayout>
     );
     screen.getByTestId('cmpsr.block.column-layout.column-group');

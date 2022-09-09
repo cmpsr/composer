@@ -37,5 +37,5 @@ EXPOSE 8080
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
 # Finally, all static assets.
-COPY --from=0 /usr/src/app/packages/components/storybook-static/ /usr/share/nginx/www/
+COPY --from=0 /usr/src/app/projects/ui-storybook/storybook-static/ /usr/share/nginx/www/
 RUN chmod -R a+r /usr/share/nginx/www

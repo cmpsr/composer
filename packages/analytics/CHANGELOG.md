@@ -1,5 +1,23 @@
 # Change Log
 
+## 0.0.28
+
+### Patch Changes
+
+- ea10a7d: update dependecies to latest version in @cmpsr/analytics project
+
+## 0.0.27
+
+### Patch Changes
+
+- 41d0505: fix: include package.json in release
+
+## 0.0.26
+
+### Patch Changes
+
+- 8289ef7: fix: use project config to emit types
+
 ## 0.0.25
 
 ### Patch Changes

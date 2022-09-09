@@ -1,17 +1,15 @@
 import { LinkProps as ChakraLinkProps } from '@chakra-ui/react';
-import { FC } from 'react';
 import { buttonVariants } from '../Button/types';
-import { IconProps } from '../Icons';
 
-export const linkVariants = buttonVariants;
+export const linkVariants = buttonVariants.filter((v) => v !== 'link');
 type LinkVariant = typeof linkVariants[number];
 
 export const linkSizes = ['s', 'm', 'l'] as const;
-type LinkSize = typeof linkSizes[number];
+export type LinkSize = typeof linkSizes[number];
 
 export interface LinkProps extends ChakraLinkProps {
   size?: LinkSize;
-  leadingIcon?: FC<IconProps>;
-  trailingIcon?: FC<IconProps>;
+  leadingIcon?: React.ReactElement;
+  trailingIcon?: React.ReactElement;
   variant?: LinkVariant;
 }

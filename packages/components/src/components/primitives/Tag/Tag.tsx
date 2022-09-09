@@ -4,21 +4,21 @@ import {
   TagLeftIcon,
   TagRightIcon,
   TagLabel,
-  useStyles,
   forwardRef,
   StyleProps,
+  useTagStyles,
 } from '@chakra-ui/react';
 import { TagProps } from './types';
 
 const Tag = forwardRef<TagProps, typeof ChakraTag>((props, ref) => <ChakraTag ref={ref} {...props} />);
 
 const LeftIcon = forwardRef((props, ref) => {
-  const styles = useStyles() as { leftIcon: StyleProps };
+  const styles = useTagStyles() as { leftIcon: StyleProps };
   return <TagLeftIcon ref={ref} {...styles.leftIcon} {...props} />;
 });
 
 const RightIcon = forwardRef((props, ref) => {
-  const styles = useStyles() as { rightIcon: StyleProps };
+  const styles = useTagStyles() as { rightIcon: StyleProps };
   return <TagRightIcon ref={ref} {...styles.rightIcon} {...props} />;
 });
 

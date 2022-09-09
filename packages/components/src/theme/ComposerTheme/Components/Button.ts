@@ -1,6 +1,7 @@
 import { cssVar } from '@chakra-ui/react';
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { transparentize } from '@chakra-ui/theme-tools';
+import { linkBaseStyle } from './Link';
 
 const generateButton = (color: string, textColor?: string) => {
   const _disabled = {
@@ -50,29 +51,18 @@ const generateAltButton = (color: string) => {
     backgroundColor: 'background-action-disabled',
     opacity: 1,
     color: transparentize(`text-link-${color}-default`, 0.6),
-    borderColor: transparentize(`text-link-${color}-default`, 0.6),
+    outlineColor: `${color}-disabled`,
   };
-
-  let loadingStyles = {
-    borderColor: `${color}-default`,
-    borderBottomColor: transparentize(`${color}-default`, 0.3),
-    borderLeftColor: transparentize(`${color}-default`, 0.3),
-  };
-
-  if (color === 'secondary') {
-    loadingStyles = {
-      borderColor: 'primary-default',
-      borderBottomColor: transparentize('primary-default', 0.3),
-      borderLeftColor: transparentize('primary-default', 0.3),
-    };
-  }
 
   return {
     backgroundColor: 'background-action-default',
     color: `text-link-${color}-default`,
-    border: '1px solid',
-    borderColor: `text-link-${color}-default`,
-    loading: loadingStyles,
+    outline: `1px solid var(--chakra-colors-text-link-${color}-default)`,
+    loading: {
+      borderColor: 'primary-default',
+      borderBottomColor: transparentize('primary-default', 0.3),
+      borderLeftColor: transparentize('primary-default', 0.3),
+    },
     _disabled,
     _hover: {
       backgroundColor: 'background-action-hover',
@@ -150,9 +140,12 @@ export const Button: ComponentStyleConfig = {
     'primary-alt': generateAltButton('primary'),
     'secondary-alt': generateAltButton('secondary'),
     destroy: generateButton('alert-error', 'alert'),
+    link: {
+      ...linkBaseStyle,
+    },
   },
   defaultProps: {
-    size: 'md',
+    size: 'm',
     variant: 'primary',
   },
 };

@@ -1,5 +1,126 @@
 # @cmpsr/components
 
+## 4.3.0
+
+### Minor Changes
+
+- a3aec10: feat: apply column gap in TextPairing from base breakpoint
+
+## 4.2.0
+
+### Minor Changes
+
+- bf0bfa0: feat: create new primitive component NumberedList
+
+## 4.1.0
+
+### Minor Changes
+
+- c0086a6: feat: add column gap to parts of textpairing
+
+## 4.0.0
+
+### Major Changes
+
+- 5f3d719: feat: update TextPairing to use dot notation - composition
+
+## 3.4.2
+
+### Patch Changes
+
+- 105ef56: update font size for body-meta-medium font styles
+
+## 3.4.1
+
+### Patch Changes
+
+- 0abd4e6: fix(Input): focus and invalid states
+
+## 3.4.0
+
+### Minor Changes
+
+- 63d863c: feat: add new brand icons
+
+## 3.3.1
+
+### Patch Changes
+
+- ae74dcc: fix(InlineAlert): use appropriate textStyle token
+
+## 3.3.0
+
+### Minor Changes
+
+- e2b62ae: feat: export accordion types
+
+## 3.2.0
+
+### Minor Changes
+
+- 7d3f0cc: feat: reexport keyframes from chakra-ui
+
+## 3.1.0
+
+### Minor Changes
+
+- c06accb: feat: add breakpoints and styles props to Theme
+
+## 3.0.0
+
+### Major Changes
+
+- f292607: feat: feat: allow TextPairing to receive all Text props"
+
+## 2.4.0
+
+### Minor Changes
+
+- adba0b1: feat: add subLabel whiteSapce prop to TextPairing"
+
+## 2.3.0
+
+### Minor Changes
+
+- ae4b778: feat: add text align property to TextPairing
+
+## 2.2.0
+
+### Minor Changes
+
+- 465da90: feat: add new hook useScrollPosition
+
+## 2.1.0
+
+### Minor Changes
+
+- 0443122: feat: add link variant to Button
+
+## 2.0.0
+
+### Major Changes
+
+- e951e88: Link component refactor to accept a react element instead of component in its leading and trailing icon props
+- e46976b: refactor button component to accept a react element instead a component in its leading and trailing icon props
+
+## 1.20.3
+
+### Patch Changes
+
+- fb122d4: update chakra packages to latest version to support React 18
+
+## 1.20.2
+
+### Patch Changes
+
+- 41d0505: fix: include package.json in release
+
+## 1.20.1
+
+### Patch Changes
+
+- 8289ef7: fix: use project config to emit types
+
 ## 1.20.0
 
 ### Minor Changes

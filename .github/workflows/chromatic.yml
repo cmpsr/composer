@@ -35,5 +35,5 @@ jobs:
       with:
         appCode: ${{ secrets.CHROMATIC_TOKEN }}
         token: ${{ secrets.GITHUB_TOKEN }}
-        storybookBuildDir: "./packages/components/storybook-static"
+        storybookBuildDir: "./projects/ui-storybook/storybook-static"
         autoAcceptChanges: "master"

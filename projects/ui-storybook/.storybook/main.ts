@@ -1,13 +1,17 @@
 const path = require('path');
 
 module.exports = {
-  stories: ['../src/**/*.stories.tsx'],
+  core: {
+    builder: 'webpack5',
+  },
+  stories: ['../../../packages/components/src/**/*.stories.tsx', '../../../packages/blocks/src/**/*.stories.tsx'],
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     'storybook-dark-mode',
     'storybook-addon-turbo-build',
+    '@storybook/addon-viewport',
   ],
   features: { postcss: false },
   refs: {
@@ -21,15 +25,11 @@ module.exports = {
     checkOptions: {},
     reactDocgen: false,
   },
+  framework: '@storybook/react',
   webpackFinal: async (config) => {
     // remove default rules for (t|j)s?(x) to be able to use swc-loader
     const rules = config.module.rules.filter((r) => {
-      return !(
-        r.test.test('.js') ||
-        r.test.test('.ts') ||
-        r.test.test('stories.mdx') ||
-        r.test.test('.md')
-      );
+      return !(r.test.test('.js') || r.test.test('.ts') || r.test.test('stories.mdx') || r.test.test('.md'));
     });
     rules.push({
       test: /\.mjs$/,
@@ -51,11 +51,11 @@ module.exports = {
         ...config.resolve,
         alias: {
           ...config.resolve.alias,
-          '@components': path.resolve(__dirname, '../src/components'),
-          '@theme': path.resolve(__dirname, '../src/theme'),
-          '@hooks': path.resolve(__dirname, '../src/hooks'),
-          '@emotion/core': '@emotion/react',
-          'emotion-theming': '@emotion/react',
+          '@cmpsr/components': path.resolve(__dirname, '../../../packages/components/src'),
+          '@cmpsr/blocks': path.resolve(__dirname, '../../../packages/blocks/src'),
+          '@components': path.resolve(__dirname, '../../../packages/components/src/components'),
+          '@theme': path.resolve(__dirname, '../../../packages/components/src/theme'),
+          '@hooks': path.resolve(__dirname, '../../../packages/components/src/hooks'),
         },
       },
     };

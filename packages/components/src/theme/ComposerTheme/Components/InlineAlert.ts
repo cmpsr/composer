@@ -17,18 +17,18 @@ const messageColor = {
 
 export const InlineAlert: ComponentMultiStyleConfig = {
   parts: ['container', 'description', 'icon'],
-  baseStyle: ({ status, ...rest }) => {
+  baseStyle: ({ status, theme }) => {
     return {
       container: {
         alignItems: 'center',
         gap: '0.5rem',
       },
       message: {
-        textStyle: 'body-meta-regular',
+        textStyle: 'text-body-meta-regular',
         ...messageColor[status],
       },
       icon: {
-        ...rest.theme.components.Alert.baseStyle(rest).icon.status[status],
+        ...theme.components.Alert.baseStyle.icon.status[status],
       },
     };
   },

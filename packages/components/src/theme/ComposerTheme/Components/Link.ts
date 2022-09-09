@@ -1,7 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
-import { buttonVariants, linkSizes } from '@components';
+import { linkVariants, linkSizes } from '@components';
 
-const linkBaseStyle = {
+export const linkBaseStyle = {
   display: 'inline-flex',
   color: 'text-link-primary-default',
   borderRadius: '0.25rem',
@@ -16,11 +16,11 @@ const linkBaseStyle = {
   },
 };
 
-const isButtonVariant = (variant) => buttonVariants.includes(variant);
+const isButtonVariant = (variant) => linkVariants.includes(variant);
 
 const getButtonVariants = () => {
   const variants = {};
-  buttonVariants.forEach((variant) => {
+  linkVariants.forEach((variant) => {
     variants[variant] = ({ theme }) => theme.components.Button.variants[variant];
   });
   return variants;

@@ -23,45 +23,6 @@
     "packages/*",
     "projects/*"
   ],
-  "turbo": {
-    "baseBranch": "origin/master",
-    "pipeline": {
-      "build-storybook": {
-        "dependsOn": [
-          "@cmpsr/components#libbuild"
-        ],
-        "outputs": [
-          "storybook-static/**"
-        ]
-      },
-      "libbuild": {
-        "dependsOn": [
-          "^libbuild"
-        ],
-        "outputs": [
-          "lib/**"
-        ]
-      },
-      "storybook": {
-        "outputs": []
-      },
-      "test": {
-        "outputs": []
-      },
-      "test:watch": {
-        "outputs": []
-      },
-      "test:coverage": {
-        "outputs": []
-      },
-      "type:check": {
-        "outputs": []
-      },
-      "type:emit": {
-        "outputs": []
-      }
-    }
-  },
   "dependencies": {
     "@changesets/cli": "^2.20.0",
     "lerna": "^5.1.2"

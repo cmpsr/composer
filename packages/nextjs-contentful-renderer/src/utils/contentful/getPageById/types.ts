@@ -31,7 +31,7 @@ export interface Block {
 
 export type Model = ResponsiveValue<string>;
 
-export type PropsValue = ResponsiveValue<Record<string, string>>;
+export type PropsValue = ResponsiveValue<Record<string, string | Record<string, string | string[]>>>;
 
 export interface ResponsiveValue<T> {
   base?: T;

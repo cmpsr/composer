@@ -177,4 +177,10 @@ describe('generateMdx', () => {
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([{ base: '<Text>Value 3</Text>' }]);
   });
+  test('should handle multiple templates in the same line', async () => {
+    const code = '<Text>Value {{value1:number}}-{{value2:string}}</Text>';
+    const fakeBlocks = [{ models: [{ base: code }], propsValues: [{ base: { value1: '1', value2: '2' } }] }];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: '<Text>Value 1-2</Text>' }]);
+  });
 });

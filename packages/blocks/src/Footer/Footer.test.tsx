@@ -8,14 +8,14 @@ describe('Footer', () => {
     renderWithProviders(
       <Footer>
         <Footer.Logo alt="Logo" />
-        <Footer.Content.Links>
-          <Footer.Content.LinkGroup>
-            <Footer.Content.LinkGroup.Title as="h3">Group 1</Footer.Content.LinkGroup.Title>
-            <Footer.Content.LinkGroup.Link href="#">Link 1</Footer.Content.LinkGroup.Link>
-            <Footer.Content.LinkGroup.Link href="#">Link 2</Footer.Content.LinkGroup.Link>
-            <Footer.Content.LinkGroup.Link href="#">Link 3</Footer.Content.LinkGroup.Link>
-          </Footer.Content.LinkGroup>
-        </Footer.Content.Links>
+        <Footer.Content.ColumnsContainer>
+          <Footer.Content.Column>
+            <Footer.Content.Column.Title as="h3">Group 1</Footer.Content.Column.Title>
+            <Footer.Content.Column.Action href="#">Link 1</Footer.Content.Column.Action>
+            <Footer.Content.Column.Action href="#">Link 2</Footer.Content.Column.Action>
+            <Footer.Content.Column.Action href="#">Link 3</Footer.Content.Column.Action>
+          </Footer.Content.Column>
+        </Footer.Content.ColumnsContainer>
         {renderCopyGroup && <Footer.Content.CopyGroup>copyGroup</Footer.Content.CopyGroup>}
         {renderBottom && <Footer.Bottom>Bottom content</Footer.Bottom>}
       </Footer>

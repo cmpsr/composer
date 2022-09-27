@@ -7,7 +7,7 @@ describe('HighlightedText', () => {
   test('should render static members', () => {
     renderWithProviders(
       <HighlightedText contentAlignment="center">
-        <HighlightedText.Overline>legend</HighlightedText.Overline>
+        <HighlightedText.Overline>overline</HighlightedText.Overline>
         <HighlightedText.Title variant="textpairing-header-4XL">
           <HighlightedText.Title.Label>label</HighlightedText.Title.Label>
           <HighlightedText.Title.SubLabel color="text-secondary">subLabel</HighlightedText.Title.SubLabel>
@@ -17,7 +17,7 @@ describe('HighlightedText', () => {
         </HighlightedText.Actions>
       </HighlightedText>
     );
-    screen.getByText('legend');
+    screen.getByText('overline');
     screen.getByText('label');
     screen.getByText('subLabel');
     screen.getByText('link');

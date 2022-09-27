@@ -27,7 +27,7 @@ const BrandLogosImagesContainer: FC<FlexProps> = (props) => (
     {...props}
   />
 );
-BrandLogos.ImageContainer = BrandLogosImagesContainer;
+BrandLogos.ImagesContainer = BrandLogosImagesContainer;
 
 const BrandLogosImage: FC<ImageProps> = (props) => (
   <Image maxWidth={{ base: '10rem', md: '11.25rem', xl: '12.5rem' }} {...props} />

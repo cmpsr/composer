@@ -11,9 +11,9 @@ describe('BrandLogos', () => {
           <BrandLogos.Title.Label>Title</BrandLogos.Title.Label>
           <BrandLogos.Title.SubLabel>Description</BrandLogos.Title.SubLabel>
         </BrandLogos.Title>
-        <BrandLogos.ImageContainer>
+        <BrandLogos.ImagesContainer>
           <BrandLogos.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
-        </BrandLogos.ImageContainer>
+        </BrandLogos.ImagesContainer>
       </BrandLogos>
     );
     const textPairing = container.firstChild.firstChild.childNodes;
@@ -25,9 +25,9 @@ describe('BrandLogos', () => {
         <BrandLogos.Title>
           <BrandLogos.Title.Label>Title</BrandLogos.Title.Label>
         </BrandLogos.Title>
-        <BrandLogos.ImageContainer>
+        <BrandLogos.ImagesContainer>
           <BrandLogos.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
-        </BrandLogos.ImageContainer>
+        </BrandLogos.ImagesContainer>
       </BrandLogos>
     );
     const text = container.firstChild.firstChild.childNodes;
@@ -36,9 +36,9 @@ describe('BrandLogos', () => {
   test('should render image', () => {
     renderWithProviders(
       <BrandLogos>
-        <BrandLogos.ImageContainer>
+        <BrandLogos.ImagesContainer>
           <BrandLogos.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
-        </BrandLogos.ImageContainer>
+        </BrandLogos.ImagesContainer>
       </BrandLogos>
     );
     screen.getByRole('img');

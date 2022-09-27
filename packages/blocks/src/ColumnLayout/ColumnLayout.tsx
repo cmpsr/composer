@@ -5,7 +5,7 @@ import { MediaBlock } from '../';
 
 export const ColumnLayout: ColumnLayoutType = (props) => <Flex flexDirection="column" {...props} />;
 
-ColumnLayout.ColumnContainer = Flex;
+ColumnLayout.ColumnsContainer = Flex;
 ColumnLayout.Column = MediaBlock;
 ColumnLayout.Title = TextPairing;
 ColumnLayout.Action = Link;

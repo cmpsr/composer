@@ -4,7 +4,7 @@ export { FlexProps as BrandLogosProps } from '@cmpsr/components';
 
 export interface BrandLogosStaticMembers {
   Image: typeof Image;
-  ImageContainer: typeof Flex;
+  ImagesContainer: typeof Flex;
   Title: typeof TextPairing;
 }
 

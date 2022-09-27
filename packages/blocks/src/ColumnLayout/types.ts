@@ -7,7 +7,7 @@ export interface ColumnLayoutStaticMembers {
   Action: typeof Link;
   Actions: typeof Flex;
   Column: typeof MediaBlock;
-  ColumnContainer: typeof Flex;
+  ColumnsContainer: typeof Flex;
 }
 
 export type ColumnLayoutType = FC<FlexProps> & ColumnLayoutStaticMembers;

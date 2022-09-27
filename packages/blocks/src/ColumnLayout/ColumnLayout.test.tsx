@@ -12,7 +12,7 @@ describe('ColumnLayout', () => {
             We’re setting a new standard of care for families across geographies, cultures, and backgrounds.
           </ColumnLayout.Title.SubLabel>
         </ColumnLayout.Title>
-        <ColumnLayout.ColumnContainer
+        <ColumnLayout.ColumnsContainer
           gap="1rem"
           justifyContent="center"
           flexWrap="wrap"
@@ -31,7 +31,7 @@ describe('ColumnLayout', () => {
               </ColumnLayout.Column.Title.SubLabel>
             </ColumnLayout.Column.Title>
           </ColumnLayout.Column>
-        </ColumnLayout.ColumnContainer>
+        </ColumnLayout.ColumnsContainer>
         <ColumnLayout.Actions gap="1rem" justifyContent="center" data-testid="cmpsr.block.column-layout.link-group">
           <ColumnLayout.Action variant="primary">Primary</ColumnLayout.Action>
         </ColumnLayout.Actions>

@@ -22,10 +22,10 @@ describe('Hero', () => {
           <Hero.ContentContainer gap="1.5rem">
             <Hero.MediaBlock>
               <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
-              <Hero.MediaBlock.TextPairing>
-                <Hero.MediaBlock.TextPairing.Label>MediaBlock</Hero.MediaBlock.TextPairing.Label>
-                <Hero.MediaBlock.TextPairing.SubLabel>SubLabel</Hero.MediaBlock.TextPairing.SubLabel>
-              </Hero.MediaBlock.TextPairing>
+              <Hero.MediaBlock.Title>
+                <Hero.MediaBlock.Title.Label>MediaBlock</Hero.MediaBlock.Title.Label>
+                <Hero.MediaBlock.Title.SubLabel>SubLabel</Hero.MediaBlock.Title.SubLabel>
+              </Hero.MediaBlock.Title>
             </Hero.MediaBlock>
           </Hero.ContentContainer>
           <Hero.ContentContainer>

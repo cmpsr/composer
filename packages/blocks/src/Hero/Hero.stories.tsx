@@ -82,24 +82,24 @@ export const All = () => (
       <Hero.ContentContainer gap="1.5rem">
         <Hero.MediaBlock>
           <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
-          <Hero.MediaBlock.TextPairing>
-            <Hero.MediaBlock.TextPairing.Label>Label</Hero.MediaBlock.TextPairing.Label>
-            <Hero.MediaBlock.TextPairing.SubLabel>SubLabel</Hero.MediaBlock.TextPairing.SubLabel>
-          </Hero.MediaBlock.TextPairing>
+          <Hero.MediaBlock.Title>
+            <Hero.MediaBlock.Title.Label>Label</Hero.MediaBlock.Title.Label>
+            <Hero.MediaBlock.Title.SubLabel>SubLabel</Hero.MediaBlock.Title.SubLabel>
+          </Hero.MediaBlock.Title>
         </Hero.MediaBlock>
         <Hero.MediaBlock>
           <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
-          <Hero.MediaBlock.TextPairing>
-            <Hero.MediaBlock.TextPairing.Label>Label</Hero.MediaBlock.TextPairing.Label>
-            <Hero.MediaBlock.TextPairing.SubLabel>SubLabel</Hero.MediaBlock.TextPairing.SubLabel>
-          </Hero.MediaBlock.TextPairing>
+          <Hero.MediaBlock.Title>
+            <Hero.MediaBlock.Title.Label>Label</Hero.MediaBlock.Title.Label>
+            <Hero.MediaBlock.Title.SubLabel>SubLabel</Hero.MediaBlock.Title.SubLabel>
+          </Hero.MediaBlock.Title>
         </Hero.MediaBlock>
         <Hero.MediaBlock>
           <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
-          <Hero.MediaBlock.TextPairing>
-            <Hero.MediaBlock.TextPairing.Label>Label</Hero.MediaBlock.TextPairing.Label>
-            <Hero.MediaBlock.TextPairing.SubLabel>SubLabel</Hero.MediaBlock.TextPairing.SubLabel>
-          </Hero.MediaBlock.TextPairing>
+          <Hero.MediaBlock.Title>
+            <Hero.MediaBlock.Title.Label>Label</Hero.MediaBlock.Title.Label>
+            <Hero.MediaBlock.Title.SubLabel>SubLabel</Hero.MediaBlock.Title.SubLabel>
+          </Hero.MediaBlock.Title>
         </Hero.MediaBlock>
       </Hero.ContentContainer>
       <Hero.ContentContainer>
@@ -150,10 +150,10 @@ const Template = ({
       <Hero.ContentContainer gap="1.5rem">
         <Hero.MediaBlock>
           <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
-          <Hero.MediaBlock.TextPairing>
-            <Hero.MediaBlock.TextPairing.Label>{mediaBlockLabel}</Hero.MediaBlock.TextPairing.Label>
-            <Hero.MediaBlock.TextPairing.SubLabel>{mediaBlockSubLabel}</Hero.MediaBlock.TextPairing.SubLabel>
-          </Hero.MediaBlock.TextPairing>
+          <Hero.MediaBlock.Title>
+            <Hero.MediaBlock.Title.Label>{mediaBlockLabel}</Hero.MediaBlock.Title.Label>
+            <Hero.MediaBlock.Title.SubLabel>{mediaBlockSubLabel}</Hero.MediaBlock.Title.SubLabel>
+          </Hero.MediaBlock.Title>
         </Hero.MediaBlock>
       </Hero.ContentContainer>
       <Hero.ContentContainer>

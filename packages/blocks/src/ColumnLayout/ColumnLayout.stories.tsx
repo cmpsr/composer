@@ -23,36 +23,36 @@ export const Bounded = () => (
           src="https://images.ctfassets.net/zfrki53eq8jx/BFxs2EQI9sxdhvlzvby9O/e821396e84ddd929a01468776b7dd70a/Composer_Icon_-_Dark_Edition_3x.png"
           width="50px"
         />
-        <ColumnLayout.Column.TextPairing>
-          <ColumnLayout.Column.TextPairing.Label>Composer</ColumnLayout.Column.TextPairing.Label>
-          <ColumnLayout.Column.TextPairing.SubLabel color="text-secondary">
+        <ColumnLayout.Column.Title>
+          <ColumnLayout.Column.Title.Label>Composer</ColumnLayout.Column.Title.Label>
+          <ColumnLayout.Column.Title.SubLabel color="text-secondary">
             the most advanced web and landing page builder for non-programmers
-          </ColumnLayout.Column.TextPairing.SubLabel>
-        </ColumnLayout.Column.TextPairing>
+          </ColumnLayout.Column.Title.SubLabel>
+        </ColumnLayout.Column.Title>
       </ColumnLayout.Column>
       <ColumnLayout.Column variant="vertical" maxWidth="250px" bounded filled>
         <ColumnLayout.Column.Image
           src="https://images.ctfassets.net/zfrki53eq8jx/BFxs2EQI9sxdhvlzvby9O/e821396e84ddd929a01468776b7dd70a/Composer_Icon_-_Dark_Edition_3x.png"
           width="50px"
         />
-        <ColumnLayout.Column.TextPairing>
-          <ColumnLayout.Column.TextPairing.Label>Composer</ColumnLayout.Column.TextPairing.Label>
-          <ColumnLayout.Column.TextPairing.SubLabel color="text-secondary">
+        <ColumnLayout.Column.Title>
+          <ColumnLayout.Column.Title.Label>Composer</ColumnLayout.Column.Title.Label>
+          <ColumnLayout.Column.Title.SubLabel color="text-secondary">
             the most advanced web and landing page builder for non-programmers
-          </ColumnLayout.Column.TextPairing.SubLabel>
-        </ColumnLayout.Column.TextPairing>
+          </ColumnLayout.Column.Title.SubLabel>
+        </ColumnLayout.Column.Title>
       </ColumnLayout.Column>
       <ColumnLayout.Column variant="vertical" maxWidth="250px" bounded filled>
         <ColumnLayout.Column.Image
           src="https://images.ctfassets.net/zfrki53eq8jx/BFxs2EQI9sxdhvlzvby9O/e821396e84ddd929a01468776b7dd70a/Composer_Icon_-_Dark_Edition_3x.png"
           width="50px"
         />
-        <ColumnLayout.Column.TextPairing>
-          <ColumnLayout.Column.TextPairing.Label>Composer</ColumnLayout.Column.TextPairing.Label>
-          <ColumnLayout.Column.TextPairing.SubLabel color="text-secondary">
+        <ColumnLayout.Column.Title>
+          <ColumnLayout.Column.Title.Label>Composer</ColumnLayout.Column.Title.Label>
+          <ColumnLayout.Column.Title.SubLabel color="text-secondary">
             the most advanced web and landing page builder for non-programmers
-          </ColumnLayout.Column.TextPairing.SubLabel>
-        </ColumnLayout.Column.TextPairing>
+          </ColumnLayout.Column.Title.SubLabel>
+        </ColumnLayout.Column.Title>
       </ColumnLayout.Column>
     </ColumnLayout.ColumnContainer>
     <ColumnLayout.Actions gap="1rem" justifyContent="center">
@@ -76,15 +76,15 @@ export const Unbounded = () => (
         <ColumnLayout.Column.Tag size="s">
           <ColumnLayout.Column.Tag.Label>Tech</ColumnLayout.Column.Tag.Label>
         </ColumnLayout.Column.Tag>
-        <ColumnLayout.Column.TextPairing>
-          <ColumnLayout.Column.TextPairing.Label>Composer</ColumnLayout.Column.TextPairing.Label>
-          <ColumnLayout.Column.TextPairing.SubLabel color="text-secondary">
+        <ColumnLayout.Column.Title>
+          <ColumnLayout.Column.Title.Label>Composer</ColumnLayout.Column.Title.Label>
+          <ColumnLayout.Column.Title.SubLabel color="text-secondary">
             the most advanced web and landing page builder for non-programmers
-          </ColumnLayout.Column.TextPairing.SubLabel>
-        </ColumnLayout.Column.TextPairing>
-        <ColumnLayout.Column.Link size="s" trailingIcon={<IconChevronRight />}>
+          </ColumnLayout.Column.Title.SubLabel>
+        </ColumnLayout.Column.Title>
+        <ColumnLayout.Column.Action size="s" trailingIcon={<IconChevronRight />}>
           More info
-        </ColumnLayout.Column.Link>
+        </ColumnLayout.Column.Action>
       </ColumnLayout.Column>
       <ColumnLayout.Column variant="vertical" maxWidth="220px">
         <ColumnLayout.Column.Image
@@ -94,15 +94,15 @@ export const Unbounded = () => (
         <ColumnLayout.Column.Tag size="s">
           <ColumnLayout.Column.Tag.Label>Tech</ColumnLayout.Column.Tag.Label>
         </ColumnLayout.Column.Tag>
-        <ColumnLayout.Column.TextPairing>
-          <ColumnLayout.Column.TextPairing.Label>Composer</ColumnLayout.Column.TextPairing.Label>
-          <ColumnLayout.Column.TextPairing.SubLabel color="text-secondary">
+        <ColumnLayout.Column.Title>
+          <ColumnLayout.Column.Title.Label>Composer</ColumnLayout.Column.Title.Label>
+          <ColumnLayout.Column.Title.SubLabel color="text-secondary">
             the most advanced web and landing page builder for non-programmers
-          </ColumnLayout.Column.TextPairing.SubLabel>
-        </ColumnLayout.Column.TextPairing>
-        <ColumnLayout.Column.Link size="s" trailingIcon={<IconChevronRight />}>
+          </ColumnLayout.Column.Title.SubLabel>
+        </ColumnLayout.Column.Title>
+        <ColumnLayout.Column.Action size="s" trailingIcon={<IconChevronRight />}>
           More info
-        </ColumnLayout.Column.Link>
+        </ColumnLayout.Column.Action>
       </ColumnLayout.Column>
       <ColumnLayout.Column variant="vertical" maxWidth="220px">
         <ColumnLayout.Column.Image
@@ -112,15 +112,15 @@ export const Unbounded = () => (
         <ColumnLayout.Column.Tag size="s">
           <ColumnLayout.Column.Tag.Label>Tech</ColumnLayout.Column.Tag.Label>
         </ColumnLayout.Column.Tag>
-        <ColumnLayout.Column.TextPairing>
-          <ColumnLayout.Column.TextPairing.Label>Composer</ColumnLayout.Column.TextPairing.Label>
-          <ColumnLayout.Column.TextPairing.SubLabel color="text-secondary">
+        <ColumnLayout.Column.Title>
+          <ColumnLayout.Column.Title.Label>Composer</ColumnLayout.Column.Title.Label>
+          <ColumnLayout.Column.Title.SubLabel color="text-secondary">
             the most advanced web and landing page builder for non-programmers
-          </ColumnLayout.Column.TextPairing.SubLabel>
-        </ColumnLayout.Column.TextPairing>
-        <ColumnLayout.Column.Link size="s" trailingIcon={<IconChevronRight />}>
+          </ColumnLayout.Column.Title.SubLabel>
+        </ColumnLayout.Column.Title>
+        <ColumnLayout.Column.Action size="s" trailingIcon={<IconChevronRight />}>
           More info
-        </ColumnLayout.Column.Link>
+        </ColumnLayout.Column.Action>
       </ColumnLayout.Column>
     </ColumnLayout.ColumnContainer>
   </ColumnLayout>
@@ -133,26 +133,28 @@ const Template = ({ label, subLabel, tagLabel, columnLabel, columnSubLabel, link
       <ColumnLayout.Title.SubLabel color="text-secondary">{subLabel}</ColumnLayout.Title.SubLabel>
     </ColumnLayout.Title>
     <ColumnLayout.ColumnContainer gap="2rem" justifyContent="center" flexWrap="wrap">
-      {Array(6).fill(
-        <ColumnLayout.Column variant="vertical" maxWidth="220px" bounded={bounded} filled={filled}>
-          <ColumnLayout.Column.Image
-            src="https://images.ctfassets.net/zfrki53eq8jx/BFxs2EQI9sxdhvlzvby9O/e821396e84ddd929a01468776b7dd70a/Composer_Icon_-_Dark_Edition_3x.png"
-            maxWidth="150px"
-          />
-          <ColumnLayout.Column.Tag size="s">
-            <ColumnLayout.Column.Tag.Label>{tagLabel}</ColumnLayout.Column.Tag.Label>
-          </ColumnLayout.Column.Tag>
-          <ColumnLayout.Column.TextPairing>
-            <ColumnLayout.Column.TextPairing.Label>{columnLabel}</ColumnLayout.Column.TextPairing.Label>
-            <ColumnLayout.Column.TextPairing.SubLabel color="text-secondary">
-              {columnSubLabel}
-            </ColumnLayout.Column.TextPairing.SubLabel>
-          </ColumnLayout.Column.TextPairing>
-          <ColumnLayout.Column.Link size="s" trailingIcon={<IconChevronRight />}>
-            {linkLabel}
-          </ColumnLayout.Column.Link>
-        </ColumnLayout.Column>
-      )}
+      {Array(6)
+        .fill(0)
+        .map((_, index) => (
+          <ColumnLayout.Column key={index} variant="vertical" maxWidth="220px" bounded={bounded} filled={filled}>
+            <ColumnLayout.Column.Image
+              src="https://images.ctfassets.net/zfrki53eq8jx/BFxs2EQI9sxdhvlzvby9O/e821396e84ddd929a01468776b7dd70a/Composer_Icon_-_Dark_Edition_3x.png"
+              maxWidth="150px"
+            />
+            <ColumnLayout.Column.Tag size="s">
+              <ColumnLayout.Column.Tag.Label>{tagLabel}</ColumnLayout.Column.Tag.Label>
+            </ColumnLayout.Column.Tag>
+            <ColumnLayout.Column.Title>
+              <ColumnLayout.Column.Title.Label>{columnLabel}</ColumnLayout.Column.Title.Label>
+              <ColumnLayout.Column.Title.SubLabel color="text-secondary">
+                {columnSubLabel}
+              </ColumnLayout.Column.Title.SubLabel>
+            </ColumnLayout.Column.Title>
+            <ColumnLayout.Column.Action size="s" trailingIcon={<IconChevronRight />}>
+              {linkLabel}
+            </ColumnLayout.Column.Action>
+          </ColumnLayout.Column>
+        ))}
     </ColumnLayout.ColumnContainer>
   </ColumnLayout>
 );

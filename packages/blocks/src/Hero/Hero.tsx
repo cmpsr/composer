@@ -73,7 +73,7 @@ Hero.Overline = HeroOverline;
 
 const HeroMediaBlock: MediaBlockType = (props) => <MediaBlock variant="horizontal" {...props} />;
 HeroMediaBlock.Image = MediaBlock.Image;
-HeroMediaBlock.TextPairing = MediaBlock.TextPairing;
+HeroMediaBlock.Title = MediaBlock.Title;
 HeroMediaBlock.Tag = MediaBlock.Tag;
-HeroMediaBlock.Link = MediaBlock.Link;
+HeroMediaBlock.Action = MediaBlock.Action;
 Hero.MediaBlock = HeroMediaBlock;

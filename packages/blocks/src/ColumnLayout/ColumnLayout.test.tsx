@@ -24,12 +24,12 @@ describe('ColumnLayout', () => {
               width="50px"
               alt="column image"
             />
-            <ColumnLayout.Column.TextPairing>
-              <ColumnLayout.Column.TextPairing.Label>Composer</ColumnLayout.Column.TextPairing.Label>
-              <ColumnLayout.Column.TextPairing.SubLabel color="text-secondary">
+            <ColumnLayout.Column.Title>
+              <ColumnLayout.Column.Title.Label>Composer</ColumnLayout.Column.Title.Label>
+              <ColumnLayout.Column.Title.SubLabel color="text-secondary">
                 the most advanced web and landing page builder for non-programmers
-              </ColumnLayout.Column.TextPairing.SubLabel>
-            </ColumnLayout.Column.TextPairing>
+              </ColumnLayout.Column.Title.SubLabel>
+            </ColumnLayout.Column.Title>
           </ColumnLayout.Column>
         </ColumnLayout.ColumnContainer>
         <ColumnLayout.Actions gap="1rem" justifyContent="center" data-testid="cmpsr.block.column-layout.link-group">

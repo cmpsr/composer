@@ -1,10 +1,17 @@
 import { useSignalwireSms } from '.';
 import { SignalwireSms } from '.';
-jest.mock('@signalwire/realtime-api');
+
+jest.mock('@signalwire/realtime-api', () => ({
+  Messaging: {
+    Client: function () {
+      return {};
+    },
+  },
+}));
 
 describe('index', () => {
   test('should create plain instance', () => {
-    const twilioSms = useSignalwireSms();
-    expect(twilioSms).toBeInstanceOf(SignalwireSms);
+    const signalwireSms = useSignalwireSms();
+    expect(signalwireSms).toBeInstanceOf(SignalwireSms);
   });
 });

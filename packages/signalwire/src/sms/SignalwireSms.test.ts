@@ -1,15 +1,21 @@
 import { SignalwireSms } from '.';
 
-
 const mockSms = {
   code: '200',
   message: 'OK',
   messageId: '123',
 };
+
 const mockSendSms = jest.fn().mockReturnValue(mockSms);
 const mockCreateClient = jest.fn().mockReturnValue({ send: mockSendSms });
 
-jest.mock('@signalwire/realtime-api');
+jest.mock('@signalwire/realtime-api', () => ({
+  Messaging: {
+    Client: function (config) {
+      return mockCreateClient(config);
+    },
+  },
+}));
 
 describe('SignalwireSms', () => {
   const config = {
@@ -18,26 +24,10 @@ describe('SignalwireSms', () => {
     contexts: ['context'],
   };
 
-  const signalwire = require('@signalwire/realtime-api');
-  beforeAll(() => {
-    signalwire.mockReturnValue({
-      Messaging: {
-        Client: mockCreateClient,
-      },
-    });
-  });
-
   test('should initialize client', () => {
     new SignalwireSms(config);
-    const signalwire = require('@signalwire/realtime-api');
-    expect(signalwire.Messaging.Client).toBeCalledTimes(1);
-    expect(signalwire.Messaging.Client).toBeCalledWith(config);
-  });
-
-
-
-  afterAll(() => {
-    signalwire.mockReset();
+    expect(mockCreateClient).toBeCalledTimes(1);
+    expect(mockCreateClient).toBeCalledWith(config);
   });
 
   describe('send', () => {
@@ -53,4 +43,5 @@ describe('SignalwireSms', () => {
       expect(messageSent).toStrictEqual(mockSendSms());
     });
   });
+
 });

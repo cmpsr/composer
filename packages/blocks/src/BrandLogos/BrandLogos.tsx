@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Flex, Image, Text, TextPairing, FlexProps, ImageProps } from '@cmpsr/components';
+import { Flex, Image, TextPairing, FlexProps, ImageProps } from '@cmpsr/components';
 
 import { BrandLogosType } from './types';
 
@@ -33,5 +33,4 @@ const BrandLogosImage: FC<ImageProps> = (props) => (
   <Image maxWidth={{ base: '10rem', md: '11.25rem', xl: '12.5rem' }} {...props} />
 );
 BrandLogos.Image = BrandLogosImage;
-BrandLogos.TextPairing = TextPairing;
-BrandLogos.Text = Text;
+BrandLogos.Title = TextPairing;

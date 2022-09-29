@@ -1,14 +1,14 @@
 import React, { FC, cloneElement, isValidElement, Children, ReactElement } from 'react';
 import { Flex, FlexProps, useBreakpointValue, useScrollPosition } from '@cmpsr/components';
 
-import { NavigationLogoProps, NavigationProps, NavigationStaticMembers } from './types';
+import { NavigationImageProps, NavigationProps, NavigationStaticMembers } from './types';
 import {
   NavigationAction,
   NavigationActions,
   NavigationLink,
   NavigationLinks,
   NavigationLinksProps,
-  NavigationLogo,
+  NavigationImage,
   NavigationProvider,
 } from './components';
 
@@ -16,14 +16,14 @@ export const Navigation: FC<NavigationProps> & NavigationStaticMembers = ({ stic
   const showBaseNavigation = useBreakpointValue({ base: true, lg: false });
   const scrollPosition = useScrollPosition();
 
-  let logo: ReactElement<NavigationLogoProps> = null;
+  let image: ReactElement<NavigationImageProps> = null;
   let links: ReactElement<NavigationLinksProps> = null;
   let actions: ReactElement<FlexProps> = null;
   Children.map(children, (child) => {
     if (isValidElement(child)) {
       switch (child.type) {
-        case NavigationLogo:
-          logo = child;
+        case NavigationImage:
+          image = child;
           break;
         case NavigationLinks:
           links = child;
@@ -51,13 +51,13 @@ export const Navigation: FC<NavigationProps> & NavigationStaticMembers = ({ stic
         {...(scrollPosition && { boxShadow: 'elevation-interactive' })}
         {...props}
       >
-        {cloneElement(links, { actions, logo })}
+        {cloneElement(links, { actions, image })}
       </Flex>
     </NavigationProvider>
   );
 };
 
-Navigation.Logo = NavigationLogo;
+Navigation.Image = NavigationImage;
 Navigation.Links = NavigationLinks;
 Navigation.Link = NavigationLink;
 Navigation.Actions = NavigationActions;

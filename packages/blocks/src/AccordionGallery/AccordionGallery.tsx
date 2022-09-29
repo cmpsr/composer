@@ -12,14 +12,13 @@ import React, {
 import {
   Accordion,
   AccordionProps,
-  AccordionStaticMembers,
   Flex,
-  ImageProps,
   TextPairing,
   TextPairingProps,
   useBreakpointValue,
   Text,
   TextProps,
+  Image,
 } from '@cmpsr/components';
 import { AccordionGalleryProps, AccordionGalleryStaticMembers } from './types';
 import {
@@ -94,15 +93,17 @@ export const AccordionGallery: FC<AccordionGalleryProps> & AccordionGalleryStati
   );
 };
 
-const AccordionGalleryAccordion: FC<AccordionProps> &
-  AccordionStaticMembers & { Image: FC<ImageProps> } = Object.assign(AccordionGalleryAccordionComponent, {
-  Image: AccordionGalleryImage,
-  Item: AccordionGalleryItem,
-  Button: Accordion.Button,
-  Panel: Accordion.Panel,
-  Icon: Accordion.Icon,
-});
+const AccordionGalleryAccordion: typeof Accordion & { Image: typeof Image } = Object.assign(
+  AccordionGalleryAccordionComponent,
+  {
+    Image: AccordionGalleryImage,
+    Item: AccordionGalleryItem,
+    Button: Accordion.Button,
+    Panel: Accordion.Panel,
+    Icon: Accordion.Icon,
+  }
+);
 
 AccordionGallery.Title = TextPairing;
 AccordionGallery.Accordion = AccordionGalleryAccordion;
-AccordionGallery.Legend = Text;
+AccordionGallery.Overline = Text;

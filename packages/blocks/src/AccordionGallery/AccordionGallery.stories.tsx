@@ -44,9 +44,9 @@ export const Basic = () => (
 
 export const WithTitles = () => (
   <AccordionGallery>
-    <AccordionGallery.Legend variant="text-header-M" color="primary-default" textTransform="uppercase">
+    <AccordionGallery.Overline variant="text-header-M" color="primary-default" textTransform="uppercase">
       Legend
-    </AccordionGallery.Legend>
+    </AccordionGallery.Overline>
     <AccordionGallery.Title variant="textpairing-header-2XL" textAlign={{ base: 'unset', md: 'center', lg: 'unset' }}>
       <AccordionGallery.Title.Label>There is life elsewhere in the universe</AccordionGallery.Title.Label>
     </AccordionGallery.Title>
@@ -93,9 +93,9 @@ export const WithDefaultImage = () => (
       />
     }
   >
-    <AccordionGallery.Legend variant="text-header-M" color="primary-default" textTransform="uppercase">
+    <AccordionGallery.Overline variant="text-header-M" color="primary-default" textTransform="uppercase">
       Legend
-    </AccordionGallery.Legend>
+    </AccordionGallery.Overline>
     <AccordionGallery.Title variant="textpairing-header-2XL" textAlign={{ base: 'unset', md: 'center', lg: 'unset' }}>
       <AccordionGallery.Title.Label>There is life elsewhere in the universe</AccordionGallery.Title.Label>
     </AccordionGallery.Title>
@@ -134,9 +134,9 @@ export const WithDefaultImage = () => (
 
 const Template = ({ legend, label, subLabel, itemLabel, itemPanel }) => (
   <AccordionGallery>
-    <AccordionGallery.Legend variant="text-header-M" color="primary-default" textTransform="uppercase">
+    <AccordionGallery.Overline variant="text-header-M" color="primary-default" textTransform="uppercase">
       {legend}
-    </AccordionGallery.Legend>
+    </AccordionGallery.Overline>
     <AccordionGallery.Title variant="textpairing-header-2XL" textAlign={{ base: 'unset', md: 'center', lg: 'unset' }}>
       <AccordionGallery.Title.Label>{label}</AccordionGallery.Title.Label>
       <AccordionGallery.Title.SubLabel>{subLabel}</AccordionGallery.Title.SubLabel>

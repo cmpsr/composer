@@ -5,17 +5,17 @@ import { NavigationLinkProps } from '../types';
 
 export interface NavigationLinksProps extends PropsWithChildren<{}> {
   actions?: ReactNode;
-  logo?: ReactNode;
+  image?: ReactNode;
 }
 
-export const NavigationLinks: FC<NavigationLinksProps> = ({ actions, logo, children }) => {
+export const NavigationLinks: FC<NavigationLinksProps> = ({ actions, image, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { showBaseNavigation } = useNavigationContext();
 
   return showBaseNavigation ? (
     <>
       <IconButton icon={<IconMenu2 />} aria-label="Hamburger menu button" variant="ghost" size="l" onClick={onOpen} />
-      {logo}
+      {image}
       {isOpen && (
         <Flex
           width="100%"
@@ -55,7 +55,7 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({ actions, logo, child
   ) : (
     <Flex maxWidth="80rem" margin="0 auto" alignItems="center" justifyContent="space-between" width="100%">
       <Flex gap={{ lg: '2.75rem', xxl: '4.5rem' }}>
-        {logo}
+        {image}
         <Flex gap={{ lg: '1.5rem', xl: '2.25rem', xxl: '5rem' }}>{children}</Flex>
       </Flex>
       {actions}

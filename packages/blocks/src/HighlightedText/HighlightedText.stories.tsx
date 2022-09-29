@@ -17,86 +17,90 @@ export default {
 
 export const Center = () => (
   <HighlightedText contentAlignment="center">
-    <HighlightedText.Legend>BREAKING NEWS</HighlightedText.Legend>
-    <HighlightedText.TextPairing variant="textpairing-header-4XL">
-      <HighlightedText.TextPairing.Label>There is life elsewhere in the universe</HighlightedText.TextPairing.Label>
-      <HighlightedText.TextPairing.SubLabel color="text-secondary">
+    <HighlightedText.Overline>BREAKING NEWS</HighlightedText.Overline>
+    <HighlightedText.Title variant="textpairing-header-4XL">
+      <HighlightedText.Title.Label>There is life elsewhere in the universe</HighlightedText.Title.Label>
+      <HighlightedText.Title.SubLabel color="text-secondary">
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
         three ways we could find it.
-      </HighlightedText.TextPairing.SubLabel>
-    </HighlightedText.TextPairing>
-    <HighlightedText.LinkGroup>
-      <HighlightedText.Link variant="primary">Launch mission</HighlightedText.Link>
-      <HighlightedText.Link variant="primary-alt">Learn more</HighlightedText.Link>
-      <HighlightedText.Link variant="link" trailingIcon={<IconChevronRight />}>
+      </HighlightedText.Title.SubLabel>
+    </HighlightedText.Title>
+    <HighlightedText.Actions>
+      <HighlightedText.Action variant="primary">Launch mission</HighlightedText.Action>
+      <HighlightedText.Action variant="primary-alt">Learn more</HighlightedText.Action>
+      <HighlightedText.Action variant="link" trailingIcon={<IconChevronRight />}>
         Find me a spaceship
-      </HighlightedText.Link>
-    </HighlightedText.LinkGroup>
+      </HighlightedText.Action>
+    </HighlightedText.Actions>
   </HighlightedText>
 );
 
 export const End = () => (
   <HighlightedText contentAlignment="end">
-    <HighlightedText.Legend>BREAKING NEWS</HighlightedText.Legend>
-    <HighlightedText.TextPairing variant="textpairing-header-4XL">
-      <HighlightedText.TextPairing.Label>There is life elsewhere in the universe</HighlightedText.TextPairing.Label>
-      <HighlightedText.TextPairing.SubLabel color="text-secondary">
+    <HighlightedText.Overline>BREAKING NEWS</HighlightedText.Overline>
+    <HighlightedText.Title variant="textpairing-header-4XL">
+      <HighlightedText.Title.Label>There is life elsewhere in the universe</HighlightedText.Title.Label>
+      <HighlightedText.Title.SubLabel color="text-secondary">
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
         three ways we could find it.
-      </HighlightedText.TextPairing.SubLabel>
-    </HighlightedText.TextPairing>
-    <HighlightedText.LinkGroup>
-      <HighlightedText.Link variant="primary">Launch mission</HighlightedText.Link>
-      <HighlightedText.Link variant="primary-alt">Learn more</HighlightedText.Link>
-      <HighlightedText.Link variant="link" trailingIcon={<IconChevronRight />} alignSelf={{ base: 'end', md: 'unset' }}>
+      </HighlightedText.Title.SubLabel>
+    </HighlightedText.Title>
+    <HighlightedText.Actions>
+      <HighlightedText.Action variant="primary">Launch mission</HighlightedText.Action>
+      <HighlightedText.Action variant="primary-alt">Learn more</HighlightedText.Action>
+      <HighlightedText.Action
+        variant="link"
+        trailingIcon={<IconChevronRight />}
+        alignSelf={{ base: 'end', md: 'unset' }}
+      >
         Find me a spaceship
-      </HighlightedText.Link>
-    </HighlightedText.LinkGroup>
+      </HighlightedText.Action>
+    </HighlightedText.Actions>
   </HighlightedText>
 );
 
 export const Start = () => (
   <HighlightedText contentAlignment="start">
-    <HighlightedText.Legend>BREAKING NEWS</HighlightedText.Legend>
-    <HighlightedText.TextPairing variant="textpairing-header-4XL">
-      <HighlightedText.TextPairing.Label>There is life elsewhere in the universe</HighlightedText.TextPairing.Label>
-      <HighlightedText.TextPairing.SubLabel color="text-secondary">
+    <HighlightedText.Overline>BREAKING NEWS</HighlightedText.Overline>
+    <HighlightedText.Title variant="textpairing-header-4XL">
+      <HighlightedText.Title.Label>There is life elsewhere in the universe</HighlightedText.Title.Label>
+      <HighlightedText.Title.SubLabel color="text-secondary">
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
         three ways we could find it.
-      </HighlightedText.TextPairing.SubLabel>
-    </HighlightedText.TextPairing>
-    <HighlightedText.LinkGroup>
-      <HighlightedText.Link variant="primary">Launch mission</HighlightedText.Link>
-      <HighlightedText.Link variant="primary-alt">Learn more</HighlightedText.Link>
-      <HighlightedText.Link
+      </HighlightedText.Title.SubLabel>
+    </HighlightedText.Title>
+    <HighlightedText.Actions>
+      <HighlightedText.Action variant="primary">Launch mission</HighlightedText.Action>
+      <HighlightedText.Action variant="primary-alt">Learn more</HighlightedText.Action>
+      <HighlightedText.Action
         variant="link"
         trailingIcon={<IconChevronRight />}
         alignSelf={{ base: 'start', md: 'unset' }}
       >
         Find me a spaceship
-      </HighlightedText.Link>
-    </HighlightedText.LinkGroup>
+      </HighlightedText.Action>
+    </HighlightedText.Actions>
   </HighlightedText>
 );
 
 const Template = ({ legend, label, subLabel, contentAlignment }) => (
   <HighlightedText contentAlignment={contentAlignment}>
-    <HighlightedText.Legend>{legend}</HighlightedText.Legend>
-    <HighlightedText.TextPairing variant="textpairing-header-4XL">
-      <HighlightedText.TextPairing.Label>{label}</HighlightedText.TextPairing.Label>
-      <HighlightedText.TextPairing.SubLabel color="text-secondary">{subLabel}</HighlightedText.TextPairing.SubLabel>
-    </HighlightedText.TextPairing>
-    <HighlightedText.LinkGroup>
-      <HighlightedText.Link variant="primary">Launch mission</HighlightedText.Link>
-      <HighlightedText.Link variant="primary-alt">Learn more</HighlightedText.Link>
-      <HighlightedText.Link
+    <HighlightedText.Overline>{legend}</HighlightedText.Overline>
+    <HighlightedText.Title variant="textpairing-header-4XL">
+      <HighlightedText.Title.Label>{label}</HighlightedText.Title.Label>
+      <HighlightedText.Title.SubLabel color="text-secondary">{subLabel}</HighlightedText.Title.SubLabel>
+    </HighlightedText.Title>
+    <HighlightedText.Actions>
+      <HighlightedText.Action variant="primary">Launch mission</HighlightedText.Action>
+      <HighlightedText.Action variant="primary-alt">Learn more</HighlightedText.Action>
+      <HighlightedText.Action
         variant="link"
         trailingIcon={<IconChevronRight />}
         alignSelf={{ base: contentAlignment, md: 'unset' }}
       >
         Find me a spaceship
-      </HighlightedText.Link>
-    </HighlightedText.LinkGroup>
+      </HighlightedText.Action>
+    </HighlightedText.Actions>
   </HighlightedText>
 );
 

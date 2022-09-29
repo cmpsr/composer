@@ -19,7 +19,7 @@ export const WithLegend = () => (
   <Testimonial>
     <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" />
     <Testimonial.Content>
-      <Testimonial.Legend>The universe</Testimonial.Legend>
+      <Testimonial.Overline>The universe</Testimonial.Overline>
       <Testimonial.Testimony variant="text-body-display-M">
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
         three ways we could find it.
@@ -54,7 +54,7 @@ export const WithLink = () => (
         three ways we could find it.
       </Testimonial.Testimony>
       <Testimonial.Author>John Doe</Testimonial.Author>
-      <Testimonial.Link href="#">Read more</Testimonial.Link>
+      <Testimonial.Action href="#">Read more</Testimonial.Action>
     </Testimonial.Content>
   </Testimonial>
 );
@@ -63,13 +63,13 @@ const Template = ({ backgroundColor, imageUrl, testimony, testimonyTextVariant, 
   <Testimonial backgroundColor={backgroundColor}>
     <Testimonial.Image src={imageUrl} />
     <Testimonial.Content>
-      {legend && <Testimonial.Legend>{legend}</Testimonial.Legend>}
+      {legend && <Testimonial.Overline>{legend}</Testimonial.Overline>}
       <Testimonial.Testimony variant={testimonyTextVariant}>{testimony}</Testimonial.Testimony>
       <Testimonial.Author>
         {name}
         {association && <Testimonial.Author.Association>{association}</Testimonial.Author.Association>}
       </Testimonial.Author>
-      {link && <Testimonial.Link target="_blank" size="s" href="#" {...link} />}
+      {link && <Testimonial.Action target="_blank" size="s" href="#" {...link} />}
     </Testimonial.Content>
   </Testimonial>
 );

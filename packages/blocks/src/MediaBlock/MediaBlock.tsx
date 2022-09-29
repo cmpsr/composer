@@ -23,6 +23,6 @@ export const MediaBlock: MediaBlockType = (props) => {
 };
 
 MediaBlock.Image = Image;
-MediaBlock.TextPairing = TextPairing;
+MediaBlock.Title = TextPairing;
 MediaBlock.Tag = Tag;
-MediaBlock.Link = Link;
+MediaBlock.Action = Link;

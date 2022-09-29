@@ -7,10 +7,10 @@ describe('BrandLogos', () => {
   test('should render text pairing when title and description are provided', () => {
     const { container } = renderWithProviders(
       <BrandLogos>
-        <BrandLogos.TextPairing>
-          <BrandLogos.TextPairing.Label>Title</BrandLogos.TextPairing.Label>
-          <BrandLogos.TextPairing.SubLabel>Description</BrandLogos.TextPairing.SubLabel>
-        </BrandLogos.TextPairing>
+        <BrandLogos.Title>
+          <BrandLogos.Title.Label>Title</BrandLogos.Title.Label>
+          <BrandLogos.Title.SubLabel>Description</BrandLogos.Title.SubLabel>
+        </BrandLogos.Title>
         <BrandLogos.ImagesContainer>
           <BrandLogos.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         </BrandLogos.ImagesContainer>
@@ -22,7 +22,9 @@ describe('BrandLogos', () => {
   test('should render text when title is provided', () => {
     const { container } = renderWithProviders(
       <BrandLogos>
-        <BrandLogos.Text>Title</BrandLogos.Text>
+        <BrandLogos.Title>
+          <BrandLogos.Title.Label>Title</BrandLogos.Title.Label>
+        </BrandLogos.Title>
         <BrandLogos.ImagesContainer>
           <BrandLogos.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         </BrandLogos.ImagesContainer>

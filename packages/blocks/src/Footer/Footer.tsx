@@ -23,12 +23,12 @@ const FooterLogo: FC<ImageProps> = (props) => (
 );
 Footer.Logo = FooterLogo;
 
-const FooterLinkGroupTitle: FC<TextProps> = (props) => <Text variant="text-body-bold" mb="0.5rem" {...props} />;
-const FooterLinkGroupLink: FC<LinkProps> = (props) => <Link size="m" color="text-link-secondary-default" {...props} />;
-const FooterContentLinkGroup: FC<FlexProps> & FooterLinkGroupStaticMember = (props) => (
+const FooterColumnTitle: FC<TextProps> = (props) => <Text variant="text-body-bold" mb="0.5rem" {...props} />;
+const FooterColumnAction: FC<LinkProps> = (props) => <Link size="m" color="text-link-secondary-default" {...props} />;
+const FooterContentColumn: FC<FlexProps> & FooterLinkGroupStaticMember = (props) => (
   <Flex flexDirection="column" gap="0.75rem" flex={1} {...props} />
 );
-const FooterContentLinks: FC<FlexProps> = (props) => (
+const FooterContentColumnsContainer: FC<FlexProps> = (props) => (
   <Flex
     gap={{ base: '2.75rem', lg: '1.5rem' }}
     flexDirection={{ base: 'column', md: 'row' }}
@@ -36,13 +36,13 @@ const FooterContentLinks: FC<FlexProps> = (props) => (
     {...props}
   />
 );
-FooterContentLinkGroup.Title = FooterLinkGroupTitle;
-FooterContentLinkGroup.Link = FooterLinkGroupLink;
+FooterContentColumn.Title = FooterColumnTitle;
+FooterContentColumn.Action = FooterColumnAction;
 const FooterContent: FC<FlexProps> & FooterContentStaticMembers = (props) => (
   <Flex flexDirection={{ base: 'column', lg: 'row' }} gap={{ base: '2.75rem', md: '3rem' }} {...props} />
 );
-FooterContent.Links = FooterContentLinks;
-FooterContent.LinkGroup = FooterContentLinkGroup;
+FooterContent.ColumnsContainer = FooterContentColumnsContainer;
+FooterContent.Column = FooterContentColumn;
 FooterContent.CopyGroup = Flex;
 Footer.Content = FooterContent;
 

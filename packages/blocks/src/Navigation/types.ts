@@ -5,7 +5,7 @@ export interface NavigationProps extends FlexProps {
   sticky?: boolean;
 }
 
-export interface NavigationLogoProps extends ImageProps {
+export interface NavigationImageProps extends ImageProps {
   href?: string;
 }
 
@@ -14,7 +14,7 @@ export interface NavigationLinkProps extends LinkProps {
 }
 
 export interface NavigationStaticMembers {
-  Logo: FC<NavigationLogoProps>;
+  Image: FC<NavigationImageProps>;
   Links: FC<PropsWithChildren<{}>>;
   Link: FC<NavigationLinkProps>;
   Actions: FC<FlexProps>;

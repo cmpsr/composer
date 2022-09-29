@@ -42,7 +42,7 @@ const TestimonialLegend: FC<TextProps> = (props) => (
     <Divider />
   </Flex>
 );
-Testimonial.Legend = TestimonialLegend;
+Testimonial.Overline = TestimonialLegend;
 
 const TestimonialTestimony: FC<TextProps> = (props) => (
   <Text variant={{ base: 'text-body-display-M', lg: 'text-body-display-L' }} {...props} />
@@ -65,5 +65,5 @@ const TestimonialAuthor: FC<TextProps> & TestimonialAuthorStaticMembers = ({ chi
 TestimonialAuthor.Association = TestimonialAuthorAssociation;
 Testimonial.Author = TestimonialAuthor;
 
-const TestimonialLink: FC<LinkProps> = (props) => <Link target="_blank" size="s" {...props} />;
-Testimonial.Link = TestimonialLink;
+const TestimonialAction: FC<LinkProps> = (props) => <Link target="_blank" size="s" {...props} />;
+Testimonial.Action = TestimonialAction;

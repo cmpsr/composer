@@ -1,12 +1,4 @@
-import {
-  AccordionProps,
-  AccordionStaticMembers,
-  FlexProps,
-  ImageProps,
-  TextPairingProps,
-  TextPairingStaticMembers,
-  TextProps,
-} from '@cmpsr/components';
+import { FlexProps, ImageProps, Text, TextPairing, Accordion } from '@cmpsr/components';
 import { FC, ReactNode } from 'react';
 export { ImageProps as AccordionGalleryImageProps } from '@cmpsr/components';
 
@@ -16,7 +8,7 @@ export interface AccordionGalleryProps extends FlexProps {
 }
 
 export interface AccordionGalleryStaticMembers {
-  Title: FC<TextPairingProps> & TextPairingStaticMembers;
-  Accordion: FC<AccordionProps> & AccordionStaticMembers & { Image: FC<ImageProps> };
-  Legend: FC<TextProps>;
+  Title: typeof TextPairing;
+  Accordion: typeof Accordion & { Image: FC<ImageProps> };
+  Overline: typeof Text;
 }

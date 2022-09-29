@@ -24,10 +24,10 @@ export default {
 
 export const WithAuthor = () => (
   <Quote>
-    <Quote.Text>
+    <Quote.Title>
       &ldquo;We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
       three ways we could find it.&rdquo;
-    </Quote.Text>
+    </Quote.Title>
     <Quote.Author>
       <Quote.Author.Avatar name="John Doe" src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
       <Quote.Author.Name>
@@ -40,16 +40,16 @@ export const WithAuthor = () => (
 
 export const WithoutAuthor = () => (
   <Quote>
-    <Quote.Text>
+    <Quote.Title>
       &ldquo;We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
       three ways we could find it.&rdquo;
-    </Quote.Text>
+    </Quote.Title>
   </Quote>
 );
 
 const Template = ({ quote, quoteVariant, author, association, authorVariant, avatarSize, avatarUrl }) => (
   <Quote>
-    <Quote.Text variant={quoteVariant}>{quote}</Quote.Text>
+    <Quote.Title variant={quoteVariant}>{quote}</Quote.Title>
     <Quote.Author>
       <Quote.Author.Avatar name={author} size={avatarSize} src={avatarUrl} />
       <Quote.Author.Name variant={authorVariant}>

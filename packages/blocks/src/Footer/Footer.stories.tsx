@@ -13,26 +13,26 @@ export const NoBottomContent = () => (
   <Footer backgroundColor="background-page">
     <Footer.Logo src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="4.25rem" />
     <Footer.Content>
-      <Footer.Content.Links>
-        <Footer.Content.LinkGroup>
-          <Footer.Content.LinkGroup.Title>Group 1</Footer.Content.LinkGroup.Title>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-        </Footer.Content.LinkGroup>
-        <Footer.Content.LinkGroup>
-          <Footer.Content.LinkGroup.Title>Group 2</Footer.Content.LinkGroup.Title>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-        </Footer.Content.LinkGroup>
-        <Footer.Content.LinkGroup>
-          <Footer.Content.LinkGroup.Title>Group 3</Footer.Content.LinkGroup.Title>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-        </Footer.Content.LinkGroup>
-      </Footer.Content.Links>
+      <Footer.Content.ColumnsContainer>
+        <Footer.Content.Column>
+          <Footer.Content.Column.Title>Group 1</Footer.Content.Column.Title>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+        </Footer.Content.Column>
+        <Footer.Content.Column>
+          <Footer.Content.Column.Title>Group 2</Footer.Content.Column.Title>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+        </Footer.Content.Column>
+        <Footer.Content.Column>
+          <Footer.Content.Column.Title>Group 3</Footer.Content.Column.Title>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+        </Footer.Content.Column>
+      </Footer.Content.ColumnsContainer>
       <Footer.Content.CopyGroup flexDirection="column" gap="1.25rem" maxWidth={{ lg: '27.625rem' }}>
         <Text variant="text-body-bold">Title</Text>
         <Text variant="text-body-regular" color="text-secondary">
@@ -48,26 +48,26 @@ export const NoCopyGroup = () => (
   <Footer backgroundColor="background-page">
     <Footer.Logo src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="4.25rem" />
     <Footer.Content>
-      <Footer.Content.Links>
-        <Footer.Content.LinkGroup>
-          <Footer.Content.LinkGroup.Title>Group 1</Footer.Content.LinkGroup.Title>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-        </Footer.Content.LinkGroup>
-        <Footer.Content.LinkGroup>
-          <Footer.Content.LinkGroup.Title>Group 2</Footer.Content.LinkGroup.Title>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-        </Footer.Content.LinkGroup>
-        <Footer.Content.LinkGroup>
-          <Footer.Content.LinkGroup.Title>Group 3</Footer.Content.LinkGroup.Title>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-          <Footer.Content.LinkGroup.Link href="#">Default Link</Footer.Content.LinkGroup.Link>
-        </Footer.Content.LinkGroup>
-      </Footer.Content.Links>
+      <Footer.Content.ColumnsContainer>
+        <Footer.Content.Column>
+          <Footer.Content.Column.Title>Group 1</Footer.Content.Column.Title>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+        </Footer.Content.Column>
+        <Footer.Content.Column>
+          <Footer.Content.Column.Title>Group 2</Footer.Content.Column.Title>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+        </Footer.Content.Column>
+        <Footer.Content.Column>
+          <Footer.Content.Column.Title>Group 3</Footer.Content.Column.Title>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+          <Footer.Content.Column.Action href="#">Default Link</Footer.Content.Column.Action>
+        </Footer.Content.Column>
+      </Footer.Content.ColumnsContainer>
     </Footer.Content>
   </Footer>
 );
@@ -76,16 +76,16 @@ const Template = ({ backgroundColor, imageProps, bottomContent, linkGroups, show
   <Footer backgroundColor={backgroundColor}>
     <Footer.Logo {...imageProps} />
     <Footer.Content>
-      <Footer.Content.Links>
+      <Footer.Content.ColumnsContainer>
         {linkGroups.map(({ title, items }, index: number) => (
-          <Footer.Content.LinkGroup key={index}>
-            <Footer.Content.LinkGroup.Title>{title}</Footer.Content.LinkGroup.Title>
+          <Footer.Content.Column key={index}>
+            <Footer.Content.Column.Title>{title}</Footer.Content.Column.Title>
             {items.map((item: LinkProps, index: number) => (
-              <Footer.Content.LinkGroup.Link key={index} {...item} />
+              <Footer.Content.Column.Action key={index} {...item} />
             ))}
-          </Footer.Content.LinkGroup>
+          </Footer.Content.Column>
         ))}
-      </Footer.Content.Links>
+      </Footer.Content.ColumnsContainer>
       {showCopyGroup && (
         <Footer.Content.CopyGroup flexDirection="column" gap="1.25rem" maxWidth={{ lg: '27.625rem' }}>
           <Text variant="text-body-bold">Title</Text>

@@ -13,15 +13,15 @@ jest.mock('@cmpsr/components', () => {
 });
 
 describe('AccordionGallery', () => {
-  test('should render legend', () => {
+  test('should render overline', () => {
     renderWithProviders(
       <AccordionGallery>
-        <AccordionGallery.Legend>legend</AccordionGallery.Legend>
+        <AccordionGallery.Overline>overline</AccordionGallery.Overline>
       </AccordionGallery>
     );
-    screen.getByText('legend');
+    screen.getByText('overline');
   });
-  test('should render text pairing', () => {
+  test('should render title', () => {
     renderWithProviders(
       <AccordionGallery>
         <AccordionGallery.Title>

@@ -1,4 +1,4 @@
-# @cmpsr/twilio
+# @cmpsr/signalwire
 
 [![npm version](https://img.shields.io/npm/v/@cmpsr/signalwire.svg?style=flat-square)](https://www.npmjs.com/package/@cmpsr/signalwire)
 
@@ -58,11 +58,11 @@ const { useSignalwireSms } = require("@cmpsr/signalwire");
 const app = express();
 app.use(express.json());
 
-const twilioSms = useSignalwireSms();
+const signalwireSms = useSignalwireSms();
 
 app.post("/send-sms", async (req, res) => {
   const { message, from, to } = req.body;
-  const response = await twilioSms.send(message, from, to);
+  const response = await signalwireSms.send(message, from, to);
   res.json(response);
 });
 ```

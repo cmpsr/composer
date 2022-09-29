@@ -21,7 +21,7 @@
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "dependencies": {
-    "plaid": "^4.11.0",
+    "plaid": "^9.0.0",
     "rimraf": "^3.0.2"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"

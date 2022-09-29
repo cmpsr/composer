@@ -1,0 +1,32 @@
+{
+  "name": "@cmpsr/signalwire",
+  "repository": {
+    "url": "ssh://git@github.com:cmpsr/composer.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "version": "0.1.0",
+  "author": "Angel Gonzalez <angel@impulsum.vc>",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "/lib",
+    "package.json"
+  ],
+  "scripts": {
+    "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore '**/*.test.ts'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' \\) -exec rm {} +"
+  },
+  "dependencies": {
+    "@signalwire/realtime-api": "^3.5.0",
+    "rimraf": "^3.0.2"
+  },
+  "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
+}

@@ -1,5 +1,47 @@
 # @cmpsr/blocks
 
+## 10.0.0
+
+### Major Changes
+
+- b32c581: feat: change Navigation to use dot notation
+- 3fcbca7: feat: refactor Testimonial component to use dot notation
+- 2266f1c: feat: change Footer to use dot notation
+- d7074b2: feat: update naming of blocks to be consistent
+- 75aaa11: feat: refactor CookieBanner to use dot notation
+
+### Minor Changes
+
+- 5154cde: feat: create new block ColumnLayout and add support for bounded mode, tag and link in MediaBlock
+- a92ad07: feat: update theme to use object notation syntax and correct info color tokens
+- 74756d7: feat: add Quote block
+- 213233a: feat: create new block HighlightedText
+- cdd33b1: feat: create AccordionGallery block
+
+### Patch Changes
+
+- Updated dependencies [2fc42a9]
+- Updated dependencies [5154cde]
+- Updated dependencies [e81182b]
+- Updated dependencies [4a816fe]
+- Updated dependencies [1dc8655]
+- Updated dependencies [6e4f0f9]
+- Updated dependencies [a92ad07]
+- Updated dependencies [1feb881]
+- Updated dependencies [f6b9e43]
+- Updated dependencies [02bec73]
+- Updated dependencies [0b62aa1]
+- Updated dependencies [80cfa89]
+- Updated dependencies [327159b]
+- Updated dependencies [213233a]
+- Updated dependencies [41e22cb]
+- Updated dependencies [4fc181c]
+- Updated dependencies [c3582e3]
+- Updated dependencies [cdd33b1]
+- Updated dependencies [ac20d33]
+- Updated dependencies [1673d3c]
+  - @cmpsr/components@5.0.0
+
 ## 9.1.2
 
 ## 9.1.1

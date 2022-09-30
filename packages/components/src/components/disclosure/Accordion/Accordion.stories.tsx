@@ -1,13 +1,13 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Accordion } from './Accordion';
-import { Avatar } from '..';
+import { Avatar } from '../../primitives';
 import { Box, Flex } from '../../layouts';
 import { Text, TextPairing } from '../../typography';
 
 export default {
   component: Accordion,
-  title: 'Components/Primitives/Accordion',
+  title: 'Components/Disclosure/Accordion',
 } as Meta;
 
 const AVATAR_URL = 'https://avatars0.githubusercontent.com/u/67131017?s=200';

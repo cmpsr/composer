@@ -6,7 +6,7 @@ import { StackDivider, VStack } from '@chakra-ui/react';
 
 export default {
   component: Tabs,
-  title: 'Components/Primitives/Tabs',
+  title: 'Components/Disclosure/Tabs',
   argTypes: {
     variant: {
       options: tabsVariants,

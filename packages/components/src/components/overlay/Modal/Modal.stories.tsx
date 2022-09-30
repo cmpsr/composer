@@ -4,7 +4,7 @@ import { Avatar, Button, Flex, Modal, Text, TextPairing, modalSizes } from '@com
 
 export default {
   component: Modal,
-  title: 'Components/Primitives/Modal',
+  title: 'Components/Overlay/Modal',
   argTypes: {
     size: {
       options: modalSizes,

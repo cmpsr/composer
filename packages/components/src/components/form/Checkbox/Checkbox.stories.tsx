@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { Checkbox, CheckboxProps } from '.';
 import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
 import { CheckboxSizes } from './types';
-import { Text } from '../../primitives';
+import { Text } from '../../typography';
 
 export default {
   component: Checkbox,

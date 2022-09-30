@@ -1,8 +1,9 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Accordion } from './Accordion';
-import { Text, TextPairing, Avatar } from '..';
+import { Avatar } from '..';
 import { Box, Flex } from '../../layouts';
+import { Text, TextPairing } from '../../typography';
 
 export default {
   component: Accordion,

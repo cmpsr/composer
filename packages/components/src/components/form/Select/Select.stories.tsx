@@ -6,7 +6,7 @@ import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 
 export default {
   component: Select,
-  title: 'Components/Primitives/Select',
+  title: 'Components/Form/Select',
   argTypes: {
     size: {
       options: selectSizes,

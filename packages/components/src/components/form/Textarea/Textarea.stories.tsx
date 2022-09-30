@@ -6,7 +6,7 @@ import { textareaSizes, textareaVariants } from './types';
 
 export default {
   component: Textarea,
-  title: 'Components/Primitives/Textarea',
+  title: 'Components/Form/Textarea',
   argTypes: {
     size: {
       options: textareaSizes,

@@ -2,12 +2,12 @@ import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { Button } from './Button';
 import { buttonSizes, buttonVariants } from './types';
-import * as Icons from '../Icons';
+import * as Icons from '../../primitives/Icons';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 
 export default {
   component: Button,
-  title: 'Components/Primitives/Button',
+  title: 'Components/Form/Button',
   argTypes: {
     variant: {
       options: buttonVariants,

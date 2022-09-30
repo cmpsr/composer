@@ -3,11 +3,11 @@ import { Meta } from '@storybook/react';
 import { Checkbox, CheckboxProps } from '.';
 import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
 import { CheckboxSizes } from './types';
-import { Text } from '..';
+import { Text } from '../../primitives';
 
 export default {
   component: Checkbox,
-  title: 'Components/Primitives/Checkbox',
+  title: 'Components/Form/Checkbox',
 } as Meta;
 
 const sizeLabels = {

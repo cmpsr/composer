@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Meta } from '@storybook/react';
 import { VStack, StackDivider, HStack } from '@chakra-ui/layout';
 import { IconChevronLeft, IconChevronRight, Text } from '@components';
-import { RangeSlider } from './';
+import { RangeSlider } from '.';
 import { RangeSliderProps } from './types';
 
 const orientations = ['horizontal', 'vertical'];
 
 export default {
   component: RangeSlider,
-  title: 'Components/Primitives/RangeSlider',
+  title: 'Components/Form/RangeSlider',
   argTypes: {
     orientation: {
       options: orientations,

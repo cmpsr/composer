@@ -7,7 +7,7 @@ import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 
 export default {
   component: IconButton,
-  title: 'Components/Primitives/IconButton',
+  title: 'Components/Form/IconButton',
   argTypes: {
     size: {
       options: iconButtonSizes,

@@ -3,11 +3,11 @@ import { Meta } from '@storybook/react';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Input } from '.';
 import { inputSizes, inputVariants } from './types';
-import { IconCloud } from '../Icons';
+import { IconCloud } from '../../primitives/Icons';
 
 export default {
   component: Input,
-  title: 'Components/Primitives/Input',
+  title: 'Components/Form/Input',
   argTypes: {
     variant: {
       options: inputVariants,

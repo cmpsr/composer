@@ -6,7 +6,7 @@ import { pinInputSizes, pinInputVariants } from './types';
 
 export default {
   component: PinInput,
-  title: 'Components/Primitives/PinInput',
+  title: 'Components/Form/PinInput',
   argTypes: {
     variant: {
       options: pinInputVariants,

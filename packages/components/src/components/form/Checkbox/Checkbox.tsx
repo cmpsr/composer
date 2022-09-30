@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Checkbox as ChakraCheckbox } from '@chakra-ui/react';
 import { CheckboxProps } from './types';
-import * as Icons from '../Icons';
+import * as Icons from '../../primitives/Icons';
 
 const CheckboxTransition = ({ open, children }) => (
   <AnimatePresence initial={false}>
@@ -33,6 +33,4 @@ const CheckboxIcon = ({ __css, isChecked }: any) => (
   </CheckboxTransition>
 );
 
-export const Checkbox: FC<CheckboxProps> = (props) => (
-  <ChakraCheckbox icon={<CheckboxIcon />} {...props} />
-);
+export const Checkbox: FC<CheckboxProps> = (props) => <ChakraCheckbox icon={<CheckboxIcon />} {...props} />;

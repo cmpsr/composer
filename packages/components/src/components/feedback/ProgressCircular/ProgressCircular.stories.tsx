@@ -5,7 +5,7 @@ import { HStack, Text, VStack } from '@chakra-ui/react';
 
 export default {
   component: ProgressCircular,
-  title: 'Components/Primitives/ProgressCircular',
+  title: 'Components/Feedback/ProgressCircular',
   argTypes: {
     size: {
       type: { name: 'string', required: false },

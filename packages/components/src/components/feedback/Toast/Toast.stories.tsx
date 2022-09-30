@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { alertStatuses, alertVariants, Button, useToast, UseToastOptions } from '@components';
 
 export default {
-  title: 'Components/Notifications/Toast',
+  title: 'Components/Feedback/Toast',
   argTypes: {
     status: {
       options: alertStatuses,

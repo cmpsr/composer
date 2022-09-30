@@ -1,5 +1,5 @@
 import { FlexProps, StyleProps } from '@chakra-ui/react';
-import { AlertStatus } from '@components/notifications';
+import { AlertStatus } from '@components/feedback';
 
 export interface InlineAlertProps extends FlexProps {
   status?: AlertStatus;

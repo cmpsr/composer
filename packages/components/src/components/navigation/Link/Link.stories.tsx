@@ -7,7 +7,7 @@ import { IconExternalLink, Text } from '@components';
 
 export default {
   component: Link,
-  title: 'Components/Primitives/Link',
+  title: 'Components/Navigation/Link',
   argTypes: {
     variant: {
       options: linkVariants,

@@ -4,7 +4,7 @@ import { screen, renderWithProviders } from '@tests/renderWithProviders';
 
 import { Link } from './Link';
 import { linkSizes } from './types';
-import { IconExternalLink } from '../Icons';
+import { IconExternalLink } from '../../primitives/Icons';
 
 describe('Link', () => {
   it('should render an anchor', () => {

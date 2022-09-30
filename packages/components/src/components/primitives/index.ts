@@ -7,6 +7,4 @@ export * from './Image';
 export * from './Icons';
 export * from './Modal';
 export * from './Tabs';
-export * from './Text';
-export * from './TextPairing';
 export * from './Tooltip';

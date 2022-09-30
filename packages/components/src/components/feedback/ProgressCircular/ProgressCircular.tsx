@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { CircularProgress as ChakraProgressCircular, useStyleConfig } from '@chakra-ui/react';
 import { ProgressCircularProps } from './types';
-import { Text, TextProps } from '../../primitives';
+import { Text, TextProps } from '../../typography';
 
 export const ProgressCircular: FC<ProgressCircularProps> = ({ showLabel, ...props }) => {
   const {

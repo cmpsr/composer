@@ -5,7 +5,7 @@ import { Flex, IconCheck, IconWorld } from '@components';
 
 export default {
   component: Breadcrumb,
-  title: 'Components/Primitives/Breadcrumb',
+  title: 'Components/Navigation/Breadcrumb',
   argTypes: {
     separator: {
       options: ['default', '/'],

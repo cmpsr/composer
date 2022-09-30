@@ -1,7 +1,6 @@
 export * from './Accordion';
 export * from './Avatar';
 export * from './Badge';
-export * from './Breadcrumb';
 export * from './Button';
 export * from './Card';
 export * from './Checkbox';
@@ -12,7 +11,6 @@ export * from './Image';
 export * from './IconButton';
 export * from './Icons';
 export * from './Input';
-export * from './Link';
 export * from './Modal';
 export * from './NumberInput';
 export * from './NumberedList';

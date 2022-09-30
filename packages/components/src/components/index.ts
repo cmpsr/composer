@@ -1,4 +1,5 @@
 export * from './dataDisplay';
+export * from './disclosure';
 export * from './form';
 export * from './layouts';
 export * from './primitives';

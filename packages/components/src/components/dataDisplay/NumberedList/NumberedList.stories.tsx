@@ -6,7 +6,7 @@ import { NumberedList } from './NumberedList';
 
 export default {
   component: NumberedList,
-  title: 'Components/Primitives/NumberedList',
+  title: 'Components/Data Display/NumberedList',
 } as Meta;
 
 export const Simple = () => (

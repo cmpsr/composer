@@ -8,7 +8,7 @@ const dividerOrientations = ['horizontal', 'vertical'];
 
 export default {
   component: Divider,
-  title: 'Components/Primitives/Divider',
+  title: 'Components/Data Display/Divider',
   argTypes: {
     orientation: {
       options: dividerOrientations,

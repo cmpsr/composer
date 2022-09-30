@@ -6,7 +6,7 @@ import { badgeVariants } from './types';
 
 export default {
   component: Badge,
-  title: 'Components/Primitives/Badge',
+  title: 'Components/Data Display/Badge',
   argTypes: {
     variant: {
       options: badgeVariants,

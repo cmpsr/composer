@@ -4,7 +4,7 @@ import { Symbol, SymbolProps } from '.';
 
 export default {
   component: Symbol,
-  title: 'Components/Primitives/Symbol',
+  title: 'Components/Data Display/Symbol',
   argTypes: {},
 } as Meta;
 

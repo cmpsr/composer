@@ -7,7 +7,7 @@ import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 
 export default {
   component: Tag,
-  title: 'Components/Primitives/Tag',
+  title: 'Components/Data Display/Tag',
   argTypes: {
     size: {
       options: tagSizes,

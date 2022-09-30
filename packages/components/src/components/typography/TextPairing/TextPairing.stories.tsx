@@ -6,7 +6,7 @@ import { TextPairing, textPairingVariants } from '.';
 
 export default {
   component: TextPairing,
-  title: 'Components/Primitives/TextPairing',
+  title: 'Components/Typography/TextPairing',
   argTypes: {
     variant: {
       options: textPairingVariants,

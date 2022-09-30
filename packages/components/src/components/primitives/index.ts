@@ -28,7 +28,5 @@ export * from './Switch';
 export * from './Symbol';
 export * from './Tabs';
 export * from './Tag';
-export * from './Text';
-export * from './TextPairing';
 export * from './Textarea';
 export * from './Tooltip';

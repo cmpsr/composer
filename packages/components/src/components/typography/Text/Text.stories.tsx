@@ -5,7 +5,7 @@ import { Box, Flex, Spacer, Stack, StackDivider } from '@chakra-ui/layout';
 
 export default {
   component: Text,
-  title: 'Components/Primitives/Text',
+  title: 'Components/Typography/Text',
   argTypes: {
     variant: {
       options: textVariants,

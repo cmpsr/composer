@@ -1,5 +1,5 @@
 ---
-"@cmpsr/components": major
+"@cmpsr/components": minor
 ---
 
 feat: restructure feedback components

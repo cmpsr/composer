@@ -7,7 +7,7 @@ const orientations = ['horizontal', 'vertical'];
 
 export default {
   component: Slider,
-  title: 'Components/Primitives/Slider',
+  title: 'Components/Form/Slider',
   argTypes: {
     orientation: {
       options: orientations,

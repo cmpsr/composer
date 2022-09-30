@@ -6,7 +6,7 @@ import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 
 export default {
   component: Switch,
-  title: 'Components/Primitives/Switch',
+  title: 'Components/Form/Switch',
   argTypes: {
     size: {
       options: switchSizes,

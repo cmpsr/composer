@@ -6,7 +6,7 @@ import { inputSizes, inputVariants } from '@components';
 
 export default {
   component: NumberInput,
-  title: 'Components/Primitives/NumberInput',
+  title: 'Components/Form/NumberInput',
   argTypes: {
     variant: {
       options: inputVariants,

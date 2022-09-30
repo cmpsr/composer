@@ -7,7 +7,7 @@ import { radioSizes } from './types';
 
 export default {
   component: Radio,
-  title: 'Components/Primitives/Radio',
+  title: 'Components/Form/Radio',
   argTypes: {
     size: {
       options: radioSizes,

@@ -6,7 +6,7 @@ import { spinnerSizes, spinnerVariants } from './types';
 
 export default {
   component: Spinner,
-  title: 'Components/Primitives/Spinner',
+  title: 'Components/Feedback/Spinner',
   argTypes: {
     variant: {
       options: spinnerVariants,

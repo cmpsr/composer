@@ -6,7 +6,7 @@ import { progressBarSizes } from './types';
 
 export default {
   component: ProgressBar,
-  title: 'Components/Primitives/ProgressBar',
+  title: 'Components/Feedback/ProgressBar',
   argTypes: {
     size: {
       options: progressBarSizes,

@@ -2,11 +2,11 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { InlineAlert } from './InlineAlert';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
-import { alertStatuses } from '@components/notifications';
+import { alertStatuses } from '@components/feedback';
 
 export default {
   component: InlineAlert,
-  title: 'Components/Notifications/InlineAlert',
+  title: 'Components/Feedback/InlineAlert',
   argTypes: {
     status: {
       options: alertStatuses,

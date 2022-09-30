@@ -10,7 +10,7 @@ const placements = [].concat(...combinations);
 
 export default {
   component: Tooltip,
-  title: 'Components/Primitives/Tooltip',
+  title: 'Components/Overlay/Tooltip',
   argTypes: {
     placement: {
       options: placements,

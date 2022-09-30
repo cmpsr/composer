@@ -4,7 +4,7 @@ import { Dropdown } from '.';
 
 export default {
   component: Dropdown,
-  title: 'Components/Primitives/Dropdown',
+  title: 'Components/Overlay/Dropdown',
 } as Meta;
 
 const PlaygroundItems = ({ showDivider }) => (

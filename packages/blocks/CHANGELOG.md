@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 10.1.0
+
+### Minor Changes
+
+- 18ec2f4: feat: export HighlightedText component
+
 ## 10.0.0
 
 ### Major Changes

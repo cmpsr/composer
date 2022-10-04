@@ -186,7 +186,7 @@ describe('generateMdx', () => {
   test('should render component with object props', async () => {
     const fakeBlocks = [
       {
-        models: [{ base: '<HighlightedText>{{legend:Legend:HighlightedText.Legend}}</HighlightedText>' }],
+        models: [{ base: '<HighlightedText>{{legend:Text:HighlightedText.Legend}}</HighlightedText>' }],
         propsValues: [{ base: { legend: { children: 'Legend' } } }],
       },
     ];
@@ -237,7 +237,7 @@ describe('generateMdx', () => {
   test('should not render component if value is not set', async () => {
     const fakeBlocks = [
       {
-        models: [{ base: '<HighlightedText>{{legend:Legend:HighlightedText.Legend}}</HighlightedText>' }],
+        models: [{ base: '<HighlightedText>{{legend:Text:HighlightedText.Legend}}</HighlightedText>' }],
         propsValues: [],
       },
     ];
@@ -247,7 +247,7 @@ describe('generateMdx', () => {
   test('should not render component if value is "undefined"', async () => {
     const fakeBlocks = [
       {
-        models: [{ base: '<HighlightedText>{{legend:Legend:HighlightedText.Legend}}</HighlightedText>' }],
+        models: [{ base: '<HighlightedText>{{legend:Text:HighlightedText.Legend}}</HighlightedText>' }],
         propsValues: [{ base: { legend: 'undefined' } }],
       },
     ];

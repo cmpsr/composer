@@ -177,4 +177,101 @@ describe('generateMdx', () => {
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([{ base: '<Text>Value 3</Text>' }]);
   });
+  test('should handle multiple templates in the same line', async () => {
+    const code = '<Text>Value {{value1:number}}-{{value2:string}}</Text>';
+    const fakeBlocks = [{ models: [{ base: code }], propsValues: [{ base: { value1: '1', value2: '2' } }] }];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: '<Text>Value 1-2</Text>' }]);
+  });
+  test('should render component with object props', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<HighlightedText>{{legend:Text:HighlightedText.Legend}}</HighlightedText>' }],
+        propsValues: [{ base: { legend: { children: 'Legend' } } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([
+      { base: '<HighlightedText><HighlightedText.Legend >Legend</HighlightedText.Legend></HighlightedText>' },
+    ]);
+  });
+  test('should render component with string props', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<HighlightedText>{{action:Action:HighlightedText.Link}}</HighlightedText>' }],
+        propsValues: [{ base: { action: 'href="#"' } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: '<HighlightedText><HighlightedText.Link href="#"/></HighlightedText>' }]);
+  });
+  test('should render component children as an array', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<HighlightedText>{{title:TextPairing:HighlightedText.TextPairing}}</HighlightedText>' }],
+        propsValues: [
+          {
+            base: {
+              title: {
+                variant: 'textpairing-header-4XL',
+                children: [
+                  '{{titleLabel:Text:HighlightedText.TextPairing.Label}}',
+                  '{{titleSubLabel:Text:HighlightedText.TextPairing.SubLabel}}',
+                ],
+              },
+              titleLabel: { children: 'Label' },
+              titleSubLabel: { color: 'text-secondary', children: 'SubLabel' },
+            },
+          },
+        ],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([
+      {
+        base:
+          '<HighlightedText><HighlightedText.TextPairing variant="textpairing-header-4XL" ><HighlightedText.TextPairing.Label >Label</HighlightedText.TextPairing.Label>\n<HighlightedText.TextPairing.SubLabel color="text-secondary" >SubLabel</HighlightedText.TextPairing.SubLabel></HighlightedText.TextPairing></HighlightedText>',
+      },
+    ]);
+  });
+  test('should not render component if value is not set', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<HighlightedText>{{legend:Text:HighlightedText.Legend}}</HighlightedText>' }],
+        propsValues: [],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: '<HighlightedText></HighlightedText>' }]);
+  });
+  test('should not render component if value is "undefined"', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<HighlightedText>{{legend:Text:HighlightedText.Legend}}</HighlightedText>' }],
+        propsValues: [{ base: { legend: 'undefined' } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: '<HighlightedText></HighlightedText>' }]);
+  });
+  test('should add ContainerProps to component', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<HighlightedText {{props:ContainerProps}} />' }],
+        propsValues: [{ base: { props: 'color="red"' } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: '<HighlightedText color="red" />' }]);
+  });
+  test('should add object ContainerProps to component', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<HighlightedText {{props:ContainerProps}} />' }],
+        propsValues: [{ base: { props: { color: 'red' } } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: '<HighlightedText color="red"  />' }]);
+  });
 });

@@ -61,13 +61,15 @@ const replaceValuesByBreakpoint = (mdxModel: Model, values: PropsValue): Model =
 
 const bundler = async (code: string): Promise<string> => (await bundleMDX({ source: code.trim() })).code;
 
-export const getRgxInstance = () => new RegExp('{{(\\w+):(\\w+)(?:\\((.+)(?=\\|)?\\))?(?::(.+))?}}', 'g');
+export const getRgxInstance = () => new RegExp('{{(\\w+):(\\w+)(?:\\((.+)(?=\\|)?\\))?(?::([^}}]*))?}}', 'g');
 
 const replacePropValues = (mdx: string, values: Record<string, string> = {}): string => {
   if (!mdx) return '';
   let mdxCopy = mdx;
   const instanceToGetAllMatches = getRgxInstance();
   const matches = mdxCopy.match(instanceToGetAllMatches) || [];
+
+  if (matches.length === 0) return mdx;
 
   const uniqueMatches = Array.from(new Set(matches));
 
@@ -80,13 +82,61 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
     const defaultValue = rgxGroups[4] || '';
 
     const propValue = values[propName];
-    const newValue = propValue ? propValue : defaultValue;
+    let newValue = propValue ? propValue : defaultValue;
 
-    const searchValue = fieldType === 'list' && listPattern ? escapeCharactersInListPattern(match) : match;
+    let searchValue: string;
+    switch (fieldType) {
+      case 'Action':
+      case 'Actions':
+      case 'Container':
+      case 'Icon':
+      case 'Text':
+      case 'TextPairing':
+        searchValue = match;
+        if (newValue === 'undefined' || propValue === undefined) {
+          newValue = '';
+        } else {
+          newValue = renderComponent(defaultValue, propValue);
+        }
+        break;
+      case 'ContainerProps':
+        searchValue = match;
+        if (typeof newValue === 'object') {
+          newValue = flatObject(newValue);
+        }
+        break;
+      case 'list':
+        searchValue = listPattern ? escapeCharactersInListPattern(match) : match;
+        break;
+      default:
+        searchValue = match;
+    }
 
     mdxCopy = replaceAll(searchValue, newValue)(mdxCopy);
   });
-  return mdxCopy;
+  return replacePropValues(mdxCopy, values);
+};
+
+const renderComponent = (componentName: string, props: Record<string, unknown> | string): string => {
+  if (typeof props === 'string') {
+    return `<${componentName} ${props}/>`;
+  }
+  const { children, ...rest } = props;
+  const props1 = flatObject(rest);
+  const child = Array.isArray(children) ? children.join('\n') : children;
+  return children ? `<${componentName} ${props1}>${child}</${componentName}>` : `<${componentName} ${props1}/>`;
+};
+
+const flatObject = (obj: Record<string, any>): string => {
+  let result = '';
+  for (const [key, value] of Object.entries(obj)) {
+    const patternToGetRgxGroups = getRgxInstance();
+    const isReplaceableValue = !!patternToGetRgxGroups.exec(value);
+    const wrapper = isReplaceableValue ? '{' : '"';
+    const endWrapper = isReplaceableValue ? ' }' : '"';
+    result += `${key}=${wrapper}${value}${endWrapper} `;
+  }
+  return result;
 };
 
 // Escape characters (, ), | to \\(, \\), \\|

@@ -4,6 +4,7 @@ export * from './ColumnLayout';
 export * from './CookieBanner';
 export * from './Footer';
 export * from './Hero';
+export * from './HighlightedText';
 export * from './MediaBlock';
 export * from './Navigation';
 export * from './Quote';

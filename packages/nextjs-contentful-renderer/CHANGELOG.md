@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 15.1.0
+
+### Minor Changes
+
+- 18ec2f4: feat: handle components when generating mdx
+
 ## 15.0.0
 
 ### Minor Changes

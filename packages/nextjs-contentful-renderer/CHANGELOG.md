@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 15.2.0
+
+### Minor Changes
+
+- 7121126: feat: merge nested object props
+
 ## 15.1.0
 
 ### Minor Changes

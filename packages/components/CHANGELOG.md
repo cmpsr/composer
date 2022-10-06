@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.0.1
+
+### Patch Changes
+
+- 73db0ad: fix: override instead of merging the breakpoints
+
 ## 5.0.0
 
 ### Major Changes

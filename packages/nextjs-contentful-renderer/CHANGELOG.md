@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 15.2.1
+
+### Patch Changes
+
+- 73db0ad: fix: replace lodash.merge with custom implementation
+
 ## 15.2.0
 
 ### Minor Changes

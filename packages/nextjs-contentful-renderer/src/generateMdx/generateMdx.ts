@@ -1,7 +1,7 @@
 import { bundleMDX } from 'mdx-bundler';
 import { replaceAll } from '../utils/replaceAll';
 import { Block, Model, PropsValue, ResponsiveValue } from '../utils/contentful/getPageById/types';
-import { merge } from 'lodash';
+import { mergeDeep } from '../utils/mergeDeep';
 
 const breakpoints = ['base', 'md', 'lg', 'xl', 'xxl'];
 
@@ -42,7 +42,7 @@ const mergeValues = <T>(values: ResponsiveValue<T>, breakpoint: string) => {
   for (let i = 1; i <= index; i++) {
     const currentValue = values[breakpoints[i]];
     if (currentValue) {
-      merged = merge(merged, currentValue);
+      merged = mergeDeep(merged, currentValue);
     }
   }
   return merged;

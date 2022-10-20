@@ -308,6 +308,26 @@ describe('generateMdx', () => {
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([{ base: '<HighlightedText color="red"  />' }]);
   });
+  test('should add FlexProps to component', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<HighlightedText {{props:FlexProps}} />' }],
+        propsValues: [{ base: { props: 'color="red"' } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: '<HighlightedText color="red" />' }]);
+  });
+  test('should add object FlexProps to component', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<HighlightedText {{props:FlexProps}} />' }],
+        propsValues: [{ base: { props: { color: 'red' } } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: '<HighlightedText color="red"  />' }]);
+  });
   test('should render Image component', async () => {
     const fakeBlocks = [
       {

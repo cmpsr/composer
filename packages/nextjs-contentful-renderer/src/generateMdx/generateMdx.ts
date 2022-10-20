@@ -102,6 +102,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
         }
         break;
       case 'BoxProps':
+      case 'FlexProps':
         searchValue = match;
         if (typeof newValue === 'object') {
           newValue = flatObject(newValue);

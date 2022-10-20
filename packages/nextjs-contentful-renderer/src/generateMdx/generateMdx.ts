@@ -101,7 +101,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
           newValue = renderComponent(defaultValue, propValue);
         }
         break;
-      case 'ContainerProps':
+      case 'BoxProps':
         searchValue = match;
         if (typeof newValue === 'object') {
           newValue = flatObject(newValue);

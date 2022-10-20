@@ -288,20 +288,20 @@ describe('generateMdx', () => {
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([{ base: '<HighlightedText></HighlightedText>' }]);
   });
-  test('should add ContainerProps to component', async () => {
+  test('should add BoxProps to component', async () => {
     const fakeBlocks = [
       {
-        models: [{ base: '<HighlightedText {{props:ContainerProps}} />' }],
+        models: [{ base: '<HighlightedText {{props:BoxProps}} />' }],
         propsValues: [{ base: { props: 'color="red"' } }],
       },
     ];
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([{ base: '<HighlightedText color="red" />' }]);
   });
-  test('should add object ContainerProps to component', async () => {
+  test('should add object BoxProps to component', async () => {
     const fakeBlocks = [
       {
-        models: [{ base: '<HighlightedText {{props:ContainerProps}} />' }],
+        models: [{ base: '<HighlightedText {{props:BoxProps}} />' }],
         propsValues: [{ base: { props: { color: 'red' } } }],
       },
     ];

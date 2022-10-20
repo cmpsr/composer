@@ -308,4 +308,14 @@ describe('generateMdx', () => {
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([{ base: '<HighlightedText color="red"  />' }]);
   });
+  test('should render Image component', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<div>{{image:Image:Image}}<div/>' }],
+        propsValues: [{ base: { image: { src: 'https://image.url', alt: 'Image alt' } } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: '<div><Image src="https://image.url" alt="Image alt" /><div/>' }]);
+  });
 });

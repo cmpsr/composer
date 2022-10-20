@@ -288,24 +288,54 @@ describe('generateMdx', () => {
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([{ base: '<HighlightedText></HighlightedText>' }]);
   });
-  test('should add ContainerProps to component', async () => {
+  test('should add BoxProps to component', async () => {
     const fakeBlocks = [
       {
-        models: [{ base: '<HighlightedText {{props:ContainerProps}} />' }],
+        models: [{ base: '<HighlightedText {{props:BoxProps}} />' }],
         propsValues: [{ base: { props: 'color="red"' } }],
       },
     ];
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([{ base: '<HighlightedText color="red" />' }]);
   });
-  test('should add object ContainerProps to component', async () => {
+  test('should add object BoxProps to component', async () => {
     const fakeBlocks = [
       {
-        models: [{ base: '<HighlightedText {{props:ContainerProps}} />' }],
+        models: [{ base: '<HighlightedText {{props:BoxProps}} />' }],
         propsValues: [{ base: { props: { color: 'red' } } }],
       },
     ];
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([{ base: '<HighlightedText color="red"  />' }]);
+  });
+  test('should add FlexProps to component', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<HighlightedText {{props:FlexProps}} />' }],
+        propsValues: [{ base: { props: 'color="red"' } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: '<HighlightedText color="red" />' }]);
+  });
+  test('should add object FlexProps to component', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<HighlightedText {{props:FlexProps}} />' }],
+        propsValues: [{ base: { props: { color: 'red' } } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: '<HighlightedText color="red"  />' }]);
+  });
+  test('should render Image component', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<div>{{image:Image:Image}}<div/>' }],
+        propsValues: [{ base: { image: { src: 'https://image.url', alt: 'Image alt' } } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: '<div><Image src="https://image.url" alt="Image alt" /><div/>' }]);
   });
 });

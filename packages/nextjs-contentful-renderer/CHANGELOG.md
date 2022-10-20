@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 15.3.0
+
+### Minor Changes
+
+- db37d80: feat: add support for other components to generateMdx
+
 ## 15.2.1
 
 ### Patch Changes

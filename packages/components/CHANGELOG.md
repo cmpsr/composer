@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.1.0
+
+### Minor Changes
+
+- bc0b80b: feat: export useTheme
+
 ## 5.0.1
 
 ### Patch Changes

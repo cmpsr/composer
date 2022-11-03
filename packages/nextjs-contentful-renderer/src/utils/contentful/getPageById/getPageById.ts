@@ -18,11 +18,13 @@ export const getPageById = async (
             model {
               ...ModelFragment
             }
+            propsValue
           }
           footer {
             model {
               ...ModelFragment
             }
+            propsValue
           }
           theme {
             theme

@@ -1,5 +1,12 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 15.4.0
+
+### Minor Changes
+
+- 9cbf8bc: feat: load propsValue for navbar and footer
+- a50a7c6: feat: add support for MediaBlock and Bullets
+
 ## 15.3.1
 
 ## 15.3.0

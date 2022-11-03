@@ -230,7 +230,7 @@ describe('generateMdx', () => {
     expect(mdx).toStrictEqual([
       {
         base:
-          '<HighlightedText><HighlightedText.TextPairing variant="textpairing-header-4XL" ><HighlightedText.TextPairing.Label >Label</HighlightedText.TextPairing.Label>\n<HighlightedText.TextPairing.SubLabel color="text-secondary" >SubLabel</HighlightedText.TextPairing.SubLabel></HighlightedText.TextPairing></HighlightedText>',
+          '<HighlightedText><HighlightedText.TextPairing variant="textpairing-header-4XL" ><HighlightedText.TextPairing.Label >Label</HighlightedText.TextPairing.Label><HighlightedText.TextPairing.SubLabel color="text-secondary" >SubLabel</HighlightedText.TextPairing.SubLabel></HighlightedText.TextPairing></HighlightedText>',
       },
     ]);
   });
@@ -262,9 +262,9 @@ describe('generateMdx', () => {
     expect(mdx).toStrictEqual([
       {
         base:
-          '<HighlightedText><HighlightedText.TextPairing variant="textpairing-header-4XL" ><HighlightedText.TextPairing.Label >Label</HighlightedText.TextPairing.Label>\n<HighlightedText.TextPairing.SubLabel color="text-secondary" >SubLabel</HighlightedText.TextPairing.SubLabel></HighlightedText.TextPairing></HighlightedText>',
+          '<HighlightedText><HighlightedText.TextPairing variant="textpairing-header-4XL" ><HighlightedText.TextPairing.Label >Label</HighlightedText.TextPairing.Label><HighlightedText.TextPairing.SubLabel color="text-secondary" >SubLabel</HighlightedText.TextPairing.SubLabel></HighlightedText.TextPairing></HighlightedText>',
         xxl:
-          '<HighlightedText><HighlightedText.TextPairing variant="textpairing-header-3XL" ><HighlightedText.TextPairing.Label >Label</HighlightedText.TextPairing.Label>\n<HighlightedText.TextPairing.SubLabel color="text-secondary" >SubLabel</HighlightedText.TextPairing.SubLabel></HighlightedText.TextPairing></HighlightedText>',
+          '<HighlightedText><HighlightedText.TextPairing variant="textpairing-header-3XL" ><HighlightedText.TextPairing.Label >Label</HighlightedText.TextPairing.Label><HighlightedText.TextPairing.SubLabel color="text-secondary" >SubLabel</HighlightedText.TextPairing.SubLabel></HighlightedText.TextPairing></HighlightedText>',
       },
     ]);
   });

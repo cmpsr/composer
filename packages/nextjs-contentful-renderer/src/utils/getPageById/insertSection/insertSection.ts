@@ -9,4 +9,7 @@ export const insertSection = (originalContent: Block[], section: Section, method
   return content;
 };
 
-const convertSectionToBlock = (section: Section) => ({ models: [section.model || {}], propsValues: [] });
+const convertSectionToBlock = (section: Section) => ({
+  models: [section.model || {}],
+  propsValues: section.propsValue ? [section.propsValue] : [],
+});

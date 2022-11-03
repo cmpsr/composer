@@ -47,4 +47,16 @@ describe('insertSection', () => {
       },
     ]);
   });
+
+  test('should add propsValue to the result', () => {
+    const footer = { model: { base: 'footer' }, propsValue: { base: { prop: 'value' } } };
+    const newContent = insertSection(dummyContent, footer, 'push');
+    expect(newContent).toStrictEqual([
+      ...dummyContent,
+      {
+        models: [{ base: 'footer' }],
+        propsValues: [footer.propsValue],
+      },
+    ]);
+  });
 });

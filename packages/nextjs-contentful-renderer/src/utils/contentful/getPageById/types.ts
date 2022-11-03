@@ -2,6 +2,7 @@ import { Theme } from '@cmpsr/components';
 
 export interface Section {
   model: Model;
+  propsValue?: PropsValue;
 }
 
 export interface Page {

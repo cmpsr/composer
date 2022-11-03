@@ -89,9 +89,11 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
     switch (fieldType) {
       case 'Action':
       case 'Actions':
+      case 'Bullets':
       case 'Container':
       case 'Icon':
       case 'Image':
+      case 'MediaBlock':
       case 'Text':
       case 'TextPairing':
         searchValue = match;
@@ -126,7 +128,7 @@ const renderComponent = (componentName: string, props: Record<string, unknown> |
   }
   const { children, ...rest } = props;
   const props1 = flatObject(rest);
-  const child = Array.isArray(children) ? children.join('\n') : children;
+  const child = Array.isArray(children) ? children.join('') : children;
   return children ? `<${componentName} ${props1}>${child}</${componentName}>` : `<${componentName} ${props1}/>`;
 };
 

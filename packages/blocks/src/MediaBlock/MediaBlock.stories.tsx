@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { MediaBlock, mediaBlockVariants } from '.';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
+import { IconChevronRight } from '@cmpsr/components';
 
 const alignments = ['start', 'center', 'end'] as const;
 
@@ -74,6 +75,26 @@ export const Horizontal = () => (
       ))}
     </Tbody>
   </Table>
+);
+
+export const ColumnLayout = () => (
+  <MediaBlock variant="vertical" alignItems="start" maxWidth="240px">
+    <MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" width="100px" />
+    <MediaBlock.Tag size="s">
+      <MediaBlock.Tag.Label>News</MediaBlock.Tag.Label>
+    </MediaBlock.Tag>
+    <MediaBlock.Overline>Breaking news</MediaBlock.Overline>
+    <MediaBlock.Title variant="textpairing-header-M">
+      <MediaBlock.Title.Label>There is life elsewhere in the universe</MediaBlock.Title.Label>
+      <MediaBlock.Title.SubLabel color="text-secondary">
+        We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
+        three ways we could find it.
+      </MediaBlock.Title.SubLabel>
+    </MediaBlock.Title>
+    <MediaBlock.Action href="#" size="s" trailingIcon={<IconChevronRight />}>
+      Find a spaceship
+    </MediaBlock.Action>
+  </MediaBlock>
 );
 
 const Template = ({ variant, label, subLabel, imageWidth, contentAlignment, spaceBetween }) => (

@@ -1,5 +1,7 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 15.4.1
+
 ## 15.4.0
 
 ### Minor Changes

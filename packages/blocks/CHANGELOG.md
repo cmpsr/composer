@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 10.2.0
+
+### Minor Changes
+
+- 149cbb5: feat: add Overline to MediaBlock and ColumnLayout
+
 ## 10.1.2
 
 ## 10.1.1

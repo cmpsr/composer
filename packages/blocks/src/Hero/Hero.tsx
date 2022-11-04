@@ -76,4 +76,5 @@ HeroMediaBlock.Image = MediaBlock.Image;
 HeroMediaBlock.Title = MediaBlock.Title;
 HeroMediaBlock.Tag = MediaBlock.Tag;
 HeroMediaBlock.Action = MediaBlock.Action;
+HeroMediaBlock.Overline = MediaBlock.Overline;
 Hero.MediaBlock = HeroMediaBlock;

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Card, Flex, Image, Link, Tag, TextPairing } from '@cmpsr/components';
+import React, { FC } from 'react';
+import { Card, Flex, Image, Link, Tag, Text, TextPairing, TextProps } from '@cmpsr/components';
 import { MediaBlockType } from './types';
 
 export const MediaBlock: MediaBlockType = (props) => {
@@ -22,7 +22,12 @@ export const MediaBlock: MediaBlockType = (props) => {
   );
 };
 
+const MediaBlockOverline: FC<TextProps> = (props) => (
+  <Text color="text-secondary" variant="text-body-medium" textTransform="uppercase" {...props} />
+);
+
 MediaBlock.Image = Image;
 MediaBlock.Title = TextPairing;
 MediaBlock.Tag = Tag;
 MediaBlock.Action = Link;
+MediaBlock.Overline = MediaBlockOverline;

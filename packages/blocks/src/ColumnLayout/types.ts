@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { FlexProps, Link, Flex, TextPairing } from '@cmpsr/components';
+import { FlexProps, Link, Flex, Text, TextPairing } from '@cmpsr/components';
 import { MediaBlock } from '../';
 
 export interface ColumnLayoutStaticMembers {
@@ -8,6 +8,7 @@ export interface ColumnLayoutStaticMembers {
   Actions: typeof Flex;
   Column: typeof MediaBlock;
   ColumnsContainer: typeof Flex;
+  Overline: typeof Text;
 }
 
 export type ColumnLayoutType = FC<FlexProps> & ColumnLayoutStaticMembers;

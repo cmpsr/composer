@@ -11,6 +11,7 @@ describe('MediaBlock', () => {
           <MediaBlock.Title.Label>Label</MediaBlock.Title.Label>
           <MediaBlock.Title.SubLabel>SubLabel</MediaBlock.Title.SubLabel>
         </MediaBlock.Title>
+        <MediaBlock.Overline>Overline</MediaBlock.Overline>
         <MediaBlock.Tag>
           <MediaBlock.Tag.Label>Tag</MediaBlock.Tag.Label>
         </MediaBlock.Tag>
@@ -22,5 +23,6 @@ describe('MediaBlock', () => {
     screen.getByText('SubLabel');
     screen.getByText('Tag');
     screen.getByText('Link');
+    screen.getByText('Overline');
   });
 });

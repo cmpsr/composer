@@ -6,6 +6,7 @@ describe('ColumnLayout', () => {
   test('should render ColumnLayout parts', () => {
     renderWithProviders(
       <ColumnLayout backgroundColor="background-overlay" p="1.5rem" gap="1.5rem">
+        <ColumnLayout.Overline>Breaking news</ColumnLayout.Overline>
         <ColumnLayout.Title variant="textpairing-header-XL" textAlign="center">
           <ColumnLayout.Title.Label>The next generation of care for women and families</ColumnLayout.Title.Label>
           <ColumnLayout.Title.SubLabel color="text-secondary">
@@ -39,6 +40,7 @@ describe('ColumnLayout', () => {
     );
     screen.getByTestId('cmpsr.block.column-layout.column-group');
     screen.getByTestId('cmpsr.block.column-layout.column');
+    screen.getByText(/Breaking news/i);
     screen.getByText('The next generation of care for women and families');
     screen.getByText(
       'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.'

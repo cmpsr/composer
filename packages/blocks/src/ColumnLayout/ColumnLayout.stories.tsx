@@ -10,6 +10,7 @@ export default {
 
 export const Bounded = () => (
   <ColumnLayout backgroundColor="background-overlay" p="1.5rem" gap="1.5rem">
+    <ColumnLayout.Overline textAlign="center">Breaking news</ColumnLayout.Overline>
     <ColumnLayout.Title variant="textpairing-header-XL" textAlign="center">
       <ColumnLayout.Title.Label>There is life elsewhere in the universe</ColumnLayout.Title.Label>
       <ColumnLayout.Title.SubLabel color="text-secondary">

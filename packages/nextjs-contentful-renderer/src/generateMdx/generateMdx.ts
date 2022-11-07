@@ -113,6 +113,10 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
       case 'list':
         searchValue = listPattern ? escapeCharactersInListPattern(match) : match;
         break;
+      case 'ENV_VAR':
+        searchValue = match;
+        newValue = process.env[propName];
+        break;
       default:
         searchValue = match;
     }

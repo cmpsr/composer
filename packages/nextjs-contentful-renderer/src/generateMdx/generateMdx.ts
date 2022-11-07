@@ -84,7 +84,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
 
     const propValue = values[propName];
     let newValue = propValue ? propValue : defaultValue;
-    console.log('replacepropvALUES', fieldType);
+
     let searchValue: string;
     switch (fieldType) {
       case 'Action':

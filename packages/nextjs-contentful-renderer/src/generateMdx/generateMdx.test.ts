@@ -338,4 +338,15 @@ describe('generateMdx', () => {
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([{ base: '<div><Image src="https://image.url" alt="Image alt" /><div/>' }]);
   });
+  test('should replace ENV_VAR', async () => {
+    process.env.composer = 'composerEnvVar';
+    const fakeBlocks = [
+      {
+        models: [{ base: '{{composer:ENV_VAR}}' }],
+        propsValues: [{ base: {} }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([{ base: 'composerEnvVar' }]);
+  });
 });

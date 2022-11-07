@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 15.5.0
+
+### Minor Changes
+
+- 029d5a7: feat: replace fieldType ENV_VAR with process environment
+
 ## 15.4.1
 
 ## 15.4.0

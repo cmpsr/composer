@@ -18,7 +18,7 @@ export const Bounded = () => (
         three ways we could find it.
       </ColumnLayout.Title.SubLabel>
     </ColumnLayout.Title>
-    <ColumnLayout.ColumnsContainer gap="1rem" justifyContent="center" flexWrap="wrap">
+    <ColumnLayout.ColumnsContainer justifyContent="center">
       <ColumnLayout.Column variant="vertical" maxWidth="250px" bounded filled>
         <ColumnLayout.Column.Image
           src="https://images.ctfassets.net/zfrki53eq8jx/BFxs2EQI9sxdhvlzvby9O/e821396e84ddd929a01468776b7dd70a/Composer_Icon_-_Dark_Edition_3x.png"
@@ -68,7 +68,7 @@ export const Unbounded = () => (
     <ColumnLayout.Title variant="textpairing-header-XL" textAlign="center">
       <ColumnLayout.Title.Label>The next generation of care for women and families</ColumnLayout.Title.Label>
     </ColumnLayout.Title>
-    <ColumnLayout.ColumnsContainer gap="2rem" justifyContent="center" flexWrap="wrap">
+    <ColumnLayout.ColumnsContainer gap="2rem" justifyContent="center">
       <ColumnLayout.Column variant="vertical" maxWidth="220px">
         <ColumnLayout.Column.Image
           src="https://images.ctfassets.net/zfrki53eq8jx/BFxs2EQI9sxdhvlzvby9O/e821396e84ddd929a01468776b7dd70a/Composer_Icon_-_Dark_Edition_3x.png"
@@ -133,7 +133,7 @@ const Template = ({ label, subLabel, tagLabel, columnLabel, columnSubLabel, link
       <ColumnLayout.Title.Label>{label}</ColumnLayout.Title.Label>
       <ColumnLayout.Title.SubLabel color="text-secondary">{subLabel}</ColumnLayout.Title.SubLabel>
     </ColumnLayout.Title>
-    <ColumnLayout.ColumnsContainer gap="2rem" justifyContent="center" flexWrap="wrap">
+    <ColumnLayout.ColumnsContainer gap="2rem" justifyContent="center">
       {Array(6)
         .fill(0)
         .map((_, index) => (

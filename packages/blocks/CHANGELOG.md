@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 10.3.0
+
+### Minor Changes
+
+- 4eaf23a: feat: add default flex-wrap to ColumnLayout
+
 ## 10.2.0
 
 ### Minor Changes

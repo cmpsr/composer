@@ -1,5 +1,12 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 15.7.0
+
+### Minor Changes
+
+- d71d8ea: feat: add support for Columns type
+- d71d8ea: feat: add support for Column type
+
 ## 15.6.0
 
 ### Minor Changes

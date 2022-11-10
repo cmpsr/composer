@@ -91,6 +91,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
       case 'Actions':
       case 'Bullets':
       case 'Column':
+      case 'Columns':
       case 'Container':
       case 'Icon':
       case 'Image':

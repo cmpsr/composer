@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 15.8.0
+
+### Minor Changes
+
+- b5c7543: feat: add support for Images field type
+
 ## 15.7.1
 
 ## 15.7.0

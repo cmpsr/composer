@@ -39,6 +39,6 @@ const HighlightedTextLink: FC<LinkProps> = (props) => (
 HighlightedText.Action = HighlightedTextLink;
 
 const HighlightedTextLegend: FC<TextProps> = (props) => (
-  <Text color="text-secondary" variant="text-body-display-S" textTransform="uppercase" {...props} />
+  <Text color="text-secondary" variant="text-body-display-S" textTransform="uppercase" display="flex" {...props} />
 );
 HighlightedText.Overline = HighlightedTextLegend;

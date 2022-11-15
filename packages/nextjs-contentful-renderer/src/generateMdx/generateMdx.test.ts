@@ -33,6 +33,34 @@ describe('generateMdx', () => {
       },
     ]);
   });
+  test('should replace boolean props as boolean', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<Text prop={{prop:boolean}}/>' }],
+        propsValues: [{ base: { prop: false } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([
+      {
+        base: '<Text prop={false}/>',
+      },
+    ]);
+  });
+  test('should replace number props as number', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<Text prop={{prop:number}}/>' }],
+        propsValues: [{ base: { prop: 5 } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([
+      {
+        base: '<Text prop={5}/>',
+      },
+    ]);
+  });
   test('should replace props in all breakpoints', async () => {
     const fakeBlocks = [
       {
@@ -136,12 +164,12 @@ describe('generateMdx', () => {
   });
   test('should return code with replaced number values', async () => {
     const code = '<Text>Value {{value:number}}</Text>';
-    const fakeBlocks = [{ models: [{ base: code }], propsValues: [{ base: { value: '1' } }] }];
+    const fakeBlocks = [{ models: [{ base: code }], propsValues: [{ base: { value: 1 } }] }];
     const mdx = await generateMdx(fakeBlocks);
-    expect(mdx).toStrictEqual([{ base: '<Text>Value 1</Text>' }]);
+    expect(mdx).toStrictEqual([{ base: '<Text>Value {1}</Text>' }]);
   });
   test('should return code with replaced values with default value', async () => {
-    const code = '<Text>Must use {{value:number:default value}}</Text>';
+    const code = '<Text>Must use {{value:string:default value}}</Text>';
     const fakeBlocks = [{ models: [{ base: code }], propsValues: [] }];
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([{ base: '<Text>Must use default value</Text>' }]);
@@ -181,7 +209,7 @@ describe('generateMdx', () => {
     const code = '<Text>Value {{value1:number}}-{{value2:string}}</Text>';
     const fakeBlocks = [{ models: [{ base: code }], propsValues: [{ base: { value1: '1', value2: '2' } }] }];
     const mdx = await generateMdx(fakeBlocks);
-    expect(mdx).toStrictEqual([{ base: '<Text>Value 1-2</Text>' }]);
+    expect(mdx).toStrictEqual([{ base: '<Text>Value {1}-2</Text>' }]);
   });
   test('should render component with object props', async () => {
     const fakeBlocks = [

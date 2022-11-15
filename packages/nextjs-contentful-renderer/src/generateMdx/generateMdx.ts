@@ -113,6 +113,11 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
           newValue = flatObject(newValue);
         }
         break;
+      case 'boolean':
+      case 'number':
+        searchValue = match;
+        newValue = `{${propValue}}`;
+        break;
       case 'list':
         searchValue = listPattern ? escapeCharactersInListPattern(match) : match;
         break;
@@ -143,7 +148,8 @@ const flatObject = (obj: Record<string, any>): string => {
   let result = '';
   for (const [key, value] of Object.entries(obj)) {
     const patternToGetRgxGroups = getRgxInstance();
-    const isReplaceableValue = !!patternToGetRgxGroups.exec(value);
+    const isReplaceableValue =
+      typeof value === 'boolean' || typeof value === 'number' || !!patternToGetRgxGroups.exec(value);
     const wrapper = isReplaceableValue ? '{' : '"';
     const endWrapper = isReplaceableValue ? ' }' : '"';
     result += `${key}=${wrapper}${value}${endWrapper} `;

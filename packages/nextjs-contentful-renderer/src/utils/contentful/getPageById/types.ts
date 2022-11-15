@@ -32,7 +32,12 @@ export interface Block {
 
 export type Model = ResponsiveValue<string>;
 
-export type PropsValue = ResponsiveValue<Record<string, string | Record<string, string | string[]>>>;
+export type PropsValue = ResponsiveValue<
+  Record<
+    string,
+    string | number | boolean | Record<string, string | string[] | number | boolean | number[] | boolean[]>
+  >
+>;
 
 export interface ResponsiveValue<T> {
   base?: T;

@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 15.8.1
+
+### Patch Changes
+
+- 5bb2acb: fix: handle number and boolean types
+
 ## 15.8.0
 
 ### Minor Changes

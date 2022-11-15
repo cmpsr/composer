@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 10.4.0
+
+### Minor Changes
+
+- a5d09e3: feat: add display flex to HighlightedText Overline
+
 ## 10.3.0
 
 ### Minor Changes

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Flex, Image, TextPairing, FlexProps, ImageProps } from '@cmpsr/components';
+import { Flex, Image, Text, TextPairing, FlexProps, ImageProps, TextProps } from '@cmpsr/components';
 
 import { BrandLogosType } from './types';
 
@@ -34,3 +34,8 @@ const BrandLogosImage: FC<ImageProps> = (props) => (
 );
 BrandLogos.Image = BrandLogosImage;
 BrandLogos.Title = TextPairing;
+
+const BrandLogosOverline: FC<TextProps> = (props) => (
+  <Text color="text-secondary" variant="text-body-display-S" textTransform="uppercase" display="flex" {...props} />
+);
+BrandLogos.Overline = BrandLogosOverline;

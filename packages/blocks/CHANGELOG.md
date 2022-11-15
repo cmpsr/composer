@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 10.5.0
+
+### Minor Changes
+
+- d9c1610: feat: add support for overline in brandlogos block
+
 ## 10.4.0
 
 ### Minor Changes

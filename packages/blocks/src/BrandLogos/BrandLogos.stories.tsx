@@ -8,6 +8,22 @@ export default {
   title: 'Blocks/BrandLogos',
 } as Meta;
 
+export const WithOverline = () => (
+  <BrandLogos backgroundColor="background-page">
+    <BrandLogos.Overline>BREAKING NEWS</BrandLogos.Overline>
+    <BrandLogos.Title variant="textpairing-header-2XL">
+      <BrandLogos.Title.Label>Title</BrandLogos.Title.Label>
+    </BrandLogos.Title>
+    <BrandLogos.ImagesContainer>
+      {Array(8)
+        .fill('https://avatars0.githubusercontent.com/u/67131017?s=200')
+        .map((image, i) => (
+          <BrandLogos.Image src={image} key={i} maxHeight="12.5rem" />
+        ))}
+    </BrandLogos.ImagesContainer>
+  </BrandLogos>
+);
+
 export const WithText = () => (
   <BrandLogos backgroundColor="background-page">
     <BrandLogos.Title variant="textpairing-header-2XL">

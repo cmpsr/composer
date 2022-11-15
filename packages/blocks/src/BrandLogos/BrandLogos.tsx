@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Flex, Image, TextPairing, FlexProps, ImageProps } from '@cmpsr/components';
+import { Flex, Image, Text, TextPairing, FlexProps, ImageProps, TextProps, TextPairingType } from '@cmpsr/components';
 
 import { BrandLogosType } from './types';
 
@@ -11,7 +11,6 @@ export const BrandLogos: BrandLogosType = (props) => (
     alignItems="center"
     py={{ base: '3.5rem', md: '4rem', lg: '5.5rem', xl: '7rem' }}
     px="2rem"
-    gap={{ base: '2rem', md: '2.75rem', lg: '4.75rem' }}
     {...props}
   />
 );
@@ -33,4 +32,22 @@ const BrandLogosImage: FC<ImageProps> = (props) => (
   <Image maxWidth={{ base: '10rem', md: '11.25rem', xl: '12.5rem' }} {...props} />
 );
 BrandLogos.Image = BrandLogosImage;
-BrandLogos.Title = TextPairing;
+
+const BrandLogosTextPairing: TextPairingType = (props) => (
+  <TextPairing marginBottom={{ base: '2rem', md: '2.75rem', lg: '4.75rem' }} {...props} />
+);
+BrandLogosTextPairing.Label = TextPairing.Label;
+BrandLogosTextPairing.SubLabel = TextPairing.SubLabel;
+BrandLogos.Title = BrandLogosTextPairing;
+
+const BrandLogosOverline: FC<TextProps> = (props) => (
+  <Text
+    color="text-secondary"
+    variant="text-body-display-S"
+    textTransform="uppercase"
+    display="flex"
+    marginBottom="1rem"
+    {...props}
+  />
+);
+BrandLogos.Overline = BrandLogosOverline;

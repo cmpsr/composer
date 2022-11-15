@@ -43,4 +43,12 @@ describe('BrandLogos', () => {
     );
     screen.getByRole('img');
   });
+  test('should render overline', () => {
+    renderWithProviders(
+      <BrandLogos>
+        <BrandLogos.Overline>Overline</BrandLogos.Overline>
+      </BrandLogos>
+    );
+    screen.getByText('Overline');
+  });
 });

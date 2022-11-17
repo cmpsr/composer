@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.2.0
+
+### Minor Changes
+
+- 01e672b: feat: add width inherit to Link component in order to adapt parent size when provided
+
 ## 5.1.0
 
 ### Minor Changes

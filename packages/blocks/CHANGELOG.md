@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 10.6.0
+
+### Minor Changes
+
+- 9dc4920: feat: bump components package in blocks
+
 ## 10.5.1
 
 ## 10.5.0

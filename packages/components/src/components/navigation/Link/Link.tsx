@@ -15,6 +15,7 @@ export const Link = forwardRef<LinkProps, typeof ChakraLink>(
         data-testid="cmpsr.link.container"
         alignItems="center"
         columnGap="0.5rem"
+        width="inherit"
         {...props}
       >
         {leftIcon}

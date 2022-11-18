@@ -38,7 +38,7 @@ export const AllVertical = () => (
                 <MediaBlock.Title.SubLabel children={`vertical - ${alignment}`} />
               </MediaBlock.Title>
               <MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" width="100px" />
-              <MediaBlock.Tag size="s">
+              <MediaBlock.Tag>
                 <MediaBlock.Tag.Label>Tag</MediaBlock.Tag.Label>
               </MediaBlock.Tag>
               <MediaBlock.Action href="#" size="s">

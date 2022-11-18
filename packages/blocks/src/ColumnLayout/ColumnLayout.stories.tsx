@@ -74,7 +74,7 @@ export const Unbounded = () => (
           src="https://images.ctfassets.net/zfrki53eq8jx/BFxs2EQI9sxdhvlzvby9O/e821396e84ddd929a01468776b7dd70a/Composer_Icon_-_Dark_Edition_3x.png"
           maxWidth="150px"
         />
-        <ColumnLayout.Column.Tag size="s">
+        <ColumnLayout.Column.Tag>
           <ColumnLayout.Column.Tag.Label>Tech</ColumnLayout.Column.Tag.Label>
         </ColumnLayout.Column.Tag>
         <ColumnLayout.Column.Title>
@@ -92,7 +92,7 @@ export const Unbounded = () => (
           src="https://images.ctfassets.net/zfrki53eq8jx/BFxs2EQI9sxdhvlzvby9O/e821396e84ddd929a01468776b7dd70a/Composer_Icon_-_Dark_Edition_3x.png"
           maxWidth="150px"
         />
-        <ColumnLayout.Column.Tag size="s">
+        <ColumnLayout.Column.Tag>
           <ColumnLayout.Column.Tag.Label>Tech</ColumnLayout.Column.Tag.Label>
         </ColumnLayout.Column.Tag>
         <ColumnLayout.Column.Title>
@@ -110,7 +110,7 @@ export const Unbounded = () => (
           src="https://images.ctfassets.net/zfrki53eq8jx/BFxs2EQI9sxdhvlzvby9O/e821396e84ddd929a01468776b7dd70a/Composer_Icon_-_Dark_Edition_3x.png"
           maxWidth="150px"
         />
-        <ColumnLayout.Column.Tag size="s">
+        <ColumnLayout.Column.Tag>
           <ColumnLayout.Column.Tag.Label>Tech</ColumnLayout.Column.Tag.Label>
         </ColumnLayout.Column.Tag>
         <ColumnLayout.Column.Title>
@@ -142,7 +142,7 @@ const Template = ({ label, subLabel, tagLabel, columnLabel, columnSubLabel, link
               src="https://images.ctfassets.net/zfrki53eq8jx/BFxs2EQI9sxdhvlzvby9O/e821396e84ddd929a01468776b7dd70a/Composer_Icon_-_Dark_Edition_3x.png"
               maxWidth="150px"
             />
-            <ColumnLayout.Column.Tag size="s">
+            <ColumnLayout.Column.Tag>
               <ColumnLayout.Column.Tag.Label>{tagLabel}</ColumnLayout.Column.Tag.Label>
             </ColumnLayout.Column.Tag>
             <ColumnLayout.Column.Title>

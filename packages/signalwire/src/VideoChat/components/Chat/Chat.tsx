@@ -32,9 +32,12 @@ export const Chat = ({ userId, channel, floating = true, ...flexProps }: ChatPro
   }, [messages, showMessages]);
 
   useEffect(() => {
-    fetchTokenAndStartChat(userId);
     setShowMessages(!isMobile || false);
-  }, [isMobile, userId, fetchTokenAndStartChat]);
+  }, [isMobile]);
+
+  useEffect(() => {
+    fetchTokenAndStartChat(userId);
+  }, [fetchTokenAndStartChat, userId]);
 
   const handleSendMessage = () => {
     sendMessage(message);

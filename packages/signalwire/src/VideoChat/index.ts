@@ -1,1 +1,1 @@
-export const VideoChat = 1;
+export * from './components/VideoChat';

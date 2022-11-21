@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
 import * as Composer from '@cmpsr/components';
 import * as Blocks from '@cmpsr/blocks';
+import { VideoChat } from '@cmpsr/signalwire/client';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { MdxRendererProps } from './types';
 
@@ -42,6 +43,7 @@ const composerComponents: any = Object.keys(Composer).reduce(
     h6: (props: Composer.TextProps) => renderHeader(props, 'h6'),
     a: (props: Composer.LinkProps) => <Composer.Link display="inline-flex" {...props} />,
     img: Composer.Image,
+    VideoChat,
   }
 );
 

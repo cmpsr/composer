@@ -11,6 +11,8 @@ const dummyPageContent = {
   content: dummyContent,
 };
 
+const footer = [{ models: [{ base: '- opt 1' }], propsValues: [] }];
+
 describe('configFooter', () => {
   test('should return content if there is no footer', () => {
     const newContent = configFooter(dummyPageContent);
@@ -18,7 +20,6 @@ describe('configFooter', () => {
   });
 
   test('should return an array with footer if it has a footer but content is null', () => {
-    const footer = { model: { base: '- opt 1' } };
     const newContent = configFooter({ content: null, footer });
     expect(newContent).toStrictEqual([
       {
@@ -29,7 +30,6 @@ describe('configFooter', () => {
   });
 
   test('should concat footer to content', () => {
-    const footer = { model: { base: '- opt 1' } };
     const newContent = configFooter({ content: dummyContent, footer });
     expect(newContent).toStrictEqual([
       ...dummyContent,

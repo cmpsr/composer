@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 10.7.0
+
+### Minor Changes
+
+- 50eb4d0: feat: update navigation links to accept spread properties
+
 ## 10.6.0
 
 ### Minor Changes

@@ -88,7 +88,7 @@ export const Chat = ({ userId, channel, floating = true, ...flexProps }: ChatPro
                 flex="6"
                 maxHeight="86%"
                 overflowY="scroll"
-                css={{
+                __css={{
                   '&::-webkit-scrollbar': {
                     display: 'none',
                   },

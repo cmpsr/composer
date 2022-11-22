@@ -1,5 +1,15 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 16.0.0
+
+### Major Changes
+
+- d2a847d: feat: Update navbar and footer to behave as Blocks
+
+### Minor Changes
+
+- 469077e: feat: add support for extra props in types
+
 ## 15.9.1
 
 ## 15.9.0

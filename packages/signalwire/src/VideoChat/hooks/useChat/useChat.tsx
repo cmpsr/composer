@@ -1,23 +1,11 @@
 import { Chat } from '@signalwire/js';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { apiClient } from '../../utils/api';
+import { getChatToken } from '../../utils/client';
 
 const createChatClient = (token: string, events: any): Chat.Client => {
   const client = new Chat.Client({ token });
   Object.keys(events).forEach((eventName) => client.on(eventName as any, events[eventName]));
   return client;
-};
-
-const fetchToken = async (username: string, channels: string | string[]) => {
-  const {
-    data: { token },
-  } = await apiClient.post('/chat/token', {
-    user: username,
-    channels: Array.isArray(channels) ? channels : [channels],
-    validFor: 50,
-  });
-
-  return token;
 };
 
 type Props = {
@@ -43,7 +31,7 @@ export const useChat = ({ username, channel, autoload }: Props) => {
   const fetchTokenAndStartChat = useCallback(
     async (manualUsername?: string) => {
       if (!username && !manualUsername) return;
-      const token = await fetchToken((manualUsername || username) as string, channel);
+      const token = await getChatToken((manualUsername || username) as string, channel);
       clientRef.current = createChatClient(token, {
         message: (message: Chat.ChatMessage) =>
           setMessages((messages) => {

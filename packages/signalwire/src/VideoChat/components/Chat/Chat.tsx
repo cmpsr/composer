@@ -29,7 +29,7 @@ export const Chat = ({ userId, channel, floating = true, ...flexProps }: ChatPro
     if (containerRef.current && showMessages) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
-  }, [messages, showMessages]);
+  }, [messages, showMessages, containerRef.current]);
 
   useEffect(() => {
     setShowMessages(!isMobile || false);

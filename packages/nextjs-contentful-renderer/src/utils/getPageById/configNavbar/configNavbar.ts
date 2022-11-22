@@ -1,4 +1,4 @@
 import { Block, Page } from '../../contentful/getPageById/types';
-import { insertSection } from '../insertSection';
+import { insertBlock } from '../insertBlock';
 
-export const configNavbar = (page: Partial<Page>): Block[] => insertSection(page.content, page.navbar, 'unshift');
+export const configNavbar = (page: Partial<Page>): Block[] => insertBlock(page.content, page.navbar?.[0], 'unshift');

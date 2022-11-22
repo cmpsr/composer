@@ -11,6 +11,8 @@ const dummyPageContent = {
   content: dummyContent,
 };
 
+const navbar = [{ models: [{ base: '- opt 1' }], propsValues: [] }];
+
 describe('configNavbar', () => {
   test('should return content if there is no navbar', () => {
     const newContent = configNavbar(dummyPageContent);
@@ -18,7 +20,6 @@ describe('configNavbar', () => {
   });
 
   test('should return an array with navbar if it has a navbar but content is null', () => {
-    const navbar = { model: { base: '- opt 1' } };
     const newContent = configNavbar({ content: null, navbar });
     expect(newContent).toStrictEqual([
       {
@@ -29,7 +30,6 @@ describe('configNavbar', () => {
   });
 
   test('should concat navbar to content', () => {
-    const navbar = { model: { base: '- opt 1' } };
     const newContent = configNavbar({ content: dummyContent, navbar });
     expect(newContent).toStrictEqual([
       {

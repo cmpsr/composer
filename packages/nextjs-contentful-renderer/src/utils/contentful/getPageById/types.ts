@@ -1,18 +1,13 @@
 import { Theme } from '@cmpsr/components';
 
-export interface Section {
-  model: Model;
-  propsValue?: PropsValue;
-}
-
 export interface Page {
   id: string;
   title: string;
   metaConfiguration?: PageMetaData;
   content: Block[];
   theme: Partial<Theme>;
-  navbar: Section;
-  footer: Section;
+  navbar: Block[];
+  footer: Block[];
 }
 
 interface PageMetaData {

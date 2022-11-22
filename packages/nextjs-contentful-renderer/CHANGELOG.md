@@ -1,5 +1,18 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 15.9.1
+
+## 15.9.0
+
+### Minor Changes
+
+- 69cc934: feat: add VideoChat component
+
+### Patch Changes
+
+- Updated dependencies [69cc934]
+  - @cmpsr/signalwire@0.3.0
+
 ## 15.8.4
 
 ## 15.8.3

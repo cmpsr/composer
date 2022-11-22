@@ -1,5 +1,17 @@
 # Change Log
 
+## 0.3.1
+
+### Patch Changes
+
+- 22f7ae1: fix: chat not showing latest messages automatically
+
+## 0.3.0
+
+### Minor Changes
+
+- 69cc934: feat: add VideoChat component
+
 ## 0.2.0
 
 ### Minor Changes

@@ -377,4 +377,16 @@ describe('generateMdx', () => {
     const mdx = await generateMdx(fakeBlocks);
     expect(mdx).toStrictEqual([{ base: 'composerEnvVar' }]);
   });
+  test('should replace extras on type', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '{{image:Image[href:string,target:string]:Navigation.Image}}' }],
+        propsValues: [{ base: { image: { src: 'https://image.url', alt: 'Image alt', href: '#', target: '_blank' } } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([
+      { base: '<Navigation.Image src="https://image.url" alt="Image alt" href="#" target="_blank" />' },
+    ]);
+  });
 });

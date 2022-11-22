@@ -62,7 +62,7 @@ const replaceValuesByBreakpoint = (mdxModel: Model, values: PropsValue): Model =
 
 const bundler = async (code: string): Promise<string> => (await bundleMDX({ source: code.trim() })).code;
 
-export const getRgxInstance = () => new RegExp('{{(\\w+):(\\w+)(?:\\((.+)(?=\\|)?\\))?(?::([^}}]*))?}}', 'g');
+export const getRgxInstance = () => new RegExp('{{(\\w+):(\\w+)(?:\\((.+)?\\))?(\\[(.+)?\\])?(?::([^}}]*))?}}', 'g');
 
 const replacePropValues = (mdx: string, values: Record<string, string> = {}): string => {
   if (!mdx) return '';
@@ -80,7 +80,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
     const propName = rgxGroups[1];
     const fieldType = rgxGroups[2];
     const listPattern = rgxGroups[3];
-    const defaultValue = rgxGroups[4] || '';
+    const defaultValue = rgxGroups[6] || '';
 
     const propValue = values[propName];
     let newValue = propValue ? propValue : defaultValue;

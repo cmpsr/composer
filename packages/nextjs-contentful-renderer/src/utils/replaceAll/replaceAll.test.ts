@@ -13,4 +13,11 @@ describe('replaceAll', () => {
   `('should return "$expectedOutput" for "$value"', ({ value, expectedOutput }) => {
     expect(replaceAll(textToReplace, replaceValue)(value)).toBe(expectedOutput);
   });
+  test('should replace patterns containing square brackets', () => {
+    const textToReplace = 'Text[text]';
+    const replaceValue = 'Value';
+    const str = `Some ${textToReplace}`;
+    const expectedStr = `Some ${replaceValue}`;
+    expect(replaceAll(textToReplace, replaceValue)(str)).toBe(expectedStr);
+  });
 });

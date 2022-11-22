@@ -1,6 +1,7 @@
 import { Chat } from '@signalwire/js';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { getChatToken } from '../../utils/client';
+import { UseChatProps } from './types';
 
 const createChatClient = (token: string, events: any): Chat.Client => {
   const client = new Chat.Client({ token });
@@ -8,13 +9,7 @@ const createChatClient = (token: string, events: any): Chat.Client => {
   return client;
 };
 
-type Props = {
-  username?: string;
-  channel: string;
-  autoload?: boolean;
-};
-
-export const useChat = ({ username, channel, autoload }: Props) => {
+export const useChat = ({ username, channel, autoload }: UseChatProps) => {
   const [messages, setMessages] = useState<Chat.ChatMessage[]>([]);
   const [members, setMembers] = useState<Chat.ChatMember[]>([]);
   const [ready, setReady] = useState(false);

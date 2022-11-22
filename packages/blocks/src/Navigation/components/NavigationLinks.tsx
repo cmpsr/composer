@@ -8,7 +8,7 @@ export interface NavigationLinksProps extends PropsWithChildren<{}> {
   image?: ReactNode;
 }
 
-export const NavigationLinks: FC<NavigationLinksProps> = ({ actions, image, children }) => {
+export const NavigationLinks: FC<NavigationLinksProps> = ({ actions, image, children, ...props }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { showBaseNavigation } = useNavigationContext();
 
@@ -26,6 +26,7 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({ actions, image, chil
           left="0"
           zIndex="1"
           flexDirection="column"
+          {...props}
         >
           <Box pt="0.75rem" px="1rem">
             <IconButton
@@ -53,7 +54,7 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({ actions, image, chil
       )}
     </>
   ) : (
-    <Flex maxWidth="80rem" margin="0 auto" alignItems="center" justifyContent="space-between" width="100%">
+    <Flex maxWidth="80rem" margin="0 auto" alignItems="center" justifyContent="space-between" width="100%" {...props}>
       <Flex gap={{ lg: '2.75rem', xxl: '4.5rem' }}>
         {image}
         <Flex gap={{ lg: '1.5rem', xl: '2.25rem', xxl: '5rem' }}>{children}</Flex>

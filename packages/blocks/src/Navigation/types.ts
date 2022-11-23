@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 import { FlexProps, ImageProps, LinkProps } from '@cmpsr/components';
 
 export interface NavigationProps extends FlexProps {

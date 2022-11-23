@@ -23,7 +23,7 @@ describe('Footer', () => {
   test('should render content', () => {
     givenComponentRendered();
     screen.getByRole('img', { name: 'Logo' });
-    screen.getByRole('heading', { name: 'Group 1' });
+    screen.getByText('Group 1');
     screen.getByRole('link', { name: 'Link 1' });
     screen.getByRole('link', { name: 'Link 2' });
     screen.getByRole('link', { name: 'Link 3' });

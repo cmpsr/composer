@@ -19,7 +19,7 @@ export interface NavigationLinksProps extends FlexProps {
 
 export interface NavigationStaticMembers {
   Image: FC<NavigationImageProps>;
-  Links: FC<PropsWithChildren<{} & NavigationLinksProps>>;
+  Links: FC<NavigationLinksProps>;
   Link: FC<NavigationLinkProps>;
   Actions: FC<FlexProps>;
   Action: FC<LinkProps>;

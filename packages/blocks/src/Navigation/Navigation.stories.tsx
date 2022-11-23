@@ -14,19 +14,11 @@ export const Sticky = () => (
   <>
     <Navigation sticky>
       <Navigation.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" href="#" />
-      <Navigation.Links>
-        <Navigation.Link href="#" showDivider>
-          Default Link
-        </Navigation.Link>
-        <Navigation.Link href="#" showDivider>
-          Default Link
-        </Navigation.Link>
-        <Navigation.Link href="#" showDivider>
-          Default Link
-        </Navigation.Link>
-        <Navigation.Link href="#" showDivider>
-          Default Link
-        </Navigation.Link>
+      <Navigation.Links showDividers>
+        <Navigation.Link href="#">Default Link</Navigation.Link>
+        <Navigation.Link href="#">Default Link</Navigation.Link>
+        <Navigation.Link href="#">Default Link</Navigation.Link>
+        <Navigation.Link href="#">Default Link</Navigation.Link>
         <Navigation.Link href="#">Default Link</Navigation.Link>
       </Navigation.Links>
       <Navigation.Actions>

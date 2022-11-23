@@ -1,13 +1,12 @@
 import React, { FC, cloneElement, isValidElement, Children, ReactElement } from 'react';
 import { Flex, FlexProps, useBreakpointValue, useScrollPosition } from '@cmpsr/components';
 
-import { NavigationImageProps, NavigationProps, NavigationStaticMembers } from './types';
+import { NavigationImageProps, NavigationProps, NavigationStaticMembers, NavigationLinksProps } from './types';
 import {
   NavigationAction,
   NavigationActions,
   NavigationLink,
   NavigationLinks,
-  NavigationLinksProps,
   NavigationImage,
   NavigationProvider,
 } from './components';

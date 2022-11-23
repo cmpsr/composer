@@ -1,7 +1,12 @@
-import React, { FC, Fragment, cloneElement, isValidElement, Children } from 'react';
+import React, { FC, Fragment, ReactNode, cloneElement, isValidElement, Children } from 'react';
 import { Box, Divider, Flex, IconButton, IconMenu2, IconX, Link, Text, useDisclosure } from '@cmpsr/components';
 import { useNavigationContext } from './NavigationContext';
-import { NavigationLinkProps, NavigationLinksProps } from '../types';
+import { NavigationLinkProps, NavigationLinksProps as INavigationLinksProps } from '../types';
+
+export interface NavigationLinksProps extends INavigationLinksProps {
+  actions?: ReactNode;
+  image?: ReactNode;
+}
 
 export const NavigationLinks: FC<NavigationLinksProps> = ({
   actions,

@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, ReactNode } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { FlexProps, ImageProps, LinkProps } from '@cmpsr/components';
 
 export interface NavigationProps extends FlexProps {
@@ -12,15 +12,14 @@ export interface NavigationImageProps extends ImageProps {
 export interface NavigationLinkProps extends LinkProps {
   showDivider?: boolean;
 }
-export interface NavigationLinksProps extends PropsWithChildren<{}> {
-  actions?: ReactNode;
-  image?: ReactNode;
+
+export interface NavigationLinksProps extends FlexProps {
   showDividers?: boolean;
 }
 
 export interface NavigationStaticMembers {
   Image: FC<NavigationImageProps>;
-  Links: FC<NavigationLinksProps>;
+  Links: FC<PropsWithChildren<{} & NavigationLinksProps>>;
   Link: FC<NavigationLinkProps>;
   Actions: FC<FlexProps>;
   Action: FC<LinkProps>;

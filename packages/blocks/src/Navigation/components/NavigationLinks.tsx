@@ -1,4 +1,4 @@
-import React, { FC, Fragment, PropsWithChildren, ReactNode } from 'react';
+import React, { FC, Fragment, PropsWithChildren, ReactNode, cloneElement, isValidElement, Children } from 'react';
 import { Box, Divider, Flex, IconButton, IconMenu2, IconX, Link, Text, useDisclosure } from '@cmpsr/components';
 import { useNavigationContext } from './NavigationContext';
 import { NavigationLinkProps } from '../types';
@@ -6,9 +6,16 @@ import { NavigationLinkProps } from '../types';
 export interface NavigationLinksProps extends PropsWithChildren<{}> {
   actions?: ReactNode;
   image?: ReactNode;
+  showDividers?: boolean;
 }
 
-export const NavigationLinks: FC<NavigationLinksProps> = ({ actions, image, children, ...props }) => {
+export const NavigationLinks: FC<NavigationLinksProps> = ({
+  actions,
+  image,
+  children,
+  showDividers = true,
+  ...props
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { showBaseNavigation } = useNavigationContext();
 
@@ -47,7 +54,14 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({ actions, image, chil
             flexDirection="column"
             overflow="auto"
           >
-            {children}
+            {Children.map(
+              children,
+              (child, index) =>
+                isValidElement(child) &&
+                cloneElement(child, {
+                  showDivider: index === Children.count(children) - 1 ? false : showDividers,
+                } as NavigationLinkProps)
+            )}
             {actions}
           </Flex>
         </Flex>
@@ -69,7 +83,7 @@ export const NavigationLink: FC<NavigationLinkProps> = ({ showDivider, children,
 
   return showBaseNavigation ? (
     <Fragment>
-      <Link size="l" {...props}>
+      <Link size="l" justifyContent="center" {...props}>
         <Text variant="text-body-display-L" color="text-link-secondary-default">
           {children}
         </Text>

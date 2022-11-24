@@ -1,5 +1,15 @@
 # @cmpsr/blocks
 
+## 11.0.0
+
+### Major Changes
+
+- fa3a20f: feat: restructure Footer block
+
+### Minor Changes
+
+- 96856a2: feat: add new showDividers property to NavigationLinks
+
 ## 10.7.0
 
 ### Minor Changes

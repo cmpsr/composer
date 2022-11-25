@@ -5,10 +5,7 @@ import { ComposerProviderProps } from '.';
 import { theme as defaultTheme } from '../';
 
 export const ComposerProvider: FC<ComposerProviderProps> = ({ children, theme = {}, resetCSS = true }) => {
-  let extended = extendTheme(defaultTheme, theme);
-  if (theme.breakpoints) {
-    extended = { ...extended, breakpoints: theme.breakpoints };
-  }
+  const extended = extendTheme(defaultTheme, theme);
   return (
     <ChakraProvider theme={extended} resetCSS={resetCSS}>
       {children}

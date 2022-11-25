@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.3.0
+
+### Minor Changes
+
+- 51d629f: feat: define default theme
+
 ## 5.2.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { screen, renderWithProviders, fireEvent } from '@tests/renderWithProviders';
+import { screen, renderWithProviders, fireEvent } from '../tests/renderWithProviders';
 
 import { Navigation } from './Navigation';
 

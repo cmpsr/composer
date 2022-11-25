@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, renderWithProviders } from '@tests/renderWithProviders';
+import { screen, renderWithProviders } from '../tests/renderWithProviders';
 import { Quote } from '.';
 
 describe('Quote', () => {

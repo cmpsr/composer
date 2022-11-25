@@ -1,18 +1,8 @@
 import React from 'react';
-import { ComposerProvider, createBreakpoints } from '@cmpsr/components';
+import { ComposerProvider } from '@cmpsr/components';
 import '@fontsource/inter/300.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/700.css';
-
-const breakpoints = createBreakpoints({
-  base: '0px',
-  sm: '414px',
-  md: '768px',
-  lg: '1024px',
-  xl: '1280px',
-  '2xl': '1440px',
-  xxl: '1440px',
-});
 
 export const parameters = {
   backgrounds: {
@@ -67,7 +57,6 @@ const theme = {
     heading: 'Inter',
     body: 'Inter',
   },
-  breakpoints,
 };
 
 export const decorators = [

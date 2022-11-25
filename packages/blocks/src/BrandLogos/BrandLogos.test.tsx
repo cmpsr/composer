@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderWithProviders, screen } from '@tests/renderWithProviders';
+import { renderWithProviders, screen } from '../tests/renderWithProviders';
 
 import { BrandLogos } from './BrandLogos';
 

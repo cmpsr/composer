@@ -6,11 +6,6 @@
       "decorators": false,
       "dynamicImport": false
     },
-    "paths": {
-      "@tests/*": [
-        "./src/tests/*"
-      ]
-    },
     "minify": {
       "keepClassnames": true,
       "keepFnames": true

@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, renderWithProviders, screen } from '@tests/renderWithProviders';
+import { fireEvent, renderWithProviders, screen } from '../tests/renderWithProviders';
 import { AccordionGallery } from './AccordionGallery';
 import '@testing-library/jest-dom';
 

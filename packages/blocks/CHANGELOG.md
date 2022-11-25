@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 11.0.1
+
+### Patch Changes
+
+- 4d05901: fix: package build
+
 ## 11.0.0
 
 ### Major Changes

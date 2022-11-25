@@ -6,9 +6,6 @@
       "decorators": true,
       "dynamicImport": false
     },
-    "paths": {
-      "types": ["./src/types"]
-    },
     "baseUrl": "."
   },
   "module": {

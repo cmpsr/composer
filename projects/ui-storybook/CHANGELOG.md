@@ -1,5 +1,13 @@
 # @cmpsr/ui-storybook
 
+## 0.0.23
+
+### Patch Changes
+
+- 51d629f: feat: use composer default theme
+- Updated dependencies [51d629f]
+  - @cmpsr/components@5.3.0
+
 ## 0.0.22
 
 ### Patch Changes

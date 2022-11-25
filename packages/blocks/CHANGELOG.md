@@ -1,5 +1,7 @@
 # @cmpsr/blocks
 
+## 11.0.2
+
 ## 11.0.1
 
 ### Patch Changes

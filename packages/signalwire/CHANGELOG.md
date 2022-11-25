@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.2
+
+### Patch Changes
+
+- 8ca3216: fix: signalwire/client package build
+
 ## 0.3.1
 
 ### Patch Changes

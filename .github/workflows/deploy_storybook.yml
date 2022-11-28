@@ -3,6 +3,7 @@ on:
   push:
     branches:
     - master
+    - deploy
 
 env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}
@@ -10,6 +11,10 @@ env:
 
 jobs:
   setup-build-deploy:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
 
@@ -17,12 +22,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    # Setup gcloud CLI
-    - uses: google-github-actions/setup-gcloud@v0
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v1'
       with:
-        version: '290.0.1'
-        service_account_key: ${{ secrets.RUN_SA_KEY }}
-        project_id: ${{ secrets.RUN_PROJECT }}
+        workload_identity_provider: ${{ secrets.GCP_PROVIDER }}
+        service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+    # Setup gcloud CLI
+    - uses: google-github-actions/setup-gcloud@v1
 
     - name: Copy deploy files to root
       run: cp -r ./deploy/storybook/. ./

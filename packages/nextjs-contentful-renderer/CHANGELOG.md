@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 17.1.0
+
+### Minor Changes
+
+- ea8d5eb: feat: add support for styling Text via CML
+
 ## 17.0.3
 
 ## 17.0.2

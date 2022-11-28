@@ -7,6 +7,10 @@ export default {
   title: 'SignalWire/VideoChat/components/Login',
 } as Meta;
 
-export const Default = () => <Login loginLabel="Log In" isDisabled={false} onLogin={() => {}} />;
+const noop = () => {
+  // just to make the linter happy
+};
 
-export const Disabled = () => <Login loginLabel="Log In" isDisabled onLogin={() => {}} />;
+export const Default = () => <Login loginLabel="Log In" isDisabled={false} onLogin={noop} />;
+
+export const Disabled = () => <Login loginLabel="Log In" isDisabled onLogin={noop} />;

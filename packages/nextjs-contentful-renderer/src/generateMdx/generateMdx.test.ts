@@ -389,4 +389,24 @@ describe('generateMdx', () => {
       { base: '<Navigation.Image src="https://image.url" alt="Image alt" href="#" target="_blank" />' },
     ]);
   });
+  test('should add styling to text using span tag', async () => {
+    const fakeBlocks = [
+      {
+        models: [
+          {
+            base:
+              '<Text>This {{_:styling[color=primary-default,decoration=underline 4px accent-default]:text should have color}}, not this one</Text>',
+          },
+        ],
+        propsValues: [{}],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([
+      {
+        base:
+          '<Text>This <Text as="span" variant="inherited" color="primary-default" decoration="underline 4px accent-default">text should have color</Text>, not this one</Text>',
+      },
+    ]);
+  });
 });

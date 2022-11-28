@@ -113,6 +113,10 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
           newValue = flatObject(newValue);
         }
         break;
+      case 'styling':
+        searchValue = match;
+        newValue = applyStyling(newValue, rgxGroups[5]);
+        break;
       case 'boolean':
       case 'number':
         searchValue = match;
@@ -160,3 +164,14 @@ const flatObject = (obj: Record<string, any>): string => {
 // Escape characters (, ), | to \\(, \\), \\|
 const escapeCharactersInListPattern = (match: string) =>
   replaceAll('\\|', '\\|')(match.replace('(', '\\(').replace(')', '\\)'));
+
+const applyStyling = (text: string, stylesStr: string): string => {
+  const styles = stylesStr.split(',');
+  const styleWithValue: string = styles
+    .reduce((prev, curr) => {
+      const [prop, value] = curr.split('=');
+      return prev.concat(` ${prop}="${value}"`);
+    }, '')
+    .trim();
+  return `<Text as="span" variant="inherited" ${styleWithValue}>${text}</Text>`;
+};

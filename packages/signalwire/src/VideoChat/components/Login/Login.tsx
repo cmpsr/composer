@@ -12,7 +12,11 @@ export const Login: FC<LoginProps> = ({ loginLabel, onLogin, isDisabled }) => {
 
   return (
     <Flex flexDir="column" alignItems="center" gap="2rem">
-      <Image src="/images/cmpsrooms.png" width="200px" alt="logo" />
+      <Image
+        src="https://images.ctfassets.net/zfrki53eq8jx/4fhvBZ0IujsOShoSPKhe7s/2a8726928e198fbb7900386f1e2bfce8/cmpsrooms.png"
+        width="200px"
+        alt="logo"
+      />
       <Input
         isDisabled={isDisabled}
         value={user}

@@ -4,7 +4,7 @@ import { Image } from '.';
 
 export default {
   component: Image,
-  title: 'Components/Primitives/Image',
+  title: 'Components/Media/Image',
 } as Meta;
 
 const Template = (args) => <Image {...args} />;

@@ -11,7 +11,7 @@ import { iconSizes } from './types';
 import { Box, Flex, Grid } from '@components';
 
 export default {
-  title: 'Components/Primitives/Icons',
+  title: 'Components/Media/Icons',
   argTypes: {
     size: {
       options: iconSizes,

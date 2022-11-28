@@ -70,7 +70,7 @@ export const All = () => (
     <Hero.Content>
       <Hero.ContentContainer>
         <Hero.Tag>Hello</Hero.Tag>
-        <Hero.Overline>Breaking news</Hero.Overline>
+        <Hero.Overline>BREAKING NEWS</Hero.Overline>
         <Hero.Title variant="textpairing-header-4XL">
           <Hero.Title.Label>There is life elsewhere in the universe</Hero.Title.Label>
           <Hero.Title.SubLabel color="text-secondary">
@@ -170,7 +170,7 @@ const Template = ({
 export const Playground = Template.bind({});
 Playground.args = {
   tag: 'Tag',
-  legend: 'Breaking news',
+  legend: 'BREAKING NEWS',
   label: 'The next generation of care for women and families',
   subLabel: 'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
   contentAlignment: 'start',

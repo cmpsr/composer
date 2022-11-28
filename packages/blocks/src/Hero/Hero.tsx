@@ -66,9 +66,7 @@ const HeroDisclaimer: FC<TextProps> = (props) => (
 );
 Hero.Disclaimer = HeroDisclaimer;
 
-const HeroOverline: FC<TextProps> = (props) => (
-  <Text color="text-secondary" variant="text-header-L" textTransform="uppercase" {...props} />
-);
+const HeroOverline: FC<TextProps> = (props) => <Text color="text-secondary" variant="text-header-L" {...props} />;
 Hero.Overline = HeroOverline;
 
 const HeroMediaBlock: MediaBlockType = (props) => <MediaBlock variant="horizontal" {...props} />;

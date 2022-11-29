@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 11.1.0
+
+### Minor Changes
+
+- e44454c: feat: remove text transform uppercase from Hero overline
+
 ## 11.0.2
 
 ## 11.0.1

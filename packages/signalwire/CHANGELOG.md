@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.4
+
+### Patch Changes
+
+- 35d6df8: fix: show rooms logo from contentful
+
 ## 0.3.3
 
 ### Patch Changes

@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Input } from '.';
 import { inputSizes, inputVariants } from './types';
-import { IconCloud } from '../../primitives/Icons';
+import { IconCloud } from '../../media/Icons';
 
 export default {
   component: Input,

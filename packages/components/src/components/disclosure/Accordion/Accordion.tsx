@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 
 import { AccordionProps, AccordionButtonProps, AccordionStaticMembers } from './types';
-import { IconChevronDown, IconProps } from '../../primitives/Icons';
+import { IconChevronDown, IconProps } from '../../media/Icons';
 
 export const Accordion: FC<AccordionProps> & AccordionStaticMembers = (props) => <ChakraAccordion {...props} />;
 

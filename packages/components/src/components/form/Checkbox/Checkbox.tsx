@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Checkbox as ChakraCheckbox } from '@chakra-ui/react';
 import { CheckboxProps } from './types';
-import * as Icons from '../../primitives/Icons';
+import * as Icons from '../../media/Icons';
 
 const CheckboxTransition = ({ open, children }) => (
   <AnimatePresence initial={false}>

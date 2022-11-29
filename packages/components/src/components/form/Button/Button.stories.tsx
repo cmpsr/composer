@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { Button } from './Button';
 import { buttonSizes, buttonVariants } from './types';
-import * as Icons from '../../primitives/Icons';
+import * as Icons from '../../media/Icons';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 
 export default {

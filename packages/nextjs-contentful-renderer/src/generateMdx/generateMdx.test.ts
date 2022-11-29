@@ -409,4 +409,23 @@ describe('generateMdx', () => {
       },
     ]);
   });
+  test('should not crash when two styling provided', async () => {
+    const fakeBlocks = [
+      {
+        models: [
+          {
+            base: '{{_:styling[color=primary-default]:copy one}}{{_:styling[color=primary-default]:copy two}}',
+          },
+        ],
+        propsValues: [],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([
+      {
+        base:
+          '<Text as="span" variant="inherited" color="primary-default">copy one</Text><Text as="span" variant="inherited" color="primary-default">copy two</Text>',
+      },
+    ]);
+  });
 });

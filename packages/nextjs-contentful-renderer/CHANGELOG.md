@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 17.1.1
+
+### Patch Changes
+
+- 1d73bf1: fix: properly handle multiple stylings in the same content
+
 ## 17.1.0
 
 ### Minor Changes

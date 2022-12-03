@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { textVariants } from '@cmpsr/components';
+import { Divider, Text, textVariants } from '@cmpsr/components';
 
 import { Testimonial } from './Testimonial';
 
@@ -39,7 +39,10 @@ export const WithAssociation = () => (
       </Testimonial.Testimony>
       <Testimonial.Author>
         John Doe
-        <Testimonial.Author.Association>Composer Studio</Testimonial.Author.Association>
+        <Divider display="inline" orientation="vertical" marginX="0.5rem" />
+        <Text display="inline" variant="text-body-regular" color="text-secondary">
+          Composer Studio
+        </Text>
       </Testimonial.Author>
     </Testimonial.Content>
   </Testimonial>
@@ -67,7 +70,16 @@ const Template = ({ backgroundColor, imageUrl, testimony, testimonyTextVariant, 
       <Testimonial.Testimony variant={testimonyTextVariant}>{testimony}</Testimonial.Testimony>
       <Testimonial.Author>
         {name}
-        {association && <Testimonial.Author.Association>{association}</Testimonial.Author.Association>}
+        {association ? (
+          <>
+            <Divider display="inline" orientation="vertical" marginX="0.5rem" />
+            <Text display="inline" variant="text-body-regular" color="text-secondary">
+              {association}
+            </Text>
+          </>
+        ) : (
+          null
+        )}
       </Testimonial.Author>
       {link && <Testimonial.Action target="_blank" size="s" href="#" {...link} />}
     </Testimonial.Content>

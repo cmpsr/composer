@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Flex, Image, ImageProps, FlexProps, Text, TextProps, Divider, LinkProps, Link } from '@cmpsr/components';
 
-import { TestimonialAuthorStaticMembers, TestimonialProps, TestimonialStaticMembers } from './types';
+import { TestimonialProps, TestimonialStaticMembers } from './types';
 
 export const Testimonial: FC<TestimonialProps> & TestimonialStaticMembers = ({
   backgroundColor = 'background-page',
@@ -49,20 +49,11 @@ const TestimonialTestimony: FC<TextProps> = (props) => (
 );
 Testimonial.Testimony = TestimonialTestimony;
 
-const TestimonialAuthorAssociation: FC<TextProps> = (props) => (
-  <Flex gap="0.5rem">
-    <Divider orientation="vertical" />
-    <Text variant="text-body-regular" color="text-secondary" {...props} />
+const TestimonialAuthor: FC<TextProps> = (props) => (
+  <Flex gap="0.5rem" flexWrap="wrap" direction="row">
+    <Text variant="text-body-medium" {...props} />
   </Flex>
 );
-const TestimonialAuthor: FC<TextProps> & TestimonialAuthorStaticMembers = ({ children, ...props }) => (
-  <Flex gap="0.5rem" flexWrap="wrap">
-    {React.Children.map(children, (child) =>
-      typeof child === 'string' ? <Text variant="text-body-medium" {...props} children={child} /> : child
-    )}
-  </Flex>
-);
-TestimonialAuthor.Association = TestimonialAuthorAssociation;
 Testimonial.Author = TestimonialAuthor;
 
 const TestimonialAction: FC<LinkProps> = (props) => <Link target="_blank" size="s" {...props} />;

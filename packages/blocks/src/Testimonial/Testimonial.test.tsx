@@ -50,22 +50,6 @@ describe('Testimonial', () => {
     );
     screen.getByText('testimony');
   });
-  test('should render name and association', () => {
-    renderWithProviders(
-      <Testimonial>
-        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
-        <Testimonial.Content>
-          <Testimonial.Testimony>testimony</Testimonial.Testimony>
-          <Testimonial.Author>
-            name
-            <Testimonial.Author.Association>association</Testimonial.Author.Association>
-          </Testimonial.Author>
-        </Testimonial.Content>
-      </Testimonial>
-    );
-    screen.getByText('name');
-    screen.getByText('association');
-  });
   test('should render link', () => {
     renderWithProviders(
       <Testimonial>

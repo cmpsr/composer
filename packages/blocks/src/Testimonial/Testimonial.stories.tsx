@@ -17,7 +17,7 @@ export default {
 
 export const WithLegend = () => (
   <Testimonial>
-    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" />
+    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" width="500px" />
     <Testimonial.Content>
       <Testimonial.Overline>The universe</Testimonial.Overline>
       <Testimonial.Testimony variant="text-body-display-M">
@@ -31,7 +31,7 @@ export const WithLegend = () => (
 
 export const WithAssociation = () => (
   <Testimonial>
-    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" />
+    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" width="500px" />
     <Testimonial.Content>
       <Testimonial.Testimony variant="text-body-display-M">
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
@@ -50,7 +50,7 @@ export const WithAssociation = () => (
 
 export const WithLink = () => (
   <Testimonial>
-    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" />
+    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" width="500px" />
     <Testimonial.Content>
       <Testimonial.Testimony variant="text-body-display-M">
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
@@ -62,9 +62,19 @@ export const WithLink = () => (
   </Testimonial>
 );
 
-const Template = ({ backgroundColor, imageUrl, testimony, testimonyTextVariant, name, legend, association, link }) => (
+const Template = ({
+  backgroundColor,
+  imageUrl,
+  imageWidth,
+  testimony,
+  testimonyTextVariant,
+  name,
+  legend,
+  association,
+  link,
+}) => (
   <Testimonial backgroundColor={backgroundColor}>
-    <Testimonial.Image src={imageUrl} />
+    <Testimonial.Image src={imageUrl} width={imageWidth} />
     <Testimonial.Content>
       {legend && <Testimonial.Overline>{legend}</Testimonial.Overline>}
       <Testimonial.Testimony variant={testimonyTextVariant}>{testimony}</Testimonial.Testimony>
@@ -77,9 +87,7 @@ const Template = ({ backgroundColor, imageUrl, testimony, testimonyTextVariant, 
               {association}
             </Text>
           </>
-        ) : (
-          null
-        )}
+        ) : null}
       </Testimonial.Author>
       {link && <Testimonial.Action target="_blank" size="s" href="#" {...link} />}
     </Testimonial.Content>
@@ -90,6 +98,7 @@ export const Playground = Template.bind({});
 Playground.args = {
   backgroundColor: 'background-page',
   imageUrl: 'https://avatars0.githubusercontent.com/u/67131017?s=500',
+  imageWidth: '500px',
   testimony:
     'We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it.',
   testimonyTextVariant: 'text-body-display-M',

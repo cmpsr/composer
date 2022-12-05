@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Flex, Image, ImageProps, FlexProps, Text, TextProps, Divider, LinkProps, Link } from '@cmpsr/components';
+import { Flex, Image, FlexProps, Text, TextProps, Divider, LinkProps, Link } from '@cmpsr/components';
 
 import { TestimonialProps, TestimonialStaticMembers } from './types';
 
@@ -19,16 +19,7 @@ export const Testimonial: FC<TestimonialProps> & TestimonialStaticMembers = ({
   />
 );
 
-const TestimonialImage: FC<ImageProps> = (props) => (
-  <Image
-    alt="testimony image"
-    maxWidth={{ md: '34.75rem', lg: '19.6875rem', xl: '31.25rem' }}
-    width="100%"
-    alignSelf={{ md: 'center' }}
-    {...props}
-  />
-);
-Testimonial.Image = TestimonialImage;
+Testimonial.Image = Image;
 
 const FlexContent: FC<FlexProps> = (props) => (
   <Flex gap="1.5rem" flexDirection="column" maxWidth={{ lg: '36.8125rem', xl: '33.5rem', xxl: '43.5rem' }} {...props} />

@@ -4,7 +4,6 @@ import {
   Link,
   TextPairing,
   Image,
-  ImageProps,
   FlexProps,
   LinkProps,
   TagProps,
@@ -27,8 +26,7 @@ export const Hero: HeroType = (props) => (
   />
 );
 
-const HeroImage: FC<ImageProps> = (props) => <Image width="100%" {...props} />;
-Hero.Image = HeroImage;
+Hero.Image = Image;
 
 const HeroContent: FC<HeroContentProps> = ({ contentAlignment = 'start', ...rest }) => (
   <Flex
@@ -39,7 +37,6 @@ const HeroContent: FC<HeroContentProps> = ({ contentAlignment = 'start', ...rest
     gap="2rem"
     alignItems={contentAlignment}
     textAlign={contentAlignment}
-    maxWidth={{ lg: '24.375rem', xl: '32.125rem' }}
     {...rest}
   />
 );

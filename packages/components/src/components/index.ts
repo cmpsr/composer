@@ -7,3 +7,4 @@ export * from './typography';
 export * from './navigation';
 export * from './overlay';
 export * from './feedback';
+export * from './threeDimensional';

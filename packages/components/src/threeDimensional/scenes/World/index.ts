@@ -1,0 +1,118 @@
+import { ThreeDimensionalBackgroundColors } from '@components/threeDimensional/threeDimensionalScene/types';
+//Commonjs import of three
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
+// const OrbitControls = require('@types/three/examples/jsm/controls/OrbitControls');
+
+class World {
+  renderer!: THREE.WebGLRenderer;
+  resolution!: THREE.Vector2;
+  camera!: THREE.PerspectiveCamera;
+  scene: THREE.Scene = new THREE.Scene();
+  clock: THREE.Clock = new THREE.Clock();
+  backgroundColor: ThreeDimensionalBackgroundColors = "black";
+  animationFrameId = 0;
+  canvasContainerId: string;
+  canvasSceneId: string;
+  observerOfCanvasContainer!: ResizeObserver;
+  controls!: OrbitControls;
+  canvasContainer = {
+    width: 0,
+    height: 0,
+  }
+  CENTER_ORIGIN_AXES = {
+    x: 30,
+    y: -2,
+    z: 30,
+  }
+  CAMERA_POSITION = {
+    x: this.CENTER_ORIGIN_AXES.x,
+    y: this.CENTER_ORIGIN_AXES.y + 7,
+    z: this.CENTER_ORIGIN_AXES.z + 7,
+  }
+  CAMERA_ROTATION = {
+    x: -0.7,
+    y: 0,
+    z: 0,
+  }
+  constructor(canvasSceneId: string, canvasContainerId: string, backgroundColor?: ThreeDimensionalBackgroundColors) {
+    const canvasContainer = document.getElementById(canvasContainerId) as HTMLElement
+    const canvasScene = document.getElementById(canvasSceneId) as HTMLCanvasElement
+    if (canvasScene && canvasContainer) {
+      if (backgroundColor) {
+        this.backgroundColor = backgroundColor
+      }
+      this.canvasSceneId = canvasSceneId
+      this.canvasContainerId = canvasContainerId
+      this.resolution = new THREE.Vector2(canvasScene.clientWidth, canvasScene.clientHeight)
+      this.camera = new THREE.PerspectiveCamera(75, canvasScene.clientWidth / canvasScene.clientHeight, 0.1, 1000)
+      this.renderer = new THREE.WebGLRenderer({ canvas: canvasScene })
+      this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+      this.setupIllumination()
+      this.setUpRenderer()
+      this.setCameraPositionAndAspect()
+      this.setCameraControls()
+      this.renderScene()
+      this.updateRendererAndCamera()
+      this.trackWindowAndContainerResize()
+    }
+  }
+  private trackWindowAndContainerResize() {
+    this.observerOfCanvasContainer = new ResizeObserver(this.updateRendererAndCamera.bind(this))
+    this.observerOfCanvasContainer.observe(document.getElementById(this.canvasContainerId) as HTMLElement)
+  }
+  private setCameraPositionAndAspect() {
+    this.camera.position.set(this.CAMERA_POSITION.x, this.CAMERA_POSITION.y, this.CAMERA_POSITION.z)
+    this.camera.rotation.set(this.CAMERA_ROTATION.x, this.CAMERA_ROTATION.y, this.CAMERA_ROTATION.z)
+    this.camera.aspect = this.canvasContainer.width / this.canvasContainer.height
+    this.camera.updateProjectionMatrix()
+  }
+  private setCameraControls() {
+    this.controls.target.set(0, 0, 0)
+  }
+  private updateRendererAndCamera() {
+    const gameSceneContainer = document.getElementById(this.canvasContainerId) as HTMLElement
+    this.canvasContainer.width = gameSceneContainer?.clientWidth
+    this.canvasContainer.height = gameSceneContainer?.clientHeight
+    this.renderer.setSize(this.canvasContainer.width, this.canvasContainer.height)
+    this.camera.aspect = this.canvasContainer.width / this.canvasContainer.height
+    this.camera.updateProjectionMatrix()
+    this.controls.update()
+  }
+  private setupIllumination() {
+    this.scene.background = new THREE.Color(this.backgroundColor)
+    const directionalLight = new THREE.DirectionalLight(0xBC2732, 1)
+    directionalLight.position.set(this.CENTER_ORIGIN_AXES.x, this.CENTER_ORIGIN_AXES.y, this.CENTER_ORIGIN_AXES.z)
+    directionalLight.castShadow = true
+    directionalLight.shadow.camera.near = 0.1
+    directionalLight.shadow.camera.far = 50
+    directionalLight.shadow.mapSize.width = 1024
+    directionalLight.shadow.mapSize.height = 1024
+    directionalLight.intensity = 3
+    directionalLight.target = this.scene
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const helper = new THREE.DirectionalLightHelper(directionalLight)
+    this.scene.add(directionalLight)
+    const ambientLight = new THREE.AmbientLight(0xffffff)
+    ambientLight.intensity = 0.2
+    this.scene.add(ambientLight)
+  }
+  private setUpRenderer() {
+    this.renderer.shadowMap.enabled = true
+    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
+  }
+  private renderScene() {
+    this.renderer.render(this.scene, this.camera)
+    this.animationFrameId = requestAnimationFrame(this.renderScene.bind(this))
+  }
+  setDirectionalLightTarget(target: THREE.Object3D<THREE.Event>) {
+    const directionalLight = this.scene.getObjectByName('directionalLight') as THREE.DirectionalLight
+    directionalLight.target = target
+  }
+}
+
+export const useWorld = (canvasSceneId: string, canvasContainerId: string, backgroundColor?: ThreeDimensionalBackgroundColors) => {
+  const world = new World(canvasSceneId, canvasContainerId, backgroundColor)
+  return world
+}

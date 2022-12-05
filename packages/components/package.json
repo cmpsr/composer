@@ -38,7 +38,9 @@
     "@chakra-ui/theme-tools": "^2.0.5",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
-    "framer-motion": "^5"
+    "framer-motion": "^5",
+    "three": "^0.137.4",
+    "@types/three": "^0.137.0"
   },
   "devDependencies": {
     "@chakra-ui/cli": "^2.1.2",
@@ -50,7 +52,9 @@
     "@types/jest": "^27.0.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "swc-loader": "^0.1.15"
+    "swc-loader": "^0.1.15",
+    "three": "^0.137.4",
+    "@types/three": "^0.137.0"
   },
   "engines": {
     "node": ">=14 <17"

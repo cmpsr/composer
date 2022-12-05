@@ -49,11 +49,7 @@ const TestimonialTestimony: FC<TextProps> = (props) => (
 );
 Testimonial.Testimony = TestimonialTestimony;
 
-const TestimonialAuthor: FC<TextProps> = (props) => (
-  <Flex gap="0.5rem" flexWrap="wrap" direction="row">
-    <Text variant="text-body-medium" {...props} />
-  </Flex>
-);
+const TestimonialAuthor: FC<TextProps> = (props) => <Text variant="text-body-medium" {...props} />;
 Testimonial.Author = TestimonialAuthor;
 
 const TestimonialAction: FC<LinkProps> = (props) => <Link target="_blank" size="s" {...props} />;

@@ -24,7 +24,6 @@ const TestimonialImage: FC<ImageProps> = (props) => (
     alt="testimony image"
     maxWidth={{ md: '34.75rem', lg: '19.6875rem', xl: '31.25rem' }}
     width="100%"
-    borderRadius="0.375rem"
     alignSelf={{ md: 'center' }}
     {...props}
   />

@@ -19,6 +19,12 @@ export const ThreeDimensionalScene: FC<ThreeDimensionalSceneProps> = (props) => 
     if (!sceneInstanceRef.current) {
       sceneInstanceRef.current = useWorld(sceneId, sceneContainerId, props.backgroundColor)
     }
+    return () => {
+      if (sceneInstanceRef.current) {
+        console.log("world scene ", sceneInstanceRef.current)
+        sceneInstanceRef.current.stopRendering();
+      }
+    }
   }, [])
   return (
     <Box id={sceneContainerId} {...boxProps}>

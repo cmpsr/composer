@@ -1,9 +1,6 @@
-import { ThreeDimensionalBackgroundColors } from '@components/threeDimensional/threeDimensionalScene/types';
 //Commonjs import of three
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-
-// const OrbitControls = require('@types/three/examples/jsm/controls/OrbitControls');
 
 class World {
   renderer!: THREE.WebGLRenderer;
@@ -11,7 +8,7 @@ class World {
   camera!: THREE.PerspectiveCamera;
   scene: THREE.Scene = new THREE.Scene();
   clock: THREE.Clock = new THREE.Clock();
-  backgroundColor: ThreeDimensionalBackgroundColors = "black";
+  backgroundColor = "black";
   animationFrameId = 0;
   canvasContainerId: string;
   canvasSceneId: string;
@@ -36,7 +33,7 @@ class World {
     y: 0,
     z: 0,
   }
-  constructor(canvasSceneId: string, canvasContainerId: string, backgroundColor?: ThreeDimensionalBackgroundColors) {
+  constructor(canvasSceneId: string, canvasContainerId: string, backgroundColor?: string) {
     const canvasContainer = document.getElementById(canvasContainerId) as HTMLElement
     const canvasScene = document.getElementById(canvasSceneId) as HTMLCanvasElement
     if (canvasScene && canvasContainer) {
@@ -110,9 +107,16 @@ class World {
     const directionalLight = this.scene.getObjectByName('directionalLight') as THREE.DirectionalLight
     directionalLight.target = target
   }
+  stopRendering() {
+    console.log('stoppingRender')
+    console.log('animationFrameId', this.animationFrameId)
+    console.log('observerOfCanvasContainer', this.observerOfCanvasContainer)
+    cancelAnimationFrame(this.animationFrameId)
+    this.observerOfCanvasContainer.disconnect()
+  }
 }
 
-export const useWorld = (canvasSceneId: string, canvasContainerId: string, backgroundColor?: ThreeDimensionalBackgroundColors) => {
+export const useWorld = (canvasSceneId: string, canvasContainerId: string, backgroundColor?: string) => {
   const world = new World(canvasSceneId, canvasContainerId, backgroundColor)
   return world
 }

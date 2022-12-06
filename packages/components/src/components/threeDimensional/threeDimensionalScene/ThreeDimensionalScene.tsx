@@ -6,22 +6,23 @@ import { ThreeDimensionalSceneProps } from './types';
 const formattedBoxProps = (props: ThreeDimensionalSceneProps) => {
   const boxProps = { ...props };
   delete boxProps.backgroundColor;
+  delete boxProps.threeDimensionalObjectOrScene;
   return boxProps;
 }
 
 
 export const ThreeDimensionalScene: FC<ThreeDimensionalSceneProps> = (props) => {
+  console.log('typeof file ', typeof props.threeDimensionalObjectOrScene)
   const boxProps = formattedBoxProps(props);
   const sceneInstanceRef = useRef(null);
   const sceneContainerId = `${props.backgroundColor}-sceneContainerId`;
   const sceneId = `${props.backgroundColor}-sceneId`;
   useEffect(() => {
     if (!sceneInstanceRef.current) {
-      sceneInstanceRef.current = useWorld(sceneId, sceneContainerId, props.backgroundColor)
+      sceneInstanceRef.current = useWorld(sceneId, sceneContainerId, props.backgroundColor, props.threeDimensionalObjectOrScene)
     }
     return () => {
       if (sceneInstanceRef.current) {
-        console.log("world scene ", sceneInstanceRef.current)
         sceneInstanceRef.current.stopRendering();
       }
     }

@@ -19,18 +19,16 @@ export default {
       control: { type: "text" },
     },
     threeDimensionalObjectOrScene: {
-      control: { type: "file", accept: ".glb" },
+      control: { type: "file", accept: [".gltf", ".glb"] },
     },
   },
 } as Meta;
 
-const Template = (args) => {
-  console.log('Args changing', args)
-  return <ThreeDimensionalScene {...args}></ThreeDimensionalScene>;
-};
+const Template = (args) => <ThreeDimensionalScene {...args}></ThreeDimensionalScene>;
 export const Playground = Template.bind({});
 Playground.args = {
   backgroundColor: "blue",
   width: "100%",
   height: "600px",
+  threeDimensionalObjectOrScene: [""],
 };

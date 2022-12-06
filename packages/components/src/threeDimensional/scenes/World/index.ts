@@ -1,11 +1,13 @@
 //Commonjs import of three
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 class World {
   renderer!: THREE.WebGLRenderer;
   resolution!: THREE.Vector2;
   camera!: THREE.PerspectiveCamera;
+  modelLoader!: GLTFLoader;
   scene: THREE.Scene = new THREE.Scene();
   clock: THREE.Clock = new THREE.Clock();
   backgroundColor = "black";
@@ -14,6 +16,7 @@ class World {
   canvasSceneId: string;
   observerOfCanvasContainer!: ResizeObserver;
   controls!: OrbitControls;
+  threeDimensionalObjectOrSceneURL: string;
   canvasContainer = {
     width: 0,
     height: 0,
@@ -33,12 +36,19 @@ class World {
     y: 0,
     z: 0,
   }
-  constructor(canvasSceneId: string, canvasContainerId: string, backgroundColor?: string) {
+  constructor(canvasSceneId: string, canvasContainerId: string, backgroundColor?: string, threeDimensionalObjectOrScene?: Blob) {
     const canvasContainer = document.getElementById(canvasContainerId) as HTMLElement
     const canvasScene = document.getElementById(canvasSceneId) as HTMLCanvasElement
     if (canvasScene && canvasContainer) {
       if (backgroundColor) {
         this.backgroundColor = backgroundColor
+      }
+      this.modelLoader = new GLTFLoader();
+      if (threeDimensionalObjectOrScene) {
+        console.log('adding object url')
+        console.log(threeDimensionalObjectOrScene)
+        this.threeDimensionalObjectOrSceneURL = threeDimensionalObjectOrScene[0]
+        // this.threeDimensionalObjectOrSceneURL = URL.createObjectURL(threeDimensionalObjectOrScene)
       }
       this.canvasSceneId = canvasSceneId
       this.canvasContainerId = canvasContainerId
@@ -50,9 +60,38 @@ class World {
       this.setUpRenderer()
       this.setCameraPositionAndAspect()
       this.setCameraControls()
+      this.addFileObjectToScene()
       this.renderScene()
       this.updateRendererAndCamera()
       this.trackWindowAndContainerResize()
+    }
+  }
+  private addFileObjectToScene() {
+    if (this.threeDimensionalObjectOrSceneURL) {
+      console.log(this.threeDimensionalObjectOrSceneURL)
+      this.modelLoader.load(this.threeDimensionalObjectOrSceneURL, (Object3D) => {
+        console.log('allo ', Object3D)
+        Object3D.scene.traverse((child: any) => {
+          if (child instanceof THREE.Mesh) {
+            child.castShadow = true
+          }
+        })
+        Object3D.scene.position.set(this.CENTER_ORIGIN_AXES.x, this.CENTER_ORIGIN_AXES.y, this.CENTER_ORIGIN_AXES.z)
+        Object3D.scene.scale.set(2, 2, 2)
+        Object3D.scene.rotateOnAxis(new THREE.Vector3(0, 1, 0), Math.PI)
+        // characterAnimationMixer.current = new THREE.AnimationMixer(character.scene)
+        // const idleAnimation = characterAnimationMixer.current.clipAction(character.animations[15])
+        // idleAnimation.play()
+        // idleAnimation.clampWhenFinished = true
+        Object3D.scene.castShadow = true
+        // characterAnimations.current = character.animations
+        this.scene.add(Object3D.scene)
+        URL.revokeObjectURL(this.threeDimensionalObjectOrSceneURL);
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+      }, () => { }, (error) => {
+        URL.revokeObjectURL(this.threeDimensionalObjectOrSceneURL);
+        console.log(error)
+      })
     }
   }
   private trackWindowAndContainerResize() {
@@ -100,23 +139,25 @@ class World {
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
   }
   private renderScene() {
+    if (this.animationFrameId) {
+      cancelAnimationFrame(this.animationFrameId)
+    }
     this.renderer.render(this.scene, this.camera)
     this.animationFrameId = requestAnimationFrame(this.renderScene.bind(this))
+
   }
   setDirectionalLightTarget(target: THREE.Object3D<THREE.Event>) {
     const directionalLight = this.scene.getObjectByName('directionalLight') as THREE.DirectionalLight
     directionalLight.target = target
   }
   stopRendering() {
-    console.log('stoppingRender')
-    console.log('animationFrameId', this.animationFrameId)
-    console.log('observerOfCanvasContainer', this.observerOfCanvasContainer)
+    this.renderer.dispose()
     cancelAnimationFrame(this.animationFrameId)
     this.observerOfCanvasContainer.disconnect()
   }
 }
 
-export const useWorld = (canvasSceneId: string, canvasContainerId: string, backgroundColor?: string) => {
-  const world = new World(canvasSceneId, canvasContainerId, backgroundColor)
+export const useWorld = (canvasSceneId: string, canvasContainerId: string, backgroundColor?: string, threeDimensionalObjectOrScene?: Blob) => {
+  const world = new World(canvasSceneId, canvasContainerId, backgroundColor, threeDimensionalObjectOrScene)
   return world
 }

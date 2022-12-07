@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.4.0
+
+### Minor Changes
+
+- 9b5fc7c: feat: replace outline for before pseudo selector with border in order to support Safari
+
 ## 5.3.0
 
 ### Minor Changes

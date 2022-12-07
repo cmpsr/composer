@@ -51,13 +51,13 @@ const generateAltButton = (color: string) => {
     backgroundColor: 'background-action-disabled',
     opacity: 1,
     color: transparentize(`text-link-${color}-default`, 0.6),
-    outlineColor: `${color}-disabled`,
+    border: `1px solid ${color}-disabled`,
   };
 
   return {
+    position: 'relative',
     backgroundColor: 'background-action-default',
     color: `text-link-${color}-default`,
-    outline: `1px solid var(--chakra-colors-text-link-${color}-default)`,
     loading: {
       borderColor: 'primary-default',
       borderBottomColor: transparentize('primary-default', 0.3),
@@ -77,6 +77,17 @@ const generateAltButton = (color: string) => {
     },
     _active: {
       backgroundColor: 'background-action-pressed',
+    },
+    // Safari patch - If the targeted element already has a border-radius, the outline will not follow it: It will be a square.
+    _before: {
+      content: '""',
+      position: 'absolute',
+      top: '-1px',
+      right: '-1px',
+      bottom: '-1px',
+      left: '-1px',
+      border: `1px solid var(--chakra-colors-text-link-${color}-default)`,
+      borderRadius: '0.375rem',
     },
   };
 };

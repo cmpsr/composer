@@ -46,7 +46,7 @@ const generateButton = (color: string, textColor?: string) => {
   };
 };
 
-const generateAltButton = (color: string) => {
+const generateAltButton = (color: string, theme: Record<string, any>) => {
   const _disabled = {
     backgroundColor: 'background-action-disabled',
     opacity: 1,
@@ -87,7 +87,7 @@ const generateAltButton = (color: string) => {
       bottom: '-1px',
       left: '-1px',
       border: `1px solid var(--chakra-colors-text-link-${color}-default)`,
-      borderRadius: '0.375rem',
+      borderRadius: theme?.components?.Button?.baseStyle?.borderRadius || '0.375rem',
     },
   };
 };
@@ -148,8 +148,8 @@ export const Button: ComponentStyleConfig = {
     accent: generateButton('accent'),
     primary: generateButton('primary'),
     secondary: generateButton('secondary'),
-    'primary-alt': generateAltButton('primary'),
-    'secondary-alt': generateAltButton('secondary'),
+    'primary-alt': ({ theme }) => generateAltButton('primary', theme),
+    'secondary-alt': ({ theme }) => generateAltButton('secondary', theme),
     destroy: generateButton('alert-error', 'alert'),
     link: {
       ...linkBaseStyle,

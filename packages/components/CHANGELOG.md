@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.4.1
+
+### Patch Changes
+
+- c28ddf8: fix: use button border-radius
+
 ## 5.4.0
 
 ### Minor Changes

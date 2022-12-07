@@ -1,4 +1,5 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
+import { StyleFunctionProps } from '@chakra-ui/theme-tools';
 import { linkVariants, linkSizes } from '@components';
 
 export const linkBaseStyle = {
@@ -18,13 +19,17 @@ export const linkBaseStyle = {
 
 const isButtonVariant = (variant) => linkVariants.includes(variant);
 
-const getButtonVariants = () => {
-  const variants = {};
-  linkVariants.forEach((variant) => {
-    variants[variant] = ({ theme }) => theme.components.Button.variants[variant];
-  });
-  return variants;
-};
+const getButtonVariants = () =>
+  linkVariants.reduce(
+    (prev, variant) => ({
+      ...prev,
+      [variant]: (params: StyleFunctionProps) => {
+        const variantValue = params.theme.components.Button.variants[variant];
+        return typeof variantValue === 'function' ? variantValue(params) : variantValue;
+      },
+    }),
+    {}
+  );
 
 const getButtonSize = (size, props) => ({
   ...props.theme.components.Button.sizes[size](props),

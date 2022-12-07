@@ -162,7 +162,7 @@ if (!sourceDir) {
 icons.forEach((icon) =>
   fs.copyFileSync(
     `${sourceDir}/icons-react/icons-js/${icon}.js`,
-    `${process.cwd()}/src/components/primitives/Icons/TablerIcons/${icon}.js`
+    `${process.cwd()}/src/components/media/Icons/TablerIcons/${icon}.js`
   )
 );
 
@@ -179,7 +179,7 @@ const tablerIndexContent = icons
   .map((icon) => `export { default as ${iconName(icon)} } from './${icon}';`)
   .join('\n');
 fs.writeFileSync(
-  `${process.cwd()}/src/components/primitives/Icons/TablerIcons/index.ts`,
+  `${process.cwd()}/src/components/media/Icons/TablerIcons/index.ts`,
   `${doNotEditHeader}
 ${tablerIndexContent}`
 );
@@ -217,7 +217,7 @@ ${tablerIcons.join('\n')}
 `;
 
 fs.writeFileSync(
-  `${process.cwd()}/src/components/primitives/Icons/Icons.tsx`,
+  `${process.cwd()}/src/components/media/Icons/Icons.tsx`,
   iconsFileContent
 );
 
@@ -231,7 +231,7 @@ import { iconSizes } from './types';
 import { Box, Flex, Grid } from '@components';
 
 export default {
-  title: 'Components/Primitives/Icons',
+  title: 'Components/Media/Icons',
   argTypes: {
     size: {
       options: iconSizes,
@@ -261,6 +261,6 @@ All.args = {
 `;
 
 fs.writeFileSync(
-  `${process.cwd()}/src/components/primitives/Icons/Icons.stories.tsx`,
+  `${process.cwd()}/src/components/media/Icons/Icons.stories.tsx`,
   storiesContent
 );

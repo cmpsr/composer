@@ -11,7 +11,7 @@ class World {
   scene: THREE.Scene = new THREE.Scene();
   clock: THREE.Clock = new THREE.Clock();
   backgroundColor = "black";
-  animationFrameId = 0;
+  hasToStopRendering = false;
   canvasContainerId: string;
   canvasSceneId: string;
   observerOfCanvasContainer!: ResizeObserver;
@@ -66,7 +66,7 @@ class World {
     }
   }
   private addFileObjectToScene() {
-    if (this.threeDimensionalObjectOrSceneURL) {
+    if (this.threeDimensionalObjectOrSceneURL && !this.hasToStopRendering) {
       console.log(this.threeDimensionalObjectOrSceneURL)
       this.modelLoader.load(this.threeDimensionalObjectOrSceneURL, (Object3D) => {
         console.log('allo ', Object3D)
@@ -85,7 +85,7 @@ class World {
         Object3D.scene.castShadow = true
         // characterAnimations.current = character.animations
         this.scene.add(Object3D.scene)
-        URL.revokeObjectURL(this.threeDimensionalObjectOrSceneURL);
+        // URL.revokeObjectURL(this.threeDimensionalObjectOrSceneURL);
         // eslint-disable-next-line @typescript-eslint/no-empty-function
       }, () => { }, (error) => {
         URL.revokeObjectURL(this.threeDimensionalObjectOrSceneURL);
@@ -138,11 +138,12 @@ class World {
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
   }
   private renderScene() {
-    if (this.animationFrameId) {
-      cancelAnimationFrame(this.animationFrameId)
+    console.log('hasToStop rendering ', this.hasToStopRendering)
+    if (this.hasToStopRendering) {
+      return
     }
     this.renderer.render(this.scene, this.camera)
-    this.animationFrameId = requestAnimationFrame(this.renderScene.bind(this))
+    requestAnimationFrame(this.renderScene.bind(this))
 
   }
   setDirectionalLightTarget(target: THREE.Object3D<THREE.Event>) {
@@ -150,8 +151,8 @@ class World {
     directionalLight.target = target
   }
   stopRendering() {
+    this.hasToStopRendering = true
     this.renderer.dispose()
-    cancelAnimationFrame(this.animationFrameId)
     this.observerOfCanvasContainer.disconnect()
   }
 }

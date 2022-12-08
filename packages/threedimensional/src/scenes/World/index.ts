@@ -148,7 +148,7 @@ class World {
     requestAnimationFrame(this.renderScene.bind(this))
 
   }
-  setDirectionalLightTarget(target: THREE.Object3D<THREE.Event>) {
+  private setDirectionalLightTarget(target: THREE.Object3D<THREE.Event>) {
     const directionalLight = this.scene.getObjectByName('directionalLight') as THREE.DirectionalLight
     const directionalLightHelper = this.scene.getObjectByName('directionalLightHelper') as THREE.DirectionalLightHelper
     if (directionalLight?.target && directionalLightHelper?.update) {

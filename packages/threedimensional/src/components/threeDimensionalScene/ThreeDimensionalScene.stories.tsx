@@ -20,6 +20,9 @@ export default {
     threeDimensionalObjectOrScene: {
       control: { type: "file", accept: [".gltf", ".glb"] },
     },
+    transparentBackgroundColor: {
+      type: { name: 'boolean' },
+    },
   },
 } as Meta;
 
@@ -30,4 +33,5 @@ Playground.args = {
   width: "100%",
   height: "600px",
   threeDimensionalObjectOrScene: [""],
+  transparentBackgroundColor: false,
 };

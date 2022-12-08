@@ -7,6 +7,7 @@ const formattedBoxProps = (props: ThreeDimensionalSceneProps) => {
   const boxProps = { ...props };
   delete boxProps.backgroundColor;
   delete boxProps.threeDimensionalObjectOrScene;
+  delete boxProps.transparentBackgroundColor;
   return boxProps;
 }
 
@@ -18,7 +19,7 @@ export const ThreeDimensionalScene: FC<ThreeDimensionalSceneProps> = (props) => 
   const sceneId = `${props.backgroundColor}-sceneId`;
   useEffect(() => {
     if (!sceneInstanceRef.current) {
-      sceneInstanceRef.current = useWorld(sceneId, sceneContainerId, props.backgroundColor, props.threeDimensionalObjectOrScene)
+      sceneInstanceRef.current = useWorld(sceneId, sceneContainerId, props.backgroundColor, props.threeDimensionalObjectOrScene, props.transparentBackgroundColor)
     }
     return () => {
       if (sceneInstanceRef.current) {

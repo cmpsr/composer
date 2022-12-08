@@ -12,6 +12,7 @@ class World {
   scene: THREE.Scene = new THREE.Scene();
   clock: THREE.Clock = new THREE.Clock();
   backgroundColor = "black";
+  transparentBackgroundColor = false;
   hasToStopRendering = false;
   canvasContainerId: string;
   canvasSceneId: string;
@@ -37,17 +38,18 @@ class World {
     y: 0,
     z: 0,
   }
-  constructor(canvasSceneId: string, canvasContainerId: string, backgroundColor?: string, threeDimensionalObjectOrScene?: Blob) {
+  constructor(canvasSceneId: string, canvasContainerId: string, backgroundColor?: string, threeDimensionalObjectOrScene?: Blob, transparentBackgroundColor?: boolean) {
     const canvasContainer = document.getElementById(canvasContainerId) as HTMLElement
     const canvasScene = document.getElementById(canvasSceneId) as HTMLCanvasElement
     if (canvasScene && canvasContainer) {
       if (backgroundColor) {
         this.backgroundColor = backgroundColor
       }
+      if (transparentBackgroundColor) {
+        this.transparentBackgroundColor = transparentBackgroundColor
+      }
       this.modelLoader = new GLTFLoader();
       if (threeDimensionalObjectOrScene) {
-        console.log('adding object url')
-        console.log(threeDimensionalObjectOrScene)
         this.threeDimensionalObjectOrSceneURL = threeDimensionalObjectOrScene[0]
       }
       this.canvasSceneId = canvasSceneId
@@ -68,7 +70,6 @@ class World {
   }
   private addFileObjectToScene() {
     if (this.threeDimensionalObjectOrSceneURL && !this.hasToStopRendering) {
-      console.log(this.threeDimensionalObjectOrSceneURL)
       this.modelLoader.load(this.threeDimensionalObjectOrSceneURL, (Object3D) => {
         const maxAnisotropy = this.renderer.capabilities.getMaxAnisotropy();
         const modelContainingBox = new THREE.Box3();
@@ -117,7 +118,7 @@ class World {
     this.controls.update()
   }
   private setupIllumination() {
-    this.scene.background = new THREE.Color(this.backgroundColor)
+    this.scene.background = this.transparentBackgroundColor ? null : new THREE.Color(this.backgroundColor)
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
     directionalLight.position.set(this.CAMERA_POSITION.x, this.CAMERA_POSITION.y, this.CAMERA_POSITION.z + 30)
     directionalLight.castShadow = true
@@ -164,7 +165,7 @@ class World {
   }
 }
 
-export const useWorld = (canvasSceneId: string, canvasContainerId: string, backgroundColor?: string, threeDimensionalObjectOrScene?: Blob) => {
-  const world = new World(canvasSceneId, canvasContainerId, backgroundColor, threeDimensionalObjectOrScene)
+export const useWorld = (canvasSceneId: string, canvasContainerId: string, backgroundColor?: string, threeDimensionalObjectOrScene?: Blob, transparentBackgroundColor?: boolean) => {
+  const world = new World(canvasSceneId, canvasContainerId, backgroundColor, threeDimensionalObjectOrScene, transparentBackgroundColor)
   return world
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-// import { StackDivider, VStack } from '@chakra-ui/layout';
 import { ThreeDimensionalScene } from './ThreeDimensionalScene';
 
 export default {

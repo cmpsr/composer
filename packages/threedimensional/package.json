@@ -1,0 +1,51 @@
+{
+  "name": "@cmpsr/threedimensional",
+  "version": "0.0.16",
+  "description": "> TODO: description",
+  "author": "Ignacio <rogerpeke97@gmail.com>",
+  "homepage": "https://github.com/cmpsr/composer#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmpsr/composer.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/@cmpsr/threedimensional.test.js",
+    "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore",
+    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' \\) -exec rm {} +"
+  },
+  "dependencies": {
+    "three": "^0.137.4",
+    "@types/three": "^0.137.0",
+    "@chakra-ui/react": "^2.2.4",
+    "@chakra-ui/react-utils": "^2.0.1",
+    "@chakra-ui/theme-tools": "^2.0.5",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.150",
+    "@swc/jest": "^0.2.20",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "swc-loader": "^0.1.15"
+  },
+  "bugs": {
+    "url": "https://github.com/cmpsr/composer/issues"
+  },
+  "engines": {
+    "node": ">=14 <17"
+  }
+}

@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import React, { FC, useEffect, useRef } from 'react';
-import { useWorld } from '../../../threeDimensional/scenes/World';
+import { useWorld } from '../../scenes/World';
 import { ThreeDimensionalSceneProps } from './types';
 
 const formattedBoxProps = (props: ThreeDimensionalSceneProps) => {

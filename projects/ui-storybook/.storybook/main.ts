@@ -8,6 +8,7 @@ module.exports = {
     '../../../packages/components/src/**/*.stories.tsx',
     '../../../packages/blocks/src/**/*.stories.tsx',
     '../../../packages/signalwire/src/**/*.stories.tsx',
+    '../../../packages/threedimensional/src/**/*.stories.tsx',
   ],
   addons: [
     '@storybook/addon-links',
@@ -58,6 +59,7 @@ module.exports = {
           '@components': path.resolve(__dirname, '../../../packages/components/src/components'),
           '@theme': path.resolve(__dirname, '../../../packages/components/src/theme'),
           '@hooks': path.resolve(__dirname, '../../../packages/components/src/hooks'),
+          '@cmpsr/threedimensional': path.resolve(__dirname, '../../../packages/threedimensional/src'),
         },
       },
     };

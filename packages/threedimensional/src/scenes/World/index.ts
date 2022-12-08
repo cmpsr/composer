@@ -48,7 +48,6 @@ class World {
         console.log('adding object url')
         console.log(threeDimensionalObjectOrScene)
         this.threeDimensionalObjectOrSceneURL = threeDimensionalObjectOrScene[0]
-        // this.threeDimensionalObjectOrSceneURL = URL.createObjectURL(threeDimensionalObjectOrScene)
       }
       this.canvasSceneId = canvasSceneId
       this.canvasContainerId = canvasContainerId

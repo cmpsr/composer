@@ -7,6 +7,7 @@ class World {
   renderer!: THREE.WebGLRenderer;
   resolution!: THREE.Vector2;
   camera!: THREE.PerspectiveCamera;
+  directionalLight!: THREE.DirectionalLight;
   modelLoader!: GLTFLoader;
   scene: THREE.Scene = new THREE.Scene();
   clock: THREE.Clock = new THREE.Clock();
@@ -29,7 +30,7 @@ class World {
   CAMERA_POSITION = {
     x: this.CENTER_ORIGIN_AXES.x,
     y: this.CENTER_ORIGIN_AXES.y + 7,
-    z: this.CENTER_ORIGIN_AXES.z + 7,
+    z: this.CENTER_ORIGIN_AXES.z + 15,
   }
   CAMERA_ROTATION = {
     x: -0.7,
@@ -53,7 +54,7 @@ class World {
       this.canvasContainerId = canvasContainerId
       this.resolution = new THREE.Vector2(canvasScene.clientWidth, canvasScene.clientHeight)
       this.camera = new THREE.PerspectiveCamera(75, canvasScene.clientWidth / canvasScene.clientHeight, 0.1, 1000)
-      this.renderer = new THREE.WebGLRenderer({ canvas: canvasScene })
+      this.renderer = new THREE.WebGLRenderer({ canvas: canvasScene, antialias: true, alpha: true })
       this.controls = new OrbitControls(this.camera, this.renderer.domElement)
       this.setupIllumination()
       this.setUpRenderer()
@@ -69,23 +70,23 @@ class World {
     if (this.threeDimensionalObjectOrSceneURL && !this.hasToStopRendering) {
       console.log(this.threeDimensionalObjectOrSceneURL)
       this.modelLoader.load(this.threeDimensionalObjectOrSceneURL, (Object3D) => {
-        console.log('allo ', Object3D)
+        const maxAnisotropy = this.renderer.capabilities.getMaxAnisotropy();
+        const modelContainingBox = new THREE.Box3();
         Object3D.scene.traverse((child: any) => {
           if (child instanceof THREE.Mesh) {
             child.castShadow = true
+            if (child.material.map) {
+              child.material.map.anisotropy = maxAnisotropy
+            }
           }
         })
-        Object3D.scene.position.set(this.CENTER_ORIGIN_AXES.x, this.CENTER_ORIGIN_AXES.y, this.CENTER_ORIGIN_AXES.z)
-        Object3D.scene.scale.set(2, 2, 2)
-        Object3D.scene.rotateOnAxis(new THREE.Vector3(0, 1, 0), Math.PI)
-        // characterAnimationMixer.current = new THREE.AnimationMixer(character.scene)
-        // const idleAnimation = characterAnimationMixer.current.clipAction(character.animations[15])
-        // idleAnimation.play()
-        // idleAnimation.clampWhenFinished = true
+        modelContainingBox.setFromObject(Object3D.scene)
+        const modelSizeXYZ = modelContainingBox.getSize(new THREE.Vector3())
+        Object3D.scene.position.set(this.CENTER_ORIGIN_AXES.x - modelSizeXYZ.x / 2, this.CENTER_ORIGIN_AXES.y, this.CENTER_ORIGIN_AXES.z + modelSizeXYZ.z / 2)
+        Object3D.scene.scale.set(1, 1, 1)
         Object3D.scene.castShadow = true
-        // characterAnimations.current = character.animations
         this.scene.add(Object3D.scene)
-        // URL.revokeObjectURL(this.threeDimensionalObjectOrSceneURL);
+        this.setDirectionalLightTarget(Object3D.scene)
         // eslint-disable-next-line @typescript-eslint/no-empty-function
       }, () => { }, (error) => {
         URL.revokeObjectURL(this.threeDimensionalObjectOrSceneURL);
@@ -117,18 +118,19 @@ class World {
   }
   private setupIllumination() {
     this.scene.background = new THREE.Color(this.backgroundColor)
-    const directionalLight = new THREE.DirectionalLight(0xBC2732, 1)
-    directionalLight.position.set(this.CENTER_ORIGIN_AXES.x, this.CENTER_ORIGIN_AXES.y, this.CENTER_ORIGIN_AXES.z)
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
+    directionalLight.position.set(this.CAMERA_POSITION.x, this.CAMERA_POSITION.y, this.CAMERA_POSITION.z + 30)
     directionalLight.castShadow = true
     directionalLight.shadow.camera.near = 0.1
     directionalLight.shadow.camera.far = 50
     directionalLight.shadow.mapSize.width = 1024
     directionalLight.shadow.mapSize.height = 1024
     directionalLight.intensity = 3
-    directionalLight.target = this.scene
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const helper = new THREE.DirectionalLightHelper(directionalLight)
+    directionalLight.name = 'directionalLight'
+    const directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight)
+    directionalLightHelper.name = 'directionalLightHelper'
     this.scene.add(directionalLight)
+    this.scene.add(directionalLightHelper)
     const ambientLight = new THREE.AmbientLight(0xffffff)
     ambientLight.intensity = 0.2
     this.scene.add(ambientLight)
@@ -138,7 +140,6 @@ class World {
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
   }
   private renderScene() {
-    console.log('hasToStop rendering ', this.hasToStopRendering)
     if (this.hasToStopRendering) {
       return
     }
@@ -148,7 +149,13 @@ class World {
   }
   setDirectionalLightTarget(target: THREE.Object3D<THREE.Event>) {
     const directionalLight = this.scene.getObjectByName('directionalLight') as THREE.DirectionalLight
-    directionalLight.target = target
+    const directionalLightHelper = this.scene.getObjectByName('directionalLightHelper') as THREE.DirectionalLightHelper
+    if (directionalLight?.target && directionalLightHelper?.update) {
+      directionalLight.target = target
+      directionalLight.target.updateMatrixWorld();
+      directionalLightHelper.update()
+      this.camera.lookAt(target.position)
+    }
   }
   stopRendering() {
     this.hasToStopRendering = true

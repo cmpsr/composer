@@ -12,7 +12,6 @@ const formattedBoxProps = (props: ThreeDimensionalSceneProps) => {
 
 
 export const ThreeDimensionalScene: FC<ThreeDimensionalSceneProps> = (props) => {
-  console.log('typeof file ', typeof props.threeDimensionalObjectOrScene)
   const boxProps = formattedBoxProps(props);
   const sceneInstanceRef = useRef(null);
   const sceneContainerId = `${props.backgroundColor}-sceneContainerId`;

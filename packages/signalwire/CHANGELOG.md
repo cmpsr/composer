@@ -1,5 +1,25 @@
 # Change Log
 
+## 0.3.6
+
+### Patch Changes
+
+- Updated dependencies [c28ddf8]
+  - @cmpsr/components@5.4.1
+
+## 0.3.5
+
+### Patch Changes
+
+- Updated dependencies [9b5fc7c]
+  - @cmpsr/components@5.4.0
+
+## 0.3.4
+
+### Patch Changes
+
+- 35d6df8: fix: show rooms logo from contentful
+
 ## 0.3.3
 
 ### Patch Changes

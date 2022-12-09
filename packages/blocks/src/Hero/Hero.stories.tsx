@@ -17,8 +17,8 @@ export default {
 
 export const ImageLeft = () => (
   <Hero>
-    <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
-    <Hero.Content>
+    <Hero.Image width="100%" src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
+    <Hero.Content maxWidth={{ lg: '24.375rem', xl: '32.125rem' }}>
       <Hero.Title variant="textpairing-header-4XL">
         <Hero.Title.Label>The next generation of care for women and families</Hero.Title.Label>
         <Hero.Title.SubLabel>
@@ -35,7 +35,7 @@ export const ImageLeft = () => (
 
 export const ContentCentered = () => (
   <Hero>
-    <Hero.Content contentAlignment="center">
+    <Hero.Content contentAlignment="center" maxWidth={{ lg: '24.375rem', xl: '32.125rem' }}>
       <Hero.Title variant="textpairing-header-4XL">
         <Hero.Title.Label>The next generation of care for women and families</Hero.Title.Label>
         <Hero.Title.SubLabel>
@@ -47,13 +47,13 @@ export const ContentCentered = () => (
         <Hero.Action children="Default" variant="primary-alt" />
       </Hero.Actions>
     </Hero.Content>
-    <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
+    <Hero.Image width="100%" src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
   </Hero>
 );
 
 export const NoCta = () => (
   <Hero>
-    <Hero.Content contentAlignment="start">
+    <Hero.Content contentAlignment="start" maxWidth={{ lg: '24.375rem', xl: '32.125rem' }}>
       <Hero.Title variant="textpairing-header-4XL">
         <Hero.Title.Label>The next generation of care for women and families</Hero.Title.Label>
         <Hero.Title.SubLabel>
@@ -61,13 +61,13 @@ export const NoCta = () => (
         </Hero.Title.SubLabel>
       </Hero.Title>
     </Hero.Content>
-    <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
+    <Hero.Image width="100%" src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
   </Hero>
 );
 
 export const All = () => (
   <Hero>
-    <Hero.Content>
+    <Hero.Content maxWidth={{ lg: '24.375rem', xl: '32.125rem' }}>
       <Hero.ContentContainer>
         <Hero.Tag>Hello</Hero.Tag>
         <Hero.Overline>BREAKING NEWS</Hero.Overline>
@@ -119,7 +119,7 @@ export const All = () => (
         <Hero.Action size="l" leadingIcon={<IconMail />} />
       </Hero.ContentContainer>
     </Hero.Content>
-    <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
+    <Hero.Image width="100%" src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
   </Hero>
 );
 
@@ -137,8 +137,8 @@ const Template = ({
   disclaimer,
 }) => (
   <Hero flexDirection={{ base: 'column', lg: variant === 'left' ? 'row' : 'row-reverse' }}>
-    <Hero.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
-    <Hero.Content contentAlignment={contentAlignment}>
+    <Hero.Image width="100%" src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="20rem" />
+    <Hero.Content contentAlignment={contentAlignment} maxWidth={{ lg: '24.375rem', xl: '32.125rem' }}>
       <Hero.ContentContainer>
         <Hero.Tag>{tag}</Hero.Tag>
         <Hero.Overline>{legend}</Hero.Overline>

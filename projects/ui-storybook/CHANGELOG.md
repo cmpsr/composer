@@ -1,5 +1,25 @@
 # @cmpsr/ui-storybook
 
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies [c28ddf8]
+  - @cmpsr/components@5.4.1
+
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies [9b5fc7c]
+  - @cmpsr/components@5.4.0
+
+## 0.1.0
+
+### Minor Changes
+
+- 35d6df8: feat: load stories from signalwire package
+
 ## 0.0.23
 
 ### Patch Changes

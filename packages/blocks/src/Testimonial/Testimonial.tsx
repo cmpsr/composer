@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { Flex, Image, ImageProps, FlexProps, Text, TextProps, Divider, LinkProps, Link } from '@cmpsr/components';
+import { Flex, Image, FlexProps, Text, TextProps, Divider, LinkProps, Link } from '@cmpsr/components';
 
-import { TestimonialAuthorStaticMembers, TestimonialProps, TestimonialStaticMembers } from './types';
+import { TestimonialProps, TestimonialStaticMembers } from './types';
 
 export const Testimonial: FC<TestimonialProps> & TestimonialStaticMembers = ({
   backgroundColor = 'background-page',
@@ -19,17 +19,7 @@ export const Testimonial: FC<TestimonialProps> & TestimonialStaticMembers = ({
   />
 );
 
-const TestimonialImage: FC<ImageProps> = (props) => (
-  <Image
-    alt="testimony image"
-    maxWidth={{ md: '34.75rem', lg: '19.6875rem', xl: '31.25rem' }}
-    width="100%"
-    borderRadius="0.375rem"
-    alignSelf={{ md: 'center' }}
-    {...props}
-  />
-);
-Testimonial.Image = TestimonialImage;
+Testimonial.Image = Image;
 
 const FlexContent: FC<FlexProps> = (props) => (
   <Flex gap="1.5rem" flexDirection="column" maxWidth={{ lg: '36.8125rem', xl: '33.5rem', xxl: '43.5rem' }} {...props} />
@@ -49,20 +39,7 @@ const TestimonialTestimony: FC<TextProps> = (props) => (
 );
 Testimonial.Testimony = TestimonialTestimony;
 
-const TestimonialAuthorAssociation: FC<TextProps> = (props) => (
-  <Flex gap="0.5rem">
-    <Divider orientation="vertical" />
-    <Text variant="text-body-regular" color="text-secondary" {...props} />
-  </Flex>
-);
-const TestimonialAuthor: FC<TextProps> & TestimonialAuthorStaticMembers = ({ children, ...props }) => (
-  <Flex gap="0.5rem" flexWrap="wrap">
-    {React.Children.map(children, (child) =>
-      typeof child === 'string' ? <Text variant="text-body-medium" {...props} children={child} /> : child
-    )}
-  </Flex>
-);
-TestimonialAuthor.Association = TestimonialAuthorAssociation;
+const TestimonialAuthor: FC<TextProps> = (props) => <Text variant="text-body-medium" {...props} />;
 Testimonial.Author = TestimonialAuthor;
 
 const TestimonialAction: FC<LinkProps> = (props) => <Link target="_blank" size="s" {...props} />;

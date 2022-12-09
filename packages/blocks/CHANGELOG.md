@@ -1,5 +1,26 @@
 # @cmpsr/blocks
 
+## 12.0.2
+
+## 12.0.1
+
+## 12.0.0
+
+### Major Changes
+
+- 0837005: feat: remove author association
+
+### Minor Changes
+
+- 584b2eb: feat: add spacing between base navigation links when there are no dividers
+- a088642: feat: remove default maxWidth of Hero.Content and width of Hero.Image
+
+## 11.1.0
+
+### Minor Changes
+
+- e44454c: feat: remove text transform uppercase from Hero overline
+
 ## 11.0.2
 
 ## 11.0.1

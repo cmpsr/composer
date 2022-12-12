@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Accordion } from './Accordion';
-import { Avatar } from '../../primitives';
+import { Avatar } from '../../media';
 import { Box, Flex } from '../../layouts';
 import { Text, TextPairing } from '../../typography';
 

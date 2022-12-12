@@ -5,7 +5,7 @@ import { Box, Flex } from '@components';
 
 export default {
   component: Avatar,
-  title: 'Components/Primitives/Avatar',
+  title: 'Components/Media/Avatar',
 } as Meta;
 
 const AVATAR_URL = 'https://avatars0.githubusercontent.com/u/67131017?s=200';

@@ -1,4 +1,5 @@
 //Commonjs import of three
+import { normalizeValue } from '../../utils';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -18,6 +19,7 @@ class World {
   canvasSceneId: string;
   observerOfCanvasContainer!: ResizeObserver;
   controls!: OrbitControls;
+  trackMouseMovementBinded!: (event: MouseEvent) => void;
   threeDimensionalObjectOrSceneURL: string;
   canvasContainer = {
     width: 0,
@@ -55,9 +57,10 @@ class World {
       this.canvasSceneId = canvasSceneId
       this.canvasContainerId = canvasContainerId
       this.resolution = new THREE.Vector2(canvasScene.clientWidth, canvasScene.clientHeight)
-      this.camera = new THREE.PerspectiveCamera(75, canvasScene.clientWidth / canvasScene.clientHeight, 0.1, 1000)
+      this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
       this.renderer = new THREE.WebGLRenderer({ canvas: canvasScene, antialias: true, alpha: true })
-      this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+      this.trackMouseMovementBinded = this.trackMouseMovement.bind(this)
+      // this.controls = new OrbitControls(this.camera, this.renderer.domElement)
       this.setupIllumination()
       this.setUpRenderer()
       this.setCameraPositionAndAspect()
@@ -72,7 +75,6 @@ class World {
     if (this.threeDimensionalObjectOrSceneURL && !this.hasToStopRendering) {
       this.modelLoader.load(this.threeDimensionalObjectOrSceneURL, (Object3D) => {
         const maxAnisotropy = this.renderer.capabilities.getMaxAnisotropy();
-        const modelContainingBox = new THREE.Box3();
         Object3D.scene.traverse((child: any) => {
           if (child instanceof THREE.Mesh) {
             child.castShadow = true
@@ -81,9 +83,7 @@ class World {
             }
           }
         })
-        modelContainingBox.setFromObject(Object3D.scene)
-        const modelSizeXYZ = modelContainingBox.getSize(new THREE.Vector3())
-        Object3D.scene.position.set(this.CENTER_ORIGIN_AXES.x - modelSizeXYZ.x / 2, this.CENTER_ORIGIN_AXES.y, this.CENTER_ORIGIN_AXES.z + modelSizeXYZ.z / 2)
+        Object3D.scene.position.set(this.CENTER_ORIGIN_AXES.x, this.CENTER_ORIGIN_AXES.y, this.CENTER_ORIGIN_AXES.z + 3)
         Object3D.scene.scale.set(1, 1, 1)
         Object3D.scene.castShadow = true
         this.scene.add(Object3D.scene)
@@ -98,6 +98,20 @@ class World {
   private trackWindowAndContainerResize() {
     this.observerOfCanvasContainer = new ResizeObserver(this.updateRendererAndCamera.bind(this))
     this.observerOfCanvasContainer.observe(document.getElementById(this.canvasContainerId) as HTMLElement)
+    this.renderer.domElement.addEventListener('mousemove', this.trackMouseMovementBinded)
+  }
+  private trackMouseMovement(event: MouseEvent) {
+    const halfWindowWidth = window.innerWidth / 2
+    const halfWindowHeight = window.innerHeight / 2
+    const newMousePositions = {
+      x: event.clientX - halfWindowWidth,
+      y: event.clientY - halfWindowHeight,
+    }
+    const interpolationFactor = 0.1
+    const normalizedMousePositionX = normalizeValue(newMousePositions.x, -halfWindowWidth, halfWindowWidth)
+    const normalizedMousePositionY = normalizeValue(newMousePositions.y, -halfWindowHeight, halfWindowHeight)
+    this.camera.rotation.y = THREE.MathUtils.lerp(this.CAMERA_ROTATION.y, normalizedMousePositionX, interpolationFactor)
+    this.camera.rotation.x = THREE.MathUtils.lerp(this.CAMERA_ROTATION.x, normalizedMousePositionY, interpolationFactor)
   }
   private setCameraPositionAndAspect() {
     this.camera.position.set(this.CAMERA_POSITION.x, this.CAMERA_POSITION.y, this.CAMERA_POSITION.z)
@@ -106,7 +120,7 @@ class World {
     this.camera.updateProjectionMatrix()
   }
   private setCameraControls() {
-    this.controls.target.set(0, 0, 0)
+    // this.controls.target.set(0, 0, 0)
   }
   private updateRendererAndCamera() {
     const gameSceneContainer = document.getElementById(this.canvasContainerId) as HTMLElement
@@ -115,7 +129,7 @@ class World {
     this.renderer.setSize(this.canvasContainer.width, this.canvasContainer.height)
     this.camera.aspect = this.canvasContainer.width / this.canvasContainer.height
     this.camera.updateProjectionMatrix()
-    this.controls.update()
+    // this.controls.update()
   }
   private setupIllumination() {
     this.scene.background = this.transparentBackgroundColor ? null : new THREE.Color(this.backgroundColor)
@@ -155,13 +169,13 @@ class World {
       directionalLight.target = target
       directionalLight.target.updateMatrixWorld();
       directionalLightHelper.update()
-      this.camera.lookAt(target.position)
     }
   }
   stopRendering() {
     this.hasToStopRendering = true
     this.renderer.dispose()
     this.observerOfCanvasContainer.disconnect()
+    this.renderer.domElement.removeEventListener('mousemove', this.trackMouseMovementBinded)
   }
 }
 

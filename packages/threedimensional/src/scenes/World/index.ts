@@ -20,6 +20,7 @@ class World {
   observerOfCanvasContainer!: ResizeObserver;
   controls!: OrbitControls;
   trackMouseMovementBinded!: (event: MouseEvent) => void;
+  trackMouseScrollBinded!: (event: WheelEvent) => void;
   threeDimensionalObjectOrSceneURL: string;
   canvasContainer = {
     width: 0,
@@ -60,6 +61,7 @@ class World {
       this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
       this.renderer = new THREE.WebGLRenderer({ canvas: canvasScene, antialias: true, alpha: true })
       this.trackMouseMovementBinded = this.trackMouseMovement.bind(this)
+      this.trackMouseScrollBinded = this.trackMouseScroll.bind(this)
       // this.controls = new OrbitControls(this.camera, this.renderer.domElement)
       this.setupIllumination()
       this.setUpRenderer()
@@ -83,8 +85,7 @@ class World {
             }
           }
         })
-        Object3D.scene.position.set(this.CENTER_ORIGIN_AXES.x, this.CENTER_ORIGIN_AXES.y, this.CENTER_ORIGIN_AXES.z + 3)
-        Object3D.scene.scale.set(1, 1, 1)
+        Object3D.scene.position.set(this.CENTER_ORIGIN_AXES.x, this.CENTER_ORIGIN_AXES.y, this.CENTER_ORIGIN_AXES.z + 5)
         Object3D.scene.castShadow = true
         this.scene.add(Object3D.scene)
         this.setDirectionalLightTarget(Object3D.scene)
@@ -99,6 +100,15 @@ class World {
     this.observerOfCanvasContainer = new ResizeObserver(this.updateRendererAndCamera.bind(this))
     this.observerOfCanvasContainer.observe(document.getElementById(this.canvasContainerId) as HTMLElement)
     this.renderer.domElement.addEventListener('mousemove', this.trackMouseMovementBinded)
+    this.renderer.domElement.addEventListener('wheel', this.trackMouseScrollBinded)
+  }
+  private trackMouseScroll(event: WheelEvent) {
+    event.preventDefault()
+    if (event.deltaY > 0) {
+      this.camera.position.z += 1
+    } else {
+      this.camera.position.z -= 1
+    }
   }
   private trackMouseMovement(event: MouseEvent) {
     const halfWindowWidth = window.innerWidth / 2
@@ -133,21 +143,21 @@ class World {
   }
   private setupIllumination() {
     this.scene.background = this.transparentBackgroundColor ? null : new THREE.Color(this.backgroundColor)
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
-    directionalLight.position.set(this.CAMERA_POSITION.x, this.CAMERA_POSITION.y, this.CAMERA_POSITION.z + 30)
+    const directionalLight = new THREE.DirectionalLight(0xF4D772, 1)
+    directionalLight.position.set(this.CAMERA_POSITION.x, this.CAMERA_POSITION.y, this.CAMERA_POSITION.z)
     directionalLight.castShadow = true
     directionalLight.shadow.camera.near = 0.1
     directionalLight.shadow.camera.far = 50
     directionalLight.shadow.mapSize.width = 1024
     directionalLight.shadow.mapSize.height = 1024
-    directionalLight.intensity = 3
+    directionalLight.intensity = 2
     directionalLight.name = 'directionalLight'
     const directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight)
     directionalLightHelper.name = 'directionalLightHelper'
     this.scene.add(directionalLight)
     this.scene.add(directionalLightHelper)
-    const ambientLight = new THREE.AmbientLight(0xffffff)
-    ambientLight.intensity = 0.2
+    const ambientLight = new THREE.AmbientLight(0x404040)
+    ambientLight.intensity = 0.8
     this.scene.add(ambientLight)
   }
   private setUpRenderer() {
@@ -176,6 +186,7 @@ class World {
     this.renderer.dispose()
     this.observerOfCanvasContainer.disconnect()
     this.renderer.domElement.removeEventListener('mousemove', this.trackMouseMovementBinded)
+    this.renderer.domElement.removeEventListener('wheel', this.trackMouseScrollBinded)
   }
 }
 

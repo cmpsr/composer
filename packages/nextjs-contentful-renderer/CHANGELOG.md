@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 18.1.0
+
+### Minor Changes
+
+- 081f7ab: feat: allow anything but : in the prop name
+
 ## 18.0.2
 
 ## 18.0.1

@@ -428,4 +428,30 @@ describe('generateMdx', () => {
       },
     ]);
   });
+  test('should allow props name with white spaces', async () => {
+    const fakeBlocks = [
+      {
+        models: [
+          {
+            base:
+              '{{prop name:styling[color=primary-default]:copy one}}{{other prop name:styling[color=primary-default]:copy two}}',
+          },
+          {
+            base: '<>{{prop name:string}}</><>{{other prop name:string}}</>',
+          },
+        ],
+        propsValues: [{}, { base: { 'prop name': 'prop value', 'other prop name': 'other prop value' } }],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([
+      {
+        base:
+          '<Text as="span" variant="inherited" color="primary-default">copy one</Text><Text as="span" variant="inherited" color="primary-default">copy two</Text>',
+      },
+      {
+        base: '<>prop value</><>other prop value</>',
+      },
+    ]);
+  });
 });

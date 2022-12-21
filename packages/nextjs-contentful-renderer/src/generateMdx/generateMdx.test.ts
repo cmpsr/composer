@@ -475,7 +475,6 @@ describe('generateMdx', () => {
               actionsAction1TrailingIcon: '',
             },
           },
-          ,
         ],
       },
     ];

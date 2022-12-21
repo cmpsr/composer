@@ -454,4 +454,36 @@ describe('generateMdx', () => {
       },
     ]);
   });
+  test('should render icons', async () => {
+    const fakeBlocks = [
+      {
+        models: [
+          {
+            base: `<HighlightedText>{{actions:Actions:HighlightedText.Actions}}</HighlightedText>`,
+          },
+        ],
+        propsValues: [
+          {
+            base: {
+              actions: {
+                children: ['{{actionsAction1:Action:HighlightedText.Action}}'],
+              },
+              actionsAction1: {
+                children: 'Test',
+                trailingIcon: '{{actionsAction1TrailingIcon:Icon:IconAlertCircle}}',
+              },
+              actionsAction1TrailingIcon: '',
+            },
+          },
+        ],
+      },
+    ];
+    const mdx = await generateMdx(fakeBlocks);
+    expect(mdx).toStrictEqual([
+      {
+        base:
+          '<HighlightedText><HighlightedText.Actions ><HighlightedText.Action trailingIcon={<IconAlertCircle /> } >Test</HighlightedText.Action></HighlightedText.Actions></HighlightedText>',
+      },
+    ]);
+  });
 });

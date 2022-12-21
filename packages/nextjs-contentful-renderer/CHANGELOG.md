@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 18.1.1
+
+### Patch Changes
+
+- bb7b8bb: fix: do not capture { in the prop name
+
 ## 18.1.0
 
 ### Minor Changes

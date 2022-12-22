@@ -1,4 +1,5 @@
 import { bundleMDX } from 'mdx-bundler';
+import { getRgxInstance } from '@cmpsr/cml';
 import { replaceAll } from '../utils/replaceAll';
 import { Block, Model, PropsValue, ResponsiveValue } from '../utils/contentful/getPageById/types';
 import { mergeDeep } from '../utils/mergeDeep';
@@ -62,9 +63,6 @@ const replaceValuesByBreakpoint = (mdxModel: Model, values: PropsValue): Model =
 
 const bundler = async (code: string): Promise<string> => (await bundleMDX({ source: code.trim() })).code;
 
-export const getRgxInstance = () =>
-  new RegExp('{{([^:^{]*):(\\w+)(?:\\((.+)?\\))?(\\[([^\\]]*)?\\])?(?::([^}}]*))?}}', 'g');
-
 const replacePropValues = (mdx: string, values: Record<string, string> = {}): string => {
   if (!mdx) return '';
   let mdxCopy = mdx;
@@ -124,7 +122,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
         newValue = `{${propValue}}`;
         break;
       case 'list':
-        searchValue = listPattern ? escapeCharactersInListPattern(match) : match;
+        searchValue = match;
         break;
       case 'ENV_VAR':
         searchValue = match;
@@ -161,10 +159,6 @@ const flatObject = (obj: Record<string, any>): string => {
   }
   return result;
 };
-
-// Escape characters (, ), | to \\(, \\), \\|
-const escapeCharactersInListPattern = (match: string) =>
-  replaceAll('\\|', '\\|')(match.replace('(', '\\(').replace(')', '\\)'));
 
 const applyStyling = (text: string, stylesStr: string): string => {
   const styles = stylesStr.split(',');

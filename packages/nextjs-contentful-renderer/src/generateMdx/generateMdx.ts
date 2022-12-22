@@ -1,10 +1,7 @@
 import { bundleMDX } from 'mdx-bundler';
-import { getRgxInstance } from '@cmpsr/cml';
+import { Block, Model, PropsValue, ResponsiveValue, breakpoints, getRgxInstance } from '@cmpsr/cml';
 import { replaceAll } from '../utils/replaceAll';
-import { Block, Model, PropsValue, ResponsiveValue } from '../utils/contentful/getPageById/types';
 import { mergeDeep } from '../utils/mergeDeep';
-
-const breakpoints = ['base', 'md', 'lg', 'xl', 'xxl'];
 
 export const generateMdx = async (blocks: Block[]): Promise<Model[]> => {
   const promises = blocks.map(async ({ models, propsValues }) => {
@@ -78,7 +75,6 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
     const rgxGroups = patternToGetRgxGroups.exec(match) || [];
     const propName = rgxGroups[1];
     const fieldType = rgxGroups[2];
-    const listPattern = rgxGroups[3];
     const defaultValue = rgxGroups[6] || '';
 
     const propValue = values[propName];

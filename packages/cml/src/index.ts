@@ -1,3 +1,3 @@
 export * from './getRgxInstance';
-export * from './replaceCmlTemplates';
+export * from './replaceCmlPlaceholders';
 export * from './types';

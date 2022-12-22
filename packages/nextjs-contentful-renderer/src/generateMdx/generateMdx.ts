@@ -1,9 +1,11 @@
 import { bundleMDX } from 'mdx-bundler';
-import { Block, Model, breakpoints, replaceCmlTemplates } from '@cmpsr/cml';
+import { Block, Model, breakpoints, replaceCmlPlaceholders } from '@cmpsr/cml';
 
 export const generateMdx = async (blocks: Block[]): Promise<Model[]> => {
   const promises = blocks.map(async ({ models, propsValues }) => {
-    const mdxModelsUpdated = models.map((mdxModel, index) => replaceCmlTemplates(mdxModel, propsValues[index] || {}));
+    const mdxModelsUpdated = models.map((mdxModel, index) =>
+      replaceCmlPlaceholders(mdxModel, propsValues[index] || {})
+    );
 
     const bundledModels = mdxModelsUpdated.map(async (model) => {
       const bundled: Model = {};

@@ -3,7 +3,7 @@ import { breakpoints, Model, PropsValue, ResponsiveValue } from '../types';
 import { mergeDeep } from '../utils/mergeDeep';
 import { replaceAll } from '../utils/replaceAll';
 
-export const replaceCmlTemplates = (model: Model, values: PropsValue): Model =>
+export const replaceCmlPlaceholders = (model: Model, values: PropsValue): Model =>
   breakpoints.reduce((acc, breakpoint) => {
     if (model[breakpoint] || values[breakpoint]) {
       return {

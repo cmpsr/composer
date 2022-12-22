@@ -6,13 +6,13 @@ jest.mock('mdx-bundler', () => ({
   bundleMDX: (params) => mockBundleMDX(params),
 }));
 
-const mockReplaceCmlTemplates = jest.fn();
-mockReplaceCmlTemplates.mockImplementation((m) => m);
+const mockReplaceCmlPlaceholders = jest.fn();
+mockReplaceCmlPlaceholders.mockImplementation((m) => m);
 jest.mock('@cmpsr/cml', () => {
   const actual = jest.requireActual('@cmpsr/cml');
   return {
     ...actual,
-    replaceCmlTemplates: (m, v) => mockReplaceCmlTemplates(m, v),
+    replaceCmlPlaceholders: (m, v) => mockReplaceCmlPlaceholders(m, v),
   };
 });
 
@@ -29,9 +29,13 @@ describe('generateMdx', () => {
       },
     ];
     await generateMdx(fakeBlocks);
-    expect(mockReplaceCmlTemplates).toHaveBeenCalledTimes(fakeBlocks.length);
+    expect(mockReplaceCmlPlaceholders).toHaveBeenCalledTimes(fakeBlocks.length);
     fakeBlocks.forEach((block, index) => {
-      expect(mockReplaceCmlTemplates).toHaveBeenNthCalledWith(index + 1, block.models[0], block.propsValues[0] || {});
+      expect(mockReplaceCmlPlaceholders).toHaveBeenNthCalledWith(
+        index + 1,
+        block.models[0],
+        block.propsValues[0] || {}
+      );
     });
   });
   test('should bundle blocks', async () => {

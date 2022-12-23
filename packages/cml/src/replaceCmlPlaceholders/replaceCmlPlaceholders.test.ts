@@ -1,6 +1,6 @@
 import { replaceCmlPlaceholders } from '.';
 
-describe('replaceCmlTemplates', () => {
+describe('replaceCmlPlaceholders', () => {
   test('should only return breakpoint with mdx', () => {
     const code = '<Text>Title</Text>';
     const model = { base: code };

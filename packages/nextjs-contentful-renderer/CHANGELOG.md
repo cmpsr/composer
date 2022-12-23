@@ -1,5 +1,16 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 19.0.0
+
+### Minor Changes
+
+- b0fce1f: feat: create cml package and move responsibilities from nextjs-contentful-renderer
+
+### Patch Changes
+
+- Updated dependencies [b0fce1f]
+  - @cmpsr/cml@0.1.0
+
 ## 18.1.1
 
 ### Patch Changes

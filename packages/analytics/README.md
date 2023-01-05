@@ -21,8 +21,9 @@ More information can be found on [Segment](https://segment.com/docs/connections/
 
 ## Supported Providers
 
-- GA
+- GTag
 - Segment
+- GA (will deprecated july 2023)
 
 ## Setup
 
@@ -39,6 +40,7 @@ Here are the props you can pass in to enable these providers.
 ```typescript
 export interface IAnalyticsProvider {
   segment?: ISegmentConfig;
+  gtag?: IGTagConfig;
   ga?: IGAConfig;
 }
 ```
@@ -46,7 +48,9 @@ export interface IAnalyticsProvider {
 ### Use Function
 
 ```typescript
-const { track } from 'useAnalytics';
+import useAnalytics from 'useAnalytics';
+
+const { track } = useAnalytics();
 track('Hello World');
 ```
 

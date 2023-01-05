@@ -12,7 +12,7 @@
     "build-storybook": "turbo run build-storybook",
     "test": "turbo run test -- --passWithNoTests",
     "test:watch": "turbo run test:watch --parallel",
-    "test:coverage": "turbo run test:coverage",
+    "test:coverage": "turbo run test:coverage -- --passWithNoTests",
     "lint": "eslint . --ext .tsx,.ts,.js",
     "lint-and-fix": "eslint . --ext .tsx,.ts,.js --fix",
     "publish-ci": "turbo run libbuild && turbo run type:emit && changeset publish",

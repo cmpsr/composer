@@ -1,5 +1,28 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 18.2.0
+
+### Minor Changes
+
+- b0fce1f: feat: create cml package and move responsibilities from nextjs-contentful-renderer
+
+### Patch Changes
+
+- Updated dependencies [b0fce1f]
+  - @cmpsr/cml@0.1.0
+
+## 18.1.1
+
+### Patch Changes
+
+- bb7b8bb: fix: do not capture { in the prop name
+
+## 18.1.0
+
+### Minor Changes
+
+- 081f7ab: feat: allow anything but : in the prop name
+
 ## 18.0.2
 
 ## 18.0.1

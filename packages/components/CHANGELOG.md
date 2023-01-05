@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.5.0
+
+### Minor Changes
+
+- f7f244f: Make the title of the following Avatar, Icons, Image match /Components/Media/[Component name] in storybook
+
 ## 5.4.1
 
 ### Patch Changes

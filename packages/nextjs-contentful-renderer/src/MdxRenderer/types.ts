@@ -1,5 +1,5 @@
 import { ComponentMap } from 'mdx-bundler/client';
-import { Model } from '../utils/contentful/getPageById/types';
+import { Model } from '@cmpsr/cml';
 
 export interface MdxRendererProps {
   content: Model;

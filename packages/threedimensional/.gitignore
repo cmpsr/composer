@@ -1,0 +1,8 @@
+# Node dependencies
+node_modules
+
+# Compiled library files
+lib
+
+# Local env files
+.env

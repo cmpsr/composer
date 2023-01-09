@@ -1,0 +1,23 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "decorators": false,
+      "dynamicImport": false
+    },
+    "minify": {
+      "keepClassnames": true,
+      "keepFnames": true
+    },
+    "keepClassNames": true,
+    "baseUrl": "."
+  },
+  "module": {
+    "type": "commonjs",
+    "strict": false,
+    "strictMode": true,
+    "lazy": false,
+    "noInterop": false
+  }
+}

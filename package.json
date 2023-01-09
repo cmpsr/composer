@@ -54,7 +54,8 @@
       },
       "build-storybook": {
         "dependsOn": [
-          "@cmpsr/components#libbuild"
+          "@cmpsr/components#libbuild",
+          "@cmpsr/threedimensional#libbuild"
         ],
         "outputs": [
           "storybook-static/**"

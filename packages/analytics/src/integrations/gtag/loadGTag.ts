@@ -1,0 +1,17 @@
+import { IGTagConfig } from "src/integrations/gtag/types";
+
+export const loadGTag = (gTagConfig: IGTagConfig) => {
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js',
+    });
+    const f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s) as any, dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+      'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', gTagConfig.trackingId);
+};

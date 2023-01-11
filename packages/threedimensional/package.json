@@ -1,6 +1,6 @@
 {
   "name": "@cmpsr/threedimensional",
-  "version": "0.0.16",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "Ignacio <rogerpeke97@gmail.com>",
   "homepage": "https://github.com/cmpsr/composer#readme",
@@ -27,19 +27,18 @@
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' \\) -exec rm {} +"
   },
   "dependencies": {
+    "@cmpsr/components": "^5.3.0",
+    "lodash": "^4.17.21",
+    "rimraf": "^3.0.2",
     "three": "^0.137.4",
-    "@types/three": "^0.137.0",
-    "@chakra-ui/react": "^2.2.4",
-    "@chakra-ui/react-utils": "^2.0.1",
-    "@chakra-ui/theme-tools": "^2.0.5",
-    "rimraf": "^3.0.2"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "@types/three": "^0.137.0",
     "swc-loader": "^0.1.15"
   },
   "bugs": {

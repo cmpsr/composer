@@ -26,7 +26,7 @@ export default {
   },
 } as Meta;
 
-const Template = (args) => <ThreeDimensionalScene {...args}></ThreeDimensionalScene>;
+const Template = (args) => <ThreeDimensionalScene {...args} />;
 export const Playground = Template.bind({});
 Playground.args = {
   backgroundColor: "blue",

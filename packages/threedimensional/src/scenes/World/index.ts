@@ -1,15 +1,14 @@
-//Commonjs import of three
 import { normalizeValue } from '../../utils';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
+
 class World {
-  renderer!: THREE.WebGLRenderer;
-  resolution!: THREE.Vector2;
-  camera!: THREE.PerspectiveCamera;
-  directionalLight!: THREE.DirectionalLight;
-  modelLoader!: GLTFLoader;
+  renderer: THREE.WebGLRenderer;
+  resolution: THREE.Vector2;
+  camera: THREE.PerspectiveCamera;
+  directionalLight: THREE.DirectionalLight;
+  modelLoader: GLTFLoader;
   scene: THREE.Scene = new THREE.Scene();
   clock: THREE.Clock = new THREE.Clock();
   backgroundColor = "black";
@@ -17,10 +16,9 @@ class World {
   hasToStopRendering = false;
   canvasContainerId: string;
   canvasSceneId: string;
-  observerOfCanvasContainer!: ResizeObserver;
-  controls!: OrbitControls;
-  trackMouseMovementBinded!: (event: MouseEvent) => void;
-  trackMouseScrollBinded!: (event: WheelEvent) => void;
+  observerOfCanvasContainer: ResizeObserver;
+  trackMouseMovementBinded: (event: MouseEvent) => void;
+  trackMouseScrollBinded: (event: WheelEvent) => void;
   threeDimensionalObjectOrSceneURL: string;
   canvasContainer = {
     width: 0,
@@ -62,11 +60,9 @@ class World {
       this.renderer = new THREE.WebGLRenderer({ canvas: canvasScene, antialias: true, alpha: true })
       this.trackMouseMovementBinded = this.trackMouseMovement.bind(this)
       this.trackMouseScrollBinded = this.trackMouseScroll.bind(this)
-      // this.controls = new OrbitControls(this.camera, this.renderer.domElement)
       this.setupIllumination()
       this.setUpRenderer()
       this.setCameraPositionAndAspect()
-      this.setCameraControls()
       this.addFileObjectToScene()
       this.renderScene()
       this.updateRendererAndCamera()
@@ -129,9 +125,6 @@ class World {
     this.camera.aspect = this.canvasContainer.width / this.canvasContainer.height
     this.camera.updateProjectionMatrix()
   }
-  private setCameraControls() {
-    // this.controls.target.set(0, 0, 0)
-  }
   private updateRendererAndCamera() {
     const gameSceneContainer = document.getElementById(this.canvasContainerId) as HTMLElement
     this.canvasContainer.width = gameSceneContainer?.clientWidth
@@ -139,7 +132,6 @@ class World {
     this.renderer.setSize(this.canvasContainer.width, this.canvasContainer.height)
     this.camera.aspect = this.canvasContainer.width / this.canvasContainer.height
     this.camera.updateProjectionMatrix()
-    // this.controls.update()
   }
   private setupIllumination() {
     this.scene.background = this.transparentBackgroundColor ? null : new THREE.Color(this.backgroundColor)
@@ -190,7 +182,6 @@ class World {
   }
 }
 
-export const useWorld = (canvasSceneId: string, canvasContainerId: string, backgroundColor?: string, threeDimensionalObjectOrScene?: Blob, transparentBackgroundColor?: boolean) => {
-  const world = new World(canvasSceneId, canvasContainerId, backgroundColor, threeDimensionalObjectOrScene, transparentBackgroundColor)
-  return world
+export {
+  World,
 }

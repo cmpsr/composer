@@ -1,25 +1,20 @@
-import { Box } from '@chakra-ui/react';
+import { Box } from '@cmpsr/components';
+import { omit } from 'lodash';
 import React, { FC, useEffect, useRef } from 'react';
-import { useWorld } from '../../scenes/World';
+import { generateUUID } from 'three/src/math/MathUtils';
+import { World } from '../../scenes/World';
 import { ThreeDimensionalSceneProps } from './types';
-
-const formattedBoxProps = (props: ThreeDimensionalSceneProps) => {
-  const boxProps = { ...props };
-  delete boxProps.backgroundColor;
-  delete boxProps.threeDimensionalObjectOrScene;
-  delete boxProps.transparentBackgroundColor;
-  return boxProps;
-}
 
 
 export const ThreeDimensionalScene: FC<ThreeDimensionalSceneProps> = (props) => {
-  const boxProps = formattedBoxProps(props);
+  const THREEPropsKeys = ["backgroundColor", "threeDimensionalObjectOrScene", "transparentBackgroundColor"];
+  const boxProps = omit(props, THREEPropsKeys);
   const sceneInstanceRef = useRef(null);
-  const sceneContainerId = `${props.backgroundColor}-sceneContainerId`;
-  const sceneId = `${props.backgroundColor}-sceneId`;
+  const sceneContainerId = `${generateUUID()}-sceneContainerId`;
+  const sceneId = `${generateUUID()}-sceneId`;
   useEffect(() => {
     if (!sceneInstanceRef.current) {
-      sceneInstanceRef.current = useWorld(sceneId, sceneContainerId, props.backgroundColor, props.threeDimensionalObjectOrScene, props.transparentBackgroundColor)
+      sceneInstanceRef.current = new World(sceneId, sceneContainerId, props.backgroundColor, props.threeDimensionalObjectOrScene, props.transparentBackgroundColor)
     }
     return () => {
       if (sceneInstanceRef.current) {

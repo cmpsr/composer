@@ -248,4 +248,31 @@ describe('replaceCmlPlaceholders', () => {
         '<HighlightedText><HighlightedText.Actions ><HighlightedText.Action trailingIcon={<IconAlertCircle /> }>Test</HighlightedText.Action></HighlightedText.Actions></HighlightedText>',
     });
   });
+  test('should handle AccordionsGallery field type', () => {
+    const model = { base: '{{accordion:AccordionsGallery:AccordionGallery}}' };
+    const values = {
+      base: {
+        accordion: {
+          children: [
+            '{{overlineTitle:Text:AccordionGallery.Overline}}',
+            '{{title:TextPairing:AccordionGallery.Title}}',
+          ],
+        },
+        title: {
+          children: [
+            '{{titleLabel:Text:AccordionGallery.Title.Label}}',
+            '{{titleSublabel:Text:AccordionGallery.Title.SubLabel}}',
+          ],
+        },
+        overlineTitle: { children: 'Overline' },
+        titleLabel: { children: 'Label' },
+        titleSubLabel: { children: 'SubLabel' },
+      },
+    };
+    const mdx = replaceCmlPlaceholders(model, values);
+    expect(mdx).toStrictEqual({
+      base:
+        '<AccordionGallery ><AccordionGallery.Overline >Overline</AccordionGallery.Overline><AccordionGallery.Title ><AccordionGallery.Title.Label >Label</AccordionGallery.Title.Label></AccordionGallery.Title></AccordionGallery>',
+    });
+  });
 });

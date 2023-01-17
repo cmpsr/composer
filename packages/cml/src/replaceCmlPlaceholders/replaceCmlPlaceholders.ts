@@ -37,6 +37,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
 
     let searchValue: string;
     switch (fieldType) {
+      case 'AccordionsGallery':
       case 'Action':
       case 'Actions':
       case 'Bullets':

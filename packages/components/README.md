@@ -16,7 +16,7 @@ The composer component library is an _opinionated_ wrapper on top of [chakra-ui]
 
 For the time being only components defined in [figma](#design-resources) will be accepted as contributions to the library and the implementation must match the design specifications for the pull request to be approved and merged.
 
-When adding new components to the library ideally you will reuse the chakra's equivalent as much as possible (see an [example](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/primitives/Divider/Divider.tsx)), unless you find that the _counterpart_ does fit the specs (see an [example](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/primitives/Breadcrumb/Breadcrumb.tsx)).
+When adding new components to the library ideally you will reuse the chakra's equivalent as much as possible (see an [example](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/dataDisplay/Divider/index.ts)), unless you find that the _counterpart_ does fit the specs (see an [example](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/navigation/Breadcrumb/Breadcrumb.tsx)).
 
 It is required to add stories for all component, the storybook can be started by executing `yarn storybook` from the `./packages/components` folder.
 
@@ -33,7 +33,7 @@ All the UI customisation applied to a component must be defined inside the theme
 
 The theme of a component will be defined in a file with the name of the component inside the `packages/components/src/theme/ComposerTheme/Components` folder. This is true for components that already exists in chakra and for new components added by us, like [TextPairing](https://github.com/cmpsr/composer/blob/master/packages/components/src/theme/ComposerTheme/Components/TextPairing.ts). Once defined the component has to be re-exported from the [index file](https://github.com/cmpsr/composer/blob/master/packages/components/src/theme/ComposerTheme/Components/index.ts).
 
-- The text style applied to a component should be one of the text styles [already defined](https://storybook.cmpsr.io/?path=/story/components-primitives-text--all). In some cases applying it using the `textStyle` prop is not possible (chakra will not apply it to the component) and we have to apply the properties of the style _one by one_, in those cases use the functional option `theme` param to apply the styles:
+- The text style applied to a component should be one of the text styles [already defined](https://storybook.cmpsr.io/?path=/story/components-typography-text--all). In some cases applying it using the `textStyle` prop is not possible (chakra will not apply it to the component) and we have to apply the properties of the style _one by one_, in those cases use the functional option `theme` param to apply the styles:
 
 ```typescript
 export const Component: ComponentStyleConfig = {
@@ -125,14 +125,14 @@ export const Component: ComponentStyleConfig = {
 
 ### Implementing the component
 
-The non-theme related code of the component will live in the `packages/components/src/components` folder, inside a folder that defines the category of the component (layout, primitives, ...). For each component we will create a new folder inside the corresponding category folder, if the category folder does not exists it should be created too, so a new primitive `Component` will have to be defined in the `packages/components/src/components/primitives/Component` folder.
+The non-theme related code of the component will live in the `packages/components/src/components` folder, inside a folder that defines the category of the component like form, layouts, navigation, etc. For each component we will create a new folder inside the corresponding category folder, if the category folder does not exists it should be created too, so a new form `Component` will have to be defined in the `packages/components/src/components/form/Component` folder for instance.
 
-- Every category folder will have an index file that will re-export all the components inside the category (see [primitive folder example](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/primitives/index.ts)), the re-exports have to be done in alphabetical order. If a new category is added a re-export in the parent folder [index](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/index.ts) has to be added too, also in alphabetical order:
+- Every category folder will have an index file that will re-export all the components inside the category (see [form folder example](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/form/index.ts)), the re-exports have to be done in alphabetical order. If a new category is added a re-export in the parent folder [index](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/index.ts) has to be added too, also in alphabetical order:
 
 ```typescript
 // packages/components/src/components/index.ts
+export * from "./form";
 export * from "./layouts";
-export * from "./primitives";
 
 // packages/components/src/components/layout/index.ts
 export * from "./Box";
@@ -289,7 +289,7 @@ Playground.args = {
 ```typescript
 export default {
   component: Component,
-  title: "Components/Primitives/Component",
+  title: "Components/Form/Component",
   argTypes: {
     variant: {
       options: componentVariants,
@@ -353,7 +353,7 @@ export const ComponentChild = forwardRef<ComponentChildProps, 'div'>((props, ref
 );
 ```
 
-You can take a look to the implementation of the [Slider](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/primitives/Slider/Slider.tsx) or [Breadcrumb](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/primitives/Breadcrumb/Breadcrumb.tsx) components for more details about how we do it.
+You can take a look to the implementation of the [Slider](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/form/Slider/Slider.tsx) or [Breadcrumb](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/navigation/Breadcrumb/Breadcrumb.tsx) components for more details about how we do it.
 
 ### Special cases
 

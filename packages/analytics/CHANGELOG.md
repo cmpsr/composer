@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.0
+
+### Minor Changes
+
+- a4c6f9d: Adds gtag implementation
+
 ## 0.0.28
 
 ### Patch Changes

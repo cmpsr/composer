@@ -35,7 +35,7 @@ const composerComponents: any = Object.keys(Composer).reduce(
   },
   {
     ul: Composer.UnorderedList,
-    ol: Composer.OrderedList,
+    ol: Composer.NumberedList,
     p: Composer.Text,
     h1: (props: Composer.TextProps) => renderHeader(props, 'h1'),
     h2: (props: Composer.TextProps) => renderHeader(props, 'h2'),

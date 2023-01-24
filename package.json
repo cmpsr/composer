@@ -9,6 +9,7 @@
     "build": "turbo run libbuild",
     "type:check": "turbo run type:check",
     "type:emit": "turbo run type:emit",
+    "build-storybook": "turbo run build-storybook",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch --parallel",
     "test:coverage": "turbo run test:coverage",

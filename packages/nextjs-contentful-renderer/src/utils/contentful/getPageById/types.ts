@@ -1,8 +1,5 @@
 import { Theme } from '@cmpsr/components';
-
-export interface Section {
-  model: Model;
-}
+import { Block } from '@cmpsr/cml';
 
 export interface Page {
   id: string;
@@ -10,8 +7,8 @@ export interface Page {
   metaConfiguration?: PageMetaData;
   content: Block[];
   theme: Partial<Theme>;
-  navbar: Section;
-  footer: Section;
+  navbar: Block[];
+  footer: Block[];
 }
 
 interface PageMetaData {
@@ -22,21 +19,4 @@ interface PageMeta {
   propertyName: string;
   propertyValue: string;
   content: string;
-}
-
-export interface Block {
-  models: Model[];
-  propsValues: PropsValue[];
-}
-
-export type Model = ResponsiveValue<string>;
-
-export type PropsValue = ResponsiveValue<Record<string, string>>;
-
-export interface ResponsiveValue<T> {
-  base?: T;
-  md?: T;
-  lg?: T;
-  xl?: T;
-  xxl?: T;
 }

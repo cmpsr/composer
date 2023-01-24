@@ -4,11 +4,7 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { ComposerProviderProps } from '.';
 import { theme as defaultTheme } from '../';
 
-export const ComposerProvider: FC<ComposerProviderProps> = ({
-  children,
-  theme = {},
-  resetCSS = true,
-}) => {
+export const ComposerProvider: FC<ComposerProviderProps> = ({ children, theme = {}, resetCSS = true }) => {
   const extended = extendTheme(defaultTheme, theme);
   return (
     <ChakraProvider theme={extended} resetCSS={resetCSS}>

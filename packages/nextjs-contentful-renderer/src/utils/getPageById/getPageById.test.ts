@@ -22,20 +22,20 @@ describe('getPageById', () => {
     const page = await getPageById(mockApolloClient, pageId, preview);
     expect(page).toStrictEqual(fakeContent);
   });
-  test.only('should append the navbar and footer to the content', async () => {
+  test('should append the navbar and footer to the content', async () => {
     const fakeContent = {
       content: [{ models: [{ base: 'base content' }], propsValues: [] }],
-      navbar: { model: { base: 'navbar' } },
-      footer: { model: { base: 'footer' } },
+      navbar: [{ models: [{ base: 'navbar' }], propsValues: [] }],
+      footer: [{ models: [{ base: 'footer' }], propsValues: [] }],
     };
     mockGetPageFromContentful.mockResolvedValueOnce({ ...fakeContent, content: [...fakeContent.content] });
     const page = await getPageById(mockApolloClient, pageId, preview);
     expect(page).toStrictEqual({
       ...fakeContent,
       content: [
-        { models: [fakeContent.navbar.model], propsValues: [] },
+        { models: [fakeContent.navbar[0].models[0]], propsValues: [] },
         ...fakeContent.content,
-        { models: [fakeContent.footer.model], propsValues: [] },
+        { models: [fakeContent.footer[0].models[0]], propsValues: [] },
       ],
     });
   });

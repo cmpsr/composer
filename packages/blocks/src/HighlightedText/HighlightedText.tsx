@@ -20,7 +20,7 @@ export const HighlightedText: HighlightedTextType = ({
   />
 );
 
-HighlightedText.TextPairing = TextPairing;
+HighlightedText.Title = TextPairing;
 
 const HighlightedTextLinkGroup: FC<FlexProps> = (props) => (
   <Flex
@@ -31,14 +31,14 @@ const HighlightedTextLinkGroup: FC<FlexProps> = (props) => (
     {...props}
   />
 );
-HighlightedText.LinkGroup = HighlightedTextLinkGroup;
+HighlightedText.Actions = HighlightedTextLinkGroup;
 
 const HighlightedTextLink: FC<LinkProps> = (props) => (
   <Link target="_blank" size="l" justifyContent="center" {...props} />
 );
-HighlightedText.Link = HighlightedTextLink;
+HighlightedText.Action = HighlightedTextLink;
 
 const HighlightedTextLegend: FC<TextProps> = (props) => (
-  <Text color="text-secondary" variant="text-body-display-S" textTransform="uppercase" {...props} />
+  <Text color="text-secondary" variant="text-body-display-S" textTransform="uppercase" display="flex" {...props} />
 );
-HighlightedText.Legend = HighlightedTextLegend;
+HighlightedText.Overline = HighlightedTextLegend;

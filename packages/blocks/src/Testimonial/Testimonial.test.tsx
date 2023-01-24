@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, renderWithProviders } from '@tests/renderWithProviders';
+import { screen, renderWithProviders } from '../tests/renderWithProviders';
 
 import { Testimonial } from './Testimonial';
 
@@ -29,7 +29,7 @@ describe('Testimonial', () => {
       <Testimonial>
         <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
         <Testimonial.Content>
-          <Testimonial.Legend>legend</Testimonial.Legend>
+          <Testimonial.Overline>legend</Testimonial.Overline>
           <Testimonial.Testimony>testimony</Testimonial.Testimony>
           <Testimonial.Author>name</Testimonial.Author>
         </Testimonial.Content>
@@ -42,29 +42,13 @@ describe('Testimonial', () => {
       <Testimonial>
         <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
         <Testimonial.Content>
-          <Testimonial.Legend>legend</Testimonial.Legend>
+          <Testimonial.Overline>legend</Testimonial.Overline>
           <Testimonial.Testimony>testimony</Testimonial.Testimony>
           <Testimonial.Author>name</Testimonial.Author>
         </Testimonial.Content>
       </Testimonial>
     );
     screen.getByText('testimony');
-  });
-  test('should render name and association', () => {
-    renderWithProviders(
-      <Testimonial>
-        <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
-        <Testimonial.Content>
-          <Testimonial.Testimony>testimony</Testimonial.Testimony>
-          <Testimonial.Author>
-            name
-            <Testimonial.Author.Association>association</Testimonial.Author.Association>
-          </Testimonial.Author>
-        </Testimonial.Content>
-      </Testimonial>
-    );
-    screen.getByText('name');
-    screen.getByText('association');
   });
   test('should render link', () => {
     renderWithProviders(
@@ -73,7 +57,7 @@ describe('Testimonial', () => {
         <Testimonial.Content>
           <Testimonial.Testimony>testimony</Testimonial.Testimony>
           <Testimonial.Author>name</Testimonial.Author>
-          <Testimonial.Link href="#">linking</Testimonial.Link>
+          <Testimonial.Action href="#">linking</Testimonial.Action>
         </Testimonial.Content>
       </Testimonial>
     );

@@ -1,18 +1,19 @@
 import React from 'react';
-import { screen, renderWithProviders } from '@tests/renderWithProviders';
+import { screen, renderWithProviders } from '../tests/renderWithProviders';
 import { ColumnLayout } from '.';
 
 describe('ColumnLayout', () => {
   test('should render ColumnLayout parts', () => {
     renderWithProviders(
       <ColumnLayout backgroundColor="background-overlay" p="1.5rem" gap="1.5rem">
+        <ColumnLayout.Overline>Breaking news</ColumnLayout.Overline>
         <ColumnLayout.Title variant="textpairing-header-XL" textAlign="center">
           <ColumnLayout.Title.Label>The next generation of care for women and families</ColumnLayout.Title.Label>
           <ColumnLayout.Title.SubLabel color="text-secondary">
             We’re setting a new standard of care for families across geographies, cultures, and backgrounds.
           </ColumnLayout.Title.SubLabel>
         </ColumnLayout.Title>
-        <ColumnLayout.ColumnGroup
+        <ColumnLayout.ColumnsContainer
           gap="1rem"
           justifyContent="center"
           flexWrap="wrap"
@@ -24,21 +25,22 @@ describe('ColumnLayout', () => {
               width="50px"
               alt="column image"
             />
-            <ColumnLayout.Column.TextPairing>
-              <ColumnLayout.Column.TextPairing.Label>Composer</ColumnLayout.Column.TextPairing.Label>
-              <ColumnLayout.Column.TextPairing.SubLabel color="text-secondary">
+            <ColumnLayout.Column.Title>
+              <ColumnLayout.Column.Title.Label>Composer</ColumnLayout.Column.Title.Label>
+              <ColumnLayout.Column.Title.SubLabel color="text-secondary">
                 the most advanced web and landing page builder for non-programmers
-              </ColumnLayout.Column.TextPairing.SubLabel>
-            </ColumnLayout.Column.TextPairing>
+              </ColumnLayout.Column.Title.SubLabel>
+            </ColumnLayout.Column.Title>
           </ColumnLayout.Column>
-        </ColumnLayout.ColumnGroup>
-        <ColumnLayout.LinkGroup gap="1rem" justifyContent="center" data-testid="cmpsr.block.column-layout.link-group">
-          <ColumnLayout.Link variant="primary">Primary</ColumnLayout.Link>
-        </ColumnLayout.LinkGroup>
+        </ColumnLayout.ColumnsContainer>
+        <ColumnLayout.Actions gap="1rem" justifyContent="center" data-testid="cmpsr.block.column-layout.link-group">
+          <ColumnLayout.Action variant="primary">Primary</ColumnLayout.Action>
+        </ColumnLayout.Actions>
       </ColumnLayout>
     );
     screen.getByTestId('cmpsr.block.column-layout.column-group');
     screen.getByTestId('cmpsr.block.column-layout.column');
+    screen.getByText(/Breaking news/i);
     screen.getByText('The next generation of care for women and families');
     screen.getByText(
       'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.'

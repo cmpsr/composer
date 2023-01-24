@@ -6,6 +6,8 @@ import {
   ISegmentConfig,
   GA,
   IGAConfig,
+  GTag,
+  IGTagConfig,
   IIntegration,
 } from './integrations';
 import { v1 as uuidv1 } from 'uuid'; // v1 is timestamp based + random
@@ -13,11 +15,13 @@ import Cookies from 'js-cookie';
 
 const supportedIntegrations = {
   ga: GA,
+  gtag: GTag,
   segment: Segment,
 };
 
 export interface IAnalyticsProvider {
   segment?: ISegmentConfig;
+  gtag?: IGTagConfig;
   ga?: IGAConfig;
   children: ReactNode;
 }

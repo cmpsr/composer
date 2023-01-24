@@ -14,13 +14,24 @@ const dummyMainContentItem = {
   propsValues: [],
 };
 
+const dummyBlock = {
+  modelsCollection: {
+    items: [
+      {
+        base: '# H1',
+      },
+    ],
+  },
+  propsValues: [],
+};
+
 const dummyPage = {
   id: 'page_id',
   title: 'Page title',
   metaConfiguration: {},
   theme: { theme: {} },
-  navbar: { model: {} },
-  footer: { model: {} },
+  navbar: dummyBlock,
+  footer: dummyBlock,
   contentCollection: {
     items: [dummyMainContentItem],
   },
@@ -65,8 +76,18 @@ describe('getPageById', () => {
       title: 'Page title',
       metaConfiguration: {},
       theme: {},
-      navbar: { model: {} },
-      footer: { model: {} },
+      navbar: [
+        {
+          models: [{ base: '# H1' }],
+          propsValues: [],
+        },
+      ],
+      footer: [
+        {
+          models: [{ base: '# H1' }],
+          propsValues: [],
+        },
+      ],
       content: [
         {
           models: [{ base: '# H1' }, { base: '## H2' }],
@@ -84,8 +105,18 @@ describe('getPageById', () => {
       title: 'Page title',
       metaConfiguration: {},
       theme: null,
-      navbar: { model: {} },
-      footer: { model: {} },
+      navbar: [
+        {
+          models: [{ base: '# H1' }],
+          propsValues: [],
+        },
+      ],
+      footer: [
+        {
+          models: [{ base: '# H1' }],
+          propsValues: [],
+        },
+      ],
       content: [
         {
           models: [{ base: '# H1' }, { base: '## H2' }],
@@ -104,7 +135,12 @@ describe('getPageById', () => {
       metaConfiguration: {},
       theme: null,
       navbar: null,
-      footer: { model: {} },
+      footer: [
+        {
+          models: [{ base: '# H1' }],
+          propsValues: [],
+        },
+      ],
       content: [
         {
           models: [{ base: '# H1' }, { base: '## H2' }],

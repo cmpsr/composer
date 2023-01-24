@@ -1,4 +1,5 @@
-import { insertSection } from '../insertSection';
-import { Block, Page } from '../../contentful/getPageById/types';
+import { Block } from '@cmpsr/cml';
+import { insertBlock } from '../insertBlock';
+import { Page } from '../../contentful/getPageById/types';
 
-export const configFooter = (page: Partial<Page>): Block[] => insertSection(page.content, page.footer, 'push');
+export const configFooter = (page: Partial<Page>): Block[] => insertBlock(page.content, page.footer?.[0], 'push');

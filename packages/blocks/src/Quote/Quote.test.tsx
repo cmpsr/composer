@@ -1,12 +1,12 @@
 import React from 'react';
-import { screen, renderWithProviders } from '@tests/renderWithProviders';
+import { screen, renderWithProviders } from '../tests/renderWithProviders';
 import { Quote } from '.';
 
 describe('Quote', () => {
   const givenComponentRendered = () =>
     renderWithProviders(
       <Quote>
-        <Quote.Text>Quote</Quote.Text>
+        <Quote.Title>Quote</Quote.Title>
         <Quote.Author>
           <Quote.Author.Avatar name="Author" />
           <Quote.Author.Name>

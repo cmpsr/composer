@@ -4,7 +4,11 @@ module.exports = {
   core: {
     builder: 'webpack5',
   },
-  stories: ['../../../packages/components/src/**/*.stories.tsx', '../../../packages/blocks/src/**/*.stories.tsx'],
+  stories: [
+    '../../../packages/components/src/**/*.stories.tsx',
+    '../../../packages/blocks/src/**/*.stories.tsx',
+    '../../../packages/signalwire/src/**/*.stories.tsx',
+  ],
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-links',

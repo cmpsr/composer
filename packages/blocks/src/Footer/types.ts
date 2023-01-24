@@ -1,20 +1,16 @@
 import { FC } from 'react';
-import { DividerProps, FlexProps, ImageProps, LinkProps, TextProps } from '@cmpsr/components';
+import { Divider, Flex, FlexProps, Image, Link } from '@cmpsr/components';
 export { FlexProps as FooterProps } from '@cmpsr/components';
 
-export interface FooterLinkGroupStaticMember {
-  Title: FC<TextProps>;
-  Link: FC<LinkProps>;
+export interface FooterActionsProps extends FlexProps {
+  title?: string;
 }
-
-export interface FooterContentStaticMembers {
-  Links: FC<FlexProps>;
-  LinkGroup: FC<FlexProps> & FooterLinkGroupStaticMember;
-  CopyGroup: FC<FlexProps>;
-}
-
 export interface FooterStaticMembers {
-  Logo: FC<ImageProps>;
-  Content: FC<FlexProps> & FooterContentStaticMembers;
-  Bottom: FC<DividerProps>;
+  Logo: typeof Image;
+  Content: typeof Flex;
+  Bottom: typeof Divider;
+  ActionsContainer: typeof Flex;
+  Actions: FC<FooterActionsProps>;
+  Action: typeof Link;
+  CopyGroup: typeof Flex;
 }

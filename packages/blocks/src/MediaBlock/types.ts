@@ -1,4 +1,4 @@
-import { FlexProps, ImageProps, TextPairingType, Tag, CardProps, Link } from '@cmpsr/components';
+import { FlexProps, Tag, CardProps, Link, Image, Text, TextPairing } from '@cmpsr/components';
 import { FC } from 'react';
 
 export const mediaBlockVariants = ['vertical', 'horizontal'] as const;
@@ -11,10 +11,11 @@ export interface MediaBlockProps extends FlexProps, CardProps {
 }
 
 export interface MediaBlockStaticMembers {
-  Image: FC<ImageProps>;
-  TextPairing: TextPairingType;
+  Image: typeof Image;
+  Title: typeof TextPairing;
   Tag: typeof Tag;
-  Link: typeof Link;
+  Action: typeof Link;
+  Overline: typeof Text;
 }
 
 export type MediaBlockType = FC<MediaBlockProps> & MediaBlockStaticMembers;

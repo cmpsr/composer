@@ -15,14 +15,20 @@ export const getPageById = async (
           title
           metaConfiguration
           navbar {
-            model {
-              ...ModelFragment
+            modelsCollection {
+              items {
+                ...ModelFragment
+              }
             }
+            propsValue
           }
           footer {
-            model {
-              ...ModelFragment
+            modelsCollection {
+              items {
+                ...ModelFragment
+              }
             }
+            propsValue
           }
           theme {
             theme
@@ -50,8 +56,12 @@ export const getPageById = async (
 
   const { id, title, metaConfiguration, contentCollection } = data.page;
   const theme = data.page.theme?.theme || null;
-  const navbar = data.page.navbar || null;
-  const footer = data.page.footer || null;
+  const navbar = data.page.navbar
+    ? [{ models: [data.page.navbar.modelsCollection?.items?.[0]], propsValues: data.page.navbar.propsValue || [] }]
+    : null;
+  const footer = data.page.footer
+    ? [{ models: [data.page.footer.modelsCollection?.items?.[0]], propsValues: data.page.footer.propsValue || [] }]
+    : null;
 
   const content = contentCollection.items.map((item) => ({
     models: item.modelsCollection.items,

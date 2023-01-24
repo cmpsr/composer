@@ -1,6 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { screen, renderWithProviders, fireEvent } from '@tests/renderWithProviders';
+import { screen, renderWithProviders, fireEvent } from '../tests/renderWithProviders';
 
 import { Navigation } from './Navigation';
 
@@ -19,7 +19,7 @@ describe('Navigation', () => {
   const givenComponentRendered = ({ sticky = false, logoHref = undefined } = {}) =>
     renderWithProviders(
       <Navigation sticky={sticky}>
-        <Navigation.Logo href={logoHref} alt="Logo" />
+        <Navigation.Image href={logoHref} alt="Logo" />
         <Navigation.Links>
           <Navigation.Link href="#">Link 1</Navigation.Link>
           <Navigation.Link href="#">Link 2</Navigation.Link>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { textVariants } from '@cmpsr/components';
+import { Divider, Text, textVariants } from '@cmpsr/components';
 
 import { Testimonial } from './Testimonial';
 
@@ -17,9 +17,9 @@ export default {
 
 export const WithLegend = () => (
   <Testimonial>
-    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" />
+    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" width="500px" />
     <Testimonial.Content>
-      <Testimonial.Legend>The universe</Testimonial.Legend>
+      <Testimonial.Overline>The universe</Testimonial.Overline>
       <Testimonial.Testimony variant="text-body-display-M">
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
         three ways we could find it.
@@ -31,7 +31,7 @@ export const WithLegend = () => (
 
 export const WithAssociation = () => (
   <Testimonial>
-    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" />
+    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" width="500px" />
     <Testimonial.Content>
       <Testimonial.Testimony variant="text-body-display-M">
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
@@ -39,7 +39,10 @@ export const WithAssociation = () => (
       </Testimonial.Testimony>
       <Testimonial.Author>
         John Doe
-        <Testimonial.Author.Association>Composer Studio</Testimonial.Author.Association>
+        <Divider display="inline" orientation="vertical" marginX="0.5rem" />
+        <Text display="inline" variant="text-body-regular" color="text-secondary">
+          Composer Studio
+        </Text>
       </Testimonial.Author>
     </Testimonial.Content>
   </Testimonial>
@@ -47,29 +50,46 @@ export const WithAssociation = () => (
 
 export const WithLink = () => (
   <Testimonial>
-    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" />
+    <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=500" width="500px" />
     <Testimonial.Content>
       <Testimonial.Testimony variant="text-body-display-M">
         We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
         three ways we could find it.
       </Testimonial.Testimony>
       <Testimonial.Author>John Doe</Testimonial.Author>
-      <Testimonial.Link href="#">Read more</Testimonial.Link>
+      <Testimonial.Action href="#">Read more</Testimonial.Action>
     </Testimonial.Content>
   </Testimonial>
 );
 
-const Template = ({ backgroundColor, imageUrl, testimony, testimonyTextVariant, name, legend, association, link }) => (
+const Template = ({
+  backgroundColor,
+  imageUrl,
+  imageWidth,
+  testimony,
+  testimonyTextVariant,
+  name,
+  legend,
+  association,
+  link,
+}) => (
   <Testimonial backgroundColor={backgroundColor}>
-    <Testimonial.Image src={imageUrl} />
+    <Testimonial.Image src={imageUrl} width={imageWidth} />
     <Testimonial.Content>
-      {legend && <Testimonial.Legend>{legend}</Testimonial.Legend>}
+      {legend && <Testimonial.Overline>{legend}</Testimonial.Overline>}
       <Testimonial.Testimony variant={testimonyTextVariant}>{testimony}</Testimonial.Testimony>
       <Testimonial.Author>
         {name}
-        {association && <Testimonial.Author.Association>{association}</Testimonial.Author.Association>}
+        {association ? (
+          <>
+            <Divider display="inline" orientation="vertical" marginX="0.5rem" />
+            <Text display="inline" variant="text-body-regular" color="text-secondary">
+              {association}
+            </Text>
+          </>
+        ) : null}
       </Testimonial.Author>
-      {link && <Testimonial.Link target="_blank" size="s" href="#" {...link} />}
+      {link && <Testimonial.Action target="_blank" size="s" href="#" {...link} />}
     </Testimonial.Content>
   </Testimonial>
 );
@@ -78,6 +98,7 @@ export const Playground = Template.bind({});
 Playground.args = {
   backgroundColor: 'background-page',
   imageUrl: 'https://avatars0.githubusercontent.com/u/67131017?s=500',
+  imageWidth: '500px',
   testimony:
     'We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are three ways we could find it.',
   testimonyTextVariant: 'text-body-display-M',

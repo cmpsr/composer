@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, renderWithProviders } from '@tests/renderWithProviders';
+import { screen, renderWithProviders } from '../tests/renderWithProviders';
 
 import { Hero } from './Hero';
 
@@ -8,34 +8,34 @@ describe('Hero', () => {
     renderWithProviders(
       <Hero>
         <Hero.Content>
-          <Hero.ContentGroup>
+          <Hero.ContentContainer>
             <Hero.Tag>Tag</Hero.Tag>
-            <Hero.Legend>Legend</Hero.Legend>
-            <Hero.TextPairing variant="textpairing-header-4XL">
-              <Hero.TextPairing.Label>There is life elsewhere in the universe</Hero.TextPairing.Label>
-              <Hero.TextPairing.SubLabel color="text-secondary">
+            <Hero.Overline>Legend</Hero.Overline>
+            <Hero.Title variant="textpairing-header-4XL">
+              <Hero.Title.Label>There is life elsewhere in the universe</Hero.Title.Label>
+              <Hero.Title.SubLabel color="text-secondary">
                 We are right now on the verge of finding out whether there is life elsewhere in the universe, and there
                 are three ways we could find it.
-              </Hero.TextPairing.SubLabel>
-            </Hero.TextPairing>
-          </Hero.ContentGroup>
-          <Hero.ContentGroup gap="1.5rem">
+              </Hero.Title.SubLabel>
+            </Hero.Title>
+          </Hero.ContentContainer>
+          <Hero.ContentContainer gap="1.5rem">
             <Hero.MediaBlock>
               <Hero.MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" maxWidth="2rem" />
-              <Hero.MediaBlock.TextPairing>
-                <Hero.MediaBlock.TextPairing.Label>MediaBlock</Hero.MediaBlock.TextPairing.Label>
-                <Hero.MediaBlock.TextPairing.SubLabel>SubLabel</Hero.MediaBlock.TextPairing.SubLabel>
-              </Hero.MediaBlock.TextPairing>
+              <Hero.MediaBlock.Title>
+                <Hero.MediaBlock.Title.Label>MediaBlock</Hero.MediaBlock.Title.Label>
+                <Hero.MediaBlock.Title.SubLabel>SubLabel</Hero.MediaBlock.Title.SubLabel>
+              </Hero.MediaBlock.Title>
             </Hero.MediaBlock>
-          </Hero.ContentGroup>
-          <Hero.ContentGroup>
-            <Hero.LinkGroup alignItems={{ base: 'center', md: 'start' }}>
-              <Hero.Link children="Link 1" variant="primary" />
-              <Hero.Link children="Link 2" variant="primary-alt" />
-            </Hero.LinkGroup>
+          </Hero.ContentContainer>
+          <Hero.ContentContainer>
+            <Hero.Actions alignItems={{ base: 'center', md: 'start' }}>
+              <Hero.Action children="Link 1" variant="primary" />
+              <Hero.Action children="Link 2" variant="primary-alt" />
+            </Hero.Actions>
             <Hero.Disclaimer>Disclaimer</Hero.Disclaimer>
-            <Hero.Link size="s" children="I need help >" />
-          </Hero.ContentGroup>
+            <Hero.Action size="s" children="I need help >" />
+          </Hero.ContentContainer>
         </Hero.Content>
         <Hero.Image
           src="https://avatars0.githubusercontent.com/u/67131017?s=200"

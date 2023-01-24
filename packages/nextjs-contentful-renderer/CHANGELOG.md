@@ -1,5 +1,209 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 18.3.0
+
+### Patch Changes
+
+- Updated dependencies [1bdd795]
+  - @cmpsr/cml@0.2.0
+
+## 18.2.0
+
+### Minor Changes
+
+- b0fce1f: feat: create cml package and move responsibilities from nextjs-contentful-renderer
+
+### Patch Changes
+
+- Updated dependencies [b0fce1f]
+  - @cmpsr/cml@0.1.0
+
+## 18.1.1
+
+### Patch Changes
+
+- bb7b8bb: fix: do not capture { in the prop name
+
+## 18.1.0
+
+### Minor Changes
+
+- 081f7ab: feat: allow anything but : in the prop name
+
+## 18.0.2
+
+## 18.0.1
+
+## 18.0.0
+
+### Patch Changes
+
+- Updated dependencies [584b2eb]
+- Updated dependencies [0837005]
+- Updated dependencies [a088642]
+  - @cmpsr/blocks@12.0.0
+
+## 17.1.1
+
+### Patch Changes
+
+- 1d73bf1: fix: properly handle multiple stylings in the same content
+
+## 17.1.0
+
+### Minor Changes
+
+- ea8d5eb: feat: add support for styling Text via CML
+
+## 17.0.3
+
+## 17.0.2
+
+## 17.0.1
+
+## 17.0.0
+
+### Patch Changes
+
+- Updated dependencies [fa3a20f]
+- Updated dependencies [96856a2]
+  - @cmpsr/blocks@11.0.0
+
+## 16.0.0
+
+### Major Changes
+
+- d2a847d: feat: Update navbar and footer to behave as Blocks
+
+### Minor Changes
+
+- 469077e: feat: add support for extra props in types
+
+## 15.9.1
+
+## 15.9.0
+
+### Minor Changes
+
+- 69cc934: feat: add VideoChat component
+
+### Patch Changes
+
+- Updated dependencies [69cc934]
+  - @cmpsr/signalwire@0.3.0
+
+## 15.8.4
+
+## 15.8.3
+
+## 15.8.2
+
+## 15.8.1
+
+### Patch Changes
+
+- 5bb2acb: fix: handle number and boolean types
+
+## 15.8.0
+
+### Minor Changes
+
+- b5c7543: feat: add support for Images field type
+
+## 15.7.1
+
+## 15.7.0
+
+### Minor Changes
+
+- d71d8ea: feat: add support for Columns type
+- d71d8ea: feat: add support for Column type
+
+## 15.6.0
+
+### Minor Changes
+
+- 57e2273: feat: add support for Column type
+
+## 15.5.0
+
+### Minor Changes
+
+- 029d5a7: feat: replace fieldType ENV_VAR with process environment
+
+## 15.4.1
+
+## 15.4.0
+
+### Minor Changes
+
+- 9cbf8bc: feat: load propsValue for navbar and footer
+- a50a7c6: feat: add support for MediaBlock and Bullets
+
+## 15.3.1
+
+## 15.3.0
+
+### Minor Changes
+
+- db37d80: feat: add support for other components to generateMdx
+
+## 15.2.1
+
+### Patch Changes
+
+- 73db0ad: fix: replace lodash.merge with custom implementation
+
+## 15.2.0
+
+### Minor Changes
+
+- 7121126: feat: merge nested object props
+
+## 15.1.0
+
+### Minor Changes
+
+- 18ec2f4: feat: handle components when generating mdx
+
+## 15.0.0
+
+### Minor Changes
+
+- 5154cde: feat: create new block ColumnLayout and add support for bounded mode, tag and link in MediaBlock
+
+### Patch Changes
+
+- 5549961: fix: remove custom Text and Paragraph
+- Updated dependencies [2fc42a9]
+- Updated dependencies [5154cde]
+- Updated dependencies [e81182b]
+- Updated dependencies [4a816fe]
+- Updated dependencies [1dc8655]
+- Updated dependencies [b32c581]
+- Updated dependencies [6e4f0f9]
+- Updated dependencies [a92ad07]
+- Updated dependencies [74756d7]
+- Updated dependencies [1feb881]
+- Updated dependencies [f6b9e43]
+- Updated dependencies [02bec73]
+- Updated dependencies [3fcbca7]
+- Updated dependencies [0b62aa1]
+- Updated dependencies [80cfa89]
+- Updated dependencies [2266f1c]
+- Updated dependencies [327159b]
+- Updated dependencies [213233a]
+- Updated dependencies [41e22cb]
+- Updated dependencies [4fc181c]
+- Updated dependencies [c3582e3]
+- Updated dependencies [cdd33b1]
+- Updated dependencies [ac20d33]
+- Updated dependencies [d7074b2]
+- Updated dependencies [1673d3c]
+- Updated dependencies [75aaa11]
+  - @cmpsr/components@5.0.0
+  - @cmpsr/blocks@10.0.0
+
 ## 14.4.6
 
 ### Patch Changes

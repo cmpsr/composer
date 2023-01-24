@@ -1,5 +1,78 @@
 # @cmpsr/components
 
+## 5.5.0
+
+### Minor Changes
+
+- f7f244f: Make the title of the following Avatar, Icons, Image match /Components/Media/[Component name] in storybook
+
+## 5.4.1
+
+### Patch Changes
+
+- c28ddf8: fix: use button border-radius
+
+## 5.4.0
+
+### Minor Changes
+
+- 9b5fc7c: feat: replace outline for before pseudo selector with border in order to support Safari
+
+## 5.3.0
+
+### Minor Changes
+
+- 51d629f: feat: define default theme
+
+## 5.2.0
+
+### Minor Changes
+
+- 01e672b: feat: add width inherit to Link component in order to adapt parent size when provided
+
+## 5.1.0
+
+### Minor Changes
+
+- bc0b80b: feat: export useTheme
+
+## 5.0.1
+
+### Patch Changes
+
+- 73db0ad: fix: override instead of merging the breakpoints
+
+## 5.0.0
+
+### Major Changes
+
+- a92ad07: feat: update theme to use object notation syntax and correct info color tokens
+- 41e22cb: feat(Select): add new variant and remove iconSize prop
+
+### Minor Changes
+
+- 2fc42a9: feat: restructure form components
+- 5154cde: feat: create new block ColumnLayout and add support for bounded mode, tag and link in MediaBlock
+- 1dc8655: feat: restructure feedback components
+- 6e4f0f9: feat: export Card types
+- f6b9e43: feat: add NumberInput component
+- 02bec73: feat: restructure overlay components
+- 0b62aa1: feat: restructure data display components
+- 327159b: feat: adds RangeSlider component
+- 213233a: feat: create new block HighlightedText
+- 4fc181c: feat: restructure disclosure components
+- c3582e3: feat: restructure navigation components
+- cdd33b1: feat: create AccordionGallery block
+- 1673d3c: feat: restructure typography components
+
+### Patch Changes
+
+- e81182b: fix border height for alt variants in buttons with size s, m and l
+- 4a816fe: feat: update chakra-ui to latest version
+- 1feb881: fix(Button): disabled border color for alt variants
+- 80cfa89: feat: set alert icon optional using dot notation
+- ac20d33: feat(Accordion): use composer chevron icon instead of chakra's one
+
 ## 4.3.0
 
 ### Minor Changes

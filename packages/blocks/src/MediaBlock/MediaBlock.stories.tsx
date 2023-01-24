@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { MediaBlock, mediaBlockVariants } from '.';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
+import { IconChevronRight } from '@cmpsr/components';
 
 const alignments = ['start', 'center', 'end'] as const;
 
@@ -32,17 +33,17 @@ export const AllVertical = () => (
         <Tr key={'vertical' + alignment}>
           <Td>
             <MediaBlock variant="vertical" alignItems={alignment}>
-              <MediaBlock.TextPairing variant="textpairing-header-M">
-                <MediaBlock.TextPairing.Label textTransform="capitalize">{alignment}</MediaBlock.TextPairing.Label>
-                <MediaBlock.TextPairing.SubLabel children={`vertical - ${alignment}`} />
-              </MediaBlock.TextPairing>
+              <MediaBlock.Title variant="textpairing-header-M">
+                <MediaBlock.Title.Label textTransform="capitalize">{alignment}</MediaBlock.Title.Label>
+                <MediaBlock.Title.SubLabel children={`vertical - ${alignment}`} />
+              </MediaBlock.Title>
               <MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" width="100px" />
               <MediaBlock.Tag size="s">
                 <MediaBlock.Tag.Label>Tag</MediaBlock.Tag.Label>
               </MediaBlock.Tag>
-              <MediaBlock.Link href="#" size="s">
+              <MediaBlock.Action href="#" size="s">
                 Link
-              </MediaBlock.Link>
+              </MediaBlock.Action>
             </MediaBlock>
           </Td>
         </Tr>
@@ -63,10 +64,10 @@ export const Horizontal = () => (
         <Tr key={'horizontal' + alignment}>
           <Td>
             <MediaBlock variant="horizontal" alignItems={alignment} justifyContent="space-between">
-              <MediaBlock.TextPairing variant="textpairing-header-M">
-                <MediaBlock.TextPairing.Label textTransform="capitalize">{alignment}</MediaBlock.TextPairing.Label>
-                <MediaBlock.TextPairing.SubLabel children={`horizontal - ${alignment}`} />
-              </MediaBlock.TextPairing>
+              <MediaBlock.Title variant="textpairing-header-M">
+                <MediaBlock.Title.Label textTransform="capitalize">{alignment}</MediaBlock.Title.Label>
+                <MediaBlock.Title.SubLabel children={`horizontal - ${alignment}`} />
+              </MediaBlock.Title>
               <MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" width="100px" />
             </MediaBlock>
           </Td>
@@ -76,6 +77,26 @@ export const Horizontal = () => (
   </Table>
 );
 
+export const ColumnLayout = () => (
+  <MediaBlock variant="vertical" alignItems="start" maxWidth="240px">
+    <MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" width="100px" />
+    <MediaBlock.Tag size="s">
+      <MediaBlock.Tag.Label>News</MediaBlock.Tag.Label>
+    </MediaBlock.Tag>
+    <MediaBlock.Overline>Breaking news</MediaBlock.Overline>
+    <MediaBlock.Title variant="textpairing-header-M">
+      <MediaBlock.Title.Label>There is life elsewhere in the universe</MediaBlock.Title.Label>
+      <MediaBlock.Title.SubLabel color="text-secondary">
+        We are right now on the verge of finding out whether there is life elsewhere in the universe, and there are
+        three ways we could find it.
+      </MediaBlock.Title.SubLabel>
+    </MediaBlock.Title>
+    <MediaBlock.Action href="#" size="s" trailingIcon={<IconChevronRight />}>
+      Find a spaceship
+    </MediaBlock.Action>
+  </MediaBlock>
+);
+
 const Template = ({ variant, label, subLabel, imageWidth, contentAlignment, spaceBetween }) => (
   <MediaBlock
     variant={variant}
@@ -83,10 +104,10 @@ const Template = ({ variant, label, subLabel, imageWidth, contentAlignment, spac
     justifyContent={spaceBetween ? 'space-between' : undefined}
   >
     <MediaBlock.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" width={imageWidth} />
-    <MediaBlock.TextPairing variant="textpairing-header-M">
-      <MediaBlock.TextPairing.Label>{label}</MediaBlock.TextPairing.Label>
-      <MediaBlock.TextPairing.SubLabel>{subLabel}</MediaBlock.TextPairing.SubLabel>
-    </MediaBlock.TextPairing>
+    <MediaBlock.Title variant="textpairing-header-M">
+      <MediaBlock.Title.Label>{label}</MediaBlock.Title.Label>
+      <MediaBlock.Title.SubLabel>{subLabel}</MediaBlock.Title.SubLabel>
+    </MediaBlock.Title>
   </MediaBlock>
 );
 

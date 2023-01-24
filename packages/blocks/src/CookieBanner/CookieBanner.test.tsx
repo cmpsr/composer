@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from '@cmpsr/components';
-import { fireEvent, renderWithProviders, screen } from '@tests/renderWithProviders';
+import { fireEvent, renderWithProviders, screen } from '../tests/renderWithProviders';
 import { CookieBanner } from './CookieBanner';
 import '@testing-library/jest-dom';
 

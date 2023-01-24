@@ -5,7 +5,7 @@ import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 
 export default {
   component: CloseButton,
-  title: 'Components/Primitives/CloseButton',
+  title: 'Components/Other/CloseButton',
   argTypes: {
     size: {
       options: closeButtonSizes,

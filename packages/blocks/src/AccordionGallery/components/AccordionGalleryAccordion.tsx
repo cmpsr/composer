@@ -8,7 +8,7 @@ export const AccordionGalleryAccordion: FC<AccordionProps> = ({ children, ...res
       if (isValidElement(child)) {
         switch (child.type) {
           case AccordionGalleryItem:
-            return cloneElement(child, { index });
+            return cloneElement(child, { index } as AccordionProps);
           default:
             return child;
         }

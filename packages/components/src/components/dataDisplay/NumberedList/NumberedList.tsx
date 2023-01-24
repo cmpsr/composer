@@ -33,7 +33,7 @@ const NumberedListItem: FC<NumberedListItemProps> = ({
     <Box>
       {Children.map(children, (child) => {
         if (isValidElement(child) && child.type === NumberedList) {
-          return cloneElement(child as React.ReactElement, { number, paddingTop: '0.75rem' });
+            return cloneElement(child, { number, paddingTop: '0.75rem' } as NumberedListProps);
         } else return child;
       })}
     </Box>

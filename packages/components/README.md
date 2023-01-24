@@ -6,7 +6,7 @@ The composer component library is an _opinionated_ wrapper on top of [chakra-ui]
 
 ## Running the app
 
-- Go to the root of this repo
+- Go to `projects/ui-storybook` folder
 - Run `yarn install`
 - Run `yarn run storybook`
 - Browse `http://localhost:8080`

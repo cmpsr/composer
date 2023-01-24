@@ -1,14 +1,6 @@
 {
   "baseBranch": "origin/master",
   "pipeline": {
-    "build-storybook": {
-      "dependsOn": [
-        "@cmpsr/components#libbuild"
-      ],
-      "outputs": [
-        "storybook-static/**"
-      ]
-    },
     "libbuild": {
       "dependsOn": [
         "^libbuild"
@@ -16,9 +8,6 @@
       "outputs": [
         "lib/**"
       ]
-    },
-    "storybook": {
-      "outputs": []
     },
     "test": {
       "outputs": []
@@ -34,6 +23,17 @@
     },
     "type:emit": {
       "outputs": []
+    },
+    "storybook": {
+      "outputs": []
+    },
+    "build-storybook": {
+      "dependsOn": [
+        "@cmpsr/components#libbuild"
+      ],
+      "outputs": [
+        "storybook-static/**"
+      ]
     }
   }
 }

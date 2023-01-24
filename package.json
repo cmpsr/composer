@@ -7,8 +7,6 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "turbo run libbuild",
-    "components:build-storybook": "turbo run build-storybook",
-    "components:storybook": "turbo run storybook",
     "type:check": "turbo run type:check",
     "type:emit": "turbo run type:emit",
     "test": "turbo run test",
@@ -16,7 +14,8 @@
     "test:coverage": "turbo run test:coverage",
     "lint": "eslint . --ext .tsx,.ts,.js",
     "lint-and-fix": "eslint . --ext .tsx,.ts,.js --fix",
-    "publish-ci": "turbo run libbuild && turbo run type:emit && changeset publish"
+    "publish-ci": "turbo run libbuild && turbo run type:emit && changeset publish",
+    "storybook": "turbo run storybook"
   },
   "private": true,
   "workspaces": [

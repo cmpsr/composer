@@ -19,11 +19,11 @@
   ],
   "private": false,
   "scripts": {
-    "build-storybook": "build-storybook -c .storybook",
     "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore '**/*.test.ts,**/*.stories.ts' && yarn type:emit",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "gen:icons": "node scripts/generate_icons.js",
     "gen:theme-typings": "./scripts/generate_theme_typings.sh",
     "postinstall": "npm run gen:theme-typings",
     "type:check": "yarn tsc --project tsconfig.json --noEmit",
@@ -42,12 +42,6 @@
   },
   "devDependencies": {
     "@chakra-ui/cli": "^2.1.2",
-    "@fontsource/inter": "^4.5.0",
-    "@storybook/addon-a11y": "^6.5.10",
-    "@storybook/addon-console": "^1.2.3",
-    "@storybook/addon-essentials": "^6.5.10",
-    "@storybook/addon-links": "^6.5.10",
-    "@storybook/react": "^6.5.10",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",
@@ -56,9 +50,6 @@
     "@types/jest": "^27.0.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "storybook-addon-turbo-build": "^1.1.0",
-    "storybook-chromatic": "^4.0.2",
-    "storybook-dark-mode": "^1.1.0",
     "swc-loader": "^0.1.15"
   },
   "engines": {

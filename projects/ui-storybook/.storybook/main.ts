@@ -13,7 +13,6 @@ module.exports = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    'storybook-dark-mode',
     'storybook-addon-turbo-build',
     '@storybook/addon-viewport',
   ],

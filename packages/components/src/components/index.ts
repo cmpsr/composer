@@ -3,7 +3,7 @@ export * from './media';
 export * from './disclosure';
 export * from './form';
 export * from './layouts';
-export * from './primitives';
+export * from './other';
 export * from './typography';
 export * from './navigation';
 export * from './overlay';

@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 18.4.0
+
+### Minor Changes
+
+- e3dc2dd: feat: prefix slugs with a slash
+
 ## 18.3.0
 
 ### Patch Changes

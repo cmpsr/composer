@@ -28,11 +28,25 @@ describe('getRouteBySlug', () => {
     query: (params: Record<string, unknown>) => mockQuery(params),
   };
 
-  const slug = 'route_slug';
+  const slug = '/route_slug';
+  const slugWithoutSlash = slug.slice(1);
   const preview = true;
 
   test('should query apollo to retrieve data', async () => {
     await getRouteBySlug(mockApolloClient, slug, preview);
+    expect(mockQuery).toBeCalledTimes(1);
+    expect(mockQuery).toBeCalledWith({
+      query: expect.anything(),
+      variables: {
+        slug,
+        domain: process.env.SITE_DOMAIN,
+        preview,
+      },
+    });
+  });
+
+  test('should prefix slug with a slash', async () => {
+    await getRouteBySlug(mockApolloClient, slugWithoutSlash, preview);
     expect(mockQuery).toBeCalledTimes(1);
     expect(mockQuery).toBeCalledWith({
       query: expect.anything(),

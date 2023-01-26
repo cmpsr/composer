@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.6.0
+
+### Minor Changes
+
+- 2b69e2b: Added unordered list for composer components
+
 ## 5.5.0
 
 ### Minor Changes

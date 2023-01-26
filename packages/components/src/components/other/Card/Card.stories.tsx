@@ -6,7 +6,7 @@ import { Box, Text } from '@components';
 
 export default {
   component: Card,
-  title: 'Components/Primitives/Card',
+  title: 'Components/Other/Card',
 } as Meta;
 
 const Template = (args: CardProps) => (

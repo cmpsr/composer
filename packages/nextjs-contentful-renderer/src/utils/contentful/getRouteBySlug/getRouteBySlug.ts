@@ -7,6 +7,7 @@ export const getRouteBySlug = async (
   preview: boolean,
   domain = process.env.SITE_DOMAIN
 ): Promise<Route> => {
+  const normalizedSlug = slug.startsWith('/') ? slug : `/${slug}`;
   const { data } = await apolloClient.query({
     query: gql`
       query routeBySlug($slug: String, $domain: String, $preview: Boolean) {
@@ -29,7 +30,7 @@ export const getRouteBySlug = async (
       }
     `,
     variables: {
-      slug,
+      slug: normalizedSlug,
       domain,
       preview,
     },

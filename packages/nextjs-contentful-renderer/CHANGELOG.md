@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 18.5.0
+
+### Minor Changes
+
+- 28f2c8f: Added mapping for unordered list
+
 ## 18.4.1
 
 ## 18.4.0

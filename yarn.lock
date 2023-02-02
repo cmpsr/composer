@@ -20059,13 +20059,13 @@ react-merge-refs@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
   integrity sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==
 
-react-plaid-link@^2.2.1:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/react-plaid-link/-/react-plaid-link-2.2.3.tgz#dbce3ae09d43e760f1bfaf67098d2dd79fb808c2"
-  integrity sha512-iOhs3aDHF5VfhTGYcI8ems/h1i8y70evh90DrDERKge2Oak52ZYC8sXm3r86xCFNSOFjfoThOWpVR+iBmqYdng==
+react-plaid-link@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/react-plaid-link/-/react-plaid-link-3.3.2.tgz#58799baf7dc35a68cc84b62f721aa51f12df927b"
+  integrity sha512-W2L9C4RCE/KFFia2SUFFTi8SYRQ1UMUXh4iLE/oo4EQ8UYAT6msKzWvauj8bJirlrkzeiUtY6wgkmWil/okaNg==
   dependencies:
     prop-types "^15.7.2"
-    react-script-hook "1.1.0"
+    react-script-hook "^1.6.0"
 
 react-refresh@^0.11.0:
   version "0.11.0"
@@ -20106,10 +20106,10 @@ react-router@6.3.0, react-router@^6.0.0:
   dependencies:
     history "^5.2.0"
 
-react-script-hook@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-script-hook/-/react-script-hook-1.1.0.tgz#f88bb74b1c89250d7577e6cd5472f10992190706"
-  integrity sha512-swEdGFIOgG4lfi1gdYzFNV28uKuowzbgEGb8Lwi/yp696BVa6RvvuW4a7FY9mic+SecojVlHMWcllygmAg6EJg==
+react-script-hook@^1.6.0:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/react-script-hook/-/react-script-hook-1.7.2.tgz#ec130d67f9a25fcde57fbfd1faa87e5b97521948"
+  integrity sha512-fhyCEfXb94fag34UPRF0zry1XGwmVY+79iibWwTqAoOiCzYJQOYTiWJ7CnqglA9tMSV8g45cQpHCMcBwr7dwhA==
 
 react-shallow-renderer@^16.15.0:
   version "16.15.0"

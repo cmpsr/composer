@@ -13,8 +13,7 @@
       "@theme": ["./src/theme"]
     },
     "minify": {
-      "keepClassnames": true,
-      "keepFnames": true
+      "mangle": true
     },
     "keepClassNames": true,
     "baseUrl": "."
@@ -25,5 +24,8 @@
     "strictMode": true,
     "lazy": false,
     "noInterop": false
+  },
+  "env": {
+    "targets": "> 0.25%, not dead"
   }
 }

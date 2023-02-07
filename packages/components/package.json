@@ -19,7 +19,8 @@
   ],
   "private": false,
   "scripts": {
-    "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore '**/*.test.ts,**/*.stories.ts' && yarn type:emit",
+    "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore '**/*.test.ts,**/*.stories.ts' && yarn type:emit && yarn cleanUselessSourceMaps",
+    "cleanUselessSourceMaps": "find lib/components/media/Icons/**/ -name \\*.js.map | xargs rm",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",

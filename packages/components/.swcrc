@@ -13,8 +13,11 @@
       "@theme": ["./src/theme"]
     },
     "minify": {
-      "keepClassnames": true,
-      "keepFnames": true
+      "compress": {
+        "keep_classnames": true,
+        "sequences": false
+      },
+      "mangle": false
     },
     "keepClassNames": true,
     "baseUrl": "."

@@ -1,5 +1,26 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 18.5.0
+
+### Minor Changes
+
+- 28f2c8f: Added mapping for unordered list
+
+## 18.4.1
+
+## 18.4.0
+
+### Minor Changes
+
+- e3dc2dd: feat: prefix slugs with a slash
+
+## 18.3.0
+
+### Patch Changes
+
+- Updated dependencies [1bdd795]
+  - @cmpsr/cml@0.2.0
+
 ## 18.2.0
 
 ### Minor Changes

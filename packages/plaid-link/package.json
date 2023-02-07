@@ -21,8 +21,11 @@
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "dependencies": {
-    "react-plaid-link": "^2.2.1",
+    "react-plaid-link": "^3.3.2",
     "rimraf": "^3.0.2"
+  },
+  "peerDependencies": {
+    "react": "^18.1.0"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
 }

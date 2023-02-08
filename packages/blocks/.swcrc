@@ -22,5 +22,8 @@
     "strictMode": true,
     "lazy": false,
     "noInterop": false
-  }
+  },
+   "env": {
+     "targets": "> 0.25%, not dead"
+   }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import {
   Tag as ChakraTag,
   TagLeftIcon,
@@ -10,7 +10,11 @@ import {
 } from '@chakra-ui/react';
 import { TagProps } from './types';
 
-const Tag = forwardRef<TagProps, typeof ChakraTag>((props, ref) => <ChakraTag ref={ref} {...props} />);
+const Tag = forwardRef<TagProps, typeof ChakraTag>((props, ref) => {
+  const hasNoChildren = Children.toArray(props.children).length === 0;
+  if (hasNoChildren) return <></>
+  return <ChakraTag ref={ref} {...props} />
+});
 
 const LeftIcon = forwardRef((props, ref) => {
   const styles = useTagStyles() as { leftIcon: StyleProps };

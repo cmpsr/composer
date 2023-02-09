@@ -3,7 +3,7 @@
     "parser": {
       "syntax": "typescript",
       "tsx": true,
-      "decorators": false,
+      "decorators": true,
       "dynamicImport": false
     },
     "minify": {
@@ -13,7 +13,6 @@
       },
       "mangle": false
     },
-    "keepClassNames": true,
     "baseUrl": "."
   },
   "module": {

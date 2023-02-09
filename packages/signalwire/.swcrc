@@ -6,13 +6,6 @@
       "decorators": true,
       "dynamicImport": false
     },
-    "minify": {
-      "compress": {
-        "keep_classnames": true,
-        "sequences": false
-      },
-      "mangle": false
-    },
     "baseUrl": "."
   },
   "module": {

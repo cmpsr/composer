@@ -18,6 +18,9 @@ export default {
       defaultValue: placements[0],
     },
   },
+  parameters: {
+    chromatic: { pauseAnimationAtEnd: true },
+  },
 } as Meta;
 
 export const All = () => (

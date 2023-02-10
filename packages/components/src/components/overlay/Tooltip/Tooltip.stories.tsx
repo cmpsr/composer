@@ -18,9 +18,6 @@ export default {
       defaultValue: placements[0],
     },
   },
-  parameters: {
-    chromatic: { delay: 900 },
-  },
 } as Meta;
 
 export const All = () => (
@@ -53,6 +50,11 @@ export const Opened = () => (
     </Tooltip>
   </Box>
 );
+
+Opened.parameters = {
+  // Sets the delay for a specific story.
+  chromatic: { delay: 3000 },
+};
 
 const Template = (args: TooltipProps) => (
   <Box p="12rem">

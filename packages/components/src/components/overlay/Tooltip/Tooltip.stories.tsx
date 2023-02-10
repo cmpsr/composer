@@ -19,7 +19,7 @@ export default {
     },
     parameters: {
       // Sets the delay for a specific story.
-      chromatic: { delay: 500 },
+      chromatic: { delay: 900 },
     },
   },
 } as Meta;

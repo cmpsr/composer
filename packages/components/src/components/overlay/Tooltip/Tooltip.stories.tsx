@@ -19,7 +19,7 @@ export default {
     },
   },
   parameters: {
-    chromatic: { pauseAnimationAtEnd: true },
+    chromatic: { delay: 500 },
   },
 } as Meta;
 

@@ -19,7 +19,7 @@ export default {
     },
   },
   parameters: {
-    chromatic: { delay: 500 },
+    chromatic: { delay: 900 },
   },
 } as Meta;
 

@@ -18,6 +18,9 @@ export default {
       defaultValue: placements[0],
     },
   },
+  parameters: {
+    chromatic: { delay: 1000 },
+  },
 } as Meta;
 
 export const All = () => (

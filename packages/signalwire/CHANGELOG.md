@@ -1,5 +1,14 @@
 # Change Log
 
+## 0.3.9
+
+### Patch Changes
+
+- d1afb4a: Removes SourceMaps from blocks/components/signalwire packages
+- Updated dependencies [d1afb4a]
+- Updated dependencies [4d21743]
+  - @cmpsr/components@5.6.1
+
 ## 0.3.8
 
 ### Patch Changes

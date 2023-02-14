@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.20
+
+### Patch Changes
+
+- 15bf0a7: bumps react-plaid-link version to the latest
+
 ## 0.0.19
 
 ### Patch Changes

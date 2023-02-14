@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 12.0.5
+
+### Patch Changes
+
+- d1afb4a: Removes SourceMaps from blocks/components/signalwire packages
+
 ## 12.0.4
 
 ## 12.0.3

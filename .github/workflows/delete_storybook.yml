@@ -7,6 +7,10 @@ env:
 
 jobs:
   delete:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
     if: ${{github.event.ref_type == 'branch' && github.event.ref != 'changeset-release/master'}}
     name: Delete storybook
     runs-on: ubuntu-latest

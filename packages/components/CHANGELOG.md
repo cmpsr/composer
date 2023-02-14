@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 5.6.1
+
+### Patch Changes
+
+- d1afb4a: Removes SourceMaps from blocks/components/signalwire packages
+- 4d21743: COM-723 Fixes Tooltip stories + Updates chromatic from v5 to latest v6.17.0
+
 ## 5.6.0
 
 ### Minor Changes

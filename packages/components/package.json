@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "5.6.1",
+  "version": "5.6.2",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -53,6 +53,6 @@
     "swc-loader": "^0.1.15"
   },
   "engines": {
-    "node": ">=14 <17"
+    "node": ">=14"
   }
 }

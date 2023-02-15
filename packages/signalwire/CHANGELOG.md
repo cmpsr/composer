@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.3.10
+
+### Patch Changes
+
+- Updated dependencies [d2ba880]
+  - @cmpsr/components@5.6.2
+
 ## 0.3.9
 
 ### Patch Changes

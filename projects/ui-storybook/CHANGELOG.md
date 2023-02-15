@@ -1,5 +1,13 @@
 # @cmpsr/ui-storybook
 
+## 0.1.6
+
+### Patch Changes
+
+- d2ba880: feat: remove nodejs version upper limit
+- Updated dependencies [d2ba880]
+  - @cmpsr/components@5.6.2
+
 ## 0.1.5
 
 ### Patch Changes

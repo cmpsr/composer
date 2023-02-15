@@ -1,5 +1,11 @@
 # @cmpsr/cml
 
+## 0.2.1
+
+### Patch Changes
+
+- d2ba880: feat: remove nodejs version upper limit
+
 ## 0.2.0
 
 ### Minor Changes

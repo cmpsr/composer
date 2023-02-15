@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 18.5.2
+
+### Patch Changes
+
+- cf40f14: Add missing `CONTENTFUL_ENVIRONMENT` default
+
 ## 18.5.1
 
 ## 18.5.0

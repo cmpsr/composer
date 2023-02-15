@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.6.2
+
+### Patch Changes
+
+- d2ba880: feat: remove nodejs version upper limit
+
 ## 5.6.1
 
 ### Patch Changes

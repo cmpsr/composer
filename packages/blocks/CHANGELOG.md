@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 12.0.6
+
+### Patch Changes
+
+- d2ba880: feat: remove nodejs version upper limit
+
 ## 12.0.5
 
 ### Patch Changes

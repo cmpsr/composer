@@ -39,6 +39,7 @@ module.exports = {
     'jest.config.js',
     'scripts',
     'coverage',
+    'TablerIcons',
   ],
 
   // A list of reporter names that Jest uses when writing coverage reports

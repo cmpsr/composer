@@ -1,3 +1,10 @@
+export interface PageModel {
+  id: string;
+  modelData: any;
+  page: string;
+  slug: string;
+}
+
 export interface RouteVariant {
   traffic: number;
   page: string;

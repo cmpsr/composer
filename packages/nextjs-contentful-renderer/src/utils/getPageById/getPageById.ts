@@ -15,7 +15,7 @@ export const getPageById = async (
     if (modelData) {
       page.content = page.content.map((block, index) => ({
         ...block,
-        propsValue: merge(block.propsValue, modelData?.[index] ?? {}),
+        propsValues: merge(block.propsValues, modelData?.[index] ?? {}),
       }));
     }
     page.content = configNavbar(page);

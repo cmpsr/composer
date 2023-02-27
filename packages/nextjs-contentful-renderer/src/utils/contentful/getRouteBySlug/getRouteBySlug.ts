@@ -53,7 +53,7 @@ export const getRouteBySlug = async (
   });
 
   // Resolve with PageModel, if available
-  if (data.pageModels.items.length) {
+  if (data.pageModel.items.length) {
     return data.pageModel.items.map((pageModel) => ({
       id: pageModel.id,
       modelData: pageModel.modelData,

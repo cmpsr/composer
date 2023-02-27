@@ -8,7 +8,7 @@ export const getStaticPageContent = async (slug: string, preview = false, domain
 
   const pageModelRoute = await getRouteBySlug(apolloClient, slug, preview, domain);
 
-  if (Object.keys(pageModelRoute).includes('modelData')) {
+  if (pageModelRoute && Object.keys(pageModelRoute).includes('modelData')) {
     const pageModel = pageModelRoute as PageModel;
     return await getPageById(apolloClient, pageModel.page, preview, pageModel.modelData);
   }

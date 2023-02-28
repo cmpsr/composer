@@ -71,7 +71,7 @@ jobs:
 
       - name: Publish Snapshot version
         id: changesets
-        uses: changesets/actions@v1
+        uses: changesets/action@v1
         with:
           publish: yarn changeset publish --tag ${BRANCH_NAME}
         env:

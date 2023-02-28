@@ -6,6 +6,10 @@ on:
       - 'master'
       - 'changeset-release/*'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   release-snapshot:
     name: Release Snapshot
@@ -64,7 +68,7 @@ jobs:
           done
 
       - name: Create Snapshot version
-        run: yarn changeset version --snapshot ${BRANCH_NAME//\//-}
+        run: yarn changeset version --snapshot ${GITHUB_REF_NAME//\//-}
 
       - name: Build Packages
         run: yarn build
@@ -73,9 +77,8 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: yarn changeset publish --tag ${BRANCH_NAME}
+          publish: yarn changeset publish --tag ${GITHUB_REF_NAME//\//-}
         env:
-          BRANCH_NAME: ${BRANCH_NAME//\//-}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

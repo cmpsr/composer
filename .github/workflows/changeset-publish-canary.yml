@@ -77,9 +77,9 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: yarn changeset publish --no-git-tag --tag ${BRANCH_NAME}
+          publish: yarn changeset publish --no-git-tag --tag ${BRANCH_NAME//\//-}
         env:
-          BRANCH_NAME: ${GITHUB_REF_NAME//\//-}
+          BRANCH_NAME: ${{ github.ref_name }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

@@ -67,6 +67,9 @@ jobs:
             fi
           done
 
+      - name: Generate Branch Name
+        run: echo "BRANCH_NAME=${GITHUB_REF_NAME//\//-}" >> $GITHUB_ENV
+
       - name: Create Snapshot version
         run: yarn changeset version --snapshot ${GITHUB_REF_NAME//\//-}
 
@@ -79,7 +82,7 @@ jobs:
         with:
           publish: yarn changeset publish --tag ${BRANCH_NAME}
         env:
-          BRANCH_NAME: ${GITHUB_REF_NAME//\//-}
+          BRANCH_NAME: ${{ env.BRANCH_NAME }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

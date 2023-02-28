@@ -52,24 +52,24 @@ export const getRouteBySlug = async (
     },
   });
 
-  // Resolve with PageModel, if available
-  if (data.pageModel.items.length) {
-    return data.pageModel.items.map((pageModel) => ({
-      id: pageModel.id,
-      modelData: pageModel.modelData,
-      page: pageModel?.pageTemplate?.sys?.id,
+  // Resolve with Route, if available
+  if (data.route.items.length) {
+    return data.route.items.map((route) => ({
+      id: route.id,
       slug,
+      variants: route.variants.items.map((variant: any) => ({
+        traffic: variant.traffic,
+        page: variant.page.sys.id,
+        utmCampaign: variant.utmCampaign,
+      })),
     }))[0];
   }
 
-  // Resolve with Route
-  return data.route.items.map((route) => ({
-    id: route.id,
+  // Resolve with PageModel
+  return data.pageModel.items.map((pageModel) => ({
+    id: pageModel.id,
+    modelData: pageModel.modelData,
+    page: pageModel?.pageTemplate?.sys?.id,
     slug,
-    variants: route.variants.items.map((variant: any) => ({
-      traffic: variant.traffic,
-      page: variant.page.sys.id,
-      utmCampaign: variant.utmCampaign,
-    })),
   }))[0];
 };

@@ -76,6 +76,9 @@ jobs:
       - name: Build Packages
         run: yarn build
 
+      - name: Emit Types
+        run: yarn type:emit
+
       - name: Publish Snapshot version
         id: changesets
         uses: changesets/action@v1

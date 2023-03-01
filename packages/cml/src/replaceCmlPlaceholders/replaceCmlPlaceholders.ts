@@ -48,6 +48,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
       case 'Image':
       case 'Images':
       case 'MediaBlock':
+      case 'Tag':
       case 'Text':
       case 'TextPairing':
         searchValue = match;

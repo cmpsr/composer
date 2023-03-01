@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.7.0
+
+### Minor Changes
+
+- 5e5768c: Adds radii-button
+
 ## 5.6.2
 
 ### Patch Changes

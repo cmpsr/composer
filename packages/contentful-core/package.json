@@ -25,7 +25,7 @@
     "access": "public"
   },
   "scripts": {
-    "libbuild": "rimraf lib && npx swc ./src -d lib -s --ignore '**/*.test.ts'",
+    "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts'",
     "test": "jest --testPathIgnorePatterns=lib/",
     "test:watch": "jest --watch --testPathIgnorePatterns=lib/",
     "test:coverage": "jest --coverage --testPathIgnorePatterns=lib/",
@@ -33,7 +33,7 @@
     "graphql:types": "node ./scripts/graphql-types.js",
     "graphql:possibleTypes": "node ./scripts/graphql-possibleTypes.js",
     "type:check": "yarn tsc --project tsconfig.json --noEmit",
-    "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --declarationMap --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
+    "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "bugs": {
     "url": "https://github.com/cmpsr/composer/issues"

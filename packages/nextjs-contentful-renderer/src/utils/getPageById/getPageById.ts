@@ -18,7 +18,7 @@ export const getPageById = async (
       page.content = page.content.map((block, blockIndex) => ({
         ...block,
         propsValues: block.models.map((model, modelIndex) =>
-          merge(block.propsValues[modelIndex], modelData?.[blockIndex]?.[modelIndex] ?? {})
+          merge({}, block.propsValues[modelIndex] ?? {}, modelData?.[blockIndex]?.[modelIndex] ?? {})
         ),
       }));
     }

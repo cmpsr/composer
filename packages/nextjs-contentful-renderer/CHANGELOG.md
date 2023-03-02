@@ -1,5 +1,13 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 18.5.4
+
+### Patch Changes
+
+- a7d7f03: fix: do not generate source maps
+- Updated dependencies [a7d7f03]
+  - @cmpsr/contentful-core@0.5.3
+
 ## 18.5.3
 
 ### Patch Changes

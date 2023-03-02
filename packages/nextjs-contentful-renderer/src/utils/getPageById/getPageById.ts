@@ -12,12 +12,12 @@ export const getPageById = async (
 ) => {
   const page = await getPageByIdFromContentful(apolloClient, pageId, preview);
   if (page) {
-    console.debug(page.content, modelData);
-
     if (modelData) {
-      page.content = page.content.map((block, index) => ({
+      page.content = page.content.map((block, blockIndex) => ({
         ...block,
-        propsValues: merge(block.propsValues, modelData?.[index] ?? {}),
+        propsValues: block.models.map((model, modelIndex) =>
+          merge(block.propsValues[modelIndex], modelData?.[blockIndex]?.[modelIndex] ?? {})
+        ),
       }));
     }
     page.content = configNavbar(page);

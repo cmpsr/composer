@@ -83,7 +83,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: yarn changeset publish --no-git-tag --snapshot --tag ${BRANCH_NAME}
+          publish: yarn changeset publish --tag ${BRANCH_NAME} --no-git-tag
         env:
           BRANCH_NAME: ${{ env.BRANCH_NAME }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

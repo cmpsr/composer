@@ -1,5 +1,11 @@
 # @cmpsr/cml
 
+## 0.3.0
+
+### Minor Changes
+
+- 514f9c6: Added new Tag fieldType
+
 ## 0.2.1
 
 ### Patch Changes

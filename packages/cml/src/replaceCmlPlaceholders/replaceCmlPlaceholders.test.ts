@@ -275,4 +275,20 @@ describe('replaceCmlPlaceholders', () => {
         '<AccordionGallery ><AccordionGallery.Overline >Overline</AccordionGallery.Overline><AccordionGallery.Title ><AccordionGallery.Title.Label >Label</AccordionGallery.Title.Label></AccordionGallery.Title></AccordionGallery>',
     });
   });
+  test('should return tag component', () => {
+    const model = { base: '<div>{{tag:Tag:Tag}}</div>' }
+    const values = {
+      base: {
+        tag: {
+          children: 'Tag',
+          variant: 'text-header-4XL',
+          color: 'accent-default',
+        },
+      },
+    }
+    const mdx = replaceCmlPlaceholders(model, values);
+    expect(mdx).toStrictEqual({
+      base: '<div><Tag variant="text-header-4XL" color="accent-default">Tag</Tag></div>',
+    });
+  });
 });

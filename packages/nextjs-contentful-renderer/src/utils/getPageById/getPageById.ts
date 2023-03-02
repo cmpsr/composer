@@ -12,8 +12,6 @@ export const getPageById = async (
 ) => {
   const page = await getPageByIdFromContentful(apolloClient, pageId, preview);
   if (page) {
-    console.debug(JSON.stringify(page.content), JSON.stringify(modelData));
-
     if (modelData) {
       page.content = page.content.map((block, blockIndex) => ({
         ...block,

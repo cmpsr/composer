@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.5.3
+
+### Patch Changes
+
+- a7d7f03: fix: do not generate source maps
+
 ## 0.5.2
 
 ### Patch Changes

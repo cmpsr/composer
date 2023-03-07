@@ -1,5 +1,11 @@
 # @cmpsr/cml
 
+## 0.3.1
+
+### Patch Changes
+
+- a7d7f03: fix: do not generate source maps
+
 ## 0.3.0
 
 ### Minor Changes

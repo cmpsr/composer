@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.27
+
+### Patch Changes
+
+- a7d7f03: fix: do not generate source maps
+
 ## 0.0.26
 
 ### Patch Changes

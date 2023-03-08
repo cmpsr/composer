@@ -1,4 +1,4 @@
-export interface PageModel {
+export interface Replica {
   id: string;
   modelData: any;
   page: string;

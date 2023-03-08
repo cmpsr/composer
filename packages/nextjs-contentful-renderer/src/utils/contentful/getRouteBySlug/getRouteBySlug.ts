@@ -1,17 +1,17 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
-import { PageModel, Route } from './types';
+import { Replica, Route } from './types';
 
 export const getRouteBySlug = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
   slug: string,
   preview: boolean,
   domain = process.env.SITE_DOMAIN
-): Promise<PageModel | Route> => {
+): Promise<Replica | Route> => {
   const normalizedSlug = slug.startsWith('/') ? slug : `/${slug}`;
   const { data } = await apolloClient.query({
     query: gql`
       query routeBySlug($slug: String, $domain: String, $preview: Boolean) {
-        pageModel: pageModelCollection(where: { domain: $domain, slug: $slug }, preview: $preview) {
+        replica: replicaCollection(where: { domain: $domain, slug: $slug }, preview: $preview) {
           items {
             sys {
               id
@@ -65,11 +65,11 @@ export const getRouteBySlug = async (
     }))[0];
   }
 
-  // Resolve with PageModel
-  return data.pageModel.items.map((pageModel) => ({
-    id: pageModel.id,
-    modelData: pageModel.modelData,
-    page: pageModel?.pageTemplate?.sys?.id,
+  // Resolve with Replica
+  return data.replica.items.map((replica) => ({
+    id: replica.id,
+    modelData: replica.modelData,
+    page: replica?.pageTemplate?.sys?.id,
     slug,
   }))[0];
 };

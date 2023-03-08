@@ -4,7 +4,7 @@ describe('getRouteBySlug', () => {
   const mockQuery = jest.fn();
   mockQuery.mockResolvedValue({
     data: {
-      pageModel: {
+      replica: {
         items: [],
       },
       route: {

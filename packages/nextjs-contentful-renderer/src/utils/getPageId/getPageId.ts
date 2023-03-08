@@ -1,14 +1,14 @@
-import { PageModel, Route, RouteVariant } from '../contentful/getRouteBySlug/types';
+import { Replica, Route, RouteVariant } from '../contentful/getRouteBySlug/types';
 
 export const getPageId = (
-  pageModelRoute: PageModel | Route,
+  replicaRoute: Replica | Route,
   campaign: undefined | string | string[] = undefined
 ): string => {
-  if (Object.keys(pageModelRoute).includes('page')) {
-    return (pageModelRoute as PageModel).page;
+  if (Object.keys(replicaRoute).includes('page')) {
+    return (replicaRoute as Replica).page;
   }
 
-  const route = pageModelRoute as Route;
+  const route = replicaRoute as Route;
 
   if (campaign !== undefined) {
     const pageId = getCampaignVariant(route.variants, campaign);

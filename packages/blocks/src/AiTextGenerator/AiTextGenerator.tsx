@@ -3,8 +3,8 @@ import { Text } from '@cmpsr/components';
 
 import { AiTextGeneratorProps } from './types';
 
-export const AiTextGenerator: FC<AiTextGeneratorProps> = (props) => (
-  <Text as="p" {...props}>
-    {props?.aiTextGeneratorResult || ''}
+export const AiTextGenerator: FC<AiTextGeneratorProps> = ({ aiTextGeneratorResult, ...rest }) => (
+  <Text as="p" {...rest}>
+    {aiTextGeneratorResult || ''}
   </Text>
 );

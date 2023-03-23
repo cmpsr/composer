@@ -4,7 +4,12 @@ import { screen, renderWithProviders } from '../tests/renderWithProviders';
 import { AiTextGenerator } from './AiTextGenerator';
 
 describe('AiTextGenerator', () => {
-  const givenComponentRendered = () => renderWithProviders(<AiTextGenerator aiTextGeneratorResult="result" />);
+  const givenComponentRendered = () =>
+    renderWithProviders(
+      <AiTextGenerator>
+        <AiTextGenerator.Result aiTextGeneratorResult="result" />
+      </AiTextGenerator>
+    );
 
   test('should render content', () => {
     givenComponentRendered();
@@ -12,7 +17,11 @@ describe('AiTextGenerator', () => {
   });
 
   test('should render content with variant', () => {
-    renderWithProviders(<AiTextGenerator aiTextGeneratorResult="result" variant="text-header-XL" />);
+    renderWithProviders(
+      <AiTextGenerator>
+        <AiTextGenerator.Result aiTextGeneratorResult="result" variant="text-header-XL" />
+      </AiTextGenerator>
+    );
     screen.getByText('result');
   });
 

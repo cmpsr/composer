@@ -37,10 +37,12 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
 
     let searchValue: string;
     switch (fieldType) {
+      case 'AiTextGenerator':
+        newValue = '';
+        break;
       case 'AccordionsGallery':
       case 'Action':
       case 'Actions':
-      case 'AiTextGenerator':
       case 'Bullets':
       case 'Column':
       case 'Columns':

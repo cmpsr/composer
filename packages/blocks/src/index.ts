@@ -1,5 +1,4 @@
 export * from './AccordionGallery';
-export * from './AiTextGenerator';
 export * from './BrandLogos';
 export * from './ColumnLayout';
 export * from './CookieBanner';

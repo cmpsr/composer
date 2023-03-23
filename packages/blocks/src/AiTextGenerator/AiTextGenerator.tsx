@@ -5,13 +5,15 @@ import { AiTextGeneratorProps, AiTextGeneratorType } from './types';
 
 export const AiTextGenerator: AiTextGeneratorType = (props) => <Flex {...props} />;
 
-export const AiTextGeneratorPrompt: FC<AiTextGeneratorProps> = ({ aiTextGeneratorPrompt, ...rest }) => (
-  <Text {...rest}>{aiTextGeneratorPrompt}</Text>
-);
+export const AiTextGeneratorPrompt: FC<AiTextGeneratorProps> = (props) => {
+  console.debug('AiTextGeneratorPrompt', props);
+  return <Text>{''}</Text>;
+};
 
-export const AiTextGeneratorResult: FC<AiTextGeneratorProps> = ({ aiTextGeneratorResult, ...rest }) => (
-  <Text {...rest}>{aiTextGeneratorResult}</Text>
-);
+export const AiTextGeneratorResult: FC<AiTextGeneratorProps> = (props) => {
+  console.debug('AiTextGeneratorResult', props);
+  return <Text>{''}</Text>;
+};
 
 AiTextGenerator.Prompt = AiTextGeneratorPrompt;
 AiTextGenerator.Result = AiTextGeneratorResult;

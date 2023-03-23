@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
-import { Text } from '@cmpsr/components';
+import { Flex, Text } from '@cmpsr/components';
 
-import { AiTextGeneratorProps } from './types';
+import { AiTextGeneratorProps, AiTextGeneratorType } from './types';
 
-export const AiTextGenerator: FC<AiTextGeneratorProps> = ({ aiTextGeneratorResult, ...rest }) => (
-  <Text as="p" {...rest}>
-    {aiTextGeneratorResult || ''}
-  </Text>
+export const AiTextGenerator: AiTextGeneratorType = (props) => <Flex {...props} />;
+
+export const AiTextGeneratorResult: FC<AiTextGeneratorProps> = ({ aiTextGeneratorResult, ...rest }) => (
+  <Text {...rest}>{aiTextGeneratorResult}</Text>
 );
+
+AiTextGenerator.Result = AiTextGeneratorResult;

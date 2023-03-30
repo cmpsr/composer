@@ -21,7 +21,7 @@ export const generateMdx = async (blocks: Block[]): Promise<Model[]> => {
   });
 
   const all = await Promise.all(promises);
-  return all.reduce((acc, val) => acc.concat(val), []);
+  return all.reduce((acc, val) => acc.concat(val), []).filter((model) => !Object.keys(model).length);
 };
 
 const bundler = async (code: string): Promise<string> => (await bundleMDX({ source: code.trim() })).code;

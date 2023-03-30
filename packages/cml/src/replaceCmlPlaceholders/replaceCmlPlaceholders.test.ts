@@ -295,6 +295,6 @@ describe('replaceCmlPlaceholders', () => {
     const model = { base: '{{aiTextGenerator:AiTextGenerator}}' };
     const values = {};
     const mdx = replaceCmlPlaceholders(model, values);
-    expect(mdx).toStrictEqual({});
+    expect(mdx).toStrictEqual({ base: '' });
   });
 });

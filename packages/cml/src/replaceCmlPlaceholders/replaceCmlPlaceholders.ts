@@ -5,10 +5,7 @@ import { replaceAll } from '../utils/replaceAll';
 
 export const replaceCmlPlaceholders = (model: Model, values: PropsValue): Model =>
   breakpoints.reduce((acc, breakpoint) => {
-    // Hack to prevent rendering errors when AiTextGenerator model is used - Ryan
-    if (model[breakpoint] && model[breakpoint] === '{{aiTextGenerator:AiTextGenerator}}') {
-      return acc;
-    } else if (model[breakpoint] || values[breakpoint]) {
+    if (model[breakpoint] || values[breakpoint]) {
       return {
         ...acc,
         [breakpoint]: replacePropValues(getBreakpointValue(model, breakpoint), mergeValues(values, breakpoint)),
@@ -40,6 +37,10 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
 
     let searchValue: string;
     switch (fieldType) {
+      case 'AiTextGenerator':
+        searchValue = match;
+        newValue = '';
+        break;
       case 'AccordionsGallery':
       case 'Action':
       case 'Actions':

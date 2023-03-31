@@ -20,6 +20,8 @@ export const generateMdx = async (blocks: Block[]): Promise<Model[]> => {
   });
 
   const all = await Promise.all(promises);
+  // .filter added to remove empty models, (ex. AiTextGenerator, but could be more in the future)
+  // prevents site rendering from breaking when a model is empty
   return all.reduce((acc, val) => acc.concat(val), []).filter((model) => !!Object.keys(model).length);
 };
 

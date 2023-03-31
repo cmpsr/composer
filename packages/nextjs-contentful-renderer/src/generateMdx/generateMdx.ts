@@ -3,7 +3,6 @@ import { Block, Model, breakpoints, replaceCmlPlaceholders } from '@cmpsr/cml';
 
 export const generateMdx = async (blocks: Block[]): Promise<Model[]> => {
   const promises = blocks.map(async ({ models, propsValues }) => {
-    // .filter((mdxModel) => mdxModel.base !== '{{aiTextGenerator:AiTextGenerator}}')
     const mdxModelsUpdated = models.map((mdxModel, index) =>
       replaceCmlPlaceholders(mdxModel, propsValues[index] || {})
     );

@@ -1,6 +1,6 @@
 import { IIntegration } from '../types';
 import { IGTagConfig } from './types';
-import { loadGTag } from 'src/integrations/gtag/loadGTag';
+import { loadGTag } from './loadGTag';
 import { Identify, Track, Page, Group } from 'types';
 
 export class GTag implements IIntegration {

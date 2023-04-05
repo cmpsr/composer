@@ -1,4 +1,4 @@
-import { IGTagConfig } from "src/integrations/gtag/types";
+import { IGTagConfig } from "./types";
 
 export const loadGTag = (gTagConfig: IGTagConfig) => {
   (function (w, d, s, l, i) {

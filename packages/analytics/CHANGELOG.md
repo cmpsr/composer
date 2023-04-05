@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.2
+
+### Patch Changes
+
+- 31ef4ee: Fixes GTAG imports in analytics
+
 ## 0.1.1
 
 ### Patch Changes

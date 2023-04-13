@@ -60,5 +60,10 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },
+  "peerDependenciesMeta": {
+    "@cmpsr/signalwire": {
+      "optional": true
+    }
+  },
   "gitHead": "6ed57ef588712950eed22c96da22cff216a4b6fc"
 }

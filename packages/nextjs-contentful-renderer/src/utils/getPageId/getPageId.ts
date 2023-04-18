@@ -4,7 +4,7 @@ export const getPageId = (
   replicaRoute: Replica | Route,
   campaign: undefined | string | string[] = undefined
 ): string => {
-  if (Object.keys(replicaRoute).includes('page')) {
+  if ((replicaRoute as Replica).page !== undefined) {
     return (replicaRoute as Replica).page;
   }
 

@@ -2,7 +2,7 @@ import { getApolloClient } from '../utils/getApolloClient';
 import { getRouteBySlug } from '../utils/contentful';
 import { getPageById } from '../utils/getPageById';
 import type { Replica, Route } from '../utils/contentful/getRouteBySlug/types';
-import { isReplica } from 'src/utils/isReplica';
+import { isReplica } from '../utils/isReplica';
 
 export const getStaticPageContent = async (slug: string, preview = false, domain: string | undefined = undefined) => {
   const apolloClient = getApolloClient({ preview });

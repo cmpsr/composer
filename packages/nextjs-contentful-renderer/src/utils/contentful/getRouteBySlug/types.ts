@@ -1,6 +1,8 @@
+import { PropsValue } from '@cmpsr/cml';
+
 export interface Replica {
   id: string;
-  modelData: any;
+  modelData: PropsValue[][];
   page: string;
   slug: string;
 }

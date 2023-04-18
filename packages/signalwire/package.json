@@ -26,13 +26,16 @@
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' \\) -exec rm {} +"
   },
   "dependencies": {
-    "@cmpsr/components": "^5.7.0",
     "@signalwire/js": "^3.16.0",
     "@signalwire/realtime-api": "^3.5.0",
     "axios": "^1.1.3",
     "rimraf": "^3.0.2"
   },
+  "devDependencies": {
+    "@cmpsr/components": "^5.7.0"
+  },
   "peerDependencies": {
+    "@cmpsr/components": "^5.7.0",
     "react": "^18.1.0"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"

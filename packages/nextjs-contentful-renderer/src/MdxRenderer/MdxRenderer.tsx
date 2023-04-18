@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
 import * as Composer from '@cmpsr/components';
 import * as Blocks from '@cmpsr/blocks';
-import { VideoChat } from '@cmpsr/signalwire/client';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { MdxRendererProps } from './types';
 
@@ -20,6 +19,15 @@ const renderHeader = ({ children, ...props }: Composer.TextProps, as: 'h1' | 'h2
     </Composer.Text>
   );
 };
+
+const SignalWireComponents: Record<string, unknown> = {};
+
+try {
+  const { VideoChat } = require('@cmpsr/signalwire/client');
+  SignalWireComponents['VideoChat'] = VideoChat;
+} catch {
+  // Intentionally left blank
+}
 
 const composerComponents: any = Object.keys(Composer).reduce(
   (acc, key) => {
@@ -45,7 +53,7 @@ const composerComponents: any = Object.keys(Composer).reduce(
     h6: (props: Composer.TextProps) => renderHeader(props, 'h6'),
     a: (props: Composer.LinkProps) => <Composer.Link display="inline-flex" {...props} />,
     img: Composer.Image,
-    VideoChat,
+    ...SignalWireComponents,
   }
 );
 

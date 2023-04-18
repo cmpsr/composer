@@ -2,13 +2,14 @@ import { getApolloClient } from '../utils/getApolloClient';
 import { getRouteBySlug } from '../utils/contentful';
 import { getPageById } from '../utils/getPageById';
 import type { Replica, Route } from '../utils/contentful/getRouteBySlug/types';
+import { isReplica } from 'src/utils/isReplica';
 
 export const getStaticPageContent = async (slug: string, preview = false, domain: string | undefined = undefined) => {
   const apolloClient = getApolloClient({ preview });
 
   const replicaRoute = await getRouteBySlug(apolloClient, slug, preview, domain);
 
-  if (replicaRoute && Object.keys(replicaRoute).includes('modelData')) {
+  if (replicaRoute && isReplica(replicaRoute)) {
     const replica = replicaRoute as Replica;
     return await getPageById(apolloClient, replica.page, preview, replica.modelData);
   }

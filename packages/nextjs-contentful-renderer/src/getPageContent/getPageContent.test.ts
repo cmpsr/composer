@@ -37,7 +37,7 @@ describe('getPageContent', () => {
     };
     await getPageContent(context);
     expect(mockGetSlug).toBeCalledTimes(1);
-    expect(mockGetSlug).toBeCalledWith(context, '/');
+    expect(mockGetSlug).toBeCalledWith('/');
   });
   describe('nextjs preview mode', () => {
     test('should use nextjs preview mode over param', async () => {

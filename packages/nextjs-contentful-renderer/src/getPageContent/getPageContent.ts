@@ -16,7 +16,7 @@ export const getPageContent = async (
 
   const apolloClient = getApolloClient({ preview });
 
-  const slug = getSlug(context.query.slug || '/');
+  const slug = getSlug(context?.query?.slug || '/');
 
   const replicaRoute = await getRouteBySlug(apolloClient, slug, preview, domain);
 

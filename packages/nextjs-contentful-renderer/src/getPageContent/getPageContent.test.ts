@@ -1,10 +1,5 @@
 import { getPageContent } from '.';
 
-const mockGetSlug = jest.fn();
-jest.mock('../utils/getSlug', () => ({
-  getSlug: (...params) => mockGetSlug(...params),
-}));
-
 const mockGetPageId = jest.fn();
 jest.mock('../utils/getPageId', () => ({
   getPageId: (...params) => mockGetPageId(...params),
@@ -36,8 +31,8 @@ describe('getPageContent', () => {
       query: {},
     };
     await getPageContent(context);
-    expect(mockGetSlug).toBeCalledTimes(1);
-    expect(mockGetSlug).toBeCalledWith('/');
+    expect(mockGetRouteBySlug).toBeCalledTimes(1);
+    expect(mockGetRouteBySlug).toBeCalledWith(expect.anything(), '/', false, undefined);
   });
   describe('nextjs preview mode', () => {
     test('should use nextjs preview mode over param', async () => {

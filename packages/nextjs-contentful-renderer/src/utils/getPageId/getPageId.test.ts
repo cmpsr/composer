@@ -1,6 +1,12 @@
 import { getPageId } from '.';
 
 describe('getPageId', () => {
+  const replica = {
+    id: 'replica_id',
+    page: 'replica_page_id',
+    slug: 'replica_slug',
+    modelData: [],
+  };
   const route = {
     id: 'route_id',
     slug: 'slug',
@@ -20,6 +26,15 @@ describe('getPageId', () => {
       },
     ],
   };
+
+  test('should return Replica page, if set', () => {
+    const pageId = getPageId(replica);
+    expect(pageId).toBe('replica_page_id');
+  });
+  test('should return existing page, if set', () => {
+    const pageId = getPageId(route, undefined, 'page_a_id');
+    expect(pageId).toBe('page_a_id');
+  });
   test('should get variant matching the utmCampaign', () => {
     const pageId = getPageId(route, 'campaign');
     expect(pageId).toBe(route.variants[2].page);

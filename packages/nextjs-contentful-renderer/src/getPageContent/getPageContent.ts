@@ -5,7 +5,6 @@ import { Page } from '../utils/contentful/getPageById/types';
 import { getApolloClient } from '../utils/getApolloClient';
 import { getPageId } from '../utils/getPageId';
 import { getSlug } from '../utils/getSlug';
-import type { Replica } from '../utils/contentful/getRouteBySlug/types';
 import { getVisitedPageIdFromCookies, setCookie } from '../utils/cookies';
 import { isReplica } from '../utils/isReplica';
 
@@ -23,7 +22,7 @@ export const getPageContent = async (
 
   if (!replicaRoute) return undefined;
 
-  const modelData = isReplica(replicaRoute) ? (replicaRoute as Replica).modelData : null;
+  const modelData = isReplica(replicaRoute) ? replicaRoute.modelData : null;
   const existingPageId = getVisitedPageIdFromCookies(context, slug);
   const pageId = getPageId(replicaRoute, context.query.utm_campaign, existingPageId);
   const page = await getPageById(apolloClient, pageId, preview, modelData);

@@ -1,7 +1,7 @@
 import { getApolloClient } from '../utils/getApolloClient';
 import { getRouteBySlug } from '../utils/contentful';
 import { getPageById } from '../utils/getPageById';
-import type { Replica, Route } from '../utils/contentful/getRouteBySlug/types';
+import type { Route } from '../utils/contentful/getRouteBySlug/types';
 import { isReplica } from '../utils/isReplica';
 
 export const getStaticPageContent = async (slug: string, preview = false, domain: string | undefined = undefined) => {
@@ -10,8 +10,7 @@ export const getStaticPageContent = async (slug: string, preview = false, domain
   const replicaRoute = await getRouteBySlug(apolloClient, slug, preview, domain);
 
   if (replicaRoute && isReplica(replicaRoute)) {
-    const replica = replicaRoute as Replica;
-    return await getPageById(apolloClient, replica.page, preview, replica.modelData);
+    return await getPageById(apolloClient, replicaRoute.page, preview, replicaRoute.modelData);
   }
 
   // We always take the first variant of the route for static pages

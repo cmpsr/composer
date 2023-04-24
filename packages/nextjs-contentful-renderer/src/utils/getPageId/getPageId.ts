@@ -1,12 +1,13 @@
 import { Replica, Route, RouteVariant } from '../contentful/getRouteBySlug/types';
+import { isReplica } from '../isReplica';
 
 export const getPageId = (
   replicaRoute: Replica | Route,
   campaign: undefined | string | string[] = undefined,
   existingPageId: undefined | string = undefined
 ): string => {
-  if ((replicaRoute as Replica).page !== undefined) {
-    return (replicaRoute as Replica).page;
+  if (isReplica(replicaRoute) && replicaRoute.page !== undefined) {
+    return replicaRoute.page;
   }
 
   const route = replicaRoute as Route;

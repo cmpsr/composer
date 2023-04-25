@@ -3,11 +3,18 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Dot 
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useStyleConfig } from '@chakra-ui/system';
 import { IconChevronLeft, IconChevronRight, Flex, IconButton } from '@components';
-import { CarouselProps, CarouselStaticMembers, ButtonProps, DotProps, DotGroupProps, CarouselStyles } from './types';
+import {
+  CarouselProps,
+  CarouselStaticMembers,
+  CarouselButtonProps,
+  DotProps,
+  DotGroupProps,
+  CarouselStyles,
+} from './types';
 
 export const Carousel: FC<CarouselProps> & CarouselStaticMembers = (props) => <CarouselProvider {...props} />;
 
-const CarouselButtonBack: ButtonProps = (props) => {
+const CarouselButtonBack: CarouselButtonProps = (props) => {
   const { buttonStyles, chevronStyles } = useStyleConfig('Carousel') as CarouselStyles;
   return (
     <IconButton
@@ -20,7 +27,7 @@ const CarouselButtonBack: ButtonProps = (props) => {
   );
 };
 
-const CarouselButtonNext: ButtonProps = (props) => {
+const CarouselButtonNext: CarouselButtonProps = (props) => {
   const { buttonStyles, chevronStyles } = useStyleConfig('Carousel') as CarouselStyles;
   return (
     <IconButton

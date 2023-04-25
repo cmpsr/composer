@@ -9,7 +9,7 @@ import { IconButtonProps } from '@components';
 import { CSSWithMultiValues, RecursiveCSSObject } from '@chakra-ui/react';
 export { CarouselProviderProps as CarouselProps } from 'pure-react-carousel';
 
-export type ButtonProps = FC<Omit<IconButtonProps, 'aria-label'>>;
+export type CarouselButtonProps = FC<Omit<IconButtonProps, 'aria-label'>>;
 export type DotProps = FC<Omit<BaseDotProps, 'children'>>;
 export type DotGroupProps = FC<Omit<BaseDotGroupProps, 'children'>>;
 
@@ -21,8 +21,8 @@ export type CarouselStyles = {
 export interface CarouselStaticMembers {
   Slider: ComponentType<SliderProps>;
   Slide: ComponentType<SlideProps>;
-  ButtonBack: ButtonProps;
-  ButtonNext: ButtonProps;
+  ButtonBack: CarouselButtonProps;
+  ButtonNext: CarouselButtonProps;
   Dot: DotProps;
   DotGroup: DotGroupProps;
 }

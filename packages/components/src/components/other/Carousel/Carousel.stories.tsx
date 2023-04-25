@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Card, Flex } from '@cmpsr/components';
+import { Card, Flex } from '../../';
 import { Carousel } from './Carousel';
 import { CarouselProps } from './types';
 

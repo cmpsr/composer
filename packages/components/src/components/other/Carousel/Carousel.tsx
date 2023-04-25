@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Dot } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useStyleConfig } from '@chakra-ui/system';
 import { IconChevronLeft, IconChevronRight, Flex, IconButton } from '@components';
 import {

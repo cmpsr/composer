@@ -51,4 +51,13 @@ describe('generateMdx', () => {
       { base: 'bundled: <Link>Title</Link>', lg: 'bundled: <Link>Lg</Link>' },
     ]);
   });
+  test('should filter out empty models', async () => {
+    const mdx = await generateMdx([
+      {
+        models: [{ base: '' }],
+        propsValues: [],
+      },
+    ]);
+    expect(mdx).toStrictEqual([]);
+  });
 });

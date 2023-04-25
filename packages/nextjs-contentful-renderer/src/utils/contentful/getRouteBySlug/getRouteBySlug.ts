@@ -1,17 +1,33 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
-import { Route } from './types';
+import { Replica, Route } from './types';
 
 export const getRouteBySlug = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
   slug: string,
   preview: boolean,
   domain = process.env.SITE_DOMAIN
-): Promise<Route> => {
+): Promise<Replica | Route> => {
   const normalizedSlug = slug.startsWith('/') ? slug : `/${slug}`;
   const { data } = await apolloClient.query({
     query: gql`
       query routeBySlug($slug: String, $domain: String, $preview: Boolean) {
-        route: routeCollection(where: { slug: $slug, domain: $domain }, preview: $preview) {
+        replica: replicaCollection(where: { domain: $domain, slug: $slug }, preview: $preview) {
+          items {
+            sys {
+              id
+            }
+            id
+            domain
+            modelData
+            pageTemplate {
+              sys {
+                id
+              }
+            }
+            slug
+          }
+        }
+        route: routeCollection(where: { domain: $domain, slug: $slug }, preview: $preview) {
           items {
             id
             variants: variantsCollection(limit: 10) {
@@ -36,8 +52,9 @@ export const getRouteBySlug = async (
     },
   });
 
-  const result = data.route.items.map((route) => {
-    return {
+  // Resolve with Route, if available
+  if (data.route.items.length) {
+    return data.route.items.map((route) => ({
       id: route.id,
       slug,
       variants: route.variants.items.map((variant: any) => ({
@@ -45,8 +62,14 @@ export const getRouteBySlug = async (
         page: variant.page.sys.id,
         utmCampaign: variant.utmCampaign,
       })),
-    };
-  })[0];
+    }))[0];
+  }
 
-  return result;
+  // Resolve with Replica
+  return data.replica.items.map((replica) => ({
+    id: replica.id,
+    modelData: replica.modelData,
+    page: replica?.pageTemplate?.sys?.id,
+    slug,
+  }))[0];
 };

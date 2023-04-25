@@ -276,7 +276,7 @@ describe('replaceCmlPlaceholders', () => {
     });
   });
   test('should return tag component', () => {
-    const model = { base: '<div>{{tag:Tag:Tag}}</div>' }
+    const model = { base: '<div>{{tag:Tag:Tag}}</div>' };
     const values = {
       base: {
         tag: {
@@ -285,10 +285,16 @@ describe('replaceCmlPlaceholders', () => {
           color: 'accent-default',
         },
       },
-    }
+    };
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({
       base: '<div><Tag variant="text-header-4XL" color="accent-default">Tag</Tag></div>',
     });
+  });
+  test('should exclude AiTextGenerator from bundle', () => {
+    const model = { base: '{{aiTextGenerator:AiTextGenerator}}' };
+    const values = {};
+    const mdx = replaceCmlPlaceholders(model, values);
+    expect(mdx).toStrictEqual({ base: '' });
   });
 });

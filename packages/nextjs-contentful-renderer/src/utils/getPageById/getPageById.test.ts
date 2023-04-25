@@ -39,4 +39,24 @@ describe('getPageById', () => {
       ],
     });
   });
+  test('confirm modelData is merged with content', async () => {
+    const fakeContent = {
+      content: [{ models: [{ base: 'base content' }], propsValues: [] }],
+      navbar: [{ models: [{ base: 'navbar' }], propsValues: [] }],
+      footer: [{ models: [{ base: 'footer' }], propsValues: [] }],
+    };
+    const fakeModelData = [[{ base: { textColor: 'white' } }]];
+
+    mockGetPageFromContentful.mockResolvedValueOnce({ ...fakeContent, content: [...fakeContent.content] });
+    const page = await getPageById(mockApolloClient, pageId, preview, fakeModelData);
+
+    expect(page).toStrictEqual({
+      ...fakeContent,
+      content: [
+        { models: [fakeContent.navbar[0].models[0]], propsValues: [] },
+        { models: [fakeContent.content[0].models[0]], propsValues: fakeModelData[0] },
+        { models: [fakeContent.footer[0].models[0]], propsValues: [] },
+      ],
+    });
+  });
 });

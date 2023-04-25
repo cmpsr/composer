@@ -1,0 +1,101 @@
+name: "Publish - Canary"
+
+on:
+  push:
+    branches-ignore:
+      - 'master'
+      - 'changeset-release/*'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release-snapshot:
+    name: Release Snapshot
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@main
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+
+      - name: Setup Node.js 18.x
+        uses: actions/setup-node@main
+        with:
+          node-version: 18.x
+
+      - name: Restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('./yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install modules
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn
+
+      - name: Check for changeset or [no-release]
+        if: "!contains(github.event.pull_request.title, '[no-release]')"
+        shell: bash
+        run: |
+          set -eu -o pipefail # Using some heavy bash, so setting up some better defaults
+          echo "Grabbing changeset to determine version for canary..."
+          yarn changeset status --since=origin/master
+          CHANGESETS=$(yarn changeset status --since=origin/master | grep "@cmpsr" | cut -d' ' -f4)
+          echo -e "\n"
+          for pkg in $(yarn -s turbo run build --filter...[origin/master] --dry=json | grep -v "//" |jq -r .packages[]); do
+            if grep -q "$CHANGESETS" <<< "$pkg"; then
+              echo -e "$pkg has changeset\n"
+            else
+              echo -e "$pkg is missing a changeset. You may have forgotten to run yarn changeset.\n"
+              exit 1
+            fi
+          done
+
+      - name: Generate Branch Name
+        run: echo "BRANCH_NAME=${GITHUB_REF_NAME//\//-}" >> $GITHUB_ENV
+
+      - name: Create Snapshot version
+        run: yarn changeset version --snapshot ${GITHUB_REF_NAME//\//-}
+
+      - name: Build Packages
+        run: yarn build
+
+      - name: Emit Types
+        run: yarn type:emit
+
+      - name: Publish Snapshot version
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: yarn changeset publish --tag ${BRANCH_NAME} --no-git-tag
+        env:
+          BRANCH_NAME: ${{ env.BRANCH_NAME }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create PR comment with published canary versions
+        id: get-canaries
+        run: |
+          packageVersions=$( echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r -c 'map([.name,.version]) | map(join("@")) | join("\n")' )
+          canariesComment=$(echo "Latest Canary Releases for this pull request:\n\n${packageVersions}" )
+          echo -e "${canariesComment}" > msg
+          export msg=$(cat msg)
+          gh pr comment ${{ github.event.number }} --body "$msg"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

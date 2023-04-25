@@ -38,8 +38,8 @@ describe('getPageContent', () => {
       query: {},
     };
     await getPageContent(context);
-    expect(mockGetVisitedPageIdFromCookies).toBeCalledTimes(1);
-    expect(mockGetVisitedPageIdFromCookies).toBeCalledWith(context, '/');
+    expect(mockGetRouteBySlug).toBeCalledTimes(1);
+    expect(mockGetRouteBySlug).toBeCalledWith(expect.anything(), '/', false, undefined);
   });
   describe('nextjs preview mode', () => {
     test('should use nextjs preview mode over param', async () => {
@@ -87,12 +87,17 @@ describe('getPageContent', () => {
     expect(pageContent).not.toBeDefined();
   });
   test('should request page id stored in cookies', async () => {
+    const fakeRoute = { id: 'route_id', variants: [{ page: 'page_id' }] };
+    mockGetRouteBySlug.mockResolvedValueOnce(fakeRoute);
     mockGetVisitedPageIdFromCookies.mockReturnValueOnce('page_id');
+    mockGetPageId.mockReturnValueOnce('page_id');
     await getPageContent(fakeContext);
     expect(mockGetPageById).toBeCalledTimes(1);
-    expect(mockGetPageById).toBeCalledWith(expect.anything(), 'page_id', true);
+    expect(mockGetPageById).toBeCalledWith(expect.anything(), 'page_id', true, null);
   });
   test('should return page content for page id stored in cookies if exists', async () => {
+    const fakeRoute = { id: 'route_id' };
+    mockGetRouteBySlug.mockResolvedValueOnce(fakeRoute);
     mockGetVisitedPageIdFromCookies.mockReturnValueOnce('page_id');
     mockGetPageById.mockResolvedValueOnce(fakePageContent);
     const pageContent = await getPageContent(fakeContext);
@@ -109,16 +114,12 @@ describe('getPageContent', () => {
   test('should get page id for route', async () => {
     const fakeRoute = { id: 'route_id' };
     mockGetRouteBySlug.mockResolvedValueOnce(fakeRoute);
+    mockGetVisitedPageIdFromCookies.mockReturnValueOnce('page_id');
     await getPageContent(fakeContext);
+    expect(mockGetVisitedPageIdFromCookies).toBeCalledTimes(1);
+    expect(mockGetVisitedPageIdFromCookies).toBeCalledWith(fakeContext, '/home');
     expect(mockGetPageId).toBeCalledTimes(1);
-    expect(mockGetPageId).toBeCalledWith(fakeRoute, undefined);
-  });
-  test('should get page by id', async () => {
-    mockGetRouteBySlug.mockResolvedValueOnce({});
-    mockGetPageId.mockReturnValueOnce('page_id');
-    await getPageContent(fakeContext);
-    expect(mockGetPageById).toBeCalledTimes(1);
-    expect(mockGetPageById).toBeCalledWith(expect.anything(), 'page_id', true);
+    expect(mockGetPageId).toBeCalledWith(fakeRoute, undefined, 'page_id');
   });
   test('should set cookie with returned page id', async () => {
     mockGetRouteBySlug.mockResolvedValueOnce({});
@@ -126,6 +127,14 @@ describe('getPageContent', () => {
     await getPageContent(fakeContext);
     expect(mockSetCookie).toBeCalledTimes(1);
     expect(mockSetCookie).toBeCalledWith(fakeContext, '/home', 'page_id');
+    expect(mockGetPageById).toBeCalledWith(expect.anything(), 'page_id', true, null);
+  });
+  test('should get page by id', async () => {
+    mockGetRouteBySlug.mockResolvedValueOnce({});
+    mockGetPageId.mockReturnValueOnce('page_id');
+    await getPageContent(fakeContext);
+    expect(mockGetPageById).toBeCalledTimes(1);
+    expect(mockGetPageById).toBeCalledWith(expect.anything(), 'page_id', true, null);
   });
   test('should return page content', async () => {
     mockGetRouteBySlug.mockResolvedValueOnce({});

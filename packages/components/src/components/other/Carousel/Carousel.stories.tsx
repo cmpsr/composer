@@ -46,7 +46,7 @@ const Template = (args: CarouselProps) => (
       </Flex>
     </Carousel.Slider>
     <Flex gap="12px" alignItems="center" justifyContent="center">
-      <Carousel.ButtonBack aria-label="back" />
+      <Carousel.ButtonBack />
       <Carousel.DotGroup
         renderDots={() => (
           <>
@@ -58,7 +58,7 @@ const Template = (args: CarouselProps) => (
             <Carousel.Dot slide={5} />
           </>
         )}
-      ></Carousel.DotGroup>
+      />
       <Carousel.ButtonNext aria-label="next" />
     </Flex>
   </Carousel>

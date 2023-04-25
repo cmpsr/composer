@@ -3,26 +3,34 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Dot 
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useStyleConfig } from '@chakra-ui/system';
 import { IconChevronLeft, IconChevronRight, Flex, IconButton } from '@components';
-import {
-  CarouselProps,
-  CarouselStaticMembers,
-  ButtonBackProps,
-  ButtonNextProps,
-  DotProps,
-  DotGroupProps,
-  CarouselStyles,
-} from './types';
+import { CarouselProps, CarouselStaticMembers, ButtonProps, DotProps, DotGroupProps, CarouselStyles } from './types';
 
 export const Carousel: FC<CarouselProps> & CarouselStaticMembers = (props) => <CarouselProvider {...props} />;
 
-const CarouselButtonBack: ButtonBackProps = (props) => {
+const CarouselButtonBack: ButtonProps = (props) => {
   const { buttonStyles, chevronStyles } = useStyleConfig('Carousel') as CarouselStyles;
-  return <IconButton as={ButtonBack} icon={<IconChevronLeft {...chevronStyles} />} {...buttonStyles} {...props} />;
+  return (
+    <IconButton
+      aria-label="back"
+      as={ButtonBack}
+      icon={<IconChevronLeft {...chevronStyles} />}
+      {...buttonStyles}
+      {...props}
+    />
+  );
 };
 
-const CarouselButtonNext: ButtonNextProps = (props) => {
+const CarouselButtonNext: ButtonProps = (props) => {
   const { buttonStyles, chevronStyles } = useStyleConfig('Carousel') as CarouselStyles;
-  return <IconButton as={ButtonNext} icon={<IconChevronRight {...chevronStyles} />} {...buttonStyles} {...props} />;
+  return (
+    <IconButton
+      aria-label="next"
+      as={ButtonNext}
+      icon={<IconChevronRight {...chevronStyles} />}
+      {...buttonStyles}
+      {...props}
+    />
+  );
 };
 
 const CarouselDot: DotProps = (props) => {

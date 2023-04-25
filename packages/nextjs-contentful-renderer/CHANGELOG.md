@@ -1,5 +1,17 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 19.0.0
+
+### Minor Changes
+
+- bf779a8: [spike] Replicas
+
+### Patch Changes
+
+- a424fa7: feat: make @cmpsr/signalwire optional
+- Updated dependencies [bf779a8]
+  - @cmpsr/cml@0.4.0
+
 ## 18.5.4
 
 ### Patch Changes

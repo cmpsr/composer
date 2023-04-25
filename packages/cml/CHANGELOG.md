@@ -1,5 +1,11 @@
 # @cmpsr/cml
 
+## 0.4.0
+
+### Minor Changes
+
+- bf779a8: [spike] Replicas
+
 ## 0.3.1
 
 ### Patch Changes

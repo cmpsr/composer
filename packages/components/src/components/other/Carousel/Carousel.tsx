@@ -10,6 +10,7 @@ import {
   DotGroupProps,
   CarouselStyles,
 } from './types';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 export const Carousel: FC<CarouselProps> & CarouselStaticMembers = (props) => <CarouselProvider {...props} />;
 

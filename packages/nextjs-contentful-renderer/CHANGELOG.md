@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 19.0.1
+
+### Patch Changes
+
+- a7f50b9: add lodash dependency
+
 ## 19.0.0
 
 ### Minor Changes

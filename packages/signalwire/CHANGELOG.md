@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.12
+
+### Patch Changes
+
+- fe72544: Align versions and peers
+
 ## 0.3.11
 
 ### Patch Changes

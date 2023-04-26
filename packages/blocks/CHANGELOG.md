@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 12.0.8
+
+### Patch Changes
+
+- fe72544: Align versions and peers
+
 ## 12.0.7
 
 ## 12.0.6

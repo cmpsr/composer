@@ -22,7 +22,7 @@ const Template = ({ isIntrinsicHeight, naturalSlideWidth, naturalSlideHeight, wi
       <Carousel.MediaBlock.Title variant="textpairing-body-display-M">
         <Carousel.MediaBlock.Title.Label>Rapid Solutions with Blocks</Carousel.MediaBlock.Title.Label>
         <Carousel.MediaBlock.Title.SubLabel>
-          Our tech company provides rapid and high-quality solutions to your company's problems. We leverage the best
+          Our tech company provides rapid and high-quality solutions to your company problems. We leverage the best
           technology and expertise to deliver results fast.
         </Carousel.MediaBlock.Title.SubLabel>
       </Carousel.MediaBlock.Title>

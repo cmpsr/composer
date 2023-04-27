@@ -43,5 +43,8 @@
   },
   "engines": {
     "node": ">=14"
+  },
+  "dependencies": {
+    "pure-react-carousel": "^1.30.1"
   }
 }

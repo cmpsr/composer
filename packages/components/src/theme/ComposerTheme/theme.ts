@@ -6,7 +6,6 @@ import { defaultShadows } from './Shadows';
 import { defaultRadius } from './Radius';
 import { defaultSpacing } from './Spacing';
 import { textStyles } from './styles';
-import { pureReactCarouselStyles } from './Components/Carousel';
 
 export const theme: Theme = {
   breakpoints,
@@ -16,9 +15,4 @@ export const theme: Theme = {
   space: defaultSpacing,
   components,
   textStyles,
-  styles: {
-    global: {
-      ...pureReactCarouselStyles,
-    },
-  },
 };

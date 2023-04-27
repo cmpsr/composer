@@ -5,7 +5,6 @@ import { Badge } from './Badge';
 import { Breadcrumb } from './Breadcrumb';
 import { Button } from './Button';
 import { Card } from './Card';
-import { Carousel } from './Carousel';
 import { Checkbox } from './Checkbox';
 import { CloseButton } from './CloseButton';
 import { Divider } from './Divider';
@@ -41,7 +40,6 @@ export const components = {
   Breadcrumb,
   Button,
   Card,
-  Carousel,
   Checkbox,
   CloseButton,
   Divider,

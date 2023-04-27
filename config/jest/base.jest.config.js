@@ -93,9 +93,9 @@ module.exports = {
   // ],
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
-  // moduleNameMapper: {
-  // "^.+\\.module\\.css$": "identity-obj-proxy",
-  // },
+  moduleNameMapper: {
+    '^.+\\.(css)$': '<rootDir>/../../config/jest/cssTransform.js',
+  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],

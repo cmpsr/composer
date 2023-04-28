@@ -44,12 +44,11 @@ const Template = ({ totalSlides, visibleSlides, step, withArrows }) => (
     </Carousel.Slider>
     <Carousel.NavigationContainer>
       {withArrows && <Carousel.ButtonBack />}
-      <Carousel.Dot slide={0} />
-      <Carousel.Dot slide={1} />
-      <Carousel.Dot slide={2} />
-      <Carousel.Dot slide={3} />
-      <Carousel.Dot slide={4} />
-      <Carousel.Dot slide={5} />
+      {Array(totalSlides)
+        .fill(0)
+        .map((_, index) => (
+          <Carousel.Dot slide={index} key={index} />
+        ))}
       {withArrows && <Carousel.ButtonNext />}
     </Carousel.NavigationContainer>
   </Carousel>

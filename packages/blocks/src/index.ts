@@ -1,6 +1,5 @@
 export * from './AccordionGallery';
 export * from './BrandLogos';
-export * from './Carousel';
 export * from './ColumnLayout';
 export * from './CookieBanner';
 export * from './Footer';

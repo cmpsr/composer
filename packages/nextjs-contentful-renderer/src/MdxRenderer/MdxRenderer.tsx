@@ -29,6 +29,15 @@ try {
   // Intentionally left blank
 }
 
+const CarouselComponents: Record<string, unknown> = {};
+
+try {
+  const { Carousel } = require('@cmpsr/carousel');
+  CarouselComponents['Carousel'] = Carousel;
+} catch {
+  // Intentionally left blank
+}
+
 const composerComponents: any = Object.keys(Composer).reduce(
   (acc, key) => {
     const descriptor = Reflect.getOwnPropertyDescriptor(Composer, key);
@@ -54,6 +63,7 @@ const composerComponents: any = Object.keys(Composer).reduce(
     a: (props: Composer.LinkProps) => <Composer.Link display="inline-flex" {...props} />,
     img: Composer.Image,
     ...SignalWireComponents,
+    ...CarouselComponents,
   }
 );
 

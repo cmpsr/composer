@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "@cmpsr/components": "^5.7.0",
-    "@storybook/addon-viewport": "^6.5.6",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",

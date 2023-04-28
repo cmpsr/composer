@@ -1,7 +1,6 @@
 import React from 'react';
 import { IconChevronLeft, IconChevronRight, Flex, IconButton } from '@cmpsr/components';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Dot } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
 import { MediaBlock, MediaBlockType } from '../MediaBlock';
 import { CarouselProps, CarouselButtonProps, DotProps, DotGroupProps, NavigationContainerProps } from './types';
 

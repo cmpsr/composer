@@ -1,5 +1,11 @@
 # @cmpsr/ui-storybook
 
+## 0.2.0
+
+### Minor Changes
+
+- 7b868ee: feat: create carousel package and update consumer project
+
 ## 0.1.7
 
 ### Patch Changes

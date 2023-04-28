@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 19.1.0
+
+### Minor Changes
+
+- b0fec3b: feat: update @cmpsr/carousel to optional peer dependency in @cmpsr/nextjs-contentful-renderer
+
 ## 19.0.1
 
 ### Patch Changes

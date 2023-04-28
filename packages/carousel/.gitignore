@@ -1,0 +1,7 @@
+# Node dependencies
+node_modules
+
+# build folder
+lib
+
+yarn-error.log*

@@ -9,13 +9,14 @@ export default {
   title: 'Carousel/Carousel',
 } as Meta;
 
-const Template = ({ isIntrinsicHeight, naturalSlideWidth, naturalSlideHeight, withArrows }) => (
+const Template = ({ totalSlides, visibleSlides, step, withArrows }) => (
   <Carousel
-    visibleSlides={2}
-    naturalSlideWidth={naturalSlideWidth}
-    naturalSlideHeight={naturalSlideHeight}
-    isIntrinsicHeight={isIntrinsicHeight}
-    totalSlides={6}
+    visibleSlides={visibleSlides}
+    naturalSlideWidth={1}
+    naturalSlideHeight={1}
+    isIntrinsicHeight
+    totalSlides={totalSlides}
+    step={step}
   >
     <TextPairing variant="textpairing-header-2XL" mb="spacer-8">
       <TextPairing.Label>Rapid Solutions with Blocks</TextPairing.Label>
@@ -25,7 +26,7 @@ const Template = ({ isIntrinsicHeight, naturalSlideWidth, naturalSlideHeight, wi
       </TextPairing.SubLabel>
     </TextPairing>
     <Carousel.Slider>
-      {Array(6)
+      {Array(totalSlides)
         .fill(0)
         .map((_, index) => (
           <Carousel.Slide index={index} key={index}>
@@ -55,7 +56,7 @@ const Template = ({ isIntrinsicHeight, naturalSlideWidth, naturalSlideHeight, wi
 );
 
 export const Playground = Template.bind({});
-Playground.args = { isIntrinsicHeight: true, naturalSlideWidth: 1, naturalSlideHeight: 1 };
+Playground.args = { visibleSlides: 2, totalSlides: 6, step: 2, withArrows: false };
 
 export const WithArrows = Template.bind({});
-WithArrows.args = { isIntrinsicHeight: true, naturalSlideWidth: 1, naturalSlideHeight: 1, withArrows: true };
+WithArrows.args = { visibleSlides: 2, totalSlides: 6, step: 2, withArrows: true };

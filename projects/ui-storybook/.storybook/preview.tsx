@@ -3,6 +3,7 @@ import { ComposerProvider } from '@cmpsr/components';
 import '@fontsource/inter/300.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/700.css';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 export const parameters = {
   backgrounds: {

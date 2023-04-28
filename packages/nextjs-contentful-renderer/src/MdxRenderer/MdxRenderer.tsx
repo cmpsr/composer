@@ -32,7 +32,7 @@ try {
 const CarouselComponents: Record<string, unknown> = {};
 
 try {
-  const { Carousel } = require('@cmpsr/carousel/client');
+  const { Carousel } = require('@cmpsr/carousel');
   CarouselComponents['Carousel'] = Carousel;
 } catch {
   // Intentionally left blank

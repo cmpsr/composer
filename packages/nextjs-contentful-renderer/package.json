@@ -37,6 +37,7 @@
   "devDependencies": {
     "@apollo/client": "^3.6.2",
     "@cmpsr/blocks": "^12.0.8",
+    "@cmpsr/carousel": "^0.1.0",
     "@cmpsr/cml": "^0.4.0",
     "@cmpsr/components": "^5.7.0",
     "@cmpsr/signalwire": "^0.3.12",
@@ -54,6 +55,7 @@
   "peerDependencies": {
     "@apollo/client": "^3.6.2",
     "@cmpsr/blocks": "^12.0.7",
+    "@cmpsr/carousel": "^0.1.0",
     "@cmpsr/cml": "^0.4.0",
     "@cmpsr/components": "^5.7.0",
     "@cmpsr/signalwire": "^0.3.11",
@@ -62,6 +64,9 @@
     "react-dom": "^18.1.0"
   },
   "peerDependenciesMeta": {
+    "@cmpsr/carousel": {
+      "optional": true
+    },
     "@cmpsr/signalwire": {
       "optional": true
     }

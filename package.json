@@ -25,7 +25,7 @@
   ],
   "dependencies": {
     "@changesets/cli": "^2.26.0",
-    "lerna": "^5.5.2"
+    "lerna": "^6.6.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.15.0",

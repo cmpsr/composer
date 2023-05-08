@@ -1,5 +1,11 @@
 # @cmpsr/cml
 
+## 0.5.0
+
+### Minor Changes
+
+- 436f71a: feat: add support for Carousel field type
+
 ## 0.4.0
 
 ### Minor Changes

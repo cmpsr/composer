@@ -24,4 +24,7 @@ interface CarouselStaticMembers {
   NavigationContainer: NavigationContainerProps;
 }
 
-export type CarouselProps = FC<FlexProps & CarouselProviderProps> & CarouselStaticMembers;
+export type CarouselProps = FC<
+  FlexProps & Omit<CarouselProviderProps, 'totalSlides'> & { showDots?: boolean; showArrows?: boolean }
+> &
+  CarouselStaticMembers;

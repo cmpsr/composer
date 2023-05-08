@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { Children, isValidElement, ReactNode } from 'react';
 import { IconChevronLeft, IconChevronRight, Flex, IconButton } from '@cmpsr/components';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Dot } from 'pure-react-carousel';
 import { CarouselProps, CarouselButtonProps, DotProps, DotGroupProps, NavigationContainerProps } from './types';
 
-export const Carousel: CarouselProps = (props) => <CarouselProvider {...props} />;
+export const Carousel: CarouselProps = ({ children, showDots = true, showArrows = false, ...props }) => {
+  const [totalSlides] = Children.map(children, (child) => {
+    if (isValidElement(child) && child.type === Carousel.Slider) {
+      return Children.count(child.props.children) as number;
+    }
+  });
+  if (!totalSlides) return;
+
+  const renderDots = (totalSlides: number) => {
+    const carouselDots: ReactNode[] = [];
+    for (let i = 0; i < totalSlides; i++) {
+      carouselDots.push(<Carousel.Dot key={i} slide={i} />);
+    }
+    return carouselDots;
+  };
+
+  return (
+    <CarouselProvider totalSlides={totalSlides} {...props}>
+      <>
+        {children}
+        {(showDots || showArrows) && (
+          <Carousel.NavigationContainer>
+            {showArrows && <Carousel.ButtonBack />}
+            {showDots && renderDots(totalSlides)}
+            {showArrows && <Carousel.ButtonNext />}
+          </Carousel.NavigationContainer>
+        )}
+      </>
+    </CarouselProvider>
+  );
+};
 
 const carouselButtonStyles = {
   width: '24px',

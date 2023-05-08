@@ -12,7 +12,7 @@ export const Carousel: CarouselProps = ({ children, showDots = true, showArrows 
   if (!totalSlides) return;
 
   const renderDots = (totalSlides: number) => {
-    let carouselDots: ReactNode[] = [];
+    const carouselDots: ReactNode[] = [];
     for (let i = 0; i < totalSlides; i++) {
       carouselDots.push(<Carousel.Dot key={i} slide={i} />);
     }

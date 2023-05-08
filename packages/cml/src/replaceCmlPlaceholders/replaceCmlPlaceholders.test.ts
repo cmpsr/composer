@@ -297,4 +297,28 @@ describe('replaceCmlPlaceholders', () => {
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({ base: '' });
   });
+  test('should handle Carousel field type', () => {
+    const model = { base: '{{carouselSlider:Carousel:Carousel.Slider}}' };
+    const values = {
+      base: {
+        carouselSlider: {
+          children: ['{{carouselSliderCarousel1Slide:Container:Carousel.Slide}}'],
+        },
+        carouselSliderCarousel1Slide: {
+          children: ['{{carouselSliderCarousel1SlideMediaBlock:Container:MediaBlock}}'],
+        },
+        carouselSliderCarousel1SlideMediaBlock: {
+          children: ['{{carouselSliderCarousel1SlideMediaBlockTag:Tag:MediaBlock.Tag}}'],
+        },
+        carouselSliderCarousel1SlideMediaBlockTag: {
+          children: 'TAG',
+        },
+      },
+    };
+    const mdx = replaceCmlPlaceholders(model, values);
+    expect(mdx).toStrictEqual({
+      base:
+        '<Carousel.Slider ><Carousel.Slide ><MediaBlock ><MediaBlock.Tag >TAG</MediaBlock.Tag></MediaBlock></Carousel.Slide></Carousel.Slider>',
+    });
+  });
 });

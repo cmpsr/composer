@@ -3,14 +3,14 @@ import { Meta } from '@storybook/react';
 import { Link } from './Link';
 import { linkSizes, linkVariants } from './types';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
-import { IconExternalLink, Text } from '@components';
+import { ButtonVariant, buttonVariants, IconExternalLink, LinkVariant, Text } from '@components';
 
 export default {
   component: Link,
   title: 'Components/Navigation/Link',
   argTypes: {
     variant: {
-      options: linkVariants,
+      options: [...linkVariants, ...buttonVariants],
       control: { type: 'select' },
     },
     size: {
@@ -19,41 +19,6 @@ export default {
     },
   },
 } as Meta;
-
-export const All = () => (
-  <Table variant="simple">
-    <Thead>
-      <Tr>
-        <Th>Size</Th>
-        <Th>Text only</Th>
-        <Th>With leading icon</Th>
-        <Th>With trailing Icon</Th>
-      </Tr>
-    </Thead>
-    <Tbody>
-      {linkSizes.map((size) => (
-        <Tr key="size">
-          <Td>{size.toUpperCase()}</Td>
-          <Td>
-            <Link size={size} href="#">
-              Size {size.toUpperCase()} link
-            </Link>
-          </Td>
-          <Td>
-            <Link size={size} href="#" leadingIcon={<IconExternalLink />}>
-              Size {size.toUpperCase()} link with leading icon
-            </Link>
-          </Td>
-          <Td>
-            <Link size={size} href="#" trailingIcon={<IconExternalLink />}>
-              Size {size.toUpperCase()} link with trailing icon
-            </Link>
-          </Td>
-        </Tr>
-      ))}
-    </Tbody>
-  </Table>
-);
 
 const AllVariantsTemplate = () => (
   <Table variant="simple">
@@ -66,7 +31,7 @@ const AllVariantsTemplate = () => (
       </Tr>
     </Thead>
     <Tbody>
-      {linkVariants.map((variant, i) => (
+      {[...linkVariants, ...buttonVariants].map((variant, i) => (
         <Fragment key={i}>
           {['Default', 'Leading Icon', 'Trailing Icon'].map((state, i) => (
             <Tr key={`${state}-${i}`}>
@@ -76,7 +41,7 @@ const AllVariantsTemplate = () => (
                   <Link
                     href="#"
                     role="link"
-                    variant={variant}
+                    variant={variant as LinkVariant & ButtonVariant}
                     size={size}
                     {...{ ...(state === 'Trailing Icon' && { trailingIcon: <IconExternalLink /> }) }}
                     {...{ ...(state === 'Leading Icon' && { leadingIcon: <IconExternalLink /> }) }}

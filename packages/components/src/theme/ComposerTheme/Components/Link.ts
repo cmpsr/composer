@@ -1,26 +1,43 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { StyleFunctionProps } from '@chakra-ui/theme-tools';
-import { linkVariants, linkSizes } from '@components';
+import { linkSizes, buttonVariants } from '@components';
 
 export const linkBaseStyle = {
   display: 'inline-flex',
-  color: 'text-link-primary-default',
   borderRadius: '0.25rem',
   _hover: {
     textDecoration: 'none',
   },
-  _focus: {
-    boxShadow: `0 0 0 0.25rem var(--chakra-colors-primary-focus)`,
-  },
-  _focusVisible: {
-    boxShadow: `0 0 0 0.25rem var(--chakra-colors-primary-focus)`,
-  },
 };
 
-const isButtonVariant = (variant) => linkVariants.includes(variant);
+const generateLink = (textColor: string) => {
+  const variantColor = textColor.split('-')[1];
+  return {
+    display: 'inline-flex',
+    color: `text-${textColor}-default`,
+    borderRadius: '0.25rem',
+    _hover: {
+      textDecoration: 'none',
+      color: `text-${textColor}-hover`,
+    },
+    _active: {
+      color: `text-${textColor}-pressed`,
+    },
+    _focus: {
+      boxShadow: `0 0 0 0.25rem var(--chakra-colors-${variantColor}-focus)`,
+      color: `text-${textColor}-hover`,
+    },
+    _focusVisible: {
+      boxShadow: `0 0 0 0.25rem var(--chakra-colors-${variantColor}-focus)`,
+      color: `text-${textColor}-hover`,
+    },
+  };
+};
+
+const isButtonVariant = (variant) => !variant.startsWith('link');
 
 const getButtonVariants = () =>
-  linkVariants.reduce(
+  buttonVariants.reduce(
     (prev, variant) => ({
       ...prev,
       [variant]: (params: StyleFunctionProps) => {
@@ -31,17 +48,12 @@ const getButtonVariants = () =>
     {}
   );
 
-const getButtonSize = (size, props) => ({
-  ...props.theme.components.Button.sizes[size](props),
-  color: 'text-link-primary-default',
-});
-
 const getSizes = () => {
   const sizes = {};
   linkSizes.forEach((size) => {
     sizes[size] = (props) =>
       isButtonVariant(props.variant)
-        ? getButtonSize(size, props)
+        ? props.theme.components.Button.sizes[size](props)
         : {
             ...props.theme.textStyles[
               {
@@ -56,16 +68,7 @@ const getSizes = () => {
                 },
               }[size].textStyleToken
             ],
-            color: 'text-link-primary-default',
-            _hover: {
-              color: 'text-link-primary-hover',
-            },
-            _active: {
-              color: 'text-link-primary-pressed',
-            },
-            _focus: {
-              color: 'text-link-primary-hover',
-            },
+            ...generateLink(props.variant),
           };
   });
   return sizes;
@@ -83,9 +86,13 @@ export const Link: ComponentStyleConfig = {
     return isButtonVariant(props.variant) ? buttonBaseStyle : linkBaseStyle;
   },
   sizes: getSizes(),
-  variants: getButtonVariants(),
+  variants: {
+    'link-primary': generateLink('link-primary'),
+    'link-accent': generateLink('link-accent'),
+    ...getButtonVariants(),
+  },
   defaultProps: {
     size: 'l',
-    variant: undefined,
+    variant: 'link-primary',
   },
 };

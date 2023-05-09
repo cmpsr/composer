@@ -31,7 +31,7 @@ const Template = ({ totalSlides, visibleSlides, step, showArrows }) => (
           .fill(0)
           .map((_, index) => (
             <Carousel.Slide index={index} key={index}>
-              <Card outlined mr="24px">
+              <Card outlined>
                 <TextPairing>
                   <TextPairing.Label>Testimonial {index}</TextPairing.Label>
                   <TextPairing.SubLabel>

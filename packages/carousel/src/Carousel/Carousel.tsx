@@ -1,7 +1,14 @@
 import React, { Children, isValidElement, ReactNode } from 'react';
 import { IconChevronLeft, IconChevronRight, Flex, IconButton } from '@cmpsr/components';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Dot } from 'pure-react-carousel';
-import { CarouselProps, CarouselButtonProps, DotProps, DotGroupProps, NavigationContainerProps } from './types';
+import {
+  CarouselProps,
+  CarouselButtonProps,
+  DotProps,
+  DotGroupProps,
+  NavigationContainerProps,
+  SlideProps,
+} from './types';
 
 export const Carousel: CarouselProps = ({ children, showDots = true, showArrows = false, ...props }) => {
   const [totalSlides] = Children.map(children, (child) => {
@@ -89,8 +96,12 @@ const CarouselNavigationContainer: NavigationContainerProps = (props) => (
   <Flex alignItems="center" justifyContent="center" gap="12px" mt="spacer-16" {...props} />
 );
 
+const CarouselSlide: SlideProps = (props) => (
+  <Flex _last={{ marginRight: '0px' }} marginRight="24px" as={Slide} {...props} />
+);
+
 Carousel.Slider = Slider;
-Carousel.Slide = Slide;
+Carousel.Slide = CarouselSlide;
 Carousel.ButtonBack = CarouselButtonBack;
 Carousel.ButtonNext = CarouselButtonNext;
 Carousel.DotGroup = CarouselDotGroup;

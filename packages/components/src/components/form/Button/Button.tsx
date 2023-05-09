@@ -12,7 +12,7 @@ export const Button = forwardRef<ButtonProps, typeof ChakraButton>(
     }) as { loading: SpinnerProps };
     const leftIcon = getIcon(leadingIcon, size);
     const rightIcon = getIcon(trailingIcon, size);
-    const isLinkVariant = variant.startsWith('link');
+    const isLinkVariant = variant?.startsWith('link');
 
     return (
       <ChakraButton

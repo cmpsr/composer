@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { Button } from './Button';
-import { buttonSizes, ButtonVariant, buttonVariants } from './types';
+import { buttonSizes, buttonVariants } from './types';
 import * as Icons from '../../media/Icons';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
-import { LinkVariant, linkVariants } from '@components';
+import { linkVariants } from '@components';
 
 export default {
   component: Button,

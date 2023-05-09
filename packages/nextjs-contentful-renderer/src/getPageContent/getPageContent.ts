@@ -22,10 +22,9 @@ export const getPageContent = async (
 
   if (!replicaRoute) return undefined;
 
-  const modelData = isReplica(replicaRoute) ? replicaRoute.modelData : null;
   const existingPageId = getVisitedPageIdFromCookies(context, slug);
   const pageId = getPageId(replicaRoute, context.query.utm_campaign, existingPageId);
-  const page = await getPageById(apolloClient, pageId, preview, modelData);
+  const page = await getPageById(apolloClient, pageId, preview, isReplica(replicaRoute) ? replicaRoute : undefined);
 
   if (!isReplica(replicaRoute)) {
     setCookie(context, slug, pageId);

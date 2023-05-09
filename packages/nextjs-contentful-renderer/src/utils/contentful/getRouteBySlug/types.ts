@@ -1,8 +1,10 @@
 import { PropsValue } from '@cmpsr/cml';
+import { PageMetaData } from '../getPageById/types';
 
 export interface Replica {
   id: string;
-  modelData: PropsValue[][];
+  metaConfiguration?: PageMetaData;
+  modelData?: PropsValue[][];
   page: string;
   slug: string;
 }

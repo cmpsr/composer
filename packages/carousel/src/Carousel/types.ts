@@ -2,7 +2,7 @@ import { ComponentType, FC } from 'react';
 import {
   DotGroupProps as BaseDotGroupProps,
   DotProps as BaseDotProps,
-  SlideProps,
+  SlideProps as BaseSlideProps,
   SliderProps as BaseSliderProps,
   CarouselProviderProps,
 } from 'pure-react-carousel';
@@ -13,10 +13,11 @@ export type DotProps = FC<Omit<BaseDotProps, 'children'>>;
 export type DotGroupProps = FC<Omit<BaseDotGroupProps, 'children'>>;
 export type SliderProps = FC<Omit<BaseSliderProps, 'children'>>;
 export type NavigationContainerProps = FC<FlexProps>;
+export type SlideProps = FC<Omit<BaseSlideProps, 'children'>>;
 
 interface CarouselStaticMembers {
   Slider: ComponentType<BaseSliderProps>;
-  Slide: ComponentType<SlideProps>;
+  Slide: SlideProps;
   ButtonBack: CarouselButtonProps;
   ButtonNext: CarouselButtonProps;
   Dot: DotProps;

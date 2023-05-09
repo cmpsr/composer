@@ -45,18 +45,57 @@ describe('getPageById', () => {
       navbar: [{ models: [{ base: 'navbar' }], propsValues: [] }],
       footer: [{ models: [{ base: 'footer' }], propsValues: [] }],
     };
-    const fakeModelData = [[{ base: { textColor: 'white' } }]];
+    const fakeReplica = {
+      id: 'replica-id',
+      slug: '/replica',
+      modelData: [[{ base: { textColor: 'white' } }]],
+      page: 'page-id',
+    };
 
     mockGetPageFromContentful.mockResolvedValueOnce({ ...fakeContent, content: [...fakeContent.content] });
-    const page = await getPageById(mockApolloClient, pageId, preview, fakeModelData);
+    const page = await getPageById(mockApolloClient, pageId, preview, fakeReplica);
 
     expect(page).toStrictEqual({
       ...fakeContent,
       content: [
         { models: [fakeContent.navbar[0].models[0]], propsValues: [] },
-        { models: [fakeContent.content[0].models[0]], propsValues: fakeModelData[0] },
+        { models: [fakeContent.content[0].models[0]], propsValues: fakeReplica.modelData[0] },
         { models: [fakeContent.footer[0].models[0]], propsValues: [] },
       ],
+    });
+  });
+  test('confirm metaConfiguration is merged with content', async () => {
+    const fakeContent = {
+      content: [{ models: [{ base: 'base content' }], propsValues: [] }],
+      metaConfiguration: {
+        title: { propertyName: 'title', propertyValue: 'page title', content: '' },
+        description: { propertyName: 'description', propertyValue: 'page description', content: '' },
+      },
+      navbar: [{ models: [{ base: 'navbar' }], propsValues: [] }],
+      footer: [{ models: [{ base: 'footer' }], propsValues: [] }],
+    };
+    const fakeReplica = {
+      id: 'replica-id',
+      slug: '/replica',
+      metaConfiguration: { title: { propertyName: 'title', propertyValue: 'replica title', content: '' } },
+      modelData: [],
+      page: 'page-id',
+    };
+
+    mockGetPageFromContentful.mockResolvedValueOnce({ ...fakeContent, content: [...fakeContent.content] });
+    const page = await getPageById(mockApolloClient, pageId, preview, fakeReplica);
+
+    expect(page).toStrictEqual({
+      ...fakeContent,
+      content: [
+        { models: [fakeContent.navbar[0].models[0]], propsValues: [] },
+        { models: [fakeContent.content[0].models[0]], propsValues: [] },
+        { models: [fakeContent.footer[0].models[0]], propsValues: [] },
+      ],
+      metaConfiguration: {
+        title: { propertyName: 'title', propertyValue: 'replica title', content: '' },
+        description: { propertyName: 'description', propertyValue: 'page description', content: '' },
+      },
     });
   });
 });

@@ -1,5 +1,11 @@
 # @cmpsr/carousel
 
+## 0.3.0
+
+### Minor Changes
+
+- cf438a9: feat: wrap Carousel Slide in Flex element and add base margin in Slide to have spacing between Slider
+
 ## 0.2.0
 
 ### Minor Changes

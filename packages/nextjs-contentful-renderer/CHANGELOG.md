@@ -1,5 +1,12 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 20.0.0
+
+### Patch Changes
+
+- Updated dependencies [cf438a9]
+  - @cmpsr/carousel@0.3.0
+
 ## 19.2.0
 
 ### Patch Changes

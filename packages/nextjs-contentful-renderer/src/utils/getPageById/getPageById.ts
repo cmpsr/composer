@@ -23,11 +23,15 @@ export const getPageById = async (
       page.content = page.content.map((block, blockIndex) => ({
         ...block,
         propsValues: block.models
-          .map((model, modelIndex) =>
-            block.propsValues[modelIndex] || replica.modelData?.[blockIndex]?.[modelIndex]
-              ? merge({}, block.propsValues[modelIndex] ?? {}, replica.modelData?.[blockIndex]?.[modelIndex] ?? {})
-              : null
-          )
+          .map((model, modelIndex) => {
+            const props = merge(
+              {},
+              block.propsValues[modelIndex] ?? {},
+              replica.modelData?.[blockIndex]?.[modelIndex] ?? {}
+            );
+
+            return Object.keys(props).length ? props : null;
+          })
           .filter((model) => model !== null),
       }));
     }

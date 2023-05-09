@@ -41,7 +41,7 @@ const AllVariantsTemplate = () => (
                   <Link
                     href="#"
                     role="link"
-                    variant={variant as LinkVariant & ButtonVariant}
+                    variant={variant}
                     size={size}
                     {...{ ...(state === 'Trailing Icon' && { trailingIcon: <IconExternalLink /> }) }}
                     {...{ ...(state === 'Leading Icon' && { leadingIcon: <IconExternalLink /> }) }}

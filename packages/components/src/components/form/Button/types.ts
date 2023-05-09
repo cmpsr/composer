@@ -8,7 +8,7 @@ export const buttonSizes = ['xs', 's', 'm', 'l'] as const;
 export type ButtonSize = typeof buttonSizes[number];
 
 export interface ButtonProps extends ChakraButtonProps {
-  variant?: ButtonVariant & LinkVariant;
+  variant?: ButtonVariant | LinkVariant;
   size?: ButtonSize;
   leadingIcon?: ReactElement;
   trailingIcon?: ReactElement;

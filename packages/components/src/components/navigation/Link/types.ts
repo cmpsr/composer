@@ -11,5 +11,5 @@ export interface LinkProps extends ChakraLinkProps {
   size?: LinkSize;
   leadingIcon?: React.ReactElement;
   trailingIcon?: React.ReactElement;
-  variant?: LinkVariant & ButtonVariant;
+  variant?: LinkVariant | ButtonVariant;
 }

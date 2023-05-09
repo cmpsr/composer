@@ -41,7 +41,7 @@ const AllTemplate = () => (
               {buttonSizes.map((size, i) => (
                 <Td key={`${variant}-${size}-${i}-${state}`}>
                   <Button
-                    variant={variant as ButtonVariant & LinkVariant}
+                    variant={variant}
                     size={size}
                     {...{
                       ...(state === 'Disabled' && {

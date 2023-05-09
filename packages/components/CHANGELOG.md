@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.8.0
+
+### Minor Changes
+
+- 242f100: feat: update Composer colors
+
 ## 5.7.0
 
 ### Minor Changes

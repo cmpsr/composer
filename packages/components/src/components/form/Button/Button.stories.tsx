@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { Button } from './Button';
-import { buttonSizes, buttonVariants } from './types';
+import { buttonSizes, ButtonVariant, buttonVariants } from './types';
 import * as Icons from '../../media/Icons';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
+import { LinkVariant, linkVariants } from '@components';
 
 export default {
   component: Button,
@@ -32,7 +33,7 @@ const AllTemplate = () => (
       </Tr>
     </Thead>
     <Tbody>
-      {buttonVariants.map((variant, i) => (
+      {[...buttonVariants, ...linkVariants].map((variant, i) => (
         <Fragment key={i}>
           {['Default', 'Leading Icon', 'Trailing Icon', 'Both Icons', 'Disabled', 'Loading'].map((state, i) => (
             <Tr key={`${state}-${i}`}>
@@ -40,7 +41,7 @@ const AllTemplate = () => (
               {buttonSizes.map((size, i) => (
                 <Td key={`${variant}-${size}-${i}-${state}`}>
                   <Button
-                    variant={variant}
+                    variant={variant as ButtonVariant & LinkVariant}
                     size={size}
                     {...{
                       ...(state === 'Disabled' && {

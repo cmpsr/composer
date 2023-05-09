@@ -1,7 +1,7 @@
 import { cssVar } from '@chakra-ui/react';
 import { ComponentStyleConfig } from '@chakra-ui/theme';
-import { transparentize } from '@chakra-ui/theme-tools';
-import { linkBaseStyle } from './Link';
+import { StyleFunctionProps, transparentize } from '@chakra-ui/theme-tools';
+import { linkVariants } from '@components';
 
 const generateButton = (color: string, textColor?: string) => {
   const _disabled = {
@@ -94,6 +94,18 @@ const generateAltButton = (color: string) => {
 
 const $spinnerSize = cssVar('spinner-size');
 
+const getLinkVariants = () =>
+  linkVariants.reduce(
+    (prev, variant) => ({
+      ...prev,
+      [variant]: (params: StyleFunctionProps) => {
+        const variantValue = params.theme.components.Link.variants[variant];
+        return typeof variantValue === 'function' ? variantValue(params) : variantValue;
+      },
+    }),
+    {}
+  );
+
 export const Button: ComponentStyleConfig = {
   baseStyle: {
     borderRadius: 'radii-button',
@@ -151,9 +163,7 @@ export const Button: ComponentStyleConfig = {
     'primary-alt': generateAltButton('primary'),
     'secondary-alt': generateAltButton('secondary'),
     destroy: generateButton('alert-error', 'alert'),
-    link: {
-      ...linkBaseStyle,
-    },
+    ...getLinkVariants(),
   },
   defaultProps: {
     size: 'm',

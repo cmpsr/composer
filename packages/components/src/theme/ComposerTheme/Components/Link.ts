@@ -15,6 +15,7 @@ const generateLink = (textColor: string) => {
   return {
     display: 'inline-flex',
     color: `text-${textColor}-default`,
+    padding: 0,
     borderRadius: '0.25rem',
     _hover: {
       textDecoration: 'none',
@@ -87,6 +88,7 @@ export const Link: ComponentStyleConfig = {
   },
   sizes: getSizes(),
   variants: {
+    link: generateLink('link-primary'),
     'link-primary': generateLink('link-primary'),
     'link-accent': generateLink('link-accent'),
     ...getButtonVariants(),

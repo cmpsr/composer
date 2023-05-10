@@ -31,7 +31,7 @@ const AllVariantsTemplate = () => (
       </Tr>
     </Thead>
     <Tbody>
-      {[...linkVariants, ...buttonVariants].map((variant, i) => (
+      {[...linkVariants.filter((v) => v !== 'link'), ...buttonVariants].map((variant, i) => (
         <Fragment key={i}>
           {['Default', 'Leading Icon', 'Trailing Icon'].map((state, i) => (
             <Tr key={`${state}-${i}`}>

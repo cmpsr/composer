@@ -1,7 +1,7 @@
 import { LinkProps as ChakraLinkProps } from '@chakra-ui/react';
 import { ButtonVariant } from '../../form/Button/types';
 
-export const linkVariants = ['link-primary', 'link-accent'] as const;
+export const linkVariants = ['link', 'link-primary', 'link-accent'] as const;
 export type LinkVariant = typeof linkVariants[number];
 
 export const linkSizes = ['s', 'm', 'l'] as const;

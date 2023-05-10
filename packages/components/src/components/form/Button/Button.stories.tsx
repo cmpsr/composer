@@ -4,6 +4,7 @@ import { Button } from './Button';
 import { buttonSizes, buttonVariants } from './types';
 import * as Icons from '../../media/Icons';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
+import { linkVariants } from '@components';
 
 export default {
   component: Button,
@@ -32,7 +33,7 @@ const AllTemplate = () => (
       </Tr>
     </Thead>
     <Tbody>
-      {buttonVariants.map((variant, i) => (
+      {[...buttonVariants, ...linkVariants.filter((v) => v !== 'link')].map((variant, i) => (
         <Fragment key={i}>
           {['Default', 'Leading Icon', 'Trailing Icon', 'Both Icons', 'Disabled', 'Loading'].map((state, i) => (
             <Tr key={`${state}-${i}`}>

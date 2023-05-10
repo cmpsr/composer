@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.9.0
+
+### Minor Changes
+
+- 473c6ae: feat: Create new accent variant for Link component
+
 ## 5.8.0
 
 ### Minor Changes

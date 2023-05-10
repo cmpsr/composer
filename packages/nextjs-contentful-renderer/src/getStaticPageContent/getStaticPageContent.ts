@@ -10,7 +10,7 @@ export const getStaticPageContent = async (slug: string, preview = false, domain
   const replicaRoute = await getRouteBySlug(apolloClient, slug, preview, domain);
 
   if (replicaRoute && isReplica(replicaRoute)) {
-    return await getPageById(apolloClient, replicaRoute.page, preview, replicaRoute.modelData);
+    return await getPageById(apolloClient, replicaRoute.page, preview, replicaRoute);
   }
 
   // We always take the first variant of the route for static pages

@@ -75,6 +75,7 @@ const getSizes = () => {
   return sizes;
 };
 
+const linkPrimary = generateLink('link-primary');
 export const Link: ComponentStyleConfig = {
   baseStyle: (props) => {
     const buttonBaseStyle = {
@@ -88,8 +89,8 @@ export const Link: ComponentStyleConfig = {
   },
   sizes: getSizes(),
   variants: {
-    link: generateLink('link-primary'),
-    'link-primary': generateLink('link-primary'),
+    link: linkPrimary,
+    'link-primary': linkPrimary,
     'link-accent': generateLink('link-accent'),
     ...getButtonVariants(),
   },

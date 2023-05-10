@@ -3,7 +3,7 @@ import { forwardRef, IconProps, Link as ChakraLink } from '@chakra-ui/react';
 import { LinkProps, LinkSize } from './types';
 
 export const Link = forwardRef<LinkProps, typeof ChakraLink>(
-  ({ children, leadingIcon, trailingIcon, size = 'm', variant = 'link', ...props }, ref) => {
+  ({ children, leadingIcon, trailingIcon, size = 'm', variant, ...props }, ref) => {
     const leftIcon = getIcon(leadingIcon, size);
     const rightIcon = getIcon(trailingIcon, size);
 

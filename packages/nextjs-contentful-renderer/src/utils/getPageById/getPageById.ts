@@ -27,7 +27,7 @@ export const getPageById = async (
             return merge({}, block.propsValues[modelIndex] ?? {}, replica.modelData?.[blockIndex]?.[modelIndex] ?? {});
           }
 
-          return model;
+          return block.propsValues[modelIndex];
         }),
       }));
     }

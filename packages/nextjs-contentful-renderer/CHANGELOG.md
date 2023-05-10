@@ -1,5 +1,12 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 19.4.2
+
+### Patch Changes
+
+- ffcbabd: Fix propsValues handling
+- 6ffa369: Fix return type
+
 ## 19.4.1
 
 ## 19.4.0

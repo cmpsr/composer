@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 19.4.0
+
+### Minor Changes
+
+- a941831: Add metaConfiguration support to Replica
+
 ## 19.3.0
 
 ### Patch Changes

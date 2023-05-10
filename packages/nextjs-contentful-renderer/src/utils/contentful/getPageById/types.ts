@@ -11,7 +11,7 @@ export interface Page {
   footer: Block[];
 }
 
-interface PageMetaData {
+export interface PageMetaData {
   [id: string]: PageMeta;
 }
 

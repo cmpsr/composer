@@ -82,16 +82,11 @@ describe('getPageById', () => {
       page: 'page-id',
     };
 
-    mockGetPageFromContentful.mockResolvedValueOnce({ ...fakeContent, content: [...fakeContent.content] });
+    mockGetPageFromContentful.mockResolvedValueOnce(fakeContent);
     const page = await getPageById(mockApolloClient, pageId, preview, fakeReplica);
 
     expect(page).toStrictEqual({
       ...fakeContent,
-      content: [
-        { models: [fakeContent.navbar[0].models[0]], propsValues: [] },
-        { models: [fakeContent.content[0].models[0]], propsValues: [] },
-        { models: [fakeContent.footer[0].models[0]], propsValues: [] },
-      ],
       metaConfiguration: {
         title: { propertyName: 'title', propertyValue: 'replica title', content: '' },
         description: { propertyName: 'description', propertyValue: 'page description', content: '' },

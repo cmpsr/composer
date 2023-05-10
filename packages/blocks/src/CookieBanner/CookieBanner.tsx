@@ -118,7 +118,7 @@ const CookieBannerActionAcceptRequired: FC<ButtonProps> = ({
     onClick?.(event);
   };
   return (
-    <Button variant="link-primary" onClick={handleClick} {...props}>
+    <Button variant="link" onClick={handleClick} {...props}>
       {children}
     </Button>
   );

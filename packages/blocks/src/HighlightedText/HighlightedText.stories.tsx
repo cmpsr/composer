@@ -28,7 +28,7 @@ export const Center = () => (
     <HighlightedText.Actions>
       <HighlightedText.Action variant="primary">Launch mission</HighlightedText.Action>
       <HighlightedText.Action variant="primary-alt">Learn more</HighlightedText.Action>
-      <HighlightedText.Action variant="link-primary" trailingIcon={<IconChevronRight />}>
+      <HighlightedText.Action variant="link" trailingIcon={<IconChevronRight />}>
         Find me a spaceship
       </HighlightedText.Action>
     </HighlightedText.Actions>
@@ -49,7 +49,7 @@ export const End = () => (
       <HighlightedText.Action variant="primary">Launch mission</HighlightedText.Action>
       <HighlightedText.Action variant="primary-alt">Learn more</HighlightedText.Action>
       <HighlightedText.Action
-        variant="link-primary"
+        variant="link"
         trailingIcon={<IconChevronRight />}
         alignSelf={{ base: 'end', md: 'unset' }}
       >
@@ -73,7 +73,7 @@ export const Start = () => (
       <HighlightedText.Action variant="primary">Launch mission</HighlightedText.Action>
       <HighlightedText.Action variant="primary-alt">Learn more</HighlightedText.Action>
       <HighlightedText.Action
-        variant="link-primary"
+        variant="link"
         trailingIcon={<IconChevronRight />}
         alignSelf={{ base: 'start', md: 'unset' }}
       >
@@ -94,7 +94,7 @@ const Template = ({ legend, label, subLabel, contentAlignment }) => (
       <HighlightedText.Action variant="primary">Launch mission</HighlightedText.Action>
       <HighlightedText.Action variant="primary-alt">Learn more</HighlightedText.Action>
       <HighlightedText.Action
-        variant="link-primary"
+        variant="link"
         trailingIcon={<IconChevronRight />}
         alignSelf={{ base: contentAlignment, md: 'unset' }}
       >

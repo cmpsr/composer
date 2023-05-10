@@ -1,5 +1,5 @@
 ---
-"@cmpsr/components": major
+"@cmpsr/components": minor
 ---
 
-feat: Create new variants for Link component
+feat: Create new accent variant for Link component

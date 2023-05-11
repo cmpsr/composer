@@ -92,6 +92,7 @@ export const Link: ComponentStyleConfig = {
     link: linkPrimary,
     'link-primary': linkPrimary,
     'link-accent': generateLink('link-accent'),
+    'link-secondary': generateLink('link-secondary'),
     ...getButtonVariants(),
   },
   defaultProps: {

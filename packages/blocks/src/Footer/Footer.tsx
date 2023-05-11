@@ -42,7 +42,7 @@ const FooterActions: FC<FooterActionsProps> = ({ children, title, ...props }) =>
   </Flex>
 );
 
-const FooterAction: FC<LinkProps> = (props) => <Link size="m" color="text-link-secondary-default" {...props} />;
+const FooterAction: FC<LinkProps> = (props) => <Link size="m" variant="link-secondary" {...props} />;
 
 Footer.Logo = FooterLogo;
 Footer.ActionsContainer = FooterActionsContainer;

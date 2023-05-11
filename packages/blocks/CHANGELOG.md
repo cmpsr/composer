@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 12.1.0
+
+### Minor Changes
+
+- 7b4a4d4: feat: add new link-secondary variant in Link component and use it in Footer.Action
+
 ## 12.0.10
 
 ## 12.0.9

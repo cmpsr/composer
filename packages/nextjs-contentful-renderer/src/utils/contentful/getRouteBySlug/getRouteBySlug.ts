@@ -26,6 +26,7 @@ export const getRouteBySlug = async (
               }
             }
             slug
+            title
           }
         }
         route: routeCollection(where: { domain: $domain, slug: $slug }, preview: $preview) {

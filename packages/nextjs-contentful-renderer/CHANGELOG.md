@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 19.5.1
+
+### Patch Changes
+
+- c9c0c65: Update replica data returned by getRouteBySlug
+
 ## 19.5.0
 
 ### Minor Changes

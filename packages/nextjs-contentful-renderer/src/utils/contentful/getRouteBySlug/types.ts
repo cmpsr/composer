@@ -7,6 +7,7 @@ export interface Replica {
   modelData?: PropsValue[][];
   page: string;
   slug: string;
+  title?: string;
 }
 
 export interface RouteVariant {

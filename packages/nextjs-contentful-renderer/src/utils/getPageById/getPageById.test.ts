@@ -39,6 +39,27 @@ describe('getPageById', () => {
       ],
     });
   });
+  test('confirm title is replaced when provided via a replica', async () => {
+    const fakeContent = {
+      content: [],
+      title: 'Page Title',
+    };
+    const fakeReplica = {
+      id: 'replica-id',
+      slug: '/replica',
+      modelData: [[{ base: { textColor: 'white' } }]],
+      page: 'page-id',
+      title: 'Replica Title',
+    };
+
+    mockGetPageFromContentful.mockResolvedValueOnce(fakeContent);
+    const page = await getPageById(mockApolloClient, pageId, preview, fakeReplica);
+
+    expect(page).toStrictEqual({
+      ...fakeContent,
+      title: fakeReplica.title,
+    });
+  });
   test('confirm modelData is merged with content', async () => {
     const fakeContent = {
       content: [{ models: [{ base: 'base content' }], propsValues: [] }],

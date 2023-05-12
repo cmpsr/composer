@@ -1,4 +1,5 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
+import omit from 'lodash/omit';
 import { Replica, Route } from './types';
 
 export const getRouteBySlug = async (
@@ -69,8 +70,7 @@ export const getRouteBySlug = async (
 
   // Resolve with Replica
   return data.replica.items.map((replica) => ({
-    id: replica.id,
-    modelData: replica.modelData,
+    ...omit(replica, ['domain', 'pageTemplate']),
     page: replica?.pageTemplate?.sys?.id,
     slug,
   }))[0];

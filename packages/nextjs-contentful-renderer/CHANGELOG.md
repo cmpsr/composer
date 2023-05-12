@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 19.5.0
+
+### Minor Changes
+
+- 002de36: Add title to Replica
+
 ## 19.4.3
 
 ## 19.4.2

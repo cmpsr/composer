@@ -1,18 +1,21 @@
 import React from 'react';
 import { Button as ChakraButton, forwardRef, IconProps, useMultiStyleConfig } from '@chakra-ui/react';
 import { ButtonProps, ButtonSize } from './types';
-import { Flex, Spinner, SpinnerProps, SpinnerVariant } from '@components';
+import { ButtonVariant, Flex, LinkVariant, Spinner, SpinnerProps, SpinnerVariant } from '@components';
+import { useResponsiveValue } from '@hooks';
 
 export const Button = forwardRef<ButtonProps, typeof ChakraButton>(
   ({ children, variant, size, isLoading, leadingIcon, trailingIcon, ...props }, ref) => {
+    const responsiveVariant = useResponsiveValue(variant) as ButtonVariant | LinkVariant;
+    const responsiveSize = useResponsiveValue(size) as ButtonSize;
     const { loading } = useMultiStyleConfig('Button', {
-      variant,
-      size,
+      variant: responsiveVariant,
+      size: responsiveSize,
       isLoading,
     }) as { loading: SpinnerProps };
-    const leftIcon = getIcon(leadingIcon, size);
-    const rightIcon = getIcon(trailingIcon, size);
-    const isLinkVariant = variant?.startsWith('link');
+    const leftIcon = getIcon(leadingIcon, responsiveSize);
+    const rightIcon = getIcon(trailingIcon, responsiveSize);
+    const isLinkVariant = responsiveVariant?.startsWith('link');
 
     return (
       <ChakraButton
@@ -20,12 +23,12 @@ export const Button = forwardRef<ButtonProps, typeof ChakraButton>(
         spinner={
           <Spinner
             data-testid="cmpsr.button.spinner"
-            {...(isLinkVariant && { variant: variant.split('-')[1] as SpinnerVariant })}
+            {...(isLinkVariant && { variant: responsiveVariant.split('-')[1] as SpinnerVariant })}
             {...loading}
           />
         }
-        variant={variant}
-        size={size}
+        variant={responsiveVariant}
+        size={responsiveSize}
         isLoading={isLoading}
         {...props}
       >

@@ -1,6 +1,6 @@
 import { cssVar } from '@chakra-ui/react';
 import { ComponentStyleConfig } from '@chakra-ui/theme';
-import { StyleFunctionProps, transparentize } from '@chakra-ui/theme-tools';
+import { StyleFunctionProps, SystemStyleObject, transparentize } from '@chakra-ui/theme-tools';
 import { linkVariants } from '@components';
 
 const generateButton = (color: string, textColor?: string) => {
@@ -106,13 +106,25 @@ const getLinkVariants = () =>
     {}
   );
 
+const getTextStyleProperties = (textStyle: SystemStyleObject) => {
+  const { fontSize, fontWeight, letterSpacing, lineHeight, textDecoration, fontFamily } = textStyle;
+  return {
+    fontSize,
+    fontWeight,
+    letterSpacing,
+    lineHeight,
+    textDecoration,
+    fontFamily,
+  };
+};
+
 export const Button: ComponentStyleConfig = {
   baseStyle: {
     borderRadius: 'radii-button',
   },
   sizes: {
     xs: ({ theme }) => ({
-      ...theme.textStyles['text-body-floating-label-medium'],
+      ...getTextStyleProperties(theme.textStyles['text-body-floating-label-medium']),
       px: '0.5rem',
       py: '0.25rem',
       [$spinnerSize.variable]: '0.75rem',
@@ -123,7 +135,7 @@ export const Button: ComponentStyleConfig = {
       },
     }),
     s: ({ theme }) => ({
-      ...theme.textStyles['text-body-meta-medium'],
+      ...getTextStyleProperties(theme.textStyles['text-body-meta-medium']),
       px: '0.75rem',
       py: '0.5rem',
       [$spinnerSize.variable]: '0.75rem',
@@ -134,7 +146,7 @@ export const Button: ComponentStyleConfig = {
       },
     }),
     m: ({ theme }) => ({
-      ...theme.textStyles['text-body-medium'],
+      ...getTextStyleProperties(theme.textStyles['text-body-medium']),
       px: '1rem',
       py: '0.5rem',
       [$spinnerSize.variable]: '1rem',
@@ -145,7 +157,7 @@ export const Button: ComponentStyleConfig = {
       },
     }),
     l: ({ theme }) => ({
-      ...theme.textStyles['text-body-large-medium'],
+      ...getTextStyleProperties(theme.textStyles['text-body-large-medium']),
       px: '1.5rem',
       py: '0.75rem',
       [$spinnerSize.variable]: '1rem',

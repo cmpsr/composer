@@ -1,5 +1,7 @@
 # @cmpsr/blocks
 
+## 12.1.1
+
 ## 12.1.0
 
 ### Minor Changes

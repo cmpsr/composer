@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.11.0
+
+### Minor Changes
+
+- 62b38ef: feat: support responsive values for button size and variants properties
+
 ## 5.10.0
 
 ### Minor Changes

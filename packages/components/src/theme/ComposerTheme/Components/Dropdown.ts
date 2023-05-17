@@ -10,6 +10,12 @@ export const Dropdown: ComponentStyleConfig = {
       border: 'none',
       backgroundColor: 'background-card',
     },
-    item: { color: 'text-primary', textStyle: 'text-body-regular', paddingX: '1rem' },
+    item: {
+      color: 'text-primary',
+      textStyle: 'text-body-regular',
+      paddingX: '1rem',
+      paddingTop: '0.5rem',
+      paddingBottom: '0.5rem',
+    },
   },
 };

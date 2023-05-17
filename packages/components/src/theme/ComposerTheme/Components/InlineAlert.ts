@@ -28,7 +28,7 @@ export const InlineAlert: ComponentMultiStyleConfig = {
         ...messageColor[status],
       },
       icon: {
-        ...theme.components.Alert.baseStyle.icon.status[status],
+        ...theme.components.Alert.baseStyle({ theme }).icon.status[status],
       },
     };
   },

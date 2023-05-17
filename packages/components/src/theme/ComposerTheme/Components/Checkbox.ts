@@ -43,27 +43,21 @@ export const Checkbox: ComponentStyleConfig = {
       control: { h: 3, w: 3 },
       label: { textStyle: 'text-body-meta-regular' },
       icon: {
-        boxSize: theme.components.Icon.sizes.xs.boxSize,
-        height: theme.components.Icon.sizes.xs.boxSize,
-        width: theme.components.Icon.sizes.xs.boxSize,
+        ...theme.components.Icon.sizes.xs,
       },
     }),
     m: ({ theme }) => ({
       control: { w: 4, h: 4 },
       label: { textStyle: 'text-body-regular' },
       icon: {
-        boxSize: theme.components.Icon.sizes.s.boxSize,
-        height: theme.components.Icon.sizes.s.boxSize,
-        width: theme.components.Icon.sizes.s.boxSize,
+        ...theme.components.Icon.sizes.s,
       },
     }),
     l: ({ theme }) => ({
       control: { w: 5, h: 5 },
       label: { textStyle: 'text-body-large-regular' },
       icon: {
-        boxSize: theme.components.Icon.sizes.m.boxSize,
-        height: theme.components.Icon.sizes.m.boxSize,
-        width: theme.components.Icon.sizes.m.boxSize,
+        ...theme.components.Icon.sizes.m,
       },
     }),
   },

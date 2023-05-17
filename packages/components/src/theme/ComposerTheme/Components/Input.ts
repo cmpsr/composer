@@ -319,6 +319,7 @@ export const flushedStyle = (props) => {
         borderColor: 'transparent',
       },
       _disabled: {
+        opacity: 1,
         _placeholder: {
           color: 'text-disabled',
         },

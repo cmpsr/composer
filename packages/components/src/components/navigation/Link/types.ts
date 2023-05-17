@@ -8,6 +8,7 @@ export const linkSizes = ['s', 'm', 'l'] as const;
 export type LinkSize = typeof linkSizes[number];
 
 export interface LinkProps extends ChakraLinkProps {
+  testId?: string;
   size?: LinkSize;
   leadingIcon?: React.ReactElement;
   trailingIcon?: React.ReactElement;

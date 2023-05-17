@@ -33,15 +33,15 @@
     "react": "^18.1.0"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.2.4",
-    "@chakra-ui/react-utils": "^2.0.1",
-    "@chakra-ui/theme-tools": "^2.0.5",
+    "@chakra-ui/react": "^2.6.1",
+    "@chakra-ui/react-utils": "^2.0.11",
+    "@chakra-ui/theme-tools": "^2.0.16",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "framer-motion": "^5"
   },
   "devDependencies": {
-    "@chakra-ui/cli": "^2.1.2",
+    "@chakra-ui/cli": "^2.4.1",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",

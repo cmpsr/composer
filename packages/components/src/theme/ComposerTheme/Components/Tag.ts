@@ -35,12 +35,8 @@ export const Tag: ComponentStyleConfig = {
       label: {
         ...theme.textStyles['text-body-floating-label-medium'],
       },
-      leftIcon: {
-        boxSize: theme.components.Icon.sizes.xs.boxSize,
-      },
-      rightIcon: {
-        boxSize: theme.components.Icon.sizes.xs.boxSize,
-      },
+      leftIcon: theme.components.Icon.sizes.xs,
+      rightIcon: theme.components.Icon.sizes.xs,
     }),
     m: ({ theme }) => ({
       container: {
@@ -49,12 +45,8 @@ export const Tag: ComponentStyleConfig = {
       label: {
         ...theme.textStyles['text-body-meta-medium'],
       },
-      leftIcon: {
-        boxSize: theme.components.Icon.sizes.xs.boxSize,
-      },
-      rightIcon: {
-        boxSize: theme.components.Icon.sizes.xs.boxSize,
-      },
+      leftIcon: theme.components.Icon.sizes.xs,
+      rightIcon: theme.components.Icon.sizes.xs,
     }),
     l: ({ theme }) => ({
       container: {
@@ -63,12 +55,8 @@ export const Tag: ComponentStyleConfig = {
       label: {
         ...theme.textStyles['text-body-medium'],
       },
-      leftIcon: {
-        boxSize: theme.components.Icon.sizes.s.boxSize,
-      },
-      rightIcon: {
-        boxSize: theme.components.Icon.sizes.s.boxSize,
-      },
+      leftIcon: theme.components.Icon.sizes.s,
+      rightIcon: theme.components.Icon.sizes.s,
     }),
   },
   defaultProps: {

@@ -8,7 +8,7 @@ describe('Breadcrumb', () => {
     return renderWithProviders(
       <Breadcrumb separator={separator}>
         {items.map((item) => (
-          <Breadcrumb.Item key={item} data-testid="cmpsr.breadcrumb.item" href="#">
+          <Breadcrumb.Item key={item} testId="cmpsr.breadcrumb.item" href="#">
             {`Item ${item + 1}`}
           </Breadcrumb.Item>
         ))}

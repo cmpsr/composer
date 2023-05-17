@@ -3,16 +3,20 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 export const Icon: ComponentStyleConfig = {
   sizes: {
     xs: {
-      boxSize: '0.75rem',
+      w: '0.75rem',
+      h: '0.75rem',
     },
     s: {
-      boxSize: '1rem',
+      w: '1rem',
+      h: '1rem',
     },
     m: {
-      boxSize: '1.25rem',
+      w: '1.25rem',
+      h: '1.25rem',
     },
     l: {
-      boxSize: '1.5rem',
+      w: '1.5rem',
+      h: '1.5rem',
     },
   },
   defaultProps: {

@@ -1,6 +1,6 @@
 import React, { FC, cloneElement, Children, isValidElement } from 'react';
 import { Accordion, AccordionProps } from '@cmpsr/components';
-import { AccordionGalleryItem } from './';
+import { AccordionGalleryItem, AccordionGalleryItemProps } from './';
 
 export const AccordionGalleryAccordion: FC<AccordionProps> = ({ children, ...rest }) => (
   <Accordion {...rest}>
@@ -8,7 +8,7 @@ export const AccordionGalleryAccordion: FC<AccordionProps> = ({ children, ...res
       if (isValidElement(child)) {
         switch (child.type) {
           case AccordionGalleryItem:
-            return cloneElement(child, { index });
+            return cloneElement(child, { index } as AccordionGalleryItemProps);
           default:
             return child;
         }

@@ -49,5 +49,4 @@ Playground.args = {
   showLeadingIcon: false,
   showTrailingIcon: false,
   numOfItems: 3,
-  spacing: '0.5rem',
 };

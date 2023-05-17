@@ -3,7 +3,7 @@ import { Accordion, AccordionItemProps } from '@cmpsr/components';
 import { AccordionGalleryContext } from '../';
 import { AccordionGalleryImage } from './';
 
-interface AccordionGalleryItemProps extends AccordionItemProps {
+export interface AccordionGalleryItemProps extends AccordionItemProps {
   index: string | number;
 }
 

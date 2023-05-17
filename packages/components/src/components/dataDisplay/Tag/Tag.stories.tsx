@@ -35,7 +35,7 @@ export const All = () => (
         <Tr key="size">
           <Td>{size.toUpperCase()}</Td>
           <Td>
-            <Tag size={size} href="#">
+            <Tag size={size}>
               <Tag.Label>Hello</Tag.Label>
             </Tag>
           </Td>

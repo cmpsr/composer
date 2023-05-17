@@ -10,7 +10,7 @@ const Breadcrumb = forwardRef<BreadcrumbProps, typeof ChakraBreadcrumb>(
 );
 
 const Item = forwardRef<BreadcrumbItemProps, typeof BreadcrumbItem>(
-  ({ isLastChild, href, separator, spacing, 'data-testid': testId, ...rest }, ref) => (
+  ({ isLastChild, href, separator, mx, testId, ...rest }, ref) => (
     <BreadcrumbItem ref={ref} data-testid={testId}>
       {isLastChild ? (
         <Text color="inherit">{rest.children}</Text>
@@ -20,11 +20,9 @@ const Item = forwardRef<BreadcrumbItemProps, typeof BreadcrumbItem>(
             <Link size="m" as="span" {...rest} />
           </BreadcrumbLink>
           {typeof separator === 'string' ? (
-            <Text mx={spacing}>{separator}</Text>
+            <Text mx={mx}>{separator}</Text>
           ) : (
-            cloneElement(separator, {
-              mx: spacing,
-            })
+            cloneElement(separator, { mx })
           )}
         </>
       )}

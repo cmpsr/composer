@@ -8,7 +8,7 @@ describe('Alert', () => {
     const alertInstance = TestRenderer.create(
       <ComposerProvider>
         <Alert status="success">
-          <Alert.Icon />
+          <Alert.Icon data-testid="cmpsr.alert.icon" />
         </Alert>
       </ComposerProvider>
     ).root;
@@ -20,7 +20,7 @@ describe('Alert', () => {
     const alertInstance = TestRenderer.create(
       <ComposerProvider>
         <Alert variant="subtle" status="error">
-          <Alert.Icon />
+          <Alert.Icon data-testid="cmpsr.alert.icon" />
         </Alert>
       </ComposerProvider>
     ).root;

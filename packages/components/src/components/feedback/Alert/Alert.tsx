@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { AlertProps, AlertStaticMembers, AlertStyles, AlertStatus } from './types';
+import { AlertProps, AlertStaticMembers, AlertStyles, AlertStatus, AlertIconProps } from './types';
 import { Alert as ChakraAlert, AlertDescription, AlertTitle, useAlertStyles } from '@chakra-ui/react';
 import { createContext } from '@chakra-ui/react-utils';
 import {
@@ -35,12 +35,12 @@ export const Alert: FC<AlertProps> & AlertStaticMembers = ({ status = 'info', ..
   );
 };
 
-const AlertIcon = () => {
+const AlertIcon: FC<AlertIconProps> = (props) => {
   const { icon } = useAlertStyles() as AlertStyles;
   const { status } = useAlertContext();
   const BaseIcon = ALERT_ICONS[status];
 
-  return <BaseIcon data-testid="cmpsr.alert.icon" size="l" {...icon} color={icon.status[status]?.color} />;
+  return <BaseIcon {...icon} color={icon.status[status]?.color} {...props} />;
 };
 
 const AlertCloseButton: FC<CloseButtonProps> = (props) => (

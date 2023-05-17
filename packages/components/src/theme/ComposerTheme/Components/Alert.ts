@@ -84,13 +84,14 @@ const generateVariantByStatus: PartsStyleFunction<typeof parts> = (props) => {
 };
 
 export const Alert: ComponentStyleConfig = {
-  baseStyle: {
+  baseStyle: ({ theme }) => ({
     container: {
       borderRadius: '0.375rem',
       py: '0.75rem',
       px: '1rem',
     },
     icon: {
+      ...theme.components.Icon.sizes.l,
       alignSelf: 'flex-start',
       marginInlineEnd: '0.625rem',
       status: {
@@ -115,7 +116,7 @@ export const Alert: ComponentStyleConfig = {
     description: {
       textStyle: 'text-body-regular',
     },
-  },
+  }),
   defaultProps: {
     variant: 'solid',
   },

@@ -49,6 +49,7 @@ const variantFlushed: SystemStyleObject = {
     boxShadow: `0 0.1875rem 0 0 var(--chakra-colors-primary-focus)`,
   },
   _disabled: {
+    opacity: 1,
     bg: 'background-action-disabled',
     cursor: 'not-allowed',
     borderBottom: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-disabled)',

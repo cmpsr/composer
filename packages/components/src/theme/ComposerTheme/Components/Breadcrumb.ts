@@ -17,6 +17,8 @@ export const Breadcrumb: ComponentMultiStyleConfig = {
     separator: {
       ...theme.textStyles['text-body-medium'],
       color: 'text-secondary',
+      mx: '0.5rem',
+      lineHeight: '1rem',
     },
     link: {
       ...theme.components.Link.sizes.m,

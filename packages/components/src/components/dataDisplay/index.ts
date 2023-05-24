@@ -1,3 +1,4 @@
+export { ListItem } from '@chakra-ui/react';
 export * from './Badge';
 export * from './Divider';
 export * from './NumberedList';

@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.11.1
+
+### Patch Changes
+
+- 943af09: feat: update chakra-ui and typescript version used
+
 ## 5.11.0
 
 ### Minor Changes

@@ -51,4 +51,35 @@ describe('getStaticRoutes', () => {
     const routes = await getStaticRoutes(mockApolloClient, preview, domain);
     expect(routes).toStrictEqual(fakeResponse.data.routes.items.map((item) => ({ ...item, variants: [] })));
   });
+  test('should include replica slugs in results', async () => {
+    const fakeReplicaResponse = {
+      data: {
+        ...fakeResponse.data,
+        replicas: {
+          items: [
+            {
+              id: 'replica_id_1',
+              slug: 'replica_slug_1',
+            },
+            {
+              id: 'replica_id_2',
+              slug: 'replica_slug_2',
+            },
+            {
+              id: 'replica_id_3',
+              slug: 'replica_slug_3',
+            },
+          ],
+        },
+      },
+    };
+
+    mockQuery.mockResolvedValueOnce(fakeReplicaResponse);
+    const routes = await getStaticRoutes(mockApolloClient, preview, domain);
+    expect(routes).toStrictEqual(
+      fakeReplicaResponse.data.routes.items
+        .map((item) => ({ ...item, variants: [] }))
+        .concat(fakeReplicaResponse.data.replicas.items.map((item) => ({ ...item, variants: [] })))
+    );
+  });
 });

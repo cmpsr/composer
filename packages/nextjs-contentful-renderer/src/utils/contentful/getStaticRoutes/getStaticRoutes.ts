@@ -9,6 +9,15 @@ export const getStaticRoutes = async (
   const { data } = await apolloClient.query({
     query: gql`
       query StaticRoutes($domain: String!, $preview: Boolean!) {
+        replicas: replicaCollection(where: { domain: $domain }, preview: $preview) {
+          items {
+            sys {
+              id
+            }
+            id
+            slug
+          }
+        }
         routes: routeCollection(where: { isStatic: true, domain: $domain }, preview: $preview) {
           items {
             sys {
@@ -26,11 +35,7 @@ export const getStaticRoutes = async (
     },
   });
 
-  if (!Array.isArray(data?.routes?.items)) {
-    return [];
-  }
-
-  return data.routes.items.map(({ id, slug }) => ({
+  return [...(data?.routes?.items ?? []), ...(data?.replicas?.items ?? [])].map(({ id, slug }) => ({
     id,
     slug,
     variants: [],

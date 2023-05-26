@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 19.6.0
+
+### Minor Changes
+
+- ec52fba: Add replicas to static routes
+
 ## 19.5.2
 
 ## 19.5.1

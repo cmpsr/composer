@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 12.1.2
+
+### Patch Changes
+
+- 943af09: feat: update chakra-ui and typescript version used
+
 ## 12.1.1
 
 ## 12.1.0

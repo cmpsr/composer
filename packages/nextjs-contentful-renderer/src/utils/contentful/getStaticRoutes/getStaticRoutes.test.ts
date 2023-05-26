@@ -76,10 +76,9 @@ describe('getStaticRoutes', () => {
 
     mockQuery.mockResolvedValueOnce(fakeReplicaResponse);
     const routes = await getStaticRoutes(mockApolloClient, preview, domain);
-    expect(routes).toStrictEqual(
-      fakeReplicaResponse.data.routes.items
-        .map((item) => ({ ...item, variants: [] }))
-        .concat(fakeReplicaResponse.data.replicas.items.map((item) => ({ ...item, variants: [] })))
-    );
+    expect(routes).toStrictEqual([
+      ...fakeReplicaResponse.data.routes.items.map((item) => ({ ...item, variants: [] })),
+      ...fakeReplicaResponse.data.replicas.items.map((item) => ({ ...item, variants: [] })),
+    ]);
   });
 });

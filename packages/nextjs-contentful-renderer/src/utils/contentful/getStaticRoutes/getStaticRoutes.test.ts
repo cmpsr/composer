@@ -2,7 +2,7 @@ import { getStaticRoutes } from '.';
 
 describe('getStaticRoutes', () => {
   const mockQuery = jest.fn();
-  const fakeResponse = {
+  const fakeRouteResponse = {
     data: {
       routes: {
         items: [
@@ -22,7 +22,27 @@ describe('getStaticRoutes', () => {
       },
     },
   };
-  mockQuery.mockResolvedValue(fakeResponse);
+  const fakeReplicaResponse = {
+    data: {
+      replicas: {
+        items: [
+          {
+            id: 'replica_id_1',
+            slug: 'replica_slug_1',
+          },
+          {
+            id: 'replica_id_2',
+            slug: 'replica_slug_2',
+          },
+          {
+            id: 'replica_id_3',
+            slug: 'replica_slug_3',
+          },
+        ],
+      },
+    },
+  };
+  mockQuery.mockResolvedValue(fakeRouteResponse);
   const mockApolloClient: any = {
     query: (params: Record<string, unknown>) => mockQuery(params),
   };
@@ -30,8 +50,10 @@ describe('getStaticRoutes', () => {
   const domain = 'domain';
 
   test('should query apollo to retrieve data', async () => {
+    mockQuery.mockResolvedValueOnce(fakeRouteResponse).mockResolvedValueOnce(fakeReplicaResponse);
+
     await getStaticRoutes(mockApolloClient, preview, domain);
-    expect(mockQuery).toBeCalledTimes(1);
+    expect(mockQuery).toBeCalledTimes(2);
     expect(mockQuery).toBeCalledWith({
       query: expect.anything(),
       variables: {
@@ -40,7 +62,7 @@ describe('getStaticRoutes', () => {
       },
     });
   });
-  [{}, { data: {} }, { data: { routes: {} } }].forEach((value) => {
+  [{}, {}, { data: {} }, { data: {} }, { data: { routes: {} } }, { data: { replicas: {} } }].forEach((value) => {
     test(`should return empty array for empty result: ${JSON.stringify(value)}`, async () => {
       mockQuery.mockResolvedValueOnce(value);
       const routes = await getStaticRoutes(mockApolloClient, preview, domain);
@@ -48,37 +70,21 @@ describe('getStaticRoutes', () => {
     });
   });
   test('should return id, slug and empty variants', async () => {
+    mockQuery.mockResolvedValueOnce(fakeRouteResponse).mockResolvedValueOnce({ data: { replicas: { items: [] } } });
     const routes = await getStaticRoutes(mockApolloClient, preview, domain);
-    expect(routes).toStrictEqual(fakeResponse.data.routes.items.map((item) => ({ ...item, variants: [] })));
+    expect(routes).toStrictEqual(fakeRouteResponse.data.routes.items.map((item) => ({ ...item, variants: [] })));
   });
   test('should include replica slugs in results', async () => {
-    const fakeReplicaResponse = {
-      data: {
-        ...fakeResponse.data,
-        replicas: {
-          items: [
-            {
-              id: 'replica_id_1',
-              slug: 'replica_slug_1',
-            },
-            {
-              id: 'replica_id_2',
-              slug: 'replica_slug_2',
-            },
-            {
-              id: 'replica_id_3',
-              slug: 'replica_slug_3',
-            },
-          ],
-        },
-      },
-    };
-
-    mockQuery.mockResolvedValueOnce(fakeReplicaResponse);
+    mockQuery.mockResolvedValueOnce(fakeRouteResponse).mockResolvedValueOnce(fakeReplicaResponse);
     const routes = await getStaticRoutes(mockApolloClient, preview, domain);
     expect(routes).toStrictEqual([
-      ...fakeReplicaResponse.data.routes.items.map((item) => ({ ...item, variants: [] })),
+      ...fakeRouteResponse.data.routes.items.map((item) => ({ ...item, variants: [] })),
       ...fakeReplicaResponse.data.replicas.items.map((item) => ({ ...item, variants: [] })),
     ]);
+  });
+  test('should gracefully handle replica request error', async () => {
+    mockQuery.mockResolvedValueOnce(fakeRouteResponse).mockRejectedValueOnce(new Error('error'));
+    const routes = await getStaticRoutes(mockApolloClient, preview, domain);
+    expect(routes).toStrictEqual(fakeRouteResponse.data.routes.items.map((item) => ({ ...item, variants: [] })));
   });
 });

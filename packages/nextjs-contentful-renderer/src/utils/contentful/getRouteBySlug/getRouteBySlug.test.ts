@@ -1,12 +1,9 @@
 import { getRouteBySlug } from '.';
 
 describe('getRouteBySlug', () => {
-  const mockQueryRoute = jest.fn();
-  mockQueryRoute.mockResolvedValue({
+  const mockQuery = jest.fn();
+  const fakeRouteResponse = {
     data: {
-      replica: {
-        items: [],
-      },
       route: {
         items: [
           {
@@ -26,13 +23,9 @@ describe('getRouteBySlug', () => {
         ],
       },
     },
-  });
-  const mockApolloClientRoute: any = {
-    query: (params: Record<string, unknown>) => mockQueryRoute(params),
   };
-
-  const mockQueryReplica = jest.fn();
-  mockQueryReplica.mockResolvedValue({
+  const fakeRouteEmptyResponse = { data: { route: { items: [] } } };
+  const fakeReplicaResponse = {
     data: {
       replica: {
         items: [
@@ -47,13 +40,10 @@ describe('getRouteBySlug', () => {
           },
         ],
       },
-      route: {
-        items: [],
-      },
     },
-  });
-  const mockApolloClientReplica: any = {
-    query: (params: Record<string, unknown>) => mockQueryReplica(params),
+  };
+  const mockApolloClient: any = {
+    query: (params: Record<string, unknown>) => mockQuery(params),
   };
 
   const slug = '/route_slug';
@@ -61,9 +51,10 @@ describe('getRouteBySlug', () => {
   const preview = true;
 
   test('should query apollo to retrieve data', async () => {
-    await getRouteBySlug(mockApolloClientRoute, slug, preview);
-    expect(mockQueryRoute).toBeCalledTimes(1);
-    expect(mockQueryRoute).toBeCalledWith({
+    mockQuery.mockResolvedValueOnce(fakeRouteResponse);
+    await getRouteBySlug(mockApolloClient, slug, preview);
+    expect(mockQuery).toBeCalledTimes(1);
+    expect(mockQuery).toBeCalledWith({
       query: expect.anything(),
       variables: {
         slug,
@@ -74,9 +65,10 @@ describe('getRouteBySlug', () => {
   });
 
   test('should prefix slug with a slash', async () => {
-    await getRouteBySlug(mockApolloClientRoute, slugWithoutSlash, preview);
-    expect(mockQueryRoute).toBeCalledTimes(1);
-    expect(mockQueryRoute).toBeCalledWith({
+    mockQuery.mockResolvedValueOnce(fakeRouteResponse);
+    await getRouteBySlug(mockApolloClient, slugWithoutSlash, preview);
+    expect(mockQuery).toBeCalledTimes(1);
+    expect(mockQuery).toBeCalledWith({
       query: expect.anything(),
       variables: {
         slug,
@@ -87,7 +79,8 @@ describe('getRouteBySlug', () => {
   });
 
   test('should return first route returned', async () => {
-    const route = await getRouteBySlug(mockApolloClientRoute, slug, preview);
+    mockQuery.mockResolvedValueOnce(fakeRouteResponse);
+    const route = await getRouteBySlug(mockApolloClient, slug, preview);
     expect(route).toStrictEqual({
       id: 'route_id',
       slug,
@@ -101,10 +94,11 @@ describe('getRouteBySlug', () => {
     });
   });
 
-  test('should query apollo to retrieve data - replica', async () => {
-    await getRouteBySlug(mockApolloClientReplica, slug, preview);
-    expect(mockQueryReplica).toBeCalledTimes(1);
-    expect(mockQueryReplica).toBeCalledWith({
+  test('should query apollo to retrieve data w/ replica request', async () => {
+    mockQuery.mockResolvedValueOnce(fakeRouteEmptyResponse).mockResolvedValueOnce(fakeReplicaResponse);
+    await getRouteBySlug(mockApolloClient, slug, preview);
+    expect(mockQuery).toBeCalledTimes(2);
+    expect(mockQuery).toBeCalledWith({
       query: expect.anything(),
       variables: {
         slug,
@@ -115,12 +109,19 @@ describe('getRouteBySlug', () => {
   });
 
   test('should return first replica returned', async () => {
-    const replica = await getRouteBySlug(mockApolloClientReplica, slug, preview);
+    mockQuery.mockResolvedValueOnce(fakeRouteEmptyResponse).mockResolvedValueOnce(fakeReplicaResponse);
+    const replica = await getRouteBySlug(mockApolloClient, slug, preview);
     expect(replica).toStrictEqual({
       id: 'replica_id',
       modelData: [],
       page: 'page_id',
       slug: '/route_slug',
     });
+  });
+
+  test('should return null if no route and replica request error', async () => {
+    mockQuery.mockResolvedValueOnce(fakeRouteEmptyResponse).mockRejectedValueOnce('error');
+    const replica = await getRouteBySlug(mockApolloClient, slug, preview);
+    expect(replica).toBeNull();
   });
 });

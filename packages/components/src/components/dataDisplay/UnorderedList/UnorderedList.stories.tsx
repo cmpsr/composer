@@ -10,9 +10,8 @@ export default {
 
 export const Default = () => (
   <UnorderedList>
-    <UnorderedList.ListItem>Item 1</UnorderedList.ListItem>
-    <UnorderedList.ListItem>Item 2</UnorderedList.ListItem>
-    <UnorderedList.ListItem>Item 3</UnorderedList.ListItem>
+    <UnorderedList.Item>Item 1</UnorderedList.Item>
+    <UnorderedList.Item>Item 2</UnorderedList.Item>
+    <UnorderedList.Item>Item 3</UnorderedList.Item>
   </UnorderedList>
 );
-

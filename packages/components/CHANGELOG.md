@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.12.0
+
+### Minor Changes
+
+- 046e533: feat: add OrderedList component
+
 ## 5.11.1
 
 ### Patch Changes

@@ -16,7 +16,7 @@ const renderText = ({ children, ...props }: Composer.TextProps, as: 'h1' | 'h2' 
   };
   const { paragraph = {}, [as]: current } = useMarkdown();
   return (
-    <Composer.Text marginBottom="1rem" as={as} variant={variants[as]} {...paragraph} {...current} {...props}>
+    <Composer.Text as={as} variant={variants[as]} {...paragraph} {...current} {...props}>
       {children}
     </Composer.Text>
   );

@@ -1,5 +1,15 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 19.7.0
+
+### Minor Changes
+
+- 49b2ea2: feat: add markdown overrides
+
+### Patch Changes
+
+- f2f696a: Add unit test for replica slugs in static routes
+
 ## 19.6.0
 
 ### Minor Changes

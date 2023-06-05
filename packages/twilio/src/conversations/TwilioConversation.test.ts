@@ -104,7 +104,9 @@ describe('TwilioConversation', () => {
     beforeAll(() => {
       twilio.mockReturnValue({
         conversations: {
-          conversations: mockConversations,
+          v1: {
+            conversations: mockConversations,
+          },
         },
       });
     });
@@ -140,12 +142,14 @@ describe('TwilioConversation', () => {
   describe('methods calling conversations as a function', () => {
     const twilio = require('twilio');
     beforeEach(() => {
-      twilio().conversations.conversations.mockClear();
+      twilio().conversations.v1.conversations.mockClear();
     });
     beforeAll(() => {
       twilio.mockReturnValue({
         conversations: {
-          conversations: jest.fn().mockReturnValue(mockConversations),
+          v1: {
+            conversations: jest.fn().mockReturnValue(mockConversations),
+          },
         },
       });
     });
@@ -159,8 +163,8 @@ describe('TwilioConversation', () => {
         const returnedConversation = await twilioConversation.getConversation(
           'sid'
         );
-        expect(twilio().conversations.conversations).toBeCalledTimes(1);
-        expect(twilio().conversations.conversations).toBeCalledWith('sid');
+        expect(twilio().conversations.v1.conversations).toBeCalledTimes(1);
+        expect(twilio().conversations.v1.conversations).toBeCalledWith('sid');
         expect(mockFetchConversation).toBeCalledTimes(1);
         expect(returnedConversation).toStrictEqual(mockFetchConversation());
       });
@@ -177,15 +181,13 @@ describe('TwilioConversation', () => {
           invitedPhone,
           inviterPhone
         );
-        expect(twilio().conversations.conversations).toBeCalledWith(
+        expect(twilio().conversations.v1.conversations).toBeCalledWith(
           conversationSid
         );
         expect(mockCreateParticipant).toBeCalledTimes(1);
         expect(mockCreateParticipant).toBeCalledWith({
-          messagingBinding: {
-            address: invitedPhone,
-            proxyAddress: inviterPhone,
-          },
+          'messagingBinding.address': invitedPhone,
+          'messagingBinding.proxyAddress': inviterPhone,
         });
         expect(returnedParticipant).toStrictEqual(mockCreateParticipant());
       });
@@ -196,7 +198,7 @@ describe('TwilioConversation', () => {
           conversationSid,
           identity
         );
-        expect(twilio().conversations.conversations).toBeCalledWith(
+        expect(twilio().conversations.v1.conversations).toBeCalledWith(
           conversationSid
         );
         expect(mockCreateParticipant).toBeCalledTimes(1);
@@ -216,7 +218,7 @@ describe('TwilioConversation', () => {
           authorSid,
           text
         );
-        expect(twilio().conversations.conversations).toBeCalledWith(
+        expect(twilio().conversations.v1.conversations).toBeCalledWith(
           conversationSid
         );
         expect(mockCreateMessage).toBeCalledTimes(1);
@@ -238,7 +240,7 @@ describe('TwilioConversation', () => {
           text,
           attributes
         );
-        expect(twilio().conversations.conversations).toBeCalledWith(
+        expect(twilio().conversations.v1.conversations).toBeCalledWith(
           conversationSid
         );
         expect(mockCreateMessage).toBeCalledTimes(1);
@@ -258,7 +260,7 @@ describe('TwilioConversation', () => {
         const returnedMessages = await twilioConversation.getMessages(
           conversationSid
         );
-        expect(twilio().conversations.conversations).toBeCalledWith(
+        expect(twilio().conversations.v1.conversations).toBeCalledWith(
           conversationSid
         );
         expect(mockListMessages).toBeCalledTimes(1);
@@ -276,16 +278,14 @@ describe('TwilioConversation', () => {
           conversationSid,
           url
         );
-        expect(twilio().conversations.conversations).toBeCalledWith(
+        expect(twilio().conversations.v1.conversations).toBeCalledWith(
           conversationSid
         );
         expect(mockCreateWebhook).toBeCalledTimes(1);
         expect(mockCreateWebhook).toBeCalledWith({
-          configuration: {
-            method: 'POST',
-            filters: ['onMessageAdded'],
-            url,
-          },
+          'configuration.method': 'POST',
+          'configuration.filters': ['onMessageAdded'],
+          'configuration.url': url,
           target: 'webhook',
         });
         expect(returnedWebhook).toStrictEqual(mockCreateWebhook());
@@ -298,16 +298,14 @@ describe('TwilioConversation', () => {
           url,
           'GET'
         );
-        expect(twilio().conversations.conversations).toBeCalledWith(
+        expect(twilio().conversations.v1.conversations).toBeCalledWith(
           conversationSid
         );
         expect(mockCreateWebhook).toBeCalledTimes(1);
         expect(mockCreateWebhook).toBeCalledWith({
-          configuration: {
-            method: 'GET',
-            filters: ['onMessageAdded'],
-            url,
-          },
+          'configuration.method': 'GET',
+          'configuration.filters': ['onMessageAdded'],
+          'configuration.url': url,
           target: 'webhook',
         });
         expect(returnedWebhook).toStrictEqual(mockCreateWebhook());

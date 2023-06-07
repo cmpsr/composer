@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.12.1
+
+### Patch Changes
+
+- bb62ccf: feat: expose ListItemProps
+
 ## 5.12.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 19.8.0
+
+### Minor Changes
+
+- 007bba0: feat: add markdown customisation for li
+
 ## 19.7.0
 
 ### Minor Changes

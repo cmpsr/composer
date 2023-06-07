@@ -4,23 +4,7 @@ import * as Blocks from '@cmpsr/blocks';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { MdxRendererProps } from './types';
 import { MarkdownProps, useMarkdown } from './MarkdownContext';
-
-const renderText = ({ children, ...props }: Composer.TextProps, as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p') => {
-  const variants = {
-    h1: 'text-header-4XL' as const,
-    h2: 'text-header-3XL' as const,
-    h3: 'text-header-2XL' as const,
-    h4: 'text-header-XL' as const,
-    h5: 'text-header-L' as const,
-    h6: 'text-header-M' as const,
-  };
-  const { paragraph = {}, [as]: current } = useMarkdown();
-  return (
-    <Composer.Text as={as} variant={variants[as]} {...paragraph} {...current} {...props}>
-      {children}
-    </Composer.Text>
-  );
-};
+import { renderText } from './renderers';
 
 const renderLink = ({ children, ...props }: Composer.LinkProps) => {
   const { link = {} } = useMarkdown();

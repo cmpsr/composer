@@ -3,17 +3,8 @@ import * as Composer from '@cmpsr/components';
 import * as Blocks from '@cmpsr/blocks';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { MdxRendererProps } from './types';
-import { MarkdownProps, useMarkdown } from './MarkdownContext';
-import { renderText } from './renderers';
-
-const renderLink = ({ children, ...props }: Composer.LinkProps) => {
-  const { link = {} } = useMarkdown();
-  return (
-    <Composer.Link display="inline-flex" {...props} {...link}>
-      {children}
-    </Composer.Link>
-  );
-};
+import { MarkdownProps } from './MarkdownContext';
+import { renderLink, renderText } from './renderers';
 
 const SignalWireComponents: Record<string, unknown> = {};
 

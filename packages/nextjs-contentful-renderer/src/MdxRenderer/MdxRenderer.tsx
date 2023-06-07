@@ -4,7 +4,7 @@ import * as Blocks from '@cmpsr/blocks';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { MdxRendererProps } from './types';
 import { MarkdownProps } from './MarkdownContext';
-import { renderLink, renderText } from './renderers';
+import { renderLink, renderListItem, renderOrderedList, renderText, renderUnorderedList } from './renderers';
 
 const SignalWireComponents: Record<string, unknown> = {};
 
@@ -37,9 +37,9 @@ const composerComponents: any = Object.keys(Composer).reduce(
     }
   },
   {
-    ul: (props: Composer.UnorderedListProps) => <Composer.UnorderedList marginBottom="1rem" {...props} />,
-    ol: (props: Composer.OrderedListProps) => <Composer.OrderedList marginBottom="1rem" {...props} />,
-    li: Composer.UnorderedList.Item,
+    ul: (props: Composer.UnorderedListProps) => renderUnorderedList(props),
+    ol: (props: Composer.OrderedListProps) => renderOrderedList(props),
+    li: (props: Composer.ListItemProps) => renderListItem(props),
     p: (props: Composer.TextProps) => renderText(props, 'p'),
     h1: (props: Composer.TextProps) => renderText(props, 'h1'),
     h2: (props: Composer.TextProps) => renderText(props, 'h2'),

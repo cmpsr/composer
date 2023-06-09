@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 5.13.0
+
+### Minor Changes
+
+- 5633294: feat: export Input as a forwardRef
+- 2d1025a: feat: export Checkbox as a forwardRef
+
 ## 5.12.1
 
 ### Patch Changes

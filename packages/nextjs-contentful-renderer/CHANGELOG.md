@@ -1,5 +1,7 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 19.8.1
+
 ## 19.8.0
 
 ### Minor Changes

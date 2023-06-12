@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { Dropdown } from '.';
+import { IconCreditCard, IconPlus, IconShare } from '@components/media';
 
 export default {
   component: Dropdown,
@@ -65,6 +66,19 @@ export const Opened = Template.bind({});
 Opened.args = {
   isOpen: true,
 };
+
+const WithIconsTemplate = () => (
+  <Dropdown>
+    <Dropdown.Button>Open</Dropdown.Button>
+    <Dropdown.List>
+      <Dropdown.Item icon={<IconPlus />}>Add</Dropdown.Item>
+      <Dropdown.Item icon={<IconCreditCard />}>Pay</Dropdown.Item>
+      <Dropdown.Item icon={<IconShare />}>Share</Dropdown.Item>
+    </Dropdown.List>
+  </Dropdown>
+);
+
+export const WithIcons = WithIconsTemplate.bind({});
 
 const renderDropdownItems = (args) => {
   if (args.showGroupedItems) {

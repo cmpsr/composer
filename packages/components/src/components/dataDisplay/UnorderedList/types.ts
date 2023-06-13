@@ -6,3 +6,5 @@ export type UnorderedListProps = ChakraUnorderedListProps;
 export interface UnorderedListStaticMembers {
   Item: FC<ListItemProps>;
 }
+
+export { ListItemProps };

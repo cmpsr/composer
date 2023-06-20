@@ -1,6 +1,5 @@
 import * as Composer from '@cmpsr/components';
 import * as Blocks from '@cmpsr/blocks';
-import { MarkdownProps } from '../MarkdownContext';
 import { renderLink, renderListItem, renderOrderedList, renderText, renderUnorderedList } from '../renderers';
 
 const SignalWireComponents: Record<string, unknown> = {};
@@ -48,7 +47,6 @@ const composerComponents: any = Object.keys(Composer).reduce(
     img: Composer.Image,
     ...SignalWireComponents,
     ...CarouselComponents,
-    MarkdownProps,
   }
 );
 

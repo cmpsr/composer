@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, TextProps } from '@cmpsr/components';
-import { useMarkdown } from '../MarkdownContext';
+import { Text, TextProps, useMarkdown } from '@cmpsr/components';
 
 export const renderText = ({ children, ...props }: TextProps, as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p') => {
   const variants = {

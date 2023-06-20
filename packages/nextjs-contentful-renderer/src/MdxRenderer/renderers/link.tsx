@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, LinkProps } from '@cmpsr/components';
-import { useMarkdown } from '../MarkdownContext';
+import { Link, LinkProps, useMarkdown } from '@cmpsr/components';
 
 export const renderLink = ({ children, ...props }: LinkProps) => {
   const { link = {} } = useMarkdown();

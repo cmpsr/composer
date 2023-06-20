@@ -1,5 +1,5 @@
-import { LinkProps, TextProps } from '@cmpsr/components';
 import { ListItemProps, StyleProps } from '@chakra-ui/react';
+import { LinkProps, TextProps } from '../../components';
 
 export interface MarkdownContextProps {
   paragraph?: StyleProps;
@@ -12,4 +12,5 @@ export interface MarkdownContextProps {
   h6?: TextProps;
   p?: TextProps;
   li?: ListItemProps;
+  quote?: TextProps;
 }

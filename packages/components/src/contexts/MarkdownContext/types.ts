@@ -2,6 +2,7 @@ import { ListItemProps, StyleProps } from '@chakra-ui/react';
 import { LinkProps, TextProps } from '../../components';
 
 export interface MarkdownContextProps {
+  blockquote?: TextProps;
   paragraph?: StyleProps;
   link?: LinkProps;
   h1?: TextProps;
@@ -12,5 +13,4 @@ export interface MarkdownContextProps {
   h6?: TextProps;
   p?: TextProps;
   li?: ListItemProps;
-  quote?: TextProps;
 }

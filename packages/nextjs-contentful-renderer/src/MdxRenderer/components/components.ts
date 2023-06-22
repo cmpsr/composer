@@ -1,7 +1,7 @@
 import * as Composer from '@cmpsr/components';
 import * as Blocks from '@cmpsr/blocks';
 import { renderLink, renderListItem, renderOrderedList, renderText, renderUnorderedList } from '../renderers';
-import { MarkdownProps, MarkdownProvider } from '../../MarkdownContext';
+import { MarkdownProps, MarkdownProvider } from '../MarkdownContext';
 
 const SignalWireComponents: Record<string, unknown> = {};
 

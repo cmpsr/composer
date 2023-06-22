@@ -44,26 +44,26 @@ Hero.Content = HeroContent;
 
 Hero.Title = TextPairing;
 
-const HeroLinkGroup: FC<FlexProps> = (props) => (
+const HeroLinkGroup = (props: FlexProps) => (
   <Flex gap="1rem" flexDirection={{ base: 'column', md: 'row' }} {...props} />
 );
 Hero.Actions = HeroLinkGroup;
 
-const HeroLink: FC<LinkProps> = (props) => <Link target="_blank" size="l" {...props} />;
+const HeroLink = (props: LinkProps) => <Link target="_blank" size="l" {...props} />;
 Hero.Action = HeroLink;
 
 const HeroTag: FC<TagProps> = (props) => <Tag size="m" alignSelf="start" {...props} />;
 Hero.Tag = HeroTag;
 
-const HeroContentGroup: FC<FlexProps> = (props) => <Flex gap="1rem" flexDirection="column" {...props} />;
+const HeroContentGroup = (props: FlexProps) => <Flex gap="1rem" flexDirection="column" {...props} />;
 Hero.ContentContainer = HeroContentGroup;
 
-const HeroDisclaimer: FC<TextProps> = (props) => (
+const HeroDisclaimer = (props: TextProps) => (
   <Text color="text-secondary" variant="text-body-meta-regular" {...props} />
 );
 Hero.Disclaimer = HeroDisclaimer;
 
-const HeroOverline: FC<TextProps> = (props) => <Text color="text-secondary" variant="text-header-L" {...props} />;
+const HeroOverline = (props: TextProps) => <Text color="text-secondary" variant="text-header-L" {...props} />;
 Hero.Overline = HeroOverline;
 
 const HeroMediaBlock: MediaBlockType = (props) => <MediaBlock variant="horizontal" {...props} />;

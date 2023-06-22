@@ -7,22 +7,22 @@ export const Footer: FC<FooterProps> & FooterStaticMembers = (props) => (
   <Flex maxWidth="66.75rem" flexDirection="column" width="100%" {...props} />
 );
 
-const FooterLogo: FC<ImageProps> = (props) => (
+const FooterLogo = (props: ImageProps) => (
   <Image alt="Footer image" width="100%" mb={{ base: '2.75rem', md: '3rem' }} {...props} />
 );
 
-const FooterContent: FC<FlexProps> = (props) => (
+const FooterContent = (props: FlexProps) => (
   <Flex flexDirection={{ base: 'column', lg: 'row' }} gap={{ base: '2.75rem', md: '3rem' }} {...props} />
 );
 
-const FooterBottom: FC<DividerProps> = ({ children, ...props }) => (
+const FooterBottom = ({ children, ...props }: DividerProps) => (
   <>
     <Divider width="100%" my={{ base: '2.75rem', md: '4rem' }} {...props} />
     {children}
   </>
 );
 
-const FooterActionsContainer: FC<FlexProps> = (props) => (
+const FooterActionsContainer = (props: FlexProps) => (
   <Flex
     gap={{ base: '2.75rem', lg: '1.5rem' }}
     flexDirection={{ base: 'column', md: 'row' }}
@@ -42,7 +42,7 @@ const FooterActions: FC<FooterActionsProps> = ({ children, title, ...props }) =>
   </Flex>
 );
 
-const FooterAction: FC<LinkProps> = (props) => <Link size="m" variant="link-secondary" {...props} />;
+const FooterAction = (props: LinkProps) => <Link size="m" variant="link-secondary" {...props} />;
 
 Footer.Logo = FooterLogo;
 Footer.ActionsContainer = FooterActionsContainer;

@@ -2,7 +2,7 @@ import { FlexProps, Tag, CardProps, Link, Image, Text, TextPairing } from '@cmps
 import { FC } from 'react';
 
 export const mediaBlockVariants = ['vertical', 'horizontal'] as const;
-export type MediaBlockVariant = typeof mediaBlockVariants[number];
+export type MediaBlockVariant = (typeof mediaBlockVariants)[number];
 
 export interface MediaBlockProps extends FlexProps, CardProps {
   variant?: MediaBlockVariant;

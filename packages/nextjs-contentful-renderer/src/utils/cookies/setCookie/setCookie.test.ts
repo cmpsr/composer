@@ -1,4 +1,4 @@
-import { setCookie } from '.';
+import { setCookie } from './setCookie';
 
 describe('setCookie', () => {
   const mockSetHeader = jest.fn();

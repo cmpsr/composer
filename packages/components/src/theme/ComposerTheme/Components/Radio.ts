@@ -8,25 +8,26 @@ const sizes: Record<string, PartsStyleInterpolation<typeof parts>> = {
     label: {
       ...theme.textStyles['text-body-meta-regular'],
     },
-    icon: { fontSize: "0.45rem" },
+    icon: { fontSize: '0.45rem' },
   }),
   m: ({ theme }) => ({
     control: { h: 4, w: 4 },
     label: {
       ...theme.textStyles['text-body-regular'],
     },
-    icon: { fontSize: "0.625rem" },
+    icon: { fontSize: '0.625rem' },
   }),
   l: ({ theme }) => ({
     control: { h: 5, w: 5 },
     label: {
       ...theme.textStyles['text-body-large-regular'],
     },
-    icon: { fontSize: "0.625rem" },
+    icon: { fontSize: '0.625rem' },
   }),
 };
 
 export const Radio: ComponentStyleConfig = {
+  parts: parts.keys,
   baseStyle: {
     control: {
       color: 'text-light',

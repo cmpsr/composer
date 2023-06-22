@@ -3,5 +3,6 @@ import { renderHook } from '@testing-library/react-hooks';
 import { ComposerProvider } from '..';
 
 export function renderHookWithProviders<TProps, TResult>(callback: (props: TProps) => TResult) {
-  return renderHook(callback, { wrapper: ({ children }) => <ComposerProvider>{children}</ComposerProvider> });
+  const wrapper = ({ children }: React.PropsWithChildren) => <ComposerProvider>{children}</ComposerProvider>;
+  return renderHook(callback, { wrapper });
 }

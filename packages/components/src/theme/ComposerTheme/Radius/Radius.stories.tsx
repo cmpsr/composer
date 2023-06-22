@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Table, Thead, Tbody, Tr, Th, Td, Box, Flex } from '@chakra-ui/react';
 
-import { defaultRadius } from '.';
+import { defaultRadius } from './radius';
 
 export default {
   title: 'Theme/Radius',
@@ -22,13 +22,7 @@ export const Radius = () => {
           <Tr key={key}>
             <Td>
               <Flex alignItems="center">
-                <Box
-                  width="60px"
-                  height="60px"
-                  bgColor="text-link-primary-hover"
-                  mr="spacer-3"
-                  borderRadius={value}
-                />
+                <Box width="60px" height="60px" bgColor="text-link-primary-hover" mr="spacer-3" borderRadius={value} />
                 <Box
                   backgroundColor="text-primary"
                   color="white"

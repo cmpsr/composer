@@ -13,7 +13,7 @@ export type DotProps = FC<Omit<BaseDotProps, 'children'>>;
 export type DotGroupProps = FC<Omit<BaseDotGroupProps, 'children'>>;
 export type SliderProps = FC<Omit<BaseSliderProps, 'children'>>;
 export type NavigationContainerProps = FC<FlexProps>;
-export type SlideProps = FC<Omit<BaseSlideProps, 'children'>>;
+export type SlideProps = FC<BaseSlideProps>;
 
 interface CarouselStaticMembers {
   Slider: ComponentType<BaseSliderProps>;

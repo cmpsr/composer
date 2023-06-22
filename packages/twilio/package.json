@@ -26,7 +26,10 @@
   },
   "dependencies": {
     "rimraf": "^3.0.2",
-    "twilio": "^3.72.0"
+    "twilio": "^4.11.2"
+  },
+  "engines": {
+    "node": ">=14"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
 }

@@ -1,5 +1,6 @@
-import { ListItemProps, OrderedListProps, OrderedList, UnorderedList, UnorderedListProps, useMarkdown } from '@cmpsr/components';
+import { ListItemProps, OrderedListProps, OrderedList, UnorderedList, UnorderedListProps } from '@cmpsr/components';
 import React from 'react';
+import { useMarkdown } from '../../MarkdownContext';
 
 export const renderOrderedList = (props: OrderedListProps) => {
   const { paragraph = {} } = useMarkdown();

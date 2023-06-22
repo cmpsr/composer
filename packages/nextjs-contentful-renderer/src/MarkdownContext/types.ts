@@ -1,5 +1,5 @@
 import { ListItemProps, StyleProps } from '@chakra-ui/react';
-import { LinkProps, TextProps } from '../../components';
+import { LinkProps, TextProps } from '@cmpsr/components';
 
 export interface MarkdownContextProps {
   blockquote?: TextProps;

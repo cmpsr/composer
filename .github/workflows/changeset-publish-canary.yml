@@ -50,8 +50,7 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
 
-      - name: Check for changeset or [no-release]
-        if: "!contains(github.event.pull_request.title, '[no-release]')"
+      - name: Check for changeset
         shell: bash
         run: |
           set -eu -o pipefail # Using some heavy bash, so setting up some better defaults

@@ -12,6 +12,7 @@ concurrency:
 
 jobs:
   release-snapshot:
+    if: ! contains(github.event.pull_request.title, '[no-release]')
     name: Release Snapshot
     runs-on: ubuntu-latest
     steps:

@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Table, Thead, Tbody, Tr, Th, Td, Box, Flex } from '@chakra-ui/react';
 
-import { defaultShadows } from '.';
+import { defaultShadows } from './shadows';
 
 export default {
   title: 'Theme/Shadows',

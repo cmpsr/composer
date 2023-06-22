@@ -4,7 +4,12 @@ import { Checkbox as ChakraCheckbox, forwardRef } from '@chakra-ui/react';
 import { CheckboxProps } from './types';
 import * as Icons from '../../media/Icons';
 
-const CheckboxTransition = ({ open, children }) => (
+interface CheckboxTransitionProps {
+  open: boolean;
+  children: React.ReactNode;
+}
+
+const CheckboxTransition: React.FC<CheckboxTransitionProps> = ({ open, children }) => (
   <AnimatePresence initial={false}>
     {open && (
       <motion.div

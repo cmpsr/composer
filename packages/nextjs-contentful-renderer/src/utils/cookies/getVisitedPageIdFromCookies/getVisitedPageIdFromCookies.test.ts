@@ -1,4 +1,4 @@
-import { getVisitedPageIdFromCookies } from '.';
+import { getVisitedPageIdFromCookies } from './getVisitedPageIdFromCookies';
 
 describe('getVisitedPageIdFromCookies', () => {
   const fakeContext: any = {

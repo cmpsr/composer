@@ -1,4 +1,4 @@
-import { getPageContent } from '.';
+import { getPageContent } from './getPageContent';
 
 const mockGetVisitedPageIdFromCookies = jest.fn();
 const mockSetCookie = jest.fn();

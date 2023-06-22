@@ -1,13 +1,9 @@
-import { Plaid } from '.';
+import { Plaid } from './Plaid';
 import { PlaidConfig } from './types';
 
-const mockExchangePublicToken = jest
-  .fn()
-  .mockReturnValue({ access_token: 'access_token', item_id: 'item_id' });
+const mockExchangePublicToken = jest.fn().mockReturnValue({ access_token: 'access_token', item_id: 'item_id' });
 const mockGetAuth = jest.fn().mockReturnValue({ accounts: [], numbers: [] });
-const mockGetTransactions = jest
-  .fn()
-  .mockReturnValue({ accounts: [], transactions: [] });
+const mockGetTransactions = jest.fn().mockReturnValue({ accounts: [], transactions: [] });
 const mockOwner = {
   names: ['Owner Full Name'],
   phone_numbers: [
@@ -35,17 +31,13 @@ const mockCreateAssetReport = jest.fn().mockReturnValue({
   asset_report_id: 'asset_report_id',
   request_id: 'request_id',
 });
-const mockGetAssetReportPdf = jest
-  .fn()
-  .mockReturnValue(Buffer.from('pdf report'));
+const mockGetAssetReportPdf = jest.fn().mockReturnValue(Buffer.from('pdf report'));
 const mockRefreshAssetReport = jest.fn().mockReturnValue({
   asset_report_token: 'asset_resport_token',
   asset_report_id: 'asset_report_id',
   request_id: 'request_id',
 });
-const mockGetAssetReport = jest
-  .fn()
-  .mockReturnValue({ report: { asset_report_id: 'asset_report_id' } });
+const mockGetAssetReport = jest.fn().mockReturnValue({ report: { asset_report_id: 'asset_report_id' } });
 jest.mock('plaid', () => {
   return {
     Client: jest.fn().mockImplementation(() => {
@@ -94,13 +86,7 @@ describe('Plaid', () => {
     new Plaid(config);
     const plaid = require('plaid');
     expect(plaid.Client).toBeCalledTimes(1);
-    expect(plaid.Client).toBeCalledWith(
-      config.clientId,
-      config.secret,
-      config.publicKey,
-      config.env,
-      config.options
-    );
+    expect(plaid.Client).toBeCalledWith(config.clientId, config.secret, config.publicKey, config.env, config.options);
   });
 
   describe('getAccessToken', () => {
@@ -156,12 +142,7 @@ describe('Plaid', () => {
       const accessToken = await givenPublicTokenExchanged(plaid);
       const transactions = await plaid.getTransactions(startDate, endDate);
       expect(mockGetTransactions).toBeCalledTimes(1);
-      expect(mockGetTransactions).toBeCalledWith(
-        accessToken,
-        startDate,
-        endDate,
-        undefined
-      );
+      expect(mockGetTransactions).toBeCalledWith(accessToken, startDate, endDate, undefined);
       expect(transactions).toStrictEqual(mockGetTransactions());
     });
 
@@ -172,18 +153,9 @@ describe('Plaid', () => {
         count: 20,
         offset: 1,
       };
-      const transactions = await plaid.getTransactions(
-        startDate,
-        endDate,
-        options
-      );
+      const transactions = await plaid.getTransactions(startDate, endDate, options);
       expect(mockGetTransactions).toBeCalledTimes(1);
-      expect(mockGetTransactions).toBeCalledWith(
-        accessToken,
-        startDate,
-        endDate,
-        options
-      );
+      expect(mockGetTransactions).toBeCalledWith(accessToken, startDate, endDate, options);
       expect(transactions).toStrictEqual(mockGetTransactions());
     });
     test('should generate access token', async () => {
@@ -273,11 +245,7 @@ describe('Plaid', () => {
       const accessToken = await givenPublicTokenExchanged(plaid);
       const report = await plaid.createAssetReport(options, days);
       expect(mockCreateAssetReport).toBeCalledTimes(1);
-      expect(mockCreateAssetReport).toBeCalledWith(
-        [accessToken],
-        days,
-        options
-      );
+      expect(mockCreateAssetReport).toBeCalledWith([accessToken], days, options);
       expect(report).toStrictEqual(mockCreateAssetReport());
     });
     test('should generate access token', async () => {
@@ -301,27 +269,15 @@ describe('Plaid', () => {
       const plaid = new Plaid(config);
       const report = await plaid.refreshAssetReport(reportAccessToken);
       expect(mockRefreshAssetReport).toBeCalledTimes(1);
-      expect(mockRefreshAssetReport).toBeCalledWith(
-        reportAccessToken,
-        730,
-        undefined
-      );
+      expect(mockRefreshAssetReport).toBeCalledWith(reportAccessToken, 730, undefined);
       expect(report).toStrictEqual(mockRefreshAssetReport());
     });
     test('should refresh asset report with given values', async () => {
       const days = 365;
       const plaid = new Plaid(config);
-      const report = await plaid.refreshAssetReport(
-        reportAccessToken,
-        options,
-        days
-      );
+      const report = await plaid.refreshAssetReport(reportAccessToken, options, days);
       expect(mockRefreshAssetReport).toBeCalledTimes(1);
-      expect(mockRefreshAssetReport).toBeCalledWith(
-        reportAccessToken,
-        days,
-        options
-      );
+      expect(mockRefreshAssetReport).toBeCalledWith(reportAccessToken, days, options);
       expect(report).toStrictEqual(mockRefreshAssetReport());
     });
   });

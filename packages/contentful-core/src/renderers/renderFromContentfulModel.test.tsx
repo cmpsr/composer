@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import { renderFromContentfulModel } from '.';
+import { renderFromContentfulModel } from './renderFromContentfulModel';
 
 const Link = ({ title, url }) => (
   <a href={url} data-testid="link">
@@ -49,10 +49,7 @@ const FAKE_LINK = {
 };
 
 // Mock the graphql file calls
-jest.mock(
-  '../../__tests__/models/content/Link/queries/LinkByIdQuery.graphql',
-  () => 'LinkByIdQuery'
-);
+jest.mock('../../__tests__/models/content/Link/queries/LinkByIdQuery.graphql', () => 'LinkByIdQuery');
 
 // Mock useQuery
 jest.mock('@apollo/client', () => ({
@@ -68,9 +65,7 @@ describe('renderContentItemFromType', () => {
   });
 
   it('renders a Link', () => {
-    const { getByText } = render(
-      renderFromContentfulModel({ componentMap }, FAKE_LINK)
-    );
+    const { getByText } = render(renderFromContentfulModel({ componentMap }, FAKE_LINK));
     getByText(FAKE_LINK.title);
   });
 

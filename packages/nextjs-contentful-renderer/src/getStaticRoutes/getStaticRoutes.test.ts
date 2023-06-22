@@ -1,4 +1,4 @@
-import { getStaticRoutes } from '.';
+import { getStaticRoutes } from './getStaticRoutes';
 
 const mockApolloClient = {};
 jest.mock('../utils/getApolloClient', () => ({

@@ -1,18 +1,18 @@
-import React, { useEffect, useMemo, ReactFragment } from 'react';
+import React, { useEffect, useMemo, ReactNode } from 'react';
 // import invariant from 'invariant';
 
 import { ContentfulContext } from './ContentfulContext';
 
 type Props = {
   accessToken?: string;
-  children?: ReactFragment;
+  children?: ReactNode;
   componentMap?: any;
   environment?: string;
   locale?: string;
   preview?: boolean;
   space?: string;
   queryMap?: any;
-}
+};
 
 export const ContentfulProvider = ({
   accessToken,
@@ -49,9 +49,5 @@ export const ContentfulProvider = ({
     };
   }, [accessToken, componentMap, environment, locale, preview, queryMap, space]);
 
-  return (
-    <ContentfulContext.Provider value={value}>
-      {children}
-    </ContentfulContext.Provider>
-  );
+  return <ContentfulContext.Provider value={value}>{children}</ContentfulContext.Provider>;
 };

@@ -1,4 +1,4 @@
-import { getDefaultTheme } from '.';
+import { getDefaultTheme } from './getDefaultTheme';
 
 const mockGetDefaultTheme = jest.fn();
 jest.mock('../utils/contentful', () => ({

@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { render } from '@testing-library/react';
 
-import { renderFromComponentMap } from '.';
+import { renderFromComponentMap } from './renderFromComponentMap';
 
 const FAKE_ITEM1 = 'Fake Item 1 Text';
 const FAKE_ITEM2 = 'Fake Item 2 Text';

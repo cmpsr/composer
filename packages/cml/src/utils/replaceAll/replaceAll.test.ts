@@ -1,4 +1,4 @@
-import { replaceAll } from '.';
+import { replaceAll } from './replaceAll';
 
 describe('replaceAll', () => {
   const textToReplace = 'text';

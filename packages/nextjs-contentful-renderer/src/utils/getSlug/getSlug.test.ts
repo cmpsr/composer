@@ -1,4 +1,4 @@
-import { getSlug } from '.';
+import { getSlug } from './getSlug';
 
 describe('getSlug', () => {
   test.each`

@@ -11,7 +11,7 @@ class TwilioConversation {
   }
 
   async create(friendlyName: string) {
-    const conversation = await this.twilioClient.conversations.conversations.create(
+    const conversation = await this.twilioClient.conversations.v1.conversations.create(
       {
         friendlyName,
       }
@@ -20,12 +20,12 @@ class TwilioConversation {
   }
 
   async getConversations() {
-    const conversations = await this.twilioClient.conversations.conversations.list();
+    const conversations = await this.twilioClient.conversations.v1.conversations.list();
     return conversations.map((c) => c.toJSON());
   }
 
   async getConversation(sid: string) {
-    const conversation = await this.twilioClient.conversations
+    const conversation = await this.twilioClient.conversations.v1
       .conversations(sid)
       .fetch();
     return conversation.toJSON();
@@ -36,16 +36,17 @@ class TwilioConversation {
     invitedPhone: string,
     inviterPhone: string
   ) {
-    const participant = await this.twilioClient.conversations
+    const participant = await this.twilioClient.conversations.v1
       .conversations(conversationSid)
       .participants.create({
-        messagingBinding: { address: invitedPhone, proxyAddress: inviterPhone },
+        "messagingBinding.address": invitedPhone,
+        "messagingBinding.proxyAddress": inviterPhone,
       });
     return participant.toJSON();
   }
 
   async addParticipant(conversationSid: string, identity: string) {
-    const participant = await this.twilioClient.conversations
+    const participant = await this.twilioClient.conversations.v1
       .conversations(conversationSid)
       .participants.create({ identity });
     return participant.toJSON();
@@ -57,14 +58,14 @@ class TwilioConversation {
     body: string,
     attributes?: string
   ) {
-    const message = await this.twilioClient.conversations
+    const message = await this.twilioClient.conversations.v1
       .conversations(conversationSid)
       .messages.create({ author, body, attributes });
     return message.toJSON();
   }
 
   async getMessages(conversationSid: string) {
-    const messages = await this.twilioClient.conversations
+    const messages = await this.twilioClient.conversations.v1
       .conversations(conversationSid)
       .messages.list();
     return messages.map((m) => m.toJSON());
@@ -75,14 +76,14 @@ class TwilioConversation {
     webhook: string,
     method: WebhookMethod = 'POST'
   ) {
-    const configuration = {
-      method: method,
-      filters: ['onMessageAdded'],
-      url: webhook,
-    };
-    const twilioWebhook = await this.twilioClient.conversations
+    const twilioWebhook = await this.twilioClient.conversations.v1
       .conversations(conversationSid)
-      .webhooks.create({ configuration, target: 'webhook' });
+      .webhooks.create({
+        'configuration.method': method,
+        'configuration.filters': ['onMessageAdded'],
+        'configuration.url': webhook,
+        target: 'webhook',
+      });
     return twilioWebhook.toJSON();
   }
 

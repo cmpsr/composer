@@ -1,4 +1,4 @@
-import { getRouteBySlug } from '.';
+import { getRouteBySlug } from './getRouteBySlug';
 
 describe('getRouteBySlug', () => {
   const mockQueryRoute = jest.fn();

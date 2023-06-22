@@ -84,6 +84,7 @@ const generateVariantByStatus: PartsStyleFunction<typeof parts> = (props) => {
 };
 
 export const Alert: ComponentStyleConfig = {
+  parts: parts.keys,
   baseStyle: ({ theme }) => ({
     container: {
       borderRadius: '0.375rem',

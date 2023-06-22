@@ -1,4 +1,4 @@
-import { getPageId } from '.';
+import { getPageId } from './getPageId';
 
 describe('getPageId', () => {
   const replica = {

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Card, Flex, Image, Link, Tag, Text, TextPairing, TextProps } from '@cmpsr/components';
 import { MediaBlockType } from './types';
 
@@ -22,7 +22,7 @@ export const MediaBlock: MediaBlockType = (props) => {
   );
 };
 
-const MediaBlockOverline: FC<TextProps> = (props) => (
+const MediaBlockOverline = (props: TextProps) => (
   <Text color="text-secondary" variant="text-body-medium" textTransform="uppercase" {...props} />
 );
 

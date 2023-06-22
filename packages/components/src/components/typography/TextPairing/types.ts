@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { CSSObject, ResponsiveValue } from '@chakra-ui/system';
+import { ResponsiveValue } from '@chakra-ui/system';
 import { ComponentDefaultProps } from '@chakra-ui/theme';
 
 import { FlexProps, TextVariant, TextProps } from '@components';
@@ -24,15 +24,14 @@ export const textPairingVariants = [
   'textpairing-body-meta-bold',
   'textpairing-body-meta-medium',
 ] as const;
-export type TextPairingVariant = typeof textPairingVariants[number];
+export type TextPairingVariant = (typeof textPairingVariants)[number];
 
 type TextPairingParts = 'label' | 'subLabel';
-export type TextPairingStyles = CSSObject &
-  {
-    [key in TextPairingParts]: {
-      variant: TextVariant;
-    };
-  } & { container: FlexProps };
+export type TextPairingStyles = {
+  [key in TextPairingParts]: {
+    variant: TextVariant;
+  };
+} & { container: FlexProps };
 
 export interface TextPairingProps extends Omit<ComponentDefaultProps, 'variant'> {
   variant?: ResponsiveValue<TextPairingVariant>;

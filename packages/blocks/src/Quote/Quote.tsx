@@ -6,7 +6,7 @@ export const Quote: FC<FlexProps> & QuoteStaticMembers = (props) => (
   <Flex flexDirection="column" gap="1.5rem" maxWidth="52.5rem" margin="0 auto" {...props} />
 );
 
-const QuoteText: FC<TextProps> = (props) => <Text variant="text-body-display-L" {...props} />;
+const QuoteText = (props: TextProps) => <Text variant="text-body-display-L" {...props} />;
 Quote.Title = QuoteText;
 
 const QuoteAuthorAvatar: FC<AvatarProps> = (props) => (

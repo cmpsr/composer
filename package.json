@@ -25,13 +25,13 @@
   ],
   "dependencies": {
     "@changesets/cli": "^2.26.0",
-    "lerna": "^6.6.1"
+    "lerna": "^7.0.2"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.15.0",
-    "@testing-library/react": "^13.2.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
     "@types/jest": "^25.1.4",
-    "@types/react": "^16.9.34",
+    "@types/react": "^18.2.13",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
     "chromatic": "^6.17.0",

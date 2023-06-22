@@ -1,5 +1,4 @@
-import useKMS from '.';
-import { Kms } from './Kms';
+import useKMS, { Kms } from '.';
 
 describe('useKMS', () => {
   it('should return Kms instance', () => {

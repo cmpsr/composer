@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Flex, Image, Text, TextPairing, FlexProps, ImageProps, TextProps, TextPairingType } from '@cmpsr/components';
 
 import { BrandLogosType } from './types';
@@ -15,7 +15,7 @@ export const BrandLogos: BrandLogosType = (props) => (
   />
 );
 
-const BrandLogosImagesContainer: FC<FlexProps> = (props) => (
+const BrandLogosImagesContainer = (props: FlexProps) => (
   <Flex
     columnGap={{ base: '4rem', lg: '3.75rem', xl: '3.5rem' }}
     rowGap={{ base: '2rem', md: '2.75rem', lg: '4.5rem', xl: '7rem' }}
@@ -28,7 +28,7 @@ const BrandLogosImagesContainer: FC<FlexProps> = (props) => (
 );
 BrandLogos.ImagesContainer = BrandLogosImagesContainer;
 
-const BrandLogosImage: FC<ImageProps> = (props) => (
+const BrandLogosImage = (props: ImageProps) => (
   <Image maxWidth={{ base: '10rem', md: '11.25rem', xl: '12.5rem' }} {...props} />
 );
 BrandLogos.Image = BrandLogosImage;
@@ -40,7 +40,7 @@ BrandLogosTextPairing.Label = TextPairing.Label;
 BrandLogosTextPairing.SubLabel = TextPairing.SubLabel;
 BrandLogos.Title = BrandLogosTextPairing;
 
-const BrandLogosOverline: FC<TextProps> = (props) => (
+const BrandLogosOverline = (props: TextProps) => (
   <Text
     color="text-secondary"
     variant="text-body-display-S"

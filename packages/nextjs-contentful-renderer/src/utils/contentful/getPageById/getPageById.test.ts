@@ -1,4 +1,4 @@
-import { getPageById } from '.';
+import { getPageById } from './getPageById';
 
 const dummyMainContentItem = {
   modelsCollection: {

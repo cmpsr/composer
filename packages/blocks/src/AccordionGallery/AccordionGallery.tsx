@@ -18,7 +18,6 @@ import {
   useBreakpointValue,
   Text,
   TextProps,
-  Image,
 } from '@cmpsr/components';
 import { AccordionGalleryProps, AccordionGalleryStaticMembers } from './types';
 import {
@@ -93,7 +92,7 @@ export const AccordionGallery: FC<AccordionGalleryProps> & AccordionGalleryStati
   );
 };
 
-const AccordionGalleryAccordion: typeof Accordion & { Image: typeof Image } = Object.assign(
+const AccordionGalleryAccordion: typeof Accordion & { Image: typeof AccordionGalleryImage } = Object.assign(
   AccordionGalleryAccordionComponent,
   {
     Image: AccordionGalleryImage,

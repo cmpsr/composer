@@ -1,4 +1,4 @@
-import { getDefaultTheme } from '.';
+import { getDefaultTheme } from './getDefaultTheme';
 
 describe('getDefaultTheme', () => {
   const fakeTheme = {

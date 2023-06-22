@@ -21,12 +21,12 @@ export const Testimonial: FC<TestimonialProps> & TestimonialStaticMembers = ({
 
 Testimonial.Image = Image;
 
-const FlexContent: FC<FlexProps> = (props) => (
+const FlexContent = (props: FlexProps) => (
   <Flex gap="1.5rem" flexDirection="column" maxWidth={{ lg: '36.8125rem', xl: '33.5rem', xxl: '43.5rem' }} {...props} />
 );
 Testimonial.Content = FlexContent;
 
-const TestimonialLegend: FC<TextProps> = (props) => (
+const TestimonialLegend = (props: TextProps) => (
   <Flex flexDirection="column" gap="0.75rem" alignSelf="start">
     <Text as="h3" variant={{ base: 'text-header-S', lg: 'text-header-XS' }} {...props} />
     <Divider />
@@ -34,13 +34,13 @@ const TestimonialLegend: FC<TextProps> = (props) => (
 );
 Testimonial.Overline = TestimonialLegend;
 
-const TestimonialTestimony: FC<TextProps> = (props) => (
+const TestimonialTestimony = (props: TextProps) => (
   <Text variant={{ base: 'text-body-display-M', lg: 'text-body-display-L' }} {...props} />
 );
 Testimonial.Testimony = TestimonialTestimony;
 
-const TestimonialAuthor: FC<TextProps> = (props) => <Text variant="text-body-medium" {...props} />;
+const TestimonialAuthor = (props: TextProps) => <Text variant="text-body-medium" {...props} />;
 Testimonial.Author = TestimonialAuthor;
 
-const TestimonialAction: FC<LinkProps> = (props) => <Link target="_blank" size="s" {...props} />;
+const TestimonialAction = (props: LinkProps) => <Link target="_blank" size="s" {...props} />;
 Testimonial.Action = TestimonialAction;

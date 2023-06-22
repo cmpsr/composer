@@ -1,10 +1,10 @@
 name: "Publish - Canary"
 
 on:
-  push:
-    branches-ignore:
-      - 'master'
-      - 'changeset-release/*'
+  pull_request:
+    types:
+      - labeled
+      - synchronize
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -12,6 +12,7 @@ concurrency:
 
 jobs:
   release-snapshot:
+    if: ${{ (github.event.label.name == 'release-canary') || (github.event.action == 'synchronize' && contains(github.event.pull_request.labels.*.name, 'release-canary')) }}
     name: Release Snapshot
     runs-on: ubuntu-latest
     steps:
@@ -49,11 +50,10 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
 
-      - name: Check for changeset or [no-release]
-        if: "!contains(github.event.pull_request.title, '[no-release]')"
+      - name: Check for changeset
         shell: bash
         run: |
-          set -eu -o pipefail # Using some heavy bash, so setting up some better defaults
+          set -eu -o pipefail
           echo "Grabbing changeset to determine version for canary..."
           yarn changeset status --since=origin/master
           CHANGESETS=$(yarn changeset status --since=origin/master | grep "@cmpsr" | cut -d' ' -f4)

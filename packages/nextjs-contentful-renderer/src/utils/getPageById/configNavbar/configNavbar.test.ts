@@ -1,4 +1,4 @@
-import { configNavbar } from '.';
+import { configNavbar } from './configNavbar';
 
 const dummyContent = [
   {

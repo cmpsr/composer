@@ -1,4 +1,4 @@
-import { usePlaid } from '.';
+import { usePlaid } from './usePlaid';
 
 const mockReturnValue = {
   open: jest.fn(),

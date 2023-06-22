@@ -30,26 +30,26 @@
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "peerDependencies": {
-    "react": "^18.1.0"
+    "react": "^18.2.0"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.6.1",
     "@chakra-ui/react-utils": "^2.0.11",
     "@chakra-ui/theme-tools": "^2.0.16",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "framer-motion": "^5"
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "framer-motion": "^10.12.16"
   },
   "devDependencies": {
     "@chakra-ui/cli": "^2.4.1",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react-hooks": "^8.0.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react-hooks": "^8.0.1",
     "@types/jest": "^27.0.2",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "swc-loader": "^0.1.15"
   },
   "engines": {

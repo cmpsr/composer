@@ -27,7 +27,7 @@
   },
   "peerDependencies": {
     "@cmpsr/components": "^5.7.0",
-    "react": "^18.1.0"
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "@cmpsr/components": "^5.13.0",
@@ -36,8 +36,8 @@
     "@swc/jest": "^0.2.20",
     "@testing-library/jest-dom": "^5.16.2",
     "@types/jest": "^27.0.2",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "swc-loader": "^0.1.15"
   },
   "engines": {

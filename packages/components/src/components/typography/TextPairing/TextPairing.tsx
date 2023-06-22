@@ -1,5 +1,5 @@
 import React, { createContext, FC, useContext } from 'react';
-import { useStyleConfig } from '@chakra-ui/system';
+import { useMultiStyleConfig } from '@chakra-ui/system';
 import { useResponsiveValue } from '@hooks';
 import { Flex, Text, TextProps, TextVariant } from '@components';
 
@@ -15,7 +15,7 @@ export const TextPairingContext = createContext<{
 
 export const TextPairing: TextPairingType = ({ variant, ...props }) => {
   const responsiveVariant = useResponsiveValue(variant);
-  const { container, label, subLabel } = useStyleConfig('TextPairing', {
+  const { container, label, subLabel } = useMultiStyleConfig('TextPairing', {
     variant: responsiveVariant,
   }) as TextPairingStyles;
 

@@ -1,4 +1,4 @@
-import { getStaticRoutes } from '.';
+import { getStaticRoutes } from './getStaticRoutes';
 
 describe('getStaticRoutes', () => {
   const mockQuery = jest.fn();

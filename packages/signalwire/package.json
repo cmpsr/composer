@@ -36,7 +36,7 @@
   },
   "peerDependencies": {
     "@cmpsr/components": "^5.7.0",
-    "react": "^18.1.0"
+    "react": "^18.2.0"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
 }

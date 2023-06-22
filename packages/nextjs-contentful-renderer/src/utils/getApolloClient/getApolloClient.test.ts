@@ -1,5 +1,5 @@
 import { ApolloClient } from '@apollo/client';
-import { getApolloClient } from '.';
+import { getApolloClient } from './getApolloClient';
 
 const mockCreateLink = jest.fn();
 jest.mock('@cmpsr/contentful-core', () => ({

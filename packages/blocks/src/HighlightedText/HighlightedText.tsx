@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Flex, Link, TextPairing, FlexProps, LinkProps, Text, TextProps } from '@cmpsr/components';
 
 import { HighlightedTextType } from './types';
@@ -22,7 +22,7 @@ export const HighlightedText: HighlightedTextType = ({
 
 HighlightedText.Title = TextPairing;
 
-const HighlightedTextLinkGroup: FC<FlexProps> = (props) => (
+const HighlightedTextLinkGroup = (props: FlexProps) => (
   <Flex
     gap={{ base: '1rem', md: '1.5rem' }}
     flexDirection={{ base: 'column', md: 'row' }}
@@ -33,12 +33,10 @@ const HighlightedTextLinkGroup: FC<FlexProps> = (props) => (
 );
 HighlightedText.Actions = HighlightedTextLinkGroup;
 
-const HighlightedTextLink: FC<LinkProps> = (props) => (
-  <Link target="_blank" size="l" justifyContent="center" {...props} />
-);
+const HighlightedTextLink = (props: LinkProps) => <Link target="_blank" size="l" justifyContent="center" {...props} />;
 HighlightedText.Action = HighlightedTextLink;
 
-const HighlightedTextLegend: FC<TextProps> = (props) => (
+const HighlightedTextLegend = (props: TextProps) => (
   <Text color="text-secondary" variant="text-body-display-S" textTransform="uppercase" display="flex" {...props} />
 );
 HighlightedText.Overline = HighlightedTextLegend;

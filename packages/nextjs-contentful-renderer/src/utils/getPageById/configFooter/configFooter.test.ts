@@ -1,4 +1,4 @@
-import { configFooter } from '.';
+import { configFooter } from './configFooter';
 
 const dummyContent = [
   {

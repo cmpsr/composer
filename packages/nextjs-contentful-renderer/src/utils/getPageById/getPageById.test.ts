@@ -1,4 +1,4 @@
-import { getPageById } from '.';
+import { getPageById } from './getPageById';
 
 const mockGetPageFromContentful = jest.fn();
 mockGetPageFromContentful.mockResolvedValue(undefined);

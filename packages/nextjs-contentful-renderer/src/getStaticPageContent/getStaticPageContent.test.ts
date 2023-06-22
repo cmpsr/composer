@@ -1,4 +1,4 @@
-import { getStaticPageContent } from '.';
+import { getStaticPageContent } from './getStaticPageContent';
 
 const mockApolloClient = {};
 jest.mock('../utils/getApolloClient', () => ({

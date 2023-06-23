@@ -60,10 +60,14 @@ jobs:
           echo -e "\n"
 
       - name: Generate Branch Name
-        run: echo "BRANCH_NAME=${GITHUB_REF_NAME//\//-}" >> $GITHUB_ENV
+        run: |
+          echo "Branch name ${GITHUB_REF_NAME//\//-}"
+          echo "BRANCH_NAME=${GITHUB_REF_NAME//\//-}" >> $GITHUB_ENV
 
       - name: Create Snapshot version
-        run: yarn changeset version --snapshot ${GITHUB_REF_NAME//\//-}
+        run: yarn changeset version --snapshot ${BRANCH_NAME}
+        env:
+          BRANCH_NAME: ${{ env.BRANCH_NAME }}
 
       - name: Build Packages
         run: yarn build
@@ -75,7 +79,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: yarn changeset publish --tag ${GITHUB_REF_NAME//\//-} --no-git-tag
+          publish: yarn changeset publish --tag ${BRANCH_NAME} --no-git-tag
         env:
           BRANCH_NAME: ${{ env.BRANCH_NAME }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -85,6 +89,7 @@ jobs:
         id: get-canaries
         run: |
           packageVersions=$( echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r -c 'map([.name,.version]) | map(join("@")) | join("\n")' )
+          echo "Package Versions: ${packageVersions} -> ${{ steps.changesets.outputs.publishedPackages }} -> ${ steps.changesets.outputs.publishedPackages }"
           canariesComment=$(echo "Latest Canary Releases for this pull request:\n\n${packageVersions}" )
           echo -e "${canariesComment}" > msg
           export msg=$(cat msg)

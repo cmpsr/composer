@@ -61,15 +61,8 @@ jobs:
           echo "$CHANGESETS"
           echo -e "\n"
 
-      - name: Generate Branch Name
-        run: |
-          echo "Branch name to use: ${GITHUB_REF_NAME//\//-}"
-          echo "BRANCH_NAME=${GITHUB_REF_NAME//\//-}" >> $GITHUB_ENV
-
       - name: Create Snapshot version
-        run: yarn changeset version --snapshot ${BRANCH_NAME}
-        env:
-          BRANCH_NAME: ${{ env.BRANCH_NAME }}
+        run: yarn changeset version --snapshot canary
 
       - name: Build Packages
         run: yarn build
@@ -81,9 +74,8 @@ jobs:
         id: changesets-publish
         uses: changesets/action@v1
         with:
-          publish: yarn changeset publish --tag ${BRANCH_NAME} --no-git-tag --snapshot
+          publish: yarn changeset publish --tag canary --no-git-tag --snapshot
         env:
-          BRANCH_NAME: ${{ env.BRANCH_NAME }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

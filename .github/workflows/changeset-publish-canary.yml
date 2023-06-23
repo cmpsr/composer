@@ -54,11 +54,10 @@ jobs:
         shell: bash
         run: |
           set -eu -o pipefail
-          echo "Grabbing changeset to determine version for canary..."
-          yarn changeset status --since=origin/master
+          echo "Determining packages to be released..."
           CHANGESETS=$(yarn changeset status --since=origin/master | grep "@cmpsr" | cut -d' ' -f4)
           echo -e "\n"
-          for pkg in $(yarn -s turbo run build --filter...[origin/master] --dry=json | grep -v "//" |jq -r .packages[]); do
+          for pkg in $(yarn -s build:affected --dry=json | grep -v "//"  | jq -r '.packages[]'); do
             if grep -q "$CHANGESETS" <<< "$pkg"; then
               echo -e "$pkg has changeset\n"
             else

@@ -17,4 +17,3 @@ export const MdxRenderer: FC<MdxRendererProps> = ({ content = {}, componentMap =
 };
 
 export * from './MarkdownContext';
-export * from './MarkdownContext/types';

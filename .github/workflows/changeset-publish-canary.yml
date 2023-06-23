@@ -90,7 +90,7 @@ jobs:
       - name: Create PR comment with published canary versions
         run: |
           packageVersions=$( echo '${{ steps.changesets-publish.outputs.publishedPackages }}' | jq -r -c 'map([.name,.version]) | map(join("@")) | join("\n")' )
-          echo "Packages published: ${packageVersions} -> ${{ steps.changesets-publish.outputs.publishedPackages }}"
+          echo "Packages published: ${packageVersions} -> ${{ steps.changesets-publish.outputs.publishedPackages }} -> ${{ steps.changesets-publish.outputs.published }}"
           canariesComment=$(echo "Latest Canary Releases for this pull request:\n\n${packageVersions}" )
           echo -e "${canariesComment}" > msg
           export msg=$(cat msg)

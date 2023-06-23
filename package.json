@@ -7,7 +7,6 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "turbo run libbuild",
-    "build:affected": "turbo run libbuild --filter=[origin/master...HEAD]",
     "type:check": "turbo run type:check",
     "type:emit": "turbo run type:emit",
     "build-storybook": "turbo run build-storybook",

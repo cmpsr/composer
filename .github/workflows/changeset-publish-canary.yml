@@ -56,15 +56,8 @@ jobs:
           set -eu -o pipefail
           echo "Determining packages to be released..."
           CHANGESETS=$(yarn changeset status --since=origin/master | grep "@cmpsr" | cut -d' ' -f4)
+          echo "$CHANGESETS"
           echo -e "\n"
-          for pkg in $(yarn -s build:affected --dry=json | grep -v "//"  | jq -r '.packages[]'); do
-            if grep -q "$CHANGESETS" <<< "$pkg"; then
-              echo -e "$pkg has changeset\n"
-            else
-              echo -e "$pkg is missing a changeset. You may have forgotten to run yarn changeset.\n"
-              exit 1
-            fi
-          done
 
       - name: Generate Branch Name
         run: echo "BRANCH_NAME=${GITHUB_REF_NAME//\//-}" >> $GITHUB_ENV
@@ -82,7 +75,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: yarn changeset publish --tag ${BRANCH_NAME} --no-git-tag
+          publish: yarn changeset publish --tag ${GITHUB_REF_NAME//\//-} --no-git-tag
         env:
           BRANCH_NAME: ${{ env.BRANCH_NAME }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

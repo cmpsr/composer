@@ -78,7 +78,6 @@ jobs:
         run: yarn type:emit
 
       - name: Publish Snapshot version
-        id: changesets-publish
         uses: changesets/action@v1
         with:
           publish:  yarn changeset version --snapshot ${BRANCH_NAME}

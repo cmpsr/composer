@@ -78,7 +78,7 @@ jobs:
         run: yarn type:emit
 
       - name: Publish Snapshot version
-        id: changesets
+        id: changesets-publish
         uses: changesets/action@v1
         with:
           publish: yarn changeset publish --tag ${BRANCH_NAME} --no-git-tag
@@ -88,10 +88,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create PR comment with published canary versions
-        id: get-canaries
         run: |
-          packageVersions=$( echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r -c 'map([.name,.version]) | map(join("@")) | join("\n")' )
-          echo "Package Versions: ${packageVersions} -> ${{ steps.changesets.outputs.publishedPackages }}"
+          packageVersions=$( echo '${{ steps.changesets-publish.outputs.publishedPackages }}' | jq -r -c 'map([.name,.version]) | map(join("@")) | join("\n")' )
+          echo "Packages published: ${packageVersions} -> ${{ steps.changesets-publish.outputs.publishedPackages }}"
           canariesComment=$(echo "Latest Canary Releases for this pull request:\n\n${packageVersions}" )
           echo -e "${canariesComment}" > msg
           export msg=$(cat msg)

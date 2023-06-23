@@ -1,4 +1,4 @@
-# What it is
+# What it is ❤️
 
 This is a library to render content from [contentful](https://www.contentful.com) into a [nextjs](https://nextjs.org/) application.
 

@@ -1,5 +1,12 @@
 # @cmpsr/carousel
 
+## 0.3.9-canary-20230623123418
+
+### Patch Changes
+
+- Updated dependencies [646f975]
+  - @cmpsr/components@5.13.1-canary-20230623123418
+
 ## 0.3.8
 
 ## 0.3.7

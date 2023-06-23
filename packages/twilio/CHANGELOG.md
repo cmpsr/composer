@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.2.0-canary-20230623123418
+
+### Minor Changes
+
+- 3ad73dc: Upgrades twilio library to latest version 4.11.2
+
 ## 0.1.7
 
 ### Patch Changes

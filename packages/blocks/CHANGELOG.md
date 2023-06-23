@@ -1,5 +1,12 @@
 # @cmpsr/blocks
 
+## 12.1.6-canary-20230623123418
+
+### Patch Changes
+
+- Updated dependencies [646f975]
+  - @cmpsr/components@5.13.1-canary-20230623123418
+
 ## 12.1.5
 
 ## 12.1.4

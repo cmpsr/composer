@@ -61,9 +61,6 @@ jobs:
           echo "$CHANGESETS"
           echo -e "\n"
 
-      - name: Create Snapshot version
-        run: yarn changeset version --snapshot canary
-
       - name: Build Packages
         run: yarn build
 
@@ -74,6 +71,7 @@ jobs:
         id: changesets-publish
         uses: changesets/action@v1
         with:
+          version: yarn changeset version --snapshot canary
           publish: yarn changeset publish --tag canary --no-git-tag --snapshot
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

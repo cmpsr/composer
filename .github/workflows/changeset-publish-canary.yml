@@ -83,6 +83,7 @@ jobs:
           publish:  yarn changeset version --snapshot ${BRANCH_NAME}
         env:
           BRANCH_NAME: ${{ env.BRANCH_NAME }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish Snapshot publish
         id: changesets-publish

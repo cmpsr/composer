@@ -36,15 +36,17 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
 
       - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "YARN_CACHE_DIR=$(yarn cache dir)" >> $GITHUB_ENV
+
       - uses: actions/cache@v2
         id: yarn-cache
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          path: ${CACHE_DIR}
           key: ${{ runner.os }}-yarn-${{ hashFiles('./yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+        env:
+          YARN_CACHE_DIR: ${{ env.YARN_CACHE_DIR }}
 
       - name: Install modules
         if: steps.yarn-cache.outputs.cache-hit != 'true'
@@ -61,7 +63,7 @@ jobs:
 
       - name: Generate Branch Name
         run: |
-          echo "Branch name ${GITHUB_REF_NAME//\//-}"
+          echo "Branch name to use: ${GITHUB_REF_NAME//\//-}"
           echo "BRANCH_NAME=${GITHUB_REF_NAME//\//-}" >> $GITHUB_ENV
 
       - name: Create Snapshot version
@@ -89,7 +91,7 @@ jobs:
         id: get-canaries
         run: |
           packageVersions=$( echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r -c 'map([.name,.version]) | map(join("@")) | join("\n")' )
-          echo "Package Versions: ${packageVersions} -> ${{ steps.changesets.outputs.publishedPackages }} -> ${ steps.changesets.outputs.publishedPackages }"
+          echo "Package Versions: ${packageVersions} -> ${{ steps.changesets.outputs.publishedPackages }}"
           canariesComment=$(echo "Latest Canary Releases for this pull request:\n\n${packageVersions}" )
           echo -e "${canariesComment}" > msg
           export msg=$(cat msg)

@@ -1,0 +1,17 @@
+name: Delete Draft Releases older than 5 days
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  delete-draft-releases:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete draft releases
+        uses: hugo19941994/delete-draft-releases@v1.0.1
+        with:
+          threshold: 5d
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -77,19 +77,11 @@ jobs:
       - name: Emit Types
         run: yarn type:emit
 
-      - name: Publish Snapshot version
-        uses: changesets/action@v1
-        with:
-          publish:  yarn changeset version --snapshot ${BRANCH_NAME}
-        env:
-          BRANCH_NAME: ${{ env.BRANCH_NAME }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Publish Snapshot publish
         id: changesets-publish
         uses: changesets/action@v1
         with:
-          publish:  yarn changeset publish --tag ${BRANCH_NAME} --no-git-tag
+          publish: yarn changeset publish --tag ${BRANCH_NAME} --no-git-tag
         env:
           BRANCH_NAME: ${{ env.BRANCH_NAME }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

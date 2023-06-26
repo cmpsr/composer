@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 19.9.0
+
+### Minor Changes
+
+- 6008cff: Expose MarkdownProvider/Context via @cmpsr/components
+
 ## 19.8.1
 
 ## 19.8.0

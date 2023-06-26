@@ -38,6 +38,7 @@
     "@chakra-ui/theme-tools": "^2.0.16",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "downshift": "^7.6.0",
     "framer-motion": "^10.12.16"
   },
   "devDependencies": {

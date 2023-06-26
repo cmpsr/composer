@@ -62,12 +62,7 @@ const AllTemplate = () => {
                     size={size}
                     placeholder={state}
                     {...{
-                      ...(state === 'disabled' && {
-                        isDisabled: true,
-                      }),
-                    }}
-                    {...{
-                      ...(state === 'disabled-and-filled' && {
+                      ...((state === 'disabled' || state === 'disabled-and-filled') && {
                         isDisabled: true,
                       }),
                     }}

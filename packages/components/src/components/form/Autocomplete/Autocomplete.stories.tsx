@@ -52,7 +52,7 @@ const AllTemplate = () => {
                     setItems(defaultItems.filter((item) => item.toLowerCase().includes(inputValue)));
                   }}
                   {...{
-                    ...(state === 'filled' && {
+                    ...((state === 'filled' || state === 'disabled-and-filled') && {
                       defaultInputValue: items[0],
                       defaultSelectedItem: items[0],
                     }),
@@ -69,7 +69,6 @@ const AllTemplate = () => {
                     {...{
                       ...(state === 'disabled-and-filled' && {
                         isDisabled: true,
-                        value: 'Filled',
                       }),
                     }}
                     {...{

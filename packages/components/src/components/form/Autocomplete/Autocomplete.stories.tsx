@@ -118,7 +118,7 @@ const Template = (args) => {
         setItems(defaultItems.filter((item) => item.toLowerCase().includes(inputValue)));
       }}
     >
-      <Autocomplete.Input placeholder={args.placeholder} showClearButton={args.showClearButton} />
+      <Autocomplete.Input placeholder={args.placeholder} showClearButton={args.showClearButton} size={args.size} />
       <Autocomplete.List renderItem={(item) => <div>{item}</div>} />
     </Autocomplete>
   );

@@ -27,7 +27,6 @@ const defaultItems = [
 ];
 
 const AllTemplate = () => {
-  const [items, setItems] = useState(defaultItems);
   const states = ['default', 'leadingIcon', 'trailingIcon', 'filled', 'disabled', 'disabled-and-filled', 'error'];
   return (
     <Table variant="simple">
@@ -45,55 +44,54 @@ const AllTemplate = () => {
             <Td>{state}</Td>
             {autocompleteSizes.map((size, i) => (
               <Td key={`${size}-${i}-${state}`}>
-                <Autocomplete
-                  items={items}
-                  onInputValueChange={({ inputValue }) => {
-                    if (!inputValue) setItems(defaultItems);
-                    setItems(defaultItems.filter((item) => item.toLowerCase().includes(inputValue)));
-                  }}
-                  {...{
-                    ...((state === 'filled' || state === 'disabled-and-filled') && {
-                      defaultInputValue: items[0],
-                      defaultSelectedItem: items[0],
-                    }),
-                  }}
-                >
-                  <Autocomplete.Input
-                    size={size}
-                    placeholder={state}
-                    {...{
-                      ...((state === 'disabled' || state === 'disabled-and-filled') && {
-                        isDisabled: true,
-                      }),
-                    }}
-                    {...{
-                      ...(state === 'error' && {
-                        isInvalid: true,
-                      }),
-                    }}
-                    {...{
-                      ...(state === 'leadingIcon' && {
-                        leadingIcon: <IconCloud />,
-                      }),
-                    }}
-                    {...{
-                      ...(state === 'trailingIcon' && {
-                        trailingIcon: <IconCloud />,
-                      }),
-                    }}
-                    {...{
-                      ...(state === 'filled' && {
-                        showClearButton: true,
-                      }),
-                    }}
-                    {...{
-                      ...(state === 'error' && {
-                        isInvalid: true,
-                      }),
-                    }}
-                  />
-                  <Autocomplete.List renderItem={(item) => <div>{item}</div>} />
-                </Autocomplete>
+                <AutocompleteWrapper initialState={defaultItems}>
+                  {(items, setItems) => (
+                    <Autocomplete
+                      items={items}
+                      onInputValueChange={({ inputValue }) => {
+                        if (!inputValue) setItems(defaultItems);
+                        setItems(defaultItems.filter((item) => item.toLowerCase().includes(inputValue)));
+                      }}
+                      {...{
+                        ...((state === 'filled' || state === 'disabled-and-filled') && {
+                          defaultInputValue: items[0],
+                          defaultSelectedItem: items[0],
+                        }),
+                      }}
+                    >
+                      <Autocomplete.Input
+                        size={size}
+                        placeholder={state}
+                        {...{
+                          ...((state === 'disabled' || state === 'disabled-and-filled') && {
+                            isDisabled: true,
+                          }),
+                        }}
+                        {...{
+                          ...(state === 'error' && {
+                            isInvalid: true,
+                          }),
+                        }}
+                        {...{
+                          ...(state === 'leadingIcon' && {
+                            leadingIcon: <IconCloud />,
+                          }),
+                        }}
+                        {...{
+                          ...(state === 'trailingIcon' && {
+                            trailingIcon: <IconCloud />,
+                          }),
+                        }}
+                        {...{
+                          ...(state === 'filled' && {
+                            showClearButton: true,
+                          }),
+                        }}
+                      />
+                      <Autocomplete.List renderItem={(item) => <div>{item}</div>} />
+                    </Autocomplete>
+                  )}
+                </AutocompleteWrapper>
               </Td>
             ))}
           </Tr>
@@ -101,6 +99,11 @@ const AllTemplate = () => {
       </Tbody>
     </Table>
   );
+};
+
+const AutocompleteWrapper = ({ initialState, children }) => {
+  const [items, setItems] = useState(initialState);
+  return children(items, setItems);
 };
 
 export const All = AllTemplate.bind({});

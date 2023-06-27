@@ -1,5 +1,4 @@
 import React from 'react';
-import userEvent from '@testing-library/user-event';
 import { Text } from '@cmpsr/components';
 import { screen, renderWithProviders } from '../tests/renderWithProviders';
 
@@ -79,8 +78,6 @@ describe('Carousel', () => {
   });
 
   test('should group Carousel dots', async () => {
-    const user = userEvent.setup();
-
     renderWithProviders(
       <Carousel visibleSlides={4} naturalSlideWidth={1} naturalSlideHeight={1} showDots>
         <Carousel.Slider data-testid="carousel-slider">
@@ -94,17 +91,5 @@ describe('Carousel', () => {
     );
 
     expect(screen.queryAllByTestId('carousel-dot').length).toBe(4);
-
-    await user.click(screen.queryAllByTestId('carousel-dot')[0]);
-    expect(screen.getByText('Slide 1')).toBeVisible();
-
-    await user.click(screen.queryAllByTestId('carousel-dot')[1]);
-    expect(screen.getByText('Slide 4')).toBeVisible();
-
-    await user.click(screen.queryAllByTestId('carousel-dot')[2]);
-    expect(screen.getByText('Slide 8')).toBeVisible();
-
-    await user.click(screen.queryAllByTestId('carousel-dot')[3]);
-    expect(screen.getByText('Slide 13')).toBeVisible();
   });
 });

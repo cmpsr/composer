@@ -10,7 +10,7 @@ import {
   SlideProps,
 } from './types';
 
-export const Carousel: CarouselProps = ({ children, showDots = true, showArrows = false, ...props }) => {
+export const Carousel: CarouselProps = ({ children, showDots = true, showArrows = false, visibleSlides, ...props }) => {
   const [totalSlides] = Children.map(children, (child) => {
     if (isValidElement(child) && child.type === Carousel.Slider) {
       return Children.count(child.props.children) as number;
@@ -18,22 +18,27 @@ export const Carousel: CarouselProps = ({ children, showDots = true, showArrows 
   });
   if (!totalSlides) return;
 
-  const renderDots = (totalSlides: number) => {
+  const renderDots = (totalSlides: number, visibleSlides: number) => {
     const carouselDots: ReactNode[] = [];
-    for (let i = 0; i < totalSlides; i++) {
-      carouselDots.push(<Carousel.Dot key={i} slide={i} />);
+    const hasRemainder = totalSlides % visibleSlides > 0;
+    const totalSlideGroups = Math.floor(totalSlides / visibleSlides) + (hasRemainder ? 1 : 0);
+
+    for (let i = 0; i < totalSlideGroups; i++) {
+      const slide = i * visibleSlides;
+      carouselDots.push(<Carousel.Dot key={slide} slide={slide} data-test-slide={slide} data-testid="carousel-dot" />);
     }
+
     return carouselDots;
   };
 
   return (
-    <CarouselProvider totalSlides={totalSlides} {...props}>
+    <CarouselProvider totalSlides={totalSlides} visibleSlides={visibleSlides} {...props}>
       <>
         {children}
         {(showDots || showArrows) && (
           <Carousel.NavigationContainer>
             {showArrows && <Carousel.ButtonBack />}
-            {showDots && renderDots(totalSlides)}
+            {showDots && renderDots(totalSlides, visibleSlides)}
             {showArrows && <Carousel.ButtonNext />}
           </Carousel.NavigationContainer>
         )}
@@ -61,6 +66,7 @@ const carouselArrowStyles = {
 const CarouselButtonBack: CarouselButtonProps = (props) => (
   <IconButton
     aria-label="back"
+    data-testid="carousel-button-back"
     as={ButtonBack}
     icon={<IconChevronLeft {...carouselArrowStyles} />}
     {...carouselButtonStyles}
@@ -71,6 +77,7 @@ const CarouselButtonBack: CarouselButtonProps = (props) => (
 const CarouselButtonNext: CarouselButtonProps = (props) => (
   <IconButton
     aria-label="next"
+    data-testid="carousel-button-next"
     as={ButtonNext}
     icon={<IconChevronRight {...carouselArrowStyles} />}
     {...carouselButtonStyles}

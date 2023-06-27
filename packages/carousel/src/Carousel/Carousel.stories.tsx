@@ -33,7 +33,7 @@ const Template = ({ totalSlides, visibleSlides, step, showArrows }) => (
             <Carousel.Slide index={index} key={index}>
               <Card outlined>
                 <TextPairing>
-                  <TextPairing.Label>Testimonial {index}</TextPairing.Label>
+                  <TextPairing.Label>Testimonial {index + 1}</TextPairing.Label>
                   <TextPairing.SubLabel>
                     Working with this company has been a game-changer for our business. Their solutions are fast and
                     effective, and they always exceed our expectations.

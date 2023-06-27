@@ -50,7 +50,7 @@ const AllTemplate = () => {
                       items={items}
                       onInputValueChange={({ inputValue }) => {
                         if (!inputValue) setItems(defaultItems);
-                        setItems(defaultItems.filter((item) => item.toLowerCase().includes(inputValue)));
+                        setItems(defaultItems.filter((item) => item.includes(inputValue)));
                       }}
                       {...{
                         ...((state === 'filled' || state === 'disabled-and-filled') && {
@@ -110,12 +110,13 @@ export const All = AllTemplate.bind({});
 
 const Template = (args) => {
   const [items, setItems] = useState(defaultItems);
+  console.log(items);
   return (
     <Autocomplete
       items={items}
       onInputValueChange={({ inputValue }) => {
         if (!inputValue) setItems(defaultItems);
-        setItems(defaultItems.filter((item) => item.toLowerCase().includes(inputValue)));
+        setItems(defaultItems.filter((item) => item.includes(inputValue)));
       }}
     >
       <Autocomplete.Input placeholder={args.placeholder} showClearButton={args.showClearButton} size={args.size} />

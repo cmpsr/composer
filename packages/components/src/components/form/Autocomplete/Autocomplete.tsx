@@ -1,16 +1,20 @@
 import React, { FC } from 'react';
-import { UseComboboxActions, UseComboboxPropGetters, UseComboboxProps, useCombobox } from 'downshift';
+import { useCombobox } from 'downshift';
 import { createContext } from '@chakra-ui/react-utils';
 import { RecursiveCSSObject, StyleProps, useStyleConfig } from '@chakra-ui/react';
 import { IconX } from '../../media';
 import { Box } from '../../layouts/Box';
 import { Input } from '../Input';
 import { Text } from '../../typography';
-import { AutocompleteProps, AutocompleteStaticMembers, AutocompleteInputProps, AutocompleteListProps } from './types';
+import {
+  AutocompleteProps,
+  AutocompleteInputProps,
+  AutocompleteListProps,
+  AutocompleteStaticMembers,
+  AutocompleteContextProps,
+} from './types';
 
-const [AutocompleteProvider, useAutocompleteContext] = createContext<
-  Partial<UseComboboxProps<any>> & Partial<UseComboboxPropGetters<any>> & Partial<UseComboboxActions<any>>
->({});
+const [AutocompleteProvider, useAutocompleteContext] = createContext<AutocompleteContextProps>({});
 
 export const Autocomplete: FC<AutocompleteProps> & AutocompleteStaticMembers = ({
   children,
@@ -59,7 +63,7 @@ const AutocompleteList: FC<AutocompleteListProps> = ({ noResultsContent, renderI
   return (
     <Box as="ul" visibility={isOpen ? 'visible' : 'hidden'} {...styles.list} {...getMenuProps()} {...rest}>
       {isOpen && items.length
-        ? items.map((item: any, index: number) => (
+        ? items.map((item, index: number) => (
             <Box
               as="li"
               key={index}

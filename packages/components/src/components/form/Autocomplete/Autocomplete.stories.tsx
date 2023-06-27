@@ -45,7 +45,7 @@ const AllTemplate = () => {
             {autocompleteSizes.map((size, i) => (
               <Td key={`${size}-${i}-${state}`}>
                 <AutocompleteWrapper initialState={defaultItems}>
-                  {(items, setItems) => (
+                  {(items: string[], setItems) => (
                     <Autocomplete
                       items={items}
                       onInputValueChange={({ inputValue }) => {
@@ -88,7 +88,7 @@ const AllTemplate = () => {
                           }),
                         }}
                       />
-                      <Autocomplete.List renderItem={(item) => <div>{item}</div>} />
+                      <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
                     </Autocomplete>
                   )}
                 </AutocompleteWrapper>
@@ -110,7 +110,7 @@ export const All = AllTemplate.bind({});
 
 const Template = (args) => {
   const [items, setItems] = useState(defaultItems);
-  console.log(items);
+
   return (
     <Autocomplete
       items={items}
@@ -120,7 +120,7 @@ const Template = (args) => {
       }}
     >
       <Autocomplete.Input placeholder={args.placeholder} showClearButton={args.showClearButton} size={args.size} />
-      <Autocomplete.List renderItem={(item) => <div>{item}</div>} />
+      <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
     </Autocomplete>
   );
 };

@@ -4,6 +4,7 @@ import {
   Input as ChakraInput,
   InputGroup as ChakraInputGroup,
   InputLeftElement as ChakraInputLeftElement,
+  InputRightElement as ChakraInputRightElement,
   InputLeftAddon as ChakraInputLeftAddon,
   InputRightAddon as ChakraInputRightAddon,
   useMultiStyleConfig,
@@ -14,7 +15,7 @@ import {
 import { InputProps } from './types';
 
 export const Input = forwardRef<InputProps, typeof ChakraInput>(
-  ({ leadingIcon: LeadingIcon, leftLabel, rightLabel, ...props }, ref) => {
+  ({ leadingIcon: LeadingIcon, trailingIcon: TrailingIcon, leftLabel, rightLabel, ...props }, ref) => {
     const [isFocused, setFocused] = useState(false);
     const [isHovered, setHovered] = useState(false);
     const [hasContent, setHasContent] = useState(false);
@@ -43,6 +44,7 @@ export const Input = forwardRef<InputProps, typeof ChakraInput>(
       rightLabel: InputAddonProps;
     };
     const showLeadingIcon = LeadingIcon && !leftLabel;
+    const showTrailingIcon = TrailingIcon && !rightLabel;
 
     return (
       <ChakraInputGroup {...inputGroupStyles} data-testid="cmpsr.input-group">
@@ -85,6 +87,15 @@ export const Input = forwardRef<InputProps, typeof ChakraInput>(
           }}
         />
         {rightLabel && <ChakraInputRightAddon {...rightLabelStyle} children={rightLabel} />}
+        {showTrailingIcon && (
+          <ChakraInputRightElement
+            {...elementContainer}
+            children={cloneElement(TrailingIcon, {
+              size: props.size === 'l' ? 'l' : 'm',
+              ...element,
+            })}
+          />
+        )}
       </ChakraInputGroup>
     );
   }

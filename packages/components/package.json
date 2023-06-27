@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "5.13.0",
+  "version": "5.13.1",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -38,6 +38,7 @@
     "@chakra-ui/theme-tools": "^2.0.16",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "downshift": "^7.6.0",
     "framer-motion": "^10.12.16"
   },
   "devDependencies": {

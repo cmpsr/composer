@@ -11,6 +11,7 @@ export interface InputProps extends ChakraInputProps {
   variant?: InputVariant;
   size?: InputSize;
   leadingIcon?: ReactElement;
+  trailingIcon?: ReactElement;
   leftLabel?: string;
   rightLabel?: string;
 }

@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.13.1
+
+### Patch Changes
+
+- 646f975: feat: add with icons story to Dropdown
+
 ## 5.13.0
 
 ### Minor Changes

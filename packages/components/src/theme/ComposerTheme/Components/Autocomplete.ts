@@ -1,6 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 export const Autocomplete: ComponentStyleConfig = {
+  parts: ['list', 'item', 'noResults'],
   baseStyle: {
     list: {
       zIndex: 1,
@@ -25,13 +26,13 @@ export const Autocomplete: ComponentStyleConfig = {
       _hover: {
         backgroundColor: 'background-action-hover',
       },
-    },
-    activeItem: {
-      backgroundColor: 'background-action-active',
-      textStyle: 'text-body-medium',
-    },
-    highlightedItem: {
-      backgroundColor: 'background-action-hover',
+      active: {
+        backgroundColor: 'background-action-active',
+        textStyle: 'text-body-medium',
+      },
+      highlighted: {
+        backgroundColor: 'background-action-hover',
+      },
     },
     noResults: {
       color: 'text-secondary',

@@ -50,7 +50,10 @@ Autocomplete.Input = AutocompleteInput;
 
 const AutocompleteList: FC<AutocompleteListProps> = ({ noResultsContent, renderItem, ...rest }) => {
   const { isOpen, items, selectedItem, highlightedIndex, getItemProps, getMenuProps } = useAutocompleteContext();
-  const styles = useStyleConfig('Autocomplete') as Record<string, RecursiveCSSObject<StyleProps>>;
+  const styles = useStyleConfig('Autocomplete') as Record<
+    string,
+    RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>
+  >;
   const noResults = noResultsContent ?? <Text {...styles.noResults}>No results</Text>;
 
   return (
@@ -62,10 +65,10 @@ const AutocompleteList: FC<AutocompleteListProps> = ({ noResultsContent, renderI
               key={index}
               {...styles.item}
               {...(item === selectedItem && {
-                ...styles.activeItem,
+                ...styles.item.active,
               })}
               {...(highlightedIndex === index && {
-                ...styles.highlightedItem,
+                ...styles.item.highlighted,
               })}
               {...getItemProps({ index, item })}
             >

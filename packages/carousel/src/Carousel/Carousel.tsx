@@ -20,8 +20,7 @@ export const Carousel: CarouselProps = ({ children, showDots = true, showArrows 
 
   const renderDots = (totalSlides: number, visibleSlides: number) => {
     const carouselDots: ReactNode[] = [];
-    const hasRemainder = totalSlides % visibleSlides > 0;
-    const totalSlideGroups = Math.floor(totalSlides / visibleSlides) + (hasRemainder ? 1 : 0);
+    const totalSlideGroups = Math.ceil(totalSlides / visibleSlides);
 
     for (let i = 0; i < totalSlideGroups; i++) {
       const slide = i * visibleSlides;

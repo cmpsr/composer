@@ -24,7 +24,7 @@ export const Carousel: CarouselProps = ({ children, showDots = true, showArrows 
 
     for (let i = 0; i < totalSlideGroups; i++) {
       const slide = i * visibleSlides;
-      carouselDots.push(<Carousel.Dot key={slide} slide={slide} data-test-slide={slide} data-testid="carousel-dot" />);
+      carouselDots.push(<Carousel.Dot key={slide} slide={slide} data-testid="carousel-dot" />);
     }
 
     return carouselDots;

@@ -18,6 +18,7 @@ export interface RouteVariant {
 
 export interface Route {
   id: string;
+  lastmod?: string;
   slug: string;
   variants: RouteVariant[];
 }

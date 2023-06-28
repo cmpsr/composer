@@ -12,11 +12,16 @@ export const IconButton: ComponentStyleConfig = {
     const buttonStyles = theme.components.Button;
     const buttonVariant = buttonStyles.variants[variant];
     const buttonLoadingStyles = buttonVariant.loading;
+    const borderRadius = isRound ? 'full' : '0.375rem';
 
     return {
-      borderRadius: isRound ? 'full' : '0.375rem',
+      borderRadius,
       loading: {
         ...buttonLoadingStyles,
+      },
+      _before: {
+        ...buttonVariant._before,
+        borderRadius,
       },
     };
   },

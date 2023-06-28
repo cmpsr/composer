@@ -37,7 +37,7 @@ describe('Carousel', () => {
       </Carousel>
     );
 
-    expect(screen.queryAllByTestId('carousel-dot').length).toBe(1);
+    expect(screen.queryAllByRole('button', { name: 'slide dot' }).length).toBe(1);
   });
 
   test('should render Carousel with arrows', () => {
@@ -72,7 +72,7 @@ describe('Carousel', () => {
       </Carousel>
     );
 
-    expect(screen.queryAllByTestId('carousel-dot').length).toBe(2);
+    expect(screen.queryAllByRole('button', { name: 'slide dot' }).length).toBe(2);
     expect(screen.getByLabelText('back')).toBeInTheDocument();
     expect(screen.getByLabelText('next')).toBeInTheDocument();
   });
@@ -90,6 +90,6 @@ describe('Carousel', () => {
       </Carousel>
     );
 
-    expect(screen.queryAllByTestId('carousel-dot').length).toBe(4);
+    expect(screen.queryAllByRole('button', { name: 'slide dot' }).length).toBe(4);
   });
 });

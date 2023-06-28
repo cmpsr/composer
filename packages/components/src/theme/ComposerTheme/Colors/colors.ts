@@ -67,6 +67,7 @@ export const defaultColors = {
   'text-button-primary': '#FFFFFF',
   'text-button-secondary': '#FFFFFF',
   'text-button-alert': '#FFFFFF',
+  'text-button-ghost': '#222222',
   'text-badge-solid': '#FFFFFF',
   'text-badge-outline': '#4F4FFF',
   'text-badge-subtle': '#4F4FFF',

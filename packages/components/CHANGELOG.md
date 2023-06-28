@@ -1,5 +1,15 @@
 # @cmpsr/components
 
+## 5.14.0
+
+### Minor Changes
+
+- bed1c63: feat: create Autocomplete component and update Input to accept trailingIcon
+
+### Patch Changes
+
+- 15fdc77: feat: remove hardcoded font family
+
 ## 5.13.1
 
 ### Patch Changes

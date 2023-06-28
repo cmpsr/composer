@@ -54,8 +54,8 @@ describe('Carousel', () => {
       </Carousel>
     );
 
-    expect(screen.getByTestId('carousel-button-back')).toBeInTheDocument();
-    expect(screen.getByTestId('carousel-button-next')).toBeInTheDocument();
+    expect(screen.getByLabelText('back')).toBeInTheDocument();
+    expect(screen.getByLabelText('next')).toBeInTheDocument();
   });
 
   test('should render Carousel with arrows and dots', () => {
@@ -73,8 +73,8 @@ describe('Carousel', () => {
     );
 
     expect(screen.queryAllByTestId('carousel-dot').length).toBe(2);
-    expect(screen.getByTestId('carousel-button-back')).toBeInTheDocument();
-    expect(screen.getByTestId('carousel-button-next')).toBeInTheDocument();
+    expect(screen.getByLabelText('back')).toBeInTheDocument();
+    expect(screen.getByLabelText('next')).toBeInTheDocument();
   });
 
   test('should group Carousel dots', async () => {

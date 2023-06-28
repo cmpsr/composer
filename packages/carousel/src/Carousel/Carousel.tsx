@@ -71,7 +71,6 @@ const carouselArrowStyles = {
 const CarouselButtonBack: CarouselButtonProps = (props) => (
   <IconButton
     aria-label="back"
-    data-testid="carousel-button-back"
     as={ButtonBack}
     icon={<IconChevronLeft {...carouselArrowStyles} />}
     {...carouselButtonStyles}
@@ -82,7 +81,6 @@ const CarouselButtonBack: CarouselButtonProps = (props) => (
 const CarouselButtonNext: CarouselButtonProps = (props) => (
   <IconButton
     aria-label="next"
-    data-testid="carousel-button-next"
     as={ButtonNext}
     icon={<IconChevronRight {...carouselArrowStyles} />}
     {...carouselButtonStyles}

@@ -1,11 +1,4 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
-import { transparentize } from '@chakra-ui/theme-tools';
-
-const _disabled = {
-  opacity: 1,
-  cursor: 'not-allowed',
-  backgroundColor: 'background-action-disabled',
-};
 
 export const IconButton: ComponentStyleConfig = {
   baseStyle: ({ isRound, theme, variant }) => {
@@ -60,30 +53,6 @@ export const IconButton: ComponentStyleConfig = {
         width: '1rem',
         height: '1rem',
         padding: 0,
-      },
-    },
-  },
-  variants: {
-    ghost: {
-      backgroundColor: 'background-action-default',
-      color: 'text-link-secondary-default',
-      loading: {
-        ..._disabled,
-        borderColor: 'text-link-secondary-default',
-        borderBottomColor: transparentize('text-link-secondary-default', 0.3),
-        borderLeftColor: transparentize('text-link-secondary-default', 0.3),
-      },
-      _disabled,
-      _focus: {
-        boxShadow: `0 0 0 0.1875rem var(--chakra-colors-primary-focus)`,
-        backgroundColor: 'background-action-hover',
-        color: 'text-link-secondary-hover',
-        _disabled,
-      },
-      _hover: {
-        backgroundColor: 'background-action-hover',
-        color: 'text-link-secondary-hover',
-        _disabled,
       },
     },
   },

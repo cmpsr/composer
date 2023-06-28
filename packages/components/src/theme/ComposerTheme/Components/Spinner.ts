@@ -37,6 +37,11 @@ export const Spinner: ComponentStyleConfig = {
       borderLeftColor: transparentize('primary-default', 0.3),
       borderBottomColor: transparentize('primary-default', 0.3),
     },
+    ghost: {
+      borderColor: 'text-button-ghost',
+      borderLeftColor: transparentize('text-button-ghost', 0.3),
+      borderBottomColor: transparentize('text-button-ghost', 0.3),
+    },
   },
   defaultProps: {
     size: 's',

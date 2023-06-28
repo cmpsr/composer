@@ -12,7 +12,6 @@ export const textStyles = {
       base: '3.75rem',
     },
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-header-3XL': {
     color: 'text-primary',
@@ -27,7 +26,6 @@ export const textStyles = {
       base: '3rem',
     },
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-header-2XL': {
     color: 'text-primary',
@@ -42,7 +40,6 @@ export const textStyles = {
       base: '2.75rem',
     },
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-header-XL': {
     color: 'text-primary',
@@ -57,7 +54,6 @@ export const textStyles = {
       base: '2.5rem',
     },
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-header-L': {
     color: 'text-primary',
@@ -69,7 +65,6 @@ export const textStyles = {
       base: '2rem',
     },
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-header-M': {
     color: 'text-primary',
@@ -78,7 +73,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.5rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-header-S': {
     color: 'text-primary',
@@ -87,7 +81,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.25rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-header-XS': {
     color: 'text-primary',
@@ -99,7 +92,6 @@ export const textStyles = {
       base: '1.25rem',
     },
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-display-2XL': {
     color: 'text-primary',
@@ -108,7 +100,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '4.5rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-display-XL': {
     color: 'text-primary',
@@ -117,7 +108,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '3.5rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-display-L': {
     color: 'text-primary',
@@ -126,7 +116,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '2.75rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-display-M': {
     color: 'text-primary',
@@ -135,7 +124,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '2.25rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-display-S': {
     color: 'text-primary',
@@ -144,7 +132,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.875rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-display-XS': {
     color: 'text-primary',
@@ -153,7 +140,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.875rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-large-regular': {
     color: 'text-primary',
@@ -162,7 +148,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.75rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-large-medium': {
     color: 'text-primary',
@@ -171,7 +156,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.75rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-large-bold': {
     color: 'text-primary',
@@ -180,7 +164,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.75rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-regular': {
     color: 'text-primary',
@@ -189,7 +172,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.5rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-medium': {
     color: 'text-primary',
@@ -198,7 +180,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.5rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-bold': {
     color: 'text-primary',
@@ -207,7 +188,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.5rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-meta-regular': {
     color: 'text-primary',
@@ -216,7 +196,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.25rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-meta-medium': {
     color: 'text-primary',
@@ -225,7 +204,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.25rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-floating-label-regular': {
     color: 'text-primary',
@@ -234,7 +212,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.125rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-floating-label-medium': {
     color: 'text-primary',
@@ -243,7 +220,6 @@ export const textStyles = {
     letterSpacing: '0.019rem',
     lineHeight: '1rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-floating-label-bold': {
     color: 'text-primary',
@@ -252,7 +228,6 @@ export const textStyles = {
     letterSpacing: '0.038rem',
     lineHeight: '1rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-body-meta-bold': {
     color: 'text-primary',
@@ -261,7 +236,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.25rem',
     textDecoration: 'none',
-    fontFamily: 'Inter',
   },
   'text-link-body-large': {
     color: 'text-link-accent-default',
@@ -270,7 +244,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '2.25rem',
     textDecoration: 'underline',
-    fontFamily: 'Inter',
   },
   'text-link-body-medium': {
     color: 'text-link-accent-default',
@@ -279,7 +252,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.5rem',
     textDecoration: 'underline',
-    fontFamily: 'Inter',
   },
   'text-link-body-small': {
     color: 'text-link-accent-default',
@@ -288,7 +260,6 @@ export const textStyles = {
     letterSpacing: '0rem',
     lineHeight: '1.25rem',
     textDecoration: 'underline',
-    fontFamily: 'Inter',
   },
 };
 

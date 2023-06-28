@@ -10,7 +10,13 @@ import {
   SlideProps,
 } from './types';
 
-export const Carousel: CarouselProps = ({ children, showDots = true, showArrows = false, visibleSlides, ...props }) => {
+export const Carousel: CarouselProps = ({
+  children,
+  showDots = true,
+  showArrows = false,
+  visibleSlides = 1,
+  ...props
+}) => {
   const [totalSlides] = Children.map(children, (child) => {
     if (isValidElement(child) && child.type === Carousel.Slider) {
       return Children.count(child.props.children) as number;

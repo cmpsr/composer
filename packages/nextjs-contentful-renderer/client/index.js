@@ -1,1 +1,1 @@
-module.exports = require('../lib/MdxRenderer');
+module.exports = require('../lib/client');

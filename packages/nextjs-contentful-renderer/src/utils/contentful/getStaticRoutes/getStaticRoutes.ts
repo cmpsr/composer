@@ -13,6 +13,7 @@ export const getStaticRoutes = async (
           items {
             sys {
               id
+              publishedAt
             }
             id
             slug
@@ -25,6 +26,15 @@ export const getStaticRoutes = async (
             }
             id
             slug
+            variantsCollection(limit: 1) {
+              items {
+                page {
+                  sys {
+                    publishedAt
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -35,9 +45,18 @@ export const getStaticRoutes = async (
     },
   });
 
-  return [...(data?.routes?.items ?? []), ...(data?.replicas?.items ?? [])].map(({ id, slug }) => ({
-    id,
-    slug,
-    variants: [],
-  }));
+  return [
+    ...(data?.routes?.items ?? []).map(({ id, slug, variantsCollection }) => ({
+      id,
+      lastmod: variantsCollection?.items?.[0]?.page?.sys?.publishedAt ?? null,
+      slug,
+      variants: [],
+    })),
+    ...(data?.replicas?.items ?? []).map(({ id, slug, sys }) => ({
+      id,
+      lastmod: sys?.publishedAt ?? null,
+      slug,
+      variants: [],
+    })),
+  ];
 };

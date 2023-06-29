@@ -15,5 +15,3 @@ export const MdxRenderer: FC<MdxRendererProps> = ({ content = {}, componentMap =
 
   return !isClient ? null : <MdxComponent components={{ ...components, ...componentMap }} />;
 };
-
-export * from './MarkdownContext';

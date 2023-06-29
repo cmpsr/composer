@@ -1,7 +1,7 @@
 import omit from 'lodash/omit';
-import { getStaticRoutes } from './getStaticRoutes';
+import { getDynamicRoutes } from './getDynamicRoutes';
 
-describe('getStaticRoutes', () => {
+describe('getDynamicRoutes', () => {
   const mockQuery = jest.fn();
   const fakeResponse = {
     data: {
@@ -64,7 +64,7 @@ describe('getStaticRoutes', () => {
   const domain = 'domain';
 
   test('should query apollo to retrieve data', async () => {
-    await getStaticRoutes(mockApolloClient, preview, domain);
+    await getDynamicRoutes(mockApolloClient, preview, domain);
     expect(mockQuery).toBeCalledTimes(1);
     expect(mockQuery).toBeCalledWith({
       query: expect.anything(),
@@ -77,12 +77,12 @@ describe('getStaticRoutes', () => {
   [{}, { data: {} }, { data: { routes: {} } }].forEach((value) => {
     test(`should return empty array for empty result: ${JSON.stringify(value)}`, async () => {
       mockQuery.mockResolvedValueOnce(value);
-      const routes = await getStaticRoutes(mockApolloClient, preview, domain);
+      const routes = await getDynamicRoutes(mockApolloClient, preview, domain);
       expect(routes).toStrictEqual([]);
     });
   });
   test('should return id, lastmod, slug and empty variants', async () => {
-    const routes = await getStaticRoutes(mockApolloClient, preview, domain);
+    const routes = await getDynamicRoutes(mockApolloClient, preview, domain);
     expect(routes).toStrictEqual(
       fakeResponse.data.routes.items.map((item) => ({
         ...omit(item, ['variantsCollection']),
@@ -90,52 +90,5 @@ describe('getStaticRoutes', () => {
         variants: [],
       }))
     );
-  });
-  test('should include replica slugs in results', async () => {
-    const fakeReplicaResponse = {
-      data: {
-        ...fakeResponse.data,
-        replicas: {
-          items: [
-            {
-              id: 'replica_id_1',
-              slug: 'replica_slug_1',
-              sys: {
-                publishedAt: '2023-06-28T15:46:50.518Z',
-              },
-            },
-            {
-              id: 'replica_id_2',
-              slug: 'replica_slug_2',
-              sys: {
-                publishedAt: '2023-06-28T15:46:50.518Z',
-              },
-            },
-            {
-              id: 'replica_id_3',
-              slug: 'replica_slug_3',
-              sys: {
-                publishedAt: '2023-06-28T15:46:50.518Z',
-              },
-            },
-          ],
-        },
-      },
-    };
-
-    mockQuery.mockResolvedValueOnce(fakeReplicaResponse);
-    const routes = await getStaticRoutes(mockApolloClient, preview, domain);
-    expect(routes).toStrictEqual([
-      ...fakeReplicaResponse.data.routes.items.map((item) => ({
-        ...omit(item, ['variantsCollection']),
-        lastmod: item.variantsCollection.items[0].page.sys.publishedAt,
-        variants: [],
-      })),
-      ...fakeReplicaResponse.data.replicas.items.map((item) => ({
-        ...omit(item, ['sys']),
-        lastmod: item.sys.publishedAt,
-        variants: [],
-      })),
-    ]);
   });
 });

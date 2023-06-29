@@ -1,7 +1,7 @@
-import { getDynamicRoutes } from '../getDynamicRoutes';
-import { getStaticRoutes } from '../getStaticRoutes';
 import { GetServerSideProps } from 'next';
 import { getServerSideSitemapLegacy } from 'next-sitemap';
+import { getDynamicRoutes } from '../getDynamicRoutes';
+import { getStaticRoutes } from '../getStaticRoutes';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const staticRoutes = await getStaticRoutes(process.env.SITE_DOMAIN, process.env.CONTENTFUL_PREVIEW === 'true');
@@ -15,6 +15,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return getServerSideSitemapLegacy(ctx, fields);
 };
 
-export default function Sitemap() {
+export function Sitemap() {
   // do nothing
 }

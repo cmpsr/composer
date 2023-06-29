@@ -1,2 +1,1 @@
-module.exports = require('../lib/MdxRenderer');
-module.exports.Sitemap = require('../lib/Sitemap');
+module.exports = require('../lib/client');

@@ -155,7 +155,7 @@ export const Chat = ({ userId, channel, floating = true, ...flexProps }: ChatPro
                   onClick={sendMessage}
                   mr="10px"
                   height="100%"
-                  variant="ghost"
+                  variant="transparent"
                   size="l"
                   aria-label="send message"
                   backgroundColor="transparent"

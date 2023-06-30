@@ -20,7 +20,13 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
 
   return showBaseNavigation ? (
     <>
-      <IconButton icon={<IconMenu2 />} aria-label="Hamburger menu button" variant="ghost" size="l" onClick={onOpen} />
+      <IconButton
+        icon={<IconMenu2 />}
+        aria-label="Hamburger menu button"
+        variant="transparent"
+        size="l"
+        onClick={onOpen}
+      />
       {image}
       {isOpen && (
         <Flex
@@ -38,7 +44,7 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
             <IconButton
               icon={<IconX />}
               aria-label="Close hamburguer menu button"
-              variant="ghost"
+              variant="transparent"
               size="l"
               onClick={onClose}
             />

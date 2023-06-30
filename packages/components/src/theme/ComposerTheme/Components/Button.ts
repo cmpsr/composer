@@ -3,13 +3,13 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { StyleFunctionProps, SystemStyleObject, transparentize } from '@chakra-ui/theme-tools';
 import { linkVariants } from '@components';
 
-const ghostButton = {
-  color: 'text-button-ghost',
+const transparentButton = {
+  color: 'text-button-transparent',
   backgroundColor: 'transparent',
   loading: {
-    borderColor: 'text-button-ghost',
-    borderBottomColor: transparentize('text-button-ghost', 0.3),
-    borderLeftColor: transparentize('text-button-ghost', 0.3),
+    borderColor: 'text-button-transparent',
+    borderBottomColor: transparentize('text-button-transparent', 0.3),
+    borderLeftColor: transparentize('text-button-transparent', 0.3),
   },
   _loading: {
     backgroundColor: 'background-action-disabled',
@@ -18,14 +18,14 @@ const ghostButton = {
     },
   },
   _disabled: {
-    color: transparentize('text-button-ghost', 0.6),
+    color: transparentize('text-button-transparent', 0.6),
     opacity: 1,
     backgroundColor: 'transparent',
   },
   _hover: {
     backgroundColor: 'background-action-hover',
     _disabled: {
-      color: transparentize('text-button-ghost', 0.6),
+      color: transparentize('text-button-transparent', 0.6),
       opacity: 1,
     },
   },
@@ -213,7 +213,7 @@ export const Button: ComponentStyleConfig = {
     'primary-alt': generateAltButton('primary'),
     'secondary-alt': generateAltButton('secondary'),
     destroy: generateButton('alert-error', 'alert'),
-    ghost: ghostButton,
+    transparent: transparentButton,
     ...getLinkVariants(),
   },
   defaultProps: {

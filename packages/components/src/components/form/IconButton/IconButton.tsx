@@ -13,12 +13,5 @@ export const IconButton: FC<IconButtonProps> = ({ isRound, icon, ...props }) => 
 
   const Icon = React.cloneElement(icon, { size: props.size });
 
-  return (
-    <ChakraIconButton
-      spinner={<Spinner {...iconButtonLoading} variant={props.variant as SpinnerVariant} />}
-      icon={Icon}
-      {...iconButtonStyles}
-      {...props}
-    />
-  );
+  return <ChakraIconButton spinner={<Spinner {...iconButtonLoading} />} icon={Icon} {...iconButtonStyles} {...props} />;
 };

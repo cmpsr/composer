@@ -5,7 +5,7 @@ export const IconButton: ComponentStyleConfig = {
     const buttonStyles = theme.components.Button;
     const buttonVariant = buttonStyles.variants[variant];
     const buttonLoadingStyles = buttonVariant.loading;
-    const borderRadius = isRound ? 'full' : '0.375rem';
+    const borderRadius = isRound ? 'full' : 'radii-button';
 
     return {
       borderRadius,

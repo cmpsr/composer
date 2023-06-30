@@ -9,7 +9,7 @@ export default {
   title: 'Carousel/Carousel',
 } as Meta;
 
-const Template = ({ totalSlides, visibleSlides, step, showArrows }) => (
+const Template = ({ totalSlides, visibleSlides, showArrows }) => (
   <>
     <TextPairing variant="textpairing-header-2XL" mb="spacer-8">
       <TextPairing.Label>Rapid Solutions with Blocks</TextPairing.Label>
@@ -23,7 +23,6 @@ const Template = ({ totalSlides, visibleSlides, step, showArrows }) => (
       naturalSlideWidth={1}
       naturalSlideHeight={1}
       isIntrinsicHeight
-      step={step}
       showArrows={showArrows}
     >
       <Carousel.Slider>
@@ -48,7 +47,7 @@ const Template = ({ totalSlides, visibleSlides, step, showArrows }) => (
 );
 
 export const Playground = Template.bind({});
-Playground.args = { visibleSlides: 2, totalSlides: 6, step: 2 };
+Playground.args = { visibleSlides: 2, totalSlides: 6 };
 
 export const WithArrows = Template.bind({});
-WithArrows.args = { visibleSlides: 2, totalSlides: 6, step: 2, showArrows: true };
+WithArrows.args = { visibleSlides: 2, totalSlides: 6, showArrows: true };

@@ -24,7 +24,7 @@
     "projects/*"
   ],
   "dependencies": {
-    "@changesets/cli": "^2.26.0",
+    "@changesets/cli": "^2.26.2",
     "lerna": "^7.0.2"
   },
   "devDependencies": {

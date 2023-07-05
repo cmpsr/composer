@@ -55,7 +55,7 @@ export const getPageById = async (
 
   if (!data.page) return undefined;
 
-  const { id, title, metaConfiguration, contentCollection } = data.page;
+  const { id, title, metaConfiguration, globalVariables, contentCollection } = data.page;
   const theme = data.page.theme?.theme || null;
   const navbar = data.page.navbar
     ? [{ models: [data.page.navbar.modelsCollection?.items?.[0]], propsValues: data.page.navbar.propsValue || [] }]
@@ -69,5 +69,5 @@ export const getPageById = async (
     propsValues: item.propsValue || [],
   }));
 
-  return { id, title, content, metaConfiguration, theme, navbar, footer };
+  return { id, title, content, metaConfiguration, globalVariables, theme, navbar, footer };
 };

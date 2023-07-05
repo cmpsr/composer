@@ -60,6 +60,42 @@ describe('getPageById', () => {
       title: fakeReplica.title,
     });
   });
+  test('confirm metaConfiguration are merged with content', async () => {
+    const fakeContent = {
+      content: [{ models: [{ base: 'base content' }], propsValues: [] }],
+      navbar: [{ models: [{ base: 'navbar' }], propsValues: [] }],
+      footer: [{ models: [{ base: 'footer' }], propsValues: [] }],
+      metaConfiguration: {
+        meta1: { propertyName: 'name', propertyValue: 'value', content: 'content' },
+        meta2: { propertyName: 'name', propertyValue: 'value', content: 'content' },
+      },
+    };
+    const fakeReplica = {
+      id: 'replica-id',
+      slug: '/replica',
+      metaConfiguration: {
+        meta1: { propertyName: 'name-replica', propertyValue: 'value-replica', content: 'content-replica' },
+      },
+      modelData: [[{ base: { textColor: 'white' } }]],
+      page: 'page-id',
+    };
+
+    mockGetPageFromContentful.mockResolvedValueOnce({ ...fakeContent, content: [...fakeContent.content] });
+    const page = await getPageById(mockApolloClient, pageId, preview, fakeReplica);
+
+    expect(page).toStrictEqual({
+      ...fakeContent,
+      content: [
+        { models: [fakeContent.navbar[0].models[0]], propsValues: [] },
+        { models: [fakeContent.content[0].models[0]], propsValues: fakeReplica.modelData[0] },
+        { models: [fakeContent.footer[0].models[0]], propsValues: [] },
+      ],
+      metaConfiguration: {
+        meta1: { propertyName: 'name-replica', propertyValue: 'value-replica', content: 'content-replica' },
+        meta2: { propertyName: 'name', propertyValue: 'value', content: 'content' },
+      },
+    });
+  });
   test('confirm modelData is merged with content', async () => {
     const fakeContent = {
       content: [{ models: [{ base: 'base content' }], propsValues: [] }],

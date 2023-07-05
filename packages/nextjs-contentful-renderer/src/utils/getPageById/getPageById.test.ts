@@ -96,6 +96,34 @@ describe('getPageById', () => {
       },
     });
   });
+  test('confirm globalVariables are merged with content', async () => {
+    const fakeContent = {
+      content: [{ models: [{ base: 'base content' }], propsValues: [] }],
+      navbar: [{ models: [{ base: 'navbar' }], propsValues: [] }],
+      footer: [{ models: [{ base: 'footer' }], propsValues: [] }],
+      globalVariables: { base: { global: 'content variable', other: 'global' } },
+    };
+    const fakeReplica = {
+      id: 'replica-id',
+      slug: '/replica',
+      globalVariables: { base: { global: 'replica variable' } },
+      modelData: [[{ base: { textColor: 'white' } }]],
+      page: 'page-id',
+    };
+
+    mockGetPageFromContentful.mockResolvedValueOnce({ ...fakeContent, content: [...fakeContent.content] });
+    const page = await getPageById(mockApolloClient, pageId, preview, fakeReplica);
+
+    expect(page).toStrictEqual({
+      ...fakeContent,
+      content: [
+        { models: [fakeContent.navbar[0].models[0]], propsValues: [] },
+        { models: [fakeContent.content[0].models[0]], propsValues: fakeReplica.modelData[0] },
+        { models: [fakeContent.footer[0].models[0]], propsValues: [] },
+      ],
+      globalVariables: { base: { global: 'replica variable', other: 'global' } },
+    });
+  });
   test('confirm modelData is merged with content', async () => {
     const fakeContent = {
       content: [{ models: [{ base: 'base content' }], propsValues: [] }],

@@ -23,6 +23,11 @@ export const getPageById = async (
       page.metaConfiguration = merge({}, page.metaConfiguration, replica.metaConfiguration);
     }
 
+    // Merge metaConfiguration from replica
+    if (replica?.globalVariables) {
+      page.globalVariables = merge({}, page.globalVariables, replica.globalVariables);
+    }
+
     // Merge modelData from replica
     if (replica?.modelData) {
       page.content = page.content.map((block, blockIndex) => ({

@@ -14,6 +14,7 @@ export const getPageById = async (
           id
           title
           metaConfiguration
+          globalVariables
           navbar {
             modelsCollection {
               items {

@@ -5,7 +5,7 @@ import { merge } from 'lodash';
 export const generateMdx = async (blocks: Block[], globalVariables: PropsValue = {}): Promise<Model[]> => {
   const promises = blocks.map(async ({ models, propsValues }) => {
     const mdxModelsUpdated = models.map((mdxModel, index) =>
-      replaceCmlPlaceholders(mdxModel, merge({}, globalVariables, propsValues[index] || {}))
+      replaceCmlPlaceholders(mdxModel, merge({}, globalVariables, propsValues[index]))
     );
 
     const bundledModels = mdxModelsUpdated.map(async (model) => {

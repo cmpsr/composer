@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 20.0.0
+
+### Major Changes
+
+- 1d76e57: feat: add support for global variables on pages/replicas
+
 ## 19.9.1
 
 ## 19.9.0

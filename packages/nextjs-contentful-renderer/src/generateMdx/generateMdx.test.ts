@@ -1,4 +1,4 @@
-import { generateMdx } from '.';
+import { generateMdx } from './generateMdx';
 
 const mockBundleMDX = jest.fn();
 mockBundleMDX.mockImplementation((s: { source: string }) => Promise.resolve({ code: `bundled: ${s.source}` }));
@@ -59,5 +59,29 @@ describe('generateMdx', () => {
       },
     ]);
     expect(mdx).toStrictEqual([]);
+  });
+  test('should use global variables values', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<Text>globalVariable</Text>' }],
+        propsValues: [{ base: {} }],
+      },
+    ];
+    const globalVariables = { base: { globalVariable: 'globalVariableValue' } };
+    await generateMdx(fakeBlocks, globalVariables);
+    expect(mockReplaceCmlPlaceholders).toHaveBeenCalledTimes(1);
+    expect(mockReplaceCmlPlaceholders).toHaveBeenCalledWith(expect.anything(), globalVariables);
+  });
+  test('should use model vales over global variables values', async () => {
+    const fakeBlocks = [
+      {
+        models: [{ base: '<Text>globalVariable</Text>' }],
+        propsValues: [{ base: { globalVariable: 'modelVariableValue' } }],
+      },
+    ];
+    const globalVariables = { base: { globalVariable: 'globalVariableValue' } };
+    await generateMdx(fakeBlocks, globalVariables);
+    expect(mockReplaceCmlPlaceholders).toHaveBeenCalledTimes(1);
+    expect(mockReplaceCmlPlaceholders).toHaveBeenCalledWith(expect.anything(), fakeBlocks[0].propsValues[0]);
   });
 });

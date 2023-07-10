@@ -21,6 +21,7 @@ export const getRouteBySlug = async (
             domain
             metaConfiguration
             modelData
+            globalVariables
             pageTemplate {
               sys {
                 id

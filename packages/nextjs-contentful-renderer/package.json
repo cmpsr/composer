@@ -54,10 +54,10 @@
   },
   "peerDependencies": {
     "@apollo/client": "^3.6.2",
-    "@cmpsr/blocks": "^12.0.7",
-    "@cmpsr/carousel": "^0.3.0",
+    "@cmpsr/blocks": "^12.1.7",
+    "@cmpsr/carousel": "^0.3.10",
     "@cmpsr/cml": "^0.5.0",
-    "@cmpsr/components": "^5.7.0",
+    "@cmpsr/components": "^5.14.0",
     "@cmpsr/signalwire": "^0.3.11",
     "next": "^12.1.6",
     "react": "^18.2.0",

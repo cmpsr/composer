@@ -1,5 +1,16 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 21.0.0
+
+### Minor Changes
+
+- 62c66a3: feat(HAM-362) configures json cml placeholder replacement
+
+### Patch Changes
+
+- Updated dependencies [62c66a3]
+  - @cmpsr/cml@0.6.0
+
 ## 20.0.0
 
 ### Major Changes

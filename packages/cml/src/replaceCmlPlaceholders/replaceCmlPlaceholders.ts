@@ -79,6 +79,16 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
         searchValue = match;
         newValue = `{${propValue}}`;
         break;
+      case 'json':
+        searchValue = match;
+
+        if (propValue && typeof propValue === 'object') {
+          newValue = `{${JSON.stringify(propValue)}}`;
+        } else {
+          newValue = `{${propValue}}`;
+        }
+
+        break;
       case 'list':
         searchValue = match;
         break;

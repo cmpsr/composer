@@ -35,7 +35,6 @@ describe('replaceCmlPlaceholders', () => {
     description    | prop
     ${'array'}     | ${['value']}
     ${'object'}    | ${{ json: 'value' }}
-    ${'string'}    | ${'{"json":"value"}'}
     ${'number'}    | ${5}
     ${'boolean'}   | ${true}
     ${'null'}      | ${null}

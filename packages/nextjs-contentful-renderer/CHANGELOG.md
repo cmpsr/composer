@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 20.0.2
+
+### Patch Changes
+
+- 776b697: fix: recursively retrieve all routes
+
 ## 20.0.1
 
 ### Patch Changes

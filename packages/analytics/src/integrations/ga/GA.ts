@@ -6,7 +6,7 @@ import { Identify, Track, Page, Group } from '../../types';
 export class GA implements IIntegration {
   constructor(config: IGAConfig) {
     if (!config.trackingId) {
-      throw new Error('Segment writeKey is required for analytics');
+      throw new Error('Google Analytics trackingId is required for analytics');
     }
     const ga = loadGA();
     ga('create', config.trackingId, config.cookieDomain || 'auto');

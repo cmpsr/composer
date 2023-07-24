@@ -37,7 +37,13 @@ export const Carousel: CarouselProps = ({
   };
 
   return (
-    <CarouselProvider totalSlides={totalSlides} visibleSlides={visibleSlides} step={visibleSlides} {...props}>
+    <CarouselProvider
+      totalSlides={totalSlides}
+      visibleSlides={visibleSlides}
+      dragStep={visibleSlides}
+      step={visibleSlides}
+      {...props}
+    >
       <>
         {children}
         {(showDots || showArrows) && (

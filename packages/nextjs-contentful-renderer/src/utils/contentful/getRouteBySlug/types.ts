@@ -4,6 +4,7 @@ import { PageMetaData } from '../getPageById/types';
 export interface Replica {
   id: string;
   metaConfiguration?: PageMetaData;
+  globalVariables?: PropsValue;
   modelData?: PropsValue[][];
   page: string;
   slug: string;

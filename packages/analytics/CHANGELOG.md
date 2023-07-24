@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.2.0
+
+### Minor Changes
+
+- 397ef72: feat: update gtag methods to push events properly
+
 ## 0.1.2
 
 ### Patch Changes

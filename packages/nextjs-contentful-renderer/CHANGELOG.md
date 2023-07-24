@@ -1,5 +1,24 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 20.0.2
+
+### Patch Changes
+
+- 776b697: fix: recursively retrieve all routes
+
+## 20.0.1
+
+### Patch Changes
+
+- Updated dependencies [62c66a3]
+  - @cmpsr/cml@0.6.0
+
+## 20.0.0
+
+### Major Changes
+
+- 1d76e57: feat: add support for global variables on pages/replicas
+
 ## 19.9.1
 
 ## 19.9.0

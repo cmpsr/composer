@@ -13,17 +13,18 @@ export const getPageById = async (
 ) => {
   const page = await getPageByIdFromContentful(apolloClient, pageId, preview);
   if (page) {
-    // Override title from replica
     if (replica?.title) {
       page.title = replica.title;
     }
 
-    // Merge metaConfiguration from replica
     if (replica?.metaConfiguration) {
       page.metaConfiguration = merge({}, page.metaConfiguration, replica.metaConfiguration);
     }
 
-    // Merge modelData from replica
+    if (replica?.globalVariables) {
+      page.globalVariables = merge({}, page.globalVariables, replica.globalVariables);
+    }
+
     if (replica?.modelData) {
       page.content = page.content.map((block, blockIndex) => ({
         ...block,

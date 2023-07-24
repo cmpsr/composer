@@ -1,10 +1,11 @@
 import { Theme } from '@cmpsr/components';
-import { Block } from '@cmpsr/cml';
+import { Block, PropsValue } from '@cmpsr/cml';
 
 export interface Page {
   id: string;
   title: string;
   metaConfiguration?: PageMetaData;
+  globalVariables?: PropsValue;
   content: Block[];
   theme: Partial<Theme>;
   navbar: Block[];

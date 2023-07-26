@@ -83,9 +83,7 @@ export const WithIcons = WithIconsTemplate.bind({});
 
 const WithCustomButtonTemplate = () => (
   <Dropdown>
-    <Dropdown.Button as={IconButton} icon={<IconShare />}>
-      Custom button
-    </Dropdown.Button>
+    <Dropdown.Button as={IconButton} icon={<IconShare />} aria-label="Custom button" />
     <Dropdown.List>
       <Dropdown.Item icon={<IconPlus />}>Add</Dropdown.Item>
       <Dropdown.Item icon={<IconCreditCard />}>Pay</Dropdown.Item>

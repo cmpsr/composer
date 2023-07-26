@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Dropdown } from '.';
 import { IconCreditCard, IconPlus, IconShare } from '@components/media';
+import { Button } from '@components/form';
 
 export default {
   component: Dropdown,
@@ -79,6 +80,19 @@ const WithIconsTemplate = () => (
 );
 
 export const WithIcons = WithIconsTemplate.bind({});
+
+const WithCustomButtonTemplate = () => (
+  <Dropdown>
+    <Dropdown.Button as={Button}>Custom button</Dropdown.Button>
+    <Dropdown.List>
+      <Dropdown.Item icon={<IconPlus />}>Add</Dropdown.Item>
+      <Dropdown.Item icon={<IconCreditCard />}>Pay</Dropdown.Item>
+      <Dropdown.Item icon={<IconShare />}>Share</Dropdown.Item>
+    </Dropdown.List>
+  </Dropdown>
+);
+
+export const WithCustomButton = WithCustomButtonTemplate.bind({});
 
 const renderDropdownItems = (args) => {
   if (args.showGroupedItems) {

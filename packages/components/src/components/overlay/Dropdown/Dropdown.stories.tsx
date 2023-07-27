@@ -85,9 +85,15 @@ const WithCustomButtonTemplate = () => (
   <Dropdown>
     <Dropdown.Button as={IconButton} icon={<IconShare />} aria-label="Custom button" />
     <Dropdown.List>
-      <Dropdown.Item icon={<IconPlus />}>Add</Dropdown.Item>
-      <Dropdown.Item icon={<IconCreditCard />}>Pay</Dropdown.Item>
-      <Dropdown.Item icon={<IconShare />}>Share</Dropdown.Item>
+      <Dropdown.Item icon={<IconPlus />} as="a" href="https://www.google.com" target="_blank">
+        Add Link
+      </Dropdown.Item>
+      <Dropdown.Item icon={<IconCreditCard />} as="a" href="https://www.google.com" target="_blank">
+        Pay Link
+      </Dropdown.Item>
+      <Dropdown.Item icon={<IconShare />} as="a" href="https://www.google.com" target="_blank">
+        Share Link
+      </Dropdown.Item>
     </Dropdown.List>
   </Dropdown>
 );

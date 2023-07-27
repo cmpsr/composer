@@ -1,5 +1,13 @@
 # @cmpsr/blocks
 
+## 12.2.1
+
+## 12.2.0
+
+### Minor Changes
+
+- 4827d11: feat: export Footer types
+
 ## 12.1.7
 
 ## 12.1.6

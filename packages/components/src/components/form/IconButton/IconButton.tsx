@@ -4,7 +4,7 @@ import { IconButtonProps, IconButtonStyle } from './types';
 import { Spinner } from '@components';
 
 export const IconButton: FC<IconButtonProps> = forwardRef<IconButtonProps, 'button'>(
-  ({ isRound, icon, ref, ...props }) => {
+  ({ isRound, icon, ...props }, ref) => {
     const { loading: iconButtonLoading, ...iconButtonStyles } = useMultiStyleConfig('IconButton', {
       isRound: isRound,
       size: props.size,

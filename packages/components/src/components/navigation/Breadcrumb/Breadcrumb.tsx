@@ -13,7 +13,9 @@ const Item = forwardRef<BreadcrumbItemProps, typeof BreadcrumbItem>(
   ({ isLastChild, href, separator, testId, ...rest }, ref) => (
     <BreadcrumbItem ref={ref} data-testid={testId} separator={separator} isLastChild={isLastChild}>
       {isLastChild ? (
-        <Text color="inherit">{rest.children}</Text>
+        <Text color="inherit" variant="text-body-medium">
+          {rest.children}
+        </Text>
       ) : (
         <BreadcrumbLink href={href}>
           <Link size="m" as="span" {...rest} />

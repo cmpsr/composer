@@ -56,7 +56,7 @@ jobs:
         run: yarn changeset version --snapshot canary
 
       - name: Build Packages
-        run: yarn build --no-cache
+        run: yarn build
 
       - name: Emit Types
         run: yarn type:emit

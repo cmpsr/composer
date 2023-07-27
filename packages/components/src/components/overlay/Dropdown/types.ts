@@ -1,12 +1,11 @@
-import { FC } from 'react';
 import {
-  MenuButtonProps,
-  MenuDividerProps,
-  MenuGroupProps,
-  MenuItemOptionProps,
-  MenuItemProps,
-  MenuListProps,
-  MenuOptionGroupProps,
+  MenuButton,
+  MenuDivider,
+  MenuGroup,
+  MenuItem,
+  MenuItemOption,
+  MenuList,
+  MenuOptionGroup,
 } from '@chakra-ui/react';
 
 export {
@@ -21,11 +20,11 @@ export {
 } from '@chakra-ui/react';
 
 export interface DropdownStaticMembers {
-  Group: FC<MenuGroupProps>;
-  Divider: FC<MenuDividerProps>;
-  OptionGroup: FC<MenuOptionGroupProps>;
-  ItemOption: FC<MenuItemOptionProps>;
-  Button: FC<MenuButtonProps>;
-  List: FC<MenuListProps>;
-  Item: FC<MenuItemProps>;
+  Group: typeof MenuGroup;
+  Divider: typeof MenuDivider;
+  OptionGroup: typeof MenuOptionGroup;
+  ItemOption: typeof MenuItemOption;
+  Button: typeof MenuButton;
+  List: typeof MenuList;
+  Item: typeof MenuItem;
 }

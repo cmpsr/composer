@@ -10,7 +10,13 @@ import {
   SlideProps,
 } from './types';
 
-export const Carousel: CarouselProps = ({ children, showDots = true, showArrows = false, ...props }) => {
+export const Carousel: CarouselProps = ({
+  children,
+  showDots = true,
+  showArrows = false,
+  visibleSlides = 1,
+  ...props
+}) => {
   const [totalSlides] = Children.map(children, (child) => {
     if (isValidElement(child) && child.type === Carousel.Slider) {
       return Children.count(child.props.children) as number;
@@ -18,22 +24,32 @@ export const Carousel: CarouselProps = ({ children, showDots = true, showArrows 
   });
   if (!totalSlides) return;
 
-  const renderDots = (totalSlides: number) => {
+  const renderDots = (totalSlides: number, visibleSlides: number) => {
     const carouselDots: ReactNode[] = [];
-    for (let i = 0; i < totalSlides; i++) {
-      carouselDots.push(<Carousel.Dot key={i} slide={i} />);
+    const totalSlideGroups = Math.ceil(totalSlides / visibleSlides);
+
+    for (let i = 0; i < totalSlideGroups; i++) {
+      const slide = i * visibleSlides;
+      carouselDots.push(<Carousel.Dot key={slide} slide={slide} />);
     }
+
     return carouselDots;
   };
 
   return (
-    <CarouselProvider totalSlides={totalSlides} {...props}>
+    <CarouselProvider
+      totalSlides={totalSlides}
+      visibleSlides={visibleSlides}
+      dragStep={visibleSlides}
+      step={visibleSlides}
+      {...props}
+    >
       <>
         {children}
         {(showDots || showArrows) && (
           <Carousel.NavigationContainer>
             {showArrows && <Carousel.ButtonBack />}
-            {showDots && renderDots(totalSlides)}
+            {showDots && renderDots(totalSlides, visibleSlides)}
             {showArrows && <Carousel.ButtonNext />}
           </Carousel.NavigationContainer>
         )}

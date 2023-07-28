@@ -1,5 +1,15 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 20.0.5
+
+### Patch Changes
+
+- 6ee90cd: fixes Dropdown types and IconButton forwardRef
+
+## 20.0.4
+
+## 20.0.3
+
 ## 20.0.2
 
 ### Patch Changes

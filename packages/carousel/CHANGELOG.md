@@ -1,5 +1,13 @@
 # @cmpsr/carousel
 
+## 0.3.12
+
+### Patch Changes
+
+- 6ee90cd: fixes Dropdown types and IconButton forwardRef
+
+## 0.3.11
+
 ## 0.3.10
 
 ## 0.3.9

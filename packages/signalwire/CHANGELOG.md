@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.3.24
+
+### Patch Changes
+
+- 6ee90cd: fixes Dropdown types and IconButton forwardRef
+
+## 0.3.23
+
 ## 0.3.22
 
 ## 0.3.21

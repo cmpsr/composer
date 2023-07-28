@@ -1,5 +1,17 @@
 # @cmpsr/components
 
+## 5.15.1
+
+### Patch Changes
+
+- 6ee90cd: fixes Dropdown types and IconButton forwardRef
+
+## 5.15.0
+
+### Minor Changes
+
+- 79a8f40: feat: Update Breadcrumb last child to use text-body-medium typography
+
 ## 5.14.0
 
 ### Minor Changes

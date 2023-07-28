@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.15.1
+
+### Patch Changes
+
+- 6ee90cd: fixes Dropdown types and IconButton forwardRef
+
 ## 5.15.0
 
 ### Minor Changes

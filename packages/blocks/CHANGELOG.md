@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 12.2.2
+
+### Patch Changes
+
+- 6ee90cd: fixes Dropdown types and IconButton forwardRef
+
 ## 12.2.1
 
 ## 12.2.0

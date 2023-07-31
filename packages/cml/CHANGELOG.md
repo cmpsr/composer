@@ -1,5 +1,11 @@
 # @cmpsr/cml
 
+## 0.7.0
+
+### Minor Changes
+
+- 2b61583: feat: allow default value replacement of number and boolean field types
+
 ## 0.6.0
 
 ### Minor Changes

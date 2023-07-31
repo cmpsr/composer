@@ -77,7 +77,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
       case 'boolean':
       case 'number':
         searchValue = match;
-        newValue = `{${propValue}}`;
+        newValue = `{${propValue ?? defaultValue}}`;
         break;
       case 'json':
         searchValue = match;

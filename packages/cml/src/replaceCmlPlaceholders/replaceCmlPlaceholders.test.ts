@@ -25,6 +25,11 @@ describe('replaceCmlPlaceholders', () => {
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({ base: '<Text prop={false}/>' });
   });
+  test('should replace boolean props with default value as boolean', () => {
+    const model = { base: '<Text prop={{prop:boolean:false}}/>' };
+    const mdx = replaceCmlPlaceholders(model, {});
+    expect(mdx).toStrictEqual({ base: '<Text prop={false}/>' });
+  });
   test('should replace number props as number', () => {
     const model = { base: '<Text prop={{prop:number}}/>' };
     const values = { base: { prop: 5 } };

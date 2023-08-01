@@ -1,5 +1,11 @@
 # @cmpsr/carousel
 
+## 1.0.0
+
+### Major Changes
+
+- 75b0883: Groups Carousel dots and sets next/back buttons step prop based on the amount of visible slides
+
 ## 0.3.12
 
 ### Patch Changes

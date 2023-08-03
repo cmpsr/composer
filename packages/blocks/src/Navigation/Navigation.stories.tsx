@@ -88,7 +88,7 @@ Playground.argTypes = {
   anchors: { control: { type: 'object' } },
   logoUrl: { control: { type: 'text' } },
   logoHref: { control: { type: 'text' } },
-  linksPosition: { control: { type: 'select', options: ['start', 'center', 'end'] } },
+  linksPosition: { control: { type: 'select' }, options: ['start', 'center', 'end'] },
   sticky: { control: { type: 'boolean' } },
   showDividers: { control: { type: 'boolean' } },
   keepActionsAlwaysVisible: { control: { type: 'boolean' } },

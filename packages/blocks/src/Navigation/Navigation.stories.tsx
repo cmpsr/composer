@@ -42,11 +42,11 @@ export const Sticky = () => (
   </>
 );
 
-const Template = ({ anchors, logoUrl, logoHref, sticky, showDividers, keepActionsAlwaysVisible }) => (
+const Template = ({ anchors, logoUrl, logoHref, sticky, showDividers, linksPosition, keepActionsAlwaysVisible }) => (
   <>
     <Navigation sticky={sticky} keepActionsAlwaysVisible={keepActionsAlwaysVisible}>
       <Navigation.Image src={logoUrl} href={logoHref} />
-      <Navigation.Links showDividers={showDividers}>
+      <Navigation.Links showDividers={showDividers} linksPosition={linksPosition}>
         {anchors.map(({ label, href }, index: number) => (
           <Navigation.Link key={index} href={href}>
             {label}
@@ -79,7 +79,17 @@ Playground.args = {
   anchors: Array(5).fill({ label: 'Default Link', href: '#' }),
   logoUrl: 'https://avatars0.githubusercontent.com/u/67131017?s=200',
   logoHref: '#',
+  linksPosition: 'start',
   sticky: false,
   showDividers: true,
   keepActionsAlwaysVisible: false,
+};
+Playground.argTypes = {
+  anchors: { control: { type: 'object' } },
+  logoUrl: { control: { type: 'text' } },
+  logoHref: { control: { type: 'text' } },
+  linksPosition: { control: { type: 'select', options: ['start', 'center', 'end'] } },
+  sticky: { control: { type: 'boolean' } },
+  showDividers: { control: { type: 'boolean' } },
+  keepActionsAlwaysVisible: { control: { type: 'boolean' } },
 };

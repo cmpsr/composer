@@ -12,6 +12,7 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
   actions,
   image,
   children,
+  linksPosition = 'start',
   showDividers = true,
   ...props
 }) => {
@@ -70,12 +71,17 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
       )}
     </>
   ) : (
-    <Flex maxWidth="80rem" margin="0 auto" alignItems="center" justifyContent="space-between" width="100%" {...props}>
-      <Flex gap={{ lg: '2.75rem', xxl: '4.5rem' }}>
-        {image}
-        <Flex gap={{ lg: '1.5rem', xl: '2.25rem', xxl: '5rem' }}>{children}</Flex>
+    <Flex maxWidth="80rem" margin="0 auto" alignItems="center" width="100%" {...props}>
+      <Box>{image}</Box>
+      <Flex
+        flexBasis="100%"
+        mx={{ lg: '2.75rem', xxl: '4.5rem' }}
+        gap={{ lg: '1.5rem', xl: '2.25rem', xxl: '5rem' }}
+        justifyContent={linksPosition}
+      >
+        {children}
       </Flex>
-      {actions}
+      <Box>{actions}</Box>
     </Flex>
   );
 };

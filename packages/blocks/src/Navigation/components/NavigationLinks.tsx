@@ -22,7 +22,7 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
   return showBaseNavigation ? (
     <>
       <IconButton icon={<IconMenu2 />} aria-label="Hamburger menu button" variant="ghost" size="l" onClick={onOpen} />
-      <Flex justifyContent="space-between" flexBasis="100%">
+      <Flex justifyContent="space-between" flexBasis="100%" gap="0.75rem">
         {image}
         {keepActionsAlwaysVisible && actions}
       </Flex>

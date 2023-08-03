@@ -3,6 +3,7 @@ import { FlexProps, ImageProps, LinkProps } from '@cmpsr/components';
 
 export interface NavigationProps extends FlexProps {
   sticky?: boolean;
+  keepActionsAlwaysVisible?: boolean;
 }
 
 export interface NavigationImageProps extends ImageProps {

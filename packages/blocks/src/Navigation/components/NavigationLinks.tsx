@@ -16,12 +16,15 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
   ...props
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { showBaseNavigation } = useNavigationContext();
+  const { showBaseNavigation, keepActionsAlwaysVisible } = useNavigationContext();
 
   return showBaseNavigation ? (
     <>
       <IconButton icon={<IconMenu2 />} aria-label="Hamburger menu button" variant="ghost" size="l" onClick={onOpen} />
-      {image}
+      <Flex justifyContent="space-between" flexBasis="100%">
+        {image}
+        {keepActionsAlwaysVisible && actions}
+      </Flex>
       {isOpen && (
         <Flex
           width="100%"
@@ -61,7 +64,7 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
                   showDivider: index === Children.count(children) - 1 ? false : showDividers,
                 } as NavigationLinkProps)
             )}
-            {actions}
+            {!keepActionsAlwaysVisible && actions}
           </Flex>
         </Flex>
       )}

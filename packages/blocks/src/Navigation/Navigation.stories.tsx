@@ -42,11 +42,11 @@ export const Sticky = () => (
   </>
 );
 
-const Template = ({ anchors, logoUrl, logoHref, sticky }) => (
+const Template = ({ anchors, logoUrl, logoHref, sticky, showDividers, keepActionsAlwaysVisible }) => (
   <>
-    <Navigation sticky={sticky}>
+    <Navigation sticky={sticky} keepActionsAlwaysVisible={keepActionsAlwaysVisible}>
       <Navigation.Image src={logoUrl} href={logoHref} />
-      <Navigation.Links>
+      <Navigation.Links showDividers={showDividers}>
         {anchors.map(({ label, href }, index: number) => (
           <Navigation.Link key={index} href={href}>
             {label}
@@ -80,4 +80,6 @@ Playground.args = {
   logoUrl: 'https://avatars0.githubusercontent.com/u/67131017?s=200',
   logoHref: '#',
   sticky: false,
+  showDividers: true,
+  keepActionsAlwaysVisible: false,
 };

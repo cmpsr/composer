@@ -74,6 +74,17 @@ const Template = ({ anchors, logoUrl, logoHref, sticky, showDividers, linksPosit
   </>
 );
 
+export const ActionsVisibleOnMobile = Template.bind({});
+ActionsVisibleOnMobile.args = {
+  anchors: Array(5).fill({ label: 'Default Link', href: '#' }),
+  logoUrl: 'https://avatars0.githubusercontent.com/u/67131017?s=200',
+  logoHref: '#',
+  linksPosition: 'end',
+  sticky: false,
+  showDividers: true,
+  keepActionsAlwaysVisible: true,
+};
+
 export const Playground = Template.bind({});
 Playground.args = {
   anchors: Array(5).fill({ label: 'Default Link', href: '#' }),

@@ -12,16 +12,20 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
   actions,
   image,
   children,
+  linksPosition = 'start',
   showDividers = true,
   ...props
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { showBaseNavigation } = useNavigationContext();
+  const { showBaseNavigation, keepActionsAlwaysVisible } = useNavigationContext();
 
   return showBaseNavigation ? (
     <>
       <IconButton icon={<IconMenu2 />} aria-label="Hamburger menu button" variant="ghost" size="l" onClick={onOpen} />
-      {image}
+      <Flex justifyContent="space-between" flexBasis="100%">
+        {image}
+        {keepActionsAlwaysVisible && actions}
+      </Flex>
       {isOpen && (
         <Flex
           width="100%"
@@ -61,18 +65,23 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
                   showDivider: index === Children.count(children) - 1 ? false : showDividers,
                 } as NavigationLinkProps)
             )}
-            {actions}
+            {!keepActionsAlwaysVisible && actions}
           </Flex>
         </Flex>
       )}
     </>
   ) : (
-    <Flex maxWidth="80rem" margin="0 auto" alignItems="center" justifyContent="space-between" width="100%" {...props}>
-      <Flex gap={{ lg: '2.75rem', xxl: '4.5rem' }}>
-        {image}
-        <Flex gap={{ lg: '1.5rem', xl: '2.25rem', xxl: '5rem' }}>{children}</Flex>
+    <Flex maxWidth="80rem" margin="0 auto" alignItems="center" width="100%" {...props}>
+      <Box>{image}</Box>
+      <Flex
+        flexBasis="100%"
+        mx={{ lg: '2.75rem', xxl: '4.5rem' }}
+        gap={{ lg: '1.5rem', xl: '2.25rem', xxl: '5rem' }}
+        justifyContent={linksPosition}
+      >
+        {children}
       </Flex>
-      {actions}
+      <Box>{actions}</Box>
     </Flex>
   );
 };

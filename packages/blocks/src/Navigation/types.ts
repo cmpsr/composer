@@ -3,6 +3,7 @@ import { FlexProps, ImageProps, LinkProps } from '@cmpsr/components';
 
 export interface NavigationProps extends FlexProps {
   sticky?: boolean;
+  keepActionsAlwaysVisible?: boolean;
 }
 
 export interface NavigationImageProps extends ImageProps {
@@ -15,6 +16,7 @@ export interface NavigationLinkProps extends LinkProps {
 
 export interface NavigationLinksProps extends FlexProps {
   showDividers?: boolean;
+  linksPosition?: 'center' | 'start' | 'end';
 }
 
 export interface NavigationStaticMembers {

@@ -8,6 +8,12 @@ export default {
   component: Navigation,
   title: 'Blocks/Navigation',
   parameters: { layout: 'fullscreen' },
+  argTypes: {
+    linksPosition: {
+      options: ['start', 'end', 'center'],
+      control: { type: 'select' },
+    },
+  },
 } as Meta;
 
 export const Sticky = () => (
@@ -94,13 +100,4 @@ Playground.args = {
   sticky: false,
   showDividers: true,
   keepActionsAlwaysVisible: false,
-};
-Playground.argTypes = {
-  anchors: { control: { type: 'object' } },
-  logoUrl: { control: { type: 'text' } },
-  logoHref: { control: { type: 'text' } },
-  linksPosition: { control: { type: 'select' }, options: ['start', 'center', 'end'] },
-  sticky: { control: { type: 'boolean' } },
-  showDividers: { control: { type: 'boolean' } },
-  keepActionsAlwaysVisible: { control: { type: 'boolean' } },
 };

@@ -72,7 +72,7 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
     </>
   ) : (
     <Flex maxWidth="80rem" margin="0 auto" alignItems="center" width="100%" {...props}>
-      <Box>{image}</Box>
+      <Box flexShrink="0">{image}</Box>
       <Flex
         flexBasis="100%"
         mx={{ lg: '2.75rem', xxl: '4.5rem' }}
@@ -81,7 +81,7 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
       >
         {children}
       </Flex>
-      <Box>{actions}</Box>
+      <Box flexShrink="0">{actions}</Box>
     </Flex>
   );
 };

@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 12.3.1
+
+### Patch Changes
+
+- b86bd09: prevents navigation logo from shrinking
+
 ## 12.3.0
 
 ### Minor Changes

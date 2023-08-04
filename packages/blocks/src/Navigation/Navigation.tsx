@@ -12,7 +12,12 @@ import {
   NavigationProvider,
 } from './components';
 
-export const Navigation: FC<NavigationProps> & NavigationStaticMembers = ({ sticky = false, children, ...props }) => {
+export const Navigation: FC<NavigationProps> & NavigationStaticMembers = ({
+  sticky = false,
+  keepActionsAlwaysVisible = false,
+  children,
+  ...props
+}) => {
   const showBaseNavigation = useBreakpointValue({ base: true, lg: false });
   const scrollPosition = useScrollPosition();
 
@@ -36,7 +41,7 @@ export const Navigation: FC<NavigationProps> & NavigationStaticMembers = ({ stic
   });
 
   return (
-    <NavigationProvider value={{ showBaseNavigation }}>
+    <NavigationProvider value={{ showBaseNavigation, keepActionsAlwaysVisible }}>
       <Flex
         as="nav"
         bg="background-page"

@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 12.3.0
+
+### Minor Changes
+
+- 51ded49: Updates navigation to allow keeping action links visible on the navbar also on mobile
+
 ## 12.2.2
 
 ### Patch Changes

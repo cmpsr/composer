@@ -91,7 +91,7 @@ export const NavigationLink: FC<NavigationLinkProps> = ({ showDivider, children,
 
   return showBaseNavigation ? (
     <Fragment>
-      <Link size="l" justifyContent="center" marginBottom={!showDivider && '3rem'} {...props}>
+      <Link size="l" justifyContent="center" marginBottom={!showDivider && '3rem'} variant="link-secondary" {...props}>
         <Text variant="text-body-display-L" color="unset">
           {children}
         </Text>
@@ -99,7 +99,7 @@ export const NavigationLink: FC<NavigationLinkProps> = ({ showDivider, children,
       {showDivider && <Divider my="1.50rem" maxWidth="24.75rem" />}
     </Fragment>
   ) : (
-    <Link size="m" {...props}>
+    <Link size="m" variant="link-secondary" {...props}>
       {children}
     </Link>
   );

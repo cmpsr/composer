@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 12.3.2
+
+### Patch Changes
+
+- b40e2f5: minor fix to allow nav link color to be set via variant prop
+
 ## 12.3.1
 
 ### Patch Changes

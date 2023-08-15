@@ -156,9 +156,9 @@ import { ComponentsProps as ChakraComponentProps } from "@chakra-ui/react";
 
 // 👍
 export const componentVariants = ["primary", "secondary"] as const;
-export type ComponentVariant = typeof componentVariants[number];
+export type ComponentVariant = (typeof componentVariants)[number];
 export const componentSizes = ["xs", "s", "m", "l"] as const;
-export type ComponentSize = typeof componentSizes[number];
+export type ComponentSize = (typeof componentSizes)[number];
 
 export interface ComponentProps extends ChakraComponentProps {
   variant?: ComponentVariant;
@@ -378,6 +378,22 @@ export const Component: ComponentStyleConfig = {
   },
 };
 ```
+
+### Icons Update
+
+Composer icons are subset of `@tabler/icons-react` so you must update its version on [package.json](./package.json).
+
+If you wanna add a new icon, ensure to add it to the icons list on the [generate_icons.js](./scripts/generate_icons.js) file.
+
+Once `@tabler/icons-react` has been update and all icons added to the list, you can then run this command to generate the icons and their stories.
+
+`yarn gen:icons`
+
+All icon files will be generated and ready to commit.
+
+#### tabler/icons breaking change
+
+If `@tabler/icons-react` releases a breaking change, the [generate_icons.js](./scripts/generate_icons.js) script should be adjusted as needed.
 
 ### Releasing your changes
 

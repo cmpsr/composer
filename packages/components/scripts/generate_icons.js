@@ -1,193 +1,163 @@
 const icons = [
-  'clock',
-  'credit-card',
-  'adjustments-horizontal',
-  'adjustments',
-  'star',
-  'heart',
-  'filter',
-  'ban',
-  'trash',
-  'fingerprint',
-  'zoom-in',
-  'zoom-out',
-  'search',
-  'thumb-up',
-  'thumb-down',
-  'send',
-  'pin',
-  'pinned-off',
-  'eye',
-  'eye-off',
-  'shopping-cart',
-  'shield',
-  'coin',
-  'calendar',
-  'help',
-  'settings',
-  'login',
-  'logout',
-  'pencil',
-  'edit',
-  'layout',
-  'list',
-  'bookmark',
-  'bookmark-off',
-  'check',
-  'world',
-  'calendar-event',
-  'alert-circle',
-  'alert-triangle',
-  'circle-check',
-  'info-circle',
-  'player-pause',
-  'player-play',
-  'player-record',
-  'player-skip-back',
-  'player-skip-forward',
-  'player-stop',
-  'player-track-next',
-  'player-track-prev',
-  'volume-2',
-  'volume-3',
-  'volume',
-  'microphone-off',
-  'microphone',
-  'video-off',
-  'video',
-  'music',
-  'phone-incoming',
-  'phone-off',
-  'phone-outgoing',
-  'phone',
-  'message',
-  'mail',
-  'mail-opened',
-  'circle-0',
-  'circle-1',
-  'circle-2',
-  'circle-3',
-  'circle-4',
-  'circle-5',
-  'circle-6',
-  'circle-7',
-  'circle-8',
-  'circle-9',
-  'plus',
-  'x',
-  'link',
-  'hash',
-  'tag',
-  'archive',
-  'flag',
-  'inbox',
-  'paperclip',
-  'folder',
-  'folder-plus',
-  'folder-x',
-  'folder-off',
-  'upload',
-  'download',
-  'cloud-upload',
-  'cloud-download',
-  'cloud',
-  'cloud-off',
-  'file',
-  'files',
-  'file-download',
-  'file-upload',
-  'file-search',
-  'external-link',
-  'file-export',
-  'file-import',
-  'photo',
-  'camera',
-  'camera-plus',
-  'map-pin',
-  'map',
-  'location',
-  'current-location',
-  'chevron-left',
-  'chevron-up',
-  'chevron-right',
-  'chevron-down',
-  'selector',
-  'arrow-left',
-  'arrow-up',
-  'arrow-right',
-  'arrow-down',
-  'arrows-sort',
-  'arrows-minimize',
-  'arrows-maximize',
-  'menu-2',
-  'circle-plus',
-  'circle-minus',
-  'circle-x',
-  'caret-left',
-  'caret-up',
-  'caret-right',
-  'caret-down',
-  'refresh',
-  'dots',
-  'lock',
-  'lock-open',
-  'bell',
-  'bell-off',
-  'share',
-  'user-circle',
-  'user',
-  'users',
-  'brand-facebook',
-  'brand-twitter',
-  'brand-linkedin',
-  'brand-instagram',
+  'IconAdjustments',
+  'IconAdjustmentsHorizontal',
+  'IconAlertCircle',
+  'IconAlertTriangle',
+  'IconArchive',
+  'IconArrowDown',
+  'IconArrowLeft',
+  'IconArrowRight',
+  'IconArrowUp',
+  'IconArrowsMaximize',
+  'IconArrowsMinimize',
+  'IconArrowsSort',
+  'IconBan',
+  'IconBell',
+  'IconBellOff',
+  'IconBookmark',
+  'IconBookmarkOff',
+  'IconBrandFacebook',
+  'IconBrandInstagram',
+  'IconBrandLinkedin',
+  'IconBrandTwitter',
+  'IconBrandX',
+  'IconCalendar',
+  'IconCalendarEvent',
+  'IconCamera',
+  'IconCameraPlus',
+  'IconCaretDown',
+  'IconCaretLeft',
+  'IconCaretRight',
+  'IconCaretUp',
+  'IconCheck',
+  'IconChevronDown',
+  'IconChevronLeft',
+  'IconChevronRight',
+  'IconChevronUp',
+  'IconCircle0',
+  'IconCircle1',
+  'IconCircle2',
+  'IconCircle3',
+  'IconCircle4',
+  'IconCircle5',
+  'IconCircle6',
+  'IconCircle7',
+  'IconCircle8',
+  'IconCircle9',
+  'IconCircleCheck',
+  'IconCircleMinus',
+  'IconCirclePlus',
+  'IconCircleX',
+  'IconClock',
+  'IconCloud',
+  'IconCloudDownload',
+  'IconCloudOff',
+  'IconCloudUpload',
+  'IconCoin',
+  'IconCreditCard',
+  'IconCurrentLocation',
+  'IconDots',
+  'IconDownload',
+  'IconEdit',
+  'IconExternalLink',
+  'IconEye',
+  'IconEyeOff',
+  'IconFile',
+  'IconFileDownload',
+  'IconFileExport',
+  'IconFileImport',
+  'IconFileSearch',
+  'IconFileUpload',
+  'IconFiles',
+  'IconFilter',
+  'IconFingerprint',
+  'IconFlag',
+  'IconFolder',
+  'IconFolderOff',
+  'IconFolderPlus',
+  'IconFolderX',
+  'IconHash',
+  'IconHeart',
+  'IconHelp',
+  'IconInbox',
+  'IconInfoCircle',
+  'IconLayout',
+  'IconLink',
+  'IconList',
+  'IconLocation',
+  'IconLock',
+  'IconLockOpen',
+  'IconLogin',
+  'IconLogout',
+  'IconMail',
+  'IconMailOpened',
+  'IconMap',
+  'IconMapPin',
+  'IconMenu2',
+  'IconMessage',
+  'IconMicrophone',
+  'IconMicrophoneOff',
+  'IconMusic',
+  'IconPaperclip',
+  'IconPencil',
+  'IconPhone',
+  'IconPhoneIncoming',
+  'IconPhoneOff',
+  'IconPhoneOutgoing',
+  'IconPhoto',
+  'IconPin',
+  'IconPinnedOff',
+  'IconPlayerPause',
+  'IconPlayerPlay',
+  'IconPlayerRecord',
+  'IconPlayerSkipBack',
+  'IconPlayerSkipForward',
+  'IconPlayerStop',
+  'IconPlayerTrackNext',
+  'IconPlayerTrackPrev',
+  'IconPlus',
+  'IconRefresh',
+  'IconSearch',
+  'IconSelector',
+  'IconSend',
+  'IconSettings',
+  'IconShare',
+  'IconShield',
+  'IconShoppingCart',
+  'IconStar',
+  'IconTag',
+  'IconThumbDown',
+  'IconThumbUp',
+  'IconTrash',
+  'IconUpload',
+  'IconUser',
+  'IconUserCircle',
+  'IconUsers',
+  'IconVideo',
+  'IconVideoOff',
+  'IconVolume',
+  'IconVolume2',
+  'IconVolume3',
+  'IconWorld',
+  'IconX',
+  'IconZoomIn',
+  'IconZoomOut',
 ].sort();
 
 const fs = require('fs');
-
-const iconName = (myStr) =>
-  'Icon' +
-  myStr
-    .replace(/-([a-z,0-9])/g, (g) => g[1].toUpperCase())
-    .replace(myStr[0], myStr[0].toUpperCase());
-
-const sourceDir = process.argv[2];
-if (!sourceDir) {
-  console.error('Missing TablerIcons directory');
-  return;
-}
-
-// Copy files
-
-icons.forEach((icon) =>
-  fs.copyFileSync(
-    `${sourceDir}/icons-react/icons-js/${icon}.js`,
-    `${process.cwd()}/src/components/media/Icons/TablerIcons/${icon}.js`
-  )
-);
+const path = require('path');
 
 const doNotEditHeader = `//
 // This is a generated file. DO NOT EDIT IT.
-// Instead run:
+// Instead run the following command from packages/components:
 //
-// yarn gen:icons [path_to_tabler_icons_root_folder]
+// yarn install #if you've updated @tabler/icons-react
+// yarn gen:icons
 //`;
-
-// Generate tabler icons index
-
-const tablerIndexContent = icons
-  .map((icon) => `export { default as ${iconName(icon)} } from './${icon}';`)
-  .join('\n');
-fs.writeFileSync(
-  `${process.cwd()}/src/components/media/Icons/TablerIcons/index.ts`,
-  `${doNotEditHeader}
-${tablerIndexContent}`
-);
 
 // Generate Icons.tsx
 
-const tablerIcons = icons.map((icon) => {
-  const Icon = iconName(icon);
+const tablerIcons = icons.map((Icon) => {
   return `export const ${Icon} = (props: IconProps) => withIcon(Tabler.${Icon}, props);`;
 });
 const iconsFileContent = `${doNotEditHeader}
@@ -198,7 +168,7 @@ import {
   RecursiveCSSObject,
   useStyleConfig,
 } from '@chakra-ui/react';
-import * as Tabler from './TablerIcons';
+import * as Tabler from '@tabler/icons-react';
 import { IconProps } from './types';
 
 const withIcon = (Component: React.FC, props: IconProps) => {
@@ -217,8 +187,8 @@ ${tablerIcons.join('\n')}
 `;
 
 fs.writeFileSync(
-  `${process.cwd()}/src/components/media/Icons/Icons.tsx`,
-  iconsFileContent
+  path.resolve(__dirname, '../src/components/media/Icons/Icons.tsx'),
+  iconsFileContent.replace(/(Tabler.IconCircle)(\d)/g, '$1Number$2')
 );
 
 // Generate stories
@@ -246,9 +216,9 @@ const Template = (args) => (
       (icon) => `
     <Flex direction="column" alignItems="center">
       <Box>
-        <Icons.${iconName(icon)} {...args} />
+        <Icons.${icon} {...args} />
       </Box>
-      <Box>${iconName(icon)}</Box>
+      <Box>${icon}</Box>
     </Flex>`
     )
     .join('')}
@@ -261,6 +231,6 @@ All.args = {
 `;
 
 fs.writeFileSync(
-  `${process.cwd()}/src/components/media/Icons/Icons.stories.tsx`,
+  path.resolve(__dirname, '../src/components/media/Icons/Icons.stories.tsx'),
   storiesContent
 );

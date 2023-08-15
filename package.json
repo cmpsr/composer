@@ -10,6 +10,7 @@
     "type:check": "turbo run type:check",
     "type:emit": "turbo run type:emit",
     "build-storybook": "turbo run build-storybook",
+    "gen:icons": "node packages/components/scripts/generate_icons.js",
     "test": "turbo run test -- --coverageThreshold {}",
     "test:watch": "turbo run test:watch --parallel",
     "test:coverage": "turbo run test:coverage -- --coverageThreshold {}",

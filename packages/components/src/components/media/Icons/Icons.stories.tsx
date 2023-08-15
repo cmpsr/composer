@@ -1,8 +1,9 @@
 //
 // This is a generated file. DO NOT EDIT IT.
-// Instead run:
+// Instead run the following command from packages/components:
 //
-// yarn gen:icons [path_to_tabler_icons_root_folder]
+// yarn install #if you've updated @tabler/icons-react
+// yarn gen:icons
 //
 import React from 'react';
 import { Meta } from '@storybook/react';
@@ -147,6 +148,12 @@ const Template = (args) => (
         <Icons.IconBrandTwitter {...args} />
       </Box>
       <Box>IconBrandTwitter</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconBrandX {...args} />
+      </Box>
+      <Box>IconBrandX</Box>
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>

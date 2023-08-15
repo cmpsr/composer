@@ -1,6 +1,6 @@
 //
 // This is a generated file. DO NOT EDIT IT.
-// Instead run the following command from packages/components:
+// Instead run the following command:
 //
 // yarn install #if you've updated @tabler/icons-react
 // yarn gen:icons

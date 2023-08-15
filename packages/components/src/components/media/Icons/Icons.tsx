@@ -2,7 +2,8 @@
 // This is a generated file. DO NOT EDIT IT.
 // Instead run:
 //
-// yarn gen:icons [path_to_tabler_icons_root_folder]
+// yarn install #if you've updated @tabler/icons-react
+// yarn gen:icons
 //
 import React from 'react';
 import {
@@ -11,7 +12,7 @@ import {
   RecursiveCSSObject,
   useStyleConfig,
 } from '@chakra-ui/react';
-import * as Tabler from './TablerIcons';
+import * as Tabler from '@tabler/icons-react';
 import { IconProps } from './types';
 
 const withIcon = (Component: React.FC, props: IconProps) => {
@@ -47,6 +48,7 @@ export const IconBrandFacebook = (props: IconProps) => withIcon(Tabler.IconBrand
 export const IconBrandInstagram = (props: IconProps) => withIcon(Tabler.IconBrandInstagram, props);
 export const IconBrandLinkedin = (props: IconProps) => withIcon(Tabler.IconBrandLinkedin, props);
 export const IconBrandTwitter = (props: IconProps) => withIcon(Tabler.IconBrandTwitter, props);
+export const IconBrandX = (props: IconProps) => withIcon(Tabler.IconBrandX, props);
 export const IconCalendar = (props: IconProps) => withIcon(Tabler.IconCalendar, props);
 export const IconCalendarEvent = (props: IconProps) => withIcon(Tabler.IconCalendarEvent, props);
 export const IconCamera = (props: IconProps) => withIcon(Tabler.IconCamera, props);
@@ -60,16 +62,16 @@ export const IconChevronDown = (props: IconProps) => withIcon(Tabler.IconChevron
 export const IconChevronLeft = (props: IconProps) => withIcon(Tabler.IconChevronLeft, props);
 export const IconChevronRight = (props: IconProps) => withIcon(Tabler.IconChevronRight, props);
 export const IconChevronUp = (props: IconProps) => withIcon(Tabler.IconChevronUp, props);
-export const IconCircle0 = (props: IconProps) => withIcon(Tabler.IconCircle0, props);
-export const IconCircle1 = (props: IconProps) => withIcon(Tabler.IconCircle1, props);
-export const IconCircle2 = (props: IconProps) => withIcon(Tabler.IconCircle2, props);
-export const IconCircle3 = (props: IconProps) => withIcon(Tabler.IconCircle3, props);
-export const IconCircle4 = (props: IconProps) => withIcon(Tabler.IconCircle4, props);
-export const IconCircle5 = (props: IconProps) => withIcon(Tabler.IconCircle5, props);
-export const IconCircle6 = (props: IconProps) => withIcon(Tabler.IconCircle6, props);
-export const IconCircle7 = (props: IconProps) => withIcon(Tabler.IconCircle7, props);
-export const IconCircle8 = (props: IconProps) => withIcon(Tabler.IconCircle8, props);
-export const IconCircle9 = (props: IconProps) => withIcon(Tabler.IconCircle9, props);
+export const IconCircle0 = (props: IconProps) => withIcon(Tabler.IconCircleNumber0, props);
+export const IconCircle1 = (props: IconProps) => withIcon(Tabler.IconCircleNumber1, props);
+export const IconCircle2 = (props: IconProps) => withIcon(Tabler.IconCircleNumber2, props);
+export const IconCircle3 = (props: IconProps) => withIcon(Tabler.IconCircleNumber3, props);
+export const IconCircle4 = (props: IconProps) => withIcon(Tabler.IconCircleNumber4, props);
+export const IconCircle5 = (props: IconProps) => withIcon(Tabler.IconCircleNumber5, props);
+export const IconCircle6 = (props: IconProps) => withIcon(Tabler.IconCircleNumber6, props);
+export const IconCircle7 = (props: IconProps) => withIcon(Tabler.IconCircleNumber7, props);
+export const IconCircle8 = (props: IconProps) => withIcon(Tabler.IconCircleNumber8, props);
+export const IconCircle9 = (props: IconProps) => withIcon(Tabler.IconCircleNumber9, props);
 export const IconCircleCheck = (props: IconProps) => withIcon(Tabler.IconCircleCheck, props);
 export const IconCircleMinus = (props: IconProps) => withIcon(Tabler.IconCircleMinus, props);
 export const IconCirclePlus = (props: IconProps) => withIcon(Tabler.IconCirclePlus, props);

@@ -188,7 +188,7 @@ ${tablerIcons.join('\n')}
 
 fs.writeFileSync(
   path.resolve(__dirname, '../src/components/media/Icons/Icons.tsx'),
-  iconsFileContent.replace(/(Tabler.IconCircle\d)/g, '$1Filled')
+  iconsFileContent.replace(/(Tabler.IconCircle)(\d)/g, '$1Number$2')
 );
 
 // Generate stories

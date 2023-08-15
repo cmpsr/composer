@@ -149,7 +149,7 @@ const path = require('path');
 
 const doNotEditHeader = `//
 // This is a generated file. DO NOT EDIT IT.
-// Instead run the following command:
+// Instead run:
 //
 // yarn install #if you've updated @tabler/icons-react
 // yarn gen:icons

@@ -381,11 +381,11 @@ export const Component: ComponentStyleConfig = {
 
 ### Icons Update
 
-Composer icons are subset of `@tabler/icons-react` so you must update its version on [package.json](./package.json).
+Composer icons are a subset of `@tabler/icons-react` so you must update its version on [package.json](./package.json).
 
 If you wanna add a new icon, ensure to add it to the icons list on the [generate_icons.js](./scripts/generate_icons.js) file.
 
-Once `@tabler/icons-react` has been update and all icons added to the list, you can then run this command to generate the icons and their stories.
+Once `@tabler/icons-react` has been updated and all icons added to the list, you can then run this command to generate the icons and their stories.
 
 `yarn gen:icons`
 

@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.16.0
+
+### Minor Changes
+
+- be4a718: feat: adds X brand icon
+
 ## 5.15.1
 
 ### Patch Changes

@@ -11,7 +11,10 @@ import {
   StepperProps as ChakraStepperProps,
 } from '@chakra-ui/react';
 
-export interface StepperProps extends Omit<ChakraStepperProps, 'size' | 'variant'> {}
+export interface StepperProps extends Omit<ChakraStepperProps, 'size' | 'variant'> {
+  size?: never;
+  variant?: never;
+}
 
 export interface StepStaticMembers {
   Icon: typeof StepIcon;

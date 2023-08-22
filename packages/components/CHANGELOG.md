@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.17.0
+
+### Minor Changes
+
+- 5af4b77: feat: add Stepper component
+
 ## 5.16.0
 
 ### Minor Changes

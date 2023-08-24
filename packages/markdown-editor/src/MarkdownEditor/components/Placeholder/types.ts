@@ -1,3 +1,3 @@
-export interface PlaceholderProps {
+export type PlaceholderProps = {
   children?: string;
-}
+};

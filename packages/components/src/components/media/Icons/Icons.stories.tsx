@@ -343,6 +343,12 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconCircleCheckFilled {...args} />
+      </Box>
+      <Box>IconCircleCheckFilled</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconCircleMinus {...args} />
       </Box>
       <Box>IconCircleMinus</Box>
@@ -412,6 +418,24 @@ const Template = (args) => (
         <Icons.IconCurrentLocation {...args} />
       </Box>
       <Box>IconCurrentLocation</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconDeviceDesktop {...args} />
+      </Box>
+      <Box>IconDeviceDesktop</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconDeviceMobile {...args} />
+      </Box>
+      <Box>IconDeviceMobile</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconDeviceTablet {...args} />
+      </Box>
+      <Box>IconDeviceTablet</Box>
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>

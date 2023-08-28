@@ -80,6 +80,7 @@ export const IconCircle7 = (props: IconProps) => withIcon(Tabler.IconCircleNumbe
 export const IconCircle8 = (props: IconProps) => withIcon(Tabler.IconCircleNumber8, props);
 export const IconCircle9 = (props: IconProps) => withIcon(Tabler.IconCircleNumber9, props);
 export const IconCircleCheck = (props: IconProps) => withIcon(Tabler.IconCircleCheck, props);
+export const IconCircleCheckFilled = (props: IconProps) => withIcon(Tabler.IconCircleCheckFilled, props);
 export const IconCircleMinus = (props: IconProps) => withIcon(Tabler.IconCircleMinus, props);
 export const IconCirclePlus = (props: IconProps) => withIcon(Tabler.IconCirclePlus, props);
 export const IconCircleX = (props: IconProps) => withIcon(Tabler.IconCircleX, props);
@@ -92,6 +93,9 @@ export const IconCode = (props: IconProps) => withIcon(Tabler.IconCode, props);
 export const IconCoin = (props: IconProps) => withIcon(Tabler.IconCoin, props);
 export const IconCreditCard = (props: IconProps) => withIcon(Tabler.IconCreditCard, props);
 export const IconCurrentLocation = (props: IconProps) => withIcon(Tabler.IconCurrentLocation, props);
+export const IconDeviceDesktop = (props: IconProps) => withIcon(Tabler.IconDeviceDesktop, props);
+export const IconDeviceMobile = (props: IconProps) => withIcon(Tabler.IconDeviceMobile, props);
+export const IconDeviceTablet = (props: IconProps) => withIcon(Tabler.IconDeviceTablet, props);
 export const IconDots = (props: IconProps) => withIcon(Tabler.IconDots, props);
 export const IconDownload = (props: IconProps) => withIcon(Tabler.IconDownload, props);
 export const IconEdit = (props: IconProps) => withIcon(Tabler.IconEdit, props);

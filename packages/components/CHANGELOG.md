@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.18.0
+
+### Minor Changes
+
+- 9755805: feat: expose more icons
+
 ## 5.17.0
 
 ### Minor Changes

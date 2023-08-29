@@ -166,6 +166,7 @@ const icons = [
   'IconH4',
   'IconH5',
   'IconH6',
+  'IconListNumbers',
 ].sort();
 
 const fs = require('fs');

@@ -132,6 +132,7 @@ export const IconLayout = (props: IconProps) => withIcon(Tabler.IconLayout, prop
 export const IconLetterT = (props: IconProps) => withIcon(Tabler.IconLetterT, props);
 export const IconLink = (props: IconProps) => withIcon(Tabler.IconLink, props);
 export const IconList = (props: IconProps) => withIcon(Tabler.IconList, props);
+export const IconListNumbers = (props: IconProps) => withIcon(Tabler.IconListNumbers, props);
 export const IconLocation = (props: IconProps) => withIcon(Tabler.IconLocation, props);
 export const IconLock = (props: IconProps) => withIcon(Tabler.IconLock, props);
 export const IconLockOpen = (props: IconProps) => withIcon(Tabler.IconLockOpen, props);

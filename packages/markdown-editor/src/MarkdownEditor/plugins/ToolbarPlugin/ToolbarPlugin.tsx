@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Button,
   Divider,
@@ -23,11 +23,8 @@ import {
   IconStrikethrough,
   IconCode,
   IconLink,
-  IconEdit,
-  Box,
-  Input,
-  Link,
   IconList,
+  IconListNumbers,
 } from '@cmpsr/components';
 
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
@@ -46,9 +43,11 @@ import {
   $createParagraphNode,
   $getNodeByKey,
   COMMAND_PRIORITY_CRITICAL,
+  KEY_MODIFIER_COMMAND,
+  COMMAND_PRIORITY_NORMAL,
 } from 'lexical';
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
-import { $isParentElementRTL, $isAtNodeEnd, $setBlocksType } from '@lexical/selection';
+import { $isParentElementRTL, $setBlocksType } from '@lexical/selection';
 import { $findMatchingParent, $getNearestNodeOfType, mergeRegister } from '@lexical/utils';
 import {
   INSERT_ORDERED_LIST_COMMAND,
@@ -57,7 +56,6 @@ import {
   $isListNode,
   ListNode,
 } from '@lexical/list';
-import { createPortal } from 'react-dom';
 import { $createHeadingNode, $createQuoteNode, $isHeadingNode, HeadingTagType } from '@lexical/rich-text';
 import {
   $createCodeNode,
@@ -68,7 +66,8 @@ import {
   getLanguageFriendlyName,
 } from '@lexical/code';
 
-const LowPriority = 1;
+import { getSelectedNode } from '../../utils/getSelectedNode';
+import { sanitizeUrl } from '../../utils/sanitizeUrl';
 
 const supportedBlockTypes = new Set(['paragraph', 'quote', 'code', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol']);
 
@@ -112,200 +111,12 @@ const getCodeLanguageOptions = (): [string, string][] => {
 
 const CODE_LANGUAGE_OPTIONS = getCodeLanguageOptions();
 
-const positionEditorElement = (editor: HTMLDivElement, rect: DOMRect) => {
-  if (rect === null) {
-    editor.style.opacity = '0';
-    editor.style.top = '-1000px';
-    editor.style.left = '-1000px';
-  } else {
-    editor.style.opacity = '1';
-    editor.style.top = `${rect.top + rect.height + window.scrollY + 10}px`;
-    editor.style.left = `${rect.left + window.scrollX - editor.offsetWidth / 2 + rect.width / 2 + 130}px`;
-  }
-};
-
 const CAN_USE_DOM: boolean =
   typeof window !== 'undefined' &&
   typeof window.document !== 'undefined' &&
   typeof window.document.createElement !== 'undefined';
 
 const IS_APPLE: boolean = CAN_USE_DOM && /Mac|iPod|iPhone|iPad/.test(navigator.platform);
-
-function FloatingLinkEditor({ editor }) {
-  const editorRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef(null);
-  const mouseDownRef = useRef(false);
-  const [linkProtocol, setLinkProtocol] = useState('https://');
-  const [linkUrl, setLinkUrl] = useState('');
-  const [isEditMode, setEditMode] = useState(false);
-  const [lastSelection, setLastSelection] = useState(null);
-
-  const updateLinkEditor = useCallback(() => {
-    const updateState = (url: string) => {
-      const [protocol, urlWithoutProtocol] = url.split('://');
-      setLinkProtocol(`${protocol}://`);
-      setLinkUrl(urlWithoutProtocol);
-    };
-    const selection = $getSelection();
-    if ($isRangeSelection(selection)) {
-      const node = getSelectedNode(selection);
-      const parent = node.getParent();
-      if ($isLinkNode(parent)) {
-        updateState(parent.getURL());
-      } else if ($isLinkNode(node)) {
-        updateState(node.getURL());
-      } else {
-        setLinkUrl('');
-      }
-    }
-    const editorElem = editorRef.current;
-    const nativeSelection = window.getSelection();
-    const activeElement = document.activeElement;
-
-    if (editorElem === null) {
-      return;
-    }
-
-    const rootElement = editor.getRootElement();
-    if (
-      selection !== null &&
-      !nativeSelection.isCollapsed &&
-      rootElement !== null &&
-      rootElement.contains(nativeSelection.anchorNode)
-    ) {
-      const domRange = nativeSelection.getRangeAt(0);
-      let rect: DOMRect;
-      if (nativeSelection.anchorNode === rootElement) {
-        let inner = rootElement;
-        while (inner.firstElementChild != null) {
-          inner = inner.firstElementChild;
-        }
-        rect = inner.getBoundingClientRect();
-      } else {
-        rect = domRange.getBoundingClientRect();
-      }
-
-      if (!mouseDownRef.current) {
-        positionEditorElement(editorElem, rect);
-      }
-      setLastSelection(selection);
-    } else if (!activeElement) {
-      positionEditorElement(editorElem, null);
-      setLastSelection(null);
-      setEditMode(false);
-      setLinkUrl('');
-    }
-
-    return true;
-  }, [editor]);
-
-  useEffect(() => {
-    return mergeRegister(
-      editor.registerUpdateListener(({ editorState }) => {
-        editorState.read(() => {
-          updateLinkEditor();
-        });
-      }),
-
-      editor.registerCommand(
-        SELECTION_CHANGE_COMMAND,
-        () => {
-          updateLinkEditor();
-          return true;
-        },
-        LowPriority
-      )
-    );
-  }, [editor, updateLinkEditor]);
-
-  useEffect(() => {
-    editor.getEditorState().read(() => {
-      updateLinkEditor();
-    });
-  }, [editor, updateLinkEditor]);
-
-  useEffect(() => {
-    if (isEditMode && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [isEditMode]);
-
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      if (lastSelection !== null) {
-        if (linkUrl !== '') {
-          editor.dispatchCommand(TOGGLE_LINK_COMMAND, linkProtocol + linkUrl);
-        }
-        setEditMode(false);
-      }
-    } else if (e.key === 'Escape') {
-      e.preventDefault();
-      setEditMode(false);
-    }
-  };
-
-  return (
-    <Box
-      ref={editorRef}
-      className="link-editor"
-      position="absolute"
-      zIndex={100}
-      mt="-0.375rem"
-      maxW="20rem"
-      w="100%"
-      opacity={0}
-      boxShadow="elevation-interactive"
-      borderRadius="0.5rem"
-      p="0.25rem"
-      transition="opacity 0.5s"
-    >
-      {isEditMode ? (
-        <Input
-          leftLabel={linkProtocol}
-          value={linkUrl}
-          onChange={(e) => setLinkUrl(e.target.value)}
-          onKeyDown={handleKeyDown}
-          trailingIcon={<IconLink />}
-        />
-      ) : (
-        <Box width="calc(100% - 24px)" position="relative" p="0.5rem 0.75rem" boxSizing="border-box">
-          <Link href={linkProtocol + linkUrl} target="_blank" rel="noopener noreferrer">
-            {linkProtocol + linkUrl}
-          </Link>
-          <IconButton
-            variant="ghost"
-            position="absolute"
-            top="0"
-            bottom="0"
-            right="0"
-            size="s"
-            icon={<IconEdit />}
-            onMouseDown={(event) => event.preventDefault()}
-            onClick={() => setEditMode(true)}
-            aria-label="Edit Url"
-          />
-        </Box>
-      )}
-    </Box>
-  );
-}
-
-function getSelectedNode(selection) {
-  const anchor = selection.anchor;
-  const focus = selection.focus;
-  const anchorNode = selection.anchor.getNode();
-  const focusNode = selection.focus.getNode();
-  if (anchorNode === focusNode) {
-    return anchorNode;
-  }
-  const isBackward = selection.isBackward();
-  if (isBackward) {
-    return $isAtNodeEnd(focus) ? anchorNode : focusNode;
-  } else {
-    return $isAtNodeEnd(anchor) ? focusNode : anchorNode;
-  }
-}
 
 const BlockOptionsDropdownList = ({ editor, blockType }) => {
   const formatParagraph = () => {
@@ -410,7 +221,7 @@ const BlockOptionsDropdownList = ({ editor, blockType }) => {
         <Dropdown.Item onClick={formatBulletList} icon={<IconList />}>
           Bulleted List
         </Dropdown.Item>
-        <Dropdown.Item onClick={formatNumberedList} icon={<IconBell />}>
+        <Dropdown.Item onClick={formatNumberedList} icon={<IconListNumbers />}>
           Numbered List
         </Dropdown.Item>
         <Dropdown.Item onClick={formatQuote} icon={<IconBell />}>
@@ -549,6 +360,23 @@ export const ToolbarPlugin = () => {
     );
   }, [updateToolbar, activeEditor, editor]);
 
+  useEffect(() => {
+    return activeEditor.registerCommand(
+      KEY_MODIFIER_COMMAND,
+      (payload) => {
+        const event: KeyboardEvent = payload;
+        const { code, ctrlKey, metaKey } = event;
+
+        if (code === 'KeyK' && (ctrlKey || metaKey)) {
+          event.preventDefault();
+          return activeEditor.dispatchCommand(TOGGLE_LINK_COMMAND, sanitizeUrl('https://'));
+        }
+        return false;
+      },
+      COMMAND_PRIORITY_NORMAL
+    );
+  }, [activeEditor, isLink]);
+
   const onCodeLanguageSelect = useCallback(
     (value: string) => {
       activeEditor.update(() => {
@@ -569,7 +397,7 @@ export const ToolbarPlugin = () => {
     } else {
       editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
     }
-  }, [editor, isLink]);
+  }, [activeEditor, isLink]);
 
   return (
     <Flex
@@ -664,7 +492,7 @@ export const ToolbarPlugin = () => {
             isDisabled={undefined}
             title={undefined}
           />
-          {isLink && createPortal(<FloatingLinkEditor editor={activeEditor} />, document.body)}
+          {/* {isLink && createPortal(<FloatingLinkEditor editor={activeEditor} />, document.body)} */}
           <Divider orientation="vertical" />
           <button
             onClick={() => {

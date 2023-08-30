@@ -8,14 +8,11 @@ export default {
 } as Meta;
 
 export const Default = () => {
-  const [value, setValue] = useState('');
-
   const handleChanges = (v: string) => {
     console.log(v);
-    setValue(v);
   };
 
-  return <MarkdownEditor value={value} onChange={handleChanges} placeholder="Enter some markdown text..." />;
+  return <MarkdownEditor onChange={handleChanges} />;
 };
 
 export const Disabled = () => {
@@ -40,12 +37,12 @@ const handleChange = (v: string) => {
   };
 
   return (
-    <MarkdownEditor
-      value={value}
-      onChange={handleChanges}
-      backgroundColor="background-action-disabled"
-      height="50rem"
-      isDisabled
-    />
+    <MarkdownEditor value={value} onChange={handleChanges} backgroundColor="background-action-disabled" isReadonly />
   );
+};
+
+const Template = (args) => <MarkdownEditor {...args} />;
+export const Playground = Template.bind({});
+Playground.args = {
+  isReadonly: false,
 };

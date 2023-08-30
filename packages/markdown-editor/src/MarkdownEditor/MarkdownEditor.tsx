@@ -57,8 +57,8 @@ const editorConfig = {
 export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   value,
   onChange,
-  placeholder,
-  isDisabled,
+  placeholder = 'Start typing here...',
+  isReadonly,
   borderRadius = '0.5rem',
   maxWidth = '38rem',
   color = 'text-primary',
@@ -81,7 +81,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
         border={border}
         borderColor={borderColor}
       >
-        <ToolbarPlugin />
+        {!isReadonly && <ToolbarPlugin />}
         <Box backgroundColor={backgroundColor} position="relative">
           <RichTextPlugin
             contentEditable={
@@ -108,7 +108,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
           <CodeHighlightPlugin />
           <ListPlugin />
           <LinkPlugin />
-          <ReadOnlyPlugin isDisabled={isDisabled} />
+          <ReadOnlyPlugin isReadonly={isReadonly} />
           <AutoLinkPlugin />
           <ListMaxIndentLevelPlugin maxDepth={7} />
           <MarkdownShortcutPlugin />

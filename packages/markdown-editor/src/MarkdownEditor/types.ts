@@ -1,8 +1,8 @@
-import { BoxProps } from '@chakra-ui/react';
-
-export type MarkdownEditorProps = Omit<BoxProps, 'onChange'> & {
+export type MarkdownEditorProps = {
   value?: string;
   onChange?: (value: string) => void;
   placeholder?: string;
-  isDisabled?: boolean;
+  isReadonly?: boolean;
+  height?: string;
+  width?: string;
 };

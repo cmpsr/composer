@@ -474,7 +474,7 @@ export const ToolbarPlugin = () => {
             aria-label="Format Strikethrough"
             icon={<IconStrikethrough />}
             isDisabled={undefined}
-            title={undefined}
+            title="Format Strikethrough"
           />
           <ToolbarIcon
             isActive={isCode}
@@ -482,7 +482,7 @@ export const ToolbarPlugin = () => {
             aria-label="Format Code"
             icon={<IconCode />}
             isDisabled={undefined}
-            title={undefined}
+            title="Format Code"
           />
           <ToolbarIcon
             isActive={isLink}
@@ -490,7 +490,7 @@ export const ToolbarPlugin = () => {
             aria-label="Insert Link"
             icon={<IconLink />}
             isDisabled={undefined}
-            title={undefined}
+            title={`Insert link (${IS_APPLE ? '⌘' : 'Ctrl+'}K)`}
           />
           {/* {isLink && createPortal(<FloatingLinkEditor editor={activeEditor} />, document.body)} */}
           <Divider orientation="vertical" />

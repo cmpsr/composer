@@ -55,7 +55,7 @@ const editorConfig = {
 };
 
 export const MarkdownEditor: FC<MarkdownEditorProps> = ({
-  value,
+  initialValue,
   onChange,
   placeholder = 'Start typing here...',
   isReadonly,
@@ -65,10 +65,15 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   backgroundColor = 'background-action-default',
   border = '1px solid',
   borderColor = 'ui-element-outline-default',
+  height = '17rem',
+  minHeight = '12rem',
 }) => {
   return (
     <LexicalComposer
-      initialConfig={{ ...editorConfig, editorState: () => $convertFromMarkdownString(value ?? '', TRANSFORMERS) }}
+      initialConfig={{
+        ...editorConfig,
+        editorState: () => $convertFromMarkdownString(initialValue ?? '', TRANSFORMERS),
+      }}
     >
       <Box
         borderRadius={borderRadius}
@@ -87,7 +92,8 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
             contentEditable={
               <ContentEditable
                 style={{
-                  height: '17rem',
+                  height,
+                  minHeight,
                   resize: 'vertical',
                   fontSize: '1rem',
                   position: 'relative',

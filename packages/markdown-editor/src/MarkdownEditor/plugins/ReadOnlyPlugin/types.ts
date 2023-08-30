@@ -1,3 +1,3 @@
 export type ReadOnlyPluginProps = {
-  isDisabled?: boolean;
+  isReadonly?: boolean;
 };

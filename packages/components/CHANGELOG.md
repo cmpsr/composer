@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.19.0
+
+### Minor Changes
+
+- edc48e6: feat: add list numbers icon
+
 ## 5.18.0
 
 ### Minor Changes

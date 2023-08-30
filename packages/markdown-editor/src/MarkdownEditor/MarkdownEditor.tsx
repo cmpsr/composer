@@ -17,8 +17,8 @@ import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { AutoLinkNode, LinkNode } from '@lexical/link';
 import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
 import { ListPlugin } from '@lexical/react/LexicalListPlugin';
-import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import { $convertFromMarkdownString, TRANSFORMERS } from '@lexical/markdown';
+import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode';
 
 import { OnChangeMarkdown } from './plugins/OnChangeMarkdown';
 import { CodeHighlightPlugin } from './plugins/CodeHighlightPlugin';
@@ -26,6 +26,8 @@ import { AutoLinkPlugin } from './plugins/AutoLinkPlugin';
 import { ReadOnlyPlugin } from './plugins/ReadOnlyPlugin';
 import { ListMaxIndentLevelPlugin } from './plugins/ListMaxIndentLevelPlugin';
 import { ToolbarPlugin } from './plugins/ToolbarPlugin';
+import { FloatingLinkEditorPlugin } from './plugins/FloatingLinkEditorPlugin';
+import { MarkdownShortcutPlugin } from './plugins/MarkdownShortcutPlugin';
 
 import './style.css';
 
@@ -48,6 +50,7 @@ const editorConfig = {
     TableRowNode,
     AutoLinkNode,
     LinkNode,
+    HorizontalRuleNode,
   ],
 };
 
@@ -59,7 +62,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   borderRadius = '0.5rem',
   maxWidth = '38rem',
   color = 'text-primary',
-  backgroundColor = '<ToolbarPlugin />',
+  backgroundColor = 'background-action-default',
   border = '1px solid',
   borderColor = 'ui-element-outline-default',
 }) => {
@@ -84,7 +87,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
             contentEditable={
               <ContentEditable
                 style={{
-                  height: '15rem',
+                  height: '17rem',
                   resize: 'vertical',
                   fontSize: '1rem',
                   position: 'relative',
@@ -108,8 +111,9 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
           <ReadOnlyPlugin isDisabled={isDisabled} />
           <AutoLinkPlugin />
           <ListMaxIndentLevelPlugin maxDepth={7} />
-          <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+          <MarkdownShortcutPlugin />
           <OnChangeMarkdown onChange={onChange} transformers={TRANSFORMERS} />
+          <FloatingLinkEditorPlugin />
         </Box>
       </Box>
     </LexicalComposer>

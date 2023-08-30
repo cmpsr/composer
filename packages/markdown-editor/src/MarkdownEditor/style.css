@@ -1,15 +1,15 @@
 .PlaygroundEditorTheme__ltr {
   text-align: left;
+  margin-bottom: 1rem;
 }
 .PlaygroundEditorTheme__rtl {
   text-align: right;
+  margin-bottom: 1rem;
 }
 .PlaygroundEditorTheme__paragraph {
-  margin: 0;
   position: relative;
 }
 .PlaygroundEditorTheme__quote {
-  margin: 0;
   margin-left: 20px;
   margin-bottom: 10px;
   font-size: 15px;
@@ -23,18 +23,15 @@
   font-size: 24px;
   color: rgb(5, 5, 5);
   font-weight: 400;
-  margin: 0;
 }
 .PlaygroundEditorTheme__h2 {
   font-size: 15px;
   color: rgb(101, 103, 107);
   font-weight: 700;
-  margin: 0;
   text-transform: uppercase;
 }
 .PlaygroundEditorTheme__h3 {
   font-size: 12px;
-  margin: 0;
   text-transform: uppercase;
 }
 .PlaygroundEditorTheme__indent {
@@ -88,7 +85,6 @@
   padding: 8px 8px 8px 52px;
   line-height: 1.53;
   font-size: 13px;
-  margin: 0;
   margin-top: 8px;
   margin-bottom: 8px;
   overflow-x: auto;
@@ -273,40 +269,34 @@
 }
 .PlaygroundEditorTheme__ol1 {
   padding: 0;
-  margin: 0;
   list-style-position: inside;
 }
 .PlaygroundEditorTheme__ol2 {
   padding: 0;
-  margin: 0;
   list-style-type: upper-alpha;
   list-style-position: inside;
 }
 .PlaygroundEditorTheme__ol3 {
   padding: 0;
-  margin: 0;
   list-style-type: lower-alpha;
   list-style-position: inside;
 }
 .PlaygroundEditorTheme__ol4 {
   padding: 0;
-  margin: 0;
   list-style-type: upper-roman;
   list-style-position: inside;
 }
 .PlaygroundEditorTheme__ol5 {
   padding: 0;
-  margin: 0;
   list-style-type: lower-roman;
   list-style-position: inside;
 }
 .PlaygroundEditorTheme__ul {
   padding: 0;
-  margin: 0;
   list-style-position: inside;
 }
 .PlaygroundEditorTheme__listItem {
-  margin: 0 32px;
+  margin-bottom: 1rem;
 }
 .PlaygroundEditorTheme__listItemChecked,
 .PlaygroundEditorTheme__listItemUnchecked {
@@ -421,130 +411,4 @@
 }
 .PlaygroundEditorTheme__embedBlockFocus {
   outline: 2px solid rgb(60, 132, 244);
-}
-
-/*****/
-
-#block-controls button:hover {
-  background-color: #efefef;
-}
-
-#block-controls button:focus-visible {
-  border-color: blue;
-}
-
-#block-controls span.block-type {
-  background-size: contain;
-  display: block;
-  width: 18px;
-  height: 18px;
-  margin: 2px;
-}
-
-#block-controls span.block-type.paragraph {
-  color: red;
-}
-
-#block-controls span.block-type.h1 {
-  color: red;
-}
-
-#block-controls span.block-type.h2 {
-  color: red;
-}
-
-#block-controls span.block-type.quote {
-  color: red;
-}
-
-#block-controls span.block-type.ul {
-  color: red;
-}
-
-#block-controls span.block-type.ol {
-  color: red;
-}
-
-#block-controls span.block-type.code {
-  color: red;
-}
-
-i.undo {
-  color: red;
-}
-
-i.redo {
-  color: red;
-}
-
-.icon.paragraph {
-  color: red;
-}
-
-.icon.large-heading,
-.icon.h1 {
-  color: red;
-}
-
-.icon.small-heading,
-.icon.h2 {
-  color: red;
-}
-
-.icon.bullet-list,
-.icon.ul {
-  color: red;
-}
-
-.icon.numbered-list,
-.icon.ol {
-  color: red;
-}
-
-.icon.quote {
-  color: red;
-}
-
-.icon.code {
-  color: red;
-}
-
-i.bold {
-  color: red;
-}
-
-i.italic {
-  color: red;
-}
-
-i.underline {
-  color: red;
-}
-
-i.strikethrough {
-  color: red;
-}
-
-i.code {
-  color: red;
-}
-
-i.link {
-  color: red;
-}
-
-i.left-align {
-  color: red;
-}
-
-i.center-align {
-  color: red;
-}
-
-i.right-align {
-  color: red;
-}
-
-i.justify-align {
-  color: red;
 }

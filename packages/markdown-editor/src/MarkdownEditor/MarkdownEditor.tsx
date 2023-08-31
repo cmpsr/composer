@@ -30,7 +30,7 @@ import { FloatingLinkEditorPlugin } from './plugins/FloatingLinkEditorPlugin';
 import { MarkdownShortcutPlugin } from './plugins/MarkdownShortcutPlugin';
 import { PLAYGROUND_TRANSFORMERS } from './plugins/MarkdownTransformers';
 
-import './style.css';
+import './styles';
 
 const editorConfig = {
   theme: defaultTheme,

@@ -16,7 +16,7 @@ import { ListItemNode, ListNode } from '@lexical/list';
 import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { AutoLinkNode, LinkNode } from '@lexical/link';
 import { ListPlugin } from '@lexical/react/LexicalListPlugin';
-import { $convertFromMarkdownString, TRANSFORMERS } from '@lexical/markdown';
+import { $convertFromMarkdownString } from '@lexical/markdown';
 import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode';
 
 import { OnChangeMarkdown } from './plugins/OnChangeMarkdown';
@@ -28,6 +28,7 @@ import { ListMaxIndentLevelPlugin } from './plugins/ListMaxIndentLevelPlugin';
 import { ToolbarPlugin } from './plugins/ToolbarPlugin';
 import { FloatingLinkEditorPlugin } from './plugins/FloatingLinkEditorPlugin';
 import { MarkdownShortcutPlugin } from './plugins/MarkdownShortcutPlugin';
+import { PLAYGROUND_TRANSFORMERS } from './plugins/MarkdownTransformers';
 
 import './style.css';
 
@@ -62,7 +63,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   borderRadius = '0.5rem',
   maxWidth = '38rem',
   color = 'text-primary',
-  backgroundColor = 'background-action-default',
+  backgroundColor = 'background-container-default',
   border = '1px solid',
   borderColor = 'ui-element-outline-default',
   height = '17rem',
@@ -72,7 +73,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
     <LexicalComposer
       initialConfig={{
         ...editorConfig,
-        editorState: () => $convertFromMarkdownString(initialValue ?? '', TRANSFORMERS),
+        editorState: () => $convertFromMarkdownString(initialValue ?? '', PLAYGROUND_TRANSFORMERS),
       }}
     >
       <Box
@@ -118,7 +119,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
           <AutoLinkPlugin />
           <ListMaxIndentLevelPlugin maxDepth={7} />
           <MarkdownShortcutPlugin />
-          <OnChangeMarkdown onChange={onChange} transformers={TRANSFORMERS} />
+          <OnChangeMarkdown onChange={onChange} transformers={PLAYGROUND_TRANSFORMERS} />
           <FloatingLinkEditorPlugin />
         </Box>
       </Box>

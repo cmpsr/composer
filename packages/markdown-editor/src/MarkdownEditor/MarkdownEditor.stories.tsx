@@ -18,10 +18,10 @@ export const Default = () => {
 export const Disabled = () => {
   const value = `# Hello World
 
-This an _example_ of the [composer](https://cmpsr.io) markdown editor in disabled mode.
+This an _example_ of the [composer](https://cmpsr.io) **markdown editor** in *disabled mode*.
 
 \`\`\`react
-// Example of usage of the MardownEditor component
+// Example of usage of the MarkdownEditor component
 const [value, setValue] = useState("");
 
 const handleChange = (v: string) => {
@@ -40,7 +40,8 @@ const handleChange = (v: string) => {
     <MarkdownEditor
       initialValue={value}
       onChange={handleChanges}
-      backgroundColor="background-action-disabled"
+      height="30rem"
+      backgroundColor="background-container-disabled"
       isReadonly
     />
   );

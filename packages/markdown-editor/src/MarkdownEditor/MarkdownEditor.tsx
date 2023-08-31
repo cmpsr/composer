@@ -86,7 +86,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
         border={border}
         borderColor={borderColor}
       >
-        {!isReadonly && <ToolbarPlugin />}
+        <ToolbarPlugin isDisabled={isReadonly} />
         <Box backgroundColor={backgroundColor} position="relative">
           <RichTextPlugin
             contentEditable={

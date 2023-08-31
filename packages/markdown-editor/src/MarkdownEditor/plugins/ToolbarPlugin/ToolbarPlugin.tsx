@@ -118,7 +118,7 @@ const CAN_USE_DOM: boolean =
 
 const IS_APPLE: boolean = CAN_USE_DOM && /Mac|iPod|iPhone|iPad/.test(navigator.platform);
 
-const BlockOptionsDropdownList = ({ editor, blockType }) => {
+const BlockOptionsDropdownList = ({ editor, blockType, isDisabled }) => {
   const formatParagraph = () => {
     editor.update(() => {
       const selection = $getSelection();
@@ -189,6 +189,7 @@ const BlockOptionsDropdownList = ({ editor, blockType }) => {
   return (
     <Dropdown>
       <Dropdown.Button
+        isDisabled={isDisabled}
         as={Button}
         variant="ghost"
         leadingIcon={blockTypeToBlockIcon[blockType]}
@@ -249,7 +250,7 @@ const ToolbarIcon = ({ isActive = undefined, isDisabled, onClick, title, icon, '
   />
 );
 
-export const ToolbarPlugin = () => {
+export const ToolbarPlugin = ({ isDisabled }: { isDisabled?: boolean }) => {
   const [editor] = useLexicalComposerContext();
   const [activeEditor, setActiveEditor] = useState(editor);
   const [canUndo, setCanUndo] = useState(false);
@@ -407,14 +408,14 @@ export const ToolbarPlugin = () => {
       borderBottomColor="ui-element-outline-default"
     >
       <ToolbarIcon
-        isDisabled={!canUndo}
+        isDisabled={isDisabled || !canUndo}
         onClick={() => editor.dispatchCommand(UNDO_COMMAND, undefined)}
         aria-label="Undo"
         icon={<IconArrowBackUp />}
         title={`Undo ${IS_APPLE ? '(⌘' : '(Ctrl+'}Z)`}
       />
       <ToolbarIcon
-        isDisabled={!canRedo}
+        isDisabled={isDisabled || !canRedo}
         onClick={() => editor.dispatchCommand(REDO_COMMAND, undefined)}
         aria-label="Redo"
         icon={<IconArrowForwardUp />}
@@ -423,13 +424,13 @@ export const ToolbarPlugin = () => {
       <Divider orientation="vertical" />
       {supportedBlockTypes.has(blockType) && (
         <>
-          <BlockOptionsDropdownList editor={activeEditor} blockType={blockType} />
+          <BlockOptionsDropdownList editor={activeEditor} blockType={blockType} isDisabled={isDisabled} />
           <Divider orientation="vertical" />
         </>
       )}
       {blockType === 'code' ? (
         <Dropdown>
-          <Dropdown.Button as={Button} variant="ghost" trailingIcon={<IconChevronDown />}>
+          <Dropdown.Button isDisabled={isDisabled} as={Button} variant="ghost" trailingIcon={<IconChevronDown />}>
             {getLanguageFriendlyName(codeLanguage)}
           </Dropdown.Button>
           <Dropdown.List>
@@ -447,7 +448,7 @@ export const ToolbarPlugin = () => {
             onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold')}
             aria-label="Format Bold"
             icon={<IconBold />}
-            isDisabled={undefined}
+            isDisabled={isDisabled}
             title={`Bold (${IS_APPLE ? '⌘' : 'Ctrl+'}B)`}
           />
           <ToolbarIcon
@@ -455,7 +456,7 @@ export const ToolbarPlugin = () => {
             onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic')}
             aria-label="Format Italic"
             icon={<IconItalic />}
-            isDisabled={undefined}
+            isDisabled={isDisabled}
             title={`Italic (${IS_APPLE ? '⌘' : 'Ctrl+'}I)`}
           />
           <ToolbarIcon
@@ -463,7 +464,7 @@ export const ToolbarPlugin = () => {
             onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline')}
             aria-label="Format Underline"
             icon={<IconUnderline />}
-            isDisabled={undefined}
+            isDisabled={isDisabled}
             title={`Underline (${IS_APPLE ? '⌘' : 'Ctrl+'}U)`}
           />
           <ToolbarIcon
@@ -471,7 +472,7 @@ export const ToolbarPlugin = () => {
             onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough')}
             aria-label="Format Strikethrough"
             icon={<IconStrikethrough />}
-            isDisabled={undefined}
+            isDisabled={isDisabled}
             title="Format Strikethrough"
           />
           <ToolbarIcon
@@ -479,7 +480,7 @@ export const ToolbarPlugin = () => {
             onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code')}
             aria-label="Format Code"
             icon={<IconCode />}
-            isDisabled={undefined}
+            isDisabled={isDisabled}
             title="Format Code"
           />
           <ToolbarIcon
@@ -487,7 +488,7 @@ export const ToolbarPlugin = () => {
             onClick={insertLink}
             aria-label="Insert Link"
             icon={<IconLink />}
-            isDisabled={undefined}
+            isDisabled={isDisabled}
             title={`Insert link (${IS_APPLE ? '⌘' : 'Ctrl+'}K)`}
           />
           <Divider orientation="vertical" />

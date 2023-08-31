@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { JSX } from 'react';
 import { screen, renderWithProviders } from '@tests/renderWithProviders';
 import { Section } from '.';
 

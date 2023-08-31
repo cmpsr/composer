@@ -191,6 +191,7 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
     >
       {isEditMode ? (
         <Input
+          ref={inputRef}
           value={linkUrl}
           onChange={(e) => setLinkUrl(e.target.value)}
           onKeyDown={monitorInputInteraction}

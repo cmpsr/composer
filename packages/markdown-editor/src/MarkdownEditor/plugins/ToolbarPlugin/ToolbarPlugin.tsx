@@ -35,7 +35,6 @@ import {
   UNDO_COMMAND,
   SELECTION_CHANGE_COMMAND,
   FORMAT_TEXT_COMMAND,
-  FORMAT_ELEMENT_COMMAND,
   DEPRECATED_$isGridSelection,
   $getSelection,
   $isRangeSelection,
@@ -69,7 +68,7 @@ import {
 import { getSelectedNode } from '../../utils/getSelectedNode';
 import { sanitizeUrl } from '../../utils/sanitizeUrl';
 
-const supportedBlockTypes = new Set(['paragraph', 'quote', 'code', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol']);
+const supportedBlockTypes = new Set(['paragraph', 'code', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bullet', 'number']);
 
 const blockTypeToBlockName = {
   code: 'Code Block',
@@ -79,10 +78,9 @@ const blockTypeToBlockName = {
   h4: 'Heading 4',
   h5: 'Heading 5',
   h6: 'Heading 6',
-  ol: 'Numbered List',
+  number: 'Numbered List',
   paragraph: 'Normal',
-  quote: 'Quote',
-  ul: 'Bulleted List',
+  bullet: 'Bulleted List',
 };
 
 const blockTypeToBlockIcon = {
@@ -93,10 +91,9 @@ const blockTypeToBlockIcon = {
   h4: <IconH4 />,
   h5: <IconH5 />,
   h6: <IconH6 />,
-  ol: <IconBell />,
+  number: <IconListNumbers />,
   paragraph: <IconLetterT />,
-  quote: <IconBell />,
-  ul: <IconBell />,
+  bullet: <IconList />,
 };
 
 const getCodeLanguageOptions = (): [string, string][] => {
@@ -152,17 +149,6 @@ const BlockOptionsDropdownList = ({ editor, blockType, isDisabled }) => {
       editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
     } else {
       editor.dispatchCommand(REMOVE_LIST_COMMAND, undefined);
-    }
-  };
-
-  const formatQuote = () => {
-    if (blockType !== 'quote') {
-      editor.update(() => {
-        const selection = $getSelection();
-        if ($isRangeSelection(selection) || DEPRECATED_$isGridSelection(selection)) {
-          $setBlocksType(selection, () => $createQuoteNode());
-        }
-      });
     }
   };
 
@@ -224,9 +210,6 @@ const BlockOptionsDropdownList = ({ editor, blockType, isDisabled }) => {
         </Dropdown.Item>
         <Dropdown.Item onClick={formatNumberedList} icon={<IconListNumbers />}>
           Numbered List
-        </Dropdown.Item>
-        <Dropdown.Item onClick={formatQuote} icon={<IconBell />}>
-          Quote
         </Dropdown.Item>
         <Dropdown.Item onClick={formatCode} icon={<IconSourceCode />}>
           Code Block

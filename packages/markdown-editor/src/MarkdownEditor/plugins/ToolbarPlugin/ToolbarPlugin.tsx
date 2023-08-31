@@ -47,7 +47,7 @@ import {
   COMMAND_PRIORITY_NORMAL,
 } from 'lexical';
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
-import { $isParentElementRTL, $setBlocksType } from '@lexical/selection';
+import { $setBlocksType } from '@lexical/selection';
 import { $findMatchingParent, $getNearestNodeOfType, mergeRegister } from '@lexical/utils';
 import {
   INSERT_ORDERED_LIST_COMMAND,
@@ -257,7 +257,6 @@ export const ToolbarPlugin = () => {
   const [blockType, setBlockType] = useState('paragraph');
   const [selectedElementKey, setSelectedElementKey] = useState(null);
   const [codeLanguage, setCodeLanguage] = useState(getDefaultCodeLanguage());
-  const [isRTL, setIsRTL] = useState(false);
   const [isLink, setIsLink] = useState(false);
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
@@ -290,7 +289,6 @@ export const ToolbarPlugin = () => {
       setIsUnderline(selection.hasFormat('underline'));
       setIsStrikethrough(selection.hasFormat('strikethrough'));
       setIsCode(selection.hasFormat('code'));
-      setIsRTL($isParentElementRTL(selection));
 
       // Update links
       const node = getSelectedNode(selection);

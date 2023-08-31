@@ -1,4 +1,4 @@
-import React, { Dispatch, useCallback, useEffect, useRef, useState } from 'react';
+import React, { Dispatch, JSX, KeyboardEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Box, IconButton, IconEdit, IconLink, Input, Link } from '@cmpsr/components';
 
@@ -152,7 +152,7 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
     }
   }, [isEditMode]);
 
-  const monitorInputInteraction = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const monitorInputInteraction = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       event.preventDefault();
       handleLinkSubmission();

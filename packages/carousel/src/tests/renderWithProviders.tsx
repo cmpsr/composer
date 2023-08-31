@@ -8,5 +8,5 @@ export const renderWithProviders = <
   BaseElement extends Element | DocumentFragment = Container
 >(
   children: ReactNode
-) => render(<ComposerProvider>{children}</ComposerProvider>, undefined) as RenderResult;
+) => render(<ComposerProvider>{children}</ComposerProvider>, undefined) as RenderResult<Q, Container, BaseElement>;
 export * from '@testing-library/react';

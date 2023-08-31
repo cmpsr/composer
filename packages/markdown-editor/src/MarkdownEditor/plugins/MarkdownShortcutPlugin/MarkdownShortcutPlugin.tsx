@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { JSX } from 'react';
 
 import { MarkdownShortcutPlugin as LexicalMarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
 

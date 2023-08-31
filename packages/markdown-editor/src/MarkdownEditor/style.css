@@ -1,13 +1,14 @@
 .PlaygroundEditorTheme__ltr {
   text-align: left;
   margin-bottom: 1rem;
-}
-.PlaygroundEditorTheme__rtl {
-  text-align: right;
-  margin-bottom: 1rem;
+  color: var(--chakra-colors-text-primary);
+  font-family: var(--chakra-fonts-body);
+  letter-spacing: 0rem;
 }
 .PlaygroundEditorTheme__paragraph {
-  position: relative;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
 }
 .PlaygroundEditorTheme__quote {
   margin-left: 20px;
@@ -20,19 +21,40 @@
   padding-left: 16px;
 }
 .PlaygroundEditorTheme__h1 {
-  font-size: 24px;
-  color: rgb(5, 5, 5);
-  font-weight: 400;
+  font-family: var(--chakra-fonts-heading);
+  font-size: 4.5rem;
+  line-height: 4.5rem;
+  font-weight: 700;
 }
 .PlaygroundEditorTheme__h2 {
-  font-size: 15px;
-  color: rgb(101, 103, 107);
+  font-family: var(--chakra-fonts-heading);
+  font-size: 3.75rem;
   font-weight: 700;
-  text-transform: uppercase;
+  line-height: 3.75rem;
 }
 .PlaygroundEditorTheme__h3 {
-  font-size: 12px;
-  text-transform: uppercase;
+  font-family: var(--chakra-fonts-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 3rem;
+}
+.PlaygroundEditorTheme__h4 {
+  font-family: var(--chakra-fonts-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 2.75rem;
+}
+.PlaygroundEditorTheme__h5 {
+  font-family: var(--chakra-fonts-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2.25rem;
+}
+.PlaygroundEditorTheme__h6 {
+  font-family: var(--chakra-fonts-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5rem;
 }
 .PlaygroundEditorTheme__indent {
   --lexical-indent-base-value: 40px;
@@ -61,9 +83,9 @@
   vertical-align: super;
 }
 .PlaygroundEditorTheme__textCode {
-  background-color: rgb(240, 242, 245);
+  background-color: var(--chakra-colors-background-card);
   padding: 1px 0.25rem;
-  font-family: Menlo, Consolas, Monaco, monospace;
+  font-family: var(--chakra-fonts-mono);
   font-size: 94%;
 }
 .PlaygroundEditorTheme__hashtag {
@@ -71,16 +93,18 @@
   border-bottom: 1px solid rgba(88, 144, 255, 0.3);
 }
 .PlaygroundEditorTheme__link {
-  color: rgb(33, 111, 219);
+  color: var(--chakra-colors-text-link-primary-default);
+  font-weight: 500;
   text-decoration: none;
 }
 .PlaygroundEditorTheme__link:hover {
-  text-decoration: underline;
+  color: var(--chakra-colors-text-link-primary-hover);
   cursor: pointer;
 }
+/* TODO: Update design once the Code block has been added to composer */
 .PlaygroundEditorTheme__code {
-  background-color: rgb(240, 242, 245);
-  font-family: Menlo, Consolas, Monaco, monospace;
+  background-color: var(--chakra-colors-background-card);
+  font-family: var(--chakra-fonts-mono);
   display: block;
   padding: 8px 8px 8px 52px;
   line-height: 1.53;
@@ -267,36 +291,21 @@
   display: inline;
   background-color: #ffbbbb !important;
 }
-.PlaygroundEditorTheme__ol1 {
+.PlaygroundEditorTheme__ol {
   padding: 0;
+  list-style-type: decimal;
   list-style-position: inside;
-}
-.PlaygroundEditorTheme__ol2 {
-  padding: 0;
-  list-style-type: upper-alpha;
-  list-style-position: inside;
-}
-.PlaygroundEditorTheme__ol3 {
-  padding: 0;
-  list-style-type: lower-alpha;
-  list-style-position: inside;
-}
-.PlaygroundEditorTheme__ol4 {
-  padding: 0;
-  list-style-type: upper-roman;
-  list-style-position: inside;
-}
-.PlaygroundEditorTheme__ol5 {
-  padding: 0;
-  list-style-type: lower-roman;
-  list-style-position: inside;
+  margin-inline-start: 1em;
+  margin-bottom: 1rem;
 }
 .PlaygroundEditorTheme__ul {
   padding: 0;
   list-style-position: inside;
+  margin-bottom: 1rem;
 }
 .PlaygroundEditorTheme__listItem {
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
+  line-height: var(--chakra-lineHeights-base);
 }
 .PlaygroundEditorTheme__listItemChecked,
 .PlaygroundEditorTheme__listItemUnchecked {

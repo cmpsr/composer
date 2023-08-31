@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
+
+import { AutoLinkNode } from '@lexical/link';
 import { AutoLinkPlugin as LexicalAutoLinkPlugin } from '@lexical/react/LexicalAutoLinkPlugin';
 
 const URL_MATCHER =
@@ -32,4 +35,16 @@ const MATCHERS = [
   },
 ];
 
-export const AutoLinkPlugin = () => <LexicalAutoLinkPlugin matchers={MATCHERS} />;
+export const AutoLinkPlugin = () => {
+  const [editor] = useLexicalComposerContext();
+
+  useEffect(() => {
+    if (!editor) return;
+    const removeNodeListener = editor.registerNodeTransform(AutoLinkNode, (node) => {
+      if (node && node.getTarget() !== '_blank') node.setTarget('_blank');
+    });
+    return () => removeNodeListener();
+  }, [editor]);
+
+  return <LexicalAutoLinkPlugin matchers={MATCHERS} />;
+};

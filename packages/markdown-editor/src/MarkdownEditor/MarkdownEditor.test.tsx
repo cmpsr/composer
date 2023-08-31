@@ -102,4 +102,20 @@ print(a + b);
       expect(heading.tagName).toBe(tag);
     });
   });
+  test.each`
+    code                          | tag
+    ${'[link](https://cmpsr.io)'} | ${'A'}
+    ${'https://cmpsr.io'}         | ${'A'}
+  `('should render links', async ({ code, tag }) => {
+    act(() => {
+      renderWithProviders(<MarkdownEditor initialValue={code} onChange={jest.fn()} />);
+    });
+    await waitFor(async () => {
+      const link = screen.getByRole('link');
+      expect(link).toBeInTheDocument();
+      expect(link).toBeInstanceOf(HTMLAnchorElement);
+      expect(link.tagName).toBe(tag);
+      expect(link).toHaveAttribute('href', 'https://cmpsr.io');
+    });
+  });
 });

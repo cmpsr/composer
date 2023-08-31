@@ -4,7 +4,6 @@ import {
   Divider,
   Dropdown,
   Flex,
-  IconBell,
   IconArrowBackUp,
   IconArrowForwardUp,
   IconChevronDown,
@@ -55,7 +54,7 @@ import {
   $isListNode,
   ListNode,
 } from '@lexical/list';
-import { $createHeadingNode, $createQuoteNode, $isHeadingNode, HeadingTagType } from '@lexical/rich-text';
+import { $createHeadingNode, $isHeadingNode, HeadingTagType } from '@lexical/rich-text';
 import {
   $createCodeNode,
   $isCodeNode,

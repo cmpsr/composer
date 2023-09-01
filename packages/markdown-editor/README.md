@@ -1,4 +1,4 @@
-# ![Composer logo](https://avatars0.githubusercontent.com/u/67131017?s=24) Composer Carousel
+# ![Composer logo](https://avatars0.githubusercontent.com/u/67131017?s=24) Composer Markdown Editor
 
 [![GitHub Actions status](https://github.com/cmpsr/composer/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/cmpsr/composer/actions/workflows/test.yml) [![Chromatic Actions status](https://github.com/cmpsr/composer/actions/workflows/chromatic.yml/badge.svg?branch=master)](https://github.com/cmpsr/composer/actions/workflows/chromatic.yml) [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://storybook.cmpsr.io/) ![node version](https://img.shields.io/node/v/@cmpsr/components.svg)
 

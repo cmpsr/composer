@@ -28,14 +28,11 @@ const handleChange = (v: string) => {
 \`\`\`
 `;
 
-  const handleChanges = () => {
-    // noop
-  };
 
   return (
     <MarkdownEditor
       initialValue={value}
-      onChange={handleChanges}
+      onChange={console.log}
       height="30rem"
       backgroundColor="background-container-disabled"
       isReadonly

@@ -379,21 +379,30 @@ export const Component: ComponentStyleConfig = {
 };
 ```
 
-### Icons Update
+### Composer Icons
 
-Composer icons are a subset of `@tabler/icons-react` so you must update its version on [package.json](./package.json).
+Composer icons are a subset of `@tabler/icons-react`.
 
-If you wanna add a new icon, ensure to add it to the icons list on the [generate_icons.js](./scripts/generate_icons.js) file.
+#### Icons Update
 
-Once `@tabler/icons-react` has been updated and all icons added to the list, you can then run this command to generate the icons and their stories.
+If a new version of tabler icons has been release and you just want to update the existing icons, then you only need to update the `@tabler/icons-react` version in the [package.json](./package.json) and you should be done.
+
+But to be safe, run `yarn gen:icons` to ensure that `@tabler/icons-react` hasn't released a breaking change. No icons will be generated, but the script will throw if there is a breaking change.
+
+#### Icons Addition or Removal
+
+If you wanna add or remove an icon, ensure to add or remove it from the icons list on the [generate_icons.js](./scripts/generate_icons.js) file.
+
+Once `@tabler/icons-react` has been updated and all icons you want to keep are on the list, you can then run this command to generate the icons and their stories.
 
 `yarn gen:icons`
 
 All icon files will be generated and ready to commit.
+Just remember that if an icon has been removed or renamed that is a breaking change in Composer and you should update the Composer version accordingly.
 
 #### tabler/icons breaking change
 
-If `@tabler/icons-react` releases a breaking change, the [generate_icons.js](./scripts/generate_icons.js) script should be adjusted as needed.
+If `@tabler/icons-react` releases a breaking change, the [generate_icons.js](./scripts/generate_icons.js) script will may throw and it should be adjusted as needed.
 
 ### Releasing your changes
 

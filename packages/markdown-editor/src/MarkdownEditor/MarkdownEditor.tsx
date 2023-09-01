@@ -16,7 +16,6 @@ import { ListItemNode, ListNode } from '@lexical/list';
 import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { AutoLinkNode, LinkNode } from '@lexical/link';
 import { ListPlugin } from '@lexical/react/LexicalListPlugin';
-import { $convertFromMarkdownString } from '@lexical/markdown';
 import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode';
 
 import { OnChangeMarkdown } from './plugins/OnChangeMarkdown';
@@ -29,6 +28,7 @@ import { ToolbarPlugin } from './plugins/ToolbarPlugin';
 import { FloatingLinkEditorPlugin } from './plugins/FloatingLinkEditorPlugin';
 import { MarkdownShortcutPlugin } from './plugins/MarkdownShortcutPlugin';
 import { PLAYGROUND_TRANSFORMERS } from './plugins/MarkdownTransformers';
+import { SetInitialValuePlugin } from './plugins/SetInitialValuePlugin';
 
 import './styles';
 
@@ -70,12 +70,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   minHeight = '12rem',
 }) => {
   return (
-    <LexicalComposer
-      initialConfig={{
-        ...editorConfig,
-        editorState: () => $convertFromMarkdownString(initialValue ?? '', PLAYGROUND_TRANSFORMERS),
-      }}
-    >
+    <LexicalComposer initialConfig={editorConfig}>
       <Box
         borderRadius={borderRadius}
         maxWidth={maxWidth}
@@ -121,6 +116,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
           <MarkdownShortcutPlugin />
           <OnChangeMarkdown onChange={onChange} transformers={PLAYGROUND_TRANSFORMERS} />
           <FloatingLinkEditorPlugin />
+          <SetInitialValuePlugin value={initialValue} />
         </Box>
       </Box>
     </LexicalComposer>

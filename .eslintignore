@@ -1,4 +1,4 @@
 **/lib/*
 **/storybook-static/**
 **/node_modules/**
-packages/components/src/components/media/Icons/TablerIcons/**
+.eslintrc.js

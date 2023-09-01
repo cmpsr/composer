@@ -9,6 +9,7 @@ module.exports = {
     '../../../packages/blocks/src/**/*.stories.tsx',
     '../../../packages/signalwire/src/**/*.stories.tsx',
     '../../../packages/carousel/src/**/*.stories.tsx',
+    '../../../packages/markdown-editor/src/**/*.stories.tsx',
   ],
   addons: [
     '@storybook/addon-links',

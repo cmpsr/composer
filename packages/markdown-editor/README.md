@@ -2,21 +2,59 @@
 
 [![GitHub Actions status](https://github.com/cmpsr/composer/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/cmpsr/composer/actions/workflows/test.yml) [![Chromatic Actions status](https://github.com/cmpsr/composer/actions/workflows/chromatic.yml/badge.svg?branch=master)](https://github.com/cmpsr/composer/actions/workflows/chromatic.yml) [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://storybook.cmpsr.io/) ![node version](https://img.shields.io/node/v/@cmpsr/components.svg)
 
-The composer carousel library is an _opinionated_ wrapper on top of [pure-react-carousel](https://github.com/express-labs/pure-react-carousel) that allows defining a branded theme instead of a generic one designed to work with the composer ecosystem.
+The composer markdown editor is an _opinionated_ [React](https://react.dev) component implemented on top of [lexical](https://lexical.dev) following and using a bunch of the [playground code](https://github.com/facebook/lexical/tree/main/packages/lexical-playground) of the library, adapted to follow our code conventions and simplified to match our specific use case.
 
-## Importing Pure React Carousel CSS
+## Using the library
 
-When using the `@cmpsr/carousel` library in your React project, it is important to import the corresponding CSS file in order for the carousel to display correctly. The `@cmpsr/carousel` library relies on the Pure React Carousel CSS file to provide the necessary styles for the carousel components.
-
-To import the Pure React Carousel CSS file, you can simply add the following line to your project's entry point file (usually index.js or App.js):
-
-```
-import 'pure-react-carousel/dist/react-carousel.es.css';
+```bash
+yarn add @cmpsr/components @cmpsr/markdown-editor
 ```
 
-This will ensure that the necessary styles are loaded and applied to the carousel components when they are rendered. Without this CSS file, the carousel may not display correctly or may not function as expected.
+The `@cmpsr/markdown-editor` library requires `react`, `react-dom` and `@cmpsr/components` libraries to be installed in your project.
 
-Please note that the library requires both the React and ReactDOM libraries to be installed and imported in your project, as well as the Pure React Carousel CSS file. Additionally, make sure to follow the documentation provided by the library for proper implementation and usage of the carousel components.
+In order to get the component properly styled it has to be rendered inside a `ComposerProvider` component. Example of usage:
+
+```typescript
+import React, { FC } from "react";
+import { ComposerProvider } from "@cmpsr/components";
+import { MarkdownEditor } from "@cmpsr/markdown-editor";
+
+type Props = {
+  value?: string;
+  onChange?: (v: string) => void;
+  placeholder?: string;
+};
+
+export const MyEditor: FC<Props> = ({ value, onChange, placeholder }) => (
+  <ComposerProvider>
+    <MarkdownEditor
+      initialValue={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      height="350px"
+      width="100%"
+    />
+  </ComposerProvider>
+);
+```
+
+### Initial value
+
+This component **is not a controlled component**, the `initialValue` will only be set once to the first _non falsy_ value provided, once a value is set subsequent values sent to the component will be ignored. For example in the following code the `value` set inside the `setTimeout` will be discarded by the `MarkdownEditor` and `# First value` will be used.
+
+```typescript
+export const WithInitialValue = () => {
+  const [value, setValue] = useState("# First value");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setValue("# Second value");
+    }, 1000);
+  }, []);
+
+  return <MarkdownEditor initialValue={value} />;
+};
+```
 
 ### Releasing your changes
 

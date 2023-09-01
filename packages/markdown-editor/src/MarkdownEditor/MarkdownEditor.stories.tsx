@@ -7,13 +7,9 @@ export default {
   title: 'Components/Editors/MarkdownEditor',
 } as Meta;
 
-export const Default = () => {
-  const handleChanges = (v: string) => {
-    console.log(v);
-  };
-
-  return <MarkdownEditor onChange={handleChanges} />;
-};
+export const Default = () => (
+  <MarkdownEditor onChange={console.log} />
+);
 
 export const Disabled = () => {
   const value = `# Hello World

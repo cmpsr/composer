@@ -402,7 +402,7 @@ Just remember that if an icon has been removed or renamed that is a breaking cha
 
 #### tabler/icons breaking change
 
-If `@tabler/icons-react` releases a breaking change, the [generate_icons.js](./scripts/generate_icons.js) script will may throw and it should be adjusted as needed.
+If `@tabler/icons-react` releases a breaking change, the [generate_icons.js](./scripts/generate_icons.js) script may throw and it should be adjusted as needed.
 
 ### Releasing your changes
 

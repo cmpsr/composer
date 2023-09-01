@@ -43,6 +43,7 @@ const handleChange = (v: string) => {
       height="30rem"
       backgroundColor="background-container-disabled"
       isReadonly
+      width="800px"
     />
   );
 };

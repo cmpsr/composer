@@ -388,6 +388,7 @@ export const ToolbarPlugin = ({ isDisabled }: { isDisabled?: boolean }) => {
       alignItems="center"
       borderBottom="1px solid"
       borderBottomColor="ui-element-outline-default"
+      w="100%"
     >
       <ToolbarIcon
         isDisabled={isDisabled || !canUndo}

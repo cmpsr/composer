@@ -61,13 +61,14 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   placeholder = 'Start typing here...',
   isReadonly,
   borderRadius = '0.5rem',
-  maxWidth = '38rem',
+  maxWidth = '100%',
   color = 'text-primary',
   backgroundColor = 'background-container-default',
   border = '1px solid',
   borderColor = 'ui-element-outline-default',
   height = '17rem',
   minHeight = '12rem',
+  width = '38rem',
 }) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
@@ -81,9 +82,12 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
         textAlign="left"
         border={border}
         borderColor={borderColor}
+        width={width}
+        pr="1px"
+        overflow="hidden"
       >
         <ToolbarPlugin isDisabled={isReadonly} />
-        <Box backgroundColor={backgroundColor} position="relative">
+        <Box backgroundColor={backgroundColor} position="relative" width={width}>
           <RichTextPlugin
             contentEditable={
               <ContentEditable
@@ -99,6 +103,8 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
                   caretColor: 'text-secondary',
                   overflow: 'auto',
                   fontStyle: '',
+                  width,
+                  maxWidth,
                 }}
               />
             }

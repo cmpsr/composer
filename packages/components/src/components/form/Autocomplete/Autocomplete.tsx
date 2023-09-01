@@ -16,6 +16,20 @@ import {
 
 const [AutocompleteProvider, useAutocompleteContext] = createContext<AutocompleteContextProps>({});
 
+const stateReducer = (state, actionAndChanges) => {
+  const { type, changes } = actionAndChanges;
+  switch (type) {
+    case useCombobox.stateChangeTypes.InputFocus:
+      // this prevents the menu from opening when there is no input value
+      return {
+        ...changes, // default Downshift new state changes on item selection.
+        isOpen: Boolean(state.inputValue), // keep the menu open if there is a value.
+      };
+    default:
+      return changes; // otherwise business as usual.
+  }
+};
+
 export const Autocomplete: FC<AutocompleteProps> & AutocompleteStaticMembers = ({
   children,
   items,
@@ -24,6 +38,7 @@ export const Autocomplete: FC<AutocompleteProps> & AutocompleteStaticMembers = (
 }) => {
   const { isOpen, getMenuProps, getInputProps, getItemProps, selectedItem, highlightedIndex, reset } = useCombobox({
     items,
+    stateReducer,
     onInputValueChange,
     ...rest,
   });

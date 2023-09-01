@@ -130,5 +130,8 @@ describe('Autocomplete', () => {
     fireEvent.change(input, { target: { value: 'foo' } });
     expect(mockRenderItem).toHaveBeenCalledTimes(items.length);
     screen.getByText('renderItem: foo');
+
+    fireEvent.change(input, { target: { value: '' } });
+    expect(screen.queryByText('renderItem')).not.toBeInTheDocument();
   });
 });

@@ -20,10 +20,11 @@ const stateReducer = (state, actionAndChanges) => {
   const { type, changes } = actionAndChanges;
   switch (type) {
     case useCombobox.stateChangeTypes.InputFocus:
+    case useCombobox.stateChangeTypes.InputChange:
       // this prevents the menu from opening when there is no input value
       return {
         ...changes, // default Downshift new state changes on item selection.
-        isOpen: Boolean(state.inputValue), // keep the menu open if there is a value.
+        isOpen: Boolean(changes.inputValue), // keep the menu open if there is a value.
       };
     default:
       return changes; // otherwise business as usual.

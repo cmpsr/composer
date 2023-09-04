@@ -104,10 +104,10 @@ describe('Autocomplete', () => {
     screen.getByText('renderItem: bar');
   });
 
-  test('should not render items when input value length is less than expectedCharLengthToOpen', () => {
+  test('should not render items when input value length is less than minCharsToShowList', () => {
     const mockRenderItem = jest.fn().mockImplementation((item: string) => <div>renderItem: {item}</div>);
     renderWithProviders(
-      <Autocomplete items={items} expectedCharLengthToOpen={3}>
+      <Autocomplete items={items} minCharsToShowList={3}>
         <Autocomplete.Input placeholder="Autocomplete" />
         <Autocomplete.List renderItem={mockRenderItem} />
       </Autocomplete>

@@ -16,16 +16,16 @@ import {
 
 const [AutocompleteProvider, useAutocompleteContext] = createContext<AutocompleteContextProps>({});
 
-const stateReducer = (expectedCharLengthToOpen = 0) => {
+const stateReducer = (minCharsToShowList = 0) => {
   return (state, actionAndChanges) => {
     const { type, changes } = actionAndChanges;
     switch (type) {
       case useCombobox.stateChangeTypes.InputFocus:
       case useCombobox.stateChangeTypes.InputChange:
-        // this prevents the menu from opening when the input value length is less than the expectedCharLengthToOpen.
+        // this prevents the menu from opening when the input value length is less than the minCharsToShowList.
         return {
           ...changes,
-          isOpen: changes.inputValue?.length >= expectedCharLengthToOpen, // keep the menu open if the input value length is greater than the expectedCharLengthToOpen.
+          isOpen: changes.inputValue?.length >= minCharsToShowList, // keep the menu open if the input value length is greater than the minCharsToShowList.
         };
       default:
         return changes; // otherwise business as usual.
@@ -37,13 +37,13 @@ export const Autocomplete: FC<AutocompleteProps> & AutocompleteStaticMembers = (
   children,
   items,
   onInputValueChange,
-  expectedCharLengthToOpen,
+  minCharsToShowList,
   ...rest
 }) => {
   const { isOpen, getMenuProps, getInputProps, getItemProps, selectedItem, highlightedIndex, reset } = useCombobox({
     items,
     onInputValueChange,
-    stateReducer: stateReducer(expectedCharLengthToOpen),
+    stateReducer: stateReducer(minCharsToShowList),
     ...rest,
   });
 

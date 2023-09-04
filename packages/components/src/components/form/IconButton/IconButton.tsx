@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { forwardRef, IconButton as ChakraIconButton, useMultiStyleConfig } from '@chakra-ui/react';
 import { IconButtonProps, IconButtonStyle } from './types';
-import { Spinner, SpinnerVariant } from '@components';
+import { Spinner } from '@components';
 
 export const IconButton: FC<IconButtonProps> = forwardRef<IconButtonProps, 'button'>(
   ({ isRound, icon, ...props }, ref) => {

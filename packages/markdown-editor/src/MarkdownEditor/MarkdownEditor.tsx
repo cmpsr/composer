@@ -70,6 +70,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   minHeight = '12rem',
   width = '38rem',
   initialValueVersion,
+  onChangeDebounceInterval,
 }) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
@@ -119,7 +120,11 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
           <AutoLinkPlugin />
           <ListMaxIndentLevelPlugin maxDepth={7} />
           <MarkdownShortcutPlugin />
-          <OnChangeMarkdown onChange={onChange} transformers={PLAYGROUND_TRANSFORMERS} />
+          <OnChangeMarkdown
+            debounceTime={onChangeDebounceInterval}
+            onChange={onChange}
+            transformers={PLAYGROUND_TRANSFORMERS}
+          />
           <FloatingLinkEditorPlugin />
           <SetInitialValuePlugin value={initialValue} version={initialValueVersion} />
         </Box>

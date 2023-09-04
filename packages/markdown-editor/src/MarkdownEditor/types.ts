@@ -13,4 +13,5 @@ export type MarkdownEditorProps = {
   borderColor?: string;
   borderRadius?: string;
   initialValueVersion?: string;
+  onChangeDebounceInterval?: number;
 };

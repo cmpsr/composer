@@ -9,7 +9,7 @@ export const buttonVariants = [
   'secondary',
   'secondary-alt',
   'destroy',
-  'transparent',
+  'ghost',
 ] as const;
 export type ButtonVariant = (typeof buttonVariants)[number];
 export const buttonSizes = ['xs', 's', 'm', 'l'] as const;

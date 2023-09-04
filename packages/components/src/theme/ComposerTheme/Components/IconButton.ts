@@ -1,17 +1,16 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 export const IconButton: ComponentStyleConfig = {
-  baseStyle: ({ isRound, theme, variant }) => {
+  baseStyle: ({ isRound, theme, variant, ...props }) => {
     const buttonStyles = theme.components.Button;
     const buttonVariant = buttonStyles.variants[variant];
-    const buttonLoadingStyles = buttonVariant.loading;
+    const resolvedButtonVariant = typeof buttonVariant === 'function' ? buttonVariant(props) : buttonVariant;
+    const buttonLoadingStyles = resolvedButtonVariant.loading;
     const borderRadius = isRound ? 'full' : 'radii-button';
 
     return {
       borderRadius,
-      loading: {
-        ...buttonLoadingStyles,
-      },
+      loading: buttonLoadingStyles,
       _before: {
         ...buttonVariant._before,
         borderRadius,

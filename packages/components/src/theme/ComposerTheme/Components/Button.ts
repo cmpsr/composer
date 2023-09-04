@@ -3,7 +3,7 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { StyleFunctionProps, SystemStyleObject, transparentize } from '@chakra-ui/theme-tools';
 import { linkVariants } from '@components';
 
-const transparentButton = {
+const ghostButton = {
   color: 'text-button-transparent',
   backgroundColor: 'transparent',
   loading: {
@@ -213,7 +213,7 @@ export const Button: ComponentStyleConfig = {
     'primary-alt': generateAltButton('primary'),
     'secondary-alt': generateAltButton('secondary'),
     destroy: generateButton('alert-error', 'alert'),
-    transparent: transparentButton,
+    ghost: ghostButton,
     ...getLinkVariants(),
   },
   defaultProps: {

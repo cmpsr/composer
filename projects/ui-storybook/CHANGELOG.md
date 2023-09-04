@@ -1,5 +1,48 @@
 # @cmpsr/ui-storybook
 
+## 0.2.16
+
+### Patch Changes
+
+- Updated dependencies [edc48e6]
+  - @cmpsr/components@5.19.0
+
+## 0.2.15
+
+### Patch Changes
+
+- Updated dependencies [9755805]
+  - @cmpsr/components@5.18.0
+
+## 0.2.14
+
+### Patch Changes
+
+- Updated dependencies [5af4b77]
+  - @cmpsr/components@5.17.0
+
+## 0.2.13
+
+### Patch Changes
+
+- Updated dependencies [be4a718]
+  - @cmpsr/components@5.16.0
+
+## 0.2.12
+
+### Patch Changes
+
+- 6ee90cd: fixes Dropdown types and IconButton forwardRef
+- Updated dependencies [6ee90cd]
+  - @cmpsr/components@5.15.1
+
+## 0.2.11
+
+### Patch Changes
+
+- Updated dependencies [79a8f40]
+  - @cmpsr/components@5.15.0
+
 ## 0.2.10
 
 ### Patch Changes

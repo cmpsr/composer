@@ -1,5 +1,57 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 21.0.7
+
+## 21.0.6
+
+## 21.0.5
+
+## 21.0.4
+
+## 21.0.3
+
+## 21.0.2
+
+## 21.0.1
+
+## 21.0.0
+
+### Patch Changes
+
+- Updated dependencies [2b61583]
+- Updated dependencies [75b0883]
+  - @cmpsr/cml@0.7.0
+  - @cmpsr/carousel@1.0.0
+
+## 20.0.5
+
+### Patch Changes
+
+- 6ee90cd: fixes Dropdown types and IconButton forwardRef
+
+## 20.0.4
+
+## 20.0.3
+
+## 20.0.2
+
+### Patch Changes
+
+- 776b697: fix: recursively retrieve all routes
+
+## 20.0.1
+
+### Patch Changes
+
+- Updated dependencies [62c66a3]
+  - @cmpsr/cml@0.6.0
+
+## 20.0.0
+
+### Major Changes
+
+- 1d76e57: feat: add support for global variables on pages/replicas
+
 ## 19.9.1
 
 ## 19.9.0

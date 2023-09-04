@@ -1,5 +1,41 @@
 # @cmpsr/components
 
+## 5.19.0
+
+### Minor Changes
+
+- edc48e6: feat: add list numbers icon
+
+## 5.18.0
+
+### Minor Changes
+
+- 9755805: feat: expose more icons
+
+## 5.17.0
+
+### Minor Changes
+
+- 5af4b77: feat: add Stepper component
+
+## 5.16.0
+
+### Minor Changes
+
+- be4a718: feat: adds X brand icon
+
+## 5.15.1
+
+### Patch Changes
+
+- 6ee90cd: fixes Dropdown types and IconButton forwardRef
+
+## 5.15.0
+
+### Minor Changes
+
+- 79a8f40: feat: Update Breadcrumb last child to use text-body-medium typography
+
 ## 5.14.0
 
 ### Minor Changes

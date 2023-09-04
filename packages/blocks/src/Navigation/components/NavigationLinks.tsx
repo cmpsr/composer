@@ -12,22 +12,20 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
   actions,
   image,
   children,
+  linksPosition = 'start',
   showDividers = true,
   ...props
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { showBaseNavigation } = useNavigationContext();
+  const { showBaseNavigation, keepActionsAlwaysVisible } = useNavigationContext();
 
   return showBaseNavigation ? (
     <>
-      <IconButton
-        icon={<IconMenu2 />}
-        aria-label="Hamburger menu button"
-        variant="transparent"
-        size="l"
-        onClick={onOpen}
-      />
-      {image}
+      <IconButton icon={<IconMenu2 />} aria-label="Hamburger menu button" variant="ghost" size="l" onClick={onOpen} />
+      <Flex justifyContent="space-between" flexBasis="100%" gap="0.75rem">
+        {image}
+        {keepActionsAlwaysVisible && actions}
+      </Flex>
       {isOpen && (
         <Flex
           width="100%"
@@ -44,7 +42,7 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
             <IconButton
               icon={<IconX />}
               aria-label="Close hamburguer menu button"
-              variant="transparent"
+              variant="ghost"
               size="l"
               onClick={onClose}
             />
@@ -67,18 +65,23 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
                   showDivider: index === Children.count(children) - 1 ? false : showDividers,
                 } as NavigationLinkProps)
             )}
-            {actions}
+            {!keepActionsAlwaysVisible && actions}
           </Flex>
         </Flex>
       )}
     </>
   ) : (
-    <Flex maxWidth="80rem" margin="0 auto" alignItems="center" justifyContent="space-between" width="100%" {...props}>
-      <Flex gap={{ lg: '2.75rem', xxl: '4.5rem' }}>
-        {image}
-        <Flex gap={{ lg: '1.5rem', xl: '2.25rem', xxl: '5rem' }}>{children}</Flex>
+    <Flex maxWidth="80rem" margin="0 auto" alignItems="center" width="100%" {...props}>
+      <Box flexShrink="0">{image}</Box>
+      <Flex
+        flexBasis="100%"
+        mx={{ lg: '2.75rem', xxl: '4.5rem' }}
+        gap={{ lg: '1.5rem', xl: '2.25rem', xxl: '5rem' }}
+        justifyContent={linksPosition}
+      >
+        {children}
       </Flex>
-      {actions}
+      <Box flexShrink="0">{actions}</Box>
     </Flex>
   );
 };
@@ -88,15 +91,15 @@ export const NavigationLink: FC<NavigationLinkProps> = ({ showDivider, children,
 
   return showBaseNavigation ? (
     <Fragment>
-      <Link size="l" justifyContent="center" marginBottom={!showDivider && '3rem'} {...props}>
-        <Text variant="text-body-display-L" color="text-link-secondary-default">
+      <Link size="l" justifyContent="center" marginBottom={!showDivider && '3rem'} variant="link-secondary" {...props}>
+        <Text variant="text-body-display-L" color="unset">
           {children}
         </Text>
       </Link>
       {showDivider && <Divider my="1.50rem" maxWidth="24.75rem" />}
     </Fragment>
   ) : (
-    <Link size="m" color="text-link-secondary-default" {...props}>
+    <Link size="m" variant="link-secondary" {...props}>
       {children}
     </Link>
   );

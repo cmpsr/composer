@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Dropdown } from '.';
 import { IconCreditCard, IconPlus, IconShare } from '@components/media';
+import { IconButton } from '@components/form';
 
 export default {
   component: Dropdown,
@@ -79,6 +80,25 @@ const WithIconsTemplate = () => (
 );
 
 export const WithIcons = WithIconsTemplate.bind({});
+
+const WithCustomButtonTemplate = () => (
+  <Dropdown>
+    <Dropdown.Button as={IconButton} icon={<IconShare />} aria-label="Custom button" />
+    <Dropdown.List>
+      <Dropdown.Item icon={<IconPlus />} as="a" href="https://www.google.com" target="_blank">
+        Add Link
+      </Dropdown.Item>
+      <Dropdown.Item icon={<IconCreditCard />} as="a" href="https://www.google.com" target="_blank">
+        Pay Link
+      </Dropdown.Item>
+      <Dropdown.Item icon={<IconShare />} as="a" href="https://www.google.com" target="_blank">
+        Share Link
+      </Dropdown.Item>
+    </Dropdown.List>
+  </Dropdown>
+);
+
+export const WithCustomButton = WithCustomButtonTemplate.bind({});
 
 const renderDropdownItems = (args) => {
   if (args.showGroupedItems) {

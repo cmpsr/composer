@@ -12,10 +12,13 @@ export class GTag implements IIntegration {
   }
 
   identify: Identify = (userId) => {
-    (window as any).dataLayer.push(function() {
+    (window as any).dataLayer.push(function () {
       this.set('userId', userId);
     });
-    (window as any).dataLayer.push('event', 'login', { userId: userId});
+    (window as any).dataLayer.push({
+      event: 'login',
+      userId,
+    });
   };
 
   // Not supported
@@ -23,20 +26,23 @@ export class GTag implements IIntegration {
   group: Group = () => {};
 
   page: Page = (pageName, traits = {}) => {
-    (window as any).dataLayer.push('event', 'page_view', {
+    (window as any).dataLayer.push({
+      event: 'page_view',
       page_location: traits.path || location.pathname,
       page_title: pageName,
     });
   };
 
-  track: Track = (eventName, traits = {}) => {
-    (window as any).dataLayer.push('event', eventName, {
-      event_category: traits.category || 'None',
+  track: Track = (eventName, { category, ...traits } = {}) => {
+    (window as any).dataLayer.push({
+      event: eventName,
+      event_category: category || 'None',
+      ...traits,
     });
   };
 
   reset = () => {
-    (window as any).dataLayer.push(function() {
+    (window as any).dataLayer.push(function () {
       // eslint-disable-next-line @typescript-eslint/no-invalid-this
       this.reset();
     });

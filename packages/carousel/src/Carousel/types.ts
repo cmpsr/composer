@@ -26,6 +26,7 @@ interface CarouselStaticMembers {
 }
 
 export type CarouselProps = FC<
-  FlexProps & Omit<CarouselProviderProps, 'totalSlides'> & { showDots?: boolean; showArrows?: boolean }
+  FlexProps &
+    Omit<CarouselProviderProps, 'totalSlides' | 'step' | 'dragStep'> & { showDots?: boolean; showArrows?: boolean }
 > &
   CarouselStaticMembers;

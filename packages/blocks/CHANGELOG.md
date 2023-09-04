@@ -1,5 +1,45 @@
 # @cmpsr/blocks
 
+## 12.3.6
+
+## 12.3.5
+
+## 12.3.4
+
+## 12.3.3
+
+## 12.3.2
+
+### Patch Changes
+
+- b40e2f5: minor fix to allow nav link color to be set via variant prop
+
+## 12.3.1
+
+### Patch Changes
+
+- b86bd09: prevents navigation logo from shrinking
+
+## 12.3.0
+
+### Minor Changes
+
+- 51ded49: Updates navigation to allow keeping action links visible on the navbar also on mobile
+
+## 12.2.2
+
+### Patch Changes
+
+- 6ee90cd: fixes Dropdown types and IconButton forwardRef
+
+## 12.2.1
+
+## 12.2.0
+
+### Minor Changes
+
+- 4827d11: feat: export Footer types
+
 ## 12.1.7
 
 ## 12.1.6

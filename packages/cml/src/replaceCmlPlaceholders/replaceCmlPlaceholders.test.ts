@@ -25,11 +25,37 @@ describe('replaceCmlPlaceholders', () => {
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({ base: '<Text prop={false}/>' });
   });
+  test('should replace boolean props with default value as boolean', () => {
+    const model = { base: '<Text prop={{prop:boolean:false}}/>' };
+    const mdx = replaceCmlPlaceholders(model, {});
+    expect(mdx).toStrictEqual({ base: '<Text prop={false}/>' });
+  });
+  test('should replace number props with provided values, preferring them over default values when both are present', () => {
+    const model = { base: '<Text prop={{prop:number:1}}/>' };
+    const values = { base: { prop: 0 } };
+    const mdx = replaceCmlPlaceholders(model, values);
+    expect(mdx).toStrictEqual({ base: '<Text prop={0}/>' });
+  });
   test('should replace number props as number', () => {
     const model = { base: '<Text prop={{prop:number}}/>' };
     const values = { base: { prop: 5 } };
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({ base: '<Text prop={5}/>' });
+  });
+  test.each`
+    description    | prop
+    ${'array'}     | ${['value']}
+    ${'object'}    | ${{ json: 'value' }}
+    ${'string'}    | ${'{"json":"value"}'}
+    ${'number'}    | ${5}
+    ${'boolean'}   | ${true}
+    ${'null'}      | ${null}
+    ${'undefined'} | ${undefined}
+  `('should replace json $description props as json', ({ prop }) => {
+    const model = { base: '<Text prop={{prop:json}}/>' };
+    const values = { base: { prop } };
+    const mdx = replaceCmlPlaceholders(model, values);
+    expect(mdx).toStrictEqual({ base: `<Text prop={${typeof prop === 'object' ? JSON.stringify(prop) : prop}}/>` });
   });
   test('should replace props in all breakpoints', () => {
     const model = { base: '<Text>{{title:string}}</Text>', lg: '<Text size="m">{{title:string}}</Text>' };
@@ -116,8 +142,7 @@ describe('replaceCmlPlaceholders', () => {
     };
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({
-      base:
-        '<HighlightedText><HighlightedText.TextPairing variant="textpairing-header-4XL"><HighlightedText.TextPairing.Label >Label</HighlightedText.TextPairing.Label><HighlightedText.TextPairing.SubLabel color="text-secondary">SubLabel</HighlightedText.TextPairing.SubLabel></HighlightedText.TextPairing></HighlightedText>',
+      base: '<HighlightedText><HighlightedText.TextPairing variant="textpairing-header-4XL"><HighlightedText.TextPairing.Label >Label</HighlightedText.TextPairing.Label><HighlightedText.TextPairing.SubLabel color="text-secondary">SubLabel</HighlightedText.TextPairing.SubLabel></HighlightedText.TextPairing></HighlightedText>',
     });
   });
   test('should handle component children as an array merging nested props', () => {
@@ -140,10 +165,8 @@ describe('replaceCmlPlaceholders', () => {
     };
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({
-      base:
-        '<HighlightedText><HighlightedText.TextPairing variant="textpairing-header-4XL"><HighlightedText.TextPairing.Label >Label</HighlightedText.TextPairing.Label><HighlightedText.TextPairing.SubLabel color="text-secondary">SubLabel</HighlightedText.TextPairing.SubLabel></HighlightedText.TextPairing></HighlightedText>',
-      xxl:
-        '<HighlightedText><HighlightedText.TextPairing variant="textpairing-header-3XL"><HighlightedText.TextPairing.Label >Label</HighlightedText.TextPairing.Label><HighlightedText.TextPairing.SubLabel color="text-secondary">SubLabel</HighlightedText.TextPairing.SubLabel></HighlightedText.TextPairing></HighlightedText>',
+      base: '<HighlightedText><HighlightedText.TextPairing variant="textpairing-header-4XL"><HighlightedText.TextPairing.Label >Label</HighlightedText.TextPairing.Label><HighlightedText.TextPairing.SubLabel color="text-secondary">SubLabel</HighlightedText.TextPairing.SubLabel></HighlightedText.TextPairing></HighlightedText>',
+      xxl: '<HighlightedText><HighlightedText.TextPairing variant="textpairing-header-3XL"><HighlightedText.TextPairing.Label >Label</HighlightedText.TextPairing.Label><HighlightedText.TextPairing.SubLabel color="text-secondary">SubLabel</HighlightedText.TextPairing.SubLabel></HighlightedText.TextPairing></HighlightedText>',
     });
   });
   test('should remove template if value is not set', () => {
@@ -203,13 +226,11 @@ describe('replaceCmlPlaceholders', () => {
   });
   test('should add styling to text using span tag', () => {
     const model = {
-      base:
-        '<Text>This {{_:styling[color=primary-default,decoration=underline 4px accent-default]:text should have color}}, not this one</Text>',
+      base: '<Text>This {{_:styling[color=primary-default,decoration=underline 4px accent-default]:text should have color}}, not this one</Text>',
     };
     const mdx = replaceCmlPlaceholders(model, {});
     expect(mdx).toStrictEqual({
-      base:
-        '<Text>This <Text as="span" variant="inherited" color="primary-default" decoration="underline 4px accent-default">text should have color</Text>, not this one</Text>',
+      base: '<Text>This <Text as="span" variant="inherited" color="primary-default" decoration="underline 4px accent-default">text should have color</Text>, not this one</Text>',
     });
   });
   test('should not crash when two styling are provided', () => {
@@ -218,8 +239,7 @@ describe('replaceCmlPlaceholders', () => {
     };
     const mdx = replaceCmlPlaceholders(model, {});
     expect(mdx).toStrictEqual({
-      base:
-        '<Text as="span" variant="inherited" color="primary-default">copy one</Text><Text as="span" variant="inherited" color="primary-default">copy two</Text>',
+      base: '<Text as="span" variant="inherited" color="primary-default">copy one</Text><Text as="span" variant="inherited" color="primary-default">copy two</Text>',
     });
   });
   test('should allow props name with white spaces', () => {
@@ -244,8 +264,7 @@ describe('replaceCmlPlaceholders', () => {
     };
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({
-      base:
-        '<HighlightedText><HighlightedText.Actions ><HighlightedText.Action trailingIcon={<IconAlertCircle /> }>Test</HighlightedText.Action></HighlightedText.Actions></HighlightedText>',
+      base: '<HighlightedText><HighlightedText.Actions ><HighlightedText.Action trailingIcon={<IconAlertCircle /> }>Test</HighlightedText.Action></HighlightedText.Actions></HighlightedText>',
     });
   });
   test('should handle AccordionsGallery field type', () => {
@@ -271,8 +290,7 @@ describe('replaceCmlPlaceholders', () => {
     };
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({
-      base:
-        '<AccordionGallery ><AccordionGallery.Overline >Overline</AccordionGallery.Overline><AccordionGallery.Title ><AccordionGallery.Title.Label >Label</AccordionGallery.Title.Label></AccordionGallery.Title></AccordionGallery>',
+      base: '<AccordionGallery ><AccordionGallery.Overline >Overline</AccordionGallery.Overline><AccordionGallery.Title ><AccordionGallery.Title.Label >Label</AccordionGallery.Title.Label></AccordionGallery.Title></AccordionGallery>',
     });
   });
   test('should return tag component', () => {
@@ -317,8 +335,7 @@ describe('replaceCmlPlaceholders', () => {
     };
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({
-      base:
-        '<Carousel.Slider ><Carousel.Slide ><MediaBlock ><MediaBlock.Tag >TAG</MediaBlock.Tag></MediaBlock></Carousel.Slide></Carousel.Slider>',
+      base: '<Carousel.Slider ><Carousel.Slide ><MediaBlock ><MediaBlock.Tag >TAG</MediaBlock.Tag></MediaBlock></Carousel.Slide></Carousel.Slider>',
     });
   });
 });

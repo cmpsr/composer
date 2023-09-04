@@ -1,17 +1,27 @@
 import React, { FC } from 'react';
-import { IconButton as ChakraIconButton, useMultiStyleConfig } from '@chakra-ui/react';
+import { forwardRef, IconButton as ChakraIconButton, useMultiStyleConfig } from '@chakra-ui/react';
 import { IconButtonProps, IconButtonStyle } from './types';
 import { Spinner, SpinnerVariant } from '@components';
 
-export const IconButton: FC<IconButtonProps> = ({ isRound, icon, ...props }) => {
-  const { loading: iconButtonLoading, ...iconButtonStyles } = useMultiStyleConfig('IconButton', {
-    isRound: isRound,
-    size: props.size,
-    variant: props.variant,
-    isLoading: props.isLoading,
-  }) as IconButtonStyle;
+export const IconButton: FC<IconButtonProps> = forwardRef<IconButtonProps, 'button'>(
+  ({ isRound, icon, ...props }, ref) => {
+    const { loading: iconButtonLoading, ...iconButtonStyles } = useMultiStyleConfig('IconButton', {
+      isRound: isRound,
+      size: props.size,
+      variant: props.variant,
+      isLoading: props.isLoading,
+    }) as IconButtonStyle;
 
-  const Icon = React.cloneElement(icon, { size: props.size });
+    const Icon = React.cloneElement(icon, { size: props.size });
 
-  return <ChakraIconButton spinner={<Spinner {...iconButtonLoading} />} icon={Icon} {...iconButtonStyles} {...props} />;
-};
+    return (
+      <ChakraIconButton
+        ref={ref}
+        icon={Icon}
+        spinner={<Spinner {...iconButtonLoading} />}
+        {...iconButtonStyles}
+        {...props}
+      />
+    );
+  }
+);

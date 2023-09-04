@@ -1,5 +1,27 @@
 # @cmpsr/carousel
 
+## 1.0.4
+
+## 1.0.3
+
+## 1.0.2
+
+## 1.0.1
+
+## 1.0.0
+
+### Major Changes
+
+- 75b0883: Groups Carousel dots and sets next/back buttons step prop based on the amount of visible slides
+
+## 0.3.12
+
+### Patch Changes
+
+- 6ee90cd: fixes Dropdown types and IconButton forwardRef
+
+## 0.3.11
+
 ## 0.3.10
 
 ## 0.3.9

@@ -23,6 +23,7 @@ import { Radio } from './Radio';
 import { Select } from './Select';
 import { Slider } from './Slider';
 import { Spinner } from './Spinner';
+import { Stepper } from './Stepper';
 import { Switch } from './Switch';
 import { Symbols } from './Symbols';
 import { Tabs } from './Tabs';
@@ -61,6 +62,7 @@ export const components = {
   Select,
   Slider,
   Spinner,
+  Stepper,
   Switch,
   Tabs,
   Tag,

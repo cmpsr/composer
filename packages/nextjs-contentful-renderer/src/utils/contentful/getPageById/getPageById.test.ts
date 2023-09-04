@@ -29,6 +29,7 @@ const dummyPage = {
   id: 'page_id',
   title: 'Page title',
   metaConfiguration: {},
+  globalVariables: {},
   theme: { theme: {} },
   navbar: dummyBlock,
   footer: dummyBlock,
@@ -74,6 +75,7 @@ describe('getPageById', () => {
     expect(page).toStrictEqual({
       id: 'page_id',
       title: 'Page title',
+      globalVariables: {},
       metaConfiguration: {},
       theme: {},
       navbar: [
@@ -104,6 +106,7 @@ describe('getPageById', () => {
       id: 'page_id',
       title: 'Page title',
       metaConfiguration: {},
+      globalVariables: {},
       theme: null,
       navbar: [
         {
@@ -133,6 +136,7 @@ describe('getPageById', () => {
       id: 'page_id',
       title: 'Page title',
       metaConfiguration: {},
+      globalVariables: {},
       theme: null,
       navbar: null,
       footer: [
@@ -157,6 +161,7 @@ describe('getPageById', () => {
       id: 'page_id',
       title: 'Page title',
       metaConfiguration: {},
+      globalVariables: {},
       theme: null,
       navbar: null,
       footer: null,

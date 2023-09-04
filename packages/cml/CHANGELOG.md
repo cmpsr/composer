@@ -1,5 +1,17 @@
 # @cmpsr/cml
 
+## 0.7.0
+
+### Minor Changes
+
+- 2b61583: feat: allow default value replacement of number and boolean field types
+
+## 0.6.0
+
+### Minor Changes
+
+- 62c66a3: feat(HAM-362) configures json cml placeholder replacement
+
 ## 0.5.0
 
 ### Minor Changes

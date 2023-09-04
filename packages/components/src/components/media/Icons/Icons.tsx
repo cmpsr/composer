@@ -2,7 +2,8 @@
 // This is a generated file. DO NOT EDIT IT.
 // Instead run:
 //
-// yarn gen:icons [path_to_tabler_icons_root_folder]
+// yarn install #if you've updated @tabler/icons-react
+// yarn gen:icons
 //
 import React from 'react';
 import {
@@ -11,7 +12,7 @@ import {
   RecursiveCSSObject,
   useStyleConfig,
 } from '@chakra-ui/react';
-import * as Tabler from './TablerIcons';
+import * as Tabler from '@tabler/icons-react';
 import { IconProps } from './types';
 
 const withIcon = (Component: React.FC, props: IconProps) => {
@@ -30,8 +31,14 @@ export const IconAdjustments = (props: IconProps) => withIcon(Tabler.IconAdjustm
 export const IconAdjustmentsHorizontal = (props: IconProps) => withIcon(Tabler.IconAdjustmentsHorizontal, props);
 export const IconAlertCircle = (props: IconProps) => withIcon(Tabler.IconAlertCircle, props);
 export const IconAlertTriangle = (props: IconProps) => withIcon(Tabler.IconAlertTriangle, props);
+export const IconAlignCenter = (props: IconProps) => withIcon(Tabler.IconAlignCenter, props);
+export const IconAlignJustified = (props: IconProps) => withIcon(Tabler.IconAlignJustified, props);
+export const IconAlignLeft = (props: IconProps) => withIcon(Tabler.IconAlignLeft, props);
+export const IconAlignRight = (props: IconProps) => withIcon(Tabler.IconAlignRight, props);
 export const IconArchive = (props: IconProps) => withIcon(Tabler.IconArchive, props);
+export const IconArrowBackUp = (props: IconProps) => withIcon(Tabler.IconArrowBackUp, props);
 export const IconArrowDown = (props: IconProps) => withIcon(Tabler.IconArrowDown, props);
+export const IconArrowForwardUp = (props: IconProps) => withIcon(Tabler.IconArrowForwardUp, props);
 export const IconArrowLeft = (props: IconProps) => withIcon(Tabler.IconArrowLeft, props);
 export const IconArrowRight = (props: IconProps) => withIcon(Tabler.IconArrowRight, props);
 export const IconArrowUp = (props: IconProps) => withIcon(Tabler.IconArrowUp, props);
@@ -41,12 +48,14 @@ export const IconArrowsSort = (props: IconProps) => withIcon(Tabler.IconArrowsSo
 export const IconBan = (props: IconProps) => withIcon(Tabler.IconBan, props);
 export const IconBell = (props: IconProps) => withIcon(Tabler.IconBell, props);
 export const IconBellOff = (props: IconProps) => withIcon(Tabler.IconBellOff, props);
+export const IconBold = (props: IconProps) => withIcon(Tabler.IconBold, props);
 export const IconBookmark = (props: IconProps) => withIcon(Tabler.IconBookmark, props);
 export const IconBookmarkOff = (props: IconProps) => withIcon(Tabler.IconBookmarkOff, props);
 export const IconBrandFacebook = (props: IconProps) => withIcon(Tabler.IconBrandFacebook, props);
 export const IconBrandInstagram = (props: IconProps) => withIcon(Tabler.IconBrandInstagram, props);
 export const IconBrandLinkedin = (props: IconProps) => withIcon(Tabler.IconBrandLinkedin, props);
 export const IconBrandTwitter = (props: IconProps) => withIcon(Tabler.IconBrandTwitter, props);
+export const IconBrandX = (props: IconProps) => withIcon(Tabler.IconBrandX, props);
 export const IconCalendar = (props: IconProps) => withIcon(Tabler.IconCalendar, props);
 export const IconCalendarEvent = (props: IconProps) => withIcon(Tabler.IconCalendarEvent, props);
 export const IconCamera = (props: IconProps) => withIcon(Tabler.IconCamera, props);
@@ -60,17 +69,18 @@ export const IconChevronDown = (props: IconProps) => withIcon(Tabler.IconChevron
 export const IconChevronLeft = (props: IconProps) => withIcon(Tabler.IconChevronLeft, props);
 export const IconChevronRight = (props: IconProps) => withIcon(Tabler.IconChevronRight, props);
 export const IconChevronUp = (props: IconProps) => withIcon(Tabler.IconChevronUp, props);
-export const IconCircle0 = (props: IconProps) => withIcon(Tabler.IconCircle0, props);
-export const IconCircle1 = (props: IconProps) => withIcon(Tabler.IconCircle1, props);
-export const IconCircle2 = (props: IconProps) => withIcon(Tabler.IconCircle2, props);
-export const IconCircle3 = (props: IconProps) => withIcon(Tabler.IconCircle3, props);
-export const IconCircle4 = (props: IconProps) => withIcon(Tabler.IconCircle4, props);
-export const IconCircle5 = (props: IconProps) => withIcon(Tabler.IconCircle5, props);
-export const IconCircle6 = (props: IconProps) => withIcon(Tabler.IconCircle6, props);
-export const IconCircle7 = (props: IconProps) => withIcon(Tabler.IconCircle7, props);
-export const IconCircle8 = (props: IconProps) => withIcon(Tabler.IconCircle8, props);
-export const IconCircle9 = (props: IconProps) => withIcon(Tabler.IconCircle9, props);
+export const IconCircle0 = (props: IconProps) => withIcon(Tabler.IconCircleNumber0, props);
+export const IconCircle1 = (props: IconProps) => withIcon(Tabler.IconCircleNumber1, props);
+export const IconCircle2 = (props: IconProps) => withIcon(Tabler.IconCircleNumber2, props);
+export const IconCircle3 = (props: IconProps) => withIcon(Tabler.IconCircleNumber3, props);
+export const IconCircle4 = (props: IconProps) => withIcon(Tabler.IconCircleNumber4, props);
+export const IconCircle5 = (props: IconProps) => withIcon(Tabler.IconCircleNumber5, props);
+export const IconCircle6 = (props: IconProps) => withIcon(Tabler.IconCircleNumber6, props);
+export const IconCircle7 = (props: IconProps) => withIcon(Tabler.IconCircleNumber7, props);
+export const IconCircle8 = (props: IconProps) => withIcon(Tabler.IconCircleNumber8, props);
+export const IconCircle9 = (props: IconProps) => withIcon(Tabler.IconCircleNumber9, props);
 export const IconCircleCheck = (props: IconProps) => withIcon(Tabler.IconCircleCheck, props);
+export const IconCircleCheckFilled = (props: IconProps) => withIcon(Tabler.IconCircleCheckFilled, props);
 export const IconCircleMinus = (props: IconProps) => withIcon(Tabler.IconCircleMinus, props);
 export const IconCirclePlus = (props: IconProps) => withIcon(Tabler.IconCirclePlus, props);
 export const IconCircleX = (props: IconProps) => withIcon(Tabler.IconCircleX, props);
@@ -79,9 +89,13 @@ export const IconCloud = (props: IconProps) => withIcon(Tabler.IconCloud, props)
 export const IconCloudDownload = (props: IconProps) => withIcon(Tabler.IconCloudDownload, props);
 export const IconCloudOff = (props: IconProps) => withIcon(Tabler.IconCloudOff, props);
 export const IconCloudUpload = (props: IconProps) => withIcon(Tabler.IconCloudUpload, props);
+export const IconCode = (props: IconProps) => withIcon(Tabler.IconCode, props);
 export const IconCoin = (props: IconProps) => withIcon(Tabler.IconCoin, props);
 export const IconCreditCard = (props: IconProps) => withIcon(Tabler.IconCreditCard, props);
 export const IconCurrentLocation = (props: IconProps) => withIcon(Tabler.IconCurrentLocation, props);
+export const IconDeviceDesktop = (props: IconProps) => withIcon(Tabler.IconDeviceDesktop, props);
+export const IconDeviceMobile = (props: IconProps) => withIcon(Tabler.IconDeviceMobile, props);
+export const IconDeviceTablet = (props: IconProps) => withIcon(Tabler.IconDeviceTablet, props);
 export const IconDots = (props: IconProps) => withIcon(Tabler.IconDots, props);
 export const IconDownload = (props: IconProps) => withIcon(Tabler.IconDownload, props);
 export const IconEdit = (props: IconProps) => withIcon(Tabler.IconEdit, props);
@@ -102,14 +116,23 @@ export const IconFolder = (props: IconProps) => withIcon(Tabler.IconFolder, prop
 export const IconFolderOff = (props: IconProps) => withIcon(Tabler.IconFolderOff, props);
 export const IconFolderPlus = (props: IconProps) => withIcon(Tabler.IconFolderPlus, props);
 export const IconFolderX = (props: IconProps) => withIcon(Tabler.IconFolderX, props);
+export const IconH1 = (props: IconProps) => withIcon(Tabler.IconH1, props);
+export const IconH2 = (props: IconProps) => withIcon(Tabler.IconH2, props);
+export const IconH3 = (props: IconProps) => withIcon(Tabler.IconH3, props);
+export const IconH4 = (props: IconProps) => withIcon(Tabler.IconH4, props);
+export const IconH5 = (props: IconProps) => withIcon(Tabler.IconH5, props);
+export const IconH6 = (props: IconProps) => withIcon(Tabler.IconH6, props);
 export const IconHash = (props: IconProps) => withIcon(Tabler.IconHash, props);
 export const IconHeart = (props: IconProps) => withIcon(Tabler.IconHeart, props);
 export const IconHelp = (props: IconProps) => withIcon(Tabler.IconHelp, props);
 export const IconInbox = (props: IconProps) => withIcon(Tabler.IconInbox, props);
 export const IconInfoCircle = (props: IconProps) => withIcon(Tabler.IconInfoCircle, props);
+export const IconItalic = (props: IconProps) => withIcon(Tabler.IconItalic, props);
 export const IconLayout = (props: IconProps) => withIcon(Tabler.IconLayout, props);
+export const IconLetterT = (props: IconProps) => withIcon(Tabler.IconLetterT, props);
 export const IconLink = (props: IconProps) => withIcon(Tabler.IconLink, props);
 export const IconList = (props: IconProps) => withIcon(Tabler.IconList, props);
+export const IconListNumbers = (props: IconProps) => withIcon(Tabler.IconListNumbers, props);
 export const IconLocation = (props: IconProps) => withIcon(Tabler.IconLocation, props);
 export const IconLock = (props: IconProps) => withIcon(Tabler.IconLock, props);
 export const IconLockOpen = (props: IconProps) => withIcon(Tabler.IconLockOpen, props);
@@ -142,6 +165,7 @@ export const IconPlayerStop = (props: IconProps) => withIcon(Tabler.IconPlayerSt
 export const IconPlayerTrackNext = (props: IconProps) => withIcon(Tabler.IconPlayerTrackNext, props);
 export const IconPlayerTrackPrev = (props: IconProps) => withIcon(Tabler.IconPlayerTrackPrev, props);
 export const IconPlus = (props: IconProps) => withIcon(Tabler.IconPlus, props);
+export const IconRadiusBottomLeft = (props: IconProps) => withIcon(Tabler.IconRadiusBottomLeft, props);
 export const IconRefresh = (props: IconProps) => withIcon(Tabler.IconRefresh, props);
 export const IconSearch = (props: IconProps) => withIcon(Tabler.IconSearch, props);
 export const IconSelector = (props: IconProps) => withIcon(Tabler.IconSelector, props);
@@ -150,11 +174,14 @@ export const IconSettings = (props: IconProps) => withIcon(Tabler.IconSettings, 
 export const IconShare = (props: IconProps) => withIcon(Tabler.IconShare, props);
 export const IconShield = (props: IconProps) => withIcon(Tabler.IconShield, props);
 export const IconShoppingCart = (props: IconProps) => withIcon(Tabler.IconShoppingCart, props);
+export const IconSourceCode = (props: IconProps) => withIcon(Tabler.IconSourceCode, props);
 export const IconStar = (props: IconProps) => withIcon(Tabler.IconStar, props);
+export const IconStrikethrough = (props: IconProps) => withIcon(Tabler.IconStrikethrough, props);
 export const IconTag = (props: IconProps) => withIcon(Tabler.IconTag, props);
 export const IconThumbDown = (props: IconProps) => withIcon(Tabler.IconThumbDown, props);
 export const IconThumbUp = (props: IconProps) => withIcon(Tabler.IconThumbUp, props);
 export const IconTrash = (props: IconProps) => withIcon(Tabler.IconTrash, props);
+export const IconUnderline = (props: IconProps) => withIcon(Tabler.IconUnderline, props);
 export const IconUpload = (props: IconProps) => withIcon(Tabler.IconUpload, props);
 export const IconUser = (props: IconProps) => withIcon(Tabler.IconUser, props);
 export const IconUserCircle = (props: IconProps) => withIcon(Tabler.IconUserCircle, props);

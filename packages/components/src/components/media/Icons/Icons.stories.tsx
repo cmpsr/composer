@@ -2,7 +2,8 @@
 // This is a generated file. DO NOT EDIT IT.
 // Instead run:
 //
-// yarn gen:icons [path_to_tabler_icons_root_folder]
+// yarn install #if you've updated @tabler/icons-react
+// yarn gen:icons
 //
 import React from 'react';
 import { Meta } from '@storybook/react';
@@ -48,15 +49,51 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconAlignCenter {...args} />
+      </Box>
+      <Box>IconAlignCenter</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconAlignJustified {...args} />
+      </Box>
+      <Box>IconAlignJustified</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconAlignLeft {...args} />
+      </Box>
+      <Box>IconAlignLeft</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconAlignRight {...args} />
+      </Box>
+      <Box>IconAlignRight</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconArchive {...args} />
       </Box>
       <Box>IconArchive</Box>
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconArrowBackUp {...args} />
+      </Box>
+      <Box>IconArrowBackUp</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconArrowDown {...args} />
       </Box>
       <Box>IconArrowDown</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconArrowForwardUp {...args} />
+      </Box>
+      <Box>IconArrowForwardUp</Box>
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
@@ -114,6 +151,12 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconBold {...args} />
+      </Box>
+      <Box>IconBold</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconBookmark {...args} />
       </Box>
       <Box>IconBookmark</Box>
@@ -147,6 +190,12 @@ const Template = (args) => (
         <Icons.IconBrandTwitter {...args} />
       </Box>
       <Box>IconBrandTwitter</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconBrandX {...args} />
+      </Box>
+      <Box>IconBrandX</Box>
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
@@ -294,6 +343,12 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconCircleCheckFilled {...args} />
+      </Box>
+      <Box>IconCircleCheckFilled</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconCircleMinus {...args} />
       </Box>
       <Box>IconCircleMinus</Box>
@@ -342,6 +397,12 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconCode {...args} />
+      </Box>
+      <Box>IconCode</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconCoin {...args} />
       </Box>
       <Box>IconCoin</Box>
@@ -357,6 +418,24 @@ const Template = (args) => (
         <Icons.IconCurrentLocation {...args} />
       </Box>
       <Box>IconCurrentLocation</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconDeviceDesktop {...args} />
+      </Box>
+      <Box>IconDeviceDesktop</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconDeviceMobile {...args} />
+      </Box>
+      <Box>IconDeviceMobile</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconDeviceTablet {...args} />
+      </Box>
+      <Box>IconDeviceTablet</Box>
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
@@ -480,6 +559,42 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconH1 {...args} />
+      </Box>
+      <Box>IconH1</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconH2 {...args} />
+      </Box>
+      <Box>IconH2</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconH3 {...args} />
+      </Box>
+      <Box>IconH3</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconH4 {...args} />
+      </Box>
+      <Box>IconH4</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconH5 {...args} />
+      </Box>
+      <Box>IconH5</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconH6 {...args} />
+      </Box>
+      <Box>IconH6</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconHash {...args} />
       </Box>
       <Box>IconHash</Box>
@@ -510,9 +625,21 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconItalic {...args} />
+      </Box>
+      <Box>IconItalic</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconLayout {...args} />
       </Box>
       <Box>IconLayout</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconLetterT {...args} />
+      </Box>
+      <Box>IconLetterT</Box>
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
@@ -525,6 +652,12 @@ const Template = (args) => (
         <Icons.IconList {...args} />
       </Box>
       <Box>IconList</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconListNumbers {...args} />
+      </Box>
+      <Box>IconListNumbers</Box>
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
@@ -720,6 +853,12 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconRadiusBottomLeft {...args} />
+      </Box>
+      <Box>IconRadiusBottomLeft</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconRefresh {...args} />
       </Box>
       <Box>IconRefresh</Box>
@@ -768,9 +907,21 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconSourceCode {...args} />
+      </Box>
+      <Box>IconSourceCode</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconStar {...args} />
       </Box>
       <Box>IconStar</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconStrikethrough {...args} />
+      </Box>
+      <Box>IconStrikethrough</Box>
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
@@ -795,6 +946,12 @@ const Template = (args) => (
         <Icons.IconTrash {...args} />
       </Box>
       <Box>IconTrash</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconUnderline {...args} />
+      </Box>
+      <Box>IconUnderline</Box>
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>

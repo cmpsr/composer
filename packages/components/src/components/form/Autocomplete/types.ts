@@ -13,6 +13,7 @@ export interface AutocompleteProps<Item = {}> extends UseComboboxProps<Item> {
   size?: AutocompleteSize;
   leadingIcon?: ReactElement;
   trailingIcon?: ReactElement;
+  expectedCharLengthToOpen?: number;
 }
 
 export interface AutocompleteInputProps extends InputProps {

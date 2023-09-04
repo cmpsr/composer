@@ -103,4 +103,31 @@ describe('Autocomplete', () => {
     screen.getByText('renderItem: foo');
     screen.getByText('renderItem: bar');
   });
+
+  test('should not render items when input value length is less than expectedCharLengthToOpen', () => {
+    const mockRenderItem = jest.fn().mockImplementation((item: string) => <div>renderItem: {item}</div>);
+    renderWithProviders(
+      <Autocomplete items={items} expectedCharLengthToOpen={3}>
+        <Autocomplete.Input placeholder="Autocomplete" />
+        <Autocomplete.List renderItem={mockRenderItem} />
+      </Autocomplete>
+    );
+
+    const input = screen.getByPlaceholderText(/Autocomplete/);
+    fireEvent.focus(input);
+
+    expect(mockRenderItem).not.toHaveBeenCalled();
+    expect(screen.queryByText('renderItem')).not.toBeInTheDocument();
+
+    fireEvent.change(input, { target: { value: 'fo' } });
+    expect(mockRenderItem).not.toHaveBeenCalled();
+    expect(screen.queryByText('renderItem')).not.toBeInTheDocument();
+
+    fireEvent.change(input, { target: { value: 'foo' } });
+    expect(mockRenderItem).toHaveBeenCalledTimes(items.length);
+    screen.getByText('renderItem: foo');
+
+    fireEvent.change(input, { target: { value: '' } });
+    expect(screen.queryByText('renderItem')).not.toBeInTheDocument();
+  });
 });

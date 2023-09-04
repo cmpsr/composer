@@ -14,7 +14,6 @@ describe('Autocomplete', () => {
     );
     const input = screen.getByPlaceholderText(/Autocomplete/);
     fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: 'foo' } });
     const list = screen.getByRole('listbox');
     expect(list.children).toHaveLength(items.length);
   });
@@ -57,7 +56,6 @@ describe('Autocomplete', () => {
     );
     const input = screen.getByPlaceholderText(/Autocomplete/);
     fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: 'foo' } });
     const list = screen.getByRole('listbox');
     expect(list.children).toHaveLength(1);
     within(list).getByText(/No results/);
@@ -74,7 +72,6 @@ describe('Autocomplete', () => {
     );
     const input = screen.getByPlaceholderText(/Autocomplete/);
     fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: 'foo' } });
     const list = screen.getByRole('listbox');
     expect(list.children).toHaveLength(1);
     within(list).getByText(/No results custom/);
@@ -102,16 +99,15 @@ describe('Autocomplete', () => {
     );
     const input = screen.getByPlaceholderText(/Autocomplete/);
     fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: 'foo' } });
     expect(mockRenderItem).toHaveBeenCalledTimes(items.length);
     screen.getByText('renderItem: foo');
     screen.getByText('renderItem: bar');
   });
 
-  test('should not render items when input value is empty', () => {
+  test('should not render items when input value length is less than expectedCharLengthToOpen', () => {
     const mockRenderItem = jest.fn().mockImplementation((item: string) => <div>renderItem: {item}</div>);
     renderWithProviders(
-      <Autocomplete items={items}>
+      <Autocomplete items={items} expectedCharLengthToOpen={3}>
         <Autocomplete.Input placeholder="Autocomplete" />
         <Autocomplete.List renderItem={mockRenderItem} />
       </Autocomplete>
@@ -123,7 +119,7 @@ describe('Autocomplete', () => {
     expect(mockRenderItem).not.toHaveBeenCalled();
     expect(screen.queryByText('renderItem')).not.toBeInTheDocument();
 
-    fireEvent.change(input, { target: { value: '' } });
+    fireEvent.change(input, { target: { value: 'fo' } });
     expect(mockRenderItem).not.toHaveBeenCalled();
     expect(screen.queryByText('renderItem')).not.toBeInTheDocument();
 

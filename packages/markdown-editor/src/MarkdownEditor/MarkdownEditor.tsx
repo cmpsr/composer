@@ -69,6 +69,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   height = '17rem',
   minHeight = '12rem',
   width = '38rem',
+  initialValueVersion,
 }) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
@@ -122,7 +123,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
           <MarkdownShortcutPlugin />
           <OnChangeMarkdown onChange={onChange} transformers={PLAYGROUND_TRANSFORMERS} />
           <FloatingLinkEditorPlugin />
-          <SetInitialValuePlugin value={initialValue} />
+          <SetInitialValuePlugin value={initialValue} version={initialValueVersion} />
         </Box>
       </Box>
     </LexicalComposer>

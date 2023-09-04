@@ -12,4 +12,5 @@ export type MarkdownEditorProps = {
   border?: string;
   borderColor?: string;
   borderRadius?: string;
+  initialValueVersion?: string;
 };

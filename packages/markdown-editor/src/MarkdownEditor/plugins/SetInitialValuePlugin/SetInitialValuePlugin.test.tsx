@@ -44,6 +44,7 @@ describe('SetInitialValuePlugin', () => {
     rerender(<SetInitialValuePlugin value="Another text" version="2" />);
     expect(mockEditor.update).toHaveBeenCalledTimes(2);
     expect(mockConvertFromMarkdownString).toHaveBeenCalledTimes(2);
-    expect(mockConvertFromMarkdownString).toHaveBeenCalledWith('Text');
+    expect(mockConvertFromMarkdownString).toHaveBeenNthCalledWith(1, 'Text');
+    expect(mockConvertFromMarkdownString).toHaveBeenNthCalledWith(2, 'Another text');
   });
 });

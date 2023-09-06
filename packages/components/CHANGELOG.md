@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 5.20.0
+
+### Minor Changes
+
+- 799c1f2: Updates icons and exports Autocomplete and Highlight components
+
 ## 5.19.0
 
 ### Minor Changes

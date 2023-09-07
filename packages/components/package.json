@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "5.19.0",
+  "version": "5.20.0",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -40,7 +40,7 @@
     "@emotion/styled": "^11.11.0",
     "downshift": "^7.6.0",
     "framer-motion": "^10.12.16",
-    "@tabler/icons-react": "^2.30.0"
+    "@tabler/icons-react": "^2.32.0"
   },
   "devDependencies": {
     "@chakra-ui/cli": "^2.4.1",

@@ -26,4 +26,16 @@ export const generateMdx = async (blocks: Block[], globalVariables: PropsValue =
   return all.reduce((acc, val) => acc.concat(val), []).filter((model) => !!Object.keys(model).length);
 };
 
-const bundler = async (code: string): Promise<string> => (await bundleMDX({ source: code.trim() })).code;
+const bundler = async (code: string): Promise<string> => {
+  const remarkGfm = (await import('remark-gfm')).default;
+
+  return (
+    await bundleMDX({
+      source: code.trim(),
+      mdxOptions: (options) => {
+        options.remarkPlugins = [...(options.remarkPlugins ?? []), ...[remarkGfm]];
+        return options;
+      },
+    })
+  ).code;
+};

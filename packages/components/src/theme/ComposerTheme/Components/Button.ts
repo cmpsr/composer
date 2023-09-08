@@ -3,6 +3,44 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { StyleFunctionProps, SystemStyleObject, transparentize } from '@chakra-ui/theme-tools';
 import { linkVariants } from '@components';
 
+const ghostButton = {
+  color: 'text-button-transparent',
+  backgroundColor: 'transparent',
+  loading: {
+    borderColor: 'text-button-transparent',
+    borderBottomColor: transparentize('text-button-transparent', 0.3),
+    borderLeftColor: transparentize('text-button-transparent', 0.3),
+  },
+  _loading: {
+    backgroundColor: 'background-action-disabled',
+    _hover: {
+      backgroundColor: 'background-action-disabled',
+    },
+  },
+  _disabled: {
+    color: transparentize('text-button-transparent', 0.6),
+    opacity: 1,
+    backgroundColor: 'transparent',
+  },
+  _hover: {
+    backgroundColor: 'background-action-hover',
+    _disabled: {
+      color: transparentize('text-button-transparent', 0.6),
+      opacity: 1,
+    },
+  },
+  _focus: {
+    backgroundColor: 'background-action-hover',
+    boxShadow: `0 0 0 0.1875rem var(--chakra-colors-primary-focus)`,
+  },
+  _pressed: {
+    backgroundColor: 'background-action-pressed',
+  },
+  _active: {
+    backgroundColor: 'background-action-pressed',
+  },
+};
+
 const generateButton = (color: string, textColor?: string) => {
   const _disabled = {
     backgroundColor: `${color}-disabled`,
@@ -175,6 +213,7 @@ export const Button: ComponentStyleConfig = {
     'primary-alt': generateAltButton('primary'),
     'secondary-alt': generateAltButton('secondary'),
     destroy: generateButton('alert-error', 'alert'),
+    ghost: ghostButton,
     ...getLinkVariants(),
   },
   defaultProps: {

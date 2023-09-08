@@ -8,6 +8,7 @@ import { $findMatchingParent, mergeRegister } from '@lexical/utils';
 import {
   $getSelection,
   $isRangeSelection,
+  BLUR_COMMAND,
   COMMAND_PRIORITY_CRITICAL,
   COMMAND_PRIORITY_HIGH,
   COMMAND_PRIORITY_LOW,
@@ -37,6 +38,31 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
   const [linkUrl, setLinkUrl] = useState('');
   const [isEditMode, setEditMode] = useState(false);
   const [lastSelection, setLastSelection] = useState<RangeSelection | GridSelection | NodeSelection | null>(null);
+
+  // This useEffect registers a command to handle blur events in the editor.
+  // It prevents closing the link editor when clicking inside the editor (excluding the input),
+  // ensuring that the link editor remains open when interacting with its content.
+  // It also handles proper focus behavior and closes the link editor when necessary.
+  useEffect(
+    () =>
+      editor.registerCommand(
+        BLUR_COMMAND,
+        (event) => {
+          if (editorRef.current && event.target === editorRef.current) {
+            // Click occurred within the editorRef element, do nothing
+            return true;
+          }
+
+          if (!isEditMode && isLink) {
+            setIsLink(false);
+            editor.blur();
+          }
+          return false;
+        },
+        COMMAND_PRIORITY_LOW
+      ),
+    [editorRef, isEditMode, isLink, setIsLink]
+  );
 
   const updateLinkEditor = useCallback(() => {
     const selection = $getSelection();
@@ -74,7 +100,7 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
         setFloatingElemPositionForLinkEditor(domRect, editorElem, anchorElem);
       }
       setLastSelection(selection);
-    } else if (!activeElement || activeElement.className !== 'link-input') {
+    } else if (!activeElement) {
       if (rootElement !== null) {
         setFloatingElemPositionForLinkEditor(null, editorElem, anchorElem);
       }
@@ -171,7 +197,7 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
     }
   };
 
-  return !isLink ? null : (
+  return (
     <Box
       ref={editorRef}
       position="absolute"
@@ -188,8 +214,9 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
       transition="opacity 0.5s"
       willChange="transform"
       backgroundColor="background-action-active"
+      display={isLink ? 'flex' : 'none'}
     >
-      {isEditMode ? (
+      {!isLink ? null : isEditMode ? (
         <Input
           ref={inputRef}
           value={linkUrl}
@@ -198,7 +225,13 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
           trailingIcon={<IconLink />}
         />
       ) : (
-        <Box width="calc(100% - 24px)" position="relative" p="0.5rem 0.75rem" boxSizing="border-box">
+        <Box
+          width="calc(100% - 24px)"
+          position="relative"
+          p="0.5rem 0.75rem"
+          boxSizing="border-box"
+          onMouseDown={(event) => event.preventDefault()}
+        >
           <Link href={linkUrl} target="_blank" rel="noopener noreferrer" noOfLines={1} title={linkUrl}>
             {linkUrl}
           </Link>

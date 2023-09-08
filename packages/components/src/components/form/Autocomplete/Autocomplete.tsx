@@ -56,15 +56,25 @@ export const Autocomplete: FC<AutocompleteProps> & AutocompleteStaticMembers = (
   );
 };
 
-const AutocompleteInput: FC<AutocompleteInputProps> = ({ showClearButton, ...rest }) => {
+const AutocompleteInput: FC<AutocompleteInputProps> = ({
+  showClearButton,
+  showClearButtonWhen = 'item-selected',
+  ...rest
+}) => {
   const { selectedItem, reset, getInputProps } = useAutocompleteContext();
+  const inputProps = getInputProps();
+
+  const shouldShowClearButton =
+    showClearButton &&
+    ((showClearButtonWhen === 'item-selected' && selectedItem) ||
+      (showClearButtonWhen === 'has-value' && inputProps.value));
+
   return (
     <Input
-      {...(showClearButton &&
-        selectedItem && {
-          trailingIcon: <IconX data-testid="cmpsr.autocomplete.clear-button" cursor="pointer" onClick={reset} />,
-        })}
-      {...getInputProps()}
+      {...(shouldShowClearButton && {
+        trailingIcon: <IconX data-testid="cmpsr.autocomplete.clear-button" cursor="pointer" onClick={reset} />,
+      })}
+      {...inputProps}
       {...rest}
     />
   );

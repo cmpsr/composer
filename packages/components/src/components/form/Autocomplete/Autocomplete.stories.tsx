@@ -119,7 +119,12 @@ const Template = (args) => {
         setItems(defaultItems.filter((item) => item.includes(inputValue)));
       }}
     >
-      <Autocomplete.Input placeholder={args.placeholder} showClearButton={args.showClearButton} size={args.size} />
+      <Autocomplete.Input
+        size={args.size}
+        placeholder={args.placeholder}
+        showClearButton={args.showClearButton}
+        showClearButtonWhen={args.showClearButtonWhen}
+      />
       <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
     </Autocomplete>
   );
@@ -129,4 +134,11 @@ export const Playground = Template.bind({});
 Playground.args = {
   placeholder: 'Playground placeholder',
   showClearButton: false,
+  showClearButtonWhen: undefined,
+};
+Playground.argTypes = {
+  showClearButtonWhen: {
+    control: { type: 'select' },
+    options: ['item-selected', 'has-value'],
+  },
 };

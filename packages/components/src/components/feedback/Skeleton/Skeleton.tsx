@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Skeleton as ChakraSkeleton, SkeletonText, SkeletonCircle } from '@chakra-ui/react';
 import { SkeletonProps } from './types';
 
-export const Skeleton: FC<SkeletonProps> = ({ variant = 'default', ...rest }) => {
+export const Skeleton: FC<SkeletonProps> = ({ variant = 'default', testId, ...rest }) => {
   const skeletonComponents = {
     default: ChakraSkeleton,
     text: SkeletonText,
@@ -11,5 +11,5 @@ export const Skeleton: FC<SkeletonProps> = ({ variant = 'default', ...rest }) =>
 
   const SkeletonComponent = skeletonComponents[variant];
 
-  return <SkeletonComponent {...rest} />;
+  return <SkeletonComponent data-testid={testId ?? `cmpsr.skeleton-${variant}`} {...rest} />;
 };

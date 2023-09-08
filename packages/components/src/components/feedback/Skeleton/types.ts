@@ -5,4 +5,5 @@ export type SkeletonVariant = (typeof skeletonVariants)[number];
 
 export interface SkeletonProps extends ChakraSkeletonProps, SkeletonTextProps {
   variant?: SkeletonVariant;
+  testId?: string;
 }

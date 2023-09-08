@@ -1,6 +1,6 @@
 {
   "name": "@cmpsr/nextjs-contentful-renderer",
-  "version": "21.0.7",
+  "version": "21.0.8",
   "description": "Utility functions to retrieve and render content from contentful in mdx format",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -37,11 +37,11 @@
   },
   "devDependencies": {
     "@apollo/client": "^3.6.2",
-    "@cmpsr/blocks": "^12.3.6",
-    "@cmpsr/carousel": "^1.0.4",
+    "@cmpsr/blocks": "^12.3.7",
+    "@cmpsr/carousel": "^1.0.5",
     "@cmpsr/cml": "^0.7.0",
-    "@cmpsr/components": "^5.19.0",
-    "@cmpsr/signalwire": "^0.3.28",
+    "@cmpsr/components": "^5.20.0",
+    "@cmpsr/signalwire": "^0.3.29",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",

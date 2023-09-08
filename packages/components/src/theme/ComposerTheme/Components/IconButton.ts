@@ -1,22 +1,19 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
-import { transparentize } from '@chakra-ui/theme-tools';
-
-const _disabled = {
-  opacity: 1,
-  cursor: 'not-allowed',
-  backgroundColor: 'background-action-disabled',
-};
 
 export const IconButton: ComponentStyleConfig = {
-  baseStyle: ({ isRound, theme, variant }) => {
+  baseStyle: ({ isRound, theme, variant, ...props }) => {
     const buttonStyles = theme.components.Button;
     const buttonVariant = buttonStyles.variants[variant];
-    const buttonLoadingStyles = buttonVariant.loading;
+    const resolvedButtonVariant = typeof buttonVariant === 'function' ? buttonVariant(props) : buttonVariant;
+    const buttonLoadingStyles = resolvedButtonVariant.loading;
+    const borderRadius = isRound ? 'full' : 'radii-button';
 
     return {
-      borderRadius: isRound ? 'full' : '0.375rem',
-      loading: {
-        ...buttonLoadingStyles,
+      borderRadius,
+      loading: buttonLoadingStyles,
+      _before: {
+        ...buttonVariant._before,
+        borderRadius,
       },
     };
   },
@@ -55,30 +52,6 @@ export const IconButton: ComponentStyleConfig = {
         width: '1rem',
         height: '1rem',
         padding: 0,
-      },
-    },
-  },
-  variants: {
-    ghost: {
-      backgroundColor: 'background-action-default',
-      color: 'text-link-secondary-default',
-      loading: {
-        ..._disabled,
-        borderColor: 'text-link-secondary-default',
-        borderBottomColor: transparentize('text-link-secondary-default', 0.3),
-        borderLeftColor: transparentize('text-link-secondary-default', 0.3),
-      },
-      _disabled,
-      _focus: {
-        boxShadow: `0 0 0 0.1875rem var(--chakra-colors-primary-focus)`,
-        backgroundColor: 'background-action-hover',
-        color: 'text-link-secondary-hover',
-        _disabled,
-      },
-      _hover: {
-        backgroundColor: 'background-action-hover',
-        color: 'text-link-secondary-hover',
-        _disabled,
       },
     },
   },

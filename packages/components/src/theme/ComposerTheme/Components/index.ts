@@ -33,6 +33,7 @@ import { TextPairing } from './TextPairing';
 import { Textarea } from './Textarea';
 import { Tooltip } from './Tooltip';
 import { Dropdown } from './Dropdown';
+import { Skeleton } from './Skeleton';
 
 export const components = {
   Accordion,
@@ -60,6 +61,7 @@ export const components = {
   ProgressCircular,
   Radio,
   Select,
+  Skeleton,
   Slider,
   Spinner,
   Stepper,

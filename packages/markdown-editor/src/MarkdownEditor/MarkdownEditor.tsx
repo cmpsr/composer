@@ -69,6 +69,8 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   height = '17rem',
   minHeight = '12rem',
   width = '38rem',
+  initialValueVersion,
+  onChangeDebounceInterval,
 }) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
@@ -83,11 +85,9 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
         border={border}
         borderColor={borderColor}
         width={width}
-        pr="1px"
-        overflow="hidden"
       >
         <ToolbarPlugin isDisabled={isReadonly} />
-        <Box backgroundColor={backgroundColor} position="relative" width={width}>
+        <Box backgroundColor={backgroundColor} position="relative" width="100%">
           <RichTextPlugin
             contentEditable={
               <ContentEditable
@@ -103,7 +103,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
                   caretColor: 'text-secondary',
                   overflow: 'auto',
                   fontStyle: '',
-                  width,
+                  width: '100%',
                   maxWidth,
                 }}
               />
@@ -120,9 +120,13 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
           <AutoLinkPlugin />
           <ListMaxIndentLevelPlugin maxDepth={7} />
           <MarkdownShortcutPlugin />
-          <OnChangeMarkdown onChange={onChange} transformers={PLAYGROUND_TRANSFORMERS} />
+          <OnChangeMarkdown
+            debounceTime={onChangeDebounceInterval}
+            onChange={onChange}
+            transformers={PLAYGROUND_TRANSFORMERS}
+          />
           <FloatingLinkEditorPlugin />
-          <SetInitialValuePlugin value={initialValue} />
+          <SetInitialValuePlugin value={initialValue} version={initialValueVersion} />
         </Box>
       </Box>
     </LexicalComposer>

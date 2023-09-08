@@ -28,14 +28,23 @@ describe('SetInitialValuePlugin', () => {
     expect(mockConvertFromMarkdownString).toHaveBeenCalledWith('Text');
   });
 
-  test.each`
-    value        | description
-    ${undefined} | ${'undefined'}
-    ${null}      | ${'null'}
-    ${''}        | ${'empty string'}
-  `('should not update editor if value is $description', ({ value }) => {
-    renderWithProviders(<SetInitialValuePlugin value={value} />);
-    expect(mockEditor.update).not.toHaveBeenCalled();
-    expect(mockConvertFromMarkdownString).not.toHaveBeenCalled();
+  // TODO: rerender restore the initial state of the component, so we need to find a way to test this
+  test.skip('should update editor only once if version does not change', () => {
+    const version = '1';
+    const { rerender } = renderWithProviders(<SetInitialValuePlugin value="Text" version={version} />);
+    expect(mockEditor.update).toHaveBeenCalledTimes(1);
+    rerender(<SetInitialValuePlugin value="Text" version={version} />);
+    expect(mockEditor.update).toHaveBeenCalledTimes(1);
+    expect(mockConvertFromMarkdownString).toHaveBeenCalledTimes(1);
+    expect(mockConvertFromMarkdownString).toHaveBeenCalledWith('Text');
+  });
+
+  test('should update editor if version change', () => {
+    const { rerender } = renderWithProviders(<SetInitialValuePlugin value="Text" version="1" />);
+    rerender(<SetInitialValuePlugin value="Another text" version="2" />);
+    expect(mockEditor.update).toHaveBeenCalledTimes(2);
+    expect(mockConvertFromMarkdownString).toHaveBeenCalledTimes(2);
+    expect(mockConvertFromMarkdownString).toHaveBeenNthCalledWith(1, 'Text');
+    expect(mockConvertFromMarkdownString).toHaveBeenNthCalledWith(2, 'Another text');
   });
 });

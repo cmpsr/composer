@@ -32,7 +32,8 @@
     "cookie": "^0.5.0",
     "esbuild": "^0.14.38",
     "lodash": "^4.17.21",
-    "mdx-bundler": "^9.0.0"
+    "mdx-bundler": "^9.0.0",
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "@apollo/client": "^3.6.2",

@@ -2,4 +2,4 @@
 "@cmpsr/components": minor
 ---
 
-Fixed import
+fix: expose Stepper component

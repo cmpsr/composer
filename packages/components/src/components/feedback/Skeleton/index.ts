@@ -1,1 +1,2 @@
-export { Skeleton, SkeletonCircle, SkeletonText, SkeletonProps } from '@chakra-ui/react';
+export * from './Skeleton';
+export * from './types';

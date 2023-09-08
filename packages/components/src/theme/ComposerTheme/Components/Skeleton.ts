@@ -1,8 +1,12 @@
-import { ComponentStyleConfig } from '@chakra-ui/react';
+import { ComponentStyleConfig, cssVar } from '@chakra-ui/react';
 
 export const Skeleton: ComponentStyleConfig = {
-  baseStyle: {
-    '--skeleton-start-color': 'var(--chakra-colors-background-skeleton-start)',
-    '--skeleton-end-color': 'var(--chakra-colors-background-skeleton-end)',
+  baseStyle: ({ theme }) => {
+    const $startColor = cssVar('skeleton-start-color');
+    const $endColor = cssVar('skeleton-end-color');
+    return {
+      [$startColor.variable]: theme.colors['background-skeleton-start'],
+      [$endColor.variable]: theme.colors['background-skeleton-end'],
+    };
   },
 };

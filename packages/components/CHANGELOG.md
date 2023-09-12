@@ -1,5 +1,13 @@
 # @cmpsr/components
 
+## 5.21.0
+
+### Minor Changes
+
+- f78bb24: feat: create Skeleton feedback component
+- 5fa8932: fix: expose Stepper component
+- b98135a: feat: create new transparent variant for IconButton in replacement for ghost variant
+
 ## 5.20.0
 
 ### Minor Changes

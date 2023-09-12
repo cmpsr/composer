@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Pau Teruel Soldevila <hi@pau.im>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -30,7 +30,7 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@cmpsr/components": "^5.20.0",
+    "@cmpsr/components": "^5.21.0",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",

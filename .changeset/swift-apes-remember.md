@@ -1,5 +1,5 @@
 ---
-"@cmpsr/components": minor
+"@cmpsr/components": major
 ---
 
-adds autocomplete prop to set when to show clear button
+update property that controls visibility of the clear button

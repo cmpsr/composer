@@ -1,5 +1,12 @@
 # @cmpsr/markdown-editor
 
+## 0.3.0
+
+### Minor Changes
+
+- c4b2269: feat: remove unsupported markdown/mdx toolbar actions
+- 5dd79e5: feat: update FloatingLinkEditorPlugin logic to work properly on embedded mode
+
 ## 0.2.1
 
 ## 0.2.0

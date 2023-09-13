@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 12.4.0
+
+### Minor Changes
+
+- b98135a: feat: create new transparent variant for IconButton in replacement for ghost variant
+
 ## 12.3.7
 
 ## 12.3.6

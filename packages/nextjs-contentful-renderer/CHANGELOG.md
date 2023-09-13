@@ -1,5 +1,12 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 21.0.9
+
+### Patch Changes
+
+- Updated dependencies [b98135a]
+  - @cmpsr/signalwire@0.4.0
+
 ## 21.0.8
 
 ## 21.0.7

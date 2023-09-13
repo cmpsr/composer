@@ -18,8 +18,6 @@ import {
   IconBold,
   IconButton,
   IconItalic,
-  IconUnderline,
-  IconStrikethrough,
   IconCode,
   IconLink,
   IconList,
@@ -243,8 +241,6 @@ export const ToolbarPlugin = ({ isDisabled }: { isDisabled?: boolean }) => {
   const [isLink, setIsLink] = useState(false);
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
-  const [isUnderline, setIsUnderline] = useState(false);
-  const [isStrikethrough, setIsStrikethrough] = useState(false);
   const [isCode, setIsCode] = useState(false);
 
   const updateToolbar = useCallback(() => {
@@ -269,8 +265,6 @@ export const ToolbarPlugin = ({ isDisabled }: { isDisabled?: boolean }) => {
       // Update text format
       setIsBold(selection.hasFormat('bold'));
       setIsItalic(selection.hasFormat('italic'));
-      setIsUnderline(selection.hasFormat('underline'));
-      setIsStrikethrough(selection.hasFormat('strikethrough'));
       setIsCode(selection.hasFormat('code'));
 
       // Update links
@@ -441,22 +435,6 @@ export const ToolbarPlugin = ({ isDisabled }: { isDisabled?: boolean }) => {
             icon={<IconItalic />}
             isDisabled={isDisabled}
             title={`Italic (${IS_APPLE ? '⌘' : 'Ctrl+'}I)`}
-          />
-          <ToolbarIcon
-            isActive={isUnderline}
-            onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline')}
-            aria-label="Format Underline"
-            icon={<IconUnderline />}
-            isDisabled={isDisabled}
-            title={`Underline (${IS_APPLE ? '⌘' : 'Ctrl+'}U)`}
-          />
-          <ToolbarIcon
-            isActive={isStrikethrough}
-            onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough')}
-            aria-label="Format Strikethrough"
-            icon={<IconStrikethrough />}
-            isDisabled={isDisabled}
-            title="Format Strikethrough"
           />
           <ToolbarIcon
             isActive={isCode}

@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.4.0
+
+### Minor Changes
+
+- b98135a: feat: create new transparent variant for IconButton in replacement for ghost variant
+
 ## 0.3.29
 
 ## 0.3.28

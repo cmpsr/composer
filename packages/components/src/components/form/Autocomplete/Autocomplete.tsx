@@ -17,7 +17,7 @@ import {
 const [AutocompleteProvider, useAutocompleteContext] = createContext<AutocompleteContextProps>({});
 
 const stateReducer = (minCharsToShowList = 0) => {
-  return (state, actionAndChanges) => {
+  return (_state, actionAndChanges) => {
     const { type, changes } = actionAndChanges;
     switch (type) {
       case useCombobox.stateChangeTypes.InputFocus:
@@ -56,15 +56,23 @@ export const Autocomplete: FC<AutocompleteProps> & AutocompleteStaticMembers = (
   );
 };
 
-const AutocompleteInput: FC<AutocompleteInputProps> = ({ showClearButton, ...rest }) => {
+const AutocompleteInput: FC<AutocompleteInputProps> = ({ clearButtonMode = 'item-selected', ...rest }) => {
   const { selectedItem, reset, getInputProps } = useAutocompleteContext();
+  const inputProps = getInputProps();
+  const clearButtonConditions = {
+    'item-selected': selectedItem,
+    'has-value': inputProps.value,
+    never: false,
+    always: true,
+  };
+  const shouldShowClearButton = clearButtonConditions[clearButtonMode];
+
   return (
     <Input
-      {...(showClearButton &&
-        selectedItem && {
-          trailingIcon: <IconX data-testid="cmpsr.autocomplete.clear-button" cursor="pointer" onClick={reset} />,
-        })}
-      {...getInputProps()}
+      {...(shouldShowClearButton && {
+        trailingIcon: <IconX data-testid="cmpsr.autocomplete.clear-button" cursor="pointer" onClick={reset} />,
+      })}
+      {...inputProps}
       {...rest}
     />
   );

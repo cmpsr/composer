@@ -84,7 +84,7 @@ const AllTemplate = () => {
                         }}
                         {...{
                           ...(state === 'filled' && {
-                            showClearButton: true,
+                            clearButtonMode: 'item-selected',
                           }),
                         }}
                       />
@@ -119,12 +119,7 @@ const Template = (args) => {
         setItems(defaultItems.filter((item) => item.includes(inputValue)));
       }}
     >
-      <Autocomplete.Input
-        size={args.size}
-        placeholder={args.placeholder}
-        showClearButton={args.showClearButton}
-        showClearButtonWhen={args.showClearButtonWhen}
-      />
+      <Autocomplete.Input size={args.size} placeholder={args.placeholder} clearButtonMode={args.clearButtonMode} />
       <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
     </Autocomplete>
   );
@@ -133,12 +128,11 @@ const Template = (args) => {
 export const Playground = Template.bind({});
 Playground.args = {
   placeholder: 'Playground placeholder',
-  showClearButton: false,
-  showClearButtonWhen: undefined,
+  clearButtonMode: 'never',
 };
 Playground.argTypes = {
-  showClearButtonWhen: {
+  clearButtonMode: {
     control: { type: 'select' },
-    options: ['item-selected', 'has-value'],
+    options: ['item-selected', 'has-value', 'never', 'always'],
   },
 };

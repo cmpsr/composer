@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "1.0.6",
+  "version": "2.0.0",
   "author": "Pau Teruel Soldevila <hi@pau.im>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -26,11 +26,11 @@
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "peerDependencies": {
-    "@cmpsr/components": "^5.7.0",
+    "@cmpsr/components": "^6.0.0",
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@cmpsr/components": "^5.21.0",
+    "@cmpsr/components": "^6.0.0",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",

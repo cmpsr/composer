@@ -1,5 +1,12 @@
 # @cmpsr/carousel
 
+## 2.0.0
+
+### Patch Changes
+
+- Updated dependencies [6d016f4]
+  - @cmpsr/components@6.0.0
+
 ## 1.0.6
 
 ## 1.0.5

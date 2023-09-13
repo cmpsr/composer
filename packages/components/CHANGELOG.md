@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 6.0.0
+
+### Major Changes
+
+- 6d016f4: update property that controls visibility of the clear button
+
 ## 5.21.0
 
 ### Minor Changes

@@ -17,7 +17,7 @@ export interface AutocompleteProps<Item = {}> extends UseComboboxProps<Item> {
 }
 
 export interface AutocompleteInputProps extends InputProps {
-  showClearButton?: boolean;
+  clearButtonMode?: 'item-selected' | 'has-value' | 'never' | 'always';
 }
 
 export interface AutocompleteListProps<Item = {}> extends BoxProps {

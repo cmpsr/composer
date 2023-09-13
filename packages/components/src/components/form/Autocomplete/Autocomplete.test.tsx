@@ -17,24 +17,10 @@ describe('Autocomplete', () => {
     const list = screen.getByRole('listbox');
     expect(list.children).toHaveLength(items.length);
   });
-  test('should display clear button when there is an item selected', () => {
-    renderWithProviders(
-      <Autocomplete items={items}>
-        <Autocomplete.Input placeholder="Autocomplete" showClearButton />
-        <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
-      </Autocomplete>
-    );
-    const input = screen.getByPlaceholderText(/Autocomplete/);
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: 'foo' } });
-    const list = screen.getByRole('listbox');
-    fireEvent.click(list.firstElementChild);
-    screen.getByTestId('cmpsr.autocomplete.clear-button');
-  });
   test('should clear selected item when clear button is clicked', () => {
     renderWithProviders(
       <Autocomplete items={items}>
-        <Autocomplete.Input placeholder="Autocomplete" showClearButton />
+        <Autocomplete.Input placeholder="Autocomplete" />
         <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
       </Autocomplete>
     );
@@ -63,7 +49,7 @@ describe('Autocomplete', () => {
   test('should render no results custom', () => {
     renderWithProviders(
       <Autocomplete items={[]}>
-        <Autocomplete.Input placeholder="Autocomplete" showClearButton />
+        <Autocomplete.Input placeholder="Autocomplete" />
         <Autocomplete.List
           renderItem={(item: string) => <div>{item}</div>}
           noResultsContent={<div>No results custom</div>}
@@ -129,5 +115,76 @@ describe('Autocomplete', () => {
 
     fireEvent.change(input, { target: { value: '' } });
     expect(screen.queryByText('renderItem')).not.toBeInTheDocument();
+  });
+
+  test('should not show clear button', () => {
+    renderWithProviders(
+      <Autocomplete items={items}>
+        <Autocomplete.Input placeholder="Autocomplete" clearButtonMode="never" />
+        <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
+      </Autocomplete>
+    );
+
+    const input = screen.getByPlaceholderText(/Autocomplete/);
+    fireEvent.focus(input);
+
+    expect(screen.queryByTestId('cmpsr.autocomplete.clear-button')).not.toBeInTheDocument();
+
+    fireEvent.change(input, { target: { value: 'foo' } });
+
+    expect(screen.queryByTestId('cmpsr.autocomplete.clear-button')).not.toBeInTheDocument();
+
+    const list = screen.getByRole('listbox');
+    fireEvent.click(list.firstElementChild);
+
+    expect(screen.queryByTestId('cmpsr.autocomplete.clear-button')).not.toBeInTheDocument();
+  });
+
+  test('should show clear button when an item is selected', () => {
+    renderWithProviders(
+      <Autocomplete items={items}>
+        <Autocomplete.Input placeholder="Autocomplete" clearButtonMode="item-selected" />
+        <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
+      </Autocomplete>
+    );
+
+    const input = screen.getByPlaceholderText(/Autocomplete/);
+    fireEvent.focus(input);
+    fireEvent.change(input, { target: { value: 'foo' } });
+
+    expect(screen.queryByTestId('cmpsr.autocomplete.clear-button')).not.toBeInTheDocument();
+
+    const list = screen.getByRole('listbox');
+    fireEvent.click(list.firstElementChild);
+
+    screen.getByTestId('cmpsr.autocomplete.clear-button');
+  });
+
+  test('should show clear button when input field has value', () => {
+    renderWithProviders(
+      <Autocomplete items={items}>
+        <Autocomplete.Input placeholder="Autocomplete" clearButtonMode="has-value" />
+        <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
+      </Autocomplete>
+    );
+
+    expect(screen.queryByTestId('cmpsr.autocomplete.clear-button')).not.toBeInTheDocument();
+
+    const input = screen.getByPlaceholderText(/Autocomplete/);
+    fireEvent.focus(input);
+
+    fireEvent.change(input, { target: { value: 'foo' } });
+    screen.getByTestId('cmpsr.autocomplete.clear-button');
+  });
+
+  test('should always show clear button', () => {
+    renderWithProviders(
+      <Autocomplete items={items}>
+        <Autocomplete.Input placeholder="Autocomplete" clearButtonMode="always" />
+        <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
+      </Autocomplete>
+    );
+
+    screen.getByTestId('cmpsr.autocomplete.clear-button');
   });
 });

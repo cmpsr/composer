@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 6.1.0
+
+### Minor Changes
+
+- 8df5fa0: feat: update input height for different sizes to match expected design
+
 ## 6.0.0
 
 ### Major Changes

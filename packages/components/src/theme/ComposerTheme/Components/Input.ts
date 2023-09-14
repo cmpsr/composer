@@ -111,6 +111,11 @@ export const inputGroupStyles = {
 };
 
 const calculateSize = (size: string) => {
+  const inputSizeHeight = {
+    small: '2rem',
+    medium: '2.5rem',
+    large: '3rem',
+  };
   return (props) => {
     return {
       elementContainer: {
@@ -127,6 +132,7 @@ const calculateSize = (size: string) => {
       field: {
         ...props.theme.textStyles[textStyles[size]],
         ...inputStyles[size],
+        height: inputSizeHeight[size],
         withIcon: {
           ...fieldSpacing[size],
         },

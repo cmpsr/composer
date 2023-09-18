@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback, useRef } from 'react';
 import { useCombobox } from 'downshift';
 import { createContext } from '@chakra-ui/react-utils';
 import { RecursiveCSSObject, StyleProps, useStyleConfig } from '@chakra-ui/react';
@@ -67,10 +67,17 @@ const AutocompleteInput: FC<AutocompleteInputProps> = ({ clearButtonMode = 'item
   };
   const shouldShowClearButton = clearButtonConditions[clearButtonMode];
 
+  const inputRef = useRef<HTMLElement>();
+  const onReset = useCallback(() => {
+    reset?.();
+    inputRef?.current?.focus?.();
+  }, []);
+
   return (
     <Input
+      ref={inputRef}
       {...(shouldShowClearButton && {
-        trailingIcon: <IconX data-testid="cmpsr.autocomplete.clear-button" cursor="pointer" onClick={reset} />,
+        trailingIcon: <IconX data-testid="cmpsr.autocomplete.clear-button" cursor="pointer" onClick={onReset} />,
       })}
       {...inputProps}
       {...rest}

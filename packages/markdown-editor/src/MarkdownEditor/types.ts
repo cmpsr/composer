@@ -1,3 +1,5 @@
+import { BoxProps } from '@cmpsr/components';
+
 export type MarkdownEditorProps = {
   initialValue?: string;
   onChange?: (value: string) => void;
@@ -14,4 +16,6 @@ export type MarkdownEditorProps = {
   borderRadius?: string;
   initialValueVersion?: string;
   onChangeDebounceInterval?: number;
+  editorContentProps?: BoxProps;
+  editorContainerProps?: BoxProps;
 };

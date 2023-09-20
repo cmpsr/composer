@@ -71,6 +71,8 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   width = '38rem',
   initialValueVersion,
   onChangeDebounceInterval,
+  editorContainerProps,
+  editorContentProps,
 }) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
@@ -85,9 +87,10 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
         border={border}
         borderColor={borderColor}
         width={width}
+        {...editorContainerProps}
       >
         <ToolbarPlugin isDisabled={isReadonly} />
-        <Box backgroundColor={backgroundColor} position="relative" width="100%">
+        <Box backgroundColor={backgroundColor} position="relative" width="100%" {...editorContentProps}>
           <RichTextPlugin
             contentEditable={
               <ContentEditable

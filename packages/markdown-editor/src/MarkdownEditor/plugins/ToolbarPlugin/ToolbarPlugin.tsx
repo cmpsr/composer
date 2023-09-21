@@ -22,6 +22,7 @@ import {
   IconLink,
   IconList,
   IconListNumbers,
+  IconMarkdown,
 } from '@cmpsr/components';
 
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
@@ -33,9 +34,11 @@ import {
   SELECTION_CHANGE_COMMAND,
   FORMAT_TEXT_COMMAND,
   DEPRECATED_$isGridSelection,
+  $getRoot,
   $getSelection,
   $isRangeSelection,
   $isRootOrShadowRoot,
+  $createTextNode,
   $createParagraphNode,
   $getNodeByKey,
   COMMAND_PRIORITY_CRITICAL,
@@ -61,9 +64,11 @@ import {
   CODE_LANGUAGE_MAP,
   getLanguageFriendlyName,
 } from '@lexical/code';
+import { $convertFromMarkdownString, $convertToMarkdownString } from '@lexical/markdown';
 
 import { getSelectedNode } from '../../utils/getSelectedNode';
 import { sanitizeUrl } from '../../utils/sanitizeUrl';
+import { PLAYGROUND_TRANSFORMERS } from '../MarkdownTransformers';
 
 const supportedBlockTypes = new Set(['paragraph', 'code', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bullet', 'number']);
 
@@ -242,6 +247,7 @@ export const ToolbarPlugin = ({ isDisabled }: { isDisabled?: boolean }) => {
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
   const [isCode, setIsCode] = useState(false);
+  const [showMarkdown, setShowMarkdown] = useState(false);
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -374,6 +380,34 @@ export const ToolbarPlugin = ({ isDisabled }: { isDisabled?: boolean }) => {
     }
   }, [activeEditor, isLink]);
 
+  const toggleMarkdown = useCallback(() => {
+    setShowMarkdown((showMarkdown) => !showMarkdown);
+
+    editor.update(() => {
+      const root = $getRoot();
+      const firstChild = root.getFirstChild();
+
+      if ($isCodeNode(firstChild) && firstChild.getLanguage() === 'markdown') {
+        $convertFromMarkdownString(firstChild.getTextContent(), PLAYGROUND_TRANSFORMERS);
+      } else {
+        const markdown = $convertToMarkdownString(PLAYGROUND_TRANSFORMERS);
+        root.clear().append($createCodeNode('markdown').append($createTextNode(markdown)));
+      }
+      root.selectEnd();
+    });
+  }, [editor]);
+
+  const markdownToggleButton = (
+    <ToolbarIcon
+      icon={<IconMarkdown />}
+      onClick={toggleMarkdown}
+      isActive={showMarkdown}
+      isDisabled={isDisabled}
+      aria-label="Toggle Markdown on and off"
+      title="Toggle Markdown on and off"
+    />
+  );
+
   return (
     <Flex
       gap="0.5rem"
@@ -401,23 +435,35 @@ export const ToolbarPlugin = ({ isDisabled }: { isDisabled?: boolean }) => {
       <Divider orientation="vertical" />
       {supportedBlockTypes.has(blockType) && (
         <>
-          <BlockOptionsDropdownList editor={activeEditor} blockType={blockType} isDisabled={isDisabled} />
+          <BlockOptionsDropdownList
+            editor={activeEditor}
+            blockType={blockType}
+            isDisabled={isDisabled || showMarkdown}
+          />
           <Divider orientation="vertical" />
         </>
       )}
       {blockType === 'code' ? (
-        <Dropdown>
-          <Dropdown.Button isDisabled={isDisabled} as={Button} variant="ghost" trailingIcon={<IconChevronDown />}>
-            {getLanguageFriendlyName(codeLanguage)}
-          </Dropdown.Button>
-          <Dropdown.List>
-            {CODE_LANGUAGE_OPTIONS.map(([lang, name]) => (
-              <Dropdown.Item key={lang} onClick={() => onCodeLanguageSelect(lang)}>
-                {name}
-              </Dropdown.Item>
-            ))}
-          </Dropdown.List>
-        </Dropdown>
+        <>
+          <Dropdown>
+            <Dropdown.Button
+              as={Button}
+              variant="ghost"
+              trailingIcon={<IconChevronDown />}
+              isDisabled={isDisabled || showMarkdown}
+            >
+              {getLanguageFriendlyName(codeLanguage)}
+            </Dropdown.Button>
+            <Dropdown.List>
+              {CODE_LANGUAGE_OPTIONS.map(([lang, name]) => (
+                <Dropdown.Item key={lang} onClick={() => onCodeLanguageSelect(lang)}>
+                  {name}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.List>
+          </Dropdown>
+          {markdownToggleButton}
+        </>
       ) : (
         <>
           <ToolbarIcon
@@ -453,6 +499,7 @@ export const ToolbarPlugin = ({ isDisabled }: { isDisabled?: boolean }) => {
             title={`Insert link (${IS_APPLE ? '⌘' : 'Ctrl+'}K)`}
           />
           <Divider orientation="vertical" />
+          {markdownToggleButton}
         </>
       )}
     </Flex>

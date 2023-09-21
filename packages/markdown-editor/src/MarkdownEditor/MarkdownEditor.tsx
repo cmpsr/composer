@@ -71,6 +71,11 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   width = '38rem',
   initialValueVersion,
   onChangeDebounceInterval,
+  toolbarPluginProps,
+  editorContainerProps,
+  editorContentProps,
+  externalToolbarActions,
+  contentEditableId = 'cmpsr-markdown-editor-content-editable',
 }) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
@@ -85,12 +90,18 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
         border={border}
         borderColor={borderColor}
         width={width}
+        {...editorContainerProps}
       >
-        <ToolbarPlugin isDisabled={isReadonly} />
-        <Box backgroundColor={backgroundColor} position="relative" width="100%">
+        <ToolbarPlugin
+          isDisabled={isReadonly}
+          externalActions={externalToolbarActions}
+          toolbarPluginProps={toolbarPluginProps}
+        />
+        <Box backgroundColor={backgroundColor} position="relative" width="100%" {...editorContentProps}>
           <RichTextPlugin
             contentEditable={
               <ContentEditable
+                id={contentEditableId}
                 style={{
                   height,
                   minHeight,

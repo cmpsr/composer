@@ -75,6 +75,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   editorContainerProps,
   editorContentProps,
   externalToolbarActions,
+  contentEditableId = 'cmpsr.markdown-editor.content-editable',
 }) => {
   return (
     <LexicalComposer initialConfig={editorConfig}>
@@ -100,6 +101,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
           <RichTextPlugin
             contentEditable={
               <ContentEditable
+                id={contentEditableId}
                 style={{
                   height,
                   minHeight,

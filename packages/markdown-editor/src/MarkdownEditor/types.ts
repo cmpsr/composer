@@ -21,4 +21,5 @@ export type MarkdownEditorProps = {
   editorContainerProps?: BoxProps;
   externalToolbarActions?: ReactNode;
   toolbarPluginProps?: BoxProps;
+  contentEditableId?: string;
 };

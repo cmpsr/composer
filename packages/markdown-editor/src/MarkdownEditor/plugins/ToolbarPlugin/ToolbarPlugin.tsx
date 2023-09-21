@@ -231,7 +231,7 @@ const ToolbarIcon = ({ isActive = undefined, isDisabled, onClick, title, icon, '
   />
 );
 
-export const ToolbarPlugin = ({ isDisabled, externalActions }: ToolbarPluginProps) => {
+export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps }: ToolbarPluginProps) => {
   const [editor] = useLexicalComposerContext();
   const [activeEditor, setActiveEditor] = useState(editor);
   const [canUndo, setCanUndo] = useState(false);
@@ -384,6 +384,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions }: ToolbarPluginProp
       borderBottomColor="ui-element-outline-default"
       w="100%"
       justifyContent="space-between"
+      {...toolbarPluginProps}
     >
       <Flex h="100%" gap="0.5rem" alignItems="center">
         <ToolbarIcon

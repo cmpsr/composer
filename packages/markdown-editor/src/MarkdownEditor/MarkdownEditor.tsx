@@ -71,6 +71,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   width = '38rem',
   initialValueVersion,
   onChangeDebounceInterval,
+  toolbarPluginProps,
   editorContainerProps,
   editorContentProps,
   externalToolbarActions,
@@ -90,7 +91,11 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
         width={width}
         {...editorContainerProps}
       >
-        <ToolbarPlugin isDisabled={isReadonly} externalActions={externalToolbarActions} />
+        <ToolbarPlugin
+          isDisabled={isReadonly}
+          externalActions={externalToolbarActions}
+          toolbarPluginProps={toolbarPluginProps}
+        />
         <Box backgroundColor={backgroundColor} position="relative" width="100%" {...editorContentProps}>
           <RichTextPlugin
             contentEditable={

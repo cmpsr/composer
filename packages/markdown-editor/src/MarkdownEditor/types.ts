@@ -18,4 +18,5 @@ export type MarkdownEditorProps = {
   onChangeDebounceInterval?: number;
   editorContentProps?: BoxProps;
   editorContainerProps?: BoxProps;
+  externalToolbarActions?: React.ReactNode;
 };

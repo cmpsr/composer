@@ -172,9 +172,7 @@ print(a + b);
   });
 
   test('should allow toggling markdown view on and off', async () => {
-    act(() => {
-      renderWithProviders(<MarkdownEditor initialValue="# Text" onChange={jest.fn()} />);
-    });
+    renderWithProviders(<MarkdownEditor initialValue="# Text" onChange={jest.fn()} />);
 
     await waitFor(async () => {
       const content = screen.getByRole('textbox');

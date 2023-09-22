@@ -440,14 +440,23 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
         <Divider orientation="vertical" />
         {supportedBlockTypes.has(blockType) && (
           <>
-            <BlockOptionsDropdownList editor={activeEditor} blockType={blockType} isDisabled={isDisabled} />
+            <BlockOptionsDropdownList
+              editor={activeEditor}
+              blockType={blockType}
+              isDisabled={isDisabled || showMarkdown}
+            />
             <Divider orientation="vertical" />
           </>
         )}
         {blockType === 'code' ? (
           <>
             <Dropdown>
-              <Dropdown.Button isDisabled={isDisabled} as={Button} variant="ghost" trailingIcon={<IconChevronDown />}>
+              <Dropdown.Button
+                as={Button}
+                variant="ghost"
+                trailingIcon={<IconChevronDown />}
+                isDisabled={isDisabled || showMarkdown}
+              >
                 {getLanguageFriendlyName(codeLanguage)}
               </Dropdown.Button>
               <Dropdown.List>

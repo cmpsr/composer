@@ -1,5 +1,5 @@
 import { BoxProps } from '@cmpsr/components';
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 export type MarkdownEditorProps = {
   initialValue?: string;
@@ -17,9 +17,9 @@ export type MarkdownEditorProps = {
   borderRadius?: string;
   initialValueVersion?: string;
   onChangeDebounceInterval?: number;
-  editorContentProps?: BoxProps;
-  editorContainerProps?: BoxProps;
+  contentProps?: BoxProps;
+  containerProps?: BoxProps;
+  contentEditableStyles?: CSSProperties;
   externalToolbarActions?: ReactNode;
   toolbarPluginProps?: BoxProps;
-  contentEditableId?: string;
 };

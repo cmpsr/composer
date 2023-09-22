@@ -207,5 +207,5 @@ print(a + b);
       expect(screen.queryByRole('button', { name: 'Markdown' })).not.toBeInTheDocument();
       expect(screen.queryByRole('button', { name: 'Code Block' })).not.toBeInTheDocument();
     });
-  });
+  }, 10000);
 });

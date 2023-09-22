@@ -133,26 +133,30 @@ print(a + b);
       expect(content.querySelector('code')).not.toBeInTheDocument();
       expect(screen.queryByRole('button', { name: 'Markdown' })).not.toBeInTheDocument();
       expect(screen.queryByRole('button', { name: 'Code Block' })).not.toBeInTheDocument();
+    });
 
-      userEvent.click(screen.getByTestId('markdown-toggle-button'));
+    userEvent.click(screen.getByTestId('markdown-toggle-button'));
 
-      await waitFor(async () => {
-        expect(content).toHaveTextContent('# Text');
-        expect(content.querySelector('code')).toHaveTextContent('# Text');
-        expect(content.querySelector('h1')).not.toBeInTheDocument();
-        expect(screen.getByRole('button', { name: 'Markdown' })).toBeDisabled();
-        expect(screen.getByRole('button', { name: 'Code Block' })).toBeDisabled();
-      });
+    await waitFor(async () => {
+      const content = screen.getByRole('textbox');
 
-      userEvent.click(screen.getByTestId('markdown-toggle-button'));
+      expect(content).toHaveTextContent('# Text');
+      expect(content.querySelector('code')).toHaveTextContent('# Text');
+      expect(content.querySelector('h1')).not.toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Markdown' })).toBeDisabled();
+      expect(screen.getByRole('button', { name: 'Code Block' })).toBeDisabled();
+    });
 
-      await waitFor(async () => {
-        expect(content).toHaveTextContent('Text');
-        expect(content.querySelector('h1')).toHaveTextContent('Text');
-        expect(content.querySelector('code')).not.toBeInTheDocument();
-        expect(screen.queryByRole('button', { name: 'Markdown' })).not.toBeInTheDocument();
-        expect(screen.queryByRole('button', { name: 'Code Block' })).not.toBeInTheDocument();
-      });
+    userEvent.click(screen.getByTestId('markdown-toggle-button'));
+
+    await waitFor(async () => {
+      const content = screen.getByRole('textbox');
+
+      expect(content).toHaveTextContent('Text');
+      expect(content.querySelector('h1')).toHaveTextContent('Text');
+      expect(content.querySelector('code')).not.toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: 'Markdown' })).not.toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: 'Code Block' })).not.toBeInTheDocument();
     });
   });
 });

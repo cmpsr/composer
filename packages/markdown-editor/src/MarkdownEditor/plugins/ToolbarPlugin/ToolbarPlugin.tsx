@@ -64,6 +64,7 @@ import {
 
 import { getSelectedNode } from '../../utils/getSelectedNode';
 import { sanitizeUrl } from '../../utils/sanitizeUrl';
+import { ToolbarPluginProps } from './types';
 
 const supportedBlockTypes = new Set(['paragraph', 'code', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bullet', 'number']);
 
@@ -230,7 +231,7 @@ const ToolbarIcon = ({ isActive = undefined, isDisabled, onClick, title, icon, '
   />
 );
 
-export const ToolbarPlugin = ({ isDisabled }: { isDisabled?: boolean }) => {
+export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps }: ToolbarPluginProps) => {
   const [editor] = useLexicalComposerContext();
   const [activeEditor, setActiveEditor] = useState(editor);
   const [canUndo, setCanUndo] = useState(false);
@@ -376,85 +377,89 @@ export const ToolbarPlugin = ({ isDisabled }: { isDisabled?: boolean }) => {
 
   return (
     <Flex
-      gap="0.5rem"
       p="0.5rem 1rem"
       h="3.25rem"
       alignItems="center"
       borderBottom="1px solid"
       borderBottomColor="ui-element-outline-default"
       w="100%"
+      justifyContent="space-between"
+      {...toolbarPluginProps}
     >
-      <ToolbarIcon
-        isDisabled={isDisabled || !canUndo}
-        onClick={() => editor.dispatchCommand(UNDO_COMMAND, undefined)}
-        aria-label="Undo"
-        icon={<IconArrowBackUp />}
-        title={`Undo ${IS_APPLE ? '(⌘' : '(Ctrl+'}Z)`}
-      />
-      <ToolbarIcon
-        isDisabled={isDisabled || !canRedo}
-        onClick={() => editor.dispatchCommand(REDO_COMMAND, undefined)}
-        aria-label="Redo"
-        icon={<IconArrowForwardUp />}
-        title={`Redo (${IS_APPLE ? '⇧⌘Z' : 'Ctrl+Y'})`}
-      />
-      <Divider orientation="vertical" />
-      {supportedBlockTypes.has(blockType) && (
-        <>
-          <BlockOptionsDropdownList editor={activeEditor} blockType={blockType} isDisabled={isDisabled} />
-          <Divider orientation="vertical" />
-        </>
-      )}
-      {blockType === 'code' ? (
-        <Dropdown>
-          <Dropdown.Button isDisabled={isDisabled} as={Button} variant="ghost" trailingIcon={<IconChevronDown />}>
-            {getLanguageFriendlyName(codeLanguage)}
-          </Dropdown.Button>
-          <Dropdown.List>
-            {CODE_LANGUAGE_OPTIONS.map(([lang, name]) => (
-              <Dropdown.Item key={lang} onClick={() => onCodeLanguageSelect(lang)}>
-                {name}
-              </Dropdown.Item>
-            ))}
-          </Dropdown.List>
-        </Dropdown>
-      ) : (
-        <>
-          <ToolbarIcon
-            isActive={isBold}
-            onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold')}
-            aria-label="Format Bold"
-            icon={<IconBold />}
-            isDisabled={isDisabled}
-            title={`Bold (${IS_APPLE ? '⌘' : 'Ctrl+'}B)`}
-          />
-          <ToolbarIcon
-            isActive={isItalic}
-            onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic')}
-            aria-label="Format Italic"
-            icon={<IconItalic />}
-            isDisabled={isDisabled}
-            title={`Italic (${IS_APPLE ? '⌘' : 'Ctrl+'}I)`}
-          />
-          <ToolbarIcon
-            isActive={isCode}
-            onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code')}
-            aria-label="Format Code"
-            icon={<IconCode />}
-            isDisabled={isDisabled}
-            title="Format Code"
-          />
-          <ToolbarIcon
-            isActive={isLink}
-            onClick={insertLink}
-            aria-label="Insert Link"
-            icon={<IconLink />}
-            isDisabled={isDisabled}
-            title={`Insert link (${IS_APPLE ? '⌘' : 'Ctrl+'}K)`}
-          />
-          <Divider orientation="vertical" />
-        </>
-      )}
+      <Flex h="100%" gap="0.5rem" alignItems="center">
+        <ToolbarIcon
+          isDisabled={isDisabled || !canUndo}
+          onClick={() => editor.dispatchCommand(UNDO_COMMAND, undefined)}
+          aria-label="Undo"
+          icon={<IconArrowBackUp />}
+          title={`Undo ${IS_APPLE ? '(⌘' : '(Ctrl+'}Z)`}
+        />
+        <ToolbarIcon
+          isDisabled={isDisabled || !canRedo}
+          onClick={() => editor.dispatchCommand(REDO_COMMAND, undefined)}
+          aria-label="Redo"
+          icon={<IconArrowForwardUp />}
+          title={`Redo (${IS_APPLE ? '⇧⌘Z' : 'Ctrl+Y'})`}
+        />
+        <Divider orientation="vertical" />
+        {supportedBlockTypes.has(blockType) && (
+          <>
+            <BlockOptionsDropdownList editor={activeEditor} blockType={blockType} isDisabled={isDisabled} />
+            <Divider orientation="vertical" />
+          </>
+        )}
+        {blockType === 'code' ? (
+          <Dropdown>
+            <Dropdown.Button isDisabled={isDisabled} as={Button} variant="ghost" trailingIcon={<IconChevronDown />}>
+              {getLanguageFriendlyName(codeLanguage)}
+            </Dropdown.Button>
+            <Dropdown.List>
+              {CODE_LANGUAGE_OPTIONS.map(([lang, name]) => (
+                <Dropdown.Item key={lang} onClick={() => onCodeLanguageSelect(lang)}>
+                  {name}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.List>
+          </Dropdown>
+        ) : (
+          <>
+            <ToolbarIcon
+              isActive={isBold}
+              onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold')}
+              aria-label="Format Bold"
+              icon={<IconBold />}
+              isDisabled={isDisabled}
+              title={`Bold (${IS_APPLE ? '⌘' : 'Ctrl+'}B)`}
+            />
+            <ToolbarIcon
+              isActive={isItalic}
+              onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic')}
+              aria-label="Format Italic"
+              icon={<IconItalic />}
+              isDisabled={isDisabled}
+              title={`Italic (${IS_APPLE ? '⌘' : 'Ctrl+'}I)`}
+            />
+            <ToolbarIcon
+              isActive={isCode}
+              onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code')}
+              aria-label="Format Code"
+              icon={<IconCode />}
+              isDisabled={isDisabled}
+              title="Format Code"
+            />
+            <ToolbarIcon
+              isActive={isLink}
+              onClick={insertLink}
+              aria-label="Insert Link"
+              icon={<IconLink />}
+              isDisabled={isDisabled}
+              title={`Insert link (${IS_APPLE ? '⌘' : 'Ctrl+'}K)`}
+            />
+            <Divider orientation="vertical" />
+          </>
+        )}
+      </Flex>
+      {externalActions}
     </Flex>
   );
 };

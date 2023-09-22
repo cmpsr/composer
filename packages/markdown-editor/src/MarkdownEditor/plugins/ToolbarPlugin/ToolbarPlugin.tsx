@@ -221,7 +221,7 @@ const BlockOptionsDropdownList = ({ editor, blockType, isDisabled }) => {
   );
 };
 
-const ToolbarIcon = ({ isActive = undefined, isDisabled, onClick, title, icon, 'aria-label': ariaLabel }) => (
+const ToolbarIcon = ({ isActive = undefined, isDisabled, onClick, title, icon, 'aria-label': ariaLabel, ...rest }) => (
   <IconButton
     isActive={isActive}
     isDisabled={isDisabled}
@@ -232,6 +232,7 @@ const ToolbarIcon = ({ isActive = undefined, isDisabled, onClick, title, icon, '
     title={title}
     aria-label={ariaLabel}
     _disabled={{ opacity: 0.4, backgroundColor: 'transparent', pointerEvents: 'none', cursor: 'not_allowed' }}
+    {...rest}
   />
 );
 
@@ -405,6 +406,7 @@ export const ToolbarPlugin = ({ isDisabled }: { isDisabled?: boolean }) => {
       isDisabled={isDisabled}
       aria-label="Toggle Markdown on and off"
       title="Toggle Markdown on and off"
+      data-testid="markdown-toggle-button"
     />
   );
 
@@ -462,6 +464,7 @@ export const ToolbarPlugin = ({ isDisabled }: { isDisabled?: boolean }) => {
               ))}
             </Dropdown.List>
           </Dropdown>
+          <Divider orientation="vertical" />
           {markdownToggleButton}
         </>
       ) : (

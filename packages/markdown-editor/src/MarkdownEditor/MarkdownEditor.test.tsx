@@ -118,4 +118,56 @@ print(a + b);
       expect(link).toHaveAttribute('href', 'https://cmpsr.io');
     });
   });
+
+  test('should render external actions in toolbar when provided', async () => {
+    renderWithProviders(
+      <MarkdownEditor
+        initialValue="**Text**"
+        onChange={jest.fn()}
+        externalToolbarActions={<span>external action</span>}
+      />
+    );
+    await waitFor(async () => {
+      expect(screen.getByText('external action')).toBeInTheDocument();
+    });
+  });
+
+  test('should render container with provided props', async () => {
+    const { container } = renderWithProviders(
+      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} containerProps={{ background: 'red' }} />
+    );
+    await waitFor(async () => {
+      const markdownEditorContainerElement = container.firstChild;
+      expect(markdownEditorContainerElement).toHaveStyle('background: red');
+    });
+  });
+
+  test('should render content with provided props', async () => {
+    const { container } = renderWithProviders(
+      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} contentProps={{ background: 'red' }} />
+    );
+    await waitFor(async () => {
+      const markdownEditorContentElement = container.firstChild.lastChild;
+      expect(markdownEditorContentElement).toHaveStyle('background: red');
+    });
+  });
+
+  test('should render contentEditable with provided styles', async () => {
+    renderWithProviders(
+      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} contentEditableStyles={{ background: 'red' }} />
+    );
+    await waitFor(async () => {
+      expect(screen.getByRole('textbox')).toHaveStyle('background: red');
+    });
+  });
+
+  test('should render toolbar plugin with provided props', async () => {
+    const { container } = renderWithProviders(
+      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} toolbarPluginProps={{ backgroundColor: 'red' }} />
+    );
+    await waitFor(async () => {
+      const markdownEditorToolbarPlugins = container.firstChild.firstChild;
+      expect(markdownEditorToolbarPlugins).toHaveStyle('background: red');
+    });
+  });
 });

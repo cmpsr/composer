@@ -241,7 +241,7 @@ const outlineStyle = (props) => {
       backgroundColor: 'background-action-default',
       border: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-default)',
       _placeholder: {
-        color: 'text-secondary',
+        color: 'text-disabled',
         textStyle: 'text-body-regular',
       },
       _hover: {
@@ -304,7 +304,7 @@ export const flushedStyle = (props) => {
       borderColor: 'ui-element-outline-default',
       borderRadius: 0,
       _placeholder: {
-        color: 'text-secondary',
+        color: 'text-disabled',
         textStyle: 'text-body-regular',
       },
       _hover: {

@@ -16,7 +16,7 @@ const baseStyleField: SystemStyleObject = {
   border: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
   borderRadius: '0.375rem',
   _placeholder: {
-    color: 'text-secondary',
+    color: 'text-disabled',
   },
   _hover: {
     borderColor: 'ui-element-outline-default',

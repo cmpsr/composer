@@ -394,7 +394,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
         const markdown = $convertToMarkdownString(PLAYGROUND_TRANSFORMERS);
         root.clear().append($createCodeNode('markdown').append($createTextNode(markdown)));
       }
-      root.selectEnd();
+      root.selectStart();
     });
   }, [editor]);
 

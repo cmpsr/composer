@@ -187,4 +187,22 @@ describe('Autocomplete', () => {
 
     screen.getByTestId('cmpsr.autocomplete.clear-button');
   });
+
+  test('should set focus on the input when clear button is clicked', () => {
+    renderWithProviders(
+      <Autocomplete items={items}>
+        <Autocomplete.Input placeholder="Autocomplete" clearButtonMode="always" />
+        <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
+      </Autocomplete>
+    );
+
+    const input = screen.getByPlaceholderText(/Autocomplete/);
+    fireEvent.focus(input);
+
+    fireEvent.change(input, { target: { value: 'foo' } });
+    screen.getByTestId('cmpsr.autocomplete.clear-button');
+
+    fireEvent.click(screen.getByTestId('cmpsr.autocomplete.clear-button'));
+    expect(input).toHaveFocus();
+  });
 });

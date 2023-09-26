@@ -184,7 +184,7 @@ print(a + b);
       expect(screen.queryByRole('button', { name: 'Code Block' })).not.toBeInTheDocument();
     });
 
-    userEvent.click(screen.getByTestId('markdown-toggle-button'));
+    userEvent.click(screen.getByRole('button', { name: 'Toggle Markdown on and off' }));
 
     await waitFor(async () => {
       const content = screen.getByRole('textbox');
@@ -196,7 +196,7 @@ print(a + b);
       expect(screen.getByRole('button', { name: 'Code Block' })).toBeDisabled();
     });
 
-    userEvent.click(screen.getByTestId('markdown-toggle-button'));
+    userEvent.click(screen.getByRole('button', { name: 'Toggle Markdown on and off' }));
 
     await waitFor(async () => {
       const content = screen.getByRole('textbox');

@@ -222,7 +222,7 @@ const BlockOptionsDropdownList = ({ editor, blockType, isDisabled }) => {
   );
 };
 
-const ToolbarIcon = ({ isActive = undefined, isDisabled, onClick, title, icon, 'aria-label': ariaLabel, ...rest }) => (
+const ToolbarIcon = ({ isActive = undefined, isDisabled, onClick, title, icon, 'aria-label': ariaLabel }) => (
   <IconButton
     isActive={isActive}
     isDisabled={isDisabled}
@@ -233,7 +233,6 @@ const ToolbarIcon = ({ isActive = undefined, isDisabled, onClick, title, icon, '
     title={title}
     aria-label={ariaLabel}
     _disabled={{ opacity: 0.4, backgroundColor: 'transparent', pointerEvents: 'none', cursor: 'not_allowed' }}
-    {...rest}
   />
 );
 
@@ -249,7 +248,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
   const [isCode, setIsCode] = useState(false);
-  const [showMarkdown, setShowMarkdown] = useState(false);
+  const [isMarkdownShown, setIsMarkdownShown] = useState(false);
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -383,7 +382,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
   }, [activeEditor, isLink]);
 
   const toggleMarkdown = useCallback(() => {
-    setShowMarkdown((showMarkdown) => !showMarkdown);
+    setIsMarkdownShown((isMarkdownShown) => !isMarkdownShown);
 
     editor.update(() => {
       const root = $getRoot();
@@ -403,11 +402,10 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
     <ToolbarIcon
       icon={<IconMarkdown />}
       onClick={toggleMarkdown}
-      isActive={showMarkdown}
+      isActive={isMarkdownShown}
       isDisabled={isDisabled}
       aria-label="Toggle Markdown on and off"
       title="Toggle Markdown on and off"
-      data-testid="markdown-toggle-button"
     />
   );
 
@@ -443,7 +441,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
             <BlockOptionsDropdownList
               editor={activeEditor}
               blockType={blockType}
-              isDisabled={isDisabled || showMarkdown}
+              isDisabled={isDisabled || isMarkdownShown}
             />
             <Divider orientation="vertical" />
           </>
@@ -455,7 +453,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
                 as={Button}
                 variant="ghost"
                 trailingIcon={<IconChevronDown />}
-                isDisabled={isDisabled || showMarkdown}
+                isDisabled={isDisabled || isMarkdownShown}
               >
                 {getLanguageFriendlyName(codeLanguage)}
               </Dropdown.Button>

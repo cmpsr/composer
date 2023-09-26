@@ -5,7 +5,7 @@ import { selectAnatomy as parts } from '@chakra-ui/anatomy';
 const isDisplayingPlaceholder = (placeholder?: string, value?: string) => !value && placeholder;
 
 const getDefaultTextColor = (placeholder?: string, value?: string) =>
-  isDisplayingPlaceholder(placeholder, value) ? 'text-secondary' : 'text-primary';
+  isDisplayingPlaceholder(placeholder, value) ? 'text-disabled' : 'text-primary';
 
 const sizes: Record<string, PartsStyleInterpolation> = {
   l: ({ theme }) => ({

@@ -1,5 +1,13 @@
 # @cmpsr/markdown-editor
 
+## 1.1.1
+
+## 1.1.0
+
+### Minor Changes
+
+- 58e518d: feat: support configurability of content and container properties
+
 ## 1.0.1
 
 ## 1.0.0

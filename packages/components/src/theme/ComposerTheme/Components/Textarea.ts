@@ -34,7 +34,7 @@ const baseStyle = {
   color: 'text-primary',
   borderRadius: '0.375rem',
   _placeholder: {
-    color: 'text-secondary',
+    color: 'text-disabled',
   },
   _hover: {
     bg: 'background-action-hover',

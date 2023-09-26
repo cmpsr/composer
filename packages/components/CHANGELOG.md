@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 6.2.0
+
+### Minor Changes
+
+- 41019f6: feat: update text color token used in Input components
+
 ## 6.1.0
 
 ### Minor Changes

@@ -37,24 +37,27 @@ export const Checkbox: ComponentStyleConfig = {
         borderColor: 'alert-error-default',
       },
     },
+    container: {
+      alignItems: 'start',
+    },
   },
   sizes: {
     s: ({ theme }) => ({
-      control: { h: 3, w: 3 },
+      control: { h: 3, w: 3, mt: '0.25rem' },
       label: { textStyle: 'text-body-meta-regular' },
       icon: {
         ...theme.components.Icon.sizes.xs,
       },
     }),
     m: ({ theme }) => ({
-      control: { w: 4, h: 4 },
+      control: { w: 4, h: 4, mt: '0.25rem' },
       label: { textStyle: 'text-body-regular' },
       icon: {
         ...theme.components.Icon.sizes.s,
       },
     }),
     l: ({ theme }) => ({
-      control: { w: 5, h: 5 },
+      control: { w: 5, h: 5, mt: '0.25rem' },
       label: { textStyle: 'text-body-large-regular' },
       icon: {
         ...theme.components.Icon.sizes.m,

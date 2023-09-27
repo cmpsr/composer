@@ -389,7 +389,11 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
       const firstChild = root.getFirstChild();
 
       if ($isCodeNode(firstChild) && firstChild.getLanguage() === 'markdown') {
+        const contentOutsideMarkdownBlock = root.getChildren();
+        contentOutsideMarkdownBlock.shift();
+
         $convertFromMarkdownString(firstChild.getTextContent(), PLAYGROUND_TRANSFORMERS);
+        root.append(...contentOutsideMarkdownBlock);
       } else {
         const markdown = $convertToMarkdownString(PLAYGROUND_TRANSFORMERS);
         root.clear().append($createCodeNode('markdown').append($createTextNode(markdown)));

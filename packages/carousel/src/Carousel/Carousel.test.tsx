@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from '@cmpsr/components';
-import { screen, renderWithProviders } from '../tests/renderWithProviders';
+import { screen, renderWithProviders, fireEvent } from '../tests/renderWithProviders';
 
 import { Carousel } from './Carousel';
 
@@ -91,5 +91,25 @@ describe('Carousel', () => {
     );
 
     expect(screen.queryAllByRole('button', { name: 'slide dot' }).length).toBe(4);
+  });
+
+  test('should render Carousel with floating arrows when carousel is hovered', () => {
+    const { container } = renderWithProviders(
+      <Carousel visibleSlides={1} naturalSlideWidth={1} naturalSlideHeight={1} showArrows arrowVariant="floating">
+        <Carousel.Slider>
+          <Carousel.Slide index={0}>
+            <Text>Label</Text>
+          </Carousel.Slide>
+        </Carousel.Slider>
+      </Carousel>
+    );
+
+    expect(screen.queryByLabelText('back')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('next')).not.toBeInTheDocument();
+
+    fireEvent.mouseEnter(container.firstChild);
+
+    expect(screen.getByLabelText('back')).toBeInTheDocument();
+    expect(screen.getByLabelText('next')).toBeInTheDocument();
   });
 });

@@ -3,13 +3,14 @@ import { Meta } from '@storybook/react';
 import { Card, TextPairing } from '@cmpsr/components';
 
 import { Carousel } from './Carousel';
+import { arrowVariants } from './types';
 
 export default {
   component: Carousel,
   title: 'Carousel/Carousel',
 } as Meta;
 
-const Template = ({ totalSlides, visibleSlides, showArrows }) => (
+const Template = ({ totalSlides, visibleSlides, showArrows, arrowVariant }) => (
   <>
     <TextPairing variant="textpairing-header-2XL" mb="spacer-8">
       <TextPairing.Label>Rapid Solutions with Blocks</TextPairing.Label>
@@ -24,6 +25,7 @@ const Template = ({ totalSlides, visibleSlides, showArrows }) => (
       naturalSlideHeight={1}
       isIntrinsicHeight
       showArrows={showArrows}
+      arrowVariant={arrowVariant}
     >
       <Carousel.Slider>
         {Array(totalSlides)
@@ -51,3 +53,9 @@ Playground.args = { visibleSlides: 2, totalSlides: 6 };
 
 export const WithArrows = Template.bind({});
 WithArrows.args = { visibleSlides: 2, totalSlides: 6, showArrows: true };
+WithArrows.argTypes = {
+  arrowVariant: {
+    control: { type: 'select' },
+    options: arrowVariants,
+  },
+};

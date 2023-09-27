@@ -1,5 +1,5 @@
-import React, { Children, isValidElement, ReactNode } from 'react';
-import { IconChevronLeft, IconChevronRight, Flex, IconButton } from '@cmpsr/components';
+import React, { Children, isValidElement, ReactNode, useState } from 'react';
+import { IconChevronLeft, IconChevronRight, Flex, IconButton, Box, IconButtonProps } from '@cmpsr/components';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Dot } from 'pure-react-carousel';
 import {
   CarouselProps,
@@ -15,6 +15,7 @@ export const Carousel: CarouselProps = ({
   showDots = true,
   showArrows = false,
   visibleSlides = 1,
+  arrowVariant = 'inline',
   ...props
 }) => {
   const [totalSlides] = Children.map(children, (child) => {
@@ -23,6 +24,13 @@ export const Carousel: CarouselProps = ({
     }
   });
   if (!totalSlides) return;
+  const isFloatingArrowVariant = arrowVariant === 'floating';
+  const [isCarouselHovered, setCarouselHovered] = useState(false);
+  const showArrowsCriteria = showArrows && (arrowVariant === 'inline' || (isFloatingArrowVariant && isCarouselHovered));
+
+  const handleMouseEnter = () => setCarouselHovered(true);
+
+  const handleMouseLeave = () => setCarouselHovered(false);
 
   const renderDots = (totalSlides: number, visibleSlides: number) => {
     const carouselDots: ReactNode[] = [];
@@ -37,62 +45,83 @@ export const Carousel: CarouselProps = ({
   };
 
   return (
-    <CarouselProvider
+    <Box
+      as={CarouselProvider}
+      position="relative"
       totalSlides={totalSlides}
       visibleSlides={visibleSlides}
       dragStep={visibleSlides}
       step={visibleSlides}
+      {...(isFloatingArrowVariant && { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave })}
       {...props}
     >
       <>
         {children}
         {(showDots || showArrows) && (
           <Carousel.NavigationContainer>
-            {showArrows && <Carousel.ButtonBack />}
+            {showArrowsCriteria && <CarouselButton arrowVariant={arrowVariant} direction="back" />}
             {showDots && renderDots(totalSlides, visibleSlides)}
-            {showArrows && <Carousel.ButtonNext />}
+            {showArrowsCriteria && <CarouselButton arrowVariant={arrowVariant} direction="next" />}
           </Carousel.NavigationContainer>
         )}
       </>
-    </CarouselProvider>
+    </Box>
   );
 };
 
 const carouselButtonStyles = {
-  width: '24px',
-  height: '24px',
-  backgroundColor: 'transparent',
-  _disabled: { backgroundColor: 'transparent' },
-  _hover: { svg: { color: 'text-link-primary-hover' } },
-  _active: { svg: { color: 'text-link-primary-pressed' } },
-  _focus: { backgroundColor: 'transparent', boxShadow: 'none' },
+  inline: {
+    width: '24px',
+    height: '24px',
+    backgroundColor: 'transparent',
+    _disabled: { backgroundColor: 'transparent', cursor: 'not-allowed' },
+    _hover: { svg: { color: 'text-link-primary-hover' } },
+    _active: { svg: { color: 'text-link-primary-pressed' } },
+    _focus: { backgroundColor: 'transparent', boxShadow: 'none' },
+  },
+  floating: {
+    position: 'absolute',
+    bottom: '5.875rem',
+  } as IconButtonProps,
 };
 
 const carouselArrowStyles = {
-  width: '100%',
-  height: '100%',
-  color: 'text-link-primary-default',
+  inline: {
+    width: '100%',
+    height: '100%',
+    color: 'text-link-primary-default',
+  },
+  floating: { color: 'text-link-primary-default' },
 };
 
-const CarouselButtonBack: CarouselButtonProps = (props) => (
-  <IconButton
-    aria-label="back"
-    as={ButtonBack}
-    icon={<IconChevronLeft {...carouselArrowStyles} />}
-    {...carouselButtonStyles}
-    {...props}
-  />
-);
+const CarouselButton: CarouselButtonProps = ({ arrowVariant, direction, ...props }) => {
+  const directionProps = {
+    back: {
+      'aria-label': 'back',
+      as: ButtonBack,
+      icon: <IconChevronLeft {...carouselArrowStyles[arrowVariant]} />,
+    },
+    next: {
+      'aria-label': 'next',
+      as: ButtonNext,
+      icon: <IconChevronRight {...carouselArrowStyles[arrowVariant]} />,
+    },
+  };
 
-const CarouselButtonNext: CarouselButtonProps = (props) => (
-  <IconButton
-    aria-label="next"
-    as={ButtonNext}
-    icon={<IconChevronRight {...carouselArrowStyles} />}
-    {...carouselButtonStyles}
-    {...props}
-  />
-);
+  return (
+    <IconButton
+      {...directionProps[direction]}
+      {...carouselButtonStyles[arrowVariant]}
+      {...(arrowVariant === 'floating' && {
+        variant: 'primary-alt',
+        size: 'l',
+        isRound: true,
+        [direction === 'back' ? 'left' : 'right']: '1.5rem',
+      })}
+      {...props}
+    />
+  );
+};
 
 const CarouselDot: DotProps = (props) => (
   <Flex
@@ -118,8 +147,8 @@ const CarouselSlide: SlideProps = (props) => (
 
 Carousel.Slider = Slider;
 Carousel.Slide = CarouselSlide;
-Carousel.ButtonBack = CarouselButtonBack;
-Carousel.ButtonNext = CarouselButtonNext;
+Carousel.ButtonBack = CarouselButton;
+Carousel.ButtonNext = CarouselButton;
 Carousel.DotGroup = CarouselDotGroup;
 Carousel.Dot = CarouselDot;
 Carousel.NavigationContainer = CarouselNavigationContainer;

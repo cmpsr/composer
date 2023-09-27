@@ -7,9 +7,7 @@ export default {
   title: 'Components/Editors/MarkdownEditor',
 } as Meta;
 
-export const Default = () => (
-  <MarkdownEditor onChange={console.log} />
-);
+export const Default = () => <MarkdownEditor onChange={console.log} />;
 
 export const Disabled = () => {
   const value = `# Hello World
@@ -28,7 +26,6 @@ const handleChange = (v: string) => {
 \`\`\`
 `;
 
-
   return (
     <MarkdownEditor
       initialValue={value}
@@ -39,6 +36,11 @@ const handleChange = (v: string) => {
       width="800px"
     />
   );
+};
+
+export const StartingWithMarkdownEnabled = () => {
+  const markdown = '```markdown ### Hello! This is markdown content set as initial value.';
+  return <MarkdownEditor initialValue={markdown} onChange={console.log} height="30rem" width="800px" />;
 };
 
 const Template = (args) => <MarkdownEditor {...args} />;

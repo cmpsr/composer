@@ -94,6 +94,8 @@ const icons = [
   'IconMailOpened',
   'IconMap',
   'IconMapPin',
+  'IconMarkdown',
+  'IconMarkdownOff',
   'IconMenu2',
   'IconMessage',
   'IconMicrophone',

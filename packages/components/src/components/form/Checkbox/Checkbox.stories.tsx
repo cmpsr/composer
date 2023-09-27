@@ -8,6 +8,12 @@ import { Text } from '../../typography';
 export default {
   component: Checkbox,
   title: 'Components/Form/Checkbox',
+  argTypes: {
+    size: {
+      options: CheckboxSizes,
+      control: { type: 'select' },
+    },
+  },
 } as Meta;
 
 const sizeLabels = {
@@ -56,6 +62,14 @@ const AllTemplate = () => {
 export const All = AllTemplate.bind({});
 
 const Template = (args: CheckboxProps) => <Checkbox {...args}></Checkbox>;
+
+export const WithLongText = Template.bind({});
+WithLongText.args = {
+  size: 'm',
+  children:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at mauris quis mauris venenatis volutpat eget vel ex. Vivamus molestie diam sit amet mi aliquam dapibus. Etiam accumsan maximus libero. Quisque rutrum enim at felis luctus, hendrerit interdum nibh ullamcorper. Fusce ornare odio velit, et auctor nisi vestibulum quis. Cras et massa et dui dapibus lacinia at non quam. Mauris congue vitae elit eu pellentesque. In nisl dolor, vestibulum vel quam sit amet, fringilla fermentum orci. Nullam a ullamcorper purus. Morbi egestas quam sit amet lectus aliquet, at maximus tellus tempor. Nullam tellus libero, tempor eu sapien in, rhoncus rutrum libero.',
+};
+
 export const Playground = Template.bind({});
 Playground.args = {
   size: 'm',

@@ -381,9 +381,21 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
     }
   }, [activeEditor, isLink]);
 
-  const toggleMarkdown = useCallback(() => {
-    setIsMarkdownShown((isMarkdownShown) => !isMarkdownShown);
+  const updateMarkdownState = useCallback(() => {
+    editor.update(() => {
+      const firstChild = $getRoot().getFirstChild();
+      const IsMarkdownShown = $isCodeNode(firstChild) && firstChild.getLanguage() === 'markdown';
 
+      setIsMarkdownShown(IsMarkdownShown);
+    });
+  }, [editor]);
+
+  useEffect(() => {
+    updateMarkdownState();
+    return editor.registerUpdateListener(updateMarkdownState);
+  }, []);
+
+  const toggleMarkdown = useCallback(() => {
     editor.update(() => {
       const root = $getRoot();
       const firstChild = root.getFirstChild();

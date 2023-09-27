@@ -208,4 +208,18 @@ print(a + b);
       expect(screen.queryByRole('button', { name: 'Code Block' })).not.toBeInTheDocument();
     });
   }, 10000);
+
+  test('should allow makrdown as initial value', async () => {
+    renderWithProviders(<MarkdownEditor initialValue="```markdown # Text```" onChange={jest.fn()} />);
+
+    await waitFor(async () => {
+      const content = screen.getByRole('textbox');
+
+      expect(content).toHaveTextContent('# Text');
+      expect(content.querySelector('code')).toHaveTextContent('# Text');
+      expect(content.querySelector('h1')).not.toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Markdown' })).toBeDisabled();
+      expect(screen.getByRole('button', { name: 'Code Block' })).toBeDisabled();
+    });
+  });
 });

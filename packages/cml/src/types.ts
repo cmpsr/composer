@@ -8,7 +8,11 @@ export type Model = ResponsiveValue<string>;
 export type PropsValue = ResponsiveValue<
   Record<
     string,
-    string | number | boolean | Record<string, string | string[] | number | boolean | number[] | boolean[]>
+    | string
+    | number
+    | boolean
+    | Array<string>
+    | Record<string, string | string[] | number | boolean | number[] | boolean[]>
   >
 >;
 

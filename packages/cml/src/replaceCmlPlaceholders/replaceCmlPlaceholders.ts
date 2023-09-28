@@ -104,6 +104,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
         } else {
           newValue = `{[${(propValue as string[])?.map((value) => `"${value}"`).join(',')}]}`;
         }
+        break;
       default:
         searchValue = match;
     }

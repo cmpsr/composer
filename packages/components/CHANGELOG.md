@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 6.2.1
+
+### Patch Changes
+
+- b15e415: sets focus back to automplete input after cleaning it
+- 73b9000: fix: align checkbox control at the top when multi-line
+
 ## 6.2.0
 
 ### Minor Changes

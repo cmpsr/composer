@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "6.2.0",
+  "version": "6.2.1",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -33,14 +33,14 @@
     "react": "^18.2.0"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.6.1",
+    "@chakra-ui/react": "^2.8.0",
     "@chakra-ui/react-utils": "^2.0.11",
-    "@chakra-ui/theme-tools": "^2.0.16",
+    "@chakra-ui/theme-tools": "^2.1.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@tabler/icons-react": "^2.32.0",
     "downshift": "^7.6.0",
-    "framer-motion": "^10.12.16",
-    "@tabler/icons-react": "^2.32.0"
+    "framer-motion": "^10.16.0"
   },
   "devDependencies": {
     "@chakra-ui/cli": "^2.4.1",

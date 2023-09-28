@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Angel Gonzalez <angel@impulsum.vc>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -32,7 +32,7 @@
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
-    "@cmpsr/components": "^6.2.0"
+    "@cmpsr/components": "^6.2.1"
   },
   "peerDependencies": {
     "@cmpsr/components": "^6.0.0",

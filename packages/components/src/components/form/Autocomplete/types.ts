@@ -2,6 +2,7 @@ import { UseComboboxActions, UseComboboxPropGetters, UseComboboxProps } from 'do
 import { FC, ReactElement, ReactNode } from 'react';
 import { InputProps } from '../Input';
 import { BoxProps } from '../../layouts/Box';
+import { ResponsiveValue } from '@chakra-ui/react';
 
 export const autocompleteSizes = ['s', 'm', 'l'] as const;
 
@@ -10,7 +11,7 @@ export type AutocompleteSize = (typeof autocompleteSizes)[number];
 export interface AutocompleteProps<Item = {}> extends UseComboboxProps<Item> {
   children: ReactNode;
   placeholder?: string;
-  size?: AutocompleteSize;
+  size?: ResponsiveValue<AutocompleteSize>;
   leadingIcon?: ReactElement;
   trailingIcon?: ReactElement;
   minCharsToShowList?: number;

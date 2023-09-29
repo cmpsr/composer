@@ -1,6 +1,6 @@
 {
   "name": "@cmpsr/nextjs-contentful-renderer",
-  "version": "22.0.3",
+  "version": "22.0.4",
   "description": "Utility functions to retrieve and render content from contentful in mdx format",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -28,7 +28,7 @@
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "dependencies": {
-    "@cmpsr/contentful-core": "^0.5.3",
+    "@cmpsr/contentful-core": "^0.5.4",
     "cookie": "^0.5.0",
     "esbuild": "^0.14.38",
     "lodash": "^4.17.21",
@@ -36,11 +36,11 @@
   },
   "devDependencies": {
     "@apollo/client": "^3.6.2",
-    "@cmpsr/blocks": "^13.0.3",
-    "@cmpsr/carousel": "^2.0.3",
-    "@cmpsr/cml": "^0.7.0",
-    "@cmpsr/components": "^6.2.1",
-    "@cmpsr/signalwire": "^1.0.3",
+    "@cmpsr/blocks": "^13.0.4",
+    "@cmpsr/carousel": "^2.0.4",
+    "@cmpsr/cml": "^0.8.0",
+    "@cmpsr/components": "^6.3.0",
+    "@cmpsr/signalwire": "^1.0.4",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",
@@ -56,7 +56,7 @@
     "@apollo/client": "^3.6.2",
     "@cmpsr/blocks": "^13.0.0",
     "@cmpsr/carousel": "^2.0.0",
-    "@cmpsr/cml": "^0.7.0",
+    "@cmpsr/cml": "^0.8.0",
     "@cmpsr/components": "^6.0.0",
     "@cmpsr/signalwire": "^1.0.0",
     "next": "^12.1.6",

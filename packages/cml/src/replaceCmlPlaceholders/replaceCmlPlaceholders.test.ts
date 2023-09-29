@@ -338,4 +338,28 @@ describe('replaceCmlPlaceholders', () => {
       base: '<Carousel.Slider ><Carousel.Slide ><MediaBlock ><MediaBlock.Tag >TAG</MediaBlock.Tag></MediaBlock></Carousel.Slide></Carousel.Slider>',
     });
   });
+  test('should handle strings field type with an array value', () => {
+    const model = { base: '<Text prop={{props:strings}} />' };
+    const values = {
+      base: {
+        props: ['Apple', 'Banana', 'Cherry'],
+      },
+    };
+    const mdx = replaceCmlPlaceholders(model, values);
+    expect(mdx).toStrictEqual({
+      base: '<Text prop={["Apple","Banana","Cherry"]} />',
+    });
+  });
+  test('should handle strings field type with a string value', () => {
+    const model = { base: '<Text prop={{props:strings}} />' };
+    const values = {
+      base: {
+        props: 'Orange',
+      },
+    };
+    const mdx = replaceCmlPlaceholders(model, values);
+    expect(mdx).toStrictEqual({
+      base: '<Text prop={["Orange"]} />',
+    });
+  });
 });

@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 0.5.4
+
+### Patch Changes
+
+- b3d831a: feat: bumps jest dependency
+
 ## 0.5.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @cmpsr/cml
 
+## 0.8.0
+
+### Minor Changes
+
+- b69bc69: feat: add support for strings field type
+
 ## 0.7.0
 
 ### Minor Changes

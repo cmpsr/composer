@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.27
+
+### Patch Changes
+
+- b3d831a: feat: bumps jest dependency
+
 ## 0.0.26
 
 ### Patch Changes

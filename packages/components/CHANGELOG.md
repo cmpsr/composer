@@ -1,5 +1,15 @@
 # @cmpsr/components
 
+## 6.3.0
+
+### Minor Changes
+
+- 5099959: feat: make size and variant responsive values
+
+### Patch Changes
+
+- b3d831a: feat: bumps chakra-ui to latest version
+
 ## 6.2.1
 
 ### Patch Changes

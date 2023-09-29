@@ -1,5 +1,5 @@
 import { RefAttributes } from 'react';
-import { IconButtonProps as ChakraIconButtonProps } from '@chakra-ui/react';
+import { IconButtonProps as ChakraIconButtonProps, ResponsiveValue } from '@chakra-ui/react';
 import { ButtonProps, SpinnerProps } from '@components';
 
 export const iconButtonSizes = ['xs', 's', 'm', 'l'] as const;
@@ -9,8 +9,8 @@ export type IconButtonSize = (typeof iconButtonSizes)[number];
 export type IconButtonVariant = (typeof iconButtonVariants)[number];
 
 export interface IconButtonProps extends ChakraIconButtonProps, RefAttributes<HTMLButtonElement> {
-  size?: IconButtonSize;
-  variant?: IconButtonVariant;
+  size?: ResponsiveValue<IconButtonSize>;
+  variant?: ResponsiveValue<IconButtonVariant>;
 }
 
 export interface IconButtonStyle extends ButtonProps {

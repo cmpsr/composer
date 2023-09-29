@@ -5,6 +5,7 @@ import {
   ModalHeaderProps,
   ModalFooterProps,
   ModalBodyProps,
+  ResponsiveValue,
 } from '@chakra-ui/react';
 import { CloseButtonProps } from '@components';
 import { FC } from 'react';
@@ -18,9 +19,9 @@ export {
 } from '@chakra-ui/react';
 
 export const modalSizes = ['auto', 'full'] as const;
-export type ModalSize = typeof modalSizes[number];
-export interface ModalProps extends Omit<ChakraModalProps, 'size'> {
-  size?: ModalSize;
+export type ModalSize = (typeof modalSizes)[number];
+export interface ModalProps extends ChakraModalProps {
+  size?: ResponsiveValue<ModalSize>;
 }
 
 export interface ModalStaticMembers {

@@ -96,7 +96,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
         searchValue = match;
         newValue = process.env[propName];
         break;
-      case 'MultiInput':
+      case 'strings':
         searchValue = match;
 
         if (typeof propValue === 'string') {

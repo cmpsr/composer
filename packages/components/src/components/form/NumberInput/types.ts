@@ -1,7 +1,7 @@
-import { NumberInputProps as ChakraNumberInputProps } from '@chakra-ui/react';
+import { NumberInputProps as ChakraNumberInputProps, ResponsiveValue } from '@chakra-ui/react';
 import { InputSize, InputVariant } from '../Input/types';
 
 export interface NumberInputProps extends ChakraNumberInputProps {
-  variant?: InputVariant;
-  size?: InputSize;
+  variant?: ResponsiveValue<InputVariant>;
+  size?: ResponsiveValue<InputSize>;
 }

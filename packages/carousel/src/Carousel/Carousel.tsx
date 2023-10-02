@@ -1,5 +1,5 @@
-import React, { Children, isValidElement, ReactNode } from 'react';
-import { IconChevronLeft, IconChevronRight, Flex, IconButton } from '@cmpsr/components';
+import React, { Children, ReactElement, cloneElement, isValidElement } from 'react';
+import { Flex, Box } from '@cmpsr/components';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Dot } from 'pure-react-carousel';
 import {
   CarouselProps,
@@ -10,13 +10,7 @@ import {
   SlideProps,
 } from './types';
 
-export const Carousel: CarouselProps = ({
-  children,
-  showDots = true,
-  showArrows = false,
-  visibleSlides = 1,
-  ...props
-}) => {
+export const Carousel: CarouselProps = ({ children, visibleSlides = 1, ...props }) => {
   const [totalSlides] = Children.map(children, (child) => {
     if (isValidElement(child) && child.type === Carousel.Slider) {
       return Children.count(child.props.children) as number;
@@ -24,75 +18,28 @@ export const Carousel: CarouselProps = ({
   });
   if (!totalSlides) return;
 
-  const renderDots = (totalSlides: number, visibleSlides: number) => {
-    const carouselDots: ReactNode[] = [];
-    const totalSlideGroups = Math.ceil(totalSlides / visibleSlides);
-
-    for (let i = 0; i < totalSlideGroups; i++) {
-      const slide = i * visibleSlides;
-      carouselDots.push(<Carousel.Dot key={slide} slide={slide} />);
-    }
-
-    return carouselDots;
-  };
-
   return (
-    <CarouselProvider
+    <Box
+      as={CarouselProvider}
+      position="relative"
       totalSlides={totalSlides}
       visibleSlides={visibleSlides}
       dragStep={visibleSlides}
       step={visibleSlides}
       {...props}
     >
-      <>
-        {children}
-        {(showDots || showArrows) && (
-          <Carousel.NavigationContainer>
-            {showArrows && <Carousel.ButtonBack />}
-            {showDots && renderDots(totalSlides, visibleSlides)}
-            {showArrows && <Carousel.ButtonNext />}
-          </Carousel.NavigationContainer>
-        )}
-      </>
-    </CarouselProvider>
+      {children}
+    </Box>
   );
 };
 
-const carouselButtonStyles = {
-  width: '24px',
-  height: '24px',
-  backgroundColor: 'transparent',
-  _disabled: { backgroundColor: 'transparent' },
-  _hover: { svg: { color: 'text-link-primary-hover' } },
-  _active: { svg: { color: 'text-link-primary-pressed' } },
-  _focus: { backgroundColor: 'transparent', boxShadow: 'none' },
-};
+const CarouselButtonBack: CarouselButtonProps = ({ children, ...props }) =>
+  isValidElement(children) &&
+  cloneElement(children as ReactElement, { as: ButtonBack, 'aria-label': 'back', ...props });
 
-const carouselArrowStyles = {
-  width: '100%',
-  height: '100%',
-  color: 'text-link-primary-default',
-};
-
-const CarouselButtonBack: CarouselButtonProps = (props) => (
-  <IconButton
-    aria-label="back"
-    as={ButtonBack}
-    icon={<IconChevronLeft {...carouselArrowStyles} />}
-    {...carouselButtonStyles}
-    {...props}
-  />
-);
-
-const CarouselButtonNext: CarouselButtonProps = (props) => (
-  <IconButton
-    aria-label="next"
-    as={ButtonNext}
-    icon={<IconChevronRight {...carouselArrowStyles} />}
-    {...carouselButtonStyles}
-    {...props}
-  />
-);
+const CarouselButtonNext: CarouselButtonProps = ({ children, ...props }) =>
+  isValidElement(children) &&
+  cloneElement(children as ReactElement, { as: ButtonNext, 'aria-label': 'next', ...props });
 
 const CarouselDot: DotProps = (props) => (
   <Flex

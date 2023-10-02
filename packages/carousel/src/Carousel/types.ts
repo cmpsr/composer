@@ -4,11 +4,13 @@ import {
   DotProps as BaseDotProps,
   SlideProps as BaseSlideProps,
   SliderProps as BaseSliderProps,
+  ButtonBackProps,
+  ButtonNextProps,
   CarouselProviderProps,
 } from 'pure-react-carousel';
-import { FlexProps, IconButtonProps } from '@cmpsr/components';
+import { FlexProps } from '@cmpsr/components';
 
-export type CarouselButtonProps = FC<Omit<IconButtonProps, 'aria-label'>>;
+export type CarouselButtonProps = FC<Omit<ButtonBackProps | ButtonNextProps, 'aria-label'>>;
 export type DotProps = FC<Omit<BaseDotProps, 'children'>>;
 export type DotGroupProps = FC<Omit<BaseDotGroupProps, 'children'>>;
 export type SliderProps = FC<Omit<BaseSliderProps, 'children'>>;
@@ -25,8 +27,5 @@ interface CarouselStaticMembers {
   NavigationContainer: NavigationContainerProps;
 }
 
-export type CarouselProps = FC<
-  FlexProps &
-    Omit<CarouselProviderProps, 'totalSlides' | 'step' | 'dragStep'> & { showDots?: boolean; showArrows?: boolean }
-> &
+export type CarouselProps = FC<FlexProps & Omit<CarouselProviderProps, 'totalSlides' | 'step' | 'dragStep'>> &
   CarouselStaticMembers;

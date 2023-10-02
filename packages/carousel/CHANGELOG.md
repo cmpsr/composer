@@ -1,5 +1,11 @@
 # @cmpsr/carousel
 
+## 3.0.0
+
+### Major Changes
+
+- fd325cf: feat: adapt Carousel navigation to use composition
+
 ## 2.0.4
 
 ## 2.0.3

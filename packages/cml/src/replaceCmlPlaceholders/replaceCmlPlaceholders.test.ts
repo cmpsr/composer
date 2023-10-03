@@ -25,6 +25,12 @@ describe('replaceCmlPlaceholders', () => {
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({ base: '<Text prop={false}/>' });
   });
+  test('should replace boolean props with value as undefined', () => {
+    const model = { base: '<Text prop={{prop:boolean}}/>' };
+    const values = { base: { prop: undefined } };
+    const mdx = replaceCmlPlaceholders(model, values);
+    expect(mdx).toStrictEqual({ base: '<Text prop={undefined}/>' });
+  });
   test('should replace boolean props with default value as boolean', () => {
     const model = { base: '<Text prop={{prop:boolean:false}}/>' };
     const mdx = replaceCmlPlaceholders(model, {});
@@ -41,6 +47,12 @@ describe('replaceCmlPlaceholders', () => {
     const values = { base: { prop: 5 } };
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({ base: '<Text prop={5}/>' });
+  });
+  test('should replace number props with value as undefined', () => {
+    const model = { base: '<Text prop={{prop:number}}/>' };
+    const values = { base: { prop: undefined } };
+    const mdx = replaceCmlPlaceholders(model, values);
+    expect(mdx).toStrictEqual({ base: '<Text prop={undefined}/>' });
   });
   test.each`
     description    | prop

@@ -13,6 +13,7 @@ export type PropsValue = ResponsiveValue<
     | boolean
     | Array<string>
     | Record<string, string | string[] | number | boolean | number[] | boolean[]>
+    | undefined
   >
 >;
 

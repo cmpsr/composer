@@ -1,5 +1,11 @@
 # @cmpsr/cml
 
+## 0.9.0
+
+### Minor Changes
+
+- b219531: feat: refactor number and boolean field types to default to undefined
+
 ## 0.8.0
 
 ### Minor Changes

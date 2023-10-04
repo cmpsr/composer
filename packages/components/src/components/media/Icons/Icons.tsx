@@ -142,6 +142,7 @@ export const IconMail = (props: IconProps) => withIcon(Tabler.IconMail, props);
 export const IconMailOpened = (props: IconProps) => withIcon(Tabler.IconMailOpened, props);
 export const IconMap = (props: IconProps) => withIcon(Tabler.IconMap, props);
 export const IconMapPin = (props: IconProps) => withIcon(Tabler.IconMapPin, props);
+export const IconMarkdown = (props: IconProps) => withIcon(Tabler.IconMarkdown, props);
 export const IconMenu2 = (props: IconProps) => withIcon(Tabler.IconMenu2, props);
 export const IconMessage = (props: IconProps) => withIcon(Tabler.IconMessage, props);
 export const IconMicrophone = (props: IconProps) => withIcon(Tabler.IconMicrophone, props);

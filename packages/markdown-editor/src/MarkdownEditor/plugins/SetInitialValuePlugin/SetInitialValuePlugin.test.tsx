@@ -1,5 +1,6 @@
 import React from 'react';
 import { renderWithProviders } from '../../../tests/renderWithProviders';
+import { TextMode } from '../../types';
 import { SetInitialValuePlugin } from './SetInitialValuePlugin';
 
 const mockConvertFromMarkdownString = jest.fn();
@@ -11,6 +12,24 @@ jest.mock('@lexical/markdown', () => {
   };
 });
 
+jest.mock('lexical', () => {
+  return {
+    ...jest.requireActual('lexical'),
+    $getRoot: () => ({
+      clear: jest.fn().mockReturnValue({
+        append: jest.fn(),
+      }),
+    }),
+    $createParagraphNode: (...args: any[]) => mockCreateParagraphNode(...args),
+    $createTextNode: (...args: any[]) => mockCreateTextNode(...args),
+  };
+});
+
+const mockCreateTextNode = jest.fn().mockImplementation((value: string) => <span id="initial-value">{value}</span>);
+const mockCreateParagraphNode = jest.fn().mockReturnValue({
+  append: (...args: any[]) => mockAppendParagraphNode(...args),
+});
+const mockAppendParagraphNode = jest.fn();
 const mockEditor = {
   update: jest.fn().mockImplementation((callback: () => void) => callback()),
 };
@@ -46,5 +65,14 @@ describe('SetInitialValuePlugin', () => {
     expect(mockConvertFromMarkdownString).toHaveBeenCalledTimes(2);
     expect(mockConvertFromMarkdownString).toHaveBeenNthCalledWith(1, 'Text');
     expect(mockConvertFromMarkdownString).toHaveBeenNthCalledWith(2, 'Another text');
+  });
+
+  test('should allow setting plain text as initial value', () => {
+    renderWithProviders(<SetInitialValuePlugin value="Text" textMode={TextMode.PlainText} />);
+    expect(mockEditor.update).toHaveBeenCalledTimes(1);
+    expect(mockConvertFromMarkdownString).toHaveBeenCalledTimes(0);
+    expect(mockCreateTextNode).toHaveBeenNthCalledWith(1, 'Text');
+    expect(mockCreateParagraphNode).toHaveBeenNthCalledWith(1);
+    expect(mockAppendParagraphNode).toHaveBeenNthCalledWith(1, <span id="initial-value">Text</span>);
   });
 });

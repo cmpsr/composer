@@ -715,6 +715,12 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconMarkdown {...args} />
+      </Box>
+      <Box>IconMarkdown</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconMenu2 {...args} />
       </Box>
       <Box>IconMenu2</Box>

@@ -22,4 +22,15 @@ export type MarkdownEditorProps = {
   contentEditableStyles?: CSSProperties;
   externalToolbarActions?: ReactNode;
   toolbarPluginProps?: BoxProps;
+  textMode?: TextMode;
 };
+
+export enum TextMode {
+  RichText = 'rich-text',
+  PlainText = 'plain-text',
+}
+
+export interface MarkdownEditorContextValue {
+  textMode: TextMode;
+  toggleTextMode: () => void;
+}

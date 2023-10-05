@@ -248,6 +248,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
   const [isCode, setIsCode] = useState(false);
   const { textMode, toggleTextMode } = useContext(MarkdownEditorContext);
   const isPlainTextModeEnabled = textMode === TextMode.PlainText;
+  const isFormattingDisabled = isDisabled || isPlainTextModeEnabled;
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -409,18 +410,14 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
         <Divider orientation="vertical" />
         {supportedBlockTypes.has(blockType) && (
           <>
-            <BlockOptionsDropdownList
-              editor={activeEditor}
-              blockType={blockType}
-              isDisabled={isDisabled || isPlainTextModeEnabled}
-            />
+            <BlockOptionsDropdownList editor={activeEditor} blockType={blockType} isDisabled={isFormattingDisabled} />
             <Divider orientation="vertical" />
           </>
         )}
         {blockType === 'code' ? (
           <Dropdown>
             <Dropdown.Button
-              isDisabled={isDisabled || isPlainTextModeEnabled}
+              isDisabled={isFormattingDisabled}
               as={Button}
               variant="ghost"
               trailingIcon={<IconChevronDown />}
@@ -442,7 +439,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
               onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold')}
               aria-label="Format Bold"
               icon={<IconBold />}
-              isDisabled={isDisabled || isPlainTextModeEnabled}
+              isDisabled={isFormattingDisabled}
               title={`Bold (${IS_APPLE ? '⌘' : 'Ctrl+'}B)`}
             />
             <ToolbarIcon
@@ -450,7 +447,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
               onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic')}
               aria-label="Format Italic"
               icon={<IconItalic />}
-              isDisabled={isDisabled || isPlainTextModeEnabled}
+              isDisabled={isFormattingDisabled}
               title={`Italic (${IS_APPLE ? '⌘' : 'Ctrl+'}I)`}
             />
             <ToolbarIcon
@@ -458,7 +455,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
               onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code')}
               aria-label="Format Code"
               icon={<IconCode />}
-              isDisabled={isDisabled || isPlainTextModeEnabled}
+              isDisabled={isFormattingDisabled}
               title="Format Code"
             />
             <ToolbarIcon
@@ -466,7 +463,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
               onClick={insertLink}
               aria-label="Insert Link"
               icon={<IconLink />}
-              isDisabled={isDisabled || isPlainTextModeEnabled}
+              isDisabled={isFormattingDisabled}
               title={`Insert link (${IS_APPLE ? '⌘' : 'Ctrl+'}K)`}
             />
             <Divider orientation="vertical" />

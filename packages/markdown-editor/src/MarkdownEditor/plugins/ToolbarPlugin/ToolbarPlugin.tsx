@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import {
   Button,
   Divider,
@@ -22,6 +22,7 @@ import {
   IconLink,
   IconList,
   IconListNumbers,
+  IconMarkdown,
 } from '@cmpsr/components';
 
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
@@ -65,6 +66,8 @@ import {
 import { getSelectedNode } from '../../utils/getSelectedNode';
 import { sanitizeUrl } from '../../utils/sanitizeUrl';
 import { ToolbarPluginProps } from './types';
+import { MarkdownEditorContext } from '../../MarkdownEditor';
+import { TextMode } from '../../types';
 
 const supportedBlockTypes = new Set(['paragraph', 'code', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bullet', 'number']);
 
@@ -243,6 +246,8 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
   const [isCode, setIsCode] = useState(false);
+  const { textMode, toggleTextMode } = useContext(MarkdownEditorContext);
+  const isPlainTextModeEnabled = textMode === TextMode.PlainText;
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -404,13 +409,22 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
         <Divider orientation="vertical" />
         {supportedBlockTypes.has(blockType) && (
           <>
-            <BlockOptionsDropdownList editor={activeEditor} blockType={blockType} isDisabled={isDisabled} />
+            <BlockOptionsDropdownList
+              editor={activeEditor}
+              blockType={blockType}
+              isDisabled={isDisabled || isPlainTextModeEnabled}
+            />
             <Divider orientation="vertical" />
           </>
         )}
         {blockType === 'code' ? (
           <Dropdown>
-            <Dropdown.Button isDisabled={isDisabled} as={Button} variant="ghost" trailingIcon={<IconChevronDown />}>
+            <Dropdown.Button
+              isDisabled={isDisabled || isPlainTextModeEnabled}
+              as={Button}
+              variant="ghost"
+              trailingIcon={<IconChevronDown />}
+            >
               {getLanguageFriendlyName(codeLanguage)}
             </Dropdown.Button>
             <Dropdown.List>
@@ -428,7 +442,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
               onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold')}
               aria-label="Format Bold"
               icon={<IconBold />}
-              isDisabled={isDisabled}
+              isDisabled={isDisabled || isPlainTextModeEnabled}
               title={`Bold (${IS_APPLE ? '⌘' : 'Ctrl+'}B)`}
             />
             <ToolbarIcon
@@ -436,7 +450,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
               onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic')}
               aria-label="Format Italic"
               icon={<IconItalic />}
-              isDisabled={isDisabled}
+              isDisabled={isDisabled || isPlainTextModeEnabled}
               title={`Italic (${IS_APPLE ? '⌘' : 'Ctrl+'}I)`}
             />
             <ToolbarIcon
@@ -444,7 +458,7 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
               onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code')}
               aria-label="Format Code"
               icon={<IconCode />}
-              isDisabled={isDisabled}
+              isDisabled={isDisabled || isPlainTextModeEnabled}
               title="Format Code"
             />
             <ToolbarIcon
@@ -452,10 +466,18 @@ export const ToolbarPlugin = ({ isDisabled, externalActions, toolbarPluginProps 
               onClick={insertLink}
               aria-label="Insert Link"
               icon={<IconLink />}
-              isDisabled={isDisabled}
+              isDisabled={isDisabled || isPlainTextModeEnabled}
               title={`Insert link (${IS_APPLE ? '⌘' : 'Ctrl+'}K)`}
             />
             <Divider orientation="vertical" />
+            <ToolbarIcon
+              icon={<IconMarkdown />}
+              isDisabled={isDisabled}
+              isActive={isPlainTextModeEnabled}
+              onClick={toggleTextMode}
+              title="Toggle Markdown on and off"
+              aria-label="Toggle Markdown on and off"
+            />
           </>
         )}
       </Flex>

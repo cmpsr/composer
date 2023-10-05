@@ -19,6 +19,8 @@ import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { AutoLinkNode, LinkNode } from '@lexical/link';
 import { ListPlugin } from '@lexical/react/LexicalListPlugin';
 import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode';
+import { $createParagraphNode, $createTextNode, $getRoot, LexicalEditor } from 'lexical';
+import { $convertFromMarkdownString, $convertToMarkdownString } from '@lexical/markdown';
 
 import { OnChangeMarkdown } from './plugins/OnChangeMarkdown';
 import { CodeHighlightPlugin } from './plugins/CodeHighlightPlugin';
@@ -33,8 +35,7 @@ import { PLAYGROUND_TRANSFORMERS } from './plugins/MarkdownTransformers';
 import { SetInitialValuePlugin } from './plugins/SetInitialValuePlugin';
 
 import './styles';
-import { $createParagraphNode, $createTextNode, $getRoot, LexicalEditor } from 'lexical';
-import { $convertFromMarkdownString, $convertToMarkdownString } from '@lexical/markdown';
+import { DISCARD_HISTORY_CANDIDATE } from './constants';
 
 const editorConfig = {
   theme: defaultTheme,
@@ -94,6 +95,9 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   const toggleTextMode = useCallback(() => {
     setTextMode((currentTextMode) => {
       const isRichTextModeOn = currentTextMode === TextMode.RichText;
+      const updateOptions = {
+        tag: DISCARD_HISTORY_CANDIDATE,
+      };
 
       editorRef.current?.update(() => {
         const root = $getRoot();
@@ -102,12 +106,11 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
           const markdown = $convertToMarkdownString(PLAYGROUND_TRANSFORMERS, root);
           root.clear().append($createParagraphNode().append($createTextNode(markdown)));
         } else {
-          console.log('parsing root content to rich text markdown', root.getTextContent());
           $convertFromMarkdownString(root.getTextContent(), PLAYGROUND_TRANSFORMERS, root);
         }
 
         root.selectStart();
-      });
+      }, updateOptions);
 
       return isRichTextModeOn ? TextMode.PlainText : TextMode.RichText;
     });

@@ -212,5 +212,9 @@ print(a + b);
     await waitFor(async () => {
       expect(container).toHaveTextContent('Text');
     });
+
+    // should not be able to undo/redo after toggling markdown on and off
+    expect(screen.getByRole('button', { name: 'Undo' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Redo' })).toBeDisabled();
   });
 });

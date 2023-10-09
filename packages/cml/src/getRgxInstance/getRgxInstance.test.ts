@@ -103,4 +103,20 @@ describe('getRgxInstance', () => {
     expect(extraProps).toBe('extraPropKey=extraPropValue');
     expect(parentComponent).toBe('Flex');
   });
+
+  it('should extract propName, fieldType, styling and defaultValue', () => {
+    const placeholder = '{{_:styling[color=foo]:default value}}';
+    const match = getRgxInstance().exec(placeholder);
+
+    expect(match).not.toBeNull();
+
+    const [, propName, roleIds, propType, values, styling, defaultValue] = match!;
+
+    expect(propName).toBe('_');
+    expect(roleIds).toBeUndefined();
+    expect(propType).toBe('styling');
+    expect(values).toBeUndefined();
+    expect(styling).toBe('color=foo');
+    expect(defaultValue).toBe('default value');
+  });
 });

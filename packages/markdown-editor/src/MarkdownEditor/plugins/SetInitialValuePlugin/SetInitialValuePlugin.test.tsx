@@ -1,6 +1,6 @@
 import React from 'react';
 import { renderWithProviders } from '../../../tests/renderWithProviders';
-import { TextMode } from '../../types';
+import { EditorMode } from '../../types';
 import { SetInitialValuePlugin } from './SetInitialValuePlugin';
 
 const mockConvertFromMarkdownString = jest.fn();
@@ -68,7 +68,7 @@ describe('SetInitialValuePlugin', () => {
   });
 
   test('should allow setting plain text as initial value', () => {
-    renderWithProviders(<SetInitialValuePlugin value="Text" textMode={TextMode.PlainText} />);
+    renderWithProviders(<SetInitialValuePlugin value="Text" editorMode={EditorMode.PlainText} />);
     expect(mockEditor.update).toHaveBeenCalledTimes(1);
     expect(mockConvertFromMarkdownString).toHaveBeenCalledTimes(0);
     expect(mockCreateTextNode).toHaveBeenNthCalledWith(1, 'Text');

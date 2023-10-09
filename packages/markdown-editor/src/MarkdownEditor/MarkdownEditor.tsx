@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useRef, useState } from 'react';
-import { MarkdownEditorContextValue, MarkdownEditorProps, TextMode } from './types';
+import { MarkdownEditorProps, EditorMode } from './types';
 import { Box } from '@cmpsr/components';
 
 import { defaultTheme } from './themes/defaultTheme';
@@ -60,11 +60,6 @@ const editorConfig = {
   ],
 };
 
-export const MarkdownEditorContext = React.createContext<MarkdownEditorContextValue>({
-  textMode: TextMode.RichText,
-  toggleTextMode: () => {},
-});
-
 export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   initialValue,
   onChange,
@@ -86,15 +81,15 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   contentProps,
   contentEditableStyles,
   externalToolbarActions,
-  textMode: initialTextMode = TextMode.RichText,
+  editorMode: initialEditorMode = EditorMode.RichText,
 }) => {
   const editorRef = useRef<LexicalEditor>(null);
-  const [textMode, setTextMode] = useState<TextMode>(initialTextMode);
-  const TextPlugin = textMode === TextMode.RichText ? RichTextPlugin : PlainTextPlugin;
+  const [editorMode, setEditorMode] = useState<EditorMode>(initialEditorMode);
+  const TextPlugin = editorMode === EditorMode.RichText ? RichTextPlugin : PlainTextPlugin;
 
-  const toggleTextMode = useCallback(() => {
-    setTextMode((currentTextMode) => {
-      const isRichTextModeOn = currentTextMode === TextMode.RichText;
+  const toggleEditorMode = useCallback(() => {
+    setEditorMode((currentEditorMode) => {
+      const isRichEditorModeOn = currentEditorMode === EditorMode.RichText;
       const updateOptions = {
         tag: DISCARD_HISTORY_CANDIDATE,
       };
@@ -102,7 +97,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
       editorRef.current?.update(() => {
         const root = $getRoot();
 
-        if (isRichTextModeOn) {
+        if (isRichEditorModeOn) {
           const markdown = $convertToMarkdownString(PLAYGROUND_TRANSFORMERS, root);
           root.clear().append($createParagraphNode().append($createTextNode(markdown)));
         } else {
@@ -112,9 +107,9 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
         root.selectStart();
       }, updateOptions);
 
-      return isRichTextModeOn ? TextMode.PlainText : TextMode.RichText;
+      return isRichEditorModeOn ? EditorMode.PlainText : EditorMode.RichText;
     });
-  }, [setTextMode]);
+  }, [setEditorMode]);
 
   return (
     <LexicalComposer initialConfig={editorConfig}>
@@ -131,60 +126,56 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
         width={width}
         {...containerProps}
       >
-        <MarkdownEditorContext.Provider value={{ textMode, toggleTextMode }}>
-          <ToolbarPlugin
-            isDisabled={isReadonly}
-            externalActions={externalToolbarActions}
-            toolbarPluginProps={toolbarPluginProps}
+        <ToolbarPlugin
+          isDisabled={isReadonly}
+          externalActions={externalToolbarActions}
+          toolbarPluginProps={toolbarPluginProps}
+          editorMode={editorMode}
+          toggleEditorMode={toggleEditorMode}
+        />
+        <Box backgroundColor={backgroundColor} position="relative" width="100%" {...contentProps}>
+          <EditorRefPlugin editorRef={editorRef} />
+          <TextPlugin
+            contentEditable={
+              <ContentEditable
+                style={{
+                  height,
+                  minHeight,
+                  resize: 'vertical',
+                  fontSize: '1rem',
+                  position: 'relative',
+                  tabSize: 1,
+                  outline: 0,
+                  padding: '1rem 0.75rem',
+                  caretColor: 'text-secondary',
+                  overflow: 'auto',
+                  fontStyle: '',
+                  width: '100%',
+                  maxWidth,
+                  ...contentEditableStyles,
+                }}
+              />
+            }
+            placeholder={<Placeholder>{placeholder}</Placeholder>}
+            ErrorBoundary={LexicalErrorBoundary}
           />
-          <Box backgroundColor={backgroundColor} position="relative" width="100%" {...contentProps}>
-            <EditorRefPlugin editorRef={editorRef} />
-            <TextPlugin
-              contentEditable={
-                <ContentEditable
-                  style={{
-                    height,
-                    minHeight,
-                    resize: 'vertical',
-                    fontSize: '1rem',
-                    position: 'relative',
-                    tabSize: 1,
-                    outline: 0,
-                    padding: '1rem 0.75rem',
-                    caretColor: 'text-secondary',
-                    overflow: 'auto',
-                    fontStyle: '',
-                    width: '100%',
-                    maxWidth,
-                    ...contentEditableStyles,
-                  }}
-                />
-              }
-              placeholder={<Placeholder>{placeholder}</Placeholder>}
-              ErrorBoundary={LexicalErrorBoundary}
-            />
-            <HistoryPlugin />
-            <ReadOnlyPlugin isReadonly={isReadonly} />
-            <FloatingLinkEditorPlugin />
-            <SetInitialValuePlugin value={initialValue} version={initialValueVersion} textMode={textMode} />
-            <OnChangeMarkdown
-              onChange={onChange}
-              transformers={PLAYGROUND_TRANSFORMERS}
-              debounceTime={onChangeDebounceInterval}
-            />
+          <HistoryPlugin />
 
-            {textMode === TextMode.RichText && (
-              <>
-                <CodeHighlightPlugin />
-                <ListPlugin />
-                <LinkPlugin />
-                <AutoLinkPlugin />
-                <ListMaxIndentLevelPlugin maxDepth={7} />
-                <MarkdownShortcutPlugin />
-              </>
-            )}
-          </Box>
-        </MarkdownEditorContext.Provider>
+          <CodeHighlightPlugin />
+          <ListPlugin />
+          <LinkPlugin />
+          <ReadOnlyPlugin isReadonly={isReadonly} />
+          <AutoLinkPlugin />
+          <ListMaxIndentLevelPlugin maxDepth={7} />
+          <MarkdownShortcutPlugin />
+          <OnChangeMarkdown
+            debounceTime={onChangeDebounceInterval}
+            onChange={onChange}
+            transformers={PLAYGROUND_TRANSFORMERS}
+          />
+          <FloatingLinkEditorPlugin />
+          <SetInitialValuePlugin value={initialValue} version={initialValueVersion} editorMode={editorMode} />
+        </Box>
       </Box>
     </LexicalComposer>
   );

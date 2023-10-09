@@ -1,7 +1,7 @@
-import { TextMode } from '@MarkdownEditor/types';
+import { EditorMode } from '@MarkdownEditor/types';
 
 export type SetInitialValuePluginProps = {
   value?: string;
   version?: string;
-  textMode?: TextMode;
+  editorMode?: EditorMode;
 };

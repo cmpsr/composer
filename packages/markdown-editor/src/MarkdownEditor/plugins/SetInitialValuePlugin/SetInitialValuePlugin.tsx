@@ -4,11 +4,11 @@ import { $convertFromMarkdownString } from '@lexical/markdown';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 
 import { PLAYGROUND_TRANSFORMERS } from '../MarkdownTransformers';
-import { TextMode } from '../../types';
+import { EditorMode } from '../../types';
 import { SetInitialValuePluginProps } from './types';
 import { $createParagraphNode, $createTextNode, $getRoot } from 'lexical';
 
-export const SetInitialValuePlugin = ({ value, version, textMode }: SetInitialValuePluginProps) => {
+export const SetInitialValuePlugin = ({ value, version, editorMode }: SetInitialValuePluginProps) => {
   const [editor] = useLexicalComposerContext();
   const [valueSet, setValueSet] = useState<boolean>(undefined);
 
@@ -22,7 +22,7 @@ export const SetInitialValuePlugin = ({ value, version, textMode }: SetInitialVa
     editor.update(() => {
       const content = value ?? '';
 
-      if (textMode === TextMode.PlainText) {
+      if (editorMode === EditorMode.PlainText) {
         $getRoot()
           .clear()
           .append($createParagraphNode().append($createTextNode(content)));

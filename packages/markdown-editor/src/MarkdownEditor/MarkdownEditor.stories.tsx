@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { MarkdownEditor } from './MarkdownEditor';
-import { TextMode } from './types';
+import { EditorMode } from './types';
 
 export default {
   component: MarkdownEditor,
@@ -41,8 +41,8 @@ const handleChange = (v: string) => {
 
 const Template = (args) => <MarkdownEditor {...args} />;
 
-export const PlainTextMode = Template.bind({});
-PlainTextMode.args = {
+export const PlainEditorMode = Template.bind({});
+PlainEditorMode.args = {
   initialValue: `# Hello World
 This is a **paragraph**
 This is a [link to cmpsr.io](https://cmpsr.io)
@@ -61,7 +61,7 @@ This is a table:
 | Cell 1   | Cell 2   |
 | Cell 3   | Cell 4   |
 `,
-  textMode: TextMode.PlainText,
+  editorMode: EditorMode.PlainText,
 };
 
 export const Playground = Template.bind({});

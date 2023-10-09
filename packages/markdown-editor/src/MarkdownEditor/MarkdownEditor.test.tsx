@@ -1,7 +1,7 @@
 import React from 'react';
 import { act, renderWithProviders, screen, waitFor } from '../tests/renderWithProviders';
 import { MarkdownEditor } from './MarkdownEditor';
-import { TextMode } from './types';
+import { EditorMode } from './types';
 
 jest.mock('./styles', () => ({}));
 
@@ -181,7 +181,7 @@ print(a + b);
       expect(container).toHaveTextContent('Text');
     });
 
-    rerender(<MarkdownEditor initialValue="**Text**" onChange={jest.fn()} textMode={TextMode.PlainText} />);
+    rerender(<MarkdownEditor initialValue="**Text**" onChange={jest.fn()} editorMode={EditorMode.PlainText} />);
 
     await waitFor(async () => {
       expect(container).toHaveTextContent('**Text**');

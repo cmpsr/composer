@@ -1,5 +1,11 @@
 # @cmpsr/markdown-editor
 
+## 1.2.0
+
+### Minor Changes
+
+- 6957e77: adds markdown view toggle button to markdown editor
+
 ## 1.1.3
 
 ## 1.1.2

@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 6.4.0
+
+### Minor Changes
+
+- 6957e77: adds markdown view toggle button to markdown editor
+
 ## 6.3.0
 
 ### Minor Changes

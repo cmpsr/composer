@@ -29,7 +29,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
     const patternToGetRgxGroups = getRgxInstance();
     const rgxGroups = patternToGetRgxGroups.exec(match) || [];
     const propName = rgxGroups[1];
-    const fieldType = rgxGroups[2];
+    const fieldType = rgxGroups[3];
     const defaultValue = rgxGroups[6] || '';
 
     const propValue = values[propName];

@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- 6957e77: adds markdown view toggle button to markdown editor
+- 6957e77: adds markdown icon
 
 ## 6.3.0
 

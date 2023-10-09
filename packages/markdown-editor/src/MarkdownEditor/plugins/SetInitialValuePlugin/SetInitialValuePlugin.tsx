@@ -4,9 +4,11 @@ import { $convertFromMarkdownString } from '@lexical/markdown';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 
 import { PLAYGROUND_TRANSFORMERS } from '../MarkdownTransformers';
+import { EditorMode } from '../../types';
 import { SetInitialValuePluginProps } from './types';
+import { $createParagraphNode, $createTextNode, $getRoot } from 'lexical';
 
-export const SetInitialValuePlugin = ({ value, version }: SetInitialValuePluginProps) => {
+export const SetInitialValuePlugin = ({ value, version, editorMode }: SetInitialValuePluginProps) => {
   const [editor] = useLexicalComposerContext();
   const [valueSet, setValueSet] = useState<boolean>(undefined);
 
@@ -18,7 +20,15 @@ export const SetInitialValuePlugin = ({ value, version }: SetInitialValuePluginP
     if (valueSet || valueSet === undefined) return;
     if (value !== undefined && value !== null) setValueSet(true);
     editor.update(() => {
-      $convertFromMarkdownString(value ?? '', PLAYGROUND_TRANSFORMERS);
+      const content = value ?? '';
+
+      if (editorMode === EditorMode.PlainText) {
+        $getRoot()
+          .clear()
+          .append($createParagraphNode().append($createTextNode(content)));
+      } else {
+        $convertFromMarkdownString(content, PLAYGROUND_TRANSFORMERS);
+      }
     });
   }, [value, editor, valueSet]);
 

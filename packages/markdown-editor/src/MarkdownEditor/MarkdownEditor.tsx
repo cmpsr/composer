@@ -160,21 +160,25 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
             ErrorBoundary={LexicalErrorBoundary}
           />
           <HistoryPlugin />
-
-          <CodeHighlightPlugin />
-          <ListPlugin />
-          <LinkPlugin />
           <ReadOnlyPlugin isReadonly={isReadonly} />
-          <AutoLinkPlugin />
-          <ListMaxIndentLevelPlugin maxDepth={7} />
-          <MarkdownShortcutPlugin />
+          <SetInitialValuePlugin value={initialValue} version={initialValueVersion} editorMode={editorMode} />
           <OnChangeMarkdown
             debounceTime={onChangeDebounceInterval}
             onChange={onChange}
             transformers={PLAYGROUND_TRANSFORMERS}
           />
-          <FloatingLinkEditorPlugin />
-          <SetInitialValuePlugin value={initialValue} version={initialValueVersion} editorMode={editorMode} />
+
+          {editorMode === EditorMode.RichText && (
+            <>
+              <CodeHighlightPlugin />
+              <ListPlugin />
+              <LinkPlugin />
+              <AutoLinkPlugin />
+              <ListMaxIndentLevelPlugin maxDepth={7} />
+              <MarkdownShortcutPlugin />
+              <FloatingLinkEditorPlugin />
+            </>
+          )}
         </Box>
       </Box>
     </LexicalComposer>

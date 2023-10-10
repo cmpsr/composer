@@ -1,4 +1,5 @@
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 import { act, renderWithProviders, screen, waitFor } from '../tests/renderWithProviders';
 import { MarkdownEditor } from './MarkdownEditor';
 import { EditorMode } from './types';
@@ -216,5 +217,49 @@ print(a + b);
     // should not be able to undo/redo after toggling markdown on and off
     expect(screen.getByRole('button', { name: 'Undo' })).toBeDisabled();
     expect(screen.getByRole('button', { name: 'Redo' })).toBeDisabled();
+  });
+
+  test.skip('should not automatically toggle to rich text mode', async () => {
+    const { container } = renderWithProviders(
+      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} editorMode={EditorMode.PlainText} />
+    );
+
+    // start in plain text mode
+    await waitFor(async () => {
+      expect(container).toHaveTextContent('**Text**');
+    });
+
+    // type a markdown title
+    await userEvent.type(screen.getByRole('textbox'), '# title sample');
+    // FIX: this test is failing because jest cannot type into the contenteditable
+    // It seems that we should test this using Cypress instead
+    // await fireEvent.input(screen.getByRole('textbox'), { target: { value: '# title sample' } });
+    // More info: https://github.com/facebook/lexical/issues/4595
+
+    // it should display markdown
+    await waitFor(async () => {
+      expect(container).toHaveTextContent('# title sample');
+    });
+
+    // manually toggle to rich text mode
+    const toggleButton = screen.getByRole('button', { name: 'Toggle Markdown on and off' });
+    act(() => {
+      toggleButton.click();
+    });
+
+    // it should display rich text
+    await waitFor(async () => {
+      expect(container).toHaveTextContent('title sample');
+    });
+
+    // toggle back to markdown mode
+    act(() => {
+      toggleButton.click();
+    });
+
+    // it should display markdown
+    await waitFor(async () => {
+      expect(container).toHaveTextContent('# title sample');
+    });
   });
 });

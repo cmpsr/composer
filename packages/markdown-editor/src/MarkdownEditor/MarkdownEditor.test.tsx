@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { act, fireEvent, renderWithProviders, screen, waitFor } from '../tests/renderWithProviders';
+import { act, renderWithProviders, screen, waitFor } from '../tests/renderWithProviders';
 import { MarkdownEditor } from './MarkdownEditor';
 import { EditorMode } from './types';
 

@@ -41,7 +41,7 @@ describe('getRgxInstance', () => {
   });
 
   it('should extract propName, roleIds, fieldType and defaultValue', () => {
-    const placeholder = '{{foo[1,2,3]:number:3}}';
+    const placeholder = '{{foo[1,2,3,4A]:number:3}}';
     const match = getRgxInstance().exec(placeholder);
 
     expect(match).not.toBeNull();
@@ -49,7 +49,7 @@ describe('getRgxInstance', () => {
     const [, propName, roleIds, propType, values, extraProps, defaultValue] = match!;
 
     expect(propName).toBe('foo');
-    expect(roleIds).toBe('1,2,3');
+    expect(roleIds).toBe('1,2,3,4A');
     expect(propType).toBe('number');
     expect(values).toBeUndefined();
     expect(extraProps).toBeUndefined();

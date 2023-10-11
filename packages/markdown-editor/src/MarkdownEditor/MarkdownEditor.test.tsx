@@ -1,6 +1,7 @@
 import React from 'react';
 import { act, renderWithProviders, screen, waitFor } from '../tests/renderWithProviders';
 import { MarkdownEditor } from './MarkdownEditor';
+import { EditorMode } from './types';
 
 jest.mock('./styles', () => ({}));
 
@@ -169,5 +170,51 @@ print(a + b);
       const markdownEditorToolbarPlugins = container.firstChild.firstChild;
       expect(markdownEditorToolbarPlugins).toHaveStyle('background: red');
     });
+  });
+
+  test('should initialize either on rich or plain text mode', async () => {
+    const { container, rerender } = renderWithProviders(
+      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} />
+    );
+
+    await waitFor(async () => {
+      expect(container).toHaveTextContent('Text');
+    });
+
+    rerender(<MarkdownEditor initialValue="**Text**" onChange={jest.fn()} editorMode={EditorMode.PlainText} />);
+
+    await waitFor(async () => {
+      expect(container).toHaveTextContent('**Text**');
+    });
+  });
+
+  test('should allow toggling between rich and plain text modes', async () => {
+    const { container } = renderWithProviders(<MarkdownEditor initialValue="**Text**" onChange={jest.fn()} />);
+
+    await waitFor(async () => {
+      expect(container).toHaveTextContent('Text');
+    });
+
+    const toggleButton = screen.getByRole('button', { name: 'Toggle Markdown on and off' });
+
+    act(() => {
+      toggleButton.click();
+    });
+
+    await waitFor(async () => {
+      expect(container).toHaveTextContent('**Text**');
+    });
+
+    act(() => {
+      toggleButton.click();
+    });
+
+    await waitFor(async () => {
+      expect(container).toHaveTextContent('Text');
+    });
+
+    // should not be able to undo/redo after toggling markdown on and off
+    expect(screen.getByRole('button', { name: 'Undo' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Redo' })).toBeDisabled();
   });
 });

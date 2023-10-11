@@ -1,10 +1,22 @@
 import React from 'react';
-import userEvent from '@testing-library/user-event';
+import { $getRoot, $createParagraphNode, $createTextNode, LexicalEditor } from 'lexical';
 import { act, renderWithProviders, screen, waitFor } from '../tests/renderWithProviders';
-import { MarkdownEditor } from './MarkdownEditor';
 import { EditorMode } from './types';
+import { MarkdownEditor } from './MarkdownEditor';
 
 jest.mock('./styles', () => ({}));
+
+let editor: LexicalEditor | null = null;
+// mock EditorRefPlugin to extract the editor instance
+jest.mock('@lexical/react/LexicalEditorRefPlugin', () => ({
+  EditorRefPlugin: (ref: unknown) => {
+    const plugin = jest.requireActual('@lexical/react/LexicalEditorRefPlugin').EditorRefPlugin(ref);
+
+    editor = (ref as { editorRef: { current: LexicalEditor } })?.editorRef?.current;
+
+    return plugin;
+  },
+}));
 
 describe('MarkdownEditor', () => {
   test('should render initialValue', async () => {
@@ -219,7 +231,7 @@ print(a + b);
     expect(screen.getByRole('button', { name: 'Redo' })).toBeDisabled();
   });
 
-  test.skip('should not automatically toggle to rich text mode', async () => {
+  test('should not automatically toggle to rich text mode', async () => {
     const { container } = renderWithProviders(
       <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} editorMode={EditorMode.PlainText} />
     );
@@ -229,12 +241,14 @@ print(a + b);
       expect(container).toHaveTextContent('**Text**');
     });
 
-    // type a markdown title
-    await userEvent.type(screen.getByRole('textbox'), '# title sample');
-    // FIX: this test is failing because jest cannot type into the contenteditable
-    // It seems that we should test this using Cypress instead
-    // await fireEvent.input(screen.getByRole('textbox'), { target: { value: '# title sample' } });
-    // More info: https://github.com/facebook/lexical/issues/4595
+    act(() => {
+      editor.update(() => {
+        const root = $getRoot();
+        const paragraph = $createParagraphNode();
+        paragraph.append($createTextNode('# title sample'));
+        root.clear().append(paragraph);
+      });
+    });
 
     // it should display markdown
     await waitFor(async () => {

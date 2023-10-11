@@ -18,6 +18,30 @@ jest.mock('@lexical/react/LexicalEditorRefPlugin', () => ({
   },
 }));
 
+/**
+ * helper function to clear the editor
+ * @returns void
+ * */
+const clear = () => {
+  editor.update(() => {
+    $getRoot().clear();
+  });
+};
+
+/**
+ * helper function to type content into the editor
+ * @param content - the content to append to the editor
+ * @returns void
+ */
+const type = (content: string) => {
+  editor.update(() => {
+    const root = $getRoot();
+    const paragraph = $createParagraphNode();
+    paragraph.append($createTextNode(content));
+    root.append(paragraph);
+  });
+};
+
 describe('MarkdownEditor', () => {
   test('should render initialValue', async () => {
     act(() => {
@@ -241,13 +265,10 @@ print(a + b);
       expect(container).toHaveTextContent('**Text**');
     });
 
+    // clear then type some markdown
     act(() => {
-      editor.update(() => {
-        const root = $getRoot();
-        const paragraph = $createParagraphNode();
-        paragraph.append($createTextNode('# title sample'));
-        root.clear().append(paragraph);
-      });
+      clear();
+      type('# title sample');
     });
 
     // it should display markdown

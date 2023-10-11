@@ -1,9 +1,46 @@
 import React from 'react';
+import { $getRoot, $createParagraphNode, $createTextNode, LexicalEditor } from 'lexical';
 import { act, renderWithProviders, screen, waitFor } from '../tests/renderWithProviders';
-import { MarkdownEditor } from './MarkdownEditor';
 import { EditorMode } from './types';
+import { MarkdownEditor } from './MarkdownEditor';
 
 jest.mock('./styles', () => ({}));
+
+let editor: LexicalEditor | null = null;
+// mock EditorRefPlugin to extract the editor instance
+jest.mock('@lexical/react/LexicalEditorRefPlugin', () => ({
+  EditorRefPlugin: (ref: unknown) => {
+    const plugin = jest.requireActual('@lexical/react/LexicalEditorRefPlugin').EditorRefPlugin(ref);
+
+    editor = (ref as { editorRef: { current: LexicalEditor } })?.editorRef?.current;
+
+    return plugin;
+  },
+}));
+
+/**
+ * helper function to clear the editor
+ * @returns void
+ * */
+const clear = () => {
+  editor.update(() => {
+    $getRoot().clear();
+  });
+};
+
+/**
+ * helper function to type content into the editor
+ * @param content - the content to append to the editor
+ * @returns void
+ */
+const type = (content: string) => {
+  editor.update(() => {
+    const root = $getRoot();
+    const paragraph = $createParagraphNode();
+    paragraph.append($createTextNode(content));
+    root.append(paragraph);
+  });
+};
 
 describe('MarkdownEditor', () => {
   test('should render initialValue', async () => {
@@ -216,5 +253,48 @@ print(a + b);
     // should not be able to undo/redo after toggling markdown on and off
     expect(screen.getByRole('button', { name: 'Undo' })).toBeDisabled();
     expect(screen.getByRole('button', { name: 'Redo' })).toBeDisabled();
+  });
+
+  test('should not automatically toggle to rich text mode', async () => {
+    const { container } = renderWithProviders(
+      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} editorMode={EditorMode.PlainText} />
+    );
+
+    // start in plain text mode
+    await waitFor(async () => {
+      expect(container).toHaveTextContent('**Text**');
+    });
+
+    // clear then type some markdown
+    act(() => {
+      clear();
+      type('# title sample');
+    });
+
+    // it should display markdown
+    await waitFor(async () => {
+      expect(container).toHaveTextContent('# title sample');
+    });
+
+    // manually toggle to rich text mode
+    const toggleButton = screen.getByRole('button', { name: 'Toggle Markdown on and off' });
+    act(() => {
+      toggleButton.click();
+    });
+
+    // it should display rich text
+    await waitFor(async () => {
+      expect(container).toHaveTextContent('title sample');
+    });
+
+    // toggle back to markdown mode
+    act(() => {
+      toggleButton.click();
+    });
+
+    // it should display markdown
+    await waitFor(async () => {
+      expect(container).toHaveTextContent('# title sample');
+    });
   });
 });

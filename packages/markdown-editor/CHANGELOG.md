@@ -1,5 +1,11 @@
 # @cmpsr/markdown-editor
 
+## 1.2.1
+
+### Patch Changes
+
+- e1c00b2f: completely disables rich text features when plain text mode is on
+
 ## 1.2.0
 
 ### Minor Changes

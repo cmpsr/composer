@@ -1,5 +1,11 @@
 # @cmpsr/cml
 
+## 0.10.0
+
+### Minor Changes
+
+- 9358f59b: feat: ignore roleIds in cml placeholder when replacement
+
 ## 0.9.0
 
 ### Minor Changes

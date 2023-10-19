@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { defaultColors } from './colors';
+import { theme } from '../theme';
 import { Center, Grid, Flex, Heading, Square, Box } from '@chakra-ui/react';
 
 interface Props {
@@ -40,7 +40,7 @@ export default {
 
 const Template = ({ borderColor }: { borderColor: string }) => {
   const categorizedColor: any = {};
-  const sortedColorsKeys = Object.keys(defaultColors).sort();
+  const sortedColorsKeys = Object.keys(theme.colors).sort();
   sortedColorsKeys.forEach((key) => {
     const category = key.split('-')[0];
     if (!categorizedColor[category]) {
@@ -48,7 +48,7 @@ const Template = ({ borderColor }: { borderColor: string }) => {
     }
     categorizedColor[category].push({
       token: key,
-      color: defaultColors[key],
+      color: theme.colors[key],
     });
   });
 

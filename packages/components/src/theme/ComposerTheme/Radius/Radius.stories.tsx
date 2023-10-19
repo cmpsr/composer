@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Table, Thead, Tbody, Tr, Th, Td, Box, Flex } from '@chakra-ui/react';
 
-import { defaultRadius } from './radius';
+import { theme } from '../theme';
 
 export default {
   title: 'Theme/Radius',
@@ -18,7 +18,7 @@ export const Radius = () => {
         </Tr>
       </Thead>
       <Tbody>
-        {Object.entries(defaultRadius).map(([key, value]) => (
+        {Object.entries(theme.radii).map(([key, value]) => (
           <Tr key={key}>
             <Td>
               <Flex alignItems="center">

@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { Table, Thead, Tbody, Tr, Th, Td, Box, Flex } from '@chakra-ui/react';
 
-import { defaultSpacing } from './spacing';
+import { theme } from '../theme';
 
 export default {
   title: 'Theme/Spacing',
@@ -18,7 +18,7 @@ export const Spacing = () => {
         </Tr>
       </Thead>
       <Tbody>
-        {Object.entries(defaultSpacing).map(([key, value]) => (
+        {Object.entries(theme.space).map(([key, value]) => (
           <Tr key={key}>
             <Td>
               <Flex alignItems="center">

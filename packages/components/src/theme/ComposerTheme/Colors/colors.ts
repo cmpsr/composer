@@ -58,6 +58,7 @@ export const defaultColors = {
   'background-inform': '#E4F2FF',
   'background-skeleton-start': '#E2E8F0',
   'background-skeleton-end': '#EDF2F7',
+  'background-text-highlight': '#FFAD4CFF',
   'text-light': '#FFFFFF',
   'text-primary': '#222222',
   'text-primary-negative': '#FFFFFF',

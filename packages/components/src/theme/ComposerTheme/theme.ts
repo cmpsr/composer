@@ -1,6 +1,8 @@
 import { Theme } from './types';
+import { components } from './Components';
 
 export const theme: Theme = {
+  components,
   breakpoints: { sm: '414px', md: '768px', lg: '1024px', xl: '1280px', '2xl': '1440px', base: '0px', xxl: '1440px' },
   colors: {
     'accent-default': '#EF8A13FF',
@@ -410,108 +412,6 @@ export const theme: Theme = {
       lineHeight: '1.250rem',
       textDecoration: 'underline',
       fontFamily: 'Inter',
-    },
-  },
-  components: {
-    TextPairing: {
-      parts: ['label', 'subLabel', 'container'],
-      variants: {
-        'textpairing-header-4XL': {
-          label: { variant: 'text-header-4XL' },
-          subLabel: { variant: 'text-body-display-S' },
-          columnGap: { md: '1.000rem', base: '1.250rem' },
-        },
-        'textpairing-header-3XL': {
-          label: { variant: 'text-header-3XL' },
-          subLabel: { variant: 'text-body-display-S' },
-          columnGap: { md: '1.000rem', base: '1.000rem' },
-        },
-        'textpairing-header-2XL': {
-          label: { variant: 'text-header-2XL' },
-          subLabel: { variant: 'text-body-display-S' },
-          columnGap: { md: '1.000rem', base: '0.750rem' },
-        },
-        'textpairing-header-M': {
-          label: { variant: 'text-header-M' },
-          subLabel: { variant: 'text-body-regular' },
-          columnGap: { md: '0.250rem', base: '0.250rem' },
-        },
-        'textpairing-header-L': {
-          label: { variant: 'text-header-L' },
-          subLabel: { variant: 'text-body-regular' },
-          columnGap: { md: '0.500rem', base: '0.250rem' },
-        },
-        'textpairing-header-XL': {
-          label: { variant: 'text-header-XL' },
-          subLabel: { variant: 'text-body-regular' },
-          columnGap: { md: '0.500rem', base: '0.500rem' },
-        },
-        'textpairing-body-display-2XL': {
-          label: { variant: 'text-body-display-2XL' },
-          subLabel: { variant: 'text-body-large-regular' },
-          columnGap: { base: '1.000rem', md: '1.000rem' },
-        },
-        'textpairing-body-display-XL': {
-          label: { variant: 'text-body-display-XL' },
-          subLabel: { variant: 'text-body-large-regular' },
-          columnGap: { base: '0.750rem', md: '0.750rem' },
-        },
-        'textpairing-body-display-L': {
-          label: { variant: 'text-body-display-L' },
-          subLabel: { variant: 'text-body-large-regular' },
-          columnGap: { base: '0.750rem', md: '0.750rem' },
-        },
-        'textpairing-body-display-M': {
-          label: { variant: 'text-body-display-M' },
-          subLabel: { variant: 'text-body-regular' },
-          columnGap: { base: '0.500rem', md: '0.500rem' },
-        },
-        'textpairing-body-display-S': {
-          label: { variant: 'text-body-display-S' },
-          subLabel: { variant: 'text-body-regular' },
-          columnGap: { base: '0.500rem', md: '0.500rem' },
-        },
-        'textpairing-body-bold': {
-          label: { variant: 'text-body-bold' },
-          subLabel: { variant: 'text-body-regular' },
-          columnGap: { base: '0.250rem', md: '0.250rem' },
-        },
-        'textpairing-body-bold-meta': {
-          label: { variant: 'text-body-bold' },
-          subLabel: { variant: 'text-body-meta-regular' },
-          columnGap: { base: '0.250rem', md: '0.250rem' },
-        },
-        'textpairing-body-meta-bold': {
-          label: { variant: 'text-body-meta-bold' },
-          subLabel: { variant: 'text-body-meta-regular' },
-          columnGap: { base: '0.125rem', md: '0.125rem' },
-        },
-        'textpairing-body-medium': {
-          label: { variant: 'text-body-medium' },
-          subLabel: { variant: 'text-body-regular' },
-          columnGap: { base: '0.250rem', md: '0.250rem' },
-        },
-        'textpairing-body-regular-meta': {
-          label: { variant: 'text-body-regular' },
-          subLabel: { variant: 'text-body-meta-regular' },
-          columnGap: { base: '0.250rem', md: '0.250rem' },
-        },
-        'textpairing-body-medium-meta': {
-          label: { variant: 'text-body-medium' },
-          subLabel: { variant: 'text-body-meta-regular' },
-          columnGap: { base: '0.250rem', md: '0.250rem' },
-        },
-        'textpairing-body-meta-medium': {
-          label: { variant: 'text-body-meta-medium' },
-          subLabel: { variant: 'text-body-meta-regular' },
-          columnGap: { base: '0.125rem', md: '0.125rem' },
-        },
-        'textpairing-body-meta-regular': {
-          label: { variant: 'text-body-meta-regular' },
-          subLabel: { variant: 'text-body-meta-regular' },
-          columnGap: { base: '0.125rem', md: '0.125rem' },
-        },
-      },
     },
   },
 };

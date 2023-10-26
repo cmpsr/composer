@@ -14,6 +14,7 @@ export type PropsValue = ResponsiveValue<
     | Array<string>
     | Record<string, string | string[] | number | boolean | number[] | boolean[]>
     | undefined
+    | null
   >
 >;
 

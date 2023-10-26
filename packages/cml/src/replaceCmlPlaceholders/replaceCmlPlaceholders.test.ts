@@ -374,4 +374,16 @@ describe('replaceCmlPlaceholders', () => {
       base: '<Text prop={["Orange"]} />',
     });
   });
+  test('should replace strings placeholders with correct values for `null` and `undefined` props', () => {
+    const model = { base: '<Text nullProp={{nullProp:strings}} undefinedProp={{undefinedProp:strings}} />' };
+    const mdx = replaceCmlPlaceholders(model, {
+      base: {
+        nullProp: null,
+        undefinedProp: undefined,
+      },
+    });
+    expect(mdx).toStrictEqual({
+      base: '<Text nullProp={null} undefinedProp={undefined} />',
+    });
+  });
 });

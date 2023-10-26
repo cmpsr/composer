@@ -1,5 +1,11 @@
 # @cmpsr/cml
 
+## 0.10.1
+
+### Patch Changes
+
+- d2397aa8: fix: update strings replacement to consider nullish and undefined scenarios
+
 ## 0.10.0
 
 ### Minor Changes

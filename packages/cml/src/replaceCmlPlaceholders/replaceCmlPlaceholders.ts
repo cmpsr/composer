@@ -105,6 +105,8 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
 
         if (typeof propValue === 'string') {
           newValue = `{["${propValue}"]}`;
+        } else if (propValue === null || propValue === undefined) {
+          newValue = `{${propValue}}`;
         } else {
           newValue = `{[${(propValue as string[])?.map((value) => `"${value}"`).join(',')}]}`;
         }

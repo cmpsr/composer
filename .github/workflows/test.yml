@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Restore lerna
+    - name: Restore yarn cache
       uses: actions/cache@v2
       with:
         path: |
@@ -30,7 +30,7 @@ jobs:
       run: yarn build
     - name: Run tests
       run: yarn test:coverage
-    - name: Upload coverage to Codecov  
+    - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}

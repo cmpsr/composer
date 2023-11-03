@@ -63,7 +63,7 @@ export const defaultColors = {
   'text-primary-negative': '#FFFFFF',
   'text-secondary': '#7C7C7C',
   'text-secondary-negative': '#D6D6D6',
-  'text-disabled': '#DFDFDF',
+  'text-disabled': '#B0B0B0',
   'text-disabled-negative': '#F5F5F5',
   'text-button-accent': '#FFFFFF',
   'text-button-primary': '#FFFFFF',

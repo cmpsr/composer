@@ -76,20 +76,14 @@ const InlineNavigationTemplate = ({ totalSlides, visibleSlides }) => (
       </Carousel.Slider>
       <Carousel.NavigationContainer>
         <Carousel.ButtonBack>
-          <Box
-            _hover={{ svg: { color: 'text-link-primary-hover' } }}
-            _active={{ svg: { color: 'text-link-primary-pressed' } }}
-          >
-            <IconChevronLeft color="text-link-primary-default" size="l" />
+          <Box _hover={{ svg: { color: 'primary-hover' } }} _active={{ svg: { color: 'primary-pressed' } }}>
+            <IconChevronLeft color="primary-default" size="l" />
           </Box>
         </Carousel.ButtonBack>
         {renderDots(totalSlides, visibleSlides)}
         <Carousel.ButtonNext>
-          <Box
-            _hover={{ svg: { color: 'text-link-primary-hover' } }}
-            _active={{ svg: { color: 'text-link-primary-pressed' } }}
-          >
-            <IconChevronRight color="text-link-primary-default" size="l" />
+          <Box _hover={{ svg: { color: 'primary-hover' } }} _active={{ svg: { color: 'primary-pressed' } }}>
+            <IconChevronRight color="primary-default" size="l" />
           </Box>
         </Carousel.ButtonNext>
       </Carousel.NavigationContainer>

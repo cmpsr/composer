@@ -1,5 +1,11 @@
 # @cmpsr/markdown-editor
 
+## 1.3.0
+
+### Minor Changes
+
+- 852bf0f5: feat: move bullet and numbered list to main toolbar
+
 ## 1.2.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 6.5.0
+
+### Minor Changes
+
+- f33af2f7: Update tab radii, text disabled color and create new link destroy variant
+
 ## 6.4.0
 
 ### Minor Changes

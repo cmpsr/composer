@@ -18,7 +18,7 @@ export const defaultColors = {
   'alert-error-hover': '#F14A2F',
   'alert-error-pressed': '#C31B00',
   'alert-error-disabled': '#EDC3C3',
-  'alert-error-focus': '#F4F4FF',
+  'alert-error-focus': '#FFD5CE',
   'alert-warning-default': '#FC9403',
   'alert-warning-hover': '#FFA932',
   'alert-warning-pressed': '#E88700',

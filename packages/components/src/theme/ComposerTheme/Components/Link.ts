@@ -10,27 +10,26 @@ export const linkBaseStyle = {
   },
 };
 
-const generateLink = (textColor: string) => {
-  const variantColor = textColor.split('-')[1];
+const generateLink = (colors: { default: string; hover: string; pressed: string; focus: string }) => {
   return {
     display: 'inline-flex',
-    color: `text-${textColor}-default`,
+    color: colors.default,
     padding: 0,
     borderRadius: '0.25rem',
     _hover: {
       textDecoration: 'none',
-      color: `text-${textColor}-hover`,
+      color: colors.hover,
     },
     _active: {
-      color: `text-${textColor}-pressed`,
+      color: colors.pressed,
     },
     _focus: {
-      boxShadow: `0 0 0 0.25rem var(--chakra-colors-${variantColor}-focus)`,
-      color: `text-${textColor}-hover`,
+      boxShadow: `0 0 0 0.25rem var(--chakra-colors-${colors.focus})`,
+      color: colors.hover,
     },
     _focusVisible: {
-      boxShadow: `0 0 0 0.25rem var(--chakra-colors-${variantColor}-focus)`,
-      color: `text-${textColor}-hover`,
+      boxShadow: `0 0 0 0.25rem var(--chakra-colors-${colors.focus})`,
+      color: colors.hover,
     },
   };
 };
@@ -75,7 +74,13 @@ const getSizes = () => {
   return sizes;
 };
 
-const linkPrimary = generateLink('link-primary');
+const linkPrimary = generateLink({
+  default: 'text-link-primary-default',
+  hover: 'text-link-primary-hover',
+  pressed: 'text-link-primary-pressed',
+  focus: 'primary-focus',
+});
+
 export const Link: ComponentStyleConfig = {
   baseStyle: (props) => {
     const buttonBaseStyle = {
@@ -91,8 +96,24 @@ export const Link: ComponentStyleConfig = {
   variants: {
     link: linkPrimary,
     'link-primary': linkPrimary,
-    'link-accent': generateLink('link-accent'),
-    'link-secondary': generateLink('link-secondary'),
+    'link-accent': generateLink({
+      default: 'text-link-accent-default',
+      hover: 'text-link-accent-hover',
+      pressed: 'text-link-accent-pressed',
+      focus: 'accent-focus',
+    }),
+    'link-secondary': generateLink({
+      default: 'text-link-secondary-default',
+      hover: 'text-link-secondary-hover',
+      pressed: 'text-link-secondary-pressed',
+      focus: 'secondary-focus',
+    }),
+    'link-destroy': generateLink({
+      default: 'alert-error-default',
+      hover: 'alert-error-hover',
+      pressed: 'alert-error-pressed',
+      focus: 'alert-error-focus',
+    }),
     ...getButtonVariants(),
   },
   defaultProps: {

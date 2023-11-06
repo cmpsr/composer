@@ -42,6 +42,9 @@ import {
   COMMAND_PRIORITY_CRITICAL,
   KEY_MODIFIER_COMMAND,
   COMMAND_PRIORITY_NORMAL,
+  LexicalNode,
+  ElementNode,
+  TextNode,
 } from 'lexical';
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
 import { $setBlocksType } from '@lexical/selection';
@@ -68,7 +71,7 @@ import { sanitizeUrl } from '../../utils/sanitizeUrl';
 import { ToolbarPluginProps } from './types';
 import { EditorMode } from '../../types';
 
-const supportedBlockTypes = new Set(['paragraph', 'code', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bullet', 'number']);
+const supportedBlockTypes = new Set(['paragraph', 'code', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
 
 const blockTypeToBlockName = {
   code: 'Code Block',
@@ -78,9 +81,7 @@ const blockTypeToBlockName = {
   h4: 'Heading 4',
   h5: 'Heading 5',
   h6: 'Heading 6',
-  number: 'Numbered List',
   paragraph: 'Normal',
-  bullet: 'Bulleted List',
 };
 
 const blockTypeToBlockIcon = {
@@ -91,9 +92,7 @@ const blockTypeToBlockIcon = {
   h4: <IconH4 />,
   h5: <IconH5 />,
   h6: <IconH6 />,
-  number: <IconListNumbers />,
   paragraph: <IconLetterT />,
-  bullet: <IconList />,
 };
 
 const getCodeLanguageOptions = (): [string, string][] => {
@@ -133,22 +132,6 @@ const BlockOptionsDropdownList = ({ editor, blockType, isDisabled }) => {
           $setBlocksType(selection, () => $createHeadingNode(headingSize));
         }
       });
-    }
-  };
-
-  const formatBulletList = () => {
-    if (blockType !== 'bullet') {
-      editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
-    } else {
-      editor.dispatchCommand(REMOVE_LIST_COMMAND, undefined);
-    }
-  };
-
-  const formatNumberedList = () => {
-    if (blockType !== 'number') {
-      editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
-    } else {
-      editor.dispatchCommand(REMOVE_LIST_COMMAND, undefined);
     }
   };
 
@@ -205,12 +188,6 @@ const BlockOptionsDropdownList = ({ editor, blockType, isDisabled }) => {
         <Dropdown.Item onClick={() => formatHeading('h6')} icon={<IconH6 />}>
           Heading 6
         </Dropdown.Item>
-        <Dropdown.Item onClick={formatBulletList} icon={<IconList />}>
-          Bulleted List
-        </Dropdown.Item>
-        <Dropdown.Item onClick={formatNumberedList} icon={<IconListNumbers />}>
-          Numbered List
-        </Dropdown.Item>
         <Dropdown.Item onClick={formatCode} icon={<IconSourceCode />}>
           Code Block
         </Dropdown.Item>
@@ -251,6 +228,8 @@ export const ToolbarPlugin = ({
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
   const [isCode, setIsCode] = useState(false);
+  const [isNumberedList, setIsNumberedList] = useState(false);
+  const [isBulletList, setIsBulletList] = useState(false);
   const isPlainEditorModeEnabled = editorMode === EditorMode.PlainText;
   const isFormattingDisabled = isDisabled || isPlainEditorModeEnabled;
 
@@ -287,22 +266,35 @@ export const ToolbarPlugin = ({
         setIsLink(false);
       }
 
-      if (elementDOM !== null) {
+      const handleListNode = (element: LexicalNode, anchorNode: ElementNode | TextNode) => {
+        const parentList = $getNearestNodeOfType<ListNode>(anchorNode, ListNode);
+        const type = parentList ? parentList.getListType() : element.getListType();
+        setIsBulletList(type === 'bullet');
+        setIsNumberedList(type === 'number');
+      };
+
+      const handleNonListNode = (element: LexicalNode) => {
+        setIsBulletList(false);
+        setIsNumberedList(false);
+
+        const type = $isHeadingNode(element) ? element.getTag() : element.getType();
+        if (type in blockTypeToBlockName) {
+          setBlockType(type as keyof typeof blockTypeToBlockName);
+        }
+        if ($isCodeNode(element)) {
+          const language = element.getLanguage() as keyof typeof CODE_LANGUAGE_MAP;
+          setCodeLanguage(language ? CODE_LANGUAGE_MAP[language] || language : '');
+          return;
+        }
+      };
+
+      if (elementDOM) {
         setSelectedElementKey(elementKey);
+
         if ($isListNode(element)) {
-          const parentList = $getNearestNodeOfType<ListNode>(anchorNode, ListNode);
-          const type = parentList ? parentList.getListType() : element.getListType();
-          setBlockType(type);
+          handleListNode(element, anchorNode);
         } else {
-          const type = $isHeadingNode(element) ? element.getTag() : element.getType();
-          if (type in blockTypeToBlockName) {
-            setBlockType(type as keyof typeof blockTypeToBlockName);
-          }
-          if ($isCodeNode(element)) {
-            const language = element.getLanguage() as keyof typeof CODE_LANGUAGE_MAP;
-            setCodeLanguage(language ? CODE_LANGUAGE_MAP[language] || language : '');
-            return;
-          }
+          handleNonListNode(element);
         }
       }
     }
@@ -384,6 +376,22 @@ export const ToolbarPlugin = ({
       editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
     }
   }, [activeEditor, isLink]);
+
+  const formatBulletList = useCallback(() => {
+    if (blockType !== 'bullet') {
+      editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
+    } else {
+      editor.dispatchCommand(REMOVE_LIST_COMMAND, undefined);
+    }
+  }, [activeEditor]);
+
+  const formatNumberedList = useCallback(() => {
+    if (blockType !== 'number') {
+      editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
+    } else {
+      editor.dispatchCommand(REMOVE_LIST_COMMAND, undefined);
+    }
+  }, [activeEditor]);
 
   const toggleMarkdownButton = (
     <ToolbarIcon
@@ -484,6 +492,23 @@ export const ToolbarPlugin = ({
               icon={<IconLink />}
               isDisabled={isFormattingDisabled}
               title={`Insert link (${IS_APPLE ? '⌘' : 'Ctrl+'}K)`}
+            />
+            <Divider orientation="vertical" />
+            <ToolbarIcon
+              isActive={isNumberedList}
+              onClick={formatNumberedList}
+              aria-label="Insert Numbered List"
+              icon={<IconListNumbers />}
+              isDisabled={isFormattingDisabled}
+              title="Insert Numbered List"
+            />
+            <ToolbarIcon
+              isActive={isBulletList}
+              onClick={formatBulletList}
+              aria-label="Insert Bullet List"
+              icon={<IconList />}
+              isDisabled={isFormattingDisabled}
+              title="Insert Bullet List"
             />
             <Divider orientation="vertical" />
             {toggleMarkdownButton}

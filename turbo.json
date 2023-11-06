@@ -26,7 +26,8 @@
     "build-storybook": {
       "dependsOn": [
         "@cmpsr/components#libbuild",
-        "@cmpsr/markdown-editor#libbuild"
+        "@cmpsr/markdown-editor#libbuild",
+        "@cmpsr/blocks#libbuild"
       ],
       "outputs": ["storybook-static/**"]
     }

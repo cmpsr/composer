@@ -5,7 +5,7 @@ import { EditorMode } from './types';
 
 export default {
   component: MarkdownEditor,
-  title: 'Editors/MarkdownEditor',
+  title: 'Components/Editors/MarkdownEditor',
 } as Meta;
 
 export const Default = () => <MarkdownEditor onChange={console.log} width="100%" />;

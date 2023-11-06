@@ -8,7 +8,7 @@ export default {
   title: 'Components/Editors/MarkdownEditor',
 } as Meta;
 
-export const Default = () => <MarkdownEditor onChange={console.log} />;
+export const Default = () => <MarkdownEditor onChange={console.log} width="100%" />;
 
 export const Disabled = () => {
   const value = `# Hello World
@@ -34,7 +34,7 @@ const handleChange = (v: string) => {
       height="30rem"
       backgroundColor="background-container-disabled"
       isReadonly
-      width="800px"
+      width="100%"
     />
   );
 };
@@ -62,9 +62,11 @@ This is a table:
 | Cell 3   | Cell 4   |
 `,
   editorMode: EditorMode.PlainText,
+  width: '100%',
 };
 
 export const Playground = Template.bind({});
 Playground.args = {
   isReadonly: false,
+  width: '100%',
 };

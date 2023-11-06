@@ -2,12 +2,8 @@
   "baseBranch": "origin/master",
   "pipeline": {
     "libbuild": {
-      "dependsOn": [
-        "^libbuild"
-      ],
-      "outputs": [
-        "lib/**"
-      ]
+      "dependsOn": ["^libbuild"],
+      "outputs": ["lib/**"]
     },
     "test": {
       "outputs": []
@@ -29,11 +25,10 @@
     },
     "build-storybook": {
       "dependsOn": [
-        "@cmpsr/components#libbuild"
+        "@cmpsr/components#libbuild",
+        "@cmpsr/markdown-editor#libbuild"
       ],
-      "outputs": [
-        "storybook-static/**"
-      ]
+      "outputs": ["storybook-static/**"]
     }
   }
 }

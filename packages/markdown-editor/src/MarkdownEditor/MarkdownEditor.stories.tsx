@@ -45,7 +45,7 @@ export const PlainEditorMode = Template.bind({});
 PlainEditorMode.args = {
   initialValue: `# Hello World
 This is a **paragraph**
-This is a [link to cmpsr.io](https://cmpsr.io)
+This is a [link to cmpsr.io](https://cmpsr.io/)
 
 This is an unordered list:
 - Item 1

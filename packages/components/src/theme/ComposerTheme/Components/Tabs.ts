@@ -37,7 +37,7 @@ export const Tabs: ComponentStyleConfig = {
     },
     rounded: {
       tab: {
-        borderRadius: '1.25rem',
+        borderRadius: 'radii-6',
         color: 'text-secondary',
         _selected: {
           backgroundColor: 'background-action-active',

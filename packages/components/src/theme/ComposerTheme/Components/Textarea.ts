@@ -44,7 +44,7 @@ const baseStyle = {
   _disabled: {
     bg: 'background-action-disabled',
     borderColor: 'ui-element-outline-disabled',
-    color: 'text-disabled',
+    color: 'text-secondary',
     opacity: 1,
     _placeholder: {
       color: 'text-disabled',

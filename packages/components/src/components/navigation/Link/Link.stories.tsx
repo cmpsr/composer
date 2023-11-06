@@ -66,7 +66,7 @@ export const WrappedByText = () => (
     <Link _hover={{ textDecoration: 'underline' }} href="#">
       link
     </Link>{' '}
-    in the middle of a text with a custom decoration
+    in the middle of a text with a custom decoration foo
   </Text>
 );
 

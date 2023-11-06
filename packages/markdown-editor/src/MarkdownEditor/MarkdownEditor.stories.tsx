@@ -11,7 +11,7 @@ export default {
 export const Default = () => <MarkdownEditor onChange={console.log} width="100%" />;
 
 export const Disabled = () => {
-  const value = `# Hello world
+  const value = `# Hello World
 
 This an _example_ of the [composer](https://cmpsr.io) **markdown editor** in *disabled mode*.
 

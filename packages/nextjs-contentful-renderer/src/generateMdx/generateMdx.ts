@@ -1,7 +1,7 @@
 import { bundleMDX } from 'mdx-bundler';
 import { Block, Model, PropsValue, breakpoints, replaceCmlPlaceholders } from '@cmpsr/cml';
 import { merge } from 'lodash';
-import remarkGfm from 'remark-gfm';
+const remarkGfm = require('./remark-gfm-wrapper');
 
 export const generateMdx = async (blocks: Block[], globalVariables: PropsValue = {}): Promise<Model[]> => {
   const promises = blocks.map(async ({ models, propsValues }) => {

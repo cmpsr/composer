@@ -26,4 +26,25 @@ export const generateMdx = async (blocks: Block[], globalVariables: PropsValue =
   return all.reduce((acc, val) => acc.concat(val), []).filter((model) => !!Object.keys(model).length);
 };
 
-const bundler = async (code: string): Promise<string> => (await bundleMDX({ source: code.trim() })).code;
+async function getProcessor() {
+  const { processor } = await import('./remark-gfm-unified.mjs');
+  return processor;
+}
+
+const bundler = async (code: string): Promise<string> => {
+  const processor = await getProcessor();
+  console.log('processor', processor);
+  console.log('processor v2', processor.remarkGfm);
+  const { default: remarkGfm } = await import('remark-gfm');
+  console.log('REMARK GFM', remarkGfm);
+  return (
+    await bundleMDX({
+      source: code.trim(),
+      mdxOptions: (options) => {
+        console.log('options', options.remarkPlugins);
+        options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
+        return options;
+      },
+    })
+  ).code;
+};

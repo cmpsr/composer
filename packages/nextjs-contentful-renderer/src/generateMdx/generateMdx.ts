@@ -1,6 +1,7 @@
 import { bundleMDX } from 'mdx-bundler';
 import { Block, Model, PropsValue, breakpoints, replaceCmlPlaceholders } from '@cmpsr/cml';
 import { merge } from 'lodash';
+import remarkGfm from 'remark-gfm';
 
 export const generateMdx = async (blocks: Block[], globalVariables: PropsValue = {}): Promise<Model[]> => {
   const promises = blocks.map(async ({ models, propsValues }) => {
@@ -26,16 +27,7 @@ export const generateMdx = async (blocks: Block[], globalVariables: PropsValue =
   return all.reduce((acc, val) => acc.concat(val), []).filter((model) => !!Object.keys(model).length);
 };
 
-async function getProcessor() {
-  const { processor } = await import('./remark-gfm-unified.mjs');
-  return processor;
-}
-
 const bundler = async (code: string): Promise<string> => {
-  const processor = await getProcessor();
-  console.log('processor', processor);
-  console.log('processor v2', processor.remarkGfm);
-  const { default: remarkGfm } = await import('remark-gfm');
   console.log('REMARK GFM', remarkGfm);
   return (
     await bundleMDX({

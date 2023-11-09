@@ -1,6 +1,7 @@
 import { bundleMDX } from 'mdx-bundler';
 import { Block, Model, PropsValue, breakpoints, replaceCmlPlaceholders } from '@cmpsr/cml';
 import { merge } from 'lodash';
+import remarkGfm from 'remark-gfm';
 
 export const generateMdx = async (blocks: Block[], globalVariables: PropsValue = {}): Promise<Model[]> => {
   const promises = blocks.map(async ({ models, propsValues }) => {
@@ -26,4 +27,16 @@ export const generateMdx = async (blocks: Block[], globalVariables: PropsValue =
   return all.reduce((acc, val) => acc.concat(val), []).filter((model) => !!Object.keys(model).length);
 };
 
-const bundler = async (code: string): Promise<string> => (await bundleMDX({ source: code.trim() })).code;
+const bundler = async (code: string): Promise<string> => {
+  console.log('REMARK GFM', remarkGfm);
+  return (
+    await bundleMDX({
+      source: code.trim(),
+      mdxOptions: (options) => {
+        console.log('options', options.remarkPlugins);
+        options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
+        return options;
+      },
+    })
+  ).code;
+};

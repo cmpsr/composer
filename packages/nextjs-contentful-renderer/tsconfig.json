@@ -3,9 +3,16 @@
   "include": ["src"],
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "target": "es5",
     "outDir": "lib",
     "rootDir": "src",
     "declaration": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true
   }
 }

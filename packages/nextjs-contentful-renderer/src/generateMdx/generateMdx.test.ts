@@ -16,6 +16,8 @@ jest.mock('@cmpsr/cml', () => {
   };
 });
 
+jest.mock('remark-gfm', () => jest.fn().mockImplementation(() => {}));
+
 describe('generateMdx', () => {
   test('should replace CML templates', async () => {
     const fakeBlocks = [

@@ -24,6 +24,7 @@ import { getSelectedNode } from '../../utils/getSelectedNode';
 import { setFloatingElemPositionForLinkEditor } from '../../utils/setFloatingElemPositionForLinkEditor';
 import { sanitizeUrl } from '../../utils/sanitizeUrl';
 import { FloatingLinkEditorPluginProps } from './types';
+import { useEditorFocus } from '../../utils/useEditorFocus';
 
 type FloatingLinkEditorProps = {
   editor: LexicalEditor;
@@ -38,7 +39,8 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
   const [linkUrl, setLinkUrl] = useState('');
   const [isEditMode, setEditMode] = useState(false);
   const [lastSelection, setLastSelection] = useState<RangeSelection | GridSelection | NodeSelection | null>(null);
-
+  const isEditorFocused = useEditorFocus();
+  const shouldRenderFloatingLink = isEditorFocused && isLink;
   // This useEffect registers a command to handle blur events in the editor.
   // It prevents closing the link editor when clicking inside the editor (excluding the input),
   // ensuring that the link editor remains open when interacting with its content.
@@ -214,7 +216,7 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
       transition="opacity 0.5s"
       willChange="transform"
       backgroundColor="background-action-active"
-      display={isLink ? 'flex' : 'none'}
+      display={shouldRenderFloatingLink ? 'flex' : 'none'}
     >
       {!isLink ? null : isEditMode ? (
         <Input

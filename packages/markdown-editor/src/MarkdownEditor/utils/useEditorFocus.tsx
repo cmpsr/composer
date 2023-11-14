@@ -1,4 +1,4 @@
-import { FOCUS_COMMAND, BLUR_COMMAND, COMMAND_PRIORITY_LOW, LexicalEditor } from 'lexical';
+import { FOCUS_COMMAND, BLUR_COMMAND, COMMAND_PRIORITY_LOW } from 'lexical';
 import { useLayoutEffect, useState } from 'react';
 import { mergeRegister } from '@lexical/utils';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
@@ -14,7 +14,6 @@ export const useEditorFocus = () => {
     // Set initial focus state when the component mounts
     setHasFocus(editor.getRootElement() === document.activeElement);
 
-    // Register commands to update state on focus and blur
     return mergeRegister(
       editor.registerCommand(
         FOCUS_COMMAND,

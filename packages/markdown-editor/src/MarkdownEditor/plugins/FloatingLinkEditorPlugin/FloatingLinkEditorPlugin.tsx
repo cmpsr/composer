@@ -40,7 +40,8 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
   const [isEditMode, setEditMode] = useState(false);
   const [lastSelection, setLastSelection] = useState<RangeSelection | GridSelection | NodeSelection | null>(null);
   const isEditorFocused = useEditorFocus();
-  const shouldRenderFloatingLink = isEditorFocused && isLink;
+  const shouldRenderFloatingLink = isLink && (isEditMode || isEditorFocused);
+
   // This useEffect registers a command to handle blur events in the editor.
   // It prevents closing the link editor when clicking inside the editor (excluding the input),
   // ensuring that the link editor remains open when interacting with its content.
@@ -223,6 +224,7 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
           ref={inputRef}
           value={linkUrl}
           onChange={(e) => setLinkUrl(e.target.value)}
+          onBlur={() => setEditMode(false)}
           onKeyDown={monitorInputInteraction}
           trailingIcon={<IconLink />}
         />

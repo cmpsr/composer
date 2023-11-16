@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 23.1.0
+
+### Minor Changes
+
+- 9f0f13ff: feat: add remark-gfm plugin to bundle mdx options
+
 ## 23.0.5
 
 ## 23.0.4

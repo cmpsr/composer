@@ -1,5 +1,11 @@
 # @cmpsr/markdown-editor
 
+## 1.3.1
+
+### Patch Changes
+
+- 20240c88: feat: avoid showing FloatingLink when editor is not focused
+
 ## 1.3.0
 
 ### Minor Changes

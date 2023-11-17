@@ -1,24 +1,24 @@
-import React from 'react';
-import { forwardRef, IconProps, Link as ChakraLink, ResponsiveValue } from '@chakra-ui/react';
+import React, { ReactElement, cloneElement, isValidElement } from 'react';
+import {
+  forwardRef,
+  IconProps,
+  Link as ChakraLink,
+  ResponsiveValue,
+  useStyleConfig,
+  StyleProps,
+  chakra,
+} from '@chakra-ui/react';
 import { LinkProps, LinkSize } from './types';
 import { getIconSize } from './getIconSize';
 
 export const Link = forwardRef<LinkProps, typeof ChakraLink>(
-  ({ children, leadingIcon, trailingIcon, size = 'm', variant, ...props }, ref) => {
-    const leftIcon = getIcon(leadingIcon, size);
-    const rightIcon = getIcon(trailingIcon, size);
+  ({ children, leadingIcon, trailingIcon, size = 'm', variant, isInline = false, ...props }, ref) => {
+    const styles = useStyleConfig('Link', { isInline, variant, size }) as StyleProps;
+    const leftIcon = getIcon(leadingIcon, size, isInline);
+    const rightIcon = getIcon(trailingIcon, size, isInline);
 
     return (
-      <ChakraLink
-        ref={ref}
-        size={size}
-        variant={variant}
-        data-testid="cmpsr.link.container"
-        alignItems="center"
-        columnGap="0.5rem"
-        width="inherit"
-        {...props}
-      >
+      <ChakraLink ref={ref} data-testid="cmpsr.link.container" {...styles} {...props}>
         {leftIcon}
         {children}
         {rightIcon}
@@ -27,10 +27,15 @@ export const Link = forwardRef<LinkProps, typeof ChakraLink>(
   }
 );
 
-const getIcon = (icon: React.ReactElement<IconProps>, size: ResponsiveValue<LinkSize>) => {
-  if (!React.isValidElement(icon)) {
-    return null;
-  }
+const getIcon = (icon: ReactElement<IconProps>, size: ResponsiveValue<LinkSize>, isInline: boolean) => {
+  if (!isValidElement(icon)) return null;
 
-  return React.cloneElement(icon, { size: getIconSize(size) } as Partial<IconProps>);
+  const iconElement = cloneElement(icon, { size: getIconSize(size) } as Partial<IconProps>);
+  return isInline ? (
+    <chakra.span display="inline-flex" verticalAlign="middle" marginInline="0.25rem">
+      {iconElement}
+    </chakra.span>
+  ) : (
+    iconElement
+  );
 };

@@ -1,2 +1,2 @@
 export * from './createContentfulLink';
-export { ContentfulRestLink } from 'apollo-link-contentful';
+export { ContentfulRestLink } from './contentfulRestLink';

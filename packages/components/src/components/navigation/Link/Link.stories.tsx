@@ -67,14 +67,14 @@ export const WrappedByText = () => (
       <code>isInline</code> is set, the link is displayed inline, allowing the text to wrap naturally in confined
       spaces. Notice how the long link text:{' '}
       <Link _hover={{ textDecoration: 'underline' }} href="#" isInline>
-        "This is a very long link text that demonstrates effective wrapping within a narrow container"
+        &quot;This is a very long link text that demonstrates effective wrapping within a narrow container&quot;
       </Link>{' '}
       integrates seamlessly with surrounding text, wrapping to the next line as needed.
     </Text>
     <Text mt="4">
-      Here's another link with a trailing icon and extended content, demonstrating the inline wrapping behavior:{' '}
+      Here&apos;s another link with a trailing icon and extended content, demonstrating the inline wrapping behavior:{' '}
       <Link _hover={{ textDecoration: 'underline' }} href="#" isInline trailingIcon={<IconExternalLink />}>
-        "Long link text with an icon, showing how it wraps in a confined space"
+        &quot;Long link text with an icon, showing how it wraps in a confined space&quot;
       </Link>{' '}
       in the text flow.
     </Text>

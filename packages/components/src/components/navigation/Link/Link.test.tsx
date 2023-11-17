@@ -62,7 +62,7 @@ describe('Link', () => {
         Link
       </Link>
     );
-    const linkComponent = screen.getByTestId('cmpsr.link.container');
+    const linkComponent = screen.getByRole('link');
     expect(linkComponent).toHaveStyle('display: inline');
   });
 });

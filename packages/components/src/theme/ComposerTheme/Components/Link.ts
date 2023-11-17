@@ -81,7 +81,7 @@ const linkPrimary = generateLink({
 });
 
 export const Link: ComponentStyleConfig = {
-  baseStyle: (props: StyleFunctionProps & { isInline?: boolean }) => {
+  baseStyle: (props: StyleFunctionProps & { isInline: boolean }) => {
     const buttonBaseStyle = {
       ...props.theme.components.Button.baseStyle,
       display: 'inline-flex',
@@ -90,10 +90,9 @@ export const Link: ComponentStyleConfig = {
       },
     };
 
-    const linkDisplayStyles = {
-      default: { display: 'inline-flex', alignItems: 'center', columnGap: '0.5rem' },
-      inline: { display: 'inline' },
-    }[props.isInline ? 'inline' : 'default'];
+    const linkDisplayStyles = !props.isInline
+      ? { display: 'inline-flex', alignItems: 'center', columnGap: '0.5rem' }
+      : { display: 'inline' };
 
     return isButtonVariant(props.variant)
       ? buttonBaseStyle

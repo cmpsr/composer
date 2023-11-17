@@ -18,7 +18,7 @@ export const Link = forwardRef<LinkProps, typeof ChakraLink>(
     const rightIcon = getIcon(trailingIcon, size, isInline);
 
     return (
-      <ChakraLink ref={ref} data-testid="cmpsr.link.container" {...styles} {...props}>
+      <ChakraLink ref={ref} {...styles} {...props}>
         {leftIcon}
         {children}
         {rightIcon}

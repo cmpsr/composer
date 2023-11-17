@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 6.5.1
+
+### Patch Changes
+
+- 3dec0200: feat: add isInline property to Link component to integrate seamlessly with surrounding texts
+
 ## 6.5.0
 
 ### Minor Changes

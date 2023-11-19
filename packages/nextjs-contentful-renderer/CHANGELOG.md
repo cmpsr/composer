@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 23.1.2
+
+### Patch Changes
+
+- 89ff49f4: feat: use inline version of link in markdown
+
 ## 23.1.1
 
 ## 23.1.0

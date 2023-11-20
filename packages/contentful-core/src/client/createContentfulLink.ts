@@ -1,5 +1,4 @@
 import { HttpLink } from '@apollo/client';
-import fetch from 'cross-fetch';
 
 export interface ContentfulLinkOptions {
   accessToken: string;
@@ -31,7 +30,6 @@ export const createContentfulLink = ({
       ...headers,
       Authorization: `Bearer ${accessToken}`,
     },
-    fetch,
     uri,
   });
 };

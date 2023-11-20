@@ -2,6 +2,19 @@ import { ContentfulLinkOptions, createContentfulLink } from './createContentfulL
 import { HttpLink } from '@apollo/client';
 
 describe('createContentfulLink', () => {
+  beforeEach(() => {
+    global.fetch = jest.fn(
+      () =>
+        Promise.resolve({
+          json: () => Promise.resolve({ data: 'mocked data' }),
+        }) as Promise<Response>
+    );
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   it('creates a new HttpLink with correct URI and headers', () => {
     const options = {
       accessToken: 'testAccessToken',

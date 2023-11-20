@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 6.5.2
+
+### Patch Changes
+
+- a9c37869: feat: resolve unmeet dependencies and remove renderers and custom logic to handle rest api in contentful rest link
+
 ## 6.5.1
 
 ### Patch Changes

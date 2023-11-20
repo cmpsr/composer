@@ -1,5 +1,13 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 23.1.3
+
+### Patch Changes
+
+- a9c37869: feat: resolve unmeet dependencies and remove renderers and custom logic to handle rest api in contentful rest link
+- Updated dependencies [a9c37869]
+  - @cmpsr/contentful-core@1.0.0
+
 ## 23.1.2
 
 ### Patch Changes

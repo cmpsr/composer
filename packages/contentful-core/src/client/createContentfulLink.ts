@@ -3,13 +3,7 @@ import invariant from 'invariant';
 import fetch from 'cross-fetch';
 
 export const createContentfulLink = (options) => {
-  const {
-    accessToken,
-    apiVersion,
-    environment,
-    space,
-    headers,
-  } = Object.assign(
+  const { accessToken, apiVersion, environment, space, headers } = Object.assign(
     {},
     {
       environment: 'master',
@@ -19,14 +13,8 @@ export const createContentfulLink = (options) => {
     options
   );
 
-  invariant(
-    space,
-    'Contentful `space` ID missing from ContentfulLink initialization.'
-  );
-  invariant(
-    accessToken,
-    'Contentful `accessToken` missing from ContentfulLink initialization'
-  );
+  invariant(space, 'Contentful `space` ID missing from ContentfulLink initialization.');
+  invariant(accessToken, 'Contentful `accessToken` missing from ContentfulLink initialization');
 
   return new HttpLink({
     headers: {

@@ -1,166 +1,34 @@
 # contentful-core
 
-Base Composer components for standing up a React/NextJS app that can dynamically
-render components based on Contentful Model types mapped to components and queries.
+A utility package providing the `createContentfulLink` method for setting up a link with Apollo Client in React/Next.js applications using Contentful.
 
 ## Install
 
-Via [npm](https://npmjs.com/package/@cmpsr/contentful-core):
-
-```sh
-npm i --save @cmpsr/contentful-core
-```
-
-Via [Yarn](https://yarn.fyi/@cmpsr/contentful-core):
+Install the package using Yarn:
 
 ```sh
 yarn add @cmpsr/contentful-core
 ```
 
-## How to use
+## Usage
 
-### Required `.env` variables
+### `createContentfulLink`
 
-```
-CONTENTFUL_PREVIEW={true|false}
-CONTENTFUL_SPACE_ID={Contentful space ID}
-CONTENTFUL_ENVIRONMENT={Contentful environment} (defaults to `master`)
-CONTENTFUL_ACCESS_TOKEN_DELIVERY={Contentful Delivery Token}
-CONTENTFUL_ACCESS_TOKEN_PREVIEW={Contentful Preview Token}
-CONTENTFUL_ACCESS_TOKEN={Contentful token used by scripts to generate schema/types}
-```
+This method creates an Apollo Client `HttpLink` for connecting to Contentful's GraphQL API.
 
-### `ContentfulProvider`
+Here's how to use `createContentfulLink` to configure Apollo Client in a Next.js application:
 
-```js
-```
-
-### `ComponentRenderer`
-
-```js
-```
-
-### `ComponentRenedererWithContext`
-
-### `ComponentRendererWithQuery`
-
-### Utility Scripts
-
-The utility scripts make it easy to generate GraphQL schemas and the associated Typescript definitions for your Contentful setup.
-
-_Required script environment variables_
-
-`CONTENTFUL_SPACE_ID` - The Contentful Space ID.
-`CONTENTFUL_ACCESS_TOKEN` - The Contentful API access token. This could be the Delivery or Preview API access token, depending on your needs.
-
-#### Generate Schema
-
-Within your project directory, run the following command to generate the `fragmentTypes.json` based on your Contentful models.
-
-```sh
-node ./node_modules/@cmpsr/contentful-core/scripts/graphql-schema.js
-```
-
-_Environment Variables_
-
-`SCHEMA_DIR` - Directory to write the `fragmentsTypes.json` to. Defaults to: `./src/schema`
-
-#### Generate Types
-
-Within your project directory, run the following command to generate the `fragmentTypes.json` based on your Contentful models.
-
-```sh
-node ./node_modules/@cmpsr/contentful-core/scripts/graphql-types.js
-```
-
-_Environment Variables_
-
-`TYPES_DIR` - Directory to write the `types` files to. Defaults to: `./src/types`
-`GLOBAL_TYPES_FILE` - Path and name for the global types files. Defaults to: `./src/types/global.ts`
-
-**Add to `package.json`**
-
-```json
-{
-  "scripts": {
-    ...
-    "graphql:schema": "node ./node_modules/@cmpsr/contentful-core/scripts/graphql-schema.js",
-    "graphql:types": "node ./node_modules/@cmpsr/contentful-core/scripts/graphql-types.js",
-    "graphql:possibleTypes": "node ./node_modules/@cmpsr/contentful-core/scripts/graphql-possibleTypes.js"
-  }
-}
-```
-
-## Examples
-
-### NextJS
-
-#### 1. Define Apollo Client
-
-`lib/apollo.js` - `createContetnfulLink` - GraphQL Version
-
-```js
+```javascript
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { withApollo } from "next-apollo";
-import { createContentfulLink } from "@cmpsr/contentful-core/lib/client";
-import possibleTypes from "types/possibleTypes.json";
+import { createContentfulLink } from "@cmpsr/contentful-core";
 
 const apolloClient = new ApolloClient({
   link: createContentfulLink({
     space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY,
   }),
-  cache: new InMemoryCache({ possibleTypes })
+  cache: new InMemoryCache(),
 });
 
-export default withApollo(apolloClient);
+export default apolloClient;
 ```
-
-`lib/apollo.js` - `ContentfulRestLink` - GraphQL Queries + REST API Version
-
-```js
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { withApollo } from "next-apollo";
-import { ContentfulRestLink } from "@cmpsr/contentful-core/lib/client";
-import possibleTypes from "types/possibleTypes.json";
-
-const apolloClient = new ApolloClient({
-  link: new ContentfulRestLink({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_DELIVERY
-  }),
-  cache: new InMemoryCache({ possibleTypes })
-});
-
-export default withApollo(apolloClient);
-```
-
-#### 2. Wrap Next App (or Page(s))
-
-`pages/_app.js`
-
-```js
-import React from "react";
-import withApollo from "lib/apollo";
-
-const MyApp = ({ Component, pageProps }) => <Component {...pageProps} />;
-
-export default withApollo({ ssr: true })(MyApp);
-```
-
-`pages/index.js`
-
-```js
-import React from 'react'
-import withApollo from 'lib/apollo'
-
-const Home = props => {
-  ...
-};
-
-export default withApollo({ ssr: true })(Home);
-```
-
-### React App
-
-_Coming soon..._

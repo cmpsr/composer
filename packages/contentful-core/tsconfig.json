@@ -7,12 +7,6 @@
     "rootDir": "src",
     "declaration": true,
     "resolveJsonModule": true,
-    "baseUrl": ".",
-    "paths": {
-      "context": ["./src/context"],
-      "constants/*": ["./src/constants/*"],
-      "renderers": ["./src/renderers"],
-      "utils": ["./src/utils"]
-    }
+    "baseUrl": "."
   }
 }

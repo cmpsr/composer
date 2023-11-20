@@ -23,7 +23,7 @@
     "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts'",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "jest --coverage --clearCache",
     "type:check": "yarn tsc --project tsconfig.json --noEmit",
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },

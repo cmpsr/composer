@@ -1,32 +1,30 @@
 import { HttpLink } from '@apollo/client';
-import invariant from 'invariant';
 import fetch from 'cross-fetch';
 
-export const createContentfulLink = (options) => {
-  const {
-    accessToken,
-    apiVersion,
-    environment,
-    space,
-    headers,
-  } = Object.assign(
-    {},
-    {
-      environment: 'master',
-      headers: {},
-      apiVersion: 'v1',
-    },
-    options
-  );
+export interface ContentfulLinkOptions {
+  accessToken: string;
+  space: string;
+  environment?: string;
+  apiVersion?: string;
+  headers?: Record<string, string>;
+}
 
-  invariant(
-    space,
-    'Contentful `space` ID missing from ContentfulLink initialization.'
-  );
-  invariant(
-    accessToken,
-    'Contentful `accessToken` missing from ContentfulLink initialization'
-  );
+export const createContentfulLink = ({
+  accessToken,
+  space,
+  environment = 'master',
+  apiVersion = 'v1',
+  headers = {},
+}: ContentfulLinkOptions): HttpLink => {
+  if (!space) {
+    throw new Error('Contentful `space` ID is required for initialization.');
+  }
+
+  if (!accessToken) {
+    throw new Error('Contentful `accessToken` is required for initialization.');
+  }
+
+  const uri = `https://graphql.contentful.com/content/${apiVersion}/spaces/${space}/environments/${environment}`;
 
   return new HttpLink({
     headers: {
@@ -34,6 +32,6 @@ export const createContentfulLink = (options) => {
       Authorization: `Bearer ${accessToken}`,
     },
     fetch,
-    uri: `https://graphql.contentful.com/content/${apiVersion}/spaces/${space}/environments/${environment}`, // Server URL (must be absolute)
+    uri,
   });
 };

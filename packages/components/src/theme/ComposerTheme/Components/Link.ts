@@ -3,7 +3,7 @@ import { StyleFunctionProps } from '@chakra-ui/theme-tools';
 import { linkSizes, buttonVariants } from '@components';
 
 export const linkBaseStyle = {
-  display: 'inline-flex',
+  width: 'inherit',
   borderRadius: '0.25rem',
   _hover: {
     textDecoration: 'none',
@@ -12,7 +12,6 @@ export const linkBaseStyle = {
 
 const generateLink = (colors: { default: string; hover: string; pressed: string; focus: string }) => {
   return {
-    display: 'inline-flex',
     color: colors.default,
     padding: 0,
     borderRadius: '0.25rem',
@@ -82,7 +81,7 @@ const linkPrimary = generateLink({
 });
 
 export const Link: ComponentStyleConfig = {
-  baseStyle: (props) => {
+  baseStyle: (props: StyleFunctionProps & { isInline: boolean }) => {
     const buttonBaseStyle = {
       ...props.theme.components.Button.baseStyle,
       display: 'inline-flex',
@@ -90,7 +89,17 @@ export const Link: ComponentStyleConfig = {
         textDecorationLine: 'none',
       },
     };
-    return isButtonVariant(props.variant) ? buttonBaseStyle : linkBaseStyle;
+
+    const linkDisplayStyles = !props.isInline
+      ? { display: 'inline-flex', alignItems: 'center', columnGap: '0.5rem' }
+      : { display: 'inline' };
+
+    return isButtonVariant(props.variant)
+      ? buttonBaseStyle
+      : {
+          ...linkBaseStyle,
+          ...linkDisplayStyles,
+        };
   },
   sizes: getSizes(),
   variants: {

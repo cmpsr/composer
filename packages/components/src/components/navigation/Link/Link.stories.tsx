@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { Link } from './Link';
 import { linkSizes, linkVariants } from './types';
-import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { Box, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { buttonVariants, IconExternalLink, Text } from '@components';
 
 export default {
@@ -61,13 +61,24 @@ const AllVariantsTemplate = () => (
 export const AllVariants = AllVariantsTemplate.bind({});
 
 export const WrappedByText = () => (
-  <Text>
-    A{' '}
-    <Link _hover={{ textDecoration: 'underline' }} href="#">
-      link
-    </Link>{' '}
-    in the middle of a text with a custom decoration
-  </Text>
+  <Box maxWidth="680px">
+    <Text>
+      This example illustrates the use of the <code>isInline</code> property with the <code>Link</code> component. When{' '}
+      <code>isInline</code> is set, the link is displayed inline, allowing the text to wrap naturally in confined
+      spaces. Notice how the long link text:{' '}
+      <Link _hover={{ textDecoration: 'underline' }} href="#" isInline>
+        &quot;This is a very long link text that demonstrates effective wrapping within a narrow container&quot;
+      </Link>{' '}
+      integrates seamlessly with surrounding text, wrapping to the next line as needed.
+    </Text>
+    <Text mt="4">
+      Here&apos;s another link with a trailing icon and extended content, demonstrating the inline wrapping behavior:{' '}
+      <Link _hover={{ textDecoration: 'underline' }} href="#" isInline trailingIcon={<IconExternalLink />}>
+        &quot;Long link text with an icon, showing how it wraps in a confined space&quot;
+      </Link>{' '}
+      in the text flow.
+    </Text>
+  </Box>
 );
 
 const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
@@ -89,4 +100,5 @@ Playground.args = {
   showLeadingIcon: true,
   showTrailingIcon: true,
   variant: undefined,
+  isInline: false,
 };

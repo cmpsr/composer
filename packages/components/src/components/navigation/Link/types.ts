@@ -14,4 +14,5 @@ export interface LinkProps extends ChakraLinkProps {
   leadingIcon?: ReactElement;
   trailingIcon?: ReactElement;
   variant?: ResponsiveValue<LinkVariant | ButtonVariant>;
+  isInline?: boolean;
 }

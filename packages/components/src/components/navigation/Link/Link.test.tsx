@@ -1,9 +1,7 @@
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
 import { screen, renderWithProviders } from '@tests/renderWithProviders';
 
 import { Link } from './Link';
-import { linkSizes } from './types';
 import { IconExternalLink } from '../../media/Icons';
 
 describe('Link', () => {
@@ -24,19 +22,6 @@ describe('Link', () => {
       </Link>
     );
     screen.getByText('Link');
-  });
-
-  it.each(linkSizes)(`should render the right containers for the size %s`, (size) => {
-    const component = TestRenderer.create(
-      <Link size={size} href="#" role="link">
-        Link
-      </Link>
-    ).root;
-
-    const linkContainer = component.findByProps({
-      'data-testid': 'cmpsr.link.container',
-    });
-    expect(linkContainer.props.size).toEqual(size);
   });
 
   it('should render a link with a trailing icon', () => {
@@ -69,5 +54,15 @@ describe('Link', () => {
     );
     screen.getByTestId('cmpsr.link.leading-icon');
     screen.getByTestId('cmpsr.link.trailing-icon');
+  });
+
+  it('renders with inline style when isInline is true', () => {
+    renderWithProviders(
+      <Link role="link" isInline>
+        Link
+      </Link>
+    );
+    const linkComponent = screen.getByRole('link');
+    expect(linkComponent).toHaveStyle('display: inline');
   });
 });

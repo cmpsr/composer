@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "react-plaid-link": "^3.3.2",
-    "rimraf": "^3.0.2"
+    "rimraf": "^4.0.0"
   },
   "peerDependencies": {
     "react": "^18.2.0"

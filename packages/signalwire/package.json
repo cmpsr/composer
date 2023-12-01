@@ -28,11 +28,11 @@
   "dependencies": {
     "@signalwire/js": "^3.16.0",
     "@signalwire/realtime-api": "^3.5.0",
-    "axios": "^1.1.3",
-    "rimraf": "^3.0.2"
+    "axios": "^1.1.3"
   },
   "devDependencies": {
-    "@cmpsr/components": "^6.5.3"
+    "@cmpsr/components": "^6.5.3",
+    "rimraf": "^5.0.5"
   },
   "peerDependencies": {
     "@cmpsr/components": "^6.0.0",

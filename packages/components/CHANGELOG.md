@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 6.5.3
+
+### Patch Changes
+
+- 8f43ed1d: feat: re-export RadioGroup from chakra-ui
+
 ## 6.5.2
 
 ### Patch Changes

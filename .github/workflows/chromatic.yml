@@ -31,7 +31,7 @@ jobs:
       run: yarn
     - name: Build storybook
       run: yarn build-storybook
-    - uses: chromaui/action@v1
+    - uses: chromaui/action@v10
       with:
         appCode: ${{ secrets.CHROMATIC_TOKEN }}
         token: ${{ secrets.GITHUB_TOKEN }}

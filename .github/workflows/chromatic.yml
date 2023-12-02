@@ -6,11 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v4
       with:
         node-version: '18'
     - name: Restore yarn cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           node_modules
@@ -19,7 +19,7 @@ jobs:
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       id: yarn-cache
       with:
         path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -31,7 +31,7 @@ jobs:
       run: yarn
     - name: Build storybook
       run: yarn build-storybook
-    - uses: chromaui/action@v1
+    - uses: chromaui/action@v10
       with:
         appCode: ${{ secrets.CHROMATIC_TOKEN }}
         token: ${{ secrets.GITHUB_TOKEN }}

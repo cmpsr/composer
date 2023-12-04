@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Radio } from './Radio';
-import { RadioGroup as ChakraRadioGroup, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { Radio, RadioGroup } from './index';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Stack } from '@chakra-ui/layout';
 import { radioSizes } from './types';
 
@@ -18,11 +18,11 @@ export default {
 
 const states = ['default', 'error', 'disabled', 'disabled-and-checked'];
 
-const RadioGroup = ({ state = 'default', numOfRadios = 2, ...rest }) => {
+const TemplateRadioGroup = ({ state = 'default', numOfRadios = 2, ...rest }) => {
   const radios = Array.from(Array(numOfRadios).keys());
 
   return (
-    <ChakraRadioGroup defaultValue={state === 'disabled-and-checked' ? '0' : ''}>
+    <RadioGroup defaultValue={state === 'disabled-and-checked' ? '0' : ''}>
       <Stack direction="row">
         {radios.map((item) => (
           <Radio
@@ -37,7 +37,7 @@ const RadioGroup = ({ state = 'default', numOfRadios = 2, ...rest }) => {
           </Radio>
         ))}
       </Stack>
-    </ChakraRadioGroup>
+    </RadioGroup>
   );
 };
 
@@ -57,7 +57,7 @@ export const All = () => (
           <Td>{state}</Td>
           {radioSizes.map((size, i) => (
             <Td key={`${state}-${size}-${i}`}>
-              <RadioGroup state={state} size={size} />
+              <TemplateRadioGroup state={state} size={size} />
             </Td>
           ))}
         </Tr>
@@ -66,7 +66,7 @@ export const All = () => (
   </Table>
 );
 
-const Template = ({ ...args }) => <RadioGroup {...args} />;
+const Template = ({ ...args }) => <TemplateRadioGroup {...args} />;
 
 export const Playground = Template.bind({});
 

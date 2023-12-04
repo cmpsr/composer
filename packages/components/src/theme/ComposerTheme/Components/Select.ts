@@ -46,6 +46,14 @@ const sizes: Record<string, PartsStyleInterpolation> = {
   }),
 };
 
+const fieldDisabledStyle = (placeholder: string, value: string) => ({
+  backgroundColor: 'background-action-disabled',
+  borderWidth: '0.0625rem',
+  borderColor: 'ui-element-outline-disabled',
+  opacity: 1,
+  color: isDisplayingPlaceholder(placeholder, value) ? 'text-disabled' : 'text-secondary',
+});
+
 const baseStyle: PartsStyleFunction<typeof parts> = ({ value, placeholder }) => ({
   icon: {
     boxSize: '1.25rem',
@@ -77,11 +85,8 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ value, placeholder }) => 
       boxShadow: '0 0 0 0.1875rem var(--chakra-colors-primary-focus)',
     },
     _disabled: {
-      backgroundColor: 'background-action-disabled',
-      borderWidth: '0.0625rem',
-      borderColor: 'ui-element-outline-disabled',
-      opacity: 1,
-      color: 'text-disabled',
+      ...fieldDisabledStyle(placeholder, value),
+      _hover: fieldDisabledStyle(placeholder, value),
     },
     _invalid: {
       borderColor: 'transparent',
@@ -114,11 +119,8 @@ const flushedStyle: PartsStyleFunction<typeof parts> = ({ size, value, placehold
       boxShadow: '0 0.1875rem 0 0 var(--chakra-colors-primary-focus)',
     },
     _disabled: {
-      backgroundColor: 'background-action-disabled',
-      borderWidth: '0.063rem',
-      borderColor: 'ui-element-outline-disabled',
-      opacity: 1,
-      color: isDisplayingPlaceholder(placeholder, value) ? 'text-disabled' : 'text-secondary',
+      ...fieldDisabledStyle(placeholder, value),
+      _hover: fieldDisabledStyle(placeholder, value),
     },
     _invalid: {
       border: 'none',

@@ -167,12 +167,17 @@ const AllTemplate = () => {
 
 export const All = AllTemplate.bind({});
 
-const Template = ({ showLeadingIcon, ...args }) => (
+const Template = ({ showLeadingIcon, maskPlaceholder, separator, mode, ...args }) => (
   <DateInput
     {...{
       ...(showLeadingIcon && {
         leadingIcon: <IconCloud />,
       }),
+    }}
+    maskOptions={{
+      placeholder: maskPlaceholder,
+      separator,
+      mode,
     }}
     {...args}
   />
@@ -181,7 +186,7 @@ export const Playground = Template.bind({});
 Playground.args = {
   variant: 'outline',
   size: 'l',
-  placeholder: 'MM/DD/YYYY',
+  maskPlaceholder: 'MM/DD/YYYY',
   separator: '/',
   mode: 'mm/dd/yyyy',
   leftLabel: '',

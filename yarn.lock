@@ -3840,6 +3840,26 @@
     globby "^11.0.0"
     read-yaml-file "^1.1.0"
 
+"@maskito/core@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@maskito/core/-/core-1.9.0.tgz#f1cfbef976015990be90837ad4efa134c162c0dd"
+  integrity sha512-WQIUrwkdIUg6PzAb4Apa0RjTPHB0EqZLc9/7kWCKVIixhkITRFXFg2BhiDVSRv0mIKVlAEJcOvvjHK5T3UaIig==
+
+"@maskito/kit@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@maskito/kit/-/kit-1.9.0.tgz#703e48abe8967e738844f7e96e7f2991d63af450"
+  integrity sha512-LNNgOJ0tAfrPoPehvoP+ZyYF9giOYL02sOMKyDC3IcqDNA8BAU0PARmS7TNsVEBpvSuJhU6xVt40nxJaONgUdw==
+
+"@maskito/phone@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@maskito/phone/-/phone-1.9.0.tgz#c7045df3e077bee2f07908ecfe0fa628dea691f7"
+  integrity sha512-dhozuKYBr8URlFA1Uv9R3GGLIrb5j8goTuN3aOshdG0mT7O08glCqz8MBpPR1nQsgzvYHwR7KaWwz90v3kUqmA==
+
+"@maskito/react@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@maskito/react/-/react-1.9.0.tgz#6748e016eab62d3f3974ee3bfcdf47a00fde3019"
+  integrity sha512-6mjdXyaJDcZH1VnIYiR0kTA//F0q2djs0fKxfMfqEhEzyRR/HXL0VvsPRayk3HHy7wEtwR7bKgTNBwlwFdTj0g==
+
 "@mdx-js/esbuild@^2.0.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@mdx-js/esbuild/-/esbuild-2.3.0.tgz#97f2f1b854d904c50bcd0a219b3664657f4fe8c3"
@@ -14243,6 +14263,11 @@ lexical@^0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/lexical/-/lexical-0.12.0.tgz#b715fb061f6394814761a07ba5b4fd4c2aa3f9cd"
   integrity sha512-ixp8+5D9UJueZSjh9a7Z0eiiKm8MZmf//+mr0rZSCXermhdIcn1lglDGbff1KGwO1ONnFlycWJV12m8Zvtgggg==
+
+libphonenumber-js@^1.10.51:
+  version "1.10.51"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.10.51.tgz#a3b8c15db2721c3e5f7fe6759e2a524712b578e6"
+  integrity sha512-vY2I+rQwrDQzoPds0JeTEpeWzbUJgqoV0O4v31PauHBb/e+1KCXKylHcDnBMgJZ9fH9mErsEbROJY3Z3JtqEmg==
 
 lines-and-columns@^1.1.6:
   version "1.2.4"

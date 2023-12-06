@@ -8,7 +8,7 @@ import { getDateMaskOptions } from './getDateMaskOptions';
 export const DateInput = forwardRef<DateInputProps, typeof Input>(({ maskOptions = {}, ...props }, ref) => {
   const dateMaskOptions = getDateMaskOptions(maskOptions);
   const dateMaskedRef = useMaskito({ options: dateMaskOptions });
-  const refsCombined = useMergeRefs(ref, dateMaskedRef);
+  const dateInputRef = useMergeRefs(ref, dateMaskedRef);
 
-  return <Input ref={refsCombined} {...props} />;
+  return <Input ref={dateInputRef} {...props} />;
 });

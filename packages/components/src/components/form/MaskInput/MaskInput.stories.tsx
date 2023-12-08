@@ -74,7 +74,7 @@ const AllTemplate = () => {
                       size={size}
                       placeholder={state}
                       maskOptions={{
-                        mask: /[\d]\.?[\d]{0,2}/,
+                        mask: /^\$?\d*\.?\d*$/,
                         prefix: '$',
                         postfix: ' USD',
                       }}
@@ -195,7 +195,7 @@ Playground.args = {
   size: 'l',
   leftLabel: '',
   rightLabel: '',
-  mask: /\d*/,
+  mask: /^\$?\d*\.?\d*$/,
   postfix: '(%)',
   prefix: '$',
   isInvalid: false,

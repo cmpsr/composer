@@ -1,28 +1,25 @@
 import React from 'react';
-import { screen, renderWithProviders, fireEvent, waitFor } from '@tests/renderWithProviders';
+import { screen, renderWithProviders, fireEvent } from '@tests/renderWithProviders';
 import { DateInput } from './DateInput';
 
-describe.skip('DateInput', () => {
-  test('should apply date mask when typing', async () => {
-    renderWithProviders(<DateInput placeholder="MM/DD/YYYY" />);
-    const input = screen.getByTestId('cmpsr.input') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '12251993' } });
-
-    await waitFor(() => {
-      expect(input.value).toBe('12/25/1995');
-    });
+describe('DateInput', () => {
+  const placeholder = 'MM/DD/YYYY';
+  test('should apply date mask when typing', () => {
+    renderWithProviders(<DateInput placeholder={placeholder} />);
+    const input = screen.getByPlaceholderText('MM/DD/YYYY') as HTMLInputElement;
+    fireEvent.input(input, { target: { value: '12122020' } });
+    expect(input.value).toBe('12/12/2020');
   });
 
   test('should display provided placeholder', () => {
-    const placeholder = 'MM/DD/YYYY';
     renderWithProviders(<DateInput placeholder={placeholder} />);
     screen.getByPlaceholderText(placeholder);
   });
 
   test('should respect passed mask options', () => {
-    renderWithProviders(<DateInput maskOptions={{ mode: 'dd/mm/yyyy', separator: '-' }} />);
+    renderWithProviders(<DateInput placeholder={placeholder} maskOptions={{ mode: 'dd/mm/yyyy', separator: '-' }} />);
     const input = screen.getByPlaceholderText('MM/DD/YYYY') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '25121995' } });
-    expect(input.value).toBe('25-12-1995');
+    fireEvent.input(input, { target: { value: '12122020' } });
+    expect(input.value).toBe('12-12-2020');
   });
 });

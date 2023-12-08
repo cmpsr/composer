@@ -206,6 +206,16 @@ export const getIconStyle = (props: { isDisabled?: boolean; hasContent?: boolean
   return {};
 };
 
+const fieldDisabledStyle = {
+  opacity: 1,
+  _placeholder: {
+    color: 'text-disabled',
+  },
+  color: 'text-secondary',
+  backgroundColor: 'background-action-disabled',
+  border: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-disabled)',
+};
+
 const outlineStyle = (props) => {
   const inputGroupConditionalStyle = getInputGroupStyle(props);
   const labelConditionalStyle = getLabelStyle(props);
@@ -260,13 +270,8 @@ const outlineStyle = (props) => {
         borderColor: 'transparent',
       },
       _disabled: {
-        opacity: 1,
-        _placeholder: {
-          color: 'text-disabled',
-        },
-        color: 'text-secondary',
-        backgroundColor: 'background-action-disabled',
-        border: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-disabled)',
+        ...fieldDisabledStyle,
+        _hover: fieldDisabledStyle,
       },
     },
   };
@@ -325,13 +330,8 @@ export const flushedStyle = (props) => {
         borderColor: 'transparent',
       },
       _disabled: {
-        opacity: 1,
-        _placeholder: {
-          color: 'text-disabled',
-        },
-        color: 'text-secondary',
-        backgroundColor: 'background-action-disabled',
-        border: 'solid 0.0625rem var(--chakra-colors-ui-element-outline-disabled)',
+        ...fieldDisabledStyle,
+        _hover: fieldDisabledStyle,
       },
     },
   };

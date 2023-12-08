@@ -11,6 +11,13 @@ const flushedStyleRoot: SystemStyleObject = {
   bg: 'background-action-default',
 };
 
+const fieldDisabledStyle = {
+  bg: 'background-action-disabled',
+  borderColor: 'ui-element-outline-disabled',
+  opacity: 1,
+  color: 'text-secondary',
+};
+
 const baseStyleField: SystemStyleObject = {
   borderColor: 'none',
   border: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
@@ -34,10 +41,8 @@ const baseStyleField: SystemStyleObject = {
     borderColor: 'var(--chakra-colors-alert-error-default)',
   },
   _disabled: {
-    bg: 'background-action-disabled',
-    borderColor: 'ui-element-outline-disabled',
-    opacity: 1,
-    color: 'text-secondary',
+    ...fieldDisabledStyle,
+    _hover: fieldDisabledStyle,
     _placeholder: {
       color: 'text-disabled',
     },

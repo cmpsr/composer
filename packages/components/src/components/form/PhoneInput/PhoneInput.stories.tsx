@@ -11,7 +11,7 @@ export default {
 const Template = ({ showLeadingIcon, countryIsoCode, ...args }) => (
   <PhoneInput
     maskOptions={{
-      countryIsoCode,
+      countryIsoCode: 'US',
     }}
     {...{
       ...(showLeadingIcon && {

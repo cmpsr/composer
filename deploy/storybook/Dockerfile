@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # https://hub.docker.com/_/node
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Create and change to the app directory.
 WORKDIR /usr/src/app

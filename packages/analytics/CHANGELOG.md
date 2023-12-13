@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.2.1
+
+### Patch Changes
+
+- 7b3bdf03: chore: update rimraf dependency and move it to devDependencies
+
 ## 0.2.0
 
 ### Minor Changes

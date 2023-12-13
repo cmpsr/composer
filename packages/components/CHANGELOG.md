@@ -1,5 +1,14 @@
 # @cmpsr/components
 
+## 6.5.4
+
+### Patch Changes
+
+- 5cf10ac7: feat: create Popover wrapper
+- 7351322a: feat: re-export @chakra-ui transitions
+- a2f0c68e: feat: create new Inputs with formatting capabilities (DateInput, PhoneInput, MaskInput)
+- 47ce8de4: feat: wrap radio in forward ref
+
 ## 6.5.3
 
 ### Patch Changes

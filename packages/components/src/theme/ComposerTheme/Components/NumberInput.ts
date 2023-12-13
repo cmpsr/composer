@@ -84,7 +84,6 @@ const baseStyleStepperGroup: SystemStyleFunction = ({ isDisabled, isInvalid }) =
 const flushedStyleStepperGroup: SystemStyleFunction = ({ isInvalid }) => ({
   border: 0,
   margin: 0,
-  bg: 'red',
   height: isInvalid ? '100%' : 'calc(100% - 0.0625rem)',
 });
 

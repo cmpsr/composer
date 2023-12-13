@@ -2,10 +2,21 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { MaskInput } from './MaskInput';
 import { IconCircleCheckFilled } from '../../media/Icons';
+import { inputSizes, inputVariants } from '../Input';
 
 export default {
   component: MaskInput,
   title: 'Components/Form/MaskInput',
+  argTypes: {
+    variant: {
+      options: inputVariants,
+      control: { type: 'select' },
+    },
+    size: {
+      options: inputSizes,
+      control: { type: 'select' },
+    },
+  },
 } as Meta;
 
 const Template = ({ showLeadingIcon, mask, prefix, postfix, ...args }) => (

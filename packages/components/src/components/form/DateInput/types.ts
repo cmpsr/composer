@@ -7,7 +7,6 @@ export interface DateInputProps extends InputProps {
 
 export type DateMaskOptions = {
   mode?: MaskitoDateMode;
-  placeholder?: string;
   separator?: string;
   showPlaceholderOnFocusOnly?: boolean;
 };

@@ -3,7 +3,6 @@ import { maskitoDateOptionsGenerator, maskitoWithPlaceholder } from '@maskito/ki
 import { DateMaskOptions } from './types';
 
 export const getDateMaskOptions = ({
-  placeholder = 'MM/DD/YYYY',
   mode = 'mm/dd/yyyy',
   separator = '/',
   showPlaceholderOnFocusOnly = true,
@@ -16,7 +15,7 @@ export const getDateMaskOptions = ({
   const {
     plugins, // These plugins ensure that the caret position is managed correctly and the placeholder is removed on blur.
     ...placeholderOptions
-  } = maskitoWithPlaceholder(placeholder, showPlaceholderOnFocusOnly);
+  } = maskitoWithPlaceholder(mode, showPlaceholderOnFocusOnly);
 
   return {
     ...dateOptions,

@@ -23,7 +23,7 @@ export default {
   },
 } as Meta;
 
-const Template = ({ showLeadingIcon, maskPlaceholder, separator, mode, ...args }) => (
+const Template = ({ showLeadingIcon, separator, mode, ...args }) => (
   <DateInput
     {...{
       ...(showLeadingIcon && {

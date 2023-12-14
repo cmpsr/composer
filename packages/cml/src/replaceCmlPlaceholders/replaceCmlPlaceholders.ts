@@ -70,6 +70,12 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
           newValue = flatObject(newValue);
         }
         break;
+      case 'BackgroundImage':
+        searchValue = match;
+        if (typeof newValue === 'object') {
+          newValue = flatObject(newValue);
+        }
+        break;
       case 'styling':
         searchValue = match;
         newValue = applyStyling(newValue, rgxGroups[5]);

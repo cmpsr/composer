@@ -11,7 +11,8 @@ import {
   StepperProps as ChakraStepperProps,
 } from '@chakra-ui/react';
 
-export interface StepperProps extends Omit<ChakraStepperProps, 'size' | 'variant'> {
+export interface StepperProps extends Omit<ChakraStepperProps, 'colorScheme' | 'size' | 'variant'> {
+  colorScheme?: never;
   size?: never;
   variant?: never;
 }

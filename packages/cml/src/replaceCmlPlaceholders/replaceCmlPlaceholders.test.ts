@@ -216,6 +216,18 @@ describe('replaceCmlPlaceholders', () => {
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({ base: '<HighlightedText color="red" />' });
   });
+  test('should add BackgroundImage as string to component', () => {
+    const model = { base: '<HighlightedText {{props:BackgroundImage}} />' };
+    const values = { base: { props: 'backgroundImage="url(http://something.com)"' } };
+    const mdx = replaceCmlPlaceholders(model, values);
+    expect(mdx).toStrictEqual({ base: `<HighlightedText backgroundImage="url('http://something.com')" />` });
+  });
+  test('should add BackgroundImage as object to component', () => {
+    const model = { base: '<HighlightedText {{props:BackgroundImage}} />' };
+    const values = { base: { props: 'backgroundImage="url(http://something.com)"' } };
+    const mdx = replaceCmlPlaceholders(model, values);
+    expect(mdx).toStrictEqual({ base: `<HighlightedText backgroundImage="url('http://something.com')" />` });
+  });
   test('should handle Image type', () => {
     const model = { base: '<div>{{image:Image:Image}}<div/>' };
     const values = { base: { image: { src: 'https://image.url', alt: 'Image alt' } } };

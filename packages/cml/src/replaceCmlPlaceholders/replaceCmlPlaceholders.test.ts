@@ -224,7 +224,7 @@ describe('replaceCmlPlaceholders', () => {
   });
   test('should add BackgroundImage as object to component', () => {
     const model = { base: '<HighlightedText {{props:BackgroundImage}} />' };
-    const values = { base: { props: 'backgroundImage="url(http://something.com)"' } };
+    const values = { base: { props: { backgroundImage: 'url(http://something.com)' } } };
     const mdx = replaceCmlPlaceholders(model, values);
     expect(mdx).toStrictEqual({ base: `<HighlightedText backgroundImage="url('http://something.com')" />` });
   });

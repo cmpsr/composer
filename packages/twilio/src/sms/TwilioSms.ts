@@ -1,10 +1,10 @@
 import twilio from 'twilio';
-import { TwilioAuthConfig } from 'types';
+import { TwilioConversationAuthConfig } from 'types';
 
 export class TwilioSms {
   private twilioClient: twilio.Twilio;
 
-  constructor(config: TwilioAuthConfig) {
+  constructor(config: TwilioConversationAuthConfig) {
     this.twilioClient = twilio(config.accountSid, config.authToken);
   }
 
@@ -17,25 +17,14 @@ export class TwilioSms {
     return sms;
   }
 
-  async availablePhones(
-    areaCode: number,
-    country = 'US',
-    mmsEnabled = true,
-    smsEnabled = true,
-    limit = 10
-  ) {
+  async availablePhones(areaCode: number, country = 'US', mmsEnabled = true, smsEnabled = true, limit = 10) {
     const phones = await this.twilioClient
       .availablePhoneNumbers(country)
       .local.list({ areaCode, mmsEnabled, smsEnabled, limit });
     return phones;
   }
 
-  async buy(
-    phoneNumber: string,
-    friendlyName: string,
-    smsUrl: string,
-    smsMethod: string
-  ) {
+  async buy(phoneNumber: string, friendlyName: string, smsUrl: string, smsMethod: string) {
     const phone = await this.twilioClient.incomingPhoneNumbers.create({
       phoneNumber,
       friendlyName,

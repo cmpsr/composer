@@ -14,7 +14,7 @@ jobs:
           yarn install
         fi
     - name: Restore yarn cache
-      uses: actions/cache@v3
+      uses: actions/cache@v2
       with:
         path: |
           node_modules

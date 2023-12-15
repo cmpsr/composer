@@ -6,6 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    # Step to check if yarn.lock exists and generate if missing
+    - name: Check and Generate yarn.lock
+      run: |
+        if [ ! -f yarn.lock ]; then
+          echo "yarn.lock not found, running yarn install to generate it."
+          yarn install
+        fi
     - name: Restore yarn cache
       uses: actions/cache@v3
       with:

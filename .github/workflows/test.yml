@@ -5,7 +5,7 @@ jobs:
   jest:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
     # Step to check if yarn.lock exists and generate if missing
     - name: Check and Generate yarn.lock
       run: |

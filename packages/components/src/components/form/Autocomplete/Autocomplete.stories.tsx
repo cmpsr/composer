@@ -4,6 +4,7 @@ import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Autocomplete } from './Autocomplete';
 import { autocompleteSizes } from './types';
 import { IconCloud } from '../../media/Icons';
+import { inputVariants } from '../Input';
 
 export default {
   component: Autocomplete,
@@ -119,7 +120,12 @@ const Template = (args) => {
         setItems(defaultItems.filter((item) => item.includes(inputValue)));
       }}
     >
-      <Autocomplete.Input size={args.size} placeholder={args.placeholder} clearButtonMode={args.clearButtonMode} />
+      <Autocomplete.Input
+        size={args.size}
+        placeholder={args.placeholder}
+        clearButtonMode={args.clearButtonMode}
+        variant={args.variant}
+      />
       <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
     </Autocomplete>
   );
@@ -129,10 +135,15 @@ export const Playground = Template.bind({});
 Playground.args = {
   placeholder: 'Playground placeholder',
   clearButtonMode: 'never',
+  variant: 'outline',
 };
 Playground.argTypes = {
   clearButtonMode: {
     control: { type: 'select' },
     options: ['item-selected', 'has-value', 'never', 'always'],
+  },
+  variant: {
+    control: { type: 'select' },
+    options: inputVariants,
   },
 };

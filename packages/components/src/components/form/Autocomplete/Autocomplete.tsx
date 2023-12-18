@@ -60,8 +60,8 @@ const AutocompleteInput = forwardRef<AutocompleteInputProps, typeof Input>(
   ({ clearButtonMode = 'item-selected', ...rest }, ref) => {
     const { selectedItem, reset, getInputProps } = useAutocompleteContext();
     const internalRef = useRef<HTMLInputElement>(null);
-    const inputProps = getInputProps({ ref: internalRef });
-    const combinedRefs = useMergeRefs(internalRef, ref);
+    const combinedRefs = useMergeRefs(ref, internalRef);
+    const inputProps = getInputProps({ ref: combinedRefs });
     const clearButtonConditions = {
       'item-selected': selectedItem,
       'has-value': inputProps.value,
@@ -77,7 +77,7 @@ const AutocompleteInput = forwardRef<AutocompleteInputProps, typeof Input>(
 
     return (
       <Input
-        ref={combinedRefs}
+        // ref={combinedRefs}
         {...(shouldShowClearButton && {
           trailingIcon: <IconX data-testid="cmpsr.autocomplete.clear-button" cursor="pointer" onClick={onReset} />,
         })}

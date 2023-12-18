@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useRef } from 'react';
 import { useCombobox } from 'downshift';
 import { createContext } from '@chakra-ui/react-utils';
-import { RecursiveCSSObject, StyleProps, useStyleConfig } from '@chakra-ui/react';
+import { RecursiveCSSObject, StyleProps, forwardRef, useMergeRefs, useStyleConfig } from '@chakra-ui/react';
 import { IconX } from '../../media';
 import { Box } from '../../layouts/Box';
 import { Input } from '../Input';
@@ -56,33 +56,37 @@ export const Autocomplete: FC<AutocompleteProps> & AutocompleteStaticMembers = (
   );
 };
 
-const AutocompleteInput: FC<AutocompleteInputProps> = ({ clearButtonMode = 'item-selected', ...rest }) => {
-  const { selectedItem, reset, getInputProps } = useAutocompleteContext();
-  const ref = useRef<HTMLInputElement>(null);
-  const inputProps = getInputProps({ ref });
-  const clearButtonConditions = {
-    'item-selected': selectedItem,
-    'has-value': inputProps.value,
-    never: false,
-    always: true,
-  };
-  const shouldShowClearButton = clearButtonConditions[clearButtonMode];
+const AutocompleteInput = forwardRef<AutocompleteInputProps, typeof Input>(
+  ({ clearButtonMode = 'item-selected', ...rest }, ref) => {
+    const { selectedItem, reset, getInputProps } = useAutocompleteContext();
+    const internalRef = useRef<HTMLInputElement>(null);
+    const inputProps = getInputProps({ ref: internalRef });
+    const combinedRefs = useMergeRefs(internalRef, ref);
+    const clearButtonConditions = {
+      'item-selected': selectedItem,
+      'has-value': inputProps.value,
+      never: false,
+      always: true,
+    };
+    const shouldShowClearButton = clearButtonConditions[clearButtonMode];
 
-  const onReset = useCallback(() => {
-    reset?.();
-    ref?.current?.focus?.();
-  }, []);
+    const onReset = useCallback(() => {
+      reset?.();
+      internalRef?.current?.focus?.();
+    }, []);
 
-  return (
-    <Input
-      {...(shouldShowClearButton && {
-        trailingIcon: <IconX data-testid="cmpsr.autocomplete.clear-button" cursor="pointer" onClick={onReset} />,
-      })}
-      {...inputProps}
-      {...rest}
-    />
-  );
-};
+    return (
+      <Input
+        ref={combinedRefs}
+        {...(shouldShowClearButton && {
+          trailingIcon: <IconX data-testid="cmpsr.autocomplete.clear-button" cursor="pointer" onClick={onReset} />,
+        })}
+        {...inputProps}
+        {...rest}
+      />
+    );
+  }
+);
 Autocomplete.Input = AutocompleteInput;
 
 const AutocompleteList: FC<AutocompleteListProps> = ({ noResultsContent, renderItem, ...rest }) => {

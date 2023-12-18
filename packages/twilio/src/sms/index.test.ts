@@ -3,7 +3,7 @@ import { TwilioSms } from '.';
 jest.mock('twilio');
 
 describe('index', () => {
-  test('should create plaid instance', () => {
+  test('should create twilio instance', () => {
     const twilioSms = useTwilioSms();
     expect(twilioSms).toBeInstanceOf(TwilioSms);
   });

@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.0
+
+### Minor Changes
+
+- 5702beed: feat: add support for twilio verification
+
 ## 0.2.1
 
 ### Patch Changes

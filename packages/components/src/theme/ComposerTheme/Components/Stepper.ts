@@ -16,20 +16,23 @@ export const Stepper: ComponentStyleConfig = {
     step: {
       gap: 0,
     },
+    indicator: {
+      '&[data-status=incomplete]': {
+        borderColor: 'background-static',
+      },
+    },
     separator: {
+      '&[data-status=active]': {
+        bg: 'background-static',
+      },
+      '&[data-status=incomplete]': {
+        bg: 'background-static',
+      },
       '&[data-orientation=horizontal]': {
         width: '100%',
         height: '2px',
         marginStart: 0,
       },
-    },
-    title: {
-      fontSize: '0.75rem',
-      fontWeight: 700,
-    },
-    description: {
-      fontSize: '0.75rem',
-      fontWeight: 400,
     },
     number: {
       fontSize: '0.875rem',

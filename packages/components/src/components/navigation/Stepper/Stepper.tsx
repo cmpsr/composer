@@ -3,14 +3,14 @@ import {
   Stepper as ChakraStepper,
   Step as ChakraStep,
   StepProps,
-  StepIcon,
   StepIndicator,
   StepNumber,
   StepSeparator,
   StepStatus,
 } from '@chakra-ui/react';
 import { StepStaticMembers, StepperProps, StepperStaticMembers } from './types';
-import { Text, TextProps } from '../../typography';
+import { Text } from '../../typography';
+import { IconCheck, IconProps } from '../../media';
 
 export { useSteps } from '@chakra-ui/react';
 
@@ -18,31 +18,14 @@ export const Stepper: FC<StepperProps> & StepperStaticMembers = (props) => <Chak
 
 const Step: FC<StepProps> & StepStaticMembers = (props) => <ChakraStep {...props} />;
 
-const Title = (props: TextProps) => {
-  const defaultStyles: Partial<TextProps> = {
-    variant: 'text-body-floating-label-bold',
-    marginBottom: 'spacer-1',
-    color: 'text-primary',
-  };
-
-  return <Text {...defaultStyles} {...props} />;
-};
-
-const Description = (props: TextProps) => {
-  const defaultStyles: Partial<TextProps> = {
-    variant: 'text-body-floating-label-regular',
-    color: 'text-secondary',
-  };
-
-  return <Text {...defaultStyles} {...props} />;
-};
+const StepIcon: FC<IconProps> = (props) => <IconCheck size="s" {...props} />;
 
 Step.Icon = StepIcon;
 Step.Indicator = StepIndicator;
 Step.Number = StepNumber;
 Step.Separator = StepSeparator;
 Step.Status = StepStatus;
-Step.Title = Title;
-Step.Description = Description;
+Step.Title = Text;
+Step.Description = Text;
 
 Stepper.Step = Step;

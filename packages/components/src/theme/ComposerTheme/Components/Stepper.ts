@@ -34,9 +34,6 @@ export const Stepper: ComponentStyleConfig = {
         marginStart: 0,
       },
     },
-    number: {
-      fontSize: '0.875rem',
-    },
   },
   sizes: {
     s: {

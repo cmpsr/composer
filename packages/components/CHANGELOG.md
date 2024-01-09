@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 6.5.6
+
+### Patch Changes
+
+- dfa98cb1: feat: add focus visible styles to outline select field
+
 ## 6.5.5
 
 ### Patch Changes

@@ -54,10 +54,17 @@ const fieldDisabledStyle = (placeholder: string, value: string) => ({
   color: isDisplayingPlaceholder(placeholder, value) ? 'text-disabled' : 'text-secondary',
 });
 
-const fieldFocusStyle = {
+const outlineFieldFocusStyle = {
   backgroundColor: 'background-action-hover',
   borderColor: 'ui-element-outline-default',
   boxShadow: '0 0 0 0.1875rem var(--chakra-colors-primary-focus)',
+};
+
+const flushedFieldFocusStyle = {
+  border: 'none',
+  borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-default)',
+  bg: 'background-action-default',
+  boxShadow: '0 0.1875rem 0 0 var(--chakra-colors-primary-focus)',
 };
 
 const baseStyle: PartsStyleFunction<typeof parts> = ({ value, placeholder }) => ({
@@ -85,8 +92,8 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ value, placeholder }) => 
       borderWidth: '0.0625rem',
       borderColor: 'ui-element-outline-active',
     },
-    _focus: fieldFocusStyle,
-    _focusVisible: fieldFocusStyle,
+    _focus: outlineFieldFocusStyle,
+    _focusVisible: outlineFieldFocusStyle,
     _disabled: {
       ...fieldDisabledStyle(placeholder, value),
       _hover: fieldDisabledStyle(placeholder, value),
@@ -115,12 +122,8 @@ const flushedStyle: PartsStyleFunction<typeof parts> = ({ size, value, placehold
       bg: 'background-action-hover',
       borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-active)',
     },
-    _focus: {
-      border: 'none',
-      borderBottom: '0.063rem solid var(--chakra-colors-ui-element-outline-default)',
-      bg: 'background-action-default',
-      boxShadow: '0 0.1875rem 0 0 var(--chakra-colors-primary-focus)',
-    },
+    _focus: flushedFieldFocusStyle,
+    _focusVisible: flushedFieldFocusStyle,
     _disabled: {
       ...fieldDisabledStyle(placeholder, value),
       _hover: fieldDisabledStyle(placeholder, value),

@@ -54,6 +54,12 @@ const fieldDisabledStyle = (placeholder: string, value: string) => ({
   color: isDisplayingPlaceholder(placeholder, value) ? 'text-disabled' : 'text-secondary',
 });
 
+const fieldFocusStyle = {
+  backgroundColor: 'background-action-hover',
+  borderColor: 'ui-element-outline-default',
+  boxShadow: '0 0 0 0.1875rem var(--chakra-colors-primary-focus)',
+};
+
 const baseStyle: PartsStyleFunction<typeof parts> = ({ value, placeholder }) => ({
   icon: {
     boxSize: '1.25rem',
@@ -79,11 +85,8 @@ const baseStyle: PartsStyleFunction<typeof parts> = ({ value, placeholder }) => 
       borderWidth: '0.0625rem',
       borderColor: 'ui-element-outline-active',
     },
-    _focus: {
-      backgroundColor: 'background-action-hover',
-      borderColor: 'ui-element-outline-default',
-      boxShadow: '0 0 0 0.1875rem var(--chakra-colors-primary-focus)',
-    },
+    _focus: fieldFocusStyle,
+    _focusVisible: fieldFocusStyle,
     _disabled: {
       ...fieldDisabledStyle(placeholder, value),
       _hover: fieldDisabledStyle(placeholder, value),

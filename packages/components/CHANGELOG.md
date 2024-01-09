@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 6.5.5
+
+### Patch Changes
+
+- 7c845370: feat: apply focus styles to focus visible pseudo selector
+
 ## 6.5.4
 
 ### Patch Changes

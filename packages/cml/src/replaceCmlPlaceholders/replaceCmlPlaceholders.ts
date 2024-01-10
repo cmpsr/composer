@@ -64,6 +64,7 @@ const replacePropValues = (mdx: string, values: Record<string, string> = {}): st
         }
         break;
       case 'BoxProps':
+      case 'BackgroundImage':
       case 'FlexProps':
         searchValue = match;
         if (typeof newValue === 'object') {

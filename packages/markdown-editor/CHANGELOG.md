@@ -1,5 +1,12 @@
 # @cmpsr/markdown-editor
 
+## 2.0.0
+
+### Patch Changes
+
+- Updated dependencies [e0e8f041]
+  - @cmpsr/components@7.0.0
+
 ## 1.3.7
 
 ## 1.3.6

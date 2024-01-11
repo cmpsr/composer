@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.0.0
+
+### Major Changes
+
+- e0e8f041: feat(Stepper): Replace colorScheme in favor of using composer colors
+
 ## 6.5.6
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.0.0
+
+### Patch Changes
+
+- Updated dependencies [e0e8f041]
+  - @cmpsr/components@7.0.0
+
 ## 1.0.12
 
 ## 1.0.11

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react';
 import { Stepper, useSteps } from './Stepper';
-import { Box, Button, Flex, ProgressBar, Text } from '@components';
+import { Box, Button, Flex, ProgressBar } from '@components';
 
 export default {
   component: Stepper,
@@ -28,17 +28,25 @@ const TopBottomLabelTemplate = ({ numberOfSteps = 3, stepFormat = 'number' }) =>
             <Flex width="100%" alignItems="center">
               <Stepper.Step.Indicator>
                 <Stepper.Step.Status
-                  complete={stepFormat === 'number' ? <Stepper.Step.Number /> : <Stepper.Step.Icon />}
-                  incomplete={stepFormat === 'number' ? <Stepper.Step.Number /> : null}
-                  active={stepFormat === 'number' ? <Stepper.Step.Number /> : null}
+                  complete={
+                    stepFormat === 'number' ? (
+                      <Stepper.Step.Number color="text-light" />
+                    ) : (
+                      <Stepper.Step.Icon color="text-light" />
+                    )
+                  }
+                  incomplete={stepFormat === 'number' ? <Stepper.Step.Number color="background-static" /> : null}
+                  active={stepFormat === 'number' ? <Stepper.Step.Number color="primary-default" /> : null}
                 />
               </Stepper.Step.Indicator>
               <Stepper.Step.Separator />
             </Flex>
-            <Box flexShrink={0} mt="0.5rem">
-              <Stepper.Step.Title>Title {item + 1}</Stepper.Step.Title>
-              <Stepper.Step.Description>Description {item + 1}</Stepper.Step.Description>
-            </Box>
+            <Flex flexDirection="column" flexShrink={0} mt="0.5rem" gap="spacer-1">
+              <Stepper.Step.Title variant="text-body-floating-label-bold">Title {item + 1}</Stepper.Step.Title>
+              <Stepper.Step.Description variant="text-body-floating-label-regular">
+                Description {item + 1}
+              </Stepper.Step.Description>
+            </Flex>
           </Stepper.Step>
         ))}
       </Stepper>
@@ -69,9 +77,15 @@ const SummaryTemplate = ({ numberOfSteps = 3, stepFormat = 'number' }) => {
           <Stepper.Step key={item}>
             <Stepper.Step.Indicator>
               <Stepper.Step.Status
-                complete={stepFormat === 'number' ? <Stepper.Step.Number /> : <Stepper.Step.Icon />}
-                incomplete={stepFormat === 'number' ? <Stepper.Step.Number /> : null}
-                active={stepFormat === 'number' ? <Stepper.Step.Number /> : null}
+                complete={
+                  stepFormat === 'number' ? (
+                    <Stepper.Step.Number color="text-light" />
+                  ) : (
+                    <Stepper.Step.Icon color="text-light" />
+                  )
+                }
+                incomplete={stepFormat === 'number' ? <Stepper.Step.Number color="background-static" /> : null}
+                active={stepFormat === 'number' ? <Stepper.Step.Number color="primary-default" /> : null}
               />
             </Stepper.Step.Indicator>
             <Stepper.Step.Separator />
@@ -79,12 +93,10 @@ const SummaryTemplate = ({ numberOfSteps = 3, stepFormat = 'number' }) => {
         ))}
       </Stepper>
       <Box flexShrink={0} mt="0.5rem">
-        <Text variant="text-body-floating-label-regular">
-          Title {activeStep + 1}:{' '}
-          <Text variant="text-body-floating-label-bold" as="span">
-            Description {activeStep + 1}
-          </Text>
-        </Text>
+        <Stepper.Step.Title variant="text-body-floating-label-regular">Title {activeStep + 1}: </Stepper.Step.Title>
+        <Stepper.Step.Description variant="text-body-floating-label-bold" as="span">
+          Description {activeStep + 1}
+        </Stepper.Step.Description>
       </Box>
       <Flex mt="1rem" gap="1rem">
         <Button onClick={() => setActiveStep((curr) => Math.max(curr - 1, 0))}>Previous</Button>
@@ -132,9 +144,15 @@ const ProgressTemplate = ({ numberOfSteps, stepFormat }) => {
           <Stepper.Step key={item}>
             <Stepper.Step.Indicator>
               <Stepper.Step.Status
-                complete={stepFormat === 'number' ? <Stepper.Step.Number /> : <Stepper.Step.Icon />}
-                incomplete={stepFormat === 'number' ? <Stepper.Step.Number /> : null}
-                active={stepFormat === 'number' ? <Stepper.Step.Number /> : null}
+                complete={
+                  stepFormat === 'number' ? (
+                    <Stepper.Step.Number color="text-light" />
+                  ) : (
+                    <Stepper.Step.Icon color="text-light" />
+                  )
+                }
+                incomplete={stepFormat === 'number' ? <Stepper.Step.Number color="background-static" /> : null}
+                active={stepFormat === 'number' ? <Stepper.Step.Number color="primary-default" /> : null}
               />
             </Stepper.Step.Indicator>
             <ProgressBar

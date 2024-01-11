@@ -1,29 +1,28 @@
 import { FC } from 'react';
 import {
-  StepDescription,
-  StepIcon,
   StepIndicator,
-  StepNumber,
   StepProps,
   StepSeparator,
   StepStatus,
-  StepTitle,
   StepperProps as ChakraStepperProps,
 } from '@chakra-ui/react';
+import { Text, TextProps } from '../../typography';
+import { IconProps } from '../../media';
 
-export interface StepperProps extends Omit<ChakraStepperProps, 'size' | 'variant'> {
+export interface StepperProps extends Omit<ChakraStepperProps, 'colorScheme' | 'size' | 'variant'> {
+  colorScheme?: never;
   size?: never;
   variant?: never;
 }
 
 export interface StepStaticMembers {
-  Icon: typeof StepIcon;
+  Icon: FC<IconProps>;
   Indicator: typeof StepIndicator;
-  Number: typeof StepNumber;
+  Number: FC<TextProps>;
   Separator: typeof StepSeparator;
   Status: typeof StepStatus;
-  Title: typeof StepTitle;
-  Description: typeof StepDescription;
+  Title: typeof Text;
+  Description: typeof Text;
 }
 
 export interface StepperStaticMembers {

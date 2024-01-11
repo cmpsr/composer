@@ -1,5 +1,12 @@
 # @cmpsr/blocks
 
+## 14.0.0
+
+### Patch Changes
+
+- Updated dependencies [e0e8f041]
+  - @cmpsr/components@7.0.0
+
 ## 13.0.12
 
 ## 13.0.11

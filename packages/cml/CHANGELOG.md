@@ -1,5 +1,11 @@
 # @cmpsr/cml
 
+## 0.10.2
+
+### Patch Changes
+
+- e9c89f2e: feat: add BackgroundImage as a possible field type
+
 ## 0.10.1
 
 ### Patch Changes

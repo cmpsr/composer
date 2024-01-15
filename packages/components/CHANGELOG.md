@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.0.1
+
+### Patch Changes
+
+- f402b32c: feat: add responsiveSize in Checkbox to avoid adding invalid media attribute to svg
+
 ## 7.0.0
 
 ### Major Changes

@@ -32,9 +32,9 @@ const CheckboxTransition: React.FC<CheckboxTransitionProps> = ({ open, children 
   </AnimatePresence>
 );
 
-const CheckboxIcon = ({ __css, isChecked }: any) => (
+const CheckboxIcon = ({ isChecked }: any) => (
   <CheckboxTransition open={isChecked}>
-    <Icons.IconCheck {...__css} />
+    <Icons.IconCheck />
   </CheckboxTransition>
 );
 

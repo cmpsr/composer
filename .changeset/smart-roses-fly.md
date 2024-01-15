@@ -2,4 +2,4 @@
 "@cmpsr/components": patch
 ---
 
-feat: Remove \_css property from CheckboxIcon to avoid issue with media being passed as attribute to svg
+feat: add responsiveSize in Checkbox to avoid adding invalid media attribute to svg

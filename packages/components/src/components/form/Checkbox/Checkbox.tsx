@@ -1,8 +1,9 @@
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Checkbox as ChakraCheckbox, forwardRef } from '@chakra-ui/react';
-import { CheckboxProps } from './types';
+import { CheckboxProps, CheckboxSize } from './types';
 import * as Icons from '../../media/Icons';
+import { useResponsiveValue } from '@hooks';
 
 interface CheckboxTransitionProps {
   open: boolean;
@@ -38,6 +39,7 @@ const CheckboxIcon = ({ __css, isChecked }: any) => (
   </CheckboxTransition>
 );
 
-export const Checkbox = forwardRef<CheckboxProps, typeof ChakraCheckbox>((props, ref) => (
-  <ChakraCheckbox ref={ref} icon={<CheckboxIcon />} {...props} />
-));
+export const Checkbox = forwardRef<CheckboxProps, typeof ChakraCheckbox>(({ size, ...props }, ref) => {
+  const responsiveSize = useResponsiveValue(size) as CheckboxSize;
+  return <ChakraCheckbox ref={ref} icon={<CheckboxIcon />} size={responsiveSize} {...props} />;
+});

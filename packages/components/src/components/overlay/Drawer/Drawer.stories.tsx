@@ -4,7 +4,7 @@ import { Avatar, Button, Flex, Drawer, Text, TextPairing } from '@components';
 
 export default {
   component: Drawer,
-  title: 'Components/Navigation/Drawer',
+  title: 'Components/Overlay/Drawer',
 } as Meta;
 
 const AVATAR_URL = 'https://avatars0.githubusercontent.com/u/67131017?s=200';

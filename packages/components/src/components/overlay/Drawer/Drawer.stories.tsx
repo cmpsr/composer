@@ -8,10 +8,9 @@ export default {
 } as Meta;
 
 const AVATAR_URL = 'https://avatars0.githubusercontent.com/u/67131017?s=200';
-const TITLE = 'Header - M';
-const SUBTITLE = 'Body - Regular';
+const TITLE = 'Drawer Title';
+const SUBTITLE = 'Drawer Subtitle';
 
-// Example Story: Basic Drawer
 export const BasicDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClose = () => setIsOpen(false);
@@ -35,7 +34,7 @@ export const BasicDrawer = () => {
             </Flex>
           </Drawer.Header>
           <Drawer.Body>
-            <Text variant="text-body-large-medium">Drawer content goes here...</Text>
+            <Text variant="text-body-large-medium">Drawer Content</Text>
           </Drawer.Body>
           <Drawer.Footer>
             <Button variant="primary-alt" mr="1rem" onClick={handleClose}>

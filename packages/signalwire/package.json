@@ -35,7 +35,7 @@
     "rimraf": "^5.0.5"
   },
   "peerDependencies": {
-    "@cmpsr/components": "^7.0.0",
+    "@cmpsr/components": "^7.0.1",
     "react": "^18.2.0"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"

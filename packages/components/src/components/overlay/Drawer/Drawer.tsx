@@ -15,11 +15,7 @@ import { CloseButton, CloseButtonProps } from '@components';
 import { callAllHandlers } from '@chakra-ui/utils';
 
 
-export const Drawer: FC<DrawerProps> & DrawerStaticMembers = ({ children, ...rest }) => (
-  <ChakraDrawer {...rest}>
-    {children}
-  </ChakraDrawer>
-);
+export const Drawer: FC<DrawerProps> & DrawerStaticMembers = (props) => <ChakraDrawer {...props} />;
 
 const DrawerCloseButton = forwardRef<CloseButtonProps, typeof CloseButton>((props, ref) => {
   const { onClick, ...rest } = props;

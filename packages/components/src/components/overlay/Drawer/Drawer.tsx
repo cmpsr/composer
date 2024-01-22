@@ -7,11 +7,6 @@ import {
   DrawerBody as ChakraDrawerBody,
   DrawerHeader as ChakraDrawerHeader,
   DrawerProps,
-  ModalOverlayProps,
-  DrawerContentProps,
-  ModalFooterProps,
-  ModalBodyProps,
-  ModalHeaderProps,
   forwardRef,
   useModalContext,
 } from '@chakra-ui/react';
@@ -26,30 +21,10 @@ export const Drawer: FC<DrawerProps> & DrawerStaticMembers = ({ children, ...res
   </ChakraDrawer>
 );
 
-const DrawerOverlay: FC<ModalOverlayProps> = (props) => <ChakraDrawerOverlay {...props} />;
-
-const DrawerContent: FC<DrawerContentProps> = ({ children, ...rest }) => (
-  <ChakraDrawerContent {...rest}>
-    {children}
-  </ChakraDrawerContent>
-);
-
-const DrawerFooter: FC<ModalFooterProps> = ({ children, ...rest }) => (
-  <ChakraDrawerFooter {...rest}>
-    {children}
-  </ChakraDrawerFooter>
-
-);
-
-const DrawerBody: FC<ModalBodyProps> = ({ children, ...rest }) => (
-  <ChakraDrawerBody {...rest}>
-    {children}
-  </ChakraDrawerBody>
-);
-
 const DrawerCloseButton = forwardRef<CloseButtonProps, typeof CloseButton>((props, ref) => {
   const { onClick, ...rest } = props;
   const { onClose } = useModalContext();
+
   return (
     <CloseButton
       position="absolute"
@@ -66,16 +41,10 @@ const DrawerCloseButton = forwardRef<CloseButtonProps, typeof CloseButton>((prop
   );
 });
 
-const DrawerHeader: FC<ModalHeaderProps> = ({ children, ...rest }) => (
-  <ChakraDrawerHeader {...rest}>
-    {children}
-  </ChakraDrawerHeader>
-);
-
-Drawer.Overlay = DrawerOverlay;
-Drawer.Content = DrawerContent;
-Drawer.Footer = DrawerFooter;
-Drawer.Body = DrawerBody;
+Drawer.Overlay = ChakraDrawerOverlay;
+Drawer.Content = ChakraDrawerContent;
+Drawer.Footer = ChakraDrawerFooter;
+Drawer.Body = ChakraDrawerBody;
 Drawer.CloseButton = DrawerCloseButton;
-Drawer.Header = DrawerHeader;
+Drawer.Header = ChakraDrawerHeader;
 

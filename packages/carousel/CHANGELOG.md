@@ -1,5 +1,11 @@
 # @cmpsr/carousel
 
+## 4.0.2
+
+### Patch Changes
+
+- ec086ad3: chore: bump outdated peerDependencies
+
 ## 4.0.1
 
 ## 4.0.0

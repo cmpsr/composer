@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.2
+
+### Patch Changes
+
+- ec086ad3: chore: bump outdated peerDependencies
+
 ## 2.0.1
 
 ## 2.0.0

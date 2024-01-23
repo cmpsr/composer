@@ -26,7 +26,7 @@
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "peerDependencies": {
-    "@cmpsr/components": "^7.0.0",
+    "@cmpsr/components": "^7.0.1",
     "react": "^18.2.0"
   },
   "devDependencies": {

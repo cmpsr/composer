@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.0.2
+
+### Patch Changes
+
+- a44f1d1b: feat: update Button loading styles to use responsive size
+
 ## 7.0.1
 
 ### Patch Changes

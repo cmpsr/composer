@@ -1,5 +1,13 @@
 # @cmpsr/blocks
 
+## 14.0.3
+
+## 14.0.2
+
+### Patch Changes
+
+- ec086ad3: chore: bump outdated peerDependencies
+
 ## 14.0.1
 
 ## 14.0.0

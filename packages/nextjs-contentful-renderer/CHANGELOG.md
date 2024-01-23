@@ -1,5 +1,13 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 24.0.3
+
+## 24.0.2
+
+### Patch Changes
+
+- ec086ad3: chore: bump outdated peerDependencies
+
 ## 24.0.1
 
 ## 24.0.0

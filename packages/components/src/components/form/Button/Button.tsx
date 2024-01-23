@@ -10,7 +10,7 @@ export const Button = forwardRef<ButtonProps, typeof ChakraButton>(
     const responsiveSize = useResponsiveValue(size) as ButtonSize;
     const { loading } = useMultiStyleConfig('Button', {
       variant,
-      size,
+      size: responsiveSize,
       isLoading,
     }) as { loading: SpinnerProps };
     const leftIcon = getIcon(leadingIcon, responsiveSize);

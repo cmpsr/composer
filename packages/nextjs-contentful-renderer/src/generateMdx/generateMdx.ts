@@ -27,7 +27,8 @@ export const generateMdx = async (blocks: Block[], globalVariables: PropsValue =
   return all.reduce((acc, val) => acc.concat(val), []).filter((model) => !!Object.keys(model).length);
 };
 
-const bundler = async (code: string): Promise<string> => (
+const bundler = async (code: string): Promise<string> =>
+  (
     await bundleMDX({
       source: code.trim(),
       mdxOptions: (options) => {
@@ -36,4 +37,3 @@ const bundler = async (code: string): Promise<string> => (
       },
     })
   ).code;
-

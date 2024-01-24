@@ -16,5 +16,3 @@ export interface DrawerStaticMembers {
   CloseButton: FC<CloseButtonProps>;
   Header: FC<ModalHeaderProps>;
 }
-
-

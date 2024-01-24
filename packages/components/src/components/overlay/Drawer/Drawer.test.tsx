@@ -5,19 +5,13 @@ import { Drawer } from './Drawer';
 describe('Drawer', () => {
   const givenComponentRendered = (isOpen = false) =>
     renderWithProviders(
-      <Drawer
-        isOpen={isOpen}
-        onClose={jest.fn()}
-      >
+      <Drawer isOpen={isOpen} onClose={jest.fn()}>
         <Drawer.Overlay />
         <Drawer.Content>
           <Drawer.CloseButton />
           <Drawer.Header>Drawer Header Children</Drawer.Header>
-          <Drawer.Body>
-           Drawer Body Children
-          </Drawer.Body>
-          <Drawer.Footer>
-          </Drawer.Footer>
+          <Drawer.Body>Drawer Body Children</Drawer.Body>
+          <Drawer.Footer></Drawer.Footer>
         </Drawer.Content>
       </Drawer>
     );
@@ -34,4 +28,3 @@ describe('Drawer', () => {
     expect(screen.queryByText(/Drawer Header Children/i)).not.toBeInTheDocument();
   });
 });
-

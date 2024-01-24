@@ -49,6 +49,7 @@ module.exports = {
   },
   rules: {
     'comma-dangle': ['error', 'always-multiline'],
+    'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-var-requires': 0,

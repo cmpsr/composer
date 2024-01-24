@@ -1,7 +1,6 @@
 import { Messaging } from '@signalwire/realtime-api';
 import { ClientConfig } from 'types';
 
-
 export class SignalwireSms {
   private signalwireClient: Messaging.Client;
 

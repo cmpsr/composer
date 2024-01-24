@@ -1,5 +1,15 @@
 # @cmpsr/components
 
+## 7.1.0
+
+### Minor Changes
+
+- 616c863d: Add drawer export
+
+### Patch Changes
+
+- 12b15a5f: feat: update IconButton to use responsive size and remove custom logic to calculate Link icon size
+
 ## 7.0.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @cmpsr/markdown-editor
 
+## 2.0.4
+
+### Patch Changes
+
+- 2c1d9882: chore: fix linter issues
+
 ## 2.0.3
 
 ## 2.0.2

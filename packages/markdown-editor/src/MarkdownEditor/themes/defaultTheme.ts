@@ -1,6 +1,5 @@
 import type { EditorThemeClasses } from 'lexical';
 
-
 export const defaultTheme: EditorThemeClasses = {
   blockCursor: 'PlaygroundEditorTheme__blockCursor',
   characterLimit: 'PlaygroundEditorTheme__characterLimit',

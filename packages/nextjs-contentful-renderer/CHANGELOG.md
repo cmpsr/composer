@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 24.0.4
+
+### Patch Changes
+
+- 2c1d9882: chore: fix linter issues
+
 ## 24.0.3
 
 ## 24.0.2

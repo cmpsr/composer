@@ -41,7 +41,7 @@ const getButtonVariants = () =>
       ...prev,
       [variant]: (params: StyleFunctionProps) => {
         const variantValue = params.theme.components.Button.variants[variant];
-        return typeof variantValue === 'function' ? variantValue(params) : variantValue;
+        return typeof variantValue === 'function' ? variantValue({ ...params, hasLoading: false }) : variantValue;
       },
     }),
     {}
@@ -52,7 +52,7 @@ const getSizes = () => {
   linkSizes.forEach((size) => {
     sizes[size] = (props) =>
       isButtonVariant(props.variant)
-        ? props.theme.components.Button.sizes[size](props)
+        ? props.theme.components.Button.sizes[size]({ ...props, hasLoading: false })
         : {
             ...props.theme.textStyles[
               {

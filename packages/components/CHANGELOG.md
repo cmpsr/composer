@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 7.1.1
+
+### Patch Changes
+
+- 5253ee10: feat: exclude Button theme loading styles in Link theme
+- 11fc6c4a: Revert custom logic to calculate Link icon size
+
 ## 7.1.0
 
 ### Minor Changes

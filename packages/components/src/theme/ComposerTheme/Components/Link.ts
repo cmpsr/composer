@@ -48,7 +48,11 @@ const getButtonVariants = () =>
     {}
   );
 
-const filterOutLoading = ({ loading, ...style }) => style;
+const filterOutLoading = (styles) => {
+  const result = { ...styles };
+  delete result.loading;
+  return result;
+};
 
 const getSizes = () => {
   const sizes = {};

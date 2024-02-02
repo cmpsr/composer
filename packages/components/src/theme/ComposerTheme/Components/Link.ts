@@ -51,7 +51,7 @@ const getButtonVariants = () =>
 const getSizes = () => {
   const sizes = {};
   linkSizes.forEach((size) => {
-    sizes[size] = (props) => {
+    sizes[size] = (props) =>
       isButtonVariant(props.variant)
         ? omit(props.theme.components.Button.sizes[size](props), ['loading'])
         : {
@@ -63,7 +63,6 @@ const getSizes = () => {
               }[size]
             ],
           };
-    };
   });
   return sizes;
 };

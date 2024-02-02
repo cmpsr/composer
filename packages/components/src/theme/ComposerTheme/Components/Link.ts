@@ -42,8 +42,7 @@ const getButtonVariants = () =>
       ...prev,
       [variant]: (params: StyleFunctionProps) => {
         const variantValue = params.theme.components.Button.variants[variant];
-        const result = typeof variantValue === 'function' ? variantValue(params) : variantValue;
-        return omit(result, ['loading']);
+        return omit(typeof variantValue === 'function' ? variantValue(params) : variantValue, ['loading']);
       },
     }),
     {}
@@ -53,20 +52,17 @@ const getSizes = () => {
   const sizes = {};
   linkSizes.forEach((size) => {
     sizes[size] = (props) => {
-      if (isButtonVariant(props.variant)) {
-        const buttonStyle = omit(props.theme.components.Button.sizes[size](props), ['loading']);
-        return buttonStyle;
-      } else {
-        return {
-          ...props.theme.textStyles[
-            {
-              s: 'text-body-meta-medium',
-              m: 'text-body-medium',
-              l: 'text-body-large-medium',
-            }[size]
-          ],
-        };
-      }
+      isButtonVariant(props.variant)
+        ? omit(props.theme.components.Button.sizes[size](props), ['loading'])
+        : {
+            ...props.theme.textStyles[
+              {
+                s: 'text-body-meta-medium',
+                m: 'text-body-medium',
+                l: 'text-body-large-medium',
+              }[size]
+            ],
+          };
     };
   });
   return sizes;

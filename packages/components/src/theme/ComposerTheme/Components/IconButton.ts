@@ -12,7 +12,7 @@ export const IconButton: ComponentStyleConfig = {
       borderRadius,
       loading: buttonLoadingStyles,
       _before: {
-        ...resolvedButtonVariant._before,
+        ...buttonVariant._before,
         borderRadius,
       },
     };

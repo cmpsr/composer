@@ -1,6 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { StyleFunctionProps } from '@chakra-ui/theme-tools';
 import { linkSizes, buttonVariants } from '@components';
+import { omit } from '@chakra-ui/utils';
 
 export const linkBaseStyle = {
   width: 'inherit',
@@ -41,7 +42,7 @@ const getButtonVariants = () =>
       ...prev,
       [variant]: (params: StyleFunctionProps) => {
         const variantValue = params.theme.components.Button.variants[variant];
-        return typeof variantValue === 'function' ? variantValue(params) : variantValue;
+        return omit(typeof variantValue === 'function' ? variantValue(params) : variantValue, ['loading']);
       },
     }),
     {}
@@ -52,22 +53,15 @@ const getSizes = () => {
   linkSizes.forEach((size) => {
     sizes[size] = (props) =>
       isButtonVariant(props.variant)
-        ? props.theme.components.Button.sizes[size](props)
+        ? omit(props.theme.components.Button.sizes[size](props), ['loading'])
         : {
             ...props.theme.textStyles[
               {
-                s: {
-                  textStyleToken: 'text-body-meta-medium',
-                },
-                m: {
-                  textStyleToken: 'text-body-medium',
-                },
-                l: {
-                  textStyleToken: 'text-body-large-medium',
-                },
-              }[size].textStyleToken
+                s: 'text-body-meta-medium',
+                m: 'text-body-medium',
+                l: 'text-body-large-medium',
+              }[size]
             ],
-            ...generateLink(props.variant),
           };
   });
   return sizes;

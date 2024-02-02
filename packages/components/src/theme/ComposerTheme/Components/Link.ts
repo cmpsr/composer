@@ -41,34 +41,34 @@ const getButtonVariants = () =>
       ...prev,
       [variant]: (params: StyleFunctionProps) => {
         const variantValue = params.theme.components.Button.variants[variant];
-        return typeof variantValue === 'function' ? variantValue(params) : variantValue;
+        const result = typeof variantValue === 'function' ? variantValue(params) : variantValue;
+        return filterOutLoading(result);
       },
     }),
     {}
   );
 
+const filterOutLoading = ({ loading, ...style }) => style;
+
 const getSizes = () => {
   const sizes = {};
   linkSizes.forEach((size) => {
-    sizes[size] = (props) =>
-      isButtonVariant(props.variant)
-        ? props.theme.components.Button.sizes[size](props)
-        : {
-            ...props.theme.textStyles[
-              {
-                s: {
-                  textStyleToken: 'text-body-meta-medium',
-                },
-                m: {
-                  textStyleToken: 'text-body-medium',
-                },
-                l: {
-                  textStyleToken: 'text-body-large-medium',
-                },
-              }[size].textStyleToken
-            ],
-            ...generateLink(props.variant),
-          };
+    sizes[size] = (props) => {
+      if (isButtonVariant(props.variant)) {
+        const buttonStyle = filterOutLoading(props.theme.components.Button.sizes[size](props));
+        return buttonStyle;
+      } else {
+        return {
+          ...props.theme.textStyles[
+            {
+              s: 'text-body-meta-medium',
+              m: 'text-body-medium',
+              l: 'text-body-large-medium',
+            }[size]
+          ],
+        };
+      }
+    };
   });
   return sizes;
 };

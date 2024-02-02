@@ -3,22 +3,20 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { StyleFunctionProps, SystemStyleObject, transparentize } from '@chakra-ui/theme-tools';
 import { linkVariants } from '@components';
 
-const ghostButton = (hasLoading = true) => ({
+const ghostButton = {
   color: 'text-button-transparent',
   backgroundColor: 'transparent',
-  ...(hasLoading && {
-    loading: {
-      borderColor: 'text-button-transparent',
-      borderBottomColor: transparentize('text-button-transparent', 0.3),
-      borderLeftColor: transparentize('text-button-transparent', 0.3),
-    },
-    _loading: {
+  loading: {
+    borderColor: 'text-button-transparent',
+    borderBottomColor: transparentize('text-button-transparent', 0.3),
+    borderLeftColor: transparentize('text-button-transparent', 0.3),
+  },
+  _loading: {
+    backgroundColor: 'background-action-disabled',
+    _hover: {
       backgroundColor: 'background-action-disabled',
-      _hover: {
-        backgroundColor: 'background-action-disabled',
-      },
     },
-  }),
+  },
   _disabled: {
     color: transparentize('text-button-transparent', 0.6),
     opacity: 1,
@@ -41,17 +39,9 @@ const ghostButton = (hasLoading = true) => ({
   _active: {
     backgroundColor: 'background-action-pressed',
   },
-});
+};
 
-const generateButton = ({
-  color,
-  textColor,
-  hasLoading = true,
-}: {
-  color: string;
-  textColor?: string;
-  hasLoading?: boolean;
-}) => {
+const generateButton = (color: string, textColor?: string) => {
   const _disabled = {
     backgroundColor: `${color}-disabled`,
     opacity: 1,
@@ -75,7 +65,7 @@ const generateButton = ({
   return {
     color: `text-button-${textColor || color}`,
     backgroundColor: `${color}-default`,
-    ...(hasLoading && { loading: loadingStyles }),
+    loading: loadingStyles,
     _disabled,
     _hover: {
       backgroundColor: `${color}-hover`,
@@ -94,7 +84,7 @@ const generateButton = ({
   };
 };
 
-const generateAltButton = ({ color, hasLoading = true }: { color: string; hasLoading?: boolean }) => {
+const generateAltButton = (color: string) => {
   const _disabled = {
     backgroundColor: 'background-action-disabled',
     opacity: 1,
@@ -102,19 +92,15 @@ const generateAltButton = ({ color, hasLoading = true }: { color: string; hasLoa
     border: `1px solid ${color}-disabled`,
   };
 
-  const loadingStyles = {
+  return {
+    position: 'relative',
+    backgroundColor: 'background-action-default',
+    color: `text-link-${color}-default`,
     loading: {
       borderColor: 'primary-default',
       borderBottomColor: transparentize('primary-default', 0.3),
       borderLeftColor: transparentize('primary-default', 0.3),
     },
-  };
-
-  return {
-    position: 'relative',
-    backgroundColor: 'background-action-default',
-    color: `text-link-${color}-default`,
-    ...(hasLoading && loadingStyles),
     _disabled,
     _hover: {
       backgroundColor: 'background-action-hover',
@@ -170,62 +156,64 @@ const getTextStyleProperties = (textStyle: SystemStyleObject) => {
   };
 };
 
-const getLoadingSizeStyles = (size: string) => {
-  const spinnerSizeMapping = {
-    xs: '0.75rem',
-    s: '0.75rem',
-    m: '1rem',
-    l: '1rem',
-  };
-
-  return {
-    [$spinnerSize.variable]: spinnerSizeMapping[size],
-    loading: {
-      width: $spinnerSize.reference,
-      height: $spinnerSize.reference,
-      padding: 0,
-    },
-  };
-};
-
 export const Button: ComponentStyleConfig = {
   baseStyle: {
     borderRadius: 'radii-button',
   },
   sizes: {
-    xs: ({ theme, hasLoading = true }) => ({
+    xs: ({ theme }) => ({
       ...getTextStyleProperties(theme.textStyles['text-body-floating-label-medium']),
       px: '0.5rem',
       py: '0.25rem',
-      ...(hasLoading && getLoadingSizeStyles('xs')),
+      [$spinnerSize.variable]: '0.75rem',
+      loading: {
+        width: $spinnerSize.reference,
+        height: $spinnerSize.reference,
+        padding: 0,
+      },
     }),
-    s: ({ theme, hasLoading = true }) => ({
+    s: ({ theme }) => ({
       ...getTextStyleProperties(theme.textStyles['text-body-meta-medium']),
       px: '0.75rem',
       py: '0.5rem',
-      ...(hasLoading && getLoadingSizeStyles('s')),
+      [$spinnerSize.variable]: '0.75rem',
+      loading: {
+        width: $spinnerSize.reference,
+        height: $spinnerSize.reference,
+        padding: 0,
+      },
     }),
-    m: ({ theme, hasLoading = true }) => ({
+    m: ({ theme }) => ({
       ...getTextStyleProperties(theme.textStyles['text-body-medium']),
       px: '1rem',
       py: '0.5rem',
-      ...(hasLoading && getLoadingSizeStyles('m')),
+      [$spinnerSize.variable]: '1rem',
+      loading: {
+        width: $spinnerSize.reference,
+        height: $spinnerSize.reference,
+        padding: 0,
+      },
     }),
-    l: ({ theme, hasLoading = true }) => ({
+    l: ({ theme }) => ({
       ...getTextStyleProperties(theme.textStyles['text-body-large-medium']),
       px: '1.5rem',
       py: '0.75rem',
-      ...(hasLoading && getLoadingSizeStyles('l')),
+      [$spinnerSize.variable]: '1rem',
+      loading: {
+        width: $spinnerSize.reference,
+        height: $spinnerSize.reference,
+        padding: 0,
+      },
     }),
   },
   variants: {
-    accent: ({ hasLoading }) => generateButton({ color: 'accent', hasLoading }),
-    primary: ({ hasLoading }) => generateButton({ color: 'primary', hasLoading }),
-    secondary: ({ hasLoading }) => generateButton({ color: 'secondary', hasLoading }),
-    'primary-alt': ({ hasLoading }) => generateAltButton({ color: 'primary', hasLoading }),
-    'secondary-alt': ({ hasLoading }) => generateAltButton({ color: 'secondary', hasLoading }),
-    destroy: ({ hasLoading }) => generateButton({ color: 'alert-error', textColor: 'alert', hasLoading }),
-    ghost: ({ hasLoading }) => ghostButton(hasLoading),
+    accent: generateButton('accent'),
+    primary: generateButton('primary'),
+    secondary: generateButton('secondary'),
+    'primary-alt': generateAltButton('primary'),
+    'secondary-alt': generateAltButton('secondary'),
+    destroy: generateButton('alert-error', 'alert'),
+    ghost: ghostButton,
     ...getLinkVariants(),
   },
   defaultProps: {

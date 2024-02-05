@@ -1,4 +1,3 @@
-import { cssVar } from '@chakra-ui/react';
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { StyleFunctionProps, SystemStyleObject, transparentize } from '@chakra-ui/theme-tools';
 import { linkVariants } from '@components';
@@ -130,8 +129,6 @@ const generateAltButton = (color: string) => {
   };
 };
 
-const $spinnerSize = cssVar('spinner-size');
-
 const getLinkVariants = () =>
   linkVariants.reduce(
     (prev, variant) => ({
@@ -165,10 +162,9 @@ export const Button: ComponentStyleConfig = {
       ...getTextStyleProperties(theme.textStyles['text-body-floating-label-medium']),
       px: '0.5rem',
       py: '0.25rem',
-      [$spinnerSize.variable]: '0.75rem',
       loading: {
-        width: $spinnerSize.reference,
-        height: $spinnerSize.reference,
+        width: '0.75rem',
+        height: '0.75rem',
         padding: 0,
       },
     }),
@@ -176,10 +172,9 @@ export const Button: ComponentStyleConfig = {
       ...getTextStyleProperties(theme.textStyles['text-body-meta-medium']),
       px: '0.75rem',
       py: '0.5rem',
-      [$spinnerSize.variable]: '0.75rem',
       loading: {
-        width: $spinnerSize.reference,
-        height: $spinnerSize.reference,
+        width: '0.75rem',
+        height: '0.75rem',
         padding: 0,
       },
     }),
@@ -187,10 +182,9 @@ export const Button: ComponentStyleConfig = {
       ...getTextStyleProperties(theme.textStyles['text-body-medium']),
       px: '1rem',
       py: '0.5rem',
-      [$spinnerSize.variable]: '1rem',
       loading: {
-        width: $spinnerSize.reference,
-        height: $spinnerSize.reference,
+        width: '1rem',
+        height: '1rem',
         padding: 0,
       },
     }),
@@ -198,10 +192,9 @@ export const Button: ComponentStyleConfig = {
       ...getTextStyleProperties(theme.textStyles['text-body-large-medium']),
       px: '1.5rem',
       py: '0.75rem',
-      [$spinnerSize.variable]: '1rem',
       loading: {
-        width: $spinnerSize.reference,
-        height: $spinnerSize.reference,
+        width: '1rem',
+        height: '1rem',
         padding: 0,
       },
     }),

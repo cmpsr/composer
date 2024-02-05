@@ -1,5 +1,5 @@
 import React, { FC, Fragment, ReactNode, cloneElement, isValidElement, Children } from 'react';
-import { Box, Divider, Flex, IconButton, IconMenu2, IconX, Link, Text, useDisclosure } from '@cmpsr/components';
+import { Box, Divider, Flex, ButtonIcon, IconMenu2, IconX, Link, Text, useDisclosure } from '@cmpsr/components';
 import { useNavigationContext } from './NavigationContext';
 import { NavigationLinkProps, NavigationLinksProps as INavigationLinksProps } from '../types';
 
@@ -21,7 +21,7 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
 
   return showBaseNavigation ? (
     <>
-      <IconButton icon={<IconMenu2 />} aria-label="Hamburger menu button" variant="ghost" size="l" onClick={onOpen} />
+      <ButtonIcon icon={<IconMenu2 />} aria-label="Hamburger menu button" variant="ghost" size="l" onClick={onOpen} />
       <Flex justifyContent="space-between" flexBasis="100%" gap="0.75rem">
         {image}
         {keepActionsAlwaysVisible && actions}
@@ -39,7 +39,7 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
           {...props}
         >
           <Box pt="0.75rem" px="1rem">
-            <IconButton
+            <ButtonIcon
               icon={<IconX />}
               aria-label="Close hamburguer menu button"
               variant="ghost"

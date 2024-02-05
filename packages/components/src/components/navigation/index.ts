@@ -1,4 +1,4 @@
 export * from './Breadcrumb';
-export * from './IconLink';
+export * from './LinkIcon';
 export * from './Link';
 export * from './Stepper';

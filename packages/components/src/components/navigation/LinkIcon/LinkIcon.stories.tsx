@@ -1,20 +1,20 @@
 import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
-import { IconLink } from './IconLink';
-import { iconLinkSizes, iconLinkVariants } from './types';
+import { LinkIcon } from './LinkIcon';
+import { linkIconSizes, linkIconVariants } from './types';
 import { Box, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { IconSend, Text } from '@components';
 
 export default {
-  component: IconLink,
-  title: 'Components/Navigation/IconLink',
+  component: LinkIcon,
+  title: 'Components/Navigation/LinkIcon',
   argTypes: {
     variant: {
-      options: [...iconLinkVariants],
+      options: [...linkIconVariants],
       control: { type: 'select' },
     },
     size: {
-      options: iconLinkSizes,
+      options: linkIconSizes,
       control: { type: 'select' },
     },
   },
@@ -31,13 +31,13 @@ const AllVariantsTemplate = () => (
       </Tr>
     </Thead>
     <Tbody>
-      {[...iconLinkVariants.filter((v) => v !== 'link')].map((variant, i) => (
+      {linkIconVariants.map((variant, i) => (
         <Fragment key={i}>
           <Tr key={`${variant}-${i}`}>
             <Td>{variant}</Td>
-            {iconLinkSizes.map((size, i) => (
+            {linkIconSizes.map((size, i) => (
               <Td key={`${variant}-${size}-${i}`}>
-                <IconLink href="#" role="link" variant={variant} size={size} icon={<IconSend />} />
+                <LinkIcon href="#" role="link" variant={variant} size={size} icon={<IconSend />} />
               </Td>
             ))}
           </Tr>
@@ -52,19 +52,19 @@ export const AllVariants = AllVariantsTemplate.bind({});
 export const WrappedByText = () => (
   <Box maxWidth="680px">
     <Text>
-      This example illustrates the use of the <code>isInline</code> property with the <code>IconLink</code> component.
+      This example illustrates the use of the <code>isInline</code> property with the <code>LinkIcon</code> component.
       When <code>isInline</code> is set, the link is displayed inline, allowing the text to wrap naturally in confined
       spaces. Notice how the following icon link
-      <IconLink _hover={{ textDecoration: 'underline' }} href="#" isInline icon={<IconSend />} />
+      <LinkIcon _hover={{ textDecoration: 'underline' }} href="#" isInline icon={<IconSend />} />
       integrates seamlessly with surrounding text, wrapping to the next line as needed.
     </Text>
   </Box>
 );
 
 const Template = ({ ...args }) => (
-  <IconLink href="#" role="link" icon={<IconSend />} {...args}>
+  <LinkIcon href="#" role="link" icon={<IconSend />} {...args}>
     Playground
-  </IconLink>
+  </LinkIcon>
 );
 
 export const Playground = Template.bind({});

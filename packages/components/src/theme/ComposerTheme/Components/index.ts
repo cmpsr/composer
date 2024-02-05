@@ -5,12 +5,12 @@ import { Avatar } from './Avatar';
 import { Badge } from './Badge';
 import { Breadcrumb } from './Breadcrumb';
 import { Button } from './Button';
+import { ButtonIcon } from './ButtonIcon';
 import { Card } from './Card';
 import { Checkbox } from './Checkbox';
 import { CloseButton } from './CloseButton';
 import { Divider } from './Divider';
 import { Icon } from './Icon';
-import { IconButton } from './IconButton';
 import { Input } from './Input';
 import { InlineAlert } from './InlineAlert';
 import { Link } from './Link';
@@ -43,12 +43,13 @@ export const components = {
   Badge,
   Breadcrumb,
   Button,
+  ButtonIcon,
   Card,
   Checkbox,
   CloseButton,
   Divider,
   Icon,
-  IconButton,
+  IconButton: ButtonIcon,
   Input,
   InlineAlert,
   Kbd: Symbols,

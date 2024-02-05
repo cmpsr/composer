@@ -16,6 +16,8 @@ export const IconButton: FC<IconButtonProps> = forwardRef<IconButtonProps, 'butt
 
     const Icon = React.cloneElement(icon, { size: responsiveSize });
 
+    console.warn('Deprecated: The component "IconButton" is deprecated. Please use "ButtonIcon" instead.');
+
     return (
       <ChakraIconButton
         ref={ref}

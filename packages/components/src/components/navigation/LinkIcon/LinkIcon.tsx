@@ -8,9 +8,9 @@ import {
   StyleProps,
   chakra,
 } from '@chakra-ui/react';
-import { IconLinkProps, IconLinkSize } from './types';
+import { LinkIconProps, LinkIconSize } from './types';
 
-export const IconLink = forwardRef<IconLinkProps, typeof ChakraLink>(
+export const LinkIcon = forwardRef<LinkIconProps, typeof ChakraLink>(
   ({ icon, size = 'm', variant, isInline = false, ...props }, ref) => {
     const styles = useStyleConfig('Link', { isInline, variant, size }) as StyleProps;
     const sizedIcon = getIcon(icon, size, isInline);
@@ -23,7 +23,7 @@ export const IconLink = forwardRef<IconLinkProps, typeof ChakraLink>(
   }
 );
 
-const getIcon = (icon: ReactElement<IconProps>, size: ResponsiveValue<IconLinkSize>, isInline: boolean) => {
+const getIcon = (icon: ReactElement<IconProps>, size: ResponsiveValue<LinkIconSize>, isInline: boolean) => {
   if (!isValidElement(icon)) return null;
 
   const iconElement = cloneElement(icon, { size } as Partial<IconProps>);

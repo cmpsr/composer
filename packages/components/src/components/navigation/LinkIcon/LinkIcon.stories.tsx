@@ -17,6 +17,9 @@ export default {
       options: linkIconSizes,
       control: { type: 'select' },
     },
+    isInline: {
+      control: 'boolean',
+    },
   },
 } as Meta;
 

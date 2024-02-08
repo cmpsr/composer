@@ -11,7 +11,7 @@ export const linkBaseStyle = {
   },
 };
 
-const generateLink = (colors: { default: string; hover: string; pressed: string; focus: string }) => {
+export const generateLink = (colors: { default: string; hover: string; pressed: string; focus: string }) => {
   return {
     color: colors.default,
     padding: 0,
@@ -67,7 +67,7 @@ const getSizes = () => {
   return sizes;
 };
 
-const linkPrimary = generateLink({
+export const linkPrimary = generateLink({
   default: 'text-link-primary-default',
   hover: 'text-link-primary-hover',
   pressed: 'text-link-primary-pressed',

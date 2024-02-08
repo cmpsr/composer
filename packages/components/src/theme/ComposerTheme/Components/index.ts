@@ -10,10 +10,12 @@ import { Card } from './Card';
 import { Checkbox } from './Checkbox';
 import { CloseButton } from './CloseButton';
 import { Divider } from './Divider';
+import { Dropdown } from './Dropdown';
 import { Icon } from './Icon';
-import { Input } from './Input';
 import { InlineAlert } from './InlineAlert';
+import { Input } from './Input';
 import { Link } from './Link';
+import { LinkIcon } from './LinkIcon';
 import { Modal } from './Modal';
 import { NumberInput } from './NumberInput';
 import { PinInput } from './PinInput';
@@ -21,6 +23,7 @@ import { ProgressBar } from './ProgressBar';
 import { ProgressCircular } from './ProgressCircular';
 import { Radio } from './Radio';
 import { Select } from './Select';
+import { Skeleton } from './Skeleton';
 import { Slider } from './Slider';
 import { Spinner } from './Spinner';
 import { Stepper } from './Stepper';
@@ -29,11 +32,9 @@ import { Symbols } from './Symbols';
 import { Tabs } from './Tabs';
 import { Tag } from './Tag';
 import { Text } from './Text';
-import { TextPairing } from './TextPairing';
 import { Textarea } from './Textarea';
+import { TextPairing } from './TextPairing';
 import { Tooltip } from './Tooltip';
-import { Dropdown } from './Dropdown';
-import { Skeleton } from './Skeleton';
 
 export const components = {
   Accordion,
@@ -50,10 +51,11 @@ export const components = {
   Divider,
   Icon,
   IconButton: ButtonIcon,
-  Input,
   InlineAlert,
+  Input,
   Kbd: Symbols,
   Link,
+  LinkIcon,
   Menu: Dropdown,
   Modal,
   NumberInput,
@@ -70,7 +72,7 @@ export const components = {
   Tabs,
   Tag,
   Text,
-  TextPairing,
   Textarea,
+  TextPairing,
   Tooltip,
 };

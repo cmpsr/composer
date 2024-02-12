@@ -10,7 +10,7 @@ export default {
   title: 'Components/Navigation/LinkIcon',
   argTypes: {
     variant: {
-      options: [...linkIconVariants],
+      options: linkIconVariants,
       control: { type: 'select' },
     },
     size: {

@@ -1,5 +1,15 @@
 # @cmpsr/components
 
+## 7.2.0
+
+### Minor Changes
+
+- 476454cb: Add LinkIcon component and rename IconButton to ButtonIcon
+
+### Patch Changes
+
+- bcef3cec: Fix the import in the NumberedList type
+
 ## 7.1.1
 
 ### Patch Changes

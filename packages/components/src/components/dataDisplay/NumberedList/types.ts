@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { FlexProps, TextVariant } from '@components';
+import { FlexProps, TextVariant } from '@cmpsr/components';
 
 export interface NumberedListProps extends FlexProps {
   number?: number;

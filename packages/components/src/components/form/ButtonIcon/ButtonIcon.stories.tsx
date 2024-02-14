@@ -1,20 +1,28 @@
 import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
-import { IconButton } from './IconButton';
-import { iconButtonSizes, iconButtonVariants } from './types';
+import { ButtonIcon } from './ButtonIcon';
+import { buttonIconSizes, buttonIconVariants } from './types';
 import { IconCloud } from '@components';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 
 export default {
-  component: IconButton,
-  title: 'Components/Form/IconButton',
+  component: ButtonIcon,
+  title: 'Components/Form/ButtonIcon',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Note: The ButtonIcon component has replaced the previous IconButton. We recommend utilizing ButtonIcon instead. ',
+      },
+    },
+  },
   argTypes: {
     size: {
-      options: iconButtonSizes,
+      options: buttonIconSizes,
       control: { type: 'select' },
     },
     variant: {
-      options: iconButtonVariants,
+      options: buttonIconVariants,
       control: { type: 'select' },
     },
   },
@@ -32,7 +40,7 @@ export const All = () => (
       </Tr>
     </Thead>
     <Tbody>
-      {iconButtonVariants.map((variant, i) => (
+      {buttonIconVariants.map((variant, i) => (
         <Fragment key={i}>
           {[false, true].map((isRound) =>
             ['default', 'disabled', 'loading'].map((state, i) => (
@@ -40,9 +48,9 @@ export const All = () => (
                 <Td>
                   {variant}-{state}-{isRound ? 'rounded' : 'squared'}
                 </Td>
-                {iconButtonSizes.map((size, i) => (
+                {buttonIconSizes.map((size, i) => (
                   <Td key={`${variant}-${size}-${i}-${state}`}>
-                    <IconButton
+                    <ButtonIcon
                       icon={<IconCloud />}
                       aria-label={size}
                       variant={variant}
@@ -70,7 +78,7 @@ export const All = () => (
   </Table>
 );
 
-const Template = (args) => <IconButton icon={<IconCloud />} isLoading {...args} />;
+const Template = (args) => <ButtonIcon icon={<IconCloud />} isLoading {...args} />;
 export const Playground = Template.bind({});
 Playground.args = {
   variant: 'primary',

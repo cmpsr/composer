@@ -1,5 +1,6 @@
 export * from './Autocomplete';
 export * from './Button';
+export * from './ButtonIcon';
 export * from './Checkbox';
 export * from './DateInput';
 export * from './IconButton';

@@ -1,6 +1,6 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
-export const IconButton: ComponentStyleConfig = {
+export const ButtonIcon: ComponentStyleConfig = {
   baseStyle: ({ isRound, theme, variant, ...props }) => {
     const buttonStyles = theme.components.Button;
     const buttonVariant = buttonStyles.variants[variant];

@@ -4,6 +4,9 @@ import { IconButtonProps, IconButtonSize, IconButtonStyle } from './types';
 import { Spinner } from '@components';
 import { useResponsiveValue } from '@hooks';
 
+/**
+ * @deprecated The component "IconButton" is deprecated. Please use "ButtonIcon" instead.
+ */
 export const IconButton: FC<IconButtonProps> = forwardRef<IconButtonProps, 'button'>(
   ({ isRound, icon, size, ...props }, ref) => {
     const responsiveSize = useResponsiveValue(size) as IconButtonSize;
@@ -15,6 +18,8 @@ export const IconButton: FC<IconButtonProps> = forwardRef<IconButtonProps, 'butt
     }) as IconButtonStyle;
 
     const Icon = React.cloneElement(icon, { size: responsiveSize });
+
+    console.warn('Deprecated: The component "IconButton" is deprecated. Please use "ButtonIcon" instead.');
 
     return (
       <ChakraIconButton

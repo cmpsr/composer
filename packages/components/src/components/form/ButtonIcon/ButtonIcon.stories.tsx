@@ -8,6 +8,14 @@ import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 export default {
   component: ButtonIcon,
   title: 'Components/Form/ButtonIcon',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Note: The ButtonIcon component has replaced the previous IconButton. We recommend utilizing ButtonIcon instead. ',
+      },
+    },
+  },
   argTypes: {
     size: {
       options: buttonIconSizes,

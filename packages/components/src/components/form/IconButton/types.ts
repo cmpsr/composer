@@ -1,8 +1,14 @@
-import { ButtonIconSize, ButtonIconVariant, buttonIconSizes, buttonIconVariants } from '@components';
+import {
+  ButtonIconSize,
+  ButtonIconVariant,
+  ButtonProps,
+  SpinnerProps,
+  buttonIconSizes,
+  buttonIconVariants,
+} from '@components';
 
-import { RefAttributes } from 'react';
 import { IconButtonProps as ChakraButtonIconProps, ResponsiveValue } from '@chakra-ui/react';
-import { ButtonProps, SpinnerProps } from '@components';
+import { RefAttributes } from 'react';
 
 export const iconButtonSizes = buttonIconSizes;
 export const iconButtonVariants = buttonIconVariants;

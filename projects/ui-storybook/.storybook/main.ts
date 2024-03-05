@@ -12,6 +12,7 @@ module.exports = {
     '../../../packages/markdown-editor/src/**/*.stories.tsx',
   ],
   addons: [
+    '@storybook/addon-docs',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     'storybook-addon-turbo-build',

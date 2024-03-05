@@ -17,7 +17,7 @@ module.exports = {
     'storybook-addon-turbo-build',
     '@storybook/addon-viewport',
   ],
-  features: { postcss: false },
+  features: { postcss: false, buildStoriesJson: true },
   refs: {
     '@chakra-ui/react': {
       disable: true,

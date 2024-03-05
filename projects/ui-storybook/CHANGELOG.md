@@ -1,5 +1,11 @@
 # @cmpsr/ui-storybook
 
+## 0.2.38
+
+### Patch Changes
+
+- a49e4521: feat: build stories as json
+
 ## 0.2.37
 
 ### Patch Changes

@@ -62,6 +62,6 @@ const Template = (args) => <Badge {...args}></Badge>;
 export const Playground = Template.bind({});
 Playground.args = {
   variant: 'solid',
-  status: 'custom',
+  status: 'primary',
   children: 'Composer badge!',
 };

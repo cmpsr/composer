@@ -1,4 +1,5 @@
 import { BadgeProps as ChakraBadgeProps } from '@chakra-ui/react';
+import { ReactElement } from 'react';
 
 export const badgeVariants = ['solid', 'outline', 'subtle'] as const;
 export type BadgeVariant = (typeof badgeVariants)[number];
@@ -18,4 +19,6 @@ export type BadgeStatus = (typeof badgeStatuses)[number];
 export interface BadgeProps extends ChakraBadgeProps {
   variant?: BadgeVariant;
   status?: BadgeStatus;
+  leadingIcon?: ReactElement;
+  trailingIcon?: ReactElement;
 }

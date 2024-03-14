@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
-import { Table, Tbody, Td, Th, Thead, Tr, Icon } from '@chakra-ui/react';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import * as Icons from '../../media/Icons';
 import { Badge } from './Badge';
 import { badgeStatuses, badgeVariants } from './types';
@@ -41,33 +41,41 @@ const AllTemplate = () => {
         {badgeVariants.map((variant, i) => (
           <Fragment key={i}>
             <Tr>
-              <Td rowSpan={4}>{variant}</Td>
+              <Td rowSpan={5}>{variant}</Td>
             </Tr>
-            {[`${variant}`, `${variant} leading icon`, `${variant} trailing icon`].map((state, i) => (
-              <Tr key={`${state}-${i}`}>
-                <Td>{state}</Td>
-                {badgeStatuses.map((status, i) => (
-                  <Td key={`${variant}-${status}-${i}`}>
-                    <Badge
-                      variant={variant}
-                      status={status}
-                      {...{
-                        ...(state.endsWith('leading icon') && {
-                          leadingIcon: <Icons.IconEdit />,
-                        }),
-                      }}
-                      {...{
-                        ...(state.endsWith('trailing icon') && {
-                          trailingIcon: <Icons.IconEdit />,
-                        }),
-                      }}
-                    >
-                      {variant}
-                    </Badge>
-                  </Td>
-                ))}
-              </Tr>
-            ))}
+            {[`${variant}`, `${variant} leading icon`, `${variant} trailing icon`, `${variant} both icons`].map(
+              (state, i) => (
+                <Tr key={`${state}-${i}`}>
+                  <Td>{state}</Td>
+                  {badgeStatuses.map((status, i) => (
+                    <Td key={`${variant}-${status}-${i}`}>
+                      <Badge
+                        variant={variant}
+                        status={status}
+                        {...{
+                          ...(state.endsWith('leading icon') && {
+                            leadingIcon: <Icons.IconEdit />,
+                          }),
+                        }}
+                        {...{
+                          ...(state.endsWith('trailing icon') && {
+                            trailingIcon: <Icons.IconEdit />,
+                          }),
+                        }}
+                        {...{
+                          ...(state.endsWith('both icons') && {
+                            leadingIcon: <Icons.IconEdit />,
+                            trailingIcon: <Icons.IconEdit />,
+                          }),
+                        }}
+                      >
+                        {variant}
+                      </Badge>
+                    </Td>
+                  ))}
+                </Tr>
+              )
+            )}
           </Fragment>
         ))}
       </Tbody>
@@ -77,10 +85,10 @@ const AllTemplate = () => {
 
 export const All = AllTemplate.bind({});
 
-const Template = ({ showLeadingICon, showTrailingIcon, ...args }) => (
+const Template = ({ showLeadingIcon, showTrailingIcon, ...args }) => (
   <Badge
-    {...(showLeadingICon && { leadingIcon: <Icon /> })}
-    {...(showTrailingIcon && { trailingIcon: <Icon /> })}
+    {...(showLeadingIcon && { leadingIcon: <Icons.IconEdit /> })}
+    {...(showTrailingIcon && { trailingIcon: <Icons.IconEdit /> })}
     {...args}
   />
 );

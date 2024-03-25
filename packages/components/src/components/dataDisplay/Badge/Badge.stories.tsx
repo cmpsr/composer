@@ -52,22 +52,16 @@ const AllTemplate = () => {
                       <Badge
                         variant={variant}
                         status={status}
-                        {...{
-                          ...(state.endsWith('leading icon') && {
-                            leadingIcon: <Icons.IconEdit />,
-                          }),
-                        }}
-                        {...{
-                          ...(state.endsWith('trailing icon') && {
-                            trailingIcon: <Icons.IconEdit />,
-                          }),
-                        }}
-                        {...{
-                          ...(state.endsWith('both icons') && {
-                            leadingIcon: <Icons.IconEdit />,
-                            trailingIcon: <Icons.IconEdit />,
-                          }),
-                        }}
+                        {...(state.endsWith('leading icon') && {
+                          leadingIcon: <Icons.IconEdit />,
+                        })}
+                        {...(state.endsWith('trailing icon') && {
+                          trailingIcon: <Icons.IconEdit />,
+                        })}
+                        {...(state.endsWith('both icons') && {
+                          leadingIcon: <Icons.IconEdit />,
+                          trailingIcon: <Icons.IconEdit />,
+                        })}
                       >
                         {variant}
                       </Badge>

@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "7.2.0",
+  "version": "7.3.0",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -23,7 +23,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "gen:theme-typings": "./scripts/generate_theme_typings.sh",
+    "gen:theme-typings": "sh ./scripts/generate_theme_typings.sh",
     "postinstall": "npm run gen:theme-typings",
     "gen:icons": "node scripts/generate_icons.js",
     "type:check": "yarn tsc --project tsconfig.json --noEmit",

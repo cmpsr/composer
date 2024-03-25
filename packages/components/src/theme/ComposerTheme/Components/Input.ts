@@ -260,11 +260,15 @@ const outlineStyle = (props) => {
       },
       _hover: {
         backgroundColor: 'background-action-hover',
+        borderWidth: '0.0625rem',
+        borderStyle: 'solid',
         borderColor: 'ui-element-outline-active',
       },
       // We need to remove the focus state from the chakra input so we can add the border shadow to the full input group.
       _focusVisible: {
         boxShadow: 'none',
+        borderWidth: '0.0625rem',
+        borderStyle: 'solid',
         borderColor: 'ui-element-outline-default',
       },
       _invalid: {

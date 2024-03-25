@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 7.3.0
+
+### Minor Changes
+
+- c3802dfe: [COM-1552] Badge component new variants
+- d3541680: Prepend gen:theme-typings script with 'sh' for OS portability
+
 ## 7.2.0
 
 ### Minor Changes

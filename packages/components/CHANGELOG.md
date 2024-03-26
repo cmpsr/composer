@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 7.4.0
+
+### Minor Changes
+
+- aa1f712a: Update outline variant of Input component
+- b6e3af3d: Badge component to support icons
+
 ## 7.3.0
 
 ### Minor Changes

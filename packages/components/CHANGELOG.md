@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.4.1
+
+### Patch Changes
+
+- 55b32107: update slider theme to include disabled styling
+
 ## 7.4.0
 
 ### Minor Changes

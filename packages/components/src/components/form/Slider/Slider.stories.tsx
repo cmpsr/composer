@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Meta } from '@storybook/react';
-import { VStack, StackDivider, HStack } from '@chakra-ui/layout';
+import { HStack, StackDivider, VStack } from '@chakra-ui/layout';
 import { Slider, SliderProps, Text } from '@components';
+import { Meta } from '@storybook/react';
+import React, { useState } from 'react';
 
 const orientations = ['horizontal', 'vertical'];
 
@@ -98,5 +98,5 @@ export const Playground = Template.bind({});
 Playground.args = {
   minH: 200,
   orientation: 'horizontal',
-  isDisabled: true,
+  isDisabled: false,
 };

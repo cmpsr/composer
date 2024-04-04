@@ -14,21 +14,27 @@ const sharedSizeStyle = (props) => ({
 });
 
 export const Slider: ComponentStyleConfig = {
-  baseStyle: {
+  baseStyle: ({ isDisabled }) => ({
     track: {
       bg: 'background-action-active',
       borderRadius: 'radii-half',
+      _disabled: {
+        bg: 'background-container-disabled',
+      },
     },
     filledTrack: {
-      bg: 'primary-default',
+      bg: isDisabled ? 'primary-disabled' : 'primary-default',
     },
     thumb: {
       bg: 'background-action-default',
       _focus: {
         boxShadow: `0 0 0 0.1875rem var(--chakra-colors-primary-focus)`,
       },
+      _disabled: {
+        bg: 'background-action-disabled',
+      },
     },
-  },
+  }),
   sizes: {
     sm: sharedSizeStyle,
     md: sharedSizeStyle,

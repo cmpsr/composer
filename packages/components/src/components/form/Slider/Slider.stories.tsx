@@ -98,4 +98,5 @@ export const Playground = Template.bind({});
 Playground.args = {
   minH: 200,
   orientation: 'horizontal',
+  isDisabled: true,
 };

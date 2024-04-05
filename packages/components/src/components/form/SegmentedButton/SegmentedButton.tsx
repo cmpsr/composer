@@ -1,6 +1,15 @@
-import { Box, Flex } from '@components';
-import React, { FC, cloneElement, useState } from 'react';
-import { ButtonProps, OptionValue, SegmentedButtonProps, SegmentedButtonStaticMembers } from './types';
+import { Button as ChakraButton, ResponsiveValue, useMultiStyleConfig } from '@chakra-ui/react';
+import { Flex, IconProps } from '@components';
+import { useResponsiveValue } from '@hooks';
+import React, { FC, ReactElement, cloneElement, isValidElement, useState } from 'react';
+import {
+  ButtonProps,
+  OptionValue,
+  SegmentedButtonProps,
+  SegmentedButtonSize,
+  SegmentedButtonStaticMembers,
+  SegmentedButtonStyles,
+} from './types';
 
 // Habrá varios tipos de botones, unos que aceptan iconos, que acepten texto + icono (opcional), pero no podrán ser combinados entre ellos.
 // El primer elemento y el último tendrán un radius diferente a los que estén entre medias.
@@ -14,6 +23,7 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
   defaultOption = '',
 }) => {
   const [selectedValue, setSelectedValue] = useState<OptionValue>(defaultOption);
+  const responsiveSize = useResponsiveValue(size) as SegmentedButtonSize;
 
   const handleChange = (value: OptionValue) => {
     setSelectedValue(value);
@@ -28,13 +38,32 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
           onClick: () => handleChange(option.value),
           isActive: selectedValue === option.value,
           variant,
-          size,
+          size: responsiveSize,
         })
       )}
     </Flex>
   );
 };
 
-export const Button: FC<ButtonProps> = ({ isActive, ...rest }) => <Box bg={isActive ? 'green' : 'red'} {...rest} />;
+export const Button: FC<ButtonProps> = ({ isActive, children, leadingIcon, trailingIcon, size, ...rest }) => {
+  const styles = useMultiStyleConfig('SegmentedButton', { isActive }) as SegmentedButtonStyles;
+  const leadingIconSized = getIcon(leadingIcon, size);
+  const trailingIconSized = getIcon(trailingIcon, size);
+  return (
+    <ChakraButton {...styles.button} size={size} {...rest}>
+      {leadingIconSized}
+      {children}
+      {trailingIconSized}
+    </ChakraButton>
+  );
+};
 
 SegmentedButton.Button = Button;
+
+const getIcon = (icon: ReactElement<IconProps>, size: ResponsiveValue<SegmentedButtonSize>) => {
+  if (!isValidElement(icon)) {
+    return null;
+  }
+
+  return cloneElement(icon, { size } as Partial<IconProps>);
+};

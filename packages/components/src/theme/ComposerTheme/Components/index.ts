@@ -22,6 +22,7 @@ import { PinInput } from './PinInput';
 import { ProgressBar } from './ProgressBar';
 import { ProgressCircular } from './ProgressCircular';
 import { Radio } from './Radio';
+import { SegmentedButton } from './SegmentedButton';
 import { Select } from './Select';
 import { Skeleton } from './Skeleton';
 import { Slider } from './Slider';
@@ -63,6 +64,7 @@ export const components = {
   Progress: ProgressBar,
   ProgressCircular,
   Radio,
+  SegmentedButton,
   Select,
   Skeleton,
   Slider,

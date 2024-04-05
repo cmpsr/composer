@@ -1,4 +1,4 @@
-import { ButtonProps as ChakraButtonProps, ResponsiveValue } from '@chakra-ui/react';
+import { ButtonProps as ChakraButtonProps, ResponsiveValue, StyleProps } from '@chakra-ui/react';
 import { FC, ReactElement } from 'react';
 
 export const segmentedButtonVariants = ['primary', 'primary-alt', 'secondary', 'secondary-alt'] as const;
@@ -27,4 +27,11 @@ export interface SegmentedButtonStaticMembers {
 
 export interface ButtonProps extends ChakraButtonProps {
   isActive?: boolean;
+  leadingIcon?: ReactElement;
+  trailingIcon?: ReactElement;
+  size?: ResponsiveValue<SegmentedButtonSize>;
 }
+
+export type SegmentedButtonStyles = {
+  button: StyleProps;
+};

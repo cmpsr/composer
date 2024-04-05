@@ -11,6 +11,7 @@ export * from './PhoneInput';
 export * from './PinInput';
 export * from './Radio';
 export * from './RangeSlider';
+export * from './SegmentedButton';
 export * from './Select';
 export * from './Slider';
 export * from './Switch';

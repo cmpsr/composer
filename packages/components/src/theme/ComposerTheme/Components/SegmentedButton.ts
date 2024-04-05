@@ -56,7 +56,16 @@ export const SegmentedButton: ComponentStyleConfig = {
   baseStyle: ({ isActive }) => ({
     button: {
       backgroundColor: isActive ? 'green' : 'red',
+      borderRadius: 'unset',
       gap: 'spacer-2',
+      _first: {
+        borderTopLeftRadius: 'radii-button',
+        borderBottomLeftRadius: 'radii-button',
+      },
+      _last: {
+        borderTopRightRadius: 'radii-button',
+        borderBottomRightRadius: 'radii-button',
+      },
     },
   }),
   // variants: {

@@ -14,6 +14,7 @@ import {
 // Habrá varios tipos de botones, unos que aceptan iconos, que acepten texto + icono (opcional), pero no podrán ser combinados entre ellos.
 // El primer elemento y el último tendrán un radius diferente a los que estén entre medias.
 // Habrá que contemplar los distintos estados: default, selected, focus, selected/focus, hover, disabled
+// El foco no se ve correctamente navegando con el teclado.
 
 export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMembers = ({
   options,
@@ -21,6 +22,7 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
   variant = 'primary',
   size = 'l',
   defaultOption = '',
+  isDisabled = false,
 }) => {
   const [selectedValue, setSelectedValue] = useState<OptionValue>(defaultOption);
   const responsiveSize = useResponsiveValue(size) as SegmentedButtonSize;
@@ -39,14 +41,15 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
           isActive: selectedValue === option.value,
           variant,
           size: responsiveSize,
+          isDisabled,
         })
       )}
     </Flex>
   );
 };
 
-export const Button: FC<ButtonProps> = ({ isActive, children, leadingIcon, trailingIcon, size, ...rest }) => {
-  const styles = useMultiStyleConfig('SegmentedButton', { isActive }) as SegmentedButtonStyles;
+export const Button: FC<ButtonProps> = ({ isActive, children, leadingIcon, trailingIcon, size, variant, ...rest }) => {
+  const styles = useMultiStyleConfig('SegmentedButton', { isActive, variant, size }) as SegmentedButtonStyles;
   const leadingIconSized = getIcon(leadingIcon, size);
   const trailingIconSized = getIcon(trailingIcon, size);
   return (

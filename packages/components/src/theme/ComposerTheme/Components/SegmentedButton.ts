@@ -1,5 +1,176 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
+const buttonActiveStyles = {
+  primary: {
+    backgroundColor: 'primary-default',
+    color: 'text-light',
+    boxShadow: '0 0 0 1px var(--chakra-colors-primary-default)',
+    _hover: {
+      backgroundColor: 'primary-default',
+      color: 'text-light',
+    },
+    _active: {
+      backgroundColor: 'primary-default',
+    },
+    _disabled: {
+      color: 'text-light',
+      backgroundColor: 'primary-disabled',
+      boxShadow: '0 0 0 1px var(--chakra-colors-primary-disabled)',
+    },
+    _focus: {
+      outline: '3px solid var(--chakra-colors-primary-focus)',
+    },
+  },
+  'primary-alt': {
+    backgroundColor: 'background-action-pressed',
+    color: 'text-link-primary-default',
+    boxShadow: '0 0 0 1px var(--chakra-colors-primary-default)',
+    _hover: {
+      backgroundColor: 'background-action-pressed',
+    },
+    _active: {
+      backgroundColor: 'background-action-pressed',
+    },
+    _disabled: {
+      color: 'text-link-primary-disabled',
+      backgroundColor: 'background-action-disabled',
+      boxShadow: '0 0 0 1px var(--chakra-colors-text-link-primary-disabled)',
+    },
+    _focusVisible: {
+      outline: '3px solid var(--chakra-colors-primary-focus)',
+      outlineOffset: '1px',
+    },
+    _focus: {
+      outline: '3px solid var(--chakra-colors-primary-focus)',
+      outlineOffset: '1px',
+    },
+  },
+  secondary: {
+    backgroundColor: 'secondary-default',
+    color: 'text-light',
+    boxShadow: '0 0 0 1px var(--chakra-colors-secondary-default)',
+    _hover: {
+      backgroundColor: 'secondary-default',
+    },
+    _active: {
+      backgroundColor: 'secondary-default',
+    },
+    _disabled: {
+      color: 'text-light',
+      backgroundColor: 'secondary-disabled',
+      boxShadow: '0 0 0 1px var(--chakra-colors-secondary-disabled)',
+    },
+    _focus: {
+      outline: '3px solid var(--chakra-colors-secondary-focus)',
+    },
+  },
+  'secondary-alt': {
+    backgroundColor: 'background-action-pressed',
+    color: 'text-link-secondary-default',
+    boxShadow: '0 0 0 1px var(--chakra-colors-secondary-default)',
+    _hover: {
+      backgroundColor: 'background-action-pressed',
+    },
+    _active: {
+      backgroundColor: 'background-action-pressed',
+    },
+    _disabled: {
+      color: 'text-link-secondary-disabled',
+      backgroundColor: 'background-action-disabled',
+      boxShadow: '0 0 0 1px var(--chakra-colors-text-link-secondary-disabled)',
+    },
+    _focusVisible: {
+      outline: '3px solid var(--chakra-colors-secondary-focus)',
+      outlineOffset: '1px',
+    },
+    _focus: {
+      outline: '3px solid var(--chakra-colors-secondary-focus)',
+      outlineOffset: '1px',
+    },
+  },
+};
+
+const buttonStyles = {
+  primary: {
+    backgroundColor: 'background-action-default',
+    color: 'text-secondary',
+    _hover: {
+      backgroundColor: 'background-action-hover',
+      color: 'text-secondary',
+    },
+    _active: {
+      backgroundColor: 'background-action-default',
+    },
+    _disabled: {
+      color: 'text-disabled',
+      backgroundColor: 'background-action-disabled',
+    },
+    _focus: {
+      outline: '3px solid var(--chakra-colors-primary-focus)',
+    },
+  },
+  'primary-alt': {
+    backgroundColor: 'background-action-default',
+    color: 'text-secondary',
+    _hover: {
+      backgroundColor: 'background-action-hover',
+      color: 'text-secondary',
+    },
+    _active: {
+      backgroundColor: 'background-action-default',
+    },
+    _disabled: {
+      color: 'text-disabled',
+      backgroundColor: 'background-action-disabled',
+    },
+    _focusVisible: {
+      outline: '3px solid var(--chakra-colors-primary-focus)',
+    },
+    _focus: {
+      outline: '3px solid var(--chakra-colors-primary-focus)',
+    },
+  },
+  secondary: {
+    backgroundColor: 'background-action-default',
+    color: 'text-secondary',
+    _hover: {
+      backgroundColor: 'background-action-hover',
+      color: 'text-secondary',
+    },
+    _active: {
+      backgroundColor: 'background-action-default',
+    },
+    _disabled: {
+      color: 'text-disabled',
+      backgroundColor: 'background-action-disabled',
+    },
+    _focus: {
+      outline: '3px solid var(--chakra-colors-secondary-focus)',
+    },
+  },
+  'secondary-alt': {
+    backgroundColor: 'background-action-default',
+    color: 'text-secondary',
+    _hover: {
+      backgroundColor: 'background-action-hover',
+      color: 'text-secondary',
+    },
+    _active: {
+      backgroundColor: 'background-action-default',
+    },
+    _disabled: {
+      color: 'text-disabled',
+      backgroundColor: 'background-action-disabled',
+    },
+    _focusVisible: {
+      outline: '3px solid var(--chakra-colors-secondary-focus)',
+    },
+    _focus: {
+      outline: '3px solid var(--chakra-colors-secondary-focus)',
+    },
+  },
+};
+
 export const SegmentedButton: ComponentStyleConfig = {
   parts: ['container', 'button'],
   baseStyle: ({ theme }) => ({
@@ -61,108 +232,19 @@ export const SegmentedButton: ComponentStyleConfig = {
   },
   variants: {
     primary: ({ isActive }) => ({
-      button: {
-        backgroundColor: isActive ? 'primary-default' : 'background-action-default',
-        color: isActive ? 'text-light' : 'text-secondary',
-        ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-primary-default)' }),
-        _hover: {
-          backgroundColor: isActive ? 'primary-default' : 'background-action-hover',
-          color: isActive ? 'text-light' : 'text-secondary',
-        },
-        _active: {
-          backgroundColor: isActive ? 'primary-default' : 'background-action-default',
-        },
-        _disabled: {
-          color: isActive ? 'text-light' : 'text-disabled',
-          backgroundColor: isActive ? 'primary-disabled' : 'background-action-disabled',
-          ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-primary-disabled)' }),
-        },
-        _focus: {
-          outline: '3px solid var(--chakra-colors-primary-focus)',
-        },
-      },
+      button: isActive ? buttonActiveStyles.primary : buttonStyles.primary,
     }),
     'primary-alt': ({ isActive }) => ({
-      button: {
-        backgroundColor: isActive ? 'background-action-pressed' : 'background-action-default',
-        color: isActive ? 'text-link-primary-default' : 'text-secondary',
-        ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-primary-default)' }),
-        _hover: {
-          ...(!isActive && {
-            backgroundColor: 'background-action-hover',
-            color: 'text-secondary',
-          }),
-        },
-        _active: {
-          backgroundColor: isActive ? 'background-action-pressed' : 'background-action-default',
-        },
-        _disabled: {
-          color: isActive ? 'text-link-primary-disabled' : 'text-disabled',
-          backgroundColor: 'background-action-disabled',
-          ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-text-link-primary-disabled)' }),
-        },
-        _focusVisible: {
-          outline: '3px solid var(--chakra-colors-primary-focus)',
-          ...(isActive && { outlineOffset: '1px' }),
-        },
-        _focus: {
-          outline: '3px solid var(--chakra-colors-primary-focus)',
-          ...(isActive && { outlineOffset: '1px' }),
-        },
-      },
+      button: isActive ? buttonActiveStyles['primary-alt'] : buttonStyles['primary-alt'],
     }),
     secondary: ({ isActive }) => ({
-      button: {
-        backgroundColor: isActive ? 'secondary-default' : 'background-action-default',
-        color: isActive ? 'text-light' : 'text-secondary',
-        ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-secondary-default)' }),
-        _hover: {
-          backgroundColor: isActive ? 'secondary-default' : 'background-action-hover',
-          color: isActive ? 'text-light' : 'text-secondary',
-        },
-        _active: {
-          backgroundColor: isActive ? 'secondary-default' : 'background-action-default',
-        },
-        _disabled: {
-          color: isActive ? 'text-light' : 'text-disabled',
-          backgroundColor: isActive ? 'secondary-disabled' : 'background-action-disabled',
-          ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-secondary-disabled)' }),
-        },
-        _focus: {
-          outline: '3px solid var(--chakra-colors-secondary-focus)',
-        },
-      },
+      button: isActive ? buttonActiveStyles.secondary : buttonStyles.secondary,
     }),
     'secondary-alt': ({ isActive }) => ({
-      button: {
-        backgroundColor: isActive ? 'background-action-pressed' : 'background-action-default',
-        color: isActive ? 'text-link-secondary-default' : 'text-secondary',
-        ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-secondary-default)' }),
-        _hover: {
-          ...(!isActive && {
-            backgroundColor: 'background-action-hover',
-            color: 'text-secondary',
-          }),
-        },
-        _active: {
-          backgroundColor: isActive ? 'background-action-pressed' : 'background-action-default',
-        },
-        _disabled: {
-          color: isActive ? 'text-link-secondary-disabled' : 'text-disabled',
-          backgroundColor: 'background-action-disabled',
-          ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-text-link-secondary-disabled)' }),
-        },
-        _focusVisible: {
-          outline: '3px solid var(--chakra-colors-secondary-focus)',
-          ...(isActive && { outlineOffset: '1px' }),
-        },
-        _focus: {
-          outline: '3px solid var(--chakra-colors-secondary-focus)',
-          ...(isActive && { outlineOffset: '1px' }),
-        },
-      },
+      button: isActive ? buttonActiveStyles['secondary-alt'] : buttonStyles['secondary-alt'],
     }),
   },
+
   defaultProps: {
     variant: 'primary',
   },

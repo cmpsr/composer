@@ -2,7 +2,7 @@ import { ComponentStyleConfig } from '@chakra-ui/react';
 
 export const SegmentedButton: ComponentStyleConfig = {
   parts: ['button'],
-  baseStyle: ({ isActive }) => ({
+  baseStyle: {
     button: {
       borderRadius: 'unset',
       borderRightWidth: '1px',
@@ -10,8 +10,6 @@ export const SegmentedButton: ComponentStyleConfig = {
       borderBottomWidth: '1px',
       borderStyle: 'solid',
       gap: 'spacer-2',
-
-      ...(isActive && { zIndex: '1' }),
       outlineOffset: 'unset',
       _first: {
         borderLeftWidth: '1px',
@@ -22,32 +20,39 @@ export const SegmentedButton: ComponentStyleConfig = {
         borderTopRightRadius: 'radii-button',
         borderBottomRightRadius: 'radii-button',
       },
+      _focus: {
+        zIndex: '1',
+      },
     },
-  }),
+  },
   sizes: {
-    // habrá que actualizar los paddings de px a tokens
     xs: ({ theme }) => ({
-      px: '8px',
-      py: '4px',
-      ...theme.textStyles['text-body-floating-label-medium'],
+      button: {
+        px: '8px',
+        py: '4px',
+        ...theme.textStyles['text-body-floating-label-medium'],
+      },
     }),
     s: ({ theme }) => ({
-      paddingLeft: '50px',
-      paddingRight: '50px',
-      px: '12px',
-      py: '24px',
-      ...theme.textStyles['text-body-meta-medium'],
+      button: {
+        px: '12px',
+        py: '8px',
+        ...theme.textStyles['text-body-meta-medium'],
+      },
     }),
     m: ({ theme }) => ({
-      paddingInlineStart: '12px',
-      paddingInlineEnd: '12px',
-      py: '8px',
-      ...theme.textStyles['text-body-medium'],
+      button: {
+        px: '12px',
+        py: '8px',
+        ...theme.textStyles['text-body-medium'],
+      },
     }),
     l: ({ theme }) => ({
-      px: 'spacer-6',
-      py: '12px',
-      ...theme.textStyles['text-body-large-medium'],
+      button: {
+        px: '24px',
+        py: '12px',
+        ...theme.textStyles['text-body-large-medium'],
+      },
     }),
   },
   variants: {
@@ -55,9 +60,7 @@ export const SegmentedButton: ComponentStyleConfig = {
       button: {
         backgroundColor: isActive ? 'primary-default' : 'background-action-default',
         color: isActive ? 'text-light' : 'text-secondary',
-        borderColor: isActive
-          ? 'var(--chakra-colors-primary-default)'
-          : 'var(--chakra-colors-ui-element-outline-default)',
+        borderColor: isActive ? 'primary-default' : 'ui-element-outline-default',
         _hover: {
           backgroundColor: isActive ? 'primary-default' : 'background-action-hover',
           color: isActive ? 'text-light' : 'text-secondary',
@@ -72,8 +75,32 @@ export const SegmentedButton: ComponentStyleConfig = {
         },
       },
     }),
+    'primary-alt': ({ isActive }) => ({
+      button: {
+        backgroundColor: isActive ? 'background-action-pressed' : 'background-action-default',
+        color: isActive ? 'text-link-primary-default' : 'text-secondary',
+        borderColor: isActive ? 'primary-default' : 'ui-element-outline-default',
+        // ...(isActive && { borderLeftWidth: '1px' }),
+
+        _hover: {
+          // backgroundColor: isActive ? 'background-action-pressed' : 'background-action-hover',
+          // color: isActive ? 'text-link-primary-default' : 'text-secondary',
+          ...(!isActive && {
+            backgroundColor: 'background-action-hover',
+            color: 'text-secondary',
+          }),
+        },
+        _disabled: {
+          color: isActive ? 'text-link-primary-disabled' : 'text-disabled',
+          backgroundColor: 'background-action-disabled',
+          ...(isActive && { borderColor: 'text-link-primary-disabled' }),
+        },
+        _focus: {
+          outline: '3px solid var(--chakra-colors-primary-focus)',
+        },
+      },
+    }),
     // secondary: ({}) => {},
-    // 'primary-alt': ({ status }) => {},
     // 'secondary-alt': ({ status }) => {},
   },
   defaultProps: {

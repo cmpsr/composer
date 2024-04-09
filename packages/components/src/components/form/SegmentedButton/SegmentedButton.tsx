@@ -12,10 +12,8 @@ import {
 } from './types';
 
 // Habrá varios tipos de botones, unos que aceptan iconos, que acepten texto + icono (opcional), pero no podrán ser combinados entre ellos.
-// El primer elemento y el último tendrán un radius diferente a los que estén entre medias.
 // Habrá que contemplar los distintos estados: default, selected, focus, selected/focus, hover, disabled
-// El foco no se ve correctamente navegando con el teclado.
-
+// Hay un problema en primary y en primary-alt aunque solo es visible en este último y es que el borde izq del botón no se muestra como debería
 export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMembers = ({
   options,
   onChange,

@@ -29,7 +29,7 @@ Playground.args = {
     { value: 'bla', segment: <SegmentedButton.Button>bla component</SegmentedButton.Button> },
   ],
   onChange: (value) => console.log(value),
-  variant: 'primary',
+  variant: 'primary-alt',
   size: 's',
   isDisabled: true,
   defaultOption: 'dark',

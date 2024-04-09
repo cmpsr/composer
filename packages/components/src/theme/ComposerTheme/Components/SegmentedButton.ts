@@ -111,8 +111,50 @@ export const SegmentedButton: ComponentStyleConfig = {
         },
       },
     }),
-    // secondary: ({}) => {},
-    // 'secondary-alt': ({ status }) => {},
+    secondary: ({ isActive }) => ({
+      button: {
+        backgroundColor: isActive ? 'secondary-default' : 'background-action-default',
+        color: isActive ? 'text-light' : 'text-secondary',
+        borderColor: isActive ? 'secondary-default' : 'ui-element-outline-default',
+        _hover: {
+          backgroundColor: isActive ? 'secondary-default' : 'background-action-hover',
+          color: isActive ? 'text-light' : 'text-secondary',
+        },
+        _disabled: {
+          color: isActive ? 'text-light' : 'text-disabled',
+          backgroundColor: isActive ? 'secondary-disabled' : 'background-action-disabled',
+          ...(isActive && { borderColor: 'secondary-disabled' }),
+        },
+        _focus: {
+          outline: '3px solid var(--chakra-colors-secondary-focus)',
+        },
+      },
+    }),
+    'secondary-alt': ({ isActive }) => ({
+      button: {
+        backgroundColor: isActive ? 'background-action-pressed' : 'background-action-default',
+        color: isActive ? 'text-link-secondary-default' : 'text-secondary',
+        borderColor: isActive ? 'secondary-default' : 'ui-element-outline-default',
+        // ...(isActive && { borderLeftWidth: '1px' }),
+
+        _hover: {
+          // backgroundColor: isActive ? 'background-action-pressed' : 'background-action-hover',
+          // color: isActive ? 'text-link-primary-default' : 'text-secondary',
+          ...(!isActive && {
+            backgroundColor: 'background-action-hover',
+            color: 'text-secondary',
+          }),
+        },
+        _disabled: {
+          color: isActive ? 'text-link-secondary-disabled' : 'text-disabled',
+          backgroundColor: 'background-action-disabled',
+          ...(isActive && { borderColor: 'text-link-secondary-disabled' }),
+        },
+        _focus: {
+          outline: '3px solid var(--chakra-colors-secondary-focus)',
+        },
+      },
+    }),
   },
   defaultProps: {
     variant: 'primary',

@@ -12,8 +12,6 @@ import {
 } from './types';
 
 // Habrá varios tipos de botones, unos que aceptan iconos, que acepten texto + icono (opcional), pero no podrán ser combinados entre ellos.
-// Habrá que contemplar los distintos estados: default, selected, focus, selected/focus, hover, disabled
-// Hay un problema en primary y en primary-alt aunque solo es visible en este último y es que el borde izq del botón no se muestra como debería
 export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMembers = ({
   options,
   onChange,
@@ -22,6 +20,7 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
   defaultOption = '',
   isDisabled = false,
 }) => {
+  const styles = useMultiStyleConfig('SegmentedButton') as SegmentedButtonStyles;
   const [selectedValue, setSelectedValue] = useState<OptionValue>(defaultOption);
   const responsiveSize = useResponsiveValue(size) as SegmentedButtonSize;
 
@@ -31,7 +30,7 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
   };
 
   return (
-    <Flex>
+    <Flex {...styles.container}>
       {options.map((option) =>
         cloneElement(option.segment, {
           key: option.value,

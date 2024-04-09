@@ -1,30 +1,34 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 export const SegmentedButton: ComponentStyleConfig = {
-  parts: ['button'],
-  baseStyle: {
+  parts: ['container', 'button'],
+  baseStyle: ({ theme }) => ({
+    container: {
+      gap: '1px',
+      bg: 'ui-element-outline-default',
+      display: 'inline-flex',
+      borderStyle: 'solid',
+      borderWidth: '1px',
+      borderColor: 'ui-element-outline-default',
+      borderRadius: 'radii-button',
+    },
     button: {
       borderRadius: 'unset',
-      borderRightWidth: '1px',
-      borderTopWidth: '1px',
-      borderBottomWidth: '1px',
-      borderStyle: 'solid',
       gap: 'spacer-2',
       outlineOffset: 'unset',
       _first: {
-        borderLeftWidth: '1px',
-        borderTopLeftRadius: 'radii-button',
-        borderBottomLeftRadius: 'radii-button',
+        borderTopLeftRadius: `calc(${theme.radii['radii-button']} - 0.0625rem)`,
+        borderBottomLeftRadius: `calc(${theme.radii['radii-button']} - 0.0625rem)`,
       },
       _last: {
-        borderTopRightRadius: 'radii-button',
-        borderBottomRightRadius: 'radii-button',
+        borderTopRightRadius: `calc(${theme.radii['radii-button']} - 0.0625rem)`,
+        borderBottomRightRadius: `calc(${theme.radii['radii-button']} - 0.0625rem)`,
       },
       _focus: {
         zIndex: '1',
       },
     },
-  },
+  }),
   sizes: {
     xs: ({ theme }) => ({
       button: {
@@ -60,10 +64,13 @@ export const SegmentedButton: ComponentStyleConfig = {
       button: {
         backgroundColor: isActive ? 'primary-default' : 'background-action-default',
         color: isActive ? 'text-light' : 'text-secondary',
-        borderColor: isActive ? 'primary-default' : 'ui-element-outline-default',
+        ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-primary-default)' }),
         _hover: {
           backgroundColor: isActive ? 'primary-default' : 'background-action-hover',
           color: isActive ? 'text-light' : 'text-secondary',
+        },
+        _active: {
+          backgroundColor: isActive ? 'primary-default' : 'background-action-default',
         },
         _disabled: {
           color: isActive ? 'text-light' : 'text-disabled',
@@ -79,24 +86,28 @@ export const SegmentedButton: ComponentStyleConfig = {
       button: {
         backgroundColor: isActive ? 'background-action-pressed' : 'background-action-default',
         color: isActive ? 'text-link-primary-default' : 'text-secondary',
-        borderColor: isActive ? 'primary-default' : 'ui-element-outline-default',
-        // ...(isActive && { borderLeftWidth: '1px' }),
-
+        ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-primary-default)' }),
         _hover: {
-          // backgroundColor: isActive ? 'background-action-pressed' : 'background-action-hover',
-          // color: isActive ? 'text-link-primary-default' : 'text-secondary',
           ...(!isActive && {
             backgroundColor: 'background-action-hover',
             color: 'text-secondary',
           }),
+        },
+        _active: {
+          backgroundColor: isActive ? 'background-action-pressed' : 'background-action-default',
         },
         _disabled: {
           color: isActive ? 'text-link-primary-disabled' : 'text-disabled',
           backgroundColor: 'background-action-disabled',
           ...(isActive && { borderColor: 'text-link-primary-disabled' }),
         },
+        _focusVisible: {
+          outline: '3px solid var(--chakra-colors-primary-focus)',
+          ...(isActive && { outlineOffset: '1px' }),
+        },
         _focus: {
           outline: '3px solid var(--chakra-colors-primary-focus)',
+          ...(isActive && { outlineOffset: '1px' }),
         },
       },
     }),

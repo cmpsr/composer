@@ -34,5 +34,6 @@ export interface ButtonProps extends ChakraButtonProps {
 }
 
 export type SegmentedButtonStyles = {
+  container: StyleProps;
   button: StyleProps;
 };

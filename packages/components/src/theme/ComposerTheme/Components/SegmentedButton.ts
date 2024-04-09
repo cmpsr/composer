@@ -75,7 +75,7 @@ export const SegmentedButton: ComponentStyleConfig = {
         _disabled: {
           color: isActive ? 'text-light' : 'text-disabled',
           backgroundColor: isActive ? 'primary-disabled' : 'background-action-disabled',
-          ...(isActive && { borderColor: 'primary-disabled' }),
+          ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-primary-disabled)' }),
         },
         _focus: {
           outline: '3px solid var(--chakra-colors-primary-focus)',
@@ -99,7 +99,7 @@ export const SegmentedButton: ComponentStyleConfig = {
         _disabled: {
           color: isActive ? 'text-link-primary-disabled' : 'text-disabled',
           backgroundColor: 'background-action-disabled',
-          ...(isActive && { borderColor: 'text-link-primary-disabled' }),
+          ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-text-link-primary-disabled)' }),
         },
         _focusVisible: {
           outline: '3px solid var(--chakra-colors-primary-focus)',
@@ -115,15 +115,18 @@ export const SegmentedButton: ComponentStyleConfig = {
       button: {
         backgroundColor: isActive ? 'secondary-default' : 'background-action-default',
         color: isActive ? 'text-light' : 'text-secondary',
-        borderColor: isActive ? 'secondary-default' : 'ui-element-outline-default',
+        ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-secondary-default)' }),
         _hover: {
           backgroundColor: isActive ? 'secondary-default' : 'background-action-hover',
           color: isActive ? 'text-light' : 'text-secondary',
         },
+        _active: {
+          backgroundColor: isActive ? 'secondary-default' : 'background-action-default',
+        },
         _disabled: {
           color: isActive ? 'text-light' : 'text-disabled',
           backgroundColor: isActive ? 'secondary-disabled' : 'background-action-disabled',
-          ...(isActive && { borderColor: 'secondary-disabled' }),
+          ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-secondary-disabled)' }),
         },
         _focus: {
           outline: '3px solid var(--chakra-colors-secondary-focus)',
@@ -134,24 +137,28 @@ export const SegmentedButton: ComponentStyleConfig = {
       button: {
         backgroundColor: isActive ? 'background-action-pressed' : 'background-action-default',
         color: isActive ? 'text-link-secondary-default' : 'text-secondary',
-        borderColor: isActive ? 'secondary-default' : 'ui-element-outline-default',
-        // ...(isActive && { borderLeftWidth: '1px' }),
-
+        ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-secondary-default)' }),
         _hover: {
-          // backgroundColor: isActive ? 'background-action-pressed' : 'background-action-hover',
-          // color: isActive ? 'text-link-primary-default' : 'text-secondary',
           ...(!isActive && {
             backgroundColor: 'background-action-hover',
             color: 'text-secondary',
           }),
         },
+        _active: {
+          backgroundColor: isActive ? 'background-action-pressed' : 'background-action-default',
+        },
         _disabled: {
           color: isActive ? 'text-link-secondary-disabled' : 'text-disabled',
           backgroundColor: 'background-action-disabled',
-          ...(isActive && { borderColor: 'text-link-secondary-disabled' }),
+          ...(isActive && { boxShadow: '0 0 0 1px var(--chakra-colors-text-link-secondary-disabled)' }),
+        },
+        _focusVisible: {
+          outline: '3px solid var(--chakra-colors-secondary-focus)',
+          ...(isActive && { outlineOffset: '1px' }),
         },
         _focus: {
           outline: '3px solid var(--chakra-colors-secondary-focus)',
+          ...(isActive && { outlineOffset: '1px' }),
         },
       },
     }),

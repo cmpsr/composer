@@ -172,7 +172,7 @@ const buttonStyles = {
 };
 
 export const SegmentedButton: ComponentStyleConfig = {
-  parts: ['container', 'button'],
+  parts: ['container', 'button', 'icon'],
   baseStyle: ({ theme }) => ({
     container: {
       gap: '1px',
@@ -207,12 +207,20 @@ export const SegmentedButton: ComponentStyleConfig = {
         py: '4px',
         ...theme.textStyles['text-body-floating-label-medium'],
       },
+      icon: {
+        px: '6px',
+        py: '6px',
+      },
     }),
     s: ({ theme }) => ({
       button: {
         px: '12px',
         py: '8px',
         ...theme.textStyles['text-body-meta-medium'],
+      },
+      icon: {
+        px: '10px',
+        py: '10px',
       },
     }),
     m: ({ theme }) => ({
@@ -221,12 +229,20 @@ export const SegmentedButton: ComponentStyleConfig = {
         py: '8px',
         ...theme.textStyles['text-body-medium'],
       },
+      icon: {
+        px: '10px',
+        py: '10px',
+      },
     }),
     l: ({ theme }) => ({
       button: {
         px: '24px',
         py: '12px',
         ...theme.textStyles['text-body-large-medium'],
+      },
+      icon: {
+        px: '14px',
+        py: '14px',
       },
     }),
   },

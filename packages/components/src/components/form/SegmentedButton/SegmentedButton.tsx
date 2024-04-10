@@ -11,7 +11,6 @@ import {
   SegmentedButtonStyles,
 } from './types';
 
-// Habrá varios tipos de botones, unos que aceptan iconos, que acepten texto + icono (opcional), pero no podrán ser combinados entre ellos.
 export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMembers = ({
   options,
   onChange,
@@ -45,7 +44,7 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
   );
 };
 
-export const Button: FC<ButtonProps> = ({ isActive, children, leadingIcon, trailingIcon, size, variant, ...rest }) => {
+const Button: FC<ButtonProps> = ({ isActive, children, leadingIcon, trailingIcon, size, variant, ...rest }) => {
   const styles = useMultiStyleConfig('SegmentedButton', { isActive, variant, size }) as SegmentedButtonStyles;
   const leadingIconSized = getIcon(leadingIcon, size);
   const trailingIconSized = getIcon(trailingIcon, size);
@@ -59,6 +58,18 @@ export const Button: FC<ButtonProps> = ({ isActive, children, leadingIcon, trail
 };
 
 SegmentedButton.Button = Button;
+
+const IconButton: FC<IconButtonProps> = ({ isActive, icon, size, variant, ...rest }) => {
+  const styles = useMultiStyleConfig('SegmentedButton', { isActive, variant, size }) as SegmentedButtonStyles;
+  const iconChild = getIcon(icon, size);
+  return (
+    <ChakraButton {...styles.button} {...styles.icon} size={size} {...rest}>
+      {iconChild}
+    </ChakraButton>
+  );
+};
+
+SegmentedButton.Icon = IconButton;
 
 const getIcon = (icon: ReactElement<IconProps>, size: ResponsiveValue<SegmentedButtonSize>) => {
   if (!isValidElement(icon)) {

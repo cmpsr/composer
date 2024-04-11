@@ -30,7 +30,7 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
   };
 
   return (
-    <Flex {...styles.container}>
+    <Flex {...styles.container} role="group">
       {options.map((option) =>
         cloneElement(option.segment, {
           key: option.value,
@@ -39,6 +39,7 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
           variant,
           size: responsiveSize,
           isDisabled,
+          'aria-current': selectedValue === option.value,
         })
       )}
     </Flex>

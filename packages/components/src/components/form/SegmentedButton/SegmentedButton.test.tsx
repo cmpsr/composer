@@ -1,0 +1,36 @@
+import { fireEvent, renderWithProviders, screen } from '@tests/renderWithProviders';
+import React from 'react';
+import { SegmentedButton } from './SegmentedButton';
+import { SegmentedButtonProps } from './types';
+
+describe('SegmentedButton', () => {
+  const options = [
+    { value: 'dummy_value_1', segment: <SegmentedButton.Button>dummy text 1</SegmentedButton.Button> },
+    { value: 'dummy_value_2', segment: <SegmentedButton.Button>dummy text 2</SegmentedButton.Button> },
+    { value: 'dummy_value_3', segment: <SegmentedButton.Button>dummy text 3</SegmentedButton.Button> },
+  ];
+  const onChangeMock = jest.fn();
+  const givenComponentRendered = (props?: Partial<SegmentedButtonProps>) =>
+    renderWithProviders(<SegmentedButton options={options} onChange={onChangeMock} {...props} />);
+
+  it('should render without crashing', () => {
+    givenComponentRendered();
+    expect(screen.getByText('dummy text 1')).toBeInTheDocument();
+  });
+  it('should call onChange when a segment is clicked', () => {
+    givenComponentRendered();
+    const dummy2Button = screen.getByText('dummy text 2');
+    fireEvent.click(dummy2Button);
+    expect(onChangeMock).toHaveBeenCalledWith('dummy_value_2');
+  });
+  it('should disable the segments when is disabled', () => {
+    givenComponentRendered({ isDisabled: true });
+    expect(screen.getByText('dummy text 1')).toBeDisabled();
+  });
+
+  it('should select an option by default when defaultOption is provided', () => {
+    givenComponentRendered({ defaultOption: 'dummy_value_2' });
+
+    expect(screen.getByRole('button', { current: true }));
+  });
+});

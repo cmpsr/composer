@@ -67,22 +67,20 @@ const AllTemplate = () => (
     <Tbody>
       {segmentedButtonVariants.map((variant, i) => (
         <Fragment key={i}>
-          {/* <Tr key={`${variant}-${i}`}> */}
-          {/* <Td>{variant}</Td> */}
           {['Default', 'Disabled'].map((state, i) => (
             <Tr key={`${state}-${i}`}>
               <Td>{variant}</Td>
               <Td>{state}</Td>
               {segmentedButtonSizes.map((size, i) => (
                 <Td key={`${variant}-${state}-${size}-${i}-icon`}>
-                  <Flex flexDirection="column" alignItems="center" gap="5">
+                  <Flex flexDirection="column" alignItems="start" gap="5">
                     <SegmentedButton
                       size={size}
                       variant={variant}
                       options={optionsIcon}
                       defaultOption={'facebook'}
                       onChange={(value) => console.log(value)}
-                      {...{ ...(state === 'Disabled' && { isDisabled: true }) }}
+                      {...(state === 'Disabled' && { isDisabled: true })}
                     />
 
                     <SegmentedButton
@@ -91,32 +89,13 @@ const AllTemplate = () => (
                       options={optionsButton}
                       defaultOption={'1'}
                       onChange={(value) => console.log(value)}
-                      {...{ ...(state === 'Disabled' && { isDisabled: true }) }}
+                      {...(state === 'Disabled' && { isDisabled: true })}
                     />
                   </Flex>
                 </Td>
               ))}
             </Tr>
           ))}
-
-          {/* {['Default', 'Disabled'].map((state, i) => (
-              <Fragment key={`${state}-${i}-button`}>
-                <Td>{state}</Td>
-                {segmentedButtonSizes.map((size, i) => (
-                  <Td key={`${variant}-${state}-${size}-${i}-button`}>
-                    <SegmentedButton
-                      size={size}
-                      variant={variant}
-                      options={optionsButton}
-                      defaultOption={'1'}
-                      onChange={(value) => console.log(value)}
-                      {...{ ...(state === 'Disabled' && { isDisabled: true }) }}
-                    />
-                  </Td>
-                ))}
-              </Fragment>
-            ))} */}
-          {/* </Tr> */}
         </Fragment>
       ))}
     </Tbody>

@@ -111,4 +111,5 @@ Playground.args = {
   size: 's',
   isDisabled: false,
   defaultOption: '1',
+  onChange: (value) => console.log(value),
 };

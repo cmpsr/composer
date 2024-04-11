@@ -9,6 +9,7 @@ import {
   SegmentedButtonSize,
   SegmentedButtonStaticMembers,
   SegmentedButtonStyles,
+  SegmentedIconButtonProps,
 } from './types';
 
 export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMembers = ({
@@ -59,7 +60,7 @@ const Button: FC<ButtonProps> = ({ isActive, children, leadingIcon, trailingIcon
 
 SegmentedButton.Button = Button;
 
-const IconButton: FC<IconButtonProps> = ({ isActive, icon, size, variant, ...rest }) => {
+const IconButton: FC<SegmentedIconButtonProps> = ({ isActive, icon, size, variant, ...rest }) => {
   const styles = useMultiStyleConfig('SegmentedButton', { isActive, variant, size }) as SegmentedButtonStyles;
   const iconChild = getIcon(icon, size);
   return (

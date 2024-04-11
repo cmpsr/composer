@@ -24,7 +24,7 @@ export interface SegmentedButtonProps {
 
 export interface SegmentedButtonStaticMembers {
   Button: FC<ButtonProps>;
-  Icon: FC<IconButtonProps>;
+  Icon: FC<SegmentedIconButtonProps>;
 }
 
 export interface ButtonProps extends ChakraButtonProps {
@@ -34,7 +34,7 @@ export interface ButtonProps extends ChakraButtonProps {
   size?: ResponsiveValue<SegmentedButtonSize>;
 }
 
-export interface IconButtonProps extends ChakraButtonProps {
+export interface SegmentedIconButtonProps extends ChakraButtonProps {
   isActive?: boolean;
   icon?: ReactElement;
   size?: ResponsiveValue<SegmentedButtonSize>;

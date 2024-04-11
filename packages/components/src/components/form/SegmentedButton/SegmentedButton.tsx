@@ -63,10 +63,10 @@ SegmentedButton.Button = Button;
 
 const IconButton: FC<SegmentedIconButtonProps> = ({ isActive, icon, size, variant, ...rest }) => {
   const styles = useMultiStyleConfig('SegmentedButton', { isActive, variant, size }) as SegmentedButtonStyles;
-  const iconChild = getIcon(icon, size);
+  const iconSized = getIcon(icon, size);
   return (
     <ChakraButton {...styles.button} {...styles.icon} size={size} {...rest}>
-      {iconChild}
+      {iconSized}
     </ChakraButton>
   );
 };

@@ -17,6 +17,17 @@ export const Button = forwardRef<ButtonProps, typeof ChakraButton>(
     const rightIcon = getIcon(trailingIcon, responsiveSize);
     const isLinkVariant = responsiveVariant?.startsWith('link');
 
+    const spacersButtonGap = (size) => {
+      const spacers = {
+        l: 'spacer-button-gap-L',
+        m: 'spacer-button-gap-M',
+        s: 'spacer-button-gap-S',
+        xs: 'spacer-button-gap-XS',
+      };
+
+      return spacers[size];
+    };
+
     return (
       <ChakraButton
         ref={ref}
@@ -32,7 +43,7 @@ export const Button = forwardRef<ButtonProps, typeof ChakraButton>(
         isLoading={isLoading}
         {...props}
       >
-        <Flex direction="row" alignItems="center" columnGap="0.5rem">
+        <Flex direction="row" alignItems="center" columnGap={spacersButtonGap(size)}>
           {leftIcon}
           {children}
           {rightIcon}

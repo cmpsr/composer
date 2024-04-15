@@ -160,8 +160,8 @@ export const Button: ComponentStyleConfig = {
   sizes: {
     xs: ({ theme }) => ({
       ...getTextStyleProperties(theme.textStyles['text-body-floating-label-medium']),
-      px: '0.5rem',
-      py: '0.25rem',
+      px: 'spacer-button-x-XS',
+      py: 'spacer-button-y-XS',
       loading: {
         width: '0.75rem',
         height: '0.75rem',
@@ -170,8 +170,8 @@ export const Button: ComponentStyleConfig = {
     }),
     s: ({ theme }) => ({
       ...getTextStyleProperties(theme.textStyles['text-body-meta-medium']),
-      px: '0.75rem',
-      py: '0.5rem',
+      px: 'spacer-button-x-S',
+      py: 'spacer-button-y-S',
       loading: {
         width: '0.75rem',
         height: '0.75rem',
@@ -180,8 +180,8 @@ export const Button: ComponentStyleConfig = {
     }),
     m: ({ theme }) => ({
       ...getTextStyleProperties(theme.textStyles['text-body-medium']),
-      px: '1rem',
-      py: '0.5rem',
+      px: 'spacer-button-x-M',
+      py: 'spacer-button-y-M',
       loading: {
         width: '1rem',
         height: '1rem',
@@ -190,8 +190,8 @@ export const Button: ComponentStyleConfig = {
     }),
     l: ({ theme }) => ({
       ...getTextStyleProperties(theme.textStyles['text-body-large-medium']),
-      px: '1.5rem',
-      py: '0.75rem',
+      px: 'spacer-button-x-L',
+      py: 'spacer-button-y-L',
       loading: {
         width: '1rem',
         height: '1rem',

@@ -41,17 +41,6 @@ const optionsButton = [
   { value: '4', segment: <SegmentedButton.Button trailingIcon={<Icons.IconFilter />}>Text</SegmentedButton.Button> },
 ];
 
-const optionsIcon = [
-  {
-    value: 'facebook',
-    segment: <SegmentedButton.Icon icon={<Icons.IconBrandFacebook />} />,
-  },
-  { value: 'instagram', segment: <SegmentedButton.Icon icon={<Icons.IconBrandInstagram />} /> },
-  { value: 'linkedin', segment: <SegmentedButton.Icon icon={<Icons.IconBrandLinkedin />} /> },
-  { value: 'twitter', segment: <SegmentedButton.Icon icon={<Icons.IconBrandTwitter />} /> },
-  { value: 'brandX', segment: <SegmentedButton.Icon icon={<Icons.IconBrandX />} /> },
-];
-
 const AllTemplate = () => (
   <Table variant="simple">
     <Thead>
@@ -77,7 +66,16 @@ const AllTemplate = () => (
                     <SegmentedButton
                       size={size}
                       variant={variant}
-                      options={optionsIcon}
+                      options={[
+                        {
+                          value: 'facebook',
+                          segment: <SegmentedButton.Icon icon={<Icons.IconBrandFacebook />} />,
+                        },
+                        { value: 'instagram', segment: <SegmentedButton.Icon icon={<Icons.IconBrandInstagram />} /> },
+                        { value: 'linkedin', segment: <SegmentedButton.Icon icon={<Icons.IconBrandLinkedin />} /> },
+                        { value: 'twitter', segment: <SegmentedButton.Icon icon={<Icons.IconBrandTwitter />} /> },
+                        { value: 'brandX', segment: <SegmentedButton.Icon icon={<Icons.IconBrandX />} /> },
+                      ]}
                       defaultOption="facebook"
                       onChange={console.log}
                       {...(state === 'Disabled' && { isDisabled: true })}
@@ -86,7 +84,34 @@ const AllTemplate = () => (
                     <SegmentedButton
                       size={size}
                       variant={variant}
-                      options={optionsButton}
+                      options={[
+                        {
+                          value: '1',
+                          segment: (
+                            <SegmentedButton.Button leadingIcon={<Icons.IconExternalLink />}>
+                              Text
+                            </SegmentedButton.Button>
+                          ),
+                        },
+                        { value: '2', segment: <SegmentedButton.Button>Text</SegmentedButton.Button> },
+                        {
+                          value: '3',
+                          segment: (
+                            <SegmentedButton.Button
+                              leadingIcon={<Icons.IconAlertTriangle />}
+                              trailingIcon={<Icons.IconAlertTriangle />}
+                            >
+                              Text
+                            </SegmentedButton.Button>
+                          ),
+                        },
+                        {
+                          value: '4',
+                          segment: (
+                            <SegmentedButton.Button trailingIcon={<Icons.IconFilter />}>Text</SegmentedButton.Button>
+                          ),
+                        },
+                      ]}
                       defaultOption="1"
                       onChange={console.log}
                       {...(state === 'Disabled' && { isDisabled: true })}

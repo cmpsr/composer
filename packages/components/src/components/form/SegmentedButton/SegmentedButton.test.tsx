@@ -13,13 +13,13 @@ describe('SegmentedButton', () => {
   const givenComponentRendered = (props?: Partial<SegmentedButtonProps>) =>
     renderWithProviders(<SegmentedButton options={options} onChange={onChangeMock} {...props} />);
 
-  it('should render without crashing', () => {
+  it('should render', () => {
     givenComponentRendered();
     expect(screen.getByText('dummy text 1')).toBeInTheDocument();
   });
   it('should call onChange when a segment is clicked', () => {
     givenComponentRendered();
-    const dummy2Button = screen.getByText('dummy text 2');
+    const dummy2Button = screen.getByRole('button', { name: 'dummy text 2' });
     fireEvent.click(dummy2Button);
     expect(onChangeMock).toHaveBeenCalledWith('dummy_value_2');
   });
@@ -31,6 +31,6 @@ describe('SegmentedButton', () => {
   it('should select an option by default when defaultOption is provided', () => {
     givenComponentRendered({ defaultOption: 'dummy_value_2' });
 
-    expect(screen.getByRole('button', { current: true }));
+    expect(screen.getByRole('button', { current: true })).toHaveValue('dummy_value_2');
   });
 });

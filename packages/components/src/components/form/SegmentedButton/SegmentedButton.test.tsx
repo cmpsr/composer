@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom';
 import { fireEvent, renderWithProviders, screen } from '@tests/renderWithProviders';
 import React from 'react';
 import { SegmentedButton } from './SegmentedButton';
@@ -31,6 +32,6 @@ describe('SegmentedButton', () => {
   it('should select an option by default when defaultOption is provided', () => {
     givenComponentRendered({ defaultOption: 'dummy_value_2' });
 
-    expect(screen.getByRole('button', { current: true })).toHaveValue('dummy_value_2');
+    expect(screen.getByRole('button', { current: true })).toHaveAttribute('data-value', 'dummy_value_2');
   });
 });

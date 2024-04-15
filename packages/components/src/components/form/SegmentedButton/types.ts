@@ -23,7 +23,7 @@ export interface SegmentedButtonProps {
 }
 
 export interface SegmentedButtonStaticMembers {
-  Button: FC<ButtonProps>;
+  Button: FC<SegmentedButtonButtonProps>;
   Icon: FC<SegmentedIconButtonProps>;
 }
 

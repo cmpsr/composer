@@ -78,8 +78,8 @@ const AllTemplate = () => (
                       size={size}
                       variant={variant}
                       options={optionsIcon}
-                      defaultOption={'facebook'}
-                      onChange={(value) => console.log(value)}
+                      defaultOption="facebook"
+                      onChange={console.log}
                       {...(state === 'Disabled' && { isDisabled: true })}
                     />
 
@@ -87,8 +87,8 @@ const AllTemplate = () => (
                       size={size}
                       variant={variant}
                       options={optionsButton}
-                      defaultOption={'1'}
-                      onChange={(value) => console.log(value)}
+                      defaultOption="1"
+                      onChange={console.log}
                       {...(state === 'Disabled' && { isDisabled: true })}
                     />
                   </Flex>

@@ -27,7 +27,7 @@ export interface SegmentedButtonStaticMembers {
   Icon: FC<SegmentedIconButtonProps>;
 }
 
-export interface ButtonProps extends ChakraButtonProps {
+export interface SegmentedButtonButtonProps extends ChakraButtonProps {
   isActive?: boolean;
   leadingIcon?: ReactElement;
   trailingIcon?: ReactElement;

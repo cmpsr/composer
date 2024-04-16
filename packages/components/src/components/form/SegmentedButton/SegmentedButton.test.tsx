@@ -29,10 +29,9 @@ describe('SegmentedButton', () => {
     givenComponentRendered({ isDisabled: true });
     expect(screen.getByText('dummy text 1')).toBeDisabled();
   });
-
   it('should select an option by default when defaultValue is provided', () => {
     givenComponentRendered({ defaultValue: 'dummy_value_2' });
 
-    expect(screen.getByRole('button', { current: true })).toHaveAttribute('data-value', 'dummy_value_2');
+    expect(screen.getByRole('button', { current: true })).toHaveValue('dummy_value_2');
   });
 });

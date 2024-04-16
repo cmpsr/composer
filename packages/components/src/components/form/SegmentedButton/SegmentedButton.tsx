@@ -40,7 +40,6 @@ export const SegmentedButton: FC<PropsWithChildren<SegmentedButtonProps>> & Segm
           size: responsiveSize,
           isDisabled,
           'aria-current': selectedValue === child.props.value,
-          'data-value': child.props.value,
         })
       )}
     </Flex>

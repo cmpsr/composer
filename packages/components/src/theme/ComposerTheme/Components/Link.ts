@@ -62,6 +62,7 @@ const getSizes = () => {
                 l: 'text-body-large-medium',
               }[size]
             ],
+            columnGap: '0.5rem',
           };
   });
   return sizes;
@@ -85,15 +86,13 @@ export const Link: ComponentStyleConfig = {
     };
 
     const linkDisplayStyles = !props.isInline
-      ? { display: 'inline-flex', alignItems: 'center', columnGap: '0.5rem' }
+      ? {
+          display: 'inline-flex',
+          alignItems: 'center',
+        }
       : { display: 'inline' };
 
-    return isButtonVariant(props.variant)
-      ? buttonBaseStyle
-      : {
-          ...linkBaseStyle,
-          ...linkDisplayStyles,
-        };
+    return isButtonVariant(props.variant) ? buttonBaseStyle : { ...linkBaseStyle, ...linkDisplayStyles };
   },
   sizes: getSizes(),
   variants: {

@@ -17,29 +17,12 @@ export default {
       options: segmentedButtonVariants,
       control: { type: 'select' },
     },
-    defaultOption: {
+    defaultValue: {
       options: ['1', '2', '3', '4'],
       control: { type: 'select' },
     },
   },
 } as Meta;
-
-const optionsButton = [
-  {
-    value: '1',
-    segment: <SegmentedButton.Button leadingIcon={<Icons.IconExternalLink />}>Text</SegmentedButton.Button>,
-  },
-  { value: '2', segment: <SegmentedButton.Button>Text</SegmentedButton.Button> },
-  {
-    value: '3',
-    segment: (
-      <SegmentedButton.Button leadingIcon={<Icons.IconAlertTriangle />} trailingIcon={<Icons.IconAlertTriangle />}>
-        Text
-      </SegmentedButton.Button>
-    ),
-  },
-  { value: '4', segment: <SegmentedButton.Button trailingIcon={<Icons.IconFilter />}>Text</SegmentedButton.Button> },
-];
 
 const AllTemplate = () => (
   <Table variant="simple">
@@ -66,56 +49,39 @@ const AllTemplate = () => (
                     <SegmentedButton
                       size={size}
                       variant={variant}
-                      options={[
-                        {
-                          value: 'facebook',
-                          segment: <SegmentedButton.Icon icon={<Icons.IconBrandFacebook />} />,
-                        },
-                        { value: 'instagram', segment: <SegmentedButton.Icon icon={<Icons.IconBrandInstagram />} /> },
-                        { value: 'linkedin', segment: <SegmentedButton.Icon icon={<Icons.IconBrandLinkedin />} /> },
-                        { value: 'twitter', segment: <SegmentedButton.Icon icon={<Icons.IconBrandTwitter />} /> },
-                        { value: 'brandX', segment: <SegmentedButton.Icon icon={<Icons.IconBrandX />} /> },
-                      ]}
-                      defaultOption="facebook"
+                      defaultValue="facebook"
                       onChange={console.log}
                       {...(state === 'Disabled' && { isDisabled: true })}
-                    />
+                    >
+                      <SegmentedButton.Icon value="facebook" icon={<Icons.IconBrandFacebook />} />
+                      <SegmentedButton.Icon value="instagram" icon={<Icons.IconBrandInstagram />} />
+                      <SegmentedButton.Icon value="linkedin" icon={<Icons.IconBrandLinkedin />} />
+                      <SegmentedButton.Icon value="twitter" icon={<Icons.IconBrandTwitter />} />
+                      <SegmentedButton.Icon value="brandX" icon={<Icons.IconBrandX />} />
+                    </SegmentedButton>
 
                     <SegmentedButton
                       size={size}
                       variant={variant}
-                      options={[
-                        {
-                          value: '1',
-                          segment: (
-                            <SegmentedButton.Button leadingIcon={<Icons.IconExternalLink />}>
-                              Text
-                            </SegmentedButton.Button>
-                          ),
-                        },
-                        { value: '2', segment: <SegmentedButton.Button>Text</SegmentedButton.Button> },
-                        {
-                          value: '3',
-                          segment: (
-                            <SegmentedButton.Button
-                              leadingIcon={<Icons.IconAlertTriangle />}
-                              trailingIcon={<Icons.IconAlertTriangle />}
-                            >
-                              Text
-                            </SegmentedButton.Button>
-                          ),
-                        },
-                        {
-                          value: '4',
-                          segment: (
-                            <SegmentedButton.Button trailingIcon={<Icons.IconFilter />}>Text</SegmentedButton.Button>
-                          ),
-                        },
-                      ]}
-                      defaultOption="1"
+                      defaultValue="1"
                       onChange={console.log}
                       {...(state === 'Disabled' && { isDisabled: true })}
-                    />
+                    >
+                      <SegmentedButton.Button value="1" leadingIcon={<Icons.IconExternalLink />}>
+                        Text
+                      </SegmentedButton.Button>
+                      <SegmentedButton.Button value="2">Text</SegmentedButton.Button>
+                      <SegmentedButton.Button
+                        value="3"
+                        leadingIcon={<Icons.IconAlertTriangle />}
+                        trailingIcon={<Icons.IconAlertTriangle />}
+                      >
+                        Text
+                      </SegmentedButton.Button>
+                      <SegmentedButton.Button value="4" trailingIcon={<Icons.IconFilter />}>
+                        Text
+                      </SegmentedButton.Button>
+                    </SegmentedButton>
                   </Flex>
                 </Td>
               ))}
@@ -128,13 +94,30 @@ const AllTemplate = () => (
 );
 export const All = AllTemplate.bind({});
 
-const Template = (props) => <SegmentedButton {...props} key={props.defaultOption} options={optionsButton} />;
+const Template = (props) => (
+  <SegmentedButton {...props} key={props.defaultValue}>
+    <SegmentedButton.Button value="1" leadingIcon={<Icons.IconExternalLink />}>
+      Text
+    </SegmentedButton.Button>
+    <SegmentedButton.Button value="2">Text</SegmentedButton.Button>
+    <SegmentedButton.Button
+      value="3"
+      leadingIcon={<Icons.IconAlertTriangle />}
+      trailingIcon={<Icons.IconAlertTriangle />}
+    >
+      Text
+    </SegmentedButton.Button>
+    <SegmentedButton.Button value="4" trailingIcon={<Icons.IconFilter />}>
+      Text
+    </SegmentedButton.Button>
+  </SegmentedButton>
+);
 
 export const Playground = Template.bind({});
 Playground.args = {
   variant: 'primary',
   size: 's',
   isDisabled: false,
-  defaultOption: '1',
+  defaultValue: '1',
   onChange: (value) => console.log(value),
 };

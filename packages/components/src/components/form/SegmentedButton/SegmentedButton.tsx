@@ -1,9 +1,8 @@
 import { Button as ChakraButton, IconProps, ResponsiveValue, forwardRef, useMultiStyleConfig } from '@chakra-ui/react';
 import { Flex } from '@components';
 import { useResponsiveValue } from '@hooks';
-import React, { FC, ReactElement, cloneElement, isValidElement, useState } from 'react';
+import React, { FC, PropsWithChildren, ReactElement, cloneElement, isValidElement, useState } from 'react';
 import {
-  OptionValue,
   SegmentedButtonButtonProps,
   SegmentedButtonProps,
   SegmentedButtonSize,
@@ -12,16 +11,16 @@ import {
   SegmentedIconButtonProps,
 } from './types';
 
-export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMembers = ({
-  options,
+export const SegmentedButton: FC<PropsWithChildren<SegmentedButtonProps>> & SegmentedButtonStaticMembers = ({
+  children,
   onChange,
   variant = 'primary',
   size = 'l',
-  defaultOption = '',
+  defaultValue = '',
   isDisabled = false,
 }) => {
   const styles = useMultiStyleConfig('SegmentedButton') as SegmentedButtonStyles;
-  const [selectedValue, setSelectedValue] = useState<OptionValue>(defaultOption);
+  const [selectedValue, setSelectedValue] = useState<OptionValue>(defaultValue);
   const responsiveSize = useResponsiveValue(size) as SegmentedButtonSize;
 
   const handleChange = (value: OptionValue) => {
@@ -31,16 +30,16 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
 
   return (
     <Flex {...styles.container} role="group">
-      {options.map((option) =>
-        cloneElement(option.segment, {
-          key: option.value,
-          onClick: () => handleChange(option.value),
-          isActive: selectedValue === option.value,
+      {(children as ReactElement[]).map((child) =>
+        cloneElement(child, {
+          key: child.props.value,
+          onClick: () => handleChange(child.props.value),
+          isActive: selectedValue === child.props.value,
           variant,
           size: responsiveSize,
           isDisabled,
-          'aria-current': selectedValue === option.value,
-          'data-value': option.value,
+          'aria-current': selectedValue === child.props.value,
+          'data-value': child.props.value,
         })
       )}
     </Flex>

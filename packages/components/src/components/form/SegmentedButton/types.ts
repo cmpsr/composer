@@ -6,19 +6,13 @@ export type SegmentedButtonVariant = (typeof segmentedButtonVariants)[number];
 export const segmentedButtonSizes = ['xs', 's', 'm', 'l'] as const;
 export type SegmentedButtonSize = (typeof segmentedButtonSizes)[number];
 
-export type OptionValue = string | number;
-
-export type Option = {
-  value: OptionValue;
-  segment: ReactElement;
-};
+export type Value = string | number;
 
 export interface SegmentedButtonProps {
-  options: Option[];
-  onChange: (value: OptionValue) => void;
+  onChange: (value: Value) => void;
   variant?: SegmentedButtonVariant;
   size?: ResponsiveValue<SegmentedButtonSize>;
-  defaultOption?: OptionValue;
+  defaultValue?: Value;
   isDisabled?: boolean;
 }
 
@@ -32,6 +26,7 @@ export interface SegmentedButtonButtonProps extends ChakraButtonProps {
   leadingIcon?: ReactElement;
   trailingIcon?: ReactElement;
   size?: ResponsiveValue<SegmentedButtonSize>;
+  value: Value;
 }
 
 export interface SegmentedIconButtonProps extends ChakraButtonProps {

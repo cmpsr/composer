@@ -5,14 +5,15 @@ import { SegmentedButton } from './SegmentedButton';
 import { SegmentedButtonProps } from './types';
 
 describe('SegmentedButton', () => {
-  const options = [
-    { value: 'dummy_value_1', segment: <SegmentedButton.Button>dummy text 1</SegmentedButton.Button> },
-    { value: 'dummy_value_2', segment: <SegmentedButton.Button>dummy text 2</SegmentedButton.Button> },
-    { value: 'dummy_value_3', segment: <SegmentedButton.Button>dummy text 3</SegmentedButton.Button> },
-  ];
   const onChangeMock = jest.fn();
   const givenComponentRendered = (props?: Partial<SegmentedButtonProps>) =>
-    renderWithProviders(<SegmentedButton options={options} onChange={onChangeMock} {...props} />);
+    renderWithProviders(
+      <SegmentedButton onChange={onChangeMock} {...props}>
+        <SegmentedButton.Button value="dummy_value_1">dummy text 1</SegmentedButton.Button>
+        <SegmentedButton.Button value="dummy_value_2">dummy text 2</SegmentedButton.Button>
+        <SegmentedButton.Button value="dummy_value_3">dummy text 3</SegmentedButton.Button>
+      </SegmentedButton>
+    );
 
   it('should render', () => {
     givenComponentRendered();
@@ -29,8 +30,8 @@ describe('SegmentedButton', () => {
     expect(screen.getByText('dummy text 1')).toBeDisabled();
   });
 
-  it('should select an option by default when defaultOption is provided', () => {
-    givenComponentRendered({ defaultOption: 'dummy_value_2' });
+  it('should select an option by default when defaultValue is provided', () => {
+    givenComponentRendered({ defaultValue: 'dummy_value_2' });
 
     expect(screen.getByRole('button', { current: true })).toHaveAttribute('data-value', 'dummy_value_2');
   });

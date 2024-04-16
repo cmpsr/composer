@@ -9,6 +9,7 @@ import {
   SegmentedButtonStaticMembers,
   SegmentedButtonStyles,
   SegmentedIconButtonProps,
+  Value,
 } from './types';
 
 export const SegmentedButton: FC<PropsWithChildren<SegmentedButtonProps>> & SegmentedButtonStaticMembers = ({
@@ -20,10 +21,10 @@ export const SegmentedButton: FC<PropsWithChildren<SegmentedButtonProps>> & Segm
   isDisabled = false,
 }) => {
   const styles = useMultiStyleConfig('SegmentedButton') as SegmentedButtonStyles;
-  const [selectedValue, setSelectedValue] = useState<OptionValue>(defaultValue);
+  const [selectedValue, setSelectedValue] = useState<Value>(defaultValue);
   const responsiveSize = useResponsiveValue(size) as SegmentedButtonSize;
 
-  const handleChange = (value: OptionValue) => {
+  const handleChange = (value: Value) => {
     setSelectedValue(value);
     onChange(value);
   };

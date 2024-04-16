@@ -167,6 +167,7 @@ export const Button: ComponentStyleConfig = {
         height: '0.75rem',
         padding: 0,
       },
+      columnGap: 'spacer-button-gap-XS',
     }),
     s: ({ theme }) => ({
       ...getTextStyleProperties(theme.textStyles['text-body-meta-medium']),
@@ -177,6 +178,7 @@ export const Button: ComponentStyleConfig = {
         height: '0.75rem',
         padding: 0,
       },
+      columnGap: 'spacer-button-gap-S',
     }),
     m: ({ theme }) => ({
       ...getTextStyleProperties(theme.textStyles['text-body-medium']),
@@ -187,6 +189,7 @@ export const Button: ComponentStyleConfig = {
         height: '1rem',
         padding: 0,
       },
+      columnGap: 'spacer-button-gap-M',
     }),
     l: ({ theme }) => ({
       ...getTextStyleProperties(theme.textStyles['text-body-large-medium']),
@@ -197,6 +200,7 @@ export const Button: ComponentStyleConfig = {
         height: '1rem',
         padding: 0,
       },
+      columnGap: 'spacer-button-gap-L',
     }),
   },
   variants: {

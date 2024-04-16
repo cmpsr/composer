@@ -1,7 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { StyleFunctionProps } from '@chakra-ui/theme-tools';
 import { omit } from '@chakra-ui/utils';
-import { buttonVariants, linkSizes, spacersButtonGap } from '@components';
+import { buttonVariants, linkSizes } from '@components';
 
 export const linkBaseStyle = {
   width: 'inherit',
@@ -62,6 +62,7 @@ const getSizes = () => {
                 l: 'text-body-large-medium',
               }[size]
             ],
+            columnGap: '0.5rem',
           };
   });
   return sizes;
@@ -91,13 +92,7 @@ export const Link: ComponentStyleConfig = {
         }
       : { display: 'inline' };
 
-    const baseStyle = isButtonVariant(props.variant) ? buttonBaseStyle : { ...linkBaseStyle, ...linkDisplayStyles };
-    const columnGap = isButtonVariant(props.variant) ? spacersButtonGap(props.size) : '0.5rem';
-
-    return {
-      ...baseStyle,
-      columnGap: columnGap,
-    };
+    return isButtonVariant(props.variant) ? buttonBaseStyle : { ...linkBaseStyle, ...linkDisplayStyles };
   },
   sizes: getSizes(),
   variants: {

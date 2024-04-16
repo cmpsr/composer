@@ -8,11 +8,11 @@ export const Button = forwardRef<ButtonProps, typeof ChakraButton>(
   ({ children, variant, size, isLoading, leadingIcon, trailingIcon, ...props }, ref) => {
     const responsiveVariant = useResponsiveValue(variant) as ButtonVariant | LinkVariant;
     const responsiveSize = useResponsiveValue(size) as ButtonSize;
-    const { loading } = useMultiStyleConfig('Button', {
+    const { loading, columnGap } = useMultiStyleConfig('Button', {
       variant,
       size: responsiveSize,
       isLoading,
-    }) as { loading: SpinnerProps };
+    }) as { loading: SpinnerProps; columnGap: string };
     const leftIcon = getIcon(leadingIcon, responsiveSize);
     const rightIcon = getIcon(trailingIcon, responsiveSize);
     const isLinkVariant = responsiveVariant?.startsWith('link');
@@ -32,7 +32,7 @@ export const Button = forwardRef<ButtonProps, typeof ChakraButton>(
         isLoading={isLoading}
         {...props}
       >
-        <Flex direction="row" alignItems="center" columnGap={spacersButtonGap(size)}>
+        <Flex direction="row" alignItems="center" columnGap={columnGap}>
           {leftIcon}
           {children}
           {rightIcon}
@@ -51,14 +51,3 @@ const getIcon = (icon: React.ReactElement<IconProps>, size: ButtonSize) => {
 };
 
 const getIconSize = (size: ButtonSize) => (size === 'l' ? 'm' : size);
-
-export const spacersButtonGap = (size) => {
-  const spacers = {
-    l: 'spacer-button-gap-L',
-    m: 'spacer-button-gap-M',
-    s: 'spacer-button-gap-S',
-    xs: 'spacer-button-gap-XS',
-  };
-
-  return spacers[size];
-};

@@ -1,8 +1,8 @@
+import React from 'react';
 import { Button as ChakraButton, forwardRef, IconProps, useMultiStyleConfig } from '@chakra-ui/react';
+import { ButtonProps, ButtonSize } from './types';
 import { ButtonVariant, Flex, LinkVariant, Spinner, SpinnerProps, SpinnerVariant } from '@components';
 import { useResponsiveValue } from '@hooks';
-import React from 'react';
-import { ButtonProps, ButtonSize } from './types';
 
 export const Button = forwardRef<ButtonProps, typeof ChakraButton>(
   ({ children, variant, size, isLoading, leadingIcon, trailingIcon, ...props }, ref) => {

@@ -1,7 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { StyleFunctionProps } from '@chakra-ui/theme-tools';
+import { linkSizes, buttonVariants } from '@components';
 import { omit } from '@chakra-ui/utils';
-import { buttonVariants, linkSizes } from '@components';
 
 export const linkBaseStyle = {
   width: 'inherit',

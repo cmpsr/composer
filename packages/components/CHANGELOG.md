@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.5.0
+
+### Minor Changes
+
+- de12a4c6: Add specific spacer tokens to Button
+
 ## 7.4.1
 
 ### Patch Changes

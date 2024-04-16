@@ -1,7 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { StyleFunctionProps } from '@chakra-ui/theme-tools';
-import { linkSizes, buttonVariants } from '@components';
 import { omit } from '@chakra-ui/utils';
+import { buttonVariants, linkSizes, spacersButtonGap } from '@components';
 
 export const linkBaseStyle = {
   width: 'inherit',
@@ -85,15 +85,19 @@ export const Link: ComponentStyleConfig = {
     };
 
     const linkDisplayStyles = !props.isInline
-      ? { display: 'inline-flex', alignItems: 'center', columnGap: '0.5rem' }
+      ? {
+          display: 'inline-flex',
+          alignItems: 'center',
+        }
       : { display: 'inline' };
 
-    return isButtonVariant(props.variant)
-      ? buttonBaseStyle
-      : {
-          ...linkBaseStyle,
-          ...linkDisplayStyles,
-        };
+    const baseStyle = isButtonVariant(props.variant) ? buttonBaseStyle : { ...linkBaseStyle, ...linkDisplayStyles };
+    const columnGap = isButtonVariant(props.variant) ? spacersButtonGap(props.size) : '0.5rem';
+
+    return {
+      ...baseStyle,
+      columnGap: columnGap,
+    };
   },
   sizes: getSizes(),
   variants: {

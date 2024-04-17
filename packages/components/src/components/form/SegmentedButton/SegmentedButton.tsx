@@ -11,6 +11,11 @@ import {
   SegmentedIconButtonProps,
   SegmentedButtonValue,
 } from './types';
+import { createContext } from '@chakra-ui/react-utils';
+
+const [SegmentedButtonProvider, useSegmentedButtonContext] = createContext<SegmentedButtonContextProps>({
+  name: 'SegmentedButtonContext',
+});
 
 export const SegmentedButton: FC<PropsWithChildren<SegmentedButtonProps>> & SegmentedButtonStaticMembers = ({
   children,
@@ -30,25 +35,27 @@ export const SegmentedButton: FC<PropsWithChildren<SegmentedButtonProps>> & Segm
   };
 
   return (
-    <Flex {...styles.container} role="group">
-      {(children as ReactElement[]).map((child) =>
-        cloneElement(child, {
-          key: child.props.value,
-          onClick: () => handleChange(child.props.value),
-          isActive: selectedValue === child.props.value,
-          variant,
-          size: responsiveSize,
-          isDisabled,
-          'aria-current': selectedValue === child.props.value,
-        })
-      )}
-    </Flex>
+    <SegmentedButtonProvider value={{ styles }}>
+      <Flex {...styles.container} role="group">
+        {(children as ReactElement[]).map((child) =>
+          cloneElement(child, {
+            key: child.props.value,
+            onClick: () => handleChange(child.props.value),
+            isActive: selectedValue === child.props.value,
+            variant,
+            size: responsiveSize,
+            isDisabled,
+            'aria-current': selectedValue === child.props.value,
+          })
+        )}
+      </Flex>
+    </SegmentedButtonProvider>
   );
 };
 
 const Button = forwardRef<SegmentedButtonButtonProps, typeof ChakraButton>(
-  ({ isActive, children, leadingIcon, trailingIcon, size, variant, ...rest }, ref) => {
-    const styles = useMultiStyleConfig('SegmentedButton', { isActive, variant, size }) as SegmentedButtonStyles;
+  ({ children, leadingIcon, trailingIcon, size, ...rest }, ref) => {
+    const { styles } = useSegmentedButtonContext();
     const leadingIconSized = getIcon(leadingIcon, size);
     const trailingIconSized = getIcon(trailingIcon, size);
     return (
@@ -63,17 +70,15 @@ const Button = forwardRef<SegmentedButtonButtonProps, typeof ChakraButton>(
 
 SegmentedButton.Button = Button;
 
-const IconButton = forwardRef<SegmentedIconButtonProps, typeof ChakraButton>(
-  ({ isActive, icon, size, variant, ...rest }, ref) => {
-    const styles = useMultiStyleConfig('SegmentedButton', { isActive, variant, size }) as SegmentedButtonStyles;
-    const iconSized = getIcon(icon, size);
-    return (
-      <ChakraButton {...styles.button} {...styles.icon} size={size} {...rest} ref={ref}>
-        {iconSized}
-      </ChakraButton>
-    );
-  }
-);
+const IconButton = forwardRef<SegmentedIconButtonProps, typeof ChakraButton>(({ icon, size, ...rest }, ref) => {
+  const { styles } = useSegmentedButtonContext();
+  const iconSized = getIcon(icon, size);
+  return (
+    <ChakraButton {...styles.button} {...styles.icon} size={size} {...rest} ref={ref}>
+      {iconSized}
+    </ChakraButton>
+  );
+});
 
 SegmentedButton.Icon = IconButton;
 

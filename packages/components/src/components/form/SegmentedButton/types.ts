@@ -10,6 +10,7 @@ export type SegmentedButtonValue = string | number;
 
 export interface SegmentedButtonProps {
   onChange: (value: SegmentedButtonValue) => void;
+  children: SegmentedButtonButtonProps[] | SegmentedIconButtonProps[];
   variant?: SegmentedButtonVariant;
   size?: ResponsiveValue<SegmentedButtonSize>;
   defaultValue?: SegmentedButtonValue;
@@ -42,5 +43,5 @@ export type SegmentedButtonStyles = {
 };
 
 export interface SegmentedButtonContextProps {
-  styles: SegmentedButtonStyles;
+  getButtonStyles: (isActive?: boolean) => SegmentedButtonStyles;
 }

@@ -1,7 +1,7 @@
 import { Button as ChakraButton, IconProps, ResponsiveValue, forwardRef, useMultiStyleConfig } from '@chakra-ui/react';
 import { Flex } from '@components';
 import { useResponsiveValue } from '@hooks';
-import React, { FC, PropsWithChildren, ReactElement, cloneElement, isValidElement, useState } from 'react';
+import React, { FC, ReactElement, cloneElement, isValidElement, useState } from 'react';
 import {
   SegmentedButtonButtonProps,
   SegmentedButtonProps,
@@ -10,6 +10,7 @@ import {
   SegmentedButtonStyles,
   SegmentedIconButtonProps,
   SegmentedButtonValue,
+  SegmentedButtonContextProps,
 } from './types';
 import { createContext } from '@chakra-ui/react-utils';
 
@@ -17,7 +18,7 @@ const [SegmentedButtonProvider, useSegmentedButtonContext] = createContext<Segme
   name: 'SegmentedButtonContext',
 });
 
-export const SegmentedButton: FC<PropsWithChildren<SegmentedButtonProps>> & SegmentedButtonStaticMembers = ({
+export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMembers = ({
   children,
   onChange,
   variant = 'primary',
@@ -25,7 +26,6 @@ export const SegmentedButton: FC<PropsWithChildren<SegmentedButtonProps>> & Segm
   defaultValue = '',
   isDisabled = false,
 }) => {
-  const styles = useMultiStyleConfig('SegmentedButton') as SegmentedButtonStyles;
   const [selectedValue, setSelectedValue] = useState<SegmentedButtonValue>(defaultValue);
   const responsiveSize = useResponsiveValue(size) as SegmentedButtonSize;
 
@@ -34,15 +34,18 @@ export const SegmentedButton: FC<PropsWithChildren<SegmentedButtonProps>> & Segm
     onChange(value);
   };
 
+  const getButtonStyles = (isActive?: boolean) => {
+    return useMultiStyleConfig('SegmentedButton', { variant, size: responsiveSize, isActive }) as SegmentedButtonStyles;
+  };
+
   return (
-    <SegmentedButtonProvider value={{ styles }}>
-      <Flex {...styles.container} role="group">
-        {(children as ReactElement[]).map((child) =>
+    <SegmentedButtonProvider value={{ getButtonStyles }}>
+      <Flex {...getButtonStyles().container} role="group">
+        {children.map((child) =>
           cloneElement(child, {
             key: child.props.value,
             onClick: () => handleChange(child.props.value),
             isActive: selectedValue === child.props.value,
-            variant,
             size: responsiveSize,
             isDisabled,
             'aria-current': selectedValue === child.props.value,
@@ -54,12 +57,12 @@ export const SegmentedButton: FC<PropsWithChildren<SegmentedButtonProps>> & Segm
 };
 
 const Button = forwardRef<SegmentedButtonButtonProps, typeof ChakraButton>(
-  ({ children, leadingIcon, trailingIcon, size, ...rest }, ref) => {
-    const { styles } = useSegmentedButtonContext();
+  ({ children, leadingIcon, trailingIcon, size, isActive, ...rest }, ref) => {
+    const { getButtonStyles } = useSegmentedButtonContext();
     const leadingIconSized = getIcon(leadingIcon, size);
     const trailingIconSized = getIcon(trailingIcon, size);
     return (
-      <ChakraButton {...styles.button} size={size} {...rest} ref={ref}>
+      <ChakraButton {...getButtonStyles(isActive).button} size={size} {...rest} ref={ref}>
         {leadingIconSized}
         {children}
         {trailingIconSized}
@@ -70,15 +73,18 @@ const Button = forwardRef<SegmentedButtonButtonProps, typeof ChakraButton>(
 
 SegmentedButton.Button = Button;
 
-const IconButton = forwardRef<SegmentedIconButtonProps, typeof ChakraButton>(({ icon, size, ...rest }, ref) => {
-  const { styles } = useSegmentedButtonContext();
-  const iconSized = getIcon(icon, size);
-  return (
-    <ChakraButton {...styles.button} {...styles.icon} size={size} {...rest} ref={ref}>
-      {iconSized}
-    </ChakraButton>
-  );
-});
+const IconButton = forwardRef<SegmentedIconButtonProps, typeof ChakraButton>(
+  ({ icon, size, isActive, ...rest }, ref) => {
+    const { getButtonStyles } = useSegmentedButtonContext();
+    const buttonStyles = getButtonStyles(isActive);
+    const iconSized = getIcon(icon, size);
+    return (
+      <ChakraButton {...buttonStyles.button} {...buttonStyles.icon} size={size} {...rest} ref={ref}>
+        {iconSized}
+      </ChakraButton>
+    );
+  }
+);
 
 SegmentedButton.Icon = IconButton;
 

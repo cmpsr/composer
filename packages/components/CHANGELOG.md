@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.6.0
+
+### Minor Changes
+
+- 5d28dd02: Add a new Segmented Button
+
 ## 7.5.0
 
 ### Minor Changes

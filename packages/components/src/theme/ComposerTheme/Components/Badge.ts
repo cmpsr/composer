@@ -28,26 +28,26 @@ export const statusStyles = {
   info: {
     backgroundColor: 'alert-inform-default',
     borderColor: 'alert-inform-default',
-    colorOutlineSubtle: 'alert-inform-default',
-    colorSolid: 'text-primary',
+    colorOutlineSubtle: 'text-inform',
+    colorSolid: 'text-badge-solid',
   },
   success: {
     backgroundColor: 'alert-success-default',
     borderColor: 'alert-success-default',
     colorOutlineSubtle: 'text-success',
-    colorSolid: 'text-success',
+    colorSolid: 'text-badge-solid',
   },
   warning: {
     backgroundColor: 'alert-warning-default',
     borderColor: 'alert-warning-default',
     colorOutlineSubtle: 'text-warning',
-    colorSolid: 'text-warning',
+    colorSolid: 'text-badge-solid',
   },
   error: {
     backgroundColor: 'alert-error-default',
     borderColor: 'alert-error-default',
     colorOutlineSubtle: 'text-error',
-    colorSolid: 'text-error',
+    colorSolid: 'text-badge-solid',
   },
 };
 

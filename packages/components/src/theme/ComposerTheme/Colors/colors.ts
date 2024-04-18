@@ -87,7 +87,7 @@ export const defaultColors = {
   'text-success': '#15793E',
   'text-warning': '#CB7600',
   'text-error': '#A72D1A',
-  'text-inform': '#134E89',
+  'text-inform': '#1F78D1',
   'ui-element-divider': '#CACACA',
   'ui-element-outline-default': '#E6E6E6',
   'ui-element-outline-active': '#D7DBE7',

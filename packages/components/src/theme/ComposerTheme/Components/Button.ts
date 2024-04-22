@@ -105,16 +105,25 @@ const generateAltButton = (color: string) => {
       backgroundColor: 'background-action-hover',
       color: `text-link-${color}-hover`,
       _disabled,
+      _before: {
+        border: `1px solid var(--chakra-colors-${color}-hover)`,
+      },
     },
     _focus: {
-      backgroundColor: 'background-action-hover',
+      backgroundColor: 'background-action-default',
       boxShadow: `0 0 0 0.1875rem var(--chakra-colors-${color}-focus)`,
     },
     _pressed: {
       backgroundColor: 'background-action-pressed',
+      _before: {
+        border: `1px solid var(--chakra-colors-${color}-pressed)`,
+      },
     },
     _active: {
       backgroundColor: 'background-action-pressed',
+      _before: {
+        border: `1px solid var(--chakra-colors-${color}-pressed)`,
+      },
     },
     // Safari patch - If the targeted element already has a border-radius, the outline will not follow it: It will be a square.
     _before: {

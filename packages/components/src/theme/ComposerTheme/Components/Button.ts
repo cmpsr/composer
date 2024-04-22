@@ -103,6 +103,7 @@ const generateAltButton = (color: string) => {
     _disabled,
     _hover: {
       backgroundColor: 'background-action-hover',
+      color: `text-link-${color}-hover`,
       _disabled,
     },
     _focus: {
@@ -123,7 +124,7 @@ const generateAltButton = (color: string) => {
       right: '-1px',
       bottom: '-1px',
       left: '-1px',
-      border: `1px solid var(--chakra-colors-text-link-${color}-default)`,
+      border: `1px solid var(--chakra-colors-${color}-default)`,
       borderRadius: 'radii-button',
     },
   };

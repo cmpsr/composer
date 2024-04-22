@@ -1,5 +1,7 @@
 # @cmpsr/markdown-editor
 
+## 2.0.12
+
 ## 2.0.11
 
 ## 2.0.10

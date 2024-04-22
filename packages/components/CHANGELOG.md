@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 7.7.0
+
+### Minor Changes
+
+- babd177e: Add new color token 'text-inform' and update Badge component styles
+- ac1cde80: Update theme button colors
+
 ## 7.6.0
 
 ### Minor Changes

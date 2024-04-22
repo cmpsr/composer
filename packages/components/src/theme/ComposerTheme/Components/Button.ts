@@ -115,9 +115,15 @@ const generateAltButton = (color: string) => {
     },
     _pressed: {
       backgroundColor: 'background-action-pressed',
+      _before: {
+        border: `1px solid var(--chakra-colors-${color}-pressed)`,
+      },
     },
     _active: {
       backgroundColor: 'background-action-pressed',
+      _before: {
+        border: `1px solid var(--chakra-colors-${color}-pressed)`,
+      },
     },
     // Safari patch - If the targeted element already has a border-radius, the outline will not follow it: It will be a square.
     _before: {

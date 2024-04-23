@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.8.0
+
+### Minor Changes
+
+- 1610ec5e: Update button-alt border color
+
 ## 7.7.0
 
 ### Minor Changes

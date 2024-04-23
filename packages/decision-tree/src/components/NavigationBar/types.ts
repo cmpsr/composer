@@ -1,5 +1,5 @@
 import { type Dispatch } from 'react';
-import { DecisionTreeAction } from '../../hooks/usePagination';
+import { DecisionTreeAction } from '../../hooks/usePagination/types';
 
 export type NavigationBarProps = {
   lastQuestion: number;

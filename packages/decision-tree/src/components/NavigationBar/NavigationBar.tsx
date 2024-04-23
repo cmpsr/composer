@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { type NavigationBarProps } from './types';
 import { Flex, Button, IconArrowRight, IconArrowLeft } from '@cmpsr/components';
-import { DecisionTreeActionKind } from '../../hooks/usePagination';
+import { DecisionTreeActionKind } from '../../hooks/usePagination/types';
 
 export const NavigationBar: FC<NavigationBarProps> = ({ lastQuestion, currentQuestion, dispatch }) => {
   return (

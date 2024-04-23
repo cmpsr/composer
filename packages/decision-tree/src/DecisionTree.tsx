@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { StepBar } from './components/StepBar';
 import { NavigationBar } from './components/NavigationBar';
 import { Question } from './components/Question';
-import { usePagination } from './hooks/usePagination';
+import { usePagination } from './hooks';
 import { DecisionTreeProps, DecisionTreeStaticMembers } from './types';
 import { Box, BoxProps } from '@cmpsr/components';
-import { useSetupCallback } from './hooks/usePagination/useSubmitAnswers';
+import { useSetupCallback } from './hooks';
 
 export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ steps, questions, callback }) => {
   const { state, dispatch, activeStep } = usePagination(questions, steps.length);

@@ -63,9 +63,7 @@ export const All = () => (
 const Template = (args) => <DecisionTree {...args} />;
 export const Playground = Template.bind({});
 Playground.args = {
-  variant: 'outline',
-  size: 'l',
-  numOfDigits: 4,
-  isInvalid: false,
-  isDisabled: false,
+  questions,
+  steps,
+  callback,
 };

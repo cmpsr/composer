@@ -5,11 +5,11 @@ import { Question } from './components/Question';
 import { usePagination } from './hooks';
 import { DecisionTreeProps, DecisionTreeStaticMembers } from './types';
 import { Box, BoxProps } from '@cmpsr/components';
-import { useSetupCallback } from './hooks';
+import { useSubmitAnswers } from './hooks';
 
 export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ steps, questions, callback }) => {
   const { state, dispatch, activeStep } = usePagination(questions, steps.length);
-  const { submitAnswer } = useSetupCallback({ callback });
+  const { submitAnswer } = useSubmitAnswers(callback);
 
   return (
     <DecisionTree.Container>

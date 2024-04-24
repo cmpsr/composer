@@ -1,21 +1,12 @@
 import { FC } from 'react';
 import { BoxProps } from '@cmpsr/components';
 
-export type SubmitAnswerProps = {
-  questionId: string;
-  value: string;
-};
-
-export type callbackFn = (submitAnswerProps: SubmitAnswerProps) => Promise<boolean>;
-
-export type UseSetupCallbackProps = {
-  callback: callbackFn;
-};
+export type UseSetupCallbackCB = (questionId: string, value: string) => Promise<boolean>;
 
 export type DecisionTreeProps = {
   steps: any;
   questions: any;
-  callback: callbackFn;
+  callback: UseSetupCallbackCB;
 };
 
 export interface DecisionTreeStaticMembers {

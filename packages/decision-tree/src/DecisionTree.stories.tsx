@@ -2,13 +2,13 @@ import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { DecisionTree } from './DecisionTree';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
-import { type SubmitAnswerProps } from './types';
+import { type UseSetupCallbackCB } from './types';
 import { questions, steps } from './DecisionTree.mock';
 
-const callback = async function ({ questionId, value }: SubmitAnswerProps): Promise<boolean> {
+const callback = async function (questionId, value) {
   console.log(questionId, value);
   return true;
-};
+} as UseSetupCallbackCB;
 
 export default {
   component: DecisionTree,

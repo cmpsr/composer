@@ -11,11 +11,12 @@ export const NavigationBar: FC<NavigationBarProps> = ({ lastQuestion, currentQue
           dispatch({ type: DecisionTreeActionKind.PreviousQuestion });
         }}
         variant="link"
-        isDisabled={currentQuestion < 1}
+        isDisabled={currentQuestion <= 1}
         size="m"
         leadingIcon={<IconArrowLeft />}
         children="Back"
         mr="spacer-4"
+        role='link'
       />
       <Button
         onClick={() => {
@@ -26,6 +27,7 @@ export const NavigationBar: FC<NavigationBarProps> = ({ lastQuestion, currentQue
         trailingIcon={<IconArrowRight />}
         children="Next"
         isDisabled={currentQuestion >= lastQuestion}
+        role='button'
       />
     </Flex>
   );

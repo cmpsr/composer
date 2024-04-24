@@ -1,9 +1,9 @@
-import { UseSetupCallbackProps } from 'src/types';
+import { UseSetupCallbackCB } from 'src/types';
 import { UseSetupCallbackResponse } from './types';
 
-export const useSetupCallback = ({ callback }: UseSetupCallbackProps): UseSetupCallbackResponse => {
-  const submitAnswer = async ({ questionId, value }) => {
-    return await callback({ questionId, value });
+export const useSubmitAnswers = ( callback : UseSetupCallbackCB): UseSetupCallbackResponse => {
+  const submitAnswer = async (questionId, value) => {
+    return await callback(questionId, value);
   };
 
   return { submitAnswer };

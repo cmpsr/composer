@@ -1,6 +1,5 @@
 {
   "name": "@cmpsr/decision-tree",
-  "type": "module",
   "repository": {
     "url": "ssh://git@github.com:cmpsr/composer.git"
   },

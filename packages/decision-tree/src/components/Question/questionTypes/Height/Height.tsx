@@ -3,7 +3,7 @@ import { type QuestionProps } from '../../types';
 import { Box, RadioGroup, Radio } from '@cmpsr/components';
 import { QuestionTitle } from '../../components/QuestionTitle';
 
-export const Boolean: FC<QuestionProps> = ({ data, submitAnswer }) => {
+export const Height: FC<QuestionProps> = ({ data, submitAnswer }) => {
   const { question, tooltip, id } = data;
 
   return (

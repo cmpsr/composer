@@ -1,5 +1,5 @@
-import { callbackFn } from 'src/types'
+import { UseSetupCallbackCB } from 'src/types'
 
 export type UseSetupCallbackResponse = {
-    submitAnswer: callbackFn;
+    submitAnswer: UseSetupCallbackCB;
 };

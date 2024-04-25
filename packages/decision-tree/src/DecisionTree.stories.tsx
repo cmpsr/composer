@@ -2,12 +2,14 @@ import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
 import { DecisionTree } from './DecisionTree';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
-import { type UseSetupCallbackCB } from './types';
-import { questions, steps } from './DecisionTree.mock';
+import { QuestionnaireType, type UseSetupCallbackCB } from './types';
+import { questionnaire } from './tests/Questionnaire.mock';
+
+const nextPages = [{ nextSectionId: 1, nextQuestionId: 2 }, { nextSectionId: 2, nextQuestionId: 3 }, null];
 
 const callback = async function (questionId, value) {
   console.log(questionId, value);
-  return true;
+  return nextPages.shift();
 } as UseSetupCallbackCB;
 
 export default {
@@ -19,7 +21,7 @@ export default {
       control: { type: 'select' },
     },
     size: {
-      options: ['s','m', 'l'],
+      options: ['s', 'm', 'l'],
       control: { type: 'select' },
     },
   },
@@ -49,7 +51,7 @@ export const All = () => (
               <Td>{state}</Td>
               {['l'].map((size, i) => (
                 <Td key={`${variant}-${state}-${size}-${i}`}>
-                  <DecisionTree questions={questions} steps={steps} callback={callback} />
+                  <DecisionTree questionnaire={questionnaire as QuestionnaireType} callback={callback} />
                 </Td>
               ))}
             </Tr>
@@ -63,7 +65,6 @@ export const All = () => (
 const Template = (args) => <DecisionTree {...args} />;
 export const Playground = Template.bind({});
 Playground.args = {
-  questions,
-  steps,
+  questionnaire,
   callback,
 };

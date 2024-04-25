@@ -3,19 +3,35 @@ import { StepBar } from './components/StepBar';
 import { NavigationBar } from './components/NavigationBar';
 import { Question } from './components/Question';
 import { usePagination } from './hooks';
-import { DecisionTreeProps, DecisionTreeStaticMembers } from './types';
+import { DecisionTreeProps, DecisionTreeStaticMembers, Steps } from './types';
 import { Box, BoxProps } from '@cmpsr/components';
-import { useSubmitAnswers } from './hooks';
+import { useHandleAnswers } from './hooks';
 
-export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ steps, questions, callback }) => {
-  const { state, dispatch, activeStep } = usePagination(questions, steps.length);
-  const { submitAnswer } = useSubmitAnswers(callback);
+export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ questionnaire, callback }) => {
+  const steps: Steps = questionnaire.sections.map(({ id, name }) => ({ id, name }));
+  const initialState = { currentQuestion: questionnaire.nextQuestionId, currentSection: questionnaire.nextSectionId };
+
+  const { state: answerState, answersDispatch, submitAnswer } = useHandleAnswers(callback);
+  const {
+    state: { currentQuestion, currentSection },
+    paginationDispatch,
+    activeStep,
+    isBackDisabled,
+  } = usePagination({ steps, initialState });
+
+  const section = questionnaire.sections.find((section) => section.id == currentSection);
+  const question = section.questions.find((question) => question.id == currentQuestion);
 
   return (
     <DecisionTree.Container>
       <StepBar steps={steps} activeStep={activeStep} />
-      <Question data={questions[state.currentQuestion]} submitAnswer={submitAnswer} />
-      <NavigationBar lastQuestion={questions.length - 1} currentQuestion={state.currentQuestion} dispatch={dispatch} />
+      <Question data={question} answersDispatch={answersDispatch} />
+      <NavigationBar
+        isBackDisabled={isBackDisabled}
+        isNextDisabled={answerState.answer === null}
+        dispatch={paginationDispatch}
+        submitAnswer={() => submitAnswer(currentQuestion)}
+      />
     </DecisionTree.Container>
   );
 };

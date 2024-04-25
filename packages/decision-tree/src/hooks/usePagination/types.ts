@@ -1,20 +1,33 @@
-import {  type Dispatch } from 'react';
+import { Steps } from '@types';
+import { type Dispatch } from 'react';
 
-export enum DecisionTreeActionKind {
-    NextQuestion = 'NextQuestion',
-    PreviousQuestion = 'PreviousQuestion',
-  }
-  
-  export type DecisionTreeAction = {
-    type: DecisionTreeActionKind;
+export enum PaginationActions {
+  NextQuestion = 'NextQuestion',
+  PreviousQuestion = 'PreviousQuestion',
+}
+
+export type PaginationAction = {
+  type: PaginationActions;
+  payload?: {
+    nextSectionId: string;
+    nextQuestionId: string;
   };
-  
-  export type DecisionTreeState = {
-    currentQuestion: number;
-  };
-  
-  export type DecisionTreeHook = {
-    state: DecisionTreeState;
-    activeStep: number;
-    dispatch: Dispatch<DecisionTreeAction>;
-  };
+};
+
+export type PaginationState = {
+  currentQuestion: string;
+  currentSection: string;
+  step?: number;
+};
+
+export type PaginationResponse = {
+  state: PaginationState;
+  activeStep: number;
+  paginationDispatch: Dispatch<PaginationAction>;
+  isBackDisabled: boolean;
+};
+
+export type PaginationProps = {
+  steps: Steps;
+  initialState: PaginationState;
+};

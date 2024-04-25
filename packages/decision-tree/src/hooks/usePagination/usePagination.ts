@@ -1,34 +1,39 @@
-import { useReducer } from 'react';
+import { useReducer, useState, type Reducer } from 'react';
 import { useSteps } from '@cmpsr/components';
-import { DecisionTreeHook, DecisionTreeState, DecisionTreeAction, DecisionTreeActionKind } from './types'
+import { PaginationResponse, PaginationState, PaginationAction, PaginationActions, PaginationProps } from './types';
 
-export const usePagination = (questions, stepsLength): DecisionTreeHook => {
+export const usePagination = ({ steps, initialState }: PaginationProps): PaginationResponse => {
   const { activeStep, setActiveStep } = useSteps({
     index: 1,
-    count: stepsLength,
+    count: steps.length,
   });
+  const [pageHistory, setPageHistory] = useState<Array<PaginationState>>([]);
 
-  const surveyReducer = ({ currentQuestion }: DecisionTreeState, action: DecisionTreeAction) => {
+  const paginationReducer = (state: PaginationState, action: PaginationAction) => {
     const actionMap = {
-      [DecisionTreeActionKind.NextQuestion]: () => {
-        const newCurrentQuestion: number = currentQuestion < questions.length ? currentQuestion + 1 : questions.length;
-        setActiveStep(questions[newCurrentQuestion].step);
+      [PaginationActions.PreviousQuestion]: () => {
+        const { currentQuestion, currentSection, step } = pageHistory.at(-1);
+        setActiveStep(step);
+        setPageHistory(pageHistory.splice(-1));
         return {
-          currentQuestion: newCurrentQuestion,
+          currentQuestion,
+          currentSection,
         };
       },
-      [DecisionTreeActionKind.PreviousQuestion]: () => {
-        const newCurrentQuestion: number = currentQuestion < questions.length ? currentQuestion + 1 : questions.length;
-        setActiveStep(questions[newCurrentQuestion].step);
+      [PaginationActions.NextQuestion]: ({ nextSectionId, nextQuestionId }) => {
+        const iSection = steps.findIndex((step) => step.id == nextSectionId);
+        setPageHistory([...pageHistory, { ...state, step: iSection }]);
+        setActiveStep(iSection);
         return {
-          currentQuestion: newCurrentQuestion,
+          currentQuestion: nextQuestionId,
+          currentSection: nextSectionId,
         };
       },
     };
-    return actionMap[action.type]();
+    return actionMap[action.type](action.payload);
   };
 
-  const [state, dispatch] = useReducer(surveyReducer, { currentQuestion: 0 });
+  const [state, dispatch] = useReducer<Reducer<PaginationState, PaginationAction>>(paginationReducer, initialState);
 
-  return { state, activeStep, dispatch };
+  return { state, activeStep, paginationDispatch: dispatch, isBackDisabled: pageHistory.length < 1 };
 };

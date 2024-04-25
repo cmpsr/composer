@@ -1,33 +1,34 @@
 import React, { FC } from 'react';
 import { type NavigationBarProps } from './types';
 import { Flex, Button, IconArrowRight, IconArrowLeft } from '@cmpsr/components';
-import { DecisionTreeActionKind } from '../../hooks/usePagination/types';
+import { PaginationActions } from '@hooks';
 
-export const NavigationBar: FC<NavigationBarProps> = ({ lastQuestion, currentQuestion, dispatch }) => {
+export const NavigationBar: FC<NavigationBarProps> = ({ isBackDisabled, isNextDisabled, dispatch, submitAnswer }) => {
   return (
     <Flex justifyContent={'center'}>
       <Button
         onClick={() => {
-          dispatch({ type: DecisionTreeActionKind.PreviousQuestion });
+          dispatch({ type: PaginationActions.PreviousQuestion });
         }}
         variant="link"
-        isDisabled={currentQuestion <= 1}
+        isDisabled={isBackDisabled}
         size="m"
         leadingIcon={<IconArrowLeft />}
         children="Back"
         mr="spacer-4"
-        role='link'
+        role="link"
       />
       <Button
-        onClick={() => {
-          dispatch({ type: DecisionTreeActionKind.NextQuestion });
+        onClick={async () => {
+          const response = await submitAnswer();
+          dispatch({ type: PaginationActions.NextQuestion, payload: response });
         }}
         variant="accent"
         size="l"
         trailingIcon={<IconArrowRight />}
         children="Next"
-        isDisabled={currentQuestion >= lastQuestion}
-        role='button'
+        isDisabled={isNextDisabled}
+        role="button"
       />
     </Flex>
   );

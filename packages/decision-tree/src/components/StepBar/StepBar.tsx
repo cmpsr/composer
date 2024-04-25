@@ -5,7 +5,7 @@ import { Stepper, Flex } from '@cmpsr/components';
 export const StepBar: FC<StepBarProps> = ({ steps, activeStep }) => {
   return (
     <Stepper index={activeStep}>
-      {steps.map(({ id, label }) => (
+      {steps.map(({ id, name }) => (
         <Stepper.Step key={id} flexDirection="column" _horizontal={{ alignItems: 'start' }}>
           <Flex width="100%" alignItems="center">
             <Stepper.Step.Indicator>
@@ -18,7 +18,7 @@ export const StepBar: FC<StepBarProps> = ({ steps, activeStep }) => {
             <Stepper.Step.Separator />
           </Flex>
           <Flex flexDirection="column" flexShrink={0} mt="0.5rem" gap="spacer-1">
-            <Stepper.Step.Title variant="text-body-floating-label-bold">{label}</Stepper.Step.Title>
+            <Stepper.Step.Title variant="text-body-floating-label-bold">{name}</Stepper.Step.Title>
           </Flex>
         </Stepper.Step>
       ))}

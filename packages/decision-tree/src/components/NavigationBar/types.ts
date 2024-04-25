@@ -1,8 +1,9 @@
 import { type Dispatch } from 'react';
-import { DecisionTreeAction } from '../../hooks/usePagination/types';
+import { PaginationAction } from '@hooks';
 
 export type NavigationBarProps = {
-  lastQuestion: number;
-  currentQuestion: number;
-  dispatch: Dispatch<DecisionTreeAction>;
+  isBackDisabled: boolean;
+  isNextDisabled: boolean;
+  dispatch: Dispatch<PaginationAction>;
+  submitAnswer: () => Promise<any>;
 };

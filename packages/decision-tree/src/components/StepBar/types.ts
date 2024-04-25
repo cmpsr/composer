@@ -1,4 +1,6 @@
+import { Steps } from '@types';
+
 export type StepBarProps = {
-  steps: any;
+  steps: Steps;
   activeStep: number;
 };

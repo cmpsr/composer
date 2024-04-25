@@ -1,4 +1,4 @@
-import { QuestionBase } from '../../types';
+import { QuestionBase } from '@components/Question/types';
 
 type Choice = {
   id: string;

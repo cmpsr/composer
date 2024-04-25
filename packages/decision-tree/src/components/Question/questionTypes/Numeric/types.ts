@@ -1,12 +1,7 @@
-import { QuestionBase } from '../../types';
-
-type Input = {
-  id: string | number;
-  placeholder: string;
-  trailingMask: string;
-};
+import { QuestionBase } from '@components/Question/types';
 
 export interface NumericQuestion extends QuestionBase {
-  inputs: Input[];
+  placeholder: string;
+  trailingMask: string;
   type: 'numeric';
 }

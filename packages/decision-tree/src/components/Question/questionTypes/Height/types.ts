@@ -1,12 +1,12 @@
-import { QuestionBase } from '../../types';
+import { QuestionBase } from '@components/Question/types';
 
-type Choice = {
-  id: string | number;
-  label: string;
-  subLabel: string;
+type measurement = {
+  placeholder: string;
+  trailingMask: string;
 };
 
-export interface BooleanQuestion extends QuestionBase {
-  choices: Choice[];
-  type: 'boolean';
+export interface HeightQuestion extends QuestionBase {
+  feet: measurement;
+  inches: measurement;
+  type: 'height';
 }

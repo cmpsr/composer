@@ -1,13 +1,15 @@
 import React from 'react';
 import { screen, renderWithProviders } from '@tests/renderWithProviders';
 import { StepBar } from './StepBar';
+import { Steps } from '@types';
 
 describe('StepBar', () => {
-  const steps = [{id:1, label:'firstStep'}, {id:2, label:'secondStep'}, {id:3, label:'thirdStep'}]
-  const givenComponentRendered = () =>
-    renderWithProviders(
-      <StepBar steps={steps} activeStep={1} />
-    );
+  const steps: Steps = [
+    { id: '1', name: 'firstStep' },
+    { id: '2', name: 'secondStep' },
+    { id: '3', name: 'thirdStep' },
+  ];
+  const givenComponentRendered = () => renderWithProviders(<StepBar steps={steps} activeStep={1} />);
 
   test('should render the first step', () => {
     givenComponentRendered();

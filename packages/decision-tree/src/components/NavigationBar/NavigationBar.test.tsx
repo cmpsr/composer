@@ -1,53 +1,112 @@
 import React from 'react';
-import { renderWithProviders, screen, fireEvent } from '@tests/renderWithProviders';
+import { renderWithProviders, screen, fireEvent, act, waitFor } from '@tests/renderWithProviders';
 import { NavigationBar } from './NavigationBar';
-import { DecisionTreeActionKind } from '../../hooks/usePagination/types';
+import { PaginationActions } from '@hooks';
 
 describe('Navigation Bar', () => {
-  const mockDispatch = jest.fn()
+  const mockDispatch = jest.fn();
+  const mockSubmitAnswer = jest.fn().mockResolvedValue('resolvedValue');
 
   afterAll(() => {
     mockDispatch.mockReset();
+    mockSubmitAnswer.mockReset();
   });
 
   test('should render 1 button and 1 link', () => {
-    renderWithProviders(<NavigationBar lastQuestion={5} currentQuestion={2} dispatch={mockDispatch} />);
+    renderWithProviders(
+      <NavigationBar
+        isBackDisabled={false}
+        isNextDisabled={false}
+        dispatch={mockDispatch}
+        submitAnswer={mockSubmitAnswer}
+      />
+    );
     expect(screen.getAllByRole('button')).toHaveLength(1);
     expect(screen.getAllByRole('link')).toHaveLength(1);
   });
 
-  test('should disable the back button on first page', () => {
-    renderWithProviders(<NavigationBar lastQuestion={5} currentQuestion={1} dispatch={mockDispatch} />);
+  test('should disable the back button when configed', () => {
+    renderWithProviders(
+      <NavigationBar
+        isBackDisabled={true}
+        isNextDisabled={false}
+        dispatch={mockDispatch}
+        submitAnswer={mockSubmitAnswer}
+      />
+    );
     expect(screen.getByRole('link')).toBeDisabled();
   });
 
-  test('should not disable the back button on second page', () => {
-    renderWithProviders(<NavigationBar lastQuestion={5} currentQuestion={2} dispatch={mockDispatch} />);
+  test('should not disable the back button when not configed', () => {
+    renderWithProviders(
+      <NavigationBar
+        isBackDisabled={false}
+        isNextDisabled={false}
+        dispatch={mockDispatch}
+        submitAnswer={mockSubmitAnswer}
+      />
+    );
     expect(screen.getByRole('link')).not.toBeDisabled();
   });
 
-  test('should disable the next button on last page', () => {
-    renderWithProviders(<NavigationBar lastQuestion={5} currentQuestion={5} dispatch={mockDispatch} />);
+  test('should disable the next button when configed', () => {
+    renderWithProviders(
+      <NavigationBar
+        isBackDisabled={false}
+        isNextDisabled={true}
+        dispatch={mockDispatch}
+        submitAnswer={mockSubmitAnswer}
+      />
+    );
     expect(screen.getByRole('button')).toBeDisabled();
   });
 
-  test('should not disable the next button on first page', () => {
-    renderWithProviders(<NavigationBar lastQuestion={5} currentQuestion={1} dispatch={mockDispatch} />);
+  test('should not disable the next button when not configed', () => {
+    renderWithProviders(
+      <NavigationBar
+        isBackDisabled={false}
+        isNextDisabled={false}
+        dispatch={mockDispatch}
+        submitAnswer={mockSubmitAnswer}
+      />
+    );
     expect(screen.getByRole('button')).not.toBeDisabled();
   });
 
   test('should call the dispatch with previous page action on back click', () => {
-    renderWithProviders(<NavigationBar lastQuestion={5} currentQuestion={2} dispatch={mockDispatch} />);
+    renderWithProviders(
+      <NavigationBar
+        isBackDisabled={false}
+        isNextDisabled={false}
+        dispatch={mockDispatch}
+        submitAnswer={mockSubmitAnswer}
+      />
+    );
     const backButton = screen.getByRole('link');
-    fireEvent.click(backButton);
-    expect(mockDispatch).toHaveBeenCalledWith({ type: DecisionTreeActionKind.PreviousQuestion});
+
+    act(() => {
+      fireEvent.click(backButton);
+    });
+
+    expect(mockDispatch).toHaveBeenCalledWith({ type: PaginationActions.PreviousQuestion });
   });
 
   test('should call the dispatch with next page action on next click', () => {
-    renderWithProviders(<NavigationBar lastQuestion={5} currentQuestion={2} dispatch={mockDispatch} />);
+    renderWithProviders(
+      <NavigationBar
+        isBackDisabled={false}
+        isNextDisabled={false}
+        dispatch={mockDispatch}
+        submitAnswer={mockSubmitAnswer}
+      />
+    );
     const nextButton = screen.getByRole('button');
-    fireEvent.click(nextButton);
-    expect(mockDispatch).toHaveBeenCalledWith({ type: DecisionTreeActionKind.NextQuestion});
-  });
 
+    act(() => {
+      fireEvent.click(nextButton);
+    });
+    waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({ type: PaginationActions.NextQuestion });
+    });
+  });
 });

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { type NavigationBarProps } from './types';
 import { Flex, Button, IconArrowRight, IconArrowLeft } from '@cmpsr/components';
-import { PaginationActions } from '@hooks';
+import { PaginationActions, PaginationPayload } from '@hooks';
 
 export const NavigationBar: FC<NavigationBarProps> = ({ isBackDisabled, isNextDisabled, dispatch, submitAnswer }) => {
   return (
@@ -21,7 +21,7 @@ export const NavigationBar: FC<NavigationBarProps> = ({ isBackDisabled, isNextDi
       <Button
         onClick={async () => {
           const response = await submitAnswer();
-          dispatch({ type: PaginationActions.NextQuestion, payload: response });
+          dispatch({ type: PaginationActions.NextQuestion, payload: response as PaginationPayload });
         }}
         variant="accent"
         size="l"

@@ -8,13 +8,15 @@ export enum PaginationActions {
   PreviousQuestion = 'PreviousQuestion',
 }
 
+export type PaginationPayload = {
+  nextSectionId: string;
+  nextQuestionId: string;
+  answers: AnswersType;
+};
+
 export type PaginationAction = {
   type: PaginationActions;
-  payload?: {
-    nextSectionId: string;
-    nextQuestionId: string;
-    answers: AnswersType;
-  };
+  payload?: PaginationPayload;
 };
 
 export type PaginationState = {

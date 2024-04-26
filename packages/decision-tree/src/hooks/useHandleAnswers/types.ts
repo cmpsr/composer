@@ -1,4 +1,4 @@
-import { AnswerType } from '@components/Question';
+import { AnswerType, AnswersType } from '@components/Question';
 import { type Dispatch } from 'react';
 
 export enum HandleAnswersActions {
@@ -17,6 +17,6 @@ export type SubmitAnswerFn = (currentPage: string) => Promise<any>;
 
 export type useHandleActionResponse = {
   answersDispatch: Dispatch<HandleAnswersAction>;
-  state: { answer: AnswerType };
+  state: { answer: AnswerType; previousAnswers: AnswersType };
   submitAnswer: SubmitAnswerFn;
 };

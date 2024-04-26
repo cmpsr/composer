@@ -1,4 +1,4 @@
-import { AnswerType } from '@components/Question';
+import { AnswersType } from '@components/Question';
 import { HandleAnswersAction } from '@hooks';
 import { Steps } from '@types';
 import { type Dispatch } from 'react';
@@ -13,9 +13,7 @@ export type PaginationAction = {
   payload?: {
     nextSectionId: string;
     nextQuestionId: string;
-    answers: {
-      [key: string]: AnswerType;
-    };
+    answers: AnswersType;
   };
 };
 

@@ -20,6 +20,10 @@ export type QuestionType = HeightQuestion | NumericQuestion | SingleChoiceQuesti
 
 export type AnswerType = string | Array<string> | HeightAnswer | null;
 
+export type AnswersType = {
+  [key: string]: AnswerType;
+};
+
 export type QuestionProps = {
   data: QuestionType;
   answersDispatch: Dispatch<HandleAnswersAction>;

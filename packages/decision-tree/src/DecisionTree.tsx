@@ -7,7 +7,11 @@ import { DecisionTreeProps, DecisionTreeStaticMembers, Steps } from './types';
 import { Box, BoxProps } from '@cmpsr/components';
 import { useHandleAnswers } from './hooks';
 
-export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ questionnaire, callback }) => {
+export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({
+  questionnaire,
+  callback,
+  endSurveyCallback,
+}) => {
   const steps: Steps = questionnaire.sections.map(({ id, name }) => ({ id, name }));
   const initialState = { currentQuestion: questionnaire.nextQuestionId, currentSection: questionnaire.nextSectionId };
 
@@ -17,7 +21,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
     paginationDispatch,
     activeStep,
     isBackDisabled,
-  } = usePagination({ steps, initialState, answersDispatch });
+  } = usePagination({ steps, initialState, answersDispatch, endSurveyCallback });
 
   const section = questionnaire.sections.find((section) => section.id == currentSection);
   const question = section.questions.find((question) => question.id == currentQuestion);

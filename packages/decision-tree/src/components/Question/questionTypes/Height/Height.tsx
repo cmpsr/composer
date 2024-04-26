@@ -12,7 +12,7 @@ export const Height: FC<QuestionProps> = ({ data, answersDispatch }) => {
   return (
     <Box>
       <QuestionTitle question={question} tooltip={tooltip} />
-      <Flex>
+      <Flex gap="spacer-4">
         <MaskInput
           variant="outline"
           size="l"

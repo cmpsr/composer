@@ -16,7 +16,7 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
         const { currentQuestion, currentSection, step } = pageHistory.at(-1);
         answersDispatch({ type: HandleAnswersActions.ResetAnswer });
         setActiveStep(step);
-        setPageHistory(pageHistory.splice(-1));
+        setPageHistory(pageHistory.slice(0, -1));
         return {
           currentQuestion,
           currentSection,

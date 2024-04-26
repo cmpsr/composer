@@ -3,7 +3,12 @@ import { useSteps } from '@cmpsr/components';
 import { PaginationResponse, PaginationState, PaginationAction, PaginationActions, PaginationProps } from './types';
 import { HandleAnswersActions } from '@hooks';
 
-export const usePagination = ({ steps, initialState, answersDispatch }: PaginationProps): PaginationResponse => {
+export const usePagination = ({
+  steps,
+  initialState,
+  answersDispatch,
+  endSurveyCallback,
+}: PaginationProps): PaginationResponse => {
   const { activeStep, setActiveStep } = useSteps({
     index: 1,
     count: steps.length,
@@ -23,6 +28,10 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
         };
       },
       [PaginationActions.NextQuestion]: ({ nextSectionId, nextQuestionId, answers }) => {
+        if (nextQuestionId === null && nextSectionId === null) {
+          endSurveyCallback();
+          return state;
+        }
         const iSection = steps.findIndex((step) => step.id == nextSectionId);
         answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: answers });
         answersDispatch({ type: HandleAnswersActions.ResetAnswer });

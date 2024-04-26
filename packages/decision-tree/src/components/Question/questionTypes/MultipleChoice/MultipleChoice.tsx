@@ -6,9 +6,10 @@ import { MultipleChoiceQuestion } from './types';
 import { HandleAnswersActions } from '@hooks';
 import { QuestionOption } from '../../components/QuestionOption';
 
-export const MultipleChoice: FC<QuestionProps> = ({ data, answersDispatch }) => {
+export const MultipleChoice: FC<QuestionProps> = ({ data, answersDispatch, defaultValue = [] }) => {
   const { question, choices, tooltip } = data as MultipleChoiceQuestion;
   const [answers, setAnswers] = useState(new Set<string>());
+  const checkedValues = defaultValue as string[] | null;
 
   return (
     <Box>
@@ -19,6 +20,7 @@ export const MultipleChoice: FC<QuestionProps> = ({ data, answersDispatch }) => 
           componentType="checkbox"
           componentProps={{
             value: id,
+            defaultChecked: checkedValues && checkedValues.length > 0 && checkedValues.includes(id),
             onChange: ({ target }) => {
               setAnswers(answers.add(target.value));
               answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: answers.values() });

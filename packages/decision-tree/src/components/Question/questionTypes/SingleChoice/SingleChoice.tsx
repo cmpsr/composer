@@ -6,13 +6,14 @@ import { SingleChoiceQuestion } from './types';
 import { HandleAnswersActions } from '@hooks';
 import { QuestionOption } from '../../components/QuestionOption';
 
-export const SingleChoice: FC<QuestionProps> = ({ data, answersDispatch }) => {
+export const SingleChoice: FC<QuestionProps> = ({ data, answersDispatch, defaultValue }) => {
   const { question, choices, tooltip } = data as SingleChoiceQuestion;
   return (
     <Box>
       <QuestionTitle question={question} tooltip={tooltip} />
       <RadioGroup
         onChange={(nextValue) => answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: nextValue })}
+        defaultValue={defaultValue as string}
       >
         {choices.map(({ id, label, subLabel }) => (
           <QuestionOption

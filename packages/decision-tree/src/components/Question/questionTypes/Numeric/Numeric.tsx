@@ -5,8 +5,8 @@ import { QuestionTitle } from '../../components/QuestionTitle';
 import { NumericQuestion } from './types';
 import { HandleAnswersActions } from '@hooks';
 
-export const Numeric: FC<QuestionProps> = ({ data, answersDispatch }) => {
-  const { question, tooltip, id, placeholder, trailingMask } = data as NumericQuestion;
+export const Numeric: FC<QuestionProps> = ({ data, answersDispatch, defaultValue }) => {
+  const { question, tooltip, id, placeholder, trailingMask } = data as NumericQuestion | null;
 
   return (
     <Box>
@@ -21,6 +21,7 @@ export const Numeric: FC<QuestionProps> = ({ data, answersDispatch }) => {
           variant="outline"
           size="l"
           placeholder={placeholder}
+          defaultValue={defaultValue as string}
           onBlur={({ target }) => answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: target.value })}
         />
       </Flex>

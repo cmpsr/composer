@@ -6,17 +6,23 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
   const handleAnswersReducer = (state, action) => {
     const actionMap = {
       [HandleAnswersActions.SaveAnswer]: (submittedAnswer) => {
-        return { answer: submittedAnswer };
+        return { ...state, answer: submittedAnswer };
       },
       [HandleAnswersActions.ResetAnswer]: () => {
-        return { answer: null };
+        return { ...state, answer: null };
+      },
+      [HandleAnswersActions.SetPreviousAnswers]: (previousAnswers) => {
+        return { ...state, previousAnswers };
+      },
+      [HandleAnswersActions.GetPreviousAnswer]: (questionId) => {
+        return { ...state, answer: state.previousAnswers[questionId] };
       },
     };
 
     return actionMap[action.type](action.payload);
   };
 
-  const [state, dispatch] = useReducer(handleAnswersReducer, { answer: null });
+  const [state, dispatch] = useReducer(handleAnswersReducer, { answer: null, previousAnswers: {} });
 
   const submitAnswer = async (questionId) => {
     return await callback(questionId, state.answer);

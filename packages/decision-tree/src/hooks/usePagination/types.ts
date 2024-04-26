@@ -1,3 +1,4 @@
+import { HandleAnswersAction } from '@hooks';
 import { Steps } from '@types';
 import { type Dispatch } from 'react';
 
@@ -30,4 +31,5 @@ export type PaginationResponse = {
 export type PaginationProps = {
   steps: Steps;
   initialState: PaginationState;
+  answersDispatch: Dispatch<HandleAnswersAction>;
 };

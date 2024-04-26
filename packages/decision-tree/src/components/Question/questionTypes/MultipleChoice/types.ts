@@ -1,7 +1,7 @@
 import { QuestionBase } from '@components/Question/types';
 
 type Choice = {
-  id: string | number;
+  id: string;
   label: string;
   subLabel: string;
 };

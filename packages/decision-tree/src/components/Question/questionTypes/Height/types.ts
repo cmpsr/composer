@@ -10,3 +10,5 @@ export interface HeightQuestion extends QuestionBase {
   inches: measurement;
   type: 'height';
 }
+
+export type HeightAnswer = { feet: string; inches: string };

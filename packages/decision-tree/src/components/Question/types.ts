@@ -1,5 +1,11 @@
 import { type Dispatch } from 'react';
-import { HeightQuestion, NumericQuestion, SingleChoiceQuestion, MultipleChoiceQuestion } from './questionTypes';
+import {
+  HeightQuestion,
+  NumericQuestion,
+  SingleChoiceQuestion,
+  MultipleChoiceQuestion,
+  HeightAnswer,
+} from './questionTypes';
 import { HandleAnswersAction } from '@hooks';
 
 export interface QuestionBase {
@@ -12,7 +18,10 @@ export interface QuestionBase {
 
 export type QuestionType = HeightQuestion | NumericQuestion | SingleChoiceQuestion | MultipleChoiceQuestion;
 
+export type AnswerType = string | Array<string> | HeightAnswer | null;
+
 export type QuestionProps = {
   data: QuestionType;
   answersDispatch: Dispatch<HandleAnswersAction>;
+  defaultValue?: AnswerType | null;
 };

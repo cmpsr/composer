@@ -1,8 +1,11 @@
+import { AnswerType } from '@components/Question';
 import { type Dispatch } from 'react';
 
 export enum HandleAnswersActions {
   SaveAnswer = 'saveAnswer',
   ResetAnswer = 'resetAnswer',
+  GetPreviousAnswer = 'getPreviousAnswer',
+  SetPreviousAnswers = 'setPreviousAnswers',
 }
 
 export type HandleAnswersAction = {
@@ -14,6 +17,6 @@ export type SubmitAnswerFn = (currentPage: string) => Promise<any>;
 
 export type useHandleActionResponse = {
   answersDispatch: Dispatch<HandleAnswersAction>;
-  state: { answer: string | object };
+  state: { answer: AnswerType };
   submitAnswer: SubmitAnswerFn;
 };

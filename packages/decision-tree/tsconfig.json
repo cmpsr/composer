@@ -1,0 +1,15 @@
+{
+  "exclude": ["node_modules", "lib"],
+  "include": ["src"],
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "lib",
+    "rootDir": "src",
+    "declaration": true,
+    "baseUrl": ".",
+    "paths": {
+      "@*": ["src/*"],
+      "@tests/*": ["src/tests/*"]
+    }
+  }
+}

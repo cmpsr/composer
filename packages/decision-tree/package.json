@@ -1,0 +1,43 @@
+{
+  "name": "@cmpsr/decision-tree",
+  "repository": {
+    "url": "ssh://git@github.com:cmpsr/composer.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "version": "0.0.1",
+  "author": "Alexis Munoz <alexismunoz@impulsum.vc>",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "private": false,
+  "scripts": {
+    "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts,**/*.stories.ts' && yarn type:emit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
+  },
+  "peerDependencies": {
+    "@cmpsr/components": "^7.4.0",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@cmpsr/components": "^7.4.0",
+    "@storybook/addon-viewport": "^6.5.6",
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.150",
+    "@swc/jest": "^0.2.20",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@types/jest": "^27.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "swc-loader": "^0.1.15"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

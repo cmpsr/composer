@@ -10,6 +10,7 @@ module.exports = {
     '../../../packages/signalwire/src/**/*.stories.tsx',
     '../../../packages/carousel/src/**/*.stories.tsx',
     '../../../packages/markdown-editor/src/**/*.stories.tsx',
+    '../../../packages/decision-tree/src/**/*.stories.tsx',
   ],
   addons: [
     '@storybook/addon-links',

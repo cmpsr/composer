@@ -14,7 +14,7 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
     const actionMap = {
       [PaginationActions.PreviousQuestion]: () => {
         const { currentQuestion, currentSection, step } = pageHistory.at(-1);
-        answersDispatch({ type: HandleAnswersActions.ResetAnswer });
+        answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: currentQuestion });
         setActiveStep(step);
         setPageHistory(pageHistory.slice(0, -1));
         return {
@@ -22,8 +22,9 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
           currentSection,
         };
       },
-      [PaginationActions.NextQuestion]: ({ nextSectionId, nextQuestionId }) => {
+      [PaginationActions.NextQuestion]: ({ nextSectionId, nextQuestionId, answers }) => {
         const iSection = steps.findIndex((step) => step.id == nextSectionId);
+        answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: answers });
         answersDispatch({ type: HandleAnswersActions.ResetAnswer });
         setPageHistory([...pageHistory, { ...state, step: iSection }]);
         setActiveStep(iSection);

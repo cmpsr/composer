@@ -23,6 +23,7 @@ export type QuestionnaireType = {
 export type DecisionTreeProps = {
   questionnaire: QuestionnaireType;
   callback: UseSetupCallbackCB;
+  endSurveyCallback: () => void;
 };
 
 export interface DecisionTreeStaticMembers {

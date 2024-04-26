@@ -36,4 +36,5 @@ export type PaginationProps = {
   steps: Steps;
   initialState: PaginationState;
   answersDispatch: Dispatch<HandleAnswersAction>;
+  endSurveyCallback: () => void;
 };

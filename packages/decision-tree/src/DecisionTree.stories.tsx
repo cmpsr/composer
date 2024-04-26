@@ -10,6 +10,10 @@ const callback = async function (questionId, value) {
   return nextPages.shift();
 } as UseSetupCallbackCB;
 
+const endSurveyCallback = function () {
+  console.log('Fin!');
+};
+
 export default {
   component: DecisionTree,
   title: 'DecisionTree/DecisionTree',
@@ -49,7 +53,11 @@ export const All = () => (
               <Td>{state}</Td>
               {['l'].map((size, i) => (
                 <Td key={`${variant}-${state}-${size}-${i}`}>
-                  <DecisionTree questionnaire={questionnaire as QuestionnaireType} callback={callback} />
+                  <DecisionTree
+                    questionnaire={questionnaire as QuestionnaireType}
+                    callback={callback}
+                    endSurveyCallback={endSurveyCallback}
+                  />
                 </Td>
               ))}
             </Tr>
@@ -65,4 +73,5 @@ export const Playground = Template.bind({});
 Playground.args = {
   questionnaire,
   callback,
+  endSurveyCallback,
 };

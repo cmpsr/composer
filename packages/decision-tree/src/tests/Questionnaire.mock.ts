@@ -3,7 +3,11 @@ export const nextPages = [
   { nextSectionId: 1, nextQuestionId: 2, answers: { '1': '1' } },
   { nextSectionId: 2, nextQuestionId: 3, answers: { '1': '1', '2': { feet: '5', inches: '5' } } },
   { nextSectionId: 3, nextQuestionId: 4, answers: { '1': '1', '2': { feet: '5', inches: '5' }, '3': ['1', '2'] } },
-  null,
+  {
+    nextSectionId: null,
+    nextQuestionId: null,
+    answers: { '1': '1', '2': { feet: '5', inches: '5' }, '3': ['1', '2'] },
+  },
 ];
 
 export const questionnaire = {

@@ -1,4 +1,10 @@
 // Temp file to test
+export const nextPages = [
+  { nextSectionId: 1, nextQuestionId: 2 },
+  { nextSectionId: 2, nextQuestionId: 3 },
+  { nextSectionId: 2, nextQuestionId: 4 },
+  null,
+];
 
 export const questionnaire = {
   version: 1,
@@ -65,6 +71,14 @@ export const questionnaire = {
               subLabel: 'standard sublabel',
             },
           ],
+        },
+        {
+          id: '4',
+          type: 'numeric',
+          question: 'How much do you weigh?',
+          tooltip: 'Tooltip for the question',
+          placeholder: 'Pounds',
+          trailingMask: '(lbs)',
         },
       ],
     },

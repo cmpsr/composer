@@ -3,9 +3,7 @@ import { Meta } from '@storybook/react';
 import { DecisionTree } from './DecisionTree';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { QuestionnaireType, type UseSetupCallbackCB } from './types';
-import { questionnaire } from './tests/Questionnaire.mock';
-
-const nextPages = [{ nextSectionId: 1, nextQuestionId: 2 }, { nextSectionId: 2, nextQuestionId: 3 }, null];
+import { questionnaire, nextPages } from './tests/Questionnaire.mock';
 
 const callback = async function (questionId, value) {
   console.log(questionId, value);

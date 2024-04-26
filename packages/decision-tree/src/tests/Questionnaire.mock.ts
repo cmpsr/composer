@@ -2,7 +2,7 @@
 export const nextPages = [
   { nextSectionId: 1, nextQuestionId: 2 },
   { nextSectionId: 2, nextQuestionId: 3 },
-  { nextSectionId: 2, nextQuestionId: 4 },
+  { nextSectionId: 3, nextQuestionId: 4 },
   null,
 ];
 
@@ -72,6 +72,12 @@ export const questionnaire = {
             },
           ],
         },
+      ],
+    },
+    {
+      id: '3',
+      name: 'Physical',
+      questions: [
         {
           id: '4',
           type: 'numeric',

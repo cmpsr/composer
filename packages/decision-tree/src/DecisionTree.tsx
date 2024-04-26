@@ -25,7 +25,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
   return (
     <DecisionTree.Container>
       <StepBar steps={steps} activeStep={activeStep} />
-      <Question data={question} answersDispatch={answersDispatch} />
+      <Question data={question} answersDispatch={answersDispatch} defaultValue={answerState.answer} />
       <NavigationBar
         isBackDisabled={isBackDisabled}
         isNextDisabled={answerState.answer === null}

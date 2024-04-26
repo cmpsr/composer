@@ -12,7 +12,7 @@ export const StepBar: FC<StepBarProps> = ({ steps, activeStep }) => {
               <Stepper.Step.Status
                 complete={<Stepper.Step.Number color="white" />}
                 incomplete={<Stepper.Step.Number color="background-static" />}
-                active={<Stepper.Step.Number color="primary-default" />}
+                active={<Stepper.Step.Number color="background-page-02" />}
               />
             </Stepper.Step.Indicator>
             <Stepper.Step.Separator />

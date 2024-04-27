@@ -38,7 +38,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
   );
 };
 
-const DecisionTreeContainer = (props: BoxProps) => <Box columnGap="0.5rem" {...props} />;
+const DecisionTreeContainer = (props: BoxProps) => <Box {...props} />;
 const Navigation = (props: NavigationBarProps) => <NavigationBar {...props} />;
 const Stepper = (props: StepBarProps) => <StepBar {...props} />;
 

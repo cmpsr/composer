@@ -6,6 +6,8 @@ import { usePagination } from './hooks';
 import { DecisionTreeProps, DecisionTreeStaticMembers, Steps } from './types';
 import { Box, BoxProps } from '@cmpsr/components';
 import { useHandleAnswers } from './hooks';
+import { NavigationBarProps } from '@components/NavigationBar/types';
+import { StepBarProps } from '@components/StepBar/types';
 
 export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ questionnaire, callback }) => {
   const steps: Steps = questionnaire.sections.map(({ id, name }) => ({ id, name }));
@@ -27,9 +29,9 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
 
   return (
     <DecisionTree.Container>
-      <StepBar steps={steps} activeStep={activeStep} />
+      <DecisionTree.Stepper steps={steps} activeStep={activeStep} />
       <Question data={question} answersDispatch={answersDispatch} defaultValue={answerState.answer} />
-      <NavigationBar
+      <DecisionTree.NavigationBar
         isBackDisabled={isBackDisabled}
         isNextDisabled={answerState.answer === null}
         dispatch={paginationDispatch}
@@ -39,6 +41,10 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
   );
 };
 
-const DecisionTreeContainer = (props: BoxProps) => <Box columnGap="0.5rem" {...props} />;
+const DecisionTreeContainer = (props: BoxProps) => <Box {...props} />;
+const Navigation = (props: NavigationBarProps) => <NavigationBar {...props} />;
+const Stepper = (props: StepBarProps) => <StepBar {...props} />;
 
 DecisionTree.Container = DecisionTreeContainer;
+DecisionTree.NavigationBar = Navigation;
+DecisionTree.Stepper = Stepper;

@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { BoxProps } from '@cmpsr/components';
 import { QuestionType } from './components/Question';
+import { StepBarProps } from '@components/StepBar/types';
+import { NavigationBarProps } from '@components/NavigationBar/types';
 
 export type UseSetupCallbackCB = (questionId: string, value: string) => Promise<any>;
 
@@ -29,6 +31,8 @@ export type DecisionTreeProps = {
 
 export interface DecisionTreeStaticMembers {
   Container: FC<BoxProps>;
+  Stepper: FC<StepBarProps>;
+  NavigationBar: FC<NavigationBarProps>;
 }
 
 export type Steps = Array<{ id: string; name: string }>;

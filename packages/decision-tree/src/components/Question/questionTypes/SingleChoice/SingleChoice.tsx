@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
-import { type QuestionProps } from '@components/Question/types';
 import { Box, RadioGroup } from '@cmpsr/components';
-import { QuestionTitle } from '../../components/QuestionTitle';
 import { SingleChoiceQuestion } from './types';
 import { HandleAnswersActions } from '@hooks';
-import { QuestionOption } from '../../components/QuestionOption';
+import { type QuestionProps } from '@components/Question/types';
+import { QuestionTitle } from '@components/Question/components/QuestionTitle';
+import { QuestionOption } from '@components/Question/components/QuestionOption';
+import { inputMargin } from '@components/Question/Question';
 
 export const SingleChoice: FC<QuestionProps> = ({ data, answersDispatch, defaultValue }) => {
   const { question, choices, tooltip } = data as SingleChoiceQuestion;
@@ -17,6 +18,7 @@ export const SingleChoice: FC<QuestionProps> = ({ data, answersDispatch, default
       >
         {choices.map(({ id, label, subLabel }) => (
           <QuestionOption
+            mx={inputMargin}
             key={`SingleChoice-${id}`}
             componentType="radio"
             componentProps={{

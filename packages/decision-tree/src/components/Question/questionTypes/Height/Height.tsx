@@ -1,9 +1,11 @@
 import React, { FC, useState } from 'react';
-import { type QuestionProps } from '@components/Question/types';
-import { Box, MaskInput, Flex } from '@cmpsr/components';
-import { QuestionTitle } from '../../components/QuestionTitle';
 import { HeightAnswer, HeightQuestion } from './types';
+import { Box, Flex } from '@cmpsr/components';
 import { HandleAnswersActions } from '@hooks';
+import { type QuestionProps } from '@components/Question/types';
+import { QuestionTitle } from '@components/Question/components/QuestionTitle';
+import { DecisionTreeInput } from '@components/Question/components/DecisionTreeInput';
+import { inputMargin } from '@components/Question/Question';
 
 export const Height: FC<QuestionProps> = ({ data, answersDispatch, defaultValue }) => {
   const { question, tooltip, feet, inches } = data as HeightQuestion;
@@ -14,29 +16,23 @@ export const Height: FC<QuestionProps> = ({ data, answersDispatch, defaultValue 
     <Box>
       <QuestionTitle question={question} tooltip={tooltip} />
       <Flex gap="spacer-4">
-        <MaskInput
+        <DecisionTreeInput
+          ml={inputMargin}
           variant="outline"
-          size="l"
           placeholder={feet.placeholder}
-          maskOptions={{
-            mask: /^\d{0,3}(\.\d{0,2})?$/,
-            postfix: ` ${feet.trailingMask}`,
-          }}
           defaultValue={defaultValues.feet}
+          trailingMask={feet.trailingMask}
           onBlur={({ target }) => {
             setAnswers({ ...answers, feet: target.value });
             answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: answers });
           }}
         />
-        <MaskInput
+        <DecisionTreeInput
+          mr={inputMargin}
           variant="outline"
-          size="l"
           placeholder={inches.placeholder}
-          maskOptions={{
-            mask: /^\d{0,3}(\.\d{0,2})?$/,
-            postfix: ` ${inches.trailingMask}`,
-          }}
           defaultValue={defaultValues.inches}
+          trailingMask={inches.trailingMask}
           onBlur={({ target }) => {
             setAnswers({ ...answers, inches: target.value });
             answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: answers });

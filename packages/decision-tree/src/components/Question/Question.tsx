@@ -15,8 +15,16 @@ export const Question: FC<QuestionProps> = ({ data, answersDispatch, defaultValu
   if (typeof questionTypesMap[data.type] != 'function') return null;
 
   return (
-    <Flex justifyContent="center" mb="spacer-4">
+    <Flex
+      justifyContent="center"
+      mt={{ base: 'spacer-8', lg: 'spacer-16' }}
+      mb={{ base: 'spacer-14', lg: 'spacer-16' }}
+      mx={{ base: 'spacer-5', md: 'spacer-20', lg: 'spacer-16', xl: 'spacer-24', xxl: 'spacer-32' }}
+      px={{ base: '0', lg: 'spacer-32', xl: 'spacer-52', xxl: 'spacer-64' }}
+    >
       {questionTypesMap[data.type]({ data, answersDispatch, defaultValue })}
     </Flex>
   );
 };
+
+export const inputMargin = { base: '0', md: 'spacer-28', lg: 'spacer-36', xl: 'spacer-40' };

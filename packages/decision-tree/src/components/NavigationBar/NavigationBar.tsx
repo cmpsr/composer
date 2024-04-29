@@ -5,7 +5,15 @@ import { PaginationActions, PaginationPayload } from '@hooks';
 
 export const NavigationBar: FC<NavigationBarProps> = ({ isBackDisabled, isNextDisabled, dispatch, submitAnswer }) => {
   return (
-    <Flex justifyContent={'center'}>
+    <Flex
+      justifyContent={'center'}
+      px={'spacer-5'}
+      pt={'spacer-4'}
+      pb={'spacer-6'}
+      borderTopWidth="1px"
+      borderTopStyle="solid"
+      borderTopColor="ui-element-divider"
+    >
       <Button
         onClick={() => {
           dispatch({ type: PaginationActions.PreviousQuestion });

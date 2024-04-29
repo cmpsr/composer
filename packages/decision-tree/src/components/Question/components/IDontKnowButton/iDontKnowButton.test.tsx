@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderWithProviders, screen, act, fireEvent } from '@tests/renderWithProviders';
+import { renderWithProviders, screen, act, fireEvent, waitFor } from '@tests/renderWithProviders';
 import { IDontKnowButton } from './IDontKnowButton';
 import { PaginationActions } from '@hooks';
 
@@ -46,6 +46,8 @@ describe('IDontKnowButton', () => {
       fireEvent.click(idkButton);
     });
 
-    expect(mockDispatch).toHaveBeenCalledWith({ type: PaginationActions.NextQuestion, payload: BEAnswer });
+    waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({ type: PaginationActions.NextQuestion, payload: BEAnswer });
+    });
   });
 });

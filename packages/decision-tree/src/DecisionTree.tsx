@@ -19,7 +19,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
     paginationDispatch,
     activeStep,
     isBackDisabled,
-  } = usePagination({ steps, initialState });
+  } = usePagination({ steps, initialState, answersDispatch });
 
   const section = questionnaire.sections.find((section) => section.id == currentSection);
   const question = section.questions.find((question) => question.id == currentQuestion);

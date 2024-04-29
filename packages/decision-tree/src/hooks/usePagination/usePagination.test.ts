@@ -10,13 +10,13 @@ describe('usePagination', () => {
     { id: '3', name: 'step3' },
   ];
   const initialState = { currentSection: '1', currentQuestion: '1' };
-
-  //return { state, activeStep, paginationDispatch: dispatch, isBackDisabled: pageHistory.length > 0 };
+  const answersDispatch = jest.fn();
 
   test('should return an activeStep number', () => {
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,
       initialState,
+      answersDispatch,
     });
 
     const hookResult = result.current;
@@ -28,6 +28,7 @@ describe('usePagination', () => {
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,
       initialState,
+      answersDispatch,
     });
 
     const hookResult = result.current;
@@ -39,6 +40,7 @@ describe('usePagination', () => {
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,
       initialState,
+      answersDispatch,
     });
 
     const hookResult = result.current;
@@ -50,6 +52,7 @@ describe('usePagination', () => {
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,
       initialState,
+      answersDispatch,
     });
 
     const hookResult = result.current;
@@ -61,6 +64,7 @@ describe('usePagination', () => {
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,
       initialState,
+      answersDispatch,
     });
 
     const { paginationDispatch, state } = result.current;
@@ -81,6 +85,7 @@ describe('usePagination', () => {
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,
       initialState,
+      answersDispatch,
     });
 
     const { paginationDispatch, state } = result.current;

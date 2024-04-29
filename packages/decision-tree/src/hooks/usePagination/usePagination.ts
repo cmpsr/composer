@@ -1,8 +1,9 @@
 import { useReducer, useState, type Reducer } from 'react';
 import { useSteps } from '@cmpsr/components';
 import { PaginationResponse, PaginationState, PaginationAction, PaginationActions, PaginationProps } from './types';
+import { HandleAnswersActions } from '@hooks';
 
-export const usePagination = ({ steps, initialState }: PaginationProps): PaginationResponse => {
+export const usePagination = ({ steps, initialState, answersDispatch }: PaginationProps): PaginationResponse => {
   const { activeStep, setActiveStep } = useSteps({
     index: 1,
     count: steps.length,
@@ -13,8 +14,9 @@ export const usePagination = ({ steps, initialState }: PaginationProps): Paginat
     const actionMap = {
       [PaginationActions.PreviousQuestion]: () => {
         const { currentQuestion, currentSection, step } = pageHistory.at(-1);
+        answersDispatch({ type: HandleAnswersActions.ResetAnswer });
         setActiveStep(step);
-        setPageHistory(pageHistory.splice(-1));
+        setPageHistory(pageHistory.slice(0, -1));
         return {
           currentQuestion,
           currentSection,
@@ -22,6 +24,7 @@ export const usePagination = ({ steps, initialState }: PaginationProps): Paginat
       },
       [PaginationActions.NextQuestion]: ({ nextSectionId, nextQuestionId }) => {
         const iSection = steps.findIndex((step) => step.id == nextSectionId);
+        answersDispatch({ type: HandleAnswersActions.ResetAnswer });
         setPageHistory([...pageHistory, { ...state, step: iSection }]);
         setActiveStep(iSection);
         return {

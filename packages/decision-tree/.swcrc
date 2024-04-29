@@ -7,7 +7,7 @@
       "dynamicImport": false
     },
     "paths": {
-      "@components": ["./src/components"],
+      "@components/*": ["./src/components/*"],
       "@hooks": ["./src/hooks"],
       "@tests/*": ["./src/tests/*"]
     },

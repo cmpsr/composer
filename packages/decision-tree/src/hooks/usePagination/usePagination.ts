@@ -22,15 +22,15 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
           currentSection,
         };
       },
-      [PaginationActions.NextQuestion]: ({ nextSectionId, nextQuestionId, answers }) => {
-        const iSection = steps.findIndex((step) => step.id == nextSectionId);
+      [PaginationActions.NextQuestion]: ({ nextQuestion, answers }) => {
+        const iSection = steps.findIndex((step) => step.id == nextQuestion.sectionId);
         answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: answers });
         answersDispatch({ type: HandleAnswersActions.ResetAnswer });
         setPageHistory([...pageHistory, { ...state, step: iSection }]);
         setActiveStep(iSection);
         return {
-          currentQuestion: nextQuestionId,
-          currentSection: nextSectionId,
+          currentQuestion: nextQuestion.questionId,
+          currentSection: nextQuestion.sectionId,
         };
       },
     };

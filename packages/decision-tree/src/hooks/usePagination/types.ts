@@ -9,8 +9,10 @@ export enum PaginationActions {
 }
 
 export type PaginationPayload = {
-  nextSectionId: string;
-  nextQuestionId: string;
+  nextQuestion: {
+    sectionId: string;
+    questionId: string;
+  };
   answers: AnswersType;
 };
 

@@ -1,15 +1,20 @@
 // Temp file to test
 export const nextPages = [
-  { nextSectionId: 1, nextQuestionId: 2, answers: { '1': '1' } },
-  { nextSectionId: 2, nextQuestionId: 3, answers: { '1': '1', '2': { feet: '5', inches: '5' } } },
-  { nextSectionId: 3, nextQuestionId: 4, answers: { '1': '1', '2': { feet: '5', inches: '5' }, '3': ['1', '2'] } },
+  { nextQuestion: { sectionId: 1, questionId: 2 }, answers: { '1': '1' } },
+  { nextQuestion: { sectionId: 2, questionId: 3 }, answers: { '1': '1', '2': { feet: '5', inches: '5' } } },
+  {
+    nextQuestion: { sectionId: 3, questionId: 4 },
+    answers: { '1': '1', '2': { feet: '5', inches: '5' }, '3': ['1', '2'] },
+  },
   null,
 ];
 
 export const questionnaire = {
   version: 1,
-  nextQuestionId: '1',
-  nextSectionId: '1',
+  nextQuestion: {
+    questionId: '1',
+    sectionId: '1',
+  },
   answers: {},
   sections: [
     {

@@ -9,7 +9,10 @@ import { useHandleAnswers } from './hooks';
 
 export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ questionnaire, callback }) => {
   const steps: Steps = questionnaire.sections.map(({ id, name }) => ({ id, name }));
-  const initialState = { currentQuestion: questionnaire.nextQuestionId, currentSection: questionnaire.nextSectionId };
+  const initialState = {
+    currentQuestion: questionnaire.nextQuestion.questionId,
+    currentSection: questionnaire.nextQuestion.sectionId,
+  };
 
   const { state: answerState, answersDispatch, submitAnswer } = useHandleAnswers(callback);
   const {

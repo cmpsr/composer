@@ -72,7 +72,7 @@ describe('usePagination', () => {
     act(() => {
       paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextSectionId: '1', nextQuestionId: '2', answers: {} },
+        payload: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: {} },
       });
     });
 
@@ -93,7 +93,7 @@ describe('usePagination', () => {
     act(() => {
       paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextSectionId: '1', nextQuestionId: '2', answers: {} },
+        payload: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: {} },
       });
       paginationDispatch({ type: PaginationActions.PreviousQuestion });
     });

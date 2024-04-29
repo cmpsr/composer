@@ -15,8 +15,10 @@ export type SectionType = {
 export type QuestionnaireType = {
   version: number;
   sections: Array<SectionType>;
-  nextQuestionId: string;
-  nextSectionId: string;
+  nextQuestion: {
+    questionId: string;
+    sectionId: string;
+  };
   answers: any;
 };
 

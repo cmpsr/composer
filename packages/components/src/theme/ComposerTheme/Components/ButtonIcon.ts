@@ -11,8 +11,6 @@ export const ButtonIcon: ComponentStyleConfig = {
     return {
       borderRadius,
       minWidth: 'unset',
-      width: 'auto',
-      height: 'auto',
       loading: buttonLoadingStyles,
       _before: {
         ...buttonVariant._before,

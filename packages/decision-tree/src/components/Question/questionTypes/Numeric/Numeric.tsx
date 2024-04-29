@@ -20,8 +20,8 @@ export const Numeric: FC<QuestionProps> = ({ data, answersDispatch, defaultValue
           variant="outline"
           placeholder={placeholder}
           defaultValue={defaultValue as string}
-          onChange={({ target }) =>
-            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: createAnswer(type, target.value) })
+          onKeyUp={({ currentTarget }) =>
+            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: createAnswer(type, currentTarget.value) })
           }
         />
       </Flex>

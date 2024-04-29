@@ -23,9 +23,9 @@ export const MultipleChoice: FC<QuestionProps> = ({ data, answersDispatch, defau
           componentProps={{
             value: id,
             defaultChecked: checkedValues && checkedValues.length > 0 && checkedValues.includes(id),
-            onChange: ({ target }) => {
-              if (target.checked) setAnswers([...answers, target.value]);
-              if (!target.checked) setAnswers(answers.filter((answer) => answer !== target.value));
+            onChange: ({ currentTarget }) => {
+              if (currentTarget.checked) setAnswers([...answers, currentTarget.value]);
+              if (!currentTarget.checked) setAnswers(answers.filter((answer) => answer !== currentTarget.value));
               answersDispatch({
                 type: HandleAnswersActions.SaveAnswer,
                 payload: createAnswer(type, Array.from(answers)),

@@ -21,8 +21,8 @@ export const Height: FC<QuestionProps> = ({ data, answersDispatch, defaultValue 
           placeholder={feet.placeholder}
           defaultValue={defaultValues.feet}
           trailingMask={feet.trailingMask}
-          onChange={({ target }) => {
-            setAnswers({ ...answers, feet: target.value });
+          onKeyUp={({ currentTarget }) => {
+            setAnswers({ ...answers, feet: currentTarget.value });
             answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: createAnswer(type, answers) });
           }}
         />
@@ -31,8 +31,8 @@ export const Height: FC<QuestionProps> = ({ data, answersDispatch, defaultValue 
           placeholder={inches.placeholder}
           defaultValue={defaultValues.inches}
           trailingMask={inches.trailingMask}
-          onChange={({ target }) => {
-            setAnswers({ ...answers, inches: target.value });
+          onKeyUp={({ currentTarget }) => {
+            setAnswers({ ...answers, inches: currentTarget.value });
             answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: createAnswer(type, answers) });
           }}
         />

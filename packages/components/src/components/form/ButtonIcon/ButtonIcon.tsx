@@ -14,7 +14,7 @@ export const ButtonIcon: FC<ButtonIconProps> = forwardRef<ButtonIconProps, 'butt
       isLoading: props.isLoading,
     }) as ButtonIconStyle;
 
-    const Icon = React.cloneElement(icon, { size: responsiveSize });
+    const Icon = React.cloneElement(icon, { size: responsiveSize, display: 'block' });
 
     return (
       <ChakraButtonIcon

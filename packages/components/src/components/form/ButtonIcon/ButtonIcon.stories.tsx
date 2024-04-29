@@ -85,4 +85,5 @@ Playground.args = {
   size: 'l',
   isDisabled: false,
   isLoading: false,
+  isRound: false,
 };

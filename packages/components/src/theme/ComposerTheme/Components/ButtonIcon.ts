@@ -19,8 +19,8 @@ export const ButtonIcon: ComponentStyleConfig = {
   },
   sizes: {
     xs: {
-      width: '1.5rem',
-      height: '1.5rem',
+      px: 'spacer-button-icon-XS',
+      py: 'spacer-button-icon-XS',
       loading: {
         width: '0.75rem',
         height: '0.75rem',
@@ -28,8 +28,8 @@ export const ButtonIcon: ComponentStyleConfig = {
       },
     },
     s: {
-      width: '2.25rem',
-      height: '2.25rem',
+      px: 'spacer-button-icon-S',
+      py: 'spacer-button-icon-S',
       loading: {
         width: '0.75rem',
         height: '0.75rem',
@@ -37,8 +37,8 @@ export const ButtonIcon: ComponentStyleConfig = {
       },
     },
     m: {
-      width: '2.5rem',
-      height: '2.5rem',
+      px: 'spacer-button-icon-M',
+      py: 'spacer-button-icon-M',
       loading: {
         width: '1rem',
         height: '1rem',
@@ -46,8 +46,8 @@ export const ButtonIcon: ComponentStyleConfig = {
       },
     },
     l: {
-      width: '3.25rem',
-      height: '3.25rem',
+      px: 'spacer-button-icon-L',
+      py: 'spacer-button-icon-L',
       loading: {
         width: '1rem',
         height: '1rem',

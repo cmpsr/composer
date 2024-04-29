@@ -42,4 +42,8 @@ export const defaultSpacing = {
   'spacer-button-gap-XS': '0.500rem',
   'spacer-button-y-XS': '0.250rem',
   'spacer-button-x-XS': '0.500rem',
+  'spacer-button-icon-L': '0.875rem',
+  'spacer-button-icon-M': '0.625rem',
+  'spacer-button-icon-S': '0.625rem',
+  'spacer-button-icon-XS': '0.250rem',
 };

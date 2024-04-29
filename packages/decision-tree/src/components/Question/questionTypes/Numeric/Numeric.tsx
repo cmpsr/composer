@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
-import { type QuestionProps } from '@components/Question/types';
-import { Box, MaskInput, Flex } from '@cmpsr/components';
-import { QuestionTitle } from '../../components/QuestionTitle';
+import { Box, Flex } from '@cmpsr/components';
 import { NumericQuestion } from './types';
 import { HandleAnswersActions } from '@hooks';
+import { type QuestionProps } from '@components/Question/types';
+import { QuestionTitle } from '@components/Question/components/QuestionTitle';
+import { DecisionTreeInput } from '@components/Question/components/DecisionTreeInput';
+import { inputMargin } from '@components/Question/Question';
 
 export const Numeric: FC<QuestionProps> = ({ data, answersDispatch }) => {
   const { question, tooltip, id, placeholder, trailingMask } = data as NumericQuestion;
@@ -12,14 +14,11 @@ export const Numeric: FC<QuestionProps> = ({ data, answersDispatch }) => {
     <Box>
       <QuestionTitle question={question} tooltip={tooltip} />
       <Flex>
-        <MaskInput
-          maskOptions={{
-            mask: /^\d{0,3}(\.\d{0,2})?$/,
-            postfix: ` ${trailingMask}`,
-          }}
+        <DecisionTreeInput
+          mx={inputMargin}
+          trailingMask={trailingMask}
           key={id}
           variant="outline"
-          size="l"
           placeholder={placeholder}
           onBlur={({ target }) => answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: target.value })}
         />

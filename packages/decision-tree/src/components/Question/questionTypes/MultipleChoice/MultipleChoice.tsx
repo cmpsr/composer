@@ -1,10 +1,11 @@
 import React, { FC, useState } from 'react';
-import { type QuestionProps } from '@components/Question/types';
 import { Box } from '@cmpsr/components';
-import { QuestionTitle } from '../../components/QuestionTitle';
 import { MultipleChoiceQuestion } from './types';
 import { HandleAnswersActions } from '@hooks';
-import { QuestionOption } from '../../components/QuestionOption';
+import { type QuestionProps } from '@components/Question/types';
+import { QuestionTitle } from '@components/Question/components/QuestionTitle';
+import { QuestionOption } from '@components/Question/components/QuestionOption';
+import { inputMargin } from '@components/Question/Question';
 
 export const MultipleChoice: FC<QuestionProps> = ({ data, answersDispatch }) => {
   const { question, choices, tooltip } = data as MultipleChoiceQuestion;
@@ -15,6 +16,7 @@ export const MultipleChoice: FC<QuestionProps> = ({ data, answersDispatch }) => 
       <QuestionTitle question={question} tooltip={tooltip} />
       {choices.map(({ id, label, subLabel }) => (
         <QuestionOption
+          mx={inputMargin}
           key={`multipleChoice-${id}`}
           componentType="checkbox"
           componentProps={{

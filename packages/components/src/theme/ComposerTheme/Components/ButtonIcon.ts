@@ -14,6 +14,7 @@ export const ButtonIcon: ComponentStyleConfig = {
       width: 'auto',
       height: 'auto',
       loading: buttonLoadingStyles,
+      _loading: { '> span': { display: 'inline-flex' } },
       _before: {
         ...buttonVariant._before,
         borderRadius,

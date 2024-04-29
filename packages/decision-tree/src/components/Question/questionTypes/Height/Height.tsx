@@ -14,9 +14,8 @@ export const Height: FC<QuestionProps> = ({ data, answersDispatch }) => {
   return (
     <Box>
       <QuestionTitle question={question} tooltip={tooltip} />
-      <Flex gap="spacer-4">
+      <Flex gap="spacer-4" px={inputMargin}>
         <DecisionTreeInput
-          ml={inputMargin}
           variant="outline"
           placeholder={feet.placeholder}
           trailingMask={feet.trailingMask}
@@ -26,7 +25,6 @@ export const Height: FC<QuestionProps> = ({ data, answersDispatch }) => {
           }}
         />
         <DecisionTreeInput
-          mr={inputMargin}
           variant="outline"
           placeholder={inches.placeholder}
           trailingMask={inches.trailingMask}

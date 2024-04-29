@@ -13,9 +13,8 @@ export const Numeric: FC<QuestionProps> = ({ data, answersDispatch, defaultValue
   return (
     <Box>
       <QuestionTitle question={question} tooltip={tooltip} />
-      <Flex>
+      <Flex px={inputMargin}>
         <DecisionTreeInput
-          mx={inputMargin}
           trailingMask={trailingMask}
           key={id}
           variant="outline"

@@ -21,7 +21,6 @@ export const QuestionOption: FC<QuestionOptionProps> = ({
       borderColor="ui-element-outline-default"
       background="background-action-default"
       borderRadius="radii-4"
-      width="350px"
       mb="spacer-4"
       mx="auto"
     >

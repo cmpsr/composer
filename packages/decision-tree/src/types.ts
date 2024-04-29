@@ -1,10 +1,11 @@
 import { FC } from 'react';
+import { AnswerModel } from '@hooks';
 import { BoxProps } from '@cmpsr/components';
 import { QuestionType } from './components/Question';
 import { StepBarProps } from '@components/StepBar/types';
 import { NavigationBarProps } from '@components/NavigationBar/types';
 
-export type UseSetupCallbackCB = (questionId: string, value: string) => Promise<any>;
+export type UseSetupCallbackCB = (questionId: string, answer: AnswerModel) => Promise<any>;
 
 export type SaveAnswerType = (submittedAnswer: string | object) => void;
 

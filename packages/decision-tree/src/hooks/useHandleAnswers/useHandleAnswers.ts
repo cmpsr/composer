@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 import { UseSetupCallbackCB } from 'src/types';
-import { useHandleActionResponse, HandleAnswersActions } from './types';
+import { useHandleActionResponse, HandleAnswersActions, createAnswer } from './types';
 
 export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionResponse => {
   const handleAnswersReducer = (state, action) => {
@@ -28,5 +28,9 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
     return await callback(questionId, state.answer);
   };
 
-  return { state, answersDispatch: dispatch, submitAnswer };
+  const iDontKnowAnswer = async (questionId) => {
+    return await callback(questionId, createAnswer('iDontKnow'));
+  };
+
+  return { state, answersDispatch: dispatch, submitAnswer, iDontKnowAnswer };
 };

@@ -6,7 +6,7 @@ import {
   MultipleChoiceQuestion,
   HeightAnswer,
 } from './questionTypes';
-import { HandleAnswersAction } from '@hooks';
+import { HandleAnswersAction, PaginationAction, SubmitAnswerFn } from '@hooks';
 
 export interface QuestionBase {
   id: string;
@@ -28,4 +28,6 @@ export type QuestionProps = {
   data: QuestionType;
   answersDispatch: Dispatch<HandleAnswersAction>;
   defaultValue?: AnswerType | null;
+  iDontKnowAnswer: SubmitAnswerFn;
+  paginationDispatch: Dispatch<PaginationAction>;
 };

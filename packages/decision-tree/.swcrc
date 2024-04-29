@@ -1,0 +1,28 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "decorators": false,
+      "dynamicImport": false
+    },
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@hooks": ["./src/hooks"],
+      "@tests/*": ["./src/tests/*"]
+    },
+    "minify": {
+      "keepClassnames": true,
+      "keepFnames": true
+    },
+    "keepClassNames": true,
+    "baseUrl": "."
+  },
+  "module": {
+    "type": "commonjs",
+    "strict": false,
+    "strictMode": true,
+    "lazy": false,
+    "noInterop": false
+  }
+}

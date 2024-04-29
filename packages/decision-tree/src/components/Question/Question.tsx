@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { type QuestionProps } from './types';
 import { Flex } from '@cmpsr/components';
 import { Height, SingleChoice, MultipleChoice, Numeric } from './questionTypes';
+import { IDontKnowButton } from './components/IDontKnowButton';
 
 const questionTypesMap = {
   height: (props) => <Height {...props} />,
@@ -10,7 +11,13 @@ const questionTypesMap = {
   numeric: (props) => <Numeric {...props} />,
 };
 
-export const Question: FC<QuestionProps> = ({ data, answersDispatch, defaultValue }) => {
+export const Question: FC<QuestionProps> = ({
+  data,
+  answersDispatch,
+  defaultValue,
+  iDontKnowAnswer,
+  paginationDispatch,
+}) => {
   if (!questionTypesMap[data.type]) return null;
   if (typeof questionTypesMap[data.type] != 'function') return null;
 
@@ -23,6 +30,15 @@ export const Question: FC<QuestionProps> = ({ data, answersDispatch, defaultValu
       px={{ base: '0', lg: 'spacer-32', xl: 'spacer-52', xxl: 'spacer-64' }}
     >
       {questionTypesMap[data.type]({ data, answersDispatch, defaultValue })}
+      {data.skippable ? (
+        <IDontKnowButton
+          iDontKnowAnswer={iDontKnowAnswer}
+          currentPage={data.id}
+          paginationDispatch={paginationDispatch}
+        />
+      ) : (
+        ''
+      )}
     </Flex>
   );
 };

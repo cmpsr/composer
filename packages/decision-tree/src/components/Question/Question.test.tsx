@@ -12,9 +12,13 @@ describe('Question', () => {
   } as QuestionBase;
 
   const answersDispatch = jest.fn();
+  const paginationDispatch = jest.fn();
+  const iDontKnowAnswer = jest.fn();
 
   afterAll(() => {
     answersDispatch.mockReset();
+    paginationDispatch.mockReset();
+    iDontKnowAnswer.mockReset();
   });
 
   test('should render a singleChoide component when calling one', () => {
@@ -26,7 +30,14 @@ describe('Question', () => {
         { id: '2', label: 'choice 2' },
       ],
     } as SingleChoiceQuestion;
-    renderWithProviders(<Question data={data} answersDispatch={answersDispatch} />);
+    renderWithProviders(
+      <Question
+        iDontKnowAnswer={iDontKnowAnswer}
+        paginationDispatch={paginationDispatch}
+        data={data}
+        answersDispatch={answersDispatch}
+      />
+    );
 
     expect(screen.getAllByText('choice 1')).toHaveLength(1);
     expect(screen.getAllByText('choice 2')).toHaveLength(1);
@@ -39,7 +50,14 @@ describe('Question', () => {
       placeholder: 'numericPlaceholder',
       trailingMask: ' fo sho',
     } as NumericQuestion;
-    renderWithProviders(<Question data={data} answersDispatch={answersDispatch} />);
+    renderWithProviders(
+      <Question
+        iDontKnowAnswer={iDontKnowAnswer}
+        paginationDispatch={paginationDispatch}
+        data={data}
+        answersDispatch={answersDispatch}
+      />
+    );
 
     expect(screen.getAllByPlaceholderText('numericPlaceholder')).toHaveLength(1);
   });
@@ -54,7 +72,14 @@ describe('Question', () => {
         { id: '3', label: 'choice 3' },
       ],
     } as MultipleChoiceQuestion;
-    renderWithProviders(<Question data={data} answersDispatch={answersDispatch} />);
+    renderWithProviders(
+      <Question
+        iDontKnowAnswer={iDontKnowAnswer}
+        paginationDispatch={paginationDispatch}
+        data={data}
+        answersDispatch={answersDispatch}
+      />
+    );
 
     expect(screen.getAllByText('choice 1')).toHaveLength(1);
     expect(screen.getAllByText('choice 2')).toHaveLength(1);
@@ -74,7 +99,14 @@ describe('Question', () => {
         trailingMask: ' fo sho',
       },
     } as HeightQuestion;
-    renderWithProviders(<Question data={data} answersDispatch={answersDispatch} />);
+    renderWithProviders(
+      <Question
+        iDontKnowAnswer={iDontKnowAnswer}
+        paginationDispatch={paginationDispatch}
+        data={data}
+        answersDispatch={answersDispatch}
+      />
+    );
 
     expect(screen.getAllByPlaceholderText('feetPlaceholder')).toHaveLength(1);
     expect(screen.getAllByPlaceholderText('inchesPlaceholder')).toHaveLength(1);

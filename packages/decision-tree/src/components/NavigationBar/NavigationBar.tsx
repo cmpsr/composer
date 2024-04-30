@@ -29,6 +29,7 @@ export const NavigationBar: FC<NavigationBarProps> = ({ isBackDisabled, isNextDi
       <Button
         onClick={async () => {
           const response = await submitAnswer();
+          if (!response?.nextQuestion?.questionId) return;
           dispatch({ type: PaginationActions.NextQuestion, payload: response as PaginationPayload });
         }}
         variant="accent"

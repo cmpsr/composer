@@ -5,7 +5,7 @@ import { HandleAnswersActions } from '@hooks';
 
 export const usePagination = ({ steps, initialState, answersDispatch }: PaginationProps): PaginationResponse => {
   const { activeStep, setActiveStep } = useSteps({
-    index: 1,
+    index: 0,
     count: steps.length,
   });
   const [pageHistory, setPageHistory] = useState<Array<PaginationState>>([]);

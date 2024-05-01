@@ -68,5 +68,19 @@ export const questionnaire = {
         },
       ],
     },
+    {
+      id: '3',
+      name: 'Symptoms',
+      questions: [
+        {
+          id: '4',
+          type: 'numeric',
+          question: 'How much do you weigh?',
+          tooltip: 'Tooltip for the question',
+          placeholder: 'Pounds',
+          trailingMask: '(lbs)',
+        },
+      ],
+    },
   ],
 };

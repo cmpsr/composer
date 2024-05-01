@@ -4,7 +4,7 @@ import { NavigationBar } from './components/NavigationBar';
 import { Question } from './components/Question';
 import { usePagination } from './hooks';
 import { DecisionTreeProps, DecisionTreeStaticMembers, Steps } from './types';
-import { Box, BoxProps } from '@cmpsr/components';
+import { Flex, FlexProps } from '@cmpsr/components';
 import { useHandleAnswers } from './hooks';
 import { NavigationBarProps } from '@components/NavigationBar/types';
 import { StepBarProps } from '@components/StepBar/types';
@@ -47,7 +47,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
   );
 };
 
-const DecisionTreeContainer = (props: BoxProps) => <Box {...props} />;
+const DecisionTreeContainer = (props: FlexProps) => <Flex flexDirection="column" height="100%" {...props} />;
 const Navigation = (props: NavigationBarProps) => <NavigationBar {...props} />;
 const Stepper = (props: StepBarProps) => <StepBar {...props} />;
 

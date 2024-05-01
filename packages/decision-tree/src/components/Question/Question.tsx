@@ -22,7 +22,7 @@ export const Question: FC<QuestionProps> = ({
   if (typeof questionTypesMap[data.type] != 'function') return null;
 
   return (
-    <Box mb={{ base: 'spacer-14', lg: 'spacer-16' }}>
+    <Box mb={{ base: 'spacer-14', lg: 'spacer-16' }} flexGrow="1">
       <Flex
         justifyContent="center"
         mt={{ base: 'spacer-8', lg: 'spacer-16' }}

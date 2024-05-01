@@ -12,6 +12,7 @@ export type SaveAnswerType = (submittedAnswer: string | object) => void;
 export type SectionType = {
   id: string;
   name: string;
+  description: string;
   questions: Array<QuestionType>;
 };
 

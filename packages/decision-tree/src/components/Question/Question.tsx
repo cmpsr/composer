@@ -17,6 +17,7 @@ export const Question: FC<QuestionProps> = ({ data, answersDispatch }) => {
   return (
     <Flex
       justifyContent="center"
+      flexGrow="1"
       mt={{ base: 'spacer-8', lg: 'spacer-16' }}
       mb={{ base: 'spacer-14', lg: 'spacer-16' }}
       mx={{ base: 'spacer-5', md: 'spacer-20', lg: 'spacer-16', xl: 'spacer-24', xxl: 'spacer-32' }}

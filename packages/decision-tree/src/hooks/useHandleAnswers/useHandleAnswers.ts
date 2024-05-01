@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 import { UseSetupCallbackCB } from 'src/types';
 import { useHandleActionResponse, HandleAnswersActions, createAnswer } from './types';
+import { sectionIntroId } from '../../DecisionTree.normalizer';
 
 export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionResponse => {
   const handleAnswersReducer = (state, action) => {
@@ -25,6 +26,8 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
   const [state, dispatch] = useReducer(handleAnswersReducer, { answer: null, previousAnswers: {} });
 
   const submitAnswer = async (questionId) => {
+    if (questionId.includes(sectionIntroId))
+      return { nextQuestion: { sectionId: 'nextQuestionOverride', questionId: 'nextQuestionOverride' }, answers: {} };
     return await callback(questionId, state.answer);
   };
 

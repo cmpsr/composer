@@ -1,10 +1,10 @@
 // Temp file to test
-export const nextPages = [
-  { nextSectionId: 1, nextQuestionId: 2 },
-  { nextSectionId: 2, nextQuestionId: 3 },
-  { nextSectionId: 3, nextQuestionId: 4 },
-  null,
-];
+export const serverMockup = {
+  1: { nextSectionId: 1, nextQuestionId: 2 },
+  2: { nextSectionId: 2, nextQuestionId: 3 },
+  3: { nextSectionId: 3, nextQuestionId: 4 },
+  4: null,
+};
 
 export const questionnaire = {
   version: 1,

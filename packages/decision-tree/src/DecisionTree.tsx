@@ -8,12 +8,14 @@ import { Flex, FlexProps } from '@cmpsr/components';
 import { useHandleAnswers } from './hooks';
 import { NavigationBarProps } from '@components/NavigationBar/types';
 import { StepBarProps } from '@components/StepBar/types';
+import { normalizeQuestionnaire } from './DecisionTree.normalizer';
 
 export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ questionnaire, callback }) => {
-  const steps: Steps = questionnaire.sections.map(({ id, name }) => ({ id, name }));
+  const normalizedQuestionnaire = normalizeQuestionnaire(questionnaire);
+  const steps: Steps = normalizedQuestionnaire.sections.map(({ id, name }) => ({ id, name }));
   const initialState = {
-    currentQuestion: questionnaire.nextQuestion.questionId,
-    currentSection: questionnaire.nextQuestion.sectionId,
+    questionId: normalizedQuestionnaire.nextQuestion.questionId,
+    sectionId: normalizedQuestionnaire.nextQuestion.sectionId,
   };
 
   const { state: answerState, answersDispatch, submitAnswer, iDontKnowAnswer } = useHandleAnswers(callback);
@@ -24,7 +26,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
     isBackDisabled,
   } = usePagination({ steps, initialState, answersDispatch });
 
-  const section = questionnaire.sections.find((section) => section.id == currentSection);
+  const section = normalizedQuestionnaire.sections.find((section) => section.id == currentSection);
   const question = section.questions.find((question) => question.id == currentQuestion);
 
   return (
@@ -39,7 +41,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
       />
       <DecisionTree.NavigationBar
         isBackDisabled={isBackDisabled}
-        isNextDisabled={answerState.answer === null}
+        isNextDisabled={answerState.answer === null && question.type !== 'sectionIntro'}
         dispatch={paginationDispatch}
         submitAnswer={() => submitAnswer(currentQuestion)}
       />

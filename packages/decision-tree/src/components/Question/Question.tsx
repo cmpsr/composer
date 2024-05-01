@@ -3,12 +3,14 @@ import { type QuestionProps } from './types';
 import { Flex, Box } from '@cmpsr/components';
 import { Height, SingleChoice, MultipleChoice, Numeric } from './questionTypes';
 import { IDontKnowButton } from './components/IDontKnowButton';
+import { SectionIntro } from './questionTypes/SectionIntro/SectionIntro';
 
 const questionTypesMap = {
   height: (props) => <Height {...props} />,
   singleChoice: (props) => <SingleChoice {...props} />,
   multipleChoice: (props) => <MultipleChoice {...props} />,
   numeric: (props) => <Numeric {...props} />,
+  sectionIntro: (props) => <SectionIntro {...props} />,
 };
 
 export const Question: FC<QuestionProps> = ({

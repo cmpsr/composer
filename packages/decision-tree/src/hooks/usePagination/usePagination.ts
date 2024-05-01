@@ -26,7 +26,7 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
         const iSection = steps.findIndex((step) => step.id == nextQuestion.sectionId);
         answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: answers });
         answersDispatch({ type: HandleAnswersActions.ResetAnswer });
-        setPageHistory([...pageHistory, { ...state, step: iSection }]);
+        setPageHistory([...pageHistory, { ...state, step: activeStep }]);
         setActiveStep(iSection);
         return {
           currentQuestion: nextQuestion.questionId,

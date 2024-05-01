@@ -1,9 +1,9 @@
 // Temp file to test
 export const nextPages = [
-  { nextQuestion: { sectionId: 1, questionId: 2 }, answers: { '1': '1' } },
-  { nextQuestion: { sectionId: 2, questionId: 3 }, answers: { '1': '1', '2': { feet: '5', inches: '5' } } },
+  { nextQuestion: { sectionId: '1', questionId: '2' }, answers: { '1': '1' } },
+  { nextQuestion: { sectionId: '2', questionId: '3' }, answers: { '1': '1', '2': { feet: '5', inches: '5' } } },
   {
-    nextQuestion: { sectionId: 3, questionId: 4 },
+    nextQuestion: { sectionId: '3', questionId: '4' },
     answers: { '1': '1', '2': { feet: '5', inches: '5' }, '3': ['1', '2'] },
   },
   null,
@@ -20,6 +20,7 @@ export const questionnaire = {
     {
       id: '1',
       name: 'Diet and Lifestyle',
+      description: 'Diet And Lifestyle section description',
       questions: [
         {
           id: '1',
@@ -58,6 +59,7 @@ export const questionnaire = {
     {
       id: '2',
       name: 'Symptoms',
+      description: 'Symptoms section description',
       questions: [
         {
           id: '3',
@@ -82,6 +84,7 @@ export const questionnaire = {
     {
       id: '3',
       name: 'Physical',
+      description: 'Physical section description',
       questions: [
         {
           id: '4',

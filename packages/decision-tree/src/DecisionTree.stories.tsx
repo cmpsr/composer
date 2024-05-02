@@ -7,7 +7,7 @@ import { questionnaire, serverMockup } from './tests/Questionnaire.mock';
 
 const callback = async function (questionId, value) {
   console.log(questionId, value);
-  return serverMockup[questionId];
+  return new Promise((resolve) => setTimeout(() => resolve(serverMockup[questionId]), 1500));
 } as UseSetupCallbackCB;
 
 export default {

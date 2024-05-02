@@ -1,4 +1,4 @@
-import { QuestionBase } from '@components/Question/types';
+import { QuestionBase, QuestionProps } from '@components/Question/types';
 
 type measurement = {
   placeholder: string;
@@ -11,4 +11,13 @@ export interface HeightQuestion extends QuestionBase {
   type: 'height';
 }
 
-export type HeightAnswer = { feet: string; inches: string };
+export type HeightAnswer = {
+  type: 'height';
+  feet: string;
+  inches: string;
+};
+
+export interface HeightProps extends QuestionProps {
+  data: HeightQuestion;
+  defaultValue?: HeightAnswer | null;
+}

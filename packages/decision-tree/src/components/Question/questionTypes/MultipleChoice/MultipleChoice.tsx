@@ -1,16 +1,14 @@
 import React, { FC, useState } from 'react';
 import { Box } from '@cmpsr/components';
-import { MultipleChoiceQuestion } from './types';
-import { HandleAnswersActions, createAnswer } from '@hooks';
-import { type QuestionProps } from '@components/Question/types';
+import { MultipleChoiceAnswer, MultipleChoiceProps, MultipleChoiceQuestion } from './types';
+import { HandleAnswersActions } from '@hooks';
 import { QuestionTitle } from '@components/Question/components/QuestionTitle';
 import { QuestionOption } from '@components/Question/components/QuestionOption';
 import { inputMargin } from '@components/Question/Question';
 
-export const MultipleChoice: FC<QuestionProps> = ({ data, answersDispatch, defaultValue = [] }) => {
-  const { question, choices, tooltip, type } = data as MultipleChoiceQuestion;
-  const [answers, setAnswers] = useState([]);
-  const checkedValues = defaultValue as string[] | null;
+export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, answersDispatch, defaultValue }) => {
+  const { question, choices, tooltip } = data as MultipleChoiceQuestion;
+  const [answers, setAnswers] = useState<MultipleChoiceAnswer>({ type: 'multipleChoice', values: [] });
 
   return (
     <Box>
@@ -22,13 +20,14 @@ export const MultipleChoice: FC<QuestionProps> = ({ data, answersDispatch, defau
           componentType="checkbox"
           componentProps={{
             value: id,
-            defaultChecked: checkedValues && checkedValues.length > 0 && checkedValues.includes(id),
+            defaultChecked: defaultValue && defaultValue.values.length > 0 && defaultValue.values.includes(id),
             onChange: ({ currentTarget }) => {
-              if (currentTarget.checked) setAnswers([...answers, currentTarget.value]);
-              if (!currentTarget.checked) setAnswers(answers.filter((answer) => answer !== currentTarget.value));
+              if (currentTarget.checked) setAnswers({ ...answers, values: [...answers.values, currentTarget.value] });
+              if (!currentTarget.checked)
+                setAnswers({ ...answers, values: answers.values.filter((answer) => answer !== currentTarget.value) });
               answersDispatch({
                 type: HandleAnswersActions.SaveAnswer,
-                payload: createAnswer(type, Array.from(answers)),
+                payload: answers,
               });
             },
           }}

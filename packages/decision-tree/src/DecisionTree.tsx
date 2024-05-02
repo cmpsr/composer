@@ -16,7 +16,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
     currentSection: questionnaire.nextQuestion.sectionId,
   };
 
-  const { state: answerState, answersDispatch, submitAnswer, iDontKnowAnswer } = useHandleAnswers(callback);
+  const { state: answerState, answersDispatch, submitAnswer, submitIDKAnswer } = useHandleAnswers(callback);
   const {
     state: { currentQuestion, currentSection },
     paginationDispatch,
@@ -35,7 +35,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
         answersDispatch={answersDispatch}
         paginationDispatch={paginationDispatch}
         defaultValue={answerState.answer}
-        iDontKnowAnswer={iDontKnowAnswer}
+        submitIDKAnswer={submitIDKAnswer}
       />
       <DecisionTree.NavigationBar
         isBackDisabled={isBackDisabled}

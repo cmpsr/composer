@@ -4,6 +4,7 @@ import { DecisionTree } from './DecisionTree';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { QuestionnaireType, type UseSetupCallbackCB } from './types';
 import { questionnaire } from './tests/Questionnaire.mock';
+import { Box } from '@cmpsr/components';
 
 const serverMockup = {
   1: { nextSectionId: 1, nextQuestionId: 2 },
@@ -25,24 +26,16 @@ export default {
       options: ['default'],
       control: { type: 'select' },
     },
-    size: {
-      options: ['s', 'm', 'l'],
-      control: { type: 'select' },
-    },
   },
 } as Meta;
 
-const states = ['default', 'filled'];
+const states = ['default'];
 
 export const All = () => (
   <Table variant="simple">
     <Thead>
       <Tr>
         <Th>Variant</Th>
-        <Th>State</Th>
-        <Th textAlign="center">S</Th>
-        <Th textAlign="center">M</Th>
-        <Th textAlign="center">L</Th>
       </Tr>
     </Thead>
     <Tbody>
@@ -54,11 +47,11 @@ export const All = () => (
           {states.map((state, i) => (
             <Tr key={`${variant}-${state}-${i}`}>
               <Td>{state}</Td>
-              {['l'].map((size, i) => (
-                <Td key={`${variant}-${state}-${size}-${i}`}>
+              <Td>
+                <Box height="80svh">
                   <DecisionTree questionnaire={questionnaire as QuestionnaireType} callback={callback} />
-                </Td>
-              ))}
+                </Box>
+              </Td>
             </Tr>
           ))}
         </Fragment>
@@ -67,7 +60,11 @@ export const All = () => (
   </Table>
 );
 
-const Template = (args) => <DecisionTree {...args} />;
+const Template = (args) => (
+  <Box height="80svh">
+    <DecisionTree {...args} />
+  </Box>
+);
 export const Playground = Template.bind({});
 Playground.args = {
   questionnaire,

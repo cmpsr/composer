@@ -17,7 +17,7 @@ export const Question: FC<QuestionProps> = ({
   data,
   answersDispatch,
   defaultValue,
-  iDontKnowAnswer,
+  submitIDKAnswer,
   paginationDispatch,
 }) => {
   if (!questionTypesMap[data.type]) return null;
@@ -37,7 +37,7 @@ export const Question: FC<QuestionProps> = ({
       {data.skippable !== false ? (
         <Flex justifyContent="center">
           <IDontKnowButton
-            iDontKnowAnswer={iDontKnowAnswer}
+            submitIDKAnswer={submitIDKAnswer}
             currentPage={data.id}
             paginationDispatch={paginationDispatch}
           />

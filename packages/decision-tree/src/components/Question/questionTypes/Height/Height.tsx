@@ -1,16 +1,14 @@
 import React, { FC, useState } from 'react';
-import { HeightAnswer, HeightQuestion } from './types';
+import { HeightAnswer, HeightQuestion, HeightProps } from './types';
 import { Box, Flex } from '@cmpsr/components';
-import { HandleAnswersActions, createAnswer } from '@hooks';
-import { type QuestionProps } from '@components/Question/types';
+import { HandleAnswersActions } from '@hooks';
 import { QuestionTitle } from '@components/Question/components/QuestionTitle';
 import { DecisionTreeInput } from '@components/Question/components/DecisionTreeInput';
 import { inputMargin } from '@components/Question/Question';
 
-export const Height: FC<QuestionProps> = ({ data, answersDispatch, defaultValue }) => {
-  const { question, tooltip, feet, inches, type } = data as HeightQuestion;
-  const [answers, setAnswers] = useState({ feet: '', inches: '' });
-  const defaultValues = defaultValue ? (defaultValue as HeightAnswer) : { feet: '', inches: '' };
+export const Height: FC<HeightProps> = ({ data, answersDispatch, defaultValue }) => {
+  const { question, tooltip, feet, inches } = data as HeightQuestion;
+  const [answers, setAnswers] = useState<HeightAnswer>({ type: 'height', feet: '', inches: '' });
 
   return (
     <Box>
@@ -19,21 +17,21 @@ export const Height: FC<QuestionProps> = ({ data, answersDispatch, defaultValue 
         <DecisionTreeInput
           variant="outline"
           placeholder={feet.placeholder}
-          defaultValue={defaultValues.feet}
+          defaultValue={defaultValue?.feet}
           trailingMask={feet.trailingMask}
           onKeyUp={({ currentTarget }) => {
             setAnswers({ ...answers, feet: currentTarget.value });
-            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: createAnswer(type, answers) });
+            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: answers });
           }}
         />
         <DecisionTreeInput
           variant="outline"
           placeholder={inches.placeholder}
-          defaultValue={defaultValues.inches}
+          defaultValue={defaultValue?.inches}
           trailingMask={inches.trailingMask}
           onKeyUp={({ currentTarget }) => {
             setAnswers({ ...answers, inches: currentTarget.value });
-            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: createAnswer(type, answers) });
+            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: answers });
           }}
         />
       </Flex>

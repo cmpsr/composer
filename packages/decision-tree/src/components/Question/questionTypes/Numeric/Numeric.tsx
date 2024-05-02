@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
 import { Box, Flex } from '@cmpsr/components';
-import { NumericQuestion } from './types';
-import { HandleAnswersActions, createAnswer } from '@hooks';
-import { type QuestionProps } from '@components/Question/types';
+import { NumericQuestion, NumericProps } from './types';
+import { HandleAnswersActions } from '@hooks';
 import { QuestionTitle } from '@components/Question/components/QuestionTitle';
 import { DecisionTreeInput } from '@components/Question/components/DecisionTreeInput';
 import { inputMargin } from '@components/Question/Question';
 
-export const Numeric: FC<QuestionProps> = ({ data, answersDispatch, defaultValue }) => {
-  const { question, tooltip, id, placeholder, trailingMask, type } = data as NumericQuestion | null;
+export const Numeric: FC<NumericProps> = ({ data, answersDispatch, defaultValue }) => {
+  const { question, tooltip, id, placeholder, trailingMask } = data as NumericQuestion | null;
 
   return (
     <Box>
@@ -19,9 +18,12 @@ export const Numeric: FC<QuestionProps> = ({ data, answersDispatch, defaultValue
           key={id}
           variant="outline"
           placeholder={placeholder}
-          defaultValue={defaultValue as string}
+          defaultValue={defaultValue?.value as string}
           onKeyUp={({ currentTarget }) =>
-            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: createAnswer(type, currentTarget.value) })
+            answersDispatch({
+              type: HandleAnswersActions.SaveAnswer,
+              payload: { type: 'numeric', value: currentTarget.value },
+            })
           }
         />
       </Flex>

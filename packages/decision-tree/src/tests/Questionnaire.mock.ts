@@ -1,10 +1,17 @@
 // Temp file to test
 export const serverMockup = {
-  1: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: { '1': '1' } },
-  2: { nextQuestion: { sectionId: '2', questionId: '3' }, answers: { '1': '1', '2': { feet: '5', inches: '5' } } },
+  1: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: { '1': { type: 'singleChoice', value: '1' } } },
+  2: {
+    nextQuestion: { sectionId: '2', questionId: '3' },
+    answers: { '1': { type: 'singleChoice', value: '1' }, '2': { type: 'heightAnswer', feet: '5', inches: '5' } },
+  },
   3: {
     nextQuestion: { sectionId: '3', questionId: '4' },
-    answers: { '1': '1', '2': { feet: '5', inches: '5' }, '3': ['1', '2'] },
+    answers: {
+      '1': { type: 'singleChoice', value: '1' },
+      '2': { type: 'heightAnswer', feet: '5', inches: '5' },
+      '3': { type: 'multipleChoice', values: ['1', '2'] },
+    },
   },
   4: null,
 };

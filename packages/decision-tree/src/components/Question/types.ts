@@ -5,6 +5,9 @@ import {
   SingleChoiceQuestion,
   MultipleChoiceQuestion,
   HeightAnswer,
+  SingleChoiceAnswer,
+  NumericAnswer,
+  MultipleChoiceAnswer,
 } from './questionTypes';
 import { HandleAnswersAction, PaginationAction, SubmitAnswerFn } from '@hooks';
 import { SectionIntroQuestion } from './questionTypes/SectionIntro';
@@ -24,16 +27,16 @@ export type QuestionType =
   | MultipleChoiceQuestion
   | SectionIntroQuestion;
 
-export type AnswerType = string | Array<string> | HeightAnswer | null;
+export type AnswerType = SingleChoiceAnswer | NumericAnswer | MultipleChoiceAnswer | HeightAnswer;
 
 export type AnswersType = {
   [key: string]: AnswerType;
 };
 
-export type QuestionProps = {
+export interface QuestionProps {
   data: QuestionType;
   answersDispatch: Dispatch<HandleAnswersAction>;
   defaultValue?: AnswerType | null;
-  iDontKnowAnswer: SubmitAnswerFn;
+  submitIDKAnswer: SubmitAnswerFn;
   paginationDispatch: Dispatch<PaginationAction>;
-};
+}

@@ -1,4 +1,10 @@
 import { AnswerType, AnswersType } from '@components/Question';
+import {
+  HeightAnswer,
+  MultipleChoiceAnswer,
+  NumericAnswer,
+  SingleChoiceAnswer,
+} from '@components/Question/questionTypes';
 import { type Dispatch } from 'react';
 
 export enum HandleAnswersActions {
@@ -23,36 +29,23 @@ export type useHandleActionResponse = {
   answersDispatch: Dispatch<HandleAnswersAction>;
   state: { answer: AnswerType; previousAnswers: AnswersType };
   submitAnswer: SubmitAnswerFn;
-  iDontKnowAnswer: SubmitAnswerFn;
+  submitIDKAnswer: SubmitAnswerFn;
 };
 
-type singleChoiceAnswer = {
-  type: 'singleChoice';
-  value: string;
+type iDontKnowAnswerType = {
+  type: 'iDontKnow';
 };
 
-type multipleChoiceAnswer = {
-  type: 'multipleChoice';
-  values: Array<string>;
-};
+export type AnswerModel =
+  | SingleChoiceAnswer
+  | MultipleChoiceAnswer
+  | NumericAnswer
+  | HeightAnswer
+  | iDontKnowAnswerType;
 
-type numericAnswer = {
-  type: 'numeric';
-  value: number;
-};
+export const iDontKnowAnswer: iDontKnowAnswerType = { type: 'iDontKnow' };
 
-type heightAnswer = {
-  type: 'height';
-  feet: number;
-  inches: number;
-};
-
-type iDontKnowAnswer = {
-  type: 'singleChoice';
-};
-
-export type AnswerModel = singleChoiceAnswer | multipleChoiceAnswer | numericAnswer | heightAnswer | iDontKnowAnswer;
-
+/*
 const answerMap = {
   numeric: (type, value) => ({ type, value }),
   singleChoice: (type, value) => ({ type, value }),
@@ -64,3 +57,4 @@ const answerMap = {
 export const createAnswer = (type: string, value: AnswerType = null): AnswerModel => {
   return answerMap[type](type, value);
 };
+*/

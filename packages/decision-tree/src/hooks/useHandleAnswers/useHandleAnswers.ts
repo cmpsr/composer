@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import { UseSetupCallbackCB } from 'src/types';
-import { useHandleActionResponse, HandleAnswersActions, createAnswer } from './types';
 import { sectionIntroId } from '../../DecisionTree.normalizer';
+import { useHandleActionResponse, HandleAnswersActions, iDontKnowAnswer } from './types';
 
 export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionResponse => {
   const handleAnswersReducer = (state, action) => {
@@ -31,9 +31,9 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
     return await callback(questionId, state.answer);
   };
 
-  const iDontKnowAnswer = async (questionId) => {
-    return await callback(questionId, createAnswer('iDontKnow'));
+  const submitIDKAnswer = async (questionId) => {
+    return await callback(questionId, iDontKnowAnswer);
   };
 
-  return { state, answersDispatch: dispatch, submitAnswer, iDontKnowAnswer };
+  return { state, answersDispatch: dispatch, submitAnswer, submitIDKAnswer };
 };

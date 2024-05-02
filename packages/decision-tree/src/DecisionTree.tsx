@@ -9,6 +9,7 @@ import { useHandleAnswers } from './hooks';
 import { NavigationBarProps } from '@components/NavigationBar/types';
 import { StepBarProps } from '@components/StepBar/types';
 import { normalizeQuestionnaire } from './DecisionTree.normalizer';
+import { SectionIntro } from './components/Question/questionTypes/SectionIntro';
 
 export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ questionnaire, callback }) => {
   const normalizedQuestionnaire = normalizeQuestionnaire(questionnaire);
@@ -56,3 +57,6 @@ const Stepper = (props: StepBarProps) => <StepBar {...props} />;
 DecisionTree.Container = DecisionTreeContainer;
 DecisionTree.NavigationBar = Navigation;
 DecisionTree.Stepper = Stepper;
+DecisionTree.SectionIntro = SectionIntro;
+
+export const CustomizedSectionIntro = DecisionTree.SectionIntro;

@@ -23,7 +23,7 @@ describe('IDontKnowButton', () => {
 
   test('should call the IDKAnswer FN on click', () => {
     renderWithProviders(
-      <IDontKnowButton iDontKnowAnswer={mockIDKAnswer} currentPage="3" paginationDispatch={mockDispatch} />
+      <IDontKnowButton submitIDKAnswer={mockIDKAnswer} currentPage="3" paginationDispatch={mockDispatch} />
     );
 
     const idkButton = screen.getByRole('link');
@@ -37,7 +37,7 @@ describe('IDontKnowButton', () => {
 
   test('should call the next question action function', () => {
     renderWithProviders(
-      <IDontKnowButton iDontKnowAnswer={mockIDKAnswer} currentPage="3" paginationDispatch={mockDispatch} />
+      <IDontKnowButton submitIDKAnswer={mockIDKAnswer} currentPage="3" paginationDispatch={mockDispatch} />
     );
 
     const idkButton = screen.getByRole('link');

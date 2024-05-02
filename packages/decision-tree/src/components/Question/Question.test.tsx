@@ -13,12 +13,12 @@ describe('Question', () => {
 
   const answersDispatch = jest.fn();
   const paginationDispatch = jest.fn();
-  const iDontKnowAnswer = jest.fn();
+  const submitIDKAnswer = jest.fn();
 
   afterAll(() => {
     answersDispatch.mockReset();
     paginationDispatch.mockReset();
-    iDontKnowAnswer.mockReset();
+    submitIDKAnswer.mockReset();
   });
 
   test('should render a singleChoide component when calling one', () => {
@@ -32,7 +32,7 @@ describe('Question', () => {
     } as SingleChoiceQuestion;
     renderWithProviders(
       <Question
-        iDontKnowAnswer={iDontKnowAnswer}
+        submitIDKAnswer={submitIDKAnswer}
         paginationDispatch={paginationDispatch}
         data={data}
         answersDispatch={answersDispatch}
@@ -52,7 +52,7 @@ describe('Question', () => {
     } as NumericQuestion;
     renderWithProviders(
       <Question
-        iDontKnowAnswer={iDontKnowAnswer}
+        submitIDKAnswer={submitIDKAnswer}
         paginationDispatch={paginationDispatch}
         data={data}
         answersDispatch={answersDispatch}
@@ -74,7 +74,7 @@ describe('Question', () => {
     } as MultipleChoiceQuestion;
     renderWithProviders(
       <Question
-        iDontKnowAnswer={iDontKnowAnswer}
+        submitIDKAnswer={submitIDKAnswer}
         paginationDispatch={paginationDispatch}
         data={data}
         answersDispatch={answersDispatch}
@@ -101,7 +101,7 @@ describe('Question', () => {
     } as HeightQuestion;
     renderWithProviders(
       <Question
-        iDontKnowAnswer={iDontKnowAnswer}
+        submitIDKAnswer={submitIDKAnswer}
         paginationDispatch={paginationDispatch}
         data={data}
         answersDispatch={answersDispatch}

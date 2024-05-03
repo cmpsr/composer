@@ -27,6 +27,7 @@ export const questionnaire = {
     {
       id: '1',
       name: 'Diet and Lifestyle',
+      description: 'Diet And Lifestyle section description',
       questions: [
         {
           id: '1',
@@ -65,6 +66,7 @@ export const questionnaire = {
     {
       id: '2',
       name: 'Symptoms',
+      description: 'Symptoms section description',
       questions: [
         {
           id: '3',
@@ -89,6 +91,7 @@ export const questionnaire = {
     {
       id: '3',
       name: 'Physical',
+      description: 'Physical section description',
       questions: [
         {
           id: '4',

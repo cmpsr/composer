@@ -10,16 +10,22 @@ import {
   MultipleChoiceAnswer,
 } from './questionTypes';
 import { HandleAnswersAction, PaginationAction, SubmitAnswerFn } from '@hooks';
+import { SectionIntroQuestion } from './questionTypes/SectionIntro';
 
 export interface QuestionBase {
   id: string;
-  type: 'numeric' | 'singleChoice' | 'multipleChoice' | 'height';
+  type: 'numeric' | 'singleChoice' | 'multipleChoice' | 'height' | 'sectionIntro';
   skippable?: boolean;
   question: string;
-  tooltip: string;
+  tooltip?: string;
 }
 
-export type QuestionType = HeightQuestion | NumericQuestion | SingleChoiceQuestion | MultipleChoiceQuestion;
+export type QuestionType =
+  | HeightQuestion
+  | NumericQuestion
+  | SingleChoiceQuestion
+  | MultipleChoiceQuestion
+  | SectionIntroQuestion;
 
 export type AnswerType = SingleChoiceAnswer | NumericAnswer | MultipleChoiceAnswer | HeightAnswer;
 

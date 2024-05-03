@@ -44,17 +44,3 @@ export type AnswerModel =
   | iDontKnowAnswerType;
 
 export const iDontKnowAnswer: iDontKnowAnswerType = { type: 'iDontKnow' };
-
-/*
-const answerMap = {
-  numeric: (type, value) => ({ type, value }),
-  singleChoice: (type, value) => ({ type, value }),
-  multipleChoice: (type, value) => ({ type, values: value }),
-  height: (type, { feet, inches }) => ({ type, feet, inches }),
-  iDontKnow: (type) => ({ type }),
-};
-
-export const createAnswer = (type: string, value: AnswerType = null): AnswerModel => {
-  return answerMap[type](type, value);
-};
-*/

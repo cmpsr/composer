@@ -11,10 +11,14 @@ import { StepBarProps } from '@components/StepBar/types';
 import { normalizeQuestionnaire } from './DecisionTree.normalizer';
 import { SectionIntro } from './components/Question/questionTypes/SectionIntro';
 
-export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ questionnaire, callback }) => {
+export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({
+  questionnaire,
+  callback,
+  firstQuestion,
+}) => {
   const normalizedQuestionnaire = normalizeQuestionnaire(questionnaire);
   const steps: Steps = normalizedQuestionnaire.sections.map(({ id, name }) => ({ id, name }));
-  const initialState = {
+  const initialState = firstQuestion ?? {
     questionId: normalizedQuestionnaire.nextQuestion.questionId,
     sectionId: normalizedQuestionnaire.nextQuestion.sectionId,
   };

@@ -5,8 +5,9 @@ import { HandleAnswersActions } from '@hooks';
 import { sectionIntroId } from '../../DecisionTree.normalizer';
 
 export const usePagination = ({ steps, initialState, answersDispatch }: PaginationProps): PaginationResponse => {
+  const firstStep = steps.findIndex(({ id }) => id === initialState.sectionId) ?? 0;
   const { activeStep, setActiveStep } = useSteps({
-    index: 0,
+    index: firstStep,
     count: steps.length,
   });
   const [pageHistory, setPageHistory] = useState<Array<PaginationState>>([]);

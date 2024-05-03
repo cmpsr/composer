@@ -16,19 +16,22 @@ export type SectionType = {
   questions: Array<QuestionType>;
 };
 
+type nextQuestion = {
+  questionId: string;
+  sectionId: string;
+};
+
 export type QuestionnaireType = {
   version: number;
   sections: Array<SectionType>;
-  nextQuestion: {
-    questionId: string;
-    sectionId: string;
-  };
+  nextQuestion: nextQuestion;
   answers: any;
 };
 
 export type DecisionTreeProps = {
   questionnaire: QuestionnaireType;
   callback: UseSetupCallbackCB;
+  firstQuestion?: nextQuestion;
 };
 
 export interface DecisionTreeStaticMembers {

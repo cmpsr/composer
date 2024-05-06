@@ -17,7 +17,8 @@ export interface QuestionBase {
   type: 'numeric' | 'singleChoice' | 'multipleChoice' | 'height' | 'sectionIntro';
   skippable?: boolean;
   question: string;
-  tooltip?: string;
+  tooltip?: string | null;
+  explanation: string;
 }
 
 export type QuestionType =

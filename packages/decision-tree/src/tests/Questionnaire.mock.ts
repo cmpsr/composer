@@ -33,6 +33,7 @@ export const questionnaire = {
           id: '1',
           type: 'singleChoice',
           question: 'What sex were you assigned at birth?',
+          explanation: 'This is an text explaining why we are asking this particular question at this point.',
           tooltip: 'Tooltip for the question',
           choices: [
             {
@@ -51,6 +52,7 @@ export const questionnaire = {
           id: '2',
           type: 'height',
           question: 'What is your current height?',
+          explanation: 'This is an text explaining why we are asking this particular question at this point.',
           tooltip: 'Tooltip for the question',
           feet: {
             placeholder: 'Feet',
@@ -72,6 +74,7 @@ export const questionnaire = {
           id: '3',
           type: 'multipleChoice',
           question: 'Have you been experiencing these symptoms?',
+          explanation: 'This is an text explaining why we are asking this particular question at this point.',
           tooltip: 'Tooltip for the question',
           choices: [
             {
@@ -97,6 +100,7 @@ export const questionnaire = {
           id: '4',
           type: 'numeric',
           question: 'How much do you weigh?',
+          explanation: 'This is an text explaining why we are asking this particular question at this point.',
           tooltip: 'Tooltip for the question',
           placeholder: 'Pounds',
           trailingMask: '(lbs)',

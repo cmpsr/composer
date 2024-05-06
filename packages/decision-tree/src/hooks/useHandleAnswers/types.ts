@@ -25,9 +25,11 @@ export type HandleAnswersAction = {
 
 export type SubmitAnswerFn = (currentPage: string) => Promise<any>;
 
+export type HandleAnswersState = { answer: AnswerType; previousAnswers: AnswersType; isAnswered: boolean };
+
 export type useHandleActionResponse = {
   answersDispatch: Dispatch<HandleAnswersAction>;
-  state: { answer: AnswerType; previousAnswers: AnswersType };
+  state: HandleAnswersState;
   submitAnswer: SubmitAnswerFn;
   submitIDKAnswer: SubmitAnswerFn;
 };

@@ -9,7 +9,7 @@ describe('usePagination', () => {
     { id: '2', name: 'step2' },
     { id: '3', name: 'step3' },
   ];
-  const initialState = { currentSection: '1', currentQuestion: '1' };
+  const initialState = { sectionId: '1', questionId: '1' };
   const answersDispatch = jest.fn();
 
   test('should return an activeStep number', () => {
@@ -24,7 +24,7 @@ describe('usePagination', () => {
     expect(typeof hookResult.activeStep).toBe('number');
   });
 
-  test('should return a state with the page', () => {
+  test('should return the first section intro state with the page', () => {
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,
       initialState,
@@ -33,7 +33,7 @@ describe('usePagination', () => {
 
     const hookResult = result.current;
 
-    expect(hookResult.state).toEqual(initialState);
+    expect(hookResult.state).toEqual({ currentQuestion: '1-section-intro', currentSection: '1' });
   });
 
   test('should return a dispatch function', () => {

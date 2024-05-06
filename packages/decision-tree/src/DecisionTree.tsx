@@ -46,7 +46,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
       />
       <DecisionTree.NavigationBar
         isBackDisabled={isBackDisabled}
-        isNextDisabled={answerState.answer === null && question.type !== 'sectionIntro'}
+        isNextDisabled={!answerState.isAnswered && question.type !== 'sectionIntro'}
         dispatch={paginationDispatch}
         submitAnswer={() => submitAnswer(currentQuestion)}
       />

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Meta } from '@storybook/react';
 import { DecisionTree } from './DecisionTree';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
@@ -21,15 +21,7 @@ const callback = async function (questionId, value) {
 export default {
   component: DecisionTree,
   title: 'DecisionTree/DecisionTree',
-  argTypes: {
-    variant: {
-      options: ['default'],
-      control: { type: 'select' },
-    },
-  },
 } as Meta;
-
-const states = ['default'];
 
 export const All = () => (
   <Table variant="simple">
@@ -39,23 +31,14 @@ export const All = () => (
       </Tr>
     </Thead>
     <Tbody>
-      {['default'].map((variant, i) => (
-        <Fragment key={`${variant}-${i}`}>
-          <Tr>
-            <Td rowSpan={6}>{variant}</Td>
-          </Tr>
-          {states.map((state, i) => (
-            <Tr key={`${variant}-${state}-${i}`}>
-              <Td>{state}</Td>
-              <Td>
-                <Box height="80svh">
-                  <DecisionTree questionnaire={questionnaire as QuestionnaireType} callback={callback} />
-                </Box>
-              </Td>
-            </Tr>
-          ))}
-        </Fragment>
-      ))}
+      <Tr>
+        <Td>Default</Td>
+        <Td>
+          <Box height="80svh">
+            <DecisionTree questionnaire={questionnaire as QuestionnaireType} callback={callback} />
+          </Box>
+        </Td>
+      </Tr>
     </Tbody>
   </Table>
 );

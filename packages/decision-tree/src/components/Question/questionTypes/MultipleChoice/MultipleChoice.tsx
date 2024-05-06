@@ -8,7 +8,7 @@ import { inputMargin } from '@components/Question/Question';
 
 export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, answersDispatch, defaultValue }) => {
   const { question, choices, tooltip } = data as MultipleChoiceQuestion;
-  const [answers, setAnswers] = useState<MultipleChoiceAnswer>({ type: 'multipleChoice', values: [] });
+  const [answers, setAnswers] = useState<MultipleChoiceAnswer>(defaultValue ?? { type: 'multipleChoice', values: [] });
 
   return (
     <Box>
@@ -22,12 +22,13 @@ export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, answersDispatch,
             value: id,
             defaultChecked: defaultValue && defaultValue.values.length > 0 && defaultValue.values.includes(id),
             onChange: ({ currentTarget }) => {
-              if (currentTarget.checked) setAnswers({ ...answers, values: [...answers.values, currentTarget.value] });
-              if (!currentTarget.checked)
-                setAnswers({ ...answers, values: answers.values.filter((answer) => answer !== currentTarget.value) });
+              const newAnswers = !currentTarget.checked
+                ? { ...answers, values: answers.values.filter((answer) => answer !== currentTarget.value) }
+                : { ...answers, values: [...answers.values, currentTarget.value] };
+              setAnswers(newAnswers);
               answersDispatch({
                 type: HandleAnswersActions.SaveAnswer,
-                payload: answers,
+                payload: newAnswers,
               });
             },
           }}

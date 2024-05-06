@@ -1,11 +1,17 @@
-import { useReducer } from 'react';
+import { Reducer, useReducer } from 'react';
 import { UseSetupCallbackCB } from 'src/types';
 import { sectionIntroId } from '../../DecisionTree.normalizer';
-import { useHandleActionResponse, HandleAnswersActions, iDontKnowAnswer } from './types';
+import {
+  useHandleActionResponse,
+  HandleAnswersActions,
+  iDontKnowAnswer,
+  HandleAnswersState,
+  HandleAnswersAction,
+} from './types';
 import { AnswerType } from '@components/Question';
 
 export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionResponse => {
-  const handleAnswersReducer = (state, action) => {
+  const handleAnswersReducer = (state: HandleAnswersState, action: HandleAnswersAction) => {
     const actionMap = {
       [HandleAnswersActions.SaveAnswer]: (submittedAnswer) => {
         return { ...state, answer: submittedAnswer, isAnswered: isAnswerFilled(submittedAnswer) };
@@ -17,14 +23,22 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
         return { ...state, previousAnswers };
       },
       [HandleAnswersActions.GetPreviousAnswer]: (questionId) => {
-        return { ...state, answer: state.previousAnswers[questionId] };
+        return {
+          ...state,
+          answer: state.previousAnswers[questionId],
+          isAnswered: isAnswerFilled(state.previousAnswers[questionId]),
+        };
       },
     };
 
     return actionMap[action.type](action.payload);
   };
 
-  const [state, dispatch] = useReducer(handleAnswersReducer, { answer: null, previousAnswers: {}, isAnswered: false });
+  const [state, dispatch] = useReducer<Reducer<HandleAnswersState, HandleAnswersAction>>(handleAnswersReducer, {
+    answer: null,
+    previousAnswers: {},
+    isAnswered: false,
+  });
 
   const submitAnswer = async (questionId) => {
     if (questionId.includes(sectionIntroId))
@@ -39,7 +53,9 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
   return { state, answersDispatch: dispatch, submitAnswer, submitIDKAnswer };
 };
 
-const isAnswerFilled = (answer: AnswerType): boolean => {
+const isAnswerFilled = (answer: AnswerType | null): boolean => {
+  if (!answer) return false;
+
   switch (answer.type) {
     case 'singleChoice':
     case 'numeric':

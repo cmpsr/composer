@@ -5,6 +5,6 @@ module.exports = {
   displayName: require('./package.json').name,
   coveragePathIgnorePatterns: [
     ...config.coveragePathIgnorePatterns,
-    ".mock.ts",
-],
+    '.mock.ts',
+  ],
 };

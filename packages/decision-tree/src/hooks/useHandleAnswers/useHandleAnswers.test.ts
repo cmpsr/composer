@@ -44,32 +44,32 @@ describe('useHandleAnswers', () => {
     expect(mockFn).toHaveBeenCalledTimes(1);
   });
 
-  test('should save the answer', () => {
+  test('should save the answer', async () => {
     const mockFn = jest.fn();
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
-    const { answersDispatch, state } = result.current;
+    const { answersDispatch } = result.current;
 
     act(() => {
       answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: 'stringAnswer' });
     });
-    waitFor(() => {
-      expect(state).toEqual({ answer: 'stringAnswer' });
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ answer: 'stringAnswer' });
     });
   });
 
-  test('should reset the answer', () => {
+  test('should reset the answer', async () => {
     const mockFn = jest.fn();
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
-    const { answersDispatch, state } = result.current;
+    const { answersDispatch } = result.current;
 
-    act(() => {
-      answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: 'stringAnswer' });
-      answersDispatch({ type: HandleAnswersActions.ResetAnswer });
+    await act(async () => {
+      await answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: 'stringAnswer' });
+      await answersDispatch({ type: HandleAnswersActions.ResetAnswer });
     });
-    waitFor(() => {
-      expect(state).toEqual({ answer: null });
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ answer: null });
     });
   });
 });

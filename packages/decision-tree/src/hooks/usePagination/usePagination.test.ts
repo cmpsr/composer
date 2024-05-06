@@ -60,14 +60,14 @@ describe('usePagination', () => {
     expect(typeof hookResult.isBackDisabled).toBe('boolean');
   });
 
-  test('should go to the next Question', () => {
+  test('should go to the next Question', async () => {
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,
       initialState,
       answersDispatch,
     });
 
-    const { paginationDispatch, state } = result.current;
+    const { paginationDispatch } = result.current;
 
     act(() => {
       paginationDispatch({
@@ -76,30 +76,30 @@ describe('usePagination', () => {
       });
     });
 
-    waitFor(() => {
-      expect(state).toEqual({ currentSection: '1', currentQuestion: '2' });
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ currentSection: '1', currentQuestion: '2' });
     });
   });
 
-  test('should go to the previous Question', () => {
+  test('should go to the previous Question', async () => {
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,
       initialState,
       answersDispatch,
     });
 
-    const { paginationDispatch, state } = result.current;
+    const { paginationDispatch } = result.current;
 
-    act(() => {
-      paginationDispatch({
+    await act(async () => {
+      await paginationDispatch({
         type: PaginationActions.NextQuestion,
         payload: { nextSectionId: '1', nextQuestionId: '2' },
       });
-      paginationDispatch({ type: PaginationActions.PreviousQuestion });
+      await paginationDispatch({ type: PaginationActions.PreviousQuestion });
     });
 
-    waitFor(() => {
-      expect(state).toEqual(initialState);
+    await waitFor(() => {
+      expect(result.current.state).toEqual(initialState);
     });
   });
 });

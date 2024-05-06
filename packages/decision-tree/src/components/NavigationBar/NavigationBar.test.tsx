@@ -4,8 +4,9 @@ import { NavigationBar } from './NavigationBar';
 import { PaginationActions } from '@hooks';
 
 describe('Navigation Bar', () => {
+  const submitResponse = { nextQuestionId: 'mockQuestionId' };
   const mockDispatch = jest.fn();
-  const mockSubmitAnswer = jest.fn().mockResolvedValue('resolvedValue');
+  const mockSubmitAnswer = jest.fn().mockResolvedValue(submitResponse);
 
   afterAll(() => {
     mockDispatch.mockReset();
@@ -91,7 +92,7 @@ describe('Navigation Bar', () => {
     expect(mockDispatch).toHaveBeenCalledWith({ type: PaginationActions.PreviousQuestion });
   });
 
-  test('should call the dispatch with next page action on next click', () => {
+  test('should call the dispatch with next page action on next click', async () => {
     renderWithProviders(
       <NavigationBar
         isBackDisabled={false}
@@ -105,8 +106,8 @@ describe('Navigation Bar', () => {
     act(() => {
       fireEvent.click(nextButton);
     });
-    waitFor(() => {
-      expect(mockDispatch).toHaveBeenCalledWith({ type: PaginationActions.NextQuestion });
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({ type: PaginationActions.NextQuestion, payload: submitResponse });
     });
   });
 });

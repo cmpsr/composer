@@ -10,9 +10,9 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
   });
   const [pageHistory, setPageHistory] = useState<Array<PaginationState>>([]);
 
-  const paginationReducer = (state: PaginationState, action: PaginationAction) => {
-    const actionMap = {
-      [PaginationActions.PreviousQuestion]: () => {
+  const paginationReducer = (state: PaginationState, { type, payload }: PaginationAction) => {
+    switch (type) {
+      case PaginationActions.PreviousQuestion: {
         const { currentQuestion, currentSection, step } = pageHistory.at(-1);
         answersDispatch({ type: HandleAnswersActions.ResetAnswer });
         setActiveStep(step);
@@ -21,8 +21,9 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
           currentQuestion,
           currentSection,
         };
-      },
-      [PaginationActions.NextQuestion]: ({ nextSectionId, nextQuestionId }) => {
+      }
+      case PaginationActions.NextQuestion: {
+        const { nextQuestionId, nextSectionId } = payload;
         const iSection = steps.findIndex((step) => step.id == nextSectionId);
         answersDispatch({ type: HandleAnswersActions.ResetAnswer });
         setPageHistory([...pageHistory, { ...state, step: iSection }]);
@@ -31,9 +32,8 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
           currentQuestion: nextQuestionId,
           currentSection: nextSectionId,
         };
-      },
-    };
-    return actionMap[action.type](action.payload);
+      }
+    }
   };
 
   const [state, dispatch] = useReducer<Reducer<PaginationState, PaginationAction>>(paginationReducer, initialState);

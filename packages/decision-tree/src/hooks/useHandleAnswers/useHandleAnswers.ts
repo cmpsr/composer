@@ -3,17 +3,13 @@ import { UseSetupCallbackCB } from 'src/types';
 import { useHandleActionResponse, HandleAnswersActions } from './types';
 
 export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionResponse => {
-  const handleAnswersReducer = (state, action) => {
-    const actionMap = {
-      [HandleAnswersActions.SaveAnswer]: (submittedAnswer) => {
-        return { answer: submittedAnswer };
-      },
-      [HandleAnswersActions.ResetAnswer]: () => {
+  const handleAnswersReducer = (state, { type, payload }) => {
+    switch (type) {
+      case HandleAnswersActions.SaveAnswer:
+        return { answer: payload };
+      case HandleAnswersActions.ResetAnswer:
         return { answer: null };
-      },
-    };
-
-    return actionMap[action.type](action.payload);
+    }
   };
 
   const [state, dispatch] = useReducer(handleAnswersReducer, { answer: null });

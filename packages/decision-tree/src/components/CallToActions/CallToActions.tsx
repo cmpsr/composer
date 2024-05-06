@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { type NavigationBarProps } from './types';
+import { type CallToActionsProps } from './types';
 import { Flex, Button, IconArrowRight, IconArrowLeft } from '@cmpsr/components';
 import { PaginationActions } from '@hooks';
 
-export const NavigationBar: FC<NavigationBarProps> = ({ isBackDisabled, isNextDisabled, dispatch, submitAnswer }) => {
+export const CallToActions: FC<CallToActionsProps> = ({ isBackDisabled, isNextDisabled, dispatch, submitAnswer }) => {
   return (
     <Flex justifyContent={'center'}>
       <Button

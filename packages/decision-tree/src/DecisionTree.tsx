@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { StepBar } from './components/StepBar';
-import { NavigationBar } from './components/NavigationBar';
+import { CallToActions } from './components/CallToActions';
 import { Question } from './components/Question';
 import { usePagination } from './hooks';
 import { DecisionTreeProps, DecisionTreeStaticMembers, Steps } from './types';
@@ -26,7 +26,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
     <DecisionTree.Container>
       <StepBar steps={steps} activeStep={activeStep} />
       <Question data={question} answersDispatch={answersDispatch} />
-      <NavigationBar
+      <CallToActions
         isBackDisabled={isBackDisabled}
         isNextDisabled={answerState.answer === null}
         dispatch={paginationDispatch}

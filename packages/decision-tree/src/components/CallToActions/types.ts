@@ -2,7 +2,7 @@ import { type Dispatch } from 'react';
 import { PaginationAction } from '@hooks';
 import { QuestionnaireType } from '@types';
 
-export type NavigationBarProps = {
+export type CallToActionsProps = {
   isBackDisabled: boolean;
   isNextDisabled: boolean;
   dispatch: Dispatch<PaginationAction>;

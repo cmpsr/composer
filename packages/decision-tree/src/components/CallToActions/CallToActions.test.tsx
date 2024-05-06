@@ -1,9 +1,9 @@
 import React from 'react';
 import { renderWithProviders, screen, fireEvent, act, waitFor } from '@tests/renderWithProviders';
-import { NavigationBar } from './NavigationBar';
+import { CallToActions } from './CallToActions';
 import { PaginationActions } from '@hooks';
 
-describe('Navigation Bar', () => {
+describe('CallToActions', () => {
   const submitResponse = { nextQuestionId: 'mockQuestionId' };
   const mockDispatch = jest.fn();
   const mockSubmitAnswer = jest.fn().mockResolvedValue(submitResponse);
@@ -15,7 +15,7 @@ describe('Navigation Bar', () => {
 
   test('should render 1 button and 1 link', () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
@@ -28,7 +28,7 @@ describe('Navigation Bar', () => {
 
   test('should disable the back button when configed', () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={true}
         isNextDisabled={false}
         dispatch={mockDispatch}
@@ -40,7 +40,7 @@ describe('Navigation Bar', () => {
 
   test('should not disable the back button when not configed', () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
@@ -52,7 +52,7 @@ describe('Navigation Bar', () => {
 
   test('should disable the next button when configed', () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={false}
         isNextDisabled={true}
         dispatch={mockDispatch}
@@ -64,7 +64,7 @@ describe('Navigation Bar', () => {
 
   test('should not disable the next button when not configed', () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
@@ -76,7 +76,7 @@ describe('Navigation Bar', () => {
 
   test('should call the dispatch with previous page action on back click', () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
@@ -94,7 +94,7 @@ describe('Navigation Bar', () => {
 
   test('should call the dispatch with next page action on next click', async () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}

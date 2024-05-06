@@ -4,9 +4,16 @@ import { UseSetupCallbackCB } from '@types';
 import { HandleAnswersActions, useHandleActionResponse } from './types';
 
 describe('useHandleAnswers', () => {
+  const serverMockup = {
+    1: { nextSectionId: 1, nextQuestionId: 2 },
+    2: { nextSectionId: 2, nextQuestionId: 3 },
+    3: { nextSectionId: 3, nextQuestionId: 4 },
+    4: null,
+  };
+
   const callback = async function (questionId, value) {
     console.log(questionId, value);
-    return true;
+    return serverMockup[questionId];
   } as UseSetupCallbackCB;
 
   test('should return a submitAnswer function', () => {

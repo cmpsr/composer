@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { BoxProps } from '@cmpsr/components';
 import { QuestionType } from './components/Question';
 
-export type UseSetupCallbackCB = (questionId: string, value: string) => Promise<any>;
+export type UseSetupCallbackCB = (questionId: string, value: string) => Promise<QuestionnaireType>;
 
 export type SaveAnswerType = (submittedAnswer: string | object) => void;
 

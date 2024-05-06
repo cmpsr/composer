@@ -1,3 +1,4 @@
+import { QuestionnaireType } from '@types';
 import { type Dispatch } from 'react';
 
 export enum HandleAnswersActions {
@@ -10,7 +11,7 @@ export type HandleAnswersAction = {
   payload?: string | object;
 };
 
-export type SubmitAnswerFn = (currentPage: string) => Promise<any>;
+export type SubmitAnswerFn = (currentPage: string) => Promise<QuestionnaireType>;
 
 export type useHandleActionResponse = {
   answersDispatch: Dispatch<HandleAnswersAction>;

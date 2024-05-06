@@ -3,7 +3,12 @@ import { useSteps } from '@cmpsr/components';
 import { PaginationResponse, PaginationState, PaginationAction, PaginationActions, PaginationProps } from './types';
 import { HandleAnswersActions } from '@hooks';
 
-export const usePagination = ({ steps, initialState, answersDispatch }: PaginationProps): PaginationResponse => {
+export const usePagination = ({
+  steps,
+  initialState,
+  answersDispatch,
+  submitAnswer,
+}: PaginationProps): PaginationResponse => {
   const { activeStep, setActiveStep } = useSteps({
     index: 0,
     count: steps.length,
@@ -38,5 +43,11 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
 
   const [state, dispatch] = useReducer<Reducer<PaginationState, PaginationAction>>(paginationReducer, initialState);
 
-  return { state, activeStep, paginationDispatch: dispatch, isBackDisabled: pageHistory.length < 1 };
+  const nextQuestion = async () => {
+    const response = await submitAnswer(state.currentQuestion);
+    if (!response || !response.nextQuestionId) return;
+    dispatch({ type: PaginationActions.NextQuestion, payload: response });
+  };
+
+  return { state, activeStep, paginationDispatch: dispatch, isBackDisabled: pageHistory.length < 1, nextQuestion };
 };

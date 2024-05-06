@@ -6,11 +6,11 @@ import { PaginationActions } from '@hooks';
 describe('CallToActions', () => {
   const submitResponse = { nextQuestionId: 'mockQuestionId' };
   const mockDispatch = jest.fn();
-  const mockSubmitAnswer = jest.fn().mockResolvedValue(submitResponse);
+  const mockNextQuestion = jest.fn().mockResolvedValue(submitResponse);
 
   afterAll(() => {
     mockDispatch.mockReset();
-    mockSubmitAnswer.mockReset();
+    mockNextQuestion.mockReset();
   });
 
   test('should render 1 button and 1 link', () => {
@@ -19,7 +19,7 @@ describe('CallToActions', () => {
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getAllByRole('button')).toHaveLength(1);
@@ -32,7 +32,7 @@ describe('CallToActions', () => {
         isBackDisabled={true}
         isNextDisabled={false}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getByRole('link')).toBeDisabled();
@@ -44,7 +44,7 @@ describe('CallToActions', () => {
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getByRole('link')).not.toBeDisabled();
@@ -56,7 +56,7 @@ describe('CallToActions', () => {
         isBackDisabled={false}
         isNextDisabled={true}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getByRole('button')).toBeDisabled();
@@ -68,7 +68,7 @@ describe('CallToActions', () => {
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getByRole('button')).not.toBeDisabled();
@@ -80,7 +80,7 @@ describe('CallToActions', () => {
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     const backButton = screen.getByRole('link');
@@ -98,7 +98,7 @@ describe('CallToActions', () => {
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     const nextButton = screen.getByRole('button');
@@ -107,7 +107,7 @@ describe('CallToActions', () => {
       fireEvent.click(nextButton);
     });
     await waitFor(() => {
-      expect(mockDispatch).toHaveBeenCalledWith({ type: PaginationActions.NextQuestion, payload: submitResponse });
+      expect(mockNextQuestion).toHaveBeenCalled();
     });
   });
 });

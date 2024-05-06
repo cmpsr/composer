@@ -2,10 +2,9 @@ import React, { FC } from 'react';
 import { StepBar } from './components/StepBar';
 import { CallToActions } from './components/CallToActions';
 import { Question } from './components/Question';
-import { usePagination } from './hooks';
+import { usePagination, useHandleAnswers } from './hooks';
 import { DecisionTreeProps, DecisionTreeStaticMembers, Steps } from './types';
 import { Box, BoxProps } from '@cmpsr/components';
-import { useHandleAnswers } from './hooks';
 
 export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ questionnaire, callback }) => {
   const steps: Steps = questionnaire.sections.map(({ id, name }) => ({ id, name }));
@@ -17,7 +16,8 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
     paginationDispatch,
     activeStep,
     isBackDisabled,
-  } = usePagination({ steps, initialState, answersDispatch });
+    nextQuestion,
+  } = usePagination({ steps, initialState, answersDispatch, submitAnswer });
 
   const section = questionnaire.sections.find((section) => section.id == currentSection);
   const question = section.questions.find((question) => question.id == currentQuestion);
@@ -30,7 +30,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
         isBackDisabled={isBackDisabled}
         isNextDisabled={answerState.answer === null}
         dispatch={paginationDispatch}
-        submitAnswer={() => submitAnswer(currentQuestion)}
+        nextQuestion={nextQuestion}
       />
     </DecisionTree.Container>
   );

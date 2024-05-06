@@ -11,12 +11,19 @@ describe('usePagination', () => {
   ];
   const initialState = { currentSection: '1', currentQuestion: '1' };
   const answersDispatch = jest.fn();
+  const submitAnswer = jest.fn();
+
+  afterAll(() => {
+    submitAnswer.mockReset();
+    answersDispatch.mockReset();
+  });
 
   test('should return an activeStep number', () => {
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,
       initialState,
       answersDispatch,
+      submitAnswer,
     });
 
     const hookResult = result.current;
@@ -29,6 +36,7 @@ describe('usePagination', () => {
       steps,
       initialState,
       answersDispatch,
+      submitAnswer,
     });
 
     const hookResult = result.current;
@@ -41,6 +49,7 @@ describe('usePagination', () => {
       steps,
       initialState,
       answersDispatch,
+      submitAnswer,
     });
 
     const hookResult = result.current;
@@ -53,6 +62,7 @@ describe('usePagination', () => {
       steps,
       initialState,
       answersDispatch,
+      submitAnswer,
     });
 
     const hookResult = result.current;
@@ -65,6 +75,7 @@ describe('usePagination', () => {
       steps,
       initialState,
       answersDispatch,
+      submitAnswer,
     });
 
     const { paginationDispatch } = result.current;
@@ -86,6 +97,7 @@ describe('usePagination', () => {
       steps,
       initialState,
       answersDispatch,
+      submitAnswer,
     });
 
     const { paginationDispatch } = result.current;

@@ -3,7 +3,7 @@ import { type CallToActionsProps } from './types';
 import { Flex, Button, IconArrowRight, IconArrowLeft } from '@cmpsr/components';
 import { PaginationActions } from '@hooks';
 
-export const CallToActions: FC<CallToActionsProps> = ({ isBackDisabled, isNextDisabled, dispatch, submitAnswer }) => {
+export const CallToActions: FC<CallToActionsProps> = ({ isBackDisabled, isNextDisabled, dispatch, nextQuestion }) => {
   return (
     <Flex justifyContent={'center'}>
       <Button
@@ -19,11 +19,7 @@ export const CallToActions: FC<CallToActionsProps> = ({ isBackDisabled, isNextDi
         role="link"
       />
       <Button
-        onClick={async () => {
-          const response = await submitAnswer();
-          if (!response?.nextQuestionId) return;
-          dispatch({ type: PaginationActions.NextQuestion, payload: response });
-        }}
+        onClick={nextQuestion}
         variant="accent"
         size="l"
         trailingIcon={<IconArrowRight />}

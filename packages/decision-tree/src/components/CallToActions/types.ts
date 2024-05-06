@@ -1,10 +1,9 @@
 import { type Dispatch } from 'react';
-import { PaginationAction } from '@hooks';
-import { QuestionnaireType } from '@types';
+import { NextQuestionType, PaginationAction } from '@hooks';
 
 export type CallToActionsProps = {
   isBackDisabled: boolean;
   isNextDisabled: boolean;
   dispatch: Dispatch<PaginationAction>;
-  submitAnswer: () => Promise<QuestionnaireType>;
+  nextQuestion: NextQuestionType;
 };

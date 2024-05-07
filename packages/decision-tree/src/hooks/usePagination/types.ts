@@ -1,5 +1,5 @@
 import { AnswersType } from '@components/Question';
-import { HandleAnswersAction } from '@hooks';
+import { HandleAnswersAction, SubmitAnswerFn } from '@hooks';
 import { Steps } from '@types';
 import { type Dispatch } from 'react';
 
@@ -27,15 +27,19 @@ export type PaginationState = {
   step?: number;
 };
 
+export type NextQuestionType = () => Promise<void>;
+
 export type PaginationResponse = {
   state: PaginationState;
   activeStep: number;
   paginationDispatch: Dispatch<PaginationAction>;
   isBackDisabled: boolean;
+  nextQuestion: NextQuestionType;
 };
 
 export type PaginationProps = {
   steps: Steps;
   initialState: PaginationState;
   answersDispatch: Dispatch<HandleAnswersAction>;
+  submitAnswer: SubmitAnswerFn;
 };

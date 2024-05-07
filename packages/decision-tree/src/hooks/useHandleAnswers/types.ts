@@ -5,6 +5,7 @@ import {
   NumericAnswer,
   SingleChoiceAnswer,
 } from '@components/Question/questionTypes';
+import { QuestionnaireType } from '@types';
 import { type Dispatch } from 'react';
 
 export enum HandleAnswersActions {
@@ -23,7 +24,7 @@ export type HandleAnswersAction = {
   payload?: AnswerModel | string | PreviousAnswersType;
 };
 
-export type SubmitAnswerFn = (currentPage: string) => Promise<any>;
+export type SubmitAnswerFn = (currentPage: string) => Promise<QuestionnaireType>;
 
 export type useHandleActionResponse = {
   answersDispatch: Dispatch<HandleAnswersAction>;

@@ -3,23 +3,20 @@ import { UseSetupCallbackCB } from 'src/types';
 import { useHandleActionResponse, HandleAnswersActions, iDontKnowAnswer } from './types';
 
 export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionResponse => {
-  const handleAnswersReducer = (state, action) => {
-    const actionMap = {
-      [HandleAnswersActions.SaveAnswer]: (submittedAnswer) => {
-        return { ...state, answer: submittedAnswer };
-      },
-      [HandleAnswersActions.ResetAnswer]: () => {
+  const handleAnswersReducer = (state, { type, payload }) => {
+    switch (type) {
+      case HandleAnswersActions.SaveAnswer:
+        return { ...state, answer: payload };
+      case HandleAnswersActions.ResetAnswer:
         return { ...state, answer: null };
-      },
-      [HandleAnswersActions.SetPreviousAnswers]: (previousAnswers) => {
-        return { ...state, previousAnswers };
-      },
-      [HandleAnswersActions.GetPreviousAnswer]: (questionId) => {
-        return { ...state, answer: state.previousAnswers[questionId] };
-      },
-    };
-
-    return actionMap[action.type](action.payload);
+      case HandleAnswersActions.SetPreviousAnswers: {
+        return { ...state, previousAnswers: payload };
+      }
+      case HandleAnswersActions.GetPreviousAnswer: {
+        console.log(state, 'statusodes');
+        return { ...state, answer: state.previousAnswers[payload] };
+      }
+    }
   };
 
   const [state, dispatch] = useReducer(handleAnswersReducer, { answer: null, previousAnswers: {} });

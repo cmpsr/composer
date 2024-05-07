@@ -3,9 +3,9 @@ import { AnswerModel } from '@hooks';
 import { BoxProps } from '@cmpsr/components';
 import { QuestionType } from './components/Question';
 import { StepBarProps } from '@components/StepBar/types';
-import { NavigationBarProps } from '@components/NavigationBar/types';
+import { CallToActionsProps } from '@components/CallToActions/types';
 
-export type UseSetupCallbackCB = (questionId: string, answer: AnswerModel) => Promise<any>;
+export type UseSetupCallbackCB = (questionId: string, answer: AnswerModel) => Promise<QuestionnaireType>;
 
 export type SaveAnswerType = (submittedAnswer: string | object) => void;
 
@@ -33,7 +33,7 @@ export type DecisionTreeProps = {
 export interface DecisionTreeStaticMembers {
   Container: FC<BoxProps>;
   Stepper: FC<StepBarProps>;
-  NavigationBar: FC<NavigationBarProps>;
+  CallToActions: FC<CallToActionsProps>;
 }
 
 export type Steps = Array<{ id: string; name: string }>;

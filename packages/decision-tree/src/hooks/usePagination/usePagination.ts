@@ -3,16 +3,21 @@ import { useSteps } from '@cmpsr/components';
 import { PaginationResponse, PaginationState, PaginationAction, PaginationActions, PaginationProps } from './types';
 import { HandleAnswersActions } from '@hooks';
 
-export const usePagination = ({ steps, initialState, answersDispatch }: PaginationProps): PaginationResponse => {
+export const usePagination = ({
+  steps,
+  initialState,
+  answersDispatch,
+  submitAnswer,
+}: PaginationProps): PaginationResponse => {
   const { activeStep, setActiveStep } = useSteps({
     index: 0,
     count: steps.length,
   });
   const [pageHistory, setPageHistory] = useState<Array<PaginationState>>([]);
 
-  const paginationReducer = (state: PaginationState, action: PaginationAction) => {
-    const actionMap = {
-      [PaginationActions.PreviousQuestion]: () => {
+  const paginationReducer = (state: PaginationState, { type, payload }: PaginationAction) => {
+    switch (type) {
+      case PaginationActions.PreviousQuestion: {
         const { currentQuestion, currentSection, step } = pageHistory.at(-1);
         answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: currentQuestion });
         setActiveStep(step);
@@ -21,8 +26,9 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
           currentQuestion,
           currentSection,
         };
-      },
-      [PaginationActions.NextQuestion]: ({ nextQuestion, answers }) => {
+      }
+      case PaginationActions.NextQuestion: {
+        const { nextQuestion, answers } = payload;
         const iSection = steps.findIndex((step) => step.id == nextQuestion.sectionId);
         answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: answers });
         answersDispatch({ type: HandleAnswersActions.ResetAnswer });
@@ -32,12 +38,17 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
           currentQuestion: nextQuestion.questionId,
           currentSection: nextQuestion.sectionId,
         };
-      },
-    };
-    return actionMap[action.type](action.payload);
+      }
+    }
   };
 
   const [state, dispatch] = useReducer<Reducer<PaginationState, PaginationAction>>(paginationReducer, initialState);
 
-  return { state, activeStep, paginationDispatch: dispatch, isBackDisabled: pageHistory.length < 1 };
+  const nextQuestion = async () => {
+    const response = await submitAnswer(state.currentQuestion);
+    if (!response?.nextQuestion?.questionId) return;
+    dispatch({ type: PaginationActions.NextQuestion, payload: response });
+  };
+
+  return { state, activeStep, paginationDispatch: dispatch, isBackDisabled: pageHistory.length < 1, nextQuestion };
 };

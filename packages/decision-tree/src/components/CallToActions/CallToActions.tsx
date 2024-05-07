@@ -1,11 +1,10 @@
 import React, { FC, useState } from 'react';
-import { type NavigationBarProps } from './types';
+import { type CallToActionsProps } from './types';
 import { Flex, Button, IconArrowRight, IconArrowLeft } from '@cmpsr/components';
-import { PaginationActions, PaginationPayload } from '@hooks';
+import { PaginationActions } from '@hooks';
 
-export const NavigationBar: FC<NavigationBarProps> = ({ isBackDisabled, isNextDisabled, dispatch, submitAnswer }) => {
+export const CallToActions: FC<CallToActionsProps> = ({ isBackDisabled, isNextDisabled, dispatch, nextQuestion }) => {
   const [isLoading, setIsloading] = useState<boolean>(false);
-
   return (
     <Flex
       justifyContent={'center'}
@@ -31,10 +30,8 @@ export const NavigationBar: FC<NavigationBarProps> = ({ isBackDisabled, isNextDi
       <Button
         onClick={async () => {
           setIsloading(true);
-          const response = await submitAnswer();
+          await nextQuestion();
           setIsloading(false);
-          if (!response?.nextQuestion?.questionId) return;
-          dispatch({ type: PaginationActions.NextQuestion, payload: response as PaginationPayload });
         }}
         variant="accent"
         size="l"

@@ -4,7 +4,12 @@ import { PaginationResponse, PaginationState, PaginationAction, PaginationAction
 import { HandleAnswersActions } from '@hooks';
 import { sectionIntroId } from '../../DecisionTree.normalizer';
 
-export const usePagination = ({ steps, initialState, answersDispatch }: PaginationProps): PaginationResponse => {
+export const usePagination = ({
+  steps,
+  initialState,
+  answersDispatch,
+  submitAnswer,
+}: PaginationProps): PaginationResponse => {
   const firstStep = steps.findIndex(({ id }) => id === initialState.sectionId) ?? 0;
   const { activeStep, setActiveStep } = useSteps({
     index: firstStep,
@@ -26,9 +31,9 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
     };
   };
 
-  const paginationReducer = (state: PaginationState, action: PaginationAction) => {
-    const actionMap = {
-      [PaginationActions.PreviousQuestion]: () => {
+  const paginationReducer = (state: PaginationState, { type, payload }: PaginationAction) => {
+    switch (type) {
+      case PaginationActions.PreviousQuestion: {
         const { currentQuestion, currentSection, step } = pageHistory.at(-1);
         if (currentQuestion.includes(sectionIntroId))
           setNextQuestionOverride({ questionId: state.currentQuestion, sectionId: state.currentSection });
@@ -41,8 +46,9 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
           currentQuestion,
           currentSection,
         };
-      },
-      [PaginationActions.NextQuestion]: ({ nextQuestion, answers }) => {
+      }
+      case PaginationActions.NextQuestion: {
+        const { nextQuestion, answers } = payload;
         setPageHistory([...pageHistory, { ...state, step: activeStep }]);
 
         if (nextQuestionOverride !== null) {
@@ -61,9 +67,8 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
         }
 
         return setNextQuestion(nextQuestion, answers);
-      },
-    };
-    return actionMap[action.type](action.payload);
+      }
+    }
   };
 
   const firstIntroState = {
@@ -73,5 +78,11 @@ export const usePagination = ({ steps, initialState, answersDispatch }: Paginati
 
   const [state, dispatch] = useReducer<Reducer<PaginationState, PaginationAction>>(paginationReducer, firstIntroState);
 
-  return { state, activeStep, paginationDispatch: dispatch, isBackDisabled: pageHistory.length < 1 };
+  const nextQuestion = async () => {
+    const response = await submitAnswer(state.currentQuestion);
+    if (!response?.nextQuestion?.questionId) return;
+    dispatch({ type: PaginationActions.NextQuestion, payload: response });
+  };
+
+  return { state, activeStep, paginationDispatch: dispatch, isBackDisabled: pageHistory.length < 1, nextQuestion };
 };

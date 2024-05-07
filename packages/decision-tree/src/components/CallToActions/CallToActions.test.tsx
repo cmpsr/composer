@@ -1,24 +1,25 @@
 import React from 'react';
 import { renderWithProviders, screen, fireEvent, act, waitFor } from '@tests/renderWithProviders';
-import { NavigationBar } from './NavigationBar';
+import { CallToActions } from './CallToActions';
 import { PaginationActions } from '@hooks';
 
-describe('Navigation Bar', () => {
+describe('CallToActions', () => {
+  const submitResponse = { nextQuestionId: 'mockQuestionId' };
   const mockDispatch = jest.fn();
-  const mockSubmitAnswer = jest.fn().mockResolvedValue('resolvedValue');
+  const mockNextQuestion = jest.fn().mockResolvedValue(submitResponse);
 
   afterAll(() => {
     mockDispatch.mockReset();
-    mockSubmitAnswer.mockReset();
+    mockNextQuestion.mockReset();
   });
 
   test('should render 1 button and 1 link', () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getAllByRole('button')).toHaveLength(1);
@@ -27,11 +28,11 @@ describe('Navigation Bar', () => {
 
   test('should disable the back button when configed', () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={true}
         isNextDisabled={false}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getByRole('link')).toBeDisabled();
@@ -39,11 +40,11 @@ describe('Navigation Bar', () => {
 
   test('should not disable the back button when not configed', () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getByRole('link')).not.toBeDisabled();
@@ -51,11 +52,11 @@ describe('Navigation Bar', () => {
 
   test('should disable the next button when configed', () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={false}
         isNextDisabled={true}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getByRole('button')).toBeDisabled();
@@ -63,11 +64,11 @@ describe('Navigation Bar', () => {
 
   test('should not disable the next button when not configed', () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getByRole('button')).not.toBeDisabled();
@@ -75,11 +76,11 @@ describe('Navigation Bar', () => {
 
   test('should call the dispatch with previous page action on back click', () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     const backButton = screen.getByRole('link');
@@ -91,13 +92,13 @@ describe('Navigation Bar', () => {
     expect(mockDispatch).toHaveBeenCalledWith({ type: PaginationActions.PreviousQuestion });
   });
 
-  test('should call the dispatch with next page action on next click', () => {
+  test('should call the dispatch with next page action on next click', async () => {
     renderWithProviders(
-      <NavigationBar
+      <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
         dispatch={mockDispatch}
-        submitAnswer={mockSubmitAnswer}
+        nextQuestion={mockNextQuestion}
       />
     );
     const nextButton = screen.getByRole('button');
@@ -105,8 +106,8 @@ describe('Navigation Bar', () => {
     act(() => {
       fireEvent.click(nextButton);
     });
-    waitFor(() => {
-      expect(mockDispatch).toHaveBeenCalledWith({ type: PaginationActions.NextQuestion });
+    await waitFor(() => {
+      expect(mockNextQuestion).toHaveBeenCalled();
     });
   });
 });

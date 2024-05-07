@@ -1,9 +1,9 @@
 import { type Dispatch } from 'react';
-import { PaginationAction } from '@hooks';
+import { NextQuestionType, PaginationAction } from '@hooks';
 
-export type NavigationBarProps = {
+export type CallToActionsProps = {
   isBackDisabled: boolean;
   isNextDisabled: boolean;
   dispatch: Dispatch<PaginationAction>;
-  submitAnswer: () => Promise<any>;
+  nextQuestion: NextQuestionType;
 };

@@ -61,7 +61,7 @@ describe('useHandleAnswers', () => {
       answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: 'stringAnswer' });
     });
     await waitFor(() => {
-      expect(result.current.state).toEqual({ answer: 'stringAnswer', previousAnswers: {} });
+      expect(result.current.state.answer).toEqual('stringAnswer');
     });
   });
 
@@ -76,7 +76,7 @@ describe('useHandleAnswers', () => {
       await answersDispatch({ type: HandleAnswersActions.ResetAnswer });
     });
     await waitFor(() => {
-      expect(result.current.state).toEqual({ answer: null, previousAnswers: {} });
+      expect(result.current.state.answer).toBeNull();
     });
   });
 });

@@ -83,12 +83,12 @@ describe('usePagination', () => {
     act(() => {
       paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: {} },
+        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} },
       });
     });
 
     await waitFor(() => {
-      expect(result.current.state).toEqual({ currentSection: '1', currentQuestion: '2' });
+      expect(result.current.state).toEqual({ currentSection: '1', currentQuestion: '1' });
     });
   });
 
@@ -105,13 +105,16 @@ describe('usePagination', () => {
     await act(async () => {
       await paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: {} },
+        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} },
       });
       await paginationDispatch({ type: PaginationActions.PreviousQuestion });
     });
 
     await waitFor(() => {
-      expect(result.current.state).toEqual(initialState);
+      expect(result.current.state).toEqual({
+        currentQuestion: '1-section-intro',
+        currentSection: '1',
+      });
     });
   });
 });

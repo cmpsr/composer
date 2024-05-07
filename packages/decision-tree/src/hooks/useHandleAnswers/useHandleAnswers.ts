@@ -13,7 +13,6 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
         return { ...state, previousAnswers: payload };
       }
       case HandleAnswersActions.GetPreviousAnswer: {
-        console.log(state, 'statusodes');
         return { ...state, answer: state.previousAnswers[payload] };
       }
     }

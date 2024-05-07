@@ -7,11 +7,11 @@ import { QuestionOption } from '@components/Question/components/QuestionOption';
 import { inputMargin } from '@components/Question/Question';
 
 export const SingleChoice: FC<SingleChoiceProps> = ({ data, answersDispatch, defaultValue }) => {
-  const { question, choices, tooltip } = data as SingleChoiceQuestion;
+  const { question, choices, tooltip, explanation } = data as SingleChoiceQuestion;
 
   return (
     <Box>
-      <QuestionTitle question={question} tooltip={tooltip} />
+      <QuestionTitle question={question} tooltip={tooltip} explanation={explanation} />
       <RadioGroup
         onChange={(nextValue) =>
           answersDispatch({

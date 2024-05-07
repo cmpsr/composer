@@ -20,8 +20,9 @@ export const Height: FC<HeightProps> = ({ data, answersDispatch, defaultValue })
           defaultValue={defaultValue?.feet}
           trailingMask={feet.trailingMask}
           onKeyUp={({ currentTarget }) => {
-            setAnswers({ ...answers, feet: currentTarget.value });
-            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: answers });
+            const newAnswer = { ...answers, feet: currentTarget.value };
+            setAnswers(newAnswer);
+            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: newAnswer });
           }}
         />
         <DecisionTreeInput
@@ -30,8 +31,9 @@ export const Height: FC<HeightProps> = ({ data, answersDispatch, defaultValue })
           defaultValue={defaultValue?.inches}
           trailingMask={inches.trailingMask}
           onKeyUp={({ currentTarget }) => {
-            setAnswers({ ...answers, inches: currentTarget.value });
-            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: answers });
+            const newAnswer = { ...answers, inches: currentTarget.value };
+            setAnswers(newAnswer);
+            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: newAnswer });
           }}
         />
       </Flex>

@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
 import { StepBar } from './components/StepBar';
-import { NavigationBar } from './components/NavigationBar';
+import { CallToActions } from './components/CallToActions';
 import { Question } from './components/Question';
-import { usePagination } from './hooks';
+import { usePagination, useHandleAnswers } from './hooks';
 import { DecisionTreeProps, DecisionTreeStaticMembers, Steps } from './types';
 import { Flex, FlexProps } from '@cmpsr/components';
-import { useHandleAnswers } from './hooks';
-import { NavigationBarProps } from '@components/NavigationBar/types';
+import { CallToActionsProps } from '@components/CallToActions/types';
 import { StepBarProps } from '@components/StepBar/types';
 import { normalizeQuestionnaire } from './DecisionTree.normalizer';
 import { SectionIntro } from './components/Question/questionTypes/SectionIntro';
@@ -29,7 +28,8 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
     paginationDispatch,
     activeStep,
     isBackDisabled,
-  } = usePagination({ steps, initialState, answersDispatch });
+    nextQuestion,
+  } = usePagination({ steps, initialState, answersDispatch, submitAnswer });
 
   const section = normalizedQuestionnaire.sections.find((section) => section.id == currentSection);
   const question = section.questions.find((question) => question.id == currentQuestion);
@@ -44,22 +44,22 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
         defaultValue={answerState.answer}
         submitIDKAnswer={submitIDKAnswer}
       />
-      <DecisionTree.NavigationBar
+      <DecisionTree.CallToActions
         isBackDisabled={isBackDisabled}
-        isNextDisabled={answerState.answer === null && question.type !== 'sectionIntro'}
+        isNextDisabled={!answerState.isAnswered && question.type !== 'sectionIntro'}
         dispatch={paginationDispatch}
-        submitAnswer={() => submitAnswer(currentQuestion)}
+        nextQuestion={nextQuestion}
       />
     </DecisionTree.Container>
   );
 };
 
 const DecisionTreeContainer = (props: FlexProps) => <Flex flexDirection="column" height="100%" {...props} />;
-const Navigation = (props: NavigationBarProps) => <NavigationBar {...props} />;
+const Navigation = (props: CallToActionsProps) => <CallToActions {...props} />;
 const Stepper = (props: StepBarProps) => <StepBar {...props} />;
 
 DecisionTree.Container = DecisionTreeContainer;
-DecisionTree.NavigationBar = Navigation;
+DecisionTree.CallToActions = Navigation;
 DecisionTree.Stepper = Stepper;
 DecisionTree.SectionIntro = SectionIntro;
 

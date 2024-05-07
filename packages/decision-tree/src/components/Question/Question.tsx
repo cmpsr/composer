@@ -21,7 +21,7 @@ export const Question: FC<QuestionProps> = ({
   paginationDispatch,
 }) => {
   if (!questionTypesMap[data.type]) return null;
-  if (typeof questionTypesMap[data.type] != 'function') return null;
+  if (typeof questionTypesMap[data.type] !== 'function') return null;
 
   return (
     <Box mb={{ base: 'spacer-14', lg: 'spacer-16' }} flexGrow="1">

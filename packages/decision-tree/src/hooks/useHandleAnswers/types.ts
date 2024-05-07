@@ -1,10 +1,10 @@
-import { AnswerType, AnswersType } from '@components/Question';
 import {
   HeightAnswer,
   MultipleChoiceAnswer,
   NumericAnswer,
   SingleChoiceAnswer,
 } from '@components/Question/questionTypes';
+import { QuestionnaireType } from '@types';
 import { type Dispatch } from 'react';
 
 export enum HandleAnswersActions {
@@ -14,7 +14,7 @@ export enum HandleAnswersActions {
   SetPreviousAnswers = 'setPreviousAnswers',
 }
 
-type PreviousAnswersType = {
+export type PreviousAnswersType = {
   [key: string]: AnswerModel;
 };
 
@@ -23,11 +23,17 @@ export type HandleAnswersAction = {
   payload?: AnswerModel | string | PreviousAnswersType;
 };
 
-export type SubmitAnswerFn = (currentPage: string) => Promise<any>;
+export type SubmitAnswerFn = (currentPage: string) => Promise<QuestionnaireType>;
+
+export type HandleAnswersState = {
+  answer: AnswerModel | null;
+  previousAnswers: PreviousAnswersType;
+  isAnswered: boolean;
+};
 
 export type useHandleActionResponse = {
   answersDispatch: Dispatch<HandleAnswersAction>;
-  state: { answer: AnswerType; previousAnswers: AnswersType };
+  state: HandleAnswersState;
   submitAnswer: SubmitAnswerFn;
   submitIDKAnswer: SubmitAnswerFn;
 };

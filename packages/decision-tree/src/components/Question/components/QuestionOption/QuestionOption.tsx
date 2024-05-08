@@ -36,10 +36,10 @@ export const QuestionOption: FC<QuestionOptionProps> = ({
         px: 'spacer-4',
         alignItems: 'center',
         children: (
-          <Box>
-            <Box>{label}</Box>
+          <>
+            {label}
             {subLabel ? <Box>{subLabel}</Box> : null}
-          </Box>
+          </>
         ),
       })}
     </Box>

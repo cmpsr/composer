@@ -3,10 +3,10 @@ import { StepBar } from './components/StepBar';
 import { CallToActions } from './components/CallToActions';
 import { Question } from './components/Question';
 import { usePagination, useHandleAnswers } from './hooks';
-import { DecisionTreeProps, DecisionTreeStaticMembers, Steps } from './types';
-import { Box, BoxProps } from '@cmpsr/components';
+import { DecisionTreeProps, Steps } from './types';
+import { Box } from '@cmpsr/components';
 
-export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ questionnaire, callback }) => {
+export const DecisionTree: FC<DecisionTreeProps> = ({ questionnaire, callback }) => {
   const steps: Steps = questionnaire.sections.map(({ id, name }) => ({ id, name }));
   const initialState = { currentQuestion: questionnaire.nextQuestionId, currentSection: questionnaire.nextSectionId };
 
@@ -23,7 +23,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
   const question = section.questions.find((question) => question.id == currentQuestion);
 
   return (
-    <DecisionTree.Container>
+    <Box columnGap="0.5rem">
       <StepBar steps={steps} activeStep={activeStep} />
       <Question data={question} answersDispatch={answersDispatch} />
       <CallToActions
@@ -32,10 +32,6 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
         dispatch={paginationDispatch}
         nextQuestion={nextQuestion}
       />
-    </DecisionTree.Container>
+    </Box>
   );
 };
-
-const DecisionTreeContainer = (props: BoxProps) => <Box columnGap="0.5rem" {...props} />;
-
-DecisionTree.Container = DecisionTreeContainer;

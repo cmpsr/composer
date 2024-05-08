@@ -1,5 +1,3 @@
-import { FC } from 'react';
-import { BoxProps } from '@cmpsr/components';
 import { QuestionType } from './components/Question';
 
 export type UseSetupCallbackCB = (questionId: string, value: string) => Promise<QuestionnaireType>;
@@ -24,9 +22,5 @@ export type DecisionTreeProps = {
   questionnaire: QuestionnaireType;
   callback: UseSetupCallbackCB;
 };
-
-export interface DecisionTreeStaticMembers {
-  Container: FC<BoxProps>;
-}
 
 export type Steps = Array<{ id: string; name: string }>;

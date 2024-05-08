@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { type QuestionOptionProps } from './types';
-import { Checkbox, Radio, Box } from '@cmpsr/components';
+import { Checkbox, Radio, Box, Text } from '@cmpsr/components';
 
 const componentsMap = {
   checkbox: Checkbox,
@@ -37,8 +37,8 @@ export const QuestionOption: FC<QuestionOptionProps> = ({
         alignItems: 'center',
         children: (
           <>
-            {label}
-            {subLabel ? <Box>{subLabel}</Box> : null}
+            <Text variant="text-body-regular">{label}</Text>
+            {subLabel ? <Text variant="text-body-meta-regular">{subLabel}</Text> : null}
           </>
         ),
       })}

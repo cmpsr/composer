@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { HeightAnswer, HeightQuestion, HeightProps } from './types';
+import { HeightAnswer, HeightProps } from './types';
 import { Box, Flex } from '@cmpsr/components';
 import { HandleAnswersActions } from '@hooks';
 import { QuestionTitle } from '@components/Question/components/QuestionTitle';
@@ -7,7 +7,7 @@ import { DecisionTreeInput } from '@components/Question/components/DecisionTreeI
 import { inputMargin } from '@components/Question/Question';
 
 export const Height: FC<HeightProps> = ({ data, answersDispatch, defaultValue }) => {
-  const { question, tooltip, feet, inches } = data as HeightQuestion;
+  const { question, tooltip, feet, inches } = data;
   const [answers, setAnswers] = useState<HeightAnswer>({ type: 'height', feet: '', inches: '' });
 
   return (

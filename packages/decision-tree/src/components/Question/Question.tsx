@@ -11,8 +11,5 @@ const questionTypesMap = {
 };
 
 export const Question: FC<QuestionProps> = ({ data, answersDispatch }) => {
-  if (!questionTypesMap[data.type]) return null;
-  if (typeof questionTypesMap[data.type] !== 'function') return null;
-
   return <Flex justifyContent="center">{questionTypesMap[data.type]({ data, answersDispatch })}</Flex>;
 };

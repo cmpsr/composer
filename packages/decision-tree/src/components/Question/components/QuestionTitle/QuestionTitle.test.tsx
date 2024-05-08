@@ -3,7 +3,7 @@ import { renderWithProviders, screen } from '@tests/renderWithProviders';
 import { QuestionTitle } from './QuestionTitle';
 
 describe('QuestionTitle', () => {
-  test('should print the element', () => {
+  test('should render the element', () => {
     renderWithProviders(
       <QuestionTitle question="mockQuestion" tooltip="mockTooltip" explanation="explanation why we ask" />
     );

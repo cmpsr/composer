@@ -1,9 +1,13 @@
 import React, { FC, useState } from 'react';
 import { type CallToActionsProps } from './types';
 import { Flex, Button, IconArrowRight, IconArrowLeft } from '@cmpsr/components';
-import { PaginationActions } from '@hooks';
 
-export const CallToActions: FC<CallToActionsProps> = ({ isBackDisabled, isNextDisabled, dispatch, nextQuestion }) => {
+export const CallToActions: FC<CallToActionsProps> = ({
+  isBackDisabled,
+  isNextDisabled,
+  goToPreviousQuestion,
+  goToNextQuestion,
+}) => {
   const [isLoading, setIsloading] = useState<boolean>(false);
   return (
     <Flex
@@ -16,31 +20,29 @@ export const CallToActions: FC<CallToActionsProps> = ({ isBackDisabled, isNextDi
       borderTopColor="ui-element-divider"
     >
       <Button
-        onClick={() => {
-          dispatch({ type: PaginationActions.PreviousQuestion });
-        }}
+        onClick={goToPreviousQuestion}
         variant="link"
         isDisabled={isBackDisabled}
         size="m"
         leadingIcon={<IconArrowLeft />}
-        children="Back"
         mr="spacer-4"
-        role="link"
-      />
+      >
+        Back
+      </Button>
       <Button
         onClick={async () => {
           setIsloading(true);
-          await nextQuestion();
+          await goToNextQuestion();
           setIsloading(false);
         }}
         variant="accent"
         size="l"
         trailingIcon={<IconArrowRight />}
-        children="Next"
         isDisabled={isNextDisabled}
         isLoading={isLoading}
-        role="button"
-      />
+      >
+        Next
+      </Button>
     </Flex>
   );
 };

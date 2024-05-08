@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { StepBar } from './components/StepBar';
 import { CallToActions } from './components/CallToActions';
 import { Question } from './components/Question';
-import { usePagination, useHandleAnswers } from './hooks';
+import { usePagination, useHandleAnswers, PaginationActions } from './hooks';
 import { DecisionTreeProps, Steps } from './types';
 import { Box } from '@cmpsr/components';
 
@@ -16,7 +16,7 @@ export const DecisionTree: FC<DecisionTreeProps> = ({ questionnaire, callback })
     paginationDispatch,
     activeStep,
     isBackDisabled,
-    nextQuestion,
+    goToNextQuestion,
   } = usePagination({ steps, initialState, answersDispatch, submitAnswer });
 
   const section = questionnaire.sections.find((section) => section.id == currentSection);
@@ -29,8 +29,8 @@ export const DecisionTree: FC<DecisionTreeProps> = ({ questionnaire, callback })
       <CallToActions
         isBackDisabled={isBackDisabled}
         isNextDisabled={answerState.answer === null}
-        dispatch={paginationDispatch}
-        nextQuestion={nextQuestion}
+        goToPreviousQuestion={() => paginationDispatch({ type: PaginationActions.PreviousQuestion })}
+        goToNextQuestion={goToNextQuestion}
       />
     </Box>
   );

@@ -21,14 +21,12 @@ export type PaginationState = {
   step?: number;
 };
 
-export type NextQuestionType = () => Promise<void>;
-
 export type PaginationResponse = {
   state: PaginationState;
   activeStep: number;
   paginationDispatch: Dispatch<PaginationAction>;
   isBackDisabled: boolean;
-  nextQuestion: NextQuestionType;
+  goToNextQuestion: () => Promise<void>;
 };
 
 export type PaginationProps = {

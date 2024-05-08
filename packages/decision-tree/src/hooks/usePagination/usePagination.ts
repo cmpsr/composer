@@ -43,11 +43,11 @@ export const usePagination = ({
 
   const [state, dispatch] = useReducer<Reducer<PaginationState, PaginationAction>>(paginationReducer, initialState);
 
-  const nextQuestion = async () => {
+  const goToNextQuestion = async () => {
     const response = await submitAnswer(state.currentQuestion);
     if (!response || !response.nextQuestionId) return;
     dispatch({ type: PaginationActions.NextQuestion, payload: response });
   };
 
-  return { state, activeStep, paginationDispatch: dispatch, isBackDisabled: pageHistory.length < 1, nextQuestion };
+  return { state, activeStep, paginationDispatch: dispatch, isBackDisabled: pageHistory.length < 1, goToNextQuestion };
 };

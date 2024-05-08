@@ -1,15 +1,17 @@
 import React, { FC } from 'react';
 import { type CallToActionsProps } from './types';
 import { Flex, Button, IconArrowRight, IconArrowLeft } from '@cmpsr/components';
-import { PaginationActions } from '@hooks';
 
-export const CallToActions: FC<CallToActionsProps> = ({ isBackDisabled, isNextDisabled, dispatch, nextQuestion }) => {
+export const CallToActions: FC<CallToActionsProps> = ({
+  isBackDisabled,
+  isNextDisabled,
+  goToPreviousQuestion,
+  goToNextQuestion,
+}) => {
   return (
     <Flex justifyContent="center">
       <Button
-        onClick={() => {
-          dispatch({ type: PaginationActions.PreviousQuestion });
-        }}
+        onClick={goToPreviousQuestion}
         variant="link"
         isDisabled={isBackDisabled}
         size="m"
@@ -19,7 +21,7 @@ export const CallToActions: FC<CallToActionsProps> = ({ isBackDisabled, isNextDi
         Back
       </Button>
       <Button
-        onClick={nextQuestion}
+        onClick={goToNextQuestion}
         variant="accent"
         size="l"
         trailingIcon={<IconArrowRight />}

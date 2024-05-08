@@ -1,15 +1,14 @@
 import React from 'react';
 import { renderWithProviders, screen, fireEvent, act, waitFor } from '@tests/renderWithProviders';
 import { CallToActions } from './CallToActions';
-import { PaginationActions } from '@hooks';
 
 describe('CallToActions', () => {
   const submitResponse = { nextQuestionId: 'mockQuestionId' };
-  const mockDispatch = jest.fn();
+  const mockPreviousQuestion = jest.fn();
   const mockNextQuestion = jest.fn().mockResolvedValue(submitResponse);
 
   afterAll(() => {
-    mockDispatch.mockReset();
+    mockPreviousQuestion.mockReset();
     mockNextQuestion.mockReset();
   });
 
@@ -18,8 +17,8 @@ describe('CallToActions', () => {
       <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
-        dispatch={mockDispatch}
-        nextQuestion={mockNextQuestion}
+        goToPreviousQuestion={mockPreviousQuestion}
+        goToNextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getAllByText('Next')).toHaveLength(1);
@@ -31,8 +30,8 @@ describe('CallToActions', () => {
       <CallToActions
         isBackDisabled={true}
         isNextDisabled={false}
-        dispatch={mockDispatch}
-        nextQuestion={mockNextQuestion}
+        goToPreviousQuestion={mockPreviousQuestion}
+        goToNextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getByText('Back').parentElement).toBeDisabled();
@@ -43,8 +42,8 @@ describe('CallToActions', () => {
       <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
-        dispatch={mockDispatch}
-        nextQuestion={mockNextQuestion}
+        goToPreviousQuestion={mockPreviousQuestion}
+        goToNextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getByText('Back').parentElement).not.toBeDisabled();
@@ -55,8 +54,8 @@ describe('CallToActions', () => {
       <CallToActions
         isBackDisabled={false}
         isNextDisabled={true}
-        dispatch={mockDispatch}
-        nextQuestion={mockNextQuestion}
+        goToPreviousQuestion={mockPreviousQuestion}
+        goToNextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getByText('Next').parentElement).toBeDisabled();
@@ -67,20 +66,20 @@ describe('CallToActions', () => {
       <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
-        dispatch={mockDispatch}
-        nextQuestion={mockNextQuestion}
+        goToPreviousQuestion={mockPreviousQuestion}
+        goToNextQuestion={mockNextQuestion}
       />
     );
     expect(screen.getByText('Next').parentElement).not.toBeDisabled();
   });
 
-  test('should call the dispatch with previous page action on back click', () => {
+  test('should call the goToPreviousQuestion with previous page action on back click', () => {
     renderWithProviders(
       <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
-        dispatch={mockDispatch}
-        nextQuestion={mockNextQuestion}
+        goToPreviousQuestion={mockPreviousQuestion}
+        goToNextQuestion={mockNextQuestion}
       />
     );
     const backButton = screen.getByText('Back').parentElement;
@@ -89,16 +88,16 @@ describe('CallToActions', () => {
       fireEvent.click(backButton);
     });
 
-    expect(mockDispatch).toHaveBeenCalledWith({ type: PaginationActions.PreviousQuestion });
+    expect(mockPreviousQuestion).toHaveBeenCalled();
   });
 
-  test('should call the dispatch with next page action on next click', async () => {
+  test('should call the goToPreviousQuestion with next page action on next click', async () => {
     renderWithProviders(
       <CallToActions
         isBackDisabled={false}
         isNextDisabled={false}
-        dispatch={mockDispatch}
-        nextQuestion={mockNextQuestion}
+        goToPreviousQuestion={mockPreviousQuestion}
+        goToNextQuestion={mockNextQuestion}
       />
     );
     const nextButton = screen.getByText('Next').parentElement;

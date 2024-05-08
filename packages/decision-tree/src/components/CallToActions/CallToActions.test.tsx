@@ -22,8 +22,8 @@ describe('CallToActions', () => {
         nextQuestion={mockNextQuestion}
       />
     );
-    expect(screen.getAllByRole('button')).toHaveLength(1);
-    expect(screen.getAllByRole('link')).toHaveLength(1);
+    expect(screen.getAllByText('Next')).toHaveLength(1);
+    expect(screen.getAllByText('Back')).toHaveLength(1);
   });
 
   test('should disable the back button when configed', () => {
@@ -35,7 +35,7 @@ describe('CallToActions', () => {
         nextQuestion={mockNextQuestion}
       />
     );
-    expect(screen.getByRole('link')).toBeDisabled();
+    expect(screen.getByText('Back').parentElement).toBeDisabled();
   });
 
   test('should not disable the back button when not configed', () => {
@@ -47,7 +47,7 @@ describe('CallToActions', () => {
         nextQuestion={mockNextQuestion}
       />
     );
-    expect(screen.getByRole('link')).not.toBeDisabled();
+    expect(screen.getByText('Back').parentElement).not.toBeDisabled();
   });
 
   test('should disable the next button when configed', () => {
@@ -59,7 +59,7 @@ describe('CallToActions', () => {
         nextQuestion={mockNextQuestion}
       />
     );
-    expect(screen.getByRole('button')).toBeDisabled();
+    expect(screen.getByText('Next').parentElement).toBeDisabled();
   });
 
   test('should not disable the next button when not configed', () => {
@@ -71,7 +71,7 @@ describe('CallToActions', () => {
         nextQuestion={mockNextQuestion}
       />
     );
-    expect(screen.getByRole('button')).not.toBeDisabled();
+    expect(screen.getByText('Next').parentElement).not.toBeDisabled();
   });
 
   test('should call the dispatch with previous page action on back click', () => {
@@ -83,7 +83,7 @@ describe('CallToActions', () => {
         nextQuestion={mockNextQuestion}
       />
     );
-    const backButton = screen.getByRole('link');
+    const backButton = screen.getByText('Back').parentElement;
 
     act(() => {
       fireEvent.click(backButton);
@@ -101,7 +101,7 @@ describe('CallToActions', () => {
         nextQuestion={mockNextQuestion}
       />
     );
-    const nextButton = screen.getByRole('button');
+    const nextButton = screen.getByText('Next').parentElement;
 
     act(() => {
       fireEvent.click(nextButton);

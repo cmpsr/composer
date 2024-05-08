@@ -14,19 +14,19 @@ export const CallToActions: FC<CallToActionsProps> = ({ isBackDisabled, isNextDi
         isDisabled={isBackDisabled}
         size="m"
         leadingIcon={<IconArrowLeft />}
-        children="Back"
         mr="spacer-4"
-        role="link"
-      />
+      >
+        Back
+      </Button>
       <Button
         onClick={nextQuestion}
         variant="accent"
         size="l"
         trailingIcon={<IconArrowRight />}
-        children="Next"
         isDisabled={isNextDisabled}
-        role="button"
-      />
+      >
+        Next
+      </Button>
     </Flex>
   );
 };

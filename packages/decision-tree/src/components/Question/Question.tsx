@@ -10,6 +10,6 @@ const questionTypesMap = {
   numeric: ({ data, answersDispatch }) => <Numeric data={data} answersDispatch={answersDispatch} />,
 };
 
-export const Question: FC<QuestionProps> = ({ data, answersDispatch }) => {
-  return <Flex justifyContent="center">{questionTypesMap[data.type]({ data, answersDispatch })}</Flex>;
-};
+export const Question: FC<QuestionProps> = ({ data, answersDispatch }) => (
+  <Flex justifyContent="center">{questionTypesMap[data.type]({ data, answersDispatch })}</Flex>
+);

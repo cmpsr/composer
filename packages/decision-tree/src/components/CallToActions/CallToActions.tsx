@@ -7,28 +7,26 @@ export const CallToActions: FC<CallToActionsProps> = ({
   isNextDisabled,
   goToPreviousQuestion,
   goToNextQuestion,
-}) => {
-  return (
-    <Flex justifyContent="center">
-      <Button
-        onClick={goToPreviousQuestion}
-        variant="link"
-        isDisabled={isBackDisabled}
-        size="m"
-        leadingIcon={<IconArrowLeft />}
-        mr="spacer-4"
-      >
-        Back
-      </Button>
-      <Button
-        onClick={goToNextQuestion}
-        variant="accent"
-        size="l"
-        trailingIcon={<IconArrowRight />}
-        isDisabled={isNextDisabled}
-      >
-        Next
-      </Button>
-    </Flex>
-  );
-};
+}) => (
+  <Flex justifyContent="center">
+    <Button
+      onClick={goToPreviousQuestion}
+      variant="link"
+      isDisabled={isBackDisabled}
+      size="m"
+      leadingIcon={<IconArrowLeft />}
+      mr="spacer-4"
+    >
+      Back
+    </Button>
+    <Button
+      onClick={goToNextQuestion}
+      variant="accent"
+      size="l"
+      trailingIcon={<IconArrowRight />}
+      isDisabled={isNextDisabled}
+    >
+      Next
+    </Button>
+  </Flex>
+);

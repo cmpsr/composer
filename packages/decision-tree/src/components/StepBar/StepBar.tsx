@@ -11,9 +11,9 @@ export const StepBar: FC<StepBarProps> = ({ steps, activeStep }) => {
             <Flex width="100%" alignItems="center">
               <Stepper.Step.Indicator>
                 <Stepper.Step.Status
-                  complete={<Stepper.Step.Number color="white" />}
+                  complete={<Stepper.Step.Number color="text-light" />}
                   incomplete={<Stepper.Step.Number color="background-static" />}
-                  active={<Stepper.Step.Number color="background-page-02" />}
+                  active={<Stepper.Step.Number color="primary-default" />}
                 />
               </Stepper.Step.Indicator>
               <Stepper.Step.Separator />

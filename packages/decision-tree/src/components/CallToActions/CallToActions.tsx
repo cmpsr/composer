@@ -5,7 +5,7 @@ import { PaginationActions } from '@hooks';
 
 export const CallToActions: FC<CallToActionsProps> = ({ isBackDisabled, isNextDisabled, dispatch, nextQuestion }) => {
   return (
-    <Flex justifyContent={'center'}>
+    <Flex justifyContent="center">
       <Button
         onClick={() => {
           dispatch({ type: PaginationActions.PreviousQuestion });

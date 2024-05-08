@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { BoxProps } from '@cmpsr/components';
 import { QuestionType } from './components/Question';
 import { StepBarProps } from '@components/StepBar/types';
 import { CallToActionsProps } from '@components/CallToActions/types';
@@ -28,7 +27,6 @@ export type DecisionTreeProps = {
 };
 
 export interface DecisionTreeStaticMembers {
-  Container: FC<BoxProps>;
   Stepper: FC<StepBarProps>;
   CallToActions: FC<CallToActionsProps>;
 }

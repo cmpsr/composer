@@ -37,8 +37,14 @@ export const QuestionOption: FC<QuestionOptionProps> = ({
         alignItems: 'center',
         children: (
           <>
-            <Text variant="text-body-regular">{label}</Text>
-            {subLabel ? <Text variant="text-body-meta-regular">{subLabel}</Text> : null}
+            <Text variant="text-body-regular" color="text-primary">
+              {label}
+            </Text>
+            {subLabel ? (
+              <Text variant="text-body-meta-regular" color="text-secondary">
+                {subLabel}
+              </Text>
+            ) : null}
           </>
         ),
       })}

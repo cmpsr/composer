@@ -33,8 +33,8 @@ const AllVariantsTemplate = () => (
     <Tbody>
       {[...linkVariants.filter((v) => v !== 'link'), ...buttonVariants].map((variant, i) => (
         <Fragment key={i}>
-          {['Default', 'Leading Icon', 'Trailing Icon'].map((state, i) => (
-            <Tr key={`${state}-${i}`}>
+          {['Default', 'Leading Icon', 'Trailing Icon', 'Disabled'].map((state, i) => (
+            <Tr key={`${state}-${i}`} {...(variant === 'link-light' && { backgroundColor: 'background-page-03' })}>
               <Td>{state}</Td>
               {linkSizes.map((size, i) => (
                 <Td key={`${variant}-${size}-${i}-${state}`}>
@@ -43,8 +43,9 @@ const AllVariantsTemplate = () => (
                     role="link"
                     variant={variant}
                     size={size}
-                    {...{ ...(state === 'Trailing Icon' && { trailingIcon: <IconExternalLink /> }) }}
-                    {...{ ...(state === 'Leading Icon' && { leadingIcon: <IconExternalLink /> }) }}
+                    {...(state === 'Trailing Icon' && { trailingIcon: <IconExternalLink /> })}
+                    {...(state === 'Leading Icon' && { leadingIcon: <IconExternalLink /> })}
+                    {...(state === 'Disabled' && { isDisabled: true })}
                   >
                     Link with {variant}
                   </Link>
@@ -101,4 +102,5 @@ Playground.args = {
   showTrailingIcon: true,
   variant: undefined,
   isInline: false,
+  isDisabled: false,
 };

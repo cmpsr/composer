@@ -4,7 +4,7 @@ import { QuestionProps, QuestionType } from './components/Question';
 import { StepBarProps } from '@components/StepBar/types';
 import { CallToActionsProps } from '@components/CallToActions/types';
 
-export type UseSetupCallbackCB = (questionId: string, answer: AnswerModel) => Promise<QuestionnaireType>;
+export type UseSetupCallbackCB = (questionId: string, answer: AnswerModel) => Promise<QuestionnaireType | null>;
 
 export type SaveAnswerType = (submittedAnswer: string | object) => void;
 

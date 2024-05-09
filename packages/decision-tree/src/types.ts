@@ -40,3 +40,5 @@ export interface DecisionTreeStaticMembers {
 }
 
 export type Steps = Array<{ id: string; name: string }>;
+
+export { AnswerModel };

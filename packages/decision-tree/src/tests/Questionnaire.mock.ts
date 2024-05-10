@@ -1,4 +1,10 @@
 // Temp file to test
+export const serverMockup = {
+  1: { nextSectionId: '1', nextQuestionId: '2' },
+  2: { nextSectionId: '2', nextQuestionId: '3' },
+  3: { nextSectionId: '3', nextQuestionId: '4' },
+  4: null,
+};
 
 export const questionnaire = {
   version: 1,
@@ -70,7 +76,7 @@ export const questionnaire = {
     },
     {
       id: '3',
-      name: 'Symptoms',
+      name: 'Physical',
       questions: [
         {
           id: '4',

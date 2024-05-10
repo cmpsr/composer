@@ -3,15 +3,8 @@ import { Meta } from '@storybook/react';
 import { DecisionTree } from './DecisionTree';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { QuestionnaireType, type UseSetupCallbackCB } from './types';
-import { questionnaire } from './tests/Questionnaire.mock';
+import { questionnaire, serverMockup } from './tests/Questionnaire.mock';
 import { Box } from '@cmpsr/components';
-
-const serverMockup = {
-  1: { nextSectionId: 1, nextQuestionId: 2 },
-  2: { nextSectionId: 2, nextQuestionId: 3 },
-  3: { nextSectionId: 3, nextQuestionId: 4 },
-  4: null,
-};
 
 const callback = async function (questionId, value) {
   console.log(questionId, value);

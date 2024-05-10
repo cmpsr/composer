@@ -7,9 +7,9 @@ export interface QuestionBase {
   id: string;
   type: 'numeric' | 'singleChoice' | 'multipleChoice' | 'height' | 'sectionIntro';
   skippable?: boolean;
-  question: string;
+  label: string;
   tooltip?: string | null;
-  explanation: string;
+  explanation?: string;
 }
 
 export type QuestionType =

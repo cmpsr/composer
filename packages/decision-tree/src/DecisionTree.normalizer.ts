@@ -7,7 +7,7 @@ const createSectionIntro = ({ id, name, description }: SectionType, orderNumber)
   return {
     id: `${id}${sectionIntroId}`,
     type: 'sectionIntro',
-    question: name,
+    label: name,
     description,
     orderNumber,
     skippable: false,

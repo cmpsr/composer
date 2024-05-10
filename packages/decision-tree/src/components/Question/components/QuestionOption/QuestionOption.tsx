@@ -40,11 +40,11 @@ export const QuestionOption: FC<QuestionOptionProps> = ({
             <Text variant="text-body-regular" color="text-primary">
               {label}
             </Text>
-            {subLabel ? (
+            {subLabel ?? (
               <Text variant="text-body-meta-regular" color="text-secondary">
                 {subLabel}
               </Text>
-            ) : null}
+            )}
           </>
         ),
       })}

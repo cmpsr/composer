@@ -17,7 +17,7 @@ export const QuestionOption: FC<QuestionOptionProps> = ({
   return (
     <Box
       {...props}
-      border="1px solid #666"
+      border="1px solid"
       borderColor="ui-element-outline-default"
       background="background-action-default"
       borderRadius="radii-4"
@@ -40,11 +40,11 @@ export const QuestionOption: FC<QuestionOptionProps> = ({
             <Text variant="text-body-regular" color="text-primary">
               {label}
             </Text>
-            {subLabel ? (
+            {subLabel ?? (
               <Text variant="text-body-meta-regular" color="text-secondary">
                 {subLabel}
               </Text>
-            ) : null}
+            )}
           </>
         ),
       })}

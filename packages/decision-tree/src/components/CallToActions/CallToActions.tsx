@@ -11,10 +11,10 @@ export const CallToActions: FC<CallToActionsProps> = ({
   const [isLoading, setIsloading] = useState<boolean>(false);
   return (
     <Flex
-      justifyContent={'center'}
-      px={'spacer-5'}
-      pt={'spacer-4'}
-      pb={'spacer-6'}
+      justifyContent="center"
+      px="spacer-5"
+      pt="spacer-4"
+      pb="spacer-6"
       borderTopWidth="1px"
       borderTopStyle="solid"
       borderTopColor="ui-element-divider"

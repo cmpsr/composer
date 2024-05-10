@@ -30,7 +30,7 @@ export const Question: FC<QuestionProps> = ({
     >
       {questionTypesMap[data.type]({ data, answersDispatch, defaultValue })}
     </Flex>
-    {data.skippable !== false ? (
+    {data.skippable !== false ?? (
       <Flex justifyContent="center">
         <IDontKnowButton
           submitIDKAnswer={submitIDKAnswer}
@@ -38,8 +38,6 @@ export const Question: FC<QuestionProps> = ({
           paginationDispatch={paginationDispatch}
         />
       </Flex>
-    ) : (
-      ''
     )}
   </Box>
 );

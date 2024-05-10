@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.4.5",
+  "version": "0.4.6",
   "author": "Alexis Munoz <alexismunoz@impulsum.vc>",
   "license": "MIT",
   "main": "./lib/index.js",

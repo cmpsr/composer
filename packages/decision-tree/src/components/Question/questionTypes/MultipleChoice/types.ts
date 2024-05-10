@@ -1,13 +1,13 @@
 import { QuestionBase, QuestionProps } from '@components/Question/types';
 
-type Choice = {
+type label = {
   id: string;
   label: string;
-  subLabel: string;
+  subLabel?: string;
 };
 
 export interface MultipleChoiceQuestion extends QuestionBase {
-  choices: Choice[];
+  options: label[];
   type: 'multipleChoice';
 }
 

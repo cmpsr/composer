@@ -1,16 +1,27 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { type QuestionTitleProps } from './types';
-import { Text, Flex, IconHelp, Tooltip, Box } from '@cmpsr/components';
+import { InfoButton } from './components/InfoButton';
+import { Text, Flex, Tooltip } from '@cmpsr/components';
+import { QuestionTitleModal } from './components/Modal';
 
-export const QuestionTitle: FC<QuestionTitleProps> = ({ question, tooltip }) => (
-  <Flex justifyContent="center" mb="spacer-8">
-    <Text variant="text-header-L" mb="spacer-8" my="auto">
-      {question}
-    </Text>
-    <Tooltip label={tooltip} placement="bottom">
-      <Box display="inline" my="auto" ml="spacer-2">
-        <IconHelp color="text-link-secondary-default" />
-      </Box>
-    </Tooltip>
-  </Flex>
-);
+export const QuestionTitle: FC<QuestionTitleProps> = ({ question, explanation, tooltip }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  return (
+    <>
+      <Flex justifyContent="center" mb="spacer-8">
+        <Text variant="text-header-L" mb="spacer-8" my="auto">
+          {question}
+        </Text>
+        {tooltip ? (
+          <Tooltip label={tooltip} placement="bottom">
+            <InfoButton onClick={() => setModalIsOpen(true)} />
+          </Tooltip>
+        ) : (
+          <InfoButton onClick={() => setModalIsOpen(true)} />
+        )}
+      </Flex>
+      <QuestionTitleModal modalIsOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} content={explanation} />
+    </>
+  );
+};

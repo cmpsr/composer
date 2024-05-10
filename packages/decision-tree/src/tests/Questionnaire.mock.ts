@@ -1,3 +1,5 @@
+import { UserQuestionnaireType } from '@types';
+
 // Temp file to test
 export const serverMockup = {
   1: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: { '1': { type: 'singleChoice', value: '1' } } },
@@ -16,7 +18,7 @@ export const serverMockup = {
   4: null,
 };
 
-export const userQuestionnaire = {
+export const userQuestionnaire: UserQuestionnaireType = {
   nextQuestion: {
     questionId: '1',
     sectionId: '1',

@@ -11,15 +11,15 @@ import { normalizeQuestionnaire } from './DecisionTree.normalizer';
 import { SectionIntro } from './components/Question/questionTypes/SectionIntro';
 
 export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({
-  questionnaire,
+  userQuestionnaire,
   callback,
   firstQuestion,
 }) => {
-  const normalizedQuestionnaire = normalizeQuestionnaire(questionnaire);
+  const normalizedQuestionnaire = normalizeQuestionnaire(userQuestionnaire.questionnaire);
   const steps: Steps = normalizedQuestionnaire.sections.map(({ id, name }) => ({ id, name }));
   const initialState = firstQuestion ?? {
-    questionId: normalizedQuestionnaire.nextQuestion.questionId,
-    sectionId: normalizedQuestionnaire.nextQuestion.sectionId,
+    questionId: userQuestionnaire.nextQuestion.questionId,
+    sectionId: userQuestionnaire.nextQuestion.sectionId,
   };
 
   const { state: answerState, answersDispatch, submitAnswer, submitIDKAnswer } = useHandleAnswers(callback);

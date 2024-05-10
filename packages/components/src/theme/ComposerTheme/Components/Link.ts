@@ -11,7 +11,7 @@ export const linkBaseStyle = {
   },
 };
 
-const generateLink = (colors: { default: string; hover: string; pressed: string; focus: string }) => {
+const generateLink = (colors: { default: string; hover: string; pressed: string; focus: string; disabled: string }) => {
   return {
     color: colors.default,
     padding: 0,
@@ -30,6 +30,11 @@ const generateLink = (colors: { default: string; hover: string; pressed: string;
     _focusVisible: {
       boxShadow: `0 0 0 0.25rem var(--chakra-colors-${colors.focus})`,
       color: colors.hover,
+    },
+    _disabled: {
+      color: colors.disabled,
+      cursor: 'not-allowed',
+      boxShadow: 'none',
     },
   };
 };
@@ -72,7 +77,8 @@ const linkPrimary = generateLink({
   default: 'text-link-primary-default',
   hover: 'text-link-primary-hover',
   pressed: 'text-link-primary-pressed',
-  focus: 'primary-focus',
+  focus: 'text-link-primary-hover',
+  disabled: 'text-link-primary-disabled',
 });
 
 export const Link: ComponentStyleConfig = {
@@ -98,23 +104,33 @@ export const Link: ComponentStyleConfig = {
   variants: {
     link: linkPrimary,
     'link-primary': linkPrimary,
+    'link-light': generateLink({
+      default: 'text-link-light-default',
+      hover: 'text-link-light-hover',
+      pressed: 'text-link-light-pressed',
+      focus: 'text-link-light-hover',
+      disabled: 'text-link-light-disabled',
+    }),
     'link-accent': generateLink({
       default: 'text-link-accent-default',
       hover: 'text-link-accent-hover',
       pressed: 'text-link-accent-pressed',
-      focus: 'accent-focus',
+      focus: 'text-link-accent-hover',
+      disabled: 'text-link-accent-disabled',
     }),
     'link-secondary': generateLink({
       default: 'text-link-secondary-default',
       hover: 'text-link-secondary-hover',
       pressed: 'text-link-secondary-pressed',
-      focus: 'secondary-focus',
+      focus: 'text-link-secondary-hover',
+      disabled: 'text-link-secondary-disabled',
     }),
     'link-destroy': generateLink({
       default: 'alert-error-default',
       hover: 'alert-error-hover',
       pressed: 'alert-error-pressed',
-      focus: 'alert-error-focus',
+      focus: 'alert-error-hover',
+      disabled: 'alert-error-disabled',
     }),
     ...getButtonVariants(),
   },

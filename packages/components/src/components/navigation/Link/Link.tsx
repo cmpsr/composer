@@ -12,13 +12,21 @@ import { LinkProps, LinkSize } from './types';
 import { getIconSize } from './getIconSize';
 
 export const Link = forwardRef<LinkProps, typeof ChakraLink>(
-  ({ children, leadingIcon, trailingIcon, size = 'm', variant, isInline = false, ...props }, ref) => {
+  (
+    { children, leadingIcon, trailingIcon, size = 'm', variant, isInline = false, isDisabled = false, ...props },
+    ref
+  ) => {
     const styles = useStyleConfig('Link', { isInline, variant, size }) as StyleProps;
     const leftIcon = getIcon(leadingIcon, size, isInline);
     const rightIcon = getIcon(trailingIcon, size, isInline);
 
     return (
-      <ChakraLink ref={ref} {...styles} {...props}>
+      <ChakraLink
+        ref={ref}
+        {...(isDisabled && { 'aria-disabled': 'true', tabIndex: -1, disabled: true, pointerEvents: 'none' })}
+        {...styles}
+        {...props}
+      >
         {leftIcon}
         {children}
         {rightIcon}

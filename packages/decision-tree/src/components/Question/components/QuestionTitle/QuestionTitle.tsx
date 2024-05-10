@@ -3,7 +3,7 @@ import { type QuestionTitleProps } from './types';
 import { Text, Flex, IconHelp, Tooltip, Box } from '@cmpsr/components';
 
 export const QuestionTitle: FC<QuestionTitleProps> = ({ question, tooltip }) => (
-  <Flex justifyContent={'center'} mb="spacer-8">
+  <Flex justifyContent="center" mb="spacer-8">
     <Text variant="text-header-L" mb="spacer-8" my="auto">
       {question}
     </Text>

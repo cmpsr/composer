@@ -17,7 +17,7 @@ export const QuestionOption: FC<QuestionOptionProps> = ({
   return (
     <Box
       {...props}
-      border="1px solid #666"
+      border="1px solid"
       borderColor="ui-element-outline-default"
       background="background-action-default"
       borderRadius="radii-4"

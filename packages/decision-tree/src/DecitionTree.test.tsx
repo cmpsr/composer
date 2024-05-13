@@ -12,11 +12,11 @@ describe('DecisionTree', () => {
 
   test('should render all the components', () => {
     renderWithProviders(<DecisionTree questionnaire={questionnaire} callback={callback} />);
-    expect(screen.getAllByText('Next')).toHaveLength(1);
-    expect(screen.getAllByText('Back')).toHaveLength(1);
-    expect(screen.getAllByText('Male')).toHaveLength(1);
-    expect(screen.getAllByText('Female')).toHaveLength(1);
-    expect(screen.getAllByText('What sex were you assigned at birth?')).toHaveLength(1);
+    screen.getByText('Next');
+    screen.getByText('Back');
+    screen.getByText('Male');
+    screen.getByText('Female');
+    screen.getByText('What sex were you assigned at birth?');
   });
 
   test('should disable both buttons by default', () => {
@@ -37,10 +37,11 @@ describe('DecisionTree', () => {
     renderWithProviders(<DecisionTree questionnaire={questionnaire} callback={callback} />);
 
     fireEvent.click(screen.getByText('Male'));
-    fireEvent.click(screen.getByText('Next').parentElement);
+    fireEvent.click(screen.getByText('Next'));
 
     await waitFor(() => {
-      expect(screen.getAllByTestId('cmpsr.input')).toHaveLength(2);
+      screen.getByPlaceholderText('Feet');
+      screen.getByPlaceholderText('Inches');
     });
   });
 
@@ -48,7 +49,7 @@ describe('DecisionTree', () => {
     renderWithProviders(<DecisionTree questionnaire={questionnaire} callback={callback} />);
 
     fireEvent.click(screen.getByText('Male'));
-    fireEvent.click(screen.getByText('Next').parentElement);
+    fireEvent.click(screen.getByText('Next'));
 
     await waitFor(() => {
       expect(screen.getByText('Back').parentElement).not.toBeDisabled();
@@ -59,18 +60,18 @@ describe('DecisionTree', () => {
     renderWithProviders(<DecisionTree questionnaire={questionnaire} callback={callback} />);
 
     fireEvent.click(screen.getByText('Male'));
-    fireEvent.click(screen.getByText('Next').parentElement);
+    fireEvent.click(screen.getByText('Next'));
 
     await waitFor(() => {
-      expect(screen.getByText('Back').parentElement).not.toBeDisabled();
+      expect(screen.getByText('Back')).not.toBeDisabled();
     });
 
-    fireEvent.click(screen.getByText('Back').parentElement);
+    fireEvent.click(screen.getByText('Back'));
 
     await waitFor(() => {
-      expect(screen.getAllByText('Male')).toHaveLength(1);
-      expect(screen.getAllByText('Female')).toHaveLength(1);
-      expect(screen.getAllByText('What sex were you assigned at birth?')).toHaveLength(1);
+      screen.getByText('Male');
+      screen.getByText('Female');
+      screen.getByText('What sex were you assigned at birth?');
     });
   });
 });

@@ -12,7 +12,7 @@ export const serverMockup = {
     answers: {
       '1': { type: 'singleChoice', value: '1' },
       '2': { type: 'heightAnswer', feet: '5', inches: '5' },
-      '3': { type: 'multipleChoice', values: ['1', '2'] },
+      '3': { type: 'multipleChoice', values: ['1'] },
     },
   },
   4: null,

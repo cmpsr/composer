@@ -4,7 +4,7 @@ import { InfoButton } from './components/InfoButton';
 import { Text, Flex, Tooltip } from '@cmpsr/components';
 import { QuestionTitleModal } from './components/Modal';
 
-export const QuestionTitle: FC<QuestionTitleProps> = ({ question, explanation, tooltip }) => {
+export const QuestionTitle: FC<QuestionTitleProps> = ({ question, whyWeAskExplanation, tooltip, description }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
@@ -21,7 +21,12 @@ export const QuestionTitle: FC<QuestionTitleProps> = ({ question, explanation, t
           <InfoButton onClick={() => setModalIsOpen(true)} />
         )}
       </Flex>
-      <QuestionTitleModal modalIsOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} content={explanation} />
+      {description ?? <Text mt="spacer-3">{description}</Text>}
+      <QuestionTitleModal
+        modalIsOpen={modalIsOpen}
+        onClose={() => setModalIsOpen(false)}
+        content={whyWeAskExplanation}
+      />
     </>
   );
 };

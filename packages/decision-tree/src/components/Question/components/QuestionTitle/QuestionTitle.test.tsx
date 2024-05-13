@@ -5,7 +5,11 @@ import { QuestionTitle } from './QuestionTitle';
 describe('QuestionTitle', () => {
   test('should render the element', () => {
     renderWithProviders(
-      <QuestionTitle question="mockQuestion" tooltip="mockTooltip" explanation="explanation why we ask" />
+      <QuestionTitle
+        question="mockQuestion"
+        tooltip="mockTooltip"
+        whyWeAskExplanation="whyWeAskExplanation why we ask"
+      />
     );
     expect(screen.getAllByText('mockQuestion')).toHaveLength(1);
   });

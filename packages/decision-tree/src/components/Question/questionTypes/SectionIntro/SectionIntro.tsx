@@ -8,7 +8,13 @@ export const SectionIntro: FC<SectionIntroProps> = ({ data, renderSectionIntro }
   if (renderSectionIntro) return renderSectionIntro(label, description, orderNumber);
 
   return (
-    <Box height="100%" textAlign="center">
+    <Box
+      height="100%"
+      textAlign="center"
+      flexGrow="1"
+      pt={{ base: 'spacer-8', lg: 'spacer-16' }}
+      px={{ base: 'spacer-5', md: 'spacer-20', lg: 'spacer-16', xl: 'spacer-24', xxl: 'spacer-32' }}
+    >
       <Text variant="text-body-regular" mb="spacer-6">
         SECTION {orderNumber}
       </Text>

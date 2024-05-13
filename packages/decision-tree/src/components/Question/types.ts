@@ -6,10 +6,11 @@ import { RenderSectionIntroType, SectionIntroQuestion } from './questionTypes/Se
 export interface QuestionBase {
   id: string;
   type: 'numeric' | 'singleChoice' | 'multipleChoice' | 'height' | 'sectionIntro';
+  description?: string;
   skippable?: boolean;
   label: string;
   tooltip?: string | null;
-  explanation?: string;
+  whyWeAskExplanation?: string;
 }
 
 export type QuestionType =

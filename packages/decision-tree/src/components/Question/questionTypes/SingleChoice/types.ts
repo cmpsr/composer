@@ -3,7 +3,7 @@ import { QuestionBase, QuestionProps } from '@components/Question/types';
 type Option = {
   id: string;
   label: string;
-  subLabel?: string;
+  description?: string;
 };
 
 export interface SingleChoiceQuestion extends QuestionBase {

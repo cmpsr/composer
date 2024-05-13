@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { Box, Text } from '@cmpsr/components';
-import { SectionIntroProps, SectionIntroQuestion } from './types';
+import { SectionIntroProps } from './types';
 
-export const SectionIntro: FC<SectionIntroProps> = ({ data, renderSectionIntroProps }) => {
-  const { question, description, orderNumber } = data as SectionIntroQuestion;
+export const SectionIntro: FC<SectionIntroProps> = ({ data, renderSectionIntro }) => {
+  const { label, description, orderNumber } = data;
 
-  if (renderSectionIntroProps) return renderSectionIntroProps(question, description, orderNumber);
+  if (renderSectionIntro) return renderSectionIntro(label, description, orderNumber);
 
   return (
     <Box height="100%" textAlign="center">
@@ -13,7 +13,7 @@ export const SectionIntro: FC<SectionIntroProps> = ({ data, renderSectionIntroPr
         SECTION {orderNumber}
       </Text>
       <Text variant="text-header-4XL" mb={{ base: '0', lg: 'spacer-3' }}>
-        {question}
+        {label}
       </Text>
       <Text variant="text-body-meta-regular">{description}</Text>
     </Box>

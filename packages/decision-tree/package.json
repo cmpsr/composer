@@ -7,11 +7,15 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.0.1",
+  "version": "0.4.11",
   "author": "Alexis Munoz <alexismunoz@impulsum.vc>",
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
+  "files": [
+    "/lib",
+    "package.json"
+  ],
   "private": false,
   "scripts": {
     "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts,**/*.stories.ts' && yarn type:emit",

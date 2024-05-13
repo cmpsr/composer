@@ -7,7 +7,7 @@ import { QuestionBase } from './types';
 describe('Question', () => {
   const baseData = {
     id: '1',
-    question: 'hello there!',
+    label: 'hello there!',
     tooltip: 'question tooltip',
   } as QuestionBase;
 
@@ -25,7 +25,7 @@ describe('Question', () => {
     const data = {
       ...baseData,
       type: 'singleChoice',
-      choices: [
+      options: [
         { id: '1', label: 'choice 1' },
         { id: '2', label: 'choice 2' },
       ],
@@ -66,7 +66,7 @@ describe('Question', () => {
     const data = {
       ...baseData,
       type: 'multipleChoice',
-      choices: [
+      options: [
         { id: '1', label: 'choice 1' },
         { id: '2', label: 'choice 2' },
         { id: '3', label: 'choice 3' },

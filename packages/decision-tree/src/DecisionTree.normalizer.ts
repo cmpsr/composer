@@ -7,7 +7,7 @@ const createSectionIntro = ({ id, name, description }: SectionType, orderNumber)
   return {
     id: `${id}${sectionIntroId}`,
     type: 'sectionIntro',
-    question: name,
+    label: name,
     description,
     orderNumber,
     skippable: false,
@@ -15,10 +15,14 @@ const createSectionIntro = ({ id, name, description }: SectionType, orderNumber)
 };
 
 export const normalizeQuestionnaire = (questionnaire: QuestionnaireType): QuestionnaireType => {
-  questionnaire.sections = questionnaire.sections.map((section, index) => ({
-    ...section,
-    questions: [createSectionIntro(section, index + 1), ...section.questions],
-  }));
+  questionnaire.sections = questionnaire.sections.map((section, index) => {
+    if (section.questions[0].id === `${section.id}${sectionIntroId}`) return section;
+
+    return {
+      ...section,
+      questions: [createSectionIntro(section, index + 1), ...section.questions],
+    };
+  });
 
   return questionnaire;
 };

@@ -45,8 +45,7 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
       return {
         nextQuestion: { sectionId: 'nextQuestionOverride', questionId: 'nextQuestionOverride' },
         answers: {},
-        version: 0,
-        sections: [],
+        questionnaire: { version: 0, sections: [] },
       };
     return await callback(questionId, state.answer as AnswerModel);
   };

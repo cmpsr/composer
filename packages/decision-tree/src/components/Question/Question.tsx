@@ -13,13 +13,7 @@ const questionTypesMap = {
   sectionIntro: (props) => <CustomizedSectionIntro {...props} />,
 };
 
-export const Question: FC<QuestionProps> = ({
-  data,
-  answersDispatch,
-  defaultValue,
-  submitIDKAnswer,
-  paginationDispatch,
-}) => (
+export const Question: FC<QuestionProps> = ({ submitIDKAnswer, paginationDispatch, ...props }) => (
   <Box mb={{ base: 'spacer-14', lg: 'spacer-16' }} flexGrow="1">
     <Flex
       justifyContent="center"
@@ -28,13 +22,13 @@ export const Question: FC<QuestionProps> = ({
       mx={{ base: 'spacer-5', md: 'spacer-20', lg: 'spacer-16', xl: 'spacer-24', xxl: 'spacer-32' }}
       px={{ base: '0', lg: 'spacer-32', xl: 'spacer-52', xxl: 'spacer-64' }}
     >
-      {questionTypesMap[data.type]({ data, answersDispatch, defaultValue })}
+      {questionTypesMap[props.data.type](props)}
     </Flex>
-    {data.skippable !== false ?? (
+    {props.data.skippable !== false ?? (
       <Flex justifyContent="center">
         <IDontKnowButton
           submitIDKAnswer={submitIDKAnswer}
-          currentPage={data.id}
+          currentPage={props.data.id}
           paginationDispatch={paginationDispatch}
         />
       </Flex>

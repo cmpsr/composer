@@ -21,6 +21,7 @@ export const QuestionTitle: FC<QuestionTitleProps> = ({ question, whyWeAskExplan
           <InfoButton onClick={() => setModalIsOpen(true)} />
         )}
       </Flex>
+      {description ?? <Text mt="spacer-3">{description}</Text>}
       <QuestionTitleModal
         modalIsOpen={modalIsOpen}
         onClose={() => setModalIsOpen(false)}

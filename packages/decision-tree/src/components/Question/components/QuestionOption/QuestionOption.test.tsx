@@ -8,8 +8,10 @@ describe('QuestionOption', () => {
     expect(screen.getAllByLabelText('componentLabel')).toHaveLength(1);
   });
 
-  test('should render the sublabel element', () => {
-    renderWithProviders(<QuestionOption componentType="radio" label="componentLabel" subLabel="componentSubLabel" />);
+  test('should render the description element', () => {
+    renderWithProviders(
+      <QuestionOption componentType="radio" label="componentLabel" description="componentSubLabel" />
+    );
     expect(screen.getAllByText('componentSubLabel')).toHaveLength(1);
   });
 });

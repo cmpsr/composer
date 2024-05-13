@@ -4,5 +4,5 @@ export interface QuestionOptionProps extends BoxProps {
   componentType: 'checkbox' | 'radio';
   componentProps?: CheckboxProps | RadioProps;
   label: string;
-  subLabel?: string;
+  description?: string;
 }

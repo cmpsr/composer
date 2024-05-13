@@ -3,7 +3,7 @@ import { QuestionBase, QuestionProps } from '@components/Question/types';
 type label = {
   id: string;
   label: string;
-  subLabel?: string;
+  description?: string;
 };
 
 export interface MultipleChoiceQuestion extends QuestionBase {

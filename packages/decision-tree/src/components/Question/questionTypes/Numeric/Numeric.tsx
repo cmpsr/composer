@@ -7,11 +7,11 @@ import { DecisionTreeInput } from '@components/Question/components/DecisionTreeI
 import { inputMargin } from '@components/Question/Question';
 
 export const Numeric: FC<NumericProps> = ({ data, answersDispatch, defaultValue }) => {
-  const { label, tooltip, id, placeholder, trailingMask, explanation } = data;
+  const { label, tooltip, id, placeholder, trailingMask, whyWeAskExplanation } = data;
 
   return (
     <Box>
-      <QuestionTitle question={label} tooltip={tooltip} explanation={explanation} />
+      <QuestionTitle question={label} tooltip={tooltip} whyWeAskExplanation={whyWeAskExplanation} />
       <Flex px={inputMargin}>
         <DecisionTreeInput
           trailingMask={trailingMask}

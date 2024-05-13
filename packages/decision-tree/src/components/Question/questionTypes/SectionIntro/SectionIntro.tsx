@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import { Box, Text } from '@cmpsr/components';
-import { SectionIntroQuestion } from './types';
-import { type QuestionProps } from '@components/Question/types';
+import { SectionIntroProps, SectionIntroQuestion } from './types';
 
-export const SectionIntro: FC<QuestionProps> = ({ data }) => {
+export const SectionIntro: FC<SectionIntroProps> = ({ data, renderSectionIntroProps }) => {
   const { question, description, orderNumber } = data as SectionIntroQuestion;
+
+  if (renderSectionIntroProps) return renderSectionIntroProps(question, description, orderNumber);
 
   return (
     <Box height="100%" textAlign="center">

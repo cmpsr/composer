@@ -1,7 +1,7 @@
 import { type Dispatch } from 'react';
 import { HeightQuestion, NumericQuestion, SingleChoiceQuestion, MultipleChoiceQuestion } from './questionTypes';
 import { AnswerModel, HandleAnswersAction, PaginationAction, SubmitAnswerFn } from '@hooks';
-import { SectionIntroQuestion } from './questionTypes/SectionIntro';
+import { RenderSectionIntroType, SectionIntroQuestion } from './questionTypes/SectionIntro';
 
 export interface QuestionBase {
   id: string;
@@ -28,4 +28,5 @@ export interface QuestionProps {
   defaultValue?: AnswerModel | null;
   submitIDKAnswer: SubmitAnswerFn;
   paginationDispatch: Dispatch<PaginationAction>;
+  renderSectionIntro?: RenderSectionIntroType;
 }

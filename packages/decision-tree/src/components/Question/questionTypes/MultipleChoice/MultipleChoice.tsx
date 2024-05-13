@@ -20,7 +20,7 @@ export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, answersDispatch,
           componentType="checkbox"
           componentProps={{
             value: id,
-            defaultChecked: defaultValue && defaultValue.values.length > 0 && defaultValue.values.includes(id),
+            defaultChecked: defaultValue?.values?.includes(id),
             onChange: ({ currentTarget }) => {
               if (currentTarget.checked) setAnswers({ ...answers, values: [...answers.values, currentTarget.value] });
               if (!currentTarget.checked)

@@ -24,11 +24,7 @@ export const Question: FC<QuestionProps> = ({ submitIDKAnswer, paginationDispatc
     </Flex>
     {props.data.skippable !== false ?? (
       <Flex justifyContent="center">
-        <IDontKnowButton
-          submitIDKAnswer={submitIDKAnswer}
-          currentPage={props.data.id}
-          paginationDispatch={paginationDispatch}
-        />
+        <IDontKnowButton submitIDKAnswer={submitIDKAnswer} paginationDispatch={paginationDispatch} />
       </Flex>
     )}
   </Box>

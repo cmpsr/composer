@@ -9,7 +9,8 @@ import {
   NumericAnswer,
   MultipleChoiceAnswer,
 } from './questionTypes';
-import { HandleAnswersAction, PaginationAction, SubmitAnswerFn } from '@hooks';
+import { HandleAnswersAction, PaginationAction } from '@hooks';
+import { QuestionnaireType } from '@types';
 
 export interface QuestionBase {
   id: string;
@@ -31,6 +32,6 @@ export interface QuestionProps {
   data: QuestionType;
   answersDispatch: Dispatch<HandleAnswersAction>;
   defaultValue?: AnswerType | null;
-  submitIDKAnswer: SubmitAnswerFn;
+  submitIDKAnswer: () => Promise<QuestionnaireType>;
   paginationDispatch: Dispatch<PaginationAction>;
 }

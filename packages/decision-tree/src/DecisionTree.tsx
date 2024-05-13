@@ -35,7 +35,7 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
         answersDispatch={answersDispatch}
         paginationDispatch={paginationDispatch}
         defaultValue={answerState.answer}
-        submitIDKAnswer={submitIDKAnswer}
+        submitIDKAnswer={() => submitIDKAnswer(currentQuestion)}
       />
       <DecisionTree.CallToActions
         isBackDisabled={isBackDisabled}

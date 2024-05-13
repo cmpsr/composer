@@ -7,12 +7,17 @@ import { DecisionTreeProps, Steps } from './types';
 import { Flex } from '@cmpsr/components';
 import { normalizeQuestionnaire } from './DecisionTree.normalizer';
 
-export const DecisionTree: FC<DecisionTreeProps> = ({ questionnaire, callback, firstQuestion, renderSectionIntro }) => {
-  const normalizedQuestionnaire = normalizeQuestionnaire(questionnaire);
+export const DecisionTree: FC<DecisionTreeProps> = ({
+  userQuestionnaire,
+  callback,
+  firstQuestion,
+  renderSectionIntro,
+}) => {
+  const normalizedQuestionnaire = normalizeQuestionnaire(userQuestionnaire.questionnaire);
   const steps: Steps = normalizedQuestionnaire.sections.map(({ id, name }) => ({ id, name }));
   const initialState = firstQuestion ?? {
-    questionId: normalizedQuestionnaire.nextQuestion.questionId,
-    sectionId: normalizedQuestionnaire.nextQuestion.sectionId,
+    questionId: userQuestionnaire.nextQuestion.questionId,
+    sectionId: userQuestionnaire.nextQuestion.sectionId,
   };
 
   const { state: answerState, answersDispatch, submitAnswer, submitIDKAnswer } = useHandleAnswers(callback);

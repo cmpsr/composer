@@ -2,8 +2,8 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { DecisionTree } from './DecisionTree';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
-import { QuestionnaireType, type UseSetupCallbackCB } from './types';
-import { questionnaire, serverMockup } from './tests/Questionnaire.mock';
+import { UserQuestionnaireType, type UseSetupCallbackCB } from './types';
+import { userQuestionnaire, serverMockup } from './tests/Questionnaire.mock';
 import { Box } from '@cmpsr/components';
 
 const callback = async function (questionId, value) {
@@ -28,7 +28,7 @@ export const All = () => (
         <Td>Default</Td>
         <Td>
           <Box height="80svh">
-            <DecisionTree questionnaire={questionnaire as QuestionnaireType} callback={callback} />
+            <DecisionTree userQuestionnaire={userQuestionnaire as UserQuestionnaireType} callback={callback} />
           </Box>
         </Td>
       </Tr>
@@ -43,6 +43,6 @@ const Template = (args) => (
 );
 export const Playground = Template.bind({});
 Playground.args = {
-  questionnaire,
+  userQuestionnaire,
   callback,
 };

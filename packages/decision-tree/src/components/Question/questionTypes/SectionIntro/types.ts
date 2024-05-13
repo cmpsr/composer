@@ -7,9 +7,9 @@ export interface SectionIntroQuestion extends QuestionBase {
   type: 'sectionIntro';
 }
 
-export type RenderSectionIntroType = (question: string, description: string, orderNumber: string) => ReactNode;
+export type RenderSectionIntroType = (label: string, description: string, orderNumber: string) => ReactNode;
 
 export interface SectionIntroProps extends QuestionProps {
   data: SectionIntroQuestion;
-  renderSectionIntroProps?: RenderSectionIntroType;
+  renderSectionIntro?: RenderSectionIntroType;
 }

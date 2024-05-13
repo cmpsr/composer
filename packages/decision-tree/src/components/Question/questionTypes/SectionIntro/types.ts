@@ -1,5 +1,5 @@
-import { BoxProps, TextProps } from '@cmpsr/components';
 import { QuestionBase, QuestionProps } from '@components/Question/types';
+import { ReactNode } from 'react';
 
 export interface SectionIntroQuestion extends QuestionBase {
   orderNumber: string;
@@ -7,8 +7,9 @@ export interface SectionIntroQuestion extends QuestionBase {
   type: 'sectionIntro';
 }
 
+export type RenderSectionIntroType = (label: string, description: string, orderNumber: string) => ReactNode;
+
 export interface SectionIntroProps extends QuestionProps {
   data: SectionIntroQuestion;
-  textProps: TextProps;
-  boxProps: BoxProps;
+  renderSectionIntro?: RenderSectionIntroType;
 }

@@ -1,8 +1,6 @@
-import { FC } from 'react';
 import { AnswerModel } from '@hooks';
-import { QuestionProps, QuestionType } from './components/Question';
-import { StepBarProps } from '@components/StepBar/types';
-import { CallToActionsProps } from '@components/CallToActions/types';
+import { QuestionType } from './components/Question';
+import { RenderSectionIntroType } from '@components/Question/questionTypes';
 
 export type UseSetupCallbackCB = (questionId: string, answer: AnswerModel) => Promise<UserQuestionnaireType | null>;
 
@@ -35,13 +33,8 @@ export type DecisionTreeProps = {
   userQuestionnaire: UserQuestionnaireType;
   callback: UseSetupCallbackCB;
   firstQuestion?: nextQuestion;
+  renderSectionIntro?: RenderSectionIntroType;
 };
-
-export interface DecisionTreeStaticMembers {
-  Stepper: FC<StepBarProps>;
-  SectionIntro: FC<QuestionProps>;
-  CallToActions: FC<CallToActionsProps>;
-}
 
 export type Steps = Array<{ id: string; name: string }>;
 

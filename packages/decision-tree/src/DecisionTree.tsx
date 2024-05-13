@@ -3,17 +3,15 @@ import { StepBar } from './components/StepBar';
 import { CallToActions } from './components/CallToActions';
 import { Question } from './components/Question';
 import { usePagination, useHandleAnswers, PaginationActions } from './hooks';
-import { DecisionTreeProps, DecisionTreeStaticMembers, Steps } from './types';
+import { DecisionTreeProps, Steps } from './types';
 import { Flex } from '@cmpsr/components';
-import { CallToActionsProps } from '@components/CallToActions/types';
-import { StepBarProps } from '@components/StepBar/types';
 import { normalizeQuestionnaire } from './DecisionTree.normalizer';
-import { SectionIntro } from './components/Question/questionTypes/SectionIntro';
 
-export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({
+export const DecisionTree: FC<DecisionTreeProps> = ({
   userQuestionnaire,
   callback,
   firstQuestion,
+  renderSectionIntro,
 }) => {
   const normalizedQuestionnaire = normalizeQuestionnaire(userQuestionnaire.questionnaire);
   const steps: Steps = normalizedQuestionnaire.sections.map(({ id, name }) => ({ id, name }));
@@ -36,15 +34,16 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
 
   return (
     <Flex flexDirection="column" height="100%">
-      <DecisionTree.Stepper steps={steps} activeStep={activeStep} />
+      <StepBar steps={steps} activeStep={activeStep} />
       <Question
         data={question}
         answersDispatch={answersDispatch}
         paginationDispatch={paginationDispatch}
         defaultValue={answerState.answer}
         submitIDKAnswer={submitIDKAnswer}
+        renderSectionIntro={renderSectionIntro}
       />
-      <DecisionTree.CallToActions
+      <CallToActions
         isBackDisabled={isBackDisabled}
         isNextDisabled={!answerState.isAnswered && question.type !== 'sectionIntro'}
         goToPreviousQuestion={() => paginationDispatch({ type: PaginationActions.PreviousQuestion })}
@@ -53,12 +52,3 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
     </Flex>
   );
 };
-
-const Navigation = (props: CallToActionsProps) => <CallToActions {...props} />;
-const Stepper = (props: StepBarProps) => <StepBar {...props} />;
-
-DecisionTree.CallToActions = Navigation;
-DecisionTree.Stepper = Stepper;
-DecisionTree.SectionIntro = SectionIntro;
-
-export const CustomizedSectionIntro = DecisionTree.SectionIntro;

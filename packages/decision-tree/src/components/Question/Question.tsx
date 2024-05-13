@@ -1,25 +1,18 @@
 import React, { FC } from 'react';
 import { type QuestionProps } from './types';
 import { Flex, Box } from '@cmpsr/components';
-import { Height, SingleChoice, MultipleChoice, Numeric } from './questionTypes';
+import { Height, SingleChoice, MultipleChoice, Numeric, SectionIntro } from './questionTypes';
 import { IDontKnowButton } from './components/IDontKnowButton';
-import { CustomizedSectionIntro } from '../../DecisionTree';
 
 const questionTypesMap = {
   height: (props) => <Height {...props} />,
   singleChoice: (props) => <SingleChoice {...props} />,
   multipleChoice: (props) => <MultipleChoice {...props} />,
   numeric: (props) => <Numeric {...props} />,
-  sectionIntro: (props) => <CustomizedSectionIntro {...props} />,
+  sectionIntro: (props) => <SectionIntro {...props} />,
 };
 
-export const Question: FC<QuestionProps> = ({
-  data,
-  answersDispatch,
-  defaultValue,
-  submitIDKAnswer,
-  paginationDispatch,
-}) => (
+export const Question: FC<QuestionProps> = ({ submitIDKAnswer, paginationDispatch, ...props }) => (
   <Box mb={{ base: 'spacer-14', lg: 'spacer-16' }} flexGrow="1">
     <Flex
       justifyContent="center"
@@ -28,13 +21,13 @@ export const Question: FC<QuestionProps> = ({
       mx={{ base: 'spacer-5', md: 'spacer-20', lg: 'spacer-16', xl: 'spacer-24', xxl: 'spacer-32' }}
       px={{ base: '0', lg: 'spacer-32', xl: 'spacer-52', xxl: 'spacer-64' }}
     >
-      {questionTypesMap[data.type]({ data, answersDispatch, defaultValue })}
+      {questionTypesMap[props.data.type](props)}
     </Flex>
-    {data.skippable !== false ?? (
+    {props.data.skippable !== false ?? (
       <Flex justifyContent="center">
         <IDontKnowButton
           submitIDKAnswer={submitIDKAnswer}
-          currentPage={data.id}
+          currentPage={props.data.id}
           paginationDispatch={paginationDispatch}
         />
       </Flex>

@@ -10,6 +10,11 @@ export const Height: FC<HeightProps> = ({ data, answersDispatch, defaultValue })
   const { question, tooltip, feet, inches } = data;
   const [answers, setAnswers] = useState<HeightAnswer>({ type: 'height', feet: '', inches: '' });
 
+  const handleChange = ({ currentTarget }) => {
+    setAnswers({ ...answers, feet: currentTarget.value });
+    answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: answers });
+  };
+
   return (
     <Box>
       <QuestionTitle question={question} tooltip={tooltip} />
@@ -19,10 +24,7 @@ export const Height: FC<HeightProps> = ({ data, answersDispatch, defaultValue })
           placeholder={feet.placeholder}
           defaultValue={defaultValue?.feet}
           trailingMask={feet.trailingMask}
-          onKeyUp={({ currentTarget }) => {
-            setAnswers({ ...answers, feet: currentTarget.value });
-            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: answers });
-          }}
+          onKeyUp={handleChange}
         />
         <DecisionTreeInput
           variant="outline"

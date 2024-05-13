@@ -9,18 +9,16 @@ import { inputMargin } from '@components/Question/Question';
 export const SingleChoice: FC<SingleChoiceProps> = ({ data, answersDispatch, defaultValue }) => {
   const { question, choices, tooltip } = data;
 
+  const handleChange = (nextValue) =>
+    answersDispatch({
+      type: HandleAnswersActions.SaveAnswer,
+      payload: { type: 'singleChoice', value: nextValue },
+    });
+
   return (
     <Box>
       <QuestionTitle question={question} tooltip={tooltip} />
-      <RadioGroup
-        onChange={(nextValue) =>
-          answersDispatch({
-            type: HandleAnswersActions.SaveAnswer,
-            payload: { type: 'singleChoice', value: nextValue },
-          })
-        }
-        defaultValue={defaultValue?.value}
-      >
+      <RadioGroup onChange={handleChange} defaultValue={defaultValue?.value}>
         {choices.map(({ id, label, subLabel }) => (
           <QuestionOption
             mx={inputMargin}

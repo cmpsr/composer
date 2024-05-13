@@ -9,6 +9,12 @@ import { inputMargin } from '@components/Question/Question';
 export const Numeric: FC<NumericProps> = ({ data, answersDispatch, defaultValue }) => {
   const { question, tooltip, id, placeholder, trailingMask } = data;
 
+  const handleChange = ({ currentTarget }) =>
+    answersDispatch({
+      type: HandleAnswersActions.SaveAnswer,
+      payload: { type: 'numeric', value: Number(currentTarget.value) },
+    });
+
   return (
     <Box>
       <QuestionTitle question={question} tooltip={tooltip} />
@@ -18,13 +24,8 @@ export const Numeric: FC<NumericProps> = ({ data, answersDispatch, defaultValue 
           key={id}
           variant="outline"
           placeholder={placeholder}
-          defaultValue={defaultValue?.value as string}
-          onKeyUp={({ currentTarget }) =>
-            answersDispatch({
-              type: HandleAnswersActions.SaveAnswer,
-              payload: { type: 'numeric', value: currentTarget.value },
-            })
-          }
+          defaultValue={defaultValue?.value}
+          onKeyUp={handleChange}
         />
       </Flex>
     </Box>

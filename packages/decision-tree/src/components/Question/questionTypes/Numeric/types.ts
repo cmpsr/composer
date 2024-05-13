@@ -8,10 +8,10 @@ export interface NumericQuestion extends QuestionBase {
 
 export type NumericAnswer = {
   type: 'numeric';
-  value: string;
+  value: number;
 };
 
 export interface NumericProps extends QuestionProps {
   data: NumericQuestion;
-  defaultValue?: NumericAnswer | null;
+  defaultValue?: NumericAnswer;
 }

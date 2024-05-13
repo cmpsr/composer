@@ -31,7 +31,7 @@ export type AnswersType = {
 export interface QuestionProps {
   data: QuestionType;
   answersDispatch: Dispatch<HandleAnswersAction>;
-  defaultValue?: AnswerType | null;
+  defaultValue?: AnswerType;
   submitIDKAnswer: () => Promise<QuestionnaireType>;
   paginationDispatch: Dispatch<PaginationAction>;
 }

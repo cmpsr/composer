@@ -19,5 +19,5 @@ export type HeightAnswer = {
 
 export interface HeightProps extends QuestionProps {
   data: HeightQuestion;
-  defaultValue?: HeightAnswer | null;
+  defaultValue?: HeightAnswer;
 }

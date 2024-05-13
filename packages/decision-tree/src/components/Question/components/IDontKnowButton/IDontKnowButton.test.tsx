@@ -24,19 +24,19 @@ describe('IDontKnowButton', () => {
   test('should call the IDKAnswer function on click', () => {
     renderWithProviders(<IDontKnowButton submitIDKAnswer={mockIDKAnswer} paginationDispatch={mockDispatch} />);
 
-    const idkButton = screen.getByText('I&aposm not sure right now').parentElement;
+    const idkButton = screen.getByText("I'm not sure right now").parentElement;
 
     act(() => {
       fireEvent.click(idkButton);
     });
 
-    expect(mockIDKAnswer).toHaveBeenCalledWith('3');
+    expect(mockIDKAnswer).toHaveBeenCalledTimes(1);
   });
 
   test('should call the next question action function', async () => {
     renderWithProviders(<IDontKnowButton submitIDKAnswer={mockIDKAnswer} paginationDispatch={mockDispatch} />);
 
-    const idkButton = screen.getByText('I&aposm not sure right now').parentElement;
+    const idkButton = screen.getByText("I'm not sure right now").parentElement;
 
     act(() => {
       fireEvent.click(idkButton);

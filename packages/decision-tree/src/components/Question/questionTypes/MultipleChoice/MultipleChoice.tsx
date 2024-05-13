@@ -10,6 +10,18 @@ export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, answersDispatch,
   const { question, choices, tooltip } = data;
   const [answers, setAnswers] = useState<MultipleChoiceAnswer>({ type: 'multipleChoice', values: [] });
 
+  const handleChange = ({ currentTarget }) => {
+    if (currentTarget.checked) {
+      setAnswers({ ...answers, values: [...answers.values, currentTarget.value] });
+    } else {
+      setAnswers({ ...answers, values: answers.values.filter((answer) => answer !== currentTarget.value) });
+    }
+    answersDispatch({
+      type: HandleAnswersActions.SaveAnswer,
+      payload: answers,
+    });
+  };
+
   return (
     <Box>
       <QuestionTitle question={question} tooltip={tooltip} />
@@ -21,15 +33,7 @@ export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, answersDispatch,
           componentProps={{
             value: id,
             defaultChecked: defaultValue?.values?.includes(id),
-            onChange: ({ currentTarget }) => {
-              if (currentTarget.checked) setAnswers({ ...answers, values: [...answers.values, currentTarget.value] });
-              if (!currentTarget.checked)
-                setAnswers({ ...answers, values: answers.values.filter((answer) => answer !== currentTarget.value) });
-              answersDispatch({
-                type: HandleAnswersActions.SaveAnswer,
-                payload: answers,
-              });
-            },
+            onChange: handleChange,
           }}
           label={label}
           subLabel={subLabel}

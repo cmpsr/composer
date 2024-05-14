@@ -1,6 +1,7 @@
 import { Accordion } from './Accordion';
 import { Alert } from './Alert';
 import { Autocomplete } from './Autocomplete';
+import { AutocompleteMultiSelect } from './AutocompleteMultiSelect';
 import { Avatar } from './Avatar';
 import { Badge } from './Badge';
 import { Breadcrumb } from './Breadcrumb';
@@ -41,6 +42,7 @@ export const components = {
   Accordion,
   Alert,
   Autocomplete,
+  AutocompleteMultiSelect,
   Avatar,
   Badge,
   Breadcrumb,

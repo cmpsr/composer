@@ -25,7 +25,7 @@ export const Numeric: FC<NumericProps> = ({ data, answersDispatch, defaultValue 
           variant="outline"
           placeholder={placeholder}
           defaultValue={defaultValue?.value}
-          onKeyUp={handleChange}
+          onInput={handleChange}
         />
       </Flex>
     </Box>

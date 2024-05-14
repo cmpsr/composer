@@ -10,8 +10,13 @@ export const Height: FC<HeightProps> = ({ data, answersDispatch, defaultValue })
   const { question, tooltip, feet, inches } = data;
   const [answers, setAnswers] = useState<HeightAnswer>({ type: 'height', feet: '', inches: '' });
 
-  const handleChange = ({ currentTarget }) => {
+  const handleChangeFeet = ({ currentTarget }) => {
     setAnswers({ ...answers, feet: currentTarget.value });
+    answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: answers });
+  };
+
+  const handleChangeInches = ({ currentTarget }) => {
+    setAnswers({ ...answers, inches: currentTarget.value });
     answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: answers });
   };
 
@@ -24,17 +29,14 @@ export const Height: FC<HeightProps> = ({ data, answersDispatch, defaultValue })
           placeholder={feet.placeholder}
           defaultValue={defaultValue?.feet}
           trailingMask={feet.trailingMask}
-          onKeyUp={handleChange}
+          onInput={handleChangeFeet}
         />
         <DecisionTreeInput
           variant="outline"
           placeholder={inches.placeholder}
           defaultValue={defaultValue?.inches}
           trailingMask={inches.trailingMask}
-          onKeyUp={({ currentTarget }) => {
-            setAnswers({ ...answers, inches: currentTarget.value });
-            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: answers });
-          }}
+          onInput={handleChangeInches}
         />
       </Flex>
     </Box>

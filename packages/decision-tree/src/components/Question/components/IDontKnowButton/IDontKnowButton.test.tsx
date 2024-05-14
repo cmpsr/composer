@@ -24,7 +24,7 @@ describe('IDontKnowButton', () => {
   test('should call the IDKAnswer function on click', () => {
     renderWithProviders(<IDontKnowButton submitIDKAnswer={mockIDKAnswer} paginationDispatch={mockDispatch} />);
 
-    const idkButton = screen.getByText("I'm not sure right now").parentElement;
+    const idkButton = screen.getByRole('button', { name: "I'm not sure right now" });
 
     act(() => {
       fireEvent.click(idkButton);
@@ -36,7 +36,7 @@ describe('IDontKnowButton', () => {
   test('should call the next question action function', async () => {
     renderWithProviders(<IDontKnowButton submitIDKAnswer={mockIDKAnswer} paginationDispatch={mockDispatch} />);
 
-    const idkButton = screen.getByText("I'm not sure right now").parentElement;
+    const idkButton = screen.getByRole('button', { name: "I'm not sure right now" });
 
     act(() => {
       fireEvent.click(idkButton);

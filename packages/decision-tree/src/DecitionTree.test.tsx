@@ -21,8 +21,8 @@ describe('DecisionTree', () => {
 
   test('should disable both buttons by default', () => {
     renderWithProviders(<DecisionTree questionnaire={questionnaire} callback={callback} />);
-    expect(screen.getByText('Back').parentElement).toBeDisabled();
-    expect(screen.getByText('Next').parentElement).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Back' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
   });
 
   test('should enable next button on value select', () => {
@@ -30,7 +30,7 @@ describe('DecisionTree', () => {
 
     fireEvent.click(screen.getByText('Female'));
 
-    expect(screen.getByText('Next').parentElement).not.toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Next' })).not.toBeDisabled();
   });
 
   test('should display the next question on answering', async () => {
@@ -52,7 +52,7 @@ describe('DecisionTree', () => {
     fireEvent.click(screen.getByText('Next'));
 
     await waitFor(() => {
-      expect(screen.getByText('Back').parentElement).not.toBeDisabled();
+      expect(screen.getByRole('button', { name: 'Back' })).not.toBeDisabled();
     });
   });
 

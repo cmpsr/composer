@@ -34,7 +34,7 @@ describe('CallToActions', () => {
         goToNextQuestion={mockNextQuestion}
       />
     );
-    expect(screen.getByText('Back').parentElement).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Back' })).toBeDisabled();
   });
 
   test('should not disable the back button when not configed', () => {
@@ -46,7 +46,7 @@ describe('CallToActions', () => {
         goToNextQuestion={mockNextQuestion}
       />
     );
-    expect(screen.getByText('Back').parentElement).not.toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Back' })).not.toBeDisabled();
   });
 
   test('should disable the next button when configed', () => {
@@ -58,7 +58,7 @@ describe('CallToActions', () => {
         goToNextQuestion={mockNextQuestion}
       />
     );
-    expect(screen.getByText('Next').parentElement).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
   });
 
   test('should not disable the next button when not configed', () => {
@@ -70,7 +70,7 @@ describe('CallToActions', () => {
         goToNextQuestion={mockNextQuestion}
       />
     );
-    expect(screen.getByText('Next').parentElement).not.toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Next' })).not.toBeDisabled();
   });
 
   test('should call the goToPreviousQuestion with previous page action on back click', () => {
@@ -82,7 +82,7 @@ describe('CallToActions', () => {
         goToNextQuestion={mockNextQuestion}
       />
     );
-    const backButton = screen.getByText('Back').parentElement;
+    const backButton = screen.getByRole('button', { name: 'Back' });
 
     act(() => {
       fireEvent.click(backButton);
@@ -100,7 +100,7 @@ describe('CallToActions', () => {
         goToNextQuestion={mockNextQuestion}
       />
     );
-    const nextButton = screen.getByText('Next').parentElement;
+    const nextButton = screen.getByRole('button', { name: 'Next' });
 
     act(() => {
       fireEvent.click(nextButton);

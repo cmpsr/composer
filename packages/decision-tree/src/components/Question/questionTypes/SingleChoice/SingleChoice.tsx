@@ -1,19 +1,14 @@
 import React, { FC } from 'react';
 import { Box, RadioGroup } from '@cmpsr/components';
 import { SingleChoiceProps } from './types';
-import { HandleAnswersActions } from '@hooks';
 import { QuestionTitle } from '@components/Question/components/QuestionTitle';
 import { QuestionOption } from '@components/Question/components/QuestionOption';
 import { inputMargin } from '@components/Question/Question';
 
-export const SingleChoice: FC<SingleChoiceProps> = ({ data, answersDispatch, defaultValue }) => {
+export const SingleChoice: FC<SingleChoiceProps> = ({ data, saveAnswer, defaultValue }) => {
   const { question, choices, tooltip } = data;
 
-  const handleChange = (nextValue) =>
-    answersDispatch({
-      type: HandleAnswersActions.SaveAnswer,
-      payload: { type: 'singleChoice', value: nextValue },
-    });
+  const handleChange = (nextValue) => saveAnswer({ type: 'singleChoice', value: nextValue });
 
   return (
     <Box>

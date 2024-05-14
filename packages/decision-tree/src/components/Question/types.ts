@@ -9,7 +9,7 @@ import {
   NumericAnswer,
   MultipleChoiceAnswer,
 } from './questionTypes';
-import { HandleAnswersAction, PaginationAction } from '@hooks';
+import { AnswerModel, PaginationAction } from '@hooks';
 import { QuestionnaireType } from '@types';
 
 export interface QuestionBase {
@@ -30,7 +30,7 @@ export type AnswersType = {
 
 export interface QuestionProps {
   data: QuestionType;
-  answersDispatch: Dispatch<HandleAnswersAction>;
+  saveAnswer: (payload: AnswerModel) => void;
   defaultValue?: AnswerType;
   submitIDKAnswer: () => Promise<QuestionnaireType>;
   paginationDispatch: Dispatch<PaginationAction>;

@@ -22,6 +22,7 @@ export const useToast = () => {
       variant = 'solid',
     } = options;
     const isTitleLeftAligned = titleAlignment === 'left';
+
     return toast({
       position,
       duration,
@@ -31,7 +32,7 @@ export const useToast = () => {
       render: render
         ? render
         : ({ onClose }) => (
-            <Alert data-testid="cmpsr.alert.toast" variant={variant} status={status}>
+            <Alert variant={variant} status={status}>
               <Alert.Icon />
               <Flex direction={isTitleLeftAligned ? 'row' : 'column'} {...(isClosable && { pr: '1.5rem' })}>
                 {title && <Alert.Title {...{ ...(isTitleLeftAligned && { mr: '0.75rem' }) }}>{title}</Alert.Title>}

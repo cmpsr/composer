@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.9.1
+
+### Patch Changes
+
+- 3035bbc6: fix: toast description overlapping the close button
+
 ## 7.9.0
 
 ### Minor Changes

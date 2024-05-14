@@ -33,7 +33,7 @@ export const useToast = () => {
         : ({ onClose }) => (
             <Alert data-testid="cmpsr.alert.toast" variant={variant} status={status}>
               <Alert.Icon />
-              <Flex direction={isTitleLeftAligned ? 'row' : 'column'}>
+              <Flex direction={isTitleLeftAligned ? 'row' : 'column'} {...(isClosable && { pr: '1.5rem' })}>
                 {title && <Alert.Title {...{ ...(isTitleLeftAligned && { mr: '0.75rem' }) }}>{title}</Alert.Title>}
                 {description && <Alert.Description>{description}</Alert.Description>}
                 {isClosable && (

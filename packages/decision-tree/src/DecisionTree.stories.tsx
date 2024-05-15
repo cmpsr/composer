@@ -7,7 +7,7 @@ import { questionnaire, serverMockup } from './tests/Questionnaire.mock';
 import { Box } from '@cmpsr/components';
 
 const callback = async function (questionId, value) {
-  console.log(questionId, value);
+  console.log(questionId, value, 'Mocked BE Call');
   return new Promise((resolve) => setTimeout(() => resolve(serverMockup[questionId]), 1500));
 } as UseSetupCallbackCB;
 

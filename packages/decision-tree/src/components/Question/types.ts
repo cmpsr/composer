@@ -20,10 +20,6 @@ export type QuestionType =
   | MultipleChoiceQuestion
   | SectionIntroQuestion;
 
-export type AnswersType = {
-  [key: string]: AnswerModel;
-};
-
 export interface QuestionProps {
   data: QuestionType;
   answersDispatch: Dispatch<HandleAnswersAction>;

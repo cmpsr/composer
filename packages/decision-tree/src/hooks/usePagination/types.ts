@@ -1,5 +1,4 @@
-import { AnswersType } from '@components/Question';
-import { HandleAnswersAction, SubmitAnswerFn } from '@hooks';
+import { AnswerModel, HandleAnswersAction, SubmitAnswerFn } from '@hooks';
 import { Steps } from '@types';
 import { type Dispatch } from 'react';
 
@@ -15,7 +14,7 @@ type nextQuestionType = {
 
 export type PaginationPayload = {
   nextQuestion: nextQuestionType;
-  answers: AnswersType;
+  answers: AnsweredQuestionsType;
 };
 
 export type PaginationAction = {
@@ -42,4 +41,12 @@ export type PaginationProps = {
   initialState: nextQuestionType;
   answersDispatch: Dispatch<HandleAnswersAction>;
   submitAnswer: SubmitAnswerFn;
+  backOnFirstQuestion: () => void;
+};
+
+export type AnsweredQuestionsType = Array<AnsweredQuestion>;
+
+type AnsweredQuestion = AnswerModel & {
+  questionId: string;
+  sectionId: string;
 };

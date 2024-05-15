@@ -34,6 +34,7 @@ export type DecisionTreeProps = {
   callback: UseSetupCallbackCB;
   firstQuestion?: nextQuestion;
   renderSectionIntro?: RenderSectionIntroType;
+  backOnFirstQuestion: () => void;
 };
 
 export type Steps = Array<{ id: string; name: string }>;

@@ -11,12 +11,12 @@ describe('Question', () => {
     tooltip: 'question tooltip',
   } as QuestionBase;
 
-  const answersDispatch = jest.fn();
+  const saveAnswer = jest.fn();
   const paginationDispatch = jest.fn();
   const submitIDKAnswer = jest.fn();
 
   afterAll(() => {
-    answersDispatch.mockReset();
+    saveAnswer.mockReset();
     paginationDispatch.mockReset();
     submitIDKAnswer.mockReset();
   });
@@ -35,7 +35,7 @@ describe('Question', () => {
         submitIDKAnswer={submitIDKAnswer}
         paginationDispatch={paginationDispatch}
         data={data}
-        answersDispatch={answersDispatch}
+        saveAnswer={saveAnswer}
       />
     );
 
@@ -55,7 +55,7 @@ describe('Question', () => {
         submitIDKAnswer={submitIDKAnswer}
         paginationDispatch={paginationDispatch}
         data={data}
-        answersDispatch={answersDispatch}
+        saveAnswer={saveAnswer}
       />
     );
 
@@ -77,7 +77,7 @@ describe('Question', () => {
         submitIDKAnswer={submitIDKAnswer}
         paginationDispatch={paginationDispatch}
         data={data}
-        answersDispatch={answersDispatch}
+        saveAnswer={saveAnswer}
       />
     );
 
@@ -104,7 +104,7 @@ describe('Question', () => {
         submitIDKAnswer={submitIDKAnswer}
         paginationDispatch={paginationDispatch}
         data={data}
-        answersDispatch={answersDispatch}
+        saveAnswer={saveAnswer}
       />
     );
 

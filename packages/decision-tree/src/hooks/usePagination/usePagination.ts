@@ -83,6 +83,7 @@ export const usePagination = ({
         if (currentQuestion.includes(sectionIntroId))
           setNextQuestionOverride({ questionId: state.currentQuestion, sectionId: state.currentSection });
         if (!currentQuestion.includes(sectionIntroId)) setNextQuestionOverride(null);
+
         answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: currentQuestion });
         setActiveStep(step);
 

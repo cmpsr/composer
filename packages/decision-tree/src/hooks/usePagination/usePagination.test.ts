@@ -12,6 +12,7 @@ describe('usePagination', () => {
   const initialState = { sectionId: '1', questionId: '1' };
   const answersDispatch = jest.fn();
   const submitAnswer = jest.fn();
+  const backOnFirstQuestion = jest.fn();
 
   afterAll(() => {
     submitAnswer.mockReset();
@@ -24,6 +25,7 @@ describe('usePagination', () => {
       initialState,
       answersDispatch,
       submitAnswer,
+      backOnFirstQuestion,
     });
 
     const hookResult = result.current;
@@ -37,6 +39,7 @@ describe('usePagination', () => {
       initialState,
       answersDispatch,
       submitAnswer,
+      backOnFirstQuestion,
     });
 
     const hookResult = result.current;
@@ -50,6 +53,7 @@ describe('usePagination', () => {
       initialState,
       answersDispatch,
       submitAnswer,
+      backOnFirstQuestion,
     });
 
     const hookResult = result.current;
@@ -63,6 +67,7 @@ describe('usePagination', () => {
       initialState,
       answersDispatch,
       submitAnswer,
+      backOnFirstQuestion,
     });
 
     const hookResult = result.current;
@@ -76,6 +81,7 @@ describe('usePagination', () => {
       initialState,
       answersDispatch,
       submitAnswer,
+      backOnFirstQuestion,
     });
 
     const { paginationDispatch } = result.current;
@@ -83,7 +89,7 @@ describe('usePagination', () => {
     act(() => {
       paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} },
+        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: [] },
       });
     });
 
@@ -98,6 +104,7 @@ describe('usePagination', () => {
       initialState,
       answersDispatch,
       submitAnswer,
+      backOnFirstQuestion,
     });
 
     const { paginationDispatch } = result.current;
@@ -105,7 +112,7 @@ describe('usePagination', () => {
     await act(async () => {
       await paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} },
+        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: [] },
       });
       await paginationDispatch({ type: PaginationActions.PreviousQuestion });
     });

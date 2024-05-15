@@ -1,20 +1,17 @@
 import React, { FC } from 'react';
 import { type IDontKnowButtonProps } from './types';
 import { IconArrowRight, Button } from '@cmpsr/components';
-import { PaginationActions, PaginationPayload } from '@hooks';
+import { PaginationActions } from '@hooks';
 
-export const IDontKnowButton: FC<IDontKnowButtonProps> = ({ submitIDKAnswer, currentPage, paginationDispatch }) => {
+export const IDontKnowButton: FC<IDontKnowButtonProps> = ({ submitIDKAnswer, paginationDispatch }) => {
+  const handleChange = async () => {
+    const response = await submitIDKAnswer();
+    paginationDispatch({ type: PaginationActions.NextQuestion, payload: response });
+  };
+
   return (
-    <Button
-      onClick={async () => {
-        const response = await submitIDKAnswer(currentPage);
-        paginationDispatch({ type: PaginationActions.NextQuestion, payload: response as PaginationPayload });
-      }}
-      variant="link"
-      size="m"
-      trailingIcon={<IconArrowRight />}
-      children="I'm not sure right now"
-      role="link"
-    />
+    <Button onClick={handleChange} variant="link" size="m" trailingIcon={<IconArrowRight />}>
+      I&apos;m not sure right now
+    </Button>
   );
 };

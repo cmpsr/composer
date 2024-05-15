@@ -1,14 +1,25 @@
 import React, { FC, useState } from 'react';
 import { HeightAnswer, HeightProps } from './types';
 import { Box, Flex } from '@cmpsr/components';
-import { HandleAnswersActions } from '@hooks';
 import { QuestionTitle } from '@components/Question/components/QuestionTitle';
 import { DecisionTreeInput } from '@components/Question/components/DecisionTreeInput';
 import { inputMargin } from '@components/Question/Question';
 
-export const Height: FC<HeightProps> = ({ data, answersDispatch, defaultValue }) => {
+export const Height: FC<HeightProps> = ({ data, saveAnswer, defaultValue }) => {
   const { question, tooltip, feet, inches } = data;
-  const [answers, setAnswers] = useState<HeightAnswer>({ type: 'height', feet: '', inches: '' });
+  const [answers, setAnswers] = useState<HeightAnswer>({ type: 'height', feet: null, inches: null });
+
+  const handleChangeFeet = ({ currentTarget }) => {
+    const newAnswer = { ...answers, feet: currentTarget.value.replace(feet.trailingMask, '') };
+    setAnswers(newAnswer);
+    saveAnswer(newAnswer);
+  };
+
+  const handleChangeInches = ({ currentTarget }) => {
+    const newAnswer = { ...answers, inches: currentTarget.value.replace(inches.trailingMask, '') };
+    setAnswers(newAnswer);
+    saveAnswer(newAnswer);
+  };
 
   return (
     <Box>
@@ -19,22 +30,14 @@ export const Height: FC<HeightProps> = ({ data, answersDispatch, defaultValue })
           placeholder={feet.placeholder}
           defaultValue={defaultValue?.feet}
           trailingMask={feet.trailingMask}
-          onKeyUp={({ currentTarget }) => {
-            const newAnswer = { ...answers, feet: currentTarget.value };
-            setAnswers(newAnswer);
-            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: newAnswer });
-          }}
+          onInput={handleChangeFeet}
         />
         <DecisionTreeInput
           variant="outline"
           placeholder={inches.placeholder}
           defaultValue={defaultValue?.inches}
           trailingMask={inches.trailingMask}
-          onKeyUp={({ currentTarget }) => {
-            const newAnswer = { ...answers, inches: currentTarget.value };
-            setAnswers(newAnswer);
-            answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: newAnswer });
-          }}
+          onInput={handleChangeInches}
         />
       </Flex>
     </Box>

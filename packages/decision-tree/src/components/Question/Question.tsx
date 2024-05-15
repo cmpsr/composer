@@ -23,14 +23,12 @@ export const Question: FC<QuestionProps> = ({ submitIDKAnswer, paginationDispatc
     >
       {questionTypesMap[props.data.type](props)}
     </Flex>
-    {props.data.skippable !== false ?? (
+    {props.data.skippable !== false ? (
       <Flex justifyContent="center">
-        <IDontKnowButton
-          submitIDKAnswer={submitIDKAnswer}
-          currentPage={props.data.id}
-          paginationDispatch={paginationDispatch}
-        />
+        <IDontKnowButton submitIDKAnswer={submitIDKAnswer} paginationDispatch={paginationDispatch} />
       </Flex>
+    ) : (
+      ''
     )}
   </Box>
 );

@@ -1,8 +1,8 @@
-import { PaginationAction, SubmitAnswerFn } from '@hooks';
+import { PaginationAction } from '@hooks';
+import { QuestionnaireType } from '@types';
 import { Dispatch } from 'react';
 
 export type IDontKnowButtonProps = {
-  submitIDKAnswer: SubmitAnswerFn;
-  currentPage: string;
+  submitIDKAnswer: () => Promise<QuestionnaireType>;
   paginationDispatch: Dispatch<PaginationAction>;
 };

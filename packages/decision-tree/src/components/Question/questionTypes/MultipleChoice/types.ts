@@ -18,5 +18,5 @@ export type MultipleChoiceAnswer = {
 
 export interface MultipleChoiceProps extends QuestionProps {
   data: MultipleChoiceQuestion;
-  defaultValue?: MultipleChoiceAnswer | null;
+  defaultValue?: MultipleChoiceAnswer;
 }

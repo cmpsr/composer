@@ -1,15 +1,22 @@
 import React, { FC, useState } from 'react';
 import { Box } from '@cmpsr/components';
-import { MultipleChoiceQuestion } from './types';
-import { HandleAnswersActions } from '@hooks';
-import { type QuestionProps } from '@components/Question/types';
+import { MultipleChoiceAnswer, MultipleChoiceProps } from './types';
 import { QuestionTitle } from '@components/Question/components/QuestionTitle';
 import { QuestionOption } from '@components/Question/components/QuestionOption';
 import { inputMargin } from '@components/Question/Question';
 
-export const MultipleChoice: FC<QuestionProps> = ({ data, answersDispatch }) => {
-  const { question, choices, tooltip } = data as MultipleChoiceQuestion;
-  const [answers, setAnswers] = useState(new Set<string>());
+export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, saveAnswer, defaultValue }) => {
+  const { question, choices, tooltip } = data;
+  const [answers, setAnswers] = useState<MultipleChoiceAnswer>({ type: 'multipleChoice', values: [] });
+
+  const handleChange = ({ currentTarget }) => {
+    if (currentTarget.checked) {
+      setAnswers({ ...answers, values: [...answers.values, currentTarget.value] });
+    } else {
+      setAnswers({ ...answers, values: answers.values.filter((answer) => answer !== currentTarget.value) });
+    }
+    saveAnswer(answers);
+  };
 
   return (
     <Box>
@@ -21,10 +28,8 @@ export const MultipleChoice: FC<QuestionProps> = ({ data, answersDispatch }) => 
           componentType="checkbox"
           componentProps={{
             value: id,
-            onChange: ({ target }) => {
-              setAnswers(answers.add(target.value));
-              answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: answers.values() });
-            },
+            defaultChecked: defaultValue?.values?.includes(id),
+            onChange: handleChange,
           }}
           label={label}
           subLabel={subLabel}

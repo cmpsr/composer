@@ -37,7 +37,7 @@ describe('useHandleAnswers', () => {
 
     const { state } = result.current;
 
-    expect(state).toEqual({ answer: null });
+    expect(state).toEqual({ answer: null, previousAnswers: {} });
   });
 
   test('should execute the setup callback on submiting', () => {
@@ -61,7 +61,7 @@ describe('useHandleAnswers', () => {
       answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: 'stringAnswer' });
     });
     await waitFor(() => {
-      expect(result.current.state).toEqual({ answer: 'stringAnswer' });
+      expect(result.current.state.answer).toEqual('stringAnswer');
     });
   });
 
@@ -76,7 +76,7 @@ describe('useHandleAnswers', () => {
       await answersDispatch({ type: HandleAnswersActions.ResetAnswer });
     });
     await waitFor(() => {
-      expect(result.current.state).toEqual({ answer: null });
+      expect(result.current.state.answer).toBeNull();
     });
   });
 });

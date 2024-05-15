@@ -83,7 +83,7 @@ describe('usePagination', () => {
     act(() => {
       paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextSectionId: '1', nextQuestionId: '2' },
+        payload: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: {} },
       });
     });
 
@@ -105,7 +105,7 @@ describe('usePagination', () => {
     await act(async () => {
       await paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextSectionId: '1', nextQuestionId: '2' },
+        payload: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: {} },
       });
       await paginationDispatch({ type: PaginationActions.PreviousQuestion });
     });

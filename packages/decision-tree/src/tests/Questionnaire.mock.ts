@@ -1,15 +1,29 @@
+import { QuestionnaireType } from '@types';
+
 // Temp file to test
 export const serverMockup = {
-  1: { nextSectionId: '1', nextQuestionId: '2' },
-  2: { nextSectionId: '2', nextQuestionId: '3' },
-  3: { nextSectionId: '3', nextQuestionId: '4' },
+  1: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: { '1': { type: 'singleChoice', value: '1' } } },
+  2: {
+    nextQuestion: { sectionId: '2', questionId: '3' },
+    answers: { '1': { type: 'singleChoice', value: '1' }, '2': { type: 'heightAnswer', feet: '5', inches: '5' } },
+  },
+  3: {
+    nextQuestion: { sectionId: '3', questionId: '4' },
+    answers: {
+      '1': { type: 'singleChoice', value: '1' },
+      '2': { type: 'heightAnswer', feet: '5', inches: '5' },
+      '3': { type: 'multipleChoice', values: ['1'] },
+    },
+  },
   4: null,
 };
 
-export const questionnaire = {
+export const questionnaire: QuestionnaireType = {
   version: 1,
-  nextQuestionId: '1',
-  nextSectionId: '1',
+  nextQuestion: {
+    questionId: '1',
+    sectionId: '1',
+  },
   answers: {},
   sections: [
     {

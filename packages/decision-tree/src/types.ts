@@ -1,9 +1,10 @@
 import { FC } from 'react';
+import { AnswerModel } from '@hooks';
 import { QuestionType } from './components/Question';
 import { StepBarProps } from '@components/StepBar/types';
 import { CallToActionsProps } from '@components/CallToActions/types';
 
-export type UseSetupCallbackCB = (questionId: string, value: string) => Promise<QuestionnaireType>;
+export type UseSetupCallbackCB = (questionId: string, answer: AnswerModel) => Promise<QuestionnaireType>;
 
 export type SaveAnswerType = (submittedAnswer: string | object) => void;
 
@@ -16,8 +17,10 @@ export type SectionType = {
 export type QuestionnaireType = {
   version: number;
   sections: Array<SectionType>;
-  nextQuestionId: string;
-  nextSectionId: string;
+  nextQuestion: {
+    questionId: string;
+    sectionId: string;
+  };
   answers: any;
 };
 

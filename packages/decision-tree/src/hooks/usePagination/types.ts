@@ -1,3 +1,4 @@
+import { AnswersType } from '@components/Question';
 import { HandleAnswersAction, SubmitAnswerFn } from '@hooks';
 import { Steps } from '@types';
 import { type Dispatch } from 'react';
@@ -7,12 +8,17 @@ export enum PaginationActions {
   PreviousQuestion = 'PreviousQuestion',
 }
 
+export type PaginationPayload = {
+  nextQuestion: {
+    sectionId: string;
+    questionId: string;
+  };
+  answers: AnswersType;
+};
+
 export type PaginationAction = {
   type: PaginationActions;
-  payload?: {
-    nextSectionId: string;
-    nextQuestionId: string;
-  } | null;
+  payload?: PaginationPayload;
 };
 
 export type PaginationState = {

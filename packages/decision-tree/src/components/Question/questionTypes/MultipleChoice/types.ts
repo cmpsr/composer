@@ -1,7 +1,7 @@
-import { QuestionBase } from '@components/Question/types';
+import { QuestionBase, QuestionProps } from '@components/Question/types';
 
 type Choice = {
-  id: string | number;
+  id: string;
   label: string;
   subLabel: string;
 };
@@ -9,4 +9,14 @@ type Choice = {
 export interface MultipleChoiceQuestion extends QuestionBase {
   choices: Choice[];
   type: 'multipleChoice';
+}
+
+export type MultipleChoiceAnswer = {
+  type: 'multipleChoice';
+  values: Array<string>;
+};
+
+export interface MultipleChoiceProps extends QuestionProps {
+  data: MultipleChoiceQuestion;
+  defaultValue?: MultipleChoiceAnswer;
 }

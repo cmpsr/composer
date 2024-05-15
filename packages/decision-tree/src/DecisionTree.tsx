@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { StepBar } from './components/StepBar';
 import { CallToActions } from './components/CallToActions';
 import { Question } from './components/Question';
-import { usePagination, useHandleAnswers, PaginationActions } from './hooks';
+import { usePagination, useHandleAnswers, PaginationActions, HandleAnswersActions } from './hooks';
 import { DecisionTreeProps, DecisionTreeStaticMembers, Steps } from './types';
 import { Flex } from '@cmpsr/components';
 import { CallToActionsProps } from '@components/CallToActions/types';
@@ -10,9 +10,12 @@ import { StepBarProps } from '@components/StepBar/types';
 
 export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ questionnaire, callback }) => {
   const steps: Steps = questionnaire.sections.map(({ id, name }) => ({ id, name }));
-  const initialState = { currentQuestion: questionnaire.nextQuestionId, currentSection: questionnaire.nextSectionId };
+  const initialState = {
+    currentQuestion: questionnaire.nextQuestion.questionId,
+    currentSection: questionnaire.nextQuestion.sectionId,
+  };
 
-  const { state: answerState, answersDispatch, submitAnswer } = useHandleAnswers(callback);
+  const { state: answerState, answersDispatch, submitAnswer, submitIDKAnswer } = useHandleAnswers(callback);
   const {
     state: { currentQuestion, currentSection },
     paginationDispatch,
@@ -27,7 +30,13 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
   return (
     <Flex flexDirection="column" height="100%">
       <DecisionTree.Stepper steps={steps} activeStep={activeStep} />
-      <Question data={question} answersDispatch={answersDispatch} />
+      <Question
+        data={question}
+        paginationDispatch={paginationDispatch}
+        defaultValue={answerState.answer}
+        submitIDKAnswer={() => submitIDKAnswer(currentQuestion)}
+        saveAnswer={(payload) => answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload })}
+      />
       <DecisionTree.CallToActions
         isBackDisabled={isBackDisabled}
         isNextDisabled={answerState.answer === null}

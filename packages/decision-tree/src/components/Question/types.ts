@@ -1,6 +1,16 @@
 import { type Dispatch } from 'react';
-import { HeightQuestion, NumericQuestion, SingleChoiceQuestion, MultipleChoiceQuestion } from './questionTypes';
-import { HandleAnswersAction } from '@hooks';
+import {
+  HeightQuestion,
+  NumericQuestion,
+  SingleChoiceQuestion,
+  MultipleChoiceQuestion,
+  HeightAnswer,
+  SingleChoiceAnswer,
+  NumericAnswer,
+  MultipleChoiceAnswer,
+} from './questionTypes';
+import { AnswerModel, PaginationAction } from '@hooks';
+import { QuestionnaireType } from '@types';
 
 export interface QuestionBase {
   id: string;
@@ -12,7 +22,16 @@ export interface QuestionBase {
 
 export type QuestionType = HeightQuestion | NumericQuestion | SingleChoiceQuestion | MultipleChoiceQuestion;
 
-export type QuestionProps = {
-  data: QuestionType;
-  answersDispatch: Dispatch<HandleAnswersAction>;
+export type AnswerType = SingleChoiceAnswer | NumericAnswer | MultipleChoiceAnswer | HeightAnswer;
+
+export type AnswersType = {
+  [key: string]: AnswerType;
 };
+
+export interface QuestionProps {
+  data: QuestionType;
+  saveAnswer: (payload: AnswerModel) => void;
+  defaultValue?: AnswerType;
+  submitIDKAnswer: () => Promise<QuestionnaireType>;
+  paginationDispatch: Dispatch<PaginationAction>;
+}

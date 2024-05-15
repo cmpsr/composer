@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import { Box, Flex } from '@cmpsr/components';
-import { NumericQuestion } from './types';
-import { HandleAnswersActions } from '@hooks';
-import { type QuestionProps } from '@components/Question/types';
+import { NumericProps } from './types';
 import { QuestionTitle } from '@components/Question/components/QuestionTitle';
 import { DecisionTreeInput } from '@components/Question/components/DecisionTreeInput';
 import { inputMargin } from '@components/Question/Question';
 
-export const Numeric: FC<QuestionProps> = ({ data, answersDispatch }) => {
-  const { question, tooltip, id, placeholder, trailingMask } = data as NumericQuestion;
+export const Numeric: FC<NumericProps> = ({ data, saveAnswer, defaultValue }) => {
+  const { question, tooltip, id, placeholder, trailingMask } = data;
+
+  const handleChange = ({ currentTarget }) => saveAnswer({ type: 'numeric', value: Number(currentTarget.value) });
 
   return (
     <Box>
@@ -19,7 +19,8 @@ export const Numeric: FC<QuestionProps> = ({ data, answersDispatch }) => {
           key={id}
           variant="outline"
           placeholder={placeholder}
-          onBlur={({ target }) => answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: target.value })}
+          defaultValue={defaultValue?.value}
+          onInput={handleChange}
         />
       </Flex>
     </Box>

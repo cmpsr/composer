@@ -19,7 +19,7 @@ export const usePagination = ({
     switch (type) {
       case PaginationActions.PreviousQuestion: {
         const { currentQuestion, currentSection, step } = pageHistory.at(-1);
-        answersDispatch({ type: HandleAnswersActions.ResetAnswer });
+        answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: currentQuestion });
         setActiveStep(step);
         setPageHistory(pageHistory.slice(0, -1));
         return {
@@ -28,14 +28,15 @@ export const usePagination = ({
         };
       }
       case PaginationActions.NextQuestion: {
-        const { nextQuestionId, nextSectionId } = payload;
-        const iSection = steps.findIndex((step) => step.id == nextSectionId);
+        const { nextQuestion, answers } = payload;
+        const iSection = steps.findIndex((step) => step.id == nextQuestion.sectionId);
+        answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: answers });
         answersDispatch({ type: HandleAnswersActions.ResetAnswer });
-        setPageHistory([...pageHistory, { ...state, step: iSection }]);
+        setPageHistory([...pageHistory, { ...state, step: activeStep }]);
         setActiveStep(iSection);
         return {
-          currentQuestion: nextQuestionId,
-          currentSection: nextSectionId,
+          currentQuestion: nextQuestion.questionId,
+          currentSection: nextQuestion.sectionId,
         };
       }
     }
@@ -45,7 +46,7 @@ export const usePagination = ({
 
   const goToNextQuestion = async () => {
     const response = await submitAnswer(state.currentQuestion);
-    if (!response || !response.nextQuestionId) return;
+    if (!response?.nextQuestion?.questionId) return;
     dispatch({ type: PaginationActions.NextQuestion, payload: response });
   };
 

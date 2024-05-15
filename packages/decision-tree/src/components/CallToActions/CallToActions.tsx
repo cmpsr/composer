@@ -9,6 +9,12 @@ export const CallToActions: FC<CallToActionsProps> = ({
   goToNextQuestion,
 }) => {
   const [isLoading, setIsloading] = useState<boolean>(false);
+  const handleNextClick = async () => {
+    setIsloading(true);
+    await goToNextQuestion();
+    setIsloading(false);
+  };
+
   return (
     <Flex
       justifyContent="center"
@@ -30,11 +36,7 @@ export const CallToActions: FC<CallToActionsProps> = ({
         Back
       </Button>
       <Button
-        onClick={async () => {
-          setIsloading(true);
-          await goToNextQuestion();
-          setIsloading(false);
-        }}
+        onClick={handleNextClick}
         variant="accent"
         size="l"
         trailingIcon={<IconArrowRight />}

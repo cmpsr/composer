@@ -3,7 +3,7 @@ import { QuestionnaireType, SectionType } from '@types';
 
 export const sectionIntroId = '-section-intro';
 
-const createSectionIntro = ({ id, name, description }: SectionType, orderNumber) => {
+const createSectionIntro = ({ id, name, description }: SectionType, orderNumber: number) => {
   return {
     id: `${id}${sectionIntroId}`,
     type: 'sectionIntro',

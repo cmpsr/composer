@@ -10,7 +10,7 @@ export const SectionIntro: FC<SectionIntroProps> = ({ data, renderSectionIntroPr
   return (
     <Box height="100%" textAlign="center">
       <Text variant="text-body-regular" mb="spacer-6">
-        SECTION {orderNumber}
+        SECTION {String(orderNumber)}
       </Text>
       <Text variant="text-header-4XL" mb={{ base: '0', lg: 'spacer-3' }}>
         {question}

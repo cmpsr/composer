@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { StepBar } from './components/StepBar';
 import { CallToActions } from './components/CallToActions';
 import { Question } from './components/Question';
-import { usePagination, useHandleAnswers, PaginationActions } from './hooks';
 import { DecisionTreeProps, Steps } from './types';
+import { usePagination, useHandleAnswers, PaginationActions, HandleAnswersActions } from './hooks';
 import { Flex } from '@cmpsr/components';
 import { normalizeQuestionnaire } from './DecisionTree.normalizer';
 
@@ -38,11 +38,11 @@ export const DecisionTree: FC<DecisionTreeProps> = ({
       <StepBar steps={steps} activeStep={activeStep} />
       <Question
         data={question}
-        answersDispatch={answersDispatch}
         paginationDispatch={paginationDispatch}
         defaultValue={answerState.answer}
-        submitIDKAnswer={submitIDKAnswer}
         renderSectionIntro={renderSectionIntro}
+        submitIDKAnswer={() => submitIDKAnswer(currentQuestion)}
+        saveAnswer={(payload) => answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload })}
       />
       <CallToActions
         isBackDisabled={isBackDisabled}

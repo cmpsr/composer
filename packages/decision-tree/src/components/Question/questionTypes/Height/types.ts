@@ -13,11 +13,11 @@ export interface HeightQuestion extends QuestionBase {
 
 export type HeightAnswer = {
   type: 'height';
-  feet: string;
-  inches: string;
+  feet: number;
+  inches: number;
 };
 
 export interface HeightProps extends QuestionProps {
   data: HeightQuestion;
-  defaultValue?: HeightAnswer | null;
+  defaultValue?: HeightAnswer;
 }

@@ -8,7 +8,7 @@ const questionTypesMap = {
   height: (props) => <Height {...props} />,
   singleChoice: (props) => <SingleChoice {...props} />,
   multipleChoice: (props) => <MultipleChoice {...props} />,
-  numeric: (props) => <Numeric {...props} />,
+  number: (props) => <Numeric {...props} />,
   sectionIntro: (props) => <SectionIntro {...props} />,
 };
 

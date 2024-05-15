@@ -65,7 +65,7 @@ const isAnswerFilled = (answer: AnswerModel | null): boolean => {
 
   switch (answer.type) {
     case 'singleChoice':
-    case 'numeric':
+    case 'number':
       return !!answer.value;
     case 'multipleChoice':
       return answer.values.length > 0;

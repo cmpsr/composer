@@ -18,5 +18,5 @@ export type SingleChoiceAnswer = {
 
 export interface SingleChoiceProps extends QuestionProps {
   data: SingleChoiceQuestion;
-  defaultValue?: SingleChoiceAnswer | null;
+  defaultValue?: SingleChoiceAnswer;
 }

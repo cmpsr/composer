@@ -26,7 +26,6 @@ export const DecisionTree: FC<DecisionTreeProps> = ({
     state: { currentQuestion, currentSection },
     paginationDispatch,
     activeStep,
-    isBackDisabled,
     goToNextQuestion,
   } = usePagination({ steps, initialState, answersDispatch, submitAnswer, backOnFirstQuestion });
 
@@ -45,7 +44,6 @@ export const DecisionTree: FC<DecisionTreeProps> = ({
         saveAnswer={(payload) => answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload })}
       />
       <CallToActions
-        isBackDisabled={isBackDisabled}
         isNextDisabled={!answerState.isAnswered && question.type !== 'sectionIntro'}
         goToPreviousQuestion={() => paginationDispatch({ type: PaginationActions.PreviousQuestion })}
         goToNextQuestion={goToNextQuestion}

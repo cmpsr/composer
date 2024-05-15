@@ -11,7 +11,10 @@ const callback = async function (questionId, value) {
   return new Promise((resolve) => setTimeout(() => resolve(serverMockup[questionId]), 1500));
 } as UseSetupCallbackCB;
 
-const backOnFirstQuestion = () => {};
+const backOnFirstQuestion = () => {
+  alert('Exit decision tree');
+  window.location.reload();
+};
 
 export default {
   component: DecisionTree,

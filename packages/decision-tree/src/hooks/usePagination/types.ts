@@ -32,7 +32,6 @@ export type PaginationResponse = {
   state: PaginationState;
   activeStep: number;
   paginationDispatch: Dispatch<PaginationAction>;
-  isBackDisabled: boolean;
   goToNextQuestion: () => Promise<void>;
 };
 

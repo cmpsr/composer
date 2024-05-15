@@ -37,7 +37,7 @@ describe('useHandleAnswers', () => {
 
     const { state } = result.current;
 
-    expect(state).toEqual({ answer: null, previousAnswers: {}, isAnswered: false });
+    expect(state).toEqual({ answer: null, previousAnswers: [], isAnswered: false });
   });
 
   test('should execute the setup callback on submiting', () => {

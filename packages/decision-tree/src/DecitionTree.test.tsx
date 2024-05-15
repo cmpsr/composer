@@ -22,7 +22,7 @@ describe('DecisionTree', () => {
     expect(screen.getAllByText('Diet and Lifestyle')).toHaveLength(2);
   });
 
-  test('should disable the back button and enable the next button', () => {
+  test('should enable the back button and enable the next button', () => {
     renderWithProviders(
       <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
     );

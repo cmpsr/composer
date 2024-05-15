@@ -61,20 +61,6 @@ describe('usePagination', () => {
     expect(typeof hookResult.paginationDispatch).toBe('function');
   });
 
-  test('should return a isBackDisabled boolean', () => {
-    const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
-      steps,
-      initialState,
-      answersDispatch,
-      submitAnswer,
-      backOnFirstQuestion,
-    });
-
-    const hookResult = result.current;
-
-    expect(typeof hookResult.isBackDisabled).toBe('boolean');
-  });
-
   test('should go to the next Question', async () => {
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,

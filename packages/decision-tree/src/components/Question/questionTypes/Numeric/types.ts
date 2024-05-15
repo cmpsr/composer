@@ -3,11 +3,11 @@ import { QuestionBase, QuestionProps } from '@components/Question/types';
 export interface NumericQuestion extends QuestionBase {
   placeholder: string;
   trailingMask: string;
-  type: 'numeric';
+  type: 'number';
 }
 
 export type NumericAnswer = {
-  type: 'numeric';
+  type: 'number';
   value: number;
 };
 

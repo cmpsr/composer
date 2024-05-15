@@ -108,7 +108,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
         questions: [
           {
             id: '4',
-            type: 'numeric',
+            type: 'number',
             label: 'How much do you weigh?',
             whyWeAskExplanation: 'This is an text explaining why we are asking this particular question at this point.',
             tooltip: 'Tooltip for the question',

@@ -12,6 +12,7 @@ export const DecisionTree: FC<DecisionTreeProps> = ({
   callback,
   firstQuestion,
   renderSectionIntro,
+  backOnFirstQuestion,
 }) => {
   const normalizedQuestionnaire = normalizeQuestionnaire(userQuestionnaire.questionnaire);
   const steps: Steps = normalizedQuestionnaire.sections.map(({ id, name }) => ({ id, name }));
@@ -27,7 +28,7 @@ export const DecisionTree: FC<DecisionTreeProps> = ({
     activeStep,
     isBackDisabled,
     goToNextQuestion,
-  } = usePagination({ steps, initialState, answersDispatch, submitAnswer });
+  } = usePagination({ steps, initialState, answersDispatch, submitAnswer, backOnFirstQuestion });
 
   const section = normalizedQuestionnaire.sections.find((section) => section.id == currentSection);
   const question = section.questions.find((question) => question.id == currentQuestion);

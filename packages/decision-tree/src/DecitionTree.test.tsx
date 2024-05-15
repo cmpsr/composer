@@ -10,8 +10,12 @@ describe('DecisionTree', () => {
     return serverMockup[questionId];
   } as UseSetupCallbackCB;
 
+  const backActionMock = jest.fn();
+
   test('should render the section intro', () => {
-    renderWithProviders(<DecisionTree userQuestionnaire={userQuestionnaire} callback={callback} />);
+    renderWithProviders(
+      <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
+    );
     expect(screen.getAllByText('Next')).toHaveLength(1);
     expect(screen.getAllByText('Back')).toHaveLength(1);
     expect(screen.getAllByText('SECTION 1')).toHaveLength(1);
@@ -19,13 +23,17 @@ describe('DecisionTree', () => {
   });
 
   test('should disable the back button and enable the next button', () => {
-    renderWithProviders(<DecisionTree userQuestionnaire={userQuestionnaire} callback={callback} />);
+    renderWithProviders(
+      <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
+    );
     expect(screen.getByText('Back').parentElement).toBeDisabled();
     expect(screen.getByText('Next').parentElement).not.toBeDisabled();
   });
 
   test('should render the second question', async () => {
-    renderWithProviders(<DecisionTree userQuestionnaire={userQuestionnaire} callback={callback} />);
+    renderWithProviders(
+      <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
+    );
 
     fireEvent.click(screen.getByText('Next').parentElement);
 
@@ -39,7 +47,9 @@ describe('DecisionTree', () => {
   });
 
   test('should disable the next button on a question and enable the back button', async () => {
-    renderWithProviders(<DecisionTree userQuestionnaire={userQuestionnaire} callback={callback} />);
+    renderWithProviders(
+      <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
+    );
 
     fireEvent.click(screen.getByText('Next').parentElement);
 
@@ -50,7 +60,9 @@ describe('DecisionTree', () => {
   });
 
   test('should enable next button on value select', async () => {
-    renderWithProviders(<DecisionTree userQuestionnaire={userQuestionnaire} callback={callback} />);
+    renderWithProviders(
+      <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
+    );
 
     fireEvent.click(screen.getByText('Next').parentElement);
 
@@ -64,7 +76,9 @@ describe('DecisionTree', () => {
   });
 
   test('should display the next question on answering', async () => {
-    renderWithProviders(<DecisionTree userQuestionnaire={userQuestionnaire} callback={callback} />);
+    renderWithProviders(
+      <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
+    );
 
     fireEvent.click(screen.getByText('Next').parentElement);
 
@@ -81,7 +95,9 @@ describe('DecisionTree', () => {
   });
 
   test('should enable the back button on the second answer', async () => {
-    renderWithProviders(<DecisionTree userQuestionnaire={userQuestionnaire} callback={callback} />);
+    renderWithProviders(
+      <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
+    );
 
     fireEvent.click(screen.getByText('Next').parentElement);
 
@@ -98,7 +114,9 @@ describe('DecisionTree', () => {
   });
 
   test('should come back to the first question on clicking back', async () => {
-    renderWithProviders(<DecisionTree userQuestionnaire={userQuestionnaire} callback={callback} />);
+    renderWithProviders(
+      <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
+    );
 
     await act(async () => {
       await fireEvent.click(screen.getByText('Next').parentElement);

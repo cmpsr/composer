@@ -2,12 +2,7 @@ import React, { FC, useState } from 'react';
 import { type CallToActionsProps } from './types';
 import { Flex, Button, IconArrowRight, IconArrowLeft } from '@cmpsr/components';
 
-export const CallToActions: FC<CallToActionsProps> = ({
-  isBackDisabled,
-  isNextDisabled,
-  goToPreviousQuestion,
-  goToNextQuestion,
-}) => {
+export const CallToActions: FC<CallToActionsProps> = ({ isNextDisabled, goToPreviousQuestion, goToNextQuestion }) => {
   const [isLoading, setIsloading] = useState<boolean>(false);
   return (
     <Flex
@@ -19,14 +14,7 @@ export const CallToActions: FC<CallToActionsProps> = ({
       borderTopStyle="solid"
       borderTopColor="ui-element-divider"
     >
-      <Button
-        onClick={goToPreviousQuestion}
-        variant="link"
-        isDisabled={isBackDisabled}
-        size="m"
-        leadingIcon={<IconArrowLeft />}
-        mr="spacer-4"
-      >
+      <Button onClick={goToPreviousQuestion} variant="link" size="m" leadingIcon={<IconArrowLeft />} mr="spacer-4">
         Back
       </Button>
       <Button

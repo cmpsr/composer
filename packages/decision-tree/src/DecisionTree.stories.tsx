@@ -11,6 +11,8 @@ const callback = async function (questionId, value) {
   return new Promise((resolve) => setTimeout(() => resolve(serverMockup[questionId]), 1500));
 } as UseSetupCallbackCB;
 
+const backOnFirstQuestion = () => {};
+
 export default {
   component: DecisionTree,
   title: 'DecisionTree/DecisionTree',
@@ -28,7 +30,11 @@ export const All = () => (
         <Td>Default</Td>
         <Td>
           <Box height="80svh">
-            <DecisionTree userQuestionnaire={userQuestionnaire as UserQuestionnaireType} callback={callback} />
+            <DecisionTree
+              backOnFirstQuestion={backOnFirstQuestion}
+              userQuestionnaire={userQuestionnaire as UserQuestionnaireType}
+              callback={callback}
+            />
           </Box>
         </Td>
       </Tr>
@@ -45,4 +51,5 @@ export const Playground = Template.bind({});
 Playground.args = {
   userQuestionnaire,
   callback,
+  backOnFirstQuestion,
 };

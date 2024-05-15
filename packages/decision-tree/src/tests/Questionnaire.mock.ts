@@ -2,18 +2,24 @@ import { UserQuestionnaireType } from '@types';
 
 // Temp file to test
 export const serverMockup = {
-  1: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: { '1': { type: 'singleChoice', value: '1' } } },
+  1: {
+    nextQuestion: { sectionId: '1', questionId: '2' },
+    answers: [{ sectionId: '1', questionId: '1', type: 'singleChoice', value: '1' }],
+  },
   2: {
     nextQuestion: { sectionId: '2', questionId: '3' },
-    answers: { '1': { type: 'singleChoice', value: '1' }, '2': { type: 'heightAnswer', feet: '5', inches: '5' } },
+    answers: [
+      { sectionId: '1', questionId: '1', type: 'singleChoice', value: '1' },
+      { sectionId: '1', questionId: '2', type: 'heightAnswer', feet: '5', inches: '5' },
+    ],
   },
   3: {
     nextQuestion: { sectionId: '3', questionId: '4' },
-    answers: {
-      '1': { type: 'singleChoice', value: '1' },
-      '2': { type: 'heightAnswer', feet: '5', inches: '5' },
-      '3': { type: 'multipleChoice', values: ['1', '2'] },
-    },
+    answers: [
+      { sectionId: '1', questionId: '1', type: 'singleChoice', value: '1' },
+      { sectionId: '1', questionId: '2', type: 'heightAnswer', feet: '5', inches: '5' },
+      { sectionId: '2', questionId: '3', type: 'multipleChoice', values: ['1', '2'] },
+    ],
   },
   4: null,
 };
@@ -23,7 +29,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
     questionId: '1',
     sectionId: '1',
   },
-  answers: {},
+  answers: [],
   questionnaire: {
     version: 1,
 

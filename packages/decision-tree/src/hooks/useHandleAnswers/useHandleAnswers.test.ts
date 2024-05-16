@@ -133,4 +133,148 @@ describe('useHandleAnswers', () => {
       });
     });
   });
+
+  test('should detect filled answers for height question feet answer', async () => {
+    const mockFn = jest.fn();
+    const previousAnswers = { '1': { type: 'height', feet: 5, inches: null } } as PreviousAnswersType;
+    const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
+
+    const { answersDispatch } = result.current;
+
+    await act(async () => {
+      await answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: previousAnswers });
+      await answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: '1' });
+    });
+    await waitFor(() => {
+      expect(result.current.state.isAnswered).toBeTruthy;
+    });
+  });
+
+  test('should detect filled answers for height question inches answer', async () => {
+    const mockFn = jest.fn();
+    const previousAnswers = { '1': { type: 'height', feet: null, inches: 5 } } as PreviousAnswersType;
+    const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
+
+    const { answersDispatch } = result.current;
+
+    await act(async () => {
+      await answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: previousAnswers });
+      await answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: '1' });
+    });
+    await waitFor(() => {
+      expect(result.current.state.isAnswered).toBeTruthy;
+    });
+  });
+
+  test('should detect non filled answers for height question', async () => {
+    const mockFn = jest.fn();
+    const previousAnswers = { '1': { type: 'height', feet: null, inches: null } } as PreviousAnswersType;
+    const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
+
+    const { answersDispatch } = result.current;
+
+    await act(async () => {
+      await answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: previousAnswers });
+      await answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: '1' });
+    });
+    await waitFor(() => {
+      expect(result.current.state.isAnswered).toBeFalsy;
+    });
+  });
+
+  test('should detect filled answers for singleChoice question', async () => {
+    const mockFn = jest.fn();
+    const previousAnswers = { '1': { type: 'singleChoice', value: '5' } } as PreviousAnswersType;
+    const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
+
+    const { answersDispatch } = result.current;
+
+    await act(async () => {
+      await answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: previousAnswers });
+      await answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: '1' });
+    });
+    await waitFor(() => {
+      expect(result.current.state.isAnswered).toBeTruthy;
+    });
+  });
+
+  test('should detect non filled answers for singleChoice question', async () => {
+    const mockFn = jest.fn();
+    const previousAnswers = { '1': { type: 'singleChoice', value: null } } as PreviousAnswersType;
+    const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
+
+    const { answersDispatch } = result.current;
+
+    await act(async () => {
+      await answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: previousAnswers });
+      await answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: '1' });
+    });
+    await waitFor(() => {
+      expect(result.current.state.isAnswered).toBeFalsy;
+    });
+  });
+
+  test('should detect filled answers for multipleChoice question', async () => {
+    const mockFn = jest.fn();
+    const previousAnswers = { '1': { type: 'multipleChoice', values: ['5'] } } as PreviousAnswersType;
+    const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
+
+    const { answersDispatch } = result.current;
+
+    await act(async () => {
+      await answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: previousAnswers });
+      await answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: '1' });
+    });
+    await waitFor(() => {
+      expect(result.current.state.isAnswered).toBeTruthy;
+    });
+  });
+
+  test('should detect non filled answers for multipleChoice question', async () => {
+    const mockFn = jest.fn();
+    const previousAnswers = { '1': { type: 'multipleChoice', values: null } } as PreviousAnswersType;
+    const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
+
+    const { answersDispatch } = result.current;
+
+    await act(async () => {
+      await answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: previousAnswers });
+      await answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: '1' });
+    });
+    await waitFor(() => {
+      expect(result.current.state.isAnswered).toBeFalsy;
+    });
+  });
+
+  test('should detect filled answers for numeric question', async () => {
+    const mockFn = jest.fn();
+    const previousAnswers = { '1': { type: 'numeric', value: 5 } } as PreviousAnswersType;
+    const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
+
+    const { answersDispatch } = result.current;
+
+    await act(async () => {
+      await answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: previousAnswers });
+      await answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: '1' });
+    });
+    await waitFor(() => {
+      expect(result.current.state.isAnswered).toBeTruthy;
+    });
+  });
+
+  test('should detect non filled answers for numeric question', async () => {
+    const mockFn = jest.fn();
+    const previousAnswers = { '1': { type: 'numeric', value: null } } as PreviousAnswersType;
+    const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
+
+    const { answersDispatch } = result.current;
+
+    await act(async () => {
+      await answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: previousAnswers });
+      await answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: '1' });
+    });
+    await waitFor(() => {
+      expect(result.current.state.isAnswered).toBeFalsy;
+    });
+  });
 });

@@ -67,7 +67,7 @@ const isAnswerFilled = (answer: AnswerModel | null): boolean => {
     case 'numeric':
       return !!answer.value;
     case 'multipleChoice':
-      return answer.values.length > 0;
+      return answer.values?.length > 0;
     case 'height':
       return !!answer.feet || !!answer.inches;
     default:

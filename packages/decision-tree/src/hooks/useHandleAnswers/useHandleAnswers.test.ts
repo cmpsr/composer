@@ -1,7 +1,8 @@
 import { renderHookWithProviders, act, waitFor } from '@tests/renderHookWithProviders';
 import { useHandleAnswers } from './useHandleAnswers';
 import { UseSetupCallbackCB } from '@types';
-import { HandleAnswersActions, useHandleActionResponse } from './types';
+import { HandleAnswersActions, PreviousAnswersType, useHandleActionResponse } from './types';
+import { sectionIntroId } from '../../DecisionTree.normalizer';
 
 describe('useHandleAnswers', () => {
   const serverMockup = {
@@ -77,6 +78,59 @@ describe('useHandleAnswers', () => {
     });
     await waitFor(() => {
       expect(result.current.state.answer).toBeNull();
+    });
+  });
+
+  test('should save the previous answers', async () => {
+    const mockFn = jest.fn();
+    const previousAnswers = { '1': { type: 'iDontKnow' } } as PreviousAnswersType;
+    const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
+
+    const { answersDispatch } = result.current;
+
+    await act(async () => {
+      await answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: previousAnswers });
+    });
+    await waitFor(() => {
+      expect(result.current.state.previousAnswers).toEqual(previousAnswers);
+    });
+  });
+
+  test('should get the previous answers', async () => {
+    const mockFn = jest.fn();
+    const previousAnswers = { '1': { type: 'iDontKnow' } } as PreviousAnswersType;
+    const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
+
+    const { answersDispatch } = result.current;
+
+    await act(async () => {
+      await answersDispatch({ type: HandleAnswersActions.SetPreviousAnswers, payload: previousAnswers });
+      await answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: '1' });
+    });
+    await waitFor(() => {
+      expect(result.current.state.answer).toEqual(previousAnswers['1']);
+      expect(result.current.state.isAnswered).toBeTruthy;
+    });
+  });
+
+  test('should override the callback when sending a sectionIntro', async () => {
+    const mockFn = jest.fn();
+    const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
+
+    const { answersDispatch, submitAnswer } = result.current;
+
+    await act(async () => {
+      await answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload: 'stringAnswer' });
+    });
+
+    await waitFor(async () => {
+      const submitResult = await submitAnswer(`${'1'}${sectionIntroId}`);
+      expect(submitResult).toEqual({
+        nextQuestion: { sectionId: 'nextQuestionOverride', questionId: 'nextQuestionOverride' },
+        answers: {},
+        version: 0,
+        sections: [],
+      });
     });
   });
 });

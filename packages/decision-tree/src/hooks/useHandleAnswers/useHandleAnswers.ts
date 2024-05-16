@@ -48,6 +48,7 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
         version: 0,
         sections: [],
       };
+    console.log('WAT');
     return await callback(questionId, state.answer as AnswerModel);
   };
 

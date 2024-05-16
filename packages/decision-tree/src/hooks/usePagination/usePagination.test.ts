@@ -117,4 +117,72 @@ describe('usePagination', () => {
       });
     });
   });
+
+  test('should trigger the next question on gotoNextQuesiton Function', async () => {
+    const submitAnswerMock = jest
+      .fn()
+      .mockResolvedValue({ nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} });
+    const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
+      steps,
+      initialState,
+      answersDispatch,
+      submitAnswer: submitAnswerMock,
+    });
+
+    const { goToNextQuestion } = result.current;
+
+    await act(async () => {
+      await goToNextQuestion();
+    });
+
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ currentSection: '1', currentQuestion: '1' });
+    });
+  });
+
+  test('should not trigger the next question on gotoNextQuesiton Function when empty response', async () => {
+    const submitAnswerMock = jest.fn().mockResolvedValue({ nextQuestion: {}, answers: {} });
+    const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
+      steps,
+      initialState,
+      answersDispatch,
+      submitAnswer: submitAnswerMock,
+    });
+
+    const { goToNextQuestion } = result.current;
+
+    await act(async () => {
+      await goToNextQuestion();
+    });
+
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ currentQuestion: '1-section-intro', currentSection: '1' });
+    });
+  });
+
+  test('should not trigger the next question on gotoNextQuesiton Function when empty response', async () => {
+    const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
+      steps,
+      initialState,
+      answersDispatch,
+      submitAnswer,
+    });
+
+    const { paginationDispatch } = result.current;
+
+    await act(async () => {
+      await paginationDispatch({
+        type: PaginationActions.NextQuestion,
+        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} },
+      });
+      await paginationDispatch({
+        type: PaginationActions.NextQuestion,
+        payload: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: {} },
+      });
+    });
+
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ currentQuestion: '2', currentSection: '1' });
+    });
+  });
 });

@@ -1,4 +1,5 @@
-import { QuestionBase, QuestionProps } from '@components/Question/types';
+import { QuestionBase } from '@components/Question/types';
+import { AnswerModel } from '@hooks';
 
 type Choice = {
   id: string;
@@ -16,7 +17,8 @@ export type SingleChoiceAnswer = {
   value: string;
 };
 
-export interface SingleChoiceProps extends QuestionProps {
+export type SingleChoiceProps = {
   data: SingleChoiceQuestion;
   defaultValue?: SingleChoiceAnswer;
-}
+  saveAnswer: (payload: AnswerModel) => void;
+};

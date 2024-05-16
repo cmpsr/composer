@@ -10,13 +10,13 @@ export const Height: FC<HeightProps> = ({ data, saveAnswer, defaultValue }) => {
   const [answers, setAnswers] = useState<HeightAnswer>({ type: 'height', feet: null, inches: null });
 
   const handleChangeFeet = ({ currentTarget }) => {
-    const newAnswer = { ...answers, feet: currentTarget.value.replace(feet.trailingMask, '') };
+    const newAnswer = { ...answers, feet: Number(currentTarget.value.replace(` ${feet.trailingMask}`, '')) };
     setAnswers(newAnswer);
     saveAnswer(newAnswer);
   };
 
   const handleChangeInches = ({ currentTarget }) => {
-    const newAnswer = { ...answers, inches: currentTarget.value.replace(inches.trailingMask, '') };
+    const newAnswer = { ...answers, inches: Number(currentTarget.value.replace(` ${inches.trailingMask}`, '')) };
     setAnswers(newAnswer);
     saveAnswer(newAnswer);
   };

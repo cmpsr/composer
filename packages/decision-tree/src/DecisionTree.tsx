@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import { StepBar } from './components/StepBar';
 import { CallToActions } from './components/CallToActions';
 import { Question } from './components/Question';
@@ -8,7 +8,7 @@ import { Flex } from '@cmpsr/components';
 import { normalizeQuestionnaire } from './DecisionTree.normalizer';
 
 export const DecisionTree: FC<DecisionTreeProps> = ({ questionnaire, callback, firstQuestion, renderSectionIntro }) => {
-  const normalizedQuestionnaire = normalizeQuestionnaire(questionnaire);
+  const normalizedQuestionnaire = useMemo(() => normalizeQuestionnaire(questionnaire), [questionnaire]);
   const steps: Steps = normalizedQuestionnaire.sections.map(({ id, name }) => ({ id, name }));
   const initialState = firstQuestion ?? {
     questionId: normalizedQuestionnaire.nextQuestion.questionId,

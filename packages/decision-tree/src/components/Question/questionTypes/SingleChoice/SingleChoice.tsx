@@ -9,18 +9,20 @@ export const SingleChoice: FC<SingleChoiceProps> = ({ data, saveAnswer, defaultV
   const { label, options, tooltip, whyWeAskExplanation } = data;
 
   const handleChange = (nextValue) => saveAnswer({ type: 'singleChoice', value: nextValue });
+  const labels = options.map(({ label }) => label).join('');
+  const randomString = labels + label;
 
   return (
     <Box>
       <QuestionTitle question={label} tooltip={tooltip} whyWeAskExplanation={whyWeAskExplanation} />
-      <RadioGroup onChange={handleChange} defaultValue={defaultValue?.value}>
+      <RadioGroup onChange={handleChange} defaultValue={defaultValue?.value.split('$!$')[0]}>
         {options.map(({ id, label, description }) => (
           <QuestionOption
             mx={inputMargin}
             key={`SingleChoice-${id}`}
             componentType="radio"
             componentProps={{
-              value: id,
+              value: `${id}$!$${randomString}`,
             }}
             label={label}
             description={description}

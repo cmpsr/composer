@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Box, Text } from '@cmpsr/components';
-import { SectionIntroProps, SectionIntroQuestion } from './types';
+import { SectionIntroProps } from './types';
 
 export const SectionIntro: FC<SectionIntroProps> = ({ data, renderSectionIntroProps }) => {
-  const { question, description, orderNumber } = data as SectionIntroQuestion;
+  const { question, description, orderNumber } = data;
 
   if (renderSectionIntroProps) return renderSectionIntroProps(question, description, orderNumber);
 

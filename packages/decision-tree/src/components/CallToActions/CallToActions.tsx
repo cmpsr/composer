@@ -28,7 +28,7 @@ export const CallToActions: FC<CallToActionsProps> = ({
       <Button
         onClick={goToPreviousQuestion}
         variant="link"
-        isDisabled={isBackDisabled}
+        isDisabled={isBackDisabled || isLoading}
         size="m"
         leadingIcon={<IconArrowLeft />}
         mr="spacer-4"

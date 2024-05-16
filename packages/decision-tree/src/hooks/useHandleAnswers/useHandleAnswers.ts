@@ -70,7 +70,5 @@ const isAnswerFilled = (answer: AnswerModel | null): boolean => {
       return answer.values?.length > 0;
     case 'height':
       return !!answer.feet || !!answer.inches;
-    default:
-      return true;
   }
 };

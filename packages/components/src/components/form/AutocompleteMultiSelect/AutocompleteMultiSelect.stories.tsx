@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react';
-import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { autocompleteMultiSelectSizes } from './types';
-import { IconCloud } from '../../media/Icons';
 import { AutocompleteMultiSelect } from './AutocompleteMultiSelect';
+import { Tag } from '@components/dataDisplay';
+import { IconX } from '@components/media';
 
 export default {
   component: AutocompleteMultiSelect,
@@ -17,9 +17,13 @@ export default {
 } as Meta;
 
 const defaultItems = [
-  { label: 'Super-Fast Websites', value: 'Super-Fast Websites' },
-  { label: 'Optimized Performance', value: 'Optimized Performance' },
-  { label: 'Seamless Integration', value: 'Seamless Integration' },
+  'Super-Fast Websites',
+  'Optimized Performance',
+  'Seamless Integration',
+  'Responsive Design',
+  'Improved SEO',
+  'Effortless Scaling',
+  'Easy Deployment',
 ];
 
 // const AllTemplate = () => {
@@ -119,10 +123,24 @@ const Template = () => {
         items,
         onInputValueChange: ({ inputValue }) => {
           if (!inputValue) setItems(defaultItems);
-          setItems(defaultItems.filter((item) => item.label.includes(inputValue)));
+          setItems(defaultItems.filter((item) => item.includes(inputValue)));
         },
       }}
-    />
+    >
+      {/* @ts-ignore */}
+      <AutocompleteMultiSelect.SelectedItems
+        renderSelectedItem={(selectedItem: string, removeSelectedItem) => (
+          <Tag>
+            <Tag.Label>{selectedItem}</Tag.Label>
+            <Tag.RightIcon as={IconX} onClick={removeSelectedItem} />
+          </Tag>
+        )}
+      />
+      {/* @ts-ignore */}
+      <AutocompleteMultiSelect.Input placeholder="Search for a feature" />
+      {/* @ts-ignore */}
+      <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
+    </AutocompleteMultiSelect>
   );
 };
 

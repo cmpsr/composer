@@ -9,8 +9,6 @@ export const SingleChoice: FC<SingleChoiceProps> = ({ data, saveAnswer, defaultV
   const { label, options, tooltip, whyWeAskExplanation } = data;
 
   const handleChange = (nextValue) => saveAnswer({ type: 'singleChoice', value: nextValue });
-  const labels = options.map(({ label }) => label).join('');
-  const randomString = labels + label;
 
   return (
     <Box>
@@ -22,7 +20,7 @@ export const SingleChoice: FC<SingleChoiceProps> = ({ data, saveAnswer, defaultV
             key={`SingleChoice-${id}`}
             componentType="radio"
             componentProps={{
-              value: `${id}$!$${randomString}`,
+              value: id,
             }}
             label={label}
             description={description}

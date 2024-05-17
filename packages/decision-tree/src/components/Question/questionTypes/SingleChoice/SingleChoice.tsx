@@ -13,7 +13,7 @@ export const SingleChoice: FC<SingleChoiceProps> = ({ data, saveAnswer, defaultV
   return (
     <Box>
       <QuestionTitle question={label} tooltip={tooltip} whyWeAskExplanation={whyWeAskExplanation} />
-      <RadioGroup onChange={handleChange} defaultValue={defaultValue?.value.split('$!$')[0]}>
+      <RadioGroup onChange={handleChange} defaultValue={defaultValue?.value}>
         {options.map(({ id, label, description }) => (
           <QuestionOption
             mx={inputMargin}

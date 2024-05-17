@@ -20,7 +20,7 @@ describe('Question', () => {
     submitIDKAnswer.mockReset();
   });
 
-  test('should render a singleChoide component when calling one', () => {
+  test('should render a singleChoice component when calling one', () => {
     const data = {
       ...baseData,
       type: 'singleChoice',

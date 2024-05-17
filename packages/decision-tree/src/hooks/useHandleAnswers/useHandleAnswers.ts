@@ -16,7 +16,6 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
     switch (type) {
       case HandleAnswersActions.SaveAnswer: {
         const answer = payload as AnswerModel;
-        console.log(answer, 'ASNWERER');
         return { ...state, answer, isAnswered: isAnswerFilled(answer) };
       }
       case HandleAnswersActions.ResetAnswer:
@@ -30,7 +29,6 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
         const previousAnswer = state.previousAnswers.find(
           (answeredQuestion) => answeredQuestion.questionId === questionId
         );
-        console.log(previousAnswer?.answer, 'answer so des');
 
         return {
           ...state,

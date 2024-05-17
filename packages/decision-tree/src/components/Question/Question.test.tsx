@@ -8,7 +8,6 @@ describe('Question', () => {
   const baseData = {
     id: '1',
     label: 'hello there!',
-    tooltip: 'question tooltip',
   } as QuestionBase;
 
   const saveAnswer = jest.fn();

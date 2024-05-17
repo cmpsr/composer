@@ -10,7 +10,6 @@ export interface QuestionBase {
   description?: string;
   skippable?: boolean;
   label: string;
-  tooltip?: string | null;
   whyWeAskExplanation?: string;
 }
 

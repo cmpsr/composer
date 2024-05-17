@@ -6,7 +6,7 @@ import { DecisionTreeInput } from '@components/Question/components/DecisionTreeI
 import { inputMargin } from '@components/Question/Question';
 
 export const Numeric: FC<NumericProps> = ({ data, saveAnswer, defaultValue }) => {
-  const { label, tooltip, id, placeholder, trailingMask, whyWeAskExplanation } = data;
+  const { label, id, placeholder, trailingMask, whyWeAskExplanation } = data;
 
   const handleChange = ({ currentTarget }) => {
     saveAnswer({ type: 'numeric', value: Number(currentTarget.value.replace(trailingMask, '')) });
@@ -14,7 +14,7 @@ export const Numeric: FC<NumericProps> = ({ data, saveAnswer, defaultValue }) =>
 
   return (
     <Box>
-      <QuestionTitle question={label} tooltip={tooltip} whyWeAskExplanation={whyWeAskExplanation} />
+      <QuestionTitle question={label} whyWeAskExplanation={whyWeAskExplanation} />
       <Flex px={inputMargin}>
         <DecisionTreeInput
           trailingMask={trailingMask}

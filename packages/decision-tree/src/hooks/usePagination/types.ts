@@ -45,7 +45,8 @@ export type PaginationProps = {
 
 export type AnsweredQuestionsType = Array<AnsweredQuestion>;
 
-type AnsweredQuestion = AnswerModel & {
+type AnsweredQuestion = {
   questionId: string;
   sectionId: string;
+  answer: AnswerModel;
 };

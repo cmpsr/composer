@@ -1,8 +1,8 @@
 // la interfaz de items debe ser genérico
 // no puede haber nada relacionado con label/value en el código
 // eliminar los ts-ignore
-// modular el componente
 // ui...
+// mirar que no haya errores en la consola
 
 import React, { FC, useRef, useState } from 'react';
 import { useMultipleSelection, useCombobox } from 'downshift';

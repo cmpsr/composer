@@ -117,13 +117,16 @@ const Template = () => {
 
       useMultipleSelectionProps={{
         // defaultSelectedItems: items,
-        onSelectedItemsChange: (props) => console.log(props),
+        onSelectedItemsChange: ({ selectedItems }) => {
+          setItems((prevItems) => prevItems.filter((item) => !selectedItems.includes(item)));
+        },
       }}
       useComboboxProps={{
         items,
-        onInputValueChange: ({ inputValue }) => {
-          if (!inputValue) setItems(defaultItems);
-          setItems(defaultItems.filter((item) => item.includes(inputValue)));
+        onInputValueChange: ({ inputValue, ...rest }) => {
+          console.log('writing ', rest);
+          // if (!inputValue) setItems(defaultItems);
+          // setItems(defaultItems.filter((item) => item.includes(inputValue)));
         },
       }}
     >

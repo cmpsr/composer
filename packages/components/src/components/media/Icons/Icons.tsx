@@ -6,22 +6,18 @@
 // yarn gen:icons
 //
 import React from 'react';
-import {
-  CSSWithMultiValues,
-  Icon,
-  RecursiveCSSObject,
-  useStyleConfig,
-} from '@chakra-ui/react';
+import { CSSWithMultiValues, Icon, RecursiveCSSObject, forwardRef, useStyleConfig } from '@chakra-ui/react';
 import * as Tabler from '@tabler/icons-react';
 import { IconProps } from './types';
 
-const withIcon = (Component: React.FC, props: IconProps) => {
+// TODO: 🚨 UPDATE THE SCRIPT TO ADD FORWARDREF TO THE ICONS, THIS FILE SHOULDNT BE UPDATED MANUALLY
+const withIcon = (Component: React.FC, props: IconProps, ref?: any) => {
   const styles = useStyleConfig('Icon', { size: props?.size }) as Record<
     string,
     RecursiveCSSObject<CSSWithMultiValues>
   >;
   return (
-    <Icon {...styles} {...props}>
+    <Icon {...styles} {...props} ref={ref}>
       <Component />
     </Icon>
   );
@@ -65,7 +61,7 @@ export const IconCaretLeft = (props: IconProps) => withIcon(Tabler.IconCaretLeft
 export const IconCaretRight = (props: IconProps) => withIcon(Tabler.IconCaretRight, props);
 export const IconCaretUp = (props: IconProps) => withIcon(Tabler.IconCaretUp, props);
 export const IconCheck = (props: IconProps) => withIcon(Tabler.IconCheck, props);
-export const IconChevronDown = (props: IconProps) => withIcon(Tabler.IconChevronDown, props);
+export const IconChevronDown = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconChevronDown, props, ref));
 export const IconChevronLeft = (props: IconProps) => withIcon(Tabler.IconChevronLeft, props);
 export const IconChevronRight = (props: IconProps) => withIcon(Tabler.IconChevronRight, props);
 export const IconChevronUp = (props: IconProps) => withIcon(Tabler.IconChevronUp, props);

@@ -4,7 +4,7 @@
 // ui...
 // mirar que no haya errores en la consola
 
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useMemo, useRef, useState } from 'react';
 import { useMultipleSelection, useCombobox } from 'downshift';
 import {
   AutocompleteMultiSelectContextProps,
@@ -22,7 +22,6 @@ const [AutocompleteMultiSelectProvider, useAutocompleteMultiSelectContext] =
   createContext<AutocompleteMultiSelectContextProps>({});
 
 export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
-  // items,
   children,
   useComboboxProps,
   useMultipleSelectionProps,
@@ -30,37 +29,54 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
   const [inputValue, setInputValue] = useState('');
 
   //Gestiona los elementos seleccionados, permitiendo añadir o quitar elementos mediante el teclado o programáticamente. Se configura para actualizar el estado de selectedItems cuando se eliminan elementos.
-  const { selectedItems, addSelectedItem, removeSelectedItem, setSelectedItems, getSelectedItemProps } =
-    useMultipleSelection({
-      onStateChange: (changes) => {
-        if ('selectedItems' in changes && 'type' in changes) {
-          // @ts-ignore
-          const { type, selectedItem } = changes;
-          switch (type) {
-            case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
-              if (selectedItem) {
-                // @ts-ignore
-                setSelectedItems((currentSelectedItems) =>
-                  currentSelectedItems.filter((item) => item.id !== selectedItem.id)
-                );
-              }
-              break;
-            case useMultipleSelection.stateChangeTypes.FunctionAddSelectedItem:
-              // Verificar contra todos los seleccionados antes de añadir
-              if (selectedItem && !selectedItems.find((item) => item === selectedItem)) {
-                // @ts-ignore
-                setSelectedItems((currentSelectedItems) => [...currentSelectedItems, selectedItem]);
-                setInputValue('');
-              }
-              break;
-            default:
-              break;
-          }
+  const {
+    selectedItems,
+    addSelectedItem,
+    removeSelectedItem,
+    setSelectedItems,
+    getSelectedItemProps,
+    getDropdownProps,
+  } = useMultipleSelection({
+    onStateChange: (changes) => {
+      if ('selectedItems' in changes && 'type' in changes) {
+        // @ts-ignore
+        const { type, selectedItem } = changes;
+        switch (type) {
+          case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
+            if (selectedItem) {
+              // @ts-ignore
+              setSelectedItems((currentSelectedItems) => currentSelectedItems.filter((item) => item !== selectedItem));
+            }
+            break;
+          case useMultipleSelection.stateChangeTypes.FunctionAddSelectedItem:
+            // Verificar contra todos los seleccionados antes de añadir
+            if (selectedItem && !selectedItems.find((item) => item === selectedItem)) {
+              // @ts-ignore
+              setSelectedItems((currentSelectedItems) => [...currentSelectedItems, selectedItem]);
+              setInputValue('');
+            }
+            break;
+          default:
+            break;
         }
-      },
-      ...useMultipleSelectionProps,
-    });
+      }
+    },
+    ...useMultipleSelectionProps,
+  });
 
+  const { items: defaultItems = [] } = useComboboxProps;
+
+  const getFilteredItems = (selectedItems, inputValue) => {
+    const lowerCasedInputValue = inputValue.toLowerCase();
+    return defaultItems.filter(
+      (item) =>
+        !selectedItems.includes(item) &&
+        // @ts-ignore
+        item?.toLowerCase().includes(lowerCasedInputValue)
+    );
+  };
+
+  const filteredItems = useMemo(() => getFilteredItems(selectedItems, inputValue), [selectedItems, inputValue]);
   // Gestiona la interacción con el menú desplegable. Controla el estado de apertura del menú, el ítem destacado, y las actualizaciones del campo de entrada. También se configura para manejar la selección de ítems y cerrar el menú tras la selección, manteniendo el primer ítem siempre destacado.
 
   const {
@@ -72,12 +88,15 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
     highlightedIndex,
     getItemProps,
   } = useCombobox({
-    // items,
+    items: filteredItems,
     inputValue,
     onSelectedItemChange: ({ selectedItem }) => {
-      selectedItem && addSelectedItem(selectedItem);
+      if (selectedItem && !selectedItems.includes(selectedItem)) {
+        // @ts-ignore
+        setSelectedItems((prevSelectedItems) => [...prevSelectedItems, selectedItem]);
+        setInputValue(''); // Reset input value when an item is selected
+      }
     },
-    // itemToString: (item) => (item ? item.label : ''),
     stateReducer: (state, actionAndChanges) => {
       const { changes, type } = actionAndChanges;
       switch (type) {
@@ -98,28 +117,20 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
             setInputValue('');
           }
           break;
-
         case useCombobox.stateChangeTypes.InputChange:
           setInputValue(newInputValue);
-
           break;
         default:
           break;
       }
     },
-    ...useComboboxProps,
   });
-
-  // const onReset = useCallback(() => {
-  //   reset?.();
-  //   ref?.current?.focus?.();
-  // }, []);
 
   return (
     <AutocompleteMultiSelectProvider
       value={{
         isOpen,
-        items: useComboboxProps.items,
+        items: filteredItems,
         getMenuProps,
         getInputProps,
         getItemProps,
@@ -130,6 +141,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
         selectedItems,
         removeSelectedItem,
         getSelectedItemProps,
+        getDropdownProps,
       }}
     >
       {children}
@@ -138,12 +150,19 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
 };
 
 const AutocompleteMultiSelectInput: FC<InputProps> = (props) => {
-  const { getInputProps, getToggleButtonProps } = useAutocompleteMultiSelectContext();
+  // @ts-ignore
+  const { getInputProps, getToggleButtonProps, getDropdownProps, isOpen } = useAutocompleteMultiSelectContext();
   const ref = useRef<HTMLInputElement>(null);
-  const inputProps = getInputProps({ ref });
+  const inputProps = getInputProps({ ...getDropdownProps({ preventKeyAction: isOpen, ref }) });
 
   return (
-    <Input trailingIcon={<IconChevronDown cursor="pointer" {...getToggleButtonProps()} />} {...inputProps} {...props} />
+    // @ts-ignore
+    <Input
+      // TODO: 🚨 The icon doesn't accept a ref prop so we wrap it in a Box component but that will cause issues with how the size is auto-calculated in the Input
+      trailingIcon={<IconChevronDown cursor="pointer" {...getToggleButtonProps()} />}
+      {...inputProps}
+      {...props}
+    />
   );
 };
 //@ts-ignore
@@ -156,7 +175,7 @@ const AutocompleteMultiSelectList: FC<AutocompleteMultiSelectListProps> = ({
 }) => {
   const { isOpen, items, getItemProps, getMenuProps } = useAutocompleteMultiSelectContext();
 
-  // TODO: Implementar estilos
+  // TODO: 🚨 Implementar estilos
   // const styles = useStyleConfig('Autocomplete') as Record<
   //   string,
   //   RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>

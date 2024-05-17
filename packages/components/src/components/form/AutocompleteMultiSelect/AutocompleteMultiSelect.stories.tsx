@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Meta } from '@storybook/react';
 import { autocompleteMultiSelectSizes } from './types';
 import { AutocompleteMultiSelect } from './AutocompleteMultiSelect';
@@ -25,6 +25,38 @@ const defaultItems = [
   'Effortless Scaling',
   'Easy Deployment',
 ];
+
+// TODO: 🚨 AUTOCOMPLETE SHOULD SUPPORT GENERIC INTERFACES, IT SHOULD KNOW HOW TO DEAL WITH DIFFERENT STRUCTURE TYPES (?)
+// const defaultItems = [
+//   {
+//     id: 1,
+//     name: 'Super-Fast Websites',
+//   },
+//   {
+//     id: 2,
+//     name: 'Optimized Performance',
+//   },
+//   {
+//     id: 3,
+//     name: 'Seamless Integration',
+//   },
+//   {
+//     id: 4,
+//     name: 'Responsive Design',
+//   },
+//   {
+//     id: 5,
+//     name: 'Improved SEO',
+//   },
+//   {
+//     id: 6,
+//     name: 'Effortless Scaling',
+//   },
+//   {
+//     id: 7,
+//     name: 'Easy Deployment',
+//   },
+// ];
 
 // const AllTemplate = () => {
 //   const states = ['default', 'filled', 'disabled', 'disabled-and-filled', 'error'];
@@ -109,25 +141,15 @@ const defaultItems = [
 // export const All = AllTemplate.bind({});
 
 const Template = () => {
-  const [items, setItems] = useState(defaultItems);
-
   return (
     <AutocompleteMultiSelect
       // @ts-ignore
-
       useMultipleSelectionProps={{
         // defaultSelectedItems: items,
-        onSelectedItemsChange: ({ selectedItems }) => {
-          setItems((prevItems) => prevItems.filter((item) => !selectedItems.includes(item)));
-        },
+        onSelectedItemsChange: console.log,
       }}
       useComboboxProps={{
-        items,
-        onInputValueChange: ({ inputValue, ...rest }) => {
-          console.log('writing ', rest);
-          // if (!inputValue) setItems(defaultItems);
-          // setItems(defaultItems.filter((item) => item.includes(inputValue)));
-        },
+        items: defaultItems,
       }}
     >
       {/* @ts-ignore */}
@@ -142,7 +164,9 @@ const Template = () => {
       {/* @ts-ignore */}
       <AutocompleteMultiSelect.Input placeholder="Search for a feature" />
       {/* @ts-ignore */}
-      <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
+      <AutocompleteMultiSelect.List
+        renderItem={(item: string) => <div style={{ padding: '20px', backgroundColor: '#eaeaea' }}>{item}</div>}
+      />
     </AutocompleteMultiSelect>
   );
 };

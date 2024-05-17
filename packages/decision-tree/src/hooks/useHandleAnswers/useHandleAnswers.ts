@@ -16,6 +16,7 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
     switch (type) {
       case HandleAnswersActions.SaveAnswer: {
         const answer = payload as AnswerModel;
+        console.log(answer, 'ASNWERER');
         return { ...state, answer, isAnswered: isAnswerFilled(answer) };
       }
       case HandleAnswersActions.ResetAnswer:
@@ -26,12 +27,15 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
       }
       case HandleAnswersActions.GetPreviousAnswer: {
         const questionId = payload as string;
-        const answer = state.previousAnswers.find((answeredQuestion) => answeredQuestion.questionId === questionId);
+        const previousAnswer = state.previousAnswers.find(
+          (answeredQuestion) => answeredQuestion.questionId === questionId
+        );
+        console.log(previousAnswer?.answer, 'answer so des');
 
         return {
           ...state,
-          answer,
-          isAnswered: isAnswerFilled(answer),
+          answer: previousAnswer?.answer,
+          isAnswered: isAnswerFilled(previousAnswer?.answer),
         };
       }
     }

@@ -10,7 +10,7 @@ export const AutocompleteMultiSelect: ComponentStyleConfig = {
       position: 'absolute',
       borderRadius: 'radii-card',
       paddingX: '0',
-      paddingY: '1rem',
+      paddingY: 'spacer-2',
       boxShadow: 'elevation-interactive',
       backgroundColor: 'background-card',
       listStyleType: 'none',
@@ -18,8 +18,8 @@ export const AutocompleteMultiSelect: ComponentStyleConfig = {
     item: {
       color: 'text-primary',
       textStyle: 'text-body-regular',
-      paddingX: '1rem',
-      paddingY: '0.5rem',
+      paddingX: 'spacer-4',
+      paddingY: 'spacer-2',
       _active: {
         backgroundColor: 'background-action-pressed',
       },

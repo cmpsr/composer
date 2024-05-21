@@ -4,7 +4,7 @@
 // ui...
 // mirar que no haya errores en la consola
 
-import React, { FC, useMemo, useRef, useState } from 'react';
+import React, { FC, useMemo, useRef, useState, useCallback } from 'react';
 import { useMultipleSelection, useCombobox } from 'downshift';
 import {
   AutocompleteMultiSelectContextProps,
@@ -87,6 +87,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
     getToggleButtonProps,
     highlightedIndex,
     getItemProps,
+    reset,
   } = useCombobox({
     items: filteredItems,
     inputValue,
@@ -142,6 +143,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
         removeSelectedItem,
         getSelectedItemProps,
         getDropdownProps,
+        reset,
       }}
     >
       {children}
@@ -149,19 +151,38 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
   );
 };
 
-const AutocompleteMultiSelectInput: FC<InputProps> = (props) => {
+const AutocompleteMultiSelectInput: FC<InputProps> = ({ clearButtonMode = 'has-value', ...rest }) => {
   // @ts-ignore
-  const { getInputProps, getToggleButtonProps, getDropdownProps, isOpen } = useAutocompleteMultiSelectContext();
+  const { reset, getInputProps, getToggleButtonProps, getDropdownProps, isOpen } = useAutocompleteMultiSelectContext();
   const ref = useRef<HTMLInputElement>(null);
   const inputProps = getInputProps({ ...getDropdownProps({ preventKeyAction: isOpen, ref }) });
+
+  const clearButtonConditions = {
+    'has-value': inputProps.value,
+    never: false,
+    always: true,
+  };
+  const shouldShowClearButton = clearButtonConditions[clearButtonMode];
+
+  const onReset = useCallback(() => {
+    reset?.();
+    ref?.current?.focus?.();
+  }, []);
 
   return (
     // @ts-ignore
     <Input
-      // TODO: 🚨 The icon doesn't accept a ref prop so we wrap it in a Box component but that will cause issues with how the size is auto-calculated in the Input
-      trailingIcon={<IconChevronDown cursor="pointer" {...getToggleButtonProps()} />}
+      trailingIcon={
+        shouldShowClearButton ? (
+          <IconX data-testid="cmpsr.autocomplete.clear-button" cursor="pointer" onClick={onReset} />
+        ) : isOpen ? (
+          <IconChevronUp cursor="pointer" {...getToggleButtonProps()} />
+        ) : (
+          <IconChevronDown cursor="pointer" {...getToggleButtonProps()} />
+        )
+      }
       {...inputProps}
-      {...props}
+      {...rest}
     />
   );
 };

@@ -10,12 +10,11 @@ export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, saveAnswer, defa
   const [answers, setAnswers] = useState<MultipleChoiceAnswer>({ type: 'multipleChoice', values: [] });
 
   const handleChange = ({ currentTarget }) => {
-    if (currentTarget.checked) {
-      setAnswers({ ...answers, values: [...answers.values, currentTarget.value] });
-    } else {
-      setAnswers({ ...answers, values: answers.values.filter((answer) => answer !== currentTarget.value) });
-    }
-    saveAnswer(answers);
+    const newAnswers = !currentTarget.checked
+      ? { ...answers, values: answers.values.filter((answer) => answer !== currentTarget.value) }
+      : { ...answers, values: [...answers.values, currentTarget.value] };
+    setAnswers(newAnswers);
+    saveAnswer(newAnswers);
   };
 
   return (

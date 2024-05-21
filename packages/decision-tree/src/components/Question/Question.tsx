@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { type QuestionProps } from './types';
 import { Flex, Box } from '@cmpsr/components';
-import { Height, SingleChoice, MultipleChoice, Numeric } from './questionTypes';
+import { Height, SingleChoice, MultipleChoice, Numeric, SectionIntro } from './questionTypes';
 import { IDontKnowButton } from './components/IDontKnowButton';
 
 const questionTypesMap = {
@@ -9,6 +9,7 @@ const questionTypesMap = {
   singleChoice: (props) => <SingleChoice {...props} />,
   multipleChoice: (props) => <MultipleChoice {...props} />,
   numeric: (props) => <Numeric {...props} />,
+  sectionIntro: (props) => <SectionIntro {...props} />,
 };
 
 export const Question: FC<QuestionProps> = ({ submitIDKAnswer, paginationDispatch, ...props }) => (

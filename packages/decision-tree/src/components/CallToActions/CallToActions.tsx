@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { type CallToActionsProps } from './types';
 import { Flex, Button, IconArrowRight, IconArrowLeft } from '@cmpsr/components';
 
@@ -7,34 +7,44 @@ export const CallToActions: FC<CallToActionsProps> = ({
   isNextDisabled,
   goToPreviousQuestion,
   goToNextQuestion,
-}) => (
-  <Flex
-    justifyContent="center"
-    px="spacer-5"
-    pt="spacer-4"
-    pb="spacer-6"
-    borderTopWidth="1px"
-    borderTopStyle="solid"
-    borderTopColor="ui-element-divider"
-  >
-    <Button
-      onClick={goToPreviousQuestion}
-      variant="link"
-      isDisabled={isBackDisabled}
-      size="m"
-      leadingIcon={<IconArrowLeft />}
-      mr="spacer-4"
+}) => {
+  const [isLoading, setIsloading] = useState<boolean>(false);
+  const handleNextClick = async () => {
+    setIsloading(true);
+    await goToNextQuestion();
+    setIsloading(false);
+  };
+
+  return (
+    <Flex
+      justifyContent="center"
+      px="spacer-5"
+      pt="spacer-4"
+      pb="spacer-6"
+      borderTopWidth="1px"
+      borderTopStyle="solid"
+      borderTopColor="ui-element-divider"
     >
-      Back
-    </Button>
-    <Button
-      onClick={goToNextQuestion}
-      variant="accent"
-      size="l"
-      trailingIcon={<IconArrowRight />}
-      isDisabled={isNextDisabled}
-    >
-      Next
-    </Button>
-  </Flex>
-);
+      <Button
+        onClick={goToPreviousQuestion}
+        variant="link"
+        isDisabled={isBackDisabled || isLoading}
+        size="m"
+        leadingIcon={<IconArrowLeft />}
+        mr="spacer-4"
+      >
+        Back
+      </Button>
+      <Button
+        onClick={handleNextClick}
+        variant="accent"
+        size="l"
+        trailingIcon={<IconArrowRight />}
+        isDisabled={isNextDisabled}
+        isLoading={isLoading}
+      >
+        Next
+      </Button>
+    </Flex>
+  );
+};

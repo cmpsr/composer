@@ -1,18 +1,18 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import { StepBar } from './components/StepBar';
 import { CallToActions } from './components/CallToActions';
 import { Question } from './components/Question';
+import { DecisionTreeProps, Steps } from './types';
 import { usePagination, useHandleAnswers, PaginationActions, HandleAnswersActions } from './hooks';
-import { DecisionTreeProps, DecisionTreeStaticMembers, Steps } from './types';
 import { Flex } from '@cmpsr/components';
-import { CallToActionsProps } from '@components/CallToActions/types';
-import { StepBarProps } from '@components/StepBar/types';
+import { normalizeQuestionnaire } from './DecisionTree.normalizer';
 
-export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = ({ questionnaire, callback }) => {
-  const steps: Steps = questionnaire.sections.map(({ id, name }) => ({ id, name }));
-  const initialState = {
-    currentQuestion: questionnaire.nextQuestion.questionId,
-    currentSection: questionnaire.nextQuestion.sectionId,
+export const DecisionTree: FC<DecisionTreeProps> = ({ questionnaire, callback, firstQuestion, renderSectionIntro }) => {
+  const normalizedQuestionnaire = useMemo(() => normalizeQuestionnaire(questionnaire), [questionnaire]);
+  const steps: Steps = normalizedQuestionnaire.sections.map(({ id, name }) => ({ id, name }));
+  const initialState = firstQuestion ?? {
+    questionId: normalizedQuestionnaire.nextQuestion.questionId,
+    sectionId: normalizedQuestionnaire.nextQuestion.sectionId,
   };
 
   const { state: answerState, answersDispatch, submitAnswer, submitIDKAnswer } = useHandleAnswers(callback);
@@ -24,31 +24,26 @@ export const DecisionTree: FC<DecisionTreeProps> & DecisionTreeStaticMembers = (
     goToNextQuestion,
   } = usePagination({ steps, initialState, answersDispatch, submitAnswer });
 
-  const section = questionnaire.sections.find((section) => section.id == currentSection);
+  const section = normalizedQuestionnaire.sections.find((section) => section.id == currentSection);
   const question = section.questions.find((question) => question.id == currentQuestion);
 
   return (
     <Flex flexDirection="column" height="100%">
-      <DecisionTree.Stepper steps={steps} activeStep={activeStep} />
+      <StepBar steps={steps} activeStep={activeStep} />
       <Question
         data={question}
         paginationDispatch={paginationDispatch}
         defaultValue={answerState.answer}
+        renderSectionIntro={renderSectionIntro}
         submitIDKAnswer={() => submitIDKAnswer(currentQuestion)}
         saveAnswer={(payload) => answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload })}
       />
-      <DecisionTree.CallToActions
+      <CallToActions
         isBackDisabled={isBackDisabled}
-        isNextDisabled={answerState.answer === null}
+        isNextDisabled={!answerState.isAnswered && question.type !== 'sectionIntro'}
         goToPreviousQuestion={() => paginationDispatch({ type: PaginationActions.PreviousQuestion })}
         goToNextQuestion={goToNextQuestion}
       />
     </Flex>
   );
 };
-
-const Navigation = (props: CallToActionsProps) => <CallToActions {...props} />;
-const Stepper = (props: StepBarProps) => <StepBar {...props} />;
-
-DecisionTree.CallToActions = Navigation;
-DecisionTree.Stepper = Stepper;

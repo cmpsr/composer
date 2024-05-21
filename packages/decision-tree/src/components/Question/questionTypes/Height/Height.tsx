@@ -7,16 +7,18 @@ import { inputMargin } from '@components/Question/Question';
 
 export const Height: FC<HeightProps> = ({ data, saveAnswer, defaultValue }) => {
   const { question, tooltip, feet, inches } = data;
-  const [answers, setAnswers] = useState<HeightAnswer>({ type: 'height', feet: '', inches: '' });
+  const [answers, setAnswers] = useState<HeightAnswer>({ type: 'height', feet: null, inches: null });
 
   const handleChangeFeet = ({ currentTarget }) => {
-    setAnswers({ ...answers, feet: currentTarget.value });
-    saveAnswer(answers);
+    const newAnswer = { ...answers, feet: Number(currentTarget.value.replace(` ${feet.trailingMask}`, '')) };
+    setAnswers(newAnswer);
+    saveAnswer(newAnswer);
   };
 
   const handleChangeInches = ({ currentTarget }) => {
-    setAnswers({ ...answers, inches: currentTarget.value });
-    saveAnswer(answers);
+    const newAnswer = { ...answers, inches: Number(currentTarget.value.replace(` ${inches.trailingMask}`, '')) };
+    setAnswers(newAnswer);
+    saveAnswer(newAnswer);
   };
 
   return (

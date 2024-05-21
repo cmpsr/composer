@@ -9,7 +9,7 @@ describe('usePagination', () => {
     { id: '2', name: 'step2' },
     { id: '3', name: 'step3' },
   ];
-  const initialState = { currentSection: '1', currentQuestion: '1' };
+  const initialState = { sectionId: '1', questionId: '1' };
   const answersDispatch = jest.fn();
   const submitAnswer = jest.fn();
 
@@ -31,7 +31,7 @@ describe('usePagination', () => {
     expect(typeof hookResult.activeStep).toBe('number');
   });
 
-  test('should return a state with the page', () => {
+  test('should return the first section intro state with the page', () => {
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,
       initialState,
@@ -41,7 +41,7 @@ describe('usePagination', () => {
 
     const hookResult = result.current;
 
-    expect(hookResult.state).toEqual(initialState);
+    expect(hookResult.state).toEqual({ currentQuestion: '1-section-intro', currentSection: '1' });
   });
 
   test('should return a dispatch function', () => {
@@ -83,12 +83,12 @@ describe('usePagination', () => {
     act(() => {
       paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: {} },
+        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} },
       });
     });
 
     await waitFor(() => {
-      expect(result.current.state).toEqual({ currentSection: '1', currentQuestion: '2' });
+      expect(result.current.state).toEqual({ currentSection: '1', currentQuestion: '1' });
     });
   });
 
@@ -105,13 +105,84 @@ describe('usePagination', () => {
     await act(async () => {
       await paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: {} },
+        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} },
       });
       await paginationDispatch({ type: PaginationActions.PreviousQuestion });
     });
 
     await waitFor(() => {
-      expect(result.current.state).toEqual(initialState);
+      expect(result.current.state).toEqual({
+        currentQuestion: '1-section-intro',
+        currentSection: '1',
+      });
+    });
+  });
+
+  test('should trigger the next question on gotoNextQuesiton Function', async () => {
+    const submitAnswerMock = jest
+      .fn()
+      .mockResolvedValue({ nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} });
+    const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
+      steps,
+      initialState,
+      answersDispatch,
+      submitAnswer: submitAnswerMock,
+    });
+
+    const { goToNextQuestion } = result.current;
+
+    await act(async () => {
+      await goToNextQuestion();
+    });
+
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ currentSection: '1', currentQuestion: '1' });
+    });
+  });
+
+  test('should not trigger the next question on gotoNextQuesiton Function when empty response', async () => {
+    const submitAnswerMock = jest.fn().mockResolvedValue({ nextQuestion: {}, answers: {} });
+    const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
+      steps,
+      initialState,
+      answersDispatch,
+      submitAnswer: submitAnswerMock,
+    });
+
+    const { goToNextQuestion } = result.current;
+
+    await act(async () => {
+      await goToNextQuestion();
+    });
+
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ currentQuestion: '1-section-intro', currentSection: '1' });
+    });
+  });
+
+  test('should not trigger the next question on gotoNextQuesiton Function when empty response', async () => {
+    const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
+      steps,
+      initialState,
+      answersDispatch,
+      submitAnswer,
+    });
+
+    const { paginationDispatch } = result.current;
+
+    await act(async () => {
+      await paginationDispatch({
+        type: PaginationActions.NextQuestion,
+        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} },
+      });
+      await paginationDispatch({
+        type: PaginationActions.NextQuestion,
+        payload: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: {} },
+      });
+    });
+
+    await waitFor(() => {
+      expect(result.current.state).toEqual({ currentQuestion: '2', currentSection: '1' });
     });
   });
 });

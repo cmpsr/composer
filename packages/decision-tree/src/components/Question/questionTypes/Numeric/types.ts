@@ -1,4 +1,5 @@
-import { QuestionBase, QuestionProps } from '@components/Question/types';
+import { QuestionBase } from '@components/Question/types';
+import { AnswerModel } from '@hooks';
 
 export interface NumericQuestion extends QuestionBase {
   placeholder: string;
@@ -11,7 +12,8 @@ export type NumericAnswer = {
   value: number;
 };
 
-export interface NumericProps extends QuestionProps {
+export type NumericProps = {
   data: NumericQuestion;
   defaultValue?: NumericAnswer;
-}
+  saveAnswer: (payload: AnswerModel) => void;
+};

@@ -8,7 +8,9 @@ import { inputMargin } from '@components/Question/Question';
 export const Numeric: FC<NumericProps> = ({ data, saveAnswer, defaultValue }) => {
   const { question, tooltip, id, placeholder, trailingMask } = data;
 
-  const handleChange = ({ currentTarget }) => saveAnswer({ type: 'numeric', value: Number(currentTarget.value) });
+  const handleChange = ({ currentTarget }) => {
+    saveAnswer({ type: 'numeric', value: Number(currentTarget.value.replace(` ${trailingMask}`, '')) });
+  };
 
   return (
     <Box>

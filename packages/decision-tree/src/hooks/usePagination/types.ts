@@ -8,11 +8,13 @@ export enum PaginationActions {
   PreviousQuestion = 'PreviousQuestion',
 }
 
+type nextQuestionType = {
+  sectionId: string;
+  questionId: string;
+};
+
 export type PaginationPayload = {
-  nextQuestion: {
-    sectionId: string;
-    questionId: string;
-  };
+  nextQuestion: nextQuestionType;
   answers: AnswersType;
 };
 
@@ -37,7 +39,7 @@ export type PaginationResponse = {
 
 export type PaginationProps = {
   steps: Steps;
-  initialState: PaginationState;
+  initialState: nextQuestionType;
   answersDispatch: Dispatch<HandleAnswersAction>;
   submitAnswer: SubmitAnswerFn;
 };

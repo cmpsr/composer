@@ -12,7 +12,7 @@ export const serverMockup = {
     answers: {
       '1': { type: 'singleChoice', value: '1' },
       '2': { type: 'heightAnswer', feet: '5', inches: '5' },
-      '3': { type: 'multipleChoice', values: ['1'] },
+      '3': { type: 'multipleChoice', values: ['1', '2'] },
     },
   },
   4: null,
@@ -29,6 +29,7 @@ export const questionnaire: QuestionnaireType = {
     {
       id: '1',
       name: 'Diet and Lifestyle',
+      description: 'Diet And Lifestyle section description',
       questions: [
         {
           id: '1',
@@ -67,6 +68,7 @@ export const questionnaire: QuestionnaireType = {
     {
       id: '2',
       name: 'Symptoms',
+      description: 'Symptoms section description',
       questions: [
         {
           id: '3',
@@ -91,6 +93,7 @@ export const questionnaire: QuestionnaireType = {
     {
       id: '3',
       name: 'Physical',
+      description: 'Physical section description',
       questions: [
         {
           id: '4',

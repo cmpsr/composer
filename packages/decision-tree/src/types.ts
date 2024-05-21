@@ -1,8 +1,6 @@
-import { FC } from 'react';
 import { AnswerModel } from '@hooks';
 import { QuestionType } from './components/Question';
-import { StepBarProps } from '@components/StepBar/types';
-import { CallToActionsProps } from '@components/CallToActions/types';
+import { RenderSectionIntroType } from '@components/Question/questionTypes';
 
 export type UseSetupCallbackCB = (questionId: string, answer: AnswerModel) => Promise<QuestionnaireType>;
 
@@ -11,27 +9,27 @@ export type SaveAnswerType = (submittedAnswer: string | object) => void;
 export type SectionType = {
   id: string;
   name: string;
+  description: string;
   questions: Array<QuestionType>;
+};
+
+type nextQuestion = {
+  questionId: string;
+  sectionId: string;
 };
 
 export type QuestionnaireType = {
   version: number;
   sections: Array<SectionType>;
-  nextQuestion: {
-    questionId: string;
-    sectionId: string;
-  };
+  nextQuestion: nextQuestion;
   answers: any;
 };
 
 export type DecisionTreeProps = {
   questionnaire: QuestionnaireType;
   callback: UseSetupCallbackCB;
+  firstQuestion?: nextQuestion;
+  renderSectionIntro?: RenderSectionIntroType;
 };
-
-export interface DecisionTreeStaticMembers {
-  Stepper: FC<StepBarProps>;
-  CallToActions: FC<CallToActionsProps>;
-}
 
 export type Steps = Array<{ id: string; name: string }>;

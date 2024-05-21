@@ -6,7 +6,7 @@ import { UseSetupCallbackCB } from '@types';
 
 describe('DecisionTree', () => {
   const callback = async function (questionId, value) {
-    console.log(questionId, value, 'Backend Callback');
+    console.log(questionId, value);
     return serverMockup[questionId];
   } as UseSetupCallbackCB;
 

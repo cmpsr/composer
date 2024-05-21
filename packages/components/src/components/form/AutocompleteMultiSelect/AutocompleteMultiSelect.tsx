@@ -16,7 +16,8 @@ import { createContext } from '@chakra-ui/react-utils';
 import { InputProps, Input } from '../Input';
 import { Box } from '../../layouts/Box';
 import { Text } from '@components/typography';
-import { IconChevronDown } from '@components/media';
+import { IconChevronDown, IconChevronUp, IconX } from '@components/media';
+import { RecursiveCSSObject, StyleProps, useStyleConfig } from '@chakra-ui/react';
 
 const [AutocompleteMultiSelectProvider, useAutocompleteMultiSelectContext] =
   createContext<AutocompleteMultiSelectContextProps>({});
@@ -28,7 +29,6 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
 }) => {
   const [inputValue, setInputValue] = useState('');
 
-  //Gestiona los elementos seleccionados, permitiendo añadir o quitar elementos mediante el teclado o programáticamente. Se configura para actualizar el estado de selectedItems cuando se eliminan elementos.
   const {
     selectedItems,
     addSelectedItem,
@@ -77,7 +77,6 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
   };
 
   const filteredItems = useMemo(() => getFilteredItems(selectedItems, inputValue), [selectedItems, inputValue]);
-  // Gestiona la interacción con el menú desplegable. Controla el estado de apertura del menú, el ítem destacado, y las actualizaciones del campo de entrada. También se configura para manejar la selección de ítems y cerrar el menú tras la selección, manteniendo el primer ítem siempre destacado.
 
   const {
     isOpen,
@@ -87,7 +86,6 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
     getToggleButtonProps,
     highlightedIndex,
     getItemProps,
-    reset,
   } = useCombobox({
     items: filteredItems,
     inputValue,
@@ -143,7 +141,8 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
         removeSelectedItem,
         getSelectedItemProps,
         getDropdownProps,
-        reset,
+        // TODO: Check why is not working when we import it from useCombobox
+        reset: () => setInputValue(''),
       }}
     >
       {children}

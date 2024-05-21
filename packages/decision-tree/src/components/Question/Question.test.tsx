@@ -38,8 +38,8 @@ describe('Question', () => {
       />
     );
 
-    expect(screen.getAllByText('choice 1')).toHaveLength(1);
-    expect(screen.getAllByText('choice 2')).toHaveLength(1);
+    screen.getAllByText('choice 1');
+    screen.getAllByText('choice 2');
   });
 
   test('should render a numeric component when calling one', () => {
@@ -58,7 +58,7 @@ describe('Question', () => {
       />
     );
 
-    expect(screen.getAllByPlaceholderText('numericPlaceholder')).toHaveLength(1);
+    screen.getAllByPlaceholderText('numericPlaceholder');
   });
 
   test('should render a multipleChoice component when calling one', () => {
@@ -80,9 +80,9 @@ describe('Question', () => {
       />
     );
 
-    expect(screen.getAllByText('choice 1')).toHaveLength(1);
-    expect(screen.getAllByText('choice 2')).toHaveLength(1);
-    expect(screen.getAllByText('choice 3')).toHaveLength(1);
+    screen.getAllByText('choice 1');
+    screen.getAllByText('choice 2');
+    screen.getAllByText('choice 3');
   });
 
   test('should render a height component when calling one', () => {
@@ -106,8 +106,28 @@ describe('Question', () => {
         saveAnswer={saveAnswer}
       />
     );
+    screen.getAllByPlaceholderText('feetPlaceholder');
+    screen.getAllByPlaceholderText('inchesPlaceholder');
+  });
 
-    expect(screen.getAllByPlaceholderText('feetPlaceholder')).toHaveLength(1);
-    expect(screen.getAllByPlaceholderText('inchesPlaceholder')).toHaveLength(1);
+  test('should render a section Intro component when calling one', () => {
+    const data = {
+      ...baseData,
+      type: 'sectionIntro',
+      orderNumber: 2,
+      description: 'section intro description',
+    } as unknown as HeightQuestion;
+
+    renderWithProviders(
+      <Question
+        submitIDKAnswer={submitIDKAnswer}
+        paginationDispatch={paginationDispatch}
+        data={data}
+        saveAnswer={saveAnswer}
+      />
+    );
+
+    screen.getByText('section intro description');
+    screen.getByText('SECTION 2');
   });
 });

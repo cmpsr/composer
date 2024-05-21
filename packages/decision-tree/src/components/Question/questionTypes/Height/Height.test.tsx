@@ -8,8 +8,8 @@ import { AnswerModel } from '@hooks';
 describe('HeightQuestion', () => {
   const baseData = {
     id: '1',
-    question: 'hello there!',
-    tooltip: 'question tooltip',
+    label: 'hello there!',
+    whyWeAskExplanation: 'question tooltip',
   } as QuestionBase;
 
   const saveAnswer = jest.fn() as (payload: AnswerModel) => void;

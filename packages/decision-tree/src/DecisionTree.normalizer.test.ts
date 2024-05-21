@@ -4,8 +4,6 @@ import { QuestionnaireType } from '@types';
 describe('Normalize Questionnaire', () => {
   const questionnaire = {
     version: 1,
-    nextQuestion: {},
-    answers: {},
     sections: [
       {
         id: '1',

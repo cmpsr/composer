@@ -8,8 +8,8 @@ import { AnswerModel } from '@hooks';
 describe('SingleChoiceQuestion', () => {
   const baseData = {
     id: '1',
-    question: 'hello there!',
-    tooltip: 'question tooltip',
+    label: 'hello there!',
+    whyWeAskExplanation: 'question tooltip',
   } as QuestionBase;
 
   const saveAnswer = jest.fn() as (payload: AnswerModel) => void;
@@ -18,7 +18,7 @@ describe('SingleChoiceQuestion', () => {
     const data = {
       ...baseData,
       type: 'singleChoice',
-      choices: [
+      options: [
         { id: '1', label: 'choice 1' },
         { id: '2', label: 'choice 2' },
       ],

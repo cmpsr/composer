@@ -3,6 +3,7 @@ import { useHandleAnswers } from './useHandleAnswers';
 import { UseSetupCallbackCB } from '@types';
 import { HandleAnswersActions, useHandleActionResponse } from './types';
 import { sectionIntroId } from '../../DecisionTree.normalizer';
+import { AnsweredQuestionsType } from '@hooks';
 
 describe('useHandleAnswers', () => {
   const serverMockup = {
@@ -83,7 +84,7 @@ describe('useHandleAnswers', () => {
 
   test('should save the previous answers', async () => {
     const mockFn = jest.fn();
-    const previousAnswers = { '1': { type: 'iDontKnow' } } as PreviousAnswersType;
+    const previousAnswers = [{ type: 'iDontKnow', sectionId: '1', questionId: '1' }] as AnsweredQuestionsType;
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
     const { answersDispatch } = result.current;
@@ -98,7 +99,7 @@ describe('useHandleAnswers', () => {
 
   test('should get the previous answers', async () => {
     const mockFn = jest.fn();
-    const previousAnswers = { '1': { type: 'iDontKnow' } } as PreviousAnswersType;
+    const previousAnswers = [{ type: 'iDontKnow', sectionId: '1', questionId: '1' }] as AnsweredQuestionsType;
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
     const { answersDispatch } = result.current;
@@ -108,7 +109,7 @@ describe('useHandleAnswers', () => {
       await answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: '1' });
     });
     await waitFor(() => {
-      expect(result.current.state.answer).toEqual(previousAnswers['1']);
+      expect(result.current.state.answer).toEqual(previousAnswers[0]);
       expect(result.current.state.isAnswered).toBeTruthy;
     });
   });
@@ -127,16 +128,20 @@ describe('useHandleAnswers', () => {
       const submitResult = await submitAnswer(`${'1'}${sectionIntroId}`);
       expect(submitResult).toEqual({
         nextQuestion: { sectionId: 'nextQuestionOverride', questionId: 'nextQuestionOverride' },
-        answers: {},
-        version: 0,
-        sections: [],
+        answers: [],
+        questionnaire: {
+          version: 0,
+          sections: [],
+        },
       });
     });
   });
 
   test('should detect filled answers for height question feet answer', async () => {
     const mockFn = jest.fn();
-    const previousAnswers = { '1': { type: 'height', feet: 5, inches: null } } as PreviousAnswersType;
+    const previousAnswers = [
+      { type: 'height', feet: 5, inches: null, sectionId: '1', questionId: '1' },
+    ] as AnsweredQuestionsType;
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
     const { answersDispatch } = result.current;
@@ -152,7 +157,9 @@ describe('useHandleAnswers', () => {
 
   test('should detect filled answers for height question inches answer', async () => {
     const mockFn = jest.fn();
-    const previousAnswers = { '1': { type: 'height', feet: null, inches: 5 } } as PreviousAnswersType;
+    const previousAnswers = [
+      { type: 'height', feet: null, inches: 5, sectionId: '1', questionId: '1' },
+    ] as AnsweredQuestionsType;
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
     const { answersDispatch } = result.current;
@@ -168,7 +175,9 @@ describe('useHandleAnswers', () => {
 
   test('should detect non filled answers for height question', async () => {
     const mockFn = jest.fn();
-    const previousAnswers = { '1': { type: 'height', feet: null, inches: null } } as PreviousAnswersType;
+    const previousAnswers = [
+      { type: 'height', feet: null, inches: null, sectionId: '1', questionId: '1' },
+    ] as AnsweredQuestionsType;
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
     const { answersDispatch } = result.current;
@@ -184,7 +193,9 @@ describe('useHandleAnswers', () => {
 
   test('should detect filled answers for singleChoice question', async () => {
     const mockFn = jest.fn();
-    const previousAnswers = { '1': { type: 'singleChoice', value: '5' } } as PreviousAnswersType;
+    const previousAnswers = [
+      { type: 'singleChoice', value: '5', sectionId: '1', questionId: '1' },
+    ] as AnsweredQuestionsType;
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
     const { answersDispatch } = result.current;
@@ -200,7 +211,9 @@ describe('useHandleAnswers', () => {
 
   test('should detect non filled answers for singleChoice question', async () => {
     const mockFn = jest.fn();
-    const previousAnswers = { '1': { type: 'singleChoice', value: null } } as PreviousAnswersType;
+    const previousAnswers = [
+      { type: 'singleChoice', value: null, sectionId: '1', questionId: '1' },
+    ] as AnsweredQuestionsType;
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
     const { answersDispatch } = result.current;
@@ -216,7 +229,9 @@ describe('useHandleAnswers', () => {
 
   test('should detect filled answers for multipleChoice question', async () => {
     const mockFn = jest.fn();
-    const previousAnswers = { '1': { type: 'multipleChoice', values: ['5'] } } as PreviousAnswersType;
+    const previousAnswers = [
+      { type: 'multipleChoice', values: ['5'], sectionId: '1', questionId: '1' },
+    ] as AnsweredQuestionsType;
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
     const { answersDispatch } = result.current;
@@ -232,7 +247,9 @@ describe('useHandleAnswers', () => {
 
   test('should detect non filled answers for multipleChoice question', async () => {
     const mockFn = jest.fn();
-    const previousAnswers = { '1': { type: 'multipleChoice', values: null } } as PreviousAnswersType;
+    const previousAnswers = [
+      { type: 'multipleChoice', values: null, sectionId: '1', questionId: '1' },
+    ] as AnsweredQuestionsType;
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
     const { answersDispatch } = result.current;
@@ -248,7 +265,7 @@ describe('useHandleAnswers', () => {
 
   test('should detect filled answers for numeric question', async () => {
     const mockFn = jest.fn();
-    const previousAnswers = { '1': { type: 'numeric', value: 5 } } as PreviousAnswersType;
+    const previousAnswers = [{ type: 'numeric', value: 5, sectionId: '1', questionId: '1' }] as AnsweredQuestionsType;
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
     const { answersDispatch } = result.current;
@@ -264,7 +281,9 @@ describe('useHandleAnswers', () => {
 
   test('should detect non filled answers for numeric question', async () => {
     const mockFn = jest.fn();
-    const previousAnswers = { '1': { type: 'numeric', value: null } } as PreviousAnswersType;
+    const previousAnswers = [
+      { type: 'numeric', value: null, sectionId: '1', questionId: '1' },
+    ] as AnsweredQuestionsType;
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
     const { answersDispatch } = result.current;

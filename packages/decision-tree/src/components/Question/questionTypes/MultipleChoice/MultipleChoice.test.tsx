@@ -7,19 +7,19 @@ import { AnswerModel } from '@hooks';
 describe('MultipleChoiceQuestion', () => {
   const data = {
     id: '1',
-    question: 'hello there!',
-    tooltip: 'question tooltip',
+    label: 'hello there!',
+    whyWeAskExplanation: 'question tooltip',
     type: 'multipleChoice',
-    choices: [
+    options: [
       {
         id: '1',
         label: 'choice 1',
-        subLabel: 'sublabel 1',
+        description: 'sublabel 1',
       },
       {
         id: '2',
         label: 'choice 2',
-        subLabel: 'sublabel 2',
+        description: 'sublabel 2',
       },
     ],
   } as MultipleChoiceQuestion;

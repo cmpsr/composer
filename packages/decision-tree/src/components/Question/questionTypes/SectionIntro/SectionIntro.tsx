@@ -16,7 +16,7 @@ export const SectionIntro: FC<SectionIntroProps> = ({ data, renderSectionIntro }
       px={{ base: 'spacer-5', md: 'spacer-20', lg: 'spacer-16', xl: 'spacer-24', xxl: 'spacer-32' }}
     >
       <Text variant="text-body-regular" mb="spacer-6">
-        SECTION {orderNumber}
+        SECTION {String(orderNumber)}
       </Text>
       <Text variant="text-header-4XL" mb={{ base: '0', lg: 'spacer-3' }}>
         {label}

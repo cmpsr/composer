@@ -3,50 +3,54 @@ import { UserQuestionnaireType } from '@types';
 export const serverMockup = {
   '1': {
     nextQuestion: { questionId: '2', sectionId: '1-demographics' },
-    answers: [{ questionId: '1', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } }],
+    answers: [{ questionId: '1', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } }],
   },
   '2': {
     nextQuestion: { questionId: '3', sectionId: '1-demographics' },
     answers: [
-      { questionId: '1', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
-      { questionId: '2', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
+      { questionId: '1', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
+      {
+        questionId: '2',
+        sectionId: '1-demographics',
+        answer: { value: 'asian-pacific-islander', type: 'singleChoice' },
+      },
     ],
   },
   '3': {
     nextQuestion: { questionId: '4', sectionId: '1-demographics' },
     answers: [
-      { questionId: '1', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
-      { questionId: '2', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
+      { questionId: '1', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
       {
-        questionId: '3',
+        questionId: '2',
         sectionId: '1-demographics',
         answer: { value: 'asian-pacific-islander', type: 'singleChoice' },
       },
+      { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
     ],
   },
   '4': {
     nextQuestion: { questionId: '5', sectionId: '1-demographics' },
     answers: [
-      { questionId: '1', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
-      { questionId: '2', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
+      { questionId: '1', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
       {
-        questionId: '3',
+        questionId: '2',
         sectionId: '1-demographics',
         answer: { value: 'asian-pacific-islander', type: 'singleChoice' },
       },
+      { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
       { questionId: '4', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
     ],
   },
   '5': {
     nextQuestion: { questionId: '6', sectionId: '2-diet-and-lifestyle' },
     answers: [
-      { questionId: '1', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
-      { questionId: '2', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
+      { questionId: '1', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
       {
-        questionId: '3',
+        questionId: '2',
         sectionId: '1-demographics',
         answer: { value: 'asian-pacific-islander', type: 'singleChoice' },
       },
+      { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
       { questionId: '4', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
       { questionId: '5', sectionId: '1-demographics', answer: { value: 'green', type: 'singleChoice' } },
     ],
@@ -54,13 +58,13 @@ export const serverMockup = {
   '6': {
     nextQuestion: { questionId: '7', sectionId: '2-diet-and-lifestyle' },
     answers: [
-      { questionId: '1', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
-      { questionId: '2', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
+      { questionId: '1', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
       {
-        questionId: '3',
+        questionId: '2',
         sectionId: '1-demographics',
         answer: { value: 'asian-pacific-islander', type: 'singleChoice' },
       },
+      { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
       { questionId: '4', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
       { questionId: '5', sectionId: '1-demographics', answer: { value: 'green', type: 'singleChoice' } },
       { questionId: '6', sectionId: '1-demographics', answer: { value: 'yes', type: 'singleChoice' } },
@@ -69,13 +73,13 @@ export const serverMockup = {
   '7': {
     nextQuestion: { questionId: '8', sectionId: '2-diet-and-lifestyle' },
     answers: [
-      { questionId: '1', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
-      { questionId: '2', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
+      { questionId: '1', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
       {
-        questionId: '3',
+        questionId: '2',
         sectionId: '1-demographics',
         answer: { value: 'asian-pacific-islander', type: 'singleChoice' },
       },
+      { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
       { questionId: '4', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
       { questionId: '5', sectionId: '1-demographics', answer: { value: 'green', type: 'singleChoice' } },
       { questionId: '6', sectionId: '1-demographics', answer: { value: 'yes', type: 'singleChoice' } },
@@ -87,9 +91,9 @@ export const serverMockup = {
 export const userQuestionnaire: UserQuestionnaireType = {
   nextQuestion: { questionId: '1', sectionId: '1-demographics' },
   answers: [
-    { questionId: '1', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
-    { questionId: '2', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
-    { questionId: '3', sectionId: '1-demographics', answer: { value: 'asian-pacific-islander', type: 'singleChoice' } },
+    { questionId: '1', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
+    { questionId: '2', sectionId: '1-demographics', answer: { value: 'asian-pacific-islander', type: 'singleChoice' } },
+    { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
     { questionId: '4', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
     { questionId: '5', sectionId: '1-demographics', answer: { value: 'green', type: 'singleChoice' } },
     { questionId: '6', sectionId: '1-demographics', answer: { value: 'yes', type: 'singleChoice' } },
@@ -106,15 +110,6 @@ export const userQuestionnaire: UserQuestionnaireType = {
         questions: [
           {
             id: '1',
-            label: 'What is your birthdate?',
-            whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
-            skippable: true,
-            description: null,
-            placeholder: 'MM/DD/YYYY',
-            type: 'date',
-          },
-          {
-            id: '2',
             label: 'What sex were you assigned at birth?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -126,7 +121,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '3',
+            id: '2',
             label: 'What best describes your race/ethnicity?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -140,6 +135,15 @@ export const userQuestionnaire: UserQuestionnaireType = {
               { id: 'other', label: 'other', description: null },
             ],
             type: 'singleChoice',
+          },
+          {
+            id: '3',
+            label: 'What is your birthdate?',
+            whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
+            skippable: true,
+            description: null,
+            placeholder: 'MM/DD/YYYY',
+            type: 'date',
           },
           {
             id: '4',

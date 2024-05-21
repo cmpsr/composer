@@ -20,11 +20,11 @@ describe('DateQuestion', () => {
 
     await act(async () => {
       const input = screen.getByPlaceholderText(/placeholderDate/);
-      fireEvent.input(input, { target: { value: '01/01/2012' } });
+      fireEvent.input(input, { target: { value: '01012012' } });
     });
 
     await waitFor(() => {
-      expect(saveAnswer).toHaveBeenCalledWith({ type: 'date', value: '2012-01-01T00:00:00+02:00' });
+      expect(saveAnswer).toHaveBeenCalledWith({ type: 'date', value: '2012-01-01T00:00:00+01:00' });
     });
   });
 });

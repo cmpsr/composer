@@ -16,6 +16,7 @@ describe('DecisionTree', () => {
     renderWithProviders(
       <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
     );
+
     expect(screen.getByText('Next'));
     expect(screen.getByText('Back'));
     expect(screen.getByText('SECTION 1'));
@@ -26,6 +27,7 @@ describe('DecisionTree', () => {
     renderWithProviders(
       <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
     );
+
     expect(screen.getByRole('button', { name: 'Back' })).not.toBeDisabled();
     expect(screen.getByRole('button', { name: 'Next' })).not.toBeDisabled();
   });
@@ -54,8 +56,8 @@ describe('DecisionTree', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Next' }));
 
     await waitFor(() => {
-      expect(screen.getByRole('button', { name: 'Back' })).not.toBeDisabled();
       expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
+      expect(screen.getByRole('button', { name: 'Back' })).not.toBeDisabled();
     });
   });
 
@@ -89,8 +91,8 @@ describe('DecisionTree', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Next' }));
 
     await waitFor(() => {
-      expect(screen.getByRole('button', { name: 'Back' })).not.toBeDisabled();
       expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
+      expect(screen.getByRole('button', { name: 'Back' })).not.toBeDisabled();
     });
   });
 

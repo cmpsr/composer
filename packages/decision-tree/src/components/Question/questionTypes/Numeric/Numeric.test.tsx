@@ -9,7 +9,7 @@ describe('NumericQuestion', () => {
     id: '1',
     label: 'hello there!',
     whyWeAskExplanation: 'question tooltip',
-    type: 'numeric',
+    type: 'number',
 
     placeholder: 'placeholderNumeric',
     trailingMask: 'tralingMaskNumeric',
@@ -26,7 +26,7 @@ describe('NumericQuestion', () => {
     });
 
     await waitFor(() => {
-      expect(saveAnswer).toHaveBeenCalledWith({ type: 'numeric', value: 4 });
+      expect(saveAnswer).toHaveBeenCalledWith({ type: 'number', value: 4 });
     });
   });
 });

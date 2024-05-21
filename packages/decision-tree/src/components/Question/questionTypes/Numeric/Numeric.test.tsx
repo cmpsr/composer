@@ -26,7 +26,7 @@ describe('NumericQuestion', () => {
     });
 
     await waitFor(() => {
-      expect(saveAnswer).toHaveBeenCalledWith({ type: 'numeric', value: 4 });
+      expect(saveAnswer).toHaveBeenCalledWith({ type: 'number', value: 4 });
     });
   });
 });

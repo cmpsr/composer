@@ -1,4 +1,5 @@
-import { QuestionBase, QuestionProps } from '@components/Question/types';
+import { QuestionBase } from '@components/Question/types';
+import { AnswerModel } from '@hooks';
 
 type Measurement = {
   placeholder: string;
@@ -17,7 +18,8 @@ export type HeightAnswer = {
   inches: number;
 };
 
-export interface HeightProps extends QuestionProps {
+export type HeightProps = {
   data: HeightQuestion;
   defaultValue?: HeightAnswer;
-}
+  saveAnswer: (payload: AnswerModel) => void;
+};

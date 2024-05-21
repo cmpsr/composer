@@ -1,4 +1,5 @@
-import { QuestionBase, QuestionProps } from '@components/Question/types';
+import { QuestionBase } from '@components/Question/types';
+import { AnswerModel } from '@hooks';
 
 type label = {
   id: string;
@@ -16,7 +17,8 @@ export type MultipleChoiceAnswer = {
   values: Array<string>;
 };
 
-export interface MultipleChoiceProps extends QuestionProps {
+export type MultipleChoiceProps = {
   data: MultipleChoiceQuestion;
   defaultValue?: MultipleChoiceAnswer;
-}
+  saveAnswer: (payload: AnswerModel) => void;
+};

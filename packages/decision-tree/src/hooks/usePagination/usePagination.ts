@@ -98,9 +98,11 @@ export const usePagination = ({
         const { currentQuestion, currentSection } = getPreviousQuestion(state);
         const step = steps.findIndex((step) => step.id == currentSection);
 
-        if (isQuestionASectionIntro(currentQuestion))
+        if (isQuestionASectionIntro(currentQuestion)) {
           setNextQuestionOverride({ questionId: state.currentQuestion, sectionId: state.currentSection });
-        if (!isQuestionASectionIntro(currentQuestion)) setNextQuestionOverride(null);
+        } else {
+          setNextQuestionOverride(null);
+        }
 
         answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: currentQuestion });
         setActiveStep(step);

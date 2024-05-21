@@ -44,7 +44,6 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
             label: 'What sex were you assigned at birth?',
             whyWeAskExplanation: 'This is an text explaining why we are asking this particular question at this point.',
-            tooltip: 'Tooltip for the question',
             options: [
               {
                 id: '1',
@@ -63,7 +62,6 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'height',
             label: 'What is your current height?',
             whyWeAskExplanation: 'This is an text explaining why we are asking this particular question at this point.',
-            tooltip: 'Tooltip for the question',
             feet: {
               placeholder: 'Feet',
               trailingMask: '(ft)',
@@ -85,7 +83,6 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'multipleChoice',
             label: 'Have you been experiencing these symptoms?',
             whyWeAskExplanation: 'This is an text explaining why we are asking this particular question at this point.',
-            tooltip: 'Tooltip for the question',
             options: [
               {
                 id: '1',
@@ -111,7 +108,6 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'number',
             label: 'How much do you weigh?',
             whyWeAskExplanation: 'This is an text explaining why we are asking this particular question at this point.',
-            tooltip: 'Tooltip for the question',
             placeholder: 'Pounds',
             trailingMask: '(lbs)',
           },

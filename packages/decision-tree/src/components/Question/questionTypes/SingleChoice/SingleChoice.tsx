@@ -6,13 +6,13 @@ import { QuestionOption } from '@components/Question/components/QuestionOption';
 import { inputMargin } from '@components/Question/Question';
 
 export const SingleChoice: FC<SingleChoiceProps> = ({ data, saveAnswer, defaultValue }) => {
-  const { label, options, tooltip, whyWeAskExplanation } = data;
+  const { label, options, whyWeAskExplanation } = data;
 
   const handleChange = (nextValue) => saveAnswer({ type: 'singleChoice', value: nextValue });
 
   return (
     <Box>
-      <QuestionTitle question={label} tooltip={tooltip} whyWeAskExplanation={whyWeAskExplanation} />
+      <QuestionTitle question={label} whyWeAskExplanation={whyWeAskExplanation} />
       <RadioGroup onChange={handleChange} defaultValue={defaultValue?.value}>
         {options.map(({ id, label, description }) => (
           <QuestionOption

@@ -9,7 +9,7 @@ describe('NumericQuestion', () => {
     id: '1',
     label: 'hello there!',
     whyWeAskExplanation: 'question tooltip',
-    type: 'numeric',
+    type: 'number',
 
     placeholder: 'placeholderNumeric',
     trailingMask: 'tralingMaskNumeric',

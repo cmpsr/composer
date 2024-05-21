@@ -3,6 +3,7 @@ import {
   MultipleChoiceAnswer,
   NumericAnswer,
   SingleChoiceAnswer,
+  DateAnswer,
 } from '@components/Question/questionTypes';
 import { AnsweredQuestionsType } from '@hooks';
 import { UserQuestionnaireType } from '@types';
@@ -44,6 +45,7 @@ export type AnswerModel =
   | MultipleChoiceAnswer
   | NumericAnswer
   | HeightAnswer
+  | DateAnswer
   | iDontKnowAnswerType;
 
 export const iDontKnowAnswer: iDontKnowAnswerType = { type: 'iDontKnow' };

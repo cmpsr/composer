@@ -185,6 +185,7 @@ const AutocompleteMultiSelectInput: FC<InputProps> = ({ clearButtonMode = 'has-v
     />
   );
 };
+
 //@ts-ignore
 AutocompleteMultiSelect.Input = AutocompleteMultiSelectInput;
 
@@ -193,31 +194,29 @@ const AutocompleteMultiSelectList: FC<AutocompleteMultiSelectListProps> = ({
   renderItem,
   ...rest
 }) => {
-  const { isOpen, items, getItemProps, getMenuProps } = useAutocompleteMultiSelectContext();
+  const { isOpen, items, selectedItem, highlightedIndex, getItemProps, getMenuProps } =
+    useAutocompleteMultiSelectContext();
 
-  // TODO: 🚨 Implementar estilos
-  // const styles = useStyleConfig('Autocomplete') as Record<
-  //   string,
-  //   RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>
-  // >;
-  // const noResults = noResultsContent ?? <Text {...styles.noResults}>No results</Text>;
+  const styles = useStyleConfig('AutocompleteMultiSelect') as Record<
+    string,
+    RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>
+  >;
   const noResults = noResultsContent ?? <Text>No results</Text>;
 
   return (
-    // <Box as="ul" visibility={isOpen ? 'visible' : 'hidden'} {...styles.list} {...getMenuProps()} {...rest}>
-    <Box as="ul" visibility={isOpen ? 'visible' : 'hidden'} {...getMenuProps()} {...rest}>
+    <Box as="ul" visibility={isOpen ? 'visible' : 'hidden'} {...styles.list} {...getMenuProps()} {...rest}>
       {isOpen && items.length
         ? items.map((item, index: number) => (
             <Box
               as="li"
               key={index}
-              // {...styles.item}
-              // {...(item === selectedItem && {
-              //   ...styles.item.active,
-              // })}
-              // {...(highlightedIndex === index && {
-              //   ...styles.item.highlighted,
-              // })}
+              {...styles.item}
+              {...(item === selectedItem && {
+                ...styles.item.active,
+              })}
+              {...(highlightedIndex === index && {
+                ...styles.item.highlighted,
+              })}
               {...getItemProps({ index, item })}
             >
               {renderItem(item)}

@@ -265,7 +265,7 @@ describe('useHandleAnswers', () => {
 
   test('should detect filled answers for numeric question', async () => {
     const mockFn = jest.fn();
-    const previousAnswers = [{ type: 'numeric', value: 5, sectionId: '1', questionId: '1' }] as AnsweredQuestionsType;
+    const previousAnswers = [{ type: 'number', value: 5, sectionId: '1', questionId: '1' }] as AnsweredQuestionsType;
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
     const { answersDispatch } = result.current;
@@ -281,9 +281,7 @@ describe('useHandleAnswers', () => {
 
   test('should detect non filled answers for numeric question', async () => {
     const mockFn = jest.fn();
-    const previousAnswers = [
-      { type: 'numeric', value: null, sectionId: '1', questionId: '1' },
-    ] as AnsweredQuestionsType;
+    const previousAnswers = [{ type: 'number', value: null, sectionId: '1', questionId: '1' }] as AnsweredQuestionsType;
     const { result } = renderHookWithProviders<UseSetupCallbackCB, useHandleActionResponse>(useHandleAnswers, mockFn);
 
     const { answersDispatch } = result.current;

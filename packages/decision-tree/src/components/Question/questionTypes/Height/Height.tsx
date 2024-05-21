@@ -6,24 +6,24 @@ import { DecisionTreeInput } from '@components/Question/components/DecisionTreeI
 import { inputMargin } from '@components/Question/Question';
 
 export const Height: FC<HeightProps> = ({ data, saveAnswer, defaultValue }) => {
-  const { label, whyWeAskExplanation, tooltip, feet, inches } = data;
+  const { label, whyWeAskExplanation, feet, inches } = data;
   const [answers, setAnswers] = useState<HeightAnswer>({ type: 'height', feet: null, inches: null });
 
   const handleChangeFeet = ({ currentTarget }) => {
-    const newAnswer = { ...answers, feet: currentTarget.value.replace(feet.trailingMask, '') };
+    const newAnswer = { ...answers, feet: Number(currentTarget.value.replace(` ${feet.trailingMask}`, '')) };
     setAnswers(newAnswer);
     saveAnswer(newAnswer);
   };
 
   const handleChangeInches = ({ currentTarget }) => {
-    const newAnswer = { ...answers, inches: currentTarget.value.replace(inches.trailingMask, '') };
+    const newAnswer = { ...answers, inches: Number(currentTarget.value.replace(` ${inches.trailingMask}`, '')) };
     setAnswers(newAnswer);
     saveAnswer(newAnswer);
   };
 
   return (
     <Box>
-      <QuestionTitle question={label} tooltip={tooltip} whyWeAskExplanation={whyWeAskExplanation} />
+      <QuestionTitle question={label} whyWeAskExplanation={whyWeAskExplanation} />
       <Flex gap="spacer-4" px={inputMargin}>
         <DecisionTreeInput
           variant="outline"

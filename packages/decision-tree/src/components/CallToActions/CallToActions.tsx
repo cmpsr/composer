@@ -4,6 +4,12 @@ import { Flex, Button, IconArrowRight, IconArrowLeft } from '@cmpsr/components';
 
 export const CallToActions: FC<CallToActionsProps> = ({ isNextDisabled, goToPreviousQuestion, goToNextQuestion }) => {
   const [isLoading, setIsloading] = useState<boolean>(false);
+  const handleNextClick = async () => {
+    setIsloading(true);
+    await goToNextQuestion();
+    setIsloading(false);
+  };
+
   return (
     <Flex
       justifyContent="center"
@@ -18,11 +24,7 @@ export const CallToActions: FC<CallToActionsProps> = ({ isNextDisabled, goToPrev
         Back
       </Button>
       <Button
-        onClick={async () => {
-          setIsloading(true);
-          await goToNextQuestion();
-          setIsloading(false);
-        }}
+        onClick={handleNextClick}
         variant="accent"
         size="l"
         trailingIcon={<IconArrowRight />}

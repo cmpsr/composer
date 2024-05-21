@@ -25,6 +25,9 @@
     "type:check": "yarn tsc --project tsconfig.json --noEmit",
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
+  "dependencies": {
+    "date-fns": "^3.6.0"
+  },
   "peerDependencies": {
     "@cmpsr/components": "^7.4.0",
     "react": "^18.2.0"

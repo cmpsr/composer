@@ -2,14 +2,29 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 
 const baseStyle = {
   container: {
-    bg: 'background-container-default',
+    bg: 'background-action-default',
     color: 'text-secondary',
     border: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
     borderRadius: '0.375rem',
+    _hover: {
+      backgroundColor: 'background-action-hover',
+    },
+    _focus: {
+      boxShadow: `0 0 0 0.188rem var(--chakra-colors-primary-focus)`,
+    },
+    _pressed: {
+      backgroundColor: 'background-action-pressed',
+    },
+    _disabled: {
+      backgroundColor: 'background-container-disabled',
+    },
   },
   label: {
     color: 'text-secondary',
     textStyle: 'text-body-medium',
+    _disabled: {
+      color: 'text-disabled',
+    },
   },
   leftIcon: {
     marginInlineEnd: '0.25rem',

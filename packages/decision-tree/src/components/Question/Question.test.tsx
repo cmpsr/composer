@@ -45,7 +45,7 @@ describe('Question', () => {
   test('should render a numeric component when calling one', () => {
     const data = {
       ...baseData,
-      type: 'numeric',
+      type: 'number',
       placeholder: 'numericPlaceholder',
       trailingMask: ' fo sho',
     } as NumericQuestion;

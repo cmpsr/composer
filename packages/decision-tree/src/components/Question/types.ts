@@ -6,7 +6,7 @@ import { UserQuestionnaireType } from '@types';
 
 export interface QuestionBase {
   id: string;
-  type: 'numeric' | 'singleChoice' | 'multipleChoice' | 'height' | 'sectionIntro';
+  type: 'number' | 'singleChoice' | 'multipleChoice' | 'height' | 'sectionIntro';
   description?: string;
   skippable?: boolean;
   label: string;

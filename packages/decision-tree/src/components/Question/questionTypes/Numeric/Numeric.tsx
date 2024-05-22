@@ -9,7 +9,7 @@ export const Numeric: FC<NumericProps> = ({ data, saveAnswer, defaultValue }) =>
   const { label, id, placeholder, trailingMask, whyWeAskExplanation } = data;
 
   const handleChange = ({ currentTarget }) => {
-    saveAnswer({ type: 'numeric', value: Number(currentTarget.value.replace(` ${trailingMask}`, '')) });
+    saveAnswer({ type: 'number', value: Number(currentTarget.value.replace(` ${trailingMask}`, '')) });
   };
 
   return (

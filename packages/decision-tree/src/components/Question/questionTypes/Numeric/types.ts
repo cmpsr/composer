@@ -4,11 +4,11 @@ import { AnswerModel } from '@hooks';
 export interface NumericQuestion extends QuestionBase {
   placeholder: string;
   trailingMask: string;
-  type: 'numeric';
+  type: 'number';
 }
 
 export type NumericAnswer = {
-  type: 'numeric';
+  type: 'number';
   value: number;
 };
 

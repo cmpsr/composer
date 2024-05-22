@@ -51,12 +51,8 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
             }
             break;
           case useMultipleSelection.stateChangeTypes.FunctionAddSelectedItem:
-            // Verificar contra todos los seleccionados antes de añadir
-            if (selectedItem && !selectedItems.find((item) => item === selectedItem)) {
-              // @ts-ignore
-              setSelectedItems((currentSelectedItems) => [...currentSelectedItems, selectedItem]);
-              setInputValue('');
-            }
+            addSelectedItem(selectedItem);
+            setInputValue('');
             break;
           default:
             break;

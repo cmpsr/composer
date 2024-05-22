@@ -2,22 +2,37 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 
 const baseStyle = {
   container: {
-    bg: 'background-container-default',
+    bg: 'background-action-default',
     color: 'text-secondary',
     border: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
     borderRadius: '0.375rem',
+    _hover: {
+      backgroundColor: 'background-action-hover',
+    },
+    _focus: {
+      boxShadow: `0 0 0 0.188rem var(--chakra-colors-primary-focus)`,
+    },
+    _active: {
+      backgroundColor: 'background-action-pressed',
+    },
+    _disabled: {
+      backgroundColor: 'background-container-disabled',
+    },
   },
   label: {
     color: 'text-secondary',
     textStyle: 'text-body-medium',
+    _disabled: {
+      color: 'text-disabled',
+    },
   },
   leftIcon: {
-    marginInlineEnd: '0.25rem',
     textStyle: 'text-body-medium',
+    margin: 0,
   },
   rightIcon: {
-    marginInlineStart: '0.25rem',
     textStyle: 'text-body-medium',
+    margin: 0,
   },
 };
 
@@ -30,7 +45,9 @@ export const Tag: ComponentStyleConfig = {
   sizes: {
     s: ({ theme }) => ({
       container: {
-        padding: '0rem 0.5rem',
+        px: 'spacer-tag-x-S',
+        py: 'spacer-tag-y-S',
+        gap: 'spacer-tag-gap-S',
       },
       label: {
         ...theme.textStyles['text-body-floating-label-medium'],
@@ -40,7 +57,9 @@ export const Tag: ComponentStyleConfig = {
     }),
     m: ({ theme }) => ({
       container: {
-        padding: '0.0625rem 0.5rem',
+        px: 'spacer-tag-x-M',
+        py: 'spacer-tag-y-M',
+        gap: 'spacer-tag-gap-M',
       },
       label: {
         ...theme.textStyles['text-body-meta-medium'],
@@ -50,7 +69,9 @@ export const Tag: ComponentStyleConfig = {
     }),
     l: ({ theme }) => ({
       container: {
-        padding: '0.25rem 0.75rem',
+        px: 'spacer-tag-x-L',
+        py: 'spacer-tag-y-L',
+        gap: 'spacer-tag-gap-L',
       },
       label: {
         ...theme.textStyles['text-body-medium'],

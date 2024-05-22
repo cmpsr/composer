@@ -72,4 +72,5 @@ Playground.args = {
   label: 'Hello',
   iconPosition: 'left',
   showIcon: true,
+  isDisabled: false,
 };

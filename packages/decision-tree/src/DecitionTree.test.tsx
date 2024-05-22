@@ -56,8 +56,8 @@ describe('DecisionTree', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Next' }));
 
     await waitFor(() => {
-      expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
       expect(screen.getByRole('button', { name: 'Back' })).not.toBeDisabled();
+      return expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
     });
   });
 

@@ -46,8 +46,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
         switch (type) {
           case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
             if (selectedItem) {
-              // @ts-ignore
-              setSelectedItems((currentSelectedItems) => currentSelectedItems.filter((item) => item !== selectedItem));
+              removeSelectedItem(selectedItem);
             }
             break;
           case useMultipleSelection.stateChangeTypes.FunctionAddSelectedItem:

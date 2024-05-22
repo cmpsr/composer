@@ -8,12 +8,13 @@ import React, { FC, useMemo, useRef, useState, useCallback } from 'react';
 import { useMultipleSelection, useCombobox } from 'downshift';
 import {
   AutocompleteMultiSelectContextProps,
+  AutocompleteMultiSelectInputProps,
   AutocompleteMultiSelectListProps,
   AutocompleteMultiSelectProps,
   AutocompleteMultiSelectSelectedItemsProps,
 } from './types';
 import { createContext } from '@chakra-ui/react-utils';
-import { InputProps, Input } from '../Input';
+import { Input } from '../Input';
 import { Box } from '../../layouts/Box';
 import { Text } from '@components/typography';
 import { IconChevronDown, IconChevronUp, IconX } from '@components/media';
@@ -150,7 +151,10 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
   );
 };
 
-const AutocompleteMultiSelectInput: FC<InputProps> = ({ clearButtonMode = 'has-value', ...rest }) => {
+const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
+  clearButtonMode = 'has-value',
+  ...rest
+}) => {
   // @ts-ignore
   const { reset, getInputProps, getToggleButtonProps, getDropdownProps, isOpen } = useAutocompleteMultiSelectContext();
   const ref = useRef<HTMLInputElement>(null);

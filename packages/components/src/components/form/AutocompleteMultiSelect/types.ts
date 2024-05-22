@@ -2,6 +2,7 @@ import { UseComboboxActions, UseComboboxPropGetters, UseComboboxProps, UseMultip
 import { ReactElement, ReactNode } from 'react';
 import { ResponsiveValue } from '@chakra-ui/react';
 import { BoxProps } from '../../layouts/Box';
+import { InputProps } from '../Input';
 
 export const autocompleteMultiSelectSizes = ['s', 'm', 'l'];
 
@@ -27,6 +28,9 @@ export interface AutocompleteMultiSelectSelectedItemsProps<Item = {}> extends Bo
   renderSelectedItem: (item: Item, removeSelectedItem: () => void) => ReactElement;
 }
 
+export interface AutocompleteMultiSelectInputProps extends InputProps {
+  clearButtonMode?: 'has-value' | 'never' | 'always';
+}
 // export interface AutocompleteMultiSelectStaticMembers<Item = {}> {
 //   Input: FC<AutocompleteMultiSelectInputProps>;
 //   List: FC<AutocompleteMultiSelectListProps<Item>>;

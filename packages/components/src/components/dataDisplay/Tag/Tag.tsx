@@ -10,7 +10,9 @@ import {
 } from '@chakra-ui/react';
 import { TagProps } from './types';
 
-const Tag = forwardRef<TagProps, typeof ChakraTag>((props, ref) => <ChakraTag ref={ref} {...props} />);
+const Tag = forwardRef<TagProps, typeof ChakraTag>(({ isDisabled, ...props }, ref) => (
+  <ChakraTag ref={ref} disabled={isDisabled} {...props} />
+));
 
 const LeftIcon = forwardRef((props, ref) => {
   const styles = useTagStyles() as { leftIcon: StyleProps };

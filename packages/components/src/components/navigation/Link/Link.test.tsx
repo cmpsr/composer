@@ -65,4 +65,15 @@ describe('Link', () => {
     const linkComponent = screen.getByRole('link');
     expect(linkComponent).toHaveStyle('display: inline');
   });
+
+  it('should render a disabled link with the correct attributes', () => {
+    renderWithProviders(
+      <Link role="link" data-testid="test.disabled-link" isDisabled>
+        Disabled Link
+      </Link>
+    );
+    const linkComponent = screen.getByTestId('test.disabled-link');
+    expect(linkComponent).toHaveAttribute('aria-disabled', 'true');
+    expect(linkComponent).toHaveAttribute('tabIndex', '-1');
+  });
 });

@@ -6,4 +6,5 @@ export type TagSize = (typeof tagSizes)[number];
 
 export interface TagProps extends Omit<ChakraTagProps, 'variant'> {
   size?: ResponsiveValue<TagSize>;
+  isDisabled?: boolean;
 }

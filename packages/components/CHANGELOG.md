@@ -1,5 +1,18 @@
 # @cmpsr/components
 
+## 7.9.1
+
+### Patch Changes
+
+- 3035bbc6: fix: toast description overlapping the close button
+
+## 7.9.0
+
+### Minor Changes
+
+- 7f1b9e5a: Update Icon Button - Tokens on paddings
+- 6beadf5a: feat: add light variant and disabled state to Link component
+
 ## 7.8.0
 
 ### Minor Changes

@@ -1,11 +1,11 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { type QuestionTitleProps } from './types';
 import { InfoButton } from './components/InfoButton';
-import { Text, Flex } from '@cmpsr/components';
+import { Text, Flex, useDisclosure } from '@cmpsr/components';
 import { QuestionTitleModal } from './components/Modal';
 
 export const QuestionTitle: FC<QuestionTitleProps> = ({ question, whyWeAskExplanation, description }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
@@ -13,14 +13,10 @@ export const QuestionTitle: FC<QuestionTitleProps> = ({ question, whyWeAskExplan
         <Text variant="text-header-L" mb="spacer-8" my="auto">
           {question}
         </Text>
-        <InfoButton onClick={() => setModalIsOpen(true)} />
+        <InfoButton onClick={onOpen} />
       </Flex>
       {description ?? <Text mt="spacer-3">{description}</Text>}
-      <QuestionTitleModal
-        modalIsOpen={modalIsOpen}
-        onClose={() => setModalIsOpen(false)}
-        content={whyWeAskExplanation}
-      />
+      <QuestionTitleModal modalIsOpen={isOpen} onClose={onClose} content={whyWeAskExplanation} />
     </>
   );
 };

@@ -14,7 +14,7 @@ const questionTypesMap = {
 
 export const Question: FC<QuestionProps> = ({ submitIDKAnswer, paginationDispatch, ...props }) => {
   if (props.data.type === 'sectionIntro') return questionTypesMap[props.data.type](props);
-  console.log(props.data.skippable, 'wtf');
+
   return (
     <Box mb={{ base: 'spacer-14', lg: 'spacer-16' }} flexGrow="1">
       <Flex

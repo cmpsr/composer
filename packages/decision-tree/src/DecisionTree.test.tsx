@@ -53,12 +53,10 @@ describe('DecisionTree', () => {
       <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
     );
 
-    fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+    await act(() => fireEvent.click(screen.getByRole('button', { name: 'Next' })));
 
-    await waitFor(() => {
-      expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
-      expect(screen.getByRole('button', { name: 'Back' })).not.toBeDisabled();
-    });
+    await waitFor(() => expect(screen.getByText('Next')));
+    expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
   });
 
   test('should enable next button on value select', async () => {
@@ -90,10 +88,41 @@ describe('DecisionTree', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Next' }));
 
+    await waitFor(() => expect(screen.getByText('Next')));
+    expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
+  });
+
+  test('should enable next button on value select', async () => {
+    renderWithProviders(
+      <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+
     await waitFor(() => {
-      expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
-      expect(screen.getByRole('button', { name: 'Back' })).not.toBeDisabled();
+      expect(screen.getByText('What sex were you assigned at birth?'));
     });
+
+    fireEvent.click(screen.getByText('Next'));
+
+    await waitFor(() => {
+      expect(screen.getByText('Next'));
+      expect(screen.getByText('Back'));
+      expect(screen.getByText('Male'));
+      expect(screen.getByText('Female'));
+      expect(screen.getByText('What sex were you assigned at birth?'));
+    });
+  });
+
+  test('should disable the next button on a question and enable the back button', async () => {
+    renderWithProviders(
+      <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+
+    await waitFor(() => expect(screen.getByText('Next')));
+    expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
   });
 
   test('should enable next button on value select', async () => {

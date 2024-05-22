@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.2.47",
+  "version": "0.2.48",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "private": true,
@@ -19,7 +19,7 @@
     "react": "^18.2.0"
   },
   "dependencies": {
-    "@cmpsr/components": "7.9.1"
+    "@cmpsr/components": "7.9.2"
   },
   "devDependencies": {
     "@fontsource/inter": "^4.5.0",

@@ -1,13 +1,16 @@
 import React, { FC } from 'react';
 import { type InfoButtonProps } from './types';
-import { IconHelp, Box, Button } from '@cmpsr/components';
+import { IconHelp, ButtonIcon } from '@cmpsr/components';
 
 export const InfoButton: FC<InfoButtonProps> = ({ onClick }) => {
   return (
-    <Button variant="ghost" onClick={onClick} ml="spacer-2">
-      <Box display="inline" my="auto">
-        <IconHelp color="text-link-secondary-default" />
-      </Box>
-    </Button>
+    <ButtonIcon
+      variant="ghost"
+      color="text-link-secondary-default"
+      onClick={onClick}
+      ml="spacer-2"
+      icon={<IconHelp />}
+      aria-label="Why we ask?"
+    />
   );
 };

@@ -1,6 +1,3 @@
-// la interfaz de items debe ser genérico
-// no puede haber nada relacionado con label/value en el código
-// eliminar los ts-ignore
 // ui...
 // mirar que no haya errores en la consola
 // BUG, type for the first option, select it, remove it, type again for the first option, select it (not working)

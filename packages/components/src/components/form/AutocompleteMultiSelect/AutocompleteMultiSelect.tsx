@@ -3,7 +3,7 @@
 // eliminar los ts-ignore
 // ui...
 // mirar que no haya errores en la consola
-
+// BUG, type for the first option, select it, remove it, type again for the first option, select it (not working)
 import React, { FC, useMemo, useRef, useState, useCallback } from 'react';
 import { useMultipleSelection, useCombobox } from 'downshift';
 import {
@@ -83,13 +83,6 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
   } = useCombobox({
     items: filteredItems,
     inputValue,
-    onSelectedItemChange: ({ selectedItem }) => {
-      if (selectedItem && !selectedItems.includes(selectedItem)) {
-        // @ts-ignore
-        setSelectedItems((prevSelectedItems) => [...prevSelectedItems, selectedItem]);
-        setInputValue(''); // Reset input value when an item is selected
-      }
-    },
     stateReducer: (state, actionAndChanges) => {
       const { changes, type } = actionAndChanges;
       switch (type) {

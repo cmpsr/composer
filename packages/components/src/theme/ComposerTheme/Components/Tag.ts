@@ -28,9 +28,11 @@ const baseStyle = {
   },
   leftIcon: {
     textStyle: 'text-body-medium',
+    margin: 0,
   },
   rightIcon: {
     textStyle: 'text-body-medium',
+    margin: 0,
   },
 };
 

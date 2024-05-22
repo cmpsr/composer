@@ -123,12 +123,10 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
         getToggleButtonProps,
         selectedItem: selectedItemCombobox,
         highlightedIndex,
-        // @ts-ignore
         selectedItems,
         removeSelectedItem,
         getSelectedItemProps,
         getDropdownProps,
-        // TODO: Check why is not working when we import it from useCombobox
         reset: () => setInputValue(''),
       }}
     >
@@ -141,7 +139,6 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
   clearButtonMode = 'has-value',
   ...rest
 }) => {
-  // @ts-ignore
   const { reset, getInputProps, getToggleButtonProps, getDropdownProps, isOpen } = useAutocompleteMultiSelectContext();
   const ref = useRef<HTMLInputElement>(null);
   const inputProps = getInputProps({ ...getDropdownProps({ preventKeyAction: isOpen, ref }) });
@@ -159,7 +156,6 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
   }, []);
 
   return (
-    // @ts-ignore
     <Input
       trailingIcon={
         shouldShowClearButton ? (
@@ -222,7 +218,6 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
   renderSelectedItem,
   ...rest
 }) => {
-  //@ts-ignore
   const { selectedItems, getSelectedItemProps, removeSelectedItem } = useAutocompleteMultiSelectContext();
   const styles = useStyleConfig('AutocompleteMultiSelect') as Record<
     string,

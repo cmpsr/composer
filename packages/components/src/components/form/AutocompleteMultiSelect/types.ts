@@ -1,4 +1,11 @@
-import { UseComboboxActions, UseComboboxPropGetters, UseComboboxProps, UseMultipleSelectionProps } from 'downshift';
+import {
+  UseComboboxActions,
+  UseComboboxPropGetters,
+  UseComboboxProps,
+  UseMultipleSelectionActions,
+  UseMultipleSelectionPropGetters,
+  UseMultipleSelectionProps,
+} from 'downshift';
 import { FC, ReactElement, ReactNode } from 'react';
 import { ResponsiveValue } from '@chakra-ui/react';
 import { BoxProps } from '../../layouts/Box';
@@ -39,5 +46,10 @@ export interface AutocompleteMultiSelectStaticMembers<Item = {}> {
 }
 
 export type AutocompleteMultiSelectContextProps<Item = {}> = Partial<
-  UseComboboxProps<Item> & UseComboboxPropGetters<Item> & UseComboboxActions<Item>
+  UseComboboxProps<Item> &
+    UseComboboxPropGetters<Item> &
+    UseComboboxActions<Item> &
+    UseMultipleSelectionProps<Item> &
+    UseMultipleSelectionActions<Item> &
+    UseMultipleSelectionPropGetters<Item>
 >;

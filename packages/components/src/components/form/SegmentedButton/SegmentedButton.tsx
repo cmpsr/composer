@@ -41,7 +41,7 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
 
   return (
     <SegmentedButtonProvider value={{ getButtonStyles }}>
-      <Flex {...getButtonStyles().container} {...rest} role="group">
+      <Flex {...getButtonStyles().container} role="group" {...rest}>
         {children.map((child) =>
           cloneElement(child, {
             key: child.props.value,

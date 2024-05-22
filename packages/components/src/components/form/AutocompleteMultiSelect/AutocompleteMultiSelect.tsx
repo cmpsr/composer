@@ -235,9 +235,13 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
 }) => {
   //@ts-ignore
   const { selectedItems, getSelectedItemProps, removeSelectedItem } = useAutocompleteMultiSelectContext();
+  const styles = useStyleConfig('AutocompleteMultiSelect') as Record<
+    string,
+    RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>
+  >;
 
   return selectedItems.length ? (
-    <Box as="ul" {...rest}>
+    <Box as="ul" {...rest} {...styles.selectedItems}>
       {selectedItems.map((selectedItem, index) => (
         <Box as="li" key={`selected-item-${index}`} {...getSelectedItemProps({ selectedItem, index })}>
           {renderSelectedItem(selectedItem, () => removeSelectedItem(selectedItem))}

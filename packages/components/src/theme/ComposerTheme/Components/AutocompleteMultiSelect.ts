@@ -1,7 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 export const AutocompleteMultiSelect: ComponentStyleConfig = {
-  parts: ['list', 'item', 'noResults'],
+  parts: ['list', 'item', 'noResults', 'selectedItems'],
   baseStyle: {
     list: {
       zIndex: 1,
@@ -13,7 +13,6 @@ export const AutocompleteMultiSelect: ComponentStyleConfig = {
       paddingY: 'spacer-2',
       boxShadow: 'elevation-interactive',
       backgroundColor: 'background-card',
-      listStyleType: 'none',
     },
     item: {
       color: 'text-primary',
@@ -38,6 +37,14 @@ export const AutocompleteMultiSelect: ComponentStyleConfig = {
       color: 'text-secondary',
       paddingX: '1rem',
       paddingY: '0.5rem',
+    },
+    selectedItems: {
+      listStyleType: 'none',
+      paddingX: 'spacer-3',
+      paddingY: 'spacer-2',
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: 'spacer-2',
     },
   },
 };

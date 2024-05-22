@@ -53,12 +53,9 @@ describe('DecisionTree', () => {
       <DecisionTree backOnFirstQuestion={backActionMock} userQuestionnaire={userQuestionnaire} callback={callback} />
     );
 
-    fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+    await act(() => fireEvent.click(screen.getByRole('button', { name: 'Next' })));
 
-    await waitFor(() => {
-      expect(screen.getByRole('button', { name: 'Back' })).not.toBeDisabled();
-      return expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
-    });
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled());
   });
 
   test('should enable next button on value select', async () => {

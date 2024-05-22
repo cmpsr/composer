@@ -14,7 +14,7 @@ const questionTypesMap = {
 
 export const Question: FC<QuestionProps> = ({ submitIDKAnswer, paginationDispatch, ...props }) => {
   if (props.data.type === 'sectionIntro') return questionTypesMap[props.data.type](props);
-
+  console.log(props.data.skippable, 'wtf');
   return (
     <Box mb={{ base: 'spacer-14', lg: 'spacer-16' }} flexGrow="1">
       <Flex
@@ -26,12 +26,10 @@ export const Question: FC<QuestionProps> = ({ submitIDKAnswer, paginationDispatc
       >
         {questionTypesMap[props.data.type](props)}
       </Flex>
-      {props.data.skippable !== false ? (
+      {props.data.skippable && (
         <Flex justifyContent="center">
           <IDontKnowButton submitIDKAnswer={submitIDKAnswer} paginationDispatch={paginationDispatch} />
         </Flex>
-      ) : (
-        ''
       )}
     </Box>
   );

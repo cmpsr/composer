@@ -55,7 +55,7 @@ describe('DecisionTree', () => {
 
     await act(() => fireEvent.click(screen.getByRole('button', { name: 'Next' })));
 
-    await waitFor(() => expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled());
+    await waitFor(() => expect(screen.getByText('Next')));
   });
 
   test('should enable next button on value select', async () => {

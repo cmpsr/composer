@@ -12,6 +12,7 @@ import {
   AutocompleteMultiSelectListProps,
   AutocompleteMultiSelectProps,
   AutocompleteMultiSelectSelectedItemsProps,
+  AutocompleteMultiSelectStaticMembers,
 } from './types';
 import { createContext } from '@chakra-ui/react-utils';
 import { Input } from '../Input';
@@ -23,7 +24,7 @@ import { RecursiveCSSObject, StyleProps, useStyleConfig } from '@chakra-ui/react
 const [AutocompleteMultiSelectProvider, useAutocompleteMultiSelectContext] =
   createContext<AutocompleteMultiSelectContextProps>({});
 
-export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
+export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & AutocompleteMultiSelectStaticMembers = ({
   children,
   useComboboxProps,
   useMultipleSelectionProps,
@@ -190,7 +191,6 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
   );
 };
 
-//@ts-ignore
 AutocompleteMultiSelect.Input = AutocompleteMultiSelectInput;
 
 const AutocompleteMultiSelectList: FC<AutocompleteMultiSelectListProps> = ({
@@ -230,7 +230,7 @@ const AutocompleteMultiSelectList: FC<AutocompleteMultiSelectListProps> = ({
     </Box>
   );
 };
-//@ts-ignore
+
 AutocompleteMultiSelect.List = AutocompleteMultiSelectList;
 
 const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedItemsProps> = ({
@@ -254,5 +254,5 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
     </Box>
   ) : null;
 };
-//@ts-ignore
+
 AutocompleteMultiSelect.SelectedItems = AutocompleteMultiSelectSelectedItems;

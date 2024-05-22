@@ -164,9 +164,7 @@ const Template = () => {
       {/* @ts-ignore */}
       <AutocompleteMultiSelect.Input placeholder="Search for a feature" />
       {/* @ts-ignore */}
-      <AutocompleteMultiSelect.List
-        renderItem={(item: string) => <div style={{ padding: '20px', backgroundColor: '#eaeaea' }}>{item}</div>}
-      />
+      <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
     </AutocompleteMultiSelect>
   );
 };

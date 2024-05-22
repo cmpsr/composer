@@ -13,6 +13,7 @@ export const AutocompleteMultiSelect: ComponentStyleConfig = {
       paddingY: 'spacer-2',
       boxShadow: 'elevation-interactive',
       backgroundColor: 'background-card',
+      listStyleType: 'none',
     },
     item: {
       color: 'text-primary',

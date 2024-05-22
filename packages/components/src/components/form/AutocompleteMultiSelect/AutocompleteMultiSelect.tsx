@@ -201,7 +201,7 @@ const AutocompleteMultiSelectList: FC<AutocompleteMultiSelectListProps> = ({
     string,
     RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>
   >;
-  const noResults = noResultsContent ?? <Text>No results</Text>;
+  const noResults = noResultsContent ?? <Text {...styles.noResults}>No results</Text>;
 
   return (
     <Box as="ul" visibility={isOpen ? 'visible' : 'hidden'} {...styles.list} {...getMenuProps()} {...rest}>

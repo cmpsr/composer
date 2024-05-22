@@ -39,23 +39,20 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
     getSelectedItemProps,
     getDropdownProps,
   } = useMultipleSelection({
-    onStateChange: (changes) => {
-      if ('selectedItems' in changes && 'type' in changes) {
-        // @ts-ignore
-        const { type, selectedItem } = changes;
-        switch (type) {
-          case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
-            if (selectedItem) {
-              removeSelectedItem(selectedItem);
-            }
-            break;
-          case useMultipleSelection.stateChangeTypes.FunctionAddSelectedItem:
-            addSelectedItem(selectedItem);
-            setInputValue('');
-            break;
-          default:
-            break;
-        }
+    onStateChange: ({ selectedItems: newSelectedItems, type }) => {
+      switch (type) {
+        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
+        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
+        case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
+        case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
+          removeSelectedItem(newSelectedItems);
+          break;
+        case useMultipleSelection.stateChangeTypes.FunctionAddSelectedItem:
+          addSelectedItem(newSelectedItems);
+          setInputValue('');
+          break;
+        default:
+          break;
       }
     },
     ...useMultipleSelectionProps,

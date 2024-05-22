@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { type QuestionTitleModalProps } from './types';
-import { Text, Flex, Button, Modal, IconX, ButtonIcon } from '@cmpsr/components';
+import { Text, Flex, Modal, IconX, ButtonIcon } from '@cmpsr/components';
 
 export const QuestionTitleModal: FC<QuestionTitleModalProps> = ({ modalIsOpen, onClose, content }) => {
   return (

@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.9.2
+
+### Patch Changes
+
+- 63841945: Update tag states and add props to SegmentedButton
+
 ## 7.9.1
 
 ### Patch Changes

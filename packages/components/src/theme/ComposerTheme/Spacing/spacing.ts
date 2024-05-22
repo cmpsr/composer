@@ -50,9 +50,9 @@ export const defaultSpacing = {
   'spacer-tag-y-L': '0.25rem',
   'spacer-tag-x-L': '0.75rem',
   'spacer-tag-gap-M': '0.25rem',
-  'spacer-tag-y-M': '0.125rem',
+  'spacer-tag-y-M': '0.0625rem',
   'spacer-tag-x-M': '0.5rem',
   'spacer-tag-gap-S': '0.25rem',
-  'spacer-tag-y-S': '0.125rem',
+  'spacer-tag-y-S': '0rem',
   'spacer-tag-x-S': '0.5rem',
 };

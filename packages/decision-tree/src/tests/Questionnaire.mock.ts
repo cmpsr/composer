@@ -133,8 +133,9 @@ export const userQuestionnaire: UserQuestionnaireType = {
               { id: 'hispanic-or-latino', label: 'Hispanic or Latino', description: null },
               { id: 'white', label: 'White', description: null },
               { id: 'other', label: 'other', description: null },
+              { id: 'none', label: 'none', description: null, type: 'none' },
             ],
-            type: 'singleChoice',
+            type: 'multipleChoice',
           },
           {
             id: '3',

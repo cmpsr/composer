@@ -16,7 +16,8 @@ export const autocompleteMultiSelectSizes = ['s', 'm', 'l'];
 export type AutocompleteMultiSelectSize = (typeof autocompleteMultiSelectSizes)[number];
 
 export interface AutocompleteMultiSelectProps<Item = {}> {
-  // items: Item[];
+  items: Item[];
+  itemToString: (item: Item) => string;
   children: ReactNode;
   placeholder?: string;
   size?: ResponsiveValue<AutocompleteMultiSelectSize>;

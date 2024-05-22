@@ -26,6 +26,8 @@ const [AutocompleteMultiSelectProvider, useAutocompleteMultiSelectContext] =
 
 export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & AutocompleteMultiSelectStaticMembers = ({
   children,
+  items,
+  itemToString,
   useComboboxProps,
   useMultipleSelectionProps,
 }) => {
@@ -58,15 +60,10 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
     ...useMultipleSelectionProps,
   });
 
-  const { items: defaultItems = [] } = useComboboxProps;
-
   const getFilteredItems = (selectedItems, inputValue) => {
     const lowerCasedInputValue = inputValue.toLowerCase();
-    return defaultItems.filter(
-      (item) =>
-        !selectedItems.includes(item) &&
-        // @ts-ignore
-        item?.toLowerCase().includes(lowerCasedInputValue)
+    return items.filter(
+      (item) => !selectedItems.includes(item) && itemToString(item)?.toLowerCase().includes(lowerCasedInputValue)
     );
   };
 
@@ -82,8 +79,9 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
     getItemProps,
   } = useCombobox({
     items: filteredItems,
+    itemToString,
     inputValue,
-    stateReducer: (state, actionAndChanges) => {
+    stateReducer: (_state, actionAndChanges) => {
       const { changes, type } = actionAndChanges;
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
@@ -110,6 +108,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
           break;
       }
     },
+    ...useComboboxProps,
   });
 
   return (

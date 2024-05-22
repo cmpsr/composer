@@ -16,47 +16,47 @@ export default {
   },
 } as Meta;
 
-const defaultItems = [
-  'Super-Fast Websites',
-  'Optimized Performance',
-  'Seamless Integration',
-  'Responsive Design',
-  'Improved SEO',
-  'Effortless Scaling',
-  'Easy Deployment',
-];
+// const defaultItems = [
+//   'Super-Fast Websites',
+//   'Optimized Performance',
+//   'Seamless Integration',
+//   'Responsive Design',
+//   'Improved SEO',
+//   'Effortless Scaling',
+//   'Easy Deployment',
+// ];
 
 // TODO: 🚨 AUTOCOMPLETE SHOULD SUPPORT GENERIC INTERFACES, IT SHOULD KNOW HOW TO DEAL WITH DIFFERENT STRUCTURE TYPES (?)
-// const defaultItems = [
-//   {
-//     id: 1,
-//     name: 'Super-Fast Websites',
-//   },
-//   {
-//     id: 2,
-//     name: 'Optimized Performance',
-//   },
-//   {
-//     id: 3,
-//     name: 'Seamless Integration',
-//   },
-//   {
-//     id: 4,
-//     name: 'Responsive Design',
-//   },
-//   {
-//     id: 5,
-//     name: 'Improved SEO',
-//   },
-//   {
-//     id: 6,
-//     name: 'Effortless Scaling',
-//   },
-//   {
-//     id: 7,
-//     name: 'Easy Deployment',
-//   },
-// ];
+const defaultItems = [
+  {
+    id: 1,
+    name: 'Super-Fast Websites',
+  },
+  {
+    id: 2,
+    name: 'Optimized Performance',
+  },
+  {
+    id: 3,
+    name: 'Seamless Integration',
+  },
+  {
+    id: 4,
+    name: 'Responsive Design',
+  },
+  {
+    id: 5,
+    name: 'Improved SEO',
+  },
+  {
+    id: 6,
+    name: 'Effortless Scaling',
+  },
+  {
+    id: 7,
+    name: 'Easy Deployment',
+  },
+];
 
 // const AllTemplate = () => {
 //   const states = ['default', 'filled', 'disabled', 'disabled-and-filled', 'error'];
@@ -143,20 +143,22 @@ const defaultItems = [
 const Template = () => {
   return (
     <AutocompleteMultiSelect
+      items={defaultItems}
+      itemToString={(item: any) => item.name}
       // @ts-ignore
       useMultipleSelectionProps={{
         // defaultSelectedItems: items,
         onSelectedItemsChange: console.log,
       }}
-      useComboboxProps={{
-        items: defaultItems,
-      }}
+      // useComboboxProps={{
+
+      // }}
     >
       {/* @ts-ignore */}
       <AutocompleteMultiSelect.SelectedItems
-        renderSelectedItem={(selectedItem: string, removeSelectedItem) => (
+        renderSelectedItem={(selectedItem: any, removeSelectedItem) => (
           <Tag>
-            <Tag.Label>{selectedItem}</Tag.Label>
+            <Tag.Label>{selectedItem.name}</Tag.Label>
             <Tag.RightIcon as={IconX} onClick={removeSelectedItem} />
           </Tag>
         )}
@@ -164,7 +166,7 @@ const Template = () => {
       {/* @ts-ignore */}
       <AutocompleteMultiSelect.Input placeholder="Search for a feature" />
       {/* @ts-ignore */}
-      <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
+      <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item.name}</div>} />
     </AutocompleteMultiSelect>
   );
 };

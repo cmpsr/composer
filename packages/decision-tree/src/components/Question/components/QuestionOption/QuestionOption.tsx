@@ -11,7 +11,7 @@ export const QuestionOption: FC<QuestionOptionProps> = ({
   componentType,
   componentProps,
   label,
-  subLabel,
+  description,
   ...props
 }) => {
   return (
@@ -40,9 +40,9 @@ export const QuestionOption: FC<QuestionOptionProps> = ({
             <Text variant="text-body-regular" color="text-primary">
               {label}
             </Text>
-            {subLabel ?? (
+            {description ?? (
               <Text variant="text-body-meta-regular" color="text-secondary">
-                {subLabel}
+                {description}
               </Text>
             )}
           </>

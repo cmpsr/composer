@@ -1,16 +1,22 @@
 import React, { FC } from 'react';
 import { type QuestionTitleProps } from './types';
-import { Text, Flex, IconHelp, Tooltip, Box } from '@cmpsr/components';
+import { InfoButton } from './components/InfoButton';
+import { Text, Flex, useDisclosure } from '@cmpsr/components';
+import { QuestionTitleModal } from './components/Modal';
 
-export const QuestionTitle: FC<QuestionTitleProps> = ({ question, tooltip }) => (
-  <Flex justifyContent="center" mb="spacer-8">
-    <Text variant="text-header-L" mb="spacer-8" my="auto">
-      {question}
-    </Text>
-    <Tooltip label={tooltip} placement="bottom">
-      <Box display="inline" my="auto" ml="spacer-2">
-        <IconHelp color="text-link-secondary-default" />
-      </Box>
-    </Tooltip>
-  </Flex>
-);
+export const QuestionTitle: FC<QuestionTitleProps> = ({ question, whyWeAskExplanation, description }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  return (
+    <>
+      <Flex justifyContent="center" mb="spacer-8">
+        <Text variant="text-header-L" mb="spacer-8" my="auto">
+          {question}
+        </Text>
+        <InfoButton onClick={onOpen} />
+      </Flex>
+      {description ?? <Text mt="spacer-3">{description}</Text>}
+      <QuestionTitleModal modalIsOpen={isOpen} onClose={onClose} content={whyWeAskExplanation} />
+    </>
+  );
+};

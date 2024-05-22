@@ -6,15 +6,15 @@ import { QuestionOption } from '@components/Question/components/QuestionOption';
 import { inputMargin } from '@components/Question/Question';
 
 export const SingleChoice: FC<SingleChoiceProps> = ({ data, saveAnswer, defaultValue }) => {
-  const { question, choices, tooltip } = data;
+  const { label, options, whyWeAskExplanation } = data;
 
   const handleChange = (nextValue) => saveAnswer({ type: 'singleChoice', value: nextValue });
 
   return (
     <Box>
-      <QuestionTitle question={question} tooltip={tooltip} />
+      <QuestionTitle question={label} whyWeAskExplanation={whyWeAskExplanation} />
       <RadioGroup onChange={handleChange} defaultValue={defaultValue?.value}>
-        {choices.map(({ id, label, subLabel }) => (
+        {options.map(({ id, label, description }) => (
           <QuestionOption
             mx={inputMargin}
             key={`SingleChoice-${id}`}
@@ -23,7 +23,7 @@ export const SingleChoice: FC<SingleChoiceProps> = ({ data, saveAnswer, defaultV
               value: id,
             }}
             label={label}
-            subLabel={subLabel}
+            description={description}
           />
         ))}
       </RadioGroup>

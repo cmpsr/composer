@@ -12,10 +12,9 @@ describe('CallToActions', () => {
     mockNextQuestion.mockReset();
   });
 
-  test('should render 1 button and 1 link', () => {
+  test('should render 1 button and 1 link-button', () => {
     renderWithProviders(
       <CallToActions
-        isBackDisabled={false}
         isNextDisabled={false}
         goToPreviousQuestion={mockPreviousQuestion}
         goToNextQuestion={mockNextQuestion}
@@ -25,34 +24,9 @@ describe('CallToActions', () => {
     expect(screen.getAllByText('Back')).toHaveLength(1);
   });
 
-  test('should disable the back button when configed', () => {
-    renderWithProviders(
-      <CallToActions
-        isBackDisabled={true}
-        isNextDisabled={false}
-        goToPreviousQuestion={mockPreviousQuestion}
-        goToNextQuestion={mockNextQuestion}
-      />
-    );
-    expect(screen.getByRole('button', { name: 'Back' })).toBeDisabled();
-  });
-
-  test('should not disable the back button when not configed', () => {
-    renderWithProviders(
-      <CallToActions
-        isBackDisabled={false}
-        isNextDisabled={false}
-        goToPreviousQuestion={mockPreviousQuestion}
-        goToNextQuestion={mockNextQuestion}
-      />
-    );
-    expect(screen.getByRole('button', { name: 'Back' })).not.toBeDisabled();
-  });
-
   test('should disable the next button when configed', () => {
     renderWithProviders(
       <CallToActions
-        isBackDisabled={false}
         isNextDisabled={true}
         goToPreviousQuestion={mockPreviousQuestion}
         goToNextQuestion={mockNextQuestion}
@@ -64,7 +38,6 @@ describe('CallToActions', () => {
   test('should not disable the next button when not configed', () => {
     renderWithProviders(
       <CallToActions
-        isBackDisabled={false}
         isNextDisabled={false}
         goToPreviousQuestion={mockPreviousQuestion}
         goToNextQuestion={mockNextQuestion}
@@ -76,7 +49,6 @@ describe('CallToActions', () => {
   test('should call the goToPreviousQuestion with previous page action on back click', () => {
     renderWithProviders(
       <CallToActions
-        isBackDisabled={false}
         isNextDisabled={false}
         goToPreviousQuestion={mockPreviousQuestion}
         goToNextQuestion={mockNextQuestion}
@@ -94,7 +66,6 @@ describe('CallToActions', () => {
   test('should call the goToPreviousQuestion with next page action on next click', async () => {
     renderWithProviders(
       <CallToActions
-        isBackDisabled={false}
         isNextDisabled={false}
         goToPreviousQuestion={mockPreviousQuestion}
         goToNextQuestion={mockNextQuestion}

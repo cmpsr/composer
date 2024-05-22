@@ -12,6 +12,7 @@ describe('usePagination', () => {
   const initialState = { sectionId: '1', questionId: '1' };
   const answersDispatch = jest.fn();
   const submitAnswer = jest.fn();
+  const backOnFirstQuestion = jest.fn();
 
   afterAll(() => {
     submitAnswer.mockReset();
@@ -24,6 +25,7 @@ describe('usePagination', () => {
       initialState,
       answersDispatch,
       submitAnswer,
+      backOnFirstQuestion,
     });
 
     const hookResult = result.current;
@@ -37,6 +39,7 @@ describe('usePagination', () => {
       initialState,
       answersDispatch,
       submitAnswer,
+      backOnFirstQuestion,
     });
 
     const hookResult = result.current;
@@ -50,24 +53,12 @@ describe('usePagination', () => {
       initialState,
       answersDispatch,
       submitAnswer,
+      backOnFirstQuestion,
     });
 
     const hookResult = result.current;
 
     expect(typeof hookResult.paginationDispatch).toBe('function');
-  });
-
-  test('should return a isBackDisabled boolean', () => {
-    const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
-      steps,
-      initialState,
-      answersDispatch,
-      submitAnswer,
-    });
-
-    const hookResult = result.current;
-
-    expect(typeof hookResult.isBackDisabled).toBe('boolean');
   });
 
   test('should go to the next Question', async () => {
@@ -76,6 +67,7 @@ describe('usePagination', () => {
       initialState,
       answersDispatch,
       submitAnswer,
+      backOnFirstQuestion,
     });
 
     const { paginationDispatch } = result.current;
@@ -83,7 +75,7 @@ describe('usePagination', () => {
     act(() => {
       paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} },
+        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: [] },
       });
     });
 
@@ -98,6 +90,7 @@ describe('usePagination', () => {
       initialState,
       answersDispatch,
       submitAnswer,
+      backOnFirstQuestion,
     });
 
     const { paginationDispatch } = result.current;
@@ -105,7 +98,7 @@ describe('usePagination', () => {
     await act(async () => {
       await paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} },
+        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: [] },
       });
       await paginationDispatch({ type: PaginationActions.PreviousQuestion });
     });
@@ -121,12 +114,13 @@ describe('usePagination', () => {
   test('should trigger the next question on gotoNextQuesiton Function', async () => {
     const submitAnswerMock = jest
       .fn()
-      .mockResolvedValue({ nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} });
+      .mockResolvedValue({ nextQuestion: { sectionId: '1', questionId: '1' }, answers: [] });
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,
       initialState,
       answersDispatch,
       submitAnswer: submitAnswerMock,
+      backOnFirstQuestion,
     });
 
     const { goToNextQuestion } = result.current;
@@ -141,12 +135,13 @@ describe('usePagination', () => {
   });
 
   test('should not trigger the next question on gotoNextQuesiton Function when empty response', async () => {
-    const submitAnswerMock = jest.fn().mockResolvedValue({ nextQuestion: {}, answers: {} });
+    const submitAnswerMock = jest.fn().mockResolvedValue({ nextQuestion: {}, answers: [] });
     const { result } = renderHookWithProviders<PaginationProps, PaginationResponse>(usePagination, {
       steps,
       initialState,
       answersDispatch,
       submitAnswer: submitAnswerMock,
+      backOnFirstQuestion,
     });
 
     const { goToNextQuestion } = result.current;
@@ -166,6 +161,7 @@ describe('usePagination', () => {
       initialState,
       answersDispatch,
       submitAnswer,
+      backOnFirstQuestion,
     });
 
     const { paginationDispatch } = result.current;
@@ -173,11 +169,11 @@ describe('usePagination', () => {
     await act(async () => {
       await paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: {} },
+        payload: { nextQuestion: { sectionId: '1', questionId: '1' }, answers: [] },
       });
       await paginationDispatch({
         type: PaginationActions.NextQuestion,
-        payload: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: {} },
+        payload: { nextQuestion: { sectionId: '1', questionId: '2' }, answers: [] },
       });
     });
 

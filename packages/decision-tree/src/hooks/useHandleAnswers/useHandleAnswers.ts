@@ -8,8 +8,8 @@ import {
   HandleAnswersState,
   HandleAnswersAction,
   AnswerModel,
-  PreviousAnswersType,
 } from './types';
+import { AnsweredQuestionsType } from '@hooks';
 
 export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionResponse => {
   const handleAnswersReducer = (state: HandleAnswersState, { type, payload }: HandleAnswersAction) => {
@@ -21,14 +21,17 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
       case HandleAnswersActions.ResetAnswer:
         return { ...state, answer: null, isAnswered: false };
       case HandleAnswersActions.SetPreviousAnswers: {
-        return { ...state, previousAnswers: payload as PreviousAnswersType };
+        const previousAnswers = [...state.previousAnswers, ...(payload as AnsweredQuestionsType)];
+        return { ...state, previousAnswers };
       }
       case HandleAnswersActions.GetPreviousAnswer: {
         const questionId = payload as string;
+        const answer = state.previousAnswers.find((answeredQuestion) => answeredQuestion.questionId === questionId);
+
         return {
           ...state,
-          answer: state.previousAnswers[questionId],
-          isAnswered: isAnswerFilled(state.previousAnswers[questionId]),
+          answer,
+          isAnswered: isAnswerFilled(answer),
         };
       }
     }
@@ -36,7 +39,7 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
 
   const [state, dispatch] = useReducer<Reducer<HandleAnswersState, HandleAnswersAction>>(handleAnswersReducer, {
     answer: null,
-    previousAnswers: {},
+    previousAnswers: [],
     isAnswered: false,
   });
 
@@ -44,11 +47,9 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
     if (questionId.includes(sectionIntroId))
       return {
         nextQuestion: { sectionId: 'nextQuestionOverride', questionId: 'nextQuestionOverride' },
-        answers: {},
-        version: 0,
-        sections: [],
+        answers: [],
+        questionnaire: { version: 0, sections: [] },
       };
-
     return await callback(questionId, state.answer as AnswerModel);
   };
 

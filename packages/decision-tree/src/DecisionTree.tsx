@@ -7,12 +7,21 @@ import { usePagination, useHandleAnswers, PaginationActions, HandleAnswersAction
 import { Flex } from '@cmpsr/components';
 import { normalizeQuestionnaire } from './DecisionTree.normalizer';
 
-export const DecisionTree: FC<DecisionTreeProps> = ({ questionnaire, callback, firstQuestion, renderSectionIntro }) => {
-  const normalizedQuestionnaire = useMemo(() => normalizeQuestionnaire(questionnaire), [questionnaire]);
+export const DecisionTree: FC<DecisionTreeProps> = ({
+  userQuestionnaire,
+  callback,
+  firstQuestion,
+  renderSectionIntro,
+  backOnFirstQuestion,
+}) => {
+  const normalizedQuestionnaire = useMemo(
+    () => normalizeQuestionnaire(userQuestionnaire.questionnaire),
+    [userQuestionnaire.questionnaire]
+  );
   const steps: Steps = normalizedQuestionnaire.sections.map(({ id, name }) => ({ id, name }));
   const initialState = firstQuestion ?? {
-    questionId: normalizedQuestionnaire.nextQuestion.questionId,
-    sectionId: normalizedQuestionnaire.nextQuestion.sectionId,
+    questionId: userQuestionnaire.nextQuestion.questionId,
+    sectionId: userQuestionnaire.nextQuestion.sectionId,
   };
 
   const { state: answerState, answersDispatch, submitAnswer, submitIDKAnswer } = useHandleAnswers(callback);
@@ -20,9 +29,8 @@ export const DecisionTree: FC<DecisionTreeProps> = ({ questionnaire, callback, f
     state: { currentQuestion, currentSection },
     paginationDispatch,
     activeStep,
-    isBackDisabled,
     goToNextQuestion,
-  } = usePagination({ steps, initialState, answersDispatch, submitAnswer });
+  } = usePagination({ steps, initialState, answersDispatch, submitAnswer, backOnFirstQuestion });
 
   const section = normalizedQuestionnaire.sections.find((section) => section.id == currentSection);
   const question = section.questions.find((question) => question.id == currentQuestion);
@@ -39,7 +47,6 @@ export const DecisionTree: FC<DecisionTreeProps> = ({ questionnaire, callback, f
         saveAnswer={(payload) => answersDispatch({ type: HandleAnswersActions.SaveAnswer, payload })}
       />
       <CallToActions
-        isBackDisabled={isBackDisabled}
         isNextDisabled={!answerState.isAnswered && question.type !== 'sectionIntro'}
         goToPreviousQuestion={() => paginationDispatch({ type: PaginationActions.PreviousQuestion })}
         goToNextQuestion={goToNextQuestion}

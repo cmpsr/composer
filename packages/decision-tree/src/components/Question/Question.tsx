@@ -12,25 +12,27 @@ const questionTypesMap = {
   sectionIntro: (props) => <SectionIntro {...props} />,
 };
 
-export const Question: FC<QuestionProps> = ({ submitIDKAnswer, paginationDispatch, ...props }) => (
-  <Box mb={{ base: 'spacer-14', lg: 'spacer-16' }} flexGrow="1">
-    <Flex
-      justifyContent="center"
-      mt={{ base: 'spacer-8', lg: 'spacer-16' }}
-      mb="spacer-8"
-      mx={{ base: 'spacer-5', md: 'spacer-20', lg: 'spacer-16', xl: 'spacer-24', xxl: 'spacer-32' }}
-      px={{ base: '0', lg: 'spacer-32', xl: 'spacer-52', xxl: 'spacer-64' }}
-    >
-      {questionTypesMap[props.data.type](props)}
-    </Flex>
-    {props.data.skippable !== false ? (
-      <Flex justifyContent="center">
-        <IDontKnowButton submitIDKAnswer={submitIDKAnswer} paginationDispatch={paginationDispatch} />
+export const Question: FC<QuestionProps> = ({ submitIDKAnswer, paginationDispatch, ...props }) => {
+  if (props.data.type === 'sectionIntro') return questionTypesMap[props.data.type](props);
+
+  return (
+    <Box mb={{ base: 'spacer-14', lg: 'spacer-16' }} flexGrow="1">
+      <Flex
+        justifyContent="center"
+        mt={{ base: 'spacer-8', lg: 'spacer-16' }}
+        mb="spacer-8"
+        mx={{ base: 'spacer-5', md: 'spacer-20', lg: 'spacer-16', xl: 'spacer-24', xxl: 'spacer-32' }}
+        px={{ base: '0', lg: 'spacer-32', xl: 'spacer-52', xxl: 'spacer-64' }}
+      >
+        {questionTypesMap[props.data.type](props)}
       </Flex>
-    ) : (
-      ''
-    )}
-  </Box>
-);
+      {props.data.skippable && (
+        <Flex justifyContent="center">
+          <IDontKnowButton submitIDKAnswer={submitIDKAnswer} paginationDispatch={paginationDispatch} />
+        </Flex>
+      )}
+    </Box>
+  );
+};
 
 export const inputMargin = { base: '0', md: 'spacer-28', lg: 'spacer-36', xl: 'spacer-40' };

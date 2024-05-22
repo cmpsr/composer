@@ -6,8 +6,8 @@ import { QuestionOption } from '@components/Question/components/QuestionOption';
 import { inputMargin } from '@components/Question/Question';
 
 export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, saveAnswer, defaultValue }) => {
-  const { question, choices, tooltip } = data;
-  const [answers, setAnswers] = useState<MultipleChoiceAnswer>({ type: 'multipleChoice', values: [] });
+  const { label, options, whyWeAskExplanation } = data;
+  const [answers, setAnswers] = useState<MultipleChoiceAnswer>(defaultValue ?? { type: 'multipleChoice', values: [] });
 
   const handleChange = ({ currentTarget }) => {
     const newAnswers = !currentTarget.checked
@@ -19,8 +19,8 @@ export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, saveAnswer, defa
 
   return (
     <Box>
-      <QuestionTitle question={question} tooltip={tooltip} />
-      {choices.map(({ id, label, subLabel }) => (
+      <QuestionTitle question={label} whyWeAskExplanation={whyWeAskExplanation} />
+      {options.map(({ id, label, description }) => (
         <QuestionOption
           mx={inputMargin}
           key={`multipleChoice-${id}`}
@@ -31,7 +31,7 @@ export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, saveAnswer, defa
             onChange: handleChange,
           }}
           label={label}
-          subLabel={subLabel}
+          description={description}
         />
       ))}
     </Box>

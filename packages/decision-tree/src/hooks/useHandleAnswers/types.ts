@@ -4,7 +4,8 @@ import {
   NumericAnswer,
   SingleChoiceAnswer,
 } from '@components/Question/questionTypes';
-import { QuestionnaireType } from '@types';
+import { AnsweredQuestionsType } from '@hooks';
+import { UserQuestionnaireType } from '@types';
 import { type Dispatch } from 'react';
 
 export enum HandleAnswersActions {
@@ -14,20 +15,16 @@ export enum HandleAnswersActions {
   SetPreviousAnswers = 'setPreviousAnswers',
 }
 
-export type PreviousAnswersType = {
-  [key: string]: AnswerModel;
-};
-
 export type HandleAnswersAction = {
   type: HandleAnswersActions;
-  payload?: AnswerModel | string | PreviousAnswersType;
+  payload?: AnswerModel | string | AnsweredQuestionsType;
 };
 
-export type SubmitAnswerFn = (currentPage: string) => Promise<QuestionnaireType>;
+export type SubmitAnswerFn = (currentPage: string) => Promise<UserQuestionnaireType>;
 
 export type HandleAnswersState = {
   answer: AnswerModel | null;
-  previousAnswers: PreviousAnswersType;
+  previousAnswers: AnsweredQuestionsType;
   isAnswered: boolean;
 };
 

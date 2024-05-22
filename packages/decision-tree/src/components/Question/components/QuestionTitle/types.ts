@@ -1,4 +1,5 @@
 export type QuestionTitleProps = {
-  tooltip: string;
+  whyWeAskExplanation?: string;
   question: string;
+  description?: string;
 };

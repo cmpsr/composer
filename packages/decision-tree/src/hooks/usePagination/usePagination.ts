@@ -1,6 +1,13 @@
 import { useReducer, useState, type Reducer } from 'react';
 import { useSteps } from '@cmpsr/components';
-import { PaginationResponse, PaginationState, PaginationAction, PaginationActions, PaginationProps } from './types';
+import {
+  PaginationResponse,
+  PaginationState,
+  PaginationAction,
+  PaginationActions,
+  PaginationProps,
+  AnsweredQuestionsType,
+} from './types';
 import { HandleAnswersActions } from '@hooks';
 import { sectionIntroId } from '../../DecisionTree.normalizer';
 
@@ -9,13 +16,14 @@ export const usePagination = ({
   initialState,
   answersDispatch,
   submitAnswer,
+  backOnFirstQuestion,
 }: PaginationProps): PaginationResponse => {
   const firstStep = steps.findIndex(({ id }) => id === initialState.sectionId) ?? 0;
   const { activeStep, setActiveStep } = useSteps({
     index: firstStep,
     count: steps.length,
   });
-  const [pageHistory, setPageHistory] = useState<Array<PaginationState>>([]);
+  const [pageHistory, setPageHistory] = useState<Array<{ questionId: string; sectionId: string }>>([]);
   const [nextQuestionOverride, setNextQuestionOverride] = useState(initialState);
 
   const setNextQuestion = (nextQuestion, answers) => {
@@ -31,12 +39,66 @@ export const usePagination = ({
     };
   };
 
+  const isQuestionASectionIntro = (questionId: string): boolean => questionId.includes(sectionIntroId);
+
+  const getNextQuestion = (state: PaginationState): PaginationState => {
+    const currentIndex = pageHistory.findIndex(({ questionId }) => questionId === state.currentQuestion);
+    const nextIndex = currentIndex + 1;
+
+    if (!pageHistory.at(nextIndex)) return state;
+
+    const { questionId: currentQuestion, sectionId: currentSection } = pageHistory.at(nextIndex);
+
+    return { currentQuestion, currentSection };
+  };
+
+  const getPreviousQuestion = (state: PaginationState): PaginationState => {
+    const currentIndex = pageHistory.findIndex(({ questionId }) => questionId === state.currentQuestion);
+
+    if (currentIndex === 0 || (!pageHistory.length && isQuestionASectionIntro(state.currentQuestion))) {
+      backOnFirstQuestion();
+      return state;
+    }
+
+    const previousIndex = currentIndex > 0 ? currentIndex - 1 : -1;
+
+    if (!pageHistory.at(previousIndex))
+      return { ...state, currentQuestion: `${state.currentSection}${sectionIntroId}` };
+
+    const { questionId: currentQuestion, sectionId: currentSection } = pageHistory.at(previousIndex);
+
+    return { currentQuestion, currentSection };
+  };
+
+  const normalizeAnswers = (
+    answers: AnsweredQuestionsType,
+    state: PaginationState
+  ): Array<{ questionId: string; sectionId: string }> => {
+    if (isQuestionASectionIntro(state.currentQuestion))
+      return [
+        ...pageHistory,
+        { sectionId: state.currentSection, questionId: `${state.currentSection}${sectionIntroId}` },
+      ];
+    if (!answers) return [];
+
+    const normalizedAnswers = answers.reduce((acc, { questionId, sectionId }, i) => {
+      const previousAnswer = answers[i - 1];
+      if (!previousAnswer || previousAnswer.sectionId !== sectionId)
+        acc.push({ questionId: `${sectionId}${sectionIntroId}`, sectionId });
+      acc.push({ questionId, sectionId });
+      return acc;
+    }, []);
+
+    return normalizedAnswers;
+  };
+
   const paginationReducer = (state: PaginationState, { type, payload }: PaginationAction) => {
     switch (type) {
       case PaginationActions.PreviousQuestion: {
-        const { currentQuestion, currentSection, step } = pageHistory.at(-1);
+        const { currentQuestion, currentSection } = getPreviousQuestion(state);
+        const step = steps.findIndex((step) => step.id == currentSection);
 
-        if (currentQuestion.includes(sectionIntroId)) {
+        if (isQuestionASectionIntro(currentQuestion)) {
           setNextQuestionOverride({ questionId: state.currentQuestion, sectionId: state.currentSection });
         } else {
           setNextQuestionOverride(null);
@@ -44,7 +106,6 @@ export const usePagination = ({
 
         answersDispatch({ type: HandleAnswersActions.GetPreviousAnswer, payload: currentQuestion });
         setActiveStep(step);
-        setPageHistory(pageHistory.slice(0, -1));
 
         return {
           currentQuestion,
@@ -53,7 +114,13 @@ export const usePagination = ({
       }
       case PaginationActions.NextQuestion: {
         const { nextQuestion, answers } = payload;
-        setPageHistory([...pageHistory, { ...state, step: activeStep }]);
+        const potentialNextQuestion = getNextQuestion(state);
+        const isAnsweredQuestion =
+          pageHistory.findIndex((page) => page.questionId === potentialNextQuestion.currentQuestion) > -1;
+        const normalizedAnswers = normalizeAnswers(answers, state);
+        if (normalizedAnswers.length) setPageHistory(normalizedAnswers);
+
+        if (isAnsweredQuestion) setNextQuestion(potentialNextQuestion, null);
 
         if (nextQuestionOverride !== null) {
           const nextQuestionState = setNextQuestion(nextQuestionOverride, null);
@@ -88,5 +155,5 @@ export const usePagination = ({
     dispatch({ type: PaginationActions.NextQuestion, payload: response });
   };
 
-  return { state, activeStep, paginationDispatch: dispatch, isBackDisabled: pageHistory.length < 1, goToNextQuestion };
+  return { state, activeStep, paginationDispatch: dispatch, goToNextQuestion };
 };

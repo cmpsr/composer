@@ -1,14 +1,14 @@
 import { QuestionBase } from '@components/Question/types';
 import { AnswerModel } from '@hooks';
 
-type Choice = {
+type Option = {
   id: string;
   label: string;
-  subLabel: string;
+  description?: string;
 };
 
 export interface SingleChoiceQuestion extends QuestionBase {
-  choices: Choice[];
+  options: Option[];
   type: 'singleChoice';
 }
 

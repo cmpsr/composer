@@ -6,7 +6,7 @@ import { DecisionTreeInput } from '@components/Question/components/DecisionTreeI
 import { inputMargin } from '@components/Question/Question';
 
 export const Height: FC<HeightProps> = ({ data, saveAnswer, defaultValue }) => {
-  const { question, tooltip, feet, inches } = data;
+  const { label, whyWeAskExplanation, feet, inches } = data;
   const [answers, setAnswers] = useState<HeightAnswer>({ type: 'height', feet: null, inches: null });
 
   const handleChangeFeet = ({ currentTarget }) => {
@@ -23,7 +23,7 @@ export const Height: FC<HeightProps> = ({ data, saveAnswer, defaultValue }) => {
 
   return (
     <Box>
-      <QuestionTitle question={question} tooltip={tooltip} />
+      <QuestionTitle question={label} whyWeAskExplanation={whyWeAskExplanation} />
       <Flex gap="spacer-4" px={inputMargin}>
         <DecisionTreeInput
           variant="outline"

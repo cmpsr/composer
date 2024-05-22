@@ -7,8 +7,8 @@ import { AnswerModel } from '@hooks';
 describe('NumericQuestion', () => {
   const data = {
     id: '1',
-    question: 'hello there!',
-    tooltip: 'question tooltip',
+    label: 'hello there!',
+    whyWeAskExplanation: 'question tooltip',
     type: 'numeric',
 
     placeholder: 'placeholderNumeric',

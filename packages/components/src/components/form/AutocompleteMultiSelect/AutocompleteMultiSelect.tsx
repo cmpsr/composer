@@ -145,7 +145,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = ({
         reset: () => setInputValue(''),
       }}
     >
-      {children}
+      <Box position="relative">{children}</Box>
     </AutocompleteMultiSelectProvider>
   );
 };

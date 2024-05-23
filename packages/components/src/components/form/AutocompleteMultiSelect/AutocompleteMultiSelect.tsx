@@ -1,6 +1,5 @@
 // ui...
 // mirar que no haya errores en la consola
-// BUG, type for the first option, select it, remove it, type again for the first option, select it (not working)
 import React, { FC, useMemo, useRef, useState, useCallback } from 'react';
 import { useMultipleSelection, useCombobox } from 'downshift';
 import {
@@ -56,6 +55,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
     getItemProps,
   } = useCombobox({
     items: filteredItems,
+    selectedItem: null,
     ...(itemToString && { itemToString }),
     inputValue,
     stateReducer: (_state, actionAndChanges) => {
@@ -157,7 +157,6 @@ const AutocompleteMultiSelectList: FC<AutocompleteMultiSelectListProps> = ({
 }) => {
   const { isOpen, items, selectedItem, highlightedIndex, getItemProps, getMenuProps } =
     useAutocompleteMultiSelectContext();
-
   const styles = useStyleConfig('AutocompleteMultiSelect') as Record<
     string,
     RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, renderWithProviders, waitFor } from '@tests/renderWithProviders';
+import { screen, renderWithProviders } from '@tests/renderWithProviders';
 import { StepBar } from './StepBar';
 import { Steps } from '@types';
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { autocompleteMultiSelectSizes } from './types';
 import { AutocompleteMultiSelect } from './AutocompleteMultiSelect';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Tag } from '@components/dataDisplay';
 import { IconX } from '@components/media';
 
@@ -25,38 +26,6 @@ const defaultItems = [
   'Effortless Scaling',
   'Easy Deployment',
 ];
-
-// TODO: 🚨 AUTOCOMPLETE SHOULD SUPPORT GENERIC INTERFACES, IT SHOULD KNOW HOW TO DEAL WITH DIFFERENT STRUCTURE TYPES (?)
-// const defaultItems = [
-//   {
-//     id: 1,
-//     name: 'Super-Fast Websites',
-//   },
-//   {
-//     id: 2,
-//     name: 'Optimized Performance',
-//   },
-//   {
-//     id: 3,
-//     name: 'Seamless Integration',
-//   },
-//   {
-//     id: 4,
-//     name: 'Responsive Design',
-//   },
-//   {
-//     id: 5,
-//     name: 'Improved SEO',
-//   },
-//   {
-//     id: 6,
-//     name: 'Effortless Scaling',
-//   },
-//   {
-//     id: 7,
-//     name: 'Easy Deployment',
-//   },
-// ];
 
 // const AllTemplate = () => {
 //   const states = ['default', 'filled', 'disabled', 'disabled-and-filled', 'error'];
@@ -142,30 +111,16 @@ const defaultItems = [
 
 const Template = () => {
   return (
-    <AutocompleteMultiSelect
-      items={defaultItems}
-      // itemToString={(item: any) => item.name}
-      // @ts-ignore
-      // useMultipleSelectionProps={{
-      //   // defaultSelectedItems: items,
-      //   onSelectedItemsChange: console.log,
-      // }}
-      // useComboboxProps={{
-
-      // }}
-    >
-      {/* @ts-ignore */}
+    <AutocompleteMultiSelect items={defaultItems}>
       <AutocompleteMultiSelect.SelectedItems
-        renderSelectedItem={(selectedItem: any, removeSelectedItem) => (
-          <Tag>
-            <Tag.Label>{selectedItem}</Tag.Label>
-            <Tag.RightIcon as={IconX} onClick={removeSelectedItem} />
-          </Tag>
-        )}
+      // renderSelectedItem={(selectedItem: any, removeSelectedItem) => (
+      //   <Tag>
+      //     <Tag.Label>{selectedItem}</Tag.Label>
+      //     <Tag.RightIcon as={IconX} onClick={removeSelectedItem} />
+      //   </Tag>
+      // )}
       />
-      {/* @ts-ignore */}
-      <AutocompleteMultiSelect.Input placeholder="Search for a feature" />
-      {/* @ts-ignore */}
+      <AutocompleteMultiSelect.Input placeholder="Search for a feature" variant="flushed" />
       <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
     </AutocompleteMultiSelect>
   );

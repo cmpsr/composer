@@ -33,7 +33,7 @@ export interface AutocompleteMultiSelectListProps<Item = {}> extends BoxProps {
 }
 
 export interface AutocompleteMultiSelectSelectedItemsProps<Item = {}> extends BoxProps {
-  renderSelectedItem: (item: Item, removeSelectedItem: () => void) => ReactElement;
+  renderSelectedItem?: (item: Item, removeSelectedItem: () => void) => ReactElement;
 }
 
 export interface AutocompleteMultiSelectInputProps extends InputProps {

@@ -1,4 +1,3 @@
-// ui...
 // mirar que no haya errores en la consola
 import React, { FC, useMemo, useRef, useState, useCallback } from 'react';
 import { useMultipleSelection, useCombobox } from 'downshift';
@@ -13,6 +12,7 @@ import {
 import { createContext } from '@chakra-ui/react-utils';
 import { Input } from '../Input';
 import { Box } from '../../layouts/Box';
+import { Tag } from '@components/dataDisplay';
 import { Text } from '@components/typography';
 import { IconChevronDown, IconChevronUp, IconX } from '@components/media';
 import { RecursiveCSSObject, StyleProps, useStyleConfig } from '@chakra-ui/react';
@@ -199,11 +199,18 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
     RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>
   >;
 
+  const defaultRenderSelectedItem = (selectedItem, removeSelectedItem) => (
+    <Tag>
+      <Tag.Label>{selectedItem}</Tag.Label>
+      <Tag.RightIcon as={IconX} onClick={removeSelectedItem} />
+    </Tag>
+  );
+
   return selectedItems.length ? (
     <Box as="ul" {...rest} {...styles.selectedItems}>
       {selectedItems.map((selectedItem, index) => (
         <Box as="li" key={`selected-item-${index}`} {...getSelectedItemProps({ selectedItem, index })}>
-          {renderSelectedItem(selectedItem, () => removeSelectedItem(selectedItem))}
+          {(renderSelectedItem || defaultRenderSelectedItem)(selectedItem, () => removeSelectedItem(selectedItem))}
         </Box>
       ))}
     </Box>

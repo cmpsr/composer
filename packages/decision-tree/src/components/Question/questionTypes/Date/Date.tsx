@@ -9,7 +9,7 @@ export const DateComp: FC<DateProps> = ({ data, saveAnswer, defaultValue }) => {
   const { label, id, placeholder, whyWeAskExplanation } = data;
 
   const handleChange = ({ currentTarget }) => {
-    const date = parse(currentTarget.value, dateFormat, new Date());
+    const date = parse(currentTarget.value, uiDateFormat, new Date());
     if (!isValid(date)) return;
 
     const formattedDate: string = format(date, isoDateFormat);

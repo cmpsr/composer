@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Box, DateInput, Flex } from '@cmpsr/components';
-import { DateProps, dateFormat } from './types';
+import { DateProps, uiDateFormat, isoDateFormat } from './types';
 import { QuestionTitle } from '@components/Question/components/QuestionTitle';
 import { inputMargin } from '@components/Question/Question';
-import { parse, format, formatISO, isValid } from 'date-fns';
+import { parse, format, isValid } from 'date-fns';
 
 export const DateComp: FC<DateProps> = ({ data, saveAnswer, defaultValue }) => {
   const { label, id, placeholder, whyWeAskExplanation } = data;
@@ -12,11 +12,11 @@ export const DateComp: FC<DateProps> = ({ data, saveAnswer, defaultValue }) => {
     const date = parse(currentTarget.value, dateFormat, new Date());
     if (!isValid(date)) return;
 
-    const formattedDate: string = formatISO(date);
+    const formattedDate: string = format(date, isoDateFormat);
     saveAnswer({ type: 'date', value: formattedDate });
   };
 
-  const defaultDate = defaultValue?.value ? format(defaultValue.value, dateFormat) : null;
+  const defaultDate = defaultValue?.value ? format(defaultValue.value, uiDateFormat) : null;
 
   return (
     <Box>

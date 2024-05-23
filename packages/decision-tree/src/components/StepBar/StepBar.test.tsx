@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, renderWithProviders } from '@tests/renderWithProviders';
+import { screen, renderWithProviders, waitFor } from '@tests/renderWithProviders';
 import { StepBar } from './StepBar';
 import { Steps } from '@types';
 
@@ -27,5 +27,29 @@ describe('StepBar', () => {
     givenComponentRendered();
     const items = screen.getAllByText('thirdStep');
     expect(items).toHaveLength(1);
+  });
+
+  test('should render the completed step progress bar as completed', async () => {
+    givenComponentRendered();
+    const progressBars = screen.getAllByTestId('cmpsr.progress-bar');
+    const progressBar = progressBars[0].firstChild as any;
+    expect(progressBar).toHaveAttribute('aria-valuenow')
+    expect(progressBar.attributes['aria-valuenow'].nodeValue).toBe('100')
+  });
+
+  test('should render the progress bar at 50% when active', async () => {
+    givenComponentRendered();
+    const progressBars = screen.getAllByTestId('cmpsr.progress-bar');
+    const progressBar = progressBars[1].firstChild as any;
+    expect(progressBar).toHaveAttribute('aria-valuenow')
+    expect(progressBar.attributes['aria-valuenow'].nodeValue).toBe('50')
+  });
+
+  test('render the pending progress bar at 0%', async () => {
+    givenComponentRendered();
+    const progressBars = screen.getAllByTestId('cmpsr.progress-bar');
+    const progressBar = progressBars[2].firstChild as any;
+    expect(progressBar).toHaveAttribute('aria-valuenow')
+    expect(progressBar.attributes['aria-valuenow'].nodeValue).toBe('0')
   });
 });

@@ -17,7 +17,7 @@ export type AutocompleteMultiSelectSize = (typeof autocompleteMultiSelectSizes)[
 
 export interface AutocompleteMultiSelectProps<Item = {}> {
   items: Item[];
-  itemToString: (item: Item) => string;
+  itemToString?: (item: Item) => string;
   children: ReactNode;
   placeholder?: string;
   size?: ResponsiveValue<AutocompleteMultiSelectSize>;

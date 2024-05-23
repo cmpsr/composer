@@ -30,38 +30,18 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
 }) => {
   const [inputValue, setInputValue] = useState('');
 
-  const {
-    selectedItems,
-    addSelectedItem,
-    removeSelectedItem,
-    setSelectedItems,
-    getSelectedItemProps,
-    getDropdownProps,
-  } = useMultipleSelection({
-    onStateChange: ({ selectedItems: newSelectedItems, type }) => {
-      switch (type) {
-        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
-        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
-        case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
-        case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
-          removeSelectedItem(newSelectedItems);
-          break;
-        case useMultipleSelection.stateChangeTypes.FunctionAddSelectedItem:
-          addSelectedItem(newSelectedItems);
-          setInputValue('');
-          break;
-        default:
-          break;
-      }
-    },
-    ...useMultipleSelectionProps,
-  });
+  const { selectedItems, addSelectedItem, removeSelectedItem, getSelectedItemProps, getDropdownProps } =
+    useMultipleSelection({
+      ...useMultipleSelectionProps,
+    });
 
   const getFilteredItems = (selectedItems, inputValue) => {
     const lowerCasedInputValue = inputValue.toLowerCase();
-    return items.filter(
-      (item) => !selectedItems.includes(item) && itemToString(item)?.toLowerCase().includes(lowerCasedInputValue)
-    );
+    return items.filter((item) => {
+      const itemString = (itemToString ? itemToString(item) : item) as string;
+
+      return !selectedItems.includes(item) && itemString.toLowerCase().includes(lowerCasedInputValue);
+    });
   };
 
   const filteredItems = useMemo(() => getFilteredItems(selectedItems, inputValue), [selectedItems, inputValue]);
@@ -76,7 +56,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
     getItemProps,
   } = useCombobox({
     items: filteredItems,
-    itemToString,
+    ...(itemToString && { itemToString }),
     inputValue,
     stateReducer: (_state, actionAndChanges) => {
       const { changes, type } = actionAndChanges;
@@ -94,9 +74,9 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
         case useCombobox.stateChangeTypes.ItemClick:
         case useCombobox.stateChangeTypes.InputBlur:
           if (newSelectedItem) {
-            setSelectedItems([...selectedItems, newSelectedItem]);
-            setInputValue('');
+            addSelectedItem(newSelectedItem);
           }
+          setInputValue('');
           break;
         case useCombobox.stateChangeTypes.InputChange:
           setInputValue(newInputValue);

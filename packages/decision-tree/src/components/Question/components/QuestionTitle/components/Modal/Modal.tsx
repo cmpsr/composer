@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { type QuestionTitleModalProps } from './types';
-import { Text, Flex, Button, Modal, TextPairing, IconX } from '@cmpsr/components';
+import { Text, Flex, Modal, IconX, ButtonIcon } from '@cmpsr/components';
 
 export const QuestionTitleModal: FC<QuestionTitleModalProps> = ({ modalIsOpen, onClose, content }) => {
   return (
@@ -8,16 +8,16 @@ export const QuestionTitleModal: FC<QuestionTitleModalProps> = ({ modalIsOpen, o
       <Modal.Content borderBottomRadius="0" borderTopRadius="radii-6" alignSelf="end" mb="93px">
         <Modal.Header>
           <Flex justifyContent="center">
-            <TextPairing variant="textpairing-header-M">
-              <TextPairing.Label children="Why we ask?" />
-            </TextPairing>
+            <Text variant="text-body-large-medium">Why we ask?</Text>
           </Flex>
         </Modal.Header>
         <Modal.Body>
-          <Text variant="text-body-large-medium">{content}</Text>
+          <Text variant="text-body-regular" color="text-secondary">
+            {content}
+          </Text>
         </Modal.Body>
         <Modal.Footer justifyContent="center">
-          <Button
+          <ButtonIcon
             variant="ghost"
             onClick={onClose}
             borderColor="primary-default"
@@ -25,9 +25,9 @@ export const QuestionTitleModal: FC<QuestionTitleModalProps> = ({ modalIsOpen, o
             borderStyle="solid"
             borderWidth="1px"
             p="spacer-2"
-          >
-            <IconX />
-          </Button>
+            aria-label="Close"
+            icon={<IconX />}
+          />
         </Modal.Footer>
       </Modal.Content>
     </Modal>

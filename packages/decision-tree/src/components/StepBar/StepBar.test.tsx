@@ -28,4 +28,28 @@ describe('StepBar', () => {
     const items = screen.getAllByText('thirdStep');
     expect(items).toHaveLength(1);
   });
+
+  test('should render the completed step progress bar as completed', async () => {
+    givenComponentRendered();
+    const progressBars = screen.getAllByTestId('cmpsr.progress-bar');
+    const progressBar = progressBars[0].firstChild as any;
+    expect(progressBar).toHaveAttribute('aria-valuenow')
+    expect(progressBar.attributes['aria-valuenow'].nodeValue).toBe('100')
+  });
+
+  test('should render the progress bar at 50% when active', async () => {
+    givenComponentRendered();
+    const progressBars = screen.getAllByTestId('cmpsr.progress-bar');
+    const progressBar = progressBars[1].firstChild as any;
+    expect(progressBar).toHaveAttribute('aria-valuenow')
+    expect(progressBar.attributes['aria-valuenow'].nodeValue).toBe('50')
+  });
+
+  test('render the pending progress bar at 0%', async () => {
+    givenComponentRendered();
+    const progressBars = screen.getAllByTestId('cmpsr.progress-bar');
+    const progressBar = progressBars[2].firstChild as any;
+    expect(progressBar).toHaveAttribute('aria-valuenow')
+    expect(progressBar.attributes['aria-valuenow'].nodeValue).toBe('0')
+  });
 });

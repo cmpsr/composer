@@ -17,4 +17,5 @@ export type DateProps = {
   saveAnswer: (payload: AnswerModel) => void;
 };
 
-export const dateFormat = 'MM/dd/yyyy';
+export const uiDateFormat = 'MM/dd/yyyy';
+export const isoDateFormat = 'yyyy-MM-dd';

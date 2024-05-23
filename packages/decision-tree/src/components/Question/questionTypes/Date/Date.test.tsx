@@ -24,7 +24,7 @@ describe('DateQuestion', () => {
     });
 
     await waitFor(() => {
-      expect(saveAnswer).toHaveBeenCalledWith({ type: 'date', value: '2012-01-01T00:00:00+01:00' });
+      expect(saveAnswer).toHaveBeenCalledWith({ type: 'date', value: '2012-01-01' });
     });
   });
 });

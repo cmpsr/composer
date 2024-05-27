@@ -25,7 +25,7 @@ export const serverMockup = {
         sectionId: '1-demographics',
         answer: { value: 'asian-pacific-islander', type: 'singleChoice' },
       },
-      { questionId: '3', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
+      { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2001', type: 'date' } },
     ],
   },
   '4': {
@@ -37,8 +37,8 @@ export const serverMockup = {
         sectionId: '1-demographics',
         answer: { value: 'asian-pacific-islander', type: 'singleChoice' },
       },
-      { questionId: '3', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
-      { questionId: '4', sectionId: '1-demographics', answer: { value: 'green', type: 'singleChoice' } },
+      { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
+      { questionId: '4', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
     ],
   },
   '5': {
@@ -50,9 +50,9 @@ export const serverMockup = {
         sectionId: '1-demographics',
         answer: { value: 'asian-pacific-islander', type: 'singleChoice' },
       },
-      { questionId: '3', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
-      { questionId: '4', sectionId: '1-demographics', answer: { value: 'green', type: 'singleChoice' } },
-      { questionId: '5', sectionId: '1-demographics', answer: { value: 'yes', type: 'singleChoice' } },
+      { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
+      { questionId: '4', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
+      { questionId: '5', sectionId: '1-demographics', answer: { value: 'green', type: 'singleChoice' } },
     ],
   },
   '6': {
@@ -64,10 +64,10 @@ export const serverMockup = {
         sectionId: '1-demographics',
         answer: { value: 'asian-pacific-islander', type: 'singleChoice' },
       },
-      { questionId: '3', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
-      { questionId: '4', sectionId: '1-demographics', answer: { value: 'green', type: 'singleChoice' } },
-      { questionId: '5', sectionId: '1-demographics', answer: { value: 'yes', type: 'singleChoice' } },
-      { questionId: '6', sectionId: '2-diet-and-lifestyle', answer: { feet: '4 ', inches: '4 ', type: 'height' } },
+      { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
+      { questionId: '4', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
+      { questionId: '5', sectionId: '1-demographics', answer: { value: 'green', type: 'singleChoice' } },
+      { questionId: '6', sectionId: '1-demographics', answer: { value: 'yes', type: 'singleChoice' } },
     ],
   },
   '7': {
@@ -79,11 +79,11 @@ export const serverMockup = {
         sectionId: '1-demographics',
         answer: { value: 'asian-pacific-islander', type: 'singleChoice' },
       },
-      { questionId: '3', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
-      { questionId: '4', sectionId: '1-demographics', answer: { value: 'green', type: 'singleChoice' } },
-      { questionId: '5', sectionId: '1-demographics', answer: { value: 'yes', type: 'singleChoice' } },
-      { questionId: '6', sectionId: '2-diet-and-lifestyle', answer: { feet: '4 ', inches: '4 ', type: 'height' } },
-      { questionId: '7', sectionId: '2-diet-and-lifestyle', answer: { value: 4, type: 'number' } },
+      { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
+      { questionId: '4', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
+      { questionId: '5', sectionId: '1-demographics', answer: { value: 'green', type: 'singleChoice' } },
+      { questionId: '6', sectionId: '1-demographics', answer: { value: 'yes', type: 'singleChoice' } },
+      { questionId: '7', sectionId: '2-diet-and-lifestyle', answer: { feet: '4 ', inches: '4 ', type: 'height' } },
     ],
   },
 };
@@ -93,11 +93,12 @@ export const userQuestionnaire: UserQuestionnaireType = {
   answers: [
     { questionId: '1', sectionId: '1-demographics', answer: { value: 'female', type: 'singleChoice' } },
     { questionId: '2', sectionId: '1-demographics', answer: { value: 'asian-pacific-islander', type: 'singleChoice' } },
-    { questionId: '3', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
-    { questionId: '4', sectionId: '1-demographics', answer: { value: 'green', type: 'singleChoice' } },
-    { questionId: '5', sectionId: '1-demographics', answer: { value: 'yes', type: 'singleChoice' } },
-    { questionId: '6', sectionId: '2-diet-and-lifestyle', answer: { feet: '4 ', inches: '4 ', type: 'height' } },
-    { questionId: '7', sectionId: '2-diet-and-lifestyle', answer: { value: 4, type: 'number' } },
+    { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
+    { questionId: '4', sectionId: '1-demographics', answer: { value: 'brown', type: 'singleChoice' } },
+    { questionId: '5', sectionId: '1-demographics', answer: { value: 'green', type: 'singleChoice' } },
+    { questionId: '6', sectionId: '1-demographics', answer: { value: 'yes', type: 'singleChoice' } },
+    { questionId: '7', sectionId: '2-diet-and-lifestyle', answer: { feet: '4 ', inches: '4 ', type: 'height' } },
+    { questionId: '8', sectionId: '2-diet-and-lifestyle', answer: { value: 4, type: 'number' } },
   ],
   questionnaire: {
     version: 1,
@@ -132,11 +133,21 @@ export const userQuestionnaire: UserQuestionnaireType = {
               { id: 'hispanic-or-latino', label: 'Hispanic or Latino', description: null },
               { id: 'white', label: 'White', description: null },
               { id: 'other', label: 'other', description: null },
+              { id: 'none', label: 'none', description: null, type: 'none' },
             ],
-            type: 'singleChoice',
+            type: 'multipleChoice',
           },
           {
             id: '3',
+            label: 'What is your birthdate?',
+            whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
+            skippable: true,
+            description: null,
+            placeholder: 'MM/DD/YYYY',
+            type: 'date',
+          },
+          {
+            id: '4',
             label: 'What is your natural hair color?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -150,7 +161,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '4',
+            id: '5',
             label: 'What color are your eyes?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -166,7 +177,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '5',
+            id: '6',
             label: 'Do you have naturally fair skin?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -185,7 +196,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
         description: 'Diet and Lifestyle description...',
         questions: [
           {
-            id: '6',
+            id: '7',
             label: 'What is your current height?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -195,7 +206,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             inches: { placeholder: 'inches', trailingMask: '(in)' },
           },
           {
-            id: '7',
+            id: '8',
             label: 'What is your current weight?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -205,7 +216,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'number',
           },
           {
-            id: '8',
+            id: '9',
             label: 'How many servings of fruits and vegetables do you consume daily?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -221,7 +232,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '8',
+            id: '10',
             label: 'How many servings of whole grains and legumes (e.g. beans, lentils) do you consume daily?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -237,7 +248,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '9',
+            id: '11',
             label:
               'How often do you consume cured, pickled, or salt-preserved foods (vegetables, fish, meats) or processed meats?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
@@ -252,7 +263,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '10',
+            id: '12',
             label: 'On average, how many servings of unprocessed red meat do you consume per week?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -267,7 +278,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '11',
+            id: '13',
             label: 'On average, how many servings of processed meat do you consume per week?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -282,7 +293,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '12',
+            id: '14',
             label: 'On average, how many servings of dairy do you consume per week?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -297,7 +308,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '13',
+            id: '15',
             label: 'On average, how many servings of fatty fish do you consume per week?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -312,7 +323,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '14',
+            id: '16',
             label: 'On average, how many servings of tomato-based foods do you eat per week?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -326,7 +337,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '15',
+            id: '17',
             label: 'On average, how many meals per week are pre-prepared, frozen, or from a restaurant?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -340,7 +351,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '16',
+            id: '18',
             label: 'On average, how many cups of coffee do you consume per day?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -354,7 +365,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '17',
+            id: '19',
             label:
               'On average, how many alcoholic drinks (e.g. 12oz beer, 5oz wine, 1.5oz liquor) do you consume per week?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
@@ -370,7 +381,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '18',
+            id: '20',
             label: 'Do you currently or formerly smoke cigarettes?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -383,7 +394,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'singleChoice',
           },
           {
-            id: '19',
+            id: '21',
             label: 'If so, for how long?',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,
@@ -393,7 +404,7 @@ export const userQuestionnaire: UserQuestionnaireType = {
             type: 'number',
           },
           {
-            id: '20',
+            id: '22',
             label: 'If so, roughly how many cigarettes per day? (if you smoke cigars, 1 cigar = 10 cigarettes)',
             whyWeAskExplanation: 'Should be a proper explanation of why we ask this question...',
             skippable: true,

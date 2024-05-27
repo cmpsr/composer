@@ -1,12 +1,18 @@
 import { type Dispatch } from 'react';
-import { HeightQuestion, NumericQuestion, SingleChoiceQuestion, MultipleChoiceQuestion } from './questionTypes';
+import {
+  HeightQuestion,
+  NumericQuestion,
+  SingleChoiceQuestion,
+  MultipleChoiceQuestion,
+  DateQuestion,
+} from './questionTypes';
 import { RenderSectionIntroType, SectionIntroQuestion } from './questionTypes/SectionIntro';
 import { AnswerModel, PaginationAction } from '@hooks';
 import { UserQuestionnaireType } from '@types';
 
 export interface QuestionBase {
   id: string;
-  type: 'number' | 'singleChoice' | 'multipleChoice' | 'height' | 'sectionIntro';
+  type: 'number' | 'singleChoice' | 'multipleChoice' | 'height' | 'sectionIntro' | 'date';
   description?: string;
   skippable?: boolean;
   label: string;
@@ -18,6 +24,7 @@ export type QuestionType =
   | NumericQuestion
   | SingleChoiceQuestion
   | MultipleChoiceQuestion
+  | DateQuestion
   | SectionIntroQuestion;
 
 export interface QuestionProps {

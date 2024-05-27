@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, renderWithProviders, screen, waitFor } from '@tests/renderWithProviders';
+import { fireEvent, renderWithProviders, screen, waitFor, act } from '@tests/renderWithProviders';
 import { MultipleChoice } from './MultipleChoice';
 import { MultipleChoiceQuestion } from './types';
 import { AnswerModel } from '@hooks';
@@ -21,6 +21,11 @@ describe('MultipleChoiceQuestion', () => {
         label: 'choice 2',
         description: 'sublabel 2',
       },
+      {
+        id: '3',
+        label: 'none',
+        type: 'none',
+      },
     ],
   } as MultipleChoiceQuestion;
 
@@ -33,6 +38,18 @@ describe('MultipleChoiceQuestion', () => {
 
     await waitFor(() => {
       expect(saveAnswer).toHaveBeenCalledWith({ type: 'multipleChoice', values: ['1'] });
+    });
+  });
+
+  test('should remove all options on checking none option', async () => {
+    renderWithProviders(<MultipleChoice defaultValue={null} data={data} saveAnswer={saveAnswer} />);
+
+    await act(() => fireEvent.click(screen.getByRole('checkbox', { name: 'choice 1 sublabel 1' })));
+    await act(() => fireEvent.click(screen.getByRole('checkbox', { name: 'choice 2 sublabel 2' })));
+    await act(() => fireEvent.click(screen.getByRole('checkbox', { name: 'none' })));
+
+    await waitFor(() => {
+      expect(saveAnswer).toHaveBeenCalledWith({ type: 'multipleChoice', values: ['3'] });
     });
   });
 });

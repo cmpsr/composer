@@ -1,7 +1,7 @@
 import { QuestionBase } from '@components/Question/types';
 import { AnswerModel } from '@hooks';
 
-type option = {
+type Option = {
   id: string;
   label: string;
   description?: string;
@@ -9,7 +9,7 @@ type option = {
 };
 
 export interface MultipleChoiceQuestion extends QuestionBase {
-  options: Array<option>;
+  options: Array<Option>;
   type: 'multipleChoice';
 }
 

@@ -28,7 +28,7 @@ export const DateComp: FC<DateProps> = ({ data, saveAnswer, defaultValue }) => {
           placeholder={placeholder}
           defaultValue={defaultDate}
           onInput={handleChange}
-          mode="MM/DD/YYYY"
+          mode="mm/dd/yyyy"
           textTransform="uppercase"
         />
       </Flex>

@@ -19,11 +19,6 @@ export interface AutocompleteMultiSelectProps<Item = {}> {
   items: Item[];
   itemToString?: (item: Item) => string;
   children: ReactNode;
-  placeholder?: string;
-  size?: ResponsiveValue<AutocompleteMultiSelectElementSize>;
-  tagSize?: ResponsiveValue<AutocompleteMultiSelectElementSize>;
-  trailingIcon?: ReactElement;
-  minCharsToShowList?: number;
   useComboboxProps?: UseComboboxProps<Item>;
   useMultipleSelectionProps?: UseMultipleSelectionProps<Item>;
 }

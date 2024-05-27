@@ -25,7 +25,7 @@ export const serverMockup = {
         sectionId: '1-demographics',
         answer: { value: 'asian-pacific-islander', type: 'singleChoice' },
       },
-      { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2000', type: 'date' } },
+      { questionId: '3', sectionId: '1-demographics', answer: { value: '01/01/2001', type: 'date' } },
     ],
   },
   '4': {

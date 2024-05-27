@@ -26,12 +26,14 @@ export const useHandleAnswers = (callback: UseSetupCallbackCB): useHandleActionR
       }
       case HandleAnswersActions.GetPreviousAnswer: {
         const questionId = payload as string;
-        const answer = state.previousAnswers.find((answeredQuestion) => answeredQuestion.questionId === questionId);
+        const previousAnswer = state.previousAnswers.find(
+          (answeredQuestion) => answeredQuestion.questionId === questionId
+        );
 
         return {
           ...state,
-          answer,
-          isAnswered: isAnswerFilled(answer),
+          answer: previousAnswer?.answer,
+          isAnswered: isAnswerFilled(previousAnswer?.answer),
         };
       }
     }

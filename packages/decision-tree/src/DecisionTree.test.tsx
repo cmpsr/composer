@@ -20,7 +20,7 @@ describe('DecisionTree', () => {
     expect(screen.getByText('Next'));
     expect(screen.getByText('Back'));
     expect(screen.getByText('SECTION 1'));
-    expect(screen.getAllByText('Diet and Lifestyle')).toHaveLength(2);
+    expect(screen.getByText('Diet and Lifestyle'));
   });
 
   test('should enable the back button and enable the next button', () => {
@@ -161,10 +161,9 @@ describe('DecisionTree', () => {
     fireEvent.click(screen.getByText('Male'));
     fireEvent.click(screen.getByText('Next'));
 
-    await waitFor(() => {
-      screen.getByPlaceholderText('Feet');
-      screen.getByPlaceholderText('Inches');
-    });
+    await waitFor(() =>
+      screen.getByText('What best describes your race/ethnicity?')
+    );
   });
 
   test('should enable the back button on the second answer', async () => {

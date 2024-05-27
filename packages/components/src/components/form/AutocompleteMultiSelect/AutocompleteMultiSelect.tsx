@@ -1,4 +1,6 @@
-// mirar que no haya errores en la consola
+// comprobar que funcione con reactHookform
+// ver si los tamaños de los tags van acorde con el tamaño del input
+
 import React, { FC, useMemo, useRef, useState, useCallback } from 'react';
 import { useMultipleSelection, useCombobox } from 'downshift';
 import {
@@ -189,28 +191,21 @@ const AutocompleteMultiSelectList: FC<AutocompleteMultiSelectListProps> = ({
 
 AutocompleteMultiSelect.List = AutocompleteMultiSelectList;
 
-const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedItemsProps> = ({
-  renderSelectedItem,
-  ...rest
-}) => {
+const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedItemsProps> = ({ ...rest }) => {
   const { selectedItems, getSelectedItemProps, removeSelectedItem } = useAutocompleteMultiSelectContext();
   const styles = useStyleConfig('AutocompleteMultiSelect') as Record<
     string,
     RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>
   >;
 
-  const defaultRenderSelectedItem = (selectedItem, removeSelectedItem) => (
-    <Tag>
-      <Tag.Label>{selectedItem}</Tag.Label>
-      <Tag.RightIcon as={IconX} onClick={removeSelectedItem} />
-    </Tag>
-  );
-
   return selectedItems.length ? (
     <Box as="ul" {...rest} {...styles.selectedItems}>
       {selectedItems.map((selectedItem, index) => (
         <Box as="li" key={`selected-item-${index}`} {...getSelectedItemProps({ selectedItem, index })}>
-          {(renderSelectedItem || defaultRenderSelectedItem)(selectedItem, () => removeSelectedItem(selectedItem))}
+          <Tag {...rest}>
+            <Tag.Label>{selectedItem}</Tag.Label>
+            <Tag.RightIcon as={IconX} onClick={removeSelectedItem} />
+          </Tag>
         </Box>
       ))}
     </Box>

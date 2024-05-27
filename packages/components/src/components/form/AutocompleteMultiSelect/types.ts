@@ -13,14 +13,15 @@ import { InputProps } from '../Input';
 
 export const autocompleteMultiSelectSizes = ['s', 'm', 'l'];
 
-export type AutocompleteMultiSelectSize = (typeof autocompleteMultiSelectSizes)[number];
+export type AutocompleteMultiSelectElementSize = (typeof autocompleteMultiSelectSizes)[number];
 
 export interface AutocompleteMultiSelectProps<Item = {}> {
   items: Item[];
   itemToString?: (item: Item) => string;
   children: ReactNode;
   placeholder?: string;
-  size?: ResponsiveValue<AutocompleteMultiSelectSize>;
+  size?: ResponsiveValue<AutocompleteMultiSelectElementSize>;
+  tagSize?: ResponsiveValue<AutocompleteMultiSelectElementSize>;
   trailingIcon?: ReactElement;
   minCharsToShowList?: number;
   useComboboxProps?: UseComboboxProps<Item>;

@@ -1,14 +1,15 @@
 import { QuestionBase } from '@components/Question/types';
 import { AnswerModel } from '@hooks';
 
-type label = {
+type Option = {
   id: string;
   label: string;
   description?: string;
+  type?: 'none';
 };
 
 export interface MultipleChoiceQuestion extends QuestionBase {
-  options: label[];
+  options: Array<Option>;
   type: 'multipleChoice';
 }
 

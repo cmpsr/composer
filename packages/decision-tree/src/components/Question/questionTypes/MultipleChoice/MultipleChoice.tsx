@@ -9,6 +9,14 @@ export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, saveAnswer, defa
   const { label, options, whyWeAskExplanation } = data;
   const [answers, setAnswers] = useState<MultipleChoiceAnswer>(defaultValue ?? { type: 'multipleChoice', values: [] });
 
+  const handleNoneChange = ({ currentTarget }) => {
+    const newAnswers = !currentTarget.checked
+      ? { ...answers, values: answers.values.filter((answer) => answer !== currentTarget.value) }
+      : { ...answers, values: [currentTarget.value] };
+    setAnswers(newAnswers);
+    saveAnswer(newAnswers);
+  };
+
   const handleChange = ({ currentTarget }) => {
     const newAnswers = !currentTarget.checked
       ? { ...answers, values: answers.values.filter((answer) => answer !== currentTarget.value) }
@@ -20,7 +28,7 @@ export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, saveAnswer, defa
   return (
     <Box>
       <QuestionTitle question={label} whyWeAskExplanation={whyWeAskExplanation} />
-      {options.map(({ id, label, description }) => (
+      {options.map(({ id, label, description, type }) => (
         <QuestionOption
           mx={inputMargin}
           key={`multipleChoice-${id}`}
@@ -28,7 +36,8 @@ export const MultipleChoice: FC<MultipleChoiceProps> = ({ data, saveAnswer, defa
           componentProps={{
             value: id,
             defaultChecked: defaultValue?.values?.includes(id),
-            onChange: handleChange,
+            isChecked: answers.values.includes(id),
+            onChange: type === 'none' ? handleNoneChange : handleChange,
           }}
           label={label}
           description={description}

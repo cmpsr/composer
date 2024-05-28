@@ -3,10 +3,10 @@ import { Meta } from '@storybook/react';
 import { autocompleteMultiSelectSizes } from './types';
 import { AutocompleteMultiSelect } from './AutocompleteMultiSelect';
 // import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
-import { Controller, useForm } from 'react-hook-form';
+// import { Controller, useForm } from 'react-hook-form';
 import { storiesOf } from '@storybook/react';
-import { Tag } from '@components/dataDisplay';
-import { IconX } from '@components/media';
+// import { Tag } from '@components/dataDisplay';
+// import { IconX } from '@components/media';
 
 export default {
   component: AutocompleteMultiSelect,
@@ -125,55 +125,55 @@ const Template = (args) => {
   // const onSubmit = (data) => {
   //   console.log(data);
   // };
-  // return (
-  //   <form onSubmit={handleSubmit(onSubmit)}>
-  //     <AutocompleteMultiSelect items={defaultItems}>
-  //       <AutocompleteMultiSelect.SelectedItems size={args.tagSize} />
-  //       <AutocompleteMultiSelect.Input placeholder={args.placeholder} size={args.size} />
-  //       <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-  //     </AutocompleteMultiSelect>
-  //     <button type="submit">Submit</button>
-  //   </form>
-  // );
-  const { control, handleSubmit, formState } = useForm({ defaultValues: { selectedItems: [defaultItems[0]] } });
-
-  const onSubmit = (data) => {
-    console.log('Submitted Data:', data);
-  };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        name="selectedItems"
-        control={control}
-        // defaultValue={[]}
-        render={({ field: { onChange, value } }) => (
-          <AutocompleteMultiSelect
-            items={defaultItems}
-            // @ts-ignore
-            selectedItems={value}
-            itemToString={(item: string) => item}
-            useMultipleSelectionProps={{
-              defaultSelectedItems: formState.defaultValues['selectedItems'],
-              onSelectedItemsChange: ({ selectedItems }) => onChange(selectedItems),
-            }}
-          >
-            <AutocompleteMultiSelect.SelectedItems
-              renderSelectedItem={(selectedItem: string, removeSelectedItem) => (
-                <Tag>
-                  <Tag.Label>{selectedItem}</Tag.Label>
-                  <Tag.RightIcon as={IconX} onClick={removeSelectedItem} />
-                </Tag>
-              )}
-            />
-            <AutocompleteMultiSelect.Input placeholder={args.placeholder} size={args.size} />
-            <AutocompleteMultiSelect.List marginTop="60px" renderItem={(item: string) => <div>{item}</div>} />
-          </AutocompleteMultiSelect>
-        )}
-      />
-      <button type="submit">Submit</button>
-    </form>
+    //   <form onSubmit={handleSubmit(onSubmit)}>
+    <AutocompleteMultiSelect items={defaultItems}>
+      <AutocompleteMultiSelect.SelectedItems />
+      <AutocompleteMultiSelect.Input placeholder={args.placeholder} size={args.size} />
+      <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
+    </AutocompleteMultiSelect>
+    //     <button type="submit">Submit</button>
+    //   </form>
   );
+  // const { control, handleSubmit, formState } = useForm({ defaultValues: { selectedItems: [defaultItems[0]] } });
+
+  // const onSubmit = (data) => {
+  //   console.log('Submitted Data:', data);
+  // };
+
+  // return (
+  // <form onSubmit={handleSubmit(onSubmit)}>
+  //   <Controller
+  //     name="selectedItems"
+  //     control={control}
+  //     // defaultValue={[]}
+  //     render={({ field: { onChange, value } }) => (
+  // <AutocompleteMultiSelect
+  //   items={defaultItems}
+  //   // @ts-ignore
+  //   // selectedItems={value}
+  //   itemToString={(item: string) => item}
+  //   // useMultipleSelectionProps={{
+  //   //   defaultSelectedItems: formState.defaultValues['selectedItems'],
+  //   //   onSelectedItemsChange: ({ selectedItems }) => onChange(selectedItems),
+  //   // }}
+  // >
+  //   <AutocompleteMultiSelect.SelectedItems
+  //     renderSelectedItem={(selectedItem: string, removeSelectedItem) => (
+  //       <Tag>
+  //         <Tag.Label>{selectedItem}</Tag.Label>
+  //         <Tag.RightIcon as={IconX} onClick={removeSelectedItem} />
+  //       </Tag>
+  //     )}
+  //   />
+  //   <AutocompleteMultiSelect.Input placeholder={args.placeholder} size={args.size} />
+  //   <AutocompleteMultiSelect.List marginTop="60px" renderItem={(item: string) => <div>{item}</div>} />
+  // </AutocompleteMultiSelect>
+  // )}
+  //   />
+  //   <button type="submit">Submit</button>
+  // </form>
+  // );
 };
 
 storiesOf('MyComponent', module)

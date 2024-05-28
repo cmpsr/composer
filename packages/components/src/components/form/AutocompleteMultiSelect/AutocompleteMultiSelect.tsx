@@ -1,4 +1,4 @@
-// crear una canary para probarlo del lado de IH con la solución final
+// crear una canary para probarlo del lado de IH con la solución final --> react-hook-form
 
 import React, { FC, useMemo, useRef, useState, useCallback } from 'react';
 import { useMultipleSelection, useCombobox } from 'downshift';

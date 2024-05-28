@@ -13,7 +13,7 @@ import {
 import { createContext } from '@chakra-ui/react-utils';
 import { Input } from '../Input';
 import { Box } from '../../layouts/Box';
-import { Tag } from '@components/dataDisplay';
+import { Tag } from '../../dataDisplay';
 import { Text } from '@components/typography';
 import { IconChevronDown, IconChevronUp, IconX } from '@components/media';
 import { RecursiveCSSObject, StyleProps, useStyleConfig } from '@chakra-ui/react';

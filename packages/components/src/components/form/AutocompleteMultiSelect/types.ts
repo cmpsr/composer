@@ -10,6 +10,7 @@ import { FC, ReactElement, ReactNode } from 'react';
 // import { ResponsiveValue } from '@chakra-ui/react';
 import { BoxProps } from '../../layouts/Box';
 import { InputProps } from '../Input';
+import { ResponsiveValue } from '@chakra-ui/react';
 
 export const autocompleteMultiSelectSizes = ['s', 'm', 'l'];
 
@@ -17,6 +18,7 @@ export type AutocompleteMultiSelectElementSize = (typeof autocompleteMultiSelect
 
 export interface AutocompleteMultiSelectProps<Item = {}> {
   items: Item[];
+  size?: ResponsiveValue<AutocompleteMultiSelectElementSize>;
   itemToString?: (item: Item) => string;
   children: ReactNode;
   useComboboxProps?: UseComboboxProps<Item>;
@@ -49,4 +51,4 @@ export type AutocompleteMultiSelectContextProps<Item = {}> = Partial<
     UseMultipleSelectionProps<Item> &
     UseMultipleSelectionActions<Item> &
     UseMultipleSelectionPropGetters<Item>
->;
+> & { size: ResponsiveValue<AutocompleteMultiSelectElementSize> };

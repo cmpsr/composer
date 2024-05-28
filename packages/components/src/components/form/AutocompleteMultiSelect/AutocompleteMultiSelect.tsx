@@ -4,6 +4,7 @@ import React, { FC, useMemo, useRef, useState, useCallback } from 'react';
 import { useMultipleSelection, useCombobox } from 'downshift';
 import {
   AutocompleteMultiSelectContextProps,
+  AutocompleteMultiSelectElementSize,
   AutocompleteMultiSelectInputProps,
   AutocompleteMultiSelectListProps,
   AutocompleteMultiSelectProps,
@@ -14,9 +15,9 @@ import { createContext } from '@chakra-ui/react-utils';
 import { Input } from '../Input';
 import { Box } from '../../layouts/Box';
 import { Tag } from '../../dataDisplay';
-import { Text } from '@components/typography';
-import { IconChevronDown, IconChevronUp, IconX } from '@components/media';
-import { RecursiveCSSObject, StyleProps, useStyleConfig } from '@chakra-ui/react';
+import { Text } from '../../typography';
+import { IconChevronDown, IconChevronUp, IconX } from '../../media';
+import { RecursiveCSSObject, ResponsiveValue, StyleProps, useStyleConfig } from '@chakra-ui/react';
 
 const [AutocompleteMultiSelectProvider, useAutocompleteMultiSelectContext] =
   createContext<AutocompleteMultiSelectContextProps>({});
@@ -24,6 +25,7 @@ const [AutocompleteMultiSelectProvider, useAutocompleteMultiSelectContext] =
 export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & AutocompleteMultiSelectStaticMembers = ({
   children,
   items,
+  size = 'm',
   itemToString,
   useComboboxProps,
   useMultipleSelectionProps,
@@ -93,6 +95,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
     <AutocompleteMultiSelectProvider
       value={{
         isOpen,
+        size,
         items: filteredItems,
         getMenuProps,
         getInputProps,
@@ -114,9 +117,17 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
 
 const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
   clearButtonMode = 'has-value',
+  size,
   ...rest
 }) => {
-  const { reset, getInputProps, getToggleButtonProps, getDropdownProps, isOpen } = useAutocompleteMultiSelectContext();
+  const {
+    reset,
+    getInputProps,
+    getToggleButtonProps,
+    getDropdownProps,
+    isOpen,
+    size: autocompleteMultiselectSize,
+  } = useAutocompleteMultiSelectContext();
   const ref = useRef<HTMLInputElement>(null);
   const inputProps = getInputProps({ ...getDropdownProps({ preventKeyAction: isOpen, ref }) });
 
@@ -126,6 +137,7 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
     always: true,
   };
   const shouldShowClearButton = clearButtonConditions[clearButtonMode];
+  const inputSize = size ?? autocompleteMultiselectSize;
 
   const onReset = useCallback(() => {
     reset?.();
@@ -143,6 +155,7 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
           <IconChevronDown cursor="pointer" {...getToggleButtonProps()} />
         )
       }
+      size={inputSize}
       {...inputProps}
       {...rest}
     />
@@ -190,8 +203,8 @@ const AutocompleteMultiSelectList: FC<AutocompleteMultiSelectListProps> = ({
 
 AutocompleteMultiSelect.List = AutocompleteMultiSelectList;
 
-const defaultRenderSelectedItem = (selectedItem, removeSelectedItem) => (
-  <Tag>
+const defaultRenderSelectedItem = (selectedItem, removeSelectedItem, size) => (
+  <Tag size={size}>
     <Tag.Label>{selectedItem}</Tag.Label>
     <Tag.RightIcon as={IconX} onClick={removeSelectedItem} />
   </Tag>
@@ -201,17 +214,18 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
   renderSelectedItem = defaultRenderSelectedItem,
   ...rest
 }) => {
-  const { selectedItems, getSelectedItemProps, removeSelectedItem } = useAutocompleteMultiSelectContext();
+  const { selectedItems, getSelectedItemProps, removeSelectedItem, size } = useAutocompleteMultiSelectContext();
   const styles = useStyleConfig('AutocompleteMultiSelect') as Record<
     string,
     RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>
   >;
+  const tagSize = getTagSize(size);
 
   return selectedItems.length ? (
     <Box as="ul" {...rest} {...styles.selectedItems}>
       {selectedItems.map((selectedItem, index) => (
         <Box as="li" key={`selected-item-${index}`} {...getSelectedItemProps({ selectedItem, index })}>
-          {renderSelectedItem(selectedItem, () => removeSelectedItem(selectedItem))}
+          {renderSelectedItem(selectedItem, () => removeSelectedItem(selectedItem), tagSize)}
         </Box>
       ))}
     </Box>
@@ -219,3 +233,15 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
 };
 
 AutocompleteMultiSelect.SelectedItems = AutocompleteMultiSelectSelectedItems;
+
+// const getTagSize = (size: React.ReactElement<IconProps>) => {
+//   const size = 'xs';
+
+//   if (!React.isValidElement(icon)) {
+//     return null;
+//   }
+
+//   return React.cloneElement(icon, { size } as Partial<IconProps>);
+// };
+
+const getTagSize = (size: ResponsiveValue<AutocompleteMultiSelectElementSize>) => (size === 'l' ? 'm' : size);

@@ -23,6 +23,7 @@ export interface AutocompleteMultiSelectProps<Item = {}> {
   children: ReactNode;
   useComboboxProps?: UseComboboxProps<Item>;
   useMultipleSelectionProps?: UseMultipleSelectionProps<Item>;
+  isDisabled?: boolean;
 }
 
 export interface AutocompleteMultiSelectListProps<Item = {}> extends BoxProps {
@@ -32,6 +33,7 @@ export interface AutocompleteMultiSelectListProps<Item = {}> extends BoxProps {
 
 export interface AutocompleteMultiSelectSelectedItemsProps<Item = {}> extends BoxProps {
   renderSelectedItem?: (item: Item, removeSelectedItem: () => void) => ReactElement;
+  isDisabled?: boolean;
 }
 
 export interface AutocompleteMultiSelectInputProps extends InputProps {
@@ -51,4 +53,4 @@ export type AutocompleteMultiSelectContextProps<Item = {}> = Partial<
     UseMultipleSelectionProps<Item> &
     UseMultipleSelectionActions<Item> &
     UseMultipleSelectionPropGetters<Item>
-> & { size: ResponsiveValue<AutocompleteMultiSelectElementSize> };
+> & { size: ResponsiveValue<AutocompleteMultiSelectElementSize>; isDisabled?: boolean };

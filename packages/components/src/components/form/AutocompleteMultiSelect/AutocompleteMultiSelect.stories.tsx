@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Meta } from '@storybook/react';
 import { autocompleteMultiSelectSizes } from './types';
 import { AutocompleteMultiSelect } from './AutocompleteMultiSelect';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
-import { Flex } from '@components';
 
 export default {
   component: AutocompleteMultiSelect,
@@ -27,7 +26,7 @@ const defaultItems = [
 ];
 
 const AllTemplate = () => {
-  const states = ['default', 'disabled'];
+  const states = ['default', 'default with pre-selected items', 'disabled', 'disabled with pre-selected items'];
   return (
     <Table variant="simple">
       <Thead>
@@ -39,52 +38,26 @@ const AllTemplate = () => {
         </Tr>
       </Thead>
       <Tbody>
-        {states.map((state, i) => (
-          <Tr key={`${state}-${i}`}>
+        {states.map((state, stateIndex) => (
+          <Tr key={`${state}-${stateIndex}`}>
             <Td>{state}</Td>
-            {autocompleteMultiSelectSizes.map((size, i) => (
-              <Td key={`${size}-${i}-${state}`}>
-                <Flex flexDirection="column" alignItems="start" gap="5">
-                  <AutocompleteMultiSelectWrapper initialState={defaultItems}>
-                    {(items: string[]) => (
-                      <AutocompleteMultiSelect items={items}>
-                        <AutocompleteMultiSelect.SelectedItems />
-                        <AutocompleteMultiSelect.Input
-                          size={size}
-                          placeholder={state}
-                          {...{
-                            ...(state === 'disabled' && {
-                              isDisabled: true,
-                            }),
-                          }}
-                        />
-                        <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-                      </AutocompleteMultiSelect>
-                    )}
-                  </AutocompleteMultiSelectWrapper>
-                  <AutocompleteMultiSelectWrapper initialState={defaultItems}>
-                    {(items: string[]) => (
-                      <AutocompleteMultiSelect
-                        items={items}
-                        useMultipleSelectionProps={{
-                          defaultSelectedItems: [items[0], items[1]],
-                        }}
-                      >
-                        <AutocompleteMultiSelect.SelectedItems />
-                        <AutocompleteMultiSelect.Input
-                          size={size}
-                          placeholder={state}
-                          {...{
-                            ...(state === 'disabled' && {
-                              isDisabled: true,
-                            }),
-                          }}
-                        />
-                        <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-                      </AutocompleteMultiSelect>
-                    )}
-                  </AutocompleteMultiSelectWrapper>
-                </Flex>
+            {autocompleteMultiSelectSizes.map((size, sizeIndex) => (
+              <Td key={`${size}-${sizeIndex}-${state}`}>
+                <AutocompleteMultiSelect
+                  items={defaultItems}
+                  useMultipleSelectionProps={
+                    state.includes('pre-selected items')
+                      ? {
+                          defaultSelectedItems: [defaultItems[0], defaultItems[1]],
+                        }
+                      : {}
+                  }
+                  isDisabled={state.includes('disabled')}
+                >
+                  <AutocompleteMultiSelect.SelectedItems />
+                  <AutocompleteMultiSelect.Input size={size} placeholder={state} />
+                  <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
+                </AutocompleteMultiSelect>
               </Td>
             ))}
           </Tr>
@@ -92,11 +65,6 @@ const AllTemplate = () => {
       </Tbody>
     </Table>
   );
-};
-
-const AutocompleteMultiSelectWrapper = ({ initialState, children }) => {
-  const [items, setItems] = useState(initialState);
-  return children(items, setItems);
 };
 
 export const All = AllTemplate.bind({});

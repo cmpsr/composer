@@ -27,6 +27,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
   itemToString,
   useComboboxProps,
   useMultipleSelectionProps,
+  isDisabled = false,
 }) => {
   const [inputValue, setInputValue] = useState('');
 
@@ -94,6 +95,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
       value={{
         isOpen,
         size,
+        isDisabled,
         items: filteredItems,
         getMenuProps,
         getInputProps,
@@ -116,6 +118,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
 const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
   clearButtonMode = 'has-value',
   size,
+  isDisabled,
   ...rest
 }) => {
   const {
@@ -125,6 +128,7 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
     getDropdownProps,
     isOpen,
     size: autocompleteMultiselectSize,
+    isDisabled: autocompleteMultiSelectDisabled,
   } = useAutocompleteMultiSelectContext();
   const ref = useRef<HTMLInputElement>(null);
   const inputProps = getInputProps({ ...getDropdownProps({ preventKeyAction: isOpen, ref }) });
@@ -136,6 +140,7 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
   };
   const shouldShowClearButton = clearButtonConditions[clearButtonMode];
   const inputSize = size ?? autocompleteMultiselectSize;
+  const isInputDisabled = isDisabled || autocompleteMultiSelectDisabled;
 
   const onReset = useCallback(() => {
     reset?.();
@@ -162,6 +167,7 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
         )
       }
       size={inputSize}
+      isDisabled={isInputDisabled}
       {...inputProps}
       {...rest}
     />
@@ -209,8 +215,8 @@ const AutocompleteMultiSelectList: FC<AutocompleteMultiSelectListProps> = ({
 
 AutocompleteMultiSelect.List = AutocompleteMultiSelectList;
 
-const defaultRenderSelectedItem = (selectedItem, removeSelectedItem, size) => (
-  <Tag size={size}>
+const defaultRenderSelectedItem = (selectedItem, removeSelectedItem, { size, isDisabled }) => (
+  <Tag size={size} isDisabled={isDisabled}>
     <Tag.Label>{selectedItem}</Tag.Label>
     <Tag.RightIcon
       data-testid="cmpsr.autocompleteMultiSelect.clear-tag-button"
@@ -222,20 +228,31 @@ const defaultRenderSelectedItem = (selectedItem, removeSelectedItem, size) => (
 
 const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedItemsProps> = ({
   renderSelectedItem = defaultRenderSelectedItem,
+  isDisabled,
   ...rest
 }) => {
-  const { selectedItems, getSelectedItemProps, removeSelectedItem, size } = useAutocompleteMultiSelectContext();
+  const {
+    selectedItems,
+    getSelectedItemProps,
+    removeSelectedItem,
+    size,
+    isDisabled: autocompleteMultiSelectDisabled,
+  } = useAutocompleteMultiSelectContext();
   const styles = useStyleConfig('AutocompleteMultiSelect') as Record<
     string,
     RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>
   >;
   const tagSize = getTagSize(size);
+  const isTagDisabled = isDisabled || autocompleteMultiSelectDisabled;
 
   return selectedItems.length ? (
     <Box as="ul" {...rest} {...styles.selectedItems}>
       {selectedItems.map((selectedItem, index) => (
         <Box as="li" key={`selected-item-${index}`} {...getSelectedItemProps({ selectedItem, index })}>
-          {renderSelectedItem(selectedItem, () => removeSelectedItem(selectedItem), tagSize)}
+          {renderSelectedItem(selectedItem, () => removeSelectedItem(selectedItem), {
+            size: tagSize,
+            isDisabled: isTagDisabled,
+          })}
         </Box>
       ))}
     </Box>
@@ -243,15 +260,5 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
 };
 
 AutocompleteMultiSelect.SelectedItems = AutocompleteMultiSelectSelectedItems;
-
-// const getTagSize = (size: React.ReactElement<IconProps>) => {
-//   const size = 'xs';
-
-//   if (!React.isValidElement(icon)) {
-//     return null;
-//   }
-
-//   return React.cloneElement(icon, { size } as Partial<IconProps>);
-// };
 
 const getTagSize = (size: ResponsiveValue<AutocompleteMultiSelectElementSize>) => (size === 'l' ? 'm' : size);

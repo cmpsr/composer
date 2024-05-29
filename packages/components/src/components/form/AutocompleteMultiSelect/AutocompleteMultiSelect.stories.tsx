@@ -53,9 +53,10 @@ const AllTemplate = () => {
                       : {}
                   }
                   isDisabled={state.includes('disabled')}
+                  size={size}
                 >
                   <AutocompleteMultiSelect.SelectedItems />
-                  <AutocompleteMultiSelect.Input size={size} placeholder={state} />
+                  <AutocompleteMultiSelect.Input placeholder={state} />
                   <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
                 </AutocompleteMultiSelect>
               </Td>

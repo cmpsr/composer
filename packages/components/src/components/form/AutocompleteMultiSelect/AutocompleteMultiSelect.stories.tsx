@@ -71,9 +71,9 @@ export const All = AllTemplate.bind({});
 
 const Template = (args) => {
   return (
-    <AutocompleteMultiSelect items={defaultItems}>
+    <AutocompleteMultiSelect items={defaultItems} size={args.size}>
       <AutocompleteMultiSelect.SelectedItems />
-      <AutocompleteMultiSelect.Input placeholder={args.placeholder} size={args.size} />
+      <AutocompleteMultiSelect.Input placeholder={args.placeholder} />
       <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
     </AutocompleteMultiSelect>
   );

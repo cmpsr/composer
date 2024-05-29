@@ -70,11 +70,11 @@ const AllTemplate = () => {
 
 export const All = AllTemplate.bind({});
 
-const Template = (args) => {
+const Template = ({ variant, ...args }) => {
   return (
     <AutocompleteMultiSelect items={defaultItems} size={args.size}>
       <AutocompleteMultiSelect.SelectedItems />
-      <AutocompleteMultiSelect.Input placeholder={args.placeholder} />
+      <AutocompleteMultiSelect.Input placeholder={args.placeholder} variant={variant} />
       <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
     </AutocompleteMultiSelect>
   );
@@ -89,5 +89,9 @@ Playground.argTypes = {
   clearButtonMode: {
     control: { type: 'select' },
     options: ['has-value', 'never', 'always'],
+  },
+  variant: {
+    control: { type: 'select' },
+    options: ['outlined', 'flushed'],
   },
 };

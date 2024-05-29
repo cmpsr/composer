@@ -1,4 +1,5 @@
 export * from './Autocomplete';
+export * from './AutocompleteMultiSelect';
 export * from './Button';
 export * from './ButtonIcon';
 export * from './Checkbox';

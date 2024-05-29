@@ -1,5 +1,3 @@
-// crear una canary para probarlo del lado de IH con la solución final --> react-hook-form
-
 import React, { FC, useMemo, useRef, useState, useCallback } from 'react';
 import { useMultipleSelection, useCombobox } from 'downshift';
 import {
@@ -148,11 +146,19 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
     <Input
       trailingIcon={
         shouldShowClearButton ? (
-          <IconX data-testid="cmpsr.autocomplete.clear-button" cursor="pointer" onClick={onReset} />
+          <IconX data-testid="cmpsr.autocompleteMultiSelect.clear-button" cursor="pointer" onClick={onReset} />
         ) : isOpen ? (
-          <IconChevronUp cursor="pointer" {...getToggleButtonProps()} />
+          <IconChevronUp
+            data-testid="cmpsr.autocompleteMultiSelect.chevron-up"
+            cursor="pointer"
+            {...getToggleButtonProps()}
+          />
         ) : (
-          <IconChevronDown cursor="pointer" {...getToggleButtonProps()} />
+          <IconChevronDown
+            data-testid="cmpsr.autocompleteMultiSelect.chevron-down"
+            cursor="pointer"
+            {...getToggleButtonProps()}
+          />
         )
       }
       size={inputSize}
@@ -206,7 +212,11 @@ AutocompleteMultiSelect.List = AutocompleteMultiSelectList;
 const defaultRenderSelectedItem = (selectedItem, removeSelectedItem, size) => (
   <Tag size={size}>
     <Tag.Label>{selectedItem}</Tag.Label>
-    <Tag.RightIcon as={IconX} onClick={removeSelectedItem} />
+    <Tag.RightIcon
+      data-testid="cmpsr.autocompleteMultiSelect.clear-tag-button"
+      as={IconX}
+      onClick={removeSelectedItem}
+    />
   </Tag>
 );
 

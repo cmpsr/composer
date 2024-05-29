@@ -1,7 +1,7 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 export const AutocompleteMultiSelect: ComponentStyleConfig = {
-  parts: ['list', 'item', 'noResults', 'selectedItems'],
+  parts: ['list', 'item', 'noResults', 'selectedItems', 'selectedItem'],
   baseStyle: {
     list: {
       zIndex: 1,
@@ -46,6 +46,10 @@ export const AutocompleteMultiSelect: ComponentStyleConfig = {
       display: 'flex',
       flexWrap: 'wrap',
       gap: 'spacer-2',
+    },
+    selectedItem: {
+      display: 'inline-flex',
+      alignSelf: 'start',
     },
   },
 };

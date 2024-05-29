@@ -248,7 +248,12 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
   return selectedItems.length ? (
     <Box as="ul" {...rest} {...styles.selectedItems}>
       {selectedItems.map((selectedItem, index) => (
-        <Box as="li" key={`selected-item-${index}`} {...getSelectedItemProps({ selectedItem, index })}>
+        <Box
+          as="li"
+          key={`selected-item-${index}`}
+          {...styles.selectedItem}
+          {...getSelectedItemProps({ selectedItem, index })}
+        >
           {renderSelectedItem(selectedItem, () => removeSelectedItem(selectedItem), {
             size: tagSize,
             isDisabled: isTagDisabled,

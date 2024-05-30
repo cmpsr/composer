@@ -258,4 +258,4 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
 
 AutocompleteMultiSelect.SelectedItems = AutocompleteMultiSelectSelectedItems;
 
-const getTagSize = (size: ResponsiveValue<AutocompleteMultiSelectElementSize>) => (size === 'l' ? 'm' : size);
+const getTagSize = (size: ResponsiveValue<AutocompleteMultiSelectElementSize>) => (size === 'l' ? 'm' : 's');

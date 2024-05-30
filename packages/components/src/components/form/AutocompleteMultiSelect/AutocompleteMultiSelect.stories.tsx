@@ -71,11 +71,25 @@ const AllTemplate = () => {
 export const All = AllTemplate.bind({});
 
 const Template = ({ variant, ...args }) => {
+  const defaultItemsWithStructure = [
+    { id: '1', name: 'Super-Fast Websites' },
+    { id: '2', name: 'Optimized Performance' },
+    { id: '3', name: 'Seamless Integration' },
+    { id: '4', name: 'Responsive Design' },
+    { id: '5', name: 'Improved SEO' },
+    { id: '6', name: 'Effortless Scaling' },
+    { id: '7', name: 'Easy Deployment' },
+  ];
+
   return (
-    <AutocompleteMultiSelect items={defaultItems} size={args.size}>
+    <AutocompleteMultiSelect
+      items={defaultItemsWithStructure}
+      size={args.size}
+      itemToString={(item: { name: string }) => (item ? item.name : '')}
+    >
       <AutocompleteMultiSelect.SelectedItems />
       <AutocompleteMultiSelect.Input placeholder={args.placeholder} variant={variant} />
-      <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
+      <AutocompleteMultiSelect.List renderItem={(item: { name: string }) => <div>{item.name}</div>} />
     </AutocompleteMultiSelect>
   );
 };

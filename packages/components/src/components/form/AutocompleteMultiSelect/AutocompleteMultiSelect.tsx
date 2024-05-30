@@ -236,6 +236,7 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
     size,
     isDisabled: autocompleteMultiSelectDisabled,
   } = useAutocompleteMultiSelectContext();
+  const isTagDisabled = isDisabled || autocompleteMultiSelectDisabled;
   const styles = useStyleConfig('AutocompleteMultiSelect') as Record<
     string,
     RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>
@@ -255,7 +256,7 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
             removeSelectedItem: () => removeSelectedItem(selectedItem),
             itemToString,
             size,
-            isDisabled: autocompleteMultiSelectDisabled,
+            isDisabled: isTagDisabled,
           })}
         </Box>
       ))}

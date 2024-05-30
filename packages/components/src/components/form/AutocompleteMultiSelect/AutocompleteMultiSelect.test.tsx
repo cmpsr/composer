@@ -127,7 +127,8 @@ describe('AutocompleteMultiSelect', () => {
   test('should render selectedItems with renderSelectedItem', () => {
     const mockRenderSelectedItem = jest
       .fn()
-      .mockImplementation((item: string) => <div>renderSelectedItem: {item}</div>);
+      .mockImplementation(({ selectedItem }) => <div>renderSelectedItem: {selectedItem}</div>);
+
     renderWithProviders(
       <AutocompleteMultiSelect items={items}>
         <AutocompleteMultiSelect.SelectedItems renderSelectedItem={mockRenderSelectedItem} />

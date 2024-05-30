@@ -31,7 +31,19 @@ export interface AutocompleteMultiSelectListProps<Item = {}> extends BoxProps {
 }
 
 export interface AutocompleteMultiSelectSelectedItemsProps<Item = {}> extends BoxProps {
-  renderSelectedItem?: (item: Item, removeSelectedItem: () => void) => ReactElement;
+  renderSelectedItem?: ({
+    selectedItem,
+    removeSelectedItem,
+    size,
+    isDisabled,
+    itemToString,
+  }: {
+    selectedItem: Item;
+    removeSelectedItem: (item: Item) => void;
+    size?: ResponsiveValue<AutocompleteMultiSelectElementSize>;
+    isDisabled?: boolean;
+    itemToString?: (item: Item) => string;
+  }) => ReactElement;
   isDisabled?: boolean;
 }
 

@@ -12,7 +12,7 @@ import {
 import { createContext } from '@chakra-ui/react-utils';
 import { Input } from '../Input';
 import { Box } from '../../layouts/Box';
-import { Tag } from '../../dataDisplay';
+import { Tag, TagSize } from '../../dataDisplay';
 import { Text } from '../../typography';
 import { IconChevronDown, IconChevronUp, IconX } from '../../media';
 import { RecursiveCSSObject, ResponsiveValue, StyleProps, useStyleConfig } from '@chakra-ui/react';
@@ -97,6 +97,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
         size,
         isDisabled,
         items: filteredItems,
+        itemToString,
         getMenuProps,
         getInputProps,
         getItemProps,
@@ -207,16 +208,20 @@ const AutocompleteMultiSelectList: FC<AutocompleteMultiSelectListProps> = ({
 
 AutocompleteMultiSelect.List = AutocompleteMultiSelectList;
 
-const defaultRenderSelectedItem = (selectedItem, removeSelectedItem, { size, isDisabled }) => (
-  <Tag size={size} isDisabled={isDisabled}>
-    <Tag.Label>{selectedItem}</Tag.Label>
-    <Tag.RightIcon
-      data-testid="cmpsr.autocompleteMultiSelect.clear-tag-button"
-      as={IconX}
-      onClick={removeSelectedItem}
-    />
-  </Tag>
-);
+const defaultRenderSelectedItem = ({ selectedItem, removeSelectedItem, itemToString, size, isDisabled }) => {
+  const tagSize = getTagSize(size) as ResponsiveValue<TagSize>;
+  const itemString = (itemToString ? itemToString(selectedItem) : selectedItem) as string;
+  return (
+    <Tag size={tagSize} isDisabled={isDisabled}>
+      <Tag.Label>{itemString}</Tag.Label>
+      <Tag.RightIcon
+        data-testid="cmpsr.autocompleteMultiSelect.clear-tag-button"
+        as={IconX}
+        onClick={removeSelectedItem}
+      />
+    </Tag>
+  );
+};
 
 const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedItemsProps> = ({
   renderSelectedItem = defaultRenderSelectedItem,
@@ -227,6 +232,7 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
     selectedItems,
     getSelectedItemProps,
     removeSelectedItem,
+    itemToString,
     size,
     isDisabled: autocompleteMultiSelectDisabled,
   } = useAutocompleteMultiSelectContext();
@@ -234,8 +240,6 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
     string,
     RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>
   >;
-  const tagSize = getTagSize(size);
-  const isTagDisabled = isDisabled || autocompleteMultiSelectDisabled;
 
   return selectedItems.length ? (
     <Box as="ul" {...rest} {...styles.selectedItems}>
@@ -246,9 +250,12 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
           {...styles.selectedItem}
           {...getSelectedItemProps({ selectedItem, index })}
         >
-          {renderSelectedItem(selectedItem, () => removeSelectedItem(selectedItem), {
-            size: tagSize,
-            isDisabled: isTagDisabled,
+          {renderSelectedItem({
+            selectedItem,
+            removeSelectedItem: () => removeSelectedItem(selectedItem),
+            itemToString,
+            size,
+            isDisabled: autocompleteMultiSelectDisabled,
           })}
         </Box>
       ))}

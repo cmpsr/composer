@@ -142,36 +142,28 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
   const inputSize = size ?? autocompleteMultiselectSize;
   const isInputDisabled = isDisabled || autocompleteMultiSelectDisabled;
 
+  const trailingIcon = shouldShowClearButton ? (
+    <IconX data-testid="cmpsr.autocompleteMultiSelect.clear-button" cursor="pointer" onClick={onReset} />
+  ) : isOpen ? (
+    <IconChevronUp
+      data-testid="cmpsr.autocompleteMultiSelect.chevron-up"
+      cursor="pointer"
+      {...getToggleButtonProps()}
+    />
+  ) : (
+    <IconChevronDown
+      data-testid="cmpsr.autocompleteMultiSelect.chevron-down"
+      cursor="pointer"
+      {...getToggleButtonProps()}
+    />
+  );
+
   const onReset = useCallback(() => {
     reset?.();
     ref?.current?.focus?.();
   }, []);
 
-  return (
-    <Input
-      trailingIcon={
-        shouldShowClearButton ? (
-          <IconX data-testid="cmpsr.autocompleteMultiSelect.clear-button" cursor="pointer" onClick={onReset} />
-        ) : isOpen ? (
-          <IconChevronUp
-            data-testid="cmpsr.autocompleteMultiSelect.chevron-up"
-            cursor="pointer"
-            {...getToggleButtonProps()}
-          />
-        ) : (
-          <IconChevronDown
-            data-testid="cmpsr.autocompleteMultiSelect.chevron-down"
-            cursor="pointer"
-            {...getToggleButtonProps()}
-          />
-        )
-      }
-      size={inputSize}
-      isDisabled={isInputDisabled}
-      {...inputProps}
-      {...rest}
-    />
-  );
+  return <Input trailingIcon={trailingIcon} size={inputSize} isDisabled={isInputDisabled} {...inputProps} {...rest} />;
 };
 
 AutocompleteMultiSelect.Input = AutocompleteMultiSelectInput;

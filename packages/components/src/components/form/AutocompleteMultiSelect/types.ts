@@ -7,7 +7,6 @@ import {
   UseMultipleSelectionProps,
 } from 'downshift';
 import { FC, ReactElement, ReactNode } from 'react';
-// import { ResponsiveValue } from '@chakra-ui/react';
 import { BoxProps } from '../../layouts/Box';
 import { InputProps } from '../Input';
 import { ResponsiveValue } from '@chakra-ui/react';

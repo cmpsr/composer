@@ -6,7 +6,6 @@ const baseStyle = {
     color: 'text-secondary',
     border: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
     borderRadius: '0.375rem',
-
     _hover: {
       backgroundColor: 'background-action-hover',
     },

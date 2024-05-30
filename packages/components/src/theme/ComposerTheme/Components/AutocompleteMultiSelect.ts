@@ -50,6 +50,9 @@ export const AutocompleteMultiSelect: ComponentStyleConfig = {
     selectedItem: {
       display: 'inline-flex',
       alignSelf: 'start',
+      _focusVisible: {
+        outline: 'none',
+      },
     },
   },
 };

@@ -22,7 +22,6 @@ const iconContainerStyles = {
 export const iconStyles = {
   disabled: {
     color: 'text-disabled',
-    pointerEvents: 'none',
   },
   withContent: {
     color: 'text-primary',

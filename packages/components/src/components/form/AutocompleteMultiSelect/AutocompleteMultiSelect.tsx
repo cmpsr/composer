@@ -148,21 +148,29 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
     ref?.current?.focus?.();
   }, []);
 
-  const trailingIcon = shouldShowClearButton ? (
-    <IconX data-testid="cmpsr.autocompleteMultiSelect.clear-button" cursor="pointer" onClick={onReset} />
-  ) : isOpen ? (
-    <IconChevronUp
-      data-testid="cmpsr.autocompleteMultiSelect.chevron-up"
-      cursor="pointer"
-      {...getToggleButtonProps()}
-    />
-  ) : (
-    <IconChevronDown
-      data-testid="cmpsr.autocompleteMultiSelect.chevron-down"
-      cursor="pointer"
-      {...getToggleButtonProps()}
-    />
-  );
+  const pointerEventsStyle: {} = isInputDisabled ? { pointerEvents: 'none' } : {};
+
+  const getIcon = () => {
+    if (shouldShowClearButton) {
+      return (
+        <IconX
+          data-testid="cmpsr.autocompleteMultiSelect.clear-button"
+          cursor="pointer"
+          onClick={onReset}
+          style={pointerEventsStyle}
+        />
+      );
+    }
+
+    const IconComponent = isOpen ? IconChevronUp : IconChevronDown;
+    const testId = isOpen ? 'cmpsr.autocompleteMultiSelect.chevron-up' : 'cmpsr.autocompleteMultiSelect.chevron-down';
+
+    return (
+      <IconComponent data-testid={testId} cursor="pointer" {...getToggleButtonProps({ style: pointerEventsStyle })} />
+    );
+  };
+
+  const trailingIcon = getIcon();
 
   return <Input trailingIcon={trailingIcon} size={inputSize} isDisabled={isInputDisabled} {...inputProps} {...rest} />;
 };

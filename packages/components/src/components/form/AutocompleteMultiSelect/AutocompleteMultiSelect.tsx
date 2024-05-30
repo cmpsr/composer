@@ -142,6 +142,11 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
   const inputSize = size ?? autocompleteMultiselectSize;
   const isInputDisabled = isDisabled || autocompleteMultiSelectDisabled;
 
+  const onReset = useCallback(() => {
+    reset?.();
+    ref?.current?.focus?.();
+  }, []);
+
   const trailingIcon = shouldShowClearButton ? (
     <IconX data-testid="cmpsr.autocompleteMultiSelect.clear-button" cursor="pointer" onClick={onReset} />
   ) : isOpen ? (
@@ -157,11 +162,6 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
       {...getToggleButtonProps()}
     />
   );
-
-  const onReset = useCallback(() => {
-    reset?.();
-    ref?.current?.focus?.();
-  }, []);
 
   return <Input trailingIcon={trailingIcon} size={inputSize} isDisabled={isInputDisabled} {...inputProps} {...rest} />;
 };

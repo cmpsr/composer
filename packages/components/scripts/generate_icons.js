@@ -184,26 +184,27 @@ const doNotEditHeader = `//
 // Generate Icons.tsx
 
 const tablerIcons = icons.map((Icon) => {
-  return `export const ${Icon} = (props: IconProps) => withIcon(Tabler.${Icon}, props);`;
+  return `export const ${Icon} = forwardRef((props: IconProps, ref) => withIcon(Tabler.${Icon}, props, ref));`;
 });
 const iconsFileContent = `${doNotEditHeader}
-import React from 'react';
+import React, { Ref } from 'react';
 import {
   CSSWithMultiValues,
   Icon,
   RecursiveCSSObject,
+  forwardRef,
   useStyleConfig,
 } from '@chakra-ui/react';
 import * as Tabler from '@tabler/icons-react';
 import { IconProps } from './types';
 
-const withIcon = (Component: React.FC, props: IconProps) => {
+const withIcon = (Component: React.FC, props: IconProps, ref: Ref<SVGSVGElement>) => {
   const styles = useStyleConfig('Icon', { size: props?.size }) as Record<
     string,
     RecursiveCSSObject<CSSWithMultiValues>
   >;
   return (
-    <Icon {...styles} {...props}>
+    <Icon {...styles} {...props} ref={ref}>
       <Component />
     </Icon>
   );

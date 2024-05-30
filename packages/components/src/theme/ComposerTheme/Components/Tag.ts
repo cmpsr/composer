@@ -17,6 +17,7 @@ const baseStyle = {
     },
     _disabled: {
       backgroundColor: 'background-container-disabled',
+      pointerEvents: 'none',
     },
   },
   label: {

@@ -89,13 +89,13 @@ describe('AutocompleteMultiSelect', () => {
     expect(list.children).toHaveLength(1);
     within(list).getByText(/No results custom/);
   });
-  test('should call onInputValueChange when input value changes', () => {
-    const mockOnInputValueChange = jest.fn();
+  test('should call onSelectedItemsChange when input value changes', () => {
+    const mockOnSelectedItemsChange = jest.fn();
 
     renderWithProviders(
       <AutocompleteMultiSelect
         items={items}
-        useMultipleSelectionProps={{ onSelectedItemsChange: mockOnInputValueChange }}
+        useMultipleSelectionProps={{ onSelectedItemsChange: mockOnSelectedItemsChange }}
       >
         <AutocompleteMultiSelect.Input placeholder="AutocompleteMultiSelect" />
         <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
@@ -107,7 +107,7 @@ describe('AutocompleteMultiSelect', () => {
     const list = screen.getByRole('listbox');
     fireEvent.click(list.firstElementChild);
 
-    expect(mockOnInputValueChange).toHaveBeenCalled();
+    expect(mockOnSelectedItemsChange).toHaveBeenCalled();
   });
   test('should render items with renderItem', () => {
     const mockRenderItem = jest.fn().mockImplementation((item: string) => <div>renderItem: {item}</div>);

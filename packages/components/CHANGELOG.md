@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.9.3
+
+### Patch Changes
+
+- 388fcefc: Add new component AutocompleteMultiSelect
+
 ## 7.9.2
 
 ### Patch Changes

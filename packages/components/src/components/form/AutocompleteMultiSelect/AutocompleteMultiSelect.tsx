@@ -148,7 +148,7 @@ const AutocompleteMultiSelectInput: FC<AutocompleteMultiSelectInputProps> = ({
     ref?.current?.focus?.();
   }, []);
 
-  const pointerEventsStyle: {} = isInputDisabled ? { pointerEvents: 'none' } : {};
+  const pointerEventsStyle: React.CSSProperties = isInputDisabled ? { pointerEvents: 'none' } : {};
 
   const getIcon = () => {
     if (shouldShowClearButton) {

@@ -88,7 +88,11 @@ const Template = ({ variant, ...args }) => {
       itemToString={(item: { name: string }) => (item ? item.name : '')}
     >
       <AutocompleteMultiSelect.SelectedItems />
-      <AutocompleteMultiSelect.Input placeholder={args.placeholder} variant={variant} />
+      <AutocompleteMultiSelect.Input
+        placeholder={args.placeholder}
+        variant={variant}
+        clearButtonMode={args.clearButtonMode}
+      />
       <AutocompleteMultiSelect.List renderItem={(item: { name: string }) => <div>{item.name}</div>} />
     </AutocompleteMultiSelect>
   );
@@ -106,6 +110,6 @@ Playground.argTypes = {
   },
   variant: {
     control: { type: 'select' },
-    options: ['outlined', 'flushed'],
+    options: ['outline', 'flushed'],
   },
 };

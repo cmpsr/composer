@@ -152,7 +152,9 @@ const Template = ({ legend, label, subLabel, itemLabel, itemPanel, actionLink })
         <AccordionGallery.Accordion.Panel>{itemPanel}</AccordionGallery.Accordion.Panel>
       </AccordionGallery.Accordion.Item>
     </AccordionGallery.Accordion>
-    <AccordionGallery.Action variant="primary">{actionLink}</AccordionGallery.Action>
+    <AccordionGallery.Action variant="primary" textAlign="center" display="block">
+      {actionLink}
+    </AccordionGallery.Action>
   </AccordionGallery>
 );
 

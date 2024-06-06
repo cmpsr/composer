@@ -38,28 +38,28 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
   isDisabled = false,
 }) => {
   const [inputValue, setInputValue] = useState('');
-  const [selectedItems, setSelectedItems] = useState(useMultipleSelectionProps?.defaultSelectedItems || []);
+
+  const { selectedItems, removeSelectedItem, getSelectedItemProps, getDropdownProps, setSelectedItems } =
+    useMultipleSelection({
+      onStateChange({ selectedItems: newSelectedItems, type }) {
+        switch (type) {
+          case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
+          case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
+          case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
+          case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
+            setSelectedItems(newSelectedItems);
+            break;
+          default:
+            break;
+        }
+      },
+      ...useMultipleSelectionProps,
+    });
 
   const filteredItems = useMemo(
     () => getFilteredItems({ selectedItems, inputValue, items, itemToString }),
     [selectedItems, inputValue, items, itemToString]
   );
-  const { getSelectedItemProps, getDropdownProps, removeSelectedItem, addSelectedItem } = useMultipleSelection({
-    selectedItems,
-    onStateChange({ selectedItems: newSelectedItems, type }) {
-      switch (type) {
-        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
-        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
-        case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
-        case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
-          setSelectedItems(newSelectedItems);
-          break;
-        default:
-          break;
-      }
-    },
-    ...useMultipleSelectionProps,
-  });
 
   const {
     isOpen,
@@ -91,7 +91,6 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
         case useCombobox.stateChangeTypes.InputBlur:
           if (newSelectedItem) {
             setSelectedItems([...selectedItems, newSelectedItem]);
-            addSelectedItem(newSelectedItem);
             setInputValue('');
           }
           break;

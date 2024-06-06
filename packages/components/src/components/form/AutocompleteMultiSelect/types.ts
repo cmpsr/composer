@@ -65,3 +65,10 @@ export type AutocompleteMultiSelectContextProps<Item = {}> = Partial<
     UseMultipleSelectionActions<Item> &
     UseMultipleSelectionPropGetters<Item>
 > & { size: ResponsiveValue<AutocompleteMultiSelectElementSize>; isDisabled?: boolean };
+
+export interface GetFilteredItemsParams<Item> {
+  selectedItems: Item[];
+  inputValue: string;
+  items: Item[];
+  itemToString: (item: Item) => string;
+}

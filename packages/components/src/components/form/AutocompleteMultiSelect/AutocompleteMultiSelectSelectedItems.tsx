@@ -13,13 +13,16 @@ const defaultRenderSelectedItem = ({ selectedItem, removeSelectedItem, itemToStr
   const tagSize = getTagSize(size);
   const itemString = (itemToString ? itemToString(selectedItem) : selectedItem) as string;
   return (
-    <Tag size={tagSize} isDisabled={isDisabled}>
+    <Tag
+      size={tagSize}
+      isDisabled={isDisabled}
+      onClick={(e: React.MouseEvent) => {
+        e.stopPropagation();
+        removeSelectedItem(selectedItem);
+      }}
+    >
       <Tag.Label>{itemString}</Tag.Label>
-      <Tag.RightIcon
-        data-testid="cmpsr.autocompleteMultiSelect.clear-tag-button"
-        as={IconX}
-        onClick={removeSelectedItem}
-      />
+      <Tag.RightIcon data-testid="cmpsr.autocompleteMultiSelect.clear-tag-button" as={IconX} />
     </Tag>
   );
 };
@@ -55,7 +58,7 @@ const AutocompleteMultiSelectSelectedItems: FC<AutocompleteMultiSelectSelectedIt
         >
           {renderSelectedItem({
             selectedItem,
-            removeSelectedItem: () => removeSelectedItem(selectedItem),
+            removeSelectedItem,
             itemToString,
             size,
             isDisabled: isTagDisabled,

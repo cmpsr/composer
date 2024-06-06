@@ -132,7 +132,7 @@ export const WithDefaultImage = () => (
   </AccordionGallery>
 );
 
-const Template = ({ legend, label, subLabel, itemLabel, itemPanel }) => (
+const Template = ({ legend, label, subLabel, itemLabel, itemPanel, actionLink }) => (
   <AccordionGallery>
     <AccordionGallery.Overline variant="text-header-M" color="primary-default" textTransform="uppercase">
       {legend}
@@ -152,6 +152,7 @@ const Template = ({ legend, label, subLabel, itemLabel, itemPanel }) => (
         <AccordionGallery.Accordion.Panel>{itemPanel}</AccordionGallery.Accordion.Panel>
       </AccordionGallery.Accordion.Item>
     </AccordionGallery.Accordion>
+    <AccordionGallery.Action variant="primary">{actionLink}</AccordionGallery.Action>
   </AccordionGallery>
 );
 
@@ -162,4 +163,5 @@ Playground.args = {
   subLabel: 'SubLabel',
   itemLabel: 'Item Label',
   itemPanel: 'Item Panel',
+  actionLink: 'Action Link',
 };

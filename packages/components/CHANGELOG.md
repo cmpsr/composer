@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.10.0
+
+### Minor Changes
+
+- 2c06fc6e: feat: update AutocompleteMultiSelect to use similar pattern as Downshift example to use controlled actions
+
 ## 7.9.3
 
 ### Patch Changes

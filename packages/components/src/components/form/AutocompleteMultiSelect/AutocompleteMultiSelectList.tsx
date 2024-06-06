@@ -16,6 +16,8 @@ const AutocompleteMultiSelectList: FC<AutocompleteMultiSelectListProps> = ({
     string,
     RecursiveCSSObject<StyleProps & { active: StyleProps; highlighted: StyleProps }>
   >;
+  const { item: itemStyles } = styles;
+  const { active, highlighted, ...restItemStyles } = itemStyles;
 
   const noResults = noResultsContent ?? <Text {...styles.noResults}>No results</Text>;
 
@@ -25,10 +27,10 @@ const AutocompleteMultiSelectList: FC<AutocompleteMultiSelectListProps> = ({
         ? items.map((item, index) => (
             <Box
               as="li"
-              key={index}
-              {...styles.item}
-              {...(item === selectedItem && styles.item.active)}
-              {...(highlightedIndex === index && styles.item.highlighted)}
+              key={`list-item-${index}`}
+              {...restItemStyles}
+              {...(item === selectedItem && active)}
+              {...(highlightedIndex === index && highlighted)}
               {...getItemProps({ index, item })}
             >
               {renderItem(item)}

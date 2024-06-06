@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 14.1.0
+
+### Minor Changes
+
+- cc71801b: Add action in AccordionGallery
+
 ## 14.0.18
 
 ## 14.0.17

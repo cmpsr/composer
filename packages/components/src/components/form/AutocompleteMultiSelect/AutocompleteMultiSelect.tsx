@@ -6,10 +6,27 @@ import {
   AutocompleteMultiSelectContextProps,
   AutocompleteMultiSelectProps,
   AutocompleteMultiSelectStaticMembers,
+  GetFilteredItemsParams,
 } from './types';
+import AutocompleteMultiSelectInput from './AutocompleteMultiSelectInput';
+import AutocompleteMultiSelectList from './AutocompleteMultiSelectList';
+import AutocompleteMultiSelectSelectedItems from './AutocompleteMultiSelectSelectedItems';
 
 const [AutocompleteMultiSelectProvider, useAutocompleteMultiSelectContext] =
   createContext<AutocompleteMultiSelectContextProps>({});
+
+const getFilteredItems = <Item,>({
+  selectedItems,
+  inputValue,
+  items,
+  itemToString,
+}: GetFilteredItemsParams<Item>): Item[] => {
+  const lowerCasedInputValue = inputValue.toLowerCase();
+  return items.filter((item) => {
+    const itemString = (itemToString ? itemToString(item) : item) as string;
+    return !selectedItems.includes(item) && itemString.toLowerCase().includes(lowerCasedInputValue);
+  });
+};
 
 export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & AutocompleteMultiSelectStaticMembers = ({
   children,
@@ -22,20 +39,27 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
 }) => {
   const [inputValue, setInputValue] = useState('');
 
-  const { selectedItems, addSelectedItem, removeSelectedItem, getSelectedItemProps, getDropdownProps } =
+  const { selectedItems, removeSelectedItem, getSelectedItemProps, getDropdownProps, setSelectedItems } =
     useMultipleSelection({
+      onStateChange({ selectedItems: newSelectedItems, type }) {
+        switch (type) {
+          case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
+          case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
+          case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
+          case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
+            setSelectedItems(newSelectedItems);
+            break;
+          default:
+            break;
+        }
+      },
       ...useMultipleSelectionProps,
     });
 
-  const getFilteredItems = (selectedItems, inputValue) => {
-    const lowerCasedInputValue = inputValue.toLowerCase();
-    return items.filter((item) => {
-      const itemString = (itemToString ? itemToString(item) : item) as string;
-      return !selectedItems.includes(item) && itemString.toLowerCase().includes(lowerCasedInputValue);
-    });
-  };
-
-  const filteredItems = useMemo(() => getFilteredItems(selectedItems, inputValue), [selectedItems, inputValue]);
+  const filteredItems = useMemo(
+    () => getFilteredItems({ selectedItems, inputValue, items, itemToString }),
+    [selectedItems, inputValue, items, itemToString]
+  );
 
   const {
     isOpen,
@@ -66,9 +90,9 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
         case useCombobox.stateChangeTypes.ItemClick:
         case useCombobox.stateChangeTypes.InputBlur:
           if (newSelectedItem) {
-            addSelectedItem(newSelectedItem);
+            setSelectedItems([...selectedItems, newSelectedItem]);
+            setInputValue('');
           }
-          setInputValue('');
           break;
         case useCombobox.stateChangeTypes.InputChange:
           setInputValue(newInputValue);
@@ -105,10 +129,6 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
     </AutocompleteMultiSelectProvider>
   );
 };
-
-import AutocompleteMultiSelectInput from './AutocompleteMultiSelectInput';
-import AutocompleteMultiSelectList from './AutocompleteMultiSelectList';
-import AutocompleteMultiSelectSelectedItems from './AutocompleteMultiSelectSelectedItems';
 
 AutocompleteMultiSelect.Input = AutocompleteMultiSelectInput;
 AutocompleteMultiSelect.List = AutocompleteMultiSelectList;

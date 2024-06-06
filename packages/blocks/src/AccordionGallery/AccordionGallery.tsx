@@ -18,6 +18,8 @@ import {
   useBreakpointValue,
   Text,
   TextProps,
+  Link,
+  LinkProps,
 } from '@cmpsr/components';
 import { AccordionGalleryProps, AccordionGalleryStaticMembers } from './types';
 import {
@@ -49,6 +51,7 @@ export const AccordionGallery: FC<AccordionGalleryProps> & AccordionGalleryStati
   let textPairing: ReactElement<TextPairingProps> = null;
   let accordion: ReactElement<AccordionProps> = null;
   let legend: ReactElement<TextProps> = null;
+  let action: ReactElement<LinkProps> = null;
 
   const handleAccordionChange = (index: number) => {
     const selectedImageIndex = index !== -1 ? index : typeof defaultImage === 'number' ? defaultImage : 'default';
@@ -68,6 +71,9 @@ export const AccordionGallery: FC<AccordionGalleryProps> & AccordionGalleryStati
         case AccordionGalleryAccordion:
           accordion = child;
           break;
+        case Link:
+          action = child;
+          break;
       }
     }
   });
@@ -86,6 +92,7 @@ export const AccordionGallery: FC<AccordionGalleryProps> & AccordionGalleryStati
           {textPairing}
           {isMobile && images.current?.[activeItem] ? images.current[activeItem] : null}
           {accordion && cloneElement(accordion, { onChange: handleAccordionChange })}
+          {action}
         </Flex>
       </Flex>
     </AccordionGalleryContext.Provider>
@@ -106,3 +113,4 @@ const AccordionGalleryAccordion: typeof Accordion & { Image: typeof AccordionGal
 AccordionGallery.Title = TextPairing;
 AccordionGallery.Accordion = AccordionGalleryAccordion;
 AccordionGallery.Overline = Text;
+AccordionGallery.Action = Link;

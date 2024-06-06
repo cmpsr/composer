@@ -122,4 +122,14 @@ describe('AccordionGallery', () => {
     fireEvent.click(screen.getByText('button'));
     expect(mockOnChange).toHaveBeenCalledTimes(1);
   });
+
+  test('should render action', () => {
+    renderWithProviders(
+      <AccordionGallery>
+        <AccordionGallery.Action href="action-url">action</AccordionGallery.Action>
+      </AccordionGallery>
+    );
+
+    expect(screen.getByText('action').getAttribute('href')).toEqual('action-url');
+  });
 });

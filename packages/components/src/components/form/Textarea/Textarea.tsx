@@ -1,5 +1,7 @@
-import { FC } from 'react';
-import { Textarea as ChakraTextarea } from '@chakra-ui/react';
+import { Textarea as ChakraTextarea, forwardRef } from '@chakra-ui/react';
 import { TextareaProps } from './types';
+import React from 'react';
 
-export const Textarea: FC<TextareaProps> = ChakraTextarea;
+export const Textarea = forwardRef<TextareaProps, 'textarea'>((props, ref) => {
+  return <ChakraTextarea {...props} ref={ref} />;
+});

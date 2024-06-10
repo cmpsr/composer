@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.11.0
+
+### Minor Changes
+
+- 7a402d8d: feat: Update Textarea to use forwardRef
+
 ## 7.10.0
 
 ### Minor Changes

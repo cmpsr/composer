@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.0
+
+### Minor Changes
+
+- 867aed92: feat: add support for amplitude analytics
+
 ## 0.2.1
 
 ### Patch Changes

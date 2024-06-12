@@ -10,7 +10,7 @@ export class Amplitude implements IIntegration {
   }
 
   identify: Identify = (userId) => {
-    (window as any).setUserId(userId);
+    (window as any).amplitude.setUserId(userId);
   };
 
   group: Group = (groupId, traits) => {
@@ -18,7 +18,6 @@ export class Amplitude implements IIntegration {
   };
 
   page: Page = (pageName, traits) => {
-    
     (window as any).amplitude.track({
       event_type: '[Amplitude] Page Viewed',
       event_properties: {
@@ -30,14 +29,14 @@ export class Amplitude implements IIntegration {
         '[Amplitude] Page URL': window.location.href,
         ...traits,
       },
-    })
+    });
   };
-  
+
   track: Track = (eventName, traits = undefined) => {
     (window as any).amplitude.track(eventName, traits);
   };
-  
+
   reset = () => {
-    (window as any).reset();
+    (window as any).amplitude.reset();
   };
 }

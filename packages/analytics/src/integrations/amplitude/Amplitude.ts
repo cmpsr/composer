@@ -9,8 +9,16 @@ export class Amplitude implements IIntegration {
     amplitude.init(config.apiKey);
   }
 
-  identify: Identify = (userId) => {
-    (window as any).amplitude.setUserId(userId);
+  identify: Identify = (userId, traits) => {
+    const amplitude = (window as any).amplitude;
+    amplitude.setUserId(userId);
+    if (traits) {
+      const identifyEvent = new amplitude.Identify();
+      Object.entries(traits).forEach(([key, value]) => {
+        identifyEvent.set(key, value);
+      });
+      amplitude.identify(identifyEvent);
+    }
   };
 
   group: Group = (groupId, traits) => {

@@ -11,7 +11,7 @@ import {
 import { FlexProps } from '@cmpsr/components';
 
 export type CarouselButtonProps = FC<Omit<ButtonBackProps | ButtonNextProps, 'aria-label'>>;
-export type DotProps = FC<Omit<BaseDotProps, 'children'>>;
+export type DotProps = FC<Omit<BaseDotProps, 'children'> & FlexProps>;
 export type DotGroupProps = FC<Omit<BaseDotGroupProps, 'children'>>;
 export type SliderProps = FC<Omit<BaseSliderProps, 'children'>>;
 export type NavigationContainerProps = FC<FlexProps>;

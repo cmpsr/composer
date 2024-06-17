@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.1
+
+### Patch Changes
+
+- 01d838b5: feat: add traits to amplitude Identify
+
 ## 0.3.0
 
 ### Minor Changes

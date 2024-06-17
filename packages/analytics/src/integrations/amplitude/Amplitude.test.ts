@@ -1,11 +1,18 @@
 import { Amplitude } from './Amplitude';
 
+class Identify {
+  set(key: string, value: any) {
+    this[key] = value;
+  }
+}
 const mockAmplitude = {
   init: jest.fn(),
   setUserId: jest.fn(),
   setGroup: jest.fn(),
   track: jest.fn(),
   reset: jest.fn(),
+  Identify,
+  identify: jest.fn(),
 };
 jest.mock('./loadAmplitude', () => {
   return {
@@ -25,6 +32,11 @@ describe('Amplitude', () => {
     const amplitude = new Amplitude({ apiKey: '1234' });
     amplitude.identify('user-id');
     expect(mockAmplitude.setUserId).toHaveBeenCalledWith('user-id');
+  });
+  it('should set user traits on identify', () => {
+    const amplitude = new Amplitude({ apiKey: '1234' });
+    amplitude.identify('user-id', { prop1: 1, prop2: 'value2' });
+    expect(mockAmplitude.identify).toHaveBeenCalledWith(expect.objectContaining({ prop1: 1, prop2: 'value2' }));
   });
   it('should set group on group', () => {
     const amplitude = new Amplitude({ apiKey: '1234' });

@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@fontsource/inter": "^4.5.0",
-    "@storybook/addon-actions": "^6.5.4",
+    "@storybook/addon-actions": "^8.1.10",
     "@storybook/addon-essentials": "^6.5.4",
     "@storybook/addon-interactions": "^6.5.4",
     "@storybook/addon-links": "^6.5.4",

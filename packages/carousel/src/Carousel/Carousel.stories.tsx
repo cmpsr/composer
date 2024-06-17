@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Meta } from '@storybook/react';
-import { Box, Card, IconButton, IconChevronLeft, IconChevronRight, TextPairing } from '@cmpsr/components';
+import { Box, ButtonIcon, Card, IconChevronLeft, IconChevronRight, TextPairing } from '@cmpsr/components';
 
 import { Carousel } from './Carousel';
 
@@ -106,7 +106,7 @@ const FloatingNavigationTemplate = ({ totalSlides, visibleSlides }) => (
       </Carousel.Slider>
       <Carousel.NavigationContainer>
         <Carousel.ButtonBack>
-          <IconButton
+          <ButtonIcon
             position="absolute"
             bottom="5.875rem"
             left="1.5rem"
@@ -119,7 +119,7 @@ const FloatingNavigationTemplate = ({ totalSlides, visibleSlides }) => (
         </Carousel.ButtonBack>
         {renderDots(totalSlides, visibleSlides)}
         <Carousel.ButtonNext>
-          <IconButton
+          <ButtonIcon
             position="absolute"
             bottom="5.875rem"
             right="1.5rem"

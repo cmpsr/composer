@@ -1,5 +1,11 @@
 # @cmpsr/carousel
 
+## 4.0.20
+
+### Patch Changes
+
+- f53febe: update props and use the correct component ButtonIcon
+
 ## 4.0.19
 
 ## 4.0.18

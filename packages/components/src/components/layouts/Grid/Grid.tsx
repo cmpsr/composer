@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { SimpleGrid, forwardRef } from '@chakra-ui/react';
 import { GridProps } from './types';
 

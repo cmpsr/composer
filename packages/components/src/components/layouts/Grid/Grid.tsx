@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { SimpleGrid } from '@chakra-ui/react';
+import React from 'react';
+import { SimpleGrid, forwardRef } from '@chakra-ui/react';
 import { GridProps } from './types';
 
-export const Grid: FC<GridProps> = (props) => <SimpleGrid {...props} />;
+export const Grid = forwardRef<GridProps, typeof SimpleGrid>((props, ref) => <SimpleGrid ref={ref} {...props} />);

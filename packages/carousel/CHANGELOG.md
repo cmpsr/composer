@@ -1,5 +1,7 @@
 # @cmpsr/carousel
 
+## 4.0.21
+
 ## 4.0.20
 
 ### Patch Changes

@@ -44,7 +44,7 @@
     "@maskito/phone": "^1.9.0",
     "@maskito/react": "^1.9.0",
     "@tabler/icons-react": "^2.32.0",
-    "downshift": "^7.6.0",
+    "downshift": "^9.0.6",
     "framer-motion": "^10.16.0",
     "libphonenumber-js": "^1.10.51"
   },

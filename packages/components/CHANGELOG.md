@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.11.1
+
+### Patch Changes
+
+- 743a567: Add forwardRef to the Grid component so a react ref can be used on it
+
 ## 7.11.0
 
 ### Minor Changes

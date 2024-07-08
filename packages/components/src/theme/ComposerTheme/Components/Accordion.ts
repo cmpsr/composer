@@ -11,5 +11,8 @@ export const Accordion: ComponentStyleConfig = {
       padding: '1rem',
       textStyle: 'text-body-regular',
     },
+    container: {
+      borderColor: 'ui-element-divider',
+    },
   },
 };

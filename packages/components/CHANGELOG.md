@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.11.2
+
+### Patch Changes
+
+- 876686c: update accordion divider color
+
 ## 7.11.1
 
 ### Patch Changes

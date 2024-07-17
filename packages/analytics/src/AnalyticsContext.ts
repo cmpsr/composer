@@ -1,5 +1,5 @@
 import React from 'react';
-import { IUser, Track, Page, Identify, Group } from './types';
+import { IUser, Track, Page, Identify, Group, Revenue } from './types';
 
 export interface IAnalyticsContext {
   identify: Identify;
@@ -8,6 +8,7 @@ export interface IAnalyticsContext {
   track: Track;
   user: () => IUser;
   reset: () => void;
+  revenue?: Revenue;
 }
 
 export const AnalyticsContext = React.createContext<IAnalyticsContext>({
@@ -19,4 +20,5 @@ export const AnalyticsContext = React.createContext<IAnalyticsContext>({
     anonymousId: '',
   }),
   reset: () => null,
+  revenue: () => null,
 });

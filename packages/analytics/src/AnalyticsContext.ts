@@ -8,7 +8,7 @@ export interface IAnalyticsContext {
   track: Track;
   user: () => IUser;
   reset: () => void;
-  revenue?: Revenue;
+  revenue: Revenue;
 }
 
 export const AnalyticsContext = React.createContext<IAnalyticsContext>({

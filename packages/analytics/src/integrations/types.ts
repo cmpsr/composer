@@ -5,5 +5,5 @@ export interface IIntegration {
   page: Page;
   track: Track;
   reset: () => void;
-  revenue?: Revenue;
+  revenue: Revenue;
 }

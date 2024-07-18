@@ -49,7 +49,6 @@ export class Amplitude implements IIntegration {
   };
 
   revenue = (price, quantity, type) => {
-    console.log('Revenueing!! Please delete this log');
     const amplitude = (window as any).amplitude;
     const event = new amplitude.revenue().setPrice(price).setQuantity(quantity).setRevenueType(type);
     amplitude.revenue(event);

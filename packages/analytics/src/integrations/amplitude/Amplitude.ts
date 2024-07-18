@@ -47,4 +47,10 @@ export class Amplitude implements IIntegration {
   reset = () => {
     (window as any).amplitude.reset();
   };
+
+  revenue = (price, quantity, type) => {
+    const amplitude = (window as any).amplitude;
+    const event = new amplitude.revenue().setPrice(price).setQuantity(quantity).setRevenueType(type);
+    amplitude.revenue(event);
+  };
 }

@@ -36,4 +36,8 @@ export class Segment implements IIntegration {
   reset = () => {
     (window as any).analytics.reset();
   };
+
+  // Not supported
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  revenue = () => {};
 }

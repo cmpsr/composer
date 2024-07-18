@@ -74,8 +74,7 @@ export const _AnalyticsProvider: FC<IAnalyticsProvider> = ({ children, ...props 
         proxyToIntegrations(integrations, 'reset', Array.from(arguments));
       },
       revenue: function () {
-        if (!integrations.includes('amplitude')) return;
-        proxyToIntegrations([integrations['amplitude']], 'revenue', Array.from(arguments));
+        proxyToIntegrations(integrations, 'revenue', Array.from(arguments));
       },
     };
   }, [anonymousId]);

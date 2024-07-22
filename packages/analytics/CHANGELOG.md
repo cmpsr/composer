@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.4.0
+
+### Minor Changes
+
+- 6093d8f: Add revenue call for amplitude integration
+
 ## 0.3.1
 
 ### Patch Changes

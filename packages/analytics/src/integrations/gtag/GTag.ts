@@ -24,6 +24,7 @@ export class GTag implements IIntegration {
   // Not supported
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   group: Group = () => {};
+  revenue = () => {};
 
   page: Page = (pageName, traits = {}) => {
     (window as any).dataLayer.push({

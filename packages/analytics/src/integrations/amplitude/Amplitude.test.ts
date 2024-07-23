@@ -5,6 +5,11 @@ class Identify {
     this[key] = value;
   }
 }
+const mockAmplitudeRevenue = {
+  setPrice: jest.fn().mockReturnThis(),
+  setQuantity: jest.fn().mockReturnThis(),
+  setRevenueType: jest.fn().mockReturnThis(),
+};
 const mockAmplitude = {
   init: jest.fn(),
   setUserId: jest.fn(),
@@ -13,6 +18,7 @@ const mockAmplitude = {
   reset: jest.fn(),
   Identify,
   identify: jest.fn(),
+  revenue: jest.fn().mockImplementation(() => mockAmplitudeRevenue),
 };
 jest.mock('./loadAmplitude', () => {
   return {
@@ -68,5 +74,13 @@ describe('Amplitude', () => {
     const amplitude = new Amplitude({ apiKey: '1234' });
     amplitude.reset();
     expect(mockAmplitude.reset).toHaveBeenCalled();
+  });
+  it('should revenue', () => {
+    const amplitude = new Amplitude({ apiKey: '1234' });
+    amplitude.revenue(19.55, 1, 'new');
+    expect(mockAmplitude.revenue).toHaveBeenCalled();
+    expect(mockAmplitude.revenue().setPrice).toHaveBeenCalled();
+    expect(mockAmplitude.revenue().setQuantity).toHaveBeenCalled();
+    expect(mockAmplitude.revenue().setRevenueType).toHaveBeenCalled();
   });
 });

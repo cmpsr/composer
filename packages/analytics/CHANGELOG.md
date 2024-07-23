@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.4.1
+
+### Patch Changes
+
+- 0e12bea: Fix typo
+
 ## 0.4.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.11.3
+
+### Patch Changes
+
+- 1db68de: fix: export BadgeProps
+
 ## 7.11.2
 
 ### Patch Changes

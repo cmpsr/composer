@@ -100,13 +100,8 @@ const Template = ({ titleAlignment, showDescription, showTitle, showClose, varia
     <Flex direction={titleAlignment === 'top' ? 'column' : 'row'}>
       {showTitle && <Alert.Title mr={titleAlignment === 'left' ? '0.75rem' : '0'}>Title</Alert.Title>}
       {showDescription && <Alert.Description>This is a description</Alert.Description>}
-      {showClose && (
-        <Alert.CloseButton
-          color={variant === 'solid' ? 'text-light' : 'text-primary'}
-          ml={titleAlignment === 'left' ? '0.75rem' : '0'}
-        />
-      )}
     </Flex>
+    {showClose && <Alert.CloseButton color={variant === 'solid' ? 'text-light' : 'text-primary'} />}
   </Alert>
 );
 

@@ -95,7 +95,7 @@ export const All = () => {
 };
 
 const Template = ({ titleAlignment, showDescription, showTitle, showClose, variant, status, showIcon }) => (
-  <Alert variant={variant} status={status}>
+  <Alert variant={variant} status={status} position="relative">
     {showIcon && <Alert.Icon />}
     <Flex direction={titleAlignment === 'top' ? 'column' : 'row'}>
       {showTitle && <Alert.Title mr={titleAlignment === 'left' ? '0.75rem' : '0'}>Title</Alert.Title>}

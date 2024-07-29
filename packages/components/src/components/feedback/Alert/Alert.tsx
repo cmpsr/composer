@@ -44,7 +44,7 @@ const AlertIcon: FC<AlertIconProps> = (props) => {
 };
 
 const AlertCloseButton: FC<CloseButtonProps> = (props) => (
-  <CloseButton size="s" position="absolute" top="0.75rem" right="0.5rem" {...props} />
+  <CloseButton size="s" position="absolute" top="0.75rem" right="0.5rem" ml="0.625rem" {...props} />
 );
 
 Alert.Title = AlertTitle;

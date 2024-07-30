@@ -1,10 +1,10 @@
-import { getBlocksByModelIds } from 'src/getBlocksByModelIds';
-import { getPagesByBlockIds } from 'src/getPagesByBlockIds';
-import { getReplicaById } from 'src/getReplicaById';
-import { getReplicasByPageIds } from 'src/getReplicasByPageIds';
-import { getRouteById } from 'src/getRouteById';
-import { getRoutesByVariantIds } from 'src/getRoutesByVariantIds';
-import { getVariantsByPageIds } from 'src/getVariantsByPageIds';
+import { getBlocksByModelIds } from '../getBlocksByModelIds';
+import { getPagesByBlockIds } from '../getPagesByBlockIds';
+import { getReplicaById } from '../getReplicaById';
+import { getReplicasByPageIds } from '../getReplicasByPageIds';
+import { getRouteById } from '../getRouteById';
+import { getRoutesByVariantIds } from '../getRoutesByVariantIds';
+import { getVariantsByPageIds } from '../getVariantsByPageIds';
 import { ContentType, ContentfulWebhookPayload } from './types';
 
 export async function getAffectedSlugs(

@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.12.0
+
+### Minor Changes
+
+- 3b5c5af: add icon dots vertical
+
 ## 7.11.3
 
 ### Patch Changes

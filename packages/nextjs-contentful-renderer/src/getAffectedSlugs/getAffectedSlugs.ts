@@ -33,19 +33,21 @@ async function recursivelyGetSlugs(
   preview: boolean
 ): Promise<void> {
   switch (contentType) {
-    case ContentType.Model:
+    case ContentType.Model: {
       const blockIds = await getBlocksByModelIds([entryId], preview);
       for (const blockId of blockIds) {
         await recursivelyGetSlugs(blockId, ContentType.Block, slugs, preview);
       }
       break;
-    case ContentType.Block:
+    }
+    case ContentType.Block: {
       const pageIds = await getPagesByBlockIds([entryId], preview);
       for (const pageId of pageIds) {
         await recursivelyGetSlugs(pageId, ContentType.Page, slugs, preview);
       }
       break;
-    case ContentType.Page:
+    }
+    case ContentType.Page: {
       const variantIds = await getVariantsByPageIds([entryId], preview);
       const replicaSlugs = await getReplicasByPageIds([entryId], preview);
       replicaSlugs.forEach((slug) => slugs.add(slug));
@@ -54,18 +56,22 @@ async function recursivelyGetSlugs(
         await recursivelyGetSlugs(variantId, ContentType.Variant, slugs, preview);
       }
       break;
-    case ContentType.Variant:
+    }
+    case ContentType.Variant: {
       const routeSlugs = await getRoutesByVariantIds([entryId], preview);
       routeSlugs.forEach((slug) => slugs.add(slug));
       break;
-    case ContentType.Route:
+    }
+    case ContentType.Route: {
       const routeSlug = await getRouteById(entryId, preview);
       if (routeSlug) slugs.add(routeSlug);
       break;
-    case ContentType.Replica:
+    }
+    case ContentType.Replica: {
       const replicaSlug = await getReplicaById(entryId, preview);
       if (replicaSlug) slugs.add(replicaSlug);
       break;
+    }
     default:
       throw new Error(`Unsupported content type: ${contentType}`);
   }

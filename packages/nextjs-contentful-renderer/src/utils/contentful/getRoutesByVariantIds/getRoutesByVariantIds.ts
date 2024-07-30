@@ -1,5 +1,4 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
-import { Route, Variant } from './types';
 
 export const getRoutesByVariantIds = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,

@@ -1,5 +1,7 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 24.0.25
+
 ## 24.0.24
 
 ## 24.0.23

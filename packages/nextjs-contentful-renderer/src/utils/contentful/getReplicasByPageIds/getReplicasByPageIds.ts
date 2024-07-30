@@ -10,7 +10,7 @@ export const getReplicasByPageIds = async (
   const { data } = await apolloClient.query({
     query: gql`
       query replicasByPageIds($ids: [String!], $domain: String, $preview: Boolean) {
-        replicaCollection(where: { pageTemplate: { sys: { id_in: $ids }, domain: $domain } }, preview: $preview) {
+        replicaCollection(where: { pageTemplate: { sys: { id_in: $ids } }, domain: $domain }, preview: $preview) {
           items {
             slug
           }

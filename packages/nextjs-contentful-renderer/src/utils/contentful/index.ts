@@ -10,3 +10,6 @@ export * from './getDefaultTheme';
 export * from './getStaticRoutes';
 export * from './getRoutesByVariantIds';
 export * from './getVariantsByPageIds';
+export * from './getPagesByThemeIds';
+export * from './getPagesByNavbarIds';
+export * from './getPagesByFooterIds';

@@ -4,7 +4,10 @@ export enum ContentType {
     Page = 'page',
     Variant = 'variant',
     Route = 'route',
-    Replica = 'replica'
+    Replica = 'replica',
+    Theme = 'theme',
+    Navbar = 'navbar',
+    Footer = 'footer',
   }
 
   export interface ContentfulWebhookPayload {

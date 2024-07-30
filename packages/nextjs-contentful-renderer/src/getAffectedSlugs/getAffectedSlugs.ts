@@ -4,7 +4,11 @@ import { getReplicaById } from '../getReplicaById';
 import { getReplicasByPageIds } from '../getReplicasByPageIds';
 import { getRouteById } from '../getRouteById';
 import { getRoutesByVariantIds } from '../getRoutesByVariantIds';
+import { getPagesByFooterIds } from '../getPagesByFooterIds';
+import { getPagesByThemeIds } from '../getPagesByThemeIds';
+import { getPagesByNavbarIds } from '../getPagesByNavbarIds';
 import { getVariantsByPageIds } from '../getVariantsByPageIds';
+
 import { ContentType, ContentfulWebhookPayload } from './types';
 
 export async function getAffectedSlugs(
@@ -70,6 +74,27 @@ async function recursivelyGetSlugs(
     case ContentType.Replica: {
       const replicaSlug = await getReplicaById(entryId, preview);
       if (replicaSlug) slugs.add(replicaSlug);
+      break;
+    }
+    case ContentType.Theme: {
+      const pageIds = await getPagesByThemeIds([entryId], preview);
+      for (const pageId of pageIds) {
+        await recursivelyGetSlugs(pageId, ContentType.Page, slugs, preview);
+      }
+      break;
+    }
+    case ContentType.Navbar: {
+      const pageIds = await getPagesByNavbarIds([entryId], preview);
+      for (const pageId of pageIds) {
+        await recursivelyGetSlugs(pageId, ContentType.Page, slugs, preview);
+      }
+      break;
+    }
+    case ContentType.Footer: {
+      const pageIds = await getPagesByFooterIds([entryId], preview);
+      for (const pageId of pageIds) {
+        await recursivelyGetSlugs(pageId, ContentType.Page, slugs, preview);
+      }
       break;
     }
     default:

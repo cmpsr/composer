@@ -3,4 +3,3 @@ import { getPagesByThemeIds as getPagesByThemeIdsContentful } from '../utils/con
 
 export const getPagesByThemeIds = async (themeIds: string[], preview = false) =>
   await getPagesByThemeIdsContentful(getApolloClient({ preview }), themeIds, preview);
-

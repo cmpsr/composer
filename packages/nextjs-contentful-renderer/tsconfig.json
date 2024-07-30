@@ -6,6 +6,7 @@
     "outDir": "lib",
     "rootDir": "src",
     "declaration": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "downlevelIteration": true
   }
 }

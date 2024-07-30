@@ -9,7 +9,7 @@ export const getReplicaById = async (
   const { data } = await apolloClient.query({
     query: gql`
       query replicaById($id: String!, $domain: String, $preview: Boolean) {
-        replicaCollection(where: { sys: { id: $id } }, preview: $preview, limit: 1) {
+        replicaCollection(where: { sys: { id: $id }, domain: $domain }, preview: $preview, limit: 1) {
           items {
             slug
           }

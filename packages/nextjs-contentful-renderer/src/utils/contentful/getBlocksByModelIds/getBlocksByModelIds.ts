@@ -4,12 +4,11 @@ import { Block, Model } from './types';
 export const getBlocksByModelIds = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
   modelIds: string[],
-  preview: boolean,
-  domain = process.env.SITE_DOMAIN
+  preview: boolean
 ): Promise<string[]> => {
   const { data } = await apolloClient.query({
     query: gql`
-      query blocksByModelIds($ids: [String!], $domain: String, $preview: Boolean) {
+      query blocksByModelIds($ids: [String!], $preview: Boolean) {
         modelCollection(where: { sys: { id_in: $ids } }, preview: $preview) {
           items {
             sys {
@@ -30,7 +29,6 @@ export const getBlocksByModelIds = async (
     `,
     variables: {
       ids: modelIds,
-      domain,
       preview,
     },
   });

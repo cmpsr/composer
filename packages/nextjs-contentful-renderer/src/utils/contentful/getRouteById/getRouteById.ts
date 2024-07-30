@@ -9,7 +9,7 @@ export const getRouteById = async (
   const { data } = await apolloClient.query({
     query: gql`
       query routeById($id: String!, $domain: String, $preview: Boolean) {
-        routeCollection(where: { sys: { id: $id } }, preview: $preview, limit: 1) {
+        routeCollection(where: { sys: { id: $id }, domain: $domain }, preview: $preview) {
           items {
             slug
           }

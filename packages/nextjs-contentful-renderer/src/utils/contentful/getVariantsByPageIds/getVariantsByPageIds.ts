@@ -4,12 +4,11 @@ import { Page, Variant } from './types';
 export const getVariantsByPageIds = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
   pageIds: string[],
-  preview: boolean,
-  domain = process.env.SITE_DOMAIN
+  preview: boolean
 ): Promise<string[]> => {
   const { data } = await apolloClient.query({
     query: gql`
-      query variantsByPageIds($ids: [String!], $domain: String, $preview: Boolean) {
+      query variantsByPageIds($ids: [String!], $preview: Boolean) {
         pageCollection(where: { sys: { id_in: $ids } }, preview: $preview) {
           items {
             sys {
@@ -30,7 +29,6 @@ export const getVariantsByPageIds = async (
     `,
     variables: {
       ids: pageIds,
-      domain,
       preview,
     },
   });

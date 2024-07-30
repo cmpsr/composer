@@ -4,15 +4,12 @@ import { Page } from './types';
 export const getPagesByNavbarIds = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
   navbarIds: string[],
-  preview: boolean,
+  preview: boolean
 ): Promise<string[] | null> => {
   const { data } = await apolloClient.query({
     query: gql`
-      query pagesByNavbarIds($ids: String!, $preview: Boolean) {
-        pageCollection(
-          where: { navbar: { sys: { id_in: $ids } } }
-          preview: $preview
-        ) {
+      query pagesByNavbarIds($ids: [String!], $preview: Boolean) {
+        pageCollection(where: { navbar: { sys: { id_in: $ids } } }, preview: $preview) {
           items {
             sys {
               id

@@ -8,7 +8,7 @@ export const getPagesByFooterIds = async (
 ): Promise<string[] | null> => {
   const { data } = await apolloClient.query({
     query: gql`
-      query pagesByFooterIds($ids: String!, $preview: Boolean) {
+      query pagesByFooterIds($ids: [String!], $preview: Boolean) {
         pageCollection(
           where: { footer: { sys: { id_in: $ids } } }
           preview: $preview

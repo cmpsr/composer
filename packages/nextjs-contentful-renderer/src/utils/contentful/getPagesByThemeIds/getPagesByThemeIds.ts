@@ -8,7 +8,7 @@ export const getPagesByThemeIds = async (
 ): Promise<string[] | null> => {
   const { data } = await apolloClient.query({
     query: gql`
-      query pagesByThemeIds($ids: String!, $preview: Boolean) {
+      query pagesByThemeIds($ids: [String!], $preview: Boolean) {
         pageCollection(
           where: { theme: { sys: { id_in: $ids } } }
           preview: $preview

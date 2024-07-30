@@ -98,6 +98,7 @@ export const IconDeviceDesktop = forwardRef((props: IconProps, ref) => withIcon(
 export const IconDeviceMobile = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconDeviceMobile, props, ref));
 export const IconDeviceTablet = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconDeviceTablet, props, ref));
 export const IconDots = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconDots, props, ref));
+export const IconDotsVertical = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconDotsVertical, props, ref));
 export const IconDownload = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconDownload, props, ref));
 export const IconEdit = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconEdit, props, ref));
 export const IconExternalLink = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconExternalLink, props, ref));

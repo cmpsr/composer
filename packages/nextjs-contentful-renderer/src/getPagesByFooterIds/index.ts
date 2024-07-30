@@ -1,1 +1,1 @@
-export * from './getPagesByNavbarIds'
+export * from './getPagesByFooterIds'

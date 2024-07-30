@@ -58,6 +58,7 @@ const icons = [
   'IconCreditCard',
   'IconCurrentLocation',
   'IconDots',
+  'IconDotsVertical',
   'IconDownload',
   'IconEdit',
   'IconExternalLink',

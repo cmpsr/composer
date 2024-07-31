@@ -11,9 +11,7 @@ import { getVariantsByPageIds } from '../getVariantsByPageIds';
 
 jest.mock('../getBlocksByModelIds');
 jest.mock('../getPagesByBlockIds');
-jest.mock('../getReplicaById');
 jest.mock('../getReplicasByPageIds');
-jest.mock('../getRouteById');
 jest.mock('../getRoutesByVariantIds');
 jest.mock('../getPagesByFooterIds');
 jest.mock('../getPagesByThemeIds');
@@ -25,20 +23,26 @@ describe('getAffectedSlugs', () => {
     jest.resetAllMocks();
   });
 
-  test('should return slug for Route content type', async () => {
+  test('should return slug for Route content type when slug is provided', async () => {
     const entry: ContentTypeEntry = { contentType: ContentType.Route, entryId: 'route1', slug: '/test-route' };
     const result = await getAffectedSlugs(entry);
     expect(result).toEqual(['/test-route']);
   });
 
-  test('should return slug for Replica content type', async () => {
+  test('should return slug for Replica content type when slug is provided', async () => {
     const entry: ContentTypeEntry = { contentType: ContentType.Replica, entryId: 'replica1', slug: '/test-replica' };
     const result = await getAffectedSlugs(entry);
     expect(result).toEqual(['/test-replica']);
   });
 
-  test('should return empty array for Route/Replica without slug', async () => {
+  test('should return empty array for Route when slug is not provided', async () => {
     const entry: ContentTypeEntry = { contentType: ContentType.Route, entryId: 'route1' };
+    const result = await getAffectedSlugs(entry);
+    expect(result).toEqual([]);
+  });
+
+  test('should return empty array for Replica when slug is not provided', async () => {
+    const entry: ContentTypeEntry = { contentType: ContentType.Replica, entryId: 'replica1' };
     const result = await getAffectedSlugs(entry);
     expect(result).toEqual([]);
   });

@@ -1,8 +1,6 @@
 import { getBlocksByModelIds } from '../getBlocksByModelIds';
 import { getPagesByBlockIds } from '../getPagesByBlockIds';
-import { getReplicaById } from '../getReplicaById';
 import { getReplicasByPageIds } from '../getReplicasByPageIds';
-import { getRouteById } from '../getRouteById';
 import { getRoutesByVariantIds } from '../getRoutesByVariantIds';
 import { getPagesByFooterIds } from '../getPagesByFooterIds';
 import { getPagesByThemeIds } from '../getPagesByThemeIds';
@@ -59,16 +57,6 @@ async function recursivelyGetSlugs(
     case ContentType.Variant: {
       const routeSlugs = await getRoutesByVariantIds([entryId], preview);
       routeSlugs.forEach((slug) => slugs.add(slug));
-      return;
-    }
-    case ContentType.Route: {
-      const routeSlug = await getRouteById(entryId, preview);
-      if (routeSlug) slugs.add(routeSlug);
-      return;
-    }
-    case ContentType.Replica: {
-      const replicaSlug = await getReplicaById(entryId, preview);
-      if (replicaSlug) slugs.add(replicaSlug);
       return;
     }
     case ContentType.Theme:

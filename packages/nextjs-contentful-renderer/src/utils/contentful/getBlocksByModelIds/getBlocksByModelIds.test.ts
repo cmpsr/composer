@@ -1,126 +1,113 @@
-// import { getRouteBySlug } from './getBlocksByModelIds';
+import { getBlocksByModelIds } from './getBlocksByModelIds';
+import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
-// describe('getRouteBySlug', () => {
-//   const mockQueryRoute = jest.fn();
-//   mockQueryRoute.mockResolvedValue({
-//     data: {
-//       replica: {
-//         items: [],
-//       },
-//       route: {
-//         items: [
-//           {
-//             id: 'route_id',
-//             variants: {
-//               items: [
-//                 {
-//                   traffic: 1,
-//                   page: {
-//                     sys: { id: 'page_id' },
-//                   },
-//                   utmCampaign: 'utm_campaign',
-//                 },
-//               ],
-//             },
-//           },
-//         ],
-//       },
-//     },
-//   });
-//   const mockApolloClientRoute: any = {
-//     query: (params: Record<string, unknown>) => mockQueryRoute(params),
-//   };
+describe('getBlocksByModelIds', () => {
+  const mockQuery = jest.fn();
+  const mockApolloClient: ApolloClient<NormalizedCacheObject> = {
+    query: mockQuery,
+  } as any;
 
-//   const mockQueryReplica = jest.fn();
-//   mockQueryReplica.mockResolvedValue({
-//     data: {
-//       replica: {
-//         items: [
-//           {
-//             id: 'replica_id',
-//             domain: 'my_domain',
-//             modelData: [],
-//             pageTemplate: {
-//               sys: { id: 'page_id' },
-//             },
-//             slug: '/route_slug',
-//           },
-//         ],
-//       },
-//       route: {
-//         items: [],
-//       },
-//     },
-//   });
-//   const mockApolloClientReplica: any = {
-//     query: (params: Record<string, unknown>) => mockQueryReplica(params),
-//   };
+  const modelIds = ['model1', 'model2'];
+  const preview = true;
 
-//   const slug = '/route_slug';
-//   const slugWithoutSlash = slug.slice(1);
-//   const preview = true;
+  beforeEach(() => {
+    mockQuery.mockReset();
+  });
 
-//   test('should query apollo to retrieve data', async () => {
-//     await getRouteBySlug(mockApolloClientRoute, slug, preview);
-//     expect(mockQueryRoute).toBeCalledTimes(1);
-//     expect(mockQueryRoute).toBeCalledWith({
-//       query: expect.anything(),
-//       variables: {
-//         slug,
-//         domain: process.env.SITE_DOMAIN,
-//         preview,
-//       },
-//     });
-//   });
+  test('should query Apollo client with correct parameters', async () => {
+    mockQuery.mockResolvedValue({
+      data: {
+        modelCollection: {
+          items: [],
+        },
+      },
+    });
 
-//   test('should prefix slug with a slash', async () => {
-//     await getRouteBySlug(mockApolloClientRoute, slugWithoutSlash, preview);
-//     expect(mockQueryRoute).toBeCalledTimes(1);
-//     expect(mockQueryRoute).toBeCalledWith({
-//       query: expect.anything(),
-//       variables: {
-//         slug,
-//         domain: process.env.SITE_DOMAIN,
-//         preview,
-//       },
-//     });
-//   });
+    await getBlocksByModelIds(mockApolloClient, modelIds, preview);
 
-//   test('should return first route returned', async () => {
-//     const route = await getRouteBySlug(mockApolloClientRoute, slug, preview);
-//     expect(route).toStrictEqual({
-//       id: 'route_id',
-//       slug,
-//       variants: [
-//         {
-//           traffic: 1,
-//           page: 'page_id',
-//           utmCampaign: 'utm_campaign',
-//         },
-//       ],
-//     });
-//   });
+    expect(mockQuery).toHaveBeenCalledTimes(1);
+    expect(mockQuery).toHaveBeenCalledWith({
+      query: expect.anything(),
+      variables: {
+        ids: modelIds,
+        preview,
+      },
+    });
+  });
 
-//   test('should query apollo to retrieve data - replica', async () => {
-//     await getRouteBySlug(mockApolloClientReplica, slug, preview);
-//     expect(mockQueryReplica).toBeCalledTimes(1);
-//     expect(mockQueryReplica).toBeCalledWith({
-//       query: expect.anything(),
-//       variables: {
-//         slug,
-//         domain: process.env.SITE_DOMAIN,
-//         preview,
-//       },
-//     });
-//   });
+  test('should return unique block IDs from the query result', async () => {
+    mockQuery.mockResolvedValue({
+      data: {
+        modelCollection: {
+          items: [
+            {
+              sys: { id: 'model1' },
+              linkedFrom: {
+                blockCollection: {
+                  items: [{ sys: { id: 'block1' } }, { sys: { id: 'block2' } }],
+                },
+              },
+            },
+            {
+              sys: { id: 'model2' },
+              linkedFrom: {
+                blockCollection: {
+                  items: [{ sys: { id: 'block2' } }, { sys: { id: 'block3' } }],
+                },
+              },
+            },
+          ],
+        },
+      },
+    });
 
-//   test('should return first replica returned', async () => {
-//     const replica = await getRouteBySlug(mockApolloClientReplica, slug, preview);
-//     expect(replica).toStrictEqual({
-//       id: 'replica_id',
-//       modelData: [],
-//       page: 'page_id',
-//       slug: '/route_slug',
-//     });
-//   });
-// });
+    const result = await getBlocksByModelIds(mockApolloClient, modelIds, preview);
+
+    expect(result).toEqual(['block1', 'block2', 'block3']);
+  });
+
+  test('should return an empty array when no blocks are found', async () => {
+    mockQuery.mockResolvedValue({
+      data: {
+        modelCollection: {
+          items: [
+            {
+              sys: { id: 'model1' },
+              linkedFrom: {
+                blockCollection: {
+                  items: [],
+                },
+              },
+            },
+            {
+              sys: { id: 'model2' },
+              linkedFrom: {
+                blockCollection: {
+                  items: [],
+                },
+              },
+            },
+          ],
+        },
+      },
+    });
+
+    const result = await getBlocksByModelIds(mockApolloClient, modelIds, preview);
+
+    expect(result).toEqual([]);
+  });
+
+  test('should handle empty response gracefully', async () => {
+    mockQuery.mockResolvedValue({
+      data: {
+        modelCollection: {
+          items: [],
+        },
+      },
+    });
+
+    const result = await getBlocksByModelIds(mockApolloClient, modelIds, preview);
+
+    expect(result).toEqual([]);
+  });
+});

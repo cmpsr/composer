@@ -1,126 +1,89 @@
-// import { getRouteBySlug } from './getBlocksByModelIds';
+import { getReplicasByPageIds } from './getReplicasByPageIds';
+import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
-// describe('getRouteBySlug', () => {
-//   const mockQueryRoute = jest.fn();
-//   mockQueryRoute.mockResolvedValue({
-//     data: {
-//       replica: {
-//         items: [],
-//       },
-//       route: {
-//         items: [
-//           {
-//             id: 'route_id',
-//             variants: {
-//               items: [
-//                 {
-//                   traffic: 1,
-//                   page: {
-//                     sys: { id: 'page_id' },
-//                   },
-//                   utmCampaign: 'utm_campaign',
-//                 },
-//               ],
-//             },
-//           },
-//         ],
-//       },
-//     },
-//   });
-//   const mockApolloClientRoute: any = {
-//     query: (params: Record<string, unknown>) => mockQueryRoute(params),
-//   };
+describe('getReplicasByPageIds', () => {
+  const mockQuery = jest.fn();
+  const mockApolloClient: ApolloClient<NormalizedCacheObject> = {
+    query: mockQuery,
+  } as any;
 
-//   const mockQueryReplica = jest.fn();
-//   mockQueryReplica.mockResolvedValue({
-//     data: {
-//       replica: {
-//         items: [
-//           {
-//             id: 'replica_id',
-//             domain: 'my_domain',
-//             modelData: [],
-//             pageTemplate: {
-//               sys: { id: 'page_id' },
-//             },
-//             slug: '/route_slug',
-//           },
-//         ],
-//       },
-//       route: {
-//         items: [],
-//       },
-//     },
-//   });
-//   const mockApolloClientReplica: any = {
-//     query: (params: Record<string, unknown>) => mockQueryReplica(params),
-//   };
+  const pageIds = ['page1', 'page2'];
+  const preview = true;
+  const domain = 'example.com';
 
-//   const slug = '/route_slug';
-//   const slugWithoutSlash = slug.slice(1);
-//   const preview = true;
+  beforeEach(() => {
+    mockQuery.mockReset();
+    process.env.SITE_DOMAIN = 'default.com';
+  });
 
-//   test('should query apollo to retrieve data', async () => {
-//     await getRouteBySlug(mockApolloClientRoute, slug, preview);
-//     expect(mockQueryRoute).toBeCalledTimes(1);
-//     expect(mockQueryRoute).toBeCalledWith({
-//       query: expect.anything(),
-//       variables: {
-//         slug,
-//         domain: process.env.SITE_DOMAIN,
-//         preview,
-//       },
-//     });
-//   });
+  test('should query Apollo client with correct parameters', async () => {
+    mockQuery.mockResolvedValue({
+      data: {
+        replicaCollection: {
+          items: [],
+        },
+      },
+    });
 
-//   test('should prefix slug with a slash', async () => {
-//     await getRouteBySlug(mockApolloClientRoute, slugWithoutSlash, preview);
-//     expect(mockQueryRoute).toBeCalledTimes(1);
-//     expect(mockQueryRoute).toBeCalledWith({
-//       query: expect.anything(),
-//       variables: {
-//         slug,
-//         domain: process.env.SITE_DOMAIN,
-//         preview,
-//       },
-//     });
-//   });
+    await getReplicasByPageIds(mockApolloClient, pageIds, preview, domain);
 
-//   test('should return first route returned', async () => {
-//     const route = await getRouteBySlug(mockApolloClientRoute, slug, preview);
-//     expect(route).toStrictEqual({
-//       id: 'route_id',
-//       slug,
-//       variants: [
-//         {
-//           traffic: 1,
-//           page: 'page_id',
-//           utmCampaign: 'utm_campaign',
-//         },
-//       ],
-//     });
-//   });
+    expect(mockQuery).toHaveBeenCalledTimes(1);
+    expect(mockQuery).toHaveBeenCalledWith({
+      query: expect.anything(),
+      variables: {
+        ids: pageIds,
+        domain,
+        preview,
+      },
+    });
+  });
 
-//   test('should query apollo to retrieve data - replica', async () => {
-//     await getRouteBySlug(mockApolloClientReplica, slug, preview);
-//     expect(mockQueryReplica).toBeCalledTimes(1);
-//     expect(mockQueryReplica).toBeCalledWith({
-//       query: expect.anything(),
-//       variables: {
-//         slug,
-//         domain: process.env.SITE_DOMAIN,
-//         preview,
-//       },
-//     });
-//   });
+  test('should return unique replica slugs from the query result', async () => {
+    mockQuery.mockResolvedValue({
+      data: {
+        replicaCollection: {
+          items: [{ slug: '/replica1' }, { slug: '/replica2' }, { slug: '/replica2' }, { slug: '/replica3' }],
+        },
+      },
+    });
 
-//   test('should return first replica returned', async () => {
-//     const replica = await getRouteBySlug(mockApolloClientReplica, slug, preview);
-//     expect(replica).toStrictEqual({
-//       id: 'replica_id',
-//       modelData: [],
-//       page: 'page_id',
-//       slug: '/route_slug',
-//     });
-//   });
-// });
+    const result = await getReplicasByPageIds(mockApolloClient, pageIds, preview, domain);
+
+    expect(result).toEqual(['/replica1', '/replica2', '/replica3']);
+  });
+
+  test('should return an empty array when no replicas are found', async () => {
+    mockQuery.mockResolvedValue({
+      data: {
+        replicaCollection: {
+          items: [],
+        },
+      },
+    });
+
+    const result = await getReplicasByPageIds(mockApolloClient, pageIds, preview, domain);
+
+    expect(result).toEqual([]);
+  });
+
+  test('should use default domain when not provided', async () => {
+    mockQuery.mockResolvedValue({
+      data: {
+        replicaCollection: {
+          items: [],
+        },
+      },
+    });
+
+    await getReplicasByPageIds(mockApolloClient, pageIds, preview);
+
+    expect(mockQuery).toHaveBeenCalledWith({
+      query: expect.anything(),
+      variables: {
+        ids: pageIds,
+        domain: process.env.SITE_DOMAIN,
+        preview,
+      },
+    });
+  });
+});

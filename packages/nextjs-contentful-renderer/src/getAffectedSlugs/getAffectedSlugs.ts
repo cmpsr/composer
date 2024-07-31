@@ -139,32 +139,38 @@ async function recursivelyGetSlugs(
   let nextContentType = nextContentTypeMap[contentType];
 
   switch (contentType) {
-    case ContentType.Model:
+    case ContentType.Model: {
       nextIds = await getBlocksByModelIds([entryId], preview);
       break;
-    case ContentType.Block:
+    }
+    case ContentType.Block: {
       nextIds = await getPagesByBlockIds([entryId], preview);
       break;
-    case ContentType.Page:
+    }
+    case ContentType.Page: {
       nextIds = await getVariantsByPageIds([entryId], preview);
       const replicaSlugs = await getReplicasByPageIds([entryId], preview);
       replicaSlugs.forEach((slug) => slugs.add(slug));
       break;
-    case ContentType.Variant:
+    }
+    case ContentType.Variant: {
       const routeSlugs = await getRoutesByVariantIds([entryId], preview);
       routeSlugs.forEach((slug) => slugs.add(slug));
       return;
-    case ContentType.Route:
+    }
+    case ContentType.Route: {
       const routeSlug = await getRouteById(entryId, preview);
       if (routeSlug) slugs.add(routeSlug);
       return;
-    case ContentType.Replica:
+    }
+    case ContentType.Replica: {
       const replicaSlug = await getReplicaById(entryId, preview);
       if (replicaSlug) slugs.add(replicaSlug);
       return;
+    }
     case ContentType.Theme:
     case ContentType.Navbar:
-    case ContentType.Footer:
+    case ContentType.Footer: {
       const getPageIds =
         contentType === ContentType.Theme
           ? getPagesByThemeIds
@@ -173,6 +179,7 @@ async function recursivelyGetSlugs(
           : getPagesByFooterIds;
       nextIds = await getPageIds([entryId], preview);
       break;
+    }
     default:
       throw new Error(`Unsupported content type: ${contentType}`);
   }

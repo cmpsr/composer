@@ -3,6 +3,8 @@ import { StyleFunctionProps } from '@chakra-ui/theme-tools';
 import { linkSizes, buttonVariants } from '@components';
 import { omit } from '@chakra-ui/utils';
 
+const hoverable = `@media (pointer: fine)`;
+
 export const linkBaseStyle = {
   width: 'inherit',
   borderRadius: '0.25rem',
@@ -16,16 +18,14 @@ const generateLink = (colors: { default: string; hover: string; pressed: string;
     color: colors.default,
     padding: 0,
     borderRadius: '0.25rem',
-    _hover: {
-      textDecoration: 'none',
-      color: colors.hover,
+    [hoverable]: {
+      _hover: {
+        textDecoration: 'none',
+        color: colors.hover,
+      },
     },
     _active: {
       color: colors.pressed,
-    },
-    _focus: {
-      boxShadow: `0 0 0 0.25rem var(--chakra-colors-${colors.focus})`,
-      color: colors.hover,
     },
     _focusVisible: {
       boxShadow: `0 0 0 0.25rem var(--chakra-colors-${colors.focus})`,

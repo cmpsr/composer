@@ -2,6 +2,8 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { StyleFunctionProps, SystemStyleObject, transparentize } from '@chakra-ui/theme-tools';
 import { linkVariants } from '@components';
 
+const hoverable = `@media (pointer: fine)`;
+
 const ghostButton = {
   color: 'text-button-transparent',
   backgroundColor: 'transparent',
@@ -21,14 +23,18 @@ const ghostButton = {
     opacity: 1,
     backgroundColor: 'transparent',
   },
+  [hoverable]: {
+    _hover: {
+      backgroundColor: 'background-action-hover',
+    },
+  },
   _hover: {
-    backgroundColor: 'background-action-hover',
     _disabled: {
       color: transparentize('text-button-transparent', 0.6),
       opacity: 1,
     },
   },
-  _focus: {
+  _focusVisible: {
     backgroundColor: 'background-action-hover',
     boxShadow: `0 0 0 0.1875rem var(--chakra-colors-primary-focus)`,
   },
@@ -66,11 +72,15 @@ const generateButton = (color: string, textColor?: string) => {
     backgroundColor: `${color}-default`,
     loading: loadingStyles,
     _disabled,
+    [hoverable]: {
+      _hover: {
+        backgroundColor: `${color}-hover`,
+      },
+    },
     _hover: {
-      backgroundColor: `${color}-hover`,
       _disabled,
     },
-    _focus: {
+    _focusVisible: {
       backgroundColor: `${color}-hover`,
       boxShadow: `0 0 0 0.1875rem var(--chakra-colors-${color}-focus)`,
     },
@@ -101,15 +111,19 @@ const generateAltButton = (color: string) => {
       borderLeftColor: transparentize('primary-default', 0.3),
     },
     _disabled,
-    _hover: {
-      backgroundColor: 'background-action-hover',
-      color: `text-link-${color}-hover`,
-      _disabled,
-      _before: {
-        border: `1px solid var(--chakra-colors-${color}-hover)`,
+    [hoverable]: {
+      _hover: {
+        backgroundColor: 'background-action-hover',
+        color: `text-link-${color}-hover`,
+        _before: {
+          border: `1px solid var(--chakra-colors-${color}-hover)`,
+        },
       },
     },
-    _focus: {
+    _hover: {
+      _disabled,
+    },
+    _focusVisible: {
       backgroundColor: 'background-action-default',
       boxShadow: `0 0 0 0.1875rem var(--chakra-colors-${color}-focus)`,
     },

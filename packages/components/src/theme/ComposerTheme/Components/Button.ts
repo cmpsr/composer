@@ -111,11 +111,11 @@ const generateAltButton = (color: string) => {
       [hoverable]: {
         backgroundColor: 'background-action-hover',
         color: `text-link-${color}-hover`,
+        _disabled,
         _before: {
           border: `1px solid var(--chakra-colors-${color}-hover)`,
         },
       },
-      _disabled,
     },
     _focusVisible: {
       backgroundColor: 'background-action-default',

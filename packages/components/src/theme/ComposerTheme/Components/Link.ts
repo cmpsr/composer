@@ -18,8 +18,8 @@ const generateLink = (colors: { default: string; hover: string; pressed: string;
     color: colors.default,
     padding: 0,
     borderRadius: '0.25rem',
-    [hoverable]: {
-      _hover: {
+    _hover: {
+      [hoverable]: {
         textDecoration: 'none',
         color: colors.hover,
       },

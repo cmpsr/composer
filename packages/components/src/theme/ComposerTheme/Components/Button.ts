@@ -23,12 +23,10 @@ const ghostButton = {
     opacity: 1,
     backgroundColor: 'transparent',
   },
-  [hoverable]: {
-    _hover: {
+  _hover: {
+    [hoverable]: {
       backgroundColor: 'background-action-hover',
     },
-  },
-  _hover: {
     _disabled: {
       color: transparentize('text-button-transparent', 0.6),
       opacity: 1,
@@ -72,12 +70,10 @@ const generateButton = (color: string, textColor?: string) => {
     backgroundColor: `${color}-default`,
     loading: loadingStyles,
     _disabled,
-    [hoverable]: {
-      _hover: {
+    _hover: {
+      [hoverable]: {
         backgroundColor: `${color}-hover`,
       },
-    },
-    _hover: {
       _disabled,
     },
     _focusVisible: {
@@ -111,16 +107,14 @@ const generateAltButton = (color: string) => {
       borderLeftColor: transparentize('primary-default', 0.3),
     },
     _disabled,
-    [hoverable]: {
-      _hover: {
+    _hover: {
+      [hoverable]: {
         backgroundColor: 'background-action-hover',
         color: `text-link-${color}-hover`,
         _before: {
           border: `1px solid var(--chakra-colors-${color}-hover)`,
         },
       },
-    },
-    _hover: {
       _disabled,
     },
     _focusVisible: {

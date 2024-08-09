@@ -2,6 +2,8 @@ import { ComponentStyleConfig } from '@chakra-ui/theme';
 import { StyleFunctionProps, SystemStyleObject, transparentize } from '@chakra-ui/theme-tools';
 import { linkVariants } from '@components';
 
+const hoverable = `@media (pointer: fine)`;
+
 const ghostButton = {
   color: 'text-button-transparent',
   backgroundColor: 'transparent',
@@ -22,13 +24,15 @@ const ghostButton = {
     backgroundColor: 'transparent',
   },
   _hover: {
-    backgroundColor: 'background-action-hover',
+    [hoverable]: {
+      backgroundColor: 'background-action-hover',
+    },
     _disabled: {
       color: transparentize('text-button-transparent', 0.6),
       opacity: 1,
     },
   },
-  _focus: {
+  _focusVisible: {
     backgroundColor: 'background-action-hover',
     boxShadow: `0 0 0 0.1875rem var(--chakra-colors-primary-focus)`,
   },
@@ -67,10 +71,12 @@ const generateButton = (color: string, textColor?: string) => {
     loading: loadingStyles,
     _disabled,
     _hover: {
-      backgroundColor: `${color}-hover`,
+      [hoverable]: {
+        backgroundColor: `${color}-hover`,
+      },
       _disabled,
     },
-    _focus: {
+    _focusVisible: {
       backgroundColor: `${color}-hover`,
       boxShadow: `0 0 0 0.1875rem var(--chakra-colors-${color}-focus)`,
     },
@@ -102,14 +108,16 @@ const generateAltButton = (color: string) => {
     },
     _disabled,
     _hover: {
-      backgroundColor: 'background-action-hover',
-      color: `text-link-${color}-hover`,
-      _disabled,
-      _before: {
-        border: `1px solid var(--chakra-colors-${color}-hover)`,
+      [hoverable]: {
+        backgroundColor: 'background-action-hover',
+        color: `text-link-${color}-hover`,
+        _disabled,
+        _before: {
+          border: `1px solid var(--chakra-colors-${color}-hover)`,
+        },
       },
     },
-    _focus: {
+    _focusVisible: {
       backgroundColor: 'background-action-default',
       boxShadow: `0 0 0 0.1875rem var(--chakra-colors-${color}-focus)`,
     },

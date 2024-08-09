@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.13.0
+
+### Minor Changes
+
+- adf45d5: Update focus and hover styles for Button and Link components
+
 ## 7.12.0
 
 ### Minor Changes

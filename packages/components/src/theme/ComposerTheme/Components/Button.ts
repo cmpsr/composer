@@ -24,6 +24,7 @@ const ghostButton = {
     backgroundColor: 'transparent',
   },
   _hover: {
+    backgroundColor: 'transparent',
     [hoverable]: {
       backgroundColor: 'background-action-hover',
     },

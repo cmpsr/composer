@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.13.1
+
+### Patch Changes
+
+- b7fcad5: fix(button): override Chakra UI hover styles for ghost variant
+
 ## 7.13.0
 
 ### Minor Changes

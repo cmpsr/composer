@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.14.0
+
+### Minor Changes
+
+- c6a59d1: feat: add healthcare icons
+
 ## 7.13.1
 
 ### Patch Changes

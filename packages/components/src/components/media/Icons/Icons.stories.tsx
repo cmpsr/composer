@@ -367,6 +367,12 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconClipboardPlus {...args} />
+      </Box>
+      <Box>IconClipboardPlus</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconClock {...args} />
       </Box>
       <Box>IconClock</Box>
@@ -619,6 +625,12 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconId {...args} />
+      </Box>
+      <Box>IconId</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconInbox {...args} />
       </Box>
       <Box>IconInbox</Box>
@@ -799,6 +811,12 @@ const Template = (args) => (
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>
+        <Icons.IconPill {...args} />
+      </Box>
+      <Box>IconPill</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
         <Icons.IconPin {...args} />
       </Box>
       <Box>IconPin</Box>
@@ -874,6 +892,12 @@ const Template = (args) => (
         <Icons.IconRefresh {...args} />
       </Box>
       <Box>IconRefresh</Box>
+    </Flex>
+    <Flex direction="column" alignItems="center">
+      <Box>
+        <Icons.IconScaleOutline {...args} />
+      </Box>
+      <Box>IconScaleOutline</Box>
     </Flex>
     <Flex direction="column" alignItems="center">
       <Box>

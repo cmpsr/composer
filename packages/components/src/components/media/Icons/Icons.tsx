@@ -85,6 +85,7 @@ export const IconCircleCheckFilled = forwardRef((props: IconProps, ref) => withI
 export const IconCircleMinus = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconCircleMinus, props, ref));
 export const IconCirclePlus = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconCirclePlus, props, ref));
 export const IconCircleX = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconCircleX, props, ref));
+export const IconClipboardPlus = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconClipboardPlus, props, ref));
 export const IconClock = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconClock, props, ref));
 export const IconCloud = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconCloud, props, ref));
 export const IconCloudDownload = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconCloudDownload, props, ref));
@@ -127,6 +128,7 @@ export const IconH6 = forwardRef((props: IconProps, ref) => withIcon(Tabler.Icon
 export const IconHash = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconHash, props, ref));
 export const IconHeart = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconHeart, props, ref));
 export const IconHelp = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconHelp, props, ref));
+export const IconId = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconId, props, ref));
 export const IconInbox = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconInbox, props, ref));
 export const IconInfoCircle = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconInfoCircle, props, ref));
 export const IconItalic = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconItalic, props, ref));
@@ -157,6 +159,7 @@ export const IconPhoneIncoming = forwardRef((props: IconProps, ref) => withIcon(
 export const IconPhoneOff = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconPhoneOff, props, ref));
 export const IconPhoneOutgoing = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconPhoneOutgoing, props, ref));
 export const IconPhoto = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconPhoto, props, ref));
+export const IconPill = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconPill, props, ref));
 export const IconPin = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconPin, props, ref));
 export const IconPinnedOff = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconPinnedOff, props, ref));
 export const IconPlayerPause = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconPlayerPause, props, ref));
@@ -170,6 +173,7 @@ export const IconPlayerTrackPrev = forwardRef((props: IconProps, ref) => withIco
 export const IconPlus = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconPlus, props, ref));
 export const IconRadiusBottomLeft = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconRadiusBottomLeft, props, ref));
 export const IconRefresh = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconRefresh, props, ref));
+export const IconScaleOutline = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconScaleOutline, props, ref));
 export const IconSearch = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconSearch, props, ref));
 export const IconSelector = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconSelector, props, ref));
 export const IconSend = forwardRef((props: IconProps, ref) => withIcon(Tabler.IconSend, props, ref));

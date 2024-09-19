@@ -96,7 +96,7 @@ const variantOutline: PartsStyleFunction<typeof parts> = (props) => {
       color: containerStatusesColors[status]?.borderStartColor,
     },
     icon: {
-      color: containerStatusesColors[status]?.borderStartColor,
+      color: containerStatusesColors[status]?.color,
     },
   };
 };

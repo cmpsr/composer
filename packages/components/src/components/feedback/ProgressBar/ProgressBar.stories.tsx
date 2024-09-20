@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { ProgressBar } from './ProgressBar';
-import { Divider, Box } from '@chakra-ui/react';
+import { Divider, Box, Text } from '@chakra-ui/react';
 import { progressBarSizes } from './types';
 
 export default {
@@ -12,16 +12,33 @@ export default {
       options: progressBarSizes,
       control: { type: 'select' },
     },
+    isRound: {
+      control: { type: 'boolean' },
+    },
+    value: {
+      control: { type: 'number' },
+    },
   },
 } as Meta;
 
-const AllTemplate = () =>
-  progressBarSizes.map((size, key) => (
-    <Box key={key}>
-      <ProgressBar value={20} size={size} />
-      <Divider my={3} />
-    </Box>
-  ));
+const AllTemplate = () => (
+  <>
+    <Text mb="1rem">Progress Bar</Text>
+    {progressBarSizes.map((size, key) => (
+      <Box key={key}>
+        <ProgressBar value={20} size={size} />
+        <Divider my={3} />
+      </Box>
+    ))}
+    <Text mb="1rem">Progress Bar rounded</Text>
+    {progressBarSizes.map((size, key) => (
+      <Box key={key}>
+        <ProgressBar value={20} size={size} isRound />
+        <Divider my={3} />
+      </Box>
+    ))}
+  </>
+);
 
 export const All = AllTemplate.bind({});
 
@@ -32,4 +49,5 @@ export const Playground = Template.bind({});
 Playground.args = {
   size: 'l',
   value: 60,
+  isRound: false,
 };

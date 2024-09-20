@@ -12,4 +12,5 @@ export const defaultRadius = {
   'radii-popover': '0.5rem',
   'radii-button': '0.375rem',
   'radii-input': '0.375rem',
+  'radii-progress-bar': '1.5rem',
 };

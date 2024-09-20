@@ -6,4 +6,5 @@ type ProgressBarSize = (typeof progressBarSizes)[number];
 
 export interface ProgressBarProps extends ChakraProgressBarProps {
   size?: ResponsiveValue<ProgressBarSize>;
+  isRound?: boolean;
 }

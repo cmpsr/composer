@@ -122,4 +122,6 @@ export const defaultColors = {
   'comms-background-bubble-container-sender': '#FFFFFF',
   'comms-background-bubble-container-receiver': '#F1F1F1',
   'comms-background-bubble-error': '#FFDDD8',
+  'ui-element-outline-hover': '#D7DBE7',
+  'ui-element-outline-focus': '#E6E6E6',
 };

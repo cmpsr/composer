@@ -38,7 +38,8 @@ const containerVariantsColors = {
   },
   subtle: containerStatusesColors,
   'left-accent': containerStatusesColors,
-  outline: {
+  //TODO: Add new tokens for outlined background colors so we can rewrite it in other projects
+  outlined: {
     success: {
       borderColor: 'alert-success-default',
       borderWidth: '1px',
@@ -81,22 +82,24 @@ const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
   };
 };
 
-const variantOutline: PartsStyleFunction<typeof parts> = (props) => {
+//TODO: Add the correct tokens for outlined variant
+
+const variantOutlined: PartsStyleFunction<typeof parts> = (props) => {
   const { status } = props;
 
   return {
     container: {
-      ...containerVariantsColors['outline']?.[status],
+      ...containerVariantsColors['outlined']?.[status],
       borderRadius: '12px',
     },
     title: {
-      color: containerStatusesColors[status]?.borderStartColor,
+      // color: containerStatusesColors[status]?.borderStartColor,
     },
     description: {
-      color: containerStatusesColors[status]?.borderStartColor,
+      // color: containerStatusesColors[status]?.borderStartColor,
     },
     icon: {
-      color: containerStatusesColors[status]?.color,
+      // color: containerStatusesColors[status]?.color,
     },
   };
 };
@@ -139,6 +142,6 @@ export const Alert: ComponentStyleConfig = {
     solid: variantSolid,
     subtle: generateVariantByStatus,
     'left-accent': generateVariantByStatus,
-    outline: variantOutline,
+    outlined: variantOutlined,
   },
 };

@@ -52,6 +52,7 @@ export const defaultColors = {
   'background-action-pressed': '#E7E7F5',
   'background-action-disabled': '#EAEAEA',
   'background-action-active': '#D5D5EB',
+  //TODO: Add new tokens for outlined background colors so we can rewrite it in other projects
   'background-error': '#FFDDD8',
   'background-warning': '#FFE5C1',
   'background-success': '#DEFFEC',

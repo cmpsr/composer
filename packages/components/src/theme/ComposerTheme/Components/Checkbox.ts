@@ -12,6 +12,7 @@ export const Checkbox: ComponentStyleConfig = {
     control: {
       background: 'background-action-default',
       borderColor: 'ui-element-outline-default',
+      borderRadius: 'radii-checkbox',
       color: 'text-primary',
       _checked: {
         background: 'primary-default',

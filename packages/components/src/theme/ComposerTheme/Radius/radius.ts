@@ -11,5 +11,6 @@ export const defaultRadius = {
   'radii-alertdialog': '0.5rem',
   'radii-popover': '0.5rem',
   'radii-button': '0.375rem',
+  'radii-tooltip': '0.25rem',
   'radii-progress-bar': '1.5rem',
 };

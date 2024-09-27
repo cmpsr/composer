@@ -55,4 +55,6 @@ export const defaultSpacing = {
   'spacer-tag-gap-S': '0.25rem',
   'spacer-tag-y-S': '0rem',
   'spacer-tag-x-S': '0.5rem',
+  'spacer-tooltip-x': '0.5rem',
+  'spacer-tooltip-y': '0.5rem',
 };

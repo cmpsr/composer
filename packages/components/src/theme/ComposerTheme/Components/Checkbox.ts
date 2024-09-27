@@ -10,12 +10,12 @@ export const Checkbox: ComponentStyleConfig = {
       },
     },
     control: {
-      background: 'background-action-default',
+      background: 'background-checkbox-default',
       borderColor: 'ui-element-outline-default',
       borderRadius: 'radii-checkbox',
       color: 'text-primary',
       _checked: {
-        background: 'primary-default',
+        background: 'background-checkbox-selected',
         borderColor: 'primary-default',
         _hover: {
           background: 'primary-hover',
@@ -32,7 +32,7 @@ export const Checkbox: ComponentStyleConfig = {
       },
       _disabled: {
         background: 'background-action-disabled',
-        borderColor: 'ui-element-outline-disabled',
+        borderColor: 'ui-element-outline-checkbox-disabled',
       },
       _invalid: {
         borderColor: 'alert-error-default',

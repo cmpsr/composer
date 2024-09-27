@@ -6,7 +6,7 @@ export const ButtonIcon: ComponentStyleConfig = {
     const buttonVariant = buttonStyles.variants[variant];
     const resolvedButtonVariant = typeof buttonVariant === 'function' ? buttonVariant(props) : buttonVariant;
     const buttonLoadingStyles = resolvedButtonVariant.loading;
-    const borderRadius = isRound ? 'full' : 'radii-button';
+    const borderRadius = isRound ? 'full' : 'radii-button-icon';
 
     return {
       borderRadius,

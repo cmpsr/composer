@@ -124,4 +124,6 @@ export const defaultColors = {
   'comms-background-bubble-error': '#FFDDD8',
   'ui-element-outline-hover': '#D7DBE7',
   'ui-element-outline-focus': '#E6E6E6',
+  'background-action-focus': 'transparent',
+  'text-close-button': 'text-primary',
 };

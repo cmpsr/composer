@@ -11,12 +11,12 @@ export const Checkbox: ComponentStyleConfig = {
     },
     control: {
       background: 'background-checkbox-default',
-      borderColor: 'ui-element-outline-default',
+      borderColor: 'ui-element-outline-checkbox-default',
       borderRadius: 'radii-checkbox',
       color: 'text-primary',
       _checked: {
         background: 'background-checkbox-selected',
-        borderColor: 'primary-default',
+        borderColor: 'ui-element-outline-checkbox-selected',
         _hover: {
           background: 'primary-hover',
           borderColor: 'primary-hover',

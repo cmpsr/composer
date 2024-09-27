@@ -8,9 +8,10 @@ export const Tooltip: ComponentStyleConfig = {
   baseStyle: ({ theme }) => ({
     bg: 'text-secondary',
     [$arrowBg.variable]: $secondaryColor.reference,
-    padding: '0.5rem',
-    borderRadius: '0.25rem',
-    boxShadow: 'none',
+    paddingX: 'spacer-tooltip-x',
+    paddingY: 'spacer-tooltip-y',
+    borderRadius: 'radii-tooltip',
+    boxShadow: 'elevation-tooltip',
     ...theme.textStyles['text-body-meta-regular'],
     color: 'text-light',
   }),

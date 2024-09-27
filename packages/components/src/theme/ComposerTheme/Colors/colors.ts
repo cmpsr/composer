@@ -60,6 +60,7 @@ export const defaultColors = {
   'background-skeleton-end': '#EDF2F7',
   'background-checkbox-default': '#FDFDFF',
   'background-checkbox-selected': '#4F4FFF',
+  'background-checkbox-disabled': '#EAEAEA',
   'text-light': '#FFFFFF',
   'text-primary': '#222222',
   'text-primary-negative': '#FFFFFF',

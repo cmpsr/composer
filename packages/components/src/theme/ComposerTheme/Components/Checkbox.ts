@@ -23,7 +23,7 @@ export const Checkbox: ComponentStyleConfig = {
         },
         _disabled: {
           borderColor: 'ui-element-outline-disabled',
-          background: 'background-action-disabled',
+          background: 'background-checkbox-disabled',
           color: 'text-disabled',
         },
       },
@@ -31,7 +31,7 @@ export const Checkbox: ComponentStyleConfig = {
         boxShadow: `0 0 0 0.1875rem var(--chakra-colors-primary-focus)`,
       },
       _disabled: {
-        background: 'background-action-disabled',
+        background: 'background-checkbox-disabled',
         borderColor: 'ui-element-outline-checkbox-disabled',
       },
       _invalid: {

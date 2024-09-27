@@ -100,6 +100,7 @@ export const defaultColors = {
   'ui-element-outline-active': '#D7DBE7',
   'ui-element-outline-disabled': '#F2F2F2',
   'ui-element-outline-checkbox-disabled': '#F2F2F2',
+  'ui-element-outline-checkbox-selected': '#E6E6E6',
   'comms-text-light': '#FFFFFF',
   'comms-text-primary': '#222222',
   'comms-text-secondary': '#7C7C7C',

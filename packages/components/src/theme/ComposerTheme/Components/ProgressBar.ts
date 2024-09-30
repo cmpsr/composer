@@ -1,13 +1,17 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
 export const ProgressBar: ComponentStyleConfig = {
-  baseStyle: {
-    filledTrack: {
-      bgColor: 'primary-default',
-    },
-    track: {
-      backgroundColor: 'background-static',
-    },
+  baseStyle: ({ isRound }) => {
+    return {
+      filledTrack: {
+        bgColor: 'primary-default',
+        ...(isRound && { borderRadius: 'radii-progress-bar' }),
+      },
+      track: {
+        backgroundColor: 'background-static',
+        ...(isRound && { borderRadius: 'radii-progress-bar' }),
+      },
+    };
   },
   sizes: {
     xs: {
@@ -25,5 +29,8 @@ export const ProgressBar: ComponentStyleConfig = {
     xl: {
       track: { h: '2rem' },
     },
+  },
+  defaultProps: {
+    size: 'm',
   },
 };

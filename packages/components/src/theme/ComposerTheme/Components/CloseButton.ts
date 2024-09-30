@@ -4,7 +4,7 @@ import { transparentize } from '@chakra-ui/theme-tools';
 const baseStyle = {
   backgroundColor: 'transparent',
   borderRadius: '0.375rem',
-  color: 'text-primary',
+  color: 'text-close-button',
   _hover: {
     backgroundColor: transparentize('background-action-hover', 0.15),
   },
@@ -13,6 +13,7 @@ const baseStyle = {
   },
   _focus: {
     boxShadow: '0 0 0 0.1875rem var(--chakra-colors-primary-focus)',
+    backgroundColor: 'background-action-focus',
   },
 };
 

@@ -3,10 +3,10 @@ import { AlertDescriptionProps, AlertProps as ChakraAlertProps, AlertTitleProps 
 import { CloseButtonProps } from '@components';
 
 export const alertStatuses = ['success', 'warning', 'error', 'info'] as const;
-export const alertVariants = ['solid', 'subtle', 'left-accent'] as const;
+export const alertVariants = ['solid', 'subtle', 'left-accent', 'outlined'] as const;
 
-export type AlertStatus = typeof alertStatuses[number];
-export type AlertVariant = typeof alertVariants[number];
+export type AlertStatus = (typeof alertStatuses)[number];
+export type AlertVariant = (typeof alertVariants)[number];
 
 export type AlertStyles = {
   icon: { status: { [key: string]: { color: string } } };

@@ -227,7 +227,7 @@ const outlineStyle = (props) => {
     inputGroup: {
       transitionProperty: 'var(--chakra-transition-property-common)',
       transitionDuration: 'var(--chakra-transition-duration-normal)',
-      borderRadius: '0.375rem',
+      borderRadius: 'radii-input',
       ...inputGroupConditionalStyle,
     },
     leftLabel: {
@@ -248,7 +248,7 @@ const outlineStyle = (props) => {
       height: '100%',
     },
     field: {
-      borderRadius: '0.375rem',
+      borderRadius: 'radii-input',
       color: 'text-primary',
       backgroundColor: 'background-action-default',
       borderWidth: '0.0625rem',
@@ -262,14 +262,14 @@ const outlineStyle = (props) => {
         backgroundColor: 'background-action-hover',
         borderWidth: '0.0625rem',
         borderStyle: 'solid',
-        borderColor: 'ui-element-outline-active',
+        borderColor: 'ui-element-outline-hover',
       },
       // We need to remove the focus state from the chakra input so we can add the border shadow to the full input group.
       _focusVisible: {
         boxShadow: 'none',
         borderWidth: '0.0625rem',
         borderStyle: 'solid',
-        borderColor: 'ui-element-outline-default',
+        borderColor: 'ui-element-outline-focus',
       },
       _invalid: {
         boxShadow: 'none',

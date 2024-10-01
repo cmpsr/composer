@@ -11,7 +11,6 @@ const baseStyle = {
     },
     _focus: {
       boxShadow: `0 0 0 0.188rem var(--chakra-colors-primary-focus)`,
-      // prior to this here we didn't have backgroundColor in the focus state
       backgroundColor: 'background-action-focus',
     },
     _active: {

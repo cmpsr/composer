@@ -32,14 +32,14 @@ const generateSize = (size: string) => {
 const baseStyle = {
   bg: 'background-action-default',
   color: 'text-primary',
-  borderRadius: '0.375rem',
+  borderRadius: 'radii-input',
   _placeholder: {
     color: 'text-disabled',
   },
   _hover: {
     bg: 'background-action-hover',
     borderWidth: '0.0625rem',
-    borderColor: 'ui-element-outline-active',
+    borderColor: 'ui-element-outline-hover',
   },
   _disabled: {
     bg: 'background-action-disabled',
@@ -52,7 +52,7 @@ const baseStyle = {
   },
   _focus: {
     bg: 'background-action-default',
-    borderColor: 'ui-element-outline-default',
+    borderColor: 'ui-element-outline-focus',
     boxShadow: '0 0 0 0.1875rem var(--chakra-colors-primary-focus)',
   },
   _invalid: {

@@ -1,5 +1,33 @@
 # @cmpsr/components
 
+## 7.15.0
+
+### Minor Changes
+
+- 9422a46: Add background-action-focus and text-close-button color tokens to CloseButton component
+- e8d72f7: Add new tooltip tokens: elevation-tooltip, radii-tooltip, spacer-tooltip-x and spacer-tooltip-y
+- 3be6a7b: Add new radii-button-icon token for ButtonIcon component
+- 46f0a90: Add same tokens as in input: radii-input, ui-element-outline-hover and ui-element-outline-focus.
+- 2a40441: Apply the same tokens as in checkbox component: ui-element-outline-checkbox-selected
+  ui-element-outline-checkbox-disabled
+  ui-element-outline-checkbox-default
+  background-checkbox-selected
+  background-checkbox-default
+  background-checkbox-disabled
+- 660cac3: Add radii-input, ui-element-outline-hover and ui-element-outline-focus tokens to input component
+
+### Patch Changes
+
+- c364940: Add new tokens to Checkbox theme and colors ui-element-outline-checkbox-selected
+  ui-element-outline-checkbox-disabled
+  ui-element-outline-checkbox-default
+  background-checkbox-selected
+  background-checkbox-default
+  background-checkbox-disabled
+  radii-checkbox
+- b3cfc8f: fix: switch component was using incorrect token for thumb
+- bf17957: Add radii-progress-bar token and isRound property to ProgressBar component.
+
 ## 7.14.0
 
 ### Minor Changes

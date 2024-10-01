@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "2.0.26",
+  "version": "2.0.27",
   "author": "Takeichi Kanzaki Cabrera <me@tkanzakic.com>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -37,7 +37,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@cmpsr/components": "^7.14.0",
+    "@cmpsr/components": "^7.15.0",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",

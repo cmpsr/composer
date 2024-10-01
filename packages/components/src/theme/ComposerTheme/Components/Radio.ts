@@ -31,7 +31,8 @@ export const Radio: ComponentStyleConfig = {
   baseStyle: {
     control: {
       color: 'text-light',
-      borderColor: 'ui-element-outline-default',
+      background: 'background-checkbox-default',
+      borderColor: 'ui-element-outline-checkbox-default',
       _focus: {
         boxShadow: `0 0 0 0.1875rem var(--chakra-colors-primary-focus)`,
         _invalid: {
@@ -45,10 +46,9 @@ export const Radio: ComponentStyleConfig = {
           },
         },
       },
-
       _checked: {
-        borderColor: 'primary-default',
-        bg: 'primary-default',
+        borderColor: 'ui-element-outline-checkbox-selected',
+        background: 'background-checkbox-selected',
         color: 'text-light',
         _focus: {
           borderColor: 'primary-default',
@@ -63,13 +63,13 @@ export const Radio: ComponentStyleConfig = {
         },
         _disabled: {
           borderColor: 'ui-element-outline-disabled',
-          bg: 'background-action-disabled',
+          background: 'background-checkbox-disabled',
           color: 'text-disabled',
         },
       },
       _disabled: {
-        borderColor: 'ui-element-outline-disabled',
-        bg: 'background-action-disabled',
+        borderColor: 'ui-element-outline-checkbox-disabled',
+        background: 'background-checkbox-disabled',
       },
 
       _invalid: {

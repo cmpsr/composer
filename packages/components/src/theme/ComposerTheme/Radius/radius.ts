@@ -16,4 +16,5 @@ export const defaultRadius = {
   'radii-tooltip': '0.25rem',
   'radii-progress-bar': '1.5rem',
   'radii-checkbox': '0px',
+  'radii-dropdown': '0px',
 };

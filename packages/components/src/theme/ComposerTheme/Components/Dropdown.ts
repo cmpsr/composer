@@ -16,6 +16,9 @@ export const Dropdown: ComponentStyleConfig = {
       paddingX: '1rem',
       paddingTop: '0.5rem',
       paddingBottom: '0.5rem',
+      marginX: 'spacer-dropdown-item-x',
+      marginY: 'spacer-dropdown-item-y',
+      borderRadius: 'radii-dropdown',
     },
   },
 };

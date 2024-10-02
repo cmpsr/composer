@@ -2,10 +2,10 @@ import { ComponentStyleConfig } from '@chakra-ui/react';
 
 export const statusStyles = {
   custom: {
-    backgroundColor: 'primary-default',
-    borderColor: 'primary-default',
-    colorOutlineSubtle: 'text-badge-outline',
-    colorSolid: 'text-badge-solid',
+    backgroundColor: 'background-badge-custom',
+    borderColor: 'background-badge-custom',
+    colorOutlineSubtle: 'text-badge-custom',
+    colorSolid: 'text-badge-custom-solid',
   },
   accent: {
     backgroundColor: 'accent-default',
@@ -54,7 +54,7 @@ export const statusStyles = {
 export const Badge: ComponentStyleConfig = {
   baseStyle: ({ theme }) => ({
     letterSpacing: '0.05em',
-    borderRadius: 'radii-half',
+    borderRadius: 'radii-badge',
     ...theme.textStyles['text-body-floating-label-bold'],
   }),
   variants: {

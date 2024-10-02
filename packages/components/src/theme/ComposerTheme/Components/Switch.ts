@@ -84,7 +84,7 @@ const baseStyleTrack: SystemStyleFunction = () => ({
 const baseStyle: PartsStyleFunction<typeof parts> = (props) => {
   return {
     track: baseStyleTrack(props),
-    thumb: { marginLeft: '0.125rem' },
+    thumb: { marginLeft: '0.125rem', bg: 'background-action-default' },
     label: {
       margin: 0,
     },

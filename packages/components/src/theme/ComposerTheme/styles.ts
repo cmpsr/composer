@@ -261,6 +261,30 @@ export const textStyles = {
     lineHeight: '1.25rem',
     textDecoration: 'underline',
   },
+  'text-body-timestamp-regular': {
+    color: 'text-primary',
+    fontSize: '0.75rem',
+    fontWeight: 400,
+    letterSpacing: '0rem',
+    lineHeight: '0.875rem',
+    textDecoration: 'none',
+  },
+  'text-body-timestamp-medium': {
+    color: 'text-primary',
+    fontSize: '0.75rem',
+    fontWeight: 500,
+    letterSpacing: '0rem',
+    lineHeight: '0.875rem',
+    textDecoration: 'none',
+  },
+  'text-body-timestamp-bold': {
+    color: 'text-primary',
+    fontSize: '0.75rem',
+    fontWeight: 700,
+    letterSpacing: '0rem',
+    lineHeight: '0.875rem',
+    textDecoration: 'none',
+  },
 };
 
 export const inputStyles = {

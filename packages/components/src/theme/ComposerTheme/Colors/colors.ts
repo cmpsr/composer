@@ -131,5 +131,8 @@ export const defaultColors = {
   'ui-element-outline-hover': '#D7DBE7',
   'ui-element-outline-focus': '#E6E6E6',
   'background-action-focus': 'transparent',
-  'text-close-button': 'text-primary',
+  'text-close-button': '#222222',
+  'text-badge-custom': '#4F4FFF',
+  'text-badge-custom-solid': '#FFFFFF',
+  'background-badge-custom': '#4F4FFF',
 };

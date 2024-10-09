@@ -26,3 +26,7 @@ Allow Tag to have variants, add a custom one and add new tokens for them:
 'ui-element-outline-tag-pressed',
 'ui-element-outline-tag-disabled',
 'ui-element-outline-tag-custom',
+'text-tag-subtle-disabled',
+'text-tag-solid-disabled',
+'text-tag-outline-disabled',
+'text-tag-custom-disabled'

@@ -18,6 +18,7 @@ const createVariantStyles = (variant: string) => ({
     },
     _disabled: {
       backgroundColor: `background-tag-${variant}-disabled`,
+      color: `text-tag-${variant}-disabled`,
       pointerEvents: 'none',
     },
   },

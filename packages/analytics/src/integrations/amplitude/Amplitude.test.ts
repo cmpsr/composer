@@ -20,6 +20,7 @@ const mockAmplitude = {
   identify: jest.fn(),
   Revenue: jest.fn().mockImplementation(() => mockAmplitudeRevenue),
   revenue: jest.fn(),
+  getDeviceId: jest.fn().mockReturnValue('4321'),
 };
 jest.mock('./loadAmplitude', () => {
   return {
@@ -83,5 +84,12 @@ describe('Amplitude', () => {
     expect(mockAmplitude.Revenue().setPrice).toHaveBeenCalled();
     expect(mockAmplitude.Revenue().setQuantity).toHaveBeenCalled();
     expect(mockAmplitude.Revenue().setRevenueType).toHaveBeenCalled();
+  });
+  it('should get the deviceID', () => {
+    const amplitude = new Amplitude({ apiKey: '1234' });
+    const result = amplitude.user();
+    console.log(result, 'AAAAAAAAAAAAAAAAAAAAAAAAA');
+    expect(mockAmplitude.getDeviceId).toHaveBeenCalled();
+    expect(result).toEqual({ deviceId: '4321' });
   });
 });

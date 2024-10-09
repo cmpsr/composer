@@ -4,9 +4,11 @@ import { loadAmplitude } from './loadAmplitude';
 import { AmplitudeConfig } from './types';
 
 export class Amplitude implements IIntegration {
-  constructor(config: AmplitudeConfig) {
+  constructor(config: AmplitudeConfig, anonymousId?: string | null) {
     const amplitude = loadAmplitude();
-    amplitude.init(config.apiKey);
+    const params = {};
+    if (anonymousId) params['deviceId'] = anonymousId;
+    amplitude.init(config.apiKey, params);
   }
 
   identify: Identify = (userId, traits) => {

@@ -29,5 +29,4 @@ export type Revenue = (price: number, quantity: number, type: string) => void;
 
 export interface IUser {
   anonymousId: string;
-  deviceId?: string;
 }

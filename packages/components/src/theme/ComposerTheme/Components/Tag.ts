@@ -34,7 +34,7 @@ export const Tag: ComponentStyleConfig = {
       bg: 'background-action-default',
       color: 'text-tag-subtle',
       border: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
-      borderRadius: '0.375rem',
+      borderRadius: 'radii-tag',
       _hover: {
         backgroundColor: 'background-action-hover',
       },

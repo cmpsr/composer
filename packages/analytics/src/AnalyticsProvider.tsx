@@ -5,7 +5,6 @@ import { Segment, ISegmentConfig, GA, IGAConfig, GTag, IGTagConfig, IIntegration
 import { v1 as uuidv1 } from 'uuid'; // v1 is timestamp based + random
 import Cookies from 'js-cookie';
 import { Amplitude, AmplitudeConfig } from './integrations/amplitude';
-import { IUser } from 'types';
 
 const supportedIntegrations = {
   ga: GA,
@@ -27,16 +26,10 @@ const ssr = !(typeof window !== 'undefined' && window.document && window.documen
 const COOKIE_NAME = 'composer_anonymous_id';
 
 const proxyToIntegrations = (integrations: IIntegration[], func: string, args: any[]) => {
-  const mappedResult = integrations.map((integration) => {
+  integrations.forEach((integration) =>
     // eslint-disable-next-line prefer-spread
-    const wat = integration[func].apply(integration, args);
-    console.log(wat, 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB');
-    return wat;
-  });
-
-  console.log(mappedResult, 'CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC');
-
-  return mappedResult;
+    integration[func].apply(integration, args)
+  );
 };
 
 // export for testing
@@ -56,7 +49,7 @@ export const _AnalyticsProvider: FC<IAnalyticsProvider> = ({ children, ...props 
     });
 
     return enabledIntegrations.map((integration) => {
-      return new supportedIntegrations[integration](props[integration]);
+      return new supportedIntegrations[integration](props[integration], anonymousId);
     });
   }, []);
 
@@ -74,13 +67,7 @@ export const _AnalyticsProvider: FC<IAnalyticsProvider> = ({ children, ...props 
       track: function () {
         proxyToIntegrations(integrations, 'track', Array.from(arguments));
       },
-      user: function () {
-        const userObjects: Array<IUser> = proxyToIntegrations(integrations, 'user', Array.from(arguments));
-        console.log(userObjects, 'DDDDDDDDDDDDDDDDDDDDDDDDDDD');
-        const user = Object.assign.apply(null, userObjects);
-        console.log(user, 'EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE');
-        return { ...user, anonymousId };
-      },
+      user: () => ({ anonymousId }),
       reset: function () {
         proxyToIntegrations(integrations, 'reset', Array.from(arguments));
       },

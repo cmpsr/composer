@@ -48,5 +48,4 @@ export class GTag implements IIntegration {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   group: Group = () => {};
   revenue = () => {};
-  user = () => ({});
 }

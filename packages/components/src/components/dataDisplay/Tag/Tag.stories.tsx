@@ -74,3 +74,22 @@ export const All = () => (
     </Tbody>
   </Table>
 );
+
+const Template = ({ showIcon, iconPosition, label, ...args }) => (
+  <Tag {...args}>
+    {showIcon && iconPosition === 'left' && <Tag.LeftIcon as={IconAlertCircle} />}
+    <Tag.Label>{label}</Tag.Label>
+    {showIcon && iconPosition === 'right' && <Tag.RightIcon as={IconAlertCircle} />}
+  </Tag>
+);
+
+export const Playground = Template.bind({});
+
+Playground.args = {
+  size: 'l',
+  variant: 'subtle',
+  label: 'Hello',
+  iconPosition: 'left',
+  showIcon: true,
+  isDisabled: false,
+};

@@ -53,4 +53,9 @@ export class Amplitude implements IIntegration {
     const event = new amplitude.Revenue().setPrice(price).setQuantity(quantity).setRevenueType(type);
     amplitude.revenue(event);
   };
+
+  user = () => {
+    const amplitude = (window as any).amplitude;
+    return { deviceId: amplitude.getDeviceId() };
+  };
 }

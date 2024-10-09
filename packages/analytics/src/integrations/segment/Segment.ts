@@ -40,4 +40,5 @@ export class Segment implements IIntegration {
   // Not supported
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   revenue = () => {};
+  user = () => ({});
 }

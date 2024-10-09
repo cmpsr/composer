@@ -56,6 +56,8 @@ export class Amplitude implements IIntegration {
 
   user = () => {
     const amplitude = (window as any).amplitude;
-    return { deviceId: amplitude.getDeviceId() };
+    const deviceId = amplitude.getDeviceId();
+    console.log(deviceId, 'AAAAAAAAAAAAAAAAAAAAAA');
+    return { deviceId };
   };
 }

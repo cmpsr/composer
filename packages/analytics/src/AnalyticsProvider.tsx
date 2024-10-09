@@ -27,10 +27,16 @@ const ssr = !(typeof window !== 'undefined' && window.document && window.documen
 const COOKIE_NAME = 'composer_anonymous_id';
 
 const proxyToIntegrations = (integrations: IIntegration[], func: string, args: any[]) => {
-  return integrations.map((integration) =>
+  const mappedResult = integrations.map((integration) => {
     // eslint-disable-next-line prefer-spread
-    integration[func].apply(integration, args)
-  );
+    const wat = integration[func].apply(integration, args);
+    console.log(wat, 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB');
+    return wat;
+  });
+
+  console.log(mappedResult, 'CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC');
+
+  return mappedResult;
 };
 
 // export for testing
@@ -69,8 +75,10 @@ export const _AnalyticsProvider: FC<IAnalyticsProvider> = ({ children, ...props 
         proxyToIntegrations(integrations, 'track', Array.from(arguments));
       },
       user: function () {
-        const userObjects: Array<IUser> = proxyToIntegrations(integrations, 'track', Array.from(arguments));
+        const userObjects: Array<IUser> = proxyToIntegrations(integrations, 'user', Array.from(arguments));
+        console.log(userObjects, 'DDDDDDDDDDDDDDDDDDDDDDDDDDD');
         const user = Object.assign.apply(null, userObjects);
+        console.log(user, 'EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE');
         return { ...user, anonymousId };
       },
       reset: function () {

@@ -41,4 +41,5 @@ export class GA implements IIntegration {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   reset = () => {};
   revenue = () => {};
+  user = () => ({});
 }

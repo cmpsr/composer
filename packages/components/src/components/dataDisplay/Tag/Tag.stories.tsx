@@ -52,7 +52,7 @@ export const All = () => (
   </Table>
 );
 
-const Template = ({ showIcon, iconPosition, status, label, ...args }) => (
+const Template = ({ showIcon, iconPosition, label, ...args }) => (
   <Tag {...args}>
     {showIcon && iconPosition === 'left' && <Tag.LeftIcon as={IconAlertCircle} />}
     <Tag.Label>{label}</Tag.Label>

@@ -24,28 +24,10 @@ export default {
   },
 } as Meta;
 
-const getStatusStyles = (status: string) => {
-  switch (status) {
-    case 'hover':
-      return { _hover: { backgroundColor: 'blue.500' } };
-    case 'focus':
-      return { _focus: { boxShadow: '0 0 0 2px blue' } };
-    case 'active':
-      return { _active: { backgroundColor: 'blue.600' } };
-    case 'disabled':
-      return { isDisabled: true };
-    default:
-      return {};
-  }
-};
-
-const statuses = ['default', 'hover', 'focus', 'active', 'disabled'];
-
 export const All = () => (
   <Table variant="simple">
     <Thead>
       <Tr>
-        <Th>State</Th>
         <Th>Variant</Th>
         {tagSizes.map((size) => (
           <Th key={size}>{size.toUpperCase()}</Th>
@@ -54,28 +36,23 @@ export const All = () => (
     </Thead>
     <Tbody>
       {tagVariants.map((variant) => (
-        <>
-          {statuses.map((status) => (
-            <Tr key={`${variant}-${status}`}>
-              <Td>{`${status.charAt(0).toUpperCase() + status.slice(1)}`}</Td>
-              <Td>{variant.toUpperCase()}</Td>
-              {tagSizes.map((size) => (
-                <Td key={`${variant}-${status}-${size}`}>
-                  <Tag size={size} variant={variant} {...getStatusStyles(status)}>
-                    <Tag.LeftIcon as={IconAlertCircle} />
-                    <Tag.Label>Hello</Tag.Label>
-                  </Tag>
-                </Td>
-              ))}
-            </Tr>
+        <Tr key={variant}>
+          <Td>{variant.toUpperCase()}</Td>
+          {tagSizes.map((size) => (
+            <Td key={`${variant}-${size}`}>
+              <Tag size={size} variant={variant}>
+                <Tag.LeftIcon as={IconAlertCircle} />
+                <Tag.Label>Hello</Tag.Label>
+              </Tag>
+            </Td>
           ))}
-        </>
+        </Tr>
       ))}
     </Tbody>
   </Table>
 );
 
-const Template = ({ showIcon, iconPosition, label, ...args }) => (
+const Template = ({ showIcon, iconPosition, status, label, ...args }) => (
   <Tag {...args}>
     {showIcon && iconPosition === 'left' && <Tag.LeftIcon as={IconAlertCircle} />}
     <Tag.Label>{label}</Tag.Label>

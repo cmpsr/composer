@@ -1,47 +1,121 @@
 import { ComponentStyleConfig } from '@chakra-ui/theme';
 
-const baseStyle = {
+const createVariantStyles = (variant: string) => ({
   container: {
-    bg: 'background-action-default',
-    color: 'text-secondary',
-    border: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
-    borderRadius: '0.375rem',
+    backgroundColor: `background-tag-${variant}-default`,
+    color: `text-tag-${variant}`,
+    borderColor: `ui-element-outline-tag-${variant}`,
+    borderWidth: '0.063rem',
     _hover: {
-      backgroundColor: 'background-action-hover',
+      backgroundColor: `background-tag-${variant}-hover`,
     },
     _focus: {
+      backgroundColor: `background-tag-${variant}-focus`,
       boxShadow: `0 0 0 0.188rem var(--chakra-colors-primary-focus)`,
     },
     _active: {
-      backgroundColor: 'background-action-pressed',
+      backgroundColor: `background-tag-${variant}-pressed`,
     },
     _disabled: {
-      backgroundColor: 'background-container-disabled',
+      backgroundColor: `background-tag-${variant}-disabled`,
+      color: `text-tag-${variant}-disabled`,
       pointerEvents: 'none',
     },
   },
   label: {
-    color: 'text-secondary',
-    textStyle: 'text-body-medium',
-    _disabled: {
-      color: 'text-disabled',
-    },
+    color: `text-tag-${variant}`,
   },
-  leftIcon: {
-    textStyle: 'text-body-medium',
-    margin: 0,
-  },
-  rightIcon: {
-    textStyle: 'text-body-medium',
-    margin: 0,
-  },
-};
+});
 
 export const Tag: ComponentStyleConfig = {
   parts: ['container', 'label', 'closeButton', 'leftIcon', 'rightIcon'],
-  baseStyle: baseStyle,
+  baseStyle: {
+    container: {
+      bg: 'background-action-default',
+      color: 'text-tag-subtle',
+      border: '0.0625rem solid var(--chakra-colors-ui-element-outline-default)',
+      borderRadius: 'radii-tag',
+      _hover: {
+        backgroundColor: 'background-action-hover',
+      },
+      _focus: {
+        backgroundColor: 'background-action-focus',
+        boxShadow: `0 0 0 0.188rem var(--chakra-colors-primary-focus)`,
+      },
+      _active: {
+        backgroundColor: 'background-action-pressed',
+      },
+      _disabled: {
+        backgroundColor: 'background-container-disabled',
+        pointerEvents: 'none',
+      },
+    },
+    label: {
+      color: 'text-tag-subtle',
+      textStyle: 'text-body-medium',
+      _disabled: {
+        color: 'text-disabled',
+      },
+    },
+    leftIcon: {
+      textStyle: 'text-body-medium',
+      margin: 0,
+    },
+    rightIcon: {
+      textStyle: 'text-body-medium',
+      margin: 0,
+    },
+  },
   variants: {
-    subtle: baseStyle,
+    subtle: {
+      container: {
+        bg: 'background-action-default',
+        color: 'text-tag-subtle',
+        _hover: {
+          backgroundColor: 'background-action-hover',
+        },
+        _focus: {
+          backgroundColor: 'background-action-focus',
+          boxShadow: `0 0 0 0.188rem var(--chakra-colors-primary-focus)`,
+        },
+        _active: {
+          backgroundColor: 'background-action-pressed',
+        },
+        _disabled: {
+          backgroundColor: 'background-container-disabled',
+          pointerEvents: 'none',
+        },
+      },
+      label: {
+        color: 'text-tag-subtle',
+      },
+    },
+    solid: createVariantStyles('solid'),
+    outline: {
+      container: {
+        backgroundColor: 'transparent',
+        borderColor: 'ui-element-outline-tag',
+        borderWidth: '0.063rem',
+        color: 'text-tag-outline',
+        _hover: {
+          borderColor: 'ui-element-outline-tag-hover',
+        },
+        _focus: {
+          boxShadow: `0 0 0 0.188rem var(--chakra-colors-primary-focus)`,
+        },
+        _active: {
+          borderColor: 'ui-element-outline-tag-pressed',
+        },
+        _disabled: {
+          borderColor: 'ui-element-outline-tag-disabled',
+          pointerEvents: 'none',
+        },
+      },
+      label: {
+        color: 'text-tag-outline',
+      },
+    },
+    custom: createVariantStyles('custom'),
   },
   sizes: {
     s: ({ theme }) => ({
@@ -83,5 +157,6 @@ export const Tag: ComponentStyleConfig = {
   },
   defaultProps: {
     size: 'l',
+    variant: 'subtle',
   },
 };

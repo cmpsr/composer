@@ -33,7 +33,7 @@ jest.mock('./loadAmplitude', () => {
 describe('Amplitude', () => {
   it('should initialize amplitude', () => {
     new Amplitude({ apiKey: '1234' });
-    expect(mockAmplitude.init).toHaveBeenCalledWith('1234');
+    expect(mockAmplitude.init).toHaveBeenCalledWith('1234', {});
   });
   it('should set user id on identify', () => {
     const amplitude = new Amplitude({ apiKey: '1234' });

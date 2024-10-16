@@ -13,7 +13,8 @@ export const statusStyles = {
     backgroundColor: 'background-badge-custom',
     borderColor: 'background-badge-custom',
     colorSolid: 'text-badge-custom-solid',
-    colorOutlineSubtle: 'text-badge-custom-subtle',
+    colorSubtle: 'text-badge-custom-subtle',
+    colorOutline: 'text-badge-custom-outline',
   },
   accent: {
     ...defaultStyles,
@@ -64,14 +65,14 @@ export const Badge: ComponentStyleConfig = {
       color: statusStyles[status].colorSolid,
     }),
     outline: ({ status }) => ({
-      borderColor: statusStyles[status].borderColor,
+      borderColor: status === 'custom' ? statusStyles[status].borderColor : statusStyles[status].backgroundColor,
       borderWidth: '1px',
       boxShadow: 'none',
-      color: statusStyles[status].colorOutlineSubtle,
+      color: status === 'custom' ? statusStyles[status].colorOutline : statusStyles[status].backgroundColor,
     }),
     subtle: ({ status }) => ({
       backgroundColor: 'background-action-default',
-      color: statusStyles[status].colorOutlineSubtle,
+      color: status === 'custom' ? statusStyles[status].colorSubtle : statusStyles[status].colorOutlineSubtle,
     }),
   },
   defaultProps: {

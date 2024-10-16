@@ -111,6 +111,8 @@ export const defaultColors = {
   'text-close-button': '#222222',
   'text-badge-custom': '#4F4FFF',
   'text-badge-custom-solid': '#FFFFFF',
+  'text-badge-custom-outline': '#222222',
+  'text-badge-custom-subtle': '#222222',
   'text-tag-subtle': '#7C7C7C',
   'text-tag-solid': '#FFFFFF',
   'text-tag-outline': '#393939',

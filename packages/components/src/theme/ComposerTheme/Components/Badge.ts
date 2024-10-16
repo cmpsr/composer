@@ -1,53 +1,54 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
+const defaultStyles = {
+  colorSolid: 'text-badge-solid',
+  borderColor: (color) => color,
+  backgroundColor: (color) => color,
+  colorOutlineSubtle: (color) => color,
+};
+
 export const statusStyles = {
   custom: {
+    ...defaultStyles,
     backgroundColor: 'background-badge-custom',
     borderColor: 'background-badge-custom',
-    colorOutlineSubtle: 'text-badge-custom',
     colorSolid: 'text-badge-custom-solid',
+    colorOutlineSubtle: 'text-badge-custom-subtle',
   },
   accent: {
+    ...defaultStyles,
     backgroundColor: 'accent-default',
-    borderColor: 'accent-default',
     colorOutlineSubtle: 'accent-default',
-    colorSolid: 'text-badge-solid',
   },
   primary: {
+    ...defaultStyles,
     backgroundColor: 'primary-default',
-    borderColor: 'primary-default',
     colorOutlineSubtle: 'primary-default',
-    colorSolid: 'text-badge-solid',
   },
   secondary: {
+    ...defaultStyles,
     backgroundColor: 'secondary-default',
-    borderColor: 'secondary-default',
     colorOutlineSubtle: 'secondary-default',
-    colorSolid: 'text-badge-solid',
   },
   info: {
+    ...defaultStyles,
     backgroundColor: 'alert-inform-default',
-    borderColor: 'alert-inform-default',
     colorOutlineSubtle: 'text-inform',
-    colorSolid: 'text-badge-solid',
   },
   success: {
+    ...defaultStyles,
     backgroundColor: 'alert-success-default',
-    borderColor: 'alert-success-default',
     colorOutlineSubtle: 'text-success',
-    colorSolid: 'text-badge-solid',
   },
   warning: {
+    ...defaultStyles,
     backgroundColor: 'alert-warning-default',
-    borderColor: 'alert-warning-default',
     colorOutlineSubtle: 'text-warning',
-    colorSolid: 'text-badge-solid',
   },
   error: {
+    ...defaultStyles,
     backgroundColor: 'alert-error-default',
-    borderColor: 'alert-error-default',
     colorOutlineSubtle: 'text-error',
-    colorSolid: 'text-badge-solid',
   },
 };
 

@@ -4,8 +4,9 @@ export const statusStyles = {
   custom: {
     backgroundColor: 'background-badge-custom',
     borderColor: 'background-badge-custom',
-    colorOutlineSubtle: 'text-badge-custom',
     colorSolid: 'text-badge-custom-solid',
+    colorSubtle: 'text-badge-custom-subtle',
+    colorOutline: 'text-badge-custom-outline',
   },
   accent: {
     backgroundColor: 'accent-default',
@@ -66,11 +67,11 @@ export const Badge: ComponentStyleConfig = {
       borderColor: statusStyles[status].borderColor,
       borderWidth: '1px',
       boxShadow: 'none',
-      color: statusStyles[status].colorOutlineSubtle,
+      color: status === 'custom' ? statusStyles[status].colorOutline : statusStyles[status].colorOutlineSubtle,
     }),
     subtle: ({ status }) => ({
       backgroundColor: 'background-action-default',
-      color: statusStyles[status].colorOutlineSubtle,
+      color: status === 'custom' ? statusStyles[status].colorSubtle : statusStyles[status].colorOutlineSubtle,
     }),
   },
   defaultProps: {

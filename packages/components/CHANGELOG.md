@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.17.0
+
+### Minor Changes
+
+- 392f404: Add new tokens text-badge-custom-outline and text-badge-custom-subtle
+
 ## 7.16.0
 
 ### Minor Changes

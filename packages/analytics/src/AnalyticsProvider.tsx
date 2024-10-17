@@ -49,7 +49,7 @@ export const _AnalyticsProvider: FC<IAnalyticsProvider> = ({ children, ...props 
     });
 
     return enabledIntegrations.map((integration) => {
-      return new supportedIntegrations[integration](props[integration]);
+      return new supportedIntegrations[integration](props[integration], anonymousId);
     });
   }, []);
 
@@ -67,9 +67,7 @@ export const _AnalyticsProvider: FC<IAnalyticsProvider> = ({ children, ...props 
       track: function () {
         proxyToIntegrations(integrations, 'track', Array.from(arguments));
       },
-      user: () => ({
-        anonymousId,
-      }),
+      user: () => ({ anonymousId }),
       reset: function () {
         proxyToIntegrations(integrations, 'reset', Array.from(arguments));
       },

@@ -1,5 +1,12 @@
 # @cmpsr/components
 
+## 7.17.0
+
+### Minor Changes
+
+- b502af1: Update SegmentedButton to lift the state
+- 392f404: Add new tokens text-badge-custom-outline and text-badge-custom-subtle
+
 ## 7.16.0
 
 ### Minor Changes

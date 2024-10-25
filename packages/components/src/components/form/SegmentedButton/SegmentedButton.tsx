@@ -7,10 +7,10 @@ import {
   SegmentedButtonProps,
   SegmentedButtonSize,
   SegmentedButtonStaticMembers,
-  SegmentedButtonStyles,
   SegmentedIconButtonProps,
   SegmentedButtonValue,
   SegmentedButtonContextProps,
+  SegmentedButtonStyles,
 } from './types';
 import { createContext } from '@chakra-ui/react-utils';
 
@@ -25,13 +25,16 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
   size = 'l',
   defaultValue = '',
   isDisabled = false,
+  selectedValue: externalSelectedValue,
   ...rest
 }) => {
-  const [selectedValue, setSelectedValue] = useState<SegmentedButtonValue>(defaultValue);
+  const [internalValue, setInternalValue] = useState<SegmentedButtonValue>(defaultValue);
+  const isExternalControlled = externalSelectedValue !== undefined;
+  const selectedValue = isExternalControlled ? externalSelectedValue : internalValue;
   const responsiveSize = useResponsiveValue(size) as SegmentedButtonSize;
 
   const handleChange = (value: SegmentedButtonValue) => {
-    setSelectedValue(value);
+    if (!isExternalControlled) setInternalValue(value);
     onChange(value);
   };
 
@@ -93,6 +96,5 @@ const getIcon = (icon: ReactElement<IconProps>, size: ResponsiveValue<SegmentedB
   if (!isValidElement(icon)) {
     return null;
   }
-
   return cloneElement(icon, { size } as Partial<IconProps>);
 };

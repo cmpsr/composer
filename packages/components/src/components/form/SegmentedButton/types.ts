@@ -16,7 +16,6 @@ export interface SegmentedButtonProps {
   defaultValue?: SegmentedButtonValue;
   isDisabled?: boolean;
   selectedValue?: SegmentedButtonValue;
-  onSelectChange?: (value: SegmentedButtonValue) => void;
 }
 
 export interface SegmentedButtonStaticMembers {

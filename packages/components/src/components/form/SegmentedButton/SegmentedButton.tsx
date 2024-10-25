@@ -26,7 +26,6 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
   defaultValue = '',
   isDisabled = false,
   selectedValue: externalSelectedValue,
-  onSelectChange,
   ...rest
 }) => {
   const [internalValue, setInternalValue] = useState<SegmentedButtonValue>(defaultValue);
@@ -36,7 +35,7 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
 
   const handleChange = (value: SegmentedButtonValue) => {
     if (!isExternalControlled) setInternalValue(value);
-    onSelectChange ? onSelectChange(value) : onChange(value);
+    onChange(value);
   };
 
   const getButtonStyles = (isActive?: boolean) => {

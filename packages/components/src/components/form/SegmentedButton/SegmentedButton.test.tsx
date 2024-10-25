@@ -37,7 +37,6 @@ describe('SegmentedButton', () => {
 
   it('should set the selected option based on the controlled selectedValue prop', () => {
     givenComponentRendered({ selectedValue: 'dummy_value_3' });
-
     expect(screen.getByRole('button', { current: true })).toHaveValue('dummy_value_3');
   });
 
@@ -59,9 +58,7 @@ describe('SegmentedButton', () => {
 
   it('should call onChange but not update internal state when controlled by selectedValue', () => {
     givenComponentRendered({ selectedValue: 'dummy_value_1' });
-
     const dummy2Button = screen.getByRole('button', { name: 'dummy text 2' });
-
     fireEvent.click(dummy2Button);
 
     expect(onChangeMock).toHaveBeenCalledWith('dummy_value_2');

@@ -1,16 +1,16 @@
 import { Button as ChakraButton, IconProps, ResponsiveValue, forwardRef, useMultiStyleConfig } from '@chakra-ui/react';
 import { Flex } from '@components';
 import { useResponsiveValue } from '@hooks';
-import React, { FC, ReactElement, cloneElement, isValidElement, useState } from 'react';
+import React, { FC, ReactElement, cloneElement, isValidElement } from 'react';
 import {
   SegmentedButtonButtonProps,
   SegmentedButtonProps,
   SegmentedButtonSize,
   SegmentedButtonStaticMembers,
   SegmentedIconButtonProps,
-  SegmentedButtonValue,
   SegmentedButtonContextProps,
   SegmentedButtonStyles,
+  SegmentedButtonValue,
 } from './types';
 import { createContext } from '@chakra-ui/react-utils';
 
@@ -23,23 +23,19 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
   onChange,
   variant = 'primary',
   size = 'l',
-  defaultValue = '',
   isDisabled = false,
-  selectedValue: externalSelectedValue,
+  selectedValue,
+  defaultValue,
   ...rest
 }) => {
-  const [internalValue, setInternalValue] = useState<SegmentedButtonValue>(defaultValue);
-  const isExternalControlled = externalSelectedValue !== undefined;
-  const selectedValue = isExternalControlled ? externalSelectedValue : internalValue;
   const responsiveSize = useResponsiveValue(size) as SegmentedButtonSize;
-
-  const handleChange = (value: SegmentedButtonValue) => {
-    if (!isExternalControlled) setInternalValue(value);
-    onChange(value);
-  };
+  const value = selectedValue !== undefined ? selectedValue : defaultValue;
 
   const getButtonStyles = (isActive?: boolean) => {
     return useMultiStyleConfig('SegmentedButton', { variant, size: responsiveSize, isActive }) as SegmentedButtonStyles;
+  };
+  const handleChange = (newValue: SegmentedButtonValue) => {
+    onChange(newValue);
   };
 
   return (
@@ -49,10 +45,10 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
           cloneElement(child, {
             key: child.props.value,
             onClick: () => handleChange(child.props.value),
-            isActive: selectedValue === child.props.value,
+            isActive: value === child.props.value,
             size: responsiveSize,
             isDisabled,
-            'aria-current': selectedValue === child.props.value,
+            'aria-current': value === child.props.value,
           })
         )}
       </Flex>

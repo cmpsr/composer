@@ -1,8 +1,6 @@
 import { Meta } from './Meta';
 
-const mockMeta = {
-  revenue: jest.fn(),
-};
+const mockMeta = jest.fn();
 const init = jest.fn().mockImplementation(() => ({ $fbq: mockMeta }));
 jest.mock('./loadMeta', () => {
   return {
@@ -19,8 +17,8 @@ describe('Meta', () => {
   it('should revenue', () => {
     const metaPixel = new Meta({ pixelAccountId: '1234' });
     metaPixel.revenue(19.55, 1, 'new', 'USD');
-    expect(mockMeta.revenue).toHaveBeenCalled();
-    expect(mockMeta.revenue).toHaveBeenCalledWith('track', 'Purchase', {
+    expect(mockMeta).toHaveBeenCalled();
+    expect(mockMeta).toHaveBeenCalledWith('track', 'Purchase', {
       content_type: 'product',
       contents: [{ id: '1', quantity: 1 }],
       value: 19.55,

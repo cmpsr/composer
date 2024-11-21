@@ -76,4 +76,12 @@ describe('Amplitude', () => {
     amplitude.reset();
     expect(mockAmplitude.reset).toHaveBeenCalled();
   });
+  it('should revenue', () => {
+    const amplitude = new Amplitude({ apiKey: '1234' });
+    amplitude.revenue(19.55, 1, 'new');
+    expect(mockAmplitude.Revenue).toHaveBeenCalled();
+    expect(mockAmplitude.Revenue().setPrice).toHaveBeenCalled();
+    expect(mockAmplitude.Revenue().setQuantity).toHaveBeenCalled();
+    expect(mockAmplitude.Revenue().setRevenueType).toHaveBeenCalled();
+  });
 });

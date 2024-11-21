@@ -14,11 +14,23 @@ describe('Meta', () => {
     expect(init).toHaveBeenCalledWith('1234');
   });
 
-  it('should revenue', () => {
+  it('should revenue with new type', () => {
     const metaPixel = new Meta({ pixelAccountId: '1234' });
-    metaPixel.revenue(19.55, 1, 'new', 'USD');
+    metaPixel.revenue(19.55, 1, 'new');
     expect(mockMeta).toHaveBeenCalled();
     expect(mockMeta).toHaveBeenCalledWith('track', 'Purchase', {
+      content_type: 'product',
+      contents: [{ id: '1', quantity: 1 }],
+      value: 19.55,
+      currency: 'USD',
+    });
+  });
+
+  it('should revenue with draft type', () => {
+    const metaPixel = new Meta({ pixelAccountId: '1234' });
+    metaPixel.revenue(19.55, 1, 'draft');
+    expect(mockMeta).toHaveBeenCalled();
+    expect(mockMeta).toHaveBeenCalledWith('track', 'InitiateCheckout', {
       content_type: 'product',
       contents: [{ id: '1', quantity: 1 }],
       value: 19.55,

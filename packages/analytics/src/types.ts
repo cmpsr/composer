@@ -25,7 +25,13 @@ export interface ITrackTraits {
 }
 export type Track = (eventName: string, traits?: ITrackTraits) => void;
 
-export type Revenue = (price: number, quantity: number, type: string) => void;
+export type Revenue = (
+  type: string,
+  price: number,
+  quantity: number,
+  productId?: string | number,
+  currency?: string
+) => void;
 
 export interface IUser {
   anonymousId: string;

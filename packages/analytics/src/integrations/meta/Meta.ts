@@ -11,18 +11,18 @@ export class Meta implements IIntegration {
     this.fbq = $fbq;
   }
 
-  revenue = (price, quantity, type, currency = 'USD') => {
+  revenue = (type, price, quantity, productId = '1', currency = 'USD') => {
     if (type.toLowerCase() !== 'new') {
       this.fbq('track', 'InitiateCheckout', {
         content_type: 'product',
-        contents: [{ id: '1', quantity }],
+        contents: [{ id: productId, quantity }],
         value: price,
         currency,
       });
     } else {
       this.fbq('track', 'Purchase', {
         content_type: 'product',
-        contents: [{ id: '1', quantity }],
+        contents: [{ id: productId, quantity }],
         value: price,
         currency,
       });

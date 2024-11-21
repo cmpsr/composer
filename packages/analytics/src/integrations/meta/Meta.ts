@@ -12,12 +12,21 @@ export class Meta implements IIntegration {
   }
 
   revenue = (price, quantity, type, currency = 'USD') => {
-    this.fbq('track', 'Purchase', {
-      content_type: 'product',
-      contents: [{ id: '1', quantity }],
-      value: price,
-      currency,
-    });
+    if (type.toLowerCase() !== 'new') {
+      this.fbq('track', 'InitiateCheckout', {
+        content_type: 'product',
+        contents: [{ id: '1', quantity }],
+        value: price,
+        currency,
+      });
+    } else {
+      this.fbq('track', 'Purchase', {
+        content_type: 'product',
+        contents: [{ id: '1', quantity }],
+        value: price,
+        currency,
+      });
+    }
   };
 
   // Not supported

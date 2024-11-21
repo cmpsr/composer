@@ -1,7 +1,17 @@
 /* eslint-disable prefer-rest-params */
 import React, { FC, ReactNode, useMemo } from 'react';
 import { AnalyticsContext } from './AnalyticsContext';
-import { Segment, ISegmentConfig, GA, IGAConfig, GTag, IGTagConfig, IIntegration } from './integrations';
+import {
+  Segment,
+  ISegmentConfig,
+  GA,
+  IGAConfig,
+  GTag,
+  IGTagConfig,
+  IIntegration,
+  Meta,
+  MetaConfig,
+} from './integrations';
 import { v1 as uuidv1 } from 'uuid'; // v1 is timestamp based + random
 import Cookies from 'js-cookie';
 import { Amplitude, AmplitudeConfig } from './integrations/amplitude';
@@ -11,6 +21,7 @@ const supportedIntegrations = {
   gtag: GTag,
   segment: Segment,
   amplitude: Amplitude,
+  meta: Meta,
 };
 
 export interface IAnalyticsProvider {
@@ -18,6 +29,7 @@ export interface IAnalyticsProvider {
   gtag?: IGTagConfig;
   ga?: IGAConfig;
   amplitude?: AmplitudeConfig;
+  meta?: MetaConfig;
   children: ReactNode;
 }
 

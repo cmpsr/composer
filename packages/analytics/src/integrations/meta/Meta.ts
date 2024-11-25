@@ -29,11 +29,14 @@ export class Meta implements IIntegration {
     }
   };
 
+  track: Track = (eventName, traits = {}) => {
+    this.fbq('trackCustom', eventName, traits);
+  };
+
   // Not supported
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   identify: Identify = () => {};
-  track: Track = () => {};
-  page: Group = () => {};
+  page: Group = () => {}; // Each time the Pixel loads, it automatically calls fbq('track', 'PageView') to track a PageView standard event
   group: Group = () => {};
   reset = () => {};
 }

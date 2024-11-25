@@ -37,4 +37,11 @@ describe('Meta', () => {
       currency: 'USD',
     });
   });
+
+  it('should track event', () => {
+    const metaPixel = new Meta({ pixelAccountId: '1234' });
+    metaPixel.track('event-name', { trait: 'trait' });
+    expect(mockMeta).toHaveBeenCalled();
+    expect(mockMeta).toHaveBeenCalledWith('trackCustom', 'event-name', { trait: 'trait' });
+  });
 });

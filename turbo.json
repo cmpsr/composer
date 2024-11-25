@@ -1,13 +1,8 @@
 {
-  "baseBranch": "origin/master",
   "tasks": {
     "libbuild": {
-      "dependsOn": [
-        "^libbuild"
-      ],
-      "outputs": [
-        "lib/**"
-      ]
+      "dependsOn": ["^libbuild"],
+      "outputs": ["lib/**"]
     },
     "test": {
       "outputs": []
@@ -33,9 +28,7 @@
         "@cmpsr/markdown-editor#libbuild",
         "@cmpsr/blocks#libbuild"
       ],
-      "outputs": [
-        "storybook-static/**"
-      ]
+      "outputs": ["storybook-static/**"]
     }
   }
 }

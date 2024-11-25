@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.4.1",
+  "version": "0.4.2",
   "author": "Steve Cox <stevejcox@me.com>",
   "license": "MIT",
   "main": "./lib/index.js",

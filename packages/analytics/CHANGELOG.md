@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.4.2
+
+### Patch Changes
+
+- 7404df5: Added new Meta Pixel integration in Analytics package
+
 ## 0.4.1
 
 ### Patch Changes

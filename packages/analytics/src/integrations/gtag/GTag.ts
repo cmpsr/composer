@@ -24,7 +24,6 @@ export class GTag implements IIntegration {
   // Not supported
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   group: Group = () => {};
-  revenue = () => {};
 
   page: Page = (pageName, traits = {}) => {
     (window as any).dataLayer.push({
@@ -46,6 +45,18 @@ export class GTag implements IIntegration {
     (window as any).dataLayer.push(function () {
       // eslint-disable-next-line @typescript-eslint/no-invalid-this
       this.reset();
+    });
+  };
+
+  revenue = (price, quantity, type, productId = '1', currency = 'USD') => {
+    (window as any).dataLayer.push({
+      event: 'revenue',
+      page_location: location.pathname,
+      price,
+      quantity,
+      type,
+      currency,
+      productId,
     });
   };
 }

@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.0
+
+### Minor Changes
+
+- ec19107: Added revenue for the GTM/GTag integration
+
 ## 0.4.2
 
 ### Patch Changes

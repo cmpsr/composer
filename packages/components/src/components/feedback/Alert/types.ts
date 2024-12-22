@@ -24,5 +24,4 @@ export interface AlertProps extends ChakraAlertProps {
   variant?: AlertVariant;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export type AlertIconProps = {};

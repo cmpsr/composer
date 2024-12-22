@@ -18,16 +18,16 @@
   ],
   "private": false,
   "scripts": {
-    "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts,**/*.stories.ts' && yarn type:emit && cp ./src/MarkdownEditor/style.css lib/MarkdownEditor/style.css",
+    "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts,**/*.stories.ts' && npm run type:emit && cp ./src/MarkdownEditor/style.css lib/MarkdownEditor/style.css",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:check": "tsc --project tsconfig.json --noEmit",
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "dependencies": {
-    "@lexical/markdown": "^0.12.0",
-    "@lexical/react": "^0.12.0",
+    "@lexical/markdown": "0.12.0",
+    "@lexical/react": "0.12.0",
     "lexical": "^0.12.0",
     "lodash.debounce": "^4.0.8"
   },
@@ -43,7 +43,6 @@
     "@swc/jest": "^0.2.20",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
-    "@types/jest": "^27.0.2",
     "@types/lodash.debounce": "^4.0.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

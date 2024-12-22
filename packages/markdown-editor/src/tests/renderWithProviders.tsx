@@ -1,11 +1,12 @@
 import React, { ReactNode } from 'react';
 import { Queries, RenderResult, render } from '@testing-library/react';
 import { ComposerProvider } from '@cmpsr/components';
+import '@testing-library/jest-dom';
 
 export const renderWithProviders = <
   Q extends Queries,
   Container extends Element | DocumentFragment = HTMLElement,
-  BaseElement extends Element | DocumentFragment = Container
+  BaseElement extends Element | DocumentFragment = Container,
 >(
   children: ReactNode,
 ): RenderResult<Q, Container, BaseElement> =>

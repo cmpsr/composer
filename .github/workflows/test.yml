@@ -9,13 +9,13 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'yarn'
+        cache: 'npm'
     - name: Install modules
-      run: yarn
+      run: npm install
     - name: Build
-      run: yarn build
+      run: npm run build
     - name: Run tests
-      run: yarn test:coverage
+      run: npm run test:coverage
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v5
       with:

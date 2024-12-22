@@ -26,25 +26,25 @@ jobs:
         uses: actions/setup-node@main
         with:
           node-version: 18.x
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Install modules
-        run: yarn
+        run: npm install
 
       - name: Create Snapshot version
-        run: yarn changeset version --snapshot canary
+        run: npm run changeset version --snapshot canary
 
       - name: Build Packages
-        run: yarn build
+        run: npm run build
 
       - name: Emit Types
-        run: yarn type:emit
+        run: npm run type:emit
 
       - name: Publish Snapshots
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: yarn changeset publish --tag canary --snapshot
+          publish: npm run changeset publish --tag canary --snapshot
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

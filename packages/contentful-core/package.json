@@ -24,7 +24,7 @@
     "test": "jest --testPathIgnorePatterns=lib/",
     "test:watch": "jest --watch --testPathIgnorePatterns=lib/",
     "test:coverage": "jest --coverage --testPathIgnorePatterns=lib/",
-    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:check": "tsc --project tsconfig.json --noEmit",
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "bugs": {

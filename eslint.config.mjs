@@ -34,6 +34,7 @@ export default [
       "react/no-children-prop": 0,
       "@typescript-eslint/no-unused-vars": ["error"],
       "eol-last": ["error", "always"],
+      "@typescript-eslint/no-empty-object-type": 0,
     },
   },
 ];

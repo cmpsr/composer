@@ -45,6 +45,8 @@
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
     "@types/cookie": "^0.5.1",
     "@types/jest": "^27.5.0",
     "jest": "^28.1.0",

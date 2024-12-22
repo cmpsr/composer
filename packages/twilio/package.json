@@ -31,7 +31,7 @@
     "rimraf": "^5.0.5"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=20"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
 }

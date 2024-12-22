@@ -1,7 +1,6 @@
 import React from 'react';
 import { renderWithProviders } from '@tests/renderWithProviders';
 import { NumberedList, Text } from '@components';
-import '@testing-library/jest-dom/extend-expect';
 
 describe('NumberedList', () => {
   test('should display index number', () => {

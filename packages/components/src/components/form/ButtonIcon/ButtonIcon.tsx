@@ -26,5 +26,5 @@ export const ButtonIcon: FC<ButtonIconProps> = forwardRef<ButtonIconProps, 'butt
         {...props}
       />
     );
-  }
+  },
 );

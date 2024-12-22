@@ -4,7 +4,7 @@ import { isReplica } from '../isReplica';
 export const getPageId = (
   replicaRoute: Replica | Route,
   campaign: undefined | string | string[] = undefined,
-  existingPageId: undefined | string = undefined
+  existingPageId: undefined | string = undefined,
 ): string => {
   if (isReplica(replicaRoute) && replicaRoute.page !== undefined) {
     return replicaRoute.page;

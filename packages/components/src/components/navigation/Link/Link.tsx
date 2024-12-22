@@ -14,7 +14,7 @@ import { getIconSize } from './getIconSize';
 export const Link = forwardRef<LinkProps, typeof ChakraLink>(
   (
     { children, leadingIcon, trailingIcon, size = 'm', variant, isInline = false, isDisabled = false, ...props },
-    ref
+    ref,
   ) => {
     const styles = useStyleConfig('Link', { isInline, variant, size }) as StyleProps;
     const leftIcon = getIcon(leadingIcon, size, isInline);
@@ -32,7 +32,7 @@ export const Link = forwardRef<LinkProps, typeof ChakraLink>(
         {rightIcon}
       </ChakraLink>
     );
-  }
+  },
 );
 
 const getIcon = (icon: ReactElement<IconProps>, size: ResponsiveValue<LinkSize>, isInline: boolean) => {

@@ -21,7 +21,7 @@ export class Plaid {
       config.secret,
       config.publicKey,
       config.env,
-      config.options
+      config.options,
     );
     this.config = config;
   }
@@ -29,7 +29,7 @@ export class Plaid {
   async getAccessToken() {
     if (this.privateToken) return this.privateToken;
     const token = await this.client.exchangePublicToken(
-      this.config.publicToken
+      this.config.publicToken,
     );
     const privateToken = {
       accessToken: token.access_token,
@@ -51,14 +51,14 @@ export class Plaid {
   async getTransactions(
     startDate: string,
     endDate: string,
-    options: GetTransactionOptions = undefined
+    options: GetTransactionOptions = undefined,
   ) {
     const { accessToken } = await this.getAccessToken();
     return this.client.getTransactions(
       accessToken,
       startDate,
       endDate,
-      options
+      options,
     );
   }
 
@@ -88,13 +88,13 @@ export class Plaid {
 
   async createAssetReport(
     options: CreateAssetsReportOptions,
-    daysRequested = 730
+    daysRequested = 730,
   ) {
     const { accessToken } = await this.getAccessToken();
     const report = await this.client.createAssetReport(
       [accessToken],
       daysRequested,
-      options
+      options,
     );
     return report;
   }
@@ -102,12 +102,12 @@ export class Plaid {
   async refreshAssetReport(
     reportAccessToken: string,
     options: CreateAssetsReportOptions = undefined,
-    daysRequested = 730
+    daysRequested = 730,
   ) {
     const report = await this.client.refreshAssetReport(
       reportAccessToken,
       daysRequested,
-      options
+      options,
     );
     return report;
   }
@@ -115,7 +115,7 @@ export class Plaid {
   async getAssetReport(reportAccessToken: string, includeInsights = false) {
     const report = this.client.getAssetReport(
       reportAccessToken,
-      includeInsights
+      includeInsights,
     );
     return report;
   }

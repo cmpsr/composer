@@ -36,14 +36,14 @@ describe('ColumnLayout', () => {
         <ColumnLayout.Actions gap="1rem" justifyContent="center" data-testid="cmpsr.block.column-layout.link-group">
           <ColumnLayout.Action variant="primary">Primary</ColumnLayout.Action>
         </ColumnLayout.Actions>
-      </ColumnLayout>
+      </ColumnLayout>,
     );
     screen.getByTestId('cmpsr.block.column-layout.column-group');
     screen.getByTestId('cmpsr.block.column-layout.column');
     screen.getByText(/Breaking news/i);
     screen.getByText('The next generation of care for women and families');
     screen.getByText(
-      'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.'
+      'We’re setting a new standard of care for families across geographies, cultures, and backgrounds.',
     );
     screen.getByRole('img', { name: 'column image' });
     screen.getByText('Composer');

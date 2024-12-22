@@ -84,6 +84,7 @@ describe('Plaid', () => {
 
   test('should instantiate client', () => {
     new Plaid(config);
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const plaid = require('plaid');
     expect(plaid.Client).toBeCalledTimes(1);
     expect(plaid.Client).toBeCalledWith(config.clientId, config.secret, config.publicKey, config.env, config.options);

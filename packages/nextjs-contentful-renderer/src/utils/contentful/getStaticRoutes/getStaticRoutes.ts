@@ -4,7 +4,7 @@ import { Route } from '../getRouteBySlug/types';
 export const getStaticRoutes = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
   preview: boolean,
-  domain: string
+  domain: string,
 ): Promise<Route[]> => {
   const allData = {
     routes: [],
@@ -51,7 +51,7 @@ const getData = async (
   preview: boolean,
   domain: string,
   limit: number,
-  skip: number
+  skip: number,
 ): Promise<SlugsData> => {
   const { data } = await apolloClient.query({
     query: gql`

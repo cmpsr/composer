@@ -9,7 +9,7 @@ export const getPageById = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
   pageId: string,
   preview: boolean,
-  replica?: Replica
+  replica?: Replica,
 ) => {
   const page = await getPageByIdFromContentful(apolloClient, pageId, preview);
   if (page) {

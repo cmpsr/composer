@@ -26,7 +26,7 @@ describe('PhoneInput', () => {
       <PhoneInput
         placeholder={placeholder}
         maskOptions={{ mask: ['(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/] }}
-      />
+      />,
     );
     const input = screen.getByPlaceholderText(placeholder) as HTMLInputElement;
     fireEvent.input(input, { target: { value: '1234567890' } });

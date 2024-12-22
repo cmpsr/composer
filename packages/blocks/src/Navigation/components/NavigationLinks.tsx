@@ -63,7 +63,7 @@ export const NavigationLinks: FC<NavigationLinksProps> = ({
                 isValidElement(child) &&
                 cloneElement(child, {
                   showDivider: index === Children.count(children) - 1 ? false : showDividers,
-                } as NavigationLinkProps)
+                } as NavigationLinkProps),
             )}
             {!keepActionsAlwaysVisible && actions}
           </Flex>

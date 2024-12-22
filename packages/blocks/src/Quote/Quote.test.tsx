@@ -14,7 +14,7 @@ describe('Quote', () => {
             <Quote.Author.Name.SubLabel>Association</Quote.Author.Name.SubLabel>
           </Quote.Author.Name>
         </Quote.Author>
-      </Quote>
+      </Quote>,
     );
 
   test('should render content', () => {

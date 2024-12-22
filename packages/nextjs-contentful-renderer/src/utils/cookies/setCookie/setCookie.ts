@@ -8,7 +8,7 @@ export const setCookie = (
   value: unknown,
   options: CookieSerializeOptions = {
     maxAge: COOKIES_PAGE_MAX_AGE,
-  }
+  },
 ) => {
   const stringValue = typeof value === 'object' ? JSON.stringify(value) : String(value);
   context.res.setHeader('Set-Cookie', serialize(COOKIES_PAGE_KEY + name, stringValue, options));

@@ -58,7 +58,7 @@ export const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> & Autocom
 
   const filteredItems = useMemo(
     () => getFilteredItems({ selectedItems, inputValue, items, itemToString }),
-    [selectedItems, inputValue, items, itemToString]
+    [selectedItems, inputValue, items, itemToString],
   );
 
   const {

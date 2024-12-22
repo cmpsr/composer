@@ -34,7 +34,7 @@ export class Meta implements IIntegration {
   };
 
   // Not supported
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+   
   identify: Identify = () => {};
   page: Group = () => {}; // Each time the Pixel loads, it automatically calls fbq('track', 'PageView') to track a PageView standard event
   group: Group = () => {};

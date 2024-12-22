@@ -16,7 +16,7 @@ describe('NumberedList', () => {
         <NumberedList.Item>
           <Text>Item</Text>
         </NumberedList.Item>
-      </NumberedList>
+      </NumberedList>,
     );
     expect(container).toHaveTextContent(/1./);
     expect(container).toHaveTextContent(/2./);
@@ -45,7 +45,7 @@ describe('NumberedList', () => {
         <NumberedList.Item>
           <Text>Item</Text>
         </NumberedList.Item>
-      </NumberedList>
+      </NumberedList>,
     );
     expect(container).toHaveTextContent(/2.1./);
     expect(container).toHaveTextContent(/2.2./);

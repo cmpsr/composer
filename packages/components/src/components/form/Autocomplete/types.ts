@@ -8,7 +8,7 @@ export const autocompleteSizes = ['s', 'm', 'l'] as const;
 
 export type AutocompleteSize = (typeof autocompleteSizes)[number];
 
-export interface AutocompleteProps<Item = {}> extends UseComboboxProps<Item> {
+export interface AutocompleteProps<Item = object> extends UseComboboxProps<Item> {
   children: ReactNode;
   placeholder?: string;
   size?: ResponsiveValue<AutocompleteSize>;
@@ -21,16 +21,16 @@ export interface AutocompleteInputProps extends InputProps {
   clearButtonMode?: 'item-selected' | 'has-value' | 'never' | 'always';
 }
 
-export interface AutocompleteListProps<Item = {}> extends BoxProps {
+export interface AutocompleteListProps<Item = object> extends BoxProps {
   noResultsContent?: ReactElement;
   renderItem: (item: Item) => ReactElement;
 }
 
-export interface AutocompleteStaticMembers<Item = {}> {
+export interface AutocompleteStaticMembers<Item = object> {
   Input: FC<AutocompleteInputProps>;
   List: FC<AutocompleteListProps<Item>>;
 }
 
-export type AutocompleteContextProps<Item = {}> = Partial<
+export type AutocompleteContextProps<Item = object> = Partial<
   UseComboboxProps<Item> & UseComboboxPropGetters<Item> & UseComboboxActions<Item>
 >;

@@ -157,7 +157,7 @@ const getLinkVariants = () =>
         return typeof variantValue === 'function' ? variantValue(params) : variantValue;
       },
     }),
-    {}
+    {},
   );
 
 const getTextStyleProperties = (textStyle: SystemStyleObject) => {

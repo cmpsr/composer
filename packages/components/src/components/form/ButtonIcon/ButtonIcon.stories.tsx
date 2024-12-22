@@ -70,7 +70,7 @@ export const All = () => (
                   </Td>
                 ))}
               </Tr>
-            ))
+            )),
           )}
         </Fragment>
       ))}

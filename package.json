@@ -13,8 +13,8 @@
     "test": "turbo run test -- --coverageThreshold {}",
     "test:watch": "turbo run test:watch --parallel",
     "test:coverage": "turbo run test:coverage -- --coverageThreshold {}",
-    "lint": "eslint . --ext .tsx,.ts,.js",
-    "lint-and-fix": "eslint . --ext .tsx,.ts,.js --fix",
+    "lint": "eslint .",
+    "lint-and-fix": "eslint . --fix",
     "publish-ci": "turbo run libbuild && turbo run type:emit && changeset publish",
     "storybook": "turbo run storybook"
   },
@@ -29,21 +29,23 @@
   "devDependencies": {
     "@types/jest": "^29.5.3",
     "@types/react": "^18.2.13",
-    "@typescript-eslint/eslint-plugin": "^6.5.0",
-    "@typescript-eslint/parser": "^6.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "@typescript-eslint/parser": "^8.18.1",
     "chromatic": "^10.0.0",
-    "eslint": "^8.48.0",
+    "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "globals": "^15.14.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.6.2",
     "nodemon": "^2.0.2",
     "prettier": "^3.4.2",
     "turbo": "^2.3.1",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "typescript-eslint": "^8.18.1"
   },
   "engines": {
     "node": ">=20"

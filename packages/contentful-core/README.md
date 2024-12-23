@@ -4,10 +4,10 @@ A utility package providing the `createContentfulLink` method for setting up a l
 
 ## Install
 
-Install the package using Yarn:
+Install the package using npm:
 
 ```sh
-yarn add @cmpsr/contentful-core
+npm install @cmpsr/contentful-core
 ```
 
 ## Usage

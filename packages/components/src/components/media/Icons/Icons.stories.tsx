@@ -2,8 +2,8 @@
 // This is a generated file. DO NOT EDIT IT.
 // Instead run:
 //
-// yarn install #if you've updated @tabler/icons-react
-// yarn gen:icons
+// npm run install #if you've updated @tabler/icons-react
+// npm run gen:icons
 //
 import React from 'react';
 import { Meta } from '@storybook/react';

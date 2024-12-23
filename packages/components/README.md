@@ -18,11 +18,10 @@ For the time being only components defined in [figma](#design-resources) will be
 
 When adding new components to the library ideally you will reuse the chakra's equivalent as much as possible (see an [example](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/dataDisplay/Divider/index.ts)), unless you find that the _counterpart_ does fit the specs (see an [example](https://github.com/cmpsr/composer/blob/master/packages/components/src/components/navigation/Breadcrumb/Breadcrumb.tsx)).
 
-It is required to add stories for all component, the storybook can be started by executing `yarn storybook` from the `./packages/components` folder.
+It is required to add stories for all components, the storybook can be started by executing `npm run storybook`.
 
 ```bash
-cd packages/components
-yarn storybook
+npm run storybook
 ```
 
 The implementation of a component will be divided in two parts, theming and implementation. Ideally when a new component is added to the library the main focus of the pull request will be on the theme and not in the implementation of the component.
@@ -387,7 +386,7 @@ Composer icons are a subset of `@tabler/icons-react`.
 
 If a new version of tabler icons has been release and you just want to update the existing icons, then you only need to update the `@tabler/icons-react` version in the [package.json](./package.json) and you should be done.
 
-But to be safe, run `yarn gen:icons` to ensure that `@tabler/icons-react` hasn't released a breaking change. No icons will be generated, but the script will throw if there is a breaking change.
+But to be safe, run `npm run gen:icons` to ensure that `@tabler/icons-react` hasn't released a breaking change. No icons will be generated, but the script will throw if there is a breaking change.
 
 #### Icons Addition or Removal
 
@@ -395,7 +394,7 @@ If you wanna add or remove an icon, ensure to add or remove it from the icons li
 
 Once `@tabler/icons-react` has been updated and all icons you want to keep are on the list, you can then run this command to generate the icons and their stories.
 
-`yarn gen:icons`
+`npm run gen:icons`
 
 All icon files will be generated and ready to commit.
 Just remember that if an icon has been removed or renamed that is a breaking change in Composer and you should update the Composer version accordingly.

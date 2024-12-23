@@ -25,13 +25,7 @@
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "dependencies": {
-    "@google-cloud/firestore": "7.11.0",
-    "@google-cloud/kms": "^4.5.0",
-    "@storybook/builder-webpack5": "8.4.7",
-    "cookie": "1.0.2",
-    "next": "15.1.2",
-    "plaid": "30.0.0",
-    "storybook-chromatic": "1.1.0"
+    "@google-cloud/kms": "^4.5.0"
   },
   "devDependencies": {
     "rimraf": "^5.0.5"

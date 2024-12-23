@@ -26,6 +26,7 @@
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' \\) -exec rm {} +"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.0",
     "@signalwire/js": "^3.16.0",
     "@signalwire/realtime-api": "^3.5.0",
     "axios": "^1.1.3"

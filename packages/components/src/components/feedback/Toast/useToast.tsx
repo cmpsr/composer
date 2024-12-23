@@ -3,7 +3,7 @@ import { useToast as useToastChakra } from '@chakra-ui/react';
 import { Alert, Flex } from '@components';
 import { UseToastOptions } from './types';
 
-export const useToast = () => {
+export const useToast: typeof useToastChakra = () => {
   const toast = useToastChakra();
 
   const toastDecorator = (options: UseToastOptions) => {

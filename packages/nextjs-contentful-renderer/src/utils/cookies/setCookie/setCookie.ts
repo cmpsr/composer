@@ -1,12 +1,12 @@
 import { GetServerSidePropsContext } from 'next';
-import { serialize, CookieSerializeOptions } from 'cookie';
+import { serialize, SerializeOptions } from 'cookie';
 import { COOKIES_PAGE_KEY, COOKIES_PAGE_MAX_AGE } from '../constants';
 
 export const setCookie = (
   context: GetServerSidePropsContext,
   name: string,
   value: unknown,
-  options: CookieSerializeOptions = {
+  options: SerializeOptions = {
     maxAge: COOKIES_PAGE_MAX_AGE,
   },
 ) => {

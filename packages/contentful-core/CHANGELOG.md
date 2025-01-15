@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 1.0.2
+
+### Patch Changes
+
+- b3900fd: chore: update dependencies
+
 ## 1.0.1
 
 ### Patch Changes

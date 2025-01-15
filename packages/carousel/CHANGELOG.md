@@ -1,5 +1,11 @@
 # @cmpsr/carousel
 
+## 4.0.32
+
+### Patch Changes
+
+- b3900fd: chore: update dependencies
+
 ## 4.0.31
 
 ### Patch Changes

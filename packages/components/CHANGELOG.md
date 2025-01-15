@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.17.2
+
+### Patch Changes
+
+- b3900fd: chore: update dependencies
+
 ## 7.17.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 14.1.13
+
+### Patch Changes
+
+- b3900fd: chore: update dependencies
+
 ## 14.1.12
 
 ### Patch Changes

@@ -6,7 +6,7 @@ export const setFloatingElemPositionForLinkEditor = (
   floatingElem: HTMLElement,
   anchorElem: HTMLElement,
   verticalGap: number = VERTICAL_GAP,
-  horizontalOffset: number = HORIZONTAL_OFFSET
+  horizontalOffset: number = HORIZONTAL_OFFSET,
 ): void => {
   const scrollerElem = anchorElem.parentElement;
 

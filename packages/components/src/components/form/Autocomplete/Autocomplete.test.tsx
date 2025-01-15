@@ -10,7 +10,7 @@ describe('Autocomplete', () => {
       <Autocomplete items={items}>
         <Autocomplete.Input placeholder="Autocomplete" />
         <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
-      </Autocomplete>
+      </Autocomplete>,
     );
     const input = screen.getByPlaceholderText(/Autocomplete/);
     fireEvent.focus(input);
@@ -22,7 +22,7 @@ describe('Autocomplete', () => {
       <Autocomplete items={items}>
         <Autocomplete.Input placeholder="Autocomplete" />
         <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
-      </Autocomplete>
+      </Autocomplete>,
     );
     const input = screen.getByPlaceholderText(/Autocomplete/);
     fireEvent.focus(input);
@@ -38,7 +38,7 @@ describe('Autocomplete', () => {
       <Autocomplete items={[]}>
         <Autocomplete.Input placeholder="Autocomplete" />
         <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
-      </Autocomplete>
+      </Autocomplete>,
     );
     const input = screen.getByPlaceholderText(/Autocomplete/);
     fireEvent.focus(input);
@@ -54,7 +54,7 @@ describe('Autocomplete', () => {
           renderItem={(item: string) => <div>{item}</div>}
           noResultsContent={<div>No results custom</div>}
         />
-      </Autocomplete>
+      </Autocomplete>,
     );
     const input = screen.getByPlaceholderText(/Autocomplete/);
     fireEvent.focus(input);
@@ -68,7 +68,7 @@ describe('Autocomplete', () => {
       <Autocomplete items={items} onInputValueChange={mockOnInputValueChange}>
         <Autocomplete.Input placeholder="Autocomplete" />
         <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
-      </Autocomplete>
+      </Autocomplete>,
     );
     const input = screen.getByPlaceholderText(/Autocomplete/);
     fireEvent.focus(input);
@@ -81,7 +81,7 @@ describe('Autocomplete', () => {
       <Autocomplete items={items}>
         <Autocomplete.Input placeholder="Autocomplete" />
         <Autocomplete.List renderItem={mockRenderItem} />
-      </Autocomplete>
+      </Autocomplete>,
     );
     const input = screen.getByPlaceholderText(/Autocomplete/);
     fireEvent.focus(input);
@@ -96,7 +96,7 @@ describe('Autocomplete', () => {
       <Autocomplete items={items} minCharsToShowList={3}>
         <Autocomplete.Input placeholder="Autocomplete" />
         <Autocomplete.List renderItem={mockRenderItem} />
-      </Autocomplete>
+      </Autocomplete>,
     );
 
     const input = screen.getByPlaceholderText(/Autocomplete/);
@@ -122,7 +122,7 @@ describe('Autocomplete', () => {
       <Autocomplete items={items}>
         <Autocomplete.Input placeholder="Autocomplete" clearButtonMode="never" />
         <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
-      </Autocomplete>
+      </Autocomplete>,
     );
 
     const input = screen.getByPlaceholderText(/Autocomplete/);
@@ -145,7 +145,7 @@ describe('Autocomplete', () => {
       <Autocomplete items={items}>
         <Autocomplete.Input placeholder="Autocomplete" clearButtonMode="item-selected" />
         <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
-      </Autocomplete>
+      </Autocomplete>,
     );
 
     const input = screen.getByPlaceholderText(/Autocomplete/);
@@ -165,7 +165,7 @@ describe('Autocomplete', () => {
       <Autocomplete items={items}>
         <Autocomplete.Input placeholder="Autocomplete" clearButtonMode="has-value" />
         <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
-      </Autocomplete>
+      </Autocomplete>,
     );
 
     expect(screen.queryByTestId('cmpsr.autocomplete.clear-button')).not.toBeInTheDocument();
@@ -182,7 +182,7 @@ describe('Autocomplete', () => {
       <Autocomplete items={items}>
         <Autocomplete.Input placeholder="Autocomplete" clearButtonMode="always" />
         <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
-      </Autocomplete>
+      </Autocomplete>,
     );
 
     screen.getByTestId('cmpsr.autocomplete.clear-button');
@@ -193,7 +193,7 @@ describe('Autocomplete', () => {
       <Autocomplete items={items}>
         <Autocomplete.Input placeholder="Autocomplete" clearButtonMode="always" />
         <Autocomplete.List renderItem={(item: string) => <div>{item}</div>} />
-      </Autocomplete>
+      </Autocomplete>,
     );
 
     const input = screen.getByPlaceholderText(/Autocomplete/);

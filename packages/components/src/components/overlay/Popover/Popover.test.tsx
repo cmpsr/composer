@@ -16,7 +16,7 @@ describe('Popover', () => {
           <Popover.Body>Body</Popover.Body>
           <Popover.Footer>Footer</Popover.Footer>
         </Popover.Content>
-      </Popover>
+      </Popover>,
     );
 
     screen.getByText('Trigger');

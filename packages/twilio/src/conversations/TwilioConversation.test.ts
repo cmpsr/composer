@@ -94,12 +94,14 @@ describe('TwilioConversation', () => {
 
   test('should initialize client', () => {
     new TwilioConversation(config);
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const twilio = require('twilio');
     expect(twilio).toBeCalledTimes(1);
     expect(twilio).toBeCalledWith(config.accountSid, config.authToken);
   });
 
   describe('methods calling conversations as an object', () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const twilio = require('twilio');
     beforeAll(() => {
       twilio.mockReturnValue({
@@ -128,7 +130,7 @@ describe('TwilioConversation', () => {
         const conversationName = 'New conversation name';
         const twilioConversation = new TwilioConversation(config);
         const returnedConversation = await twilioConversation.create(
-          conversationName
+          conversationName,
         );
         expect(mockCreateConversation).toBeCalledTimes(1);
         expect(mockCreateConversation).toBeCalledWith({
@@ -140,6 +142,7 @@ describe('TwilioConversation', () => {
   });
 
   describe('methods calling conversations as a function', () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const twilio = require('twilio');
     beforeEach(() => {
       twilio().conversations.v1.conversations.mockClear();
@@ -161,7 +164,7 @@ describe('TwilioConversation', () => {
       test('should return conversation', async () => {
         const twilioConversation = new TwilioConversation(config);
         const returnedConversation = await twilioConversation.getConversation(
-          'sid'
+          'sid',
         );
         expect(twilio().conversations.v1.conversations).toBeCalledTimes(1);
         expect(twilio().conversations.v1.conversations).toBeCalledWith('sid');
@@ -179,10 +182,10 @@ describe('TwilioConversation', () => {
         const returnedParticipant = await twilioConversation.addSmsParticipant(
           conversationSid,
           invitedPhone,
-          inviterPhone
+          inviterPhone,
         );
         expect(twilio().conversations.v1.conversations).toBeCalledWith(
-          conversationSid
+          conversationSid,
         );
         expect(mockCreateParticipant).toBeCalledTimes(1);
         expect(mockCreateParticipant).toBeCalledWith({
@@ -196,10 +199,10 @@ describe('TwilioConversation', () => {
         const twilioConversation = new TwilioConversation(config);
         const returnedParticipant = await twilioConversation.addParticipant(
           conversationSid,
-          identity
+          identity,
         );
         expect(twilio().conversations.v1.conversations).toBeCalledWith(
-          conversationSid
+          conversationSid,
         );
         expect(mockCreateParticipant).toBeCalledTimes(1);
         expect(mockCreateParticipant).toBeCalledWith({ identity });
@@ -216,10 +219,10 @@ describe('TwilioConversation', () => {
         const returnedMessage = await twilioConversation.sendMessage(
           conversationSid,
           authorSid,
-          text
+          text,
         );
         expect(twilio().conversations.v1.conversations).toBeCalledWith(
-          conversationSid
+          conversationSid,
         );
         expect(mockCreateMessage).toBeCalledTimes(1);
         expect(mockCreateMessage).toBeCalledWith({
@@ -238,10 +241,10 @@ describe('TwilioConversation', () => {
           conversationSid,
           authorSid,
           text,
-          attributes
+          attributes,
         );
         expect(twilio().conversations.v1.conversations).toBeCalledWith(
-          conversationSid
+          conversationSid,
         );
         expect(mockCreateMessage).toBeCalledTimes(1);
         expect(mockCreateMessage).toBeCalledWith({
@@ -258,10 +261,10 @@ describe('TwilioConversation', () => {
         const conversationSid = 'conversationSid';
         const twilioConversation = new TwilioConversation(config);
         const returnedMessages = await twilioConversation.getMessages(
-          conversationSid
+          conversationSid,
         );
         expect(twilio().conversations.v1.conversations).toBeCalledWith(
-          conversationSid
+          conversationSid,
         );
         expect(mockListMessages).toBeCalledTimes(1);
         expect(mockListMessages).toBeCalledWith();
@@ -276,10 +279,10 @@ describe('TwilioConversation', () => {
         const url = 'url';
         const returnedWebhook = await twilioConversation.addConversationWebhook(
           conversationSid,
-          url
+          url,
         );
         expect(twilio().conversations.v1.conversations).toBeCalledWith(
-          conversationSid
+          conversationSid,
         );
         expect(mockCreateWebhook).toBeCalledTimes(1);
         expect(mockCreateWebhook).toBeCalledWith({
@@ -296,10 +299,10 @@ describe('TwilioConversation', () => {
         const returnedWebhook = await twilioConversation.addConversationWebhook(
           conversationSid,
           url,
-          'GET'
+          'GET',
         );
         expect(twilio().conversations.v1.conversations).toBeCalledWith(
-          conversationSid
+          conversationSid,
         );
         expect(mockCreateWebhook).toBeCalledTimes(1);
         expect(mockCreateWebhook).toBeCalledWith({

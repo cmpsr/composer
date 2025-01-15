@@ -34,5 +34,5 @@ export const PhoneInput = forwardRef<PhoneInputProps, typeof Input>(
     }, [onChange]);
 
     return <Input ref={combinedRefs} {...props} />;
-  }
+  },
 );

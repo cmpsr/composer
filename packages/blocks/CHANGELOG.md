@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 14.1.12
+
+### Patch Changes
+
+- d9f8d95: chore: dependencies updates
+
 ## 14.1.11
 
 ## 14.1.10

@@ -42,7 +42,7 @@ describe('Hero', () => {
           maxWidth="20rem"
           data-testid="cmpsr.block.hero-image"
         />
-      </Hero>
+      </Hero>,
     );
     screen.getByText('Tag');
     screen.getByText('Legend');

@@ -6,6 +6,7 @@ import { MarkdownProps, MarkdownProvider } from '../MarkdownContext';
 const SignalWireComponents: Record<string, unknown> = {};
 
 try {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { VideoChat } = require('@cmpsr/signalwire/client');
   SignalWireComponents['VideoChat'] = VideoChat;
 } catch {
@@ -15,6 +16,7 @@ try {
 const CarouselComponents: Record<string, unknown> = {};
 
 try {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { Carousel } = require('@cmpsr/carousel');
   CarouselComponents['Carousel'] = Carousel;
 } catch {
@@ -50,7 +52,7 @@ const composerComponents: any = Object.keys(Composer).reduce(
     ...CarouselComponents,
     MarkdownProps,
     MarkdownProvider,
-  }
+  },
 );
 
 export const components: any = Object.keys(Blocks).reduce((acc, key) => {

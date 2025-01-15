@@ -23,7 +23,7 @@ const InlineAlert = forwardRef<InlineAlertProps, typeof Flex>((props, ref) => {
   );
 });
 
-const Message: FC<PropsWithChildren<{}>> = (props) => {
+const Message: FC<PropsWithChildren> = (props) => {
   const { styles } = useInlineAlertContext();
   return <Text {...styles.message}>{props.children}</Text>;
 };

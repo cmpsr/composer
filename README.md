@@ -6,7 +6,7 @@
 
 We use [changesets](https://github.com/atlassian/changesets) to version bump and record changeset information. Prior to making a pull request, a developer should run the following command to run through the changesets process:
 
-`yarn changeset`
+`npx changeset`
 
 The tool will ask you which packages have changed, the semver version of the change and give you the option to make a changelog entry.
 

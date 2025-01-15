@@ -11,7 +11,7 @@ describe('Tag', () => {
         {showLeftIcon && <Tag.LeftIcon data-testid="cmpsr.tag.left-icon" as={IconAlertCircle} />}
         <Tag.Label>Hello</Tag.Label>
         {showRightIcon && <Tag.RightIcon data-testid="cmpsr.tag.right-icon" as={IconAlertCircle} />}
-      </Tag>
+      </Tag>,
     );
 
   test('should render default tag component with a simple text', () => {

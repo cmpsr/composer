@@ -21,7 +21,7 @@ export const useEditorFocus = () => {
           setHasFocus(true);
           return true;
         },
-        COMMAND_PRIORITY_LOW
+        COMMAND_PRIORITY_LOW,
       ),
       editor.registerCommand(
         BLUR_COMMAND,
@@ -29,8 +29,8 @@ export const useEditorFocus = () => {
           setHasFocus(false);
           return true;
         },
-        COMMAND_PRIORITY_LOW
-      )
+        COMMAND_PRIORITY_LOW,
+      ),
     );
   }, [editor]);
 

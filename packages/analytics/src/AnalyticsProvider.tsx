@@ -40,7 +40,7 @@ const COOKIE_NAME = 'composer_anonymous_id';
 const proxyToIntegrations = (integrations: IIntegration[], func: string, args: any[]) => {
   integrations.forEach((integration) =>
     // eslint-disable-next-line prefer-spread
-    integration[func].apply(integration, args)
+    integration[func].apply(integration, args),
   );
 };
 

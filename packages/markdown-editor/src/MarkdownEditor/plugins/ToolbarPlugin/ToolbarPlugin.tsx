@@ -308,7 +308,7 @@ export const ToolbarPlugin = ({
         setActiveEditor(newEditor);
         return false;
       },
-      COMMAND_PRIORITY_CRITICAL
+      COMMAND_PRIORITY_CRITICAL,
     );
   }, [editor, updateToolbar]);
 
@@ -325,7 +325,7 @@ export const ToolbarPlugin = ({
           setCanUndo(payload);
           return false;
         },
-        COMMAND_PRIORITY_CRITICAL
+        COMMAND_PRIORITY_CRITICAL,
       ),
       activeEditor.registerCommand<boolean>(
         CAN_REDO_COMMAND,
@@ -333,8 +333,8 @@ export const ToolbarPlugin = ({
           setCanRedo(payload);
           return false;
         },
-        COMMAND_PRIORITY_CRITICAL
-      )
+        COMMAND_PRIORITY_CRITICAL,
+      ),
     );
   }, [updateToolbar, activeEditor, editor]);
 
@@ -351,7 +351,7 @@ export const ToolbarPlugin = ({
         }
         return false;
       },
-      COMMAND_PRIORITY_NORMAL
+      COMMAND_PRIORITY_NORMAL,
     );
   }, [activeEditor, isLink]);
 
@@ -366,7 +366,7 @@ export const ToolbarPlugin = ({
         }
       });
     },
-    [activeEditor, selectedElementKey]
+    [activeEditor, selectedElementKey],
   );
 
   const insertLink = useCallback(() => {

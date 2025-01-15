@@ -50,7 +50,7 @@ export const useRoom = ({
   const roomRef = useRef<Video.RoomSession>();
 
   useEffect(() => {
-    onMembersChanged && onMembersChanged(members);
+    onMembersChanged?.(members);
   }, [members, onMembersChanged]);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export const useRoom = ({
           events: {
             'room.joined': () => setInitialized(true),
             destroy: () => {
-              onRoomEnded && onRoomEnded();
+              onRoomEnded?.();
             },
             'member.joined': ({ member }) => {
               setMembers((members) => [...members, member]);
@@ -82,7 +82,7 @@ export const useRoom = ({
         // First members load
         const { members } = (await room.getMembers()) || { members: [] };
         setMembers(members);
-        onRoomLoaded && onRoomLoaded(room);
+        onRoomLoaded?.(room);
       } catch (e) {
         console.log(e);
         alert('Error encountered. Please try again:: ' + e);

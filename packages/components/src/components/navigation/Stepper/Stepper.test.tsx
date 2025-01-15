@@ -30,7 +30,7 @@ describe('Stepper', () => {
             </Box>
           </Stepper.Step>
         ))}
-      </Stepper>
+      </Stepper>,
     );
 
   test('should render all steps', () => {

@@ -10,12 +10,12 @@ jobs:
         fetch-depth: 0
     - uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        cache: 'yarn'
+        node-version: 22.x
+        cache: 'npm'
     - name: Install modules
-      run: yarn
+      run: npm install
     - name: Build storybook
-      run: yarn build-storybook
+      run: npm run build-storybook
     - uses: chromaui/action@v10
       with:
         appCode: ${{ secrets.CHROMATIC_TOKEN }}

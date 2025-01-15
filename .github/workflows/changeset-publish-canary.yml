@@ -32,7 +32,7 @@ jobs:
         run: npm install
 
       - name: Create Snapshot version
-        run: npm run changeset version --snapshot
+        run: npx changeset version --snapshot
 
       - name: Build Packages
         run: npm run build
@@ -44,7 +44,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: npm run changeset publish --tag canary --snapshot
+          publish: npx changeset publish --tag canary --snapshot
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

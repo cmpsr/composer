@@ -18,4 +18,4 @@
 "@cmpsr/cml": patch
 ---
 
-chore: dependencies updates
+chore: update dependencies

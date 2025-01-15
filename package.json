@@ -15,9 +15,8 @@
     "test:coverage": "turbo run test:coverage -- --coverageThreshold {}",
     "lint": "eslint .",
     "lint-and-fix": "eslint . --fix",
-    "publish-ci": "turbo run libbuild && turbo run type:emit && changeset publish",
-    "storybook": "turbo run storybook",
-    "changeset": "changeset"
+    "publish-ci": "turbo run libbuild && turbo run type:emit && npx changeset publish",
+    "storybook": "turbo run storybook"
   },
   "private": true,
   "workspaces": [

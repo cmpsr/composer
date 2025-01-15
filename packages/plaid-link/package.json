@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.0.22",
+  "version": "0.0.23",
   "author": "Takeichi Kanzaki Cabrera <takeichi@impulsum.vc>",
   "license": "MIT",
   "main": "./lib/index.js",

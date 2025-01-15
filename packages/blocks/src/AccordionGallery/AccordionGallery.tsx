@@ -107,7 +107,7 @@ const AccordionGalleryAccordion: typeof Accordion & { Image: typeof AccordionGal
     Button: Accordion.Button,
     Panel: Accordion.Panel,
     Icon: Accordion.Icon,
-  }
+  },
 );
 
 AccordionGallery.Title = TextPairing;

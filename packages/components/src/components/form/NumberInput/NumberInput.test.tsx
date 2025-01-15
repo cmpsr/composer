@@ -12,7 +12,7 @@ describe('NumberInput', () => {
           <NumberInput.IncrementStepper data-testid="cmpsr.number-input.increment-stepper" />
           <NumberInput.DecrementStepper data-testid="cmpsr.number-input.decrement-stepper" />
         </NumberInput.Stepper>
-      </NumberInput>
+      </NumberInput>,
     );
 
     expect(screen.queryByTestId('cmpsr.number-input')).toBeInTheDocument();

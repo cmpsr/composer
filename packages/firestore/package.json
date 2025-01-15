@@ -21,11 +21,11 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:check": "tsc --project tsconfig.json --noEmit",
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "dependencies": {
-    "@google-cloud/firestore": "^4.0.0"
+    "@google-cloud/firestore": "^7.11.0"
   },
   "devDependencies": {
     "rimraf": "^5.0.5"

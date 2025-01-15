@@ -42,11 +42,13 @@ describe('TwilioSms', () => {
 
   test('should initialize client', () => {
     new TwilioSms(config);
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const twilio = require('twilio');
     expect(twilio).toBeCalledTimes(1);
     expect(twilio).toBeCalledWith(config.accountSid, config.authToken);
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const twilio = require('twilio');
   beforeAll(() => {
     twilio.mockReturnValue({
@@ -101,7 +103,7 @@ describe('TwilioSms', () => {
         country,
         mmsEnabled,
         smsEnabled,
-        limit
+        limit,
       );
       expect(mockListPhones).toBeCalledTimes(1);
       expect(mockListPhones).toBeCalledWith({
@@ -153,7 +155,7 @@ describe('TwilioSms', () => {
         phoneNumber,
         friendlyName,
         smsUrl,
-        smsMethod
+        smsMethod,
       );
       expect(mockCreatePhone).toBeCalledTimes(1);
       expect(mockCreatePhone).toBeCalledWith({

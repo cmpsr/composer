@@ -71,7 +71,7 @@ class Kms implements IEncryptor {
         oaepHash: 'sha256',
         padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
       },
-      dataBuffer
+      dataBuffer,
     );
 
     // Return the buffer base64 encoded
@@ -113,7 +113,7 @@ class Kms implements IEncryptor {
       locationId,
       this.config.key.keyRingId,
       this.config.key.cryptoKeyId,
-      this.config.key.cryptoKeyVersionId
+      this.config.key.cryptoKeyVersionId,
     );
     return this.name;
   }

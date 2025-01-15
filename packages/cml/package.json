@@ -18,11 +18,11 @@
   ],
   "private": false,
   "scripts": {
-    "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts' && yarn type:emit",
+    "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts' && npm run type:emit",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:check": "tsc --project tsconfig.json --noEmit",
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' \\) -exec rm {} +"
   },
   "dependencies": {},
@@ -36,6 +36,6 @@
     "swc-loader": "^0.1.15"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=20"
   }
 }

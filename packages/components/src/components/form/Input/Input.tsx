@@ -98,5 +98,5 @@ export const Input = forwardRef<InputProps, typeof ChakraInput>(
         )}
       </ChakraInputGroup>
     );
-  }
+  },
 );

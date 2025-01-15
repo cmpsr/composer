@@ -60,7 +60,7 @@ export const CookieBanner: FC<CookieBannerProps> & CookieBannerStaticMembers = (
 
   const areActionsDefined = React.Children.map(
     children,
-    (child) => isValidElement(child) && child.type === CookieBannerActions
+    (child) => isValidElement(child) && child.type === CookieBannerActions,
   ).some(Boolean);
 
   return (

@@ -13,7 +13,7 @@ describe('Drawer', () => {
           <Drawer.Body>Drawer Body Children</Drawer.Body>
           <Drawer.Footer></Drawer.Footer>
         </Drawer.Content>
-      </Drawer>
+      </Drawer>,
     );
 
   test('should render child in body and header if is open', () => {

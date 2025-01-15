@@ -12,7 +12,7 @@ describe('Breadcrumb', () => {
             {`Item ${item + 1}`}
           </Breadcrumb.Item>
         ))}
-      </Breadcrumb>
+      </Breadcrumb>,
     );
   };
 

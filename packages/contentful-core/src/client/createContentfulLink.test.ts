@@ -7,7 +7,7 @@ describe('createContentfulLink', () => {
       () =>
         Promise.resolve({
           json: () => Promise.resolve({ data: 'mocked data' }),
-        }) as Promise<Response>
+        }) as Promise<Response>,
     );
   });
 
@@ -27,7 +27,7 @@ describe('createContentfulLink', () => {
 
     expect(link).toBeInstanceOf(HttpLink);
     expect(link.options.uri).toBe(
-      `https://graphql.contentful.com/content/v1/spaces/testSpace/environments/testEnvironment`
+      `https://graphql.contentful.com/content/v1/spaces/testSpace/environments/testEnvironment`,
     );
     expect(link.options.headers?.Authorization).toBe(`Bearer testAccessToken`);
     expect(link.options.headers?.['Custom-Header']).toBe('value');

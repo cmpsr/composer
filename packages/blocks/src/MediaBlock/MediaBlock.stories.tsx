@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import { MediaBlock, mediaBlockVariants } from '.';
-import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { IconChevronRight } from '@cmpsr/components';
 
 const alignments = ['start', 'center', 'end'] as const;

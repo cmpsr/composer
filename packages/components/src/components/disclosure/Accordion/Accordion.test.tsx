@@ -14,7 +14,7 @@ describe('Accordion', () => {
           <Accordion.Button>Title 2</Accordion.Button>
           <Accordion.Panel>Panel 2</Accordion.Panel>
         </Accordion.Item>
-      </Accordion>
+      </Accordion>,
     );
 
   test('should render items', () => {

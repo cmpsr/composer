@@ -49,7 +49,7 @@ export const SegmentedButton: FC<SegmentedButtonProps> & SegmentedButtonStaticMe
             size: responsiveSize,
             isDisabled,
             'aria-current': value === child.props.value,
-          })
+          }),
         )}
       </Flex>
     </SegmentedButtonProvider>
@@ -68,7 +68,7 @@ const Button = forwardRef<SegmentedButtonButtonProps, typeof ChakraButton>(
         {trailingIconSized}
       </ChakraButton>
     );
-  }
+  },
 );
 
 SegmentedButton.Button = Button;
@@ -83,7 +83,7 @@ const IconButton = forwardRef<SegmentedIconButtonProps, typeof ChakraButton>(
         {iconSized}
       </ChakraButton>
     );
-  }
+  },
 );
 
 SegmentedButton.Icon = IconButton;

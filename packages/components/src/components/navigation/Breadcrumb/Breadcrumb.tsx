@@ -6,7 +6,7 @@ import { BreadcrumbItemProps, BreadcrumbProps } from './types';
 const Breadcrumb = forwardRef<BreadcrumbProps, typeof ChakraBreadcrumb>(
   ({ separator = <IconChevronRight size="m" color="text-secondary" />, ...rest }, ref) => (
     <ChakraBreadcrumb ref={ref} separator={separator} {...rest} />
-  )
+  ),
 );
 
 const Item = forwardRef<BreadcrumbItemProps, typeof BreadcrumbItem>(
@@ -22,7 +22,7 @@ const Item = forwardRef<BreadcrumbItemProps, typeof BreadcrumbItem>(
         </BreadcrumbLink>
       )}
     </BreadcrumbItem>
-  )
+  ),
 );
 
 const BreadcrumbNamespace = Object.assign(Breadcrumb, { Item });

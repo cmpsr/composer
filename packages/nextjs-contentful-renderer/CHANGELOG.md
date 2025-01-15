@@ -1,5 +1,13 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 24.0.33
+
+### Patch Changes
+
+- b3900fd: chore: update dependencies
+- Updated dependencies [b3900fd]
+  - @cmpsr/contentful-core@1.0.2
+
 ## 24.0.32
 
 ### Patch Changes

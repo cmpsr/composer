@@ -1,5 +1,11 @@
 # @cmpsr/cml
 
+## 0.10.4
+
+### Patch Changes
+
+- b3900fd: chore: update dependencies
+
 ## 0.10.3
 
 ### Patch Changes

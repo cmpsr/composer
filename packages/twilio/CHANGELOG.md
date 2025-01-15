@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.3.2
+
+### Patch Changes
+
+- b3900fd: chore: update dependencies
+
 ## 0.3.1
 
 ### Patch Changes

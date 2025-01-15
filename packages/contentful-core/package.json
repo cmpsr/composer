@@ -1,6 +1,6 @@
 {
   "name": "@cmpsr/contentful-core",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Base Composer components for standing up a React/NextJS app that can dynamically render components based on Contentful Model types mapped to components and queries.",
   "author": "Ryan Hefner <hi@ryanhefner.com>",
   "homepage": "https://github.com/cmpsr/composer#readme",

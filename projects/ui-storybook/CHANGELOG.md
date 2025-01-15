@@ -1,5 +1,13 @@
 # @cmpsr/ui-storybook
 
+## 0.2.63
+
+### Patch Changes
+
+- b3900fd: chore: update dependencies
+- Updated dependencies [b3900fd]
+  - @cmpsr/components@7.17.2
+
 ## 0.2.62
 
 ### Patch Changes

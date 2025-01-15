@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@gmail.com>",
   "license": "MIT",
   "main": "./lib/index.js",

@@ -1,4 +1,3 @@
-/* eslint-disable no-prototype-builtins */
 import {
   FirestoreConfig,
   IDatabase,
@@ -80,6 +79,7 @@ class FirestoreDb implements IDatabase {
     return doc.delete();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   listen(from: string, modifiers: QueryModifiers, callback: Function) {
     let query = this.prepareQuery(from, modifiers.conditions);
     query = this.addOrderBy(query, modifiers.orderBy);
@@ -96,7 +96,7 @@ class FirestoreDb implements IDatabase {
         query = query.where(
           condition.field,
           condition.operator,
-          condition.value
+          condition.value,
         );
       });
     }
@@ -105,7 +105,7 @@ class FirestoreDb implements IDatabase {
 
   private addOrderBy(
     query: CollectionReference | Query,
-    orderBy?: QueryOrder[]
+    orderBy?: QueryOrder[],
   ) {
     if (!orderBy || orderBy.length < 1) return query;
     let orderedQuery = query;

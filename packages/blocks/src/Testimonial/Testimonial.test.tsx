@@ -20,7 +20,7 @@ describe('Testimonial', () => {
     renderWithProviders(
       <Testimonial>
         <Testimonial.Image src="https://avatars0.githubusercontent.com/u/67131017?s=1" />
-      </Testimonial>
+      </Testimonial>,
     );
     screen.getByRole('img');
   });
@@ -33,7 +33,7 @@ describe('Testimonial', () => {
           <Testimonial.Testimony>testimony</Testimonial.Testimony>
           <Testimonial.Author>name</Testimonial.Author>
         </Testimonial.Content>
-      </Testimonial>
+      </Testimonial>,
     );
     screen.getByRole('heading', { name: 'legend', level: 3 });
   });
@@ -46,7 +46,7 @@ describe('Testimonial', () => {
           <Testimonial.Testimony>testimony</Testimonial.Testimony>
           <Testimonial.Author>name</Testimonial.Author>
         </Testimonial.Content>
-      </Testimonial>
+      </Testimonial>,
     );
     screen.getByText('testimony');
   });
@@ -59,7 +59,7 @@ describe('Testimonial', () => {
           <Testimonial.Author>name</Testimonial.Author>
           <Testimonial.Action href="#">linking</Testimonial.Action>
         </Testimonial.Content>
-      </Testimonial>
+      </Testimonial>,
     );
     screen.getByRole('link', { name: 'linking' });
   });

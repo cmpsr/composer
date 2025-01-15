@@ -12,7 +12,7 @@ describe('CookieBanner', () => {
     renderWithProviders(
       <CookieBanner>
         <CookieBanner.Content>Hello</CookieBanner.Content>
-      </CookieBanner>
+      </CookieBanner>,
     );
     screen.getByText('Hello');
   });
@@ -22,7 +22,7 @@ describe('CookieBanner', () => {
         <CookieBanner.Content>
           <Text data-testid="children-container">Hello</Text>
         </CookieBanner.Content>
-      </CookieBanner>
+      </CookieBanner>,
     );
     screen.getByTestId('children-container');
   });
@@ -36,7 +36,7 @@ describe('CookieBanner', () => {
             <CookieBanner.Actions.AcceptAll>All</CookieBanner.Actions.AcceptAll>
           </CookieBanner.Actions>
         </CookieBanner.Content>
-      </CookieBanner>
+      </CookieBanner>,
     );
     expect(screen.queryByTestId('cookie-banner')).toBeInTheDocument();
     fireEvent.click(screen.getByText('All'));
@@ -52,7 +52,7 @@ describe('CookieBanner', () => {
             <CookieBanner.Actions.AcceptAll />
           </CookieBanner.Actions>
         </CookieBanner.Content>
-      </CookieBanner>
+      </CookieBanner>,
     );
     expect(screen.queryByTestId('cookie-banner')).toBeInTheDocument();
     fireEvent.click(screen.getByText('RequiredOnly'));
@@ -65,7 +65,7 @@ describe('CookieBanner', () => {
         <CookieBanner.Content>
           <Text>Hello</Text>
         </CookieBanner.Content>
-      </CookieBanner>
+      </CookieBanner>,
     );
     expect(screen.queryByTestId('cookie-banner')).not.toBeInTheDocument();
   });
@@ -76,7 +76,7 @@ describe('CookieBanner', () => {
         <CookieBanner.Content>
           <Text>Hello</Text>
         </CookieBanner.Content>
-      </CookieBanner>
+      </CookieBanner>,
     );
     expect(screen.queryByTestId('cookie-banner')).toBeInTheDocument();
   });
@@ -90,7 +90,7 @@ describe('CookieBanner', () => {
             <CookieBanner.Actions.AcceptAll />
           </CookieBanner.Actions>
         </CookieBanner.Content>
-      </CookieBanner>
+      </CookieBanner>,
     );
     expect(screen.queryByTestId('cookie-banner')).toBeInTheDocument();
     fireEvent.click(screen.getByText('RequiredOnly'));

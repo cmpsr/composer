@@ -1,5 +1,5 @@
 import React, { createContext, FC, useContext } from 'react';
-import { useMultiStyleConfig } from '@chakra-ui/system';
+import { useMultiStyleConfig } from '@chakra-ui/react';
 import { useResponsiveValue } from '@hooks';
 import { Flex, Text, TextProps, TextVariant } from '@components';
 

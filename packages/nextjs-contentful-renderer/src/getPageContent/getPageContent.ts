@@ -10,7 +10,7 @@ import { isReplica } from '../utils/isReplica';
 
 export const getPageContent = async (
   context: GetServerSidePropsContext,
-  domain: string | undefined = undefined
+  domain: string | undefined = undefined,
 ): Promise<Page> => {
   const preview = context.preview || context.query.preview !== undefined;
 

@@ -14,7 +14,7 @@ describe('BrandLogos', () => {
         <BrandLogos.ImagesContainer>
           <BrandLogos.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         </BrandLogos.ImagesContainer>
-      </BrandLogos>
+      </BrandLogos>,
     );
     const textPairing = container.firstChild.firstChild.childNodes;
     expect(textPairing).toHaveLength(2);
@@ -28,7 +28,7 @@ describe('BrandLogos', () => {
         <BrandLogos.ImagesContainer>
           <BrandLogos.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         </BrandLogos.ImagesContainer>
-      </BrandLogos>
+      </BrandLogos>,
     );
     const text = container.firstChild.firstChild.childNodes;
     expect(text).toHaveLength(1);
@@ -39,7 +39,7 @@ describe('BrandLogos', () => {
         <BrandLogos.ImagesContainer>
           <BrandLogos.Image src="https://avatars0.githubusercontent.com/u/67131017?s=200" />
         </BrandLogos.ImagesContainer>
-      </BrandLogos>
+      </BrandLogos>,
     );
     screen.getByRole('img');
   });
@@ -47,7 +47,7 @@ describe('BrandLogos', () => {
     renderWithProviders(
       <BrandLogos>
         <BrandLogos.Overline>Overline</BrandLogos.Overline>
-      </BrandLogos>
+      </BrandLogos>,
     );
     screen.getByText('Overline');
   });

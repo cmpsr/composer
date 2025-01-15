@@ -24,6 +24,7 @@ describe('usePlaid', () => {
   const publicKey = 'public_key';
   const onEvent = jest.fn();
   const onExit = jest.fn();
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const mockUsePlaidLink = require('react-plaid-link').usePlaidLink;
 
   afterEach(() => {

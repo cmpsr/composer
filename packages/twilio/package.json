@@ -21,7 +21,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:check": "tsc --project tsconfig.json --noEmit",
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "dependencies": {
@@ -31,7 +31,7 @@
     "rimraf": "^5.0.5"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=20"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"
 }

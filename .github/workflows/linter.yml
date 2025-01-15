@@ -8,15 +8,15 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        cache: 'yarn'
+        node-version: 22.x
+        cache: 'npm'
     - name: Install modules
-      run: yarn
+      run: npm install
     - name: Run linter
-      run: yarn lint
+      run: npm run lint
     - name: Build
-      run: yarn build
+      run: npm run build
     - name: Generate types
-      run: yarn type:emit
+      run: npm run type:emit
     - name: Run type check
-      run: yarn type:check
+      run: npm run type:check

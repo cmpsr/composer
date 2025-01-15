@@ -1,7 +1,6 @@
 import React from 'react';
 import { renderWithProviders } from '@tests/renderWithProviders';
 import { NumberedList, Text } from '@components';
-import '@testing-library/jest-dom/extend-expect';
 
 describe('NumberedList', () => {
   test('should display index number', () => {
@@ -16,7 +15,7 @@ describe('NumberedList', () => {
         <NumberedList.Item>
           <Text>Item</Text>
         </NumberedList.Item>
-      </NumberedList>
+      </NumberedList>,
     );
     expect(container).toHaveTextContent(/1./);
     expect(container).toHaveTextContent(/2./);
@@ -45,7 +44,7 @@ describe('NumberedList', () => {
         <NumberedList.Item>
           <Text>Item</Text>
         </NumberedList.Item>
-      </NumberedList>
+      </NumberedList>,
     );
     expect(container).toHaveTextContent(/2.1./);
     expect(container).toHaveTextContent(/2.2./);

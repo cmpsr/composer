@@ -14,7 +14,7 @@ describe('Tabs', () => {
           <Tabs.Panel>one!</Tabs.Panel>
           <Tabs.Panel>two!</Tabs.Panel>
         </Tabs.Panels>
-      </Tabs>
+      </Tabs>,
     );
 
   test('should render item', () => {

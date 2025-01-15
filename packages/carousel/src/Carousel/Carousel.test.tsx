@@ -13,7 +13,7 @@ describe('Carousel', () => {
             <Text>Label</Text>
           </Carousel.Slide>
         </Carousel.Slider>
-      </Carousel>
+      </Carousel>,
     );
     screen.getByText('Label');
   });
@@ -21,7 +21,7 @@ describe('Carousel', () => {
     renderWithProviders(
       <Carousel visibleSlides={1} naturalSlideWidth={1} naturalSlideHeight={1}>
         <span>foo</span>
-      </Carousel>
+      </Carousel>,
     );
     expect(screen.queryByText('foo')).not.toBeInTheDocument();
   });
@@ -37,7 +37,7 @@ describe('Carousel', () => {
         <Carousel.NavigationContainer>
           <Carousel.Dot key={0} slide={0} />
         </Carousel.NavigationContainer>
-      </Carousel>
+      </Carousel>,
     );
 
     expect(screen.queryAllByRole('button', { name: 'slide dot' }).length).toBe(1);
@@ -62,7 +62,7 @@ describe('Carousel', () => {
             <Text>next</Text>
           </Carousel.ButtonNext>
         </Carousel.NavigationContainer>
-      </Carousel>
+      </Carousel>,
     );
 
     expect(screen.getByLabelText('back')).toBeInTheDocument();

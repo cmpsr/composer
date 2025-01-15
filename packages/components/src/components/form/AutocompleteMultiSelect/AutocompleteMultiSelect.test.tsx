@@ -11,7 +11,7 @@ describe('AutocompleteMultiSelect', () => {
         <AutocompleteMultiSelect.SelectedItems />
         <AutocompleteMultiSelect.Input placeholder="AutocompleteMultiSelect" />
         <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
     const input = screen.getByPlaceholderText(/AutocompleteMultiSelect/);
     fireEvent.focus(input);
@@ -24,7 +24,7 @@ describe('AutocompleteMultiSelect', () => {
         <AutocompleteMultiSelect.SelectedItems />
         <AutocompleteMultiSelect.Input placeholder="Select an item" />
         <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
 
     const input = screen.getByPlaceholderText(/Select an item/);
@@ -34,11 +34,11 @@ describe('AutocompleteMultiSelect', () => {
     const list = screen.getByRole('listbox');
     fireEvent.click(list.firstElementChild);
 
-    let selectedItem = screen.getByText('foo');
+    const selectedItem = screen.getByText('foo');
     expect(selectedItem).toBeInTheDocument();
 
     const removeButton = selectedItem.parentElement.querySelector(
-      '[data-testid="cmpsr.autocompleteMultiSelect.clear-tag-button"]'
+      '[data-testid="cmpsr.autocompleteMultiSelect.clear-tag-button"]',
     );
     expect(removeButton).toBeInTheDocument();
     fireEvent.click(removeButton);
@@ -50,7 +50,7 @@ describe('AutocompleteMultiSelect', () => {
       <AutocompleteMultiSelect items={items}>
         <AutocompleteMultiSelect.Input placeholder="AutocompleteMultiSelect" />
         <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
     const input = screen.getByPlaceholderText(/AutocompleteMultiSelect/);
     fireEvent.focus(input);
@@ -65,7 +65,7 @@ describe('AutocompleteMultiSelect', () => {
       <AutocompleteMultiSelect items={[]}>
         <AutocompleteMultiSelect.Input placeholder="AutocompleteMultiSelect" />
         <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
     const input = screen.getByPlaceholderText(/AutocompleteMultiSelect/);
     fireEvent.focus(input);
@@ -81,7 +81,7 @@ describe('AutocompleteMultiSelect', () => {
           renderItem={(item: string) => <div>{item}</div>}
           noResultsContent={<div>No results custom</div>}
         />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
     const input = screen.getByPlaceholderText(/AutocompleteMultiSelect/);
     fireEvent.focus(input);
@@ -99,7 +99,7 @@ describe('AutocompleteMultiSelect', () => {
       >
         <AutocompleteMultiSelect.Input placeholder="AutocompleteMultiSelect" />
         <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
     const input = screen.getByPlaceholderText(/AutocompleteMultiSelect/);
     fireEvent.focus(input);
@@ -115,7 +115,7 @@ describe('AutocompleteMultiSelect', () => {
       <AutocompleteMultiSelect items={items}>
         <AutocompleteMultiSelect.Input placeholder="AutocompleteMultiSelect" />
         <AutocompleteMultiSelect.List renderItem={mockRenderItem} />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
     const input = screen.getByPlaceholderText(/AutocompleteMultiSelect/);
     fireEvent.focus(input);
@@ -134,7 +134,7 @@ describe('AutocompleteMultiSelect', () => {
         <AutocompleteMultiSelect.SelectedItems renderSelectedItem={mockRenderSelectedItem} />
         <AutocompleteMultiSelect.Input placeholder="AutocompleteMultiSelect" />
         <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
 
     const input = screen.getByPlaceholderText(/AutocompleteMultiSelect/);
@@ -153,7 +153,7 @@ describe('AutocompleteMultiSelect', () => {
         <AutocompleteMultiSelect.SelectedItems />
         <AutocompleteMultiSelect.Input placeholder="AutocompleteMultiSelect" clearButtonMode="never" />
         <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
 
     const input = screen.getByPlaceholderText(/AutocompleteMultiSelect/);
@@ -177,7 +177,7 @@ describe('AutocompleteMultiSelect', () => {
         <AutocompleteMultiSelect.SelectedItems />
         <AutocompleteMultiSelect.Input placeholder="AutocompleteMultiSelect" clearButtonMode="has-value" />
         <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
 
     expect(screen.queryByTestId('cmpsr.autocompleteMultiSelect.clear-button')).not.toBeInTheDocument();
@@ -195,7 +195,7 @@ describe('AutocompleteMultiSelect', () => {
         <AutocompleteMultiSelect.SelectedItems />
         <AutocompleteMultiSelect.Input placeholder="AutocompleteMultiSelect" clearButtonMode="always" />
         <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
 
     screen.getByTestId('cmpsr.autocompleteMultiSelect.clear-button');
@@ -207,7 +207,7 @@ describe('AutocompleteMultiSelect', () => {
         <AutocompleteMultiSelect.SelectedItems />
         <AutocompleteMultiSelect.Input placeholder="AutocompleteMultiSelect" clearButtonMode="always" />
         <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
 
     const input = screen.getByPlaceholderText(/AutocompleteMultiSelect/);
@@ -226,7 +226,7 @@ describe('AutocompleteMultiSelect', () => {
         <AutocompleteMultiSelect.SelectedItems />
         <AutocompleteMultiSelect.Input placeholder="AutocompleteMultiSelect" />
         <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
 
     const input = screen.getByPlaceholderText(/AutocompleteMultiSelect/);
@@ -244,7 +244,7 @@ describe('AutocompleteMultiSelect', () => {
         <AutocompleteMultiSelect.SelectedItems />
         <AutocompleteMultiSelect.Input placeholder="AutocompleteMultiSelect" />
         <AutocompleteMultiSelect.List renderItem={(item: string) => <div>{item}</div>} />
-      </AutocompleteMultiSelect>
+      </AutocompleteMultiSelect>,
     );
 
     screen.getByTestId('cmpsr.autocompleteMultiSelect.chevron-down');

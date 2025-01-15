@@ -1,4 +1,4 @@
-import { ProgressProps as ChakraProgressBarProps } from '@chakra-ui/progress';
+import { ProgressProps as ChakraProgressBarProps } from '@chakra-ui/react';
 import { ResponsiveValue } from '@chakra-ui/react';
 
 export const progressBarSizes = ['xs', 's', 'm', 'l', 'xl'] as const;

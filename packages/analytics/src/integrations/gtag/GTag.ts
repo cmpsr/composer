@@ -22,7 +22,7 @@ export class GTag implements IIntegration {
   };
 
   // Not supported
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+   
   group: Group = () => {};
 
   page: Page = (pageName, traits = {}) => {
@@ -43,7 +43,7 @@ export class GTag implements IIntegration {
 
   reset = () => {
     (window as any).dataLayer.push(function () {
-      // eslint-disable-next-line @typescript-eslint/no-invalid-this
+       
       this.reset();
     });
   };

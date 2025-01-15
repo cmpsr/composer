@@ -9,7 +9,7 @@ describe('Link', () => {
     renderWithProviders(
       <Link role="link" data-testid="test.id">
         Link
-      </Link>
+      </Link>,
     );
     const linkComponent = screen.getByTestId('test.id');
     expect(linkComponent.nodeName).toBe('A');
@@ -19,7 +19,7 @@ describe('Link', () => {
     renderWithProviders(
       <Link role="link" data-testid="test.id">
         Link
-      </Link>
+      </Link>,
     );
     screen.getByText('Link');
   });
@@ -28,7 +28,7 @@ describe('Link', () => {
     renderWithProviders(
       <Link role="link" trailingIcon={<IconExternalLink data-testid="cmpsr.link.trailing-icon" />}>
         Link
-      </Link>
+      </Link>,
     );
     screen.getByTestId('cmpsr.link.trailing-icon');
   });
@@ -37,7 +37,7 @@ describe('Link', () => {
     renderWithProviders(
       <Link role="link" leadingIcon={<IconExternalLink data-testid="cmpsr.link.leading-icon" />}>
         Link
-      </Link>
+      </Link>,
     );
     screen.getByTestId('cmpsr.link.leading-icon');
   });
@@ -50,7 +50,7 @@ describe('Link', () => {
         trailingIcon={<IconExternalLink data-testid="cmpsr.link.trailing-icon" />}
       >
         Link
-      </Link>
+      </Link>,
     );
     screen.getByTestId('cmpsr.link.leading-icon');
     screen.getByTestId('cmpsr.link.trailing-icon');
@@ -60,7 +60,7 @@ describe('Link', () => {
     renderWithProviders(
       <Link role="link" isInline>
         Link
-      </Link>
+      </Link>,
     );
     const linkComponent = screen.getByRole('link');
     expect(linkComponent).toHaveStyle('display: inline');
@@ -70,7 +70,7 @@ describe('Link', () => {
     renderWithProviders(
       <Link role="link" data-testid="test.disabled-link" isDisabled>
         Disabled Link
-      </Link>
+      </Link>,
     );
     const linkComponent = screen.getByTestId('test.disabled-link');
     expect(linkComponent).toHaveAttribute('aria-disabled', 'true');

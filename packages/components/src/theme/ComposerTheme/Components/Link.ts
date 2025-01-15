@@ -50,7 +50,7 @@ const getButtonVariants = () =>
         return omit(typeof variantValue === 'function' ? variantValue(params) : variantValue, ['loading']);
       },
     }),
-    {}
+    {},
   );
 
 const getSizes = () => {

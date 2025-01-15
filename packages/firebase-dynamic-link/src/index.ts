@@ -5,7 +5,7 @@ export * from './integration/LinkShortener';
 
 const getLinkShortener = (
   domainUriPrefix: string,
-  apiKey: string = process.env.FIREBASE_API_KEY
+  apiKey: string = process.env.FIREBASE_API_KEY,
 ): LinkShortener => {
   return new LinkShortener({ domainUriPrefix, apiKey });
 };

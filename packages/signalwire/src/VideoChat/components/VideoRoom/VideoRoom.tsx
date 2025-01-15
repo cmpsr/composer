@@ -45,7 +45,7 @@ export const VideoRoom: FC<VideoRoomProps> = ({
       await Promise.all(
         members
           .filter((member) => member.id !== roomRef.current?.memberId)
-          .map(async (member) => roomRef.current?.removeMember({ memberId: member.id }))
+          .map(async (member) => roomRef.current?.removeMember({ memberId: member.id })),
       );
     }
 

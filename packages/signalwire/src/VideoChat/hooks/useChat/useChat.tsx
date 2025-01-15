@@ -52,7 +52,7 @@ export const useChat = ({ username, channel, autoload }: UseChatProps) => {
       // We are ready!
       setReady(true);
     },
-    [username, channel]
+    [username, channel],
   );
 
   useEffect(() => {

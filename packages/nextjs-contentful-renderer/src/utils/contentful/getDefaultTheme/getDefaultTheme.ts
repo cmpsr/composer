@@ -4,7 +4,7 @@ import { Theme } from '@cmpsr/components';
 export const getDefaultTheme = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
   domain: string,
-  preview: boolean
+  preview: boolean,
 ): Promise<Partial<Theme> | undefined> => {
   const { data } = await apolloClient.query({
     query: gql`

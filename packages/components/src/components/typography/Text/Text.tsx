@@ -5,5 +5,5 @@ import { useResponsiveValue } from '@hooks';
 
 export const Text = forwardRef<TextProps, typeof ChakraText>(({ variant, ...rest }, ref) => {
   const responsiveVariant = useResponsiveValue(variant);
-  return <ChakraText ref={ref} variant={responsiveVariant} {...rest} />;
+  return <ChakraText ref={ref} variant={responsiveVariant} {...(rest as TextProps)} />;
 });

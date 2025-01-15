@@ -1,5 +1,13 @@
 # @cmpsr/ui-storybook
 
+## 0.2.62
+
+### Patch Changes
+
+- d9f8d95: chore: dependencies updates
+- Updated dependencies [d9f8d95]
+  - @cmpsr/components@7.17.1
+
 ## 0.2.61
 
 ### Patch Changes

@@ -15,7 +15,7 @@ describe('HighlightedText', () => {
         <HighlightedText.Actions>
           <HighlightedText.Action variant="primary">link</HighlightedText.Action>
         </HighlightedText.Actions>
-      </HighlightedText>
+      </HighlightedText>,
     );
     screen.getByText('overline');
     screen.getByText('label');

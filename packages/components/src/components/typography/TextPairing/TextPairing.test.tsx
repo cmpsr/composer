@@ -11,7 +11,7 @@ describe('TextPairing', () => {
       <TextPairing variant={variant}>
         <TextPairing.Label>{label}</TextPairing.Label>
         <TextPairing.SubLabel>{subLabel}</TextPairing.SubLabel>
-      </TextPairing>
+      </TextPairing>,
     );
 
   test('should render label and sub label', () => {

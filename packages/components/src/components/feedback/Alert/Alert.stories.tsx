@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Meta } from '@storybook/react';
-import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Alert, alertStatuses, alertVariants } from '.';
 import { Flex } from '@components';
 

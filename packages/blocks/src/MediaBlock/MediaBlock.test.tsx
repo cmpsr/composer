@@ -16,7 +16,7 @@ describe('MediaBlock', () => {
           <MediaBlock.Tag.Label>Tag</MediaBlock.Tag.Label>
         </MediaBlock.Tag>
         <MediaBlock.Action>Link</MediaBlock.Action>
-      </MediaBlock>
+      </MediaBlock>,
     );
     screen.getByRole('img');
     screen.getByText('Label');

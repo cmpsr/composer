@@ -163,7 +163,7 @@ print(a + b);
         initialValue="**Text**"
         onChange={jest.fn()}
         externalToolbarActions={<span>external action</span>}
-      />
+      />,
     );
     await waitFor(async () => {
       expect(screen.getByText('external action')).toBeInTheDocument();
@@ -172,7 +172,7 @@ print(a + b);
 
   test('should render container with provided props', async () => {
     const { container } = renderWithProviders(
-      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} containerProps={{ background: 'red' }} />
+      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} containerProps={{ background: 'red' }} />,
     );
     await waitFor(async () => {
       const markdownEditorContainerElement = container.firstChild;
@@ -182,7 +182,7 @@ print(a + b);
 
   test('should render content with provided props', async () => {
     const { container } = renderWithProviders(
-      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} contentProps={{ background: 'red' }} />
+      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} contentProps={{ background: 'red' }} />,
     );
     await waitFor(async () => {
       const markdownEditorContentElement = container.firstChild.lastChild;
@@ -192,7 +192,7 @@ print(a + b);
 
   test('should render contentEditable with provided styles', async () => {
     renderWithProviders(
-      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} contentEditableStyles={{ background: 'red' }} />
+      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} contentEditableStyles={{ background: 'red' }} />,
     );
     await waitFor(async () => {
       expect(screen.getByRole('textbox')).toHaveStyle('background: red');
@@ -201,7 +201,7 @@ print(a + b);
 
   test('should render toolbar plugin with provided props', async () => {
     const { container } = renderWithProviders(
-      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} toolbarPluginProps={{ backgroundColor: 'red' }} />
+      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} toolbarPluginProps={{ backgroundColor: 'red' }} />,
     );
     await waitFor(async () => {
       const markdownEditorToolbarPlugins = container.firstChild.firstChild;
@@ -211,7 +211,7 @@ print(a + b);
 
   test('should initialize either on rich or plain text mode', async () => {
     const { container, rerender } = renderWithProviders(
-      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} />
+      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} />,
     );
 
     await waitFor(async () => {
@@ -257,7 +257,7 @@ print(a + b);
 
   test('should not automatically toggle to rich text mode', async () => {
     const { container } = renderWithProviders(
-      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} editorMode={EditorMode.PlainText} />
+      <MarkdownEditor initialValue="**Text**" onChange={jest.fn()} editorMode={EditorMode.PlainText} />,
     );
 
     // start in plain text mode

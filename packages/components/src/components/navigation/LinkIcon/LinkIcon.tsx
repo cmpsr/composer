@@ -19,7 +19,7 @@ export const LinkIcon = forwardRef<LinkIconProps, typeof ChakraLink>(
         {sizedIcon}
       </ChakraLink>
     );
-  }
+  },
 );
 
 const getIcon = (icon: ReactElement<IconProps>, size: ResponsiveValue<LinkIconSize>) => {

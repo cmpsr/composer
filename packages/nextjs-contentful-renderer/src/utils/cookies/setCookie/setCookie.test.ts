@@ -28,7 +28,7 @@ describe('setCookie', () => {
     expect(mockSetHeader).toBeCalledTimes(1);
     expect(mockSetHeader).toBeCalledWith(
       'Set-Cookie',
-      'x-cmpsr-pages-cookie=%7B%22key%22%3A%22value%22%7D; Max-Age=3600'
+      'x-cmpsr-pages-cookie=%7B%22key%22%3A%22value%22%7D; Max-Age=3600',
     );
   });
 });

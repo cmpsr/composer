@@ -13,7 +13,7 @@ describe('Avatar', () => {
         src="https://avatars0.githubusercontent.com/u/67131017?s=200"
         name="Composer Logo"
         showBadge={showBadge}
-      />
+      />,
     );
 
   test('should render an Avatar', () => {

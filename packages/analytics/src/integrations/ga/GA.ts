@@ -18,7 +18,7 @@ export class GA implements IIntegration {
   };
 
   // Not supported
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+   
   group: Group = () => {};
 
   page: Page = (pageName, traits = {}) => {
@@ -38,7 +38,7 @@ export class GA implements IIntegration {
   };
 
   // Not supported
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+   
   reset = () => {};
   revenue = () => {};
 }

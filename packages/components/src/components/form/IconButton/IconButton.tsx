@@ -31,5 +31,5 @@ export const IconButton: FC<IconButtonProps> = forwardRef<IconButtonProps, 'butt
         {...props}
       />
     );
-  }
+  },
 );

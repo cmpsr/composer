@@ -57,6 +57,7 @@ describe('Kms', () => {
     test('should authenticate', () => {
       const kms = new Kms(config);
       kms.encrypt('plaintext');
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const client = require('@google-cloud/kms');
       const mockKmsServiceClient = client.KeyManagementServiceClient as jest.Mock;
       expect(mockKmsServiceClient).toBeCalledTimes(1);
@@ -70,7 +71,7 @@ describe('Kms', () => {
       const kms = new Kms(config);
       const encrypted = await kms.encrypt('plaintext');
       expect(encrypted).toBe(
-        Buffer.from('encrypted string').toString('base64')
+        Buffer.from('encrypted string').toString('base64'),
       );
     });
     test('should use global as locationId if not location is provided', () => {
@@ -83,7 +84,7 @@ describe('Kms', () => {
         'global',
         expect.anything(),
         expect.anything(),
-        expect.anything()
+        expect.anything(),
       );
     });
   });
@@ -92,6 +93,7 @@ describe('Kms', () => {
     test('should authenticate', () => {
       const kms = new Kms(config);
       kms.encrypt('plaintext');
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const client = require('@google-cloud/kms');
       const mockKmsServiceClient = client.KeyManagementServiceClient as jest.Mock;
       expect(mockKmsServiceClient).toBeCalledTimes(1);
@@ -114,7 +116,7 @@ describe('Kms', () => {
         'global',
         expect.anything(),
         expect.anything(),
-        expect.anything()
+        expect.anything(),
       );
     });
   });

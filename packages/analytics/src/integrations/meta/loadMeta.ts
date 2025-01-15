@@ -9,7 +9,7 @@ function addScript(
   v: string,
   n?: any,
   t?: HTMLScriptElement,
-  s?: HTMLScriptElement
+  s?: HTMLScriptElement,
 ): FacebookQuery {
   if (f.fbq) {
     return f.fbq;

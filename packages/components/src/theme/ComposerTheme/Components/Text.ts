@@ -39,7 +39,7 @@ const variants = textVariants.reduce(
     },
     ...acc,
   }),
-  {}
+  {},
 );
 
 export const Text: ComponentStyleConfig = {

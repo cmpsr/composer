@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { ButtonIcon } from './ButtonIcon';
 import { buttonIconSizes, buttonIconVariants } from './types';
 import { IconCloud } from '@components';
-import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 
 export default {
   component: ButtonIcon,
@@ -70,7 +70,7 @@ export const All = () => (
                   </Td>
                 ))}
               </Tr>
-            ))
+            )),
           )}
         </Fragment>
       ))}

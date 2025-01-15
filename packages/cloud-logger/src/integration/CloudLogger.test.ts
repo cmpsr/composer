@@ -31,6 +31,7 @@ describe('CloudLogger', () => {
   };
 
   it('should instantiate google cloud logging', () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const cloudLogging = require('@google-cloud/logging');
     new CloudLogger(config);
     expect(cloudLogging.Logging).toBeCalledTimes(1);
@@ -49,7 +50,7 @@ describe('CloudLogger', () => {
       expect(mockEntry).toBeCalledTimes(1);
       expect(mockEntry).toBeCalledWith(
         { resource: { type: 'global' }, severity },
-        message
+        message,
       );
     });
     it('should write entry', async () => {

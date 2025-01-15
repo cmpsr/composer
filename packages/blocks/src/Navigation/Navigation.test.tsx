@@ -28,7 +28,7 @@ describe('Navigation', () => {
           <Navigation.Action href="#">Action 1</Navigation.Action>
           <Navigation.Action href="#">Action 2</Navigation.Action>
         </Navigation.Actions>
-      </Navigation>
+      </Navigation>,
     );
 
   test('should render all content in desktop', () => {

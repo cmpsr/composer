@@ -12,7 +12,7 @@ describe('SegmentedButton', () => {
         <SegmentedButton.Button value="dummy_value_1">dummy text 1</SegmentedButton.Button>
         <SegmentedButton.Button value="dummy_value_2">dummy text 2</SegmentedButton.Button>
         <SegmentedButton.Button value="dummy_value_3">dummy text 3</SegmentedButton.Button>
-      </SegmentedButton>
+      </SegmentedButton>,
     );
 
   it('should render', () => {
@@ -50,7 +50,7 @@ describe('SegmentedButton', () => {
         <SegmentedButton.Button value="dummy_value_1">dummy text 1</SegmentedButton.Button>
         <SegmentedButton.Button value="dummy_value_2">dummy text 2</SegmentedButton.Button>
         <SegmentedButton.Button value="dummy_value_3">dummy text 3</SegmentedButton.Button>
-      </SegmentedButton>
+      </SegmentedButton>,
     );
 
     expect(screen.getByRole('button', { current: true })).toHaveValue('dummy_value_2');

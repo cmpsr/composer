@@ -5,7 +5,7 @@ import { Page } from './types';
 export const getPageById = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
   pageId: string,
-  preview: boolean
+  preview: boolean,
 ): Promise<Page | undefined> => {
   const { data } = await apolloClient.query({
     query: gql`

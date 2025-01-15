@@ -10,6 +10,7 @@ const commonStyle = {
 };
 
 export const Modal: ComponentStyleConfig = {
+  parts: ['overlay', 'dialog', 'header', 'body', 'footer'],
   baseStyle: {
     overlay: {
       backgroundColor: transparentize('background-overlay', 0.75),

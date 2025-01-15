@@ -1,9 +1,10 @@
+/* eslint-disable */
 export const loadAmplitude = () => {
   function c(e, t) {
-    var r = e.amplitude || { _q: [], _iq: {} };
+    const r = e.amplitude || { _q: [], _iq: {} };
     if (r.invoked) e.console && console.error && console.error('Amplitude snippet has been loaded.');
     else {
-      var n = function (e, t) {
+      const n = function (e, t) {
           e.prototype[t] = function () {
             return this._q.push({ name: t, args: Array.prototype.slice.call(arguments, 0) }), this;
           };
@@ -23,11 +24,11 @@ export const loadAmplitude = () => {
           };
         },
         a = function (e) {
-          for (var t = 0; t < g.length; t++) i(e, g[t], !1);
-          for (var r = 0; r < m.length; r++) i(e, m[r], !0);
+          for (let t = 0; t < g.length; t++) i(e, g[t], !1);
+          for (let r = 0; r < m.length; r++) i(e, m[r], !0);
         };
       r.invoked = !0;
-      var c = t.createElement('script');
+      const c = t.createElement('script');
       (c.type = 'text/javascript'),
         (c.integrity = 'sha384-r58GovPc8jo7o9PFd/Y8xHwOiockvJvuIBZZqsA7I8EzliMj0Pe0Sbx7Ti2ClxDD'),
         (c.crossOrigin = 'anonymous'),
@@ -36,7 +37,7 @@ export const loadAmplitude = () => {
         (c.onload = function () {
           e.amplitude.runQueuedFunctions || console.log('[Amplitude] Error: could not load SDK');
         });
-      var u = t.getElementsByTagName('script')[0];
+      const u = t.getElementsByTagName('script')[0];
       u.parentNode.insertBefore(c, u);
       for (
         var l = function () {

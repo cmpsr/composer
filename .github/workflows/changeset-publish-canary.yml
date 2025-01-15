@@ -32,7 +32,7 @@ jobs:
         run: npm install
 
       - name: Create Snapshot version
-        run: npm run changeset version --snapshot canary
+        run: npm run changeset version --snapshot
 
       - name: Build Packages
         run: npm run build

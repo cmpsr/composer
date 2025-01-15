@@ -16,7 +16,8 @@
     "lint": "eslint .",
     "lint-and-fix": "eslint . --fix",
     "publish-ci": "turbo run libbuild && turbo run type:emit && changeset publish",
-    "storybook": "turbo run storybook"
+    "storybook": "turbo run storybook",
+    "changeset": "changeset"
   },
   "private": true,
   "workspaces": [

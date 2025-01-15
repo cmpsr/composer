@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.17.1
+
+### Patch Changes
+
+- d9f8d95: chore: dependencies updates
+
 ## 7.17.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @cmpsr/cml
 
+## 0.10.3
+
+### Patch Changes
+
+- d9f8d95: chore: dependencies updates
+
 ## 0.10.2
 
 ### Patch Changes

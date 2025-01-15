@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.1
+
+### Patch Changes
+
+- d9f8d95: chore: dependencies updates
+
 ## 0.5.0
 
 ### Minor Changes

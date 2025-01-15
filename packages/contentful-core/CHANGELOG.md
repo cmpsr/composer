@@ -1,5 +1,11 @@
 # @cmpsr/contentful-core
 
+## 1.0.1
+
+### Patch Changes
+
+- d9f8d95: chore: dependencies updates
+
 ## 1.0.0
 
 ### Major Changes

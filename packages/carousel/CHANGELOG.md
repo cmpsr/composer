@@ -1,5 +1,11 @@
 # @cmpsr/carousel
 
+## 4.0.31
+
+### Patch Changes
+
+- d9f8d95: chore: dependencies updates
+
 ## 4.0.30
 
 ## 4.0.29

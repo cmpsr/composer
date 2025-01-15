@@ -8,7 +8,7 @@ describe('Modal', () => {
     renderWithProviders(
       <Modal isOpen={isOpen} size="auto" onClose={jest.fn()}>
         Children
-      </Modal>
+      </Modal>,
     );
 
   test('should render child if is open', () => {

@@ -89,6 +89,7 @@ describe('FirestoreDb', () => {
 
   test('should initialize client with given config', () => {
     new FirestoreDb(config);
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const firestoreModule = require('@google-cloud/firestore');
     expect(firestoreModule.Firestore).toBeCalledTimes(1);
     expect(firestoreModule.Firestore).toBeCalledWith(config);
@@ -175,7 +176,7 @@ describe('FirestoreDb', () => {
           index + 2,
           conditions[index].field,
           conditions[index].operator,
-          conditions[index].value
+          conditions[index].value,
         );
       }
     });
@@ -191,7 +192,7 @@ describe('FirestoreDb', () => {
         expect(mockOrderBy).nthCalledWith(
           index + 1,
           orderBy[index].field,
-          orderBy[index].order
+          orderBy[index].order,
         );
       }
     });
@@ -255,7 +256,7 @@ describe('FirestoreDb', () => {
       const firestoreDb = new FirestoreDb(config);
       await firestoreDb.save(
         { ...objToSave, _createdAt: 'given' },
-        collectionName
+        collectionName,
       );
       expect(mockSet).toBeCalledWith({
         ...objToSave,
@@ -267,7 +268,7 @@ describe('FirestoreDb', () => {
       const firestoreDb = new FirestoreDb(config);
       await firestoreDb.save(
         { ...objToSave, createdAt: 'given' },
-        collectionName
+        collectionName,
       );
       expect(mockSet).toBeCalledWith({
         ...objToSave,
@@ -314,7 +315,7 @@ describe('FirestoreDb', () => {
       await firestoreDb.update(
         id,
         { ...values, _updatedAt: 'given' },
-        collectionName
+        collectionName,
       );
       expect(mockUpdate).toBeCalledWith({
         field: 'newValue',
@@ -326,7 +327,7 @@ describe('FirestoreDb', () => {
       await firestoreDb.update(
         id,
         { ...values, updatedAt: 'given' },
-        collectionName
+        collectionName,
       );
       expect(mockUpdate).toBeCalledWith({
         field: 'newValue',

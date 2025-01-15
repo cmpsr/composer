@@ -29,7 +29,7 @@ More information can be found on [Segment](https://segment.com/docs/connections/
 
 ### Compile
 
-To compile this library please run `yarn run libbuild`
+To compile this library please run `npm run libbuild`
 
 ### Add Provider
 

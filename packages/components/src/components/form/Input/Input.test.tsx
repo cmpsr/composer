@@ -14,7 +14,7 @@ describe('Input', () => {
     const result = TestRenderer.create(
       <ComposerProvider>
         <Input leadingIcon={<div />} />
-      </ComposerProvider>
+      </ComposerProvider>,
     );
 
     expect(result.root.findByProps({ 'data-testid': 'cmpsr.input-icon' })).toBeTruthy();
@@ -24,7 +24,7 @@ describe('Input', () => {
     const result = TestRenderer.create(
       <ComposerProvider>
         <Input leadingIcon={<div />} leftLabel="label" />
-      </ComposerProvider>
+      </ComposerProvider>,
     );
 
     expect(result.toJSON()[0].children[0].props.className).not.toContain('chakra-input__left-element');

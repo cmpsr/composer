@@ -62,9 +62,9 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
           }
           return false;
         },
-        COMMAND_PRIORITY_LOW
+        COMMAND_PRIORITY_LOW,
       ),
-    [editorRef, isEditMode, isLink, setIsLink]
+    [editorRef, isEditMode, isLink, setIsLink],
   );
 
   const updateLinkEditor = useCallback(() => {
@@ -153,7 +153,7 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
           updateLinkEditor();
           return true;
         },
-        COMMAND_PRIORITY_LOW
+        COMMAND_PRIORITY_LOW,
       ),
       editor.registerCommand(
         KEY_ESCAPE_COMMAND,
@@ -164,8 +164,8 @@ const FloatingLinkEditor = ({ editor, isLink, setIsLink, anchorElem }: FloatingL
           }
           return false;
         },
-        COMMAND_PRIORITY_HIGH
-      )
+        COMMAND_PRIORITY_HIGH,
+      ),
     );
   }, [editor, updateLinkEditor, setIsLink, isLink]);
 
@@ -290,14 +290,14 @@ const useFloatingLinkEditorToolbar = (editor: LexicalEditor, anchorElem: HTMLEle
           setActiveEditor(newEditor);
           return false;
         },
-        COMMAND_PRIORITY_CRITICAL
-      )
+        COMMAND_PRIORITY_CRITICAL,
+      ),
     );
   }, [editor, updateToolbar]);
 
   return createPortal(
     <FloatingLinkEditor editor={activeEditor} isLink={isLink} anchorElem={anchorElem} setIsLink={setIsLink} />,
-    anchorElem
+    anchorElem,
   );
 };
 

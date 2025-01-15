@@ -17,7 +17,7 @@ describe('Footer', () => {
         </Footer.ActionsContainer>
         {renderCopyGroup && <Footer.CopyGroup>copyGroup</Footer.CopyGroup>}
         {renderBottom && <Footer.Bottom>Bottom content</Footer.Bottom>}
-      </Footer>
+      </Footer>,
     );
 
   test('should render content', () => {

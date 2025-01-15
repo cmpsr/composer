@@ -12,7 +12,7 @@ describe('MaskInput', () => {
 
   test('should apply prefix and postfix correctly', () => {
     renderWithProviders(
-      <MaskInput maskOptions={{ mask: /\d*/, prefix: '$', postfix: '%' }} placeholder="Enter amount" />
+      <MaskInput maskOptions={{ mask: /\d*/, prefix: '$', postfix: '%' }} placeholder="Enter amount" />,
     );
     const input = screen.getByPlaceholderText('Enter amount') as HTMLInputElement;
     fireEvent.input(input, { target: { value: '50' } });
@@ -26,7 +26,7 @@ describe('MaskInput', () => {
           mask: [/\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/],
         }}
         placeholder="Enter value"
-      />
+      />,
     );
     const input = screen.getByPlaceholderText('Enter value') as HTMLInputElement;
     fireEvent.input(input, { target: { value: '123456' } });
@@ -35,7 +35,7 @@ describe('MaskInput', () => {
 
   test('should clear input when mask, prefix, or postfix no longer apply', () => {
     renderWithProviders(
-      <MaskInput maskOptions={{ mask: /\d*/, prefix: '$', postfix: '%' }} placeholder="Enter amount" />
+      <MaskInput maskOptions={{ mask: /\d*/, prefix: '$', postfix: '%' }} placeholder="Enter amount" />,
     );
     const input = screen.getByPlaceholderText('Enter amount') as HTMLInputElement;
     fireEvent.input(input, { target: { value: '$1%' } });

@@ -68,7 +68,7 @@ const AllTemplate = () => {
                     </Td>
                   ))}
                 </Tr>
-              )
+              ),
             )}
           </Fragment>
         ))}

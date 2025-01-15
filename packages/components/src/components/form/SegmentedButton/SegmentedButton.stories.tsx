@@ -1,4 +1,4 @@
-import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { Flex, SegmentedButton } from '@components';
 import { Meta } from '@storybook/react';
 import React, { Fragment } from 'react';

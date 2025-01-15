@@ -17,7 +17,7 @@ describe('AccordionGallery', () => {
     renderWithProviders(
       <AccordionGallery>
         <AccordionGallery.Overline>overline</AccordionGallery.Overline>
-      </AccordionGallery>
+      </AccordionGallery>,
     );
     screen.getByText('overline');
   });
@@ -28,7 +28,7 @@ describe('AccordionGallery', () => {
           <AccordionGallery.Title.Label>label</AccordionGallery.Title.Label>
           <AccordionGallery.Title.Label>sublabel</AccordionGallery.Title.Label>
         </AccordionGallery.Title>
-      </AccordionGallery>
+      </AccordionGallery>,
     );
     screen.getByText('label');
     screen.getByText('sublabel');
@@ -42,7 +42,7 @@ describe('AccordionGallery', () => {
             <AccordionGallery.Accordion.Panel>panel</AccordionGallery.Accordion.Panel>
           </AccordionGallery.Accordion.Item>
         </AccordionGallery.Accordion>
-      </AccordionGallery>
+      </AccordionGallery>,
     );
     screen.getByText('button');
     screen.getByText('panel');
@@ -55,7 +55,7 @@ describe('AccordionGallery', () => {
             <AccordionGallery.Accordion.Image src="foo" />
           </AccordionGallery.Accordion.Item>
         </AccordionGallery.Accordion>
-      </AccordionGallery>
+      </AccordionGallery>,
     );
     screen.getByRole('img');
   });
@@ -72,7 +72,7 @@ describe('AccordionGallery', () => {
             <AccordionGallery.Accordion.Image src="image 2" alt="image 2" />
           </AccordionGallery.Accordion.Item>
         </AccordionGallery.Accordion>
-      </AccordionGallery>
+      </AccordionGallery>,
     );
     screen.getByRole('img', { name: 'image 1' });
     fireEvent.click(screen.getByText('button 2'));
@@ -89,7 +89,7 @@ describe('AccordionGallery', () => {
             <AccordionGallery.Accordion.Image src="image 2" alt="image 2" />
           </AccordionGallery.Accordion.Item>
         </AccordionGallery.Accordion>
-      </AccordionGallery>
+      </AccordionGallery>,
     );
     screen.getByRole('img', { name: 'image 2' });
   });
@@ -104,7 +104,7 @@ describe('AccordionGallery', () => {
             <AccordionGallery.Accordion.Image src="image 2" alt="image 2" />
           </AccordionGallery.Accordion.Item>
         </AccordionGallery.Accordion>
-      </AccordionGallery>
+      </AccordionGallery>,
     );
     screen.getByRole('img', { name: 'default image' });
   });
@@ -117,7 +117,7 @@ describe('AccordionGallery', () => {
             <AccordionGallery.Accordion.Button>button</AccordionGallery.Accordion.Button>
           </AccordionGallery.Accordion.Item>
         </AccordionGallery.Accordion>
-      </AccordionGallery>
+      </AccordionGallery>,
     );
     fireEvent.click(screen.getByText('button'));
     expect(mockOnChange).toHaveBeenCalledTimes(1);
@@ -127,7 +127,7 @@ describe('AccordionGallery', () => {
     renderWithProviders(
       <AccordionGallery>
         <AccordionGallery.Action href="action-url">action</AccordionGallery.Action>
-      </AccordionGallery>
+      </AccordionGallery>,
     );
 
     expect(screen.getByText('action').getAttribute('href')).toEqual('action-url');

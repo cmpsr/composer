@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react';
 import { Button } from './Button';
 import { buttonSizes, buttonVariants } from './types';
 import * as Icons from '../../media/Icons';
-import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { linkVariants } from '@components';
 
 export default {

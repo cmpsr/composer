@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "2.0.29",
+  "version": "2.0.30",
   "author": "Angel Gonzalez <angel@impulsum.vc>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -18,20 +18,21 @@
     "package.json"
   ],
   "scripts": {
-    "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts' && yarn type:emit",
+    "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts' && npm run type:emit",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:check": "tsc --project tsconfig.json --noEmit",
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' \\) -exec rm {} +"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.0",
     "@signalwire/js": "^3.16.0",
     "@signalwire/realtime-api": "^3.5.0",
     "axios": "^1.1.3"
   },
   "devDependencies": {
-    "@cmpsr/components": "^7.17.0",
+    "@cmpsr/components": "^7.17.1",
     "rimraf": "^5.0.5"
   },
   "peerDependencies": {

@@ -36,7 +36,7 @@ describe('generateMdx', () => {
       expect(mockReplaceCmlPlaceholders).toHaveBeenNthCalledWith(
         index + 1,
         block.models[0],
-        block.propsValues[0] || {}
+        block.propsValues[0] || {},
       );
     });
   });

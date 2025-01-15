@@ -7,7 +7,7 @@ The composer markdown editor is an _opinionated_ [React](https://react.dev) comp
 ## Using the library
 
 ```bash
-yarn add @cmpsr/components @cmpsr/markdown-editor
+npm install @cmpsr/components @cmpsr/markdown-editor
 ```
 
 The `@cmpsr/markdown-editor` library requires `react`, `react-dom` and `@cmpsr/components` libraries to be installed in your project.

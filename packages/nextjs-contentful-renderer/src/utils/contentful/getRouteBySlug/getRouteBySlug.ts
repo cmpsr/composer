@@ -6,7 +6,7 @@ export const getRouteBySlug = async (
   apolloClient: ApolloClient<NormalizedCacheObject>,
   slug: string,
   preview: boolean,
-  domain = process.env.SITE_DOMAIN
+  domain = process.env.SITE_DOMAIN,
 ): Promise<Replica | Route> => {
   const normalizedSlug = slug.startsWith('/') ? slug : `/${slug}`;
   const { data } = await apolloClient.query({

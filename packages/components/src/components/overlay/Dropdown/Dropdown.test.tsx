@@ -10,7 +10,7 @@ describe('Dropdown', () => {
         <Dropdown.List data-testid="cmpsr.dropdown.list">
           <Dropdown.Item data-testid="cmpsr.dropdown.item">Item 1</Dropdown.Item>
         </Dropdown.List>
-      </Dropdown>
+      </Dropdown>,
     );
     screen.getByTestId('cmpsr.dropdown.button');
     screen.getByTestId('cmpsr.dropdown.list');

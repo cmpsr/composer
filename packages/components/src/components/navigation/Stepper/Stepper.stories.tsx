@@ -51,8 +51,8 @@ const TopBottomLabelTemplate = ({ numberOfSteps = 3, stepFormat = 'number' }) =>
         ))}
       </Stepper>
       <Flex mt="1rem" gap="1rem">
-        <Button onClick={() => setActiveStep((curr) => Math.max(curr - 1, 0))}>Previous</Button>
-        <Button onClick={() => setActiveStep((curr) => Math.min(curr + 1, numberOfSteps))}>Next</Button>
+        <Button onClick={() => setActiveStep(Math.max(activeStep - 1, 0))}>Previous</Button>
+        <Button onClick={() => setActiveStep(Math.min(activeStep + 1, numberOfSteps))}>Next</Button>
       </Flex>
     </>
   );
@@ -99,8 +99,8 @@ const SummaryTemplate = ({ numberOfSteps = 3, stepFormat = 'number' }) => {
         </Stepper.Step.Description>
       </Box>
       <Flex mt="1rem" gap="1rem">
-        <Button onClick={() => setActiveStep((curr) => Math.max(curr - 1, 0))}>Previous</Button>
-        <Button onClick={() => setActiveStep((curr) => Math.min(curr + 1, numberOfSteps))}>Next</Button>
+        <Button onClick={() => setActiveStep(Math.max(activeStep - 1, 0))}>Previous</Button>
+        <Button onClick={() => setActiveStep(Math.min(activeStep + 1, numberOfSteps))}>Next</Button>
       </Flex>
     </>
   );
@@ -121,7 +121,7 @@ const ProgressTemplate = ({ numberOfSteps, stepFormat }) => {
 
   const handlePrevious = () => {
     if (currentProgress === 0) {
-      setActiveStep((curr) => Math.max(curr - 1, 0));
+      setActiveStep(Math.max(activeStep - 1, 0));
       setCurrentProgress(50);
     } else {
       setCurrentProgress(0);
@@ -133,7 +133,7 @@ const ProgressTemplate = ({ numberOfSteps, stepFormat }) => {
       setCurrentProgress(50);
     } else {
       setCurrentProgress(0);
-      setActiveStep((curr) => Math.min(curr + 1, numberOfSteps));
+      setActiveStep(Math.min(activeStep + 1, numberOfSteps));
     }
   };
 

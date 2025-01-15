@@ -39,7 +39,7 @@ export const Button = forwardRef<ButtonProps, typeof ChakraButton>(
         </Flex>
       </ChakraButton>
     );
-  }
+  },
 );
 
 const getIcon = (icon: React.ReactElement<IconProps>, size: ButtonSize) => {

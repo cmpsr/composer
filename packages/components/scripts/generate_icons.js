@@ -175,15 +175,17 @@ const icons = [
   'IconListNumbers',
 ].sort();
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const fs = require('fs');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const path = require('path');
 
 const doNotEditHeader = `//
 // This is a generated file. DO NOT EDIT IT.
 // Instead run:
 //
-// yarn install #if you've updated @tabler/icons-react
-// yarn gen:icons
+// npm run install #if you've updated @tabler/icons-react
+// npm run gen:icons
 //`;
 
 // Generate Icons.tsx
@@ -220,7 +222,7 @@ ${tablerIcons.join('\n')}
 
 fs.writeFileSync(
   path.resolve(__dirname, '../src/components/media/Icons/Icons.tsx'),
-  iconsFileContent.replace(/(Tabler.IconCircle)(\d)/g, '$1Number$2')
+  iconsFileContent.replace(/(Tabler.IconCircle)(\d)/g, '$1Number$2'),
 );
 
 // Generate stories
@@ -251,7 +253,7 @@ const Template = (args) => (
         <Icons.${icon} {...args} />
       </Box>
       <Box>${icon}</Box>
-    </Flex>`
+    </Flex>`,
     )
     .join('')}
   </Grid>
@@ -264,5 +266,5 @@ All.args = {
 
 fs.writeFileSync(
   path.resolve(__dirname, '../src/components/media/Icons/Icons.stories.tsx'),
-  storiesContent
+  storiesContent,
 );

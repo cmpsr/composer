@@ -14,7 +14,7 @@ describe('InlineAlert', () => {
       <InlineAlert>
         {showIcon && <InlineAlert.Icon />}
         <InlineAlert.Message>{message}</InlineAlert.Message>
-      </InlineAlert>
+      </InlineAlert>,
     );
 
   test('should render a generic message without icon', () => {

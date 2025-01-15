@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "7.17.0",
+  "version": "7.17.1",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -19,48 +19,51 @@
   ],
   "private": false,
   "scripts": {
-    "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts,**/*.stories.ts' && yarn type:emit",
+    "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts,**/*.stories.ts' && npm run type:emit",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "gen:theme-typings": "sh ./scripts/generate_theme_typings.sh",
     "postinstall": "npm run gen:theme-typings",
     "gen:icons": "node scripts/generate_icons.js",
-    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:check": "tsc --project tsconfig.json --noEmit",
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "peerDependencies": {
     "react": "^18.2.0"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.8.0",
-    "@chakra-ui/react-utils": "^2.0.11",
+    "@chakra-ui/layout": "^2.3.1",
+    "@chakra-ui/react": "2.8.0",
+    "@chakra-ui/react-utils": "2.0.11",
     "@chakra-ui/styled-system": "^2.0.0",
-    "@chakra-ui/theme-tools": "^2.1.2",
+    "@chakra-ui/theme-tools": "2.1.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@maskito/core": "^1.9.0",
     "@maskito/kit": "^1.9.0",
     "@maskito/phone": "^1.9.0",
     "@maskito/react": "^1.9.0",
-    "@tabler/icons-react": "^2.32.0",
+    "@tabler/icons-react": "2.32.0",
     "downshift": "^7.6.0",
     "framer-motion": "^10.16.0",
     "libphonenumber-js": "^1.10.51"
   },
   "devDependencies": {
     "@chakra-ui/cli": "^2.4.1",
+    "@storybook/react": "^8.4.7",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react-hooks": "^8.0.1",
-    "@types/jest": "^27.0.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@types/jest": "^27.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-test-renderer": "^18.3.1",
     "swc-loader": "^0.1.15"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=20"
   }
 }

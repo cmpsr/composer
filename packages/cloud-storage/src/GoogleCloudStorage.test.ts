@@ -44,6 +44,7 @@ describe('GoogleCloudStorage', () => {
   });
 
   test('should initialize client with given config', () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const storageModule = require('@google-cloud/storage');
     new GoogleCloudStorage(config);
     expect(storageModule.Storage).toBeCalledTimes(1);

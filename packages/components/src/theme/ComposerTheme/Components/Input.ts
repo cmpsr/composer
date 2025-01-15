@@ -157,7 +157,7 @@ export const getInputGroupStyle = (
     isInvalid?: boolean;
     isDisabled?: boolean;
   },
-  variant = 'outline'
+  variant = 'outline',
 ) => {
   if (props.isInvalid) {
     return inputGroupStyles[variant].invalid;
@@ -177,7 +177,7 @@ export const getLabelStyle = (
     isInvalid?: boolean;
     isDisabled?: boolean;
   },
-  variant = 'outline'
+  variant = 'outline',
 ) => {
   if (props.isInvalid) {
     return labelStyles.variants[variant].invalid;

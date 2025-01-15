@@ -7,7 +7,7 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
-  "version": "14.1.11",
+  "version": "14.1.12",
   "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -18,11 +18,11 @@
   ],
   "private": false,
   "scripts": {
-    "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts,**/*.stories.ts' && yarn type:emit",
+    "libbuild": "rimraf lib && npx swc ./src -d lib --ignore '**/*.test.ts,**/*.stories.ts' && npm run type:emit",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "type:check": "yarn tsc --project tsconfig.json --noEmit",
+    "type:check": "tsc --project tsconfig.json --noEmit",
     "type:emit": "tsc --project ./tsconfig.json -d --declarationDir lib --emitDeclarationOnly && find lib -type f \\( -name '*.test.*' -o -name '*.stories.*' \\) -exec rm {} +"
   },
   "peerDependencies": {
@@ -30,18 +30,19 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@cmpsr/components": "^7.17.0",
+    "@cmpsr/components": "^7.17.1",
     "@storybook/addon-viewport": "^6.5.6",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@swc/jest": "^0.2.20",
-    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
     "@types/jest": "^27.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "swc-loader": "^0.1.15"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=20"
   }
 }

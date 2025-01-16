@@ -1,5 +1,11 @@
 # @cmpsr/nextjs-contentful-renderer
 
+## 24.0.34
+
+### Patch Changes
+
+- 8563abb: feat: add react19 to supported versions
+
 ## 24.0.33
 
 ### Patch Changes

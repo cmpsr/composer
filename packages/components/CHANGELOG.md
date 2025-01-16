@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.17.3
+
+### Patch Changes
+
+- 8563abb: feat: add react19 to supported versions
+
 ## 7.17.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 14.1.14
+
+### Patch Changes
+
+- 8563abb: feat: add react19 to supported versions
+
 ## 14.1.13
 
 ### Patch Changes

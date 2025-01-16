@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.32
+
+### Patch Changes
+
+- 8563abb: feat: add react19 to supported versions
+
 ## 2.0.31
 
 ### Patch Changes

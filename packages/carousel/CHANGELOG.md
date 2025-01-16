@@ -1,5 +1,11 @@
 # @cmpsr/carousel
 
+## 4.0.33
+
+### Patch Changes
+
+- 8563abb: feat: add react19 to supported versions
+
 ## 4.0.32
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @cmpsr/ui-storybook
 
+## 0.2.64
+
+### Patch Changes
+
+- 8563abb: feat: add react19 to supported versions
+- Updated dependencies [8563abb]
+  - @cmpsr/components@7.17.3
+
 ## 0.2.63
 
 ### Patch Changes

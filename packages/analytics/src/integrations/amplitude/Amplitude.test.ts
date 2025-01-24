@@ -33,7 +33,15 @@ jest.mock('./loadAmplitude', () => {
 describe('Amplitude', () => {
   it('should initialize amplitude', () => {
     new Amplitude({ apiKey: '1234' });
-    expect(mockAmplitude.init).toHaveBeenCalledWith('1234');
+    expect(mockAmplitude.init).toHaveBeenCalledWith('1234', {
+      autocapture: { elementInteractions: true, fileDownloads: true, formInteractions: true, pageViews: true },
+    });
+  });
+  it('should initialize amplitude with matching config', () => {
+    new Amplitude({ apiKey: '1234', autoCaptureViews: false, autoCaptureForms: true, autoCaptureDownloads: false });
+    expect(mockAmplitude.init).toHaveBeenCalledWith('1234', {
+      autocapture: { elementInteractions: true, fileDownloads: false, formInteractions: true, pageViews: false },
+    });
   });
   it('should set user id on identify', () => {
     const amplitude = new Amplitude({ apiKey: '1234' });
@@ -62,6 +70,7 @@ describe('Amplitude', () => {
         '[Amplitude] Page Path': window.location.pathname,
         '[Amplitude] Page Title': window.document.title,
         '[Amplitude] Page URL': window.location.href,
+        trait: 'trait',
       },
     });
   });
@@ -74,5 +83,13 @@ describe('Amplitude', () => {
     const amplitude = new Amplitude({ apiKey: '1234' });
     amplitude.reset();
     expect(mockAmplitude.reset).toHaveBeenCalled();
+  });
+  it('should revenue', () => {
+    const amplitude = new Amplitude({ apiKey: '1234' });
+    amplitude.revenue(19.55, 1, 'new');
+    expect(mockAmplitude.Revenue).toHaveBeenCalled();
+    expect(mockAmplitude.Revenue().setPrice).toHaveBeenCalled();
+    expect(mockAmplitude.Revenue().setQuantity).toHaveBeenCalled();
+    expect(mockAmplitude.Revenue().setRevenueType).toHaveBeenCalled();
   });
 });

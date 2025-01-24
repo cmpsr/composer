@@ -6,7 +6,14 @@ import { AmplitudeConfig } from './types';
 export class Amplitude implements IIntegration {
   constructor(config: AmplitudeConfig) {
     const amplitude = loadAmplitude();
-    amplitude.init(config.apiKey);
+    amplitude.init(config.apiKey, {
+      autocapture: {
+        formInteractions: config.autoCaptureForms ?? true,
+        pageViews: config.autoCaptureViews ?? true,
+        fileDownloads: config.autoCaptureDownloads ?? true,
+        elementInteractions: config.autoCaptureElementInteractions ?? true,
+      },
+    });
   }
 
   identify: Identify = (userId, traits) => {
@@ -25,7 +32,7 @@ export class Amplitude implements IIntegration {
     (window as any).amplitude.setGroup(groupId, traits);
   };
 
-  page: Page = (pageName) => {
+  page: Page = (pageName, traits) => {
     (window as any).amplitude.track({
       event_type: '[Amplitude] Page Viewed',
       event_properties: {
@@ -35,6 +42,7 @@ export class Amplitude implements IIntegration {
         '[Amplitude] Page Path': window.location.pathname,
         '[Amplitude] Page Title': window.document.title,
         '[Amplitude] Page URL': window.location.href,
+        ...traits,
       },
     });
   };
@@ -47,5 +55,9 @@ export class Amplitude implements IIntegration {
     (window as any).amplitude.reset();
   };
 
-  revenue = () => {};
+  revenue = (price, quantity, type) => {
+    const amplitude = (window as any).amplitude;
+    const event = new amplitude.Revenue().setPrice(price).setQuantity(quantity).setRevenueType(type);
+    amplitude.revenue(event);
+  };
 }

@@ -25,7 +25,7 @@ export class Amplitude implements IIntegration {
     (window as any).amplitude.setGroup(groupId, traits);
   };
 
-  page: Page = (pageName, traits) => {
+  page: Page = (pageName) => {
     (window as any).amplitude.track({
       event_type: '[Amplitude] Page Viewed',
       event_properties: {

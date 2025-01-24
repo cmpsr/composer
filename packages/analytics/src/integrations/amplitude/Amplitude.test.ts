@@ -33,7 +33,15 @@ jest.mock('./loadAmplitude', () => {
 describe('Amplitude', () => {
   it('should initialize amplitude', () => {
     new Amplitude({ apiKey: '1234' });
-    expect(mockAmplitude.init).toHaveBeenCalledWith('1234');
+    expect(mockAmplitude.init).toHaveBeenCalledWith('1234', {
+      autocapture: { elementInteractions: true, fileDownloads: true, formInteractions: true, pageViews: true },
+    });
+  });
+  it('should initialize amplitude with matching config', () => {
+    new Amplitude({ apiKey: '1234', autoCaptureViews: false, autoCaptureForms: true, autoCaptureDownloads: false });
+    expect(mockAmplitude.init).toHaveBeenCalledWith('1234', {
+      autocapture: { elementInteractions: true, fileDownloads: false, formInteractions: true, pageViews: false },
+    });
   });
   it('should set user id on identify', () => {
     const amplitude = new Amplitude({ apiKey: '1234' });

@@ -40,7 +40,11 @@ const COOKIE_NAME = 'composer_anonymous_id';
 
 const proxyToIntegrations = (integrations: IIntegration[], func: string, args: any[], disabledFunctions) => {
   integrations.forEach((integration) => {
-    if (disabledFunctions && disabledFunctions[integration.constructor.name].includes(func)) {
+    if (
+      disabledFunctions &&
+      disabledFunctions[integration.constructor.name] &&
+      disabledFunctions[integration.constructor.name].includes(func)
+    ) {
       integration[func] = () => null;
       return;
     }

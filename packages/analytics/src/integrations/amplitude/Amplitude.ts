@@ -6,7 +6,14 @@ import { AmplitudeConfig } from './types';
 export class Amplitude implements IIntegration {
   constructor(config: AmplitudeConfig) {
     const amplitude = loadAmplitude();
-    amplitude.init(config.apiKey);
+    amplitude.init(config.apiKey, {
+      autocapture: {
+        formInteractions: config.autoCaptureForms ?? true,
+        pageViews: config.autoCaptureViews ?? true,
+        fileDownloads: config.autoCaptureDownloads ?? true,
+        elementInteractions: config.autoCaptureElementInteractions ?? true,
+      },
+    });
   }
 
   identify: Identify = (userId, traits) => {

@@ -2,4 +2,4 @@
 "@cmpsr/analytics": minor
 ---
 
-Disable Amplitude revenue event
+Add disable functions feature to analytics, allow Amplitude to be further configurated

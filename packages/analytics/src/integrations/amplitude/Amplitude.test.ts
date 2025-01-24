@@ -62,7 +62,6 @@ describe('Amplitude', () => {
         '[Amplitude] Page Path': window.location.pathname,
         '[Amplitude] Page Title': window.document.title,
         '[Amplitude] Page URL': window.location.href,
-        trait: 'trait',
       },
     });
   });

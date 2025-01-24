@@ -35,7 +35,6 @@ export class Amplitude implements IIntegration {
         '[Amplitude] Page Path': window.location.pathname,
         '[Amplitude] Page Title': window.document.title,
         '[Amplitude] Page URL': window.location.href,
-        ...traits,
       },
     });
   };

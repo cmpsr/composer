@@ -36,7 +36,7 @@ const proxyToIntegrations = (
 ) => {
   Object.keys(integrations).forEach((integrationKey) => {
     const integration = integrations[integrationKey];
-    if (disabledFunctions && disabledFunctions[integrationKey]?.includes(func)) {
+    if (disabledFunctions?.[integrationKey]?.includes(func)) {
       return;
     }
     // eslint-disable-next-line prefer-spread

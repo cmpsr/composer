@@ -54,7 +54,7 @@ const AnalyticsComponent = () => {
   );
 };
 
-describe('useComposerProvider', () => {
+describe('useAnalyticsProvider', () => {
   const givenComponentRendered = (children: React.ReactNode, disabledFunctions = null) =>
     render(
       <_AnalyticsProvider
@@ -63,7 +63,7 @@ describe('useComposerProvider', () => {
         disabledFunctions={disabledFunctions}
       >
         {children}
-      </_AnalyticsProvider>
+      </_AnalyticsProvider>,
     );
 
   test('should render component and children', () => {

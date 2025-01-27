@@ -34,7 +34,7 @@ describe('Amplitude', () => {
   it('should initialize amplitude', () => {
     new Amplitude({ apiKey: '1234' });
     expect(mockAmplitude.init).toHaveBeenCalledWith('1234', {
-      autocapture: { elementInteractions: true, fileDownloads: true, formInteractions: true, pageViews: true },
+      defaultTracking: true,
     });
   });
   it('should initialize amplitude with matching config', () => {

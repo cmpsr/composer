@@ -1,10 +1,20 @@
 /* eslint-disable prefer-rest-params */
 import React, { FC, ReactNode, useMemo } from 'react';
 import { AnalyticsContext } from './AnalyticsContext';
-import { Segment, ISegmentConfig, GA, IGAConfig, GTag, IGTagConfig, Meta, MetaConfig } from './integrations';
+import {
+  Segment,
+  ISegmentConfig,
+  GA,
+  IGAConfig,
+  GTag,
+  IGTagConfig,
+  Meta,
+  MetaConfig,
+  Amplitude,
+  AmplitudeConfig,
+} from './integrations';
 import { v1 as uuidv1 } from 'uuid'; // v1 is timestamp based + random
 import Cookies from 'js-cookie';
-import { Amplitude, AmplitudeConfig } from './integrations/amplitude';
 
 const supportedIntegrations = {
   ga: GA,

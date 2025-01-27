@@ -75,7 +75,7 @@ describe('useComposerProvider', () => {
     givenComponentRendered(
       <>
         <AnalyticsComponent />
-      </>
+      </>,
     );
 
     const button = screen.getByTestId('track');
@@ -90,7 +90,7 @@ describe('useComposerProvider', () => {
       <>
         <AnalyticsComponent />
       </>,
-      { amplitude: ['track'] }
+      { amplitude: ['track'] },
     );
 
     const button = screen.getByTestId('track');
@@ -103,7 +103,7 @@ describe('useComposerProvider', () => {
     givenComponentRendered(
       <>
         <AnalyticsComponent />
-      </>
+      </>,
     );
 
     const button = screen.getByTestId('revenue');
@@ -117,7 +117,7 @@ describe('useComposerProvider', () => {
       <>
         <AnalyticsComponent />
       </>,
-      { amplitude: ['revenue'] }
+      { amplitude: ['revenue'] },
     );
 
     const button = screen.getByTestId('revenue');

@@ -30,6 +30,7 @@ export interface IAnalyticsProvider {
   ga?: IGAConfig;
   amplitude?: AmplitudeConfig;
   meta?: MetaConfig;
+  disabledFunctions?: Record<string, string[]>;
   children: ReactNode;
 }
 
@@ -37,15 +38,30 @@ const ssr = !(typeof window !== 'undefined' && window.document && window.documen
 
 const COOKIE_NAME = 'composer_anonymous_id';
 
-const proxyToIntegrations = (integrations: IIntegration[], func: string, args: any[]) => {
-  integrations.forEach((integration) =>
+const proxyToIntegrations = (
+  integrations: Record<string, typeof supportedIntegrations>,
+  func: string,
+  args: any[],
+  disabledFunctions
+) => {
+  Object.keys(integrations).forEach((integrationKey) => {
+    const integration = integrations[integrationKey];
+    console.log(disabledFunctions, 'disabledFunctions');
+    console.log(integration, 'integration');
+    console.log(integration.constructor.name, 'integration.constructor.name');
+    console.log(integrationKey, 'integration key');
+    console.log(disabledFunctions[integration.constructor.name], 'disabledFunctions[integration.constructor.name]');
+    console.log(func, 'func');
+    if (disabledFunctions && disabledFunctions[integrationKey] && disabledFunctions[integrationKey].includes(func)) {
+      return;
+    }
     // eslint-disable-next-line prefer-spread
-    integration[func].apply(integration, args),
-  );
+    integration[func].apply(integration, args);
+  });
 };
 
 // export for testing
-export const _AnalyticsProvider: FC<IAnalyticsProvider> = ({ children, ...props }) => {
+export const _AnalyticsProvider: FC<IAnalyticsProvider> = ({ children, disabledFunctions = null, ...props }) => {
   const anonymousId = useMemo(() => {
     const id = Cookies.get(COOKIE_NAME) || uuidv1();
     Cookies.set(COOKIE_NAME, id, { expires: 365 });
@@ -60,33 +76,34 @@ export const _AnalyticsProvider: FC<IAnalyticsProvider> = ({ children, ...props 
       return false;
     });
 
-    return enabledIntegrations.map((integration) => {
-      return new supportedIntegrations[integration](props[integration]);
-    });
+    return enabledIntegrations.reduce((acc, integration) => {
+      acc[integration] = new supportedIntegrations[integration](props[integration]);
+      return acc;
+    }, {});
   }, []);
 
   const context = useMemo(() => {
     return {
       identify: function () {
-        proxyToIntegrations(integrations, 'identify', Array.from(arguments));
+        proxyToIntegrations(integrations, 'identify', Array.from(arguments), disabledFunctions);
       },
       group: function () {
-        proxyToIntegrations(integrations, 'group', Array.from(arguments));
+        proxyToIntegrations(integrations, 'group', Array.from(arguments), disabledFunctions);
       },
       page: function () {
-        proxyToIntegrations(integrations, 'page', Array.from(arguments));
+        proxyToIntegrations(integrations, 'page', Array.from(arguments), disabledFunctions);
       },
       track: function () {
-        proxyToIntegrations(integrations, 'track', Array.from(arguments));
+        proxyToIntegrations(integrations, 'track', Array.from(arguments), disabledFunctions);
       },
       user: () => ({
         anonymousId,
       }),
       reset: function () {
-        proxyToIntegrations(integrations, 'reset', Array.from(arguments));
+        proxyToIntegrations(integrations, 'reset', Array.from(arguments), disabledFunctions);
       },
       revenue: function () {
-        proxyToIntegrations(integrations, 'revenue', Array.from(arguments));
+        proxyToIntegrations(integrations, 'revenue', Array.from(arguments), disabledFunctions);
       },
     };
   }, [anonymousId]);

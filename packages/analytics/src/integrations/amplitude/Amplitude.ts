@@ -9,12 +9,6 @@ export class Amplitude implements IIntegration {
     const customConfig = {
       defaultTracking: config.defaultTracking ?? true,
     };
-
-    console.log(config, 'config');
-    console.log(customConfig, 'custom config');
-    console.log(config.defaultTracking, 'config defaultTracking');
-    console.log(config.defaultTracking ?? true, 'config.defaultTracking ?? true');
-
     amplitude.init(config.apiKey, customConfig);
   }
 

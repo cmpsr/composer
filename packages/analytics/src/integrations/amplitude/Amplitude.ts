@@ -44,6 +44,7 @@ export class Amplitude implements IIntegration {
   };
 
   page: Page = (pageName, traits) => {
+    console.log('PAGE AAAAAAAAAAAAAAAAAAAAAAAAAAA');
     (window as any).amplitude.track({
       event_type: '[Amplitude] Page Viewed',
       event_properties: {

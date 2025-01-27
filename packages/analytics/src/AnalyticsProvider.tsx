@@ -1,17 +1,7 @@
 /* eslint-disable prefer-rest-params */
 import React, { FC, ReactNode, useMemo } from 'react';
 import { AnalyticsContext } from './AnalyticsContext';
-import {
-  Segment,
-  ISegmentConfig,
-  GA,
-  IGAConfig,
-  GTag,
-  IGTagConfig,
-  IIntegration,
-  Meta,
-  MetaConfig,
-} from './integrations';
+import { Segment, ISegmentConfig, GA, IGAConfig, GTag, IGTagConfig, Meta, MetaConfig } from './integrations';
 import { v1 as uuidv1 } from 'uuid'; // v1 is timestamp based + random
 import Cookies from 'js-cookie';
 import { Amplitude, AmplitudeConfig } from './integrations/amplitude';
@@ -46,12 +36,6 @@ const proxyToIntegrations = (
 ) => {
   Object.keys(integrations).forEach((integrationKey) => {
     const integration = integrations[integrationKey];
-    console.log(disabledFunctions, 'disabledFunctions');
-    console.log(integration, 'integration');
-    console.log(integration.constructor.name, 'integration.constructor.name');
-    console.log(integrationKey, 'integration key');
-    console.log(disabledFunctions[integration.constructor.name], 'disabledFunctions[integration.constructor.name]');
-    console.log(func, 'func');
     if (disabledFunctions && disabledFunctions[integrationKey] && disabledFunctions[integrationKey].includes(func)) {
       return;
     }

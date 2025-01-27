@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.2",
+    "@testing-library/react": "^16.1.0",
     "rimraf": "^5.0.5"
   },
   "gitHead": "1584144554f591233e9f70dfb00225ccbf2b79ac"

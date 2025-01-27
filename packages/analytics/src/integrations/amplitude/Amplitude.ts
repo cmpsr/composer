@@ -6,7 +6,25 @@ import { AmplitudeConfig } from './types';
 export class Amplitude implements IIntegration {
   constructor(config: AmplitudeConfig) {
     const amplitude = loadAmplitude();
-    amplitude.init(config.apiKey);
+    const customConfig = {
+      autocapture: {
+        formInteractions: config.autoCaptureForms ?? true,
+        pageViews: config.autoCaptureViews ?? true,
+        fileDownloads: config.autoCaptureDownloads ?? true,
+        elementInteractions: config.autoCaptureElementInteractions ?? true,
+      },
+    };
+
+    console.log(config, 'config');
+    console.log(customConfig, 'custom config');
+    console.log(config.autoCaptureForms, 'config autocaptureforms');
+    console.log(config.autoCaptureForms ?? true, 'config.autoCaptureForms ?? true');
+    console.log(config.autoCaptureViews, 'config autoCaptureViews');
+    console.log(config.autoCaptureViews ?? true, 'config.autoCaptureViews ?? true');
+    console.log(config.autoCaptureDownloads, 'config autoCaptureDownloads');
+    console.log(config.autoCaptureDownloads ?? true, 'config.autoCaptureDownloads ?? true');
+
+    amplitude.init(config.apiKey, customConfig);
   }
 
   identify: Identify = (userId, traits) => {
@@ -26,6 +44,7 @@ export class Amplitude implements IIntegration {
   };
 
   page: Page = (pageName, traits) => {
+    console.log('PAGE AAAAAAAAAAAAAAAAAAAAAAAAAAA');
     (window as any).amplitude.track({
       event_type: '[Amplitude] Page Viewed',
       event_properties: {

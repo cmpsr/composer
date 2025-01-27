@@ -32,7 +32,7 @@ const proxyToIntegrations = (
   integrations: Record<string, typeof supportedIntegrations>,
   func: string,
   args: any[],
-  disabledFunctions?: Record<string, string[]>
+  disabledFunctions?: Record<string, string[]>,
 ) => {
   Object.keys(integrations).forEach((integrationKey) => {
     const integration = integrations[integrationKey];

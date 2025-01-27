@@ -38,9 +38,15 @@ describe('Amplitude', () => {
     });
   });
   it('should initialize amplitude with matching config', () => {
-    new Amplitude({ apiKey: '1234', autoCaptureViews: false, autoCaptureForms: true, autoCaptureDownloads: false });
+    new Amplitude({ apiKey: '1234', defaultTracking: false });
     expect(mockAmplitude.init).toHaveBeenCalledWith('1234', {
-      autocapture: { elementInteractions: true, fileDownloads: false, formInteractions: true, pageViews: false },
+      defaultTracking: false,
+    });
+  });
+  it('should initialize amplitude on true by default', () => {
+    new Amplitude({ apiKey: '1234' });
+    expect(mockAmplitude.init).toHaveBeenCalledWith('1234', {
+      defaultTracking: true,
     });
   });
   it('should set user id on identify', () => {

@@ -1,5 +1,11 @@
 # @cmpsr/components
 
+## 7.17.4
+
+### Patch Changes
+
+- a4a2c29: feat: add support for responsive values to Image component
+
 ## 7.17.3
 
 ### Patch Changes

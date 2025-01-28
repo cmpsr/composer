@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.6.0
+
+### Minor Changes
+
+- 1b649f0: Add disable functions feature to analytics, allow Amplitude to be further configurated
+
 ## 0.5.2
 
 ### Patch Changes

@@ -6,7 +6,10 @@ import { AmplitudeConfig } from './types';
 export class Amplitude implements IIntegration {
   constructor(config: AmplitudeConfig) {
     const amplitude = loadAmplitude();
-    amplitude.init(config.apiKey);
+    const customConfig = {
+      defaultTracking: config.defaultTracking ?? true,
+    };
+    amplitude.init(config.apiKey, customConfig);
   }
 
   identify: Identify = (userId, traits) => {

@@ -1,5 +1,11 @@
 # @cmpsr/blocks
 
+## 14.1.15
+
+### Patch Changes
+
+- a4a2c29: fix: flat src to use it as key
+
 ## 14.1.14
 
 ### Patch Changes

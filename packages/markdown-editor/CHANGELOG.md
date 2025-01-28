@@ -1,5 +1,7 @@
 # @cmpsr/markdown-editor
 
+## 2.0.33
+
 ## 2.0.32
 
 ### Patch Changes
